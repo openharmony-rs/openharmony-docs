@@ -62,7 +62,7 @@
 
 ### DrmCencAlgorithm
 
-```
+```c
 enum DrmCencAlgorithm
 ```
 
@@ -83,7 +83,7 @@ Drm CENC算法类型。
 
 ### DrmCencInfoMode
 
-```
+```c
 enum DrmCencInfoMode
 ```
 
@@ -103,7 +103,7 @@ enum DrmCencInfoMode
 
 ### OH_AVCencInfo_Create()
 
-```
+```c
 OH_AVCencInfo *OH_AVCencInfo_Create()
 ```
 
@@ -123,7 +123,7 @@ OH_AVCencInfo *OH_AVCencInfo_Create()
 
 ### OH_AVCencInfo_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)
 ```
 
@@ -150,7 +150,7 @@ OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)
 
 ### OH_AVCencInfo_SetAlgorithm()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlgorithm algo)
 ```
 
@@ -178,7 +178,7 @@ OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlg
 
 ### OH_AVCencInfo_SetKeyIdAndIv()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId, uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)
 ```
 
@@ -209,7 +209,7 @@ OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId
 
 ### OH_AVCencInfo_SetSubsampleInfo()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount, uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)
 ```
 
@@ -241,7 +241,7 @@ OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t en
 
 ### OH_AVCencInfo_SetMode()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode mode)
 ```
 
@@ -269,7 +269,7 @@ OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode
 
 ### OH_AVCencInfo_SetAVBuffer()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buffer)
 ```
 

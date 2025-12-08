@@ -69,7 +69,7 @@
 
 ### OH_AudioRenderer_Release()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)
 ```
 
@@ -94,7 +94,7 @@ OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)
 
 ### OH_AudioRenderer_Start()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)
 ```
 
@@ -119,7 +119,7 @@ OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)
 
 ### OH_AudioRenderer_Pause()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)
 ```
 
@@ -144,7 +144,7 @@ OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)
 
 ### OH_AudioRenderer_Stop()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 ```
 
@@ -169,7 +169,7 @@ OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 
 ### OH_AudioRenderer_Flush()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)
 ```
 
@@ -194,7 +194,7 @@ OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)
 
 ### OH_AudioRenderer_GetCurrentState()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* renderer,OH_AudioStream_State* state)
 ```
 
@@ -220,7 +220,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* rendere
 
 ### OH_AudioRenderer_GetSamplingRate()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* renderer, int32_t* rate)
 ```
 
@@ -246,7 +246,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* rendere
 
 ### OH_AudioRenderer_GetStreamId()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, uint32_t* streamId)
 ```
 
@@ -272,7 +272,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, u
 
 ### OH_AudioRenderer_GetChannelCount()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* renderer, int32_t* channelCount)
 ```
 
@@ -298,7 +298,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* rendere
 
 ### OH_AudioRenderer_GetSampleFormat()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* renderer,OH_AudioStream_SampleFormat* sampleFormat)
 ```
 
@@ -324,7 +324,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* rendere
 
 ### OH_AudioRenderer_GetLatencyMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer,OH_AudioStream_LatencyMode* latencyMode)
 ```
 
@@ -350,7 +350,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer
 
 ### OH_AudioRenderer_GetRendererInfo()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* renderer,OH_AudioStream_Usage* usage)
 ```
 
@@ -376,7 +376,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* rendere
 
 ### OH_AudioRenderer_GetEncodingType()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer,OH_AudioStream_EncodingType* encodingType)
 ```
 
@@ -402,7 +402,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* rendere
 
 ### OH_AudioRenderer_GetFramesWritten()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)
 ```
 
@@ -428,7 +428,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* render
 
 ### OH_AudioRenderer_GetTimestamp()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId,int64_t* framePosition, int64_t* timestamp)
 ```
 
@@ -456,7 +456,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 ### OH_AudioRenderer_GetAudioTimestampInfo()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer,int64_t* framePosition, int64_t* timestamp)
 ```
 
@@ -483,7 +483,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 ### OH_AudioRenderer_GetFrameSizeInCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)
 ```
 
@@ -509,7 +509,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* 
 
 ### OH_AudioRenderer_GetSpeed()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)
 ```
 
@@ -535,7 +535,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, floa
 
 ### OH_AudioRenderer_SetSpeed()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)
 ```
 
@@ -561,7 +561,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, floa
 
 ### OH_AudioRenderer_SetMarkPosition()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* renderer, uint32_t samplePos,OH_AudioRenderer_OnMarkReachedCallback callback, void* userData)
 ```
 
@@ -589,7 +589,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* rendere
 
 ### OH_AudioRenderer_CancelMark()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)
 ```
 
@@ -614,7 +614,7 @@ OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)
 
 ### OH_AudioRenderer_SetVolume()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, float volume)
 ```
 
@@ -640,7 +640,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, flo
 
 ### OH_AudioRenderer_SetVolumeWithRamp()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* renderer, float volume, int32_t durationMs)
 ```
 
@@ -667,7 +667,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* rende
 
 ### OH_AudioRenderer_GetVolume()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, float* volume)
 ```
 
@@ -693,7 +693,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, flo
 
 ### OH_AudioRenderer_GetUnderflowCount()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* renderer, uint32_t* count)
 ```
 
@@ -719,7 +719,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* rende
 
 ### OH_AudioRenderer_GetChannelLayout()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* renderer,OH_AudioChannelLayout* channelLayout)
 ```
 
@@ -745,7 +745,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* render
 
 ### OH_AudioRenderer_GetEffectMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetEffectMode(OH_AudioRenderer* renderer,OH_AudioStream_AudioEffectMode* effectMode)
 ```
 
@@ -771,7 +771,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetEffectMode(OH_AudioRenderer* renderer,
 
 ### OH_AudioRenderer_SetEffectMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetEffectMode(OH_AudioRenderer* renderer,OH_AudioStream_AudioEffectMode effectMode)
 ```
 
@@ -797,7 +797,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetEffectMode(OH_AudioRenderer* renderer,
 
 ### OH_AudioRenderer_GetRendererPrivacy()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetRendererPrivacy(OH_AudioRenderer* renderer,OH_AudioStream_PrivacyType* privacy)
 ```
 
@@ -823,7 +823,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererPrivacy(OH_AudioRenderer* rend
 
 ### OH_AudioRenderer_SetSilentModeAndMixWithOthers()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRenderer* renderer, bool on)
 ```
 
@@ -849,7 +849,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRen
 
 ### OH_AudioRenderer_GetSilentModeAndMixWithOthers()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRenderer* renderer, bool* on)
 ```
 
@@ -875,7 +875,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRen
 
 ### OH_AudioRenderer_SetDefaultOutputDevice()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* renderer, OH_AudioDevice_Type deviceType)
 ```
 
@@ -901,7 +901,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 ### OH_AudioRenderer_OnInterruptCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer, void* userData,OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)
 ```
 
@@ -923,7 +923,7 @@ typedef void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer,
 
 ### OH_AudioRenderer_OnErrorCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData,OH_AudioStream_Result error)
 ```
 
@@ -944,7 +944,7 @@ typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, voi
 
 ### OH_AudioRenderer_GetFastStatus()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer,OH_AudioStream_FastStatus* status)
 ```
 
@@ -970,7 +970,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer,
 
 ### OH_AudioRenderer_OnFastStatusChange()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_FastStatus status)
 ```
 
@@ -991,7 +991,7 @@ typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer,v
 
 ### OH_AudioRenderer_SetLoudnessGain()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)
 ```
 
@@ -1017,7 +1017,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* rendere
 
 ### OH_AudioRenderer_GetLoudnessGain()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* renderer, float* loudnessGain)
 ```
 

@@ -802,10 +802,10 @@ static clearMonitor(target: object, path: string | string[], monitorCallback?: M
 在下面的示例中：
 1. 在`ObservedClass`的构造方法中，添加对`age`属性的同步监听回调`onChange`。
 2. 点击Text组件，触发`age`自增，`onChange`的监听回调函数被触发。打印日志如下。
-<!--code_no_check-->
-```
-ObservedClass property age change from 10 to 11
-```
+   <!--code_no_check-->
+   ```
+   ObservedClass property age change from 10 to 11
+   ```
 3. 点击`clear monitor`，删除`age`的监听函数`onChange`。
 4. 再次点击Text组件，触发`age`自增，`onChange`不会被触发。
 

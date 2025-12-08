@@ -68,39 +68,41 @@
 
 更新别名是demo_alias的关键资产，将关键资产明文更新为demo_pwd_new，附属属性更新成demo_label_new。
 
-<!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+1. 引用头文件，定义工具函数。
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+   
+   ``` TypeScript
+   import { asset } from '@kit.AssetStoreKit';
+   import { util } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   function stringToArray(str: string): Uint8Array {
+     let textEncoder = new util.TextEncoder();
+     return textEncoder.encodeInto(str);
+   }
+   ```
 
-``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function updateAsset(): Promise<string> {
-  let result: string = '';
-  let query: asset.AssetMap = new Map();
-  query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-  let attrsToUpdate: asset.AssetMap = new Map();
-  attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
-  attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
-  try {
-    await asset.update(query, attrsToUpdate).then(() => {
-      console.info(`Succeeded in updating Asset.`);
-      result = 'Succeeded in updating Asset';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to update Asset';
-    });
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-    result = 'Failed to update Asset';
-  }
-  return result;
-}
-```
+2. 参考如下示例代码，进行业务功能开发。
+   <!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+   
+   ``` TypeScript
+   let query: asset.AssetMap = new Map();
+   query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+   let attrsToUpdate: asset.AssetMap = new Map();
+   attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
+   attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
+   try {
+     asset.update(query, attrsToUpdate).then(() => {
+       console.info(`Succeeded in updating Asset.`);
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
+       // ...
+     });
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
+     // ...
+   }
+   ```
 

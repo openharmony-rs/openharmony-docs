@@ -41,7 +41,7 @@
 
 ### OH_AVCodecBufferFlags
 
-```
+```c
 enum OH_AVCodecBufferFlags
 ```
 

@@ -218,6 +218,12 @@
 | [ArkUI_TextMenuItemId](#arkui_textmenuitemid) | ArkUI_TextMenuItemId | 文本菜单项id枚举。 |
 | [ArkUI_TextSpanType](#arkui_textspantype) | ArkUI_TextSpanType | 自定义文本选择菜单的文本识别类型枚举。 |
 | [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | 自定义文本选择菜单的响应类型枚举。 |
+| [ArkUI_HoverEffect](#arkui_hovereffect) | ArkUI_HoverEffect | 组件被悬停时的效果。 |
+| [ArkUI_FocusPriority](#arkui_focuspriority) | ArkUI_FocusPriority | 应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。 |
+| [ArkUI_LayoutSafeAreaType](#arkui_layoutsafeareatype)               | ArkUI_LayoutSafeAreaType         | 定义扩展安全区域的枚举值。                         |
+| [ArkUI_LayoutSafeAreaEdge](#arkui_layoutsafeareaedge)               | ArkUI_LayoutSafeAreaEdge         | 定义扩展安全区域的方向的枚举值。                         |
+| [ArkUI_LocalizedAlignment](#arkui_localizedalignment)               | ArkUI_LocalizedAlignment         | 定义Stack容器中子组件的对齐规则。                         |
+| [ArkUI_RenderStrategy](#arkui_renderstrategy)                       | ArkUI_RenderStrategy             | 定义组件绘制圆角的模式。                |
 
 ### 函数
 
@@ -1316,8 +1322,8 @@ Swiper导航点箭头枚举值。
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SWIPER_ARROW_HIDE = 0 | 不显示swiper中导航点箭头。 |
-| ARKUI_SWIPER_ARROW_SHOW | 显示swiper中导航点箭头。 |
-| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | 在hover状态下显示swiper中导航点箭头。 |
+| ARKUI_SWIPER_ARROW_SHOW = 1 | 显示swiper中导航点箭头。 |
+| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER = 2 | 在hover状态下显示swiper中导航点箭头。 |
 
 ### ArkUI_SwiperNestedScrollMode
 
@@ -1335,7 +1341,7 @@ Swiper组件和父组件的嵌套滚动模式。
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper只自身滚动，不与父组件联动。 |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。 |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST = 1 | Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。 |
 
 ### ArkUI_PageFlipMode
 
@@ -1353,7 +1359,7 @@ Swiper组件鼠标滚轮翻页模式。
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | 鼠标滚轮连续滚动时翻多页，根据鼠标事件上报次数确定。 |
-| ARKUI_PAGE_FLIP_MODE_SINGLE | 一次翻页动画结束前不响应其他鼠标滚轮事件。 |
+| ARKUI_PAGE_FLIP_MODE_SINGLE = 1 | 一次翻页动画结束前不响应其他鼠标滚轮事件。 |
 
 ### ArkUI_SwiperAnimationMode
 
@@ -2560,8 +2566,8 @@ enum ArkUI_SwiperIndicatorType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_INDICATOR_TYPE_DOT | 圆点指示器类型。 |
-| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | 数字指示器类型。 |
+| ARKUI_SWIPER_INDICATOR_TYPE_DOT = 0 | 圆点指示器类型。 |
+| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT = 1 | 数字指示器类型。 |
 
 ### ArkUI_AnimationDirection
 
@@ -2699,7 +2705,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  参数错误。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。<br>**起始版本：** 21 |
 | ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  当前XComponent状态异常，方法调用失败。错误码的详细介绍请参见[XComponent组件错误码](../apis-arkui/errorcode-xcomponent.md)。<br>**起始版本：** 19 |
 | ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | 组件不支持特定的属性或者事件。错误码的详细介绍请参见[交互事件错误码](../apis-arkui/errorcode-event.md)。 |
-| ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE = 106103 | 对应的操作不支持ArkTS创建的节点。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。 |
+| ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED = 106103 | 对应的操作不支持ArkTS创建的节点。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。 |
 | ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。错误码的详细介绍请参见[106104-适配器未绑定](../apis-arkui/errorcode-nodeadapter.md#106104-适配器未绑定)。 |
 | ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | 适配器已存在。错误码的详细介绍请参见[106105-适配器已存在](../apis-arkui/errorcode-nodeadapter.md#106105-适配器已存在)。 |
 | ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。错误码的详细介绍请参见[106106-子节点已存在](../apis-arkui/errorcode-nodeadapter.md#106106-子节点已存在)。 |
@@ -2710,7 +2716,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。<br/>错误码的详细介绍请参见[导航错误码](../apis-arkui/errorcode-router.md#106200-传入的索引值非法)。 |
 | ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。<br/>错误码的详细介绍请参见[导航错误码](../apis-arkui/errorcode-router.md#106201-查询路由导航信息失败)。 |
 | ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常。<br/>错误码的详细介绍请参见[导航错误码](../apis-arkui/errorcode-router.md#106202-传入的buffer-size异常)。 |
-| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  传入的节点未挂载到组件树上。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。<br>**起始版本：** 16 |
+| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  传入的节点未挂载到组件树上。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  不支持在非UI线程操作传入的节点。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md#106204-不支持在非ui线程操作传入的节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  反色能力入参错误。错误码的详细介绍请参见[反色能力错误码](../apis-arkui/errorcode-force-dark.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 |  节点已被接纳为附属节点。错误码的详细介绍请参见[附属节点错误码](../apis-arkui/errorcode-adopt.md#106206-节点已被接纳为附属节点)。<br>**起始版本：** 23 |
@@ -3139,6 +3145,45 @@ GridItem样式枚举。
 | GRID_ITEM_STYLE_NONE  = 0 | 无样式。 |
 | GRID_ITEM_STYLE_PLAIN  = 1  | 显示Hover、Press态样式。 |
 
+### ArkUI_HoverEffect
+
+```
+enum ArkUI_HoverEffect
+```
+
+**描述：**
+
+
+组件被悬停时的效果。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_HOVER_EFFECT_AUTO = 0 | 默认效果。 |
+| ARKUI_HOVER_EFFECT_SCALE  | 缩放效果。 |
+| ARKUI_HOVER_EFFECT_HIGHLIGHT  | 高亮效果。 |
+| ARKUI_HOVER_EFFECT_NONE  | 无效果。 |
+
+### ArkUI_FocusPriority
+
+```
+enum ArkUI_FocusPriority
+```
+
+**描述：**
+
+
+应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_FOCUS_PRIORITY_AUTO  = 0 | 默认优先级。 |
+| ARKUI_FOCUS_PRIORITY_PRIOR   | 先前的优先级。 |
+| ARKUI_FOCUS_PRIORITY_PREVIOUS   | 上一个焦点优先级。 |
+
 ### ArkUI_MenuPolicy
 
 ```
@@ -3247,6 +3292,90 @@ enum ArkUI_TextResponseType
 | ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如，同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单，此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
+
+### ArkUI_LayoutSafeAreaType
+
+```c
+enum ArkUI_LayoutSafeAreaType
+```
+
+**描述：**
+
+
+定义扩展安全区域的枚举值。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM = 1 | 系统默认非安全区域，包括状态栏、导航栏。 |
+
+### ArkUI_LayoutSafeAreaEdge
+
+```c
+enum ArkUI_LayoutSafeAreaEdge
+```
+
+**描述：**
+
+
+定义扩展安全区域的方向的枚举值。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP = 1 | 上方区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | 下方区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_START = 1 << 2 | 前部区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 1 << 3 | 尾部区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 3 | 垂直区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_START \| ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 12 | 水平区域。 |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL = ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL \| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL = 15 | 全部区域。 |
+
+### ArkUI_LocalizedAlignment
+
+```c
+enum ArkUI_LocalizedAlignment
+```
+
+**描述：**
+
+
+定义Stack容器中子组件的对齐规则。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_LOCALIZED_ALIGNMENT_TOP_START = 0 | 顶部起始。 |
+| ARKUI_LOCALIZED_ALIGNMENT_TOP = 1 | 顶部居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_TOP_END = 2 | 顶部尾端。 |
+| ARKUI_LOCALIZED_ALIGNMENT_START = 3 | 起始端纵向居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_CENTER = 4 | 横向和纵向居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_END= = 5 | 尾端纵向居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_START = 6 | 底部起始端。 |
+| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM = 7 | 底部横向居中。 |
+| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_END = 8 | 底部尾端。 |
+
+### ArkUI_RenderStrategy
+
+```c
+enum ArkUI_RenderStrategy
+```
+
+**描述：**
+
+
+定义组件绘制圆角的模式。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_RENDERSTRATEGY_FAST  = 0 | 	在线绘制模式。 |
+| ARKUI_RENDERSTRATEGY_OFFSCREEN = 1 | 离屏绘制模式。 |
+
 
 ## 函数说明
 

@@ -13523,7 +13523,6 @@ createCmsParser(): CmsParser
 **示例：**
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13683,7 +13682,6 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13824,7 +13822,6 @@ getContentType(): CmsContentType
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13977,7 +13974,6 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14118,7 +14114,6 @@ getContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14268,7 +14263,6 @@ getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +

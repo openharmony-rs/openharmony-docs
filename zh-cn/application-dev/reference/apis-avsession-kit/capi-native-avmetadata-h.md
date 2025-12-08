@@ -64,7 +64,7 @@
 
 ### AVMetadata_Result
 
-```
+```c
 enum AVMetadata_Result
 ```
 
@@ -82,7 +82,7 @@ enum AVMetadata_Result
 
 ### AVMetadata_SkipIntervals
 
-```
+```c
 enum AVMetadata_SkipIntervals
 ```
 
@@ -100,7 +100,7 @@ enum AVMetadata_SkipIntervals
 
 ### AVMetadata_DisplayTag
 
-```
+```c
 enum AVMetadata_DisplayTag
 ```
 
@@ -119,7 +119,7 @@ enum AVMetadata_DisplayTag
 
 ### OH_AVMetadataBuilder_Create()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 ```
 
@@ -144,7 +144,7 @@ AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 
 ### OH_AVMetadataBuilder_Destroy()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 ```
 
@@ -169,7 +169,7 @@ AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 
 ### OH_AVMetadataBuilder_SetAssetId()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder, const char* assetId)
 ```
 
@@ -195,7 +195,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder,
 
 ### OH_AVMetadataBuilder_SetTitle()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, const char* title)
 ```
 
@@ -221,7 +221,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, c
 
 ### OH_AVMetadataBuilder_SetArtist()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, const char* artist)
 ```
 
@@ -247,7 +247,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, 
 
 ### OH_AVMetadataBuilder_SetAuthor()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, const char* author)
 ```
 
@@ -273,7 +273,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, 
 
 ### OH_AVMetadataBuilder_SetAlbum()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, const char* album)
 ```
 
@@ -299,7 +299,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, c
 
 ### OH_AVMetadataBuilder_SetWriter()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, const char* writer)
 ```
 
@@ -325,7 +325,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, 
 
 ### OH_AVMetadataBuilder_SetComposer()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder, const char* composer)
 ```
 
@@ -351,7 +351,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder
 
 ### OH_AVMetadataBuilder_SetDuration()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder, int64_t duration)
 ```
 
@@ -377,7 +377,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder
 
 ### OH_AVMetadataBuilder_SetMediaImageUri()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* builder, const char* mediaImageUri)
 ```
 
@@ -403,7 +403,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 
 ### OH_AVMetadataBuilder_SetSubtitle()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder, const char* subtitle)
 ```
 
@@ -429,7 +429,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder
 
 ### OH_AVMetadataBuilder_SetDescription()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* builder, const char* description)
 ```
 
@@ -455,7 +455,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* buil
 
 ### OH_AVMetadataBuilder_SetLyric()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, const char* lyric)
 ```
 
@@ -481,7 +481,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, c
 
 ### OH_AVMetadataBuilder_SetSkipIntervals()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder,AVMetadata_SkipIntervals intervals)
 ```
 
@@ -507,7 +507,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* bu
 
 ### OH_AVMetadataBuilder_SetDisplayTags()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* builder, int32_t tags)
 ```
 
@@ -533,7 +533,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* buil
 
 ### OH_AVMetadataBuilder_GenerateAVMetadata()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* builder,OH_AVMetadata** avMetadata)
 ```
 
@@ -559,7 +559,7 @@ AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* 
 
 ### OH_AVMetadata_Destroy()
 
-```
+```c
 AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 ```
 

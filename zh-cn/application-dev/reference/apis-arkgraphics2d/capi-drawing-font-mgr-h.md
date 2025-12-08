@@ -43,7 +43,7 @@
 
 ### OH_Drawing_FontMgrCreate()
 
-```
+```c
 OH_Drawing_FontMgr* OH_Drawing_FontMgrCreate(void)
 ```
 
@@ -63,7 +63,7 @@ OH_Drawing_FontMgr* OH_Drawing_FontMgrCreate(void)
 
 ### OH_Drawing_FontMgrDestroy()
 
-```
+```c
 void OH_Drawing_FontMgrDestroy(OH_Drawing_FontMgr* drawingFontMgr)
 ```
 
@@ -84,7 +84,7 @@ void OH_Drawing_FontMgrDestroy(OH_Drawing_FontMgr* drawingFontMgr)
 
 ### OH_Drawing_FontMgrGetFamilyCount()
 
-```
+```c
 int OH_Drawing_FontMgrGetFamilyCount(OH_Drawing_FontMgr* drawingFontMgr)
 ```
 
@@ -111,7 +111,7 @@ int OH_Drawing_FontMgrGetFamilyCount(OH_Drawing_FontMgr* drawingFontMgr)
 
 ### OH_Drawing_FontMgrGetFamilyName()
 
-```
+```c
 char* OH_Drawing_FontMgrGetFamilyName(OH_Drawing_FontMgr* drawingFontMgr, int index)
 ```
 
@@ -139,7 +139,7 @@ char* OH_Drawing_FontMgrGetFamilyName(OH_Drawing_FontMgr* drawingFontMgr, int in
 
 ### OH_Drawing_FontMgrDestroyFamilyName()
 
-```
+```c
 void OH_Drawing_FontMgrDestroyFamilyName(char* familyName)
 ```
 
@@ -160,7 +160,7 @@ void OH_Drawing_FontMgrDestroyFamilyName(char* familyName)
 
 ### OH_Drawing_FontMgrCreateFontStyleSet()
 
-```
+```c
 OH_Drawing_FontStyleSet* OH_Drawing_FontMgrCreateFontStyleSet(OH_Drawing_FontMgr* drawingFontMgr, int index)
 ```
 
@@ -188,7 +188,7 @@ OH_Drawing_FontStyleSet* OH_Drawing_FontMgrCreateFontStyleSet(OH_Drawing_FontMgr
 
 ### OH_Drawing_FontMgrDestroyFontStyleSet()
 
-```
+```c
 void OH_Drawing_FontMgrDestroyFontStyleSet(OH_Drawing_FontStyleSet* drawingFontStyleSet)
 ```
 
@@ -209,7 +209,7 @@ void OH_Drawing_FontMgrDestroyFontStyleSet(OH_Drawing_FontStyleSet* drawingFontS
 
 ### OH_Drawing_FontMgrMatchFamily()
 
-```
+```c
 OH_Drawing_FontStyleSet* OH_Drawing_FontMgrMatchFamily(OH_Drawing_FontMgr* drawingFontMgr, const char* familyName)
 ```
 
@@ -237,7 +237,7 @@ OH_Drawing_FontStyleSet* OH_Drawing_FontMgrMatchFamily(OH_Drawing_FontMgr* drawi
 
 ### OH_Drawing_FontMgrMatchFamilyStyle()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyle(OH_Drawing_FontMgr* drawingFontMgr,const char* familyName, OH_Drawing_FontStyleStruct fontStyle)
 ```
 
@@ -266,7 +266,7 @@ OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyle(OH_Drawing_FontMgr* draw
 
 ### OH_Drawing_FontMgrMatchFamilyStyleCharacter()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyleCharacter(OH_Drawing_FontMgr* drawingFontMgr,const char* familyName, OH_Drawing_FontStyleStruct fontStyle,const char* bcp47[], int bcp47Count, int32_t character)
 ```
 
@@ -298,7 +298,7 @@ OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyleCharacter(OH_Drawing_Font
 
 ### OH_Drawing_FontStyleSetCreateTypeface()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontStyleSetCreateTypeface(OH_Drawing_FontStyleSet* fontStyleSet, int index)
 ```
 
@@ -326,7 +326,7 @@ OH_Drawing_Typeface* OH_Drawing_FontStyleSetCreateTypeface(OH_Drawing_FontStyleS
 
 ### OH_Drawing_FontStyleSetGetStyle()
 
-```
+```c
 OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleSet* fontStyleSet, int32_t index,char** styleName)
 ```
 
@@ -355,7 +355,7 @@ OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleS
 
 ### OH_Drawing_FontStyleSetFreeStyleName()
 
-```
+```c
 void OH_Drawing_FontStyleSetFreeStyleName(char** styleName)
 ```
 
@@ -376,7 +376,7 @@ void OH_Drawing_FontStyleSetFreeStyleName(char** styleName)
 
 ### OH_Drawing_FontStyleSetMatchStyle()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontStyleSetMatchStyle(OH_Drawing_FontStyleSet* fontStyleSet,OH_Drawing_FontStyleStruct fontStyleStruct)
 ```
 
@@ -404,7 +404,7 @@ OH_Drawing_Typeface* OH_Drawing_FontStyleSetMatchStyle(OH_Drawing_FontStyleSet* 
 
 ### OH_Drawing_FontStyleSetCount()
 
-```
+```c
 int OH_Drawing_FontStyleSetCount(OH_Drawing_FontStyleSet* fontStyleSet)
 ```
 

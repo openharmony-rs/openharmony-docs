@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} OH_Cursor
 ```
 
@@ -52,7 +52,7 @@ typedef struct {...} OH_Cursor
 
 ### getColumnCount()
 
-```
+```c
 int (*getColumnCount)(OH_Cursor *cursor, int *count)
 ```
 
@@ -78,7 +78,7 @@ int (*getColumnCount)(OH_Cursor *cursor, int *count)
 
 ### getColumnType()
 
-```
+```c
 int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)
 ```
 
@@ -105,7 +105,7 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 
 ### getColumnIndex()
 
-```
+```c
 int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 ```
 
@@ -132,7 +132,7 @@ int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 
 ### getColumnName()
 
-```
+```c
  int (*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)
 ```
 
@@ -160,7 +160,7 @@ int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 
 ### getRowCount()
 
-```
+```c
 int (*getRowCount)(OH_Cursor *cursor, int *count)
 ```
 
@@ -186,7 +186,7 @@ int (*getRowCount)(OH_Cursor *cursor, int *count)
 
 ### goToNextRow()
 
-```
+```c
  int (*goToNextRow)(OH_Cursor *cursor)
 ```
 
@@ -211,7 +211,7 @@ int (*getRowCount)(OH_Cursor *cursor, int *count)
 
 ### getSize()
 
-```
+```c
 int (*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)
 ```
 
@@ -238,7 +238,7 @@ int (*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)
 
 ### getText()
 
-```
+```c
 int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)
 ```
 
@@ -266,7 +266,7 @@ int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)
 
 ### getInt64()
 
-```
+```c
 int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)
 ```
 
@@ -293,7 +293,7 @@ int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)
 
 ### getReal()
 
-```
+```c
 int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)
 ```
 
@@ -320,7 +320,7 @@ int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)
 
 ### getBlob()
 
-```
+```c
 int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int length)
 ```
 
@@ -348,7 +348,7 @@ int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int
 
 ### isNull()
 
-```
+```c
 int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)
 ```
 
@@ -375,7 +375,7 @@ int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)
 
 ### destroy()
 
-```
+```c
 int (*destroy)(OH_Cursor *cursor)
 ```
 
@@ -400,7 +400,7 @@ int (*destroy)(OH_Cursor *cursor)
 
 ### getAsset()
 
-```
+```c
 int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 ```
 
@@ -427,7 +427,7 @@ int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 
 ### getAssets()
 
-```
+```c
 int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)
 ```
 
