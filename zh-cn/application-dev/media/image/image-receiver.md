@@ -23,6 +23,13 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
 
    <!-- @[receiver_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
    
+   ``` TypeScript
+   import image from '@ohos.multimedia.image'
+   import { camera } from '@kit.CameraKit';
+   import { BusinessError } from '@ohos.base'
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
+   
 2. 创建ImageReceiver对象，通过ImageReceiver对象可获取预览流SurfaceId。
    
    <!-- @[init_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->   
