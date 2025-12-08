@@ -21,6 +21,15 @@
 1. 导入相关模块包。
 
    <!-- @[encodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/EncodingPixelMap.ets) -->   
+   
+   ``` TypeScript
+   // 导入相关模块包。
+   import { image } from '@kit.ImageKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { resourceManager } from '@kit.LocalizationKit';
+   ```
 
 2. 创建图像编码ImagePacker对象。
 
