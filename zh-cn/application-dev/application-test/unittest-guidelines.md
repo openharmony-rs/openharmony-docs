@@ -609,14 +609,17 @@ interface PromiseInfo {
 
 **基础类**
 
-Mockit是Mock的基础类，用于指定需要Mock的实例和函数。
+MockKit是Mock的基础类，用于指定需要Mock的实例和函数。
+
 | 接口名 | 功能说明                 |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mock某个类实例中的函数，支持使用异步函数。                                                 |
+| mockPrivateFunc | Mock某个类的实例上的私有方法，支持使用异步函数。 |
+| mockProperty | Mock某个类的实例上的属性，将其值设置为预期值，支持私有属性。 |
 | verify | 验证函数在对应参数下的执行行为是否符合预期，返回一个VerificationMode类。 |
 | ignoreMock | 使用ignoreMock可以还原实例中被Mock后的函数，对被Mock后的函数有效。                                                                                                   |
 | clear | 用例执行完毕后，对被Mock对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
-| clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |  
+| clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |
 
 **VerificationMode**
 
@@ -1189,7 +1192,7 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
- 
+
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  
