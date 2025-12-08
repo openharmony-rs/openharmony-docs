@@ -103,18 +103,18 @@
 6. 当不使用该网络时，可以调用该对象的[unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister)方法，取消订阅。
 
    <!-- @[notification_network_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
-
-``` TypeScript
-// 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
-conn.unregister((err: BusinessError, data: void) => {
-  if (err) {
-    hilog.error(0x0000, 'testTag', 'Error occurred during unsubscription:', JSON.stringify(err));
-  } else {
-    // ···
-    hilog.info(0x0000, 'testTag', 'Network connection disconnected.');
-  }
-});
-```
+   
+   ``` TypeScript
+   // 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
+   conn.unregister((err: BusinessError, data: void) => {
+     if (err) {
+       hilog.error(0x0000, 'testTag', 'Error occurred during unsubscription:', JSON.stringify(err));
+     } else {
+       // ...
+       hilog.info(0x0000, 'testTag', 'Network connection disconnected.');
+     }
+   });
+   ```
 
 ## 监控默认网络变化并主动重建网络连接
 
