@@ -753,6 +753,175 @@ export async function testSignVerify() {
 ```
 ### RSA/SHA256/PKCS1_V1_5
 <!-- @[key_algorithm_RSASHA256PKCS1_V1_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/RSASHA256PKCS1_V1_5.ets) -->
+
+``` TypeScript
+/*
+ * 密钥算法为RSA，摘要算法为SHA256，填充模式为PKCS1_V1_5
+ */
+import { huks } from '@kit.UniversalKeystoreKit';
+
+let keyAlias = 'test_rsaKeyAlias';
+let handle: number;
+let plaintext = '123456';
+let signature: Uint8Array;
+
+function stringToUint8Array(str: String) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+function uint8ArrayToString(fileData: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < fileData.length; i++) {
+    dataString += String.fromCharCode(fileData[i]);
+  }
+  return dataString;
+}
+
+function getRsaGenerateProperties() {
+  let properties: huks.HuksParam[] = [
+    { tag: huks.HuksTag.HUKS_TAG_ALGORITHM, value: huks.HuksKeyAlg.HUKS_ALG_RSA },
+    { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    { tag: huks.HuksTag.HUKS_TAG_PADDING, value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5 },
+    { tag: huks.HuksTag.HUKS_TAG_DIGEST, value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256 }
+  ];
+  return properties;
+}
+
+function getRsaSignProperties() {
+  let properties: huks.HuksParam[] = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }];
+  return properties;
+}
+
+function getRsaVerifyProperties() {
+  let properties: huks.HuksParam[] = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }];
+  return properties;
+}
+
+async function generateRsaKey(keyAlias: string) {
+  let genProperties = getRsaGenerateProperties();
+  let options: huks.HuksOptions = {
+    properties: genProperties
+  }
+  await huks.generateKeyItem(keyAlias, options)
+    .then((data) => {
+      console.info(`promise: generate RSA Key success, data = ${JSON.stringify(data)}`);
+    }).catch((err: Error) => {
+      console.error(`promise: generate RSA Key failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+}
+
+async function sign(keyAlias: string, plaintext: string) {
+  let signProperties = getRsaSignProperties();
+  let options: huks.HuksOptions = {
+    properties: signProperties,
+    inData: stringToUint8Array(plaintext)
+  }
+  await huks.initSession(keyAlias, options)
+    .then((data) => {
+      handle = data.handle;
+    }).catch((err: Error) => {
+      console.error(`promise: init sign failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+  await huks.finishSession(handle, options)
+    .then((data) => {
+      console.info(`promise: sign success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
+      signature = data.outData as Uint8Array;
+    }).catch((err: Error) => {
+      console.error(`promise: sign failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+}
+
+async function verify(keyAlias: string, plaintext: string, signature: Uint8Array) {
+  let verifyProperties = getRsaVerifyProperties()
+  let options: huks.HuksOptions = {
+    properties: verifyProperties,
+    inData: stringToUint8Array(plaintext)
+  }
+  await huks.initSession(keyAlias, options)
+    .then((data) => {
+      handle = data.handle;
+    }).catch((err: Error) => {
+      console.error(`promise: init verify failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+  await huks.updateSession(handle, options)
+    .then((data) => {
+      console.info(`promise: update verify success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
+    }).catch((err: Error) => {
+      console.error(`promise: update verify failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+  options.inData = signature;
+  await huks.finishSession(handle, options)
+    .then((data) => {
+      console.info(`promise: verify success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
+    }).catch((err: Error) => {
+      console.error(`promise: verify failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+}
+
+async function deleteRsaKey(keyAlias: string) {
+  let emptyOptions: huks.HuksOptions = {
+    properties: []
+  }
+  await huks.deleteKeyItem(keyAlias, emptyOptions)
+    .then((data) => {
+      console.info(`promise: delete data success`);
+    }).catch((err: Error) => {
+      console.error(`promise: delete data failed`);
+      throw (err as Error);
+    })
+}
+
+export async function testSignVerify() {
+  await generateRsaKey(keyAlias);
+  await sign(keyAlias, plaintext);
+  await verify(keyAlias, plaintext, signature);
+  await deleteRsaKey(keyAlias);
+}
+```
 ### RSA2048/SHA384/PSS
 <!-- @[key_algorithm_RSA2048SHA384PSS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/RSA2048SHA384PSS.ets) -->
 
