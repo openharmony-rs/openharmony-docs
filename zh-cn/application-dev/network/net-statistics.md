@@ -107,23 +107,23 @@
    let UID = 20010038;
   ```
    <!-- @[flow_management_getUidRxBytes_and_getUidTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 获取指定应用实时下行流量数据。
-// ···
-statistics.getUidRxBytes(UID).then((stats: number) => {
-  console.info(JSON.stringify(stats));
-// ···
-})
-// ···
-// 获取指定应用实时上行流量数据。
-// ···
-statistics.getUidTxBytes(UID).then((stats: number) => {
-  console.info(JSON.stringify(stats));
-// ···
-})
-// ···
-```
+   
+   ``` TypeScript
+   // 获取指定应用实时下行流量数据。
+   // ...
+   statistics.getUidRxBytes(UID).then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   // 获取指定应用实时上行流量数据。
+   // ...
+   statistics.getUidTxBytes(UID).then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   ```
 6. 获取指定socket实时流量数据
 
     调用getSockfdRxBytes接口，传入指定的sockFd获取指定socket实时上下行流量数据。
