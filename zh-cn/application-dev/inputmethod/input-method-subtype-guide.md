@@ -58,18 +58,15 @@
 <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
 ``` TypeScript
-    // 设置监听子类型事件，改变输入法应用界面
-    InputMethodEngine.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-      this.inputHandle.addLog('GJ setSubtype inputMethodSubtype:' + inputMethodSubtype.id);
-      if(inputMethodSubtype.id == 'InputMethodExtAbility') {
-        AppStorage.setOrCreate('subtypeChange', 0);
-        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
-      }
-      if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
-        AppStorage.setOrCreate('subtypeChange', 1);
-        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
-      }
-    });
+// 设置监听子类型事件，改变输入法应用界面
+inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+  if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+    AppStorage.setOrCreate('subtypeChange', 0);
+  }
+  if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+    AppStorage.setOrCreate('subtypeChange', 1);
+  }
+});
 ```
 
 
