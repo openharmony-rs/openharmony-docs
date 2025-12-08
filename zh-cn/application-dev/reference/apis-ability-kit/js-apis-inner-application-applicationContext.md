@@ -1257,7 +1257,7 @@ class MyAbilityStage extends AbilityStage {
 }
 ```
 
-## ApplicationContext.onInteropAbilityLifecycle<sup>22+</sup>
+## ApplicationContext.onInteropAbilityLifecycle<sup>23+</sup>
 
 onInteropAbilityLifecycle(callback: InteropAbilityLifecycleCallback): void
 
@@ -1267,7 +1267,7 @@ onInteropAbilityLifecycle(callback: InteropAbilityLifecycleCallback): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1326,7 +1326,7 @@ export default class MyFirstAbility extends UIAbility {
 }
 ```
 
-## ApplicationContext.offInteropAbilityLifecycle<sup>22+</sup>
+## ApplicationContext.offInteropAbilityLifecycle<sup>23+</sup>
 
 offInteropAbilityLifecycle(callback?: InteropAbilityLifecycleCallback): void
 
@@ -1336,7 +1336,7 @@ offInteropAbilityLifecycle(callback?: InteropAbilityLifecycleCallback): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
