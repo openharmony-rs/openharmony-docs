@@ -13,7 +13,9 @@
 
 ## 导入模块
 ```ts
-import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material, MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler, SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
+import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
+  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
+  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
 ```
 ## SceneResourceType
 场景资源类型枚举，对场景中的资源进行分类。
