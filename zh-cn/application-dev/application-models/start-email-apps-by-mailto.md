@@ -2,9 +2,9 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @xialiangwei-->
-<!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
+<!--Owner: @zhumingjun-->
+<!--Designer: @w00546444-->
+<!--Tester: @l30011964-->
 <!--Adviser: @huipeizi-->
 
 ## 使用场景
