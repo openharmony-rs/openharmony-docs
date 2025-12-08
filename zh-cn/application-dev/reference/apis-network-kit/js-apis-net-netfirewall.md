@@ -366,11 +366,11 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 > **说明**
 > 
 > 1、防火墙规则优先级说明：<br>
-> （1）调用[setNetFirePolicy](#netFirewallsetNetFirewallPolicy)设置默认规则为阻止时，规则优先级由高到低为：<br>
+> （1）调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认规则为阻止时，规则优先级由高到低为：<br>
 > 	 $\quad$◦  显式阻止规则<br>
 >	 $\quad$◦  显式允许规则<br>
 >	 $\quad$◦  默认阻止规则<br>
-> （2）调用[setNetFirePolicy](#netFirewallsetNetFirewallPolicy)设置默认规则为允许时，规则优先级由高到低为：<br>
+> （2）调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认规则为允许时，规则优先级由高到低为：<br>
 >	$\quad$◦  显式允许规则<br>
 >	$\quad$◦  显式阻止规则<br>
 >	$\quad$◦  默认允许规则<br>
