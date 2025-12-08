@@ -29681,5 +29681,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/appfreeze-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/Tools/SampleStack/cluster_script.py",
+				"functions":[
+					{
+						"end_line":195,
+						"name":"sample_stack_cluster",
+						"start_line":1
+					}
+				]
+			}
+		]
 	}
 ]
