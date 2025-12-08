@@ -31,3 +31,69 @@
 > 如果业务再次使用相同别名调用HUKS生成密钥，HUKS将生成新密钥并直接覆盖历史的密钥文件。
 
 <!-- @[generate_key_ar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/GenerateKey/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 1.确定密钥别名 */
+let keyAlias = 'dh_key';
+/* 2.初始化密钥属性集 */
+let properties1: huks.HuksParam[] = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_DH
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_DH_KEY_SIZE_2048
+  }
+];
+
+let huksOptions: huks.HuksOptions = {
+  properties: properties1,
+  inData: new Uint8Array([])
+}
+
+/* 3.生成密钥 */
+function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
+  return new Promise<void>((resolve, reject) => {
+    try {
+      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throw (error as Error);
+    }
+  });
+}
+
+async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions): Promise<string> {
+  console.info(`enter promise generateKeyItem`);
+  try {
+    await generateKeyItem(keyAlias, huksOptions)
+      .then((data) => {
+        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      })
+      .catch((error: Error) => {
+        console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
+      });
+    return 'Success';
+  } catch (error) {
+    console.error(`promise: generateKeyItem input arg invalid, ` + JSON.stringify(error));
+    return 'Failed';
+  }
+}
+
+async function testGenKey(): Promise<string> {
+  let ret = await publicGenKeyFunc(keyAlias, huksOptions);
+  return ret;
+}
+```
