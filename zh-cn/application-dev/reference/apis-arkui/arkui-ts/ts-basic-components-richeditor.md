@@ -56,9 +56,7 @@ RichEditor(options: RichEditorStyledStringOptions)
 
 ### customKeyboard
 
-ArkTS-Dyn: customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
-
-ArkTS-Sta: customKeyboard(value: CustomBuilder | undefined, options?: KeyboardOptions | undefined)
+customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions | undefined)
 
 设置自定义键盘。
 
@@ -84,8 +82,8 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | undefined, options?: KeyboardOp
 
 | 参数名                | 类型                                        | 必填 | 说明                             |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br > ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 自定义键盘。                     <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| options<sup>12+</sup> | ArkTS-Dyn: [KeyboardOptions](#keyboardoptions12)<br > ArkTS-Sta: [KeyboardOptions](#keyboardoptions12) \| undefined      | 否   | 设置自定义键盘是否支持避让功能。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>23+</sup> \| undefined<sup>23+</sup> <br >ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>23+</sup> \| undefined | 是   | 自定义键盘。<br>传入undefined时默认使用系统键盘。|
+| options<sup>12+</sup> | ArkTS-Dyn: [KeyboardOptions](#keyboardoptions12) \| undefined<sup>23+</sup> <br > ArkTS-Sta: [KeyboardOptions](#keyboardoptions12) \| undefined      | 否   | 设置自定义键盘是否支持避让功能。 <br>传入undefined时默认不支持避让。|
 
 ### bindSelectionMenu
 
