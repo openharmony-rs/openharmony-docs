@@ -1325,6 +1325,28 @@ shaderStyle(shader: ShaderStyle)
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
 | shader | [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | 是 | 径向渐变或线性渐变或纯色。<br/>根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到Text文本上显示为渐变色效果。 |
 
+### compressLeadingPunctuation<sup>23+</sup>
+
+ArkTS-Dyn: compressLeadingPunctuation(enabled: Optional\<boolean>)
+
+ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
+
+设置是否启用行首标点符号压缩功能。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用，undefined表示禁用。|
+
 ## TextSpanType<sup>11+</sup>枚举说明
 
 [Span](ts-basic-components-span.md)类型信息。
@@ -2722,3 +2744,59 @@ struct Index {
 ```
 
 ![textSetTextSelection](figures/textSetTextSelection.gif)
+
+### 示例19（设置行首标点压缩）
+
+该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+从API version 23开始，支持compressLeadingPunctuation接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      Text("\u300C行首标点压缩打开")
+        .compressLeadingPunctuation(true)
+        .margin(5)
+        .border({ width: 1 })
+        .fontSize(30)
+        .width("90%")
+      Text("\u300C行首标点压缩关闭")
+        .compressLeadingPunctuation(false)
+        .border({ width: 1 })
+        .fontSize(30)
+        .width("90%")
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text } from '@ohos.arkui.component';
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      Text("\u300C行首标点压缩打开")
+        .compressLeadingPunctuation(true)
+        .margin(5)
+        .border({ width: 1 })
+        .fontSize(30)
+        .width("90%")
+      Text("\u300C行首标点压缩关闭")
+        .compressLeadingPunctuation(false)
+        .border({ width: 1 })
+        .fontSize(30)
+        .width("90%")
+    }
+  }
+}
+```
+![textCompressLeadingPunctuation](figures/textCompressLeadingPunctuation.gif)
