@@ -518,7 +518,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyNode(OH_AudioNode* audioNode)
 
 **描述**
 
-销毁一个音频编创节点。节点是否可以被删除取决于它所属的管道的状态。如果管道不处于停止状态，且节点处于管线处理路径中，将返回不支持删除。
+销毁一个音频编创节点。节点是否可以被销毁取决于它所属管线的状态，如果管线不处于[OH_AudioSuite_PipelineState.AUDIOSUITE_PIPELINE_STOPPED](../apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate)停止状态，且节点处于管线处理路径中，将销毁失败。
 
 **起始版本：** 22
 
