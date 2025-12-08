@@ -2017,7 +2017,7 @@ struct GridExample {
 
 ![edgeEffect_grid](figures/gridFocus.gif)
 
-### 示例13（滚动事件）
+### 示例13（设置滚动事件）
 
 该示例通过FrameNode中的[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)获取[UIGridEvent](#uigridevent19)，并为Grid设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
 
