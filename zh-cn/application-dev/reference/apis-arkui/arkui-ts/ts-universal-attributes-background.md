@@ -211,7 +211,7 @@ backgroundImageSize(value: SizeOptions | ImageSize): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [SizeOptions](ts-types.md#sizeoptions)&nbsp;\|&nbsp;[ImageSize](ts-appendix-enums.md#imagesize) | 是   | 设置背景图像的高度和宽度。默认保持原图的比例不变。<br/>width和height取值范围： [0, +∞)<br/>**说明：** <br/>width和height均设置为小于或等于0的值时，按值为0显示。当width和height中只有一个值未设置或者设置为小于等于0的值时，另一个会根据图片原始宽高比进行调整。 |
+| value  | [SizeOptions](ts-types.md#sizeoptions)&nbsp;\|&nbsp;[ImageSize](ts-appendix-enums.md#imagesize) | 是   | 设置背景图像的高度和宽度。默认保持原图的比例不变。<br/>width和height取值范围： [0, +∞)<br/>ImageSize用于控制图片缩放显示模式，如保持比例、填充边界等。<br/>**说明：** <br/>width和height均设置为小于或等于0的值时，按值为0显示。当width和height中只有一个值未设置或者设置为小于等于0的值时，另一个会根据图片原始宽高比进行调整。 |
 
 **返回值：**
 
@@ -461,7 +461,7 @@ backgroundEffect(options: BackgroundEffectOptions): T
 
 | 参数名  | 类型                                                  | 必填 | 说明                                       |
 | ------- | ----------------------------------------------------- | ---- | ------------------------------------------ |
-| options | [BackgroundEffectOptions](#backgroundeffectoptions11) | 是   | 设置组件背景属性包括：饱和度，亮度，颜色。 |
+| options | [BackgroundEffectOptions](#backgroundeffectoptions11) | 是   | 设置组件背景属性包括：背景模糊半径、亮度、饱和度和颜色等参数。 |
 
 **返回值：**
 
@@ -483,7 +483,7 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>): T
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | Optional\<[BackgroundEffectOptions](#backgroundeffectoptions11)> | 是   | 设置组件背景属性包括：饱和度，亮度，颜色。<br/>当options的值为undefined时，恢复为无效果的背景。 |
+| options | Optional\<[BackgroundEffectOptions](#backgroundeffectoptions11)> | 是   | 设置组件背景属性包括：背景模糊半径、亮度、饱和度和颜色等参数。<br/>当options的值为undefined时，恢复为无效果的背景。 |
 
 **返回值：**
 
@@ -509,7 +509,7 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | Optional\<[BackgroundEffectOptions](#backgroundeffectoptions11)> | 是   | 设置组件背景属性包括：饱和度，亮度，颜色。<br/>当options的值为undefined时，恢复为无效果的背景。 |
+| options | Optional\<[BackgroundEffectOptions](#backgroundeffectoptions11)> | 是   | 设置组件背景属性包括：背景模糊半径、亮度、饱和度和颜色等参数。<br/>当options的值为undefined时，恢复为无效果的背景。 |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
 **返回值：**
@@ -751,6 +751,7 @@ struct BackgroundBlurStyleDemo {
     }
     .height('100%')
     .width('100%')
+    // $r('app.media.bg')需要替换为开发者所需的图像资源文件
     .backgroundImage($r('app.media.bg'))
     .backgroundImageSize(ImageSize.Cover)
   }
@@ -815,6 +816,7 @@ struct BackgroundBrightnessDemo {
     }
     .width('100%')
     .height('100%')
+    // $r('app.media.image')需要替换为开发者所需的图像资源文件
     .backgroundImage($r('app.media.image'))
     .backgroundImageSize(ImageSize.Cover)
   }
@@ -847,14 +849,14 @@ struct BlurEffectsExample {
   build() {
     Column({ space: 10 }) {
       // 对字体进行模糊
-      Text('font blur').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      Text('font').fontSize(15).fontColor(0xCCCCCC).width('90%')
       Flex({ alignItems: ItemAlign.Center }) {
-        Text('original text').margin(10)
-        Text('blur text')
+        Text('original').margin(10)
+        Text('blur')
           .blur(5).margin(10)
-        Text('blur text')
+        Text('blur')
           .blur(10, undefined).margin(10) // 内容模糊半径为5，禁用系统自适应优化策略。
-        Text('blur text')
+        Text('blur')
           .blur(15).margin(10)
       }.width('90%').height(40)
       .backgroundColor(0xF9CF93)
@@ -867,6 +869,7 @@ struct BlurEffectsExample {
         .height(40)
         .fontSize(16)
         .backdropBlur(3)
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件
         .backgroundImage($r('app.media.image'))
         .backgroundImageSize({ width: 1200, height: 160 })
     }.width('100%').margin({ top: 5 })
@@ -878,7 +881,7 @@ struct BlurEffectsExample {
 
 ### 示例6（设置文字异形模糊效果）
 
-该示例通过blendMode和backgroundEffect实现文字异形模糊效果。<br/>
+该示例通过[blendMode](./ts-universal-attributes-image-effect.md#blendmode11)和backgroundEffect实现文字异形模糊效果。<br/>
 如果出现漏线问题，开发者应首先确保两个blendMode所在组件大小严格相同。如果确认相同，可能是组件边界落在浮点数坐标上导致，可尝试设置[pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround)通用属性，使产生的白线、暗线两侧的组件边界对齐到整数像素坐标上。
 
 ```ts
@@ -897,6 +900,7 @@ struct Index {
   @State briVal: number = 1.5;
   build() {
     Stack() {
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
       Column() {
         Column({ space: 0 }) {
@@ -986,6 +990,7 @@ struct BackGroundBlur {
     Column({ space: 5 }) {
       // backgroundBlurStyle通过枚举值的方式设置模糊参数
       Stack() {
+        // $r('app.media.test')需要替换为开发者所需的图像资源文件
         Image($r('app.media.test'))
           .width(this.imageSize)
           .height(this.imageSize)
@@ -997,6 +1002,7 @@ struct BackGroundBlur {
 
       // backgroundEffect 可以自定义设置 模糊半径，亮度，饱和度等参数
       Stack() {
+        // $r('app.media.test')需要替换为开发者所需的图像资源文件
         Image($r('app.media.test'))
           .width(this.imageSize)
           .height(this.imageSize)
@@ -1008,6 +1014,7 @@ struct BackGroundBlur {
 
       // backdropBlur 只能设置模糊半径和灰阶参数
       Stack() {
+        // $r('app.media.test')需要替换为开发者所需的图像资源文件
         Image($r('app.media.test'))
           .width(this.imageSize)
           .height(this.imageSize)
