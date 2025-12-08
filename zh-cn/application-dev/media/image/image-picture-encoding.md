@@ -56,6 +56,19 @@
 
 <!-- @[packToData_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
 
+``` TypeScript
+async function packing(picture: image.Picture, packOpts: image.PackingOption) {
+  const imagePackerApi = image.createImagePacker();
+  try {
+    let data = await imagePackerApi.packing(picture, packOpts);
+    copyData = data;
+    console.info('Succeeded in packing the image.');
+  } catch (error) {
+    console.error('Failed to pack the picture to data. And the error is: ' + error);
+  }
+}
+```
+
 ### 图片编码进文件
 
 在进行编码前，开发者需要先通过解码获取picture，具体操作可参考[使用ImageSource完成多图对象解码](./image-picture-decoding.md)。
