@@ -39,6 +39,20 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
 方式一：去除imgComponent.byteBuffer中stride数据，拷贝得到新的buffer，调用不支持stride的接口处理buffer。
 <!-- @[adjust_bufferSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
 
+``` TypeScript
+// stride与width不一致。
+const dstBufferSize = width * height * 1.5
+const dstArr = new Uint8Array(dstBufferSize)
+for (let j = 0; j < height * 1.5; j++) {
+  const srcBuf = new Uint8Array(imgComponent.byteBuffer, j * stride, width)
+  dstArr.set(srcBuf, j * width)
+}
+let pixelMap = await image.createPixelMap(dstArr.buffer, {
+  size: { height: height, width: width },
+  srcPixelFormat: 8,
+})
+```
+
 方式二：根据`stride * height`创建pixelMap，然后调用pixelMap的cropSync方法裁剪掉多余的像素。
 
 <!-- @[adjust_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
