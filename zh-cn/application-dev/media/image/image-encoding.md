@@ -47,6 +47,10 @@
       > 根据MIME标准，标准编码格式为image/jpeg。当使用image编码时，PackingOption.format设置为image/jpeg，image编码后的文件扩展名可设为.jpg或.jpeg，可在支持image/jpeg解码的平台上使用。
 
       <!-- @[create_packOpts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+      
+      ``` TypeScript
+      let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+      ```
 
     - 编码为HDR内容。
       
