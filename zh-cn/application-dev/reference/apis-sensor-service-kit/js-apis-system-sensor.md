@@ -336,7 +336,7 @@ unsubscribeBarometer(): void
 
 取消订阅气压计传感器。
 
-除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#pedometerdeprecated-2)。
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#barometerdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 

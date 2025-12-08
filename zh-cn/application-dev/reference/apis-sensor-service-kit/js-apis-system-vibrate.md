@@ -33,6 +33,8 @@ import { Vibrator } from '@kit.SensorServiceKit';
 
 触发设备振动。
 
+除Lite Wearable外，从API Version8开始，推荐使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)。
+
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice.Lite
