@@ -49,19 +49,20 @@
 
 5. 在应用的module.json5文件中配置extensionAbilities。
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/module.json5)-->
-   ```ts
-     {
-       "name": "NotificationSubscriberExtAbility",
-       "srcEntry": "./ets/notificationsubscriberextability/NotificationSubscriberExtAbility.ets",
-       "type": "notificationSubscriber",
-       "description": "$string:NotificationSubscriberExtAbility_desc",
-       "icon": "$media:layered_image",
-       "label": "$string:NotificationSubscriberExtAbility_label",
-       "exported": true
-     }
+   
+   ``` JSON5
+   {
+     "name": "NotificationSubscriberExtAbility",
+     "srcEntry": "./ets/extensionability/NotificationSubscriberExtAbility.ets",
+     "type": "notificationSubscriber",
+     "description": "$string:NotificationSubscriberExtAbility_desc",
+     "icon": "$media:layered_image",
+     "label": "$string:NotificationSubscriberExtAbility_label",
+     "exported": true
+   }
    ```
 6. 在应用的string.json文件中添加
-   ```
+   ```json
      {
        "name": "NotificationSubscriberExtAbility_desc",
        "value": "description"
