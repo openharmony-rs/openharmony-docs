@@ -250,9 +250,9 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称               | 类型                                                 | 只读 | 可选 | 说明        |
-|------------------|----------------------------------------------------|----|----|-----------|
-| callerBundleName | string                                             | 否  | 是  | 调用方应用包名。  |
-| callerModuleName | string                                             | 否  | 是  | 调用方应用模块名。 |
-| callerDeviceId   | string                                             | 否  | 是  | 调用方设备ID。  |
-| callerType       | [CallerType](arkts-apis-avsession-e.md#CallerType22) | 否  | 是  | 调用方来源。    |
+| 名称               | 类型                                                   | 只读 | 可选 | 说明        |
+|------------------|------------------------------------------------------|----|----|-----------|
+| callerBundleName | string                                               | 否  | 是  | 调用方应用包名。  |
+| callerModuleName | string                                               | 否  | 是  | 调用方应用模块名。 |
+| callerDeviceId   | string                                               | 否  | 是  | 调用方设备ID。  |
+| callerType       | [CallerType](arkts-apis-avsession-e.md#callertype22) | 否  | 是  | 调用方来源。    |
