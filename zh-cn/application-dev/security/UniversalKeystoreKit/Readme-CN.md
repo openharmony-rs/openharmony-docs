@@ -85,6 +85,7 @@
       - 开发指导<!--huks-group-key-dev-->
         - [群组密钥(ArkTS)](huks-group-key-arkts.md)
         - [群组密钥(C/C++)](huks-group-key-ndk.md)
+    <!--RP2--><!--RP2End-->
     <!--Del-->
     - [指定用户身份操作(仅对系统应用开放)](huks-as-user-sys.md)
     <!--DelEnd-->
