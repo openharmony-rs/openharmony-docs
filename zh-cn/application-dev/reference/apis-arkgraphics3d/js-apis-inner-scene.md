@@ -865,7 +865,7 @@ function registerResourcePath(): void {
 **ArkTS-Sta起始版本：** 23
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| shadowResolution | [Vec2](js-apis-inner-scene-types.md#vec2) | 否 | 是 | 表示全局阴影贴图分辨率。默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。输入的值需要大于0才能正确生效。|
+| shadowResolution | [Vec2](js-apis-inner-scene-types.md#vec2) | 否 | 是 | 表示全局阴影贴图分辨率。默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。输入的值需要大于0才能正确生效。 |
 
 ## RenderParameters<sup>15+</sup>
 渲染参数接口。
@@ -887,16 +887,12 @@ function registerResourcePath(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。 |
-| animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。|
-| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。 |
-| renderConfiguration<sup>23+</sup> | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置接口。 |
+| environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。<br/>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 22 |
+| animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。<br/>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 22|
+| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。<br/>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 22 |
+| renderConfiguration | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置接口。<br/>**ArkTS-Dyn起始版本:** 23<br>**ArkTS-Sta起始版本:** 23 |
 
 ### load
 static load(uri?: ResourceStr): Promise\<Scene>
