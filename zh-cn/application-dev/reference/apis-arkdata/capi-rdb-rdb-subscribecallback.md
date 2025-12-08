@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```
-typedef union {...} Rdb_SubscribeCallback
+typedef union Rdb_SubscribeCallback {...} Rdb_SubscribeCallback
 ```
 
 ## 概述
