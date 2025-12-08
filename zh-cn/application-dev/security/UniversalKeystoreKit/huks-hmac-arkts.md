@@ -32,3 +32,92 @@ HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentic
 4. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取哈希后的数据。
 
 <!-- @[hmac_to](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/HMAC/entry/src/main/ets/pages/HMAC.ets) -->
+
+``` TypeScript
+/*
+ * 以下以HMAC密钥的Promise操作使用为例
+ */
+import { huks } from '@kit.UniversalKeystoreKit';
+
+let hmacKeyAlias = 'test_HMAC';
+let handle: number;
+let plainText = '123456';
+let hashData: Uint8Array;
+
+function stringToUint8Array(str: String) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+function uint8ArrayToString(fileData: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < fileData.length; i++) {
+    dataString += String.fromCharCode(fileData[i]);
+  }
+  return dataString;
+}
+
+function getHMACProperties() {
+  const properties: huks.HuksParam[] = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_HMAC
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
+  }];
+  return properties;
+}
+
+/* 1.生成 HMAC 密钥 */
+async function generateHMACKey() {
+  let options: huks.HuksOptions = {
+    properties: getHMACProperties()
+  };
+
+  await huks.generateKeyItem(hmacKeyAlias, options)
+    .then((data) => {
+      console.info(`promise: generate HMAC Key success`);
+    }).catch((error: Error) => {
+      console.error(`promise: generate HMAC Key failed, ${JSON.stringify(error)}`);
+      throw (error as Error);
+    })
+}
+/* 2.执行 HMAC 计算 */
+async function hMACData() {
+  let options: huks.HuksOptions = {
+    properties: getHMACProperties(),
+    inData: stringToUint8Array(plainText)
+  }
+
+  await huks.initSession(hmacKeyAlias, options)
+    .then((data) => {
+      handle = data.handle;
+    }).catch((error: Error) => {
+      console.error(`promise: init session failed, ${JSON.stringify(error)}`);
+      throw (error as Error);
+    })
+
+  await huks.finishSession(handle, options)
+    .then((data) => {
+      console.info(`promise: HMAC data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
+      hashData = data.outData as Uint8Array;
+    }).catch((error: Error) => {
+      console.error(`promise: HMAC data failed, ${JSON.stringify(error)}`);
+      throw (error as Error);
+    })
+}
+
+async function executeHMAC() {
+  await generateHMACKey();
+  await hMACData();
+}
+```
