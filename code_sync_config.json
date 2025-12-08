@@ -2873,6 +2873,41 @@
 						"end_line":193,
 						"name":"onclick_unhandled_rejection_observer",
 						"start_line":177
+					},
+					{
+						"end_line":23,
+						"name":"error_handler_h",
+						"start_line":20
+					},
+					{
+						"end_line":105,
+						"name":"test_error_handlers",
+						"start_line":99
+					},
+					{
+						"end_line":215,
+						"name":"onclick_error_Handler",
+						"start_line":211
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets",
+				"functions":[
+					{
+						"end_line":22,
+						"name":"first_error_handler",
+						"start_line":1
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"second_error_handler",
+						"start_line":1
 					}
 				]
 			}
@@ -2928,6 +2963,16 @@
 						"end_line":1137,
 						"name":"register_app_hicollie_watcherT",
 						"start_line":1134
+					},
+					{
+						"end_line":909,
+						"name":"APP_Hicollie_RemoveWatcher",
+						"start_line":870
+					},
+					{
+						"end_line":973,
+						"name":"APP_Hicollie_DestroyWatcher",
+						"start_line":925
 					}
 				]
 			},
