@@ -908,3 +908,15 @@ Web屏幕捕获的配置。
 | :---- | :------------------------- | :--- | :--- | :--------------- |
 | mimeType | string | 否 | 否   | 文件MIME类型。 |
 | acceptableType | Array\<string\> | 否 | 否   | 文件类型数组，包含若干可供选择的文件类型。 |
+
+## FirstScreenPaint<sup>23+</sup>
+
+检测到首屏渲染时的事件信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | 否 | 否 | 本次首屏渲染统计所对应的url。    |
+| navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。    |
+| firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。    |
