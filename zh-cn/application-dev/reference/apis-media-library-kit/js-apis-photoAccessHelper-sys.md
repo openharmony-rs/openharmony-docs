@@ -3506,6 +3506,64 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+## getAlbumIdByBundleName<sup>22+</sup>
+
+getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
+
+根据bundleName获取媒体库相册的ID。使用Promise异步回调。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| bundleName | string | 是 | 需查询的应用包名，bundleName长度不能超过255个字符。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;number&gt; | Promise对象，返回bundleName对应的媒体库相册的ID。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201     | Permission denied.   |
+| 202     | Called by non-system application.   |
+| 23800151     | The bundleName is invalid, such as null, undefined and empty. |
+| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getAlbumIdByBundleName');
+
+  try {
+      let albumId: number = await phAccessHelper.getAlbumIdByBundleName('test.bundleName');
+      console.info('requestFile:: albumId: ', albumId);
+
+      console.info('getAlbumIdByBundleName completed.');
+      console.info(`albumId : ${albumId}`);
+    } catch (err) {
+      console.error(`getAlbumIdByBundleName failed: ${err.code}, ${err.message}`);
+    }
+}
+```
+
 ## PhotoAsset
 
 提供封装文件属性的方法。
@@ -11112,7 +11170,6 @@ async function example(context: Context) {
 | THUMBNAIL_VISIBLE<sup>14+</sup>  | 'thumbnail_visible' | 缩略图可见标识。**系统接口**：此接口为系统接口。 |
 | SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | 水印可编辑标识。**系统接口**：此接口为系统接口。 |
 | IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | 是否支持自动云增强。**系统接口**：此接口为系统接口。 |
-| OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | 照片所属的相册id。**系统接口**：此接口为系统接口。 |
 | IS_RECENT_SHOW<sup>18+</sup>  | 'is_recent_show' | 是否设置为最近显示。**系统接口**：此接口为系统接口。 |
 | SUM_SIZE<sup>19+</sup>  | 'sum(size)' | 文件大小总和。在fetchColumns中填入SUM_SIZE属性时，仅获取到第一个资产，并且属性中带有所有资产的总大小。**系统接口**：此接口为系统接口。 |
 | EXIF_ROTATE<sup>21+</sup>  | 'exif_rotate' | 文件的旋转角度信息。**系统接口**：此接口为系统接口。 |
