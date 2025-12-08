@@ -2057,7 +2057,7 @@ struct GridExample {
 
 ### 示例13（设置滚动事件）
 
-该示例通过FrameNode中的[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)获取[UIGridEvent](#uigridevent19)后给Grid设置滚动事件回调，可以用于无法通过声明式接口直接给Grid设置滚动事件的场景。
+该示例通过FrameNode中的[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)获取[UIGridEvent](#uigridevent19)，并为Grid设置滚动事件回调，用于事件监听方无法直接修改页面的场景。
 
 从API version 19开始，新增UIGridEvent接口。
 
