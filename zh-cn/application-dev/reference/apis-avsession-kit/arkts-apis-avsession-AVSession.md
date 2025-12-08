@@ -1763,7 +1763,7 @@ currentAVSession.on('play', () => {
 
 onPlay(callback: Callback\<CommandInfo>): void
 
-设置播放命令监听事件。使用callback异步回调。
+设置播放命令监听事件，使用callback异步回调。
 
 注册该监听，说明应用支持播放指令。应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
@@ -1907,7 +1907,7 @@ currentAVSession.on('playNext', () => {
 
 onPlayNext(callback: Callback\<CommandInfo>): void
 
-设置播放下一首命令监听事件。使用callback异步回调。
+设置播放下一首命令监听事件，使用callback异步回调。
 
 注册该监听，说明应用支持下一首指令。应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
@@ -1977,7 +1977,7 @@ currentAVSession.on('playPrevious', () => {
 
 onPlayPrevious(callback: Callback\<CommandInfo>): void
 
-设置播放上一首命令监听事件。使用callback异步回调。
+设置播放上一首命令监听事件，使用callback异步回调。
 
 注册该监听，说明应用支持上一首指令。应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
@@ -2047,7 +2047,7 @@ currentAVSession.on('fastForward', (time?: number) => {
 
 onFastForward(callback: TwoParamCallback\<number, CommandInfo>): void
 
-设置快进命令监听事件。使用callback异步回调。
+设置快进命令监听事件，使用callback异步回调。
 
 注册该监听，说明应用支持快进指令。应用将通过回调接收控制器发送的快进时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
@@ -2117,7 +2117,7 @@ currentAVSession.on('rewind', (time?: number) => {
 
 onRewind(callback: TwoParamCallback\<number, CommandInfo>): void
 
-设置快退命令监听事件。使用callback异步回调。
+设置快退命令监听事件，使用callback异步回调。
 
 注册该监听，说明应用支持快退指令。应用将通过回调接收控制器发送的快退时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
@@ -2617,7 +2617,7 @@ currentAVSession.off('play');
 
 offPlay(callback?: Callback\<CommandInfo>): void
 
-取消会话播放事件监听。使用callback异步回调。
+取消会话播放事件监听，使用callback异步回调。
 
 指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
@@ -2747,7 +2747,7 @@ currentAVSession.off('playNext');
 
 offPlayNext(callback?: Callback\<CommandInfo>): void
 
-取消会话播放下一首事件监听。使用callback异步回调。
+取消会话播放下一首事件监听，使用callback异步回调。
 
 指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
@@ -2811,7 +2811,7 @@ currentAVSession.off('playPrevious');
 
 offPlayPrevious(callback?: Callback\<CommandInfo>): void
 
-取消会话播放上一首事件监听。使用callback异步回调。
+取消会话播放上一首事件监听，使用callback异步回调。
 
 指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
@@ -2875,7 +2875,7 @@ currentAVSession.off('fastForward');
 
 offFastForward(callback?: TwoParamCallback\<number, CommandInfo>): void
 
-取消会话快进事件监听。使用callback异步回调。
+取消会话快进事件监听，使用callback异步回调。
 
 指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
@@ -2939,7 +2939,7 @@ currentAVSession.off('rewind');
 
 offRewind(callback?: TwoParamCallback\<number, CommandInfo>): void
 
-取消会话快退事件监听。使用callback异步回调。
+取消会话快退事件监听，使用callback异步回调。
 
 指定callback，取消对应监听；未指定callback，则取消所有事件监听。
 
