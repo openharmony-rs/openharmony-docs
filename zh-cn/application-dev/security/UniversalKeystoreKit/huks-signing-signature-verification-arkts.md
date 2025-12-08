@@ -233,6 +233,173 @@ async function testSignVerify() {
 ```
 ### SM2/SM3
 <!-- @[key_algorithm_SM2SM3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/SM2SM3.ets) -->
+
+``` TypeScript
+/*
+ * 密钥算法为SM2、摘要算法为SM3
+ */
+import { huks } from '@kit.UniversalKeystoreKit';
+
+let keyAlias = 'test_sm2KeyAlias';
+let handle: number;
+let plaintext = '123456';
+let signature: Uint8Array;
+
+function stringToUint8Array(str: String) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+function uint8ArrayToString(fileData: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < fileData.length; i++) {
+    dataString += String.fromCharCode(fileData[i]);
+  }
+  return dataString;
+}
+
+function getSm2GenerateProperties() {
+  let properties: huks.HuksParam[] = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_SM2
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SM3
+  }];
+  return properties;
+}
+
+function getSm2SignProperties() {
+  let properties: huks.HuksParam[] = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_SM2
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SM3
+  }];
+  return properties;
+}
+
+function getSm2VerifyProperties() {
+  let properties: huks.HuksParam[] = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_SM2
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SM3
+  }];
+  return properties;
+}
+
+async function generateSm2Key(keyAlias: string) {
+  let genProperties = getSm2GenerateProperties();
+  let options: huks.HuksOptions = {
+    properties: genProperties
+  }
+  await huks.generateKeyItem(keyAlias, options)
+    .then((data) => {
+      console.info(`promise: generate Sm2 Key success, data = ${JSON.stringify(data)}`);
+    }).catch((err: Error) => {
+      console.error(`promise: generate Sm2 Key failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+}
+
+async function sign(keyAlias: string, plaintext: string) {
+  let signProperties = getSm2SignProperties();
+  let options: huks.HuksOptions = {
+    properties: signProperties,
+    inData: stringToUint8Array(plaintext)
+  }
+  await huks.initSession(keyAlias, options)
+    .then((data) => {
+      handle = data.handle;
+    }).catch((err: Error) => {
+      console.error(`promise: init sign failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+  await huks.finishSession(handle, options)
+    .then((data) => {
+      console.info(`promise: sign success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
+      signature = data.outData as Uint8Array;
+    }).catch((err: Error) => {
+      console.error(`promise: sign failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+}
+
+async function verify(keyAlias: string, plaintext: string, signature: Uint8Array) {
+  let verifyProperties = getSm2VerifyProperties()
+  let options: huks.HuksOptions = {
+    properties: verifyProperties,
+    inData: stringToUint8Array(plaintext)
+  }
+  await huks.initSession(keyAlias, options)
+    .then((data) => {
+      handle = data.handle;
+    }).catch((err: Error) => {
+      console.error(`promise: init verify failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+  await huks.updateSession(handle, options)
+    .then((data) => {
+      console.info(`promise: update verify success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
+    }).catch((err: Error) => {
+      console.error(`promise: update verify failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+  options.inData = signature;
+  await huks.finishSession(handle, options)
+    .then((data) => {
+      console.info(`promise: verify success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
+    }).catch((err: Error) => {
+      console.error(`promise: verify failed, error: ` + JSON.stringify(err));
+      throw (err as Error);
+    })
+}
+
+async function deleteSm2Key(keyAlias: string) {
+  let emptyOptions: huks.HuksOptions = {
+    properties: []
+  }
+  await huks.deleteKeyItem(keyAlias, emptyOptions)
+    .then((data) => {
+      console.info(`promise: delete data success`);
+    }).catch((err: Error) => {
+      console.error(`promise: delete data failed`);
+      throw (err as Error);
+    })
+}
+
+export async function testSignVerify() {
+  await generateSm2Key(keyAlias);
+  await sign(keyAlias, plaintext);
+  await verify(keyAlias, plaintext, signature);
+  await deleteSm2Key(keyAlias);
+}
+```
 ### SM2/NoDigest
 <!-- @[key_algorithm_SM2NoDigest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/SM2NoDigest.ets) -->
 ### RSA/SHA256/PSS
