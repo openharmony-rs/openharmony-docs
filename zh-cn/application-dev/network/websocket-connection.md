@@ -35,11 +35,11 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 2. 创建WebSocket连接，返回一个WebSocket对象。
 
    <!-- @[WebSocket_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-let defaultIpAddress = 'wss://echo.websocket.org'; // WebSocket地址
-let ws: webSocket.WebSocket = webSocket.createWebSocket();
-```
+   
+   ``` TypeScript
+   let defaultIpAddress = 'wss://echo.websocket.org'; // WebSocket地址
+   let ws: webSocket.WebSocket = webSocket.createWebSocket();
+   ```
 
 3. 订阅WebSocket的打开、消息接收、关闭、Error事件（可选），当收到on('open')事件时，可以通过send()方法与服务器进行通信，当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。
 
