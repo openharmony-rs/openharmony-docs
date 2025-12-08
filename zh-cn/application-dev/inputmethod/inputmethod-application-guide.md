@@ -52,7 +52,7 @@
 
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
 import Log from '../model/Log';
-import { keyboardController } from '../model/KeyboardController';
+import { keyboardController } from '../InputMethodExtensionAbility/model/KeyboardController';
 import { Want } from '@kit.AbilityKit';
 
 const TAG: string = 'ServiceExtAbility->';
