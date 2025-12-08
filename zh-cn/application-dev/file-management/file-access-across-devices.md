@@ -83,10 +83,10 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
    <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
-
+   
    ``` TypeScript
    // 通过分布式设备管理的接口获取设备A的networkId信息
-   // ···
+   // ...
    let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
    let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
    if (deviceInfoList && deviceInfoList.length > 0) {
@@ -141,10 +141,10 @@
    import { fileIo as fs } from '@kit.CoreFileKit';
    ```
    <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
-
+   
    ``` TypeScript
    // 获取设备A的networkId
-   // ···
+   // ...
    let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
    let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
    if (deviceInfoList && deviceInfoList.length > 0) {

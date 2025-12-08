@@ -21,7 +21,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
    <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
-
+   
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
    try {
@@ -50,7 +50,7 @@
    import { fileUri } from '@kit.CoreFileKit';
    ```
    <!--@[copy_sand_to_distributed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
-
+   
    ``` TypeScript
    let pathDir: string = context.filesDir;
    let distributedPathDir: string = context.distributedFilesDir;
@@ -64,7 +64,7 @@
    } catch (error) {
      console.error(`Failed to createFile. Code: ${error.code}, message: ${error.message}`);
    }
-
+   
    // 获取待拷贝源文件uri
    let srcUri = fileUri.getUriFromPath(filePath);
    // 获取目标路径(分布式目录)的uri
@@ -94,16 +94,16 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
    <!--@[copy_distributed_to_sand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
-
+   
    ``` TypeScript
-   // ···
+   // ...
    let pathDir: string = context.filesDir;
    let distributedPathDir: string = context.distributedFilesDir;
    // 待拷贝文件的目标路径(沙箱路径)
    let destPath: string = pathDir + '/dest.txt';
    // 获取目标路径uri
    let destUri = fileUri.getUriFromPath(destPath);
- 
+   
    // 拷贝源文件路径(分布式目录)
    let srcPath = distributedPathDir + '/src.txt';
    // 获取源路径uri
@@ -159,10 +159,10 @@
    import { fileIo as fs } from '@kit.CoreFileKit';
    ```
    <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
-
+   
    ``` TypeScript
    // 获取设备A的networkId
-   // ···
+   // ...
    let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
    let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
    if (deviceInfoList && deviceInfoList.length > 0) {
