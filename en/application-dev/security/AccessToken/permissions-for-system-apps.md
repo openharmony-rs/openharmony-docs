@@ -5220,3 +5220,15 @@ Allows a system application to set the launch reason when starting another appli
 **Enable via ACL**: true
 
 **Valid since**: 18
+
+## ohos.permission.ACCESS_SUPER_HUB
+
+Allows an application to access Super Hub.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 12

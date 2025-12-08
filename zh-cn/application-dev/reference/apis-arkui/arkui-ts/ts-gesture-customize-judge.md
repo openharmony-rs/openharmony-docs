@@ -96,7 +96,7 @@ getModifierKeyState?(keys: Array\<string>): boolean
 
 ### 示例1（自定义手势判定）
 
-该示例通过配置onGestureJudgeBegin实现了对长按、快滑和滑动手势的自定义判定。
+该示例通过配置[onGestureJudgeBegin](#ongesturejudgebegin)实现了对长按、快滑和滑动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](#baseevent8)的axisPinch属性获取双指缩放比例。
 
 ```ts
 // xxx.ets
@@ -158,28 +158,28 @@ struct Index {
       // 若该手势类型为长按手势，转换为长按手势事件
       if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
         let longPressEvent = event as LongPressGestureEvent;
-        console.info("repeat " + longPressEvent.repeat)
+        console.info(`repeat ${longPressEvent.repeat}`)
       }
       // 若该手势类型为快滑手势，转换为快滑手势事件
       if (gestureInfo.type == GestureControl.GestureType.SWIPE_GESTURE) {
         let swipeEvent = event as SwipeGestureEvent;
-        console.info("angle " + swipeEvent.angle)
+        console.info(`angle ${swipeEvent.angle}`)
       }
       // 若该手势类型为滑动手势，转换为滑动手势事件
       if (gestureInfo.type == GestureControl.GestureType.PAN_GESTURE) {
         let panEvent = event as PanGestureEvent;
-        console.info("velocity " + panEvent.velocity)
+        console.info(`velocity ${panEvent.velocity}`)
       }
       // 若该手势类型为捏合手势，转换为捏合手势事件
       if (gestureInfo.type == GestureControl.GestureType.PINCH_GESTURE) {
         let pinchEvent = event as PinchGestureEvent;
-        console.info("axisPinch " + pinchEvent.axisPinch)
+        console.info(`axisPinch ${pinchEvent.axisPinch}`)
       }
       // 自定义判定标准
       if (gestureInfo.type == GestureControl.GestureType.DRAG) {
         // 返回 GestureJudgeResult.REJECT 会使拖动手势失败。
         return GestureJudgeResult.REJECT;
-      } else if (gestureInfo.tag == 'longPress1' && event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
+      } else if (gestureInfo.tag === 'longPress1' && event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
         // 返回 GestureJudgeResult.CONTINUE 将保持系统判定。
         return GestureJudgeResult.CONTINUE;
       }
@@ -207,7 +207,10 @@ struct Index {
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
-        Text("Drag 上下两层 上层绑定长按，下层绑定拖拽。先长按后平移上半区红色区域只会响应长按，先长按后平移下半区蓝色区域只会响应拖拽").width('100%').fontSize(20).fontColor('0xffdd00')
+        Text("Drag 上下两层 上层绑定长按，下层绑定拖拽。先长按后平移上半区红色区域只会响应长按，先长按后平移下半区蓝色区域只会响应拖拽")
+          .width('100%')
+          .fontSize(20)
+          .fontColor('0xffdd00')
           .backgroundColor(0xeeddaa00)
         Stack({ alignContent: Alignment.Center }) {
           Column() {
@@ -215,27 +218,29 @@ struct Index {
             Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
             Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
           }.width('200vp').height('200vp')
-          // Stack的下半区是绑定了拖动手势的图像区域。
+
+          // Stack的下半区是绑定了拖动手势的图像区域
           Image($r('sys.media.ohos_app_icon'))
             .draggable(true)
-            .onDragStart(()=>{
+            .onDragStart(() => {
               this.promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" })
             })
             .width('200vp').height('200vp')
-          // Stack的上半区是绑定了长按手势的浮动区域。
+          // Stack的上半区是绑定了长按手势的浮动区域
           Stack() {
           }
           .width('200vp')
           .height('200vp')
           .hitTestBehavior(HitTestMode.Transparent)
           .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-            // 确定 gestureInfo 的 tag 标志是否有值
+            // 确定gestureInfo的tag标志是否有值
             if (gestureInfo.tag) {
-              console.info("gestureInfo tag" + gestureInfo.tag.toString())
+              console.info(`gestureInfo tag ${gestureInfo.tag.toString()}`)
             }
-            console.info("gestureInfo Type " + gestureInfo.type.toString() + " isSystemGesture " + gestureInfo.isSystemGesture);
-            console.info("pressure " + event.pressure + " fingerList.length " + event.fingerList.length
-            + " timeStamp " + event.timestamp + " sourceType " + event.source.toString() + " titleX " + event.tiltX + " titleY " + event.tiltY + " rollAngle " + event.rollAngle + " sourcePool " + event.sourceTool.toString());
+            console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
+            console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
+            console.info(`zqs pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
+              `titleX ${event.tiltX}\ntitleY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourcePool ${event.sourceTool.toString()}`);
             // 如果是长按类型手势，判断点击的位置是否在上半区
             if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
               if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
@@ -332,7 +337,7 @@ struct GestureDetectorExample {
             this.fingerDetails = event.fingerInfos.map(finger =>
             `ID：${finger.id}: (${finger.localX.toFixed(1)}, ${finger.localY.toFixed(1)})`
             ).join('\n')
-            console.info('触点信息:', JSON.stringify(event.fingerInfos))
+            console.info(`触点信息：${JSON.stringify(event.fingerInfos)}`)
           }
           if (this.fingerCount > 2) {
             return GestureJudgeResult.REJECT

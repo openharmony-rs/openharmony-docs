@@ -12,7 +12,7 @@
 
 **引用文件：** <window_manager/oh_display_manager.h>
 
-**库：** libnative_display_manager.so.
+**库：** libnative_display_manager.so
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
