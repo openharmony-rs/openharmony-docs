@@ -1658,12 +1658,12 @@
         - [共享音频输入](media/audio/audio-recording-concurrency.md)
         - [实现音频耳返](media/audio/audio-ear-monitor.md)
         - [实现音频低时延耳返](media/audio/audio-ear-monitor-loopback.md)
-	  - 音频设备路由管理<!--audio-device-->
-	    - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
-		- [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
-		- [实现音频输入设备路由切换](media/audio/audio-input-device-switcher.md)
-		- [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
-	    - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
+      - 音频设备路由管理<!--audio-device-->
+        - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
+        - [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
+        - [实现音频输入设备路由切换](media/audio/audio-input-device-switcher.md)
+        - [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
+        - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
