@@ -873,11 +873,15 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardController.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
 				"functions":[
 					{
-						"end_line":531,
+						"end_line":520,
 						"name":"input_case_input_KeyboardControllersetSubtype",
-						"start_line":518
+						"start_line":510
 					}
 				]
 			}
@@ -888,33 +892,11 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets",
-				"functions":[
-					{
-						"end_line":40,
-						"name":"input_case_module_import_InputMethodExtensionAbility",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardController.ets",
-				"functions":[
-					{
-						"end_line":585,
-						"name":"input_case_input_KeyboardControler507",
-						"start_line":505
-					},
-					{
-						"end_line":729,
-						"name":"input_case_input_KeyboardControler587",
-						"start_line":587
-					},
-					{
-						"end_line":503,
-						"name":"input_case_input_KeyboardControler358",
-						"start_line":356
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets",
@@ -933,13 +915,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/Index.ets",
-				"functions":[
-					{
-						"end_line":130,
-						"name":"input_case_input_index",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5",
@@ -948,6 +924,46 @@
 						"end_line":53,
 						"name":"input_case_entry_module_extensionAbilities",
 						"start_line":36
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"input_case_module_import_InputMethodExtensionAbility",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
+				"functions":[
+					{
+						"end_line":495,
+						"name":"input_case_input_KeyboardControler358",
+						"start_line":348
+					},
+					{
+						"end_line":574,
+						"name":"input_case_input_KeyboardControler507",
+						"start_line":497
+					},
+					{
+						"end_line":716,
+						"name":"input_case_input_KeyboardControler587",
+						"start_line":576
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":127,
+						"name":"input_case_input_index",
+						"start_line":16
 					}
 				]
 			}
@@ -2403,16 +2419,15 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":63,
-						"name":"input_case_input_immersiveModeeditorAttributeChanged",
-						"start_line":61
-					},
-					{
-						"end_line":70,
+						"end_line":67,
 						"name":"input_case_input_immersiveMode",
-						"start_line":59
+						"start_line":56
 					}
 				]
 			}
@@ -2428,6 +2443,21 @@
 						"end_line":77,
 						"name":"input_case_input_switchInputMethodgetInputMethods",
 						"start_line":67
+					},
+					{
+						"end_line":65,
+						"name":"input_case_input_switchInputMethod",
+						"start_line":55
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
+				"functions":[
+					{
+						"end_line":520,
+						"name":"input_case_input_KeyboardControllersetSubtype",
+						"start_line":510
 					}
 				]
 			}
