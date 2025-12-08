@@ -336,35 +336,35 @@ function socketTest() {
    通过调用[getAllNets](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetallnets)方法，获取所有处于连接状态的网络列表(Array\<NetHandle>)。然后遍历获取到的NetHandle数组，分别调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息，能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
 
     <!-- @[get_net_capabilities_and_get_connection_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/AllNetworksBtn.ets) -->
- 
- ``` TypeScript
- // 从@kit.NetworkKit中导入connection命名空间。
- import { connection } from '@kit.NetworkKit';
- import { hilog } from '@kit.PerformanceAnalysisKit';
- // ···
-   getAllNetworks() {
-     // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)。
-     connection.getAllNets().then((data: connection.NetHandle[]) => {
-       hilog.info(0x0000, 'testTag', 'getAllNets get data: ' + JSON.stringify(data));
-       if (data) {
-         // ···
-         let itemNumber: Set<connection.NetHandle> = new Set(data);
-         let dataNumber = Array.from(itemNumber.values());
-         for (let item of dataNumber) {
-           // 循环获取网络列表每个netHandle对应网络的能力信息
-           connection.getNetCapabilities(item).then((data: connection.NetCapabilities) => {
-             hilog.info(0x0000, 'testTag', 'getNetCapabilities get data: ' + JSON.stringify(data));
-           });
- 
-           // 循环获取网络列表每个netHandle对应的网络的连接信息
-           connection.getConnectionProperties(item).then((data: connection.ConnectionProperties) => {
-             hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-           });
-         }
-       }
-     });
-   }
- ```
+    
+    ``` TypeScript
+    // 从@kit.NetworkKit中导入connection命名空间。
+    import { connection } from '@kit.NetworkKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    // ...
+      getAllNetworks() {
+        // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)。
+        connection.getAllNets().then((data: connection.NetHandle[]) => {
+          hilog.info(0x0000, 'testTag', 'getAllNets get data: ' + JSON.stringify(data));
+          if (data) {
+            // ...
+            let itemNumber: Set<connection.NetHandle> = new Set(data);
+            let dataNumber = Array.from(itemNumber.values());
+            for (let item of dataNumber) {
+              // 循环获取网络列表每个netHandle对应网络的能力信息
+              connection.getNetCapabilities(item).then((data: connection.NetCapabilities) => {
+                hilog.info(0x0000, 'testTag', 'getNetCapabilities get data: ' + JSON.stringify(data));
+              });
+    
+              // 循环获取网络列表每个netHandle对应的网络的连接信息
+              connection.getConnectionProperties(item).then((data: connection.ConnectionProperties) => {
+                hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+              });
+            }
+          }
+        });
+      }
+    ```
 
 ## 判断默认网络是否可以访问互联网
 
