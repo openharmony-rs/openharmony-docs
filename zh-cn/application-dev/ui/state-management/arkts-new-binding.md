@@ -53,7 +53,7 @@
            this.value++;
          })
          Star({ value: this.value!! })
-       // ···
+         // ...
        }
      }
    }
