@@ -145,8 +145,6 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#off_key_sta)。
 
-**ArkTS-Sta起始版本**：22
-
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                              |
@@ -216,7 +214,7 @@ struct Index {
 }
 ```
 
-## <span id="off_key_sta">inputConsumer.offKey</span>
+## <span id="off_key_sta">inputConsumer.offKey<sup>22+</sup></span>
 
 offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
@@ -227,6 +225,8 @@ offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_key_dyn)。
+
+**ArkTS-Sta起始版本**：22
 
 **参数：** 
 
