@@ -34,7 +34,6 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
   
   ``` C++
   #include "napi/native_api.h"
-  #include <future>
   // ...
   #include <hilog/log.h>
   // ...
