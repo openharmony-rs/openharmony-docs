@@ -691,7 +691,7 @@ export class Store {
 
 <!-- @[rdb_SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/SecretKeyObserver.ts) -->
 
-```ts
+``` TypeScript
 import { ECStoreManager } from './ECStoreManager';
 
 export enum SecretStatus {
