@@ -670,13 +670,13 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
 | businessName   | string | 否 | 否 | 业务名称。    |
-| size | number  |否 | 否 | 业务空间大小，单位为Byte。  |
-| flag  | boolean | 否 | 否 | 业务标志。true为显示；false为不显示。 |
+| size | number  |否 | 否 | 业务空间占用大小，单位为Byte。  |
+| flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示。true表示单独显示，false表示不单独显示。备注：如果flag为false，则businessName必须是某个应用包名，此项业务占用在“设置-存储”界面会被叠加到该应用的空间占用大小中。 |
 
-## storageStatistics.setExtBundleStats
+## storageStatistics.setExtBundleStats<sup>23+</sup>
 setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
-应用主动上报各自占用的空间大小，以Promise方式返回。
+应用主动上报各自的空间占用大小，以Promise方式返回。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -718,7 +718,7 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
   let userId: number = 100;
   let extBundleStats: storageStatistics.ExtBundleStats = {
     businessName: 'com.example.storagedemo',
-    size: 100,
+    size: 10000,
     flag: true
   }
   storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
@@ -728,10 +728,10 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
   });
   ```
 
-## storageStatistics.getExtBundleStats
+## storageStatistics.getExtBundleStats<sup>23+</sup>
 getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleStats&gt;
 
-查询指定业务空间的占用情况，以Promise方式返回。
+查询指定业务空间的占用信息，以Promise方式返回。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -750,7 +750,7 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;ExtBundleStats&gt; | Promise对象，返回指定业务空间的占用情况。 |
+  | Promise&lt;ExtBundleStats&gt; | Promise对象，返回指定业务空间的占用信息。 |
 
 **错误码：**
 
@@ -779,10 +779,10 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
   });
   ```
 
-## storageStatistics.getAllExtBundleStats
+## storageStatistics.getAllExtBundleStats<sup>23+</sup>
 getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
-查询所有业务的空间占用情况，以Promise方式返回。
+查询所有业务的空间占用信息，以Promise方式返回。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -825,5 +825,64 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
     console.info("getAllExtBundleStats successfully");
   }).catch((err: BusinessError) => {
     console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+  
+  ## UserdataDirInfo<sup>23+</sup>
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**系统接口**：该接口为系统接口。
+
+| 名称      | 类型   | 只读  | 可选  | 说明           |
+| --------- | ------ | ---- | ----- | -------------- |
+| path   | string | 否 | 否 | 全路径名。    |
+| totalSize | number  |否 | 否 | 路径占用的空间大小，单位是Byte。  |
+| totalCnt  | number | 否 | 否 | 路径下目录&文件数量。 |
+
+## storageStatistics.listUserdataDirInfo<sup>23+</sup>
+listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
+
+获取磁盘空间占用，以Promise方式返回。
+
+**需要权限**：ohos.permission.STORAGE_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**系统接口**：该接口为系统接口。
+
+**返回值：**
+
+| 类型                   | 说明    |
+| --------------------- | :---- |
+|  Promise&lt;Array&lt;UserdataDirInfo&gt;&gt; | Promise对象，返回磁盘空间占用信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600015 | Failed to traverse the query data partition directory. |
+
+**示例：**
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userId: number = 100;
+  let extBundleStats: storageStatistics.ExtBundleStats = {
+    businessName: 'com.example.storagedemo',
+    size: 10000,
+    flag: true
+  }
+  storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
+    console.info("setExtBundleStats successfully");
+  }).catch((err: BusinessError) => {
+    console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
