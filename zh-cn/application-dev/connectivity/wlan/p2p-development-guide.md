@@ -41,10 +41,10 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 ### 创建/删除P2P群组
 1. import需要的Wi-Fi模块。
    <!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-
-``` TypeScript
-import { wifiManager } from '@kit.ConnectivityKit';
-```
+   
+   ``` TypeScript
+   import { wifiManager } from '@kit.ConnectivityKit';
+   ```
 2. 开启设备的Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 创建/删除P2P群组。
