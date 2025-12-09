@@ -439,6 +439,34 @@ Web同层渲染的配置。
 | targetUrl     | string                                   | 否 | 否 | 目标url。                        |
 | handler       | [ControllerHandler](./arkts-basic-components-web-ControllerHandler.md) | 否 | 否 | 用于设置新建窗口的WebviewController实例。 |
 
+## WindowFeatures<sup>23+</sup>
+
+网页请求创建的新窗口特征信息，包括大小和位置。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                | 类型                                  | 只读 | 可选 | 说明                        |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| x                 | number                              | 否    | 否 | 新窗口左上角横坐标（单位：像素）。   |
+| y                 | number                              | 否    | 否 | 新窗口左上角纵坐标（单位：像素）。            |
+| width             | number                              | 否    | 否 | 新窗口宽度（单位：像素）。          |
+| height            | number                              | 否    | 否 | 新窗口高度（单位：像素）。          |
+
+## OnWindowNewExtEvent<sup>23+</sup>
+
+定义网页请求用户创建窗口时触发的回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读   | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| isAlert       | boolean                                  | 否 | 否 | true代表请求创建对话框，false代表请求创建新标签页。    |
+| isUserTrigger | boolean                                  | 否 | 否 | true代表用户触发，false代表非用户触发。      |
+| targetUrl     | string                                   | 否 | 否 | 请求的新窗口中需要打开的url。                        |
+| handler       | [ControllerHandler](./arkts-basic-components-web-ControllerHandler.md) | 否 | 否 | 用于设置新建窗口的WebviewController实例。 |
+| windowFeatures | [WindowFeatures](./arkts-basic-components-web-i.md#windowfeatures23)                                | 否 | 否 | 网页请求创建的新窗口特征信息。 |
+| navigationPolicy | [NavigationPolicy](./arkts-basic-components-web-e.md#navigationpolicy23)                            | 否 | 否 | 网页请求用户创建新窗口时的窗口打开方式。 |
+
 ## OnTouchIconUrlReceivedEvent<sup>12+</sup>
 
 定义设置接收到apple-touch-icon url地址时的回调函数。

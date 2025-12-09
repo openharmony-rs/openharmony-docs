@@ -2608,6 +2608,113 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
   </html>
   ```
 
+## onWindowNewExt<sup>23+</sup>
+
+onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
+
+在启用[multiWindowAccess](./arkts-basic-components-web-attributes.md#multiwindowaccess9)的情况下，通知用户新建窗口请求。
+
+> **说明：**
+>
+> - 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+>
+> - 若未创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口并设置成null，通知Web未创建新窗口。
+>
+> - 新窗口需避免直接覆盖在原Web组件上，且应与主页面以相同形式明确显示其URL（如地址栏）以防止用户混淆。若无法确保URL的显示和验证机制可靠，则需考虑禁止创建新窗口。
+>
+> - 新窗口请求来源无法可靠追溯，可能由第三方iframe发起，应用需默认采取沙箱隔离、限制权限等防御性措施以确保安全。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback       | Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\>           | 是 | 网页要求用户创建窗口时触发的回调。    |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+  @CustomDialog
+  struct NewWebViewComp {
+  controller?: CustomDialogController;
+  webviewController1: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: "www.example.com", controller: this.webviewController1 })
+        .javaScriptAccess(true)
+        .multiWindowAccess(false)
+        .onWindowExit(() => {
+          console.info("NewWebViewComp onWindowExit");
+          if (this.controller) {
+            this.controller.close();
+          }
+        })
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  dialogController: CustomDialogController | null = null;
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("window.html"), controller: this.controller })
+        .javaScriptAccess(true)
+        // 需要开启multiWindowAccess
+        .multiWindowAccess(true)
+        .allowWindowOpenMethod(true)
+        .onWindowNewExt((event) => {
+          //以event.navigationPolicy请求的方式打开新窗口
+          console.log("navigationAction: ", event.navigationPolicy)
+          //以event.windowFeatures中的大小及位置信息创建新窗口
+          console.log("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          if (this.dialogController) {
+            this.dialogController.close();
+          }
+          let popController: webview.WebviewController = new webview.WebviewController();
+          this.dialogController = new CustomDialogController({
+            builder: NewWebViewComp({ webviewController1: popController })
+          })
+          this.dialogController.open();
+          // 将新窗口对应WebviewController返回给Web内核。
+          // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+          // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
+          event.handler.setWebController(popController);
+        })
+      }
+    }
+  }
+  ```
+
+  ```html
+  <!-- window.html页面代码 -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <a href="#" onclick="openNewWindow('https://www.example.com')">打开新页面</a>
+    <script type="text/javascript">
+        function openNewWindow(url) {
+          window.open(url, 'example', 'left=60,top=80,width=800,height=600');
+          return false;
+        }
+    </script>
+    </body>
+    </html>
+  ```
+
 ## onActivateContent<sup>20+</sup>
 
 onActivateContent(callback: Callback\<void>)
