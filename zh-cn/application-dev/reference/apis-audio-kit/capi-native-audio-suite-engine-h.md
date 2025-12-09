@@ -35,7 +35,7 @@
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetPipelineState(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioSuite_PipelineState* pipelineState)](#oh_audiosuiteengine_getpipelinestate) | - | 获取当前管线的状态。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, void* audioData, int32_t requestFrameSize, int32_t* responseSize, bool* finishedFlag)](#oh_audiosuiteengine_renderframe) | - | 应用调用此接口获取管线处理后的音频数据（针对单输出效果节点）。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioDataArray* audioDataArray, int32_t* responseSize, bool* finishedFlag)](#oh_audiosuiteengine_multirenderframe) | - | 渲染该管线，获取管线处理后的音频数据。针对多输出效果节点，比如包含音源分离节点的管线，audioDataArray的大小需与效果节点的输出数量一一对应（例如：音源分离节点需两个：第1个为人声，第2个为背景声）。 |
-| [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Create(OH_AudioNodeBuilder** builder)](#oh_audiosuitenodebuilder_create) | - | 获取一个音频编创节点构造器，用于配置并创建音频节点。构建器可复用，但若新节点属性与之前不同，必须使用{@link OH_AudioSuiteNodeBuilder_Reset()}重置。 |
+| [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Create(OH_AudioNodeBuilder** builder)](#oh_audiosuitenodebuilder_create) | - | 获取一个音频编创节点构造器，用于配置并创建音频节点。构建器可复用，但若新节点属性与之前不同，必须使用[OH_AudioSuiteNodeBuilder_Reset()](#oh_audiosuitenodebuilder_reset)重置。 |
 | [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Destroy(OH_AudioNodeBuilder* builder)](#oh_audiosuitenodebuilder_destroy) | - | 销毁一个音频编创节点构造器。使用完构造器后必须调用此函数进行销毁。 |
 | [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Reset(OH_AudioNodeBuilder* builder)](#oh_audiosuitenodebuilder_reset) | - | 重置一个音频编创节点构造器，同时将之前使用接口设置参数重置。若需复用构建器创建属性不同的新节点，必须调用此接口清除所有属性（如节点类型等）。 |
 | [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetNodeType(OH_AudioNodeBuilder* builder, OH_AudioNode_Type type)](#oh_audiosuitenodebuilder_setnodetype) | - | 设置当前节点构造器需要构造的节点类型。创建节点时会根据类型验证其他参数，所有节点类型的创建均需设置此属性。 |
@@ -310,7 +310,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Create(OH_AudioNodeBuilder** build
 
 **描述**
 
-获取一个音频编创节点构造器，用于配置并创建音频节点。构建器可复用，但若新节点属性与之前不同，必须使用{@link OH_AudioSuiteNodeBuilder_Reset()}重置。
+获取一个音频编创节点构造器，用于配置并创建音频节点。构建器可复用，但若新节点属性与之前不同，必须使用[OH_AudioSuiteNodeBuilder_Reset()](#oh_audiosuitenodebuilder_reset)重置。
 
 **起始版本：** 22
 
@@ -446,11 +446,11 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioNode\* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
-| void\* userData | 用户使用的数据指针。系统调用此回调函数时，将使用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口传入的userData。 |
-| void\* audioData | 系统提供的内存地址，用于将需要处理的音频数据流写入（需由用户填充）。 |
+| OH_AudioNode* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| void* userData | 用户使用的数据指针。系统调用此回调函数时，将使用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口传入的userData。 |
+| void* audioData | 系统提供的内存地址，用于将需要处理的音频数据流写入（需由用户填充）。 |
 | int32_t audioDataSize | audioData内存地址的字节大小。 |
-| bool\* finished | 标记audioNode节点需要处理的音频数据流是否已经写入完成。true表示已完成，false表示未完成。 |
+| bool* finished | 标记audioNode节点需要处理的音频数据流是否已经写入完成。true表示已完成，false表示未完成。 |
 
 **返回：**
 
@@ -518,7 +518,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyNode(OH_AudioNode* audioNode)
 
 **描述**
 
-销毁一个音频编创节点。节点是否可以被销毁取决于它所属管线的状态，如果管线不处于[OH_AudioSuite_PipelineState.AUDIOSUITE_PIPELINE_STOPPED](../apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate)停止状态，且节点处于管线处理路径中，将销毁失败。
+销毁一个音频编创节点。节点是否可以被销毁取决于它所属管线的状态，如果管线不处于[OH_AudioSuite_PipelineState.AUDIOSUITE_PIPELINE_STOPPED](../apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate)停止状态，而节点处于管线处理路径中，将销毁失败。
 
 **起始版本：** 22
 
@@ -867,8 +867,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_IsNodeTypeSupported(OH_AudioNode_Type n
 
 **描述**
 
-查询当前系统是否支持创建指定的节点类型，避免节点创建失败。调用该接口时不依赖引擎及管线状态，仅跟系统相关，无需创建引擎及管线。<br> 在创建前用来查询是否可以创造该类型节点，避免节点创建失败。
-
+查询当前系统是否支持创建指定的节点类型，用于避免节点创建失败；该操作不依赖引擎及管线状态，仅与系统能力相关，无需预创建引擎及管线。
 **起始版本：** 22
 
 **参数：**

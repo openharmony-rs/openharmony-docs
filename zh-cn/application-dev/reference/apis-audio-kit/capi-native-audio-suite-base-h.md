@@ -30,9 +30,9 @@
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md) | OH_AudioDataArray | 定义多路输出渲染接口的输入数据描述。当管线中存在多输出效果节点时，通过多输出渲染接口获取处理过后的音频数据。 |
 | [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) | OH_EqualizerFrequencyBandGains | 定义音频编创均衡器效果节点配置参数。 |
 | [OH_AudioSuiteEngineStruct](capi-ohaudiosuite-oh-audiosuiteenginestruct.md) | OH_AudioSuiteEngine | 声明音频编创引擎，用来管理音频编创管线。 |
-| [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md) | OH_AudioSuitePipeline | 声明音频编创引擎，用来管理音频编创节点。 |
+| [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md) | OH_AudioSuitePipeline | 声明音频编创管线，用来管理音频编创节点。 |
 | [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md) | OH_AudioNode | 声明音频编创节点，用于描述音频编创节点实例。 |
-| [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md) | OH_AudioNodeBuilder | 声明音频编创节点的构造器。<br> 构造器实例通常用来设置音频流属性和创建音频流。 |
+| [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md) | OH_AudioNodeBuilder | 声明音频编创节点的构造器。用于构建[OH_AudioNode](../apis-audio-kit/capi-ohaudiosuite-oh-audionodestruct.md)，配置输入输出节点数据格式，配置输入节点回调接口。 |
 
 ### 枚举
 
@@ -85,15 +85,15 @@ enum OH_AudioNode_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| INPUT_NODE_TYPE_DEFAULT = 1 | 输入节点，支持从应用程序获取音频数据。<br>**起始版本：** 22 |
-| OUTPUT_NODE_TYPE_DEFAULT = 101 | 输出节点，支持向应用程序提供音频数据。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_EQUALIZER = 201 | 均衡器效果节点。均衡器效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | 降噪效果节点。降噪效果节点输出的音频格式如下：<br> 采样率：16000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：1。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | 声场效果节点。声场效果节点支持的声场类型：[OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)。<br> 声场效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | 音源分离效果节点。音源分离效果节点只能连接输出节点。<br> 音源分离效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE。<br> 声道数：4（前2个声道用于人声，后2个声道用于伴奏）。<br><br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | 声音美化效果节点。声音美化效果节点支持的声音美化类型：[OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)。<br> 声音美化效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | 环境效果节点。环境效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | 混音效果节点。混音效果节点输出的音频格式如下：<br> 采样率：[OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate)。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE。<br> 声道数：2。<br>**起始版本：** 22 |
+| INPUT_NODE_TYPE_DEFAULT = 1 | 输入节点，支持从应用程序获取音频数据。 |
+| OUTPUT_NODE_TYPE_DEFAULT = 101 | 输出节点，支持向应用程序提供音频数据。 |
+| EFFECT_NODE_TYPE_EQUALIZER = 201 | 均衡器效果节点。均衡器效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。 |
+| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | 降噪效果节点。降噪效果节点输出的音频格式如下：<br> 采样率：16000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：1。 |
+| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | 声场效果节点。声场效果节点支持的声场类型：[OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)。<br> 声场效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。 |
+| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | 音源分离效果节点。音源分离效果节点只能连接输出节点。<br> 音源分离效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE。<br> 声道数：4（前2个声道用于人声，后2个声道用于伴奏）。 |
+| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | 声音美化效果节点。声音美化效果节点支持的声音美化类型：[OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)。<br> 声音美化效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。 |
+| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | 环境效果节点。环境效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。 |
+| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | 混音效果节点。混音效果节点输出的音频格式如下：<br> 采样率：[OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate)。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE。<br> 声道数：2。 |
 
 ### OH_AudioSuite_PipelineWorkMode
 
@@ -153,7 +153,7 @@ enum OH_AudioSuite_Result
 | AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 |  节点不存在。<br>**起始版本：** 22 |
 | AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 |  节点之间不支持连接。<br>**起始版本：** 22 |
 | AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 |  不支持的操作。例如，效果节点不支持设置音频格式。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 |  创建管线或者节点超过系统最大数量限制。具体情况如下：<br> 引擎最多支持创建10条管线（其中，实时渲染管线最多创建1条）。<br> 每一个管线中，输入节点不超过5个，输出节点不超过1个，混音节点不超过3个，音源分离节点不超过1个，其余效果节点不超过5个。<br>**起始版本：** 22 |
+| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 |  创建管线或者节点超过系统最大数量限制。具体情况如下：<br> 引擎最多支持创建10条管线（其中，实时渲染管线最多创建1条）。每一个管线中，输入节点不超过5个，输出节点不超过1个，混音节点不超过3个，音源分离节点不超过1个，其余效果节点不超过5个。<br>**起始版本：** 22 |
 | AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 |  参数缺少必要参数。例如，输入节点未设置回调函数、输出节点未设置音频格式。<br>**起始版本：** 22 |
 | AUDIOSUITE_ERROR_TIMEOUT = 12 |  操作超时。<br>**起始版本：** 22 |
 | AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 |  内存申请失败。<br>**起始版本：** 22 |
