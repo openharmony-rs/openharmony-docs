@@ -149,7 +149,7 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse22)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[on](#inputmonitoronmouse22)。
 
 **ArkTS-Dyn起始版本**：9
 
@@ -1164,7 +1164,7 @@ onThreeFingersSwipe(receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodal
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[onThreeFingersSwipe](#inputmonitoronthreefingersswipe10)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronthreefingersswipe10)。
 
 **ArkTS-Sta起始版本**：22
 
@@ -3056,9 +3056,9 @@ offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offTouchscreenPinch](#inputmonitorofftouchscreenpinch18)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofftouchscreenpinch18)。
 
 **ArkTS-Sta起始版本**：22
 
