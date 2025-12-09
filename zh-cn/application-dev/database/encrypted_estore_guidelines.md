@@ -739,8 +739,7 @@ ECStoreManager类用于管理应用的E类数据库和C类数据库。支持配�
 
 <!-- @[rdb_ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/ECStoreManager.ts) -->
 
-```ts
-// ECStoreManager.ts
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { Mover } from './Mover';
 import { BusinessError } from '@kit.BasicServicesKit';
