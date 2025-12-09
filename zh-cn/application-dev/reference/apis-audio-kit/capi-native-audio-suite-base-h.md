@@ -59,15 +59,15 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DEFAULT | 默认均衡器频带增益效果。<br> 各频带增益：{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}。 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_BALLADS | 均衡器节点内置民谣效果。<br> 各频带增益：{3, 5, 2, -4, 1, 2, -3, 1, 4, 5}。 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CHINESE_STYLE | 均衡器节点内置中国风效果。<br> 各频带增益：{0, 0, 2, 0, 0, 4, 4, 2, 2, 5}。 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CLASSICAL | 均衡器节点内置古典效果。<br> 各频带增益：{2, 3, 2, 1, 0, 0, -5, -5, -5, -6}。 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DANCE_MUSIC | 均衡器节点内置舞曲效果。<br> 各频带增益：{4, 3, 2, -3, 0, 0, 5, 4, 2, 0}。 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_JAZZ | 均衡器节点内置爵士效果。<br> 各频带增益：{2, 0, 2, 3, 6, 5, -1, 3, 4, 4}。 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_POP | 均衡器节点内置流行效果。<br> 各频带增益：{5, 2, 1, -1, -5, -5, -2, 1, 2, 4}。 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_RB | 均衡器节点内置R&B效果。<br> 各频带增益：{1, 4, 5, 3, -2, -2, 2, 3, 5, 5}。 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_ROCK | 均衡器节点内置摇滚效果。<br> 各频带增益：{6, 4, 4, 2, 0, 1, 3, 3, 5, 4}。 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DEFAULT | 默认均衡器频带增益效果。<br> 各频带增益：{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}。<br>**起始版本：** 22 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_BALLADS | 均衡器节点内置民谣效果。<br> 各频带增益：{3, 5, 2, -4, 1, 2, -3, 1, 4, 5}。<br>**起始版本：** 22 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CHINESE_STYLE | 均衡器节点内置中国风效果。<br> 各频带增益：{0, 0, 2, 0, 0, 4, 4, 2, 2, 5}。<br>**起始版本：** 22 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CLASSICAL | 均衡器节点内置古典效果。<br> 各频带增益：{2, 3, 2, 1, 0, 0, -5, -5, -5, -6}。<br>**起始版本：** 22 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DANCE_MUSIC | 均衡器节点内置舞曲效果。<br> 各频带增益：{4, 3, 2, -3, 0, 0, 5, 4, 2, 0}。<br>**起始版本：** 22 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_JAZZ | 均衡器节点内置爵士效果。<br> 各频带增益：{2, 0, 2, 3, 6, 5, -1, 3, 4, 4}。<br>**起始版本：** 22 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_POP | 均衡器节点内置流行效果。<br> 各频带增益：{5, 2, 1, -1, -5, -5, -2, 1, 2, 4}。<br>**起始版本：** 22 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_RB | 均衡器节点内置R&B效果。<br> 各频带增益：{1, 4, 5, 3, -2, -2, 2, 3, 5, 5}。<br>**起始版本：** 22 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_ROCK | 均衡器节点内置摇滚效果。<br> 各频带增益：{6, 4, 4, 2, 0, 1, 3, 3, 5, 4}。<br>**起始版本：** 22 |
 
 ## 枚举类型说明
 
