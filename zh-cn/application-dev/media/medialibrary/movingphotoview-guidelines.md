@@ -24,7 +24,7 @@
    > **说明：**
    >
    > - MovingPhotoViewAttribute是用于配置MovingPhotoView组件属性的关键接口。API version 21及之前版本，导入MovingPhotoView组件后需要开发者手动导入MovingPhotoViewAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入MovingPhotoView组件后，会自动导入MovingPhotoViewAttribute，无需开发者手动导入。
-   > - MovingPhotoViewAttribute导入后，DevEco Studio会将其显示置灰，不影响开发这是用。
+   > - MovingPhotoViewAttribute导入后，DevEco Studio会将其显示置灰，不影响开发者使用。
 
      API version 21及之前版本：
 
