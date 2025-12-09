@@ -901,10 +901,10 @@ try {
 }
 ```
 
-### getPiPActiveStatus<sup>23+</sup>
-getPiPActiveStatus(): Promise&lt;boolean&gt;
+### isPiPActive<sup>23+</sup>
+isPiPActive(): Promise&lt;boolean&gt;
 
-获取画中画的显隐状态，使用Promise异步回调。
+获取画中画的隐藏状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -914,11 +914,11 @@ getPiPActiveStatus(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                  |
 |----------------------|---------------------|
-| Promise&lt;boolean&gt;  | Promise对象，返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见。 |
+| Promise&lt;boolean&gt;  | Promise对象，返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。画中画生命周期不为[STARTED](#pipstate)时调用本接口总是返回false。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息       |
 |-------|-------------------------------------------------------------------------------------------------------------|
@@ -927,11 +927,11 @@ getPiPActiveStatus(): Promise&lt;boolean&gt;
 
 **示例：**
 
-```ts
+``` ts
 let pipActiveStatus: boolean | undefined = undefined;
 try {
-  let promise : Promise<boolean> = this.pipController.getPiPActiveStatus();
-  promise.then((data) => {
+  let promise : Promise<boolean> | undefined = this.pipController?.isPiPActive();
+  promise?.then((data) => {
     pipActiveStatus = data;
     console.info('Succeeded in getting pip active status. activeStatus: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
