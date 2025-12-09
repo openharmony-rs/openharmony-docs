@@ -558,6 +558,52 @@ ArkTS-Sta: enableAutoSpacing(enable: boolean | undefined)
 | ------ | ------- | ---- | ---------------------------------- |
 | enable | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
+### includeFontPadding<sup>23+</sup>
+
+ArkTS-Dyn: includeFontPadding(include: Optional\<boolean>)
+
+ArkTS-Sta: includeFontPadding(include: boolean | undefined)
+
+设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| include | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。<br/>设置为undefined时，首行和尾行不增加间距。 |
+
+### fallbackLineSpacing<sup>23+</sup>
+
+ArkTS-Dyn: fallbackLineSpacing(enabled: Optional\<boolean>)
+
+ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
+
+针对多行文字叠加，支持行高基于文字实际高度自适应。不通过该接口设置，默认行高不基于文字实际高度自适应。
+
+该接口依赖[RichEditorTextStyle](#richeditortextstyle)的lineHeight属性。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，fallbackLineSpacing属性将生效。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean><br/>ArkTS-Sta: boolean \| undefined  | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。<br/>设置为undefined时，行高不基于文字实际高度自适应。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持[OnDidChangeCallback](ts-text-common.md#ondidchangecallback12)、[StyledStringChangedListener](ts-text-common.md#styledstringchangedlistener12)、[StyledStringChangeValue](ts-text-common.md#styledstringchangevalue12)和以下事件：
@@ -6327,3 +6373,186 @@ struct RichEditorExample {
 ```
 
 ![DeleteBackward](figures/richEditorDeleteBackward.gif)
+
+### 示例33（优化小语种文字显示）
+该示例通过[includeFontPadding](#includefontpadding23)属性，在首行文字顶部和尾行文字底部添加文字内边距，同时通过[fallbackLineSpacing](#fallbacklinespacing23)属性实现行高自适应，基于文字实际高度动态调整。
+
+从API version 23开始，新增includeFontPadding、fallbackLineSpacing属性。
+
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct RichEditorExample {
+  controller: RichEditorController = new RichEditorController();
+  @State fallbackLineSpacing: boolean = true;
+  @State includeFontPadding: boolean = true;
+
+  build() {
+    Scroll() {
+      Column() {
+        RichEditor({ controller: this.controller })
+          .onReady(() => {
+            this.controller.addTextSpan('བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་མིའི་རྒྱུན་ལྡན་པའི་སྐད་ཡིག་དང་།\n འཇིག་རྟེན་གྱི་ཆོས་ལུགས་དང་རྒྱུན་ལྡན་པའི་ཆོས་ལུགས་ཀྱི་དོན་ཚན་གྱི་སྐད་ཡིག་རེད།\n',
+              {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: "30",
+                  lineHeight: 10
+                },
+                paragraphStyle: {
+                  textAlign: TextAlign.Start,
+                }
+              })
+            this.controller.addTextSpan('བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་མིའི་རྒྱུན་ལྡན་པའི་སྐད་ཡིག་དང་།\n འཇིག་རྟེན་གྱི་ཆོས་ལུགས་དང་རྒྱུན་ལྡན་པའི་ཆོས་ལུགས་ཀྱི་དོན་ཚན་གྱི་སྐད་ཡིག་རེད།',
+              {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: "30",
+                },
+                paragraphStyle: {
+                  textAlign: TextAlign.Start,
+                }
+              })
+          })
+          .width("100%")
+          .height("35%")
+          .border({ width: 1, radius: 5 })
+          .draggable(false)
+          .includeFontPadding(this.includeFontPadding)
+          .fallbackLineSpacing(this.fallbackLineSpacing)
+        Row() {
+        Button('开启文字行间自适应')
+          .onClick(() => {
+            this.fallbackLineSpacing = true
+          })
+          .width("45%")
+          .height("10%")
+          .margin({ right: 10 })
+        Button('关闭文字行间自适应')
+          .onClick(() => {
+            this.fallbackLineSpacing = false
+          })
+          .width("45%")
+          .height("10%")
+          .margin({ left: 5 })
+      }
+      .margin({ top: 20 })
+
+      Row() {
+        Button('开启段落首行尾行边距增高')
+          .onClick(() => {
+            this.includeFontPadding = true
+          })
+          .width("45%")
+          .height("10%")
+          .margin({ right: 10 })
+        Button('关闭段落首行尾行边距增高')
+          .onClick(() => {
+            this.includeFontPadding = false
+          })
+          .width("45%")
+          .height("10%")
+          .margin({ left: 5 })
+      }
+      .margin({ top: 20 })
+      }
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, Component, Button, RichEditorController, RichEditorOptions, RichEditor, Margin, Row } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  @State stateVar: string = 'state var';
+  message: string = 'var';
+
+  changeValue() {
+    this.stateVar += '~'
+  }
+
+  controller: RichEditorController = new RichEditorController();
+  @State fallbackLineSpacing: boolean = true;
+  @State includeFontPadding: boolean = true;
+
+  build() {
+    Column(undefined) {
+      RichEditor({ controller: this.controller } as RichEditorOptions)
+        .onReady(() => {
+          this.controller.addTextSpan("བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་མིའི་རྒྱུན་ལྡན་པའི་སྐད་ཡིག་དང་།\n འཇིག་རྟེན་གྱི་ཆོས་ལུགས་དང་རྒྱུན་ལྡན་པའི་ཆོས་ལུགས་ཀྱི་དོན་ཚན་གྱི་སྐད་ཡིག་རེད།\n",
+            {
+              style: {
+                fontSize: "30",
+                lineHeight: 10
+              },
+            })
+          this.controller.addTextSpan("བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་མིའི་རྒྱུན་ལྡན་པའི་སྐད་ཡིག་དང་།\n འཇིག་རྟེན་གྱི་ཆོས་ལུགས་དང་རྒྱུན་ལྡན་པའི་ཆོས་ལུགས་ཀྱི་དོན་ཚན་གྱི་སྐད་ཡིག་རེད།",
+            {
+              style: {
+                fontSize: "30",
+              },
+            })
+        })
+        .width("100%")
+        .height("35%")
+        .border({ width: 1, radius: 5 })
+        .draggable(false)
+        .includeFontPadding(this.includeFontPadding)
+        .fallbackLineSpacing(this.fallbackLineSpacing)
+      Row(undefined) {
+        Button('开启文字行间自适应')
+          .onClick(() => {
+            this.fallbackLineSpacing = true
+          })
+          .width("45%")
+          .height("10%")
+          .margin({ right: 10 } as Margin)
+        Button('关闭文字行间自适应')
+          .onClick(() => {
+            this.fallbackLineSpacing = false
+          })
+          .width("45%")
+          .height("10%")
+          .margin({ left: 5 } as Margin)
+      }
+      .margin({ top: 20 } as Margin)
+
+      Row(undefined) {
+        Button('开启段落首行尾行边距增高')
+          .onClick(() => {
+            this.includeFontPadding = true
+          })
+          .width("45%")
+          .height("10%")
+          .margin({ right: 10 } as Margin)
+        Button('关闭段落首行尾行边距增高')
+          .onClick(() => {
+            this.includeFontPadding = false
+          })
+          .width("45%")
+          .height("10%")
+          .margin({ left: 5 } as Margin)
+      }
+      .margin({ top: 20 } as Margin)
+    }
+  }
+}
+
+@Component
+struct Child {
+  @State stateVar: string = 'Child';
+
+  build() {
+    Text(this.stateVar).fontSize(50)
+  }
+}
+```
+
+![richEditorIncludeFontPadding](figures/richEditorIncludeFontPadding.gif)
