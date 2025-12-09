@@ -532,7 +532,7 @@ onChange(listener: Callback&lt;DeviceListener&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputdeviceon9)。
 
-**ArkTS-Dyn起始版本**：22
+**ArkTS-Sta起始版本**：22
 
 **参数**：
 
@@ -657,7 +657,7 @@ offChange(listener?: Callback&lt;DeviceListener&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputdeviceoff9)。
 
-**ArkTS-Dyn起始版本**：22
+**ArkTS-Sta起始版本**：22
 
 **参数**：
 

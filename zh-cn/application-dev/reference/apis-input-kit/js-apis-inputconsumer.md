@@ -328,7 +328,7 @@ offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptio
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputconsumeroffhotkeychange)。
 
-**ArkTS-Dyn起始版本**：22
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -460,9 +460,9 @@ onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): voi
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Syn接口是[on](#inputconsumeronkeypressed16)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputconsumeronkeypressed16)。
 
-**ArkTS-Dyn起始版本**：22
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -582,7 +582,7 @@ offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputconsumeroffkeypressed16)。
 
-**ArkTS-Dyn起始版本**：22
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
