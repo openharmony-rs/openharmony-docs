@@ -93,7 +93,7 @@
    ``` TypeScript
    let context = getContext();
    let store: relationalStore.RdbStore | undefined = undefined;
-   // ···
+   // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
        name: 'RdbTest.db', // 数据库文件名
        securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别

@@ -105,7 +105,7 @@
      // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
      tokenizer: tokenType,
    };
-   // ···
+   // ...
      // 判断数据库版本，如果不匹配则需进行升降级操作
      // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
      // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
