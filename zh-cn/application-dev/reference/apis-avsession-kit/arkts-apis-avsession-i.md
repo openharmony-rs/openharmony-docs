@@ -246,7 +246,7 @@
 
 ## CommandInfo<sup>22+</sup>
 
-命令信息的相关属性。
+定义要发送到会话的命令信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 

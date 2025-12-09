@@ -128,7 +128,7 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 
 type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
 
-接受两个参数T和G的回调函数。
+定义包含两个参数的回调类型。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
