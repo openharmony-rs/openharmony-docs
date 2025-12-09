@@ -8742,7 +8742,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
 tlsServer.listen(tlsConnectOptions).then(() => {
   console.info("listen callback success");
   tlsServer.on('connect', (data: socket.TLSSocketConnection) => {
-    console.info(JSON.stringify(data))
+    console.info(JSON.stringify(data));
   });
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
