@@ -46,12 +46,12 @@ libohinputmethod.so
 3. 创建InputMethod_AttachOptions实例，设置绑定输入法时的选项。示例代码如下所示：
 
    <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例
-    bool showKeyboard = true;
-    attachOptions = OH_AttachOptions_Create(showKeyboard);
-```
+   
+   ``` C++
+   // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例
+   bool showKeyboard = true;
+   attachOptions = OH_AttachOptions_Create(showKeyboard);
+   ```
 
 
 4. 调用OH_InputMethodController_Attach发起绑定输入法服务，调用成功后，可以获取到用于和输入法交互的InputMethod_InputMethodProxy。示例代码如下所示：
