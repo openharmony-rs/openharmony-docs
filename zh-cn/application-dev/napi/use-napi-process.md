@@ -15,7 +15,7 @@
 - **Native侧**：.cpp文件，实现模块的注册。需要提供注册lib库的名称，并在注册回调方法中定义接口的映射关系，即Native方法及对应的JS/ArkTS接口名称等。
 
 
-此处以在ArkTS/JS侧实现add()接口、在Native侧实现Add()接口，从而实现跨语言交互为例，呈现使用Node-API进行跨语言交互的流程。
+此处以在ArkTS/JS侧实现callNative()接口、在Native侧实现加法操作的CallNative()接口，从而实现跨语言交互为例，呈现使用Node-API进行跨语言交互的流程。
 
 
 ## 创建Native C++工程
@@ -178,7 +178,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        // 第一个按钮，调用add方法，对应到Native侧的CallNative方法，进行两数相加。
+        // 第一个按钮，调用callNative方法，对应到Native侧的CallNative方法，进行两数相加。
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
