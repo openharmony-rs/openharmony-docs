@@ -29972,7 +29972,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":237,
+						"end_line":232,
 						"name":"napi_call_threadsafe_function_with_priority_cpp",
 						"start_line":15
 					}
@@ -30007,7 +30007,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":176,
+						"end_line":171,
 						"name":"napi_event_loop_cpp",
 						"start_line":17
 					}
