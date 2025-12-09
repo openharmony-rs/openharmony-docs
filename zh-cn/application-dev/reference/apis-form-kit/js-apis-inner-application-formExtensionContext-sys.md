@@ -6,9 +6,10 @@ FormExtensionContext模块提供FormExtensionAbility具有的接口和能力。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块接口仅可在Stage模型下使用。
-> 本模块接口为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
+> - 本模块接口为系统接口。
 
 
 
@@ -27,6 +28,10 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -49,6 +54,8 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { FormExtensionAbility } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -57,7 +64,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行startAbility
-    console.log(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -70,11 +77,43 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       if (error) {
         console.error(`FormExtensionContext startAbility, error:${JSON.stringify(error)}`);
       } else {
-        console.log('FormExtensionContext startAbility success');
+        console.info('FormExtensionContext startAbility success');
       }
     });
   }
 };
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import FormExtensionAbility from '@ohos.app.form.FormExtensionAbility';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError, RecordData } from '@ohos.base';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onFormEvent(formId: string, message: string) {
+    // 当触发卡片message事件时，执行startAbility
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.formstartability',
+      abilityName: 'EntryAbility',
+      parameters: {
+        'message': message
+      } as Record<string, RecordData>
+    };
+    this.context.startAbility(want, (error: BusinessError | null) => {
+      if (error) {
+        console.error(`FormExtensionContext startAbility, error:${JSON.stringify(error)}`);
+      } else {
+        console.info('FormExtensionContext startAbility success');
+      }
+    });
+  }
+}
 ```
 
 ## FormExtensionContext.startAbility
@@ -86,6 +125,10 @@ startAbility(want: Want): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -113,6 +156,8 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { FormExtensionAbility } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -121,7 +166,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行startAbility
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -139,15 +184,52 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import FormExtensionAbility from '@ohos.app.form.FormExtensionAbility';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError, RecordData } from '@ohos.base';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onFormEvent(formId: string, message: string) {
+    // 当触发卡片message事件时，执行startAbility
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.formstartability',
+      abilityName: 'EntryAbility',
+      parameters: {
+        'message': message
+      } as Record<string,RecordData>
+    };
+    this.context.startAbility(want).then(() => {
+      console.info('StartAbility Success');
+    }).catch((err) => {
+      let error=err as BusinessError;
+      console.error(`StartAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+    });
+  }
+}
+```
+
 ## FormExtensionContext.connectServiceExtensionAbility<sup>10+</sup>
 
-connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+ArkTS-Dyn: connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+
+ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 将一个Ability与服务类型的Ability绑定。
 
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口，三方应用不支持调用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -160,7 +242,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回一个connectId，后续根据此connectId断开连接。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回一个connectId，后续根据此connectId断开连接。 |
 
 **错误码：**
 
@@ -183,6 +265,8 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { rpc } from '@kit.IPCKit';
 import { FormExtensionAbility } from '@kit.FormKit';
@@ -194,7 +278,7 @@ let commRemote: rpc.IRemoteObject | null = null;
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行connectServiceExtensionAbility
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -206,10 +290,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     let options: common.ConnectOptions = {
       onConnect(elementName, remote) {
         commRemote = remote; // remote 用于与ServiceExtensionAbility进行通信
-        console.log('----------- onConnect -----------');
+        console.info('----------- onConnect -----------');
       },
       onDisconnect(elementName) {
-        console.log('----------- onDisconnect -----------')
+        console.info('----------- onDisconnect -----------')
       },
       onFailed(code) {
         console.error('----------- onFailed -----------')
@@ -227,9 +311,62 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import FormExtensionAbility from '@ohos.app.form.FormExtensionAbility';
+import Want from '@ohos.app.ability.Want';
+import common from '@ohos.app.ability.common';
+import { ElementName } from 'bundleManager.ElementName';
+import { BusinessError, RecordData } from '@ohos.base';
+import rpc from '@ohos.rpc';
+
+
+let commRemote: rpc.IRemoteObject | null = null;
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onFormEvent(formId: string, message: string) {
+    // 当触发卡片message事件时，执行connectServiceExtensionAbility
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.formstartability',
+      abilityName: 'EntryAbility',
+      parameters: {
+        'message': message
+      } as Record<string, RecordData>
+    };
+    const options: common.ConnectOptions = {
+      onConnect: (elementName: ElementName, remote: rpc.IRemoteObject): void => {
+        commRemote = remote;
+        console.info('----------- onConnect -----------');
+      },
+      onDisconnect: (elementName: ElementName): void => {
+        console.info('----------- onDisconnect -----------');
+      },
+      onFailed: (code: int): void => {
+        console.error('----------- onFailed -----------');
+      }
+    };
+
+    let connection: long | null = null;
+    try {
+      connection = this.context.connectServiceExtensionAbility(want, options);
+    } catch (paramError) {
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## FormExtensionContext.disconnectServiceExtensionAbility<sup>10+</sup>
 
-disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback&lt;void&gt;): void
 
 将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。
 
@@ -237,11 +374,15 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt
 
 **系统接口：** 此接口为系统接口，三方应用不支持调用。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 在[connectServiceExtensionAbility](#formextensioncontextconnectserviceextensionability10)中返回的number。 |
+| connection | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 在[connectServiceExtensionAbility](#formextensioncontextconnectserviceextensionability10)中返回的number。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当Ability与绑定的服务类型的Ability解绑成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -255,6 +396,8 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { FormExtensionAbility } from '@kit.FormKit';
@@ -277,7 +420,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
           return;
         }
         // 执行正常业务
-        console.log('disconnectServiceExtensionAbility succeed');
+        console.info('disconnectServiceExtensionAbility succeed');
       });
     } catch (paramError) {
       commRemote = null;
@@ -288,9 +431,47 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import FormExtensionAbility from '@ohos.app.form.FormExtensionAbility';
+import { BusinessError } from '@ohos.base';
+import rpc from '@ohos.rpc';
+
+// commRemote为onConnect回调内返回的remote对象，此处定义为null无任何实际意义，仅作示例
+let commRemote: rpc.IRemoteObject | null = null;
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onFormEvent(formId: string, message: string) {
+    // 实际使用时，connection为connectServiceExtensionAbility中的返回值，此处定义为1无任何实际意义，仅作示例
+    let connection: long = 1;
+
+    try {
+      this.context.disconnectServiceExtensionAbility(connection, (error: BusinessError | null) => {
+        commRemote = null;
+        if (error) {
+          // 处理业务逻辑错误
+          console.error(`disconnectServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('disconnectServiceExtensionAbility succeed');
+      });
+    } catch (paramError) {
+      commRemote = null;
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## FormExtensionContext.disconnectServiceExtensionAbility<sup>10+</sup>
 
-disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
+ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
+
+ArkTS-Sta: disconnectServiceExtensionAbility(connection: long): Promise&lt;void&gt;
 
 将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空(Promise形式返回结果)。
 
@@ -298,11 +479,15 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 **系统接口：** 此接口为系统接口，三方应用不支持调用。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 在[connectServiceExtensionAbility](#formextensioncontextconnectserviceextensionability10)中返回的number。 |
+| connection | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 在[connectServiceExtensionAbility](#formextensioncontextconnectserviceextensionability10)中返回的number。 |
 
 **返回值：**
 
@@ -322,6 +507,8 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { FormExtensionAbility } from '@kit.FormKit';
 import { rpc } from '@kit.IPCKit';
@@ -339,7 +526,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         .then(() => {
           commRemote = null;
           // 执行正常业务
-          console.log('disconnectServiceExtensionAbility succeed');
+          console.info('disconnectServiceExtensionAbility succeed');
         })
         .catch((error: BusinessError) => {
           commRemote = null;
@@ -353,4 +540,42 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     }
   }
 };
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import FormExtensionAbility from '@ohos.app.form.FormExtensionAbility';
+import { BusinessError } from '@ohos.base';
+import rpc from '@ohos.rpc';
+
+// commRemote为onConnect回调内返回的remote对象，此处定义为null无任何实际意义，仅作示例
+let commRemote: rpc.IRemoteObject | null = null;
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onFormEvent(formId: string, message: string) {
+    // 实际使用时，connection为connectServiceExtensionAbility中的返回值，此处定义为1无任何实际意义，仅作示例
+    let connection: long = 1;
+
+    try {
+      this.context.disconnectServiceExtensionAbility(connection)
+        .then(() => {
+          commRemote = null;
+          // 执行正常业务
+          console.info('disconnectServiceExtensionAbility succeed');
+        })
+        .catch((err) => {
+          let error=err as BusinessError;
+          commRemote = null;
+          // 处理业务逻辑错误
+          console.error(`disconnectServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+        });
+    } catch (paramError) {
+      commRemote = null;
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
 ```
