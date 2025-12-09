@@ -790,3 +790,93 @@ let listener = () => {
 };
 systemPasteboard.onUpdate(listener);
 ```
+
+## 不支持ConvertXML
+
+**规则：** `arkts-interop-js2s-create-js-instance`
+
+**规则解释：**
+
+ArkTS-Sta不能直接实例化JS对象。
+
+**变更原因：**
+
+ArkTS-Sta不能直接实例化JS对象，不支持ConvertXML解析xml文本后创建JsObject对象添加xml内容返回。
+
+**适配建议：**
+
+使用ArkTS-Dyn提供的xml.XmlPullParser来解析xml并获取属性[XML解析](../arkts-utils/xml-parsing.md)。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+import { convertxml } from '@kit.ArkTS';
+
+try {
+  let xml =
+    '<?xml version="1.0" encoding="utf-8"?>' +
+    '<note importance="high" logged="true">' +
+    '   <title>Hello\r\nWorld</title>' +
+    '   <todo><![CDATA[Work\r\n]]></todo>' +
+    '</note>';
+  let conv = new convertxml.ConvertXML();
+  let options: convertxml.ConvertOptions = {
+    trim: false, declarationKey: "_declaration",
+    instructionKey: "_instruction", attributesKey: "_attributes",
+    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
+    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
+    nameKey: "_name", elementsKey: "_elements"
+  }
+  let result = JSON.stringify(conv.fastConvertToJSObject(xml, options));
+  console.info(result);
+} catch (e) {
+  console.error((e as Object).toString());
+}
+// 输出(宽泛型)
+// {"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"element","_name":"note","_attributes":{"importance":"high","logged":"true"},"_elements":[{"_type":"element","_name":"title","_elements":[{"_type":"text","_text":"Hello\nWorld"}]},{"_type":"element","_name":"todo","_elements":[{"_type":"cdata","_cdata":"Work\n"}]}]}]}
+```
+
+ArkTS-Sta
+
+```typescript
+import { xml, util } from '@kit.ArkTS'; // 需要使用util模块函数对文本编码
+
+let strXml: string =
+'<?xml version="1.0" encoding="utf-8"?>' +
+  '<note importance="high" logged="true">' +
+  '<title>Play</title>' +
+  '<lens>Work</lens>' +
+  '</note>';
+let textEncoder: util.TextEncoder = new util.TextEncoder();
+let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
+// 基于ArrayBuffer构造XmlPullParser对象
+let that: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+
+// 自定义回调函数，本例直接打印出标签及标签值。
+function func(name: string, value: string): boolean {
+  if (name == 'note') {
+    console.info(name);
+  }
+  if (value == 'Play' || value == 'Work') {
+    console.info('    ' + value);
+  }
+  if (name == 'title' || name == 'lens') {
+    console.info('  ' + name);
+  }
+  return true; //true:继续解析 false:停止解析
+}
+
+let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
+that.parseXml(options);
+// 输出结果如下
+//note
+//  title
+//    Play
+//  title
+//  lens
+//    Work
+//  lens
+//note
+```
