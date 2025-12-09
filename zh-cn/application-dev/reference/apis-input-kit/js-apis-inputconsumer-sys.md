@@ -91,8 +91,8 @@ onKey(callback: Callback&lt;KeyOptions&gt;): void
 
 **参数：** 
 
-| 参数名         | 类型                         | 必填   | 说明                                       |
-| ---------- | -------------------------- | ---- | ---------------------------------------- |                     |
+| 参数名         | 类型                         | 必填   | 说明 |
+| ---------- | -------------------------- | ---- | ---------------------------------------- |
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
 | callback   | Callback&lt;KeyOptions&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
 
@@ -132,7 +132,7 @@ struct Index {
 }
 ```
 
-## <span id="off_key_dyn">inputConsumer.off</span>
+## inputConsumer.off
 
 off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
@@ -142,7 +142,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#off_key_sta)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#inputConsumer.offKey22)。
 
 **参数：** 
 
@@ -213,7 +213,7 @@ struct Index {
 }
 ```
 
-## <span id="off_key_sta">inputConsumer.offKey<sup>22+</sup></span>
+## inputConsumer.offKey<sup>22+</sup>
 
 offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
@@ -223,7 +223,7 @@ offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_key_dyn)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputConsumer.off)。
 
 **ArkTS-Sta起始版本**：22
 
