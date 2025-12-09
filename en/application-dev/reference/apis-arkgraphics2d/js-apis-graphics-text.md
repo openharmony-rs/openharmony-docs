@@ -255,7 +255,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("get fontDescriptor")
+        Button("get fontDesciptor")
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .width(300)
