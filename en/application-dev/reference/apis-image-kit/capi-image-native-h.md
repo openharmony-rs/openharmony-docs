@@ -222,7 +222,7 @@ Obtains the timestamp of an [OH_ImageNative](capi-image-nativemodule-oh-imagenat
 
 The specific meaning and baseline of these timestamps are determined by the image producer, which is the camera in the camera preview and photo scenarios. As a result, images from different producers may carry timestamps with distinct meanings and baselines, making direct comparison between them infeasible.
 
-To obtain the generation time of a photo, you can use [OH_ImageSourceNative_GetImageProperty](capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) to read the related EXIF information.
+To obtain the generation time of a photo, you can use [OH_ImageSourceNative_GetImageProperty](capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) to read the related Exif information.
 
 **Since**: 12
 

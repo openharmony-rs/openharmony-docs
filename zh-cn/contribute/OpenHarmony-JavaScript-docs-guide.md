@@ -48,7 +48,7 @@
 
 ## 明确文档结构（应用开发）
 
-应用开发文档链接： [https://](https://gitee.com/openharmony/docs/tree/master/zh-cn/application-dev)[gitee.com/openharmony/docs/tree/master/zh-cn/application-dev](https://gitee.com/openharmony/docs/tree/master/zh-cn/application-dev)
+应用开发文档链接： [https://](https://gitcode.com/openharmony/docs/tree/master/zh-cn/application-dev)[gitcode.com/openharmony/docs/tree/master/zh-cn/application-dev](https://gitcode.com/openharmony/docs/tree/master/zh-cn/application-dev)
 
 开发指南按不同功能分文件夹，平铺在application-dev中，比如media存放媒体开发指南，usb存放usb服务的开发指南。API参考统一放到application/reference/apis文件夹中。
 
@@ -91,7 +91,7 @@
 
 ### 内容写作
 
-JS API 文档模板路径：[https://](https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/template/js-template.md)[gitee.com/openharmony/docs/blob/master/zh-cn/contribute/template/js-template.md](https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/template/js-template.md)
+JS API 文档模板路径：[https://](https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/template/js-template.md)[gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/template/js-template.md](https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/template/js-template.md)
 
 **每一个文档必须包含的内容：**
 

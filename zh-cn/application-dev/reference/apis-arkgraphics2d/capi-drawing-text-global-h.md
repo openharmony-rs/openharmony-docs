@@ -39,7 +39,7 @@
 
 ### OH_Drawing_TextHighContrast
 
-```
+```c
 enum OH_Drawing_TextHighContrast
 ```
 
@@ -57,7 +57,7 @@ enum OH_Drawing_TextHighContrast
 
 ### OH_Drawing_TextUndefinedGlyphDisplay
 
-```
+```c
 enum OH_Drawing_TextUndefinedGlyphDisplay
 ```
 
@@ -78,7 +78,7 @@ enum OH_Drawing_TextUndefinedGlyphDisplay
 
 ### OH_Drawing_SetTextHighContrast()
 
-```
+```c
 void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)
 ```
 
@@ -105,7 +105,7 @@ void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)
 
 ### OH_Drawing_SetTextUndefinedGlyphDisplay()
 
-```
+```c
 void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)
 ```
 

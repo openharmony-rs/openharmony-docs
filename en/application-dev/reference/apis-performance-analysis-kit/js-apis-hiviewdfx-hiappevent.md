@@ -350,7 +350,7 @@ In the same lifecycle, you can set system event configuration by policy.
 
 | Type               | Description         |
 | ------------------- | ------------ |
-| Promise&lt;void&gt; | Promise that returns no value.<br>For details about the event configuration policy, see [EventPolicy](#eventpolicy22). If the configuration policy is incorrect, the API returns a failure message.<br>- If the parameter type is incorrect, error code 401 is returned.<br>- If the parameter specifications are incorrect, the error information is output in Hilog logs.|
+| Promise&lt;void&gt; | Promise that returns no value.<br>For details about the event configuration policy, see [EventPolicy](#eventpolicy22). If the configuration policy is incorrect, the API returns a failure message.<br>- If the parameter type is incorrect, error code 401 is returned.<br>- If the parameter specifications are incorrect, the error information is output in HiLog logs.|
 
 **Example**
 
@@ -393,6 +393,9 @@ Defines parameters for a **Watcher** object. This API is used to configure and m
 | onTrigger        | (curRow: number, curSize: number, holder: [AppEventPackageHolder](#appeventpackageholder)) => void |  No  | Yes  | Subscription callback. This parameter takes effect only when it is passed together with **triggerCondition**. The input arguments are described as follows:<br>**curRow**: total number of subscription events when the callback is triggered.<br>**curSize**: total size of subscribed events when the callback is triggered, in bytes.<br>**holder**: subscription data holder, which can be used to process subscribed events.|
 | onReceive<sup>11+</sup>        | (domain: string, appEventGroups: Array<[AppEventGroup](#appeventgroup11)>) => void |  No  | Yes| Real-time subscription callback. Only this callback function is triggered if it is passed together with **onTrigger**. The input arguments are described as follows:<br>domain: domain name.<br>appEventGroups: event group.|
 
+> **NOTE**
+>
+> You are not advised to [remove watchers](#hiappeventremovewatcher) in the callback. Once a watcher is removed, the subscription callback of the watcher becomes invalid, and the callback may not be triggered when an event occurs.
 
 ## TriggerCondition
 
@@ -425,7 +428,8 @@ Defines parameters of subscription filtering conditions of a [Watcher](#watcher)
 
 > **NOTE**
 >
-> In system events, address sanitizer events and task execution timeout events cannot be subscribed to in atomic services. Time-consuming launch events, frame loss events, high CPU load events, battery usage statistics events, and audio jank events cannot be subscribed to in atomic services and application clones.
+> The subscription specifications of system events vary according to application types. For details, see [HiAppEvent Constraints](../../dfx/hiappevent-intro.md#constraints).
+
 
 ## AppEventPackageHolder
 
@@ -806,7 +810,7 @@ Adds the configuration information of the data processor. The configuration file
 
 | Name    | Type       | Mandatory| Description             |
 | ---------  | ---------- | ---- | -------------    |
-| processorName  |  string  | Yes  | <!--RP2-->Name of a data processor, which can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP2End-->|
+| processorName  |  string  | Yes  | <!--RP2-->Processor name, which can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP2End-->|
 | configName  |  string  | No  | <!--RP3-->Name of the data processor configuration. The corresponding configuration can be loaded from the configuration file. The default value is **SDK_OCG**. It can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP3End-->|
 
 **Return value**
@@ -1143,11 +1147,11 @@ Defines the configuration policy for the main thread jank event.
 | Name      | Type   | Read Only| Optional| Description                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
 | logType | number | No| Yes  | Type of logs to collect.<br>**logType=0**: When the main thread experiences two consecutive timeouts between 150 ms and 450 ms, a call stack capture is triggered. When the timeout exceeds 450 ms, a trace capture is triggered. This is the default value.<br>**logType=1**: Only the call stack is captured, and the threshold for triggering the detection is customized.<br>**logType=2**: Only traces are captured.|
-| ignoreStartupTime | number | No| Yes  | Interval for the main thread jank event detection ignored during application startup, in seconds. The default value is **10** and the minimum value is 3.|
+| ignoreStartupTime | number | No| Yes  | Application startup time for the main thread jank event detection to ignore, in seconds. The default value is **10** and the minimum value is 3.|
 | sampleInterval | number | No| Yes  | Interval for the main thread jank event detection and sampling, in milliseconds. The default value is **150**. The value range is [50, 500].|
-| sampleCount | number | No| Yes  | Number of sampling times for the main thread jank event. The default value is **10**. The minimum value is 1.<br>The maximum value is calculated using the following formula: **sampleCount** ≤ (2500/**sampleInterval** - 4).|
+| sampleCount | number | No| Yes  | Number of samplings for the main thread jank event. The default value is **10**. The minimum value is 1.<br>The maximum value is calculated using the following formula: **sampleCount** ≤ (2500/**sampleInterval** - 4).|
 | reportTimesPerApp | number | No| Yes  | Number of sampling reporting times for the main thread jank event of the processes with the same PID of an application. This parameter can be set only once for the processes with the same PID.<br>The default value is **1**.<br>When **Developer options** is enabled, the number of reporting times per hour ranges from 1 to 3.<br>When **Developer options** is disabled, the number of reporting times per minute ranges from 1 to 3.|
-| autoStopSampling | boolean | No| Yes  | Whether to automatically stop sampling the main thread stack when the main thread jank event ends.<br>The value **true** means to stop sampling when the main thread jank event ends or the number of sampling times reaches the specified value.<br>The value **false** means to stop sampling when the number of sampling times reaches the specified value.<br>The default value is **false**.|
+| autoStopSampling | boolean | No| Yes  | Whether to automatically stop sampling the main thread stack when the main thread jank event ends.<br>The value **true** means to stop sampling when the main thread jank event ends or the number of samplings reaches the specified value.<br>The value **false** means to stop sampling when the number of samplings reaches the specified value.<br>The default value is **false**.|
 
 <!--RP6--><!--RP6End-->
 

@@ -428,7 +428,8 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 > **说明：**
 >
-> 系统事件中：地址越界事件和任务执行超时事件不支持在元服务中订阅。启动耗时事件、滑动丢帧事件、CPU高负载事件、24h功耗器件分解统计事件和音频卡顿事件均不支持在元服务和分身应用中订阅。
+> 不同类型应用上，系统事件的订阅规格不同，具体规格可参见[HiAppEvent约束与限制](../../dfx/hiappevent-intro.md#约束与限制)。
+
 
 ## AppEventPackageHolder
 

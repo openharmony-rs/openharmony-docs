@@ -53,33 +53,34 @@ Perform the following steps:
     
     <!-- @[clickToAfter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/main/ets/pages/ClickToAfter.ets) -->
     
-    ```TypeScript
+    ``` TypeScript
     @Entry
     @Component
     struct Index {
-        @State message: string = 'Hello World';
-        @State text: string = '';
-        build() {
+      @State message: string = 'Hello World';
+      @State text: string = '';
+    
+      build() {
         Row() {
-            Column() {
+          Column() {
             Text(this.message)
-                .fontSize(50)
-                .fontWeight(FontWeight.Bold)
-            Text("Next")
-                .fontSize(50)
-                .margin({top:20})
-                .fontWeight(FontWeight.Bold)          
-                .onClick((event?: ClickEvent) => {
-                    if(event){
-                        this.text = "after click";
-                    }
-                })
-            .width('100%')
+              .fontSize(50)
+              .fontWeight(FontWeight.Bold)
+            Text('Next')
+              .fontSize(50)
+              .margin({ top: 20 })
+              .fontWeight(FontWeight.Bold)
+              .onClick((event?: ClickEvent) => {
+                if (event) {
+                  this.text = 'after click';
+                }
+              })
+              .width('100%')
             Text(this.text).margin(15)
-            }
+          }
         }
         .height('100%')
-        }
+      }
     }
     ```
     
@@ -87,28 +88,29 @@ Perform the following steps:
     
     <!-- @[click_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
     
-    ```TypeScript
-    import { describe, it, expect, Level } from '@ohos/hypium';
+    ``` TypeScript
+    import { describe, expect, it, Level } from '@ohos/hypium';
     // Import the test dependencies.
     import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
     import { UIAbility, Want } from '@kit.AbilityKit';
     
     const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+    
     export default function abilityTest() {
       describe('ActsAbilityTest', () => {
-        it('testUiExample',Level.LEVEL3, async (done: Function) => {
+        it('testUiExample', Level.LEVEL3, async (done: Function) => {
           // Initialize the Driver object.
           const driver = Driver.create();
           const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
           // Specify the bundle name and ability name of the application to be tested.
           const want: Want = {
             bundleName: bundleName,
-              abilityName: 'EntryAbility'
+            abilityName: 'EntryAbility'
           }
           // Start the application to be tested.
           await delegator.startAbility(want);
           // Wait until the application starts.
-          await driver.waitForIdle(4000,5000);
+          await driver.waitForIdle(4000, 5000);
           // Ensure that the top ability of the application is the specified ability.
           const ability: UIAbility = await delegator.getCurrentTopAbility();
           expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
@@ -117,7 +119,7 @@ Perform the following steps:
           const next = await driver.findComponent(ON.text('Next'));
           // Tap the target component.
           await next.click();
-          await driver.waitForIdle(4000,5000);
+          await driver.waitForIdle(4000, 5000);
           // Assert the component with text "after click" exists to ensure the page changes as expected.
           await driver.assertComponentExist(ON.text('after click'));
           await driver.pressBack();
@@ -135,42 +137,43 @@ The following example shows how to search for and operate a component. Before ex
 
 <!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->
 
-  ```TypeScript
-  // Import the test dependencies.
-  import { Driver, Component, ON, On } from '@kit.TestKit';
+``` TypeScript
+import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Component, Driver, ON, On } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('componentOperationTest', () => {
-      /**
-       * Search for the Button component and click it.
-       */
-      it("componentSearchAndOperation", TestType.FUNCTION, async () => {
-        let driver: Driver = Driver.create();
-        await driver.delayMs(1000);
-        let button: Component = await driver.findComponent(ON.type('Button'));
-        await button.click();
-      })
-
-      /**
-       * Search for the Scroll component whose text is "123" using relative position.
-       */
-      it("relativePositioncomponentSearch", TestType.FUNCTION, async () => {
-        let driver: Driver = Driver.create();
-        let on: On = ON.text('123').within(ON.type('Scroll'));
-        let items: Array<Component> = await driver.findComponents(on);
-      })
-
-      /**
-       * Search for the Image component and pinch it out.
-       */
-      it("componentPinch", TestType.FUNCTION, async () => {
-        let driver: Driver = Driver.create();
-        let image: Component = await driver.findComponent(ON.type('Image'));
-        await image.pinchOut(1.5);
-      })
+export default function abilityTest() {
+  describe('componentOperationTest', () => {
+    /**
+     * Search for the Button component and click it.
+     */
+    it('componentSearchAndOperation', TestType.FUNCTION, async () => {
+      let driver: Driver = Driver.create();
+      await driver.delayMs(1000);
+      let button: Component = await driver.findComponent(ON.type('Button'));
+      await button.click();
     })
-  }
-  ```
+
+    /**
+     * Search for the Scroll component whose text is '123' using relative position.
+     */
+    it('relativePositioncomponentSearch', TestType.FUNCTION, async () => {
+      let driver: Driver = Driver.create();
+      let on: On = ON.text('123').within(ON.type('Scroll'));
+      let items: Array<Component> = await driver.findComponents(on);
+    })
+
+    /**
+     * Search for the Image component and pinch it out.
+     */
+    it('componentPinch', TestType.FUNCTION, async () => {
+      let driver: Driver = Driver.create();
+      let image: Component = await driver.findComponent(ON.type('Image'));
+      await image.pinchOut(1.5);
+    })
+  })
+}
+```
 
 ### Simulating Touch Operations
 
@@ -180,45 +183,45 @@ The following example shows how to simulate touch operations at the coordinate l
 
 <!-- @[touchScreen_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchScreenEvent.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { Driver, PointerMatrix, UiDirection } from '@kit.TestKit';
+``` TypeScript
+import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Driver, PointerMatrix, UiDirection } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('touchScreen_sample', () => {
-      /**
-       * Simulate touch operations based on coordinates.
-       */
-      it("touchScreenOperation", TestType.FUNCTION, async () => {
-        let driver: Driver = Driver.create();
-        // Tap.
-        await driver.click(100,100);
-        // Tap the specified display.
-            await driver.clickAt({ x: 100, y: 100, displayId: 0 });
-        // Swipe.
-        await driver.swipe(100, 100, 200, 200, 600);
-        // Swipe the specified display.
-        await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
-        // Fling.
-        await driver.fling({x: 100, y: 100},{x: 200, y: 200}, 5, 600);
-        // Fling in a specified direction.
-        await driver.fling(UiDirection.DOWN, 10000);
-        // Drag.
-        await driver.drag(100, 100, 200, 200, 600);
-        // Specify the display ID and the long press duration before dragging.
-        await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500); 
-        // Simulate a two-finger operation, with each finger scrolling based on two coordinates.
-        let pointers: PointerMatrix = PointerMatrix.create(2, 2);
-        pointers.setPoint(0, 0, {x: 100, y: 100});
-        pointers.setPoint(0, 1, {x: 200, y: 100});
-        pointers.setPoint(1, 0, {x: 100, y: 200});
-        pointers.setPoint(1, 1, {x: 200, y: 200});
-        await driver.injectMultiPointerAction(pointers);
-      })
+export default function abilityTest() {
+  describe('touchScreen_sample', () => {
+    /**
+     * Simulate touch operations based on coordinates.
+     */
+    it('touchScreenOperation', TestType.FUNCTION, async () => {
+      let driver: Driver = Driver.create();
+      // Tap.
+      await driver.click(100, 100);
+      // Tap on a specified display. This method is supported since API version 20.
+      await driver.clickAt({ x: 100, y: 100, displayId: 0 });
+      // Swipe.
+      await driver.swipe(100, 100, 200, 200, 600);
+      // Swipe on a specified display. This method is supported since API version 20.
+      await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800);
+      // Fling.
+      await driver.fling({ x: 100, y: 100 }, { x: 200, y: 200 }, 5, 600);
+      // Fling in a specified direction.
+      await driver.fling(UiDirection.DOWN, 10000);
+      // Drag.
+      await driver.drag(100, 100, 200, 200, 600);
+      // Specify the display ID and the long-press time before dragging. This method is supported since API version 20.
+      await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800, 1500);
+      // Simulate a two-finger operation, with each finger scrolling based on two coordinates.
+      let pointers: PointerMatrix = PointerMatrix.create(2, 2);
+      pointers.setPoint(0, 0, { x: 100, y: 100 });
+      pointers.setPoint(0, 1, { x: 200, y: 100 });
+      pointers.setPoint(1, 0, { x: 100, y: 200 });
+      pointers.setPoint(1, 1, { x: 200, y: 200 });
+      await driver.injectMultiPointerAction(pointers);
     })
-  }
-  ```
+  })
+}
+```
 ### Waiting for Page Loading Completion
 
 When interacting with a page, you can determine whether the page redirection is complete by waiting for a component to appear or waiting for the page to be idle within a specified period of time.
@@ -227,30 +230,32 @@ The following example describes how to wait for page loading completion. Before 
 
 <!-- @[waitForComp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WaitForCom.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, Level, TestType, Size } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
+``` TypeScript
+import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 
-  const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-  // Specify the bundle name and ability name of the application to be tested.
-  const bundleName: string = 'com.uitestScene.acts';
-  const abilityName: string = 'com.uitestScene.acts.MainAbility';
-  export default function abilityTest() {
-    describe('waitForComp_sample', () => {
-      it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function): Promise<void> => {
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// Specify the bundle name and ability name of the application to be tested.
+const bundleName: string = 'com.uitestScene.acts';
+const abilityName: string = 'com.uitestScene.acts.MainAbility';
+
+export default function abilityTest() {
+  describe('waitForComp_sample', () => {
+    it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function): Promise<void> => {
         let driver = Driver.create();
         // Start the target application.     
         await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
         }).catch((err: Error) => {
-            done();
+          done();
         })
         // Wait for the specified component on the target application's home screen to appear, confirming that the application has started.
         let button = await driver.waitForComponent(ON.text('StartAbility Success!'), 1000);
       })
-    })
-  }
-  ```
+  })
+}
+```
 
 ### Simulating Text Input
 
@@ -260,68 +265,71 @@ The following example describes how to input text based on components and coordi
 
 <!-- @[inputText_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputText.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { Driver, ON } from '@kit.TestKit';
+``` TypeScript
+import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Driver, ON } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('inputTextTest', () => {
-      /**
-       * Clear the text by default and then inputs the specified text based on the component.
-       * If the input text does not contain Chinese characters or special characters and its length does not exceed 200 characters, it is input word by word by default.
-       */
-      it('componentInputText', TestType.FUNCTION, async () => {
-        let driver = Driver.create();
-        let input = await driver.findComponent(ON.type('TextInput'));
-        await input.inputText('abc');
-      })
-      /**
-       * Inject specified text in copy and paste mode based on the component.
-       * Input text in addition mode. That is, the original content is not cleared when the text is input.
-       */
-      it('componentInputTextAddition', TestType.FUNCTION, async () => {
-        let driver = Driver.create();
-        let input = await driver.findComponent(ON.type('TextInput'));
-        await input.inputText('abc', {paste: true, addition: true});
-      })
-
-      /**
-       * Focus the text box by tapping the specified position and input the specified text at the cursor based on the coordinates.
-       * If the input text does not contain Chinese characters or special characters and its length does not exceed 200 characters, it is input word by word by default.
-       */
-      it('pointInputText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create()
-        let input = await driver.findComponent(ON.type('TextInput'))
-        let center = await input.getBoundsCenter()
-        await driver.inputText(center, 'abc')
-      })
-
-      /**
-       * Inject specified text in copy and paste mode based on the coordinates.
-       * Input in addition mode, that is, after the text box is focused by tapping the specified position, the cursor is moved to the end of the original text and then the specified text is input.
-       */
-      it('pointInputTextAddition', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create()
-        let input = await driver.findComponent(ON.type('TextInput'))
-        let center = await input.getBoundsCenter()
-        await driver.inputText(center, '123', {paste: true, addition: true})
-      })
-
-      /**
-       * Inject specified text in copy and paste mode based on the coordinates.
-       * Input in addition mode, that is, after the text box is focused by tapping the specified position, the cursor is moved to the end of the original text and then the specified text is input.
-       * If the input content contains Chinese characters or special characters, the text can be input only in copy and paste mode, and the paste field does not take effect.
-       */
-      it('pointInputTextChinese', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create()
-        let input = await driver.findComponent(ON.type('TextInput'))
-        let center = await input.getBoundsCenter()
-        await driver.inputText(center, 'Hello', {paste: false, addition: true})
-      })
+export default function abilityTest() {
+  describe('inputTextTest', () => {
+    /**
+     * Clear the text by default and then inputs the specified text based on the component.
+     * If the input text does not contain Chinese characters or special characters and its length does not exceed 200 characters, it is input word by word by default.
+     */
+    it('componentInputText', TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      let input = await driver.findComponent(ON.type('TextInput'));
+      await input.inputText('abc');
     })
-  }
-  ```
+    /**
+     * Inject specified text in copy and paste mode based on the component.
+     * Input text in addition mode. That is, the original content is not cleared when the text is input.
+     */
+    it('componentInputTextAddition', TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      let input = await driver.findComponent(ON.type('TextInput'));
+      // This API is supported since API version 20.
+      await input.inputText('abc', { paste: true, addition: true });
+    })
+
+    /**
+     * Focus the text box by tapping the specified position and input the specified text at the cursor based on the coordinates.
+     * If the input text does not contain Chinese characters or special characters and its length does not exceed 200 characters, it is input word by word by default.
+     */
+    it('pointInputText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      let input = await driver.findComponent(ON.type('TextInput'));
+      let center = await input.getBoundsCenter();
+      await driver.inputText(center, 'abc');
+    })
+
+    /**
+     * Inject specified text in copy and paste mode based on the coordinates.
+     * Input in addition mode, that is, after the text box is focused by tapping the specified position, the cursor is moved to the end of the original text and then the specified text is input.
+     */
+    it('pointInputTextAddition', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      let input = await driver.findComponent(ON.type('TextInput'));
+      let center = await input.getBoundsCenter();
+      // This API is supported since API version 20.
+      await driver.inputText(center, '123', { paste: true, addition: true });
+    })
+
+    /**
+     * Inject specified text in copy and paste mode based on the coordinates.
+     * Input in addition mode, that is, after the text box is focused by tapping the specified position, the cursor is moved to the end of the original text and then the specified text is input.
+     * If the input content contains Chinese characters or special characters, the text can be input only in copy and paste mode, and the paste field does not take effect.
+     */
+    it('pointInputTextChinese', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      let input = await driver.findComponent(ON.type('TextInput'));
+      let center = await input.getBoundsCenter();
+      // This API is supported since API version 20.
+      await driver.inputText(center, 'Hello', { paste: false, addition: true });
+    })
+  })
+}
+```
 ### Capturing Screenshots
 
 > **Note**:
@@ -332,38 +340,44 @@ The following example shows how to capture a screenshot with the display ID and 
 
 <!-- @[screenCap_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCap.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { Driver } from '@kit.TestKit';
-  import { display } from '@kit.ArkUI';
+``` TypeScript
+import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Driver } from '@kit.TestKit';
+import { display } from '@kit.ArkUI';
 
-  export default function abilityTest() {
-    describe('screenCap_sample', () => {
-      /**
-       * Capture the screen of a specified area and save the screenshot to a specified path.
-       */
-      it('screenCapture', TestType.FUNCTION, async () => {
-        let driver = Driver.create();
-        // Application sandbox path. el2 indicates the user-level encryption, and base indicates the subdirectory for saving the application's persistent data on the device.
-        // Use the actual path.
-        let savePath = '/data/storage/el2/base/cache/1.png';
-        let res = await driver.screenCapture(savePath, {left: 0, top: 0, right: 100, bottom: 100});
-      })
-
-      /**
-       * Capture the full screen based on the specified display ID and save it to the specified path.
-       */
-      it('screenCapWithId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        // Obtain the default display object.
-        let disPlay = display.getDefaultDisplaySync();
-        let savePath = '/data/storage/el2/base/cache/1.png'
-        let res = await driver.screenCap(savePath, disPlay.id);// Obtain the default display ID.
-      })
+export default function abilityTest() {
+  describe('screenCap_sample', () => {
+    /**
+     * Capture the screen of a specified area and save the screenshot to a specified path.
+     */
+    it('screenCapture', TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      // Application sandbox path. el2 indicates the user-level encryption, and base indicates the subdirectory for saving the application's persistent data on the device.
+      // Use the actual path.
+      let savePath = '/data/storage/el2/base/cache/1.png';
+      let res = await driver.screenCapture(savePath, {
+        left: 0,
+        top: 0,
+        right: 100,
+        bottom: 100
+      });
     })
-  }
-  ```
+
+    /**
+     * Capture the full screen based on the specified display ID and save it to the specified path.
+     */
+    it('screenCapWithId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // Obtain the default display object.
+      let disPlay = display.getDefaultDisplaySync();
+      let savePath = '/data/storage/el2/base/cache/1.png';
+      // This method is supported since API version 20.
+      let res = await driver.screenCap(savePath, disPlay.id); // Obtain the default display ID.
+    })
+  })
+}
+```
 
 
 ### Listening for UI Events
@@ -372,27 +386,27 @@ The following example describes how to listen for UI events, including setting t
 
 <!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { Driver, UIElementInfo } from '@kit.TestKit';
+``` TypeScript
+import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Driver, UIElementInfo } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('eventObserver_sample', () => {
-      // Listen for the display of the Toast component.
-      it("toastObserver", TestType.FUNCTION, async () => {
-        let driver = Driver.create();
-        let observer = driver.createUIEventObserver();
-        let callback = (uiElementInfo : UIElementInfo) => {
-          let bundleName = uiElementInfo.bundleName;
-          let text = uiElementInfo.text;
-          let type = uiElementInfo.type;
-        }
-        observer.once('toastShow', callback);
-      })
+export default function abilityTest() {
+  describe('eventObserver_sample', () => {
+    // Listen for the display of the Toast component.
+    it('toastObserver', TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      let observer = driver.createUIEventObserver();
+      let callback = (uiElementInfo: UIElementInfo) => {
+        let bundleName = uiElementInfo.bundleName;
+        let text = uiElementInfo.text;
+        let type = uiElementInfo.type;
+      }
+      observer.once('toastShow', callback);
     })
-  }
-  ```
+  })
+}
+```
 
 ### Simulating Keyboard and Mouse Operations
 
@@ -400,193 +414,195 @@ The following example describes how to simulate keyboard and mouse operations, i
 
 <!-- @[mouseAndKey_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { Driver, MouseButton } from '@kit.TestKit';
-  import { KeyCode } from '@ohos.multimodalInput.keyCode';
+``` TypeScript
+import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Driver, MouseButton } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
 
-  export default function abilityTest() {
-    describe('mouseAndKey_sample', () => {
-      // Simulate key input and combination key input.
-      it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        // Simulate key input (inject the Back key).
-        await driver.triggerKey(KeyCode.KEYCODE_BACK);
-        // Simulate combination key input (inject the Save combination key).
-        await driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT,  KeyCode.KEYCODE_S);
-      })
-
-      // Simulate the operations of left-clicking, moving, and dragging the mouse.
-      it('mouseOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        // Left-click the mouse.
-        await driver.mouseClick({x: 100, y: 100}, MouseButton.MOUSE_BUTTON_LEFT); 
-        // Move the mouse.
-        await driver.mouseMoveTo({x: 100, y: 100});
-        // Drag the mouse.
-        await driver.mouseDrag({x: 100, y: 100}, {x: 200, y: 200}, 600);
-      })
-
-      // Simulate key and mouse combination operations.
-      it('combinedOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        // Press the left Ctrl key and scroll the mouse wheel.
-        await driver.mouseScroll({x:100, y:100}, true, 30, KeyCode.KEYCODE_CTRL_LEFT);
-        // Press the left Ctrl key and long-click the left mouse button.
-        await driver.mouseLongClick({x:100, y:100}, MouseButton.MOUSE_BUTTON_LEFT, KeyCode.KEYCODE_CTRL_LEFT);
-      })
+export default function abilityTest() {
+  describe('mouseAndKey_sample', () => {
+    // Simulate key input and combination key input.
+    it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // Simulate key input (inject the Back key).
+      await driver.triggerKey(KeyCode.KEYCODE_BACK);
+      // Simulate combination key input (inject the Save combination key).
+      await driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_S);
     })
-  }
-  ```
+
+    // Simulate the operations of left-clicking, moving, and dragging the mouse.
+    it('mouseOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // Left-click the mouse.
+      await driver.mouseClick({ x: 100, y: 100 }, MouseButton.MOUSE_BUTTON_LEFT);
+      // Move the mouse.
+      await driver.mouseMoveTo({ x: 100, y: 100 });
+      // Drag the mouse.
+      await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
+    })
+
+    // Simulate key and mouse combination operations.
+    it('combinedOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // Press the left Ctrl key and scroll the mouse wheel.
+      await driver.mouseScroll({ x: 100, y: 100 }, true, 30, KeyCode.KEYCODE_CTRL_LEFT);
+      // Press the left Ctrl key and long-click the left mouse button.
+      await driver.mouseLongClick({ x: 100, y: 100 }, MouseButton.MOUSE_BUTTON_LEFT, KeyCode.KEYCODE_CTRL_LEFT);
+    })
+  })
+}
+```
 
 ### Searching for and Operating Windows
 The following example describes how to search for and minimize a window based on the window properties. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
 <!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, expect } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { Driver } from '@kit.TestKit';
-  // Error code when the device is not supported.
-  const DeviceErrorCode = 17000005;
+``` TypeScript
+import { describe, expect, it, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Driver } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('findWindowAndOp_sample', () => {
-      // Search for an active window based on specified properties and minimize the window.
-      it("windowSearchAndOperation", TestType.FUNCTION, async () => {
-        let driver = Driver.create();
-        try {
-          let window = await driver.findWindow({active: true});
-          await window.minimize();
-        } catch (error) {
-          // If the minimize API is called on a device that does not support window operations, the 17000005 error code will be thrown.
-          expect(error.code).assertEqual(DeviceErrorCode);
-        }
-      })
+// Error code when the device is not supported.
+const DeviceErrorCode = 17000005;
+
+export default function abilityTest() {
+  describe('findWindowAndOp_sample', () => {
+    // Search for an active window based on specified properties and minimize the window.
+    it('windowSearchAndOperation', TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      try {
+        let window = await driver.findWindow({ active: true });
+        await window.minimize();
+      } catch (error) {
+        // If the minimize API is called on a device that does not support window operations, the 17000005 error code will be thrown.
+        expect(error.code).assertEqual(DeviceErrorCode);
+      }
     })
-  }
-  ```
+  })
+}
+```
 
 ### Simulating Touchpad Operations
 The following example describes how to simulate the touchpad operations of swiping up with three fingers to return to the home screen and swiping down with three fingers to return to the application window. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
 <!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { Driver, UiDirection } from '@kit.TestKit';
-  // Error code when the device is not supported.
-  const DeviceErrorCode = 17000005;
+``` TypeScript
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Driver, UiDirection } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('touchPadOp_sample', () => {
-      // Simulate the three-finger swipe up (to return to the home screen) and three-finger swipe down (to restore the window) operations on the touchpad in the PC/2-in-1 device.
-      it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        try {
-          // Swipe up with three fingers to return to the home screen.
-          await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
-          // Swipe down with three fingers to restore the application window.
-          await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
-        } catch (error) {
-          // If this API is called on a device that does not support touchpad operations, the 17000005 error code will be thrown.
-          expect(error.code).assertEqual(DeviceErrorCode);
-        }
-      })
+// Error code when the device is not supported.
+const DeviceErrorCode = 17000005;
+
+export default function abilityTest() {
+  describe('touchPadOp_sample', () => {
+    // Simulate the three-finger swipe up (to return to the home screen) and three-finger swipe down (to restore the window) operations on the touchpad in the PC/2-in-1 device.
+    it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      try {
+        // Swipe up with three fingers to return to the home screen.
+        await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+        // Swipe down with three fingers to restore the application window.
+        await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
+      } catch (error) {
+        // If this API is called on a device that does not support touchpad operations, the 17000005 error code will be thrown.
+        expect(error.code).assertEqual(DeviceErrorCode);
+      }
     })
-  }
-
-  ```
+  })
+}
+```
 
 ### Simulating Stylus Operations
 The following example describes how to simulate stylus operations such as clicking, swiping, and setting pressure. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
 <!-- @[penOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PenOp.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { Driver } from '@kit.TestKit';
+``` TypeScript
+import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Driver } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('penOp_sample', () => {
-      // Simulate stylus operations such as click, double-click, long-click, and swipe.
-      it('penOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        // Click with the stylus.
-        await driver.penClick({x: 100, y: 100});
-        // Double-click with the stylus.
-        await driver.penDoubleClick({x: 100, y: 100});
-        // Long-click with the stylus.
-        await driver.penLongClick({x: 100, y: 100}, 0.5);
-        // Swipe with the stylus.
-        await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
-      })
+export default function abilityTest() {
+  describe('penOp_sample', () => {
+    // Simulate stylus operations such as click, double-click, long-click, and swipe.
+    it('penOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // Click with the stylus.
+      await driver.penClick({ x: 100, y: 100 });
+      // Double-click with the stylus.
+      await driver.penDoubleClick({ x: 100, y: 100 });
+      // Long-click with the stylus.
+      await driver.penLongClick({ x: 100, y: 100 }, 0.5);
+      // Swipe with the stylus.
+      await driver.penSwipe({ x: 100, y: 100 }, { x: 100, y: 500 }, 600, 0.5);
     })
-  }
-  ```
+  })
+}
+```
 
 ### Simulating Crown Operations
 The following example shows how to simulate clockwise and counter-clockwise crown rotations. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
 <!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { Driver } from '@kit.TestKit';
-  // Error code when the device is not supported.
-  const CapabilityCode = 801;
+``` TypeScript
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { Driver } from '@kit.TestKit';
 
-  export default function abilityTest() {
-    describe('watchOp_sample', () => {
-      // Simulate clockwise and counter-clockwise crown rotations.
-      it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        try {
-          // Rotate 50 ticks clockwise at a speed of 30 ticks per second.
-          await driver.crownRotate(50, 30);
-          // Rotate 20 ticks counterclockwise at a speed of 30 ticks per second.
-          await driver.crownRotate(-20, 30);
-        } catch (error) {
-          // driver.crownRotate is valid only on smart watches. If it is called on other devices, error code 801 will be thrown.
-          expect(error.code).assertEqual(CapabilityCode);
-        }
-      })
+// Error code when the device is not supported.
+const CapabilityCode = 801;
+
+export default function abilityTest() {
+  describe('watchOp_sample', () => {
+    // Simulate clockwise and counter-clockwise crown rotations. This API is supported since API version 20.
+    it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      try {
+        // Rotate 50 ticks clockwise at a speed of 30 ticks per second.
+        await driver.crownRotate(50, 30);
+        // Rotate 20 ticks counterclockwise at a speed of 30 ticks per second.
+        await driver.crownRotate(-20, 30);
+      } catch (error) {
+        // driver.crownRotate is valid only on smart watches. If it is called on other devices, error code 801 will be thrown.
+        expect(error.code).assertEqual(CapabilityCode);
+      }
     })
-  }
-  ```
+  })
+}
+```
 
 ### Simulating Display Operations
 The following example shows how to simulate display operations, including obtaining display properties such as size and density, waking up the display, and rotating it. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
 <!-- @[displayOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/DisplayOp.test.ets) -->
 
-  ```TypeScript
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-  // Import the test dependencies.
-  import { DisplayRotation, Driver, Point } from '@kit.TestKit';
-  
-  export default function abilityTest() {
-    describe('displayOp_sample', () => {
-      // Obtain display properties and operate the display.
-      it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-        let driver = Driver.create();
-        // Obtain the display size.
-        let size: Point = await driver.getDisplaySize();
-        // Obtain the display density.
-        let density: Point = await driver.getDisplayDensity();
-        // Wake up the display.
-        await driver.wakeUpDisplay();
-        // Rotate the display clockwise by 90 degrees.
-        await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
-      })
+``` TypeScript
+import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+// Import the test dependencies.
+import { DisplayRotation, Driver, Point } from '@kit.TestKit';
+
+export default function abilityTest() {
+  describe('displayOp_sample', () => {
+    // Obtain display properties and operate the display.
+    it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // Obtain the display size.
+      let size: Point = await driver.getDisplaySize();
+      // Obtain the display density.
+      let density: Point = await driver.getDisplayDensity();
+      // Wake up the display.
+      await driver.wakeUpDisplay();
+      // Rotate the display clockwise by 90 degrees.
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
     })
-  }
-  ```
+  })
+}
+```
 
 ## Using Commands to Perform UI Tests
 
@@ -628,9 +644,9 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -i | - | Used to disable filtering of invisible components and window merging.|
 | -a | - | Used to save the **BackgroundColor**, **Content**, **FontColor**, **FontSize**, and **extraAttrs** attributes of the component.<br>**Note**: By default, the preceding attributes are not saved. The **-a** and **-i** parameters cannot be used at the same time.| 
 | -b | \<bundleName\> | Used to obtain the component tree information of the target window based on the specified bundle name.|
-| -w | \<windowId\>  | Used to obtain the component tree information of the target window based on the specified window ID.<br> **Note**:<br>You can use hidumper to obtain the window ID of an application. For details, see [Obtaining Application Window Information](../dfx/hidumper.md#obtaining-application-window-information).|
+| -w | \<windowId\>  | Used to obtain the component tree information of the target window based on the specified window ID.<br> **Note**:<br>You can use hidumper to obtain the window ID of an application. For details, see <!--RP11-->[Obtaining Application Window Information](../dfx/hidumper.md#obtaining-application-window-information)<!--RP11End-->.|
 | -m | \<true\|false\> | Used to specify whether to merge the window information when the component tree information is obtained. The value **true** means to merge window information, and **false** means the opposite. If this parameter is not set, the default value **true** is used.|
-| -d | \<displayId\>  | Used to specify the ID of the display whose component tree is to be obtained in the multi-display scenario.<br> **Note**:<br> 1. This command is supported since API version 20.<br>2. You can use hidumper to obtain the display ID of an application. For details, see [Obtaining Application Window Information](../dfx/hidumper.md#obtaining-application-window-information).|
+| -d | \<displayId\>  | Used to specify the ID of the display whose component tree is to be obtained in the multi-display scenario.<br> **Note**:<br> 1. This command is supported since API version 20.<br>2. You can use hidumper to obtain the display ID of an application. For details, see <!--RP11-->[Obtaining Application Window Information](../dfx/hidumper.md#obtaining-application-window-information)<!--RP11End-->.|
 
 ```bash
 # Specify the file name and save the file in /data/local/tmp/.
@@ -666,8 +682,8 @@ The fields in the record data are as follows:
 
  ```json
  {
-   "ABILITY": "com.ohos.launcher.MainAbility", // Ability name of the target application
-   "BUNDLE": "com.ohos.launcher", // Bundle name of the target application
+   "ABILITY": "com.ohos.launcher.MainAbility", // Ability name of the target application.
+   "BUNDLE": "com.ohos.launcher", // Bundle name of the target application.
    "CENTER_X": "", // Reserved field.
    "CENTER_Y": "", // Reserved field.
    "EVENT_TYPE": "pointer", // Operation type.

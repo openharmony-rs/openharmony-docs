@@ -6,7 +6,7 @@
 <!--Tester: @gengfei-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct ImageEffect_Any {...} ImageEffect_Any
 ```
 

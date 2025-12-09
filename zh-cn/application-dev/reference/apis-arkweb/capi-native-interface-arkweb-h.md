@@ -61,12 +61,13 @@
 | [uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)](#oh_nativearkweb_setblanklessloadingcachecapacity) | - | 设置无白屏加载方案的持久化缓存容量，返回实际生效值。默认缓存容量为30MB，最大值为100MB。当实际缓存超过容量时，将采用淘汰不常用的过渡帧的方式清理。 |
 | [void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)](#oh_nativearkweb_setactivewebengineversion) | - | 设置ArkWeb内核版本。若系统不支持指定版本，则设置无效。该接口为全局静态方法，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。 |
 | [ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()](#oh_nativearkweb_getactivewebengineversion) | - | 获取当前使用的ArkWeb内核版本。 |
+| [void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)](#oh_nativearkweb_lazyinitializewebengineincookiemanager) | - | 设置是否延后初始化ArkWeb内核，不调用该方法时，默认不延后初始化ArkWeb内核。 |
 
 ## 枚举类型说明
 
 ### ArkWebEngineVersion
 
-```
+```c
 enum ArkWebEngineVersion
 ```
 
@@ -91,7 +92,7 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony6.0系统上的适配指�
 
 ### NativeArkWeb_OnJavaScriptCallback()
 
-```
+```c
 typedef void (*NativeArkWeb_OnJavaScriptCallback)(const char*)
 ```
 
@@ -103,7 +104,7 @@ typedef void (*NativeArkWeb_OnJavaScriptCallback)(const char*)
 
 ### NativeArkWeb_OnJavaScriptProxyCallback()
 
-```
+```c
 typedef char* (*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32_t argc)
 ```
 
@@ -115,7 +116,7 @@ typedef char* (*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32
 
 ### NativeArkWeb_OnValidCallback()
 
-```
+```c
 typedef void (*NativeArkWeb_OnValidCallback)(const char*)
 ```
 
@@ -127,7 +128,7 @@ typedef void (*NativeArkWeb_OnValidCallback)(const char*)
 
 ### NativeArkWeb_OnDestroyCallback()
 
-```
+```c
 typedef void (*NativeArkWeb_OnDestroyCallback)(const char*)
 ```
 
@@ -139,7 +140,7 @@ typedef void (*NativeArkWeb_OnDestroyCallback)(const char*)
 
 ### OH_ArkWeb_OnCookieSaveCallback()
 
-```
+```c
 typedef void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)
 ```
 
@@ -157,7 +158,7 @@ typedef void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)
 
 ### OH_NativeArkWeb_RunJavaScript()
 
-```
+```c
 void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, NativeArkWeb_OnJavaScriptCallback callback)
 ```
 
@@ -180,7 +181,7 @@ void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, Nativ
 
 ### OH_NativeArkWeb_RegisterJavaScriptProxy()
 
-```
+```c
 void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* objName, const char** methodList,NativeArkWeb_OnJavaScriptProxyCallback* callback, int32_t size, bool needRefresh)
 ```
 
@@ -206,7 +207,7 @@ void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* obj
 
 ### OH_NativeArkWeb_UnregisterJavaScriptProxy()
 
-```
+```c
 void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* objName)
 ```
 
@@ -228,7 +229,7 @@ void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* o
 
 ### OH_NativeArkWeb_SetJavaScriptProxyValidCallback()
 
-```
+```c
 void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeArkWeb_OnValidCallback callback)
 ```
 
@@ -250,7 +251,7 @@ void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeA
 
 ### OH_NativeArkWeb_GetJavaScriptProxyValidCallback()
 
-```
+```c
 NativeArkWeb_OnValidCallback OH_NativeArkWeb_GetJavaScriptProxyValidCallback(const char* webTag)
 ```
 
@@ -277,7 +278,7 @@ NativeArkWeb_OnValidCallback OH_NativeArkWeb_GetJavaScriptProxyValidCallback(con
 
 ### OH_NativeArkWeb_SetDestroyCallback()
 
-```
+```c
 void OH_NativeArkWeb_SetDestroyCallback(const char* webTag, NativeArkWeb_OnDestroyCallback callback)
 ```
 
@@ -299,7 +300,7 @@ void OH_NativeArkWeb_SetDestroyCallback(const char* webTag, NativeArkWeb_OnDestr
 
 ### OH_NativeArkWeb_GetDestroyCallback()
 
-```
+```c
 NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* webTag)
 ```
 
@@ -326,7 +327,7 @@ NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* we
 
 ### OH_NativeArkWeb_LoadData()
 
-```
+```c
 ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag,const char* data,const char* mimeType,const char* encoding,const char* baseUrl,const char* historyUrl)
 ```
 
@@ -358,7 +359,7 @@ ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag,const char* data,co
 
 ### OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy()
 
-```
+```c
 void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag,const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)
 ```
 
@@ -379,7 +380,7 @@ void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag,const
 
 ### OH_ArkWebCookieManager_SaveCookieSync()
 
-```
+```c
 ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 ```
 
@@ -397,7 +398,7 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 
 ### OH_ArkWebCookieManager_SaveCookieAsync()
 
-```
+```c
 void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callback)
 ```
 
@@ -414,7 +415,7 @@ void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callb
 | [OH_ArkWeb_OnCookieSaveCallback](#oh_arkweb_oncookiesavecallback)* callback | 保存cookie完成后执行该回调。 |
 ### OH_NativeArkWeb_GetBlanklessInfoWithKey()
 
-```
+```c
 ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag, const char* key)
 ```
 
@@ -450,7 +451,7 @@ ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag,
 
 ### OH_NativeArkWeb_SetBlanklessLoadingWithKey()
 
-```
+```c
 ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char* webTag, const char* key, bool isStarted)
 ```
 
@@ -484,7 +485,7 @@ ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char*
 
 ### OH_NativeArkWeb_ClearBlanklessLoadingCache()
 
-```
+```c
 void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size)
 ```
 
@@ -510,7 +511,7 @@ void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size
 
 ### OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity()
 
-```
+```c
 uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)
 ```
 
@@ -534,7 +535,7 @@ uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)
 
 ### OH_NativeArkWeb_SetActiveWebEngineVersion()
 
-```
+```c
 void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)
 ```
 
@@ -558,7 +559,7 @@ void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVers
 
 ### OH_NativeArkWeb_GetActiveWebEngineVersion()
 
-```
+```c
 ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()
 ```
 
@@ -573,3 +574,26 @@ ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()
 | 类型 | 说明 |
 | -- | -- |
 | ArkWebEngineVersion | 返回由[ArkWebEngineVersion](#arkwebengineversion)枚举所定义的当前使用的ArkWeb内核版本。 |
+
+### OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager()
+
+```
+void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)
+```
+
+**描述：**
+
+设置是否延后初始化ArkWeb内核，不调用该方法时，默认不延后初始化ArkWeb内核。
+
+> **说明：**
+>
+> - 该接口为全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。
+> - 该接口仅适用于调用后会初始化CookieManager的接口，比如[ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md)的接口。调用本接口后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项                                                 | 描述 |
+|-----------------------------------------------------| -- |
+| bool lazy  | 是否延后初始化ArkWeb内核，true：延后，false：不延后。 |

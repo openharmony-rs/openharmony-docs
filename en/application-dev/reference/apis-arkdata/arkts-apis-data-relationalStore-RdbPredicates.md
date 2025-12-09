@@ -6,11 +6,11 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+Defines the predicates for an RDB store. This class determines whether the conditional expression for the RDB store is true or false. Multiple predicates statements can be concatenated by using **and()** by default. **RdbPredicates** cannot be passed across threads using Sendable.
+
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-Defines the predicates for an RDB store. This class determines whether the conditional expression for the RDB store is true or false. Multiple predicates statements can be concatenated by using **and()** by default. **RdbPredicates** cannot be passed across threads using Sendable.
 
 ## Module to Import
 
@@ -69,7 +69,7 @@ When calling **sync()**, you need to call **inDevices** to specify the devices. 
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -117,7 +117,7 @@ Creates an **RdbPredicates** object to specify all remote devices on the network
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Example**:
 
@@ -145,7 +145,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -183,7 +183,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -321,7 +321,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -358,7 +358,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -395,7 +395,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -431,7 +431,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -466,7 +466,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -502,7 +502,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -539,7 +539,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -577,7 +577,7 @@ Creates an **RdbPredicates** object to search for the records that are within th
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -615,7 +615,7 @@ Creates an **RdbPredicates** object to search for the records that are out of th
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -652,7 +652,7 @@ Creates an **RdbPredicates** object to search for the records that are greater t
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -689,7 +689,7 @@ Creates an **RdbPredicates** object to search for the records that are less than
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -726,7 +726,7 @@ Creates an **RdbPredicates** object to search for the records that are greater t
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -763,7 +763,7 @@ Creates an **RdbPredicates** object to search for the records that are less than
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -799,7 +799,7 @@ Creates an **RdbPredicates** object to sort the records in the specified column 
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -834,7 +834,7 @@ Creates an **RdbPredicates** object to sort the records in the specified column 
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1035,7 +1035,7 @@ Creates an **RdbPredicates** object to search for the records that are in the gi
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1072,7 +1072,7 @@ Creates an **RdbPredicates** object to search for the records that are out of th
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1109,7 +1109,7 @@ Creates an **RdbPredicates** object to search for the records that do not contai
 
 | Type                           | Description                      |
 | ------------------------------- | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1146,7 +1146,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                           | Description                      |
 | ------------------------------- | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1176,14 +1176,14 @@ Filters for group data that meets the conditions.
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| conditions  | string | Yes  | Condition used to filter the data obtained using [groupBy](#groupby). This parameter cannot be empty and must be used with [groupBy](#groupby). |
+| conditions  | string | Yes  | Condition used to filter the data obtained using [groupBy](#groupby). This parameter cannot be empty and must be used with [groupBy](#groupby).|
 | args  | Array<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | No  | Parameters used in **conditions**, which replace the placeholder in the conditional statement. If this parameter is not specified, the default value is an empty array.|
 
 **Return value**
 
 | Type                           | Description                      |
 | ------------------------------- | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 

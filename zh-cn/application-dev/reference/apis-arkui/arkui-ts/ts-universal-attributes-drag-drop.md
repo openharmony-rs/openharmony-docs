@@ -159,6 +159,8 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 ## DragPreviewMode<sup>11+</sup>枚举说明
 
+设置拖拽预览图的显示模式。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |

@@ -124,11 +124,13 @@ getSelectionContent(): Promise\<string>
 ```ts
 import { selectionManager } from '@kit.BasicServicesKit';
 
-try {
-  let content = await selectionManager.getSelectionContent();
-} catch (err) {
-  console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
-}
+selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
+  try {
+    let content = await selectionManager.getSelectionContent();
+  } catch (err) {
+    console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
+  }
+});
 ```
 
 ## createPanel

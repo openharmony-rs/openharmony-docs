@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -396,6 +396,6 @@ enum OH_NativeXComponent_KeyAction
 | -- | -- |
 | OH_NATIVEXCOMPONENT_KEY_ACTION_UNKNOWN = -1 | 未知的按键动作。 |
 | OH_NATIVEXCOMPONENT_KEY_ACTION_DOWN = 0 | 按键按下动作。 |
-| OH_NATIVEXCOMPONENT_KEY_ACTION_UP | 按键抬起动作。 |
+| OH_NATIVEXCOMPONENT_KEY_ACTION_UP = 1 | 按键抬起动作。 |
 
 

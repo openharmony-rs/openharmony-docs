@@ -69,11 +69,11 @@ If the security component cannot be called to save images and videos in your dev
 
    > **NOTE**
    >
-   > 1. URI storage:
-   >	 - You should avoid directly using a URI in the Picker callback.
-   >	 - You are advised to define a global variable to save the URI for future use.
+   > - URI storage:
+   > 	- You should avoid directly using a URI in the Picker callback.
+   > 	- You are advised to define a global variable to save the URI for future use.
    >
-   > 2. Quick saving:
+   > - Quick saving:
    > 	- You can directly access the download directory in [DOWNLOAD mode](#saving-files-to-the-download-directory).
 
 4. After the application UI is returned from FilePicker, you can call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open a document based on the URI. The FD is returned after the document is opened.
@@ -134,11 +134,11 @@ If the security component cannot be called to save images and videos in your dev
 
    > **NOTE**
    >
-   > 1. URI storage:
+   > - URI storage:
    > 	- You should avoid directly using a URI in the Picker callback.
    > 	- You are advised to define a global variable to save the URI for future use.
    >
-   > 2. Quick saving:
+   > - Quick saving:
    > 	- You can directly access the download directory in [DOWNLOAD mode](#saving-files-to-the-download-directory).
 
 4. After the application UI is returned from FilePicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open an audio clip based on the URI. The FD is returned after the audio clip is opened.

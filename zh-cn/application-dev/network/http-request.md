@@ -57,129 +57,130 @@
 
 1. 导入HTTP一般数据请求所需模块
 
-<!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-```
+   <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   import { http } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. 创建HttpRequest对象
 
     调用createHttp()方法，创建HttpRequest对象。
 
- <!-- @[HTTP_case_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
+    <!-- @[HTTP_case_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 每一个httpRequest对应一个HTTP请求任务，不可复用。
     let httpRequest = http.createHttp();
-```
+    ```
 
 3. 订阅HTTP响应头事件
 
     调用该对象的on()方法，订阅HTTP响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。
 
-<!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    // 用于订阅HTTP响应头，此接口会比request请求先返回。可以根据业务需要订阅此消息。
-    // 从API 8开始，使用on('headersReceive', Callback)替代on('headerReceive', AsyncCallback)。
-    httpRequest.on('headersReceive', (header) => {
-      console.info(`header: ${JSON.stringify(header)}`);
-    });
-```
+   <!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 用于订阅HTTP响应头，此接口会比request请求先返回。可以根据业务需要订阅此消息。
+   // 从API 8开始，使用on('headersReceive', Callback)替代on('headerReceive', AsyncCallback)。
+   httpRequest.on('headersReceive', (header) => {
+    hilog.info(0x0000, 'testTag', `header: ${JSON.stringify(header)}`);
+   });
+   ```
 
 
 4. 发起HTTP请求，解析服务器响应事件
 
     调用该对象的request()方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
 
-<!-- @[HTTP_case_http_request_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    httpRequest.request(
-      // 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定
-      'EXAMPLE_URL',
-      {
-        method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于从服务器获取数据，而POST方法用于向服务器上传数据。
-        // 开发者根据自身业务需要添加header字段
-        header: {
-          'Content-Type': 'application/json'
-        },
-        // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定
-        extraData: 'data to send',
-        expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型
-        usingCache: true, // 可选，默认为true
-        priority: 1, // 可选，默认为1
-        connectTimeout: 60000, // 可选，默认为60000ms
-        readTimeout: 60000, // 可选，默认为60000ms
-        usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定
-        usingProxy: false, // 可选，默认不使用网络代理，自API 10开始支持该属性
-        caPath:'/path/to/cacert.pem', // 可选，默认使用系统预制证书，自API 10开始支持该属性
-        clientCert: { // 可选，默认不使用客户端证书，自API 11开始支持该属性
-          certPath: '/path/to/client.pem', // 默认不使用客户端证书，自API 11开始支持该属性
-          keyPath: '/path/to/client.key', // 若证书包含Key信息，传入空字符串，自API 11开始支持该属性
-          certType: http.CertType.PEM, // 可选，默认使用PEM，自API 11开始支持该属性
-          keyPassword: 'passwordToKey' // 可选，输入key文件的密码，自API 11开始支持该属性
-        },
-        // 可选，仅当Header中，'content-Type'为'multipart/form-data'时生效,自API 11开始支持该属性
-        // 该属性用于支持向服务器上传二进制数据，根据上传的具体数据类型进行选择。
-        multiFormDataList: [
-          {
-            name: 'Part1', // 数据名，自API 11开始支持该属性
-            contentType: 'text/plain', // 数据类型，自API 11开始支持该属性，上传的数据类型为普通文本文件。
-            data: 'Example data', // 可选，数据内容，自API 11开始支持该属性
-            remoteFileName: 'example.txt' // 可选，自API 11开始支持该属性
-          }, {
-          name: 'Part2', // 数据名，自API 11开始支持该属性
-          contentType: 'text/plain', // 数据类型，自API 11开始支持该属性，上传的数据类型为普通文本文件。
-          // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.txt
-          filePath: `${context.filesDir}/fileName.txt`, // 可选，传入文件路径，自API 11开始支持该属性
-          remoteFileName: 'fileName.txt' // 可选，自API 11开始支持该属性
-          }, {
-            name: 'Part3', // 数据名，自API 11开始支持该属性。
-            contentType: 'image/png', // 数据类型，自API 11开始支持该属性，上传的数据类型为png格式的图片。
-            // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.png。
-            filePath: `${context.filesDir}/fileName.png`, // 可选，传入文件路径，自API 11开始支持该属性。
-            remoteFileName: 'fileName.png' // 可选，自API 11开始支持该属性。
-          }, {
-            name: 'Part4', // 数据名，自API 11开始支持该属性。
-            contentType: 'audio/mpeg', // 数据类型，自API 11开始支持该属性，上传的数据类型为mpeg格式的音频。
-            // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mpeg。
-            filePath: `${context.filesDir}/fileName.mpeg`, // 可选，传入文件路径，自API 11开始支持该属性。
-            remoteFileName: 'fileName.mpeg' // 可选，自API 11开始支持该属性。
-          }, {
-            name: 'Part5', // 数据名，自API 11开始支持该属性。
-            contentType: 'video/mp4', // 数据类型，自API 11开始支持该属性，上传的数据类型为mp4格式的视频。
-            // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mp4。
-            filePath: `${context.filesDir}/fileName.mp4`, // 可选，传入文件路径，自API 11开始支持该属性。
-            remoteFileName: 'fileName.mp4' // 可选，自API 11开始支持该属性。
-          }
-        ]
-      }, (err: BusinessError, data: http.HttpResponse) => {
-      if (!err) {
-		// ···
-        // data.result为HTTP响应内容，可根据业务需要进行解析。
-        console.info(`Result: ${JSON.stringify(data.result)}`);
-        console.info(`code: ${JSON.stringify(data.responseCode)}`);
-        // data.header为HTTP响应头，可根据业务需要进行解析。
-        console.info(`header: ${JSON.stringify(data.header)}`);
-        console.info(`cookies: ${JSON.stringify(data.cookies)}`);
-        // 当该请求使用完毕时，调用destroy方法主动销毁。
-        httpRequest.destroy();
-      } else {
-		// ···
-        console.error(`error: ${JSON.stringify(err)}`);
-        // 取消订阅HTTP响应头事件
-        httpRequest.off('headersReceive');
-        // 当该请求使用完毕时，调用destroy方法主动销毁
-        httpRequest.destroy();
-      }
-    }
-    );
-```
+   <!-- @[HTTP_case_http_request_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   httpRequest.request(
+     // 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定
+     'EXAMPLE_URL',
+     {
+       method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于从服务器获取数据，而POST方法用于向服务器上传数据。
+       // 开发者根据自身业务需要添加header字段
+       header: {
+         'Content-Type': 'application/json'
+       },
+       // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定
+       extraData: 'data to send',
+       expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型
+       usingCache: true, // 可选，默认为true
+       priority: 1, // 可选，默认为1
+       connectTimeout: 60000, // 可选，默认为60000ms
+       readTimeout: 60000, // 可选，默认为60000ms
+       usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定
+       usingProxy: false, // 可选，默认不使用网络代理，自API 10开始支持该属性
+       caPath:'/path/to/cacert.pem', // 可选，默认使用系统预制证书，自API 10开始支持该属性
+       clientCert: { // 可选，默认不使用客户端证书，自API 11开始支持该属性
+         certPath: '/path/to/client.pem', // 默认不使用客户端证书，自API 11开始支持该属性
+         keyPath: '/path/to/client.key', // 若证书包含Key信息，传入空字符串，自API 11开始支持该属性
+         certType: http.CertType.PEM, // 可选，默认使用PEM，自API 11开始支持该属性
+         keyPassword: 'passwordToKey' // 可选，输入key文件的密码，自API 11开始支持该属性
+       },
+       // 可选，仅当Header中，'content-Type'为'multipart/form-data'时生效,自API 11开始支持该属性
+       // 该属性用于支持向服务器上传二进制数据，根据上传的具体数据类型进行选择。
+       multiFormDataList: [
+         {
+           name: 'Part1', // 数据名，自API 11开始支持该属性
+           contentType: 'text/plain', // 数据类型，自API 11开始支持该属性，上传的数据类型为普通文本文件。
+           data: 'Example data', // 可选，数据内容，自API 11开始支持该属性
+           remoteFileName: 'example.txt' // 可选，自API 11开始支持该属性
+         }, {
+         name: 'Part2', // 数据名，自API 11开始支持该属性
+         contentType: 'text/plain', // 数据类型，自API 11开始支持该属性，上传的数据类型为普通文本文件。
+         // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.txt
+         filePath: `${context.filesDir}/fileName.txt`, // 可选，传入文件路径，自API 11开始支持该属性
+         remoteFileName: 'fileName.txt' // 可选，自API 11开始支持该属性
+         }, {
+           name: 'Part3', // 数据名，自API 11开始支持该属性。
+           contentType: 'image/png', // 数据类型，自API 11开始支持该属性，上传的数据类型为png格式的图片。
+           // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.png。
+           filePath: `${context.filesDir}/fileName.png`, // 可选，传入文件路径，自API 11开始支持该属性。
+           remoteFileName: 'fileName.png' // 可选，自API 11开始支持该属性。
+         }, {
+           name: 'Part4', // 数据名，自API 11开始支持该属性。
+           contentType: 'audio/mpeg', // 数据类型，自API 11开始支持该属性，上传的数据类型为mpeg格式的音频。
+           // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mpeg。
+           filePath: `${context.filesDir}/fileName.mpeg`, // 可选，传入文件路径，自API 11开始支持该属性。
+           remoteFileName: 'fileName.mpeg' // 可选，自API 11开始支持该属性。
+         }, {
+           name: 'Part5', // 数据名，自API 11开始支持该属性。
+           contentType: 'video/mp4', // 数据类型，自API 11开始支持该属性，上传的数据类型为mp4格式的视频。
+           // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mp4。
+           filePath: `${context.filesDir}/fileName.mp4`, // 可选，传入文件路径，自API 11开始支持该属性。
+           remoteFileName: 'fileName.mp4' // 可选，自API 11开始支持该属性。
+         }
+       ]
+     }, (err: BusinessError, data: http.HttpResponse) => {
+     if (!err) {
+       // ...
+       // data.result为HTTP响应内容，可根据业务需要进行解析。
+       hilog.info(0x0000, 'testTag', `Result: ${JSON.stringify(data.result)}`);
+       hilog.info(0x0000, 'testTag', `code: ${JSON.stringify(data.responseCode)}`);
+       // data.header为HTTP响应头，可根据业务需要进行解析。
+       hilog.info(0x0000, 'testTag', `header: ${JSON.stringify(data.header)}`);
+       hilog.info(0x0000, 'testTag', `cookies: ${JSON.stringify(data.cookies)}`);
+       // 当该请求使用完毕时，调用destroy方法主动销毁。
+       httpRequest.destroy();
+     } else {
+       // ...
+       hilog.error(0x0000, 'testTag', `error: ${JSON.stringify(err)}`);
+       // 取消订阅HTTP响应头事件
+       httpRequest.off('headersReceive');
+       // 当该请求使用完毕时，调用destroy方法主动销毁
+       httpRequest.destroy();
+     }
+   }
+   );
+   ```
 
 
 5. 取消订阅HTTP响应头事件
@@ -206,120 +207,121 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 1. 导入HTTP流式传输所需模块
 
-  <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-```
+     <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     import { http } from '@kit.NetworkKit';
+     import { BusinessError } from '@kit.BasicServicesKit';
+     import { common } from '@kit.AbilityKit';
+     import { hilog } from '@kit.PerformanceAnalysisKit';
+     ```
 
 2. 创建HTTP流式传输HttpRequest对象
 
     调用createHttp()方法，创建HttpRequest对象。
 
- <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
+    <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
     // 每一个httpRequest对应一个HTTP请求任务，不可复用。
     let httpRequest = http.createHttp();
-```
+    ```
 
 3. 按需订阅HTTP流式响应事件
 
 	服务器响应的数据在dataReceive回调中返回，可通过订阅该信息获取服务器响应的数据，其他流式响应事件可按需进行订阅。
   
-<!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    // 用于订阅HTTP流式响应数据接收事件。
-    let res = new ArrayBuffer(0);
-	// ···
-    // 订阅HTTP流式响应数据接收事件
-    httpRequest.on('dataReceive', (data: ArrayBuffer) => {
-      const newRes = new ArrayBuffer(res.byteLength + data.byteLength);
-      const resView = new Uint8Array(newRes);
-      resView.set(new Uint8Array(res));
-      resView.set(new Uint8Array(data), res.byteLength);
-      res = newRes;
-      console.info(`res length: ${res.byteLength}`);
-    });
-
-    // 用于订阅HTTP流式响应数据接收完毕事件。
-    httpRequest.on('dataEnd', () => {
-      console.info(`No more data in response, data receive end`);
-    });
-
-    // 订阅HTTP流式响应数据接收进度事件，下载服务器的数据时，可以通过该回调获取数据下载进度。
-    httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
-      console.info('dataReceiveProgress receiveSize:' + data.receiveSize + ', totalSize:' + data.totalSize);
-    });
-
-    // 订阅HTTP流式响应数据发送进度事件，向服务器上传数据时，可以通过该回调获取数据上传进度。
-    httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
-      console.info('dataSendProgress receiveSize:' + data.sendSize + ', totalSize:' + data.totalSize);
-    });
-```
+   <!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 用于订阅HTTP流式响应数据接收事件。
+   let res = new ArrayBuffer(0);
+   // ...
+   // 订阅HTTP流式响应数据接收事件
+   httpRequest.on('dataReceive', (data: ArrayBuffer) => {
+     const newRes = new ArrayBuffer(res.byteLength + data.byteLength);
+     const resView = new Uint8Array(newRes);
+     resView.set(new Uint8Array(res));
+     resView.set(new Uint8Array(data), res.byteLength);
+     res = newRes;
+     hilog.info(0x0000, 'testTag', `res length: ${res.byteLength}`);
+   });
+   
+   // 用于订阅HTTP流式响应数据接收完毕事件。
+   httpRequest.on('dataEnd', () => {
+     hilog.info(0x0000, 'testTag', `No more data in response, data receive end`);
+   });
+   
+   // 订阅HTTP流式响应数据接收进度事件，下载服务器的数据时，可以通过该回调获取数据下载进度。
+   httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
+     hilog.info(0x0000, 'testTag', 'dataReceiveProgress receiveSize:' + data.receiveSize + ', totalSize:' + data.totalSize);
+   });
+   
+   // 订阅HTTP流式响应数据发送进度事件，向服务器上传数据时，可以通过该回调获取数据上传进度。
+   httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
+     hilog.info(0x0000, 'testTag', 'dataSendProgress receiveSize:' + data.sendSize + ', totalSize:' + data.totalSize);
+   });
+   ```
 
 4. 发起HTTP流式请求，获取服务端数据
 
-<!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-let streamInfo: http.HttpRequestOptions = {
-  method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于向服务器获取数据，而POST方法用于向服务器上传数据。
-  // 开发者根据自身业务需要添加header字段。
-  header: {
-    'Content-Type': 'application/json'
-  },
-  // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定。
-  extraData: 'data to send', // 请求体内容
-  expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
-  usingCache: true,  // 可选，默认为true。
-  priority: 1, // 可选，默认为1。
-  connectTimeout: 60000, // 可选，默认为60000ms。
-  readTimeout: 60000, // 可选，默认为60000ms。若传输的数据较大，需要较长的时间，建议增大该参数以保证数据传输正常终止。
-  usingProtocol: http.HttpProtocol.HTTP1_1 // 可选，协议类型默认值由系统自动指定。
-};
-
-// 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定。
-httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
-  .then((data: number) => {
-    // ···
-    hilog.info(0x0000, 'testTag', `requestInStream OK!`);
-    hilog.info(0x0000, 'testTag', `ResponseCode : ${JSON.stringify(data)}`);
-    // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
-    this.destroyRequest(httpRequest);
-    // ···
-  }).catch((err: Error) => {
-    // ···
-    hilog.error(0x0000, 'testTag', `requestInStream ERROR : err = ${JSON.stringify(err)}`);
-    // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
-    this.destroyRequest(httpRequest);
-  })
-```
+   <!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let streamInfo: http.HttpRequestOptions = {
+     method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于向服务器获取数据，而POST方法用于向服务器上传数据。
+     // 开发者根据自身业务需要添加header字段。
+     header: {
+       'Content-Type': 'application/json'
+     },
+     // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定。
+     extraData: 'data to send', // 请求体内容
+     expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
+     usingCache: true,  // 可选，默认为true。
+     priority: 1, // 可选，默认为1。
+     connectTimeout: 60000, // 可选，默认为60000ms。
+     readTimeout: 60000, // 可选，默认为60000ms。若传输的数据较大，需要较长的时间，建议增大该参数以保证数据传输正常终止。
+     usingProtocol: http.HttpProtocol.HTTP1_1 // 可选，协议类型默认值由系统自动指定。
+   };
+   
+   // 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定。
+   httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
+     .then((data: number) => {
+       // ...
+       hilog.info(0x0000, 'testTag', `requestInStream OK!`);
+       hilog.info(0x0000, 'testTag', `ResponseCode : ${JSON.stringify(data)}`);
+       // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
+       this.destroyRequest(httpRequest);
+       // ...
+     }).catch((err: Error) => {
+       // ...
+       hilog.error(0x0000, 'testTag', `requestInStream ERROR : err = ${JSON.stringify(err)}`);
+       // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
+       this.destroyRequest(httpRequest);
+     })
+   ```
 
 
 5. 取消步骤3中订阅HTTP流式响应事件，并调用destroy()方法销毁流式HTTP请求
 
     调用该对象的off()方法，取消订阅步骤3中的事件，并且当该请求使用完毕时，调用destroy()方法销毁，该方法调用的时机，可以参考步骤4中的示例代码。
 
-<!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-  public destroyRequest(httpRequest: http.HttpRequest) {
-    // 取消订阅HTTP流式响应数据接收事件。
-    httpRequest.off('dataReceive');
-    // 取消订阅HTTP流式响应数据发送进度事件。
-    httpRequest.off('dataSendProgress');
-    // 取消订阅HTTP流式响应数据接收进度事件。
-    httpRequest.off('dataReceiveProgress');
-    // 取消订阅HTTP流式响应数据接收完毕事件。
-    httpRequest.off('dataEnd');
-    // 当该请求使用完毕时，调用destroy方法主动销毁。
-    httpRequest.destroy();
-  }
-```
+   <!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   public destroyRequest(httpRequest: http.HttpRequest) {
+     // 取消订阅HTTP流式响应数据接收事件。
+     httpRequest.off('dataReceive');
+     // 取消订阅HTTP流式响应数据发送进度事件。
+     httpRequest.off('dataSendProgress');
+     // 取消订阅HTTP流式响应数据接收进度事件。
+     httpRequest.off('dataReceiveProgress');
+     // 取消订阅HTTP流式响应数据接收完毕事件。
+     httpRequest.off('dataEnd');
+     // 当该请求使用完毕时，调用destroy方法主动销毁。
+     httpRequest.destroy();
+   }
+   ```
 
 ## 配置证书校验
 
@@ -559,194 +561,194 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 1.  导入HTTP请求拦截器所需模块。
 
-<!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
-
-```typescript
-import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+    <!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
+    
+    ``` TypeScript
+    import { http } from '@kit.NetworkKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    ```
 
 2.  调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
- <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 创建http请求
-let httpRequest: http.HttpRequest = http.createHttp();
-```
+     <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     // 创建http请求
+     let httpRequest: http.HttpRequest = http.createHttp();
+     ```
 
 3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
 
-<!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 创建拦截器链
-let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
-```
+    <!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 创建拦截器链
+    let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
+    ```
 
 4.  创建拦截器类实现http.HttpInterceptor接口。
 
-<!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-enum InterceptorType {
-  INITIAL_REQUEST = 'INITIAL_REQUEST',
-  REDIRECTION = 'REDIRECTION',
-  CACHE_CHECKED = 'READ_CACHE',
-  NETWORK_CONNECT = 'CONNECT_NETWORK',
-  FINAL_RESPONSE = 'FINAL_RESPONSE'
-}
-
-class InitialHttpInterceptor implements http.HttpInterceptor {
-  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
-  result: boolean = false;
-
-  constructor(interceptorType: InterceptorType, result: boolean) {
-    this.interceptorType = interceptorType;
-    this.result = result;
-  }
-
-  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
-    // 命中拦截器后对请求报文与请求响应操作
-    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original req: ${JSON.stringify(reqContext)}`);
-    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original rsp: ${JSON.stringify(rspContext)}`);
-
-    reqContext.url = EXAMPLE_INITIAL_URL;
-    reqContext.header = { 'content-type': 'text/plain' };
-    reqContext.body = { 'context': 'INITIAL_REQUEST' };
-
-    rspContext.result = 'INITIAL_REQUEST';
-    rspContext.responseCode = 200;
-    rspContext.header =
-      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
-
-    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update req: ${JSON.stringify(reqContext)}`);
-    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update rsp: ${JSON.stringify(rspContext)}`);
-    return Promise.resolve(this.result);
-  }
-}
-
-class NetworkHttpInterceptor implements http.HttpInterceptor {
-  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
-  result: boolean = false;
-
-  constructor(interceptorType: InterceptorType, result: boolean) {
-    this.interceptorType = interceptorType;
-    this.result = result;
-  }
-
-  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
-    // 命中拦截器后对请求报文与请求响应操作
-    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original req: ${JSON.stringify(reqContext)}`);
-    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original rsp: ${JSON.stringify(rspContext)}`);
-
-    reqContext.url = EXAMPLE_URL;
-    reqContext.header = { 'content-type': 'text/xml' };
-    reqContext.body = { 'context': 'NETWORK_CONNECT' };
-
-    rspContext.result = 'NETWORK_CONNECT';
-    rspContext.responseCode = 300;
-    rspContext.header =
-      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
-
-    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update req: ${JSON.stringify(reqContext)}`);
-    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update rsp: ${JSON.stringify(rspContext)}`);
-    return Promise.resolve(this.result);
-  }
-}
-
-class FinalHttpInterceptor implements http.HttpInterceptor {
-  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
-  result: boolean = false;
-
-  constructor(interceptorType: InterceptorType, result: boolean) {
-    this.interceptorType = interceptorType;
-    this.result = result;
-  }
-
-  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
-    // 命中拦截器后对请求报文与请求响应操作
-    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original req: ${JSON.stringify(reqContext)}`);
-    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original rsp: ${JSON.stringify(rspContext)}`);
-
-    reqContext.url = EXAMPLE_Final_URL;
-    reqContext.header = { 'content-type': 'text/html' };
-    reqContext.body = { 'context': 'FINAL_RESPONSE' };
-
-    rspContext.result = 'FINAL_RESPONSE';
-    rspContext.responseCode = 200;
-    rspContext.header =
-      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
-
-    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update req: ${JSON.stringify(reqContext)}`);
-    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update rsp: ${JSON.stringify(rspContext)}`);
-    return Promise.resolve(this.result);
-  }
-}
-```
+    <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    enum InterceptorType {
+      INITIAL_REQUEST = 'INITIAL_REQUEST',
+      REDIRECTION = 'REDIRECTION',
+      CACHE_CHECKED = 'READ_CACHE',
+      NETWORK_CONNECT = 'CONNECT_NETWORK',
+      FINAL_RESPONSE = 'FINAL_RESPONSE'
+    }
+    
+    class InitialHttpInterceptor implements http.HttpInterceptor {
+      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      result: boolean = false;
+    
+      constructor(interceptorType: InterceptorType, result: boolean) {
+        this.interceptorType = interceptorType;
+        this.result = result;
+      }
+    
+      interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+        // 命中拦截器后对请求报文与请求响应操作
+        hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original req: ${JSON.stringify(reqContext)}`);
+        hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original rsp: ${JSON.stringify(rspContext)}`);
+    
+        reqContext.url = EXAMPLE_INITIAL_URL;
+        reqContext.header = { 'content-type': 'text/plain' };
+        reqContext.body = { 'context': 'INITIAL_REQUEST' };
+    
+        rspContext.result = 'INITIAL_REQUEST';
+        rspContext.responseCode = 200;
+        rspContext.header =
+          'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+    
+        hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update req: ${JSON.stringify(reqContext)}`);
+        hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update rsp: ${JSON.stringify(rspContext)}`);
+        return Promise.resolve(this.result);
+      }
+    }
+    
+    class NetworkHttpInterceptor implements http.HttpInterceptor {
+      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      result: boolean = false;
+    
+      constructor(interceptorType: InterceptorType, result: boolean) {
+        this.interceptorType = interceptorType;
+        this.result = result;
+      }
+    
+      interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+        // 命中拦截器后对请求报文与请求响应操作
+        hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original req: ${JSON.stringify(reqContext)}`);
+        hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original rsp: ${JSON.stringify(rspContext)}`);
+    
+        reqContext.url = EXAMPLE_URL;
+        reqContext.header = { 'content-type': 'text/xml' };
+        reqContext.body = { 'context': 'NETWORK_CONNECT' };
+    
+        rspContext.result = 'NETWORK_CONNECT';
+        rspContext.responseCode = 300;
+        rspContext.header =
+          'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+    
+        hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update req: ${JSON.stringify(reqContext)}`);
+        hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update rsp: ${JSON.stringify(rspContext)}`);
+        return Promise.resolve(this.result);
+      }
+    }
+    
+    class FinalHttpInterceptor implements http.HttpInterceptor {
+      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      result: boolean = false;
+    
+      constructor(interceptorType: InterceptorType, result: boolean) {
+        this.interceptorType = interceptorType;
+        this.result = result;
+      }
+    
+      interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+        // 命中拦截器后对请求报文与请求响应操作
+        hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original req: ${JSON.stringify(reqContext)}`);
+        hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original rsp: ${JSON.stringify(rspContext)}`);
+    
+        reqContext.url = EXAMPLE_Final_URL;
+        reqContext.header = { 'content-type': 'text/html' };
+        reqContext.body = { 'context': 'FINAL_RESPONSE' };
+    
+        rspContext.result = 'FINAL_RESPONSE';
+        rspContext.responseCode = 200;
+        rspContext.header =
+          'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+    
+        hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update req: ${JSON.stringify(reqContext)}`);
+        hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update rsp: ${JSON.stringify(rspContext)}`);
+        return Promise.resolve(this.result);
+      }
+    }
+    ```
 
 5.  调用addChain()方法，将需要的拦截器实例加入到拦截器链中。
 
-<!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
-chain.addChain([
-  new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
-  new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
-  new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
-]);
-```
+    <!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
+    chain.addChain([
+      new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
+      new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
+      new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
+    ]);
+    ```
 
 6.  调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
 
-<!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 将当前配置好的拦截器链附加到httpRequest中
-chain.apply(httpRequest);
-```
+    <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 将当前配置好的拦截器链附加到httpRequest中
+    chain.apply(httpRequest);
+    ```
 
 7.  创建请求可选项。
 
-<!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 创建请求可选项
-let options: http.HttpRequestOptions = {
-  method: http.RequestMethod.POST,
-  header: { 'content-type': 'text/html' } as Record<string, string>,
-  extraData: { 'context': 'BODY' } as Record<string, string>,
-};
-```
+    <!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 创建请求可选项
+    let options: http.HttpRequestOptions = {
+      method: http.RequestMethod.POST,
+      header: { 'content-type': 'text/html' } as Record<string, string>,
+      extraData: { 'context': 'BODY' } as Record<string, string>,
+    };
+    ```
 
 8.  调用该对象的request()方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
 
-<!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// 发起请求
-httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
-  if (err) {
-    hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
-    // ···
-  } else {
-    hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
-    // ···
-  }
-// ···
-});
-```
+    <!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 发起请求
+    httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
+      if (err) {
+        hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
+        // ...
+      } else {
+        hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
+        // ...
+      }
+      // ...
+    });
+    ```
 
 9.  调用destroy()方法销毁http请求。
 
-<!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 销毁请求
-httpRequest.destroy();
-```
+    <!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 销毁请求
+    httpRequest.destroy();
+    ```
 
 ## 
 ## 相关实例

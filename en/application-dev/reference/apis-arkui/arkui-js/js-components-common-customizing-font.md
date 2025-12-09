@@ -1,4 +1,10 @@
 # Custom Font Styles
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The custom font can be loaded from the font file in a project. The font file must be in .ttf or .otf format.
 

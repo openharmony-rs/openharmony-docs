@@ -1714,8 +1714,11 @@ Injects a JavaScript script into the **Web** component. When the specified page 
           "if (typeof(Storage) !== 'undefined') {" +
           "   localStorage.setItem('color', 'Red');" +
           "}";
+      private localStorage2: string =
+          "console.info('runJavaScriptOnDocumentStart urlRegexRules Matching succeeded.')";
       @State scripts: Array<ScriptItem> = [
-          { script: this.localStorage, scriptRules: ["*"] }
+          { script: this.localStorage, scriptRules: ["*"] },
+          { script: this.localStorage2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
       ];
 
       build() {
@@ -1792,8 +1795,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -1856,8 +1861,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnHeadEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -2411,7 +2418,7 @@ Sets whether the **viewport** attribute of the **meta** tag is enabled. When thi
 
 **Example**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2427,7 +2434,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 HTML file to be loaded:
 ```html
 <!--index.html-->
@@ -3851,6 +3858,74 @@ Sets the blank screen detection configuration, such as whether to enable the det
       }
     }
   }
+  ```
+
+## enableImageAnalyzer<sup>23+</sup>
+
+enableImageAnalyzer(enable: boolean)
+
+Sets whether to enable AI analyzer for web images. Currently, the image text recognition is supported, which is enabled by default.
+
+> **NOTE**
+>
+> When you long-press or hover the mouse over the image text, AI analyzer is triggered and the text in the image can be selected. The specifications of images that can trigger analyzer are as follows:
+>
+> - The original width and height of the image are greater than or equal to 100 pixels.
+>
+> - For [devices](../../quick-start/module-configuration-file.md#devicetypes) other than 2-in-1 devices, the image rendering width must exceed 80% of the web page width.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean | Yes  | Whether to enable AI analyzer for web page images. The value **true** means to enable AI analyzer, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is reset to **true**.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableImageAnalyzer(true) // To disable the image analyzer, set this parameter to false.
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .image-container {
+        width: 90%;
+      }
+      .image-container img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <!--example.jpg is in the same directory as the HTML file-->
+      <img src="example.jpg" alt="Image to be analyzed by AI">
+    </div>
+  </body>
+  </html>
   ```
 
 ## password<sup>(deprecated)</sup>

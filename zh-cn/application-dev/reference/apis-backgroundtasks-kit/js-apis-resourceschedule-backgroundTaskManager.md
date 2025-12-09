@@ -1654,7 +1654,7 @@ export default class EntryAbility extends UIAbility {
 
 ### requestAuthFromUser<sup>22+</sup>
 
-requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
+requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
 请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会发送横幅通知，有提示音。仅适用于[特殊场景类型长时任务](#backgroundtaskmode21)。
 
@@ -1662,10 +1662,13 @@ requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常调用，在其他设备类型中返回9800005错误码。
+
 **参数：**
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。 |
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果。 |
 
 **错误码：**
@@ -1675,6 +1678,7 @@ requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201 | Permission denied. |
+| 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
 **示例：**
@@ -1684,7 +1688,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
-    console.info("Operation requestAuthFromUser success. auth result: " + JSON.stringify(authResult));
+    console.info('Operation requestAuthFromUser success. auth result: ' + JSON.stringify(authResult));
 }
 
 export default class EntryAbility extends UIAbility {
@@ -1695,7 +1699,8 @@ export default class EntryAbility extends UIAbility {
     let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION];
     continuousTaskRequest.backgroundTaskSubmodes = subModeList;
     try {
-      continuousTaskRequest.requestAuthFromUser(callbackAuth);
+      continuousTaskRequest.requestAuthFromUser(this.context, callbackAuth);
+      console.info('Operation requestAuthFromUser succeeded.');
     } catch (error) {
       console.error(`Operation requestAuthFromUser failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -1705,13 +1710,21 @@ export default class EntryAbility extends UIAbility {
 
 ### checkSpecialScenarioAuth<sup>22+</sup>
 
-checkSpecialScenarioAuth(): Promise&lt;UserAuthResult&gt;
+checkSpecialScenarioAuth(context: Context): Promise&lt;UserAuthResult&gt;
 
 查询用户是否授权能在后台长时间运行。使用Promise异步回调。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常调用，在其他设备类型中返回9800005错误码。
+
+**参数：**
+
+| 参数名      | 类型                                                  | 必填   | 说明           |
+| -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。 |
 
 **返回值：**
 
@@ -1726,6 +1739,7 @@ checkSpecialScenarioAuth(): Promise&lt;UserAuthResult&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201 | Permission denied. |
+| 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
 **示例：**
@@ -1738,8 +1752,8 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     try {
       let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
-      continuousTaskRequest.checkSpecialScenarioAuth().then((res: backgroundTaskManager.UserAuthResult) => {
-        console.info("Operation checkSpecialScenarioAuth succeeded. data: " + JSON.stringify(res));
+      continuousTaskRequest.checkSpecialScenarioAuth(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
+        console.info('Operation checkSpecialScenarioAuth succeeded. data: ' + JSON.stringify(res));
       }).catch((error: BusinessError) => {
         console.error(`Operation checkSpecialScenarioAuth failed. code is ${error.code} message is ${error.message}`);
       });
@@ -1767,7 +1781,7 @@ export default class EntryAbility extends UIAbility {
 | MODE_VOIP                       | 8         | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
 | MODE_TASK_KEEPING               | 9         | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 |
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br/>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。            |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>使用场景举例：应用在后台导出媒体文件导出、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br/>2. 仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。 |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>使用场景举例：应用在后台导出媒体文件导出、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br/>2. 仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。 |
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -1814,5 +1828,5 @@ export default class EntryAbility extends UIAbility {
 | NOT_SUPPORTED | 0 | 不支持。例如：申请的长时任务主类型非MODE_SPECIAL_SCENARIO_PROCESSING时，不支持申请用户授权是否能在后台长时间运行。 |
 | NOT_DETERMINED | 1 | 用户未操作。 |
 | DENIED  | 2 | 拒绝。    |
-| GRANTED_ONCE | 3 | 本次允许。  |
-| GRANTED_ALWAYS | 4 | 始终允许。  |
+| GRANTED_ONCE | 3 | 本次允许。<br/>**说明：** 在应用退出时该授权记录会被清除。  |
+| GRANTED_ALWAYS | 4 | 始终允许。<br/>**说明：** <br/>当接收到以下公共事件时，相关授权记录将被清除：<br/>[COMMON_EVENT_PACKAGE_ADDED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_added)、[COMMON_EVENT_PACKAGE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_BUNDLE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_PACKAGE_FULLY_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_fully_removed)、[COMMON_EVENT_PACKAGE_CHANGED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_changed)。  |

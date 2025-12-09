@@ -37,8 +37,6 @@ constructor(scriptURL: string, options?: WorkerOptions)
 
 A constructor used to create a RestrictedWorker instance. Before using the following APIs, you must create a RestrictedWorker instance.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Utils.Lang

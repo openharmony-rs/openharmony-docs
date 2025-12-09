@@ -69,176 +69,176 @@ libnet_connection.so
 
 1. 在源文件中编写调用该API的代码，并将结果封装成一个`napi_value`类型的值返回给Node.js环境。
 
-<!-- @[build_project1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-// 获取默认网络的函数
-static napi_value GetDefaultNet(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1; // 期望接收一个函数
-    napi_value args[1] = {nullptr}; // 存储接收到的参数
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    // ···
-    int32_t param;
-    napi_get_value_int32(env, args[0], &param); // 从 args[0] 获取整数值并存储到 param 中
-    
-    NetConn_NetHandle netHandle;
-    if (param == 0) { // 如果参数是0
-        param = OH_NetConn_GetDefaultNet(NULL);
-    } else {
-        param = OH_NetConn_GetDefaultNet(&netHandle);
-    }
-
-    napi_value result;
-    napi_create_int32(env, param, &result);
-    return result;
-}
-
-// 获取默认网络ID的函数
-static napi_value NetId(napi_env env, napi_callback_info info)
-{
-    int32_t defaultNetId;
-    NetConn_NetHandle netHandle;
-    OH_NetConn_GetDefaultNet(&netHandle);
-    defaultNetId = netHandle.netId; // 获取默认的 netId
-    napi_value result;
-    napi_create_int32(env, defaultNetId, &result);
-    return result;
-}
-```
-简要说明：这两个函数用于获取系统默认网络连接的相关信息。其中，GetDefaultNet是接收ArkTs端传入的测试参数，返回调用接口后对应的返回值，param可以自行调整；如果返回值为0，代表获取成功，401代表参数错误，201代表没有权限；而NetId函数则用于获取默认网络连接的ID。这些信息可以用于进一步的网络操作。
+   <!-- @[build_project1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 获取默认网络的函数
+   static napi_value GetDefaultNet(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1; // 期望接收一个函数
+       napi_value args[1] = {nullptr}; // 存储接收到的参数
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       // ...
+       int32_t param;
+       napi_get_value_int32(env, args[0], &param); // 从 args[0] 获取整数值并存储到 param 中
+       
+       NetConn_NetHandle netHandle;
+       if (param == 0) { // 如果参数是0
+           param = OH_NetConn_GetDefaultNet(NULL);
+       } else {
+           param = OH_NetConn_GetDefaultNet(&netHandle);
+       }
+   
+       napi_value result;
+       napi_create_int32(env, param, &result);
+       return result;
+   }
+   
+   // 获取默认网络ID的函数
+   static napi_value NetId(napi_env env, napi_callback_info info)
+   {
+       int32_t defaultNetId;
+       NetConn_NetHandle netHandle;
+       OH_NetConn_GetDefaultNet(&netHandle);
+       defaultNetId = netHandle.netId; // 获取默认的 netId
+       napi_value result;
+       napi_create_int32(env, defaultNetId, &result);
+       return result;
+   }
+   ```
+   简要说明：这两个函数用于获取系统默认网络连接的相关信息。其中，GetDefaultNet是接收ArkTs端传入的测试参数，返回调用接口后对应的返回值，param可以自行调整；如果返回值为0，代表获取成功，401代表参数错误，201代表没有权限；而NetId函数则用于获取默认网络连接的ID。这些信息可以用于进一步的网络操作。
 
 
 2. 将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将以上两个函数暴露给JavaScript使用。
 
-<!-- @[build_project2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    // Information used to describe an exported attribute. Two properties are defined here: `GetDefaultNet` and `NetId`.
-    napi_property_descriptor desc[] = {
-        {"GetDefaultNet", nullptr, GetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"NetId", nullptr, NetId, nullptr, nullptr, nullptr, napi_default, nullptr},
-        // ···
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-```
+   <!-- @[build_project2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       // Information used to describe an exported attribute. Two properties are defined here: `GetDefaultNet` and `NetId`.
+       napi_property_descriptor desc[] = {
+           {"GetDefaultNet", nullptr, GetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"NetId", nullptr, NetId, nullptr, nullptr, nullptr, napi_default, nullptr},
+           // ...
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   ```
 3. 将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到Node.js中。
 
-<!-- @[build_project3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void *)0),
-    .reserved = {0},
-};
- 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
-```
+   <!-- @[build_project3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = ((void *)0),
+       .reserved = {0},
+   };
+    
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+   ```
 4. 在工程的index.d.ts文件中定义两个函数的类型。
 
 - GetDefaultNet函数接受一个数字参数code，返回一个数字类型的值。
 - NetId函数不接受参数，返回一个数字类型的值。
 
-<!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
-``` TypeScript
-export const GetDefaultNet: (code: number) => number;
-export const NetId: () => number;
-```
+   <!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const GetDefaultNet: (code: number) => number;
+   export const NetId: () => number;
+   ```
 5. 在index.ets文件中对上述封装好的接口进行调用。
 
-<!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import testNetManager from 'libentry.so';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-enum ReturnCode {
-  SUCCESS = 0, // 操作成功
-  MISSING_PERMISSION = 201, // 缺少权限
-  PARAMETER_ERROR = 401, // 参数错误
-}
-
-// ···
-@Entry
-@Component
-struct Index {
-  @State message: string = ''; // 用于展示日志消息
-// ···
-
-  build() {
-    Column() { // 显示 Logger 输出的日志
-    // ···
-      Text(this.message)
-        .fontSize(16)
-        .fontColor(Color.Black)
-        .margin({ bottom: 10 })
-        .id('test-message') // 为测试消息设置 ID，便于测试获取内容
-
-      Button($r('app.string.GetDefaultNet'))
-        .onClick(() => {
-          this.GetDefaultNet();
-        })
-        // ···
-
-      Button($r('app.string.CodeNumber'))
-        .onClick(() => {
-          this.CodeNumber();
-        })
-        // ···
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center);
-  }
-  
-  GetDefaultNet() {
-    let netId = testNetManager.NetId();
-    // ···
-      hilog.info(0x0000, 'testTag', 'The defaultNetId is [' + netId + ']');
-    // ···
-  }
-
-  CodeNumber() {
-    let testParam = 1;
-    // ···
-      let codeNumber = testNetManager.GetDefaultNet(testParam);
-      switch (codeNumber) {
-        case ReturnCode.SUCCESS:
-          hilog.info(0x0000, 'testTag', 'Test success. [' + codeNumber + ']');
-        // ···
-          break;
-        case ReturnCode.MISSING_PERMISSION:
-          hilog.info(0x0000, 'testTag', 'Missing permissions. [' + codeNumber + ']');
-        // ···
-          break;
-        case ReturnCode.PARAMETER_ERROR:
-          hilog.info(0x0000, 'testTag', 'Parameter error. [' + codeNumber + ']');
-        // ···
-          break;
-        default:
-          hilog.info(0x0000, 'testTag', 'Unexpected result: [' + codeNumber + ']');
-        // ···
-          break;
-      }
-    // ···
-  }
-```
+   <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import testNetManager from 'libentry.so';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   enum ReturnCode {
+     SUCCESS = 0, // 操作成功
+     MISSING_PERMISSION = 201, // 缺少权限
+     PARAMETER_ERROR = 401, // 参数错误
+   }
+   
+   // ...
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = ''; // 用于展示日志消息
+     // ...
+   
+     build() {
+       Column() { // 显示 Logger 输出的日志
+         // ...
+         Text(this.message)
+           .fontSize(16)
+           .fontColor(Color.Black)
+           .margin({ bottom: 10 })
+           .id('test-message') // 为测试消息设置 ID，便于测试获取内容
+   
+         Button($r('app.string.GetDefaultNet'))
+           .onClick(() => {
+             this.GetDefaultNet();
+           })
+             // ...
+   
+         Button($r('app.string.CodeNumber'))
+           .onClick(() => {
+             this.CodeNumber();
+           })
+             // ...
+       }.width('100%').height('100%').justifyContent(FlexAlign.Center);
+     }
+     
+     GetDefaultNet() {
+       let netId = testNetManager.NetId();
+       // ...
+         hilog.info(0x0000, 'testTag', 'The defaultNetId is [' + netId + ']');
+         // ...
+     }
+   
+     CodeNumber() {
+       let testParam = 1;
+       // ...
+         let codeNumber = testNetManager.GetDefaultNet(testParam);
+         switch (codeNumber) {
+           case ReturnCode.SUCCESS:
+             hilog.info(0x0000, 'testTag', 'Test success. [' + codeNumber + ']');
+             // ...
+             break;
+           case ReturnCode.MISSING_PERMISSION:
+             hilog.info(0x0000, 'testTag', 'Missing permissions. [' + codeNumber + ']');
+             // ...
+             break;
+           case ReturnCode.PARAMETER_ERROR:
+             hilog.info(0x0000, 'testTag', 'Parameter error. [' + codeNumber + ']');
+             // ...
+             break;
+           default:
+             hilog.info(0x0000, 'testTag', 'Unexpected result: [' + codeNumber + ']');
+             // ...
+             break;
+         }
+       // ...
+     }
+   ```
 6. 配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_connection.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
-> **注意：**
->
-> 如图所示，在`add_library`中的`entry`是工程自动生成的`modename`。若要做修改，需和步骤3中`.nm_modname`保持一致。
+   > **注意：**
+   >
+   > 如图所示，在`add_library`中的`entry`是工程自动生成的`modename`。若要做修改，需和步骤3中`.nm_modname`保持一致。
 
-![netmanager-4.png](./figures/netmanager-4.png)
+   ![netmanager-4.png](./figures/netmanager-4.png)
 
 经过以上步骤，整个工程的搭建已经完成，接下来就可以连接设备运行工程进行日志查看了。
 
@@ -248,18 +248,18 @@ struct Index {
 
 2. 运行工程，设备上会弹出以下所示图片。
 
-- 点击`GetDefaultNet`时获取的是默认网络ID。
-- 点击`codeNumber`时获取的是接口返回的响应状态码。
+   - 点击`GetDefaultNet`时获取的是默认网络ID。
+   - 点击`codeNumber`时获取的是接口返回的响应状态码。
 
-![netmanager-1.png](./figures/netmanager-1.png)
+   ![netmanager-1.png](./figures/netmanager-1.png)
 
 3. 点击`GetDefaultNet`按钮，控制台会打印日志。
 
-![netmanager-2.png](./figures/netmanager-2.png)
+   ![netmanager-2.png](./figures/netmanager-2.png)
 
 4. 点击`codeNumber`按钮，控制台会打印相应的响应状态码。
 
-![netmanager-3.png](./figures/netmanager-3.png)
+   ![netmanager-3.png](./figures/netmanager-3.png)
 
 ## 相关实例
 

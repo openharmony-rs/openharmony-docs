@@ -686,7 +686,9 @@ CMS封装数据的KeyAgree接收方信息。
 
 CMS封装数据的接收者信息。
 
-**说明**：至少需要设置一个接收者。
+> **说明：**
+>
+> 至少需要设置一个接收者。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -13521,7 +13523,6 @@ createCmsParser(): CmsParser
 **示例：**
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13681,7 +13682,6 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13822,7 +13822,6 @@ getContentType(): CmsContentType
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13975,7 +13974,6 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14116,7 +14114,6 @@ getContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14266,7 +14263,6 @@ getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +

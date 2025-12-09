@@ -41,7 +41,7 @@
 
 ### BackgroundProcessManager_ProcessPriority
 
-```
+```c
 enum BackgroundProcessManager_ProcessPriority
 ```
 
@@ -58,7 +58,7 @@ enum BackgroundProcessManager_ProcessPriority
 
 ### BackgroundProcessManager_ErrorCode
 
-```
+```c
 enum BackgroundProcessManager_ErrorCode
 ```
 
@@ -79,7 +79,7 @@ enum BackgroundProcessManager_ErrorCode
 
 ### OH_BackgroundProcessManager_SetProcessPriority()
 
-```
+```c
 int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessManager_ProcessPriority priority)
 ```
 
@@ -105,7 +105,7 @@ int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessMan
 
 ### OH_BackgroundProcessManager_ResetProcessPriority()
 
-```
+```c
 int OH_BackgroundProcessManager_ResetProcessPriority(int pid)
 ```
 

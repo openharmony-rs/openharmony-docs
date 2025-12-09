@@ -61,15 +61,17 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
     let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
     await systemPasteboard.setData(pasteData);
   }
-  export async function getPlainData(type: string): Promise<string> {
-    //从系统剪贴板中读取数据
+  export async function getPlainData(): Promise<string> {
+    // 从系统剪贴板中读取数据
     let data = await systemPasteboard.getData();
+    // 从剪贴板数据中获取条目数量
     let recordCount = data.getRecordCount();
+    // 从剪贴板数据中获取对应条目信息
     let result = '';
     for (let i = 0; i < recordCount; i++) {
       let record = data.getRecord(i).toPlainText();
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
-      result = record;
+      result += record;
     }
     return result;
   }
@@ -86,12 +88,12 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 
 详细接口见[接口文档](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12)。
 
-| 名称 | 说明                                                                                                                                        |
-| -------- |----------------------------------------------------------------------------------------------------------------------------------------|
-| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | 将统一数据对象的数据写入系统剪贴板。
-| setUnifiedDataSync(data: udc.UnifiedData): void | 将统一数据对象的数据写入系统剪贴板，此接口为同步接口。                                                                                                                          |
-| getUnifiedData(): Promise\<udc.UnifiedData\> | 从系统剪贴板中读取统一数据对象的数据。                                                                                                                          |
-| getUnifiedDataSync(): udc.UnifiedData | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。
+| 名称 | 说明                                                                                                   |
+| -------- |---------------------------------------------------------------------------------------------------|
+| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | 将统一数据对象的数据写入系统剪贴板。                   |
+| setUnifiedDataSync(data: udc.UnifiedData): void | 将统一数据对象的数据写入系统剪贴板，此接口为同步接口。          |
+| getUnifiedData(): Promise\<udc.UnifiedData\> | 从系统剪贴板中读取统一数据对象的数据。                           |
+| getUnifiedDataSync(): udc.UnifiedData | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。                  |
 
 ### 示例代码
 

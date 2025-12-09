@@ -6393,6 +6393,7 @@ try {
 | deviceId<sup>19+</sup>      | number  | 否  | 是  | 设备ID。            |
 | deviceName<sup>19+</sup>    | string  | 否  | 是  | 设备名称。            |
 | isLocalSensor<sup>19+</sup> | boolean | 否  | 是  | 是否本地传感器。         |
+| isMockSensor<sup>23+</sup> | boolean | 否  | 是  | 是否mock传感器。         |
 
 ## AccelerometerResponse
 

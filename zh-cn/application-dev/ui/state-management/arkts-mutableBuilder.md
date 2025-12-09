@@ -80,87 +80,92 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 ## 限制条件
 
 1. mutableBuilder方法只能传入[全局\@Builder](arkts-builder.md#全局自定义构建函数)方法，传入局部@Builder方法编译时报错。
-```typescript
-class TextContent {
-  text: string = '';
-}
 
-@Builder
-function globalBuilder(p: TextContent) {
-  Text(p.text)
-}
+   ```ts
+   class TextContent {
+     text: string = '';
+   }
+   
+   @Builder
+   function globalBuilder(p: TextContent) {
+     Text(p.text)
+   }
+   
+   @ComponentV2
+   struct MyApp {
+     @Local message: string = 'init';
+     // 正确用法，使用全局@Builder
+     @Local switchingBuilder: MutableBuilder<[TextContent]> = mutableBuilder(globalBuilder);
+     // 错误用法，使用局部@Builder，编译报错
+     @Local localBuilderObject: MutableBuilder<[TextContent]> = mutableBuilder(this.localBuilder);
+     
+     @Builder
+     localBuilder(p: TextContent) {
+       Text(p.text)
+     }
+     build() {
+       Column() {
+         this.switchingBuilder.builder({ text: this.message })
+       }
+     }
+   }
+   ```
 
-@ComponentV2
-struct MyApp {
-  @Local message: string = 'init';
-  // 正确用法，使用全局@Builder
-  @Local switchingBuilder: MutableBuilder<[TextContent]> = mutableBuilder(globalBuilder);
-  // 错误用法，使用局部@Builder，编译报错
-  @Local localBuilderObject: MutableBuilder<[TextContent]> = mutableBuilder(this.localBuilder);
-  
-  @Builder
-  localBuilder(p: TextContent) {
-    Text(p.text)
-  }
-  build() {
-    Column() {
-      this.switchingBuilder.builder({ text: this.message })
-    }
-  }
-}
-```
 2. MutableBuilder对象的builder属性方法仅限在自定义组件内部使用，在自定义组件外面使用会导致程序运行时崩溃。
-```typescript
-class TextContent {
-  text: string = '';
-}
 
-@Builder
-function globalBuilder(p: TextContent) {
-  Text(p.text)
-}
+   ```ts
+   class TextContent {
+     text: string = '';
+   }
+   
+   @Builder
+   function globalBuilder(p: TextContent) {
+     Text(p.text)
+   }
+   
+   // 错误用法，MutableBuilder对象的builder属性方法在自定义组件外面使用，运行时崩溃
+   let outSideBuilder: MutableBuilder<[TextContent]> = mutableBuilder(globalBuilder);
+   outSideBuilder.builder({ text: 'message' });
+   
+   @ComponentV2
+   struct MyApp {
+     @Local message: string = 'init';
+     @Local switchingBuilder: MutableBuilder<[TextContent]> = mutableBuilder(globalBuilder);
+     build() {
+       Column() {
+         // 正确用法，MutableBuilder对象的builder属性方法在自定义组件中使用
+         this.switchingBuilder.builder({ text: this.message })
+       }
+     }
+   }
+   ```
 
-// 错误用法，MutableBuilder对象的builder属性方法在自定义组件外面使用，运行时崩溃
-let outSideBuilder: MutableBuilder<[TextContent]> = mutableBuilder(globalBuilder);
-outSideBuilder.builder({ text: 'message' });
-
-@ComponentV2
-struct MyApp {
-  @Local message: string = 'init';
-  @Local switchingBuilder: MutableBuilder<[TextContent]> = mutableBuilder(globalBuilder);
-  build() {
-    Column() {
-      // 正确用法，MutableBuilder对象的builder属性方法在自定义组件中使用
-      this.switchingBuilder.builder({ text: this.message })
-    }
-  }
-}
-```
 3. 不建议与wrapBuilder混合使用，因为mutableBuilder创建的对象类型是MutableBuilder类型，会导致不符合预期的更新。
 
-如下为不推荐的用法：
+   如下为不推荐的用法：
 
-```ts
-// 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
-@State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
-// 不支持将MutableBuilder类型的变量赋值为undefined或null，会导致运行时crash
-@State switchingBuilder: MutableBuilder<[MutableBinding]> | undefined | null = null; 
-Button(`MutableBuilder`).onClick(() => {
-  // 不建议将wrapBuilder创建的对象赋值给MutableBuilder类型的对象，赋值后会将textBuilder动态切换成buttonBuilder
-  this.switchingBuilder = wrapBuilder(buttonBuilder);  
-})
-```
+   ```ts
+   // 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
+   @State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
+   // 不支持将MutableBuilder类型的变量赋值为undefined或null，会导致运行时crash
+   @State switchingBuilder: MutableBuilder<[MutableBinding]> | undefined | null = null; 
+   Button(`MutableBuilder`).onClick(() => {
+     // 不建议将wrapBuilder创建的对象赋值给MutableBuilder类型的对象，赋值后会将textBuilder动态切换成buttonBuilder
+     this.switchingBuilder = wrapBuilder(buttonBuilder);  
+   })
+   ```
 
-如下为推荐用法：
-```ts
-// 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
-@State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
+   如下为推荐用法：
 
-Button(`MutableBuilder`).onClick(() => {
-  // 赋值会将wrapBuilder中textBuilder中动态切换成buttonBuilder
-  this.switchingBuilder = mutableBuilder(buttonBuilder); // 推荐用法
-})
-```
+   ```ts
+   // 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
+   @State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
+   
+   Button(`MutableBuilder`).onClick(() => {
+     // 赋值会将wrapBuilder中textBuilder中动态切换成buttonBuilder
+     this.switchingBuilder = mutableBuilder(buttonBuilder); // 推荐用法
+   })
+   ```
 
 ## 动态更改全局@Builder实例
 使用\@Builder装饰器装饰的方法`textBuilder`作为mutableBuilder的参数，然后将mutableBuilder的返回值赋值给变量`switchingBuilder`，在Button的点击事件中，使用\@Builder装饰器装饰的方法`buttonBuilder`作为mutableBuilder的参数，将mutableBuilder的返回值再次赋值给变量`switchingBuilder`，可实现`textBuilder` 更新为`buttonBuilder`，以解决wrapBuilder不支持二次赋值的问题。
@@ -310,5 +315,4 @@ struct MyApp {
 ![arkts-mutableBuilder-dynamic-demo2](figures/mutableBuilder-dynamic-demo2.gif)
 
 点击Button将`textBuilder`动态切换为`buttonBuilder`时，@Monitor会监听到全局@Builder的变化，并打印日志`@Builder change. is buttonBuilder: true`。
-
 

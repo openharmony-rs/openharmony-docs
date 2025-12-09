@@ -28,16 +28,7 @@ import { FoldSplitContainer } from '@kit.ArkUI';
 
 ## FoldSplitContainer
 
-FoldSplitContainer({
-  primary: Callback&lt;void&gt;,
-  secondary: Callback&lt;void&gt;,
-  extra?: Callback&lt;void&gt;,
-  expandedLayoutOptions: ExpandedRegionLayoutOptions,
-  hoverModeLayoutOptions: HoverModeRegionLayoutOptions,
-  foldedLayoutOptions: FoldedRegionLayoutOptions,
-  animationOptions?: AnimateParam | null,
-  onHoverStatusChange?: OnHoverStatusChangeHandler
-})
+FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&gt;, extra?: Callback&lt;void&gt;, expandedLayoutOptions: ExpandedRegionLayoutOptions, hoverModeLayoutOptions: HoverModeRegionLayoutOptions, foldedLayoutOptions: FoldedRegionLayoutOptions, animationOptions?: AnimateParam | null, onHoverStatusChange?: OnHoverStatusChangeHandler})
 
 实现折叠屏二分栏、三分栏在展开态、悬停态以及折叠态的区域控制的分栏布局。
 

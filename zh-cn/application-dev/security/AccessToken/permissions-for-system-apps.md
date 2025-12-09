@@ -293,6 +293,30 @@
 
 **起始版本**：11
 
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+允许应用读取无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+允许应用设置无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
 允许批量查询无障碍节点。
@@ -925,6 +949,31 @@
 
 **起始版本**：10
 
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+允许在企业设备上安装企业MDM应用包。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+允许企业MDM应用在企业设备上自升级。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+
+**ACL使能**：true
+
+**起始版本**：10
+
 ## ohos.permission.UPDATE_MIGRATE
 
 允许升级过程中进行数据迁移。
@@ -1056,6 +1105,20 @@
 **ACL使能**：true
 
 **起始版本**：9
+
+## ohos.permission.HIVIEW_TRACE_MANAGE
+
+允许系统服务或系统应用打开或关闭系统trace。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
 
 ## ohos.permission.DEVICE_STANDBY_EXEMPTION
 
@@ -5208,3 +5271,39 @@
 **支持设备**：General
 
 **起始版本**：23
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+允许系统应用拉起其他应用时设置拉起原因。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
+
+## ohos.permission.ACCESS_SUPER_HUB
+
+允许应用拉起"中转站"。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：12
+
+## ohos.permission.ACCESS_USER_ACCOUNT_INFO
+
+允许系统应用获取账号提供的数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18

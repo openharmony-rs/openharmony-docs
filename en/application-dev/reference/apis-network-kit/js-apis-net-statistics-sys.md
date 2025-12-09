@@ -353,7 +353,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 **Example**
 
 ```js
-import statistics from '@ohos.net.statistics'
+import { statistics } from '@kit.NetworkKit';
 
 let uidInfo: statistics.UidInfo = {
   uid: 20010037,
@@ -567,8 +567,8 @@ Defines the historical traffic statistics of all applications.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name       | Type                                           | Read-Only|Optional| Description          |
-|-----------|-----------------------------------------------|----|---|--------------|
+| Name       | Type                                           | Read-Only|Optional| Description          |	
+|-----------|-----------------------------------------------|----|---|--------------|	
 | undefined | [uid:number]: [NetStatsInfo](#netstatsinfo10) | No |No|Historical traffic statistics of all applications.|
 
 ## NetStatsInfoSequence<sup>12+</sup>
@@ -579,8 +579,8 @@ Defines the historical traffic statistics of the specified application.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name       | Type                             | Read-Only| Optional|Description          |
-|-----------|---------------------------------|----|---|--------------|
-| startTime | number                          | No |No|Start timestamp, in seconds.|
-| endTime   | number                          | No |No|End timestamp, in seconds.|
+| Name       | Type                             | Read-Only| Optional|Description          |	
+|-----------|---------------------------------|----|---|--------------|	
+| startTime | number                          | No |No|Start timestamp, in seconds.|	
+| endTime   | number                          | No |No|End timestamp, in seconds.|	
 | info      | [NetStatsInfo](#netstatsinfo10) | No |No|Defines the historical traffic statistics of the specified application.|
