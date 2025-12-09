@@ -804,7 +804,7 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 
 在组件绑定输入法前，触发回调。
 
-开发者可以调用IMEClient中的setExtraConfig()方法，给输入法传递自定义消息。
+调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
