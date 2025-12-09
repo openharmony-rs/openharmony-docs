@@ -139,13 +139,13 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
 
    <!-- @[input_case_input_OH_InputMethodController_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 发起解绑请求
-    OH_InputMethodController_Detach(inputMethodProxy);
-    OH_TextEditorProxy_Destroy(textEditorProxy);
-    OH_AttachOptions_Destroy(attachOptions);
-```
+   
+   ``` C++
+   // 发起解绑请求
+   OH_InputMethodController_Detach(inputMethodProxy);
+   OH_TextEditorProxy_Destroy(textEditorProxy);
+   OH_AttachOptions_Destroy(attachOptions);
+   ```
 
 
 ## 完整示例
