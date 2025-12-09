@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_VMInfo
+```
+
 ## 概述
 
 JavaScript虚拟机信息。

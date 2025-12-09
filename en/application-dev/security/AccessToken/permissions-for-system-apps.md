@@ -293,6 +293,30 @@ Allows a system application to set themes, including wallpapers, icons, skins, A
 
 **Valid since**: 11
 
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+Allows an application to read the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+Allows an application to set the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
 Allows an application to query accessibility elements in batches.
@@ -5150,3 +5174,27 @@ Allows an application to capture screenshots, including privacy windows.
 **Supported devices**: general devices
 
 **Valid since**: 13
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+Allows a system application to set the launch reason when starting another application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18
+
+## ohos.permission.ACCESS_SUPER_HUB
+
+Allows an application to access Super Hub.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 12

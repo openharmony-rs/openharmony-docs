@@ -408,7 +408,7 @@ openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): 
 | ------ | ------ |----|----------------------------------------------------|
 | abilityName | string | 是  | 编辑页的ability名称。                                     |
 | formId | string | 是  | 卡片标识。                                              |
-| isMainPage | boolean | 否  | 是否为主编辑页，true表示是主编辑页，false表示不是主编辑页。<br/>默认值：true。 |
+| isMainPage | boolean | 否  | 是否为主编辑页。<br/>-&nbsp;true：表示是主编辑页。<br/>-&nbsp;false：表示不是主编辑页。<br/>默认值：true。 |
 
 **错误码：**
 

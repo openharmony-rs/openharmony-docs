@@ -1,7 +1,7 @@
 # 焦点轴事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  从API version 15开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## onFocusAxisEvent
 
@@ -80,7 +80,9 @@ struct FocusAxisEventExample {
           let absBrake = event.axisMap.get(AxisModel.ABS_BRAKE);
           let absHat0X = event.axisMap.get(AxisModel.ABS_HAT0X);
           let absHat0Y = event.axisMap.get(AxisModel.ABS_HAT0Y);
-          this.axisValue = 'absX: ' + absX + '; absY: ' + absY + '; absZ: ' + absZ + '; absRz: ' + absRz + '; absGas: ' + absGas + '; absBrake: ' + absBrake + '; absHat0X: ' + absHat0X + '; absHat0Y: ' + absHat0Y;
+          this.axisValue =
+            'absX: ' + absX + '; absY: ' + absY + '; absZ: ' + absZ + '; absRz: ' + absRz + '; absGas: ' + absGas +
+              '; absBrake: ' + absBrake + '; absHat0X: ' + absHat0X + '; absHat0Y: ' + absHat0Y;
           this.text = JSON.stringify(event);
         })
       Text(this.axisValue).padding(15)

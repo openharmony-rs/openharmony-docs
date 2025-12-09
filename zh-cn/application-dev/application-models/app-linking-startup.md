@@ -174,12 +174,13 @@ openLink接口提供了两种拉起目标应用的方式，开发者可根据业
 <!-- @[applink_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import common from '@ohos.app.ability.common';
-import { BusinessError } from '@ohos.base';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN_NUMBER = 0xF811;
 const TAG = '[Sample_AppLinking]';
+
 @Entry
 @Component
 struct Index {

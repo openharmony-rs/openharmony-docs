@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_CpuProfiler__* JSVM_CpuProfiler
+```
+
 ## 概述
 
 表示一个JavaScript CPU时间性能分析器。

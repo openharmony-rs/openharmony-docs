@@ -22,7 +22,7 @@
     // 自定义主题色
     public brand: ResourceColor = '#FF75D9';
     // 使用$r，让一级警示色在深色和浅色模式下，设置为不同的颜色
-    public warning: ResourceColor = $r('app.color.start_window_background');
+    public warning: ResourceColor = $r('sys.color.ohos_id_color_warning');
   }
   
   export class AppTheme implements CustomTheme {
@@ -73,7 +73,7 @@
                       .checked(true)
                   }
                   .width('50%')
-
+    
                   Column() {
                     Text('Dark')
                       .fontSize('16fp')
@@ -121,7 +121,7 @@
                   .alignSelf(ItemAlign.Center)
                   .margin({ left: '14fp' })
                   .width('75%')
-
+    
                   Toggle({ type: ToggleType.Switch, isOn: true })
                     .margin({ right: '14fp' })
                     .alignSelf(ItemAlign.Center)
@@ -138,18 +138,15 @@
                 Text('Warning')
                   .width('100%')
                   .margin({ top: '5vp', left: '14fp' })
-                Button() {
-                  Text('Text')
-                    .fontSize(30)
-                    .fontWeight(FontWeight.Bold)
-                }
-                .type(ButtonType.Capsule)
-                .role(ButtonRole.ERROR)
-                .width('40%')
+                Button('Text')
+                  .type(ButtonType.Capsule)
+                  .role(ButtonRole.ERROR)
+                  .width('40%')
               }
               .width('100%')
               .height('70vp')
               .borderRadius('10vp')
+              .backgroundColor(this.menuItemColor)
             }
           }
         }
@@ -354,7 +351,7 @@ dark.json数据示例：
 
 ## 系统缺省token色值
 
-| Token                                      | 场景类别 | Light |           | Dark    |                                              |
+| Token                                      | 场景类别 | Light |    说明       | Dark    |               说明                               |
 |--------------------------------------------|-----| --- |-----------| ------- | -------------------------------------------- |
 | theme.colors.brand                         | 品牌色 |#ff0a59f7| ![](figures/ff0a59f7.png "#ff0a59f7") |#ff317af7|![](figures/ff317af7.png "#ff317af7")|
 | theme.colors.warning                       | 一级警示色 |#ffe84026| ![](figures/ffe84026.png "#ffe84026") |#ffd94838|![](figures/ffd94838.png "#ffd94838")|

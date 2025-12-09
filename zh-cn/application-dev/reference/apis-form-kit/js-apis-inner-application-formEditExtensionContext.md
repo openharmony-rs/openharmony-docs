@@ -57,11 +57,13 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
 
 ```ts
 import { FormEditExtensionAbility } from '@kit.FormKit'
-import { Want,UIExtensionContentSession } from '@kit.AbilityKit';
+import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
 
 const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
 export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   abilityName: string = 'FormEditSecPageAbility'
+
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     try {
       this.context.startSecondPage({

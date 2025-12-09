@@ -311,8 +311,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessin
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 
@@ -338,9 +338,9 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imagePr
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_COMPOSITION类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceGainmap | 指向输入Gainmap的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceGainmap | 指向输入Gainmap的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 
@@ -366,9 +366,9 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* image
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_DECOMPOSITION类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationGainmap | 指向输出Gainmap的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationGainmap | 指向输出Gainmap的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 
@@ -394,7 +394,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_METADATA_GENERATION类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 
@@ -420,8 +420,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_EnhanceDetail(OH_ImageProcessing* i
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 

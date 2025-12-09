@@ -39,6 +39,7 @@ napi_create_reference这个接口内部实现会new一个C++对象，因此，�
 
 ```cpp
 //napi_init.cpp
+#include "napi/native_api.h"
 #include <hilog/log.h> // hilog, 输出日志, 需链接 libhilog_ndk.z.so
 #include <thread> // 创建线程
 #include <unistd.h> // 线程休眠
@@ -180,13 +181,18 @@ napi_value MyTsfnDemo(napi_env env, napi_callback_info info) {
 };
 ```
 
+```ts
+//Index.d.ts
+export const myTsfnDemo: () => void;
+```
+
 以下内容为主线程逻辑，主要用于创建 worker 线程并通知其执行任务。
 
 ```ts
 // 主线程 Index.ets
-import worker, { MessageEvents } from '@ohos.worker';
+import  {worker, MessageEvents } from '@kit.ArkTS';
 
-const mWorker = new worker.ThreadWorker('../workers/Worker');
+const mWorker = new worker.ThreadWorker('../workers/worker');
 mWorker.onmessage = (e: MessageEvents) => {
     const action: string | undefined = e.data?.action;
     if (action === 'kill') {
@@ -203,7 +209,7 @@ mWorker.postMessage({action: 'tsfn-demo'});
 
 ```ts
 // worker.ets
-import worker, { ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@ohos.worker';
+import  {worker, ThreadWorkerGlobalScope, MessageEvents} from '@kit.ArkTS';
 import napiModule from 'libentry.so'; // libentry.so: Node-API 库的模块名称
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;

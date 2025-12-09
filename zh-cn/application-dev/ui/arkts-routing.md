@@ -628,7 +628,7 @@ export struct MyComponent {
 >
 >```ts
 >"dependencies": {
->    "@ohos/library": "file:../library",
+>    "library": "file:../library",
 >    // ...
 > }
 >```
