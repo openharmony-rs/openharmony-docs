@@ -327,7 +327,7 @@ rowsTemplate(value: string)
 
 itemConstraintSize(value: ConstraintSizeOptions)
 
-设置约束尺寸，子组件布局时，进行尺寸范围限制。
+设置约束尺寸，子组件布局时，进行尺寸范围限制。使用方法参考[示例1](#示例1使用基本瀑布流)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -939,6 +939,7 @@ struct WaterFlowDemo {
       .backgroundColor(0xFAEEE0)
       .width('100%')
       .height('100%')
+      .itemConstraintSize({minWidth:80,maxWidth:180,minHeight:80,maxHeight:180})
       // 触底加载数据：滚动到底部时触发分页加载
       .onReachEnd(() => {
         console.info('onReachEnd')
@@ -2036,3 +2037,116 @@ struct WaterFlowContentSizeDemo {
 ```
 
 ![waterFlow_refresh](figures/waterFlow_contentsize.gif)
+
+### 示例11（设置滚动事件）
+
+该示例通过FrameNode中的[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)获取[UIWaterFlowEvent](#uiwaterflowevent19)，并为WaterFlow设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
+
+从API version 19开始，新增UIWaterFlowEvent接口。
+
+<!--code_no_check-->
+```ts
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute.width(100);
+    return this.rootNode;
+  }
+
+  addCommonEvent(frameNode: FrameNode) {
+    // 获取WaterFlow事件
+    let waterFlowEvent: UIWaterFlowEvent | undefined = typeNode.getEvent(frameNode, 'WaterFlow');
+
+    // 设置OnWillScroll事件
+    waterFlowEvent?.setOnWillScroll((scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => {
+      console.info('onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}');
+    });
+
+    // 设置OnDidScroll事件
+    waterFlowEvent?.setOnDidScroll((scrollOffset: number, scrollState: ScrollState) => {
+      console.info('onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}');
+    });
+
+    // 设置OnReachStart事件
+    waterFlowEvent?.setOnReachStart(() => {
+      console.info('onReachStart');
+    });
+
+    // 设置OnReachEnd事件
+    waterFlowEvent?.setOnReachEnd(() => {
+      console.info('onReachEnd');
+    });
+
+    // 设置OnScrollStart事件
+    waterFlowEvent?.setOnScrollStart(() => {
+      console.info('onScrollStart');
+    });
+
+    // 设置OnScrollStop事件
+    waterFlowEvent?.setOnScrollStop(() => {
+      console.info('onScrollStop');
+    });
+
+    // 设置OnScrollFrameBegin事件
+    waterFlowEvent?.setOnScrollFrameBegin((offset: number, state: ScrollState) => {
+      console.info('onScrollFrameBegin offset = ${offset}, state = ${state}');
+      return undefined;
+    });
+
+    // 设置OnScrollIndex事件
+    waterFlowEvent?.setOnScrollIndex((first: number, last: number) => {
+      console.info('onScrollIndex start = ${first}, end = ${last}');
+    });
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State index: number = 0;
+  private myNodeController: MyNodeController = new MyNodeController();
+  @State numbers: string[] = [];
+  @State heights: number[] = [];
+
+  aboutToAppear() {
+    for (let i = 0; i < 30; i++) {
+      this.numbers.push('${i+1}');
+      this.heights.push(70 + Math.floor(Math.random() * 60));
+    }
+  }
+
+  build() {
+    Column() {
+      Button('add CommonEvent to WaterFlow')
+        .onClick(() => {
+          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!)
+        })
+      WaterFlow() {
+        ForEach(this.numbers, (day: string, index: number) => {
+          FlowItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(this.heights[index])
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+        }, (day: string, index: number) => index.toString() + day)
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .enableScrollInteraction(true)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+      NodeContainer(this.myNodeController)
+    }.width('100%')
+  }
+}
+```
