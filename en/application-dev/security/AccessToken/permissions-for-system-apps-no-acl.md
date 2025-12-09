@@ -173,18 +173,6 @@ Allows a system service to enable distributed hardware resources.
 
 **Valid since**: 11
 
-## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
-
-Allows a UIExtensionAbility to be displayed on the locked screen.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 14
-
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 
 Allows an application to query and configure user identity authentication policies, and verify the authentication result.
