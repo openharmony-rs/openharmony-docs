@@ -4025,12 +4025,15 @@
         - 模块<!--localization-module-->
           - [rawfile](reference/apis-localization-kit/capi-rawfile.md)
           - [resourcemanager](reference/apis-localization-kit/capi-resourcemanager.md)
+          - [i18n](reference/apis-localization-kit/capi-i18n.md)
         - 头文件<!--localization-headerfile-->
           - [ohresmgr.h](reference/apis-localization-kit/capi-ohresmgr-h.md)
           - [raw_dir.h](reference/apis-localization-kit/capi-raw-dir-h.md)
           - [raw_file.h](reference/apis-localization-kit/capi-raw-file-h.md)
           - [raw_file_manager.h](reference/apis-localization-kit/capi-raw-file-manager-h.md)
           - [resmgr_common.h](reference/apis-localization-kit/capi-resmgr-common-h.md)
+          - [errorcode.h](reference/apis-localization-kit/capi-errorcode-h.md)
+          - [timezone.h](reference/apis-localization-kit/capi-timezone-h.md)
         - 结构体<!--localization-struct-->
           - [RawDir](reference/apis-localization-kit/capi-rawfile-rawdir.md)
           - [RawFileDescriptor](reference/apis-localization-kit/capi-rawfile-rawfiledescriptor.md)
@@ -4039,6 +4042,12 @@
           - [RawFile64](reference/apis-localization-kit/capi-rawfile-rawfile64.md)
           - [NativeResourceManager](reference/apis-localization-kit/capi-rawfile-nativeresourcemanager.md)
           - [ResourceManager_Configuration](reference/apis-localization-kit/capi-resourcemanager-resourcemanager-configuration.md)
+          - [DateTimeRule](reference/apis-localization-kit/capi-i18n-datetimerule.md)
+          - [InitialTimeZoneRule](reference/apis-localization-kit/capi-i18n-initialtimezonerule.md)
+          - [TimeArrayTimeZoneRule](reference/apis-localization-kit/capi-i18n-timearraytimezonerule.md)
+          - [AnnualTimeZoneRule](reference/apis-localization-kit/capi-i18n-annualtimezonerule.md)
+          - [TimeZoneRules](reference/apis-localization-kit/capi-i18n-timezonerules.md)
+          - [TimeZoneRuleQuery](reference/apis-localization-kit/capi-i18n-timezonerulequery.md)
       - 错误码<!--localization-arkts-errcode-->
         - [I18n错误码](reference/apis-localization-kit/errorcode-i18n.md)
         - [资源管理错误码](reference/apis-localization-kit/errorcode-resource-manager.md)
