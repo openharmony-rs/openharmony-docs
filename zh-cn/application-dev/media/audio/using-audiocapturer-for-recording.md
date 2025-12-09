@@ -1,4 +1,4 @@
-# 使用AudioCapturer开发音频录制功能
+# 使用AudioCapturer开发音频录制功能(ArkTs)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
