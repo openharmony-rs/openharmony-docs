@@ -222,16 +222,16 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                break;
            case NODE_ON_DRAG_START: {
                OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_START Event Receive");
-               // ···
+               // ...
                break;
            }
            case NODE_ON_DRAG_END: {
                OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_END Event Receive");
-               // ···
+               // ...
                break;
            }
            default:
-               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKOWN Event Receive");
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKNOWN Event Receive");
                break;
        }
    });
@@ -327,7 +327,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                "OH_ArkUI_DragEvent_GetDataTypes returnValue = %{public}s", eventTypeArray[i]);
        }
    }
-   // ···
+   // ...
                case NODE_ON_DROP: {
                    OH_ArkUI_DragEvent_SetSuggestedDropOperation(dragEvent, ARKUI_DROP_OPERATION_COPY);
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DROP EventReceiver");
@@ -475,11 +475,11 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        switch (eventType) {
            case NODE_ON_TOUCH_INTERCEPT: {
                OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_TOUCH_INTERCEPT EventReceiver");
-               // ···
+               // ...
                break;
            }
            default: {
-               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKOWN EventReceiver");
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKNOWN EventReceiver");
                break;
            }
        }
@@ -515,7 +515,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                    OH_ArkUI_DragAction_Dispose(action);
                    break;
                }
-               // ···
+               // ...
    void SetDragActionData()
    {
        // 创建OH_UdmfRecord对象
@@ -609,7 +609,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                    OH_ArkUI_DragAction_UnregisterStatusListener(action);
                    break;
                }
-               // ···
+               // ...
    void GetUdmfDataText(ArkUI_DragEvent* dragEvent)
    {
        // 获取UDMF data
