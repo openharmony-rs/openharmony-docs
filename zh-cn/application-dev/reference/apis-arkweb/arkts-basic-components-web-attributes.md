@@ -1503,7 +1503,7 @@ mediaOptions(options: WebMediaOptions)
 
 **参数：**
 
-| 参数名  | 类型  | 必填  | 说明 |
+| 参数名     | 类型                                  | 必填   | 说明                                     |
 | ------- | ------------------------------------- | ---- | ---------------------------------------- |
 | options | [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) | 是    | 设置Web的媒体策略。<br>属性参数更新后需重新播放音频方可生效。<br>传入undefined或null时为`{resumeInterval: 0, audioExclusive: true}` |
 
