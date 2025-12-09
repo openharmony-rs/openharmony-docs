@@ -235,7 +235,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getAlphaZeroTransparentProportion(): number
 
-获取图像中透明度为0的像素占比。
+获取图像中完全透明的像素占比。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -247,7 +247,7 @@ getAlphaZeroTransparentProportion(): number
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| number | 透明度为0的像素占比。 |
+| number | 完全透明的像素占比，比例的取值范围为(0,1]。 |
 
 **错误码：**
 
