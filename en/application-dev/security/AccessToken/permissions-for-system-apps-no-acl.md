@@ -193,7 +193,7 @@ Allows an application to query and configure user identity authentication polici
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Enable via ACL**: true
 
 **Valid since**: 18
 
