@@ -80,155 +80,155 @@
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
 
    <!-- @[input_case_input_KeyboardControler358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
-``` TypeScript
-class KeyboardController {
-  private barPosition: number = 0;
-  private keyCodes: Array<number> = [];
-  private mContext: InputMethodExtensionContext | undefined;
-  private panel: inputMethodEngine.Panel | undefined;
-  private isSpecialKeyPress: boolean = false;
-  private isKeyboardShow: boolean = false;
-  private inputHandle: InputHandler = InputHandler.getInstance();
-  private mKeyboardDelegate: inputMethodEngine.KeyboardDelegate | undefined;
-
-  constructor() {
-    this.mContext = undefined;
-    this.panel = undefined;
-    this.mKeyboardDelegate = undefined;
-  }
-
-  public onCreate(context: InputMethodExtensionContext): void {
-    this.mContext = context;
-    this.inputHandle.addLog('onCreate');
-    this.initWindow();
-    this.registerListener();
-  }
-
-  public onDestroy(): void {
-    this.inputHandle.addLog('onDestroy');
-    this.unRegisterListener();
-    this.destroyPanel();
-  }
-
-  private initWindow(): void {
-    if (this.mContext === undefined) {
-      return;
-    }
-    this.inputHandle.addLog('initWindow');
-    let dis = display.getDefaultDisplaySync();
-    this.inputHandle.addLog("initWindow-oncall display");
-    let dWidth = dis.width;
-    let dHeight = dis.height;
-    let navigationBar_height = NAVIGATIONBAR_HEIGHT_DEFAULT;
-    let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
-    AppStorage.setOrCreate('windowWidth', dis.width);
-    AppStorage.setOrCreate('windowHeight', dis.height);
-    let isLandscape = false;
-    let isRkDevice = false;
-    if (dis.width > dis.height) {
-      isLandscape = true;
-      AppStorage.setOrCreate('isLandscape', true);
-    } else {
-      AppStorage.setOrCreate('isLandscape', false);
-    }
-    if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
-      navigationBar_height = 0;
-      keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
-    } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
-      navigationBar_height = 0;
-      keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
-    } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
-      navigationBar_height = KEYBOARD_HEIGHT_RATE_DEFAULT;
-      AppStorage.setOrCreate('isRkDevice', true);
-      isRkDevice = true;
-    } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
-      navigationBar_height = 0;
-      keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
-    } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
-      navigationBar_height = 0;
-      keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
-    }
-    let keyHeight = dHeight * keyHeightRate;
-    this.barPosition = dHeight - keyHeight - navigationBar_height;
-    this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
-    this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
-    let panelInfo: inputMethodEngine.PanelInfo = {
-      type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
-      flag: inputMethodEngine.PanelFlag.FLG_FIXED
-    }
-    let inputStyle = StyleConfiguration.getInputStyle(isLandscape, isRkDevice, deviceInfo.deviceType);
-    AppStorage.setOrCreate('inputStyle', inputStyle);
-    inputMethodAbility.createPanel(this.mContext, panelInfo).then((panel: inputMethodEngine.Panel) => {
-      this.panel = panel;
-      panel.resize(dWidth, keyHeight).then(() => {
-        panel.moveTo(0, this.barPosition).then(() => {
-          panel.setUiContent('pages/Index').then(() => {
-            this.inputHandle.addLog('loadContent finished');
-          })
-        })
-      })
-    })
-  }
-
-  private destroyPanel(): void {
-    this.inputHandle.addLog('destroyPanel');
-    if (this.panel) {
-      inputMethodAbility.destroyPanel(this.panel);
-    }
-  }
-
-  private resizePanel(): void {
-    this.inputHandle.addLog('resizeWindow');
-    let dis = display.getDefaultDisplaySync();
-    this.inputHandle.addLog('resizeWindow-oncall display');
-    let dWidth = dis.width;
-    let dHeight = dis.height;
-    let navigationBar_height = dHeight * 0.07; // 有些产品导航栏高度为0，默认为0.07
-    let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
-    AppStorage.setOrCreate<number>('windowWidth', dis.width);
-    AppStorage.setOrCreate<number>('windowHeight', dis.height);
-    let isLandscape = false;
-    let isRkDevice = false;
-    if (dis.width > dis.height) {
-      isLandscape = true;
-      AppStorage.setOrCreate('isLandscape', true);
-    } else {
-      AppStorage.setOrCreate('isLandscape', false);
-    }
-    if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
-      navigationBar_height = 0;
-      keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
-    } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
-      navigationBar_height = 0;
-      keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
-    } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
-      navigationBar_height = KEYBOARD_HEIGHT_RATE_DEFAULT;
-      AppStorage.setOrCreate('isRkDevice', true);
-      isRkDevice = true;
-    } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
-      navigationBar_height = 0;
-      keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
-    } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
-      navigationBar_height = 0;
-      keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
-    }
-    let keyHeight = dHeight * keyHeightRate;
-    let inputStyle = StyleConfiguration.getInputStyle(isLandscape, isRkDevice, deviceInfo.deviceType);
-    AppStorage.setOrCreate('inputStyle', inputStyle);
-    if (this.panel) {
-      this.panel.resize(dWidth, keyHeight).then(() => {
-        if (this.panel) {
-          this.panel.moveTo(0, dHeight - keyHeight - navigationBar_height).then(() => {
-            this.inputHandle.addLog('resizePanel-moveTo success');
-          })
-        }
-      }).catch((err: BusinessError) => {
-        this.inputHandle.addLog(`resizePanel-moveTo err = ${err.code} ${err.message}`);
-      })
-    }
-  }
-```
+   
+   ``` TypeScript
+   class KeyboardController {
+     private barPosition: number = 0;
+     private keyCodes: Array<number> = [];
+     private mContext: InputMethodExtensionContext | undefined;
+     private panel: inputMethodEngine.Panel | undefined;
+     private isSpecialKeyPress: boolean = false;
+     private isKeyboardShow: boolean = false;
+     private inputHandle: InputHandler = InputHandler.getInstance();
+     private mKeyboardDelegate: inputMethodEngine.KeyboardDelegate | undefined;
+   
+     constructor() {
+       this.mContext = undefined;
+       this.panel = undefined;
+       this.mKeyboardDelegate = undefined;
+     }
+   
+     public onCreate(context: InputMethodExtensionContext): void {
+       this.mContext = context;
+       this.inputHandle.addLog('onCreate');
+       this.initWindow();
+       this.registerListener();
+     }
+   
+     public onDestroy(): void {
+       this.inputHandle.addLog('onDestroy');
+       this.unRegisterListener();
+       this.destroyPanel();
+     }
+   
+     private initWindow(): void {
+       if (this.mContext === undefined) {
+         return;
+       }
+       this.inputHandle.addLog('initWindow');
+       let dis = display.getDefaultDisplaySync();
+       this.inputHandle.addLog("initWindow-oncall display");
+       let dWidth = dis.width;
+       let dHeight = dis.height;
+       let navigationBar_height = NAVIGATIONBAR_HEIGHT_DEFAULT;
+       let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
+       AppStorage.setOrCreate('windowWidth', dis.width);
+       AppStorage.setOrCreate('windowHeight', dis.height);
+       let isLandscape = false;
+       let isRkDevice = false;
+       if (dis.width > dis.height) {
+         isLandscape = true;
+         AppStorage.setOrCreate('isLandscape', true);
+       } else {
+         AppStorage.setOrCreate('isLandscape', false);
+       }
+       if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
+       } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
+       } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
+         navigationBar_height = KEYBOARD_HEIGHT_RATE_DEFAULT;
+         AppStorage.setOrCreate('isRkDevice', true);
+         isRkDevice = true;
+       } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
+       } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
+       }
+       let keyHeight = dHeight * keyHeightRate;
+       this.barPosition = dHeight - keyHeight - navigationBar_height;
+       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
+       this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
+       let panelInfo: inputMethodEngine.PanelInfo = {
+         type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
+         flag: inputMethodEngine.PanelFlag.FLG_FIXED
+       }
+       let inputStyle = StyleConfiguration.getInputStyle(isLandscape, isRkDevice, deviceInfo.deviceType);
+       AppStorage.setOrCreate('inputStyle', inputStyle);
+       inputMethodAbility.createPanel(this.mContext, panelInfo).then((panel: inputMethodEngine.Panel) => {
+         this.panel = panel;
+         panel.resize(dWidth, keyHeight).then(() => {
+           panel.moveTo(0, this.barPosition).then(() => {
+             panel.setUiContent('pages/Index').then(() => {
+               this.inputHandle.addLog('loadContent finished');
+             })
+           })
+         })
+       })
+     }
+   
+     private destroyPanel(): void {
+       this.inputHandle.addLog('destroyPanel');
+       if (this.panel) {
+         inputMethodAbility.destroyPanel(this.panel);
+       }
+     }
+   
+     private resizePanel(): void {
+       this.inputHandle.addLog('resizeWindow');
+       let dis = display.getDefaultDisplaySync();
+       this.inputHandle.addLog('resizeWindow-oncall display');
+       let dWidth = dis.width;
+       let dHeight = dis.height;
+       let navigationBar_height = dHeight * 0.07; // 有些产品导航栏高度为0，默认为0.07
+       let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
+       AppStorage.setOrCreate<number>('windowWidth', dis.width);
+       AppStorage.setOrCreate<number>('windowHeight', dis.height);
+       let isLandscape = false;
+       let isRkDevice = false;
+       if (dis.width > dis.height) {
+         isLandscape = true;
+         AppStorage.setOrCreate('isLandscape', true);
+       } else {
+         AppStorage.setOrCreate('isLandscape', false);
+       }
+       if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
+       } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
+       } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
+         navigationBar_height = KEYBOARD_HEIGHT_RATE_DEFAULT;
+         AppStorage.setOrCreate('isRkDevice', true);
+         isRkDevice = true;
+       } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
+       } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
+       }
+       let keyHeight = dHeight * keyHeightRate;
+       let inputStyle = StyleConfiguration.getInputStyle(isLandscape, isRkDevice, deviceInfo.deviceType);
+       AppStorage.setOrCreate('inputStyle', inputStyle);
+       if (this.panel) {
+         this.panel.resize(dWidth, keyHeight).then(() => {
+           if (this.panel) {
+             this.panel.moveTo(0, dHeight - keyHeight - navigationBar_height).then(() => {
+               this.inputHandle.addLog('resizePanel-moveTo success');
+             })
+           }
+         }).catch((err: BusinessError) => {
+           this.inputHandle.addLog(`resizePanel-moveTo err = ${err.code} ${err.message}`);
+         })
+       }
+     }
+   ```
 
 
    <!-- @[input_case_input_KeyboardControler507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
