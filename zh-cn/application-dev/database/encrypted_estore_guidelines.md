@@ -817,7 +817,7 @@ export class ECStoreManager {
 
 <!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-```ts
+``` TypeScript
 import { AbilityConstant, contextConstant, UIAbility, Want, application } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
