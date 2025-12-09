@@ -217,7 +217,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
 构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
 
-s
+
 ## list命令
 
 展示当前系统支持的性能事件类型，事件类型可用于record和stat命令-e选项的参数。
