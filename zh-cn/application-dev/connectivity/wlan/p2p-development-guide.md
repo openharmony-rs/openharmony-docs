@@ -120,23 +120,23 @@ import { wifiManager } from '@kit.ConnectivityKit';
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 注册"p2pPeerDeviceChange"事件回调，并在回调实现中执行P2P连接。
    <!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
-
-``` TypeScript
-connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
-  promptAction.showToast({ message : 'connect to device' })
-  hilog.info(TAG , `connect deviceAddress=${ p2pScanInfo.deviceAddress }`)
-  hilog.info(TAG , `p2pScanInfo:` + JSON.stringify(p2pScanInfo))
-  let config: wifi.WifiP2PConfig = {
-    deviceAddress : p2pScanInfo.deviceAddress,
-    netId : - 2 ,
-    deviceAddressType: 1,
-    passphrase : '' ,
-    groupName : '' ,
-    goBand : 0
-  }
-  wifi.p2pConnect(config)
-}
-```
+   
+   ``` TypeScript
+   connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
+     promptAction.showToast({ message : 'connect to device' });
+     hilog.info(TAG , `connect deviceAddress=${ p2pScanInfo.deviceAddress }`);
+     hilog.info(TAG , `p2pScanInfo:` + JSON.stringify(p2pScanInfo));
+     let config: wifi.WifiP2PConfig = {
+       deviceAddress : p2pScanInfo.deviceAddress,
+       netId : - 2 ,
+       deviceAddressType: 1,
+       passphrase : '' ,
+       groupName : '' ,
+       goBand : 0
+     }
+     wifi.p2pConnect(config);
+   }
+   ```
 5. 开始P2P设备发现。
    <!-- @[discover_p2p_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
    
