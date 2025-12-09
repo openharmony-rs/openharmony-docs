@@ -933,7 +933,7 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[rdb_encryptedEStoreGuidelines_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Index.ets) -->
 
-```ts
+``` TypeScript
 import { storeManager, e_secretKeyObserver } from '../entryability/EntryAbility';
 import { relationalStore } from '@kit.ArkData';
 import { Store } from './Store';
