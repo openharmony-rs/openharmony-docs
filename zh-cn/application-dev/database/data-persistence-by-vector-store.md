@@ -366,7 +366,7 @@ SQL语句中的函数，如下所示：
    示例代码如下：
 
    <!--@[vector_TS_execute_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
+   
    ``` TypeScript
    // 基础用法
    try {
@@ -377,7 +377,7 @@ SQL语句中的函数，如下所示：
    } catch (err) {
      console.error(`create index failed, code is ${err.code}, message is ${err.message}`);
    }
-
+   
    // 扩展语法
    try {
      // 设置QUEUE_SIZE为20，OUT_DEGREE为50
