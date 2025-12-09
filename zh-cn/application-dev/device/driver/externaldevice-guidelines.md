@@ -226,7 +226,7 @@
       data.writeString(this.message); 
 
       try {
-        this?.remote.sendMessageRequest(REQUEST_CODE, data, reply, option);
+        this.remote?.sendMessageRequest(REQUEST_CODE, data, reply, option);
         // 获取驱动返回信息"Hello world"
         this.message = reply.readString();
         hilog.info(0, 'testTag', `sendMessageRequest, message: ${this.message}}`);
