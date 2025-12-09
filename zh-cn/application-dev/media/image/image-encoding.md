@@ -55,7 +55,7 @@
    - 编码为HDR内容。
       
      <!-- @[packOpts_isHdr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-      
+     
      ``` TypeScript
      // 资源本身为hdr且设备支持HDR编码则会编码为hdr内容(需要资源本身为hdr且设备支持HDR编码，支持jpeg格式)。
      packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
