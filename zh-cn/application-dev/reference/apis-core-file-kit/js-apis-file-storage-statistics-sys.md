@@ -771,13 +771,9 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userId: number = 100;
-  let extBundleStats: storageStatistics.ExtBundleStats = {
-    businessName: 'com.example.storagedemo',
-    size: 100,
-    flag: true
-  }
-  storageStatistics.getExtBundleStats(userId, extBundleStats.businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
-    console.info("getExtBundleStats successfully");
+  let businessName: string = 'com.example.storagedemo';
+  storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
+    console.info("getExtBundleStats successfully.");
   }).catch((err: BusinessError) => {
     console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
