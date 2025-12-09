@@ -69,8 +69,9 @@
 
 关系型数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常情况（抛出14800011），此时需要对数据库进行重建并恢复数据，以保障正常的应用开发，具体可见[关系型数据库异常重建](data-backup-and-restore.md#关系型数据库异常重建)。
 
-1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。推荐使用事务接口保证数据库升级流程原子性。
+1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。推荐使用事务接口保证数据库升级流程原子性。</br>
    示例代码如下所示：
+   
    Stage模型示例：
      
    <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
