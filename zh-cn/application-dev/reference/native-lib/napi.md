@@ -738,6 +738,7 @@ libace_napi.z.so
 |FUNC|napi_create_strong_sendable_reference|创建指向Sendable ArkTS对象的Sendable强引用。|22|
 |FUNC|napi_delete_strong_sendable_reference|删除Sendable强引用。|22|
 |FUNC|napi_get_strong_sendable_reference_value|根据Sendable强引用获取其关联的ArkTS对象值。|22|
+|FUNC|napi_throw_business_error|抛出一个带文本信息的ArkTS Error, 其错误对象的code属性类型为number类型。|23|
 
 > 说明：
 >
@@ -1658,4 +1659,27 @@ napi_status napi_get_strong_sendable_reference_value(napi_env env,
 
 如果API成功，则返回napi_ok。
 
+### napi_throw_business_error
+
+```cpp
+napi_status napi_throw_business_error(napi_env env,
+                                      int32_t errorCode,
+                                      const char* msg);
+```
+
+**描述：**
+
+抛出一个带文本信息的ArkTS Error, 指定错误码为int32_t类型，错误信息为字符串类型。使用该接口需要注意以下几点：
+1. 入参env和msg不可以为nullptr，否则会返回napi_invalid_arg。
+2. 当前上下文中存在ArkTS Error的时候，调用接口会返回napi_pending_exception。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+- [in] errorCode：int32_t类型的错误码，用于设置在错误对象上。
+- [in] msg：表示要与错误关联的文本的C字符串。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
 <!--no_check-->
