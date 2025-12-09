@@ -1183,7 +1183,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not allowed on current device. |
 | 16000071 | App clone is not supported. |
 | 16000072 | App clone or multi-instance is not supported. |
 | 16000073 | The app clone index is invalid. |
