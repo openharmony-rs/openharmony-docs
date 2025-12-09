@@ -110,7 +110,7 @@ getPinchAxisScaleValue(): number
 
 ## 示例
 
-该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[axisPinch](./ts-gesture-customize-judge.md#baseevent8)和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例。
+该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[axisPinch](./ts-gesture-customize-judge.md#属性)和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例。
 
 ```ts
 // xxx.ets
