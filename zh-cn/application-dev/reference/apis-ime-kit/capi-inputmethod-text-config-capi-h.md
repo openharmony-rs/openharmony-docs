@@ -160,7 +160,7 @@ InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | 指向即将被设置值的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例的指针。 |
-| bool supported | 表示输入框是否支持预上屏。 |
+| bool supported | 表示输入框是否支持预上屏，true为支持，false为不支持。 |
 
 **返回：**
 
@@ -345,7 +345,7 @@ InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfi
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | 指向即将被获取值的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例的指针。 |
-| bool *supported | 表示输入框是否支持预上屏。 |
+| bool *supported | 表示输入框是否支持预上屏，true为支持，false为不支持。 |
 
 **返回：**
 
