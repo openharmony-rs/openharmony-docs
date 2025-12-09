@@ -330,3 +330,4 @@ VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint
 | -- | -- |
 | VkResult | 返回一个VkResult类型的错误码，具体返回类型如下：<br> 返回VK_SUCCESS，表示执行成功。<br> 返回VK_ERROR_DEVICE_LOST，表示Vulkan设备链接丢失。<br> 返回VK_ERROR_OUT_OF_HOST_MEMORY，表示主机内存不足。 |
 
+
