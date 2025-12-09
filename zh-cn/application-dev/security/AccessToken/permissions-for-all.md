@@ -569,6 +569,8 @@
 
 **起始版本**：20
 
+**变更信息：** API 20-22，该权限仅支持在PC/2in1设备上申请；从API23开始，增加支持在平板上申请。
+
 ## ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN
 
 允许应用在锁屏状态下被启动。
