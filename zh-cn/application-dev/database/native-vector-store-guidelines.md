@@ -140,22 +140,23 @@ libnative_rdb_ndk.z.so
 4. 获取到OH_Rdb_Store后，修改或删除数据。示例代码如下：
 
    <!--@[vector_OH_Rdb_ExecuteV2_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    // 不使用参数绑定修改数据
    OH_Rdb_ExecuteV2(store_, "update test set data1 = '[5.1, 6.1]' where id = 0;", nullptr, nullptr);
-
+       
    // 使用参数绑定修改数据
    float test1[2] = { 5.5, 6.6 };
    OH_Data_Values *values1 = OH_Values_Create();
-   OH_Values_PutFloatVector(values1, test1, 2);
+   size_t len1 = sizeof(test1) / sizeof(test1[0]);
+   OH_Values_PutFloatVector(values1, test1, len1);
    OH_Values_PutInt(values1, 1);
    OH_Rdb_ExecuteV2(store_, "update test set data1 = ? where id = ?", values1, nullptr);
    OH_Values_Destroy(values1);
-
+       
    // 不使用参数绑定删除数据
    OH_Rdb_ExecuteV2(store_, "delete from test where id = 0", nullptr, nullptr);
-
+       
    // 使用参数绑定删除数据
    OH_Data_Values *values2 = OH_Values_Create();
    OH_Values_PutInt(values2, 1);
