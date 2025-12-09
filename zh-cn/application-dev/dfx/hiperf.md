@@ -199,7 +199,7 @@ See 'hiperf help [command]' for more information on a specific command.
 
 ## debug应用
 
-hiperf record/stat -p [pid] 命令采集的进程应为“使用调试证书签名的应用”。
+使用 `hiperf record/stat -p [pid]` 命令采集的进程应为使用调试证书签名的应用。
 
 确认命令指定的应用是否为可调试应用，可执行hdc shell "bm dump -n bundlename | grep appProvisionType"查询，预期返回信息为"appProvisionType": "debug"。
 
