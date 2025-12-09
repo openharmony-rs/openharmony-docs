@@ -1187,7 +1187,7 @@ struct ImageEffectsExample {
 
 ### 示例2（设置组件线性渐变模糊效果）
 
-该示例主要演示通过linearGradientBlur设置组件的内容线性渐变模糊效果。
+该示例主要演示通过[linearGradientBlur](#lineargradientblur12)设置组件的内容线性渐变模糊效果。
 
 ```ts
 // xxx.ets
@@ -1215,7 +1215,7 @@ struct ImageExample1 {
 
 ### 示例3（设置离屏渲染效果）
 
-该示例主要演示通过renderGroup来设置组件是否先整体离屏渲染绘制后，再与父控件融合绘制。
+该示例主要演示通过[renderGroup](#rendergroup10)来设置组件是否先整体离屏渲染绘制后，再与父控件融合绘制。
 
 ```ts
 // xxx.ets
@@ -1268,7 +1268,7 @@ struct RenderGroupExample {
 
 ### 示例4（当前组件内容与下方画布内容混合）
 
-该示例主要演示通过blendMode将当前组件内容与下方画布内容混合。
+该示例主要演示通过[blendMode](#blendmode11)将当前组件内容与下方画布内容混合。
 
 ```ts
 // xxx.ets
@@ -1313,7 +1313,7 @@ struct Index {
 
 ### 示例5（前景智能取反色）
 
-该示例主要通过InvertOptions来实现前景智能取反色。
+该示例主要通过[InvertOptions](#invertoptions11对象说明)来实现前景智能取反色。
 
 ```ts
 // xxx.ets
@@ -1353,7 +1353,7 @@ struct Index {
 
 ### 示例6（设置同层阴影不重叠效果）
 
-该示例主要通过useShadowBatching搭配shadow实现同层阴影不重叠效果。
+该示例主要通过[useShadowBatching](#useshadowbatching11)搭配[shadow](#shadow)实现同层阴影不重叠效果。
 
 ```ts
 // xxx.ets
@@ -1449,7 +1449,7 @@ struct UseShadowBatchingExample {
 
 ### 示例7（设置组件图像球面效果）
 
-该示例主要演示通过sphericalEffect设置组件的图像球面效果。
+该示例主要演示通过[sphericalEffect](#sphericaleffect12)设置组件的图像球面效果。
 
 ```ts
 // xxx.ets
@@ -1486,7 +1486,7 @@ struct SphericalEffectExample {
 
 ### 示例8（设置组件图像渐亮效果）
 
-该示例主要演示通过lightUpEffect设置组件的图像渐亮效果。
+该示例主要演示通过[lightUpEffect](#lightupeffect12)设置组件的图像渐亮效果。
 
 ```ts
 // xxx.ets
@@ -1522,7 +1522,7 @@ struct LightUpExample {
 
 ### 示例9（设置组件图像边缘像素扩展效果）
 
-该示例主要演示通过pixelStretchEffect设置组件的图像边缘像素扩展效果。
+该示例主要演示通过[pixelStretchEffect](#pixelstretcheffect12)设置组件的图像边缘像素扩展效果。
 
 ```ts
 // xxx.ets
@@ -1560,7 +1560,7 @@ struct PixelStretchExample {
 
 ### 示例10（系统导航条智能反色）
 
-该示例主要演示通过systemBarEffect来实现系统导航条智能反色。
+该示例主要演示通过[systemBarEffect](#systembareffect12)来实现系统导航条智能反色。
 
 ```ts
 // xxx.ets
