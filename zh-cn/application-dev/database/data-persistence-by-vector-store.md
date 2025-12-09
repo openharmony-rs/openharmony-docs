@@ -409,7 +409,7 @@ SQL语句中的函数，如下所示：
     示例代码如下：
 
    <!--@[vector_TS_execute_gsdiskann](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
+   
    ``` TypeScript
    try {
      // 手动触发异步删除整理，对向量数据库下所有gsdiskann执行磁盘碎片回收
