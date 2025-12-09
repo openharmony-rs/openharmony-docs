@@ -715,8 +715,8 @@ ArkTS-Sta示例：
   let data = rpc.MessageSequence.create();
   data.writeInt(12);
   data.writeString("sequence");
-  let number = data.readInt();
-  hilog.info(0x0000, 'testTag', 'RpcClient: number is ' + number);
+  let number1 = data.readInt();
+  hilog.info(0x0000, 'testTag', 'RpcClient: number is ' + number1);
   try {
     data.rewindRead(0);
   } catch (error) {
@@ -793,8 +793,8 @@ ArkTS-Sta示例：
     hilog.error(0x0000, 'testTag', 'rpc rewindWrite fail, errorMessage ' + e.message);
   }
   data.writeInt(5);
-  let number = data.readInt();
-  hilog.info(0x0000, 'testTag', 'RpcClient: rewindWrite is: ' + number);
+  let number1 = data.readInt();
+  hilog.info(0x0000, 'testTag', 'RpcClient: rewindWrite is: ' + number1);
   ```
 
 ### writeByte
@@ -2149,7 +2149,7 @@ ArkTS-Sta示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let data = rpc.MessageSequence.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
+  let ByteArrayVar: Array<Int> = [1, 2, 3, 4, 5];
   try {
     data.writeByteArray(ByteArrayVar);
   } catch (error) {
@@ -2158,7 +2158,7 @@ ArkTS-Sta示例：
     hilog.error(0x0000, 'testTag', 'rpc write byteArray fail, errorMessage ' + e.message);
   }
   try {
-    let array: Array<int> = new Array(5);
+    let array: Array<int> = new Array<int>(5);
     data.readByteArray(array);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
@@ -2223,7 +2223,7 @@ ArkTS-Sta示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let data = rpc.MessageSequence.create();
-  let byteArrayVar = [1, 2, 3, 4, 5];
+  let byteArrayVar: Array<Int> = [1, 2, 3, 4, 5];
   try {
     data.writeByteArray(byteArrayVar);
   } catch (error) {
@@ -2370,7 +2370,7 @@ ArkTS-Sta示例：
     hilog.error(0x0000, 'testTag', 'rpc write shortArray fail, errorMessage ' + e.message);
   }
   try {
-    let array: Array<int> = new Array(3);
+    let array: Array<int> = new Array<int>(3);
     data.readShortArray(array);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
@@ -2781,7 +2781,7 @@ ArkTS-Sta示例：
     hilog.error(0x0000, 'testTag', 'rpc write longArray fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'rpc write longArray fail, errorMessage ' + e.message);
   }
-  let array: Array<long> = new Array(3);
+  let array: Array<long> = new Array<long>(3);
   try {
     data.readLongArray(array);
   } catch (error) {
@@ -2992,7 +2992,7 @@ ArkTS-Sta示例：
     hilog.error(0x0000, 'testTag', 'rpc write floatArray fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'rpc write floatArray fail, errorMessage ' + e.message);
   }
-  let array: Array<double> = new Array(3);
+  let array: Array<double> = new Array<double>(3);
   try {
     data.readFloatArray(array);
   } catch (error) {
@@ -3536,7 +3536,7 @@ ArkTS-Sta示例：
     hilog.error(0x0000, 'testTag', 'rpc write charArray fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'rpc write charArray fail, errorMessage ' + e.message);
   }
-  let array: Array<int> = new Array(3);
+  let array: Array<int> = new Array<int>(3);
   try {
     data.readCharArray(array);
   } catch (error) {
