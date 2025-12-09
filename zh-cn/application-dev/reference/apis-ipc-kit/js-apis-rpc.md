@@ -801,7 +801,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: writeByte(val: number): void
 
-ArkTS-Dyn: writeByte(val: int): void
+ArkTS-Sta: writeByte(val: int): void
 
 将字节值写入MessageSequence实例。
 
@@ -2718,7 +2718,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: readLongArray(dataIn: number[]): void
 
-ArkTS-Dyn: readLongArray(dataIn: long[]): void
+ArkTS-Sta: readLongArray(dataIn: long[]): void
 
 从MessageSequence实例读取的长整数数组。
 
@@ -2784,6 +2784,7 @@ ArkTS-Sta示例：
   let array: Array<long> = new Array<long>(3);
   try {
     data.readLongArray(array);
+    hilog.info(0x0000, 'testTag', 'readLongArray is ' + array);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     hilog.error(0x0000, 'testTag', 'rpc read longArray fail, errorCode ' + e.code);
@@ -2995,6 +2996,7 @@ ArkTS-Sta示例：
   let array: Array<double> = new Array<double>(3);
   try {
     data.readFloatArray(array);
+    hilog.info(0x0000, 'testTag', 'readFloatArray is ' + array);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     hilog.error(0x0000, 'testTag', 'rpc read floatArray fail, errorCode ' + e.code);
@@ -4253,7 +4255,7 @@ ArkTS-Sta: static dupFileDescriptor(fd: int): int
 
   | 参数名 | 类型   | 必填 | 说明                     |
   | ------ | ------ | ---- | ------------------------ |
-  | fd     | numbArkTS-Dyn: number<br>ArkTS-Sta: inter | 是   | 表示已存在的文件描述符。 |
+  | fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示已存在的文件描述符。 |
 
 **返回值：**
 
