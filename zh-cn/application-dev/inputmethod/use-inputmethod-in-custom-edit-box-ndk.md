@@ -36,11 +36,11 @@ libohinputmethod.so
 1. 创建InputMethod_TextEditorProxy实例，示例代码如下所示：
 
    <!-- @[input_case_input_TextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 创建InputMethod_TextEditorProxy实例
-    textEditorProxy = OH_TextEditorProxy_Create();
-```
+   
+   ``` C++
+   // 创建InputMethod_TextEditorProxy实例
+   textEditorProxy = OH_TextEditorProxy_Create();
+   ```
 
    
 3. 创建InputMethod_AttachOptions实例，设置绑定输入法时的选项。示例代码如下所示：
