@@ -173,18 +173,6 @@
 
 **起始版本**：11
 
-## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
-
-允许UIExtensionAbility显示在锁屏之上。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：14
-
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 
 允许应用查询和配置用户身份认证策略、校验用户身份认证结果。
