@@ -28,7 +28,7 @@
 
    **编译配置**
 
-   ```
+   ```txt
    // CMakeLists.txt
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.4.1)
