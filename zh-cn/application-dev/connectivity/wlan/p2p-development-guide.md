@@ -139,24 +139,24 @@ connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
 ```
 5. 开始P2P设备发现。
    <!-- @[discover_p2p_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
-
-``` TypeScript
-aboutToAppear() {
-  // 如果wifi是开的，就记录下状态，然后扫描p2p设备，并获取连接信息
-  if (!wifi.isWifiActive()) {
-    promptAction.showToast({ message : 'place active wifi' })
-    return
-  }
-  this.isSwitchOn = true;
-  wifi.startDiscoverDevices()
-  this.addListener();
-}
-
-aboutToDisappear() {
-  wifi.off('p2pPeerDeviceChange')
-  wifi.off('p2pConnectionChange')
-}
-```
+   
+   ``` TypeScript
+   aboutToAppear() {
+     // 如果wifi是开的，就记录下状态，然后扫描p2p设备，并获取连接信息
+     if (!wifi.isWifiActive()) {
+       promptAction.showToast({ message : 'place active wifi' });
+       return;
+     }
+     this.isSwitchOn = true;
+     wifi.startDiscoverDevices();
+     this.addListener();
+   }
+   
+   aboutToDisappear() {
+     wifi.off('p2pPeerDeviceChange');
+     wifi.off('p2pConnectionChange');
+   }
+   ```
 6. 示例代码：
 
    ```ts
