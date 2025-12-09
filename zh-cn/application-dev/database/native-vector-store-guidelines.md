@@ -427,8 +427,8 @@ libnative_rdb_ndk.z.so
 10. 删除数据库。示例代码如下：
 
     <!--@[vector_OH_Rdb_DeleteStoreV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->    
-
-   ``` C
-   OH_Rdb_CloseStore(store_);
-   OH_Rdb_DeleteStoreV2(config);
-   ```
+    
+    ``` C++
+    OH_Rdb_CloseStore(store_);
+    OH_Rdb_DeleteStoreV2(config);
+    ```
