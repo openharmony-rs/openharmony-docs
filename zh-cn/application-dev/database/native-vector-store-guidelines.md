@@ -395,10 +395,11 @@ libnative_rdb_ndk.z.so
    示例代码如下：
 
    <!--@[vector_OH_Rdb_ExecuteV2_data_aging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    // 每隔五分钟执行写操作后，会触发数据老化任务
-   OH_Rdb_ExecuteV2(store_, "CREATE TABLE test2(rec_time integer not null) WITH (time_col = 'rec_time', interval = '5 minute');", nullptr, nullptr);
+   OH_Rdb_ExecuteV2(store_,"CREATE TABLE test2(rec_time integer not null) WITH "
+       "(time_col = 'rec_time', interval = '5 minute');", nullptr, nullptr);
    ```
 
 9. 配置数据压缩功能。该功能在建表时配置，可以压缩数据类型为text的列数据。
