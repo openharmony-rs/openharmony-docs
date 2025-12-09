@@ -337,7 +337,7 @@ delete(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt
 | 参数名     | 类型                        | 必填 | 说明                    |
 | -------- | ----------------------------- | ---- | ------------------------ |
 | uris     | string\[]          | 是   | 表示需要删除的共享配置对应的URI数组，数组最大长度为32。URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
-| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示共享配置的类型。 |
+| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示数据代理操作的配置。 |
 
 **返回值：**
 
@@ -384,7 +384,7 @@ get(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyGetResult[]&gt
 | 参数名     | 类型                        | 必填 | 说明                    |
 | -------- | ----------------------------- | ---- | ------------------------ |
 | uris     | string\[]         | 是   | 表示需要获取的共享配置的URI数组，数组最大长度为32。URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
-| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示共享配置的类型。 |
+| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示数据代理操作的配置。 |
 
 **返回值：**
 
