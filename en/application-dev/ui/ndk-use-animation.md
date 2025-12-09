@@ -25,213 +25,250 @@ The ArkUI framework primarily offers property animations through NDK APIs to imp
 
 A global **animateTo** explicit animation API is provided to specify transition effects for state changes caused by closure code. Like property animations, layout changes such as width and height adjustments are animated directly to their final states.
 
-1. Obtain [UIContext](../reference//apis-arkui/arkts-apis-uicontext-uicontext.md) in the .ets file and pass **this.getUIContext()** as a parameter to the native API.
-   ```ts
-   // createNativeNode is an API exposed on the native side.
-   nativeNode.createNativeNode("xcomponentId", this.getUIContext());
-   ```
+1. Create a [NodeContent](../reference//apis-arkui/js-apis-arkui-NodeContent.md) object in the .ets file and pass it as a parameter to the native method.
 
-2. Parse the UI context to convert the context object in C.
-   ```
-   // Obtain the context passed from the ArkTS side.
-   ArkUI_ContextHandle context = nullptr;
-   // Determine whether the acquisition is successful based on code.
-   auto code = OH_ArkUI_GetContextFromNapiValue(env, args[1], &context);
-   ```
+    <!-- @[get_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/ets/pages/UseFrameAnimation.ets) -->
+    
+    ``` TypeScript
+      // Initialize the NodeContent object.
+      private rootSlot = new NodeContent();
+      @State @Watch('changeNativeFlag') showNative: boolean = false;
+    // ···
+      changeNativeFlag(): void {
+        // ···
+        if (this.showNative) {
+          // Pass the NodeContent object for the native side to create component mounting and display.
+          nativeNode?.createNativeRoot(this.rootSlot);
+        } else {
+        // ···
+        }
+      }
+    ```
+
+2. Parse the **NodeContent** object and convert it to the corresponding **ArkUI_NodeContentHandle** structure in C.
+
+    <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/NativeEntry.cpp) -->
+    
+    ``` C++
+    // Obtain the NodeContent object.
+    ArkUI_NodeContentHandle contentHandle;
+    OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+    ```
 
 3. Obtain the **ArkUI_NativeAnimateAPI_1** object.
-   ```
-   // Obtain the ArkUI_NativeAnimateAPI.
-   ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
-   OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
-   ```
+
+    <!-- @[get_Api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
+    
+    ``` C
+    // Obtain the ArkUI_NativeAnimateAPI.
+    ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
+    ```
 
 4. Set the **ArkUI_AnimateOption** parameters using the provided C APIs.
-   ```
-   ArkUI_AnimateOption *option = OH_ArkUI_AnimateOption_Create();
-   OH_ArkUI_AnimateOption_SetDuration(option, 2000);
-   OH_ArkUI_AnimateOption_SetTempo(option, 1.1);
-   OH_ArkUI_AnimateOption_SetCurve(option, ARKUI_CURVE_EASE);
-   OH_ArkUI_AnimateOption_SetDelay(option, 20);
-   OH_ArkUI_AnimateOption_SetIterations(option, 1);
-   OH_ArkUI_AnimateOption_SetPlayMode(option, ARKUI_ANIMATION_PLAY_MODE_REVERSE);
-   ArkUI_ExpectedFrameRateRange *range = new ArkUI_ExpectedFrameRateRange;
-   range->min = 10;
-   range->max = 120;
-   range->expected = 60;
-   OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(option, range);
-   ```
+
+    <!-- @[set_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
+    
+    ``` C
+    // Set the animation parameters.
+    ArkUI_AnimateOption *option = OH_ArkUI_AnimateOption_Create();
+    OH_ArkUI_AnimateOption_SetDuration(option, NUM_2000); // NUM_2000 = 2000
+    OH_ArkUI_AnimateOption_SetTempo(option, 1.1);
+    OH_ArkUI_AnimateOption_SetCurve(option, ARKUI_CURVE_EASE);
+    ArkUI_CurveHandle cubicBezierCurve = OH_ArkUI_Curve_CreateCubicBezierCurve(0.5f, 4.0f, 1.2f, 0.0f);
+    // Set the animation curve parameters, which take precedence over OH_ArkUI_AnimateOption_SetCurve.
+    OH_ArkUI_AnimateOption_SetICurve(option, cubicBezierCurve);
+    OH_ArkUI_AnimateOption_SetDelay(option, NUM_20); // NUM_20 = 20
+    OH_ArkUI_AnimateOption_SetIterations(option, NUM_1); // NUM_1 = 1
+    OH_ArkUI_AnimateOption_SetPlayMode(option, ARKUI_ANIMATION_PLAY_MODE_REVERSE);
+    ArkUI_ExpectedFrameRateRange *range = new ArkUI_ExpectedFrameRateRange;
+    range->min = NUM_10; // NUM_10 = 10
+    range->max = NUM_120; // NUM_120 = 120
+    range->expected = NUM_60; // NUM_60 = 60
+    OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(option, range);
+    ```
 
 5. Set callback parameters.
-   ```
-   // Define a user data struct.
-   struct UserData{
-       int32_t data;
-   };
-   UserData *onFinishUser = new UserData;
-   onFinishUser->data= 101;
-   // Create and set user data for the completion callback.
-   ArkUI_AnimateCompleteCallback *completeCallback = new ArkUI_AnimateCompleteCallback;
-   completeCallback->userData = onFinishUser;
-   completeCallback->type = ARKUI_FINISH_CALLBACK_REMOVED;
-   completeCallback->callback = [](void *userData) {
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "CreateNativeNode  onFinishCallback %{public}d",
-                    reinterpret_cast<AA *>(userData)->a);
-   };
-   // User data
-   UserData *eventUser = new UserData ;
-   eventUser->data= 201;
-   static bool isback = true;
-   ArkUI_ContextCallback *update = new ArkUI_ContextCallback;
-   update->userData = eventUser;
-   update->callback = [](void *user) {
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "CreateNativeNode  animateTo %{public}d",
-                    reinterpret_cast<UserData*>(user)->data);
-       // Example of changing width and height properties
-       if (isback) {
-           ArkUI_NumberValue custom_widthValue[] = {200};
-           ArkUI_AttributeItem custom_widthItem = {custom_widthValue, 1};
-           ArkUI_NumberValue custom_heightValue1[] = {80};
-           ArkUI_AttributeItem custom_heightItem1 = {custom_heightValue1, 1};
-           nodeAPI->setAttribute(textInput, NODE_WIDTH, &custom_widthItem);
-           nodeAPI->setAttribute(textInput, NODE_HEIGHT, &custom_heightItem1);
-       } else {
-           ArkUI_NumberValue custom_widthValue[] = {100};
-           ArkUI_AttributeItem custom_widthItem = {custom_widthValue, 1};
-           ArkUI_NumberValue custom_heightValue1[] = {40};
-           ArkUI_AttributeItem custom_heightItem1 = {custom_heightValue1, 1};
-           nodeAPI->setAttribute(textInput, NODE_WIDTH, &custom_widthItem);
-           nodeAPI->setAttribute(textInput, NODE_HEIGHT, &custom_heightItem1);
-       }
-   };
-   // Execute the animation with the set options and callbacks.
-   animateApi->animateTo(context, option, update, completeCallback);
-   ```
+
+    <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
+    
+    ``` C
+    // Create and set user data for the completion callback.
+    ArkUI_AnimateCompleteCallback *completeCallback = new ArkUI_AnimateCompleteCallback;
+    completeCallback->type = ARKUI_FINISH_CALLBACK_REMOVED;
+    // The AnimateData struct contains ArkUI_AnimateOption* option and ArkUI_CurveHandle curve.
+    AnimateData* data = new AnimateData();
+    data->option = option;
+    data->curve = cubicBezierCurve;
+    completeCallback->userData = reinterpret_cast<void*>(data);
+    completeCallback->callback = [](void *userData) {
+        AnimateData* data = reinterpret_cast<AnimateData*>(userData);
+        if (data) {
+            ArkUI_AnimateOption* option = data->option;
+            ArkUI_CurveHandle curve = data->curve;
+            if (option) {
+                OH_ArkUI_AnimateOption_Dispose(option);
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                    "Init", "CXX OH_ArkUI_AnimateOption_Dispose  success!");
+            }
+            if (curve) {
+                OH_ArkUI_Curve_DisposeCurve(curve);
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                    "Init", "CXX OH_ArkUI_Curve_DisposeCurve  success!");
+            }
+            delete data; // Release the struct.
+        }
+    };
+                
+    // Set the closure function.
+    static bool isback = true;
+    ArkUI_ContextCallback *update = new ArkUI_ContextCallback;
+    update->callback = [](void *user) {
+        // Example of changing width and height properties
+        if (isback) {
+            g_animateto_button->SetWidth(NUM_200); // NUM_200 = 200
+            g_animateto_button->SetHeight(NUM_80); // NUM_80 = 80
+            g_animateto_button->SetBackgroundColor(0xFFA280FF);
+        } else {
+            g_animateto_button->SetWidth(NUM_100); // NUM_100 = 100
+            g_animateto_button->SetHeight(NUM_40); // NUM_40 = 40
+            g_animateto_button->SetBackgroundColor(0xFFFF2E77);
+        }
+        isback = !isback;
+    };
+    // Execute the animation with the set options and callbacks.
+    animateApi->animateTo(context, option, update, completeCallback);
+    ```
 
    ![GIF](figures/animateTo.gif)
-
-
-
-
 
 ## Using Component Appearance/Disappearance Transitions
 
 Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSLATE**, **SCALE**, **ROTATE**, or **MOVE**) to configure transition effects for components, enhancing the user experience when components are added to or removed from containers. The **NODE_TRANSFORM_CENTER** property sets the center point for animations including **NODE_SCALE_TRANSITION** and **NODE_ROTATE_ROTATE**.  
 
 1. Design an interactive UI with a button to manage the addition and removal of transition nodes. For details about how to obtain and use the ArkUI_NodeContentHandle node, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
-   ```
-   constexpr int32_t BUTTON_CLICK_ID = 1;
-   bool flag = false;
-   ArkUI_NodeHandle parentNode;
-   ArkUI_NodeHandle childNode;
-   ArkUI_NodeHandle buttonNode;
-   
-   void mainViewMethod(ArkUI_NodeContentHandle handle)
-   {
-       ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-       ArkUI_NumberValue widthValue[] = {{.f32 = 500}};
-       ArkUI_AttributeItem widthItem = {.value = widthValue, .size = sizeof(widthValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(column, NODE_WIDTH, &widthItem);
-       ArkUI_NumberValue heightValue[] = {{.f32 = 500}};
-       ArkUI_AttributeItem heightItem = {.value = heightValue, .size = sizeof(heightValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(column, NODE_HEIGHT, &heightItem);
-       ArkUI_NodeHandle buttonShow = nodeAPI->createNode(ARKUI_NODE_BUTTON);
-       ArkUI_NumberValue buttonWidthValue[] = {{.f32 = 200}};
-       ArkUI_AttributeItem buttonWidthItem = {.value = buttonWidthValue,
-                                              .size = sizeof(buttonWidthValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(buttonShow, NODE_WIDTH, &buttonWidthItem);
-       ArkUI_NumberValue buttonHeightValue[] = {{.f32 = 50}};
-       ArkUI_AttributeItem buttonHeightItem = {.value = buttonHeightValue,
-                                               .size = sizeof(buttonHeightValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(buttonShow, NODE_HEIGHT, &buttonHeightItem);
-       ArkUI_AttributeItem labelItem = {.string = "show"};
-       nodeAPI->setAttribute(buttonShow, NODE_BUTTON_LABEL, &labelItem);
-       ArkUI_NumberValue buttonOpenTypeValue[] = {{.i32 = static_cast<int32_t>(ARKUI_BUTTON_TYPE_NORMAL)}};
-       ArkUI_AttributeItem buttonOpenTypeItem = {.value = buttonOpenTypeValue,
-                                                 .size = sizeof(buttonOpenTypeValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(buttonShow, NODE_BUTTON_TYPE, &buttonOpenTypeItem);
-       ArkUI_NumberValue buttonShowMarginValue[] = {{.f32 = 20}};
-       ArkUI_AttributeItem buttonShowMarginItem = {.value = buttonShowMarginValue,
+
+    <!-- @[main_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
+    
+    ``` C
+    constexpr int32_t BUTTON_CLICK_ID = 1;
+    bool g_flag = false;
+    ArkUI_NodeHandle parentNode;
+    ArkUI_NodeHandle childNode;
+    ArkUI_NodeHandle buttonNode;
+    // ···
+    void mainViewMethod(ArkUI_NodeContentHandle handle)
+    {
+        ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+        ArkUI_NumberValue widthValue[] = {{.f32 = 500}};
+        ArkUI_AttributeItem widthItem = {.value = widthValue, .size = sizeof(widthValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(column, NODE_WIDTH, &widthItem);
+        ArkUI_NumberValue heightValue[] = {{.f32 = 500}};
+        ArkUI_AttributeItem heightItem = {.value = heightValue, .size = sizeof(heightValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(column, NODE_HEIGHT, &heightItem);
+        ArkUI_NodeHandle buttonShow = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+        ArkUI_NumberValue buttonWidthValue[] = {{.f32 = 200}};
+        ArkUI_AttributeItem buttonWidthItem = {.value = buttonWidthValue,
+                                               .size = sizeof(buttonWidthValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(buttonShow, NODE_WIDTH, &buttonWidthItem);
+        ArkUI_NumberValue buttonHeightValue[] = {{.f32 = 50}};
+        ArkUI_AttributeItem buttonHeightItem = {.value = buttonHeightValue,
+                                                .size = sizeof(buttonHeightValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(buttonShow, NODE_HEIGHT, &buttonHeightItem);
+        ArkUI_AttributeItem labelItem = {.string = "show"};
+        nodeAPI->setAttribute(buttonShow, NODE_BUTTON_LABEL, &labelItem);
+        ArkUI_NumberValue buttonOpenTypeValue[] = {{.i32 = static_cast<int32_t>(ARKUI_BUTTON_TYPE_NORMAL)}};
+        ArkUI_AttributeItem buttonOpenTypeItem = {.value = buttonOpenTypeValue,
+                                                  .size = sizeof(buttonOpenTypeValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(buttonShow, NODE_BUTTON_TYPE, &buttonOpenTypeItem);
+        ArkUI_NumberValue buttonShowMarginValue[] = {{.f32 = 20}};
+        ArkUI_AttributeItem buttonShowMarginItem = {.value = buttonShowMarginValue,
                                                     .size = sizeof(buttonShowMarginValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(buttonShow, NODE_MARGIN, &buttonShowMarginItem);
-       nodeAPI->registerNodeEvent(buttonShow, NODE_ON_CLICK, BUTTON_CLICK_ID, nullptr);
-       nodeAPI->addNodeEventReceiver(buttonShow, OnButtonShowClicked);
-       parentNode = column;
-       buttonNode = buttonShow;
-       nodeAPI->addChild(column, buttonShow);
-       OH_ArkUI_NodeContent_AddNode(handle, column);
-   }
-   ```
+        nodeAPI->setAttribute(buttonShow, NODE_MARGIN, &buttonShowMarginItem);
+        nodeAPI->registerNodeEvent(buttonShow, NODE_ON_CLICK, BUTTON_CLICK_ID, nullptr);
+        nodeAPI->addNodeEventReceiver(buttonShow, OnButtonShowClicked);
+        parentNode = column;
+        buttonNode = buttonShow;
+        nodeAPI->addChild(column, buttonShow);
+        OH_ArkUI_NodeContent_AddNode(handle, column);
+    }
+    ```
 
 2. Create a node with **Transition** properties that play a transition animation when the target node is mounted or unmounted.
-   ```
-   ArkUI_NodeHandle CreateChildNode() {
-       ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       ArkUI_NodeHandle image = nodeAPI->createNode(ARKUI_NODE_IMAGE);
-       ArkUI_AttributeItem imageSrcItem = {.string = "/pages/common/scenery.jpg"};
-       nodeAPI->setAttribute(image, NODE_IMAGE_SRC, &imageSrcItem);
-       ArkUI_NumberValue textWidthValue[] = {{.f32 = 300}};
-       ArkUI_AttributeItem textWidthItem = {.value = textWidthValue,
-                                            .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_WIDTH, &textWidthItem);
-       ArkUI_NumberValue textHeightValue[] = {{.f32 = 300}};
-       ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
+
+    <!-- @[create_child_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
+    
+    ``` C
+    ArkUI_NodeHandle CreateChildNode()
+    {
+        ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        ArkUI_NodeHandle image = nodeAPI->createNode(ARKUI_NODE_IMAGE);
+        ArkUI_AttributeItem imageSrcItem = {.string = "/pages/common/scenery.jpg"};
+        nodeAPI->setAttribute(image, NODE_IMAGE_SRC, &imageSrcItem);
+        ArkUI_NumberValue textWidthValue[] = {{.f32 = 300}};
+        ArkUI_AttributeItem textWidthItem = {.value = textWidthValue,
                                              .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_HEIGHT, &textHeightItem);
-       ArkUI_NumberValue transformCenterValue[] = {0.0f, 0.0f, 0.0f, 0.5f, 0.5f};
-       ArkUI_AttributeItem transformCenterItem = {.value = transformCenterValue,
-                                             .size = sizeof(transformCenterValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_TRANSFORM_CENTER, &transformCenterItem);
-       ArkUI_NumberValue rotateAnimationValue[] = {0.0f, 0.0f, 1.0f, 360.0f, 0.0f, {.i32 = 500}, {.i32 = static_cast<int32_t>(ARKUI_CURVE_SHARP)}};
-       ArkUI_AttributeItem rotateAnimationItem = {.value = rotateAnimationValue,
-                                                  .size = sizeof(rotateAnimationValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_ROTATE_TRANSITION, &rotateAnimationItem);
-       ArkUI_NumberValue scaleAnimationValue[] = {
-           0.0f, 0.0f, 0.0f, {.i32 = 500}, {.i32 = static_cast<int32_t>(ARKUI_CURVE_SHARP)}};
-       ArkUI_AttributeItem scaleAnimationItem = {.value = scaleAnimationValue,
+        nodeAPI->setAttribute(image, NODE_WIDTH, &textWidthItem);
+        ArkUI_NumberValue textHeightValue[] = {{.f32 = 300}};
+        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
+                                              .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(image, NODE_HEIGHT, &textHeightItem);
+        ArkUI_NumberValue transformCenterValue[] = {0.0f, 0.0f, 0.0f, 0.5f, 0.5f};
+        ArkUI_AttributeItem transformCenterItem = {.value = transformCenterValue,
+                                                   .size = sizeof(transformCenterValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(image, NODE_TRANSFORM_CENTER, &transformCenterItem);
+        ArkUI_NumberValue rotateAnimationValue[] = {
+            0.0f, 0.0f, 1.0f, 360.0f, 0.0f, {.i32 = 500}, {.i32 = static_cast<int32_t>(ARKUI_CURVE_SHARP)}};
+        ArkUI_AttributeItem rotateAnimationItem = {.value = rotateAnimationValue,
+                                                   .size = sizeof(rotateAnimationValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(image, NODE_ROTATE_TRANSITION, &rotateAnimationItem);
+        ArkUI_NumberValue scaleAnimationValue[] = {
+            0.0f, 0.0f, 0.0f, {.i32 = 500}, {.i32 = static_cast<int32_t>(ARKUI_CURVE_SHARP)}};
+        ArkUI_AttributeItem scaleAnimationItem = {.value = scaleAnimationValue,
                                                   .size = sizeof(scaleAnimationValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_SCALE_TRANSITION, &scaleAnimationItem);
-       ArkUI_NumberValue translateAnimationValue[] = {
-           200, 200, 0.0f, {.i32 = 500}, {.i32 = static_cast<int32_t>(ARKUI_CURVE_SHARP)}};
-       ArkUI_AttributeItem translateAnimationItem = {.value = translateAnimationValue,
-                                                 .size = sizeof(translateAnimationValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_TRANSLATE_TRANSITION, &translateAnimationItem);
-       return image;
-   }
-   ```
+        nodeAPI->setAttribute(image, NODE_SCALE_TRANSITION, &scaleAnimationItem);
+        ArkUI_NumberValue translateAnimationValue[] = {
+            200, 200, 0.0f, {.i32 = 500}, {.i32 = static_cast<int32_t>(ARKUI_CURVE_SHARP)}};
+        ArkUI_AttributeItem translateAnimationItem = {.value = translateAnimationValue,
+                                                      .size = sizeof(translateAnimationValue) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(image, NODE_TRANSLATE_TRANSITION, &translateAnimationItem);
+        return image;
+    }
+    ```
 
 3. Add logic for mounting and unmounting the transition node within the **Button** component event callback to control the appearance and disappearance of the transition node.
-   ```
-   void OnButtonShowClicked(ArkUI_NodeEvent* event)
-   {
-       if (!event) {
-           return;
-       }
-       if (!childNode) {
-           childNode = CreateChildNode();
-       }
-       ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       if (flag) {
-           flag = false;
-           ArkUI_AttributeItem labelItem = {.string = "show"};
-           nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
-           nodeAPI->removeChild(parentNode, childNode);
-       } else {
-           flag = true;
-           ArkUI_AttributeItem labelItem = {.string = "hide"};
-           nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
-           nodeAPI->addChild(parentNode, childNode);
-       }
-   }
-   ```
 
-   ![en-us_image_0000001903284256](figures/en-us_image_0000001903284256.gif)
+    <!-- @[button_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
+    
+    ``` C
+    void OnButtonShowClicked(ArkUI_NodeEvent *event)
+    {
+        if (!event) {
+            return;
+        }
+        if (!childNode) {
+            childNode = CreateChildNode();
+        }
+        ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        if (g_flag) {
+            g_flag = false;
+            ArkUI_AttributeItem labelItem = {.string = "show"};
+            nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
+            nodeAPI->removeChild(parentNode, childNode);
+        } else {
+            g_flag = true;
+            ArkUI_AttributeItem labelItem = {.string = "hide"};
+            nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
+            nodeAPI->addChild(parentNode, childNode);
+        }
+    }
+    ```
 
-
+    ![zh-cn_image_0000001903284256](figures/zh-cn_image_0000001903284256.gif)
 
 ## Using Keyframe Animations
 
@@ -239,76 +276,115 @@ You can use the [keyframeAnimateTo](../reference/apis-arkui/capi-arkui-nativemod
 
 This example demonstrates how to use the [keyframeAnimateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#keyframeanimateto) API to set up keyframe animations. For the complete process of mounting a UI developed with NDK APIs to the ArkTS main page, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 
-```
-auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+<!-- @[get_keyframeAnimateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->    
 
+``` C
+// ArkUIColumnNode is a project-encapsulated node type.
+auto column = std::make_shared<ArkUIColumnNode>();
+// Set width to 300 (NUM_300 = 300).
+column->SetWidth(NUM_300);
+// Set height to 250 (NUM_250 = 250).
+column->SetHeight(NUM_250);
+// Create a text node with content "This is a keyframe animation."
+auto textNode = std::make_shared<ArkUITextNode>();
+textNode->SetTextContent("This is a keyframe animation");
+// Set width to 120 (NUM_120 = 120).
+textNode->SetWidth(NUM_120);
+// Set height to 120 (NUM_120 = 120).
+textNode->SetHeight(NUM_50);
 // Create a button that will be the target of the keyframe animation.
-auto button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
-ArkUI_NumberValue widthValue0[] = {100};
-ArkUI_AttributeItem widthItem0 = {widthValue0, 1};
-ArkUI_NumberValue heightValue0[] = {100};
-ArkUI_AttributeItem heightItem0 = {heightValue0, 1};
-nodeAPI->setAttribute(button, NODE_WIDTH, &widthItem0);
-nodeAPI->setAttribute(button, NODE_HEIGHT, &heightItem0);
-ArkUI_NumberValue typeValue[] = {{.i32 = ArkUI_ButtonType::ARKUI_BUTTON_TYPE_CIRCLE}};
-ArkUI_AttributeItem typeItem = {typeValue, 1};
-nodeAPI->setAttribute(button, NODE_BUTTON_TYPE, &typeItem); // Set the button shape to circular.
-
-static ArkUI_NodeHandle buttonSelf = button;
-static ArkUI_NativeNodeAPI_1 *nodeAPISelf = nodeAPI;
-
-// Register a click event for the button.
-nodeAPI->registerNodeEvent(button, NODE_ON_CLICK, 1, nullptr);
+auto button = std::make_shared<ArkUIButtonNode>();
+// Set the initial width and height of the button (NUM_100 = 100).
+button->SetWidth(NUM_100);
+button->SetHeight(NUM_100);
+// Store the button as a global variable for use in onTouch registration.
+g_keyframe_button = button;
+// Register a click event for the button (NUM_1 = 1).
+button->RegisterNodeEvent(button->GetHandle(), NODE_ON_CLICK, NUM_1, nullptr);
+g_keyframe_text = std::make_shared<ArkUITextNode>();
+// This function encapsulates logic to print AnimateTo parameter values in a text component (to be implemented by the user based on specific requirements).
+g_keyframe_text->KeyframeAnimatetoToString();
 auto onTouch = [](ArkUI_NodeEvent *event) {
-    
-    // Logic triggered when the button is clicked.
-    if (OH_ArkUI_NodeEvent_GetTargetId(event) == 1) {
-        
+    // Trigger logic when the target button (NUM_1 = 1) is clicked.
+    if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_1) {
         // Obtain the context object.
-        static ArkUI_ContextHandle context = nullptr;
-        context = OH_ArkUI_GetContextByNode(buttonSelf);
-        
+        ArkUI_ContextHandle context = nullptr;
+        // g_keyframe_button (std::shared_ptr<ArkUIButtonNode>) is a global variable that holds the button node instance for use in onTouch event registration.
+        context = OH_ArkUI_GetContextByNode(g_keyframe_button->GetHandle());
         // Obtain the ArkUI_NativeAnimateAPI.
         ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
         OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
-        
+            
         // The following code is the key process for creating a keyframe animation, including setting keyframe animation parameters and starting the animation.
         // Set the ArkUI_KeyframeAnimateOption parameters using the provided C APIs.
-        static ArkUI_KeyframeAnimateOption *option =  OH_ArkUI_KeyframeAnimateOption_Create(2); // Number of keyframe animation states.
-        OH_ArkUI_KeyframeAnimateOption_SetDuration(option, 1000, 0); // Duration of the first keyframe animation segment.
-        OH_ArkUI_KeyframeAnimateOption_SetDuration(option, 2000, 1); // Duration of the second keyframe animation segment.
-        OH_ArkUI_KeyframeAnimateOption_SetIterations(option, 5); // Number of keyframe animation repetitions.
-        OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(option, nullptr, [](void *user) {
-            ArkUI_NumberValue widthValue0[] = {150};
-            ArkUI_AttributeItem widthItem0 = {widthValue0, 1};
-            ArkUI_NumberValue heightValue0[] = {150};
-            ArkUI_AttributeItem heightItem0 = {heightValue0, 1};
-            nodeAPISelf->setAttribute(buttonSelf, NODE_WIDTH, &widthItem0);
-            nodeAPISelf->setAttribute(buttonSelf, NODE_HEIGHT, &heightItem0);
-        }, 0); // Closure function for the first keyframe state.
-        OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(option, nullptr, [](void *user) {
-            ArkUI_NumberValue widthValue0[] = {80};
-            ArkUI_AttributeItem widthItem0 = {widthValue0, 1};
-            ArkUI_NumberValue heightValue0[] = {80};
-            ArkUI_AttributeItem heightItem0 = {heightValue0, 1};
-            nodeAPISelf->setAttribute(buttonSelf, NODE_WIDTH, &widthItem0);
-            nodeAPISelf->setAttribute(buttonSelf, NODE_HEIGHT, &heightItem0);
-        }, 1); // Closure function for the second keyframe state.
+        // Number of keyframe animation states (NUM_2 = 2, NUM_500 = 500).
+        ArkUI_KeyframeAnimateOption *option =  OH_ArkUI_KeyframeAnimateOption_Create(NUM_2);
+        OH_ArkUI_KeyframeAnimateOption_SetDelay(option, NUM_500);
+        // Duration for the first keyframe segment (NUM_1000 = 1000, NUM_0 = 0).
+        OH_ArkUI_KeyframeAnimateOption_SetDuration(option, NUM_1000, NUM_0);
+        // Duration for the second keyframe segment (NUM_2000 = 2000, NUM_1 = 1).
+        OH_ArkUI_KeyframeAnimateOption_SetDuration(option, NUM_2000, NUM_1);
+        // Animation playback iterations (NUM_5 = 5).
+        OH_ArkUI_KeyframeAnimateOption_SetIterations(option, NUM_5);
+        ArkUI_CurveHandle curve = OH_ArkUI_Curve_CreateCubicBezierCurve(0.5f, 4.0f, 1.2f, 0.0f);
+        // Select the animation curves based on service requirements.
+        ArkUI_CurveHandle springCurve = OH_ArkUI_Curve_CreateSpringCurve(0.5f, 4.0f, 1.2f, 0.0f);
+        ArkUI_CurveHandle springMotionCurve = OH_ArkUI_Curve_CreateSpringMotion(0.5f, 0.6f, 0.0f);
+        ArkUI_CurveHandle responsiveSpringMotionCurve = OH_ArkUI_Curve_CreateResponsiveSpringMotion(0.5f,
+            4.0f, 1.2f);
+        ArkUI_CurveHandle interpolatingSpringCurve = OH_ArkUI_Curve_CreateInterpolatingSpring(0.5f,
+            4.0f, 1.2f, 0.0f);
+        OH_ArkUI_KeyframeAnimateOption_SetCurve(option, curve, 1);
+        OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(option, nullptr, [](void *userData) {
+              g_keyframe_button->SetWidth(NUM_150);
+        }, NUM_0); // Callback for the first keyframe state (NUM_150 = 150, NUM_0 = 0).
+        OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(option, nullptr, [](void *userData) {
+              g_keyframe_button->SetWidth(80);
+        }, NUM_1); // Callback for the second keyframe state (NUM_1 = 1).
+        KeyFrameAnimateToData* data = new KeyFrameAnimateToData();
+        data->option = option;
+        data->curve = curve;
         OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(option, nullptr, [](void *user) {
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "keyframe animate finish");
+            KeyFrameAnimateToData* data = reinterpret_cast<KeyFrameAnimateToData*>(user);
+            if (data) {
+                ArkUI_KeyframeAnimateOption* option = data->option;
+                ArkUI_CurveHandle curve = data->curve;
+                if (option) {
+                    OH_ArkUI_KeyframeAnimateOption_Dispose(option);
+                    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                        "Init", "CXX OH_ArkUI_KeyframeAnimateOption_Dispose  success!");
+                }
+                if (curve) {
+                    OH_ArkUI_Curve_DisposeCurve(curve);
+                    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                        "Init", "CXX OH_ArkUI_Curve_DisposeCurve  success!");
+                }
+                delete data; // Release the struct.
+            }
         }); // Keyframe animation completion callback.
         ArkUI_ExpectedFrameRateRange *range = new ArkUI_ExpectedFrameRateRange;
-        range->max = 120;
-        range->expected = 60;
-        range->min = 30;
+        range->max = NUM_120; // NUM_120 = 120
+        range->expected = NUM_60; // NUM_60 = 60
+        range->min = NUM_30; // NUM_30 = 30
         OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(option, range); // Set the expected frame rate for keyframes.
-        
+
         // Execute the animation with the set options and callbacks.
         animateApi->keyframeAnimateTo(context, option);
+        auto delay = OH_ArkUI_KeyframeAnimateOption_GetDelay(option);
+        auto iter = OH_ArkUI_KeyframeAnimateOption_GetIterations(option);
+        auto expected = OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(option); // Obtain the expected frame rate range from the keyframe animation parameters.
+        auto dur0 = OH_ArkUI_KeyframeAnimateOption_GetDuration(option, NUM_1); // NUM_1 = 1
+        auto dur1 = OH_ArkUI_KeyframeAnimateOption_GetDuration(option, NUM_1);
+        auto curves = OH_ArkUI_KeyframeAnimateOption_GetCurve(option, NUM_1); // Obtain the animation curve for a specific keyframe segment.
+        g_keyframe_text->KeyframeAnimatetoToString(dur0, dur1, delay, iter, *expected);
     }
 };
-nodeAPI->registerNodeEventReceiver(onTouch);
-nodeAPI->addChild(column, button);
+// Register a callback function for the click event.
+button->RegisterNodeEventReceiver(onTouch);
+// Mount the button to the column and return the column node.
+column->AddChild(g_keyframe_text);
+column->AddChild(textNode);
+column->AddChild(button);
 ```
 
 ![en-us_image_0000001903284256](figures/en-us_image_keyframeAnimateTo.gif)
@@ -320,33 +396,36 @@ Frame animation enables adjustment of animation properties on each frame through
 Compared with the property animation, the frame animation offers the benefits of real-time visibility into the animation process and allows you to modify UI values on the fly. In addition, it provides high responsiveness to events and can be paused as needed. However, it is worth noting that the frame animation may not deliver the same performance efficiency as the property animation. Therefore, where the property animation meets your requirements, you are advised to use the property animation APIs. For details about how to use the [animateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto) API, see [Using Property Animations](#using-property-animations).
 
 This example demonstrates how to use the [createAnimator](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator) API to set up frame animations. For the complete sample project, see <!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->.
-```
+
+<!-- @[get_createAnimator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
+
+```C
 std::shared_ptr<ArkUIBaseNode> CreateAnimator()
 {
     auto column = std::make_shared<ArkUIColumnNode>();
-    column->SetWidth(300);
-    column->SetHeight(250);
-    // Create a text node with content "This is Animator animation."
+    column->SetWidth(NUM_300); // NUM_300 = 300
+    column->SetHeight(NUM_250); // NUM_250 = 250
+    // Create a text node with content "This is an animator animation."
     auto textNode = std::make_shared<ArkUITextNode>();
-    textNode->SetTextContent("This is Animator animation.");
-    textNode->SetWidth(150);
-    textNode->SetHeight(50);
-    // Create createButton to initialize Animator parameters.
+    textNode->SetTextContent("This is an animator animation");
+    textNode->SetWidth(NUM_120); // NUM_120 = 120
+    textNode->SetHeight(NUM_50); // NUM_50 = 50
+    // Create createButton to initialize animator parameters.
     auto createButton = std::make_shared<ArkUIButtonNode>();
-    // Create a button that will be the target of the Animator animation.
+    // Create a button that serves as the target of the animator animation.
     auto button = std::make_shared<ArkUIButtonNode>();
-    // Set the initial width and height of the button.
-    button->SetWidth(100);
-    button->SetHeight(100);
+    // Set the initial width and height of the button (NUM_100 = 100).
+    button->SetWidth(NUM_100);
+    button->SetHeight(NUM_100);
     // Store the button as a global variable for use in onTouch registration.
     g_animator_button = button;
-    // Register a click event for the button.
-    createButton->RegisterNodeEvent(createButton->GetHandle(), NODE_ON_CLICK, 3, nullptr);
+    // Register a click event for the button (NUM_3 = 3).
+    createButton->RegisterNodeEvent(createButton->GetHandle(), NODE_ON_CLICK, NUM_3, nullptr);
     g_animator_text = std::make_shared<ArkUITextNode>();
     g_animator_text->AnimatorToString();
     auto onTouch = [](ArkUI_NodeEvent *event) {
-        // Logic triggered when the button is clicked.
-        if (OH_ArkUI_NodeEvent_GetTargetId(event) == 3) {
+        // Trigger logic when the target button (NUM_3 = 3) is clicked.
+        if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_3) {
             // Obtain the context object.
             static ArkUI_ContextHandle context = nullptr;
             context = OH_ArkUI_GetContextByNode(g_animator_button->GetHandle());
@@ -356,36 +435,41 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
             OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
             
             // The following demonstrates the key process for creating an Animator animation, including setting Animator animation parameters and starting the animation.
-            // Set the ArkUI_AnimatorOption parameters using the provided C APIs.
-            static ArkUI_AnimatorOption *option =  OH_ArkUI_AnimatorOption_Create(0); // Number of Animator animation states.
-            OH_ArkUI_AnimatorOption_SetDuration(option, 2000);
-            OH_ArkUI_AnimatorOption_SetDelay(option, 10);
-            OH_ArkUI_AnimatorOption_SetIterations(option, 3);
+            // Set the ArkUI_AnimatorOption parameters using the provided C APIs (NUM_0 = 0).
+            static ArkUI_AnimatorOption *option =  OH_ArkUI_AnimatorOption_Create(NUM_0); // Number of animator animation states.
+            OH_ArkUI_AnimatorOption_SetDuration(option, NUM_2000); // NUM_2000 = 2000
+            OH_ArkUI_AnimatorOption_SetDelay(option, NUM_10); // NUM_10 = 10
+            OH_ArkUI_AnimatorOption_SetIterations(option, NUM_3); // NUM_3 = 3
             OH_ArkUI_AnimatorOption_SetFill(option, ARKUI_ANIMATION_FILL_MODE_NONE);
             OH_ArkUI_AnimatorOption_SetDirection(option, ARKUI_ANIMATION_DIRECTION_NORMAL);
-            ArkUI_CurveHandle curve = OH_ArkUI_Curve_CreateCubicBezierCurve(0.5f, 4.0f, 1.2f, 0.0f); // Create a cubic bezier curve object.
+            ArkUI_CurveHandle curve = OH_ArkUI_Curve_CreateCubicBezierCurve(0.5f, 4.0f, 1.2f, 0.0f); // Create a cubic Bézier curve object.
             OH_ArkUI_AnimatorOption_SetCurve(option, curve);
-            OH_ArkUI_AnimatorOption_SetBegin(option, 100);
-            OH_ArkUI_AnimatorOption_SetEnd(option, 150);
+            OH_ArkUI_AnimatorOption_SetBegin(option, NUM_100); // NUM_100 = 100
+            OH_ArkUI_AnimatorOption_SetEnd(option, NUM_150); // NUM_150 = 150
             ArkUI_ExpectedFrameRateRange *range = new ArkUI_ExpectedFrameRateRange;
-            range->max = 120;
-            range->expected = 60;
-            range->min = 30;
+            range->max = NUM_120; // NUM_120 = 120
+            range->expected = NUM_60; // NUM_60 = 60
+            range->min = NUM_30; // NUM_30 = 30
             OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange(option, range);
-            OH_ArkUI_AnimatorOption_SetKeyframe(option, 0.5, 120.5, 0); // Set the keyframe parameters of the Animator animation.
-            OH_ArkUI_AnimatorOption_SetKeyframeCurve(option, curve, 0); // Set the keyframe curve type of the Animator animation.
-            OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(option, nullptr, [](ArkUI_AnimatorOnFrameEvent *event){
+            OH_ArkUI_AnimatorOption_SetKeyframe(option, 0.5, 120.5, NUM_0); // Set the keyframe parameters of the animator animation (NUM_0 = 0).
+            OH_ArkUI_AnimatorOption_SetKeyframeCurve(option, curve, NUM_0); // Set the keyframe curve type of the animator animation.
+            OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(option, nullptr, [](ArkUI_AnimatorOnFrameEvent *event)
+            {
                 OH_ArkUI_AnimatorOnFrameEvent_GetUserData(event); // Obtain the custom object from the animation event object.
                 auto value = OH_ArkUI_AnimatorOnFrameEvent_GetValue(event); // Obtain the current progress from the animation event object.
-                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "CXX OH_ArkUI_AnimatorOption_RegisterOnFrameCallback  %{public}f", value);
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init",
+                    "CXX OH_ArkUI_AnimatorOption_RegisterOnFrameCallback  %{public}f", value);
                 g_animator_button->SetWidth(value);
             });
-            OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(option, reinterpret_cast<void*>(option), [](ArkUI_AnimatorEvent* event){
+            OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(option, nullptr, [](ArkUI_AnimatorEvent* event)
+            {
                 OH_ArkUI_AnimatorEvent_GetUserData(event); // Obtain the custom object from the animation event object.
             });
-            OH_ArkUI_AnimatorOption_RegisterOnCancelCallback(option, nullptr, [](ArkUI_AnimatorEvent* event){
+            OH_ArkUI_AnimatorOption_RegisterOnCancelCallback(option, nullptr, [](ArkUI_AnimatorEvent* event)
+            {
             });
-            OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback(option, nullptr, [](ArkUI_AnimatorEvent* event){
+            OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback(option, nullptr, [](ArkUI_AnimatorEvent* event)
+            {
             });
             // Execute the animation with the set options and callbacks.
             animatorHandle = animateApi->createAnimator(context, option);
@@ -395,13 +479,13 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
             auto iterations = OH_ArkUI_AnimatorOption_GetIterations(option);
             auto fill = OH_ArkUI_AnimatorOption_GetFill(option);
             auto direction = OH_ArkUI_AnimatorOption_GetDirection(option);
-            auto curves = OH_ArkUI_AnimatorOption_GetCurve(option); // Obtain the interpolation curve of the Animator animation.
+            auto curves = OH_ArkUI_AnimatorOption_GetCurve(option); // Obtain the animator animation interpolation curve.
             auto begin = OH_ArkUI_AnimatorOption_GetBegin(option);
-            auto end = OH_ArkUI_AnimatorOption_GetEnd(option); // Obtain the interpolation end point of the Animator animation.
+            auto end = OH_ArkUI_AnimatorOption_GetEnd(option); // Obtain the interpolation end point of the animator animation.
             auto expected = OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(option); // Obtain the expected frame rate range from the keyframe animation parameters.
-            auto keyframeTime = OH_ArkUI_AnimatorOption_GetKeyframeTime(option, 0); // Obtain the keyframe time of the Animator animation.
-            auto keyframeValue = OH_ArkUI_AnimatorOption_GetKeyframeValue(option, 0); // Obtain the keyframe value from the Animator animation parameters.
-            auto keyframeCurve = OH_ArkUI_AnimatorOption_GetKeyframeCurve(option, 0); // Obtain the keyframe interpolation curve of the Animator animation.
+            auto keyframeTime = OH_ArkUI_AnimatorOption_GetKeyframeTime(option, NUM_0); // Obtain the keyframe time of the animator animation.
+            auto keyframeValue = OH_ArkUI_AnimatorOption_GetKeyframeValue(option, NUM_0); // Obtain the keyframe value from the animator animation parameters.
+            auto keyframeCurve = OH_ArkUI_AnimatorOption_GetKeyframeCurve(option, NUM_0); // Obtain the keyframe interpolation curve of the animator animation.
             g_animator_text->AnimatorToString(duration, delay, iterations, fill, direction, begin,
                 end, *expected, keyframeTime, keyframeValue);
         }
@@ -412,56 +496,57 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
     createButton->SetButtonLabel("create");
     // Create a container for storing the button.
     auto buttoColumn = std::make_shared<ArkUIColumnNode>();
-    buttoColumn->SetPadding(30, false); // Set layout parameters and adjust internal component spacing.
-    buttoColumn->SetWidth(300);
+    buttoColumn->SetPadding(NUM_30, false); // Set the layout padding (NUM_30=30).
+    buttoColumn->SetWidth(NUM_300); // NUM_300 = 300
     // Create a container for storing playButton.
     auto playButtonColumn = std::make_shared<ArkUIColumnNode>();
-    playButtonColumn->SetPadding(10, false); // Set layout parameters and adjust internal component spacing.
-    playButtonColumn->SetWidth(300);
-    // Set the Animator play button.
+    playButtonColumn->SetPadding(NUM_10, false); // Set the layout padding (NUM_10 = 10).
+    playButtonColumn->SetWidth(NUM_300); // NUM_300 = 300
+    // Set the animator play button.
     auto playButton = std::make_shared<ArkUIButtonNode>();
     playButton->SetButtonLabel("play");
-    playButton->RegisterNodeEvent(playButton->GetHandle(), NODE_ON_CLICK, 4, nullptr);
+    playButton->RegisterNodeEvent(playButton->GetHandle(), NODE_ON_CLICK, NUM_4, nullptr);
     auto onTouchPlay = [](ArkUI_NodeEvent *event) {
-        // Logic triggered when the button is clicked.
-        if (OH_ArkUI_NodeEvent_GetTargetId(event) == 4) {
+        // Trigger logic when the target button (NUM_4 = 4) is clicked.
+        if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_4) {
             OH_ArkUI_Animator_Play(animatorHandle);
         }
     };
     playButton->RegisterNodeEventReceiver(onTouchPlay);
-    // Set the Animator end button.
+    // Set the animator end button.
     auto finishButton = std::make_shared<ArkUIButtonNode>();
     finishButton->SetButtonLabel("finish");
-    finishButton->RegisterNodeEvent(finishButton->GetHandle(), NODE_ON_CLICK, 5, nullptr);
+    finishButton->RegisterNodeEvent(finishButton->GetHandle(), NODE_ON_CLICK, NUM_5, nullptr); // NUM_5 = 5
     auto onTouchFinish = [](ArkUI_NodeEvent *event) {
-        // Logic triggered when the button is clicked.
-        if (OH_ArkUI_NodeEvent_GetTargetId(event) == 5) {
+        // Trigger logic when the target button (NUM_5 = 5) is clicked.
+        if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_5) {
             OH_ArkUI_Animator_Finish(animatorHandle);
         }
     };
     finishButton->RegisterNodeEventReceiver(onTouchFinish);
     // Create a container for storing resetButton.
     auto resetButtonColumn = std::make_shared<ArkUIColumnNode>();
-    resetButtonColumn->SetPadding(10, false); // Set layout parameters and adjust internal component spacing.
-    resetButtonColumn->SetWidth(300);
-    // Set the Animator update button.
+    resetButtonColumn->SetPadding(NUM_10, false); // Set the layout padding (NUM_10 = 10).
+    resetButtonColumn->SetWidth(NUM_300); // NUM_300 = 300
+    // Set the animator update button.
     auto resetButton = std::make_shared<ArkUIButtonNode>();
     resetButton->SetButtonLabel("reset");
-    resetButton->RegisterNodeEvent(resetButton->GetHandle(), NODE_ON_CLICK, 6, nullptr);
+    resetButton->RegisterNodeEvent(resetButton->GetHandle(), NODE_ON_CLICK, NUM_6, nullptr); // NUM_6 = 6
     auto onTouchReset = [](ArkUI_NodeEvent *event) {
-        // Logic triggered when the button is clicked.
-        if (OH_ArkUI_NodeEvent_GetTargetId(event) == 6) {
-            static ArkUI_AnimatorOption *option =  OH_ArkUI_AnimatorOption_Create(0); // Number of Animator animation states.
-            OH_ArkUI_AnimatorOption_SetDuration(option, 1000);
-            OH_ArkUI_AnimatorOption_SetDelay(option, 0);
-            OH_ArkUI_AnimatorOption_SetIterations(option, 4);
-            // Choose the appropriate curve from the following two options to set OH_ArkUI_AnimatorOption_SetCurve.
+        // Trigger logic when the target button (NUM_6 = 6) is clicked.
+        if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_6) {
+            static ArkUI_AnimatorOption *option =  OH_ArkUI_AnimatorOption_Create(NUM_0); // Number of animator animation states.
+            OH_ArkUI_AnimatorOption_SetDuration(option, NUM_1000); // NUM_1000 = 1000
+            OH_ArkUI_AnimatorOption_SetDelay(option, NUM_0);
+            OH_ArkUI_AnimatorOption_SetIterations(option, NUM_4); // NUM_4 = 4
+            // Choose a curve based on actual service requirements for OH_ArkUI_AnimatorOption_SetCurve.
             auto curve = OH_ArkUI_Curve_CreateCurveByType(ARKUI_CURVE_EASE); // The animation starts slowly, accelerates, and then slows down towards the end.
-            auto stepsCurve = OH_ArkUI_Curve_CreateStepsCurve(20, true); // Create a step curve object.
+            auto stepsCurve = OH_ArkUI_Curve_CreateStepsCurve(NUM_20, true); // Create a steps curve object (NUM_20 = 20).
             OH_ArkUI_AnimatorOption_SetCurve(option, curve);
-            OH_ArkUI_AnimatorOption_SetBegin(option, 200);
-            OH_ArkUI_AnimatorOption_SetEnd(option, 100);
-            OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(option, nullptr, [](ArkUI_AnimatorOnFrameEvent *event){
+            OH_ArkUI_AnimatorOption_SetBegin(option, NUM_200); // NUM_200 = 200
+            OH_ArkUI_AnimatorOption_SetEnd(option, NUM_100); // NUM_100 = 100
+            OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(option, nullptr, [](ArkUI_AnimatorOnFrameEvent *event)
+            {
                 OH_ArkUI_AnimatorOnFrameEvent_GetUserData(event); // Obtain the custom object from the animation event object.
                 auto value = OH_ArkUI_AnimatorOnFrameEvent_GetValue(event); // Obtain the current progress from the animation event object.
                 g_animator_button->SetWidth(value);
@@ -470,39 +555,39 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
         }
     };
     resetButton->RegisterNodeEventReceiver(onTouchReset);
-    // Set the Animator pause button.
+    // Set the animator pause button.
     auto pauseButton = std::make_shared<ArkUIButtonNode>();
     pauseButton->SetButtonLabel("pause");
-    pauseButton->RegisterNodeEvent(pauseButton->GetHandle(), NODE_ON_CLICK, 7, nullptr);
+    pauseButton->RegisterNodeEvent(pauseButton->GetHandle(), NODE_ON_CLICK, NUM_7, nullptr); // NUM_7 = 7
     auto onTouchPause = [](ArkUI_NodeEvent *event) {
-        // Logic triggered when the button is clicked.
-        if (OH_ArkUI_NodeEvent_GetTargetId(event) == 7) {
+        // Trigger logic when the target button (NUM_7 = 7) is clicked.
+        if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_7) {
             OH_ArkUI_Animator_Pause(animatorHandle);
         }
     };
     pauseButton->RegisterNodeEventReceiver(onTouchPause);
     // Create a container for storing cancelButton.
     auto cancelButtonColumn = std::make_shared<ArkUIColumnNode>();
-    cancelButtonColumn->SetPadding(10, false); // Set layout parameters and adjust internal component spacing.
-    cancelButtonColumn->SetWidth(300);
-    // Set the Animator cancel button.
+    cancelButtonColumn->SetPadding(NUM_10, false); // Set the layout padding (NUM_10 = 10).
+    cancelButtonColumn->SetWidth(NUM_300); // NUM_300 = 300
+    // Set the animator cancel button.
     auto cancelButton = std::make_shared<ArkUIButtonNode>();
     cancelButton->SetButtonLabel("cancel");
-    cancelButton->RegisterNodeEvent(cancelButton->GetHandle(), NODE_ON_CLICK, 8, nullptr);
+    cancelButton->RegisterNodeEvent(cancelButton->GetHandle(), NODE_ON_CLICK, NUM_8, nullptr); // NUM_8 = 8
     auto onTouchCancel = [](ArkUI_NodeEvent *event) {
-        // Logic triggered when the button is clicked.
-        if (OH_ArkUI_NodeEvent_GetTargetId(event) == 8) {
+        // Trigger logic when the target button (NUM_8 = 8) is clicked.
+        if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_8) {
             OH_ArkUI_Animator_Cancel(animatorHandle);
         }
     };
     cancelButton->RegisterNodeEventReceiver(onTouchCancel);
-    // Set the Animator reverse-play button.
+    // Set the animator reverse-play button.
     auto reverseButton = std::make_shared<ArkUIButtonNode>();
     reverseButton->SetButtonLabel("reverse");
-    reverseButton->RegisterNodeEvent(reverseButton->GetHandle(), NODE_ON_CLICK, 9, nullptr);
+    reverseButton->RegisterNodeEvent(reverseButton->GetHandle(), NODE_ON_CLICK, NUM_9, nullptr);
     auto onTouchReverse = [](ArkUI_NodeEvent *event) {
-        // Logic triggered when the button is clicked.
-        if (OH_ArkUI_NodeEvent_GetTargetId(event) == 9) {
+        // Trigger logic when the target button (NUM_9 = 9) is clicked.
+        if (OH_ArkUI_NodeEvent_GetTargetId(event) == NUM_9) {
             OH_ArkUI_Animator_Reverse(animatorHandle);
         }
     };
