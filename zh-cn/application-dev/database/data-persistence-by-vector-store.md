@@ -248,7 +248,7 @@ SQL语句中的函数，如下所示：
    示例代码如下：
 
    <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
+   
    ``` TypeScript
    // 单表查询
    try {
@@ -257,11 +257,11 @@ SQL语句中的函数，如下所示：
      const vectorValue2: Float32Array = Float32Array.from([6.2, 7.3]);
      let resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0, vectorValue2]);
      while (resultSet!.goToNextRow()) {
-        let id = resultSet.getValue(0);
-        let dis = resultSet.getValue(1);
+       let id = resultSet.getValue(0);
+       let dis = resultSet.getValue(1);
      }
      resultSet!.close();
-
+   
      // 不使用参数绑定
      const QUERY_SQL1 = "select id, repr <-> '[6.2, 7.3]' as distance from test where id > 0 order by repr <-> '[6.2, 7.3]' limit 5;";
      resultSet = await store!.querySql(QUERY_SQL1);
@@ -269,7 +269,7 @@ SQL语句中的函数，如下所示：
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    }
-
+   
    // 子查询
    try {
      // 创建第二张表
@@ -280,7 +280,7 @@ SQL语句中的函数，如下所示：
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    }
-
+   
    // 聚合查询
    try {
      let resultSet = await store!.querySql("select * from test where repr <-> '[1.0, 1.0]' > 0 group by id having max(repr <=> '[1.0, 1.0]');");
@@ -288,7 +288,7 @@ SQL语句中的函数，如下所示：
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    }
-
+   
    // 多表查询
    try {
      // union all与union的区别在于union会将数据去重
