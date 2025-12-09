@@ -885,7 +885,7 @@ onPinch(receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pi
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[on](#inputmonitoronpinch10)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronpinch10)。
 
 **ArkTS-Sta起始版本**：22
 
@@ -2830,7 +2830,7 @@ struct Index {
 }
 ```
 
-## <span id = "on_touchscreenPinch_dyn">inputMonitor.on('touchscreenPinch')<sup>18+</sup></span>
+## inputMonitor.on('touchscreenPinch')<sup>18+</sup>
 
 on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
@@ -2842,7 +2842,7 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onTouchscreenPinch](#on_touchscreenPinch_sta)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onTouchscreenPinch](#inputmonitorontouchscreenpinch22)。
 
 **ArkTS-Dyn起始版本**：18
 
@@ -2891,7 +2891,7 @@ struct Index {
 }
 ```
 
-## <span id = "on_touchscreenPinch_sta">inputMonitor.onTouchscreenPinch<sup>22+</sup></span>
+## inputMonitor.onTouchscreenPinch<sup>22+</sup>
 
 onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
@@ -2903,7 +2903,7 @@ onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_touchscreenPinch_dyn)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitorontouchscreenpinch18)。
 
 **ArkTS-Sta起始版本**：22
 

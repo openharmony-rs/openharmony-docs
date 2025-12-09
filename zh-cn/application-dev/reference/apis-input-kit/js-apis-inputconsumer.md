@@ -133,7 +133,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[onHotkeyChange](#inputconsumeronhotkeychange22)。
 
-**ArkTS-Sta起始版本**：14
+**ArkTS-Dyn起始版本**：14
 
 **参数：** 
 
