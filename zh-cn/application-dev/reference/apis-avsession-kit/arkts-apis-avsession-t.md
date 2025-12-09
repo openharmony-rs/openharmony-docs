@@ -123,3 +123,18 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 |'answer' <sup>11+</sup>        | 接听。无需传入参数。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | 'hangUp' <sup>11+</sup>         | 挂断。无需传入参数。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 |'toggleCallMute' <sup>11+</sup>  | 设置通话静音状态。无需传入参数。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+
+## TwoParamCallback<sup>22+</sup>
+
+type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
+
+定义包含两个参数的回调类型。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+|-------|----| ---- |------|
+| data1 | T  | 是   | 参数1。 |
+| data2 | G  | 是   | 参数2。 |
