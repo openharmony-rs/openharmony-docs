@@ -69,7 +69,7 @@ import { formInfo } from '@kit.FormKit';
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 20开始废弃。暂无代替的接口。
+> 从API version 9开始支持，从API version 20开始废弃。暂无代替的接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
