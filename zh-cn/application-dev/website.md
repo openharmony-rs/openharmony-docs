@@ -4455,12 +4455,14 @@
           <!--Del-->
           - [@js-apis-awareness-metadataBinding (回旋镖)(系统接口)](reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding-sys.md)
           - [@ohos.multimodalawareness.roomLocation (房间级定位)(系统接口)](js-apis-awareness-roomLocation.md)
+          - [@ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)](reference/apis-multimodalawareness-kit/js-apis-awareness-spatialAwareness-sys.md)
           <!--DelEnd-->
         - 错误码<!--ultimodal-awareness-arkts-errcode-->
           - [行为动作感知错误码](reference/apis-multimodalawareness-kit/errorcode-motion.md)
           - [回旋镖错误码](reference/apis-multimodalawareness-kit/errorcode-metadataBinding.md)
           - [设备状态感知错误码](reference/apis-multimodalawareness-kit/errorcode-deviceStatus.md)
           - [房间级定位错误码](reference/apis-multimodalawareness-kit/errorcode-roomLocation.md)
+          - [空间感知错误码](reference/apis-multimodalawareness-kit/errorcode-spatialAwareness.md)
       - Sensor Service Kit（传感器服务）<!--sensor-service-api-->
         - ArkTS API<!--sensor-service-arkts-->
           - [@ohos.sensor(传感器)](reference/apis-sensor-service-kit/js-apis-sensor.md)
