@@ -6,7 +6,7 @@ InteropAbilityLifecycleCallback模块提供应用中不同ArkTS环境下的[UIAb
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 本模块首批接口从API version 22 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 23 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -26,9 +26,9 @@ ArkTS-Sta: onAbilityCreate: (ability: Any) => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -50,9 +50,9 @@ ArkTS-Sta: onWindowStageCreate: (ability: Any, windowStage: window.WindowStage) 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -75,9 +75,9 @@ ArkTS-Sta: onWindowStageDestroy: (ability: Any, windowStage: window.WindowStage)
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -100,9 +100,9 @@ ArkTS-Sta: onAbilityDestroy: (ability: Any) => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -124,9 +124,9 @@ ArkTS-Sta: onAbilityForeground: (ability: Any) => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -148,9 +148,9 @@ ArkTS-Sta: onAbilityBackground: (ability: Any) => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
