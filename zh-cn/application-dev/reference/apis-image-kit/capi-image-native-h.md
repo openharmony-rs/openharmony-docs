@@ -45,7 +45,7 @@
 
 ### OH_ImageNative_GetImageSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetImageSize(OH_ImageNative *image, Image_Size *size)
 ```
 
@@ -75,7 +75,7 @@ OH_ImageNative对象所存储的数据是预览流还是拍照流，取决于应
 
 ### OH_ImageNative_GetComponentTypes()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t **types, size_t *typeSize)
 ```
 
@@ -102,7 +102,7 @@ Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t 
 
 ### OH_ImageNative_GetByteBuffer()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t componentType, OH_NativeBuffer **nativeBuffer)
 ```
 
@@ -129,7 +129,7 @@ Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t comp
 
 ### OH_ImageNative_GetBufferSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t componentType, size_t *size)
 ```
 
@@ -156,7 +156,7 @@ Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t comp
 
 ### OH_ImageNative_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t componentType, int32_t *rowStride)
 ```
 
@@ -185,7 +185,7 @@ Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t compo
 
 ### OH_ImageNative_GetPixelStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t componentType, int32_t *pixelStride)
 ```
 
@@ -212,7 +212,7 @@ Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t com
 
 ### OH_ImageNative_GetTimestamp()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *timestamp)
 ```
 
@@ -242,7 +242,7 @@ Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *time
 
 ### OH_ImageNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)
 ```
 

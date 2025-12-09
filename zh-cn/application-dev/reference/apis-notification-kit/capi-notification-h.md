@@ -26,7 +26,7 @@
 
 ### OH_Notification_IsNotificationEnabled()
 
-```
+```c
 bool OH_Notification_IsNotificationEnabled(void)
 ```
 

@@ -56,7 +56,7 @@ HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死
 
 ### HiCollie_ErrorCode
 
-```
+```c
 enum HiCollie_ErrorCode
 ```
 
@@ -79,7 +79,7 @@ enum HiCollie_ErrorCode
 
 ### HiCollie_Flag
 
-```
+```c
 enum HiCollie_Flag
 ```
 
@@ -101,7 +101,7 @@ enum HiCollie_Flag
 
 ### OH_HiCollie_Task()
 
-```
+```c
 typedef void (*OH_HiCollie_Task)(void)
 ```
 
@@ -113,7 +113,7 @@ typedef void (*OH_HiCollie_Task)(void)
 
 ### OH_HiCollie_BeginFunc()
 
-```
+```c
 typedef void (*OH_HiCollie_BeginFunc)(const char* eventName)
 ```
 
@@ -132,7 +132,7 @@ typedef void (*OH_HiCollie_BeginFunc)(const char* eventName)
 
 ### OH_HiCollie_EndFunc()
 
-```
+```c
 typedef void (*OH_HiCollie_EndFunc)(const char* eventName)
 ```
 
@@ -151,7 +151,7 @@ typedef void (*OH_HiCollie_EndFunc)(const char* eventName)
 
 ### OH_HiCollie_Init_StuckDetection()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)
 ```
 
@@ -176,7 +176,7 @@ HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)
 
 ### OH_HiCollie_Init_StuckDetectionWithTimeout()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task task, uint32_t stuckTimeout)
 ```
 
@@ -202,7 +202,7 @@ HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task t
 
 ### OH_HiCollie_Init_JankDetection()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc, OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)
 ```
 
@@ -229,7 +229,7 @@ HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFu
 
 ### OH_HiCollie_Report()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)
 ```
 
@@ -254,7 +254,7 @@ HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)
 
 ### OH_HiCollie_Callback()
 
-```
+```c
 typedef void (*OH_HiCollie_Callback)(void*)
 ```
 
@@ -266,7 +266,7 @@ typedef void (*OH_HiCollie_Callback)(void*)
 
 ### OH_HiCollie_SetTimer()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)
 ```
 
@@ -292,7 +292,7 @@ HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)
 
 ### OH_HiCollie_CancelTimer()
 
-```
+```c
 void OH_HiCollie_CancelTimer(int id)
 ```
 

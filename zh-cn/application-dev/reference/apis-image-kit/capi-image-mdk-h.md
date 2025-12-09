@@ -52,7 +52,7 @@
 
 ### 图像格式
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -69,7 +69,7 @@ enum anonymous enum
 
 ### 图像颜色通道类型
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -91,7 +91,7 @@ enum anonymous enum
 
 ### OH_Image_InitImageNative()
 
-```
+```c
 ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 ```
 
@@ -121,7 +121,7 @@ ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 
 ### OH_Image_ClipRect()
 
-```
+```c
 int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 ```
 
@@ -147,7 +147,7 @@ int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 
 ### OH_Image_Size()
 
-```
+```c
 int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)
 ```
 
@@ -177,7 +177,7 @@ ImageNative对象所存储的数据是预览流还是拍照流，取决于应用
 
 ### OH_Image_Format()
 
-```
+```c
 int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 ```
 
@@ -203,7 +203,7 @@ int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 
 ### OH_Image_GetComponent()
 
-```
+```c
 int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, struct OhosImageComponent* componentNative)
 ```
 
@@ -230,7 +230,7 @@ int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, 
 
 ### OH_Image_Release()
 
-```
+```c
 int32_t OH_Image_Release(ImageNative* native)
 ```
 

@@ -44,7 +44,7 @@
 
 ### NetStack_CertType
 
-```
+```c
 enum NetStack_CertType
 ```
 
@@ -62,7 +62,7 @@ enum NetStack_CertType
 
 ### NetStack_CertificatePinningKind
 
-```
+```c
 enum NetStack_CertificatePinningKind
 ```
 
@@ -78,7 +78,7 @@ enum NetStack_CertificatePinningKind
 
 ### NetStack_HashAlgorithm
 
-```
+```c
 enum NetStack_HashAlgorithm
 ```
 

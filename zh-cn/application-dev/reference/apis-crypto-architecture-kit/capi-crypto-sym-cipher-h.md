@@ -54,7 +54,7 @@
 
 ### CryptoSymCipher_ParamsType
 
-```
+```c
 enum CryptoSymCipher_ParamsType
 ```
 
@@ -75,7 +75,7 @@ enum CryptoSymCipher_ParamsType
 
 ### OH_CryptoSymCipherParams_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymCipherParams_Create(OH_CryptoSymCipherParams **params)
 ```
 
@@ -100,7 +100,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_Create(OH_CryptoSymCipherParams **par
 
 ### OH_CryptoSymCipherParams_SetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymCipherParams_SetParam(OH_CryptoSymCipherParams *params,CryptoSymCipher_ParamsType paramsType, Crypto_DataBlob *value)
 ```
 
@@ -127,7 +127,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_SetParam(OH_CryptoSymCipherParams *pa
 
 ### OH_CryptoSymCipherParams_Destroy()
 
-```
+```c
 void OH_CryptoSymCipherParams_Destroy(OH_CryptoSymCipherParams *params)
 ```
 
@@ -146,7 +146,7 @@ void OH_CryptoSymCipherParams_Destroy(OH_CryptoSymCipherParams *params)
 
 ### OH_CryptoSymCipher_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCipher **ctx)
 ```
 
@@ -172,7 +172,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCi
 
 ### OH_CryptoSymCipher_Init()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymCipher_Init(OH_CryptoSymCipher *ctx, Crypto_CipherMode mod,OH_CryptoSymKey *key, OH_CryptoSymCipherParams *params)
 ```
 
@@ -207,7 +207,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Init(OH_CryptoSymCipher *ctx, Crypto_Cipher
 
 ### OH_CryptoSymCipher_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymCipher_Update(OH_CryptoSymCipher *ctx, Crypto_DataBlob *in, Crypto_DataBlob *out)
 ```
 
@@ -241,7 +241,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Update(OH_CryptoSymCipher *ctx, Crypto_Data
 
 ### OH_CryptoSymCipher_Final()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymCipher_Final(OH_CryptoSymCipher *ctx, Crypto_DataBlob *in, Crypto_DataBlob *out)
 ```
 
@@ -275,7 +275,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Final(OH_CryptoSymCipher *ctx, Crypto_DataB
 
 ### OH_CryptoSymCipher_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoSymCipher_GetAlgoName(OH_CryptoSymCipher *ctx)
 ```
 
@@ -300,7 +300,7 @@ const char *OH_CryptoSymCipher_GetAlgoName(OH_CryptoSymCipher *ctx)
 
 ### OH_CryptoSymCipher_Destroy()
 
-```
+```c
 void OH_CryptoSymCipher_Destroy(OH_CryptoSymCipher *ctx)
 ```
 
