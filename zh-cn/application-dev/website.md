@@ -1416,8 +1416,8 @@
           - [压缩与解压](basic-services/compress/deflate-and-inflate.md)
         <!--Del-->
         - 划词服务<!--selectioninput-->
-          - [划词服务概述（仅对系统应用开放）](basic-services/selectionInput/selection-services-intro-sys.md)
-          - [实现一个划词应用（仅对系统应用开放）](basic-services/selectionInput/selection-services-application-guide-sys.md)
+          - [划词服务子系统概述（仅对系统应用开放）](basic-services/selectionInput/selection-services-intro-sys.md)
+          - [实现一个划词扩展能力（仅对系统应用开放）](basic-services/selectionInput/selection-services-application-guide-sys.md)
         <!--DelEnd-->
       - Function Flow Runtime Kit（任务并发调度服务）<!--ffrt-kit-->
         - [Function Flow Runtime Kit概述](ffrt/ffrt-overview.md)
