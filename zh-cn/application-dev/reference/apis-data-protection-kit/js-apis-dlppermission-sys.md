@@ -441,7 +441,7 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| dlpProperty | [DLPProperty](js-apis-dlppermission.md/#dlpproperty21) | 否 | 否 | 表示DLP文件授权相关信息。 |
+| dlpProperty |  [DLPProperty](js-apis-dlppermission.md#dlpproperty21)  | 否 | 否 | 表示DLP文件授权相关信息。 |
 
 ### addDLPLinkFile
 
