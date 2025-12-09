@@ -220,14 +220,23 @@ libnative_rdb_ndk.z.so
    ```
 
    <!--@[vector_OH_Rdb_ExecuteV2_subquery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    // 子查询，创建第二张表
-   OH_Rdb_ExecuteV2(store_, "CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);", nullptr, nullptr);
-   cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from test where id in (select id from test1);", nullptr);
+   OH_Rdb_ExecuteV2(store_, "CREATE TABLE IF NOT EXISTS example(id text PRIMARY KEY);", nullptr, nullptr);
+   char querySql[] = "select * from test where id in (select id from example);";
+   OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, querySql, nullptr);
    if (cursor == NULL) {
-      OH_LOG_ERROR(LOG_APP, "Query failed.");
-      return;
+       OH_LOG_ERROR(LOG_APP, "Query failed.");
+       return;
+   }
+   while (cursor->goToNextRow(cursor) == OH_Rdb_ErrCode::RDB_OK) {
+       size_t count = 0;
+       // floatvector数组是第二列数据，1表示列下标索引
+       OH_Cursor_GetFloatVectorCount(cursor, 1, &count);
+       float test[count];
+       size_t outLen;
+       OH_Cursor_GetFloatVector(cursor, 1, test, count, &outLen);
    }
    cursor->destroy(cursor);
    ```
