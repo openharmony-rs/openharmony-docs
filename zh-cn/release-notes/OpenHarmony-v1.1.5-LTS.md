@@ -21,11 +21,11 @@
 
 ### 通过repo获取
 
-**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
   
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.5-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.5-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -34,7 +34,7 @@ repo forall -c 'git lfs pull'
 
   
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.5-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.5-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -69,7 +69,7 @@ repo forall -c 'git lfs pull'
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ## 修复缺陷列表
@@ -78,18 +78,18 @@ repo forall -c 'git lfs pull'
 
 | ISSUE单号 | 问题描述 | 合入链接 | 
 | -------- | -------- | -------- |
-| I58X0S | 修复curl组件的CVE-2022-27781、CVE-2022-27782安全漏洞 | [PR](https://gitee.com/openharmony/third_party_curl/pulls/60) | 
-| I56PV4 | 修复curl组件的CVE-2022-22576、CVE-2022-27775、CVE-2022-27774、CVE-2022-27776安全漏洞 | [PR](https://gitee.com/openharmony/third_party_curl/pulls/54) | 
-| NA | 修复curl组件的CVE-2021-22945、CVE-2021-22946、CVE-2021-22947安全漏洞 | [PR](https://gitee.com/openharmony/third_party_curl/pulls/56) | 
-| I4QT0K/I56GI9 | 修复mbed&nbsp;tls组件的CVE-2021-44732、CVE-2021-45450安全漏洞 | [PR](https://gitee.com/openharmony/third_party_mbedtls/pulls/30) | 
-| I5F0WG | 修复freetype组件的CVE-2022-27404、CVE-2022-27406安全漏洞 | [PR](https://gitee.com/openharmony/third_party_freetype/pulls/22) | 
-| I4TLI9 | 修复freetype组件的CVE-2020-15999安全漏洞 | [PR](https://gitee.com/openharmony/third_party_freetype/pulls/7) | 
-| I51D98 | 修复zlib组件的CVE-2018-25032安全漏洞 | [PR](https://gitee.com/openharmony/third_party_zlib/pulls/31) | 
-| I5F13F/I4UHO4 | 修复ffmpeg组件的CVE-2020-35964、CVE-2022-1475、CVE-2021-38291、CVE-2020-35965、CVE-2020-22042、CVE-2020-22038、CVE-2020-22037、CVE-2020-22021、CVE-2020-22019安全漏洞 | [PR](https://gitee.com/openharmony/device_hisilicon_third_party_ffmpeg/pulls/17) | 
+| I58X0S | 修复curl组件的CVE-2022-27781、CVE-2022-27782安全漏洞 | [PR](https://gitcode.com/openharmony/third_party_curl/pulls/60) | 
+| I56PV4 | 修复curl组件的CVE-2022-22576、CVE-2022-27775、CVE-2022-27774、CVE-2022-27776安全漏洞 | [PR](https://gitcode.com/openharmony/third_party_curl/pulls/54) | 
+| NA | 修复curl组件的CVE-2021-22945、CVE-2021-22946、CVE-2021-22947安全漏洞 | [PR](https://gitcode.com/openharmony/third_party_curl/pulls/56) | 
+| I4QT0K/I56GI9 | 修复mbed&nbsp;tls组件的CVE-2021-44732、CVE-2021-45450安全漏洞 | [PR](https://gitcode.com/openharmony/third_party_mbedtls/pulls/30) | 
+| I5F0WG | 修复freetype组件的CVE-2022-27404、CVE-2022-27406安全漏洞 | [PR](https://gitcode.com/openharmony/third_party_freetype/pulls/22) | 
+| I4TLI9 | 修复freetype组件的CVE-2020-15999安全漏洞 | [PR](https://gitcode.com/openharmony/third_party_freetype/pulls/7) | 
+| I51D98 | 修复zlib组件的CVE-2018-25032安全漏洞 | [PR](https://gitcode.com/openharmony/third_party_zlib/pulls/31) | 
+| I5F13F/I4UHO4 | 修复ffmpeg组件的CVE-2020-35964、CVE-2022-1475、CVE-2021-38291、CVE-2020-35965、CVE-2020-22042、CVE-2020-22038、CVE-2020-22037、CVE-2020-22021、CVE-2020-22019安全漏洞 | [PR](https://gitcode.com/openharmony/device_hisilicon_third_party_ffmpeg/pulls/17) | 
 
   **表4** 已修复的缺陷列表
 
 | ISSUE单号 | 问题描述 | 
 | -------- | -------- |
 | [I4VKNM](https://gitcode.com/openharmony/xts_acts/issues/I4VKNM) | 小型系统Hi3518开发板执行testSigtimedwaitBlock用例时概率性失败 | 
-| [I4S098](https://gitee.com/openharmony/applications_sample_camera/issues/I4S098) | 小型系统Hi3516开发板点击设置-WiFi，进入WiFi列表界面后退出，重复此操作会使开发板概率性无响应 | 
+| [I4S098](https://gitcode.com/openharmony/applications_sample_camera/issues/I4S098) | 小型系统Hi3516开发板点击设置-WiFi，进入WiFi列表界面后退出，重复此操作会使开发板概率性无响应 | 

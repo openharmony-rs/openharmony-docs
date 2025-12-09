@@ -45,7 +45,7 @@ MyApplication
 │   ├── src
 │   │   └── main
 |   |       ├── cpp
-|   |       |   ├── CMakeLists.txt    //C++原生代码编译的配置文件 
+|   |       |   ├── CMakeLists.txt    //C++代码编译的配置文件 
 |   |       |   └── napi_init.cpp     //NAPI模块初始化的C++文件
 │   │       ├── ets
 │   │       │   └── pages

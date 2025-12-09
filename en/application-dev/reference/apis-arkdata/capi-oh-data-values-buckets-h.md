@@ -10,7 +10,7 @@
 
 Defines structs, APIs, and enums related to stored data values.
 
-**File to include**: <database/rdb/oh_data_values_buckets.h>
+**File to include**: <database/data/oh_data_values_buckets.h>
 
 **Library**: libnative_rdb_ndk.z.so
 

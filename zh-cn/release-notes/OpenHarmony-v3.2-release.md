@@ -92,7 +92,7 @@ OpenHarmony 3.2版本完整里程碑如下图所示，阅读本文档了解更�
 - 支持相册服务卡片，提供相册浏览能力。
 
 - 支持图片编辑能力，如自由裁剪图片、旋转图片等操作。
-  详细请参考[Application Photos](https://gitee.com/openharmony/applications_photos)。
+  详细请参考[Application Photos](https://gitcode.com/openharmony/applications_photos)。
 
 
  **FilePicker** 
@@ -102,7 +102,7 @@ OpenHarmony 3.2版本完整里程碑如下图所示，阅读本文档了解更�
 
  **浏览器**
 
-当前版本未内置浏览器应用。可手动安装[浏览器应用示例](https://gitee.com/openharmony/applications_app_samples/tree/samples_3.2_Release/code/BasicFeature/Web/Browser)后进行网络内容浏览等场景的体验。
+当前版本未内置浏览器应用。可手动安装[浏览器应用示例](https://gitcode.com/openharmony/applications_app_samples/tree/samples_3.2_Release/code/BasicFeature/Web/Browser)后进行网络内容浏览等场景的体验。
 
 
 
@@ -474,21 +474,21 @@ OpenHarmony 3.2版本完整里程碑如下图所示，阅读本文档了解更�
 
 ### 测试能力
 
-- 新增测试用例筛选执行能力，支持在用例中配置指定字段如用例类型、级别等参数，通过命令执行筛选后的用例，帮助开发者提升测试执行效率，详细请参考[指导](https://gitee.com/openharmony/testfwk_arkxtest#%E5%9F%BA%E7%A1%80%E6%B5%81%E7%A8%8B)。
+- 新增测试用例筛选执行能力，支持在用例中配置指定字段如用例类型、级别等参数，通过命令执行筛选后的用例，帮助开发者提升测试执行效率，详细请参考[指导](https://gitcode.com/openharmony/testfwk_arkxtest#%E5%9F%BA%E7%A1%80%E6%B5%81%E7%A8%8B)。
 
-- 新增测试用例驱动执行能力，可将相似测试逻辑的不同输入输出数据配置到辅助文件中使用，帮助开发者减少测试代码量，详细请参考[指导](https://gitee.com/openharmony/testfwk_arkxtest#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8)。
+- 新增测试用例驱动执行能力，可将相似测试逻辑的不同输入输出数据配置到辅助文件中使用，帮助开发者减少测试代码量，详细请参考[指导](https://gitcode.com/openharmony/testfwk_arkxtest#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8)。
 
 - 新增多窗口、双指捏合、抛滑等UI场景模拟操作能力，提升UI自动化支持范围，详细请参考[API说明](../application-dev/reference/apis/js-apis-uitest.md)。
 
 - 新增OpenHarmony应用质量要求兼容性测试规范，涵盖UX、性能、功耗、稳定性、兼容性和安全六大方面，规范OpenHarmony应用基础质量要求，详细请参考[官网说明](https://www.openharmony.cn/certification/moreStandard)。
 
-- [SmartPerf-Host](https://gitee.com/openharmony-sig/smartperf/tree/master)性能功耗调试调优工具，为开发者提供一套性能调优平台，支持GUI（图形用户界面）操作进行详细数据分析。3.2版本新增：
-  - 支持功耗分析能力，展示应用各子类别功耗占比信息、资源申请使用记录、功耗异常事件、功耗与系统状态关联信息，详细请参考HiSystemEvent[指导](https://gitee.com/openharmony-sig/smartperf/blob/master/host/ide/src/doc/md/quickstart_hisystemevent.md)。
-  - 支持Web端抓取trace，详细请参考[指导](https://gitee.com/openharmony-sig/smartperf/blob/master/host/ide/src/doc/md/quickstart_web_record.md)。
-  - 支持SQL查询和Metrics说明，详细请参考[指导](https://gitee.com/openharmony-sig/smartperf/blob/master/host/ide/src/doc/md/quickstart_sql_metrics.md)。
-  - 支持内核内存事件分析，详细请参考[指导](https://gitee.com/openharmony-sig/smartperf/blob/master/host/ide/src/doc/md/quickstart_page_fault.md)。
+- [SmartPerf-Host](https://gitcode.com/openharmony-sig/smartperf/tree/master)性能功耗调试调优工具，为开发者提供一套性能调优平台，支持GUI（图形用户界面）操作进行详细数据分析。3.2版本新增：
+  - 支持功耗分析能力，展示应用各子类别功耗占比信息、资源申请使用记录、功耗异常事件、功耗与系统状态关联信息，详细请参考HiSystemEvent[指导](https://gitcode.com/openharmony-sig/smartperf/blob/master/host/ide/src/doc/md/quickstart_hisystemevent.md)。
+  - 支持Web端抓取trace，详细请参考[指导](https://gitcode.com/openharmony-sig/smartperf/blob/master/host/ide/src/doc/md/quickstart_web_record.md)。
+  - 支持SQL查询和Metrics说明，详细请参考[指导](https://gitcode.com/openharmony-sig/smartperf/blob/master/host/ide/src/doc/md/quickstart_sql_metrics.md)。
+  - 支持内核内存事件分析，详细请参考[指导](https://gitcode.com/openharmony-sig/smartperf/blob/master/host/ide/src/doc/md/quickstart_page_fault.md)。
 
-- [wukong](https://gitee.com/openharmony/ostest_wukong)软件稳定性工具能力增强：
+- [wukong](https://gitcode.com/openharmony/ostest_wukong)软件稳定性工具能力增强：
   - 支持注入滑动、鼠标、字符、系统按键、控件事件，模拟用户多样化随机操作，覆盖真实用户操作场景，挖掘更多稳定性问题。
   - 支持设置运行总时长、应用黑白名单，实现个性化测试。
   - 支持控件顺序遍历测试，测试过程中支持界面截图；支持休眠唤醒测试。
@@ -511,9 +511,9 @@ OpenHarmony 3.2版本完整里程碑如下图所示，阅读本文档了解更�
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
   
    ```
    git config --global user.name "yourname"
@@ -524,7 +524,7 @@ OpenHarmony 3.2版本完整里程碑如下图所示，阅读本文档了解更�
 4. 安装码云repo工具，可以执行如下命令。
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -533,18 +533,18 @@ OpenHarmony 3.2版本完整里程碑如下图所示，阅读本文档了解更�
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -555,14 +555,14 @@ OpenHarmony 3.2版本完整里程碑如下图所示，阅读本文档了解更�
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-3.2-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-3.2-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -595,7 +595,7 @@ API变更请参考:
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 ### Samples
 
@@ -603,12 +603,12 @@ API变更请参考:
 
 | 子系统 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- | -------- |
-| 无障碍 | [AccessibilityExtensionAbility示例](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/AccessibilityExtAbility) | 本示例展示了AccessibilityExtensionAbility的简单应用，使用多个辅助功能接口实现了一些快捷的交互方式。 | ArkTS |
-| 企业管理 | [企业设备管理ExtensionAbility](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/EnterpriseAdminExtensionAbility) | 企业设备管理扩展能力，是MDM应用必备组件。当开发者为企业开发MDM（Mobile Device Management）应用时，需继承EnterpriseAdminExtensionAbility，在EnterpriseAdminExtensionAbility实例中实现MDM业务逻辑，EnterpriseAdminExtensionAbility实现了系统管理状态变化通知功能，并定义了管理应用激活、去激活、应用安装、卸载事件等回调接口。 | ArkTS |
-| 任务管理 | [任务延时调度](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/WorkScheduler) | 本示例使用\@ohos.WorkSchedulerExtensionAbility 、\@ohos.net.http 、\@ohos.notification 、\@ohos.bundle 、\@ohos.fileio 等接口，实现了设置后台任务、下载更新包 、保存更新包、发送通知 、安装更新包实现升级的功能。 | ArkTS |
+| 无障碍 | [AccessibilityExtensionAbility示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/AccessibilityExtAbility) | 本示例展示了AccessibilityExtensionAbility的简单应用，使用多个辅助功能接口实现了一些快捷的交互方式。 | ArkTS |
+| 企业管理 | [企业设备管理ExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/EnterpriseAdminExtensionAbility) | 企业设备管理扩展能力，是MDM应用必备组件。当开发者为企业开发MDM（Mobile Device Management）应用时，需继承EnterpriseAdminExtensionAbility，在EnterpriseAdminExtensionAbility实例中实现MDM业务逻辑，EnterpriseAdminExtensionAbility实现了系统管理状态变化通知功能，并定义了管理应用激活、去激活、应用安装、卸载事件等回调接口。 | ArkTS |
+| 任务管理 | [任务延时调度](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/WorkScheduler) | 本示例使用\@ohos.WorkSchedulerExtensionAbility 、\@ohos.net.http 、\@ohos.notification 、\@ohos.bundle 、\@ohos.fileio 等接口，实现了设置后台任务、下载更新包 、保存更新包、发送通知 、安装更新包实现升级的功能。 | ArkTS |
 
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples)仓了解更多信息。
 
 
 ## 修复缺陷列表

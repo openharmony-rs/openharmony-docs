@@ -251,21 +251,21 @@ class B {
 .function any .#~B=#B(any a0, any a1, any a2) {
 label_1: 
 label_0: 
-	callruntime.ldsendablevar 0x0, 0x0
-	sta v0
-	throw.undefinedifholewithname A
-	...
+    callruntime.ldsendablevar 0x0, 0x0
+    sta v0
+    throw.undefinedifholewithname A
+    ...
 label_2: 
 }
 
 .function any .func_main_0(any a0, any a1, any a2) {
 label_1: 
 label_0: 
-	callruntime.newsendableenv 0x1
-	...
-	callruntime.definesendableclass 0x0, .#~A=#A, _3, 0x0, v0
-	callruntime.stsendablevar 0x0, 0x0
-	...
+    callruntime.newsendableenv 0x1
+    ...
+    callruntime.definesendableclass 0x0, .#~A=#A, _3, 0x0, v0
+    callruntime.stsendablevar 0x0, 0x0
+    ...
 label_2: 
 }
 ```

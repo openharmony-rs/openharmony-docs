@@ -77,18 +77,6 @@ Allows an SA to register the executor.
 
 **Valid since**: 9
 
-## ohos.permission.READ_ACCESSIBILITY_CONFIG
-
-Allows an application to read the accessibility configuration.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 9
-
 ## ohos.permission.WRITE_APP_PUSH_DATA
 
 Allows the push service to write data to an application.
@@ -185,18 +173,6 @@ Allows an SA to delete the IAM user information without a token.
 
 **Valid since**: 9
 
-## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
-
-Allows an application to set the accessibility configuration.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 9
-
 ## ohos.permission.ENABLE_DISTRIBUTED_HARDWARE
 
 Allows a system service to enable distributed hardware resources.
@@ -208,18 +184,6 @@ Allows a system service to enable distributed hardware resources.
 **Enable via ACL**: false
 
 **Valid since**: 11
-
-## ohos.permission.ACCESS_SUPER_HUB
-
-Allows an application to access Super Hub.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 12
 
 ## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
 
@@ -236,18 +200,6 @@ Allows a UIExtensionAbility to be displayed on the locked screen.
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 
 Allows an application to query and configure user identity authentication policies, and verify the authentication result.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 18
-
-## ohos.permission.SET_LAUNCH_REASON_MESSAGE
-
-Allows a system application to set the launch reason when starting another application.
 
 **Permission level**: system_basic
 
