@@ -1018,7 +1018,7 @@ animate(options: AnimationOptions, handler: () => void): void
          hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',  `Code is ${err.code}, message is ${err.message}`);
          windowStage.getMainWindow((err, data) => {
            if (err.code) {
-             hilog.error(0x0000, `Failed to abtain the main window. Cause: ${err.message}`, '');
+             hilog.error(0x0000, `Failed to obtain the main window. Cause: ${err.message}`, '');
              return;
            }
            uiContext = data.getUIContext();
