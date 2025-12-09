@@ -121,7 +121,7 @@ struct Index {
 }
 ```
 
-## <span id="on_hotkeyChange_dyn">inputConsumer.on('hotkeyChange')</span>
+## inputConsumer.on('hotkeyChange')
 
 on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
@@ -131,7 +131,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onHotkeyChange](#on_hotkeyChange_sta)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onHotkeyChange](#inputConsumer.onHotkeyChange22)。
 
 **ArkTS-Sta起始版本**：14
 
@@ -187,7 +187,7 @@ struct Index {
 }
 ```
 
-## <span id="on_hotkeyChange_sta">inputConsumer.onHotkeyChange<sup>22+</sup></span>
+## inputConsumer.onHotkeyChange<sup>22+</sup>
 
 onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
@@ -197,7 +197,7 @@ onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_hotkeyChange_dyn)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputConsumer.on('hotkeyChange'))。
 
 **ArkTS-Syn起始版本**：22
 
@@ -253,7 +253,7 @@ struct Index {
 }
 ```
 
-## <span id="off_hotkeyChange_dyn"> inputConsumer.off('hotkeyChange') </span>
+## inputConsumer.off('hotkeyChange')
 
 off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptions&gt;): void
 
@@ -263,7 +263,7 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offhotkeyChange](#off_hotkeyChange_sta)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offhotkeyChange](#inputConsumer.offHotkeyChange22)。
 
 **ArkTS-Dyn起始版本**：14
 
@@ -316,7 +316,7 @@ struct Index {
 }
 ```
 
-## <span id="off_hotkeyChange_sta">inputConsumer.offHotkeyChange<sup>22+</sup></span>
+## inputConsumer.offHotkeyChange<sup>22+</sup>
 
 offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptions&gt;): void
 
@@ -326,7 +326,7 @@ offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptio
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_hotkeyChange_sta)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputConsumer.off('hotkeyChange'))。
 
 **ArkTS-Dyn起始版本**：22
 
@@ -385,7 +385,7 @@ struct Index {
 }
 ```
 
-## <span id="on_keyPressed_dyn">inputConsumer.on('keyPressed')<sup>16+</sup></span>
+## inputConsumer.on('keyPressed')<sup>16+</sup>
 
 on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): void
 
@@ -397,7 +397,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onKeyPressed](#on_keyPressed_sta)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onKeyPressed](#inputConsumer.onKeyPressed22)。
 
 **ArkTS-Dyn起始版本**：16
 
@@ -448,7 +448,7 @@ struct Index {
 }
 ```
 
-## <span id="on_keyPressed_sta">inputConsumer.onKeyPressed<sup>22+</sup></span>
+## inputConsumer.onKeyPressed<sup>22+</sup>
 
 onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): void
 
@@ -460,7 +460,7 @@ onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): voi
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Syn接口是[on](#on_keyPressed_dyn)。
+**相关接口**: 该接口对应的ArkTS-Syn接口是[on](inputConsumer.on('keyPressed')16)。
 
 **ArkTS-Dyn起始版本**：22
 
@@ -512,7 +512,7 @@ struct Index {
 }
 ```
 
-## <span id="off_keyPressed_dyn">inputConsumer.off('keyPressed')<sup>16+</sup></span>
+## inputConsumer.off('keyPressed')<sup>16+</sup>
 
 off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
@@ -522,7 +522,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offKeyPressed](#off_keyPressed_sta)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offKeyPressed](#inputConsumer.offKeyPressed22)。
 
 **ArkTS-Dyn起始版本**：16
 
@@ -570,7 +570,7 @@ struct Index {
 }
 ```
 
-## <span id="off_keyPressed_sta">inputConsumer.offKeyPressed<sup>22+</sup></span>
+## inputConsumer.offKeyPressed<sup>22+</sup>
 
 offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 
@@ -580,7 +580,7 @@ offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_keyPressed_dyn)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputConsumer.off('keyPressed')16)。
 
 **ArkTS-Dyn起始版本**：22
 
