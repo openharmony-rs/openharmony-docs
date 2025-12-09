@@ -73,8 +73,8 @@ libnative_rdb_ndk.z.so
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
 
    <!--@[vector_OH_Rdb_GetSupportedDbType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    int numType = 0;
    // 如果numType为2则支持向量数据库，为1则不支持向量数据库
    OH_Rdb_GetSupportedDbType(&numType);
