@@ -65,7 +65,7 @@ import { formInfo } from '@kit.FormKit';
 
 ## ColorMode<sup>(deprecated)</sup>
 
-卡片主题样式统一跟随系统的颜色模式，卡片支持的颜色模式枚举。
+卡片主题样式统一跟随系统的颜色模式，应用卡片需要支持深浅色两种显示模式，无替代接口。
 
 > **说明：**
 >
