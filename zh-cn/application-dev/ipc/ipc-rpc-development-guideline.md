@@ -36,7 +36,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
 3. 在ServiceExtAbility.ets文件中，导入ServiceExtensionAbility的依赖包，自定义类继承ServiceExtensionAbility并实现生命周期回调。定义一个继承自[rpc.RemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#remoteobject)的stub类，实现[onRemoteMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#onremotemessagerequest9)方法，用来处理客户端的请求。在onConnect生命周期回调函数里，创建之前定义的Stub对象并返回。
 
-    <!-- @[service_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Stub/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets) -->
+    <!-- @[service_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Stub/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets) -->
     
     ``` TypeScript
     import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -111,7 +111,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
   导入相关依赖，并定义所需的变量；
 
-  <!-- @[front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -133,7 +133,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
   连接服务，获取代理对象，发送信息给服务端，通信结束后断开连接。
 
-  <!-- @[funcation_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[funcation_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   // 连接服务
@@ -232,7 +232,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
   导入相关依赖，并定义所需的变量；
 
-  <!-- @[rpc_front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[rpc_front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -259,7 +259,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
 获取[允许多设备协同的权限](../security/AccessToken/permissions-for-all-user.md#ohospermissiondistributed_datasync)，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并发送信息给服务端，当代理对象与服务端的通信结束后，进行断连。
 
-  <!-- @[rpc_funcation_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[rpc_funcation_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   // 获取权限
@@ -423,4 +423,4 @@ featureAbility.disconnectAbility(connectId, disconnectCallback);
 
 针对IPC与RPC通信开发，端到端的完整示例，请参考：
 
-- [IPC通信完整样例-使用Parcelable/ArrayBuffer通信](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/IPC/ObjectTransfer)
+- [IPC通信完整样例-使用Parcelable/ArrayBuffer通信](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/IPC/ObjectTransfer)
