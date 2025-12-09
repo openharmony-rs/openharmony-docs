@@ -49,26 +49,26 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 创建/删除P2P群组。
    <!-- @[createGrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-
-``` TypeScript
-async createGroup() {
-  try {
-    let deviceInfo = await wifiManager.getP2pLocalDevice()
-    let config:wifiManager.WifiP2PConfig = {
-      deviceAddress: deviceInfo.deviceAddress,
-      netId: this.netId,
-      passphrase: this.passphrase,
-      groupName: this.groupName,
-      goBand: this.goBand,
-    }
-    hilog.info(`deviceAddress: ${config.deviceAddress}, netId: ${config.netId}, pwd: ${config.passphrase}, gpname: ${config.groupName}, goBand: ${config.goBand}`)
-    wifiManager.createGroup(config)
-    promptAction.showToast({ message : 'createGroup success' })
-  } catch (e) {
-    hilog.info(TAG, `createGroup Error: ${JSON.stringify(e)}`)
-  }
-}
-```
+   
+   ``` TypeScript
+   async createGroup() {
+     try {
+       let deviceInfo = await wifiManager.getP2pLocalDevice();
+       let config:wifiManager.WifiP2PConfig = {
+         deviceAddress: deviceInfo.deviceAddress,
+         netId: this.netId,
+         passphrase: this.passphrase,
+         groupName: this.groupName,
+         goBand: this.goBand,
+       }
+       hilog.info(`deviceAddress: ${config.deviceAddress}, netId: ${config.netId}, pwd: ${config.passphrase}, gpname: ${config.groupName}, goBand: ${config.goBand}`);
+       await wifiManager.createGroup(config);
+       promptAction.showToast({ message : 'createGroup success' });
+     } catch (e) {
+       hilog.info(TAG, `createGroup Error: ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 5. 示例代码：
 
    ```ts
