@@ -215,7 +215,7 @@ SQL语句中的函数，如下所示：
 4. 获取到RdbStore后，调用execute接口修改或删除数据。示例代码如下：
 
    <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
+   
    ``` TypeScript
    // 修改数据
    try {
@@ -227,7 +227,7 @@ SQL语句中的函数，如下所示：
    } catch (err) {
      console.error(`execute update failed, code is ${err.code}, message is ${err.message}`);
    }
-
+   
    // 删除数据
    try {
      // 使用参数绑定
