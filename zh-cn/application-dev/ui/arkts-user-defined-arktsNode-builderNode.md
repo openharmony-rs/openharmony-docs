@@ -299,6 +299,8 @@ struct Index {
   }
 }
 ```
+  
+![zh-cn_image_update_BuilderNode](figures/zh-cn_image_update_BuilderNode.gif)
 
 ## 解除实体节点引用关系
 
