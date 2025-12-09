@@ -95,11 +95,12 @@ import { globalBuilder } from 'dynamic_module'; // 引入ArkTS-Dyn模块导出�
 @Component
 struct MainPage {
   @State stateVar: string = 'Hello World!';
+  flag: boolean = true;
 
   build() {
     Column() {
       // 构造WrappedBuilder函数的参数对象
-      let globalBuilderParam = ESValue.instantiateEmptyObject()
+      let globalBuilderParam = ESValue.instantiateEmptyObject();
       // 设置参数prop的值为@State变量
       globalBuilderParam.setProperty(ESValue.wrap('prop'), ESValue.wrap(this.stateVar))
       // 显式使用占位compatibleWrappedBuilder函数，链接ArkTS-Dyn的WrappedBuilder对象
@@ -107,7 +108,12 @@ struct MainPage {
 
       Button('Click me').onClick((e: ClickEvent) => {
         // 点击按钮时更新@State变量，触发UI更新
-        this.stateVar = 'Hello ArkUI!';
+        this.flag = !this.flag;
+        if (this.flag) {
+          this.stateVar = 'Hello static!';
+        } else {
+          this.stateVar = 'Hello dynamic!';
+        }
       })
     }
     .width('100%')
