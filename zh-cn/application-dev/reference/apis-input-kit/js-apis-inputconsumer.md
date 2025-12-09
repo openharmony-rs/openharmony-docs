@@ -199,7 +199,7 @@ onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputconsumeronhotkeychange)。
 
-**ArkTS-Syn起始版本**：22
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
