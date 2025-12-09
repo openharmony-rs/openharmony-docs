@@ -59,15 +59,15 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DEFAULT | 默认均衡器频带增益效果。<br> 各频带增益：{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}。<br>**起始版本：** 22 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_BALLADS | 均衡器节点内置民谣效果。<br> 各频带增益：{3, 5, 2, -4, 1, 2, -3, 1, 4, 5}。<br>**起始版本：** 22 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CHINESE_STYLE | 均衡器节点内置中国风效果。<br> 各频带增益：{0, 0, 2, 0, 0, 4, 4, 2, 2, 5}。<br>**起始版本：** 22 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CLASSICAL | 均衡器节点内置古典效果。<br> 各频带增益：{2, 3, 2, 1, 0, 0, -5, -5, -5, -6}。<br>**起始版本：** 22 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DANCE_MUSIC | 均衡器节点内置舞曲效果。<br> 各频带增益：{4, 3, 2, -3, 0, 0, 5, 4, 2, 0}。<br>**起始版本：** 22 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_JAZZ | 均衡器节点内置爵士效果。<br> 各频带增益：{2, 0, 2, 3, 6, 5, -1, 3, 4, 4}。<br>**起始版本：** 22 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_POP | 均衡器节点内置流行效果。<br> 各频带增益：{5, 2, 1, -1, -5, -5, -2, 1, 2, 4}。<br>**起始版本：** 22 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_RB | 均衡器节点内置R&B效果。<br> 各频带增益：{1, 4, 5, 3, -2, -2, 2, 3, 5, 5}。<br>**起始版本：** 22 |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_ROCK | 均衡器节点内置摇滚效果。<br> 各频带增益：{6, 4, 4, 2, 0, 1, 3, 3, 5, 4}。<br>**起始版本：** 22 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DEFAULT | 默认均衡器频带增益效果。<br> 各频带增益：{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}。 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_BALLADS | 均衡器节点内置民谣效果。<br> 各频带增益：{3, 5, 2, -4, 1, 2, -3, 1, 4, 5}。 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CHINESE_STYLE | 均衡器节点内置中国风效果。<br> 各频带增益：{0, 0, 2, 0, 0, 4, 4, 2, 2, 5}。 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CLASSICAL | 均衡器节点内置古典效果。<br> 各频带增益：{2, 3, 2, 1, 0, 0, -5, -5, -5, -6}。 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DANCE_MUSIC | 均衡器节点内置舞曲效果。<br> 各频带增益：{4, 3, 2, -3, 0, 0, 5, 4, 2, 0}。 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_JAZZ | 均衡器节点内置爵士效果。<br> 各频带增益：{2, 0, 2, 3, 6, 5, -1, 3, 4, 4}。 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_POP | 均衡器节点内置流行效果。<br> 各频带增益：{5, 2, 1, -1, -5, -5, -2, 1, 2, 4}。 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_RB | 均衡器节点内置R&B效果。<br> 各频带增益：{1, 4, 5, 3, -2, -2, 2, 3, 5, 5}。 |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_ROCK | 均衡器节点内置摇滚效果。<br> 各频带增益：{6, 4, 4, 2, 0, 1, 3, 3, 5, 4}。 |
 
 ## 枚举类型说明
 
@@ -109,8 +109,8 @@ enum OH_AudioSuite_PipelineWorkMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOSUITE_PIPELINE_EDIT_MODE = 1 | 编辑模式，管线处于该工作模式下可创建多种效果节点进行音频处理。<br>**起始版本：** 22 |
-| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | 实时渲染模式，即在音频处理过程中实时播放已处理的音频。<br> 实时渲染模式下，管线仅支持均衡器效果处理。<br>**起始版本：** 22 |
+| AUDIOSUITE_PIPELINE_EDIT_MODE = 1 | 编辑模式，管线处于该工作模式下可创建多种效果节点进行音频处理。 |
+| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | 实时渲染模式，即在音频处理过程中实时播放已处理的音频。<br> 实时渲染模式下，管线仅支持均衡器效果处理。 |
 
 ### OH_AudioSuite_PipelineState
 
@@ -126,8 +126,8 @@ enum OH_AudioSuite_PipelineState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOSUITE_PIPELINE_STOPPED = 1 | 管线处于停止状态。<br>**起始版本：** 22 |
-| AUDIOSUITE_PIPELINE_RUNNING = 2 | 管线处于运行状态。<br>**起始版本：** 22 |
+| AUDIOSUITE_PIPELINE_STOPPED = 1 | 管线处于停止状态。 |
+| AUDIOSUITE_PIPELINE_RUNNING = 2 | 管线处于运行状态。 |
 
 ### OH_AudioSuite_Result
 
@@ -143,20 +143,20 @@ enum OH_AudioSuite_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOSUITE_SUCCESS = 0 |  调用成功。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_INVALID_PARAM = 1 |  输入参数无效。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_INVALID_STATE = 2 |  非法状态。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_SYSTEM = 3 |  系统通用错误。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 |  不支持的音频格式，如不支持的编码类型、采样格式等。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5 |  引擎不存在。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6 |  管线不存在。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 |  节点不存在。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 |  节点之间不支持连接。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 |  不支持的操作。例如，效果节点不支持设置音频格式。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 |  创建管线或者节点超过系统最大数量限制。具体情况如下：<br> 引擎最多支持创建10条管线（其中，实时渲染管线最多创建1条）。每一个管线中，输入节点不超过5个，输出节点不超过1个，混音节点不超过3个，音源分离节点不超过1个，其余效果节点不超过5个。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 |  参数缺少必要参数。例如，输入节点未设置回调函数、输出节点未设置音频格式。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_TIMEOUT = 12 |  操作超时。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 |  内存申请失败。<br>**起始版本：** 22 |
+| AUDIOSUITE_SUCCESS = 0 |  调用成功。 |
+| AUDIOSUITE_ERROR_INVALID_PARAM = 1 |  输入参数无效。 |
+| AUDIOSUITE_ERROR_INVALID_STATE = 2 |  非法状态。 |
+| AUDIOSUITE_ERROR_SYSTEM = 3 |  系统通用错误。 |
+| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 |  不支持的音频格式，如不支持的编码类型、采样格式等。 |
+| AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5 |  引擎不存在。 |
+| AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6 |  管线不存在。 |
+| AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 |  节点不存在。 |
+| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 |  节点之间不支持连接。 |
+| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 |  不支持的操作。例如，效果节点不支持设置音频格式。 |
+| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 |  创建管线或者节点超过系统最大数量限制。具体情况如下：<br> 引擎最多支持创建10条管线（其中，实时渲染管线最多创建1条）。每一个管线中，输入节点不超过5个，输出节点不超过1个，混音节点不超过3个，音源分离节点不超过1个，其余效果节点不超过5个。 |
+| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 |  参数缺少必要参数。例如，输入节点未设置回调函数、输出节点未设置音频格式。 |
+| AUDIOSUITE_ERROR_TIMEOUT = 12 |  操作超时。 |
+| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 |  内存申请失败。 |
 
 ### OH_Audio_SampleFormat
 
@@ -172,11 +172,11 @@ enum OH_Audio_SampleFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_SAMPLE_U8 = 0 | Unsigned 8位。<br>**起始版本：** 22 |
-| AUDIO_SAMPLE_S16LE = 1 | Short 16位小端。<br>**起始版本：** 22 |
-| AUDIO_SAMPLE_S24LE = 2 | Short 24位小端。<br>**起始版本：** 22 |
-| AUDIO_SAMPLE_S32LE = 3 | Short 32位小端。<br>**起始版本：** 22 |
-| AUDIO_SAMPLE_F32LE = 4 | Float 32位小端。<br>**起始版本：** 22 |
+| AUDIO_SAMPLE_U8 = 0 | Unsigned 8位。 |
+| AUDIO_SAMPLE_S16LE = 1 | Short 16位小端。 |
+| AUDIO_SAMPLE_S24LE = 2 | Short 24位小端。 |
+| AUDIO_SAMPLE_S32LE = 3 | Short 32位小端。 |
+| AUDIO_SAMPLE_F32LE = 4 | Float 32位小端。 |
 
 ### OH_Audio_EncodingType
 
@@ -192,7 +192,7 @@ enum OH_Audio_EncodingType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_ENCODING_TYPE_RAW = 0 | PCM编码。<br>**起始版本：** 22 |
+| AUDIO_ENCODING_TYPE_RAW = 0 | PCM编码。 |
 
 ### OH_Audio_SampleRate
 
@@ -208,20 +208,20 @@ enum OH_Audio_SampleRate
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SAMPLE_RATE_8000 = 8000 | 采样率8kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_11025 = 11025 | 采样率11.025kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_12000 = 12000 | 采样率12kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_16000 = 16000 | 采样率16kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_22050 = 22050 | 采样率22.05kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_24000 = 24000 | 采样率24kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_32000 = 32000 | 采样率32kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_44100 = 44100 | 采样率44.1kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_48000 = 48000 | 采样率48kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_64000 = 64000 | 采样率64kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_88200 = 88200 | 采样率88.2kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_96000 = 96000 | 采样率96kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_176400 = 176400 | 采样率176.4kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_192000 = 192000 | 采样率192kHz。<br>**起始版本：** 22 |
+| SAMPLE_RATE_8000 = 8000 | 采样率8kHz。 |
+| SAMPLE_RATE_11025 = 11025 | 采样率11.025kHz。 |
+| SAMPLE_RATE_12000 = 12000 | 采样率12kHz。 |
+| SAMPLE_RATE_16000 = 16000 | 采样率16kHz。 |
+| SAMPLE_RATE_22050 = 22050 | 采样率22.05kHz。 |
+| SAMPLE_RATE_24000 = 24000 | 采样率24kHz。 |
+| SAMPLE_RATE_32000 = 32000 | 采样率32kHz。 |
+| SAMPLE_RATE_44100 = 44100 | 采样率44.1kHz。 |
+| SAMPLE_RATE_48000 = 48000 | 采样率48kHz。 |
+| SAMPLE_RATE_64000 = 64000 | 采样率64kHz。 |
+| SAMPLE_RATE_88200 = 88200 | 采样率88.2kHz。 |
+| SAMPLE_RATE_96000 = 96000 | 采样率96kHz。 |
+| SAMPLE_RATE_176400 = 176400 | 采样率176.4kHz。 |
+| SAMPLE_RATE_192000 = 192000 | 采样率192kHz。 |
 
 ### OH_SoundFieldType
 
@@ -237,10 +237,10 @@ enum OH_SoundFieldType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SOUND_FIELD_FRONT_FACING = 1 | 前置声场效果。<br>**起始版本：** 22 |
-| SOUND_FIELD_GRAND = 2 | 宏大声场效果。<br>**起始版本：** 22 |
-| SOUND_FIELD_NEAR = 3 | 聆听声场效果。<br>**起始版本：** 22 |
-| SOUND_FIELD_WIDE = 4 | 宽广声场效果。<br>**起始版本：** 22 |
+| SOUND_FIELD_FRONT_FACING = 1 | 前置声场效果。 |
+| SOUND_FIELD_GRAND = 2 | 宏大声场效果。 |
+| SOUND_FIELD_NEAR = 3 | 聆听声场效果。 |
+| SOUND_FIELD_WIDE = 4 | 宽广声场效果。 |
 
 ### OH_EnvironmentType
 
@@ -256,10 +256,10 @@ enum OH_EnvironmentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ENVIRONMENT_TYPE_BROADCAST = 1 | 环境节点效果为广播。<br>**起始版本：** 22 |
-| ENVIRONMENT_TYPE_EARPIECE = 2 | 环境节点效果为电话听筒。<br>**起始版本：** 22 |
-| ENVIRONMENT_TYPE_UNDERWATER = 3 | 环境节点效果为水下。<br>**起始版本：** 22 |
-| ENVIRONMENT_TYPE_GRAMOPHONE = 4 | 环境节点效果为留声机。<br>**起始版本：** 22 |
+| ENVIRONMENT_TYPE_BROADCAST = 1 | 环境节点效果为广播。 |
+| ENVIRONMENT_TYPE_EARPIECE = 2 | 环境节点效果为电话听筒。 |
+| ENVIRONMENT_TYPE_UNDERWATER = 3 | 环境节点效果为水下。 |
+| ENVIRONMENT_TYPE_GRAMOPHONE = 4 | 环境节点效果为留声机。 |
 
 ### OH_VoiceBeautifierType
 
@@ -275,9 +275,9 @@ enum OH_VoiceBeautifierType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VOICE_BEAUTIFIER_TYPE_CLEAR = 1 | 声音美化节点效果为清澈。<br>**起始版本：** 22 |
-| VOICE_BEAUTIFIER_TYPE_THEATRE = 2 | 声音美化节点效果为剧场。<br>**起始版本：** 22 |
-| VOICE_BEAUTIFIER_TYPE_CD = 3 | 声音美化节点效果为CD。<br>**起始版本：** 22 |
-| VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4 | 声音美化节点效果为录音棚。<br>**起始版本：** 22 |
+| VOICE_BEAUTIFIER_TYPE_CLEAR = 1 | 声音美化节点效果为清澈。 |
+| VOICE_BEAUTIFIER_TYPE_THEATRE = 2 | 声音美化节点效果为剧场。 |
+| VOICE_BEAUTIFIER_TYPE_CD = 3 | 声音美化节点效果为CD。 |
+| VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4 | 声音美化节点效果为录音棚。 |
 
 

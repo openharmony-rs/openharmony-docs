@@ -26,10 +26,10 @@ typedef struct {...} OH_AudioFormat
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate) samplingRate | 音频流采样率。<br>**起始版本：** 22 |
-| OH_AudioChannelLayout channelLayout | 音频流声道布局，当前只支持CH_LAYOUT_MONO 和 CH_LAYOUT_STEREO。<br>**起始版本：** 22 |
-| uint32_t channelCount | 音频流声道个数，当前只支持1声道和2声道。<br>**起始版本：** 22 |
-| [OH_Audio_EncodingType](capi-native-audio-suite-base-h.md#oh_audio_encodingtype) encodingType | 音频流编码类型。<br>**起始版本：** 22 |
-| [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat) sampleFormat | 音频流采样格式。<br>**起始版本：** 22 |
+| [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate) samplingRate | 音频流采样率。 |
+| OH_AudioChannelLayout channelLayout | 音频流声道布局，当前只支持CH_LAYOUT_MONO 和 CH_LAYOUT_STEREO。 |
+| uint32_t channelCount | 音频流声道个数，当前只支持1声道和2声道。 |
+| [OH_Audio_EncodingType](capi-native-audio-suite-base-h.md#oh_audio_encodingtype) encodingType | 音频流编码类型。 |
+| [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat) sampleFormat | 音频流采样格式。 |
 
 
