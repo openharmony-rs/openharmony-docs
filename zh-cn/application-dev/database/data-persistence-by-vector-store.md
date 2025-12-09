@@ -199,7 +199,7 @@ SQL语句中的函数，如下所示：
    示例代码如下：
 
    <!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
+   
    ``` TypeScript
    try {
      // 使用参数绑定
