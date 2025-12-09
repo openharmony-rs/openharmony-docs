@@ -1477,9 +1477,9 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 
 | 名称                   | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                 |
 |----------------------|-------------------------------------------------| ---- |-----|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | 否 | 否| 表示用于延迟加载数据的处理函数，从API version 20开始，该接口支持在原子化服务中使用。             |
-| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#DelayedDataLoadHandler22) | 否 | 是| 表示用于延迟加载数据的异步处理函数，从API version 22开始，该接口支持在原子化服务中使用，此接口仅可在Stage模型下使用。              |
-| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | 否 | 否| 用于描述当前发送方可生成的数据类型及数量信息，从API version 20开始，该接口支持在原子化服务中使用              |
+| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | 否 | 否| 表示用于延迟加载数据的处理函数。<br/>从API version 20开始，该接口支持在原子化服务中使用。             |
+| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#DelayedDataLoadHandler22) | 否 | 是| 表示用于延迟加载数据的异步处理函数。<br/>从API version 22开始，该接口支持在原子化服务中使用.<br/>此接口仅可在Stage模型下使用。              |
+| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | 否 | 否| 用于描述当前发送方可生成的数据类型及数量信息。<br/>从API version 20开始，该接口支持在原子化服务中使用。              |
 
 ## unifiedDataChannel.insertData
 
