@@ -209,7 +209,7 @@ function sendMessageToNative() {
     import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import {buffer, util} from '@kit.ArkTS';
-    import { fileIo as fs } from '@kit.CoreFileKit';
+    import fs from '@ohos.file.fs';
 
     const TAG: string = '[MyWebNativeMessageExtAbility]';
     const DOMAIN_NUMBER: number = 0xFF00;
