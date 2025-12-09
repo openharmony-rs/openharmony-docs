@@ -246,11 +246,13 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, V
 
 **描述**
 
-根据给定的Vulkan设备、图像格式和图像使用标志, 返回适当的Gralloc(内存分配器)使用标志。
+根据给定的Vulkan设备、图像格式和图像使用标志, 返回适当的Gralloc(内存分配器)使用标志。应用开发者无需使用该接口。
 
 **系统能力：** SystemCapability.Graphic.Vulkan
 
 **起始版本：** 10
+
+**废弃版本：** 23
 
 
 **参数：**
@@ -276,11 +278,13 @@ VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image
 
 **描述**
 
-用于获取交换链图像的所有权, 并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。
+用于获取交换链图像的所有权, 并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。应用开发者无需使用该接口。
 
 **系统能力：** SystemCapability.Graphic.Vulkan
 
 **起始版本：** 10
+
+**废弃版本：** 23
 
 
 **参数：**
@@ -307,11 +311,13 @@ VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint
 
 **描述**
 
-当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号, 以便其他组件可以访问该图像。
+当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号, 以便其他组件可以访问该图像。应用开发者无需使用该接口。
 
 **系统能力：** SystemCapability.Graphic.Vulkan
 
 **起始版本：** 10
+
+**废弃版本：** 23
 
 
 **参数：**
