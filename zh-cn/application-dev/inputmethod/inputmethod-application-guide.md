@@ -462,176 +462,175 @@ private registerListener(): void {
 
 
    <!-- @[input_case_input_KeyboardKeyData016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
-
-``` TypeScript
-export interface keySourceListType {
-  title: string,
-  content: string,
-  upperContent: string
-}
-
-export interface sourceListType {
-  content: string
-}
-
-export enum MenuKey {
-  NUMBER_KEY = '?123',
-  NORMAL_KEY = 'ABC',
-  SPECIAL_KEY = '=/\<'
-}
-
-export enum SubMenuType {
-  NORMAL = 0,
-  MENU = 1,
-  EDIT = 2
-}
-
-export enum MenuType {
-  NORMAL = 0,
-  NUMBER = 1,
-  SPECIAL = 2
-}
-
-export enum KeyState {
-  LOWER_CASE = 0,
-  ONCE_UPPER_CASE = 1,
-  UPPER_CASE = 2
-}
-
-export let keySourceListData: keySourceListType[] = [
-  {
-    title: '1',
-    content: 'q',
-    upperContent: 'Q'
-  },
-  {
-    title: '2',
-    content: 'w',
-    upperContent: 'W'
-  },
-  {
-    title: '3',
-    content: 'e',
-    upperContent: 'E'
-  },
-  {
-    title: '4',
-    content: 'r',
-    upperContent: 'R'
-  },
-  {
-    title: '5',
-    content: 't',
-    upperContent: 'T'
-  },
-  {
-    title: '6',
-    content: 'y',
-    upperContent: 'Y'
-  },
-  {
-    title: '7',
-    content: 'u',
-    upperContent: 'U'
-  },
-  {
-    title: '8',
-    content: 'i',
-    upperContent: 'I'
-  },
-  {
-    title: '9',
-    content: 'o',
-    upperContent: 'O'
-  },
-  {
-    title: '0',
-    content: 'p',
-    upperContent: 'P'
-  },
-  {
-    title: String.fromCharCode(126),
-    content: 'a',
-    upperContent: 'A'
-  },
-  {
-    title: String.fromCharCode(33),
-    content: 's',
-    upperContent: 'S'
-  },
-  {
-    title: '@',
-    content: 'd',
-    upperContent: 'D'
-  },
-  {
-    title: String.fromCharCode(35),
-    content: 'f',
-    upperContent: 'F'
-  },
-  {
-    title: '%',
-    content: 'g',
-    upperContent: 'G'
-  },
-  {
-    title: String.fromCharCode(39),
-    content: 'h',
-    upperContent: 'H'
-  },
-  {
-    title: '&',
-    content: 'j',
-    upperContent: 'J'
-  },
-  {
-    title: '*',
-    content: 'k',
-    upperContent: 'K'
-  },
-  {
-    title: '?',
-    content: 'l',
-    upperContent: 'L'
-  },
-  {
-    title: String.fromCharCode(72),
-    content: 'z',
-    upperContent: 'Z'
-  },
-  {
-    title: String.fromCharCode(73),
-    content: 'x',
-    upperContent: 'X'
-  },
-  {
-    title: String.fromCharCode(175),
-    content: 'c',
-    upperContent: 'C'
-  },
-  {
-    title: String.fromCharCode(95),
-    content: 'v',
-    upperContent: 'V'
-  },
-  {
-    title: String.fromCharCode(58),
-    content: 'b',
-    upperContent: 'B'
-  },
-  {
-    title: String.fromCharCode(59),
-    content: 'n',
-    upperContent: 'N'
-  },
-  {
-    title: String.fromCharCode(47),
-    content: 'm',
-    upperContent: 'M'
-  }
-]
-
-```
+   
+   ``` TypeScript
+   export interface keySourceListType {
+     title: string,
+     content: string,
+     upperContent: string
+   }
+   
+   export interface sourceListType {
+     content: string
+   }
+   
+   export enum MenuKey {
+     NUMBER_KEY = '?123',
+     NORMAL_KEY = 'ABC',
+     SPECIAL_KEY = '=/\<'
+   }
+   
+   export enum SubMenuType {
+     NORMAL = 0,
+     MENU = 1,
+     EDIT = 2
+   }
+   
+   export enum MenuType {
+     NORMAL = 0,
+     NUMBER = 1,
+     SPECIAL = 2
+   }
+   
+   export enum KeyState {
+     LOWER_CASE = 0,
+     ONCE_UPPER_CASE = 1,
+     UPPER_CASE = 2
+   }
+   
+   export let keySourceListData: keySourceListType[] = [
+     {
+       title: '1',
+       content: 'q',
+       upperContent: 'Q'
+     },
+     {
+       title: '2',
+       content: 'w',
+       upperContent: 'W'
+     },
+     {
+       title: '3',
+       content: 'e',
+       upperContent: 'E'
+     },
+     {
+       title: '4',
+       content: 'r',
+       upperContent: 'R'
+     },
+     {
+       title: '5',
+       content: 't',
+       upperContent: 'T'
+     },
+     {
+       title: '6',
+       content: 'y',
+       upperContent: 'Y'
+     },
+     {
+       title: '7',
+       content: 'u',
+       upperContent: 'U'
+     },
+     {
+       title: '8',
+       content: 'i',
+       upperContent: 'I'
+     },
+     {
+       title: '9',
+       content: 'o',
+       upperContent: 'O'
+     },
+     {
+       title: '0',
+       content: 'p',
+       upperContent: 'P'
+     },
+     {
+       title: String.fromCharCode(126),
+       content: 'a',
+       upperContent: 'A'
+     },
+     {
+       title: String.fromCharCode(33),
+       content: 's',
+       upperContent: 'S'
+     },
+     {
+       title: '@',
+       content: 'd',
+       upperContent: 'D'
+     },
+     {
+       title: String.fromCharCode(35),
+       content: 'f',
+       upperContent: 'F'
+     },
+     {
+       title: '%',
+       content: 'g',
+       upperContent: 'G'
+     },
+     {
+       title: String.fromCharCode(39),
+       content: 'h',
+       upperContent: 'H'
+     },
+     {
+       title: '&',
+       content: 'j',
+       upperContent: 'J'
+     },
+     {
+       title: '*',
+       content: 'k',
+       upperContent: 'K'
+     },
+     {
+       title: '?',
+       content: 'l',
+       upperContent: 'L'
+     },
+     {
+       title: String.fromCharCode(72),
+       content: 'z',
+       upperContent: 'Z'
+     },
+     {
+       title: String.fromCharCode(73),
+       content: 'x',
+       upperContent: 'X'
+     },
+     {
+       title: String.fromCharCode(175),
+       content: 'c',
+       upperContent: 'C'
+     },
+     {
+       title: String.fromCharCode(95),
+       content: 'v',
+       upperContent: 'V'
+     },
+     {
+       title: String.fromCharCode(58),
+       content: 'b',
+       upperContent: 'B'
+     },
+     {
+       title: String.fromCharCode(59),
+       content: 'n',
+       upperContent: 'N'
+     },
+     {
+       title: String.fromCharCode(47),
+       content: 'm',
+       upperContent: 'M'
+     }
+   ]
+   ```
 
 
    <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
