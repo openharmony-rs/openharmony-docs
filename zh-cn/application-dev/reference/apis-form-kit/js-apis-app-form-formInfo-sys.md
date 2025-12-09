@@ -129,10 +129,10 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称    | 类型                                          | 可读 | 可写 | 说明                       |
+| 名称    | 类型                                          | 只读 | 可选 | 说明                       |
 | ------- | --------------------------------------------- | ---- | ---- | -------------------------- |
-| code    | [PublishFormErrorCode](#publishformerrorcode12) | 是   | 否   | 发布卡片加桌错误码。       |
-| message | string                                        | 是   | 否   | 设置卡片加桌结果返回信息。 |
+| code    | [PublishFormErrorCode](#publishformerrorcode12) | 否   | 否   | 发布卡片加桌错误码。       |
+| message | string                                        | 否   | 否   | 设置卡片加桌结果返回信息。 |
 
 ## PublishFormErrorCode<sup>12+</sup>
 
