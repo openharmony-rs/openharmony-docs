@@ -210,7 +210,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
 | timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
-| bundleName       | string | 否   | 是   | 监听窗口对应包名，默认监听所有窗口。       |
+| bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
 
 
 ## ComponentEventOptions<sup>22+</sup>
