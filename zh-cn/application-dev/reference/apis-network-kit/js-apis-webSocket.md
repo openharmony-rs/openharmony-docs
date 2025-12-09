@@ -891,7 +891,7 @@ createWebSocketServer(): WebSocketServer
 
 > **说明：**
 >
-> api22之前仅支持TV设置使用，api22及之后支持全设备使用。
+> api22之前仅支持TV设备使用，api22及之后支持全设备使用。
 
 **系统能力**: SystemCapability.Communication.NetStack
 
