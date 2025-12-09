@@ -100,8 +100,8 @@ struct Index {
 ```
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
@@ -220,8 +220,8 @@ onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
@@ -348,8 +348,8 @@ offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptio
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
@@ -482,8 +482,8 @@ onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): voi
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
@@ -601,8 +601,8 @@ offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
 

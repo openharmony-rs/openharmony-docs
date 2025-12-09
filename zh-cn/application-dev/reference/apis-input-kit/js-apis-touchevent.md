@@ -105,15 +105,11 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：22
-
 | 名称         | 类型       | 只读   | 可选   | 说明        |
 | ---------- | ---------- | ---- | ---- | --------- |
-| action     | [Action](#action)     | 否    | 否    | 触屏事件类型。     |
-| touch      | [Touch](#touch)      | 否    | 否    | 当前触屏点信息。   |
-| touches    | [Touch](#touch)[]    | 否    | 否    | 所有触屏点。     |
+| action     | [Action](#action)     | 否    | 否    | 触屏事件类型。 <br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：22    |
+| touch      | [Touch](#touch)      | 否    | 否    | 当前触屏点信息。 <br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：22  |
+| touches    | [Touch](#touch)[]    | 否    | 否    | 所有触屏点。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：22     |
 | sourceType | [SourceType](#sourcetype) | 否    | 否    | 触屏来源的设备类型。 |
 | isInject<sup>20+</sup>   | boolean     | 否   | 是    | 是否注入事件。true代表注入，false代表非注入。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：22  |
 

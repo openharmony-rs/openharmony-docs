@@ -79,8 +79,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -157,8 +157,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -246,7 +246,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -339,8 +339,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -428,8 +428,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -551,7 +551,7 @@ onChange(listener: Callback&lt;DeviceListener&gt;): void
 **示例：**
 
 ```ts
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -675,8 +675,8 @@ offChange(listener?: Callback&lt;DeviceListener&gt;): void
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -940,9 +940,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { inputDevice, KeyCode } from '@kit.InputKit'
+import { inputDevice, KeyCode } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1031,8 +1031,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputDevice, KeyCode } from '@kit.InputKit'
 
@@ -1122,8 +1122,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice, KeyCode } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1213,8 +1213,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';;
 import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
 
@@ -1310,8 +1310,8 @@ struct Index {
 ```
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
 
@@ -1402,8 +1402,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-mport { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
 
@@ -1489,8 +1489,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputDevice } from '@kit.InputKit'
 
@@ -1580,8 +1580,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputDevice } from '@kit.InputKit'
 
@@ -1650,8 +1650,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

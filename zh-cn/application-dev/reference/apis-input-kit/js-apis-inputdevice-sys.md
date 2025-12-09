@@ -85,7 +85,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -180,8 +180,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
 
@@ -271,7 +271,7 @@ struct Index {
 ArkTS-Sta示例:
 
 ```ts
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -360,8 +360,8 @@ struct Index {
 
 ArkTS-Sta示例:
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -450,8 +450,8 @@ struct Index {
 
 ArkTS-Sta示例:
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -463,7 +463,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatRate(60, (error:  BusinessError<void>|null, data: undefined) => {
+            inputDevice.setKeyboardRepeatRate(60, (error: BusinessError<void> | null, data: undefined) => {
               if (error) {
                 console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -476,6 +476,7 @@ struct Index {
         })
     }
   }
+}
 ```
 
 ## inputDevice.setKeyboardRepeatRate<sup>10+</sup>
@@ -544,8 +545,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -810,8 +811,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

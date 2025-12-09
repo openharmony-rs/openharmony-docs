@@ -110,8 +110,8 @@ onTouch(type: 'touch', receiver: TouchEventReceiver): void
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
@@ -229,8 +229,8 @@ onMouse(receiver: Callback&lt;MouseEvent&gt;): void
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
@@ -375,8 +375,8 @@ onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 import { inputMonitor } from '@kit.InputKit';
@@ -532,8 +532,8 @@ offTouch(receiver?: TouchEventReceiver): void
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, TouchEvent } from '@kit.InputKit';
 
@@ -693,8 +693,8 @@ offMouse(receiver?: Callback&lt;MouseEvent&gt;): void
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, MouseEvent } from '@kit.InputKit';
 
@@ -786,8 +786,8 @@ struct Index {
 
 ArkTS-Sta示例
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
@@ -907,8 +907,8 @@ onPinch(receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pi
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, Pinch } from '@kit.InputKit';
 
@@ -1060,8 +1060,8 @@ offPinch(receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, Pinch } from '@kit.InputKit';
 
@@ -1186,8 +1186,8 @@ onThreeFingersSwipe(receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodal
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
 
@@ -1339,8 +1339,8 @@ offThreeFingersSwipe(receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimod
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
 
@@ -1465,8 +1465,8 @@ onFourFingersSwipe(receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalin
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
 
@@ -1618,8 +1618,8 @@ offFourFingersSwipe(receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodal
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
 
@@ -1948,7 +1948,7 @@ struct Index {
           };
           try {
             inputMonitor.onRotate(2, callback);
-            inputMonitor.offRrotate(2);
+            inputMonitor.offRotate(2);
             console.log(`Monitor off success`);
           } catch (error) {
             console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2360,8 +2360,8 @@ onThreeFingersTap(receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinpu
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
 
@@ -2513,8 +2513,8 @@ offThreeFingersTap(receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalin
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
 
@@ -2642,8 +2642,8 @@ onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
@@ -2796,8 +2796,8 @@ offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
@@ -2927,8 +2927,8 @@ onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
@@ -3081,8 +3081,8 @@ offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
@@ -3213,8 +3213,8 @@ onKeyPressed(keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): vo
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
 
@@ -3362,8 +3362,8 @@ offKeyPressed(receiver?: Callback&lt;KeyEvent&gt;): void
 
 **示例：**
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
 
@@ -3458,8 +3458,8 @@ try {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor, TouchEvent } from '@kit.InputKit'
 
@@ -3474,8 +3474,10 @@ struct Index {
            inputMonitor.queryTouchEvents(10).then((events: Array<TouchEvent>) => {
                 console.info(`events ${events}`);
             });
-            } catch(error: BusinessError) {
-            console.error('queryTouchEvents promise error: ' + JSON.stringify(error));
+            } catch(error) {
+             const code = (error as BusinessError).code;
+             const message = (error as BusinessError).message;
+             console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
           }
         })
     }

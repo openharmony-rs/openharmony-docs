@@ -74,8 +74,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { infraredEmitter } from '@kit.InputKit';
 
 @Entry
@@ -94,7 +94,6 @@ struct Index {
     }
   }
 }
-
 ```
 
 ## infraredEmitter.getInfraredFrequencies<sup>15+</sup>
@@ -154,7 +153,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { infraredEmitter } from '@kit.InputKit';
 
 @Entry

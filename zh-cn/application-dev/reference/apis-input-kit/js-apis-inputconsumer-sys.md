@@ -19,7 +19,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-## <span id="on_key_dyn">inputConsumer.on</span>
+## inputConsumer.on
 
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
@@ -29,7 +29,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#on_key_sta)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](js-apis-inputconsumer-sys.md#inputConsumer.onKey22)。
 
 **ArkTS-Dyn起始版本**：8
 
@@ -75,7 +75,7 @@ struct Index {
 }
 ```
 
-## <span id="on_key_sta">inputConsumer.onKey<sup>22+</sup></span>
+## inputConsumer.onKey<sup>22+</sup>
 
 onKey(callback: Callback&lt;KeyOptions&gt;): void
 
@@ -85,22 +85,21 @@ onKey(callback: Callback&lt;KeyOptions&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_key_dyn)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](js-apis-inputconsumer-sys.md#inputConsumer.on)。
 
 **ArkTS-Sta起始版本**：22
 
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
-| ---------- | -------------------------- | ---- | ---------------------------------------- |
-| type       | string                     | 是    | 事件类型，目前仅支持'key'。                       |
+| ---------- | -------------------------- | ---- | ---------------------------------------- |                     |
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
 | callback   | Callback&lt;KeyOptions&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
 
 **示例：**
 
 ```ts
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer, KeyCode } from '@kit.InputKit';
 
@@ -238,8 +237,8 @@ offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
 **示例：**
 
-```ets
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer, KeyCode } from '@kit.InputKit';
 
@@ -326,8 +325,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
@@ -361,6 +360,10 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
+
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
@@ -375,8 +378,35 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { inputConsumer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let FACTORY_MODE = 0;
+            let shieldstatusResult:Boolean =  inputConsumer.getShieldStatus(FACTORY_MODE);
+            console.log(` get shield status result:${JSON.stringify(shieldstatusResult)}`);
+          } catch (error) {
+            console.error(`Failed to get shield status, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputConsumer } from '@kit.InputKit';
 
