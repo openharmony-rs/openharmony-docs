@@ -174,7 +174,8 @@
 
 
 <!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  
-```ts
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 
 let store: relationalStore.RdbStore | undefined = undefined;
