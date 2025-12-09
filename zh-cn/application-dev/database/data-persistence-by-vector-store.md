@@ -453,14 +453,14 @@ SQL语句中的函数，如下所示：
    示例代码如下：
 
    <!--@[vector_TS_execute_auto_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
+   
    ``` TypeScript
    try {
-     // 每隔五分钟执行写操作后，会触发数据老化任务
-     await store!.execute("CREATE TABLE test2(rec_time integer not null) WITH (time_col = 'rec_time', interval = '5 minute');");
-   } catch (err) {
-     console.error(`configure data aging failed, code is ${err.code}, message is ${err.message}`);
-   }
+      // 每隔五分钟执行写操作后，会触发数据老化任务
+      await store!.execute("CREATE TABLE test2(rec_time integer not null) WITH (time_col = 'rec_time', interval = '5 minute');");
+    } catch (err) {
+      console.error(`configure data aging failed, code is ${err.code}, message is ${err.message}`);
+    }
    ```
 
 10. 配置数据压缩功能。该功能在建表时配置，可以压缩数据类型为text的列数据。
