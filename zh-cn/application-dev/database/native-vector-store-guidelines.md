@@ -117,12 +117,13 @@ libnative_rdb_ndk.z.so
    示例代码如下：
 
    <!--@[vector_OH_Rdb_ExecuteV2_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
-   char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
+   
+   ``` C++
+   char createTableSql[] =
+       "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
    // 执行建表语句
    OH_Rdb_ExecuteByTrxId(store_, 0, createTableSql);
-
+       
    // 不使用参数绑定插入数据
    OH_Rdb_ExecuteV2(store_, "INSERT INTO test (id, data1) VALUES (0, '[3.4, 4.5]');", nullptr, nullptr);
    // 使用参数绑定插入数据
@@ -131,7 +132,7 @@ libnative_rdb_ndk.z.so
    float test[] = { 1.2, 2.3 };
    size_t len = sizeof(test) / sizeof(test[0]);
    OH_Values_PutFloatVector(values, test, len);
-   char insertSql[] = "INSERT INTO test (id, data1)   VALUES (?, ?);";
+   char insertSql[] = "INSERT INTO test (id, data1) VALUES (?, ?);";
    OH_Rdb_ExecuteV2(store_, insertSql, values, nullptr);
    OH_Values_Destroy(values);
    ```
