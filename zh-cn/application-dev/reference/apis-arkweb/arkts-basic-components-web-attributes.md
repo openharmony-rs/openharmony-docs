@@ -5185,6 +5185,94 @@ dataDetectorConfig(config: TextDataDetectorConfig)
   </html>
   ```
 
+## enableSelectedDataDetector<sup>22+</sup>
+
+ArkTS-Dyn: enableSelectedDataDetector(enabled: boolean)
+
+ArkTS-Sta: enableSelectedDataDetector(enabled: boolean | undefined)
+
+设置是否启用文本选择的AI菜单功能，启用后可识别选区中的邮件、电话、网址、日期、地址等，并在文本选择菜单中展示对应的AI菜单项。当属性没有显式调用时，默认启用AI菜单功能。
+
+AI菜单功能启用时，在网页中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)中的url（打开连接）、email（新建邮件）、phoneNumber（呼叫）、address（导航前往）、dateTime（新建日程）。
+
+AI菜单生效时，需在选中范围内，包括一个完整的AI实体，即邮件、电话、网址、日期、地址等才能展示对应的选项。该菜单项与[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
+
+示例使用场景详见[使用Web组件的智能分词能力](../../web/web-data-detector.md)。
+
+> **说明：** 
+>
+> 当enableSelectedDataDetector未配置或设置为true时，将遵循[dataDetectorConfig](#datadetectorconfig20)中types的配置；若[dataDetectorConfig](#datadetectorconfig20)也未配置，则默认识别所有类型。
+> 
+> 当enableSelectedDataDetector设置为false时，不激活实体文本选择AI菜单项。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是   | 是否启用Web文本识别，true表示启用，false表示不启用。<br>传入undefined或null时属性重置为默认值。 |
+
+**示例：**
+
+  ArkTS-Dyn示例：
+  ```ts
+  // enableSelectedDataDetector.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableSelectedDataDetector(true)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // enableSelectedDataDetector.ets
+  import { Web, Column, Component, Entry, $rawfile} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableSelectedDataDetector(true)
+      }
+    }
+  }
+  ```
+
+加载的html文件
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>enableSelectedDataDetector示例</title>
+  </head>
+  <body>
+      <p> 电话：400-123-4567 </p>
+      <p> 邮箱：example@example.com </p>
+  </body>
+  </html>
+  ```
+
 ## rotateRenderEffect<sup>21+</sup>
 
 rotateRenderEffect(effect: WebRotateEffect)
@@ -5330,6 +5418,105 @@ ArkTS-Sta示例：
   <body>
     <h1>forceEnableZoom Demo</h1>
     <span>You can scale page when forceEnableZoom is true.</span>
+  </body>
+  </html>
+  ```
+
+## backToTop<sup>22+</sup>
+
+backToTop(backToTop: boolean)
+
+ArkTS-Dyn: backToTop(backToTop: boolean)
+
+ArkTS-Sta: backToTop(backToTop: boolean | undefined)
+
+设置Web组件是否启用点击状态栏网页回到顶部功能。当属性没有显式调用时，默认开启状态栏网页回到顶部功能。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| backToTop  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是   | 是否启用Web点击状态栏回顶，true表示启用，false表示不启用。<br>传入undefined或null时为true。|
+
+**示例：**
+
+ArkTS-Dyn示例：
+  ```ts
+  // backToTop.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .backToTop(true)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // backToTop.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, $rawfile} from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .backToTop(true)
+      }
+    }
+  }
+  ```
+
+  加载的html文件：
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+          .blue {
+            background-color: lightblue;
+          }
+          .green {
+            background-color: lightgreen;
+          }
+          .blue, .green {
+           font-size:16px;
+           height:200px;
+           text-align: center;       /* 水平居中 */
+           line-height: 200px;       /* 垂直居中（值等于容器高度） */
+          }
+      </style>
+  </head>
+  <body>
+  <div class="blue" >webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
   </body>
   </html>
   ```
