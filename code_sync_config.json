@@ -2156,11 +2156,6 @@
 						"start_line":184
 					},
 					{
-						"end_line":83,
-						"name":"vector_OH_Rdb_ExecuteV2_query",
-						"start_line":27
-					},
-					{
 						"end_line":255,
 						"name":"vector_OH_Rdb_ExecuteV2_create_view",
 						"start_line":247
@@ -2184,6 +2179,31 @@
 						"end_line":203,
 						"name":"vector_OH_Rdb_DeleteStoreV2",
 						"start_line":200
+					},
+					{
+						"end_line":55,
+						"name":"vector_OH_Rdb_ExecuteV2_queryWithoutBingArgs",
+						"start_line":36
+					},
+					{
+						"end_line":80,
+						"name":"vector_OH_Rdb_ExecuteV2_queryWithBingArgs",
+						"start_line":60
+					},
+					{
+						"end_line":103,
+						"name":"vector_OH_Rdb_ExecuteV2_subquery",
+						"start_line":85
+					},
+					{
+						"end_line":125,
+						"name":"vector_OH_Rdb_ExecuteV2_aggregateQuery",
+						"start_line":108
+					},
+					{
+						"end_line":147,
+						"name":"vector_OH_Rdb_ExecuteV2_multiTableQuery",
+						"start_line":130
 					}
 				]
 			}
@@ -3135,6 +3155,16 @@
 						"start_line":50
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets",
+				"functions":[
+					{
+						"end_line":35,
+						"name":"rdb_accessControlByDeviceAndDataLevel",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -3183,6 +3213,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets",
 				"functions":[
 					{
 						"end_line":22,
@@ -3327,6 +3361,66 @@
 					{
 						"end_line":88,
 						"name":"Index",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Mover.ts",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"rdb_Mover",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts",
+				"functions":[
+					{
+						"end_line":114,
+						"name":"rdb_Store",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/SecretKeyObserver.ts",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"rdb_SecretKeyObserver",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/ECStoreManager.ts",
+				"functions":[
+					{
+						"end_line":86,
+						"name":"rdb_ECStoreManager",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":124,
+						"name":"rdb_EntryAbility",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Index.ets",
+				"functions":[
+					{
+						"end_line":114,
+						"name":"rdb_encryptedEStoreGuidelines_index",
 						"start_line":16
 					}
 				]
@@ -3483,6 +3577,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets",
 				"functions":[
 					{
 						"end_line":21,
@@ -8731,6 +8829,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets",
 				"functions":[
 					{
 						"end_line":115,
@@ -8786,6 +8888,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets",
 				"functions":[
 					{
 						"end_line":22,
@@ -8886,6 +8992,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
 						"end_line":20,
@@ -8893,9 +9003,9 @@
 						"start_line":18
 					},
 					{
-						"end_line":176,
+						"end_line":180,
 						"name":"SetSecurityLevelForRdbStore",
-						"start_line":159
+						"start_line":163
 					}
 				]
 			}
@@ -8906,6 +9016,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
 						"end_line":20,
@@ -8913,14 +9027,14 @@
 						"start_line":18
 					},
 					{
-						"end_line":120,
+						"end_line":122,
 						"name":"BackupRdbStore",
-						"start_line":105
+						"start_line":107
 					},
 					{
-						"end_line":145,
+						"end_line":148,
 						"name":"rdb_OH_Rdb_Restore",
-						"start_line":129
+						"start_line":132
 					}
 				]
 			}
@@ -8931,6 +9045,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
 						"end_line":20,
@@ -8943,9 +9061,9 @@
 						"start_line":25
 					},
 					{
-						"end_line":96,
+						"end_line":97,
 						"name":"CustomizedConfigRdbStore",
-						"start_line":51
+						"start_line":52
 					}
 				]
 			}
