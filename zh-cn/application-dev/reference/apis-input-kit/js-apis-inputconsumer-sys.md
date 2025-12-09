@@ -144,6 +144,8 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#inputconsumeroffkey22)。
 
+**ArkTS-Dyn起始版本**：8
+
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                              |
@@ -436,9 +438,6 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 22
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | -------- | ---- | ---- | ------- |

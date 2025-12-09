@@ -17,7 +17,7 @@ import { infraredEmitter } from '@kit.InputKit';
 
 ## infraredEmitter.transmitInfrared<sup>15+</sup>
 
-ArkTS-Dyn： transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
+ArkTS-Dyn: transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
 ArkTS-Sta: transmitInfrared(infraredFrequency: long, pattern: Array&lt;long&gt;): void
 
