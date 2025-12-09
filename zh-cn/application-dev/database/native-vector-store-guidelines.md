@@ -417,10 +417,11 @@ libnative_rdb_ndk.z.so
    示例代码如下：
 
    <!--@[vector_OH_Rdb_ExecuteV2_data_compression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    // content列配置了数据压缩，并且配置了数据老化。
-   OH_Rdb_ExecuteV2(store_, "CREATE TABLE IF NOT EXISTS test3 (time integer not null, content text) with (time_col = 'time', interval = '5 minute', compress_col = 'content');", nullptr, nullptr);
+   OH_Rdb_ExecuteV2(store_,"CREATE TABLE IF NOT EXISTS test3 (time integer not null, content text) with "
+       "(time_col = 'time', interval = '5 minute', compress_col = 'content');", nullptr, nullptr);
    ```
 
 10. 删除数据库。示例代码如下：
