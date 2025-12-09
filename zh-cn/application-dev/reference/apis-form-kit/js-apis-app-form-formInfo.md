@@ -65,9 +65,11 @@ import { formInfo } from '@kit.FormKit';
 
 ## ColorMode<sup>(deprecated)</sup>
 
-从API version 11开始支持，从API version 20开始废弃，卡片主题样式统一跟随系统的颜色模式。
+卡片主题样式统一跟随系统的颜色模式，卡片支持的颜色模式枚举。
 
-卡片支持的颜色模式枚举。
+> **说明：**
+>
+> 从API version 11开始支持，从API version 20开始废弃。暂无代替的接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
