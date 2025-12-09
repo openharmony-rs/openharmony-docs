@@ -14,7 +14,7 @@ ConsoleMessage的信息级别。
 
 > **说明：**
 >
-> - 在html5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
+> - 在html5侧，调用console.log或console.info对应ConsoleMessage的信息级别在ArkTS-Dyn中均为MessageLevel.Info，在ArkTS-Sta中均为MessageLevel.INFO。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
