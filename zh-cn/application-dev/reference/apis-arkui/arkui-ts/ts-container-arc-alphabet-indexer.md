@@ -54,7 +54,7 @@ color(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 文字颜色。<br/>默认值：0xFFFFFF |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 ### selectedColor
 
@@ -70,7 +70,7 @@ selectedColor(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 选中项文字颜色。<br/>默认值：0xFFFFFF |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 选中项文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 ### popupColor
 
@@ -86,7 +86,7 @@ popupColor(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 提示弹窗文字颜色。<br/>默认值：0xFFFFFF |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 提示弹窗文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 ### selectedBackgroundColor
 
@@ -102,7 +102,7 @@ selectedBackgroundColor(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 选中项背景颜色。<br/>默认值：0x1F71FF |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 选中项背景颜色。<br/>默认值：0x1F71FF，显示为深蓝色。 |
 
 ### popupBackground
 
@@ -118,7 +118,7 @@ popupBackground(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 提示弹窗背景色。<br/>默认值：0xD8404040 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 提示弹窗背景色。<br/>默认值：0xD8404040，显示为微透明的深灰色。 |
 
 >  **说明：**
 >
@@ -138,7 +138,7 @@ usePopup(enabled: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------- | ---- | -------------------------------------- |
-| enabled | Optional&lt;boolean&gt; | 是   | 是否使用提示弹窗，true表示使用提示弹窗，false表示不使用提示弹窗。<br/>默认值：false，不使用提示弹窗。 |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否使用提示弹窗。<br/>true表示使用提示弹窗；false表示不使用提示弹窗。<br/>默认值：false |
 
 ### selectedFont
 
@@ -154,7 +154,7 @@ selectedFont(font: Optional&lt;Font&gt;)
 
 | 参数名 | 类型                                     | 必填 | 说明                                                         |
 | ------ | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| font   | [Optional&lt;Font&gt;](ts-types.md#font) | 是   | 选中项文字样式。<br/>默认值：{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[Font](ts-types.md#font)&gt; | 是   | 选中项文字样式。<br/>默认值：{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### popupFont
 
@@ -170,7 +170,7 @@ popupFont(font: Optional&lt;Font&gt;)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font  | [Optional&lt;Font&gt;](ts-types.md#font) | 是   | 提示弹窗字体样式。<br/>默认值：<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[Font](ts-types.md#font)&gt; | 是   | 提示弹窗字体样式。<br/>默认值：<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### font
 
@@ -186,7 +186,7 @@ font(font: Optional&lt;Font&gt;)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font   | [Optional&lt;Font&gt;](ts-types.md#font) | 是   | 字母索引条默认字体样式。<br/>默认值：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[Font](ts-types.md#font)&gt; | 是   | 字母索引条默认字体样式。<br/>默认值：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### itemSize
 
@@ -202,7 +202,7 @@ itemSize(size: Optional&lt;LengthMetrics&gt;)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| size  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 字母索引条字母区域大小，字母区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
+| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 字母索引条字母区域大小，字母区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
 
 ### selected
 
@@ -218,7 +218,7 @@ selected(index: Optional&lt;number&gt;)
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | Optional&lt;number&gt; | 是   | 选中项索引值 <br/>默认值：0 <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| index  | Optional&lt;number&gt; | 是   | 选中项索引值。 <br/>默认值：0 <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
 
 ### autoCollapse
 
@@ -234,7 +234,7 @@ autoCollapse(enable: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| enable  | Optional&lt;boolean&gt; | 是   | 是否使用自适应折叠模式。<br/>默认值：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否使用自适应折叠模式。<br/>默认值：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。|
 
 ### popupBackgroundBlurStyle
 
@@ -250,7 +250,7 @@ popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 
 | 参数名 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style  | [Optional&lt;BlurStyle&gt;](ts-universal-attributes-background.md#blurstyle9) | 是   | 设置提示弹窗的背景模糊材质。<br/>默认值：NONE。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | 是   | 设置提示弹窗的背景模糊材质。<br/>默认值：NONE |
 
 >  **说明：**
 >
@@ -274,7 +274,7 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| handler  | Optional&lt;[OnSelectCallback](#onselectcallback)&gt; | 是   | 回调函数类型。 |
+| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[OnSelectCallback](#onselectcallback)&gt; | 是   | 回调函数类型。 |
 
 
 ## ArcAlphabetIndexerInitInfo对象说明
