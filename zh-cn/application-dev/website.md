@@ -4733,8 +4733,8 @@
           <!--Del-->
           - [@ohos.sensor(传感器)(系统接口)](reference/apis-sensor-service-kit/js-apis-sensor-sys.md)
           <!--DelEnd-->
-          - [@ohos.sensor(传感器)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-sensor.md)
-          - [@ohos.vibrator(振动)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
+          - [@system.sensor (传感器)](reference/apis-sensor-service-kit/js-apis-system-sensor.md)
+          - [@system.vibrator (振动)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
         - C API<!--sensor-service-c-->
           - 模块<!--sensor-service-module-->
             - [Sensor](reference/apis-sensor-service-kit/capi-sensor.md)
