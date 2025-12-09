@@ -19,7 +19,7 @@
 
 ### 简介
 
-为使用低时延模式，开发者需要参考[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)进行音频开发。
+为使用低时延模式，开发者需要参考[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)进行音频开发。
 
 当前OHAudio支持两种模式：普通模式（AUDIOSTREAM_LATENCY_MODE_NORMAL）和低时延模式（AUDIOSTREAM_LATENCY_MODE_FAST）。
 
@@ -61,7 +61,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ### 数据回调线程
 音频录制的音频数据需要通过回调接口读入。开发者要实现回调接口，使用[OH_AudioStreamBuilder_SetCapturerReadDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerreaddatacallback)设置回调函数，在设置音频回调函数时，回调函数[OH_AudioCapturer_OnReadDataCallback](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback)（从API version 12开始支持）用于读取音频数据。
 
-开发音频录制功能的示例代码请参考：[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
+开发音频录制功能的示例代码请参考：[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
 
 设置数据回调函数示例：
 ```cpp

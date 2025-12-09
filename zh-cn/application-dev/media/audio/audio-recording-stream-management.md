@@ -1,4 +1,4 @@
-# 音频录制流管理
+# 查询和监听其他应用录制状态
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -10,7 +10,7 @@
 
 ## 读取或监听应用内音频流状态变化
 
-参考[使用AudioCapturer开发音频录制功能](using-audiocapturer-for-recording.md)或[audio.createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8)，完成AudioCapturer的创建，然后可以通过以下两种方式查看音频流状态的变化：
+参考[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)或[audio.createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8)，先完成AudioCapturer的创建，再通过以下两种方法查看音频流状态的变化。
 
 - 方法1：直接查看AudioCapturer的[state](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#属性)：
     
