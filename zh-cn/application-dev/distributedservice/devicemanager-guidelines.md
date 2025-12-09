@@ -277,30 +277,30 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 4. 查询周围上线并且可信的设备。
 
    <!-- @[get_available_device_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
-
-``` TypeScript
-  getTrustedDeviceList(): void {
-    if (typeof (this.deviceManager) == 'undefined') {
-      logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-      promptAction.showToast({
-        message: 'deviceManager has not initialized'
-      });
-      return;
-    }
-
-    logger.info('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList begin');
-    try {
-      this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
-	// ···
-    } catch (err) {
-      let error: BusinessError = err as BusinessError;
-      logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
-      promptAction.showToast({
-        message: 'getTrustedDeviceList failed'
-      });
-    }
-  }
-```
+   
+   ``` TypeScript
+   getTrustedDeviceList(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       promptAction.showToast({
+         message: 'deviceManager has not initialized'
+       });
+       return;
+     }
+   
+     logger.info('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList begin');
+     try {
+       this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
+       // ...
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
+       promptAction.showToast({
+         message: 'getTrustedDeviceList failed'
+       });
+     }
+   }
+   ```
 
 
 
