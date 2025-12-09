@@ -948,7 +948,6 @@ off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestur
 
 **ArkTS-Dyn起始版本**：10
 
-
 **参数：**
 
 | 参数名       | 类型                         | 必填   | 说明                  |
