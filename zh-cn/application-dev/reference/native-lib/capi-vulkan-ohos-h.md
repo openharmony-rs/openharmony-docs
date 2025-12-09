@@ -246,13 +246,11 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, V
 
 **描述**
 
-根据给定的Vulkan设备、图像格式和图像使用标志, 返回适当的Gralloc(内存分配器)使用标志。应用开发者无需使用该接口。
+根据给定的Vulkan设备、图像格式和图像使用标志, 返回适当的Gralloc(内存分配器)使用标志。
 
 **系统能力：** SystemCapability.Graphic.Vulkan
 
 **起始版本：** 10
-
-**废弃版本：** 23
 
 
 **参数：**
@@ -278,13 +276,11 @@ VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image
 
 **描述**
 
-用于获取交换链图像的所有权, 并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。应用开发者无需使用该接口。
+用于获取交换链图像的所有权, 并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。
 
 **系统能力：** SystemCapability.Graphic.Vulkan
 
 **起始版本：** 10
-
-**废弃版本：** 23
 
 
 **参数：**
@@ -311,13 +307,11 @@ VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint
 
 **描述**
 
-当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号, 以便其他组件可以访问该图像。应用开发者无需使用该接口。
+当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号, 以便其他组件可以访问该图像。
 
 **系统能力：** SystemCapability.Graphic.Vulkan
 
 **起始版本：** 10
-
-**废弃版本：** 23
 
 
 **参数：**
@@ -335,5 +329,4 @@ VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint
 | 类型 | 说明 |
 | -- | -- |
 | VkResult | 返回一个VkResult类型的错误码，具体返回类型如下：<br> 返回VK_SUCCESS，表示执行成功。<br> 返回VK_ERROR_DEVICE_LOST，表示Vulkan设备链接丢失。<br> 返回VK_ERROR_OUT_OF_HOST_MEMORY，表示主机内存不足。 |
-
 
