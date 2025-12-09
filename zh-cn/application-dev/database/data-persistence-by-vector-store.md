@@ -143,17 +143,17 @@ SQL语句中的函数，如下所示：
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
 
    <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
+   
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
    import { BusinessError } from '@kit.BasicServicesKit';
-
-    // 判断当前系统是否支持向量数据库
-    let ret = relationalStore.isVectorSupported();
-    if (!ret) {
-      console.error(`vectorDB is not supported.`);
-      return;
-    }
+   // ...
+     // 判断当前系统是否支持向量数据库
+     let ret = relationalStore.isVectorSupported();
+     if (!ret) {
+       console.error(`vectorDB is not supported.`);
+       return;
+     }
    ```
 
 2. 若支持向量数据库则需要获取一个RdbStore。通过getRdbStore接口创建数据库，并执行建表操作。
