@@ -17,18 +17,6 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting the permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
-## ohos.permission.RECEIVER_STARTUP_COMPLETED
-
-Allows an application to subscribe to the startup broadcast.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 9
-
 ## ohos.permission.SYSTEM_LIGHT_CONTROL
 
 Allows an application to control lights, including turning on and off lights.
