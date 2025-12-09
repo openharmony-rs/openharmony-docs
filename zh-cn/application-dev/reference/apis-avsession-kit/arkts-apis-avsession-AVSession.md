@@ -2055,9 +2055,9 @@ onFastForward(callback: TwoParamCallback\<number, CommandInfo>): void
 
 **参数：**
 
-| 参数名   | 类型                                                                              | 必填 | 说明     |
-| -------- |---------------------------------------------------------------------------------| ---- | --------- |
-| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。    |
+| 参数名   | 类型                                                                                                   | 必填 | 说明     |
+| -------- |------------------------------------------------------------------------------------------------------| ---- | --------- |
+| callback | TwoParamCallback\<time: number, commandInfo: [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。    |
 
 **错误码：**
 
@@ -2125,9 +2125,9 @@ onRewind(callback: TwoParamCallback\<number, CommandInfo>): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明     |
-| -------- | -------------------- | ---- | --------- |
-| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。      |
+| 参数名   | 类型                                                                                                   | 必填 | 说明     |
+| -------- |------------------------------------------------------------------------------------------------------| ---- | --------- |
+| callback | TwoParamCallback\<time: number, commandInfo: [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。参数time是时间节点，单位为秒。      |
 
 **错误码：**
 

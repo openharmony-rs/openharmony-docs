@@ -138,11 +138,3 @@ type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
 |-------|----| ---- |------|
 | data1 | T  | 是   | 参数1。 |
 | data2 | G  | 是   | 参数2。 |
-
-**示例：**
-<!--code_no_check-->
-```ts
-let twoParamCallback: avSession.TwoParamCallback = (time: number, offset: number) => {
-  console.info(`Succeeded in twoParamCallback. time: ${time}, offset: ${offset}`);
-}
-```
