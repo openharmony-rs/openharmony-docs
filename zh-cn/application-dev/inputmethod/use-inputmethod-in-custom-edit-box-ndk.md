@@ -57,17 +57,17 @@ libohinputmethod.so
 4. 调用OH_InputMethodController_Attach发起绑定输入法服务，调用成功后，可以获取到用于和输入法交互的InputMethod_InputMethodProxy。示例代码如下所示：
 
    <!-- @[input_case_input_OH_InputMethodController_Attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 发起绑定请求
-    auto ret = OH_InputMethodController_Attach(textEditorProxy, attachOptions, &inputMethodProxy);
-    if (ret != IME_ERR_OK) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Attach failed, ret=%{public}d.", ret);
-        OH_TextEditorProxy_Destroy(textEditorProxy);
-        OH_AttachOptions_Destroy(attachOptions);
-        return;
-    }
-```
+   
+   ``` C++
+   // 发起绑定请求
+   auto ret = OH_InputMethodController_Attach(textEditorProxy, attachOptions, &inputMethodProxy);
+   if (ret != IME_ERR_OK) {
+       OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Attach failed, ret=%{public}d.", ret);
+       OH_TextEditorProxy_Destroy(textEditorProxy);
+       OH_AttachOptions_Destroy(attachOptions);
+       return;
+   }
+   ```
 
 
 ## 显示/隐藏面板功能
