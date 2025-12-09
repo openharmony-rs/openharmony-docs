@@ -870,20 +870,21 @@ FileTransfer finish, Size:xxx, File...
 
 | 命令 | 说明 |
 | -------- | -------- |
-| fport ls | 列出全部转发端口转发任务。 |
-| fport [IP:port] [IP:port] | 设置正向端口转发任务：监听“主机端口”，接收请求并进行转发， 转发到“设备端口”。设备端口范围1~65535。 |
-| rport [IP:port] [IP:port] | 设置反向端口转发任务：监听“设备端口”，接收请求并进行转发，转发到“主机端口”。设备端口范围1024~65535。 |
-| fport rm [IP:port] [IP:port] | 删除指定的端口转发任务。 |
+| fport ls | 列出所有端口转发任务。 |
+| fport localnode remotenode | 设置正向端口转发任务：监听“电脑端端口”请求并转发到“设备端端口”。<br/>localnode为电脑端端口转发类型，remotenode为设备端端口转发类型。 |
+| rport remotenode localnode | 设置反向端口转发任务：监听“设备端端口”请求并转发到“电脑端端口”。<br/>localnode为电脑端端口转发类型，remotenode为设备端端口转发类型。 |
+| fport rm taskstr | 删除指定的端口转发任务。 |
 
 > **说明：**
 >
+>
 > 电脑端支持的端口转发类型：tcp。
 >
-> 设备端支持的端口转发类型：tcp，dev，localabstract，localfilesystem，jdwp，ark。
+> 设备端支持的端口转发类型：tcp，dev，localabstract， localreserved，localfilesystem，jdwp，ark。
 
 ### 查询端口转发任务列表
 
-命令格式如下：
+查询所有的正向端口转发任务和反向端口转发任务，命令格式如下：
 
 ```shell
 hdc fport ls
@@ -901,15 +902,16 @@ hdc fport ls
 
 ```shell
 $ hdc fport ls
-[Empty]
+connect-key tcp:2080 tcp:2345 [Reverse]
+connect-key tcp:1234 tcp:1080 [Forward]
 ```
 
 ### 创建正向端口转发任务
 
-设置正向端口转发任务，系统将指定的“主机端口”转发到“设备端口”，命令格式如下：
+设置正向端口转发任务，将指定的“电脑端端口”转发到“设备端端口”，命令格式如下：
 
 ```shell
-hdc fport [IP:port] [IP:port]
+hdc fport localnode remotenode
 ```
 
 **返回信息**：
@@ -930,7 +932,7 @@ Forwardport result:OK
 ```
 > **说明：**
 >
-> 在创建正向端口转发任务时，如果本地端口为TCP协议，指定端口为port，且启动服务进程时使用了-e参数， 则本地主机会监听-e参数指定的IP地址的port端口；如果启动服务进程时未使用-e参数，则本地主机会监听127.0.0.1:port。
+> 创建正向端口转发任务时，电脑端使用TCP协议类型且指定端口为port，电脑端默认监听127.0.0.1:port。如果在启动服务进程时使用-e参数指定了监听主机IP地址，则电脑端会监听-e指定的IP:port。
 
 
 ### 创建反向端口转发任务
@@ -938,7 +940,7 @@ Forwardport result:OK
 设置反向端口转发任务，系统将指定的“设备端口”转发到“主机端口”，命令格式如下：
 
 ```shell
-hdc rport [IP:port] [IP:port]
+hdc rport remotenode localnode
 ```
 
 **返回信息**：
@@ -959,17 +961,21 @@ Forwardport result:OK
 
 ### 删除端口转发任务
 
-删除指定的转发任务，命令格式如下：
+删除指定的正向端口转发任务或反向端口转发任务，命令格式如下：
 
 ```shell
-hdc fport rm [IP:port][IP:port]
+hdc fport rm taskstr
 ```
+
+> **说明：**
+>
+> taskstr参数为具体的正向端口转发任何或反向端口转发任务，可通过hdc fport ls查询后再删除。
 
 **参数**：
 
 | 参数 | 说明 |
 | -------- | -------- |
-| IP:port | 端口转发任务，形如 tcp:XXXX tcp:XXXX。 |
+| taskstr | 端口转发任务，形如 tcp:XXXX tcp:XXXX。 |
 
 **返回信息**：
 
