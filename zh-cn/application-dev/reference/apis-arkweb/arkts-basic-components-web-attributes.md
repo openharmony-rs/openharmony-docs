@@ -1401,8 +1401,8 @@ allowWindowOpenMethod(flag: boolean)
 
 **示例：**
 
-  ```ts
-  // xxx.ets
+```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 // 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
@@ -1462,7 +1462,7 @@ struct WebComponent {
         }
     }
 }
-  ```
+```
 **HTML示例：**
 
 ```html
@@ -1503,7 +1503,7 @@ mediaOptions(options: WebMediaOptions)
 
 **参数：**
 
-| 参数名     | 类型                                  | 必填   | 说明                                     |
+| 参数名  | 类型  | 必填  | 说明 |
 | ------- | ------------------------------------- | ---- | ---------------------------------------- |
 | options | [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) | 是    | 设置Web的媒体策略。<br>属性参数更新后需重新播放音频方可生效。<br>传入undefined或null时为`{resumeInterval: 0, audioExclusive: true}` |
 
