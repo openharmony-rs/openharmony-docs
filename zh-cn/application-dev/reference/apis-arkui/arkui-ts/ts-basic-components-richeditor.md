@@ -54,11 +54,9 @@ RichEditor(options: RichEditorStyledStringOptions)
 
 >  **说明：**
 >
->  align属性只支持上方、中间和下方位置的对齐方式。
-> 
->  不支持[borderImage](ts-universal-attributes-border-image.md#borderimage)属性。
->
-> 组件水平方向默认padding为16vp，竖直方向默认padding为8vp。
+>  - align属性只支持上方、中间和下方位置的对齐方式。
+>  - 不支持[borderImage](ts-universal-attributes-border-image.md#borderimage)属性。
+>  - 组件水平方向默认padding为16vp，竖直方向默认padding为8vp。
 
 ### customKeyboard
 
@@ -241,14 +239,14 @@ enablePreviewText(enable: boolean)
 
 >  **说明：**
 >
-该接口在CAPI场景使用时默认关闭。可以在工程的module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段控制是否启用预上屏，配置如下：
+>该接口在CAPI场景使用时默认关闭。可以在工程的module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段控>制是否启用预上屏，配置如下：
 > ```json
->  "metadata": [
->    {
->      "name": "can_preview_text",
->      "resource": "true"
->    }
->  ]
+> "metadata": [
+>   {
+>     "name": "can_preview_text",
+>     "resource": "true"
+>   }
+> ]
 > ```
 
 ### placeholder<sup>12+</sup>
@@ -992,8 +990,8 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | fontColor | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 否 | 否 | SymbolSpan组件颜色。<br/> 默认值：不同渲染策略下默认值不同。 |
 | fontSize | number \| string \| [Resource](ts-types.md#resource) | 否 | 否 | SymbolSpan组件大小，默认单位为fp。<br/>默认值：跟随主题。|
 | fontWeight | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string  | 否 | 否 | SymbolSpan组件粗细。<br/>number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。<br/>string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal。|
-| renderingStrategy | [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) | 否 | 否 | SymbolSpan组件渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。<br/>
-| effectStrategy | [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明) | 否 | 否 | SymbolSpan组件动效策略。<br/>默认值：SymbolEffectStrategy.NONE。<br/>
+| renderingStrategy | [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) | 否 | 否 | SymbolSpan组件渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。|
+| effectStrategy | [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明) | 否 | 否 | SymbolSpan组件动效策略。<br/>默认值：SymbolEffectStrategy.NONE。|
 
 ## RichEditorImageSpanResult
 
@@ -1940,7 +1938,7 @@ RichEditor span信息。
 | menuType<sup>13+</sup> | [MenuType](ts-text-common.md#menutype13枚举说明) | 否 | 是 | 自定义选择菜单类型。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>默认值：MenuType.SELECTION_MENU。 |
 | onMenuShow<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单显示时回调。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | onMenuHide<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单隐藏时回调。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| previewMenuOptions<sup>18+</sup> | [PreviewMenuOptions](#previewmenuoptions18) | 否 | 是 |  预览菜单的选项。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| previewMenuOptions<sup>18+</sup> | [PreviewMenuOptions](#previewmenuoptions18) | 否 | 是 |  预览菜单的选项。该参数只在RichEditor中生效。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## PreviewMenuOptions<sup>18+</sup>
 
