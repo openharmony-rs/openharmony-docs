@@ -159,198 +159,196 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 > 需要在CMakeList.txt中添加libohinputmethod.so libhilog_ndk.z.so依赖。
 
    <!-- @[input_case_input_CPreview016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include "napi/native_api.h"
-#include <codecvt>
-#include <locale>
-#include <thread>
-
-#include "hilog/log.h"
-#include "inputmethod/inputmethod_controller_capi.h"
-
- constexpr int32_t TEXTSIZE = 1024;
-
-static std::string g_strText;
-char g_strTextChar[TEXTSIZE];
-int32_t g_strTextCharLen = 0;
-bool g_flagShow = false;
-std::mutex g_textMutex;
-InputMethod_TextEditorProxy *textEditorProxy = nullptr;
-InputMethod_AttachOptions *attachOptions = nullptr;
-InputMethod_InputMethodProxy *inputMethodProxy = nullptr;
-
-void InputMethodDestroy();
-
-void InitText()
-{
-    std::lock_guard<std::mutex> lock(g_textMutex);
-    if (g_flagShow) {
-        memset(g_strTextChar, 0x00, sizeof(g_strTextChar));
-        g_strTextCharLen = 0;
-        g_flagShow = false;
-    }
-}
-
-void SetText(const char* input)
-{
-    std::lock_guard<std::mutex> lock(g_textMutex);
-    g_strTextCharLen = strlen(input);
-    if (g_strTextCharLen > TEXTSIZE) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Length greater than 1024 , ret=%{public}d", g_strTextCharLen);
-    }
-    strncpy(g_strTextChar, input, g_strTextCharLen);
-}
-
-void GetTextConfigFunc(InputMethod_TextEditorProxy *proxy, InputMethod_TextConfig *config)
-{ // 处理获取输入框配置请求
-    auto ret = OH_TextConfig_SetEnterKeyType(config, InputMethod_EnterKeyType::IME_ENTER_KEY_SEND);
-    if (ret != IME_ERR_OK) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "SetEnterKeyType failed, ret=%{public}d", ret);
-        return;
-    }
-
-    ret = OH_TextConfig_SetInputType(config, InputMethod_TextInputType::IME_TEXT_INPUT_TYPE_PHONE);
-    if (ret != IME_ERR_OK) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "SetInputType failed, ret=%{public}d", ret);
-        return;
-    }
-}
-
-void InsertTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, size_t length)
-{
-    InitText();
-
-    // 处理插入文本请求
-    // 将char16_t类型的字符串转换为u16string
-    std::u16string u16Str(text, length + 1);
-
-    // 转换为UTF-8编码的string
-    std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> converter;
-    std::string utf8Str = converter.to_bytes(u16Str);
-    for (size_t i = 0; i < utf8Str.size(); ++i) {
-        unsigned char c = static_cast<unsigned char>(utf8Str[i]);
-        if (c != 0x00) {
-            std::lock_guard<std::mutex> lock(g_textMutex);
-            g_strTextChar[g_strTextCharLen] = c;
-            g_strTextCharLen += 1;
-        }
-    }
-}
-
-void DeleteForwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length)
-{
-    std::lock_guard<std::mutex> lock(g_textMutex);
-    if (g_strTextCharLen > 0) {
-        strncpy(g_strTextChar, g_strTextChar + 1, g_strTextCharLen - 1);
-        g_strTextCharLen = (g_strTextCharLen > 0) ? g_strTextCharLen - 1 : g_strTextCharLen;
-    }
-}
-
-void DeleteBackwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length)
-{
-    std::lock_guard<std::mutex> lock(g_textMutex);
-    g_strTextCharLen = (g_strTextCharLen > 0) ? g_strTextCharLen - 1 : g_strTextCharLen;
-    g_strTextChar[g_strTextCharLen] = '\0';
-}
-
-void SendKeyboardStatusFunc(InputMethod_TextEditorProxy *proxy, InputMethod_KeyboardStatus status)
-{
-    if (status == InputMethod_KeyboardStatus::IME_KEYBOARD_STATUS_HIDE) {
-        g_flagShow = false;
-        SetText("键盘已经被被隐藏");
-    } else if (status == InputMethod_KeyboardStatus::IME_KEYBOARD_STATUS_SHOW && g_flagShow != true) {
-        g_flagShow = true;
-        SetText("键盘已经被被拉起");
-    }
-}
-
-void SendEnterKeyFunc(InputMethod_TextEditorProxy *proxy, InputMethod_EnterKeyType type)
-{
-    SetText("处理回车键请求事件");
-    g_flagShow = true;
-}
-
-void MoveCursorFunc(InputMethod_TextEditorProxy *proxy, InputMethod_Direction direction)
-{
-    if (direction == InputMethod_Direction::IME_DIRECTION_UP) {
-        SetText("光标正在向 上 移动");
-    } else if (direction == InputMethod_Direction::IME_DIRECTION_DOWN) {
-        SetText("光标正在向 下 移动");
-    } else if (direction == InputMethod_Direction::IME_DIRECTION_LEFT) {
-        SetText("光标正在向 左 移动");
-    } else if (direction == InputMethod_Direction::IME_DIRECTION_RIGHT) {
-        SetText("光标正在向 右  移动");
-    } else {
-        SetText("光标正在 出现错误");
-    }
-}
-
-void HandleSetSelectionFunc(InputMethod_TextEditorProxy *proxy, int32_t start, int32_t end)
-{
-    SetText("处理选中文本请求");
-}
-
-void HandleExtendActionFunc(InputMethod_TextEditorProxy *proxy, InputMethod_ExtendAction action)
-{
-    SetText("处理扩展编辑请求");
-}
-
-void GetleftTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, int32_t number, char16_t text[], size_t *length)
-{
-    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "testTag", "处理获取光标左侧文本请求  ...");
-}
-
-void GetRightTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, int32_t number, char16_t text[], size_t *length)
-{
-    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "testTag", "处理获取光标右侧文本请求  ...");
-}
-
-int32_t GetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy)
-{
-    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "testTag", "处理获取光标所在输入框文本索引请求  ...");
-    return 0;
-}
-int32_t ReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, InputMethod_PrivateCommand *privateCommand[],
-    size_t size)
-{
-    SetText("处理扩展编辑请求");
-    return 0;
-}
-
-int32_t SetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, size_t length, int32_t start,
-    int32_t end)
-{
-    SetText("处处理设置预上屏文本请求");
-    return 0;
-}
-
-void FinishTextPreviewFunc(InputMethod_TextEditorProxy *proxy)
-{
-    SetText("处理结束预上屏请求");
-}
-
-void ConstructTextEditorProxy(InputMethod_TextEditorProxy *textEditorProxy)
-{
-    // [Start input_case_input_ConstructTextEditorProxy]
-    OH_TextEditorProxy_SetGetTextConfigFunc(textEditorProxy, GetTextConfigFunc);
-    OH_TextEditorProxy_SetInsertTextFunc(textEditorProxy, InsertTextFunc);
-    OH_TextEditorProxy_SetDeleteForwardFunc(textEditorProxy, DeleteForwardFunc);
-    OH_TextEditorProxy_SetDeleteBackwardFunc(textEditorProxy, DeleteBackwardFunc);
-    OH_TextEditorProxy_SetSendKeyboardStatusFunc(textEditorProxy, SendKeyboardStatusFunc);
-    OH_TextEditorProxy_SetSendEnterKeyFunc(textEditorProxy, SendEnterKeyFunc);
-    OH_TextEditorProxy_SetMoveCursorFunc(textEditorProxy, MoveCursorFunc);
-    OH_TextEditorProxy_SetHandleSetSelectionFunc(textEditorProxy, HandleSetSelectionFunc);
-    OH_TextEditorProxy_SetHandleExtendActionFunc(textEditorProxy, HandleExtendActionFunc);
-    OH_TextEditorProxy_SetGetLeftTextOfCursorFunc(textEditorProxy, GetleftTextOfCursorFunc);
-    OH_TextEditorProxy_SetGetRightTextOfCursorFunc(textEditorProxy, GetRightTextOfCursorFunc);
-    OH_TextEditorProxy_SetGetTextIndexAtCursorFunc(textEditorProxy, GetTextIndexAtCursorFunc);
-    OH_TextEditorProxy_SetReceivePrivateCommandFunc(textEditorProxy, ReceivePrivateCommandFunc);
-    OH_TextEditorProxy_SetSetPreviewTextFunc(textEditorProxy, SetPreviewTextFunc);
-    OH_TextEditorProxy_SetFinishTextPreviewFunc(textEditorProxy, FinishTextPreviewFunc);
-    // [End input_case_input_ConstructTextEditorProxy]
-}
-```
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include <codecvt>
+   #include <locale>
+   #include <thread>
+   
+   #include "hilog/log.h"
+   #include "inputmethod/inputmethod_controller_capi.h"
+   
+    constexpr int32_t TEXTSIZE = 1024;
+   
+   static std::string g_strText;
+   char g_strTextChar[TEXTSIZE];
+   int32_t g_strTextCharLen = 0;
+   bool g_flagShow = false;
+   std::mutex g_textMutex;
+   InputMethod_TextEditorProxy *textEditorProxy = nullptr;
+   InputMethod_AttachOptions *attachOptions = nullptr;
+   InputMethod_InputMethodProxy *inputMethodProxy = nullptr;
+   
+   void InputMethodDestroy();
+   
+   void InitText()
+   {
+       std::lock_guard<std::mutex> lock(g_textMutex);
+       if (g_flagShow) {
+           memset(g_strTextChar, 0x00, sizeof(g_strTextChar));
+           g_strTextCharLen = 0;
+           g_flagShow = false;
+       }
+   }
+   
+   void SetText(const char* input)
+   {
+       std::lock_guard<std::mutex> lock(g_textMutex);
+       g_strTextCharLen = strlen(input);
+       if (g_strTextCharLen > TEXTSIZE) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Length greater than 1024 , ret=%{public}d", g_strTextCharLen);
+       }
+       strncpy(g_strTextChar, input, g_strTextCharLen);
+   }
+   
+   void GetTextConfigFunc(InputMethod_TextEditorProxy *proxy, InputMethod_TextConfig *config)
+   { // 处理获取输入框配置请求
+       auto ret = OH_TextConfig_SetEnterKeyType(config, InputMethod_EnterKeyType::IME_ENTER_KEY_SEND);
+       if (ret != IME_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "SetEnterKeyType failed, ret=%{public}d", ret);
+           return;
+       }
+   
+       ret = OH_TextConfig_SetInputType(config, InputMethod_TextInputType::IME_TEXT_INPUT_TYPE_PHONE);
+       if (ret != IME_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "SetInputType failed, ret=%{public}d", ret);
+           return;
+       }
+   }
+   
+   void InsertTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, size_t length)
+   {
+       InitText();
+   
+       // 处理插入文本请求
+       // 将char16_t类型的字符串转换为u16string
+       std::u16string u16Str(text, length + 1);
+   
+       // 转换为UTF-8编码的string
+       std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> converter;
+       std::string utf8Str = converter.to_bytes(u16Str);
+       for (size_t i = 0; i < utf8Str.size(); ++i) {
+           unsigned char c = static_cast<unsigned char>(utf8Str[i]);
+           if (c != 0x00) {
+               std::lock_guard<std::mutex> lock(g_textMutex);
+               g_strTextChar[g_strTextCharLen] = c;
+               g_strTextCharLen += 1;
+           }
+       }
+   }
+   
+   void DeleteForwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length)
+   {
+       std::lock_guard<std::mutex> lock(g_textMutex);
+       if (g_strTextCharLen > 0) {
+           strncpy(g_strTextChar, g_strTextChar + 1, g_strTextCharLen - 1);
+           g_strTextCharLen = (g_strTextCharLen > 0) ? g_strTextCharLen - 1 : g_strTextCharLen;
+       }
+   }
+   
+   void DeleteBackwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length)
+   {
+       std::lock_guard<std::mutex> lock(g_textMutex);
+       g_strTextCharLen = (g_strTextCharLen > 0) ? g_strTextCharLen - 1 : g_strTextCharLen;
+       g_strTextChar[g_strTextCharLen] = '\0';
+   }
+   
+   void SendKeyboardStatusFunc(InputMethod_TextEditorProxy *proxy, InputMethod_KeyboardStatus status)
+   {
+       if (status == InputMethod_KeyboardStatus::IME_KEYBOARD_STATUS_HIDE) {
+           g_flagShow = false;
+           SetText("键盘已经被被隐藏");
+       } else if (status == InputMethod_KeyboardStatus::IME_KEYBOARD_STATUS_SHOW && g_flagShow != true) {
+           g_flagShow = true;
+           SetText("键盘已经被被拉起");
+       }
+   }
+   
+   void SendEnterKeyFunc(InputMethod_TextEditorProxy *proxy, InputMethod_EnterKeyType type)
+   {
+       SetText("处理回车键请求事件");
+       g_flagShow = true;
+   }
+   
+   void MoveCursorFunc(InputMethod_TextEditorProxy *proxy, InputMethod_Direction direction)
+   {
+       if (direction == InputMethod_Direction::IME_DIRECTION_UP) {
+           SetText("光标正在向 上 移动");
+       } else if (direction == InputMethod_Direction::IME_DIRECTION_DOWN) {
+           SetText("光标正在向 下 移动");
+       } else if (direction == InputMethod_Direction::IME_DIRECTION_LEFT) {
+           SetText("光标正在向 左 移动");
+       } else if (direction == InputMethod_Direction::IME_DIRECTION_RIGHT) {
+           SetText("光标正在向 右  移动");
+       } else {
+           SetText("光标正在 出现错误");
+       }
+   }
+   
+   void HandleSetSelectionFunc(InputMethod_TextEditorProxy *proxy, int32_t start, int32_t end)
+   {
+       SetText("处理选中文本请求");
+   }
+   
+   void HandleExtendActionFunc(InputMethod_TextEditorProxy *proxy, InputMethod_ExtendAction action)
+   {
+       SetText("处理扩展编辑请求");
+   }
+   
+   void GetleftTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, int32_t number, char16_t text[], size_t *length)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0, "testTag", "处理获取光标左侧文本请求  ...");
+   }
+   
+   void GetRightTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, int32_t number, char16_t text[], size_t *length)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0, "testTag", "处理获取光标右侧文本请求  ...");
+   }
+   
+   int32_t GetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0, "testTag", "处理获取光标所在输入框文本索引请求  ...");
+       return 0;
+   }
+   int32_t ReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, InputMethod_PrivateCommand *privateCommand[],
+       size_t size)
+   {
+       SetText("处理扩展编辑请求");
+       return 0;
+   }
+   
+   int32_t SetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, size_t length, int32_t start,
+       int32_t end)
+   {
+       SetText("处处理设置预上屏文本请求");
+       return 0;
+   }
+   
+   void FinishTextPreviewFunc(InputMethod_TextEditorProxy *proxy)
+   {
+       SetText("处理结束预上屏请求");
+   }
+   
+   void ConstructTextEditorProxy(InputMethod_TextEditorProxy *textEditorProxy)
+   {
+       OH_TextEditorProxy_SetGetTextConfigFunc(textEditorProxy, GetTextConfigFunc);
+       OH_TextEditorProxy_SetInsertTextFunc(textEditorProxy, InsertTextFunc);
+       OH_TextEditorProxy_SetDeleteForwardFunc(textEditorProxy, DeleteForwardFunc);
+       OH_TextEditorProxy_SetDeleteBackwardFunc(textEditorProxy, DeleteBackwardFunc);
+       OH_TextEditorProxy_SetSendKeyboardStatusFunc(textEditorProxy, SendKeyboardStatusFunc);
+       OH_TextEditorProxy_SetSendEnterKeyFunc(textEditorProxy, SendEnterKeyFunc);
+       OH_TextEditorProxy_SetMoveCursorFunc(textEditorProxy, MoveCursorFunc);
+       OH_TextEditorProxy_SetHandleSetSelectionFunc(textEditorProxy, HandleSetSelectionFunc);
+       OH_TextEditorProxy_SetHandleExtendActionFunc(textEditorProxy, HandleExtendActionFunc);
+       OH_TextEditorProxy_SetGetLeftTextOfCursorFunc(textEditorProxy, GetleftTextOfCursorFunc);
+       OH_TextEditorProxy_SetGetRightTextOfCursorFunc(textEditorProxy, GetRightTextOfCursorFunc);
+       OH_TextEditorProxy_SetGetTextIndexAtCursorFunc(textEditorProxy, GetTextIndexAtCursorFunc);
+       OH_TextEditorProxy_SetReceivePrivateCommandFunc(textEditorProxy, ReceivePrivateCommandFunc);
+       OH_TextEditorProxy_SetSetPreviewTextFunc(textEditorProxy, SetPreviewTextFunc);
+       OH_TextEditorProxy_SetFinishTextPreviewFunc(textEditorProxy, FinishTextPreviewFunc);
+   }
+   ```
 
 
    <!-- @[input_case_input_CPreview208](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
