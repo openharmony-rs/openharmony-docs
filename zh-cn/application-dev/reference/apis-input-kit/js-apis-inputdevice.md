@@ -454,7 +454,7 @@ struct Index {
 
 ```
 
-## <span id="on_change">inputDevice.on<sup>9+</sup></span>
+## inputDevice.on<sup>9+</sup>
 
 on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
@@ -464,7 +464,7 @@ on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onChange](#onChange)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onChange](#inputdeviceonchange22)。
 
 **ArkTS-Dyn起始版本**：9
 
@@ -520,7 +520,7 @@ struct Index {
 }
 ```
 
-## <span id="onChange">inputDevice.onChange<sup>22+</sup></span>
+## inputDevice.onChange<sup>22+</sup>
 
 onChange(listener: Callback&lt;DeviceListener&gt;): void
 
@@ -530,7 +530,7 @@ onChange(listener: Callback&lt;DeviceListener&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on_change)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputdeviceon9)。
 
 **ArkTS-Dyn起始版本**：22
 
@@ -575,7 +575,7 @@ struct Index {
 }
 ```
 
-## <span id = "off_change">inputDevice.off<sup>9+</sup></span>
+## inputDevice.off<sup>9+</sup>
 
 off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
@@ -585,7 +585,7 @@ off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offChange](#offChange22)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offChange](#inputdeviceoffchange22)。
 
 **ArkTS-Dyn起始版本**：9
 
@@ -645,7 +645,7 @@ struct Index {
 }
 ```
 
-## <span id = "offChange22">inputDevice.offChange<sup>22+</sup></span>
+## inputDevice.offChange<sup>22+</sup>
 
 offChange(listener?: Callback&lt;DeviceListener&gt;): void
 
@@ -655,7 +655,7 @@ offChange(listener?: Callback&lt;DeviceListener&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off_Change)。
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputdeviceoff9)。
 
 **ArkTS-Dyn起始版本**：22
 

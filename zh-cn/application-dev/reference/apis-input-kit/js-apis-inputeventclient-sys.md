@@ -16,7 +16,7 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
-## <span id = "injectevent8">inputEventClient.injectEvent</span>
+## inputEventClient.injectEvent
 
 injectEvent({KeyEvent: KeyEvent}): void
 
@@ -28,7 +28,7 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[injectEvent](#injectEvent_keyeventinfo)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[injectEvent](#inputeventclientinjectevent22)。
 
 **ArkTS-Dyn起始版本**：8
 
@@ -95,7 +95,7 @@ struct Index {
 }
 ```
 
-## <span id = "injectEvent_keyeventinfo">inputEventClient.injectEvent<sup>20+</sup></span>
+## inputEventClient.injectEvent<sup>22+</sup>
 
 injectEvent(keyEvent: KeyEventInfo): void
 
@@ -105,7 +105,7 @@ injectEvent(keyEvent: KeyEventInfo): void
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
 
-**相关接口**: 对应最初版本[injectEvent](#injectevent8)
+**相关接口**: 对应最初版本[injectEvent](#inputeventclientinjectevent)
 
 **ArkTS-Dyn起始版本**：22
 
