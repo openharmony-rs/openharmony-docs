@@ -83,8 +83,8 @@ libnative_rdb_ndk.z.so
 2. 当前系统支持向量数据库时，获取OH_Rdb_Store实例。示例代码如下：
 
    <!--@[vector_OH_Rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    // 创建OH_Rdb_Config对象
    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
    // 该路径为应用沙箱路径
@@ -102,7 +102,7 @@ libnative_rdb_ndk.z.so
    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
    // 数据库类型
    OH_Rdb_SetDbType(config, RDB_CAYLEY);
-   
+       
    // 获取OH_Rdb_Store实例
    int errCode = 0;
    OH_Rdb_Store *store_ = OH_Rdb_CreateOrOpen(config, &errCode);
