@@ -173,23 +173,25 @@ libnative_rdb_ndk.z.so
    示例代码如下：
 
    <!--@[vector_OH_Rdb_ExecuteV2_queryWithoutBingArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    // 不使用参数绑定查询数据
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from test where id = 1;", nullptr);
    if (cursor == NULL) {
-      OH_LOG_ERROR(LOG_APP, "Query failed.");
-      return;
+       OH_LOG_ERROR(LOG_APP, "Query failed.");
+       return;
    }
+   // getRowCount会导致性能冗余。建议仅在调试或者维测时再使用
    int rowCount = 0;
    cursor->getRowCount(cursor, &rowCount);
-   cursor->goToNextRow(cursor);
-   size_t count = 0;
-   // floatvector数组是第二列数据
-   OH_Cursor_GetFloatVectorCount(cursor, 1, &count);
-   float test2[count];
-   size_t outLen;
-   OH_Cursor_GetFloatVector(cursor, 1, test2, count, &outLen);
+   while (cursor->goToNextRow(cursor) == OH_Rdb_ErrCode::RDB_OK) {
+       size_t count = 0;
+       // floatvector数组是第二列数据，1表示列下标索引
+       OH_Cursor_GetFloatVectorCount(cursor, 1, &count);
+       float test[count];
+       size_t outLen;
+       OH_Cursor_GetFloatVector(cursor, 1, test, count, &outLen);
+   }
    cursor->destroy(cursor);
    ```
 
