@@ -348,16 +348,17 @@ libnative_rdb_ndk.z.so
    示例代码如下：
 
    <!--@[vector_OH_Rdb_ExecuteV2_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->    
-
-   ``` C
+   
+   ``` C++
    // 基础用法，创建的索引名称为diskann_l2_idx，索引列为repr，类型为gsdiskann，距离度量类型为L2
    OH_Rdb_ExecuteV2(store_, "CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(data1 L2);", nullptr, nullptr);
-
+   
    // 删除表test中的diskann_l2_idx索引
    OH_Rdb_ExecuteV2(store_, "DROP INDEX test.diskann_l2_idx;", nullptr, nullptr);
-
+   
    // 扩展语法，设置QUEUE_SIZE为20，OUT_DEGREE为50
-   OH_Rdb_ExecuteV2(store_, "CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(repr L2) WITH (queue_size=20, out_degree=50);", nullptr, nullptr);
+   OH_Rdb_ExecuteV2(store_, "CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(data1 L2) WITH "
+       "(queue_size=20, out_degree=50);", nullptr, nullptr);
    ```
 
 8. 配置数据老化功能。当应用的数据需要定期清理时，可以按时间或空间配置数据老化策略，从而实现数据的自动化清理。
