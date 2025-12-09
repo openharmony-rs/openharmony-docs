@@ -352,109 +352,101 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
 
    <!-- @[input_case_input_CPreview208](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-void InputMethodNdkDemo()
-{
-    // [Start input_case_input_TextEditorProxy]
-    // 创建InputMethod_TextEditorProxy实例
-    textEditorProxy = OH_TextEditorProxy_Create();
-    // [End input_case_input_TextEditorProxy]
-    if (textEditorProxy == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Create TextEditorProxy failed.");
-        return;
-    }
-
-    // 将实现好的响应处理函数设置到InputMethod_TextEditorProxy中
-    ConstructTextEditorProxy(textEditorProxy);
-
-    // [Start input_case_input_attachOptions]
-    // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例
-    bool showKeyboard = true;
-    attachOptions = OH_AttachOptions_Create(showKeyboard);
-    // [End input_case_input_attachOptions]
-    if (attachOptions == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Create AttachOptions failed.");
-        OH_TextEditorProxy_Destroy(textEditorProxy);
-        return;
-    }
-
-    // [Start input_case_input_OH_InputMethodController_Attach]
-    // 发起绑定请求
-    auto ret = OH_InputMethodController_Attach(textEditorProxy, attachOptions, &inputMethodProxy);
-    if (ret != IME_ERR_OK) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Attach failed, ret=%{public}d.", ret);
-        OH_TextEditorProxy_Destroy(textEditorProxy);
-        OH_AttachOptions_Destroy(attachOptions);
-        return;
-    }
-    // [End input_case_input_OH_InputMethodController_Attach]
-}
-
-static napi_value InputMethodDestroy(napi_env env, napi_callback_info info)
-{
-   // 隐藏键盘
-    int ret = OH_InputMethodProxy_HideKeyboard(inputMethodProxy);
-    if (ret != IME_ERR_OK) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "HideKeyboard failed, ret=%{public}d.", ret);
-        OH_TextEditorProxy_Destroy(textEditorProxy);
-        OH_AttachOptions_Destroy(attachOptions);
-        return nullptr;
-    }
-
-    // [Start input_case_input_OH_InputMethodController_Detach]
-    // 发起解绑请求
-    OH_InputMethodController_Detach(inputMethodProxy);
-    OH_TextEditorProxy_Destroy(textEditorProxy);
-    OH_AttachOptions_Destroy(attachOptions);
-    // [End input_case_input_OH_InputMethodController_Detach]
-    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "testTag", "Finished.");
-    return nullptr;
-}
-
-
-static napi_value AttachInputMethod(napi_env env, napi_callback_info info)
-{
-    InputMethodNdkDemo();
-
-    napi_value result;
-    napi_create_string_utf8(env,  g_strText.c_str(),  g_strText.length(),  &result);
-    return result;
-}
-
-static napi_value GetText(napi_env env, napi_callback_info info)
-{
-    napi_value result;
-    napi_create_string_utf8(env, g_strTextChar, g_strTextCharLen,  &result);
-    return result;
-}
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    napi_property_descriptor desc[] = {
-        { "attachInputMethod", nullptr, AttachInputMethod, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "getText", nullptr, GetText, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "inputMethodDestroy", nullptr, InputMethodDestroy, nullptr, nullptr, nullptr, napi_default, nullptr },
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&demoModule);
-}
-```
+   
+   ``` C++
+   void InputMethodNdkDemo()
+   {
+       // 创建InputMethod_TextEditorProxy实例
+       textEditorProxy = OH_TextEditorProxy_Create();
+       if (textEditorProxy == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Create TextEditorProxy failed.");
+           return;
+       }
+   
+       // 将实现好的响应处理函数设置到InputMethod_TextEditorProxy中
+       ConstructTextEditorProxy(textEditorProxy);
+   
+       // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例
+       bool showKeyboard = true;
+       attachOptions = OH_AttachOptions_Create(showKeyboard);
+       if (attachOptions == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Create AttachOptions failed.");
+           OH_TextEditorProxy_Destroy(textEditorProxy);
+           return;
+       }
+   
+       // 发起绑定请求
+       auto ret = OH_InputMethodController_Attach(textEditorProxy, attachOptions, &inputMethodProxy);
+       if (ret != IME_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "Attach failed, ret=%{public}d.", ret);
+           OH_TextEditorProxy_Destroy(textEditorProxy);
+           OH_AttachOptions_Destroy(attachOptions);
+           return;
+       }
+   }
+   
+   static napi_value InputMethodDestroy(napi_env env, napi_callback_info info)
+   {
+      // 隐藏键盘
+       int ret = OH_InputMethodProxy_HideKeyboard(inputMethodProxy);
+       if (ret != IME_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "HideKeyboard failed, ret=%{public}d.", ret);
+           OH_TextEditorProxy_Destroy(textEditorProxy);
+           OH_AttachOptions_Destroy(attachOptions);
+           return nullptr;
+       }
+   
+       // 发起解绑请求
+       OH_InputMethodController_Detach(inputMethodProxy);
+       OH_TextEditorProxy_Destroy(textEditorProxy);
+       OH_AttachOptions_Destroy(attachOptions);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0, "testTag", "Finished.");
+       return nullptr;
+   }
+   
+   
+   static napi_value AttachInputMethod(napi_env env, napi_callback_info info)
+   {
+       InputMethodNdkDemo();
+   
+       napi_value result;
+       napi_create_string_utf8(env,  g_strText.c_str(),  g_strText.length(),  &result);
+       return result;
+   }
+   
+   static napi_value GetText(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       napi_create_string_utf8(env, g_strTextChar, g_strTextCharLen,  &result);
+       return result;
+   }
+   
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           { "attachInputMethod", nullptr, AttachInputMethod, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "getText", nullptr, GetText, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "inputMethodDestroy", nullptr, InputMethodDestroy, nullptr, nullptr, nullptr, napi_default, nullptr },
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = ((void*)0),
+       .reserved = { 0 },
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+   {
+       napi_module_register(&demoModule);
+   }
+   ```
 
