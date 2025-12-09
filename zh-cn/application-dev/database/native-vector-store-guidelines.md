@@ -242,13 +242,22 @@ libnative_rdb_ndk.z.so
    ```
 
    <!--@[vector_OH_Rdb_ExecuteV2_aggregateQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    // 聚合查询
-   cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from test where data1 <-> '[1.0, 1.0]' > 0 group by id having max(data1 <=> '[1.0, 1.0]');", nullptr);
+   OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_,
+       "select * from test where data1 <-> '[1.0, 1.0]' > 0 group by id having max(data1 <=> '[1.0, 1.0]');", nullptr);
    if (cursor == NULL) {
-      OH_LOG_ERROR(LOG_APP, "Query failed.");
-      return;
+       OH_LOG_ERROR(LOG_APP, "Query failed.");
+       return;
+   }
+   while (cursor->goToNextRow(cursor) == OH_Rdb_ErrCode::RDB_OK) {
+       size_t count = 0;
+       // floatvector数组是第二列数据，1表示列下标索引
+       OH_Cursor_GetFloatVectorCount(cursor, 1, &count);
+       float test[count];
+       size_t outLen;
+       OH_Cursor_GetFloatVector(cursor, 1, test, count, &outLen);
    }
    cursor->destroy(cursor);
    ```
