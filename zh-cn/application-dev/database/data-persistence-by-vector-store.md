@@ -302,7 +302,7 @@ SQL语句中的函数，如下所示：
 6. 创建视图并执行查询。示例代码如下：
 
    <!--@[vector_TS_execute_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
+   
    ``` TypeScript
    // 视图查询
    try {
