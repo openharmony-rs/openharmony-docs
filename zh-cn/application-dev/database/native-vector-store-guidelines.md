@@ -286,13 +286,13 @@ libnative_rdb_ndk.z.so
 6. 创建视图并执行查询。示例代码如下：
 
    <!--@[vector_OH_Rdb_ExecuteV2_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    OH_Rdb_ExecuteV2(store_, "CREATE VIEW v1 as select * from test where id > 0;", nullptr, nullptr);
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from v1;", nullptr);
    if (cursor == NULL) {
-      OH_LOG_ERROR(LOG_APP, "Query failed.");
-      return;
+       OH_LOG_ERROR(LOG_APP, "Query failed.");
+       return;
    }
    cursor->destroy(cursor);
    ```
