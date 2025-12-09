@@ -29752,6 +29752,18 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Stub/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Stub/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets",
 				"functions":[
 					{
 						"end_line":66,
@@ -29761,7 +29773,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
 						"end_line":32,
@@ -29776,7 +29788,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
 						"end_line":37,
@@ -29797,6 +29809,14 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
 						"end_line":32,
@@ -29811,7 +29831,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
 						"end_line":37,
@@ -29912,6 +29932,56 @@
 						"end_line":30,
 						"name":"napi_event_loop_utils",
 						"start_line":20
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ipc/ipc-capi-development-guideline.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp",
+				"functions":[
+					{
+						"end_line":22,
+						"name":"child_process_head_file",
+						"start_line":17
+					},
+					{
+						"end_line":76,
+						"name":"child_process_must_method",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp",
+				"functions":[
+					{
+						"end_line":167,
+						"name":"main_processIpc_launch_native_child",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/IpcProxy.cpp",
+				"functions":[
+					{
+						"end_line":129,
+						"name":"proxy_implement",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/IpcStub.cpp",
+				"functions":[
+					{
+						"end_line":136,
+						"name":"stub_implement",
+						"start_line":16
 					}
 				]
 			}
