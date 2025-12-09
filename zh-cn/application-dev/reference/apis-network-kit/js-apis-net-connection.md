@@ -3044,7 +3044,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。       |
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。       |
 | hasGateway     | boolean                     | 否 | 否 | 是否有网关。true：有网关；false：无网关。     |
-| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。 |
+| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。IPv4默认路由：0.0.0.0/0；IPv6默认路由：::/0 |
 | isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
 
 ## LinkAddress
