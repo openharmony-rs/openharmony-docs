@@ -775,7 +775,6 @@ export struct PageHome1 {
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
   text: string = '';
-  index: number = 0;
   param: Object = new Object();
   lastBackTime: number = 0;
 
@@ -800,7 +799,6 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // 跳转至PageHome1页面
                     this.pageStack.pushPathByName('PageHome1', 'testParam', true, SplitPolicy.HOME_PAGE);
-                    this.index++;
                   }
                 })
               Button('OpenDetail', { stateEffect: true, type: ButtonType.Capsule})
@@ -811,7 +809,6 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // 跳转至PageDetail1页面
                     this.pageStack.pushPathByName('PageDetail1', 'testParam');
-                    this.index++;
                   }
                 })
               Button('OpenFull', { stateEffect: true, type: ButtonType.Capsule})

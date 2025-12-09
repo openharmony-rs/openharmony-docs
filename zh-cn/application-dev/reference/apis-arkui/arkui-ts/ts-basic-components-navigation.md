@@ -4698,7 +4698,7 @@ struct NavigationExample {
 
 该示例主要展示Navigation工具栏的自适应能力的启用及关闭。
 
-在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "landscape"。
+在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "landscape"（该工程配置仅方便演示在横屏模式下的Navigation工具栏自适应能力，实际配置可自行设置为"auto_rotation"）。
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
