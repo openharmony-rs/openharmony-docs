@@ -268,7 +268,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     predicates2->destroy(predicates2);
     ```
     <!--@[rdb_OH_Rdb_Delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
-
+    
     ``` C++
     // 删除数据
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
