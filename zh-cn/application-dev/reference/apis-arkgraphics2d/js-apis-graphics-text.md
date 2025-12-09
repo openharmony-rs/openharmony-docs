@@ -320,7 +320,7 @@ import { text } from '@kit.ArkGraphics2D'
 struct GetFontDescriptorsFromPathTest {
   build() {
     Column({ space: 10 }) {
-      Button("get fontDesciptors")
+      Button("get fontDescriptors")
         .onClick(async () => {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
           promise.then((fontFullDescriptors) => {
