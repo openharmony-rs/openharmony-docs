@@ -1420,7 +1420,8 @@ type DataProgressListener = (progressInfo: ProgressInfo, data: UnifiedData | nul
 type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 
 用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。
-该处理函数为同步函数，适用于处理简单业务逻辑，若函数业务逻辑较复杂、执行时间较长（3s以上），推荐使用异步处理函数[DelayedDataLoadHandler](#DelayedDataLoadHandler22).
+
+该处理函数为同步函数，适用于处理简单业务逻辑，若函数业务逻辑较复杂、执行时间较长（3s以上），推荐使用异步处理函数[DelayedDataLoadHandler](#DelayedDataLoadHandler22)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1443,9 +1444,12 @@ type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<UnifiedData | null>
 
 用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。
+
 该处理函数为异步函数，返回Promise对象，不阻塞主线程，可处理复杂业务逻辑、执行长耗时任务。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1465,7 +1469,7 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 
 用于在延迟加载场景下描述发送方的数据加载策略。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+当同时传入loadHandler和delayedDataLoadHandler时，优先使用delayedDataLoadHandler，loadHandler不生效。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1473,9 +1477,9 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 
 | 名称                   | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                 |
 |----------------------|-------------------------------------------------| ---- |-----|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | 否 | 否| 表示用于延迟加载数据的处理函数。             |
-| delayedDataLoadHandler | [DelayedDataLoadHandler](#DelayedDataLoadHandler22) | 否 | 是| 表示用于延迟加载数据的异步处理函数。              |
-| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | 否 | 否| 用于描述当前发送方可生成的数据类型及数量信息。              |
+| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | 否 | 否| 表示用于延迟加载数据的处理函数，从API version 20开始，该接口支持在原子化服务中使用。             |
+| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#DelayedDataLoadHandler22) | 否 | 是| 表示用于延迟加载数据的异步处理函数，从API version 22开始，该接口支持在原子化服务中使用，此接口仅可在Stage模型下使用。              |
+| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | 否 | 否| 用于描述当前发送方可生成的数据类型及数量信息，从API version 20开始，该接口支持在原子化服务中使用              |
 
 ## unifiedDataChannel.insertData
 
