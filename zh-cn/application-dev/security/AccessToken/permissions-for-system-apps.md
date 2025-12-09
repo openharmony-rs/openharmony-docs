@@ -5320,7 +5320,6 @@
 
 **起始版本**：18
 
-
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 
 允许应用查询和配置用户身份认证策略、校验用户身份认证结果。
