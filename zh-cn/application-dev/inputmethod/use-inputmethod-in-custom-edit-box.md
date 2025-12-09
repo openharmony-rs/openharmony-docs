@@ -114,10 +114,10 @@
 4. 在应用界面布局中引入该控件即可，此处假设使用界面为Index.ets和控件CustomInput.ets在同一目录下。
 
    <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
-
-``` TypeScript
-      CustomInput()
-```
+   
+   ``` TypeScript
+   CustomInput()
+   ```
 
 
    ## 示例效果图
