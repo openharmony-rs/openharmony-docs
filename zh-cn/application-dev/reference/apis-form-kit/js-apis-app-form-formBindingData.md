@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -23,10 +24,14 @@ import { formBindingData } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| key<sup>10+</sup> | string | 是 | 卡片代理刷新的订阅标识，与数据发布者保持一致。|
-| subscriberId<sup>10+</sup> | string | 否 | 卡片代理刷新的订阅条件，默认值为当前卡片的formId。|
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| key | string | 否 | 否 | 卡片代理刷新的订阅标识，与数据发布者保持一致。|
+| subscriberId | string | 否 | 是 | 卡片代理刷新的订阅条件，默认值为当前卡片的formId。|
 
 
 ## FormBindingData
@@ -37,10 +42,10 @@ FormBindingData相关描述。
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| data | Object | 是 | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。|
-| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 卡片代理刷新的订阅信息，默认为空数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| data | Object | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，默认为空数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## formBindingData.createFormBindingData
 
@@ -51,6 +56,10 @@ createFormBindingData(obj?: Object | string): FormBindingData
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
