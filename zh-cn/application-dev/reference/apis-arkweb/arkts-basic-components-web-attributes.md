@@ -233,7 +233,7 @@ javaScriptAccess(javaScriptAccess: boolean)
 
 overScrollMode(mode: OverScrollMode)
 
-设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭过滚动模式。
+设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -241,7 +241,7 @@ overScrollMode(mode: OverScrollMode)
 
 | 参数名  | 类型                                    | 必填   | 说明               |
 | ---- | --------------------------------------- | ---- | ------------------ |
-| mode | [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) | 是    | 设置Web的过滚动模式为关闭或开启。<br>传入undefined与null时为OverScrollMode.NEVER。 |
+| mode | [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) | 是    | 设置Web的过滚动模式为关闭或开启。<br>默认值：`OverScrollMode.NEVER`，表示关闭过滚动模式。 |
 
 **示例：**
 
@@ -275,7 +275,7 @@ mixedMode(mixedMode: MixedMode)
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | 是    | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.None。 |
+| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | 是    | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.All。 |
 
 **示例：**
 
@@ -335,7 +335,7 @@ onlineImageAccess(onlineImageAccess: boolean)
 
 zoomAccess(zoomAccess: boolean)
 
-设置是否支持手势进行缩放。该属性没有显式调用时，默认支持手势进行缩放。
+设置是否支持手势进行缩放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -343,7 +343,7 @@ zoomAccess(zoomAccess: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| zoomAccess | boolean | 是    | 设置是否支持手势进行缩放。<br>true表示设置支持手势进行缩放，false表示设置不支持手势进行缩放。<br>传入undefined或null时为false。 |
+| zoomAccess | boolean | 是    | 设置是否支持手势进行缩放。<br>true表示设置支持手势进行缩放，false表示设置不支持手势进行缩放。<br>默认值：true。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -542,7 +542,7 @@ multiWindowAccess(multiWindow: boolean)
 
 horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
-设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示横向滚动条。
+设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。
 
 > **说明：**
 >
@@ -555,7 +555,7 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 | 参数名                 | 类型    | 必填   | 说明         |
 | ------------------- | ------- | ---- | ------------ |
-| horizontalScrollBar | boolean | 是    | 设置是否显示横向滚动条。<br>true表示设置显示横向滚动条，false表示设置不显示横向滚动条。<br>传入undefined或null时为false。 |
+| horizontalScrollBar | boolean | 是    | 设置是否显示横向滚动条。<br>true表示设置显示横向滚动条，false表示设置不显示横向滚动条。<br>默认值：true。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -624,7 +624,7 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 verticalScrollBarAccess(verticalScrollBar: boolean)
 
-设置是否显示纵向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示纵向滚动条。
+设置是否显示纵向滚动条，包括系统默认滚动条和用户自定义滚动条。
 
 > **说明：**
 >
@@ -637,7 +637,7 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
 
 | 参数名               | 类型    | 必填   | 说明         |
 | ----------------- | ------- | ---- | ------------ |
-| verticalScrollBar | boolean | 是    | 设置是否显示纵向滚动条。<br>true表示设置显示纵向滚动条，false表示设置不显示纵向滚动条。<br>传入undefined或null时为false。 |
+| verticalScrollBar | boolean | 是    | 设置是否显示纵向滚动条。<br>true表示设置显示纵向滚动条，false表示设置不显示纵向滚动条。<br>默认值：true。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -741,7 +741,7 @@ cacheMode(cacheMode: CacheMode)
 
 copyOptions(value: CopyOptions)
 
-设置剪贴板复制范围选项。该属性没有显式调用时，默认支持复制后在当前设备内所有应用内粘贴。
+设置剪贴板复制范围选项。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -749,7 +749,7 @@ copyOptions(value: CopyOptions)
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| value | [CopyOptions](../apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9) | 是    | 要设置的剪贴板复制范围选项。<br>传入undefined与null时为CopyOptions.None。 |
+| value | [CopyOptions](../apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9) | 是    | 要设置的剪贴板复制范围选项。<br>默认值：`CopyOptions.LocalDevice`。 |
 
 **示例：**
 
@@ -810,7 +810,7 @@ textZoomRatio(textZoomRatio: number)
 
 initialScale(percent: number)
 
-设置整体页面的缩放百分比。该属性没有显式调用时，默认缩放百分比为100。
+设置整体页面的缩放百分比。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -818,7 +818,7 @@ initialScale(percent: number)
 
 | 参数名     | 类型   | 必填   | 说明                          |
 | ------- | ------ | ---- | ----------------------------- |
-| percent | number | 是    | 要设置的整体页面的缩放百分比。<br>取值范围：(0, 1000]。<br>传入undefined与null时属性设置不生效。 |
+| percent | number | 是    | 要设置的整体页面的缩放百分比。<br>取值范围：(0, 1000]。<br>默认值：100。 |
 
 **示例：**
 
@@ -853,7 +853,7 @@ blockNetwork(block: boolean)
 
 | 参数名   | 类型    | 必填   | 说明                |
 | ----- | ------- | ---- | ------------------- |
-| block | boolean | 是    | 设置Web组件是否允许从网络加载资源。<br>true表示不允许从网络加载资源，false表示允许从网络加载资源。<br>传入undefined或null时为true。 |
+| block | boolean | 是    | 设置Web组件是否允许从网络加载资源。<br>true表示不允许从网络加载资源，false表示允许从网络加载资源。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -1401,8 +1401,8 @@ allowWindowOpenMethod(flag: boolean)
 
 **示例：**
 
-  ```ts
-  // xxx.ets
+```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 // 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
@@ -1462,7 +1462,7 @@ struct WebComponent {
         }
     }
 }
-  ```
+```
 **HTML示例：**
 
 ```html
@@ -2114,7 +2114,7 @@ enableNativeEmbedMode(mode: boolean)
 
 | 参数名   | 类型                      | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| mode |  boolean | 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>传入null或undefined时为false。 |
+| mode |  boolean | 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>传入null或undefined时为false。|
 
 **示例：**
 
@@ -2139,7 +2139,7 @@ enableNativeEmbedMode(mode: boolean)
 forceDisplayScrollBar(enabled: boolean)
 
 
-设置滚动条是否常驻。在常驻状态下，当页面大小超过一页时，滚动条出现且不消失。该属性没有显式调用时，默认设置滚动条不常驻。
+设置滚动条是否常驻。在常驻状态下，当页面大小超过一页时，滚动条出现且不消失。
 
 全量展开模式下不支持滚动条常驻，即layoutMode为WebLayoutMode.FIT_CONTENT模式时，参数enabled为false。
 
@@ -2149,7 +2149,7 @@ forceDisplayScrollBar(enabled: boolean)
 
 | 参数名  | 类型 | 必填 | 说明           |
 | ------- | -------- | ---- | ------------------ |
-| enabled | boolean  | 是   | 滚动条是否常驻。<br>true表示滚动条常驻，false表示滚动条不常驻。<br>传入undefined与null时属性设置不生效。 |
+| enabled | boolean  | 是   | 滚动条是否常驻。<br>true表示滚动条常驻，false表示滚动条不常驻。<br>默认值：false。 |
 
 
 **示例：**
@@ -2411,7 +2411,7 @@ metaViewport(enabled: boolean)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2427,7 +2427,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 加载的html文件。
 ```html
 <!--index.html-->
@@ -2751,12 +2751,18 @@ struct WebComponent {
     <h1>editMenuOptions Demo</h1>
     <span>edit menu options</span>
     <script>
+      function callArkTS() {
+        let str = testObjName.test();
+        document.getElementById("demo").innerHTML = str;
+      }
+
       document.addEventListener('selectionchange', () => {
         var selection = window.getSelection();
         if (selection.rangeCount > 0) {
           var selectedText = selection.toString();
           testObjName.setSelectText(selectedText);
         }
+        callArkTS();
       });
   </script>
   </body>
@@ -2767,7 +2773,7 @@ struct WebComponent {
 
 enableHapticFeedback(enabled: boolean)
 
-设置Web组件长按文本选择是否开启振动。需配置"ohos.permission.VIBRATE"。该属性没有显式调用时，默认开启振动。
+设置Web组件长按文本选择是否开启振动。需配置"ohos.permission.VIBRATE"。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2775,7 +2781,7 @@ enableHapticFeedback(enabled: boolean)
 
 | 参数名     | 类型        | 必填   | 说明 |
 | --------- | ---------   | ------ | ------------- |
-| enabled   | boolean | 是  | 是否开启振动。<br>true表示开启振动，false表示不开启振动。<br>传入undefined与null时属性设置不生效。 |
+| enabled   | boolean | 是  | 是否开启振动。<br>true表示开启振动，false表示不开启振动。<br>默认值：true。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -2834,14 +2840,23 @@ bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseT
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
+import { pasteboard } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 interface PreviewBuilderParam {
+  width: number;
+  height: number;
+  url:Resource | string | undefined;
+}
+
+interface PreviewBuilderParamForImage {
   previewImage: Resource | string | undefined;
   width: number;
   height: number;
 }
 
-@Builder function PreviewBuilderGlobal($$: PreviewBuilderParam) {
+
+@Builder function PreviewBuilderGlobalForImage($$: PreviewBuilderParamForImage) {
   Column() {
     Image($$.previewImage)
       .objectFit(ImageFit.Fill)
@@ -2851,63 +2866,192 @@ interface PreviewBuilderParam {
 
 @Entry
 @Component
-struct WebComponent {
+struct SelectionMenuLongPress {
   controller: webview.WebviewController = new webview.WebviewController();
+  previewController: webview.WebviewController = new webview.WebviewController();
+  @Builder PreviewBuilder($$: PreviewBuilderParam){
+    Column() {
+      Stack(){
+        Text("") // 可选择是否展示url
+          .padding(5)
+          .width('100%')
+          .textAlign(TextAlign.Start)
+          .backgroundColor(Color.White)
+          .copyOption(CopyOptions.LocalDevice)
+          .maxLines(1)
+          .textOverflow({overflow:TextOverflow.Ellipsis})
+        Progress({ value: this.progressValue, total: 100, type: ProgressType.Linear }) // 展示进度条
+          .style({ strokeWidth: 3, enableSmoothEffect: true })
+          .backgroundColor(Color.White)
+          .opacity(this.progressVisible?1:0)
+          .backgroundColor(Color.White)
+      }.alignContent(Alignment.Bottom)
+      Web({src:$$.url,controller: new webview.WebviewController()})
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .onlineImageAccess(true)
+        .imageAccess(true)
+        .domStorageAccess(true)
+        .onPageBegin(()=>{
+          this.progressValue = 0;
+          this.progressVisible = true;
+        })
+        .onProgressChange((event)=>{
+          this.progressValue = event.newProgress;
+        })
+        .onPageEnd(()=>{
+          this.progressVisible = false;
+        })
+        .hitTestBehavior(HitTestMode.None) // 使预览Web不响应手势
+    }.width($$.width).height($$.height) // 设置预览宽高
+  }
 
   private result: WebContextMenuResult | undefined = undefined;
   @State previewImage: Resource | string | undefined = undefined;
-  @State previewWidth: number = 0;
-  @State previewHeight: number = 0;
+  @State previewWidth: number = 1;
+  @State previewHeight: number = 1;
+  @State previewWidthImage: number = 1;
+  @State previewHeightImage: number = 1;
+  @State linkURL:string = "";
+  @State progressValue:number = 0;
+  @State progressVisible:boolean = true;
   uiContext: UIContext = this.getUIContext();
+  enablePaste = false;
+
+  clearSelection() {
+    try {
+      this.controller.runJavaScript(
+        'clearSelection()',
+        (error, result) => {
+          if (error) {
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            return;
+          }
+          if (result) {
+            console.info(`The clearSelection() return value is: ${result}`);
+          }
+        });
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
 
   @Builder
-  MenuBuilder() {
+  LinkMenuBuilder() {
+    Menu() {
+      MenuItem({ content: '复制链接', })
+        .onClick(() => {
+          const pasteboardData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, this.linkURL);
+          const systemPasteboard = pasteboard.getSystemPasteboard();
+          systemPasteboard.setData(pasteboardData);
+        })
+      MenuItem({content:'打开链接'})
+        .onClick(()=>{
+          this.controller.loadUrl(this.linkURL);
+        })
+    }
+  }
+  @Builder
+  ImageMenuBuilder() {
+    Menu() {
+      MenuItem({ content: '复制图片', })
+        .onClick(() => {
+          this.result?.copyImage();
+          this.result?.closeContextMenu();
+        })
+    }
+  }
+  @Builder
+  TextMenuBuilder() {
     Menu() {
       MenuItem({ content: '复制', })
         .onClick(() => {
-          this.result?.copy();
-          this.result?.closeContextMenu();
-        })
-      MenuItem({ content: '全选', })
-        .onClick(() => {
-          this.result?.selectAll();
-          this.result?.closeContextMenu();
-        })
+          try {
+            this.controller.runJavaScript(
+              'copySelectedText()',
+              (error, result) => {
+                if (error) {
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
+                if (result) {
+                  console.info(`The copySelectedText() return value is: ${result}`);
+                }
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+          this.clearSelection()
+        }).backgroundColor(Color.Pink)
     }
   }
   build() {
     Column() {
       Web({ src: $rawfile("index.html"), controller: this.controller })
-        .bindSelectionMenu(WebElementType.IMAGE, this.MenuBuilder, WebResponseType.LONG_PRESS,
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .onlineImageAccess(true)
+        .imageAccess(true)
+        .domStorageAccess(true)
+        .bindSelectionMenu(WebElementType.TEXT, this.TextMenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {},
+            menuType: MenuType.SELECTION_MENU,
+          })
+        .bindSelectionMenu(WebElementType.LINK, this.LinkMenuBuilder, WebResponseType.LONG_PRESS,
           {
             onAppear: () => {},
             onDisappear: () => {
               this.result?.closeContextMenu();
             },
-            preview: PreviewBuilderGlobal({
-              previewImage: this.previewImage,
-              width: this.previewWidth,
-              height: this.previewHeight
+            preview: this.PreviewBuilder({
+              width: 500,
+              height: 400,
+              url:this.linkURL
             }),
             menuType: MenuType.PREVIEW_MENU
           })
-        .onContextMenuShow((event) => {
-            if (event) {
-              this.result = event.result;
-              if (event.param.getLinkUrl()) {
-                return false;
-              }
-              this.previewWidth = this.uiContext!.px2vp(event.param.getPreviewWidth());
-              this.previewHeight = this.uiContext!.px2vp(event.param.getPreviewHeight());
-              if (event.param.getSourceUrl().indexOf("resource://rawfile/") == 0) {
-                this.previewImage = $rawfile(event.param.getSourceUrl().substr(19));
-              } else {
-                this.previewImage = event.param.getSourceUrl();
-              }
-              return true;
-            }
-            return false;
+        .bindSelectionMenu(WebElementType.IMAGE, this.ImageMenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {
+              this.result?.closeContextMenu();
+            },
+            preview: PreviewBuilderGlobalForImage({
+              previewImage: this.previewImage,
+              width: this.previewWidthImage,
+              height: this.previewHeightImage,
+            }),
+            menuType: MenuType.PREVIEW_MENU,
           })
+        .zoomAccess(true)
+        .onContextMenuShow((event) => {
+          if (event) {
+            this.result = event.result;
+            this.previewWidthImage = this.uiContext!.px2vp(event.param.getPreviewWidth());
+            this.previewHeightImage = this.uiContext!.px2vp(event.param.getPreviewHeight());
+            if (event.param.getSourceUrl().indexOf("resource://rawfile/") == 0) {
+              this.previewImage = $rawfile(event.param.getSourceUrl().substring(19));
+            } else {
+              this.previewImage = event.param.getSourceUrl();
+            }
+            this.linkURL = event.param.getLinkUrl()
+            return true;
+          }
+          return false;
+        })
+    }
+
+  }
+  // 侧滑返回
+  onBackPress(): boolean | void {
+    if (this.controller.accessStep(-1)) {
+      this.controller.backward();
+      return true;
+    } else {
+      return false;
     }
   }
 }
@@ -2917,15 +3061,94 @@ struct WebComponent {
 ```html
 <!--index.html-->
 <!DOCTYPE html>
-<html>
-  <head>
-      <title>测试网页</title>
-  </head>
-  <body>
-    <h1>bindSelectionMenu Demo</h1>
-    <!--img.png为html同目录下图片-->
-    <img src="./img.png" >
-  </body>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长按复制文本</title>
+    <style>
+        .container {
+            background-color: white;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .context {
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .context span {
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        .context a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 12px 24px;
+            border: 2px solid #3498db;
+            border-radius: 30px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .context img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .context:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="context">
+        <!--img.png为html同目录下图片-->
+        <img src="img.png">
+    </div>
+
+    <div class="context">
+        <a  href="https://www.example.com">长按链接唤起菜单</a>
+    </div>
+
+    <div class="context">
+        <span>在这个数字时代，文本复制功能变得日益重要。无论是引用名言、保存重要信息，还是分享有趣的内容，复制文本都是我们日常操作的一部分。</span>
+    </div>
+
+</div>
+<br>
+
+<script>
+    function copySelectedText() {
+        const selectedText = window.getSelection().toString();
+        if (selectedText.length > 0) {
+            // 使用Clipboard API复制文本
+            navigator.clipboard.writeText(selectedText)
+                .then(() => {
+                    showNotification();
+                })
+                .catch(err => {
+                    console.error('复制失败:', err);
+                });
+        }
+    }
+     function clearSelection() {
+        if (window.getSelection) {
+            window.getSelection().removeAllRanges();
+        }
+    }
+</script>
+</body>
 </html>
 ```
 
@@ -3124,7 +3347,7 @@ nativeEmbedOptions(options?: EmbedOptions)
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| options | [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) | 否    | 同层渲染相关配置。<br>传入undefined或null时为`{supportDefaultIntrinsicSize: false}`。  |
+| options | [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) | 否    | 同层渲染相关配置。<br>传入undefined或null时为`{supportDefaultIntrinsicSize: false}`。 |
 
 **示例：**
 
@@ -3166,7 +3389,7 @@ nativeEmbedOptions(options?: EmbedOptions)
 
 enableDataDetector(enable: boolean)
 
-设置是否识别网页文本特殊实体，如邮件、电话、网址等。该接口依赖设备底层具备文本识别能力，否则设置无效。该属性没有显式调用时，默认不启用。
+设置是否识别网页文本特殊实体，如邮件、电话、网址等。该接口依赖设备底层具备文本识别能力，否则设置无效。
 
 当enableDataDetector设置为true，同时不设置[dataDetectorConfig](#datadetectorconfig20)属性时，默认识别所有类型的实体，所识别实体的color和decoration会被更改为如下样式：
 <!--code_no_check-->
@@ -3191,7 +3414,7 @@ AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才�
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean | 是   | 是否启用Web文本识别，true表示启用，false表示不启用。<br>传入undefined与null时属性设置不生效。 |
+| enable  | boolean | 是   | 是否启用Web文本识别，true表示启用，false表示不启用。<br/>默认值：false |
 
 > **说明：** 
 > 
@@ -3313,7 +3536,7 @@ dataDetectorConfig(config: TextDataDetectorConfig)
 
 gestureFocusMode(mode: GestureFocusMode)
 
-设置Web组件手势获焦模式。该属性没有显式调用时，默认表示手势按下时，任何手势均会使Web组件获焦。
+设置Web组件手势获焦模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3321,7 +3544,7 @@ gestureFocusMode(mode: GestureFocusMode)
 
 | 参数名              | 类型                              | 必填   | 说明          |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| mode | [GestureFocusMode](./arkts-basic-components-web-e.md#gesturefocusmode20) | 是     | 设置Web组件手势获焦模式。传入undefined与null时为GestureFocusMode.DEFAULT。|
+| mode | [GestureFocusMode](./arkts-basic-components-web-e.md#gesturefocusmode20) | 是     | 设置Web组件手势获焦模式。<br>默认值：`GestureFocusMode.DEFAULT`，表示手势按下时，任何手势均会使Web组件获焦。|
 
 **示例：**
 
@@ -3357,6 +3580,56 @@ gestureFocusMode(mode: GestureFocusMode)
   </html>
   ```
 
+## forceEnableZoom<sup>21+</sup>
+
+forceEnableZoom(enable: boolean)
+
+设置Web组件是否启用强制缩放功能。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| enable | boolean | 是    | 设置是否遵从网页中`<meta name="viewport">`标签设置的缩放限制。<br>设置为`true`时，不遵从网页缩放限制；设置为`false`时，遵从网页缩放限制。<br>传入`undefined`与`null`时为`false`。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .forceEnableZoom(true)
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>测试网页</title>
+  </head>
+  <body>
+    <h1>forceEnableZoom Demo</h1>
+    <span>You can scale page when forceEnableZoom is true.</span>
+  </body>
+  </html>
+  ```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
@@ -3373,7 +3646,7 @@ password(password: boolean)
 
 | 参数名          | 类型   | 必填  | 说明                             |
 | ------------ | ------ | ---- | -------------------------------- |
-| password | boolean | 是   | 设置为true时，表示允许Web保存密码。<br>设置为false时，表示不允许Web保存密码。 |
+| password | boolean | 是   | 设置为true时，表示允许Web保存密码。<br>设置为false时，表示不允许Web保存密码。<br>默认值：false。 |
 
 ## textZoomAtio<sup>(deprecated)</sup>
 
