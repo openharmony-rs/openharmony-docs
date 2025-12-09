@@ -169,25 +169,25 @@ SQL语句中的函数，如下所示：
    示例代码如下：
 
    <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->    
-
+   
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
-   let context = getContext(); // 获取上下文
-   const STORE_CONFIG :relationalStore.StoreConfig= {
+   let context = getContext();
+   const STORE_CONFIG: relationalStore.StoreConfig = {
      name: 'VectorTest.db', // 数据库文件名
      securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
      vector: true // 可选参数，该参数为true时才可以使用向量数据库。
-   };   
-   
-   relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
-     store = rdbStore;
-     // 建表语句，floatvector(2)代表repr的维度是2
-     const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
-     // 第二个入参表示不开启显示事务，第三个参数undefined表示未使用参数绑定
-     await store!.execute(SQL_CREATE_TABLE, 0, undefined);
-   }).catch((err: BusinessError) => {
-     console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
-   });
+   };
+   // ...
+     try {
+       store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+       // 建表语句，floatvector(2)代表repr的维度是2
+       const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
+       // 第二个入参表示不开启显示事务，第三个参数undefined表示未使用参数绑定
+       await store!.execute(SQL_CREATE_TABLE, 0, undefined);
+     } catch(err) {
+       console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+     };
    ```
 
 3. 获取到RdbStore后，调用execute接口插入数据。
