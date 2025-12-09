@@ -335,42 +335,42 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口，并注册设备上下线回调。
 
    <!-- @[device_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
-
-``` TypeScript
-  registerDeviceStateListener(): void {
-    logger.info('[DeviceManager.RemoteDeviceModel] registerDeviceStateListener');
-    if (typeof (this.deviceManager) == 'undefined') {
-      logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-      promptAction.showToast({
-        message: 'deviceManager has not initialized'
-      });
-      return;
-    }
-
-	// ···
-    try {
-      this.deviceManager.on('deviceStateChange', (data: dataType) => {
-        if (data == null) {
-          return;
-        }
-        logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange data=' + JSON.stringify(data));
-        switch (data.action) {
-          case distributedDeviceManager.DeviceStateChange.AVAILABLE:
-            logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange ONLINE');
-			// ···
-            break;
-          case distributedDeviceManager.DeviceStateChange.UNAVAILABLE:
-            logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange OFFLINE');
-			// ···
-            break;
-          default:
-            break;
-        }
-      })
-    } catch(err) {
-      let e: BusinessError = err as BusinessError;
-      logger.error('[DeviceManager.RemoteDeviceModel] deviceStateChange failed err: ' + e.toString());
-    }
-  }
-```
+   
+   ``` TypeScript
+   registerDeviceStateListener(): void {
+     logger.info('[DeviceManager.RemoteDeviceModel] registerDeviceStateListener');
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       promptAction.showToast({
+         message: 'deviceManager has not initialized'
+       });
+       return;
+     }
+   
+     // ...
+     try {
+       this.deviceManager.on('deviceStateChange', (data: dataType) => {
+         if (data == null) {
+           return;
+         }
+         logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange data=' + JSON.stringify(data));
+         switch (data.action) {
+           case distributedDeviceManager.DeviceStateChange.AVAILABLE:
+             logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange ONLINE');
+             // ...
+             break;
+           case distributedDeviceManager.DeviceStateChange.UNAVAILABLE:
+             logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange OFFLINE');
+             // ...
+             break;
+           default:
+             break;
+         }
+       })
+     } catch(err) {
+       let e: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceStateChange failed err: ' + e.toString());
+     }
+   }
+   ```
 
