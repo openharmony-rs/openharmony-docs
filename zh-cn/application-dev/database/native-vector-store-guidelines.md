@@ -196,18 +196,26 @@ libnative_rdb_ndk.z.so
    ```
 
    <!--@[vector_OH_Rdb_ExecuteV2_queryWithBingArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-
-   ``` C
+   
+   ``` C++
    // 使用参数绑定查询数据
    char querySql[] = "select * from test where id = ?;";
-   OH_Data_Values *values3 = OH_Values_Create();
-   OH_Values_PutInt(values3, 1);
-   cursor = OH_Rdb_ExecuteQueryV2(store_, querySql, values3);
+   OH_Data_Values *values = OH_Values_Create();
+   OH_Values_PutInt(values, 1);
+   OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, querySql, values);
    if (cursor == NULL) {
-      OH_LOG_ERROR(LOG_APP, "Query failed.");
-      return;
+       OH_LOG_ERROR(LOG_APP, "Query failed.");
+       return;
    }
-   OH_Values_Destroy(values3);
+   while (cursor->goToNextRow(cursor) == OH_Rdb_ErrCode::RDB_OK) {
+       size_t count = 0;
+       // floatvector数组是第二列数据，1表示列下标索引
+       OH_Cursor_GetFloatVectorCount(cursor, 1, &count);
+       float test[count];
+       size_t outLen;
+       OH_Cursor_GetFloatVector(cursor, 1, test, count, &outLen);
+   }
+   OH_Values_Destroy(values);
    cursor->destroy(cursor);
    ```
 
