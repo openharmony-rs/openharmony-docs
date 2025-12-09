@@ -56,18 +56,18 @@
 3. 输入法应用中监听子类型事件，根据不同的子类型，可以加载不同的软键盘界面，或者通过状态变量控制软键盘显示效果。
 
    <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
-``` TypeScript
-// 设置监听子类型事件，改变输入法应用界面
-inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-  if(inputMethodSubtype.id == 'InputMethodExtAbility') {
-    AppStorage.setOrCreate('subtypeChange', 0);
-  }
-  if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
-    AppStorage.setOrCreate('subtypeChange', 1);
-  }
-});
-```
+   
+   ``` TypeScript
+   // 设置监听子类型事件，改变输入法应用界面
+   inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+     if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+       AppStorage.setOrCreate('subtypeChange', 0);
+     }
+     if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+       AppStorage.setOrCreate('subtypeChange', 1);
+     }
+   });
+   ```
 
 
 ## 输入法子类型相关信息的获取
