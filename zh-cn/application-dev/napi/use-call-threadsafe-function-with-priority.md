@@ -28,151 +28,156 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 ### 示例代码
 
+- 功能实现
+
+  <!-- @[napi_call_threadsafe_function_with_priority_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  #include "napi/native_api.h"
+  #include <future>
+  // ...
+  #include <hilog/log.h>
+  // ...
+  static constexpr int INT_ARG_2 = 2; // 入参索引
+  static constexpr int INT_ARG_12 = 12; // 入参索引
+  static constexpr int INT_ARG_15 = 15; // 入参索引
+  // ...
+  struct CallbackData {
+      napi_threadsafe_function tsfn;
+      napi_async_work work;
+  };
+  // ArkTS线程的回调实现
+  static void CallJs(napi_env env, napi_value jsCb, void *context, void *data)
+  {
+      if (env == nullptr) {
+          return;
+      }
+      napi_value resultNumber = nullptr;
+      napi_value undefined = nullptr;
+      napi_get_undefined(env, &undefined);
+      napi_value number1 = nullptr;
+      napi_create_int32(env, INT_ARG_12, &number1);
+      napi_value number2 = nullptr;
+      napi_create_int32(env, INT_ARG_15, &number2);
+      napi_value argv[2] = {number1, number2};
+      napi_call_function(env, undefined, jsCb, INT_ARG_2, argv, &resultNumber);
+      int32_t res = 0;
+      napi_get_value_int32(env, resultNumber, &res);
+  }
+  
+  // 异步线程中调用该接口向ArkTS线程投递指定优先级和入队方式的任务
+  static void ExecuteWork(napi_env env, void *data)
+  {
+      CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
+      // 执行任务为napi_priority_idle优先级，入队方式为队列尾部入队
+      napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_idle, true);
+      napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_low, true);
+      napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, true);
+      napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_immediate, true);
+      // 执行任务为napi_priority_high优先级，入队方式为队列头部入队
+      napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, false);
+  }
+  
+  static void WorkComplete(napi_env env, napi_status status, void *data)
+  {
+      CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
+      napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
+      napi_delete_async_work(env, callbackData->work);
+      callbackData->work = nullptr;
+      callbackData->tsfn = nullptr;
+  }
+  
+  static napi_value CallThreadSafeWithPriority(napi_env env, napi_callback_info info)
+  {
+      CallbackData *callbackData = new CallbackData();
+      size_t argc = 1;
+      napi_value jsCb = nullptr;
+      napi_get_cb_info(env, info, &argc, &jsCb, nullptr, nullptr);
+      napi_value resourceName = nullptr;
+      napi_create_string_utf8(env, "Thread-safe Function Demo", NAPI_AUTO_LENGTH, &resourceName);
+      napi_create_threadsafe_function(env, jsCb, nullptr, resourceName, 0, 1, callbackData, nullptr, callbackData, CallJs,
+                                      &callbackData->tsfn);
+      napi_create_async_work(env, nullptr, resourceName, ExecuteWork, WorkComplete, callbackData, &callbackData->work);
+      napi_queue_async_work(env, callbackData->work);
+      return nullptr;
+  }
+  ```
+
 - 模块注册
 
-   ```c++
-    // napi_init.cpp
-    #include "napi/native_api.h"
-    #include <string.h>
-    #include <stdlib.h>
-    #include "hilog/log.h"
+  ``` C++
+  // 注册模块接口
+  EXTERN_C_START
+  static napi_value Init(napi_env env, napi_value exports)
+  {
+      napi_property_descriptor desc[] = {
+          { "callThreadSafeWithPriority", nullptr, CallThreadSafeWithPriority, nullptr, nullptr, nullptr, napi_default, nullptr }
+      };
+      napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+      return exports;
+  }
+  EXTERN_C_END
 
-    static constexpr int INT_NUM_2 = 2;     // int类型数值2
-    static constexpr int INT_NUM_12 = 12;   // int类型数值12
-    static constexpr int INT_NUM_15 = 15;   // int类型数值15
+  static napi_module nativeModule = {
+      .nm_version = 1,
+      .nm_flags = 0,
+      .nm_filename = nullptr,
+      .nm_register_func = Init,
+      .nm_modname = "entry",
+      .nm_priv = nullptr,
+      .reserved = { 0 },
+  };
 
-    struct CallbackData {
-        napi_threadsafe_function tsfn;
-        napi_async_work work;
-    };
-    // ArkTS线程的回调实现
-    static void CallJs(napi_env env, napi_value jsCb, void *context, void *data) {
-        if (env == nullptr) {
-            return;
-        }
-        napi_value resultNumber = nullptr;
-        napi_value undefined = nullptr;
-        napi_get_undefined(env, &undefined);
-        napi_value number1 = nullptr;
-        napi_create_int32(env, INT_NUM_12, &number1);
-        napi_value number2 = nullptr;
-        napi_create_int32(env, INT_NUM_15, &number2);
-        napi_value argv[2] = {number1, number2};
-        napi_call_function(env, undefined, jsCb, INT_NUM_2, argv, &resultNumber);
-        int32_t res = 0;
-        // 获取resultNumber对应的int32值
-        napi_get_value_int32(env, resultNumber, &res);
-        OH_LOG_INFO(LOG_APP, "napi_init res is %{public}d", res);
-    }
-
-    // 异步线程中调用该接口向ArkTS线程投递指定优先级和入队方式的任务
-    static void ExecuteWork(napi_env env, void *data) {
-        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
-        napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_idle, true); // 投递指定优先级为napi_priority_idle，入队方式为队列尾部入队的任务
-        napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_low, true); // 投递指定优先级为napi_priority_low，入队方式为队列尾部入队的任务
-        napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, true); // 投递指定优先级为napi_priority_high，入队方式为队列尾部入队的任务
-        napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_immediate, true); // 投递指定优先级为napi_priority_immediate，入队方式为队列尾部入队的任务
-        napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, false); // 投递指定优先级为napi_priority_high，入队方式为队列头部入队的任务
-    }
-
-    static void WorkComplete(napi_env env, napi_status status, void *data) {
-        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
-        if (callbackData == nullptr) {
-            return;
-        }
-        napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
-        napi_delete_async_work(env, callbackData->work);
-        callbackData->work = nullptr;
-        callbackData->tsfn = nullptr;
-        delete callbackData;
-    }
-
-    static napi_value CallThreadSafeWithPriority(napi_env env, napi_callback_info info) {
-        size_t argc = 1;
-        napi_value jsCb = nullptr;
-        CallbackData *callbackData = new CallbackData();
-        napi_get_cb_info(env, info, &argc, &jsCb, nullptr, nullptr);
-        napi_value resourceName = nullptr;
-        napi_create_string_utf8(env, "Thread-safe Function Demo", NAPI_AUTO_LENGTH, &resourceName);
-        napi_create_threadsafe_function(env, jsCb, nullptr, resourceName, 0, 1, nullptr, nullptr, nullptr, CallJs,
-                                        &callbackData->tsfn);
-        // 创建一个异步任务对象
-        napi_create_async_work(env, nullptr, resourceName, ExecuteWork, WorkComplete, callbackData, &callbackData->work);
-        napi_queue_async_work(env, callbackData->work);
-        return nullptr;
-    }
-
-    // 注册模块接口
-    EXTERN_C_START
-    static napi_value Init(napi_env env, napi_value exports)
-    {
-        napi_property_descriptor desc[] = {
-            { "callThreadSafeWithPriority", nullptr, CallThreadSafeWithPriority, nullptr, nullptr, nullptr, napi_default, nullptr }
-        };
-        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-        return exports;
-    }
-    EXTERN_C_END
-
-    static napi_module nativeModule = {
-        .nm_version = 1,
-        .nm_flags = 0,
-        .nm_filename = nullptr,
-        .nm_register_func = Init,
-        .nm_modname = "entry",
-        .nm_priv = nullptr,
-        .reserved = { 0 },
-    };
-
-    extern "C" __attribute__((constructor)) void RegisterEntryModule()
-    {
-        napi_module_register(&nativeModule);
-    }
-   ```
-   <!-- @[napi_call_threadsafe_function_with_priority_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
+  extern "C" __attribute__((constructor)) void RegisterEntryModule()
+  {
+      napi_module_register(&nativeModule);
+  }
+  ```
 
 - 接口声明
 
-    ```ts
-    // index.d.ts
-    export const callThreadSafeWithPriority: (cb: (a: number, b: number) => number) => void;
-    ```
-    <!-- @[napi_call_threadsafe_function_with_priority_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  <!-- @[napi_call_threadsafe_function_with_priority_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  
+  ``` TypeScript
+  // index.d.ts
+  export const callThreadSafeWithPriority: (cb: (a: number, b: number) => number) => void;
+  ```
 
 - 编译配置
 
   CMakeLists.txt文件需要按照如下配置
+  ```text
+  # the minimum version of CMake.
+  cmake_minimum_required(VERSION 3.5.0)
+  project(MyApplication3)
 
-    ```
-    // CMakeLists.txt
-    # the minimum version of CMake.
-    cmake_minimum_required(VERSION 3.4.1)
-    project(myapplication)
+  set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
-    set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+  if(DEFINED PACKAGE_FIND_FILE)
+      include(${PACKAGE_FIND_FILE})
+  endif()
+  add_definitions( "-DLOG_TAG=\"LOG_TAG\"" )
+  include_directories(${NATIVERENDER_ROOT_PATH}
+                      ${NATIVERENDER_ROOT_PATH}/include)
 
-    if(DEFINED PACKAGE_FIND_FILE)
-        include(${PACKAGE_FIND_FILE})
-    endif()
+  add_library(entry SHARED napi_init.cpp)
+  target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
+  ```
 
-    add_definitions( "-DLOG_TAG=\"LOG_TAG\"" )
-    include_directories(${NATIVERENDER_ROOT_PATH}
-                        ${NATIVERENDER_ROOT_PATH}/include)
-    add_library(entry SHARED napi_init.cpp)
-    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
-    ```
-    <!-- @[napi_call_threadsafe_function_with_priority_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/CMakeLists.txt) -->
+- ArkTS导入头文件
+  ``` TypeScript
+  import testNapi from 'libentry.so';
+  ```
 
 - ArkTS代码示例
 
-    ```ts
-    // index.ets
-    import testNapi from 'libentry.so';
-    
-    let callback = (a: number, b: number) : number => {
-        console.info('result is ' + (a + b));
-        return a + b;
-    }
-    testNapi.callThreadSafeWithPriority(callback); // 注意：如果底层 ThreadSafeFunction 被取消，则无法保证所有任务都会被执行
-    ```
-    <!-- @[napi_call_threadsafe_function_with_priority_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[napi_call_threadsafe_function_with_priority_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  // index.ets
+  let callback = (a: number, b: number): number => {
+    console.info('result is ' + (a + b))
+    return a + b;
+  }
+  testNapi.callThreadSafeWithPriority(callback);
+  ```
