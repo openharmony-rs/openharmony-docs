@@ -937,25 +937,25 @@ private registerListener(): void {
 
 
    <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
-
-``` JSON5
-    "extensionAbilities": [
-      {
-        "srcEntry": "./ets/ServiceExtAbility/ServiceExtAbility.ets",
-        "name": "ServiceExtAbility",
-        "label": "$string:MainAbility_label",
-        "description": "$string:extension_ability_descripter",
-        "type": "inputMethod",
-        "exported": true,
-        "metadata": [
-          {
-            "name": "ohos.extension.input_method",
-            "resource": "$profile:input_method_config"
-          }
-        ]
-      }
-    ],
-```
+   
+   ``` JSON5
+   "extensionAbilities": [
+     {
+       "srcEntry": "./ets/InputMethodExtensionAbility/InputMethodService.ets",
+       "name": "InputMethodService",
+       "label": "$string:MainAbility_label",
+       "description": "$string:extension_ability_descripter",
+       "type": "inputMethod",
+       "exported": true,
+       "metadata": [
+         {
+           "name": "ohos.extension.input_method",
+           "resource": "$profile:input_method_config"
+         }
+       ]
+     }
+   ],
+   ```
 
 
 
