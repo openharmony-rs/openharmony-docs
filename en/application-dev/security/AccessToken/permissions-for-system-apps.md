@@ -3873,6 +3873,18 @@ Allows a modal UIExtension to unhide non-secure windows.
 
 **Valid since**: 12
 
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+Allows a UIExtensionAbility to be displayed on the locked screen.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 14
+
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
 Allows a system service to access distributed modems.
