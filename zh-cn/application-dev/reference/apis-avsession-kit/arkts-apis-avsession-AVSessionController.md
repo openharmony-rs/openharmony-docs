@@ -1224,6 +1224,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 | 6600103  | The session controller does not exist.                       |
 
 **示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
@@ -1271,7 +1272,7 @@ struct Index {
 
 getExtras(): Promise\<Record\<string, Object>>
 
-获取媒体提供方设置的自定义媒体数据包。结果通过Promise异步回调方式返回。
+获取媒体提供方设置的自定义媒体数据包。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1281,7 +1282,7 @@ getExtras(): Promise\<Record\<string, Object>>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-|  Promise\<Record\<string, Object>>   | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。<br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise<{[key: string]: Object}>。 |
+|  Promise\<Record\<string, Object>>   | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。<br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise\<{[key: string]: Object}>。 |
 
 **错误码：**
 
@@ -1484,7 +1485,6 @@ on(type: 'metadataChange', filter: Array\<string> | 'all', callback: (data: AVMe
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1524,7 +1524,6 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1560,7 +1559,6 @@ on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1599,7 +1597,6 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
