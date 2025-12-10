@@ -435,7 +435,11 @@ try {
 
 registerShutdownCallback(callback: Callback&lt;boolean&gt;): void
 
-**方法介绍：** 订阅电源关机或重启的回调提醒。使用callback回调。
+订阅电源关机或重启的回调提醒。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REBOOT
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -443,11 +447,11 @@ registerShutdownCallback(callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                         | 必填 | 说明                           |
 | -------- | ---------------------------- | ---- | ------------------------------ |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，返回关机或重启；该参数是一个函数类型。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数，返回true表示重启；返回flase表示关机。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
@@ -472,7 +476,11 @@ try {
 
 unregisterShutdownCallback(callback?: Callback\<void>): void
 
-**方法介绍：** 取消订阅电源关机或重启的回调提醒。使用callback回调。
+取消订阅电源关机或重启的回调提醒。使用callback同步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REBOOT
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -484,7 +492,7 @@ unregisterShutdownCallback(callback?: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
