@@ -57,7 +57,7 @@ InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool showKeyboard | 表示是否显示键盘。 |
+| bool showKeyboard | 表示绑定时是否显示键盘。true - 表示绑定完成时需要显示键盘。false - 表示绑定完成时不需要显示键盘。 |
 
 **返回：**
 
