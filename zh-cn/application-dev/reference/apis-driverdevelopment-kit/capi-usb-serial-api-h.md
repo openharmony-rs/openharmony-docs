@@ -44,7 +44,7 @@
 
 ### OH_UsbSerial_Init()
 
-```
+```c
 int32_t OH_UsbSerial_Init(void)
 ```
 
@@ -64,7 +64,7 @@ int32_t OH_UsbSerial_Init(void)
 
 ### OH_UsbSerial_Release()
 
-```
+```c
 int32_t OH_UsbSerial_Release(void)
 ```
 
@@ -84,7 +84,7 @@ int32_t OH_UsbSerial_Release(void)
 
 ### OH_UsbSerial_Open()
 
-```
+```c
 int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_DeviceHandle **dev)
 ```
 
@@ -113,7 +113,7 @@ int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_D
 
 ### OH_UsbSerial_Close()
 
-```
+```c
 int32_t OH_UsbSerial_Close(UsbSerial_DeviceHandle *dev)
 ```
 
@@ -140,7 +140,7 @@ int32_t OH_UsbSerial_Close(UsbSerial_DeviceHandle *dev)
 
 ### OH_UsbSerial_Read()
 
-```
+```c
 int32_t OH_UsbSerial_Read(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)
 ```
 
@@ -170,7 +170,7 @@ int32_t OH_UsbSerial_Read(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t b
 
 ### OH_UsbSerial_Write()
 
-```
+```c
 int32_t OH_UsbSerial_Write(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)
 ```
 
@@ -200,7 +200,7 @@ int32_t OH_UsbSerial_Write(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t 
 
 ### OH_UsbSerial_SetBaudRate()
 
-```
+```c
 int32_t OH_UsbSerial_SetBaudRate(UsbSerial_DeviceHandle *dev, uint32_t baudRate)
 ```
 
@@ -228,7 +228,7 @@ int32_t OH_UsbSerial_SetBaudRate(UsbSerial_DeviceHandle *dev, uint32_t baudRate)
 
 ### OH_UsbSerial_SetParams()
 
-```
+```c
 int32_t OH_UsbSerial_SetParams(UsbSerial_DeviceHandle *dev, UsbSerial_Params *params)
 ```
 
@@ -256,7 +256,7 @@ int32_t OH_UsbSerial_SetParams(UsbSerial_DeviceHandle *dev, UsbSerial_Params *pa
 
 ### OH_UsbSerial_SetTimeout()
 
-```
+```c
 int32_t OH_UsbSerial_SetTimeout(UsbSerial_DeviceHandle *dev, int timeout)
 ```
 
@@ -284,7 +284,7 @@ int32_t OH_UsbSerial_SetTimeout(UsbSerial_DeviceHandle *dev, int timeout)
 
 ### OH_UsbSerial_SetFlowControl()
 
-```
+```c
 int32_t OH_UsbSerial_SetFlowControl(UsbSerial_DeviceHandle *dev, UsbSerial_FlowControl flowControl)
 ```
 
@@ -312,7 +312,7 @@ int32_t OH_UsbSerial_SetFlowControl(UsbSerial_DeviceHandle *dev, UsbSerial_FlowC
 
 ### OH_UsbSerial_Flush()
 
-```
+```c
 int32_t OH_UsbSerial_Flush(UsbSerial_DeviceHandle *dev)
 ```
 
@@ -339,7 +339,7 @@ int32_t OH_UsbSerial_Flush(UsbSerial_DeviceHandle *dev)
 
 ### OH_UsbSerial_FlushInput()
 
-```
+```c
 int32_t OH_UsbSerial_FlushInput(UsbSerial_DeviceHandle *dev)
 ```
 
@@ -366,7 +366,7 @@ int32_t OH_UsbSerial_FlushInput(UsbSerial_DeviceHandle *dev)
 
 ### OH_UsbSerial_FlushOutput()
 
-```
+```c
 int32_t OH_UsbSerial_FlushOutput(UsbSerial_DeviceHandle *dev)
 ```
 

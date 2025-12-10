@@ -54,7 +54,7 @@
 
 ### ImageDetailEnhancer_QualityLevel
 
-```
+```c
 enum ImageDetailEnhancer_QualityLevel
 ```
 
@@ -79,7 +79,7 @@ enum ImageDetailEnhancer_QualityLevel
 
 ### ImageProcessing_ErrorCode
 
-```
+```c
 enum ImageProcessing_ErrorCode
 ```
 

@@ -67,7 +67,7 @@
 
 ### QoS_Level
 
-```
+```c
 enum QoS_Level
 ```
 
@@ -88,7 +88,7 @@ enum QoS_Level
 
 ### OH_QoS_GewuErrorCode
 
-```
+```c
 enum OH_QoS_GewuErrorCode
 ```
 
@@ -114,7 +114,7 @@ enum OH_QoS_GewuErrorCode
 
 ### OH_QoS_SetThreadQoS()
 
-```
+```c
 int OH_QoS_SetThreadQoS(QoS_Level level)
 ```
 
@@ -143,7 +143,7 @@ int OH_QoS_SetThreadQoS(QoS_Level level)
 
 ### OH_QoS_ResetThreadQoS()
 
-```
+```c
 int OH_QoS_ResetThreadQoS()
 ```
 
@@ -166,7 +166,7 @@ int OH_QoS_ResetThreadQoS()
 
 ### OH_QoS_GetThreadQoS()
 
-```
+```c
 int OH_QoS_GetThreadQoS(QoS_Level *level)
 ```
 
@@ -195,7 +195,7 @@ int OH_QoS_GetThreadQoS(QoS_Level *level)
 
 ### OH_QoS_GewuOnResponse()
 
-```
+```c
 typedef void (*OH_QoS_GewuOnResponse)(void* context, const char* response)
 ```
 
@@ -214,7 +214,7 @@ typedef void (*OH_QoS_GewuOnResponse)(void* context, const char* response)
 
 ### OH_QoS_GewuCreateSession()
 
-```
+```c
 OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes)
 ```
 
@@ -238,7 +238,7 @@ OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes)
 
 ### OH_QoS_GewuDestroySession()
 
-```
+```c
 OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session)
 ```
 
@@ -262,7 +262,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session)
 
 ### OH_QoS_GewuAbortRequest()
 
-```
+```c
 OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_GewuRequest request)
 ```
 
@@ -287,7 +287,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 
 ### OH_QoS_GewuSubmitRequest()
 
-```
+```c
 OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession session, const char* request, OH_QoS_GewuOnResponse callback, void* context)
 ```
 

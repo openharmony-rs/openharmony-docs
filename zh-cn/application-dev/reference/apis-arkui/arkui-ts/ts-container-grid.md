@@ -2055,9 +2055,11 @@ struct GridExample {
 
 ![edgeEffect_grid](figures/gridFocus.gif)
 
-### 示例13（滚动事件）
+### 示例13（设置滚动事件）
 
-从API version 19开始，新增[UIGridEvent](#uigridevent19)中的滚动事件的使用。
+该示例通过FrameNode中的[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)获取[UIGridEvent](#uigridevent19)，并为Grid设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
+
+从API version 19开始，新增UIGridEvent接口。
 
 ```ts
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';

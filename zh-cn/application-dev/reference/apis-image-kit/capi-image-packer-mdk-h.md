@@ -53,7 +53,7 @@
 
 ### OH_ImagePacker_Create()
 
-```
+```c
 int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)
 ```
 
@@ -79,7 +79,7 @@ int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)
 
 ### OH_ImagePacker_InitNative()
 
-```
+```c
 ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)
 ```
 
@@ -109,7 +109,7 @@ ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)
 
 ### OH_ImagePacker_PackToData()
 
-```
+```c
 int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source,ImagePacker_Opts* opts, uint8_t* outData, size_t* size)
 ```
 
@@ -142,7 +142,7 @@ int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source,
 
 ### OH_ImagePacker_PackToFile()
 
-```
+```c
 int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source,ImagePacker_Opts* opts, int fd)
 ```
 
@@ -174,7 +174,7 @@ int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source,
 
 ### OH_ImagePacker_Release()
 
-```
+```c
 int32_t OH_ImagePacker_Release(ImagePacker_Native* native)
 ```
 

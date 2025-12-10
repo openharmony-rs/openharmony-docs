@@ -343,7 +343,7 @@ createAlbum(name: string, callback: AsyncCallback&lt;Album&gt;): void
 - 不允许出现的非法英文字符，包括：<br> . .. \ / : * ? " ' ` < > | { } [ ]
 - 相册名不允许重名。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.createAlbumRequest](#createalbumrequest11)替代。
 
@@ -404,7 +404,7 @@ createAlbum(name: string): Promise&lt;Album&gt;
 - 不允许出现的非法英文字符，包括：<br> . .. \ / : * ? " ' ` < > | { } [ ]
 - 相册名不允许重名。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.createAlbumRequest](#createalbumrequest11)替代。
 
@@ -465,7 +465,7 @@ deleteAlbums(albums: Array&lt;Album&gt;, callback: AsyncCallback&lt;void&gt;): v
 
 删除存在的用户相册。使用callback异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.deleteAlbums](#deletealbums11)替代。
 
@@ -531,7 +531,7 @@ deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
 删除存在的用户相册。使用Promise异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.deleteAlbums](#deletealbums11)替代。
 
@@ -678,10 +678,10 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, callback: AsyncCallback&lt;FetchR
 
 **参数：**
 
-| 参数名   | 类型                     | 必填 | 说明                      |
-| -------- | ------------------------ | ---- | ------------------------- |
-| mode  | [HiddenPhotosDisplayMode](#hiddenphotosdisplaymode11)         | 是   | 隐藏文件显示模式。  |
-| callback |  AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | 是   | callback返回获取相册的结果集。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------------------------ | ---- | - |
+| mode  | [HiddenPhotosDisplayMode](#hiddenphotosdisplaymode11) | 是 | 隐藏文件显示模式。 |
+| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | 是 | callback返回获取相册的结果集。 |
 
 **错误码：**
 
@@ -777,9 +777,9 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise&
 
 **返回值：**
 
-| 类型                        | 说明           |
+| 类型 | 说明 |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | Promise对象，返回获取相册的结果集。
+| Promise&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | Promise对象，返回获取相册的结果集。|
 
 **错误码：**
 
@@ -854,7 +854,7 @@ deleteAssets(uriList: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 
 删除媒体文件，删除的文件进入到回收站。使用callback异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.deleteAssets](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#deleteassets11)替代。
 
@@ -926,7 +926,7 @@ deleteAssets(uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 删除媒体文件，删除的文件进入到回收站。使用Promise异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.deleteAssets](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#deleteassets11)替代。
 
@@ -2074,7 +2074,7 @@ getKeyFrameThumbnail(beginFrameTimeMs: number, type: ThumbnailType): Promise<ima
 | 201   | Permission denied.       |
 | 202   | Called by non-system application.       |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011   | Internal system error.       
+| 14000011   | Internal system error. |
 
 **示例：**
 
@@ -2449,7 +2449,7 @@ on(type: 'hiddenPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): 
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | 是   | 注册监听隐藏资产，取值为'hiddenPhotoChange'。注册完成后，有隐藏资产发生变化时，通过callback返回变更信息。 |
-| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 是   | 返回变更的隐藏媒体资产信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：** 该接口可以注册多个不同的callback监听，[off('hiddenPhotoChange')](#offhiddenphotochange20)即可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 是   | 返回变更的隐藏媒体资产信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[off('hiddenPhotoChange')](#offhiddenphotochange20)既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -2509,7 +2509,7 @@ off(type: 'hiddenPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;)
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | 是   | 取消监听隐藏资产，取值为'hiddenPhotoChange'。取消监听后，有隐藏资产发生变化时，不再通过callback返回变更信息。 |
-| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 否   | 取消[on('hiddenPhotoChange')](#onhiddenphotochange20)注册时指定的callback监听；不填时，则取消对'hiddenPhotoChange'的所有监听。<br>**注意：** 取消注册的callback后，有隐藏资产发生变化时，不会进入此回调。 |
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 否   | 取消[on('hiddenPhotoChange')](#onhiddenphotochange20)注册时指定的callback监听；不填时，则取消对'hiddenPhotoChange'的所有监听。<br>**注意：**<br>取消注册的callback后，有隐藏资产发生变化时，不会进入此回调。 |
 
 **错误码：**
 
@@ -2572,7 +2572,7 @@ on(type: 'trashedPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;):
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | 是   | 注册监听回收站资产，取值为'trashedPhotoChange'。注册完成后，有回收站资产发生变化时，通过callback返回变更信息。 |
-| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 是   | 返回变更的回收站媒体资产信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：** 该接口可以注册多个不同的callback监听，[off('trashedPhotoChange')](#offtrashedphotochange20)即可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 是   | 返回变更的回收站媒体资产信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[off('trashedPhotoChange')](#offtrashedphotochange20)既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -2632,7 +2632,7 @@ off(type: 'trashedPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | 是   | 取消监听回收站资产，取值为'trashedPhotoChange'。取消监听后，有回收站资产发生变化时，不再通过callback返回变更信息。 |
-| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 否   | 取消[on('trashedPhotoChange')](#ontrashedphotochange20)注册时指定的callback监听；不填时，则取消对'trashedPhotoChange'的所有监听。<br>**注意：** 取消注册的callback后，有回收站资产发生变化时，不会进入此回调。 |
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 否   | 取消[on('trashedPhotoChange')](#ontrashedphotochange20)注册时指定的callback监听；不填时，则取消对'trashedPhotoChange'的所有监听。<br>**注意：**<br>取消注册的callback后，有回收站资产发生变化时，不会进入此回调。 |
 
 **错误码：**
 
@@ -2695,7 +2695,7 @@ on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | 是   | 注册监听隐藏相册，取值为'hiddenAlbumChange'。注册完成后，有隐藏相册发生变化时，通过callback返回变更信息。 |
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是   | 返回变更的隐藏相册信息[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)。<br>**注意：** 该接口可以注册多个不同的callback监听，[off('hiddenAlbumChange')](#offhiddenalbumchange20)即可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是   | 返回变更的隐藏相册信息[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[off('hiddenAlbumChange')](#offhiddenalbumchange20)既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -2755,7 +2755,7 @@ off(type: 'hiddenAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): voi
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | 是   | 取消监听隐藏相册，取值为'hiddenAlbumChange'。取消监听后，有隐藏相册发生变化时，不再通过callback返回变更信息。 |
-| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 否   | 取消[on('hiddenAlbumChange')](#onhiddenalbumchange20)注册时指定的callback监听；不填时，则取消对'hiddenAlbumChange'的所有监听。<br>**注意：** 取消注册的callback后，有隐藏相册发生变化时，不会进入此回调。 |
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 否   | 取消[on('hiddenAlbumChange')](#onhiddenalbumchange20)注册时指定的callback监听；不填时，则取消对'hiddenAlbumChange'的所有监听。<br>**注意：**<br>取消注册的callback后，有隐藏相册发生变化时，不会进入此回调。 |
 
 **错误码：**
 
@@ -2818,7 +2818,7 @@ on(type: 'trashedAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | 是   | 注册监听回收站相册，取值为'trashedAlbumChange'。注册完成后，有回收站相册发生变化时，通过callback返回变更信息。 |
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是   | 返回变更的相册信息[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)。<br>**注意：** 该接口可以注册多个不同的callback监听，[off('trashedAlbumChange')](#offtrashedalbumchange20)即可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是   | 返回变更的相册信息[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[off('trashedAlbumChange')](#offtrashedalbumchange20)既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -2878,7 +2878,7 @@ off(type: 'trashedAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): vo
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | 是   | 取消监听回收站相册，取值为'trashedAlbumChange'。取消监听后，有回收站相册发生变化时，不再通过callback返回变更信息。 |
-| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 否   | 取消[on('trashedAlbumChange')](#ontrashedalbumchange20)注册时指定的callback监听；不填时，则取消对'trashedAlbumChange'的所有监听。<br>**注意：** 取消注册的callback后，有回收站相册发生变化时，不会进入此回调。 |
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 否   | 取消[on('trashedAlbumChange')](#ontrashedalbumchange20)注册时指定的callback监听；不填时，则取消对'trashedAlbumChange'的所有监听。<br>**注意：**<br>取消注册的callback后，有回收站相册发生变化时，不会进入此回调。 |
 
 **错误码：**
 
@@ -3516,11 +3516,11 @@ open(mode: string, callback: AsyncCallback&lt;number&gt;): void
 
 打开当前文件。使用callback异步回调。
 
-> **说明：** 
+该接口返回的文件描述符在使用完毕后需要调用close进行释放。
+
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。出于安全考量，不再提供获取正式媒体文件句柄的接口。
-
-**注意**：当前此（写）操作是互斥的操作，返回的文件描述符在使用完毕后需要调用close进行释放。
 
 **系统接口**：此接口为系统接口。
 
@@ -3575,11 +3575,11 @@ open(mode: string): Promise&lt;number&gt;
 
 打开当前文件。使用Promise异步回调。
 
-> **说明：** 
+该接口返回的文件描述符在使用完毕后需要调用close进行释放。
+
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。出于安全考量，不再提供获取正式媒体文件句柄的接口。
-
-**注意**：当前此（写）操作是互斥的操作，返回的文件描述符在使用完毕后需要调用close进行释放。
 
 **系统接口**：此接口为系统接口。
 
@@ -3642,7 +3642,7 @@ setFavorite(favoriteState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 将文件设置为收藏文件。使用callback异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setFavorite](#setfavorite11)替代。
 
@@ -3705,7 +3705,7 @@ setFavorite(favoriteState: boolean): Promise&lt;void&gt;
 
 将文件设置为收藏文件。使用Promise异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setFavorite](#setfavorite11)替代。
 
@@ -3778,7 +3778,7 @@ setHidden(hiddenState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 隐私文件存在隐私相册中，用户通过隐私相册去获取隐私文件后可以通过设置hiddenState为false来从隐私相册中移除。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setHidden](#sethidden11)替代。
 
@@ -3843,7 +3843,7 @@ setHidden(hiddenState: boolean): Promise&lt;void&gt;
 
 隐私文件存在隐私相册中，用户通过隐私相册去获取隐私文件后可以通过设置hiddenState为false来从隐私相册中移除。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setHidden](#sethidden11)替代。
 
@@ -3915,7 +3915,9 @@ getExif(): Promise&lt;string&gt;
 
 此接口中获取的Exif标签信息是由[image](../apis-image-kit/arkts-apis-image.md)模块提供。Exif标签详细信息请参考[image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7)。
 
-**注意**：此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[PhotoKeys.USER_COMMENT](#photokeys)组成，fetchColumns需要传入这两个字段。
+> **注意：**
+>
+> 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[PhotoKeys.USER_COMMENT](#photokeys)组成，[FetchOptions](./arkts-apis-photoAccessHelper-i.md#fetchoptions).fetchColumns需要传入这两个字段。
 
 **系统接口**：此接口为系统接口。
 
@@ -3979,7 +3981,9 @@ getExif(callback: AsyncCallback&lt;string&gt;): void
 
 此接口中获取的Exif标签信息是由[image](../apis-image-kit/arkts-apis-image.md)模块提供。Exif标签详细信息请参考[image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7)。
 
-**注意**：此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[PhotoKeys.USER_COMMENT](#photokeys)组成，fetchColumns需要传入这两个字段。
+> **注意：**
+>
+> 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[PhotoKeys.USER_COMMENT](#photokeys)组成，[FetchOptions](./arkts-apis-photoAccessHelper-i.md#fetchoptions).fetchColumns需要传入这两个字段。
 
 **系统接口**：此接口为系统接口。
 
@@ -4048,11 +4052,9 @@ setUserComment(userComment: string): Promise&lt;void&gt;
 
 修改图片或者视频的备注信息。使用Promise异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setUserComment](#setusercomment11)替代。
-
-**注意**：此接口只可修改图片或者视频的备注信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -4117,11 +4119,9 @@ setUserComment(userComment: string, callback: AsyncCallback&lt;void&gt;): void
 
 修改图片或者视频的备注信息。使用callback异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setUserComment](#setusercomment11)替代。
-
-**注意**：此接口只可修改图片或者视频的备注信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -4189,7 +4189,9 @@ setPending(pendingState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 将文件通过`setPending(true)`设置为pending状态后，只能通过`setPending(false)`解除pending状态。可以通过`photoAsset.get(photoAccessHelper.PhotoKeys.PENDING)`的方式获取是否为pending状态，pending状态下返回true，否则返回false。
 
-**注意**：setPending只能在文件的创建期使用，在文件的首次创建流程的close之后，无法通过setPending(true)将文件设置为pending状态。
+> **注意：**
+>
+> setPending只能在文件的创建期使用，在文件的首次创建流程的close之后，无法通过setPending(true)将文件设置为pending状态。
 
 **系统接口**：此接口为系统接口。
 
@@ -4252,7 +4254,9 @@ setPending(pendingState: boolean): Promise&lt;void&gt;
 
 将文件通过`setPending(true)`设置为pending状态后，只能通过`setPending(false)`解除pending状态。可以通过`photoAsset.get(photoAccessHelper.PhotoKeys.PENDING)`的方式获取是否为pending状态，pending状态下返回true，否则返回false。
 
-**注意**：setPending只能在文件的创建期使用，在文件的首次创建流程的close之后，无法通过setPending(true)将文件设置为pending状态。
+> **注意：**
+>
+> setPending只能在文件的创建期使用，在文件的首次创建流程的close之后，无法通过setPending(true)将文件设置为pending状态。
 
 **系统接口**：此接口为系统接口。
 
@@ -4772,7 +4776,9 @@ commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void
 
 通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md)。
 
-**注意**：新的编辑数据提交后，将覆盖掉原来的编辑数据。
+> **注意：**
+>
+> 新的编辑数据提交后，将覆盖掉原来的编辑数据。
 
 **系统接口**：此接口为系统接口。
 
@@ -4843,7 +4849,9 @@ commitEditedAsset(editData: string, uri: string): Promise&lt;void&gt;
 
 通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md)。
 
-**注意**：新的编辑数据提交后，将覆盖掉原来的编辑数据。
+> **注意：**
+>
+> 新的编辑数据提交后，将覆盖掉原来的编辑数据。
 
 **系统接口**：此接口为系统接口。
 
@@ -4908,7 +4916,9 @@ revertToOriginal(callback: AsyncCallback&lt;void&gt;)
 
 回退到编辑前的状态。使用callback异步回调。
 
-**注意**：调用该接口后，编辑数据和编辑后的图片或视频资源都将被删除，无法恢复，请谨慎调用。
+> **注意：**
+>
+> 调用该接口后，编辑数据和编辑后的图片或视频资源都将被删除，无法恢复，请谨慎调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -4969,7 +4979,9 @@ revertToOriginal(): Promise&lt;void&gt;
 
 回退到编辑前的状态。使用Promise异步回调。
 
-**注意**：调用该接口后，编辑数据和编辑后的图片或视频资源都将被删除，无法恢复，请谨慎调用。
+> **注意：**
+>
+> 调用该接口后，编辑数据和编辑后的图片或视频资源都将被删除，无法恢复，请谨慎调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -5478,7 +5490,7 @@ recoverAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&g
 
 从回收站中恢复图片或者视频，需要先在回收站中预置文件资源。使用callback异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.recoverAssets](#recoverassets11)替代。
 
@@ -5547,7 +5559,7 @@ recoverAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 从回收站中恢复图片或者视频，需要先在回收站中预置文件资源。使用Promise异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.recoverAssets](#recoverassets11)替代。
 
@@ -5620,11 +5632,11 @@ deleteAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt
 
 从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。使用callback异步回调。
 
-> **说明：** 
+> **说明：**
+>
+> 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.deleteAssets](#deleteassets11)替代。
-
-**注意**：此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
 **系统接口**：此接口为系统接口。
 
@@ -5691,11 +5703,11 @@ deleteAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源，建议删除数量不超过1000张。使用Promise异步回调。
 
-> **说明：** 
+> **说明：**
+>
+> 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.deleteAssets](#deleteassets11)替代。
-
-**注意**：此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
 **系统接口**：此接口为系统接口。
 
@@ -5764,13 +5776,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setCoverUri(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-设置相册封面。使用callback异步回调。
+设置用户相册封面。使用callback异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.setCoverUri](#setcoveruri11)替代。
-
-**注意**：此接口只可修改用户相册封面，不允许修改系统相册封面。
 
 **系统接口**：此接口为系统接口。
 
@@ -5835,13 +5845,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setCoverUri(uri: string): Promise&lt;void&gt;
 
-设置相册封面。使用Promise异步回调。
+设置用户相册封面。使用Promise异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAlbumChangeRequest.setCoverUri](#setcoveruri11)替代。
-
-**注意**：此接口只可修改用户相册封面，不允许修改系统相册封面。
 
 **系统接口**：此接口为系统接口。
 
@@ -6410,7 +6418,9 @@ addResource(type: ResourceType, proxy: PhotoProxy): void
 
 通过PhotoProxy数据添加资源。
 
-**注意**：对于同一个资产变更请求，不支持在成功添加资源后，重复调用该接口。
+> **注意：**
+>
+> 对于同一个资产变更请求，不支持在成功添加资源后，重复调用该接口。
 
 **系统接口**：此接口为系统接口，仅提供给相机应用使用。
 
@@ -6622,7 +6632,7 @@ setSupportedWatermarkType(watermarkType: WatermarkType): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| watermarkType | [WatermarkType](#watermarktype14) | 是   | 水印可编辑标识。<br>**注意：** 不支持传入WatermarkType.DEFAULT。 |
+| watermarkType | [WatermarkType](#watermarktype14) | 是   | 水印可编辑标识。<br>**注意：**<br>不支持传入WatermarkType.DEFAULT。 |
 
 **错误码：**
 
@@ -6665,7 +6675,9 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array\<PhotoAsset>
 
 批量彻底删除照片或者视频。使用Promise异步回调。
 
-**注意**：此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
+> **注意：**
+>
+> 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
 **系统接口**：此接口为系统接口。
 
@@ -6695,7 +6707,7 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array\<PhotoAsset>
 | 201   | Permission denied.       |
 | 202   | Called by non-system application.       |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011   | Internal system error.       
+| 14000011   | Internal system error. |
 
 **示例：**
 
@@ -6885,7 +6897,8 @@ static deleteLocalAssetsPermanentlyWithUri(context: Context, assetUris: Array&lt
 
 通过资产Uri批量彻底删除照片或者视频。使用promise异步回调。
 
->**注意**：
+> **注意：**
+>
 > 此操作不可逆，执行此操作后文件资源将被彻底删除，请谨慎操作。
 
 **系统接口**：此接口为系统接口。
@@ -7909,7 +7922,9 @@ deleteAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 从回收站中彻底删除资产。
 
-**注意**：此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
+> **注意：**
+>
+> 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
 **系统接口**：此接口为系统接口。
 
@@ -7976,7 +7991,8 @@ deleteAssetsWithUri(assetUris: Array&lt;String&gt;): void
 
 从回收站中彻底删除资产。
 
->**注意**：
+> **注意：**
+>
 > 此操作不可逆，执行此操作后文件资源将被彻底删除，请谨慎操作。
 
 **系统接口**：此接口为系统接口。
@@ -11214,7 +11230,9 @@ async function example(context: Context) {
 
 媒体变更请求，资产变更请求和相册变更请求的父类型。
 
-**注意**：媒体变更请求需要在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)后才会提交生效。
+> **注意：**
+>
+> 媒体变更请求需要在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)后才会提交生效。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

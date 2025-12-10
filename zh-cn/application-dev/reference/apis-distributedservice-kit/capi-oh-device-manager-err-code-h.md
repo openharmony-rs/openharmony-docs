@@ -26,7 +26,7 @@
 
 ### DeviceManager_ErrorCode
 
-```
+```c
 enum DeviceManager_ErrorCode
 ```
 

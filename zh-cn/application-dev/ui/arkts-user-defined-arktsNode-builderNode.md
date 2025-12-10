@@ -305,6 +305,8 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
     }
   }
   ```
+  
+  ![zh-cn_image_update_BuilderNode](figures/zh-cn_image_update_BuilderNode.gif)
 
 ## 解除实体节点引用关系
 

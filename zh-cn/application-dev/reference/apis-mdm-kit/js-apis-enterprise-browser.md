@@ -40,7 +40,7 @@ setPolicySync(admin: Want, appId: string, policyName: string, policyValue: strin
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appId       | string                                                  | 是   | 应用ID，用于指定浏览器。                                     |
 | policyName  | string                                                  | 是   | 浏览器子策略名。当此值为空字符串时，表示设置应用ID对应的浏览器策略。 |
 | policyValue | string                                                  | 是   | 浏览器子策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
@@ -95,7 +95,7 @@ getPoliciesSync(admin: Want, appId: string): string
 
 | 参数名 | 类型                                                    | 必填 | 说明                     |
 | ------ | ------------------------------------------------------- | ---- | ------------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。           |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。           |
 | appId  | string                                                  | 是   | 应用ID，用于指定浏览器。 |
 
 **返回值：**
@@ -152,7 +152,7 @@ setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, pol
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | bundleName  | string                                                  | 是   | 应用包名，用于指定浏览器。                                     |
 | policyName  | string                                                  | 是   | 浏览器策略名。 |
 | policyValue | string                                                  | 是   | 浏览器策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
@@ -206,7 +206,7 @@ getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer
 
 | 参数名      | 类型                                                    | 必填 | 说明                     |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------ |
-| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。           |
+| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。           |
 | bundleName  | string                                                  | 是   | 应用包名，用于指定浏览器。 |
 
 **返回值：**

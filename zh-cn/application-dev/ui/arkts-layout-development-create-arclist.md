@@ -189,7 +189,7 @@ class Contact {
 @Entry
 @Component
 export struct ArcListContents {
-  private contacts: Array<object> = [
+  @State private contacts: Array<object> = [
     new Contact('小红', $r('app.media.ic_contact')),
     new Contact('小兰', $r('app.media.ic_contact')),
     new Contact('小王', $r('app.media.ic_contact')),

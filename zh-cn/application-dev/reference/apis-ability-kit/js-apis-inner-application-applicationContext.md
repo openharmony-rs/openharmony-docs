@@ -922,6 +922,11 @@ restartApp(want: Want): void
 > **说明：**
 >
 > 通过该接口重启应用时，不会触发应用中Ability的onDestroy生命周期回调。
+>
+> 在原子化服务调用本接口成功后的3秒内，再次调用本接口、[restartSelfAtomicService()](js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20)或[UIAbilityContext.restartApp()](js-apis-inner-application-uiAbilityContext.md#restartapp22)接口中的任一接口，系统将返回错误码16000064。
+>
+> 在应用调用本接口成功后的3秒内，若再次调用本接口或[UIAbilityContext.restartApp()](js-apis-inner-application-uiAbilityContext.md#restartapp22)接口中的任一接口，系统将返回错误码16000064。
+
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1133,7 +1138,7 @@ setSupportedProcessCache(isSupported : boolean): void
 import { AbilityStage, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyAbilityStage extends AbilityStage {
+export default class MyAbilityStage extends AbilityStage {
   onCreate() {
     let applicationContext = this.context.getApplicationContext();
     try {
@@ -1215,7 +1220,7 @@ getCurrentInstanceKey(): string
 import { AbilityStage } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyAbilityStage extends AbilityStage {
+export default class MyAbilityStage extends AbilityStage {
   onCreate() {
     let applicationContext = this.context.getApplicationContext();
     let currentInstanceKey = '';
@@ -1261,7 +1266,7 @@ getAllRunningInstanceKeys(): Promise\<Array\<string>>;
 import { AbilityStage } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyAbilityStage extends AbilityStage {
+export default class MyAbilityStage extends AbilityStage {
   onCreate() {
     let applicationContext = this.context.getApplicationContext();
     try {
