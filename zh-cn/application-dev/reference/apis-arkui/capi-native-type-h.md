@@ -481,14 +481,14 @@ enum ArkUI_Alignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ALIGNMENT_TOP_START = 0 | 顶部起始。 |
-| ARKUI_ALIGNMENT_TOP | 顶部居中。 |
-| ARKUI_ALIGNMENT_TOP_END | 顶部尾端。 |
-| ARKUI_ALIGNMENT_START | 起始端纵向居中。 |
-| ARKUI_ALIGNMENT_CENTER | 横向和纵向居中。 |
-| ARKUI_ALIGNMENT_END | 尾端纵向居中。 |
-| ARKUI_ALIGNMENT_BOTTOM_START | 底部起始端。 |
-| ARKUI_ALIGNMENT_BOTTOM | 底部横向居中。 |
-| ARKUI_ALIGNMENT_BOTTOM_END | 底部尾端。 |
+| ARKUI_ALIGNMENT_TOP = 1 | 顶部居中。 |
+| ARKUI_ALIGNMENT_TOP_END = 2 | 顶部尾端。 |
+| ARKUI_ALIGNMENT_START = 3 | 起始端纵向居中。 |
+| ARKUI_ALIGNMENT_CENTER = 4 | 横向和纵向居中。 |
+| ARKUI_ALIGNMENT_END = 5 | 尾端纵向居中。 |
+| ARKUI_ALIGNMENT_BOTTOM_START = 6 | 底部起始端。 |
+| ARKUI_ALIGNMENT_BOTTOM = 7 | 底部横向居中。 |
+| ARKUI_ALIGNMENT_BOTTOM_END = 8 | 底部尾端。 |
 
 ### ArkUI_ImageRepeat
 
@@ -1091,8 +1091,8 @@ enum ArkUI_BorderStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_BORDER_STYLE_SOLID = 0 | 显示为一条实线。 |
-| ARKUI_BORDER_STYLE_DASHED | 显示为一系列短的方形虚线。 |
-| ARKUI_BORDER_STYLE_DOTTED | 显示为一系列圆点。 |
+| ARKUI_BORDER_STYLE_DASHED = 1 | 显示为一系列短的方形虚线。 |
+| ARKUI_BORDER_STYLE_DOTTED = 2 | 显示为一系列圆点。 |
 
 ### ArkUI_HitTestMode
 
@@ -1611,8 +1611,8 @@ enum ArkUI_VerticalAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_VERTICAL_ALIGNMENT_TOP = 0 | 顶部对齐。 |
-| ARKUI_VERTICAL_ALIGNMENT_CENTER | 居中对齐，默认对齐方式。 |
-| ARKUI_VERTICAL_ALIGNMENT_BOTTOM | 底部对齐。 |
+| ARKUI_VERTICAL_ALIGNMENT_CENTER = 1 | 居中对齐，默认对齐方式。 |
+| ARKUI_VERTICAL_ALIGNMENT_BOTTOM = 2 | 底部对齐。 |
 
 ### ArkUI_HorizontalAlignment
 
@@ -1630,8 +1630,8 @@ enum ArkUI_HorizontalAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_HORIZONTAL_ALIGNMENT_START = 0 | 按照语言方向起始端对齐。 |
-| ARKUI_HORIZONTAL_ALIGNMENT_CENTER | 居中对齐，默认对齐方式。 |
-| ARKUI_HORIZONTAL_ALIGNMENT_END | 按照语言方向末端对齐。 |
+| ARKUI_HORIZONTAL_ALIGNMENT_CENTER = 1 | 居中对齐，默认对齐方式。 |
+| ARKUI_HORIZONTAL_ALIGNMENT_END = 2 | 按照语言方向末端对齐。 |
 
 ### ArkUI_TextOverflow
 
@@ -1787,7 +1787,7 @@ enum ArkUI_Direction
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_DIRECTION_LTR = 0 | 元素从左到右布局。 |
-| ARKUI_DIRECTION_RTL | 元素从右到左布局。 |
+| ARKUI_DIRECTION_RTL = 1 | 元素从右到左布局。 |
 | ARKUI_DIRECTION_AUTO = 3 | 使用系统默认布局方向。 |
 
 ### ArkUI_ItemAlignment
@@ -1806,11 +1806,11 @@ enum ArkUI_ItemAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ITEM_ALIGNMENT_AUTO = 0 | 使用Flex容器中默认配置。 |
-| ARKUI_ITEM_ALIGNMENT_START | 元素在Flex容器中，交叉轴方向首部对齐。 |
-| ARKUI_ITEM_ALIGNMENT_CENTER | 元素在Flex容器中，交叉轴方向居中对齐。 |
-| ARKUI_ITEM_ALIGNMENT_END | 元素在Flex容器中，交叉轴方向底部对齐。 |
-| ARKUI_ITEM_ALIGNMENT_STRETCH | 元素在Flex容器中，交叉轴方向拉伸填充。 |
-| ARKUI_ITEM_ALIGNMENT_BASELINE | 元素在Flex容器中，交叉轴方向文本基线对齐。 |
+| ARKUI_ITEM_ALIGNMENT_START = 1 | 元素在Flex容器中，交叉轴方向首部对齐。 |
+| ARKUI_ITEM_ALIGNMENT_CENTER = 2 | 元素在Flex容器中，交叉轴方向居中对齐。 |
+| ARKUI_ITEM_ALIGNMENT_END = 3 | 元素在Flex容器中，交叉轴方向底部对齐。 |
+| ARKUI_ITEM_ALIGNMENT_STRETCH = 4 | 元素在Flex容器中，交叉轴方向拉伸填充。 |
+| ARKUI_ITEM_ALIGNMENT_BASELINE = 5 | 元素在Flex容器中，交叉轴方向文本基线对齐。 |
 
 ### ArkUI_ColorStrategy
 
@@ -1869,9 +1869,9 @@ enum ArkUI_FlexDirection
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FLEX_DIRECTION_ROW = 0 | 主轴与行方向一致。 |
-| ARKUI_FLEX_DIRECTION_COLUMN | 主轴与列方向一致。 |
-| ARKUI_FLEX_DIRECTION_ROW_REVERSE | 主轴与行方向相反。 |
-| ARKUI_FLEX_DIRECTION_COLUMN_REVERSE | 主轴与列方向相反。 |
+| ARKUI_FLEX_DIRECTION_COLUMN = 1 | 主轴与列方向一致。 |
+| ARKUI_FLEX_DIRECTION_ROW_REVERSE = 2 | 主轴与行方向相反。 |
+| ARKUI_FLEX_DIRECTION_COLUMN_REVERSE = 3 | 主轴与列方向相反。 |
 
 ### ArkUI_FlexWrap
 
@@ -1889,8 +1889,8 @@ enum ArkUI_FlexWrap
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FLEX_WRAP_NO_WRAP = 0 | 单行/单列布局，子项不能超出容器。 |
-| ARKUI_FLEX_WRAP_WRAP | 多行/多列布局，子项允许超出容器。 |
-| ARKUI_FLEX_WRAP_WRAP_REVERSE | 反向多行/多列布局，子项允许超出容器。 |
+| ARKUI_FLEX_WRAP_WRAP = 1 | 多行/多列布局，子项允许超出容器。 |
+| ARKUI_FLEX_WRAP_WRAP_REVERSE = 2 | 反向多行/多列布局，子项允许超出容器。 |
 
 ### ArkUI_Visibility
 
@@ -2234,9 +2234,9 @@ enum ArkUI_BarrierDirection
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_BARRIER_DIRECTION_START = 0 | 屏障在其所有referencedId的最左侧。 |
-| ARKUI_BARRIER_DIRECTION_END | 屏障在其所有referencedId的最右侧。 |
-| ARKUI_BARRIER_DIRECTION_TOP | 屏障在其所有referencedId的最上方。 |
-| ARKUI_BARRIER_DIRECTION_BOTTOM | 屏障在其所有referencedId的最下方。 |
+| ARKUI_BARRIER_DIRECTION_END = 1 | 屏障在其所有referencedId的最右侧。 |
+| ARKUI_BARRIER_DIRECTION_TOP = 2 | 屏障在其所有referencedId的最上方。 |
+| ARKUI_BARRIER_DIRECTION_BOTTOM = 3 | 屏障在其所有referencedId的最下方。 |
 
 ### ArkUI_RelativeLayoutChainStyle
 
@@ -2254,8 +2254,8 @@ enum ArkUI_RelativeLayoutChainStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | 组件在约束锚点间均匀分布。 |
-| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE | 除首尾2个子组件的其他组件在约束锚点间均匀分布。 |
-| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED | 链内子组件无间隙。 |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE = 1 | 除首尾2个子组件的其他组件在约束锚点间均匀分布。 |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED = 2 | 链内子组件无间隙。 |
 
 ### ArkUI_TextInputStyle
 
