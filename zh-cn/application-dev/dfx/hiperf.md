@@ -440,7 +440,7 @@ $ hiperf report -i /data/local/tmp/perf.data --limit-percent 1
 
 **可采取的解决方法**：
 
-hiperf record/stat -p [pid] 命令采集的进程应为“使用调试证书签名的应用”。
+使用`hiperf record/stat -p [pid]`命令时，被采集的进程必须是使用debug证书签名的应用。
 
 确认命令指定的应用是否为可调试应用，可执行hdc shell "bm dump -n bundlename | grep appProvisionType"查询，预期返回信息为"appProvisionType": "debug"。
 
@@ -456,5 +456,5 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 "appProvisionType": "debug",
 ```
 
-构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
+构建可调试应用需要使用debug证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
 
