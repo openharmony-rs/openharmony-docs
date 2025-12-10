@@ -959,8 +959,6 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：true
-
 **支持设备**：PC/2in1
 
 **起始版本**：20
