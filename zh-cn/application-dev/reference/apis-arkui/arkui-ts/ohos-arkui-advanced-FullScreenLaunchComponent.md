@@ -103,18 +103,16 @@ function ColumChild() {
 ```
 ArkTS-Sta示例：
 ```ts
-import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
-import { ReceiveCallback, Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, $r, Row, Builder, TerminationInfo, Entry } from '@ohos.arkui.component';
-import { RecordData } from '@ohos.base';
+import { Entry, ReceiveCallback, Text, Column, Component, Button, Row, Builder, TerminationInfo } from '@ohos.arkui.component';
 import { FullScreenLaunchComponent } from '@ohos.arkui.advanced.FullScreenLaunchComponent';
-import { State, MutableState, stateOf, observableProxy } from '@ohos.arkui.stateManagement';
+import { State } from '@ohos.arkui.stateManagement';
 import AtomicServiceOptions from '@ohos.app.ability.AtomicServiceOptions';
-import { ErrorCallback, Callback, BusinessError} from '@ohos.base';
+import { ErrorCallback, Callback, BusinessError, RecordData} from '@ohos.base';
 
 @Entry
 @Component
 struct MyStateSample {
-  @State appId: string = '5765880207853275489'; // 原子化服务appId
+  @State appId: string = '6917573653426122083'; // 原子化服务appId
 
   build() {
     Row() {

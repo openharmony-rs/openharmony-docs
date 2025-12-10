@@ -300,7 +300,7 @@ offDrawChildren(callback?: VoidCallback): void
 ArkTS-Dyn示例：
 
 ```ts
-import { inspector } from '@kit.ArkUI'
+import { inspector } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -309,43 +309,46 @@ struct ImageExample {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
-          Image($r('app.media.app_icon'))
+          Image($r('app.media.startIcon'))
             .width(110)
             .height(110)
             .border({ width: 1 })
             .id('IMAGE_ID')
         }
+        .id('ROW_ID')
       }
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID')
 
   aboutToAppear() {
-    let onLayoutComplete:()=>void=():void=>{
-        // 用户自定义回调函数
+    let onLayoutComplete: () => void = (): void => {
+      // 根据需要补充实现代码
     }
-    let onDrawComplete:()=>void=():void=>{
-        // 用户自定义回调函数
+    let onDrawComplete: () => void = (): void => {
+      // 根据需要补充实现代码
     }
-    let onDrawChildrenComplete:()=>void=():void=>{
-        // 用户自定义回调函数
+    let onDrawChildrenComplete: () => void = (): void => {
+      // 根据需要补充实现代码
     }
-    let FuncLayout = onLayoutComplete // 绑定当前js对象
-    let FuncDraw = onDrawComplete // 绑定当前js对象
-    let FuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
-    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
-    let OffFuncDraw = onDrawComplete // 绑定当前js对象
-    let OffFuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
+    // 绑定当前js实例
+    let FuncLayout = onLayoutComplete
+    let FuncDraw = onDrawComplete
+    let FuncDrawChildren = onDrawChildrenComplete
+    let OffFuncLayout = onLayoutComplete
+    let OffFuncDraw = onDrawComplete
+    let OffFuncDrawChildren = onDrawChildrenComplete
 
-    this.listener.on('layout', FuncLayout)
-    this.listener.on('draw', FuncDraw)
-    this.listener.on('drawChildren', FuncDrawChildren)
-    
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // this.listener.off('layout', OffFuncLayout)
-    // this.listener.off('draw', OffFuncDraw)
-    // this.listener.off('drawChildren', OffFuncDrawChildren)
+    this.listenerForImage.on('layout', FuncLayout)
+    this.listenerForImage.on('draw', FuncDraw)
+    this.listenerForRow.on('drawChildren', FuncDrawChildren)
+
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用
+    // this.listenerForImage.off('layout', OffFuncLayout)
+    // this.listenerForImage.off('draw', OffFuncDraw)
+    // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
   }
 }
 ```
@@ -353,9 +356,8 @@ struct ImageExample {
 ArkTS-Sta示例：
 
 ```ts
-import { inspector } from '@ohos.arkui.inspector'
-import { Column, Row, Image, Flex, FlexDirection, 
-ItemAlign, Image, $r, Text, Component, Entry} from '@ohos.arkui.component'
+import inspector from '@ohos.arkui.inspector';
+import { Column, Row, Image, Flex, FlexDirection, ItemAlign, $r, Text, Component, Entry} from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -364,27 +366,29 @@ struct ImageExample {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row() {
-          Image($r('app.media.app_icon'))
+          Image($r('app.media.startIcon'))
             .width(110)
             .height(110)
             .border({ width: 1 })
             .id('IMAGE_ID')
         }
+        .id('ROW_ID')
       }
     }.height(320).width(360)
   }
 
-  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID') as inspector.ComponentObserver
+  listenerForImage:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID') as inspector.ComponentObserver
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID') as inspector.ComponentObserver
 
   aboutToAppear() {
     let onLayoutComplete:()=>void=():void=>{
-        // 用户自定义回调函数
+      // 用户自定义回调函数
     }
     let onDrawComplete:()=>void=():void=>{
-        // 用户自定义回调函数
+      // 用户自定义回调函数
     }
     let onDrawChildrenComplete:()=>void=():void=>{
-        // 用户自定义回调函数
+      // 用户自定义回调函数
     }
     let FuncLayout = onLayoutComplete // 绑定当前js对象
     let FuncDraw = onDrawComplete // 绑定当前js对象
@@ -393,10 +397,10 @@ struct ImageExample {
     let OffFuncDraw = onDrawComplete // 绑定当前js对象
     let OffFuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
 
-    this.listener.onLayout(FuncLayout)
-    this.listener.onDraw(FuncDraw)
-    this.listener.onDrawChildren(onDrawChildrenComplete)
-    
+    this.listenerForImage.onLayout(FuncLayout)
+    this.listenerForImage.onDraw(FuncDraw)
+    this.listenerForRow.onDrawChildren(FuncDrawChildren)
+
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
     // this.listener.offLayout(OffFuncLayout)
     // this.listener.offDraw(OffFuncDraw)

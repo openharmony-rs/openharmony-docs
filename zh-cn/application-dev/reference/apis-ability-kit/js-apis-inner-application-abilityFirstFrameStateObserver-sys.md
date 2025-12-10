@@ -1,11 +1,11 @@
 # AbilityFirstFrameStateObserver(系统接口)
-
-定义Ability首帧绘制完成事件监听对象，可以作为[on](js-apis-app-ability-appManager-sys.md#appmanageronabilityfirstframestate12)的入参监听Ability首帧绘制完成事件。
+定义了Ability首帧绘制完成事件监听对象，可以作为[on](js-apis-app-ability-appManager-sys.md#appmanageronabilityfirstframestate12)的入参，用于监听Ability首帧绘制完成事件。
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块接口为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -13,12 +13,69 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-## 属性
+## AbilityFirstFrameStateObserver
+
+### onAbilityFirstFrameDrawn
+
+onAbilityFirstFrameDrawn(data: AbilityFirstFrameStateData): void
+
+Ability首帧绘制完成时触发的回调函数。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称                     | 类型                 | 只读 | 必填 | 说明                                                         |
-| ------------------------ | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| onAbilityFirstFrameDrawn | AsyncCallback\<void> | 是   | 否   | Ability首帧绘制完成时执行的回调函数。传入参数类型是[AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md)。 |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| data | [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | 是 | 表示首帧绘制完成时返回的数据。 |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer: appManager.AbilityFirstFrameStateObserver = {
+  onAbilityFirstFrameDrawn(data: appManager.AbilityFirstFrameStateData) {
+    console.info(`onAbilityFirstFrameDrawn success, abilityFirstFrameStateData: ${data}.`);
+  }
+};
+
+try {
+  appManager.on('abilityFirstFrameState', observer);
+} catch (e) {
+  let code = (e as BusinessError).code;
+  let msg = (e as BusinessError).message;
+  console.error(`appmanager.on failed, err code: ${code}, err msg: ${msg}.`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyObserver implements appManager.AbilityFirstFrameStateObserver {
+  onAbilityFirstFrameDrawn(data: appManager.AbilityFirstFrameStateData) {
+    console.info(`onAbilityFirstFrameDrawn success, abilityFirstFrameStateData: ${data}.`);
+  }
+}
+
+try {
+  let observer = new MyObserver();
+  appManager.onAbilityFirstFrameStateChange(observer);
+} catch (e) {
+  let code = (e as BusinessError).code;
+  let msg = (e as BusinessError).message;
+  console.error(`appmanager.on failed, err code: ${code}, err msg: ${msg}.`);
+}
+```
