@@ -103,7 +103,7 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
    }
    ```
 
-通过[image.Component](../../reference/apis-image-kit/arkts-apis-image-i.md#component9)解析图片的buffer数据。
+4. 通过[image.Component](../../reference/apis-image-kit/arkts-apis-image-i.md#component9)解析图片的buffer数据。
 
 > **注意：**
 > 需要确认图像的宽（width）是否与行距（rowStride）一致，如果不一致可参考以下方式一和方式二进行预处理。
