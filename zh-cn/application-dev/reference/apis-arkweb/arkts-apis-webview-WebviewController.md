@@ -14294,7 +14294,7 @@ ArkTS-Sta: static enableBackForwardCache(features?: BackForwardCacheSupportedFea
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否   | 允许使用特定的页面进入前进后退缓存中。<br>ArkTS-Sta: 若入参为空，默认设置为false。|
+| features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否   | 允许使用特定的页面进入前进后退缓存中。<br>ArkTS-Sta: 入参为空或undefined时，默认设置为false。|
 
 **示例：**
 
@@ -14362,7 +14362,7 @@ ArkTS-Sta: setBackForwardCacheOptions(options?: BackForwardCacheOptions): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否 | 用来控制Web组件前进后退缓存相关选项。<br>ArkTS-Sta: 若入参为空，默认设置size为1，timeToLive为600。|
+| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否 | 用来控制Web组件前进后退缓存相关选项。<br>ArkTS-Sta: 入参为空或undefined时，默认设置size为1，timeToLive为600。|
 
 **错误码：**
 
