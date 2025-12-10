@@ -103,9 +103,9 @@
 5. 获取指定应用实时流量数据
 
     调用getUidRxBytes接口，传入UID获取指定应用实时上下行流量数据。
-  ```ts
-   let UID = 20010038;
-  ```
+   ```ts
+    let UID = 20010038;
+   ```
    <!-- @[flow_management_getUidRxBytes_and_getUidTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
