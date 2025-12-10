@@ -127,7 +127,7 @@
 
 ### OH_CaptureSession_OnFocusStateChange()
 
-```
+```c
 typedef void (*OH_CaptureSession_OnFocusStateChange)(Camera_CaptureSession* session, Camera_FocusState focusState)
 ```
 
@@ -147,7 +147,7 @@ typedef void (*OH_CaptureSession_OnFocusStateChange)(Camera_CaptureSession* sess
 
 ### OH_CaptureSession_OnError()
 
-```
+```c
 typedef void (*OH_CaptureSession_OnError)(Camera_CaptureSession* session, Camera_ErrorCode errorCode)
 ```
 
@@ -172,7 +172,7 @@ typedef void (*OH_CaptureSession_OnError)(Camera_CaptureSession* session, Camera
 
 ### OH_CaptureSession_OnSmoothZoomInfo()
 
-```
+```c
 typedef void (*OH_CaptureSession_OnSmoothZoomInfo)(Camera_CaptureSession* session,Camera_SmoothZoomInfo* smoothZoomInfo)
 ```
 
@@ -192,7 +192,7 @@ typedef void (*OH_CaptureSession_OnSmoothZoomInfo)(Camera_CaptureSession* sessio
 
 ### OH_CaptureSession_OnAutoDeviceSwitchStatusChange()
 
-```
+```c
 typedef void (*OH_CaptureSession_OnAutoDeviceSwitchStatusChange)(Camera_CaptureSession* session,Camera_AutoDeviceSwitchStatusInfo* autoDeviceSwitchStatusInfo)
 ```
 
@@ -212,7 +212,7 @@ typedef void (*OH_CaptureSession_OnAutoDeviceSwitchStatusChange)(Camera_CaptureS
 
 ### OH_CaptureSession_OnSystemPressureLevelChange()
 
-```
+```c
 typedef void (*OH_CaptureSession_OnSystemPressureLevelChange)(Camera_CaptureSession* session,Camera_SystemPressureLevel systemPressureLevel)
 ```
 
@@ -232,7 +232,7 @@ typedef void (*OH_CaptureSession_OnSystemPressureLevelChange)(Camera_CaptureSess
 
 ### OH_CaptureSession_OnControlCenterEffectStatusChange()
 
-```
+```c
 typedef void (*OH_CaptureSession_OnControlCenterEffectStatusChange)(Camera_CaptureSession* session,Camera_ControlCenterStatusInfo* controlCenterStatusInfo)
 ```
 
@@ -252,7 +252,7 @@ typedef void (*OH_CaptureSession_OnControlCenterEffectStatusChange)(Camera_Captu
 
 ### OH_CaptureSession_RegisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RegisterCallback(Camera_CaptureSession* session,CaptureSession_Callbacks* callback)
 ```
 
@@ -278,7 +278,7 @@ Camera_ErrorCode OH_CaptureSession_RegisterCallback(Camera_CaptureSession* sessi
 
 ### OH_CaptureSession_UnregisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_UnregisterCallback(Camera_CaptureSession* session,CaptureSession_Callbacks* callback)
 ```
 
@@ -304,7 +304,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterCallback(Camera_CaptureSession* ses
 
 ### OH_CaptureSession_RegisterSmoothZoomInfoCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RegisterSmoothZoomInfoCallback(Camera_CaptureSession* session,OH_CaptureSession_OnSmoothZoomInfo smoothZoomInfoCallback)
 ```
 
@@ -330,7 +330,7 @@ Camera_ErrorCode OH_CaptureSession_RegisterSmoothZoomInfoCallback(Camera_Capture
 
 ### OH_CaptureSession_UnregisterSmoothZoomInfoCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_UnregisterSmoothZoomInfoCallback(Camera_CaptureSession* session,OH_CaptureSession_OnSmoothZoomInfo smoothZoomInfoCallback)
 ```
 
@@ -356,7 +356,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterSmoothZoomInfoCallback(Camera_Captu
 
 ### OH_CaptureSession_SetSessionMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session, Camera_SceneMode sceneMode)
 ```
 
@@ -382,7 +382,7 @@ Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session
 
 ### OH_CaptureSession_AddSecureOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_AddSecureOutput(Camera_CaptureSession* session, Camera_PreviewOutput* previewOutput)
 ```
 
@@ -408,7 +408,7 @@ Camera_ErrorCode OH_CaptureSession_AddSecureOutput(Camera_CaptureSession* sessio
 
 ### OH_CaptureSession_BeginConfig()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_BeginConfig(Camera_CaptureSession* session)
 ```
 
@@ -433,7 +433,7 @@ Camera_ErrorCode OH_CaptureSession_BeginConfig(Camera_CaptureSession* session)
 
 ### OH_CaptureSession_CommitConfig()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_CommitConfig(Camera_CaptureSession* session)
 ```
 
@@ -458,7 +458,7 @@ Camera_ErrorCode OH_CaptureSession_CommitConfig(Camera_CaptureSession* session)
 
 ### OH_CaptureSession_AddInput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_AddInput(Camera_CaptureSession* session, Camera_Input* cameraInput)
 ```
 
@@ -484,7 +484,7 @@ Camera_ErrorCode OH_CaptureSession_AddInput(Camera_CaptureSession* session, Came
 
 ### OH_CaptureSession_RemoveInput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RemoveInput(Camera_CaptureSession* session, Camera_Input* cameraInput)
 ```
 
@@ -510,7 +510,7 @@ Camera_ErrorCode OH_CaptureSession_RemoveInput(Camera_CaptureSession* session, C
 
 ### OH_CaptureSession_AddPreviewOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_AddPreviewOutput(Camera_CaptureSession* session,Camera_PreviewOutput* previewOutput)
 ```
 
@@ -536,7 +536,7 @@ Camera_ErrorCode OH_CaptureSession_AddPreviewOutput(Camera_CaptureSession* sessi
 
 ### OH_CaptureSession_RemovePreviewOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RemovePreviewOutput(Camera_CaptureSession* session,Camera_PreviewOutput* previewOutput)
 ```
 
@@ -562,7 +562,7 @@ Camera_ErrorCode OH_CaptureSession_RemovePreviewOutput(Camera_CaptureSession* se
 
 ### OH_CaptureSession_AddPhotoOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_AddPhotoOutput(Camera_CaptureSession* session, Camera_PhotoOutput* photoOutput)
 ```
 
@@ -588,7 +588,7 @@ Camera_ErrorCode OH_CaptureSession_AddPhotoOutput(Camera_CaptureSession* session
 
 ### OH_CaptureSession_RemovePhotoOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RemovePhotoOutput(Camera_CaptureSession* session, Camera_PhotoOutput* photoOutput)
 ```
 
@@ -614,7 +614,7 @@ Camera_ErrorCode OH_CaptureSession_RemovePhotoOutput(Camera_CaptureSession* sess
 
 ### OH_CaptureSession_AddVideoOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_AddVideoOutput(Camera_CaptureSession* session, Camera_VideoOutput* videoOutput)
 ```
 
@@ -640,7 +640,7 @@ Camera_ErrorCode OH_CaptureSession_AddVideoOutput(Camera_CaptureSession* session
 
 ### OH_CaptureSession_RemoveVideoOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RemoveVideoOutput(Camera_CaptureSession* session, Camera_VideoOutput* videoOutput)
 ```
 
@@ -666,7 +666,7 @@ Camera_ErrorCode OH_CaptureSession_RemoveVideoOutput(Camera_CaptureSession* sess
 
 ### OH_CaptureSession_AddMetadataOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_AddMetadataOutput(Camera_CaptureSession* session,Camera_MetadataOutput* metadataOutput)
 ```
 
@@ -692,7 +692,7 @@ Camera_ErrorCode OH_CaptureSession_AddMetadataOutput(Camera_CaptureSession* sess
 
 ### OH_CaptureSession_RemoveMetadataOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RemoveMetadataOutput(Camera_CaptureSession* session,Camera_MetadataOutput* metadataOutput)
 ```
 
@@ -718,7 +718,7 @@ Camera_ErrorCode OH_CaptureSession_RemoveMetadataOutput(Camera_CaptureSession* s
 
 ### OH_CaptureSession_Start()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_Start(Camera_CaptureSession* session)
 ```
 
@@ -743,7 +743,7 @@ Camera_ErrorCode OH_CaptureSession_Start(Camera_CaptureSession* session)
 
 ### OH_CaptureSession_Stop()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_Stop(Camera_CaptureSession* session)
 ```
 
@@ -768,7 +768,7 @@ Camera_ErrorCode OH_CaptureSession_Stop(Camera_CaptureSession* session)
 
 ### OH_CaptureSession_Release()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_Release(Camera_CaptureSession* session)
 ```
 
@@ -793,7 +793,7 @@ Camera_ErrorCode OH_CaptureSession_Release(Camera_CaptureSession* session)
 
 ### OH_CaptureSession_HasFlash()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_HasFlash(Camera_CaptureSession* session, bool* hasFlash)
 ```
 
@@ -819,7 +819,7 @@ Camera_ErrorCode OH_CaptureSession_HasFlash(Camera_CaptureSession* session, bool
 
 ### OH_CaptureSession_IsFlashModeSupported()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_IsFlashModeSupported(Camera_CaptureSession* session,Camera_FlashMode flashMode, bool* isSupported)
 ```
 
@@ -846,7 +846,7 @@ Camera_ErrorCode OH_CaptureSession_IsFlashModeSupported(Camera_CaptureSession* s
 
 ### OH_CaptureSession_GetFlashMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetFlashMode(Camera_CaptureSession* session, Camera_FlashMode* flashMode)
 ```
 
@@ -872,7 +872,7 @@ Camera_ErrorCode OH_CaptureSession_GetFlashMode(Camera_CaptureSession* session, 
 
 ### OH_CaptureSession_SetFlashMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, Camera_FlashMode flashMode)
 ```
 
@@ -898,7 +898,7 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 
 ### OH_CaptureSession_IsExposureModeSupported()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_IsExposureModeSupported(Camera_CaptureSession* session,Camera_ExposureMode exposureMode, bool* isSupported)
 ```
 
@@ -925,7 +925,7 @@ Camera_ErrorCode OH_CaptureSession_IsExposureModeSupported(Camera_CaptureSession
 
 ### OH_CaptureSession_GetExposureMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetExposureMode(Camera_CaptureSession* session, Camera_ExposureMode* exposureMode)
 ```
 
@@ -951,7 +951,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureMode(Camera_CaptureSession* sessio
 
 ### OH_CaptureSession_SetExposureMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetExposureMode(Camera_CaptureSession* session, Camera_ExposureMode exposureMode)
 ```
 
@@ -977,7 +977,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureMode(Camera_CaptureSession* sessio
 
 ### OH_CaptureSession_GetMeteringPoint()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetMeteringPoint(Camera_CaptureSession* session, Camera_Point* point)
 ```
 
@@ -1003,7 +1003,7 @@ Camera_ErrorCode OH_CaptureSession_GetMeteringPoint(Camera_CaptureSession* sessi
 
 ### OH_CaptureSession_SetMeteringPoint()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetMeteringPoint(Camera_CaptureSession* session, Camera_Point point)
 ```
 
@@ -1029,7 +1029,7 @@ Camera_ErrorCode OH_CaptureSession_SetMeteringPoint(Camera_CaptureSession* sessi
 
 ### OH_CaptureSession_GetExposureBiasRange()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetExposureBiasRange(Camera_CaptureSession* session, float* minExposureBias,float* maxExposureBias, float* step)
 ```
 
@@ -1057,7 +1057,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureBiasRange(Camera_CaptureSession* s
 
 ### OH_CaptureSession_SetExposureBias()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetExposureBias(Camera_CaptureSession* session, float exposureBias)
 ```
 
@@ -1083,7 +1083,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureBias(Camera_CaptureSession* sessio
 
 ### OH_CaptureSession_GetExposureBias()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetExposureBias(Camera_CaptureSession* session, float* exposureBias)
 ```
 
@@ -1109,7 +1109,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureBias(Camera_CaptureSession* sessio
 
 ### OH_CaptureSession_IsFocusModeSupported()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_IsFocusModeSupported(Camera_CaptureSession* session,Camera_FocusMode focusMode, bool* isSupported)
 ```
 
@@ -1136,7 +1136,7 @@ Camera_ErrorCode OH_CaptureSession_IsFocusModeSupported(Camera_CaptureSession* s
 
 ### OH_CaptureSession_GetFocusMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetFocusMode(Camera_CaptureSession* session, Camera_FocusMode* focusMode)
 ```
 
@@ -1162,7 +1162,7 @@ Camera_ErrorCode OH_CaptureSession_GetFocusMode(Camera_CaptureSession* session, 
 
 ### OH_CaptureSession_SetFocusMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetFocusMode(Camera_CaptureSession* session, Camera_FocusMode focusMode)
 ```
 
@@ -1188,7 +1188,7 @@ Camera_ErrorCode OH_CaptureSession_SetFocusMode(Camera_CaptureSession* session, 
 
 ### OH_CaptureSession_GetFocusPoint()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetFocusPoint(Camera_CaptureSession* session, Camera_Point* focusPoint)
 ```
 
@@ -1214,7 +1214,7 @@ Camera_ErrorCode OH_CaptureSession_GetFocusPoint(Camera_CaptureSession* session,
 
 ### OH_CaptureSession_SetFocusPoint()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetFocusPoint(Camera_CaptureSession* session, Camera_Point focusPoint)
 ```
 
@@ -1240,7 +1240,7 @@ Camera_ErrorCode OH_CaptureSession_SetFocusPoint(Camera_CaptureSession* session,
 
 ### OH_CaptureSession_GetZoomRatioRange()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetZoomRatioRange(Camera_CaptureSession* session, float* minZoom, float* maxZoom)
 ```
 
@@ -1267,7 +1267,7 @@ Camera_ErrorCode OH_CaptureSession_GetZoomRatioRange(Camera_CaptureSession* sess
 
 ### OH_CaptureSession_GetZoomRatio()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetZoomRatio(Camera_CaptureSession* session, float* zoom)
 ```
 
@@ -1293,7 +1293,7 @@ Camera_ErrorCode OH_CaptureSession_GetZoomRatio(Camera_CaptureSession* session, 
 
 ### OH_CaptureSession_SetZoomRatio()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetZoomRatio(Camera_CaptureSession* session, float zoom)
 ```
 
@@ -1319,7 +1319,7 @@ Camera_ErrorCode OH_CaptureSession_SetZoomRatio(Camera_CaptureSession* session, 
 
 ### OH_CaptureSession_IsVideoStabilizationModeSupported()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_IsVideoStabilizationModeSupported(Camera_CaptureSession* session,Camera_VideoStabilizationMode mode, bool* isSupported)
 ```
 
@@ -1346,7 +1346,7 @@ Camera_ErrorCode OH_CaptureSession_IsVideoStabilizationModeSupported(Camera_Capt
 
 ### OH_CaptureSession_GetVideoStabilizationMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetVideoStabilizationMode(Camera_CaptureSession* session,Camera_VideoStabilizationMode* mode)
 ```
 
@@ -1372,7 +1372,7 @@ Camera_ErrorCode OH_CaptureSession_GetVideoStabilizationMode(Camera_CaptureSessi
 
 ### OH_CaptureSession_SetVideoStabilizationMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetVideoStabilizationMode(Camera_CaptureSession* session,Camera_VideoStabilizationMode mode)
 ```
 
@@ -1398,7 +1398,7 @@ Camera_ErrorCode OH_CaptureSession_SetVideoStabilizationMode(Camera_CaptureSessi
 
 ### OH_CaptureSession_CanAddInput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_CanAddInput(Camera_CaptureSession* session,Camera_Input* cameraInput, bool* isSuccessful)
 ```
 
@@ -1425,7 +1425,7 @@ Camera_ErrorCode OH_CaptureSession_CanAddInput(Camera_CaptureSession* session,Ca
 
 ### OH_CaptureSession_CanAddPreviewOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_CanAddPreviewOutput(Camera_CaptureSession* session,Camera_PreviewOutput* cameraOutput, bool* isSuccessful)
 ```
 
@@ -1452,7 +1452,7 @@ Camera_ErrorCode OH_CaptureSession_CanAddPreviewOutput(Camera_CaptureSession* se
 
 ### OH_CaptureSession_CanAddPhotoOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_CanAddPhotoOutput(Camera_CaptureSession* session,Camera_PhotoOutput* cameraOutput, bool* isSuccessful)
 ```
 
@@ -1479,7 +1479,7 @@ Camera_ErrorCode OH_CaptureSession_CanAddPhotoOutput(Camera_CaptureSession* sess
 
 ### OH_CaptureSession_CanAddVideoOutput()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_CanAddVideoOutput(Camera_CaptureSession* session,Camera_VideoOutput* cameraOutput, bool* isSuccessful)
 ```
 
@@ -1506,7 +1506,7 @@ Camera_ErrorCode OH_CaptureSession_CanAddVideoOutput(Camera_CaptureSession* sess
 
 ### OH_CaptureSession_CanPreconfig()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_CanPreconfig(Camera_CaptureSession* session,Camera_PreconfigType preconfigType, bool* canPreconfig)
 ```
 
@@ -1533,7 +1533,7 @@ Camera_ErrorCode OH_CaptureSession_CanPreconfig(Camera_CaptureSession* session,C
 
 ### OH_CaptureSession_CanPreconfigWithRatio()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_CanPreconfigWithRatio(Camera_CaptureSession* session,Camera_PreconfigType preconfigType, Camera_PreconfigRatio preconfigRatio, bool* canPreconfig)
 ```
 
@@ -1561,7 +1561,7 @@ Camera_ErrorCode OH_CaptureSession_CanPreconfigWithRatio(Camera_CaptureSession* 
 
 ### OH_CaptureSession_Preconfig()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_Preconfig(Camera_CaptureSession* session,Camera_PreconfigType preconfigType)
 ```
 
@@ -1587,7 +1587,7 @@ Camera_ErrorCode OH_CaptureSession_Preconfig(Camera_CaptureSession* session,Came
 
 ### OH_CaptureSession_PreconfigWithRatio()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_PreconfigWithRatio(Camera_CaptureSession* session,Camera_PreconfigType preconfigType, Camera_PreconfigRatio preconfigRatio)
 ```
 
@@ -1614,7 +1614,7 @@ Camera_ErrorCode OH_CaptureSession_PreconfigWithRatio(Camera_CaptureSession* ses
 
 ### OH_CaptureSession_GetExposureValue()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetExposureValue(Camera_CaptureSession* session, float* exposureValue)
 ```
 
@@ -1640,7 +1640,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureValue(Camera_CaptureSession* sessi
 
 ### OH_CaptureSession_GetFocalLength()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetFocalLength(Camera_CaptureSession* session, float* focalLength)
 ```
 
@@ -1666,7 +1666,7 @@ Camera_ErrorCode OH_CaptureSession_GetFocalLength(Camera_CaptureSession* session
 
 ### OH_CaptureSession_SetSmoothZoom()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetSmoothZoom(Camera_CaptureSession* session,float targetZoom, Camera_SmoothZoomMode smoothZoomMode)
 ```
 
@@ -1693,7 +1693,7 @@ Camera_ErrorCode OH_CaptureSession_SetSmoothZoom(Camera_CaptureSession* session,
 
 ### OH_CaptureSession_GetSupportedColorSpaces()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetSupportedColorSpaces(Camera_CaptureSession* session,OH_NativeBuffer_ColorSpace** colorSpace, uint32_t* size)
 ```
 
@@ -1720,7 +1720,7 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedColorSpaces(Camera_CaptureSession
 
 ### OH_CaptureSession_DeleteColorSpaces()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_DeleteColorSpaces(Camera_CaptureSession* session,OH_NativeBuffer_ColorSpace* colorSpace)
 ```
 
@@ -1746,7 +1746,7 @@ Camera_ErrorCode OH_CaptureSession_DeleteColorSpaces(Camera_CaptureSession* sess
 
 ### OH_CaptureSession_GetActiveColorSpace()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetActiveColorSpace(Camera_CaptureSession* session,OH_NativeBuffer_ColorSpace* colorSpace)
 ```
 
@@ -1772,7 +1772,7 @@ Camera_ErrorCode OH_CaptureSession_GetActiveColorSpace(Camera_CaptureSession* se
 
 ### OH_CaptureSession_SetActiveColorSpace()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetActiveColorSpace(Camera_CaptureSession* session,OH_NativeBuffer_ColorSpace colorSpace)
 ```
 
@@ -1798,7 +1798,7 @@ Camera_ErrorCode OH_CaptureSession_SetActiveColorSpace(Camera_CaptureSession* se
 
 ### OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback(Camera_CaptureSession* session,OH_CaptureSession_OnAutoDeviceSwitchStatusChange autoDeviceSwitchStatusChange)
 ```
 
@@ -1824,7 +1824,7 @@ Camera_ErrorCode OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback(Camera
 
 ### OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback(Camera_CaptureSession* session,OH_CaptureSession_OnAutoDeviceSwitchStatusChange autoDeviceSwitchStatusChange)
 ```
 
@@ -1850,7 +1850,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback(Came
 
 ### OH_CaptureSession_IsAutoDeviceSwitchSupported()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_IsAutoDeviceSwitchSupported(Camera_CaptureSession* session, bool* isSupported)
 ```
 
@@ -1876,7 +1876,7 @@ Camera_ErrorCode OH_CaptureSession_IsAutoDeviceSwitchSupported(Camera_CaptureSes
 
 ### OH_CaptureSession_EnableAutoDeviceSwitch()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_EnableAutoDeviceSwitch(Camera_CaptureSession* session, bool enabled)
 ```
 
@@ -1902,7 +1902,7 @@ Camera_ErrorCode OH_CaptureSession_EnableAutoDeviceSwitch(Camera_CaptureSession*
 
 ### OH_CaptureSession_RegisterSystemPressureLevelChangeCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RegisterSystemPressureLevelChangeCallback(Camera_CaptureSession* session,OH_CaptureSession_OnSystemPressureLevelChange systemPressureLevelChange)
 ```
 
@@ -1928,7 +1928,7 @@ Camera_ErrorCode OH_CaptureSession_RegisterSystemPressureLevelChangeCallback(Cam
 
 ### OH_CaptureSession_UnregisterSystemPressureLevelChangeCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_UnregisterSystemPressureLevelChangeCallback(Camera_CaptureSession* session,OH_CaptureSession_OnSystemPressureLevelChange systemPressureLevelChange)
 ```
 
@@ -1954,7 +1954,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterSystemPressureLevelChangeCallback(C
 
 ### OH_CaptureSession_SetQualityPrioritization()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetQualityPrioritization(Camera_CaptureSession* session, Camera_QualityPrioritization qualityPrioritization)
 ```
 
@@ -1980,7 +1980,7 @@ Camera_ErrorCode OH_CaptureSession_SetQualityPrioritization(Camera_CaptureSessio
 
 ### OH_CaptureSession_IsMacroSupported()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_IsMacroSupported(Camera_CaptureSession* session, bool* isSupported)
 ```
 
@@ -2006,7 +2006,7 @@ Camera_ErrorCode OH_CaptureSession_IsMacroSupported(Camera_CaptureSession* sessi
 
 ### OH_CaptureSession_EnableMacro()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_EnableMacro(Camera_CaptureSession* session, bool enabled)
 ```
 
@@ -2032,7 +2032,7 @@ Camera_ErrorCode OH_CaptureSession_EnableMacro(Camera_CaptureSession* session, b
 
 ### OH_CaptureSession_SetWhiteBalance()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetWhiteBalance(Camera_CaptureSession* session, int32_t colorTemperature)
 ```
 
@@ -2058,7 +2058,7 @@ Camera_ErrorCode OH_CaptureSession_SetWhiteBalance(Camera_CaptureSession* sessio
 
 ### OH_CaptureSession_GetWhiteBalance()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetWhiteBalance(Camera_CaptureSession* session, int32_t *colorTemperature)
 ```
 
@@ -2084,7 +2084,7 @@ Camera_ErrorCode OH_CaptureSession_GetWhiteBalance(Camera_CaptureSession* sessio
 
 ### OH_CaptureSession_GetWhiteBalanceMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceMode(Camera_CaptureSession* session, Camera_WhiteBalanceMode* whiteBalanceMode)
 ```
 
@@ -2109,7 +2109,7 @@ Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceMode(Camera_CaptureSession* se
 
 ### OH_CaptureSession_IsWhiteBalanceModeSupported()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_IsWhiteBalanceModeSupported(Camera_CaptureSession* session,Camera_WhiteBalanceMode whiteBalanceMode, bool* isSupported)
 ```
 
@@ -2136,7 +2136,7 @@ Camera_ErrorCode OH_CaptureSession_IsWhiteBalanceModeSupported(Camera_CaptureSes
 
 ### OH_CaptureSession_SetWhiteBalanceMode()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_SetWhiteBalanceMode(Camera_CaptureSession* session, Camera_WhiteBalanceMode whiteBalanceMode)
 ```
 
@@ -2162,7 +2162,7 @@ Camera_ErrorCode OH_CaptureSession_SetWhiteBalanceMode(Camera_CaptureSession* se
 
 ### OH_CaptureSession_GetWhiteBalanceRange()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceRange(Camera_CaptureSession* session, int32_t *minColorTemperature, int32_t *maxColorTemperature)
 ```
 
@@ -2189,7 +2189,7 @@ Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceRange(Camera_CaptureSession* s
 
 ### OH_CaptureSession_IsControlCenterSupported()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_IsControlCenterSupported(Camera_CaptureSession* session, bool* isSupported)
 ```
 
@@ -2215,7 +2215,7 @@ Camera_ErrorCode OH_CaptureSession_IsControlCenterSupported(Camera_CaptureSessio
 
 ### OH_CaptureSession_GetSupportedEffectTypes()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_GetSupportedEffectTypes(Camera_CaptureSession* session,Camera_ControlCenterEffectType** types, uint32_t* size)
 ```
 
@@ -2242,7 +2242,7 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedEffectTypes(Camera_CaptureSession
 
 ### OH_CaptureSession_DeleteSupportedEffectTypes()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_DeleteSupportedEffectTypes(Camera_CaptureSession* session,Camera_ControlCenterEffectType* types, uint32_t size)
 ```
 
@@ -2269,7 +2269,7 @@ Camera_ErrorCode OH_CaptureSession_DeleteSupportedEffectTypes(Camera_CaptureSess
 
 ### OH_CaptureSession_EnableControlCenter()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_EnableControlCenter(Camera_CaptureSession* session, bool enabled)
 ```
 
@@ -2295,7 +2295,7 @@ Camera_ErrorCode OH_CaptureSession_EnableControlCenter(Camera_CaptureSession* se
 
 ### OH_CaptureSession_RegisterControlCenterEffectStatusChangeCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_RegisterControlCenterEffectStatusChangeCallback(Camera_CaptureSession* session,OH_CaptureSession_OnControlCenterEffectStatusChange controlCenterEffectStatusChange)
 ```
 
@@ -2321,7 +2321,7 @@ Camera_ErrorCode OH_CaptureSession_RegisterControlCenterEffectStatusChangeCallba
 
 ### OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCallback()
 
-```
+```c
 Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCallback(Camera_CaptureSession* session,OH_CaptureSession_OnControlCenterEffectStatusChange controlCenterEffectStatusChange)
 ```
 
@@ -2347,7 +2347,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCall
 
 ### OH_CaptureSession_OnMacroStatusChange()
 
-```
+```c
  typedef void (*OH_CaptureSession_OnMacroStatusChange)(Camera_CaptureSession* session, bool isMacroDetected)
 ```
 
@@ -2367,7 +2367,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCall
 
 ### OH_CaptureSession_RegisterMacroStatusChangeCallback()
 
-```
+```c
  Camera_ErrorCode OH_CaptureSession_RegisterMacroStatusChangeCallback(Camera_CaptureSession* session,OH_CaptureSession_OnMacroStatusChange macroStatusChange)
 ```
 
@@ -2393,7 +2393,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCall
 
 ### OH_CaptureSession_UnregisterMacroStatusChangeCallback()
 
-```
+```c
  Camera_ErrorCode OH_CaptureSession_UnregisterMacroStatusChangeCallback(Camera_CaptureSession* session,OH_CaptureSession_OnMacroStatusChange macroStatusChange)
 ```
 

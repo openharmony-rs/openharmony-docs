@@ -41,7 +41,7 @@
 
 ### Telephony_RadioResult
 
-```
+```c
 enum Telephony_RadioResult
 ```
 
@@ -62,7 +62,7 @@ enum Telephony_RadioResult
 
 ### Telephony_RegState
 
-```
+```c
 enum Telephony_RegState
 ```
 
@@ -81,7 +81,7 @@ enum Telephony_RegState
 
 ### Telephony_RadioTechnology
 
-```
+```c
 enum Telephony_RadioTechnology
 ```
 
@@ -109,7 +109,7 @@ enum Telephony_RadioTechnology
 
 ### Telephony_NsaState
 
-```
+```c
 enum Telephony_NsaState
 ```
 

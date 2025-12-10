@@ -48,7 +48,7 @@
 
 ### OH_PurgeableMemory_ModifyFunc()
 
-```
+```c
 typedef bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *)
 ```
 
@@ -74,7 +74,7 @@ typedef bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *)
 
 ### OH_PurgeableMemory_Create()
 
-```
+```c
 OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_ModifyFunc func, void *funcPara)
 ```
 
@@ -100,7 +100,7 @@ OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_Mo
 
 ### OH_PurgeableMemory_Destroy()
 
-```
+```c
 bool OH_PurgeableMemory_Destroy(OH_PurgeableMemory *purgObj)
 ```
 
@@ -124,7 +124,7 @@ bool OH_PurgeableMemory_Destroy(OH_PurgeableMemory *purgObj)
 
 ### OH_PurgeableMemory_BeginRead()
 
-```
+```c
 bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)
 ```
 
@@ -148,7 +148,7 @@ bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)
 
 ### OH_PurgeableMemory_EndRead()
 
-```
+```c
 void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)
 ```
 
@@ -166,7 +166,7 @@ void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)
 
 ### OH_PurgeableMemory_BeginWrite()
 
-```
+```c
 bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)
 ```
 
@@ -190,7 +190,7 @@ bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)
 
 ### OH_PurgeableMemory_EndWrite()
 
-```
+```c
 void OH_PurgeableMemory_EndWrite(OH_PurgeableMemory *purgObj)
 ```
 
@@ -208,7 +208,7 @@ void OH_PurgeableMemory_EndWrite(OH_PurgeableMemory *purgObj)
 
 ### OH_PurgeableMemory_GetContent()
 
-```
+```c
 void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)
 ```
 
@@ -232,7 +232,7 @@ void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)
 
 ### OH_PurgeableMemory_ContentSize()
 
-```
+```c
 size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)
 ```
 
@@ -256,7 +256,7 @@ size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)
 
 ### OH_PurgeableMemory_AppendModify()
 
-```
+```c
 bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMemory_ModifyFunc func, void *funcPara)
 ```
 
