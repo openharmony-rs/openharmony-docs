@@ -78,7 +78,7 @@ PhotoPickerComponent({
 
 ## PickerOptions
 
-Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10)。
+Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
