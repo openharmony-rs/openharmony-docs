@@ -70,7 +70,7 @@ The network locating is failed because the network cannot be accessed.
 
 请检查设备是否能联网，设备是否插入SIM卡，Wi-Fi开关是否开启等。</br>
 
-### 2. 位置精度要求过高导致定位超时
+### 2. 定位结果不满足精度要求导致定位超时
 
 **错误信息**
 
@@ -82,7 +82,7 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 **可能原因**
 
-定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)较高。
+定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)阈值设置较小。
 
 **处理步骤**
 
@@ -92,7 +92,7 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 2.当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
 
-### 3. 系统无缓存位置导致获取缓存位置失败
+### 3. 获取缓存位置失败
 
 **错误信息**
 
@@ -104,7 +104,7 @@ The system does not have a cache location.
 
 **可能原因**
 
-系统无缓存位置。
+系统无缓存位置情况下，尝试获取缓存位置。
 
 **处理步骤**
 
