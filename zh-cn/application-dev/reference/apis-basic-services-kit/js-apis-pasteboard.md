@@ -245,7 +245,7 @@ let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboa
 | ---------------------------------- | --- | ------------------------------------------------------------------------------------- |
 | INAPP                              | 0   | 表示仅允许同应用内粘贴。 </br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 22 |
 | LOCALDEVICE                        | 1   | 表示允许在任何应用内粘贴。<!--RP1--><!--RP1End--> </br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 22 |
-| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。</br> ArkTS-Dyn起始版本: 11  |
+| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。</br> ArkTS-Dyn起始版本: 9 |
 
 ## pasteboard.createHtmlData<sup>(deprecated)</sup>
 
