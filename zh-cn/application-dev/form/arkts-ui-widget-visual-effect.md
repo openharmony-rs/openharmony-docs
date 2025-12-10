@@ -63,8 +63,8 @@
   onAddForm(want: Want) {
     // Called to return a FormBindingData object.
     let formData: Record<string, Object> = {};
-    let wantParams = want.parameters
-    formData.visualEffectType = String(wantParams?.visualEffectType|| 'none');
+    let wantParams = want.parameters;
+    formData.visualEffectType = String(wantParams?.visualEffectType || 'none');
     return formBindingData.createFormBindingData(formData);
   }
 ```
@@ -93,13 +93,21 @@
 import { HdsSceneController, HdsSceneType, HdsVisualComponent, HdsVisualComponentAttribute } from '@kit.UIDesignKit';
 import { uiEffect } from '@kit.ArkGraphics2D';
 
-@Entry
+let storage: LocalStorage = new LocalStorage();
+
+@Entry (storage)
 @Component
 struct WidgetCard {
+  readonly TAG: string = 'WidgetCard'
+  @LocalStorageProp('formId') formId: string = '';
+  @LocalStorageProp('visualEffectType') @Watch('dataChange') visualEffectType: string = '';
+  @State isBlurStyle: boolean = this.visualEffectType === 'blurEffect';
+  @State isHarmoniumStyle: boolean = this.visualEffectType === 'lightAnimationEffect';
+  @State whiteEffect: uiEffect.VisualEffect | undefined = undefined;
+
   @State sceneController: HdsSceneController = new HdsSceneController();
-  
   @State sigma: number = 5;
-  @State message: string = "Hello World"
+  @State message: string = "Hello World";
   @State fontSize: number = 200;
   @State minFontSize: number = 20;
   @State maxFontSize: number = 100;
@@ -142,13 +150,6 @@ struct WidgetCard {
     ['fraction', this.fraction],
   ]);
 
-  readonly TAG: string = 'WidgetCard'
-  @LocalStorageProp('formId') formId: string = '';
-  @State whiteEffect: uiEffect.VisualEffect | undefined = undefined;
-  @LocalStorageProp('visualEffectType') @Watch('dataChange') visualEffectType: string = '';
-  @State isBlurStyle: boolean = this.visualEffectType === 'blurEffect';
-  @State isHarmoniumStyle: boolean = this.visualEffectType === 'lightAnimationEffect';
-
   aboutToAppear(): void {
     this.sceneController.setSceneParams(this.params, false);
 
@@ -175,14 +176,14 @@ struct WidgetCard {
               .fontColor(this.color)
               .fontFamily(this.mirrorFontFamily)
               .fontSize(this.fontSize)
-                .minFontSize(this.minFontSize)
-                .maxFontSize(this.maxFontSize)
-                .fontWeight(this.fontWeight)
-                .fontFeature(this.fontFeature)
-                .maxLines(this.maxLines)
-                .id(`WidgetCard_1`)
-                .fontFeature('\"ss10\" on')
-                .accessibilityLevel('no')
+              .minFontSize(this.minFontSize)
+              .maxFontSize(this.maxFontSize)
+              .fontWeight(this.fontWeight)
+              .fontFeature(this.fontFeature)
+              .maxLines(this.maxLines)
+              .id(`WidgetCard_1`)
+              .fontFeature('\"ss10\" on')
+              .accessibilityLevel('no')
           }
           this.effectRender(this)
         }
@@ -245,11 +246,13 @@ struct WidgetCard {
   dataChange(propName: string) {
     switch (propName) {
       case 'visualEffectType':
-        console.warn(this.TAG,
-          `visualEffectType changed with form=${this.formId},visualEffectType=${this.visualEffectType}`);
-        this.isBlurStyle = this.visualEffectType === 'blurEffect';
-        this.isHarmoniumStyle = this.visualEffectType === 'lightAnimationEffect';
-        break;
+        {
+          console.warn(this.TAG,
+            `visualEffectType changed with form=${this.formId},visualEffectType=${this.visualEffectType}`);
+          this.isBlurStyle = this.visualEffectType === 'blurEffect';
+          this.isHarmoniumStyle = this.visualEffectType === 'lightAnimationEffect';
+          break;
+        }
       default:
         console.info(this.TAG, `${propName} changed with form=${this.formId}.`);
         break
