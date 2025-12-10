@@ -197,8 +197,69 @@ mainHandler dump is:
 | PROCESS_NAME | 应用进程名。 |
 | MSG | 发生故障时间及EventHandler信息。 |
 | task name | 任务队列中的任务名。 |
+
+EventHandler信息，具体解释如下：
+
+dump信息组成结构：
+
+| 主要信息字段 | 说明 |
+| -------- | -------- |
+| EventHandler dump begin curTime | 获取dump信息时间。 |
+| Event runner | EventHandler对应的线程名和线程号。 |
+| Current Running | 当前正在执行的完整任务信息。 |
+| History event queue information | 历史执行任务信息。 |
+| VIP priority event queue information | VIP级任务队列信息。 |
+| Immediate priority event queue information | 立即执行任务队列信息。 |
+| High priority event queue information | 高优先级任务队列信息。 |
+| Low priority event queue information | 低优先级任务队列信息。 |
+| Idle priority event queue information | 挂起任务队列信息。 |
+
+任务组成部分：
+
+| 主要信息字段 | 说明 |
+| -------- | -------- |
+| send thread | 提交任务线程号。 |
+| send time | 提交任务时间。 |
+| task name | 任务队列中的任务名。 |
+| priority | 任务优先级。 |
+| caller | 任务提交方法。 |
+| handle time | 任务预期执行时间。与实际的任务执行时间（trigger time）可能存在偏差 |
 | trigger time | 任务执行时间。 |
 | completeTime time | 任务执行完成时间（如果没有打印则表示该任务未执行完成）。 |
+EventHandler信息，具体解释如下：
+
+dump信息组成结构：
+
+| 主要信息字段 | 说明 |
+| -------- | -------- |
+| EventHandler dump begin curTime | 获取dump信息时间。 |
+| Event runner | EventHandler对应的线程名和线程号。 |
+| Current Running | 当前正在执行的完整任务信息。 |
+| History event queue information | 历史执行任务信息。 |
+| VIP priority event queue information | VIP级任务队列信息。 |
+| Immediate priority event queue information | 立即执行任务队列信息。 |
+| High priority event queue information | 高优先级任务队列信息。 |
+| Low priority event queue information | 低优先级任务队列信息。 |
+| Idle priority event queue information | 挂起任务队列信息。 |
+
+任务组成部分：
+
+| 主要信息字段 | 说明 |
+| -------- | -------- |
+| send thread | 提交任务线程号。 |
+| send time | 提交任务时间。 |
+| task name | 任务队列中的任务名。 |
+| priority | 任务优先级。 |
+| caller | 任务提交方法。 |
+| handle time | 任务预期执行时间。与实际的任务执行时间（trigger time）可能存在偏差 |
+| trigger time | 任务执行时间。 |
+| completeTime time | 任务执行完成时间（如果没有打印则表示该任务未执行完成）。 |
+
+> **说明：**
+>
+> EventHandler信息中，开发者只需重点关注EventHandler dump begin curTime，trigger time和completeTime time时间即可。
+>
+> EventHandler信息详细指导可参考：[查看eventHandler信息](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-freeze-way#section190014865618)
 
 ### 堆栈信息
 
@@ -267,7 +328,7 @@ pid context     request started max ready   free_async_space
 
 进程间通信调用信息解释如下：
 
-| | |
+| 主要信息字段 | 说明 |
 | -------- | -------- |
 | xxx:xxx to xxx:xxx | 客户端进程号、线程号 to 服务端进程号、线程号。其中async表示异步，无async表示同步。 |
 | code | 客户端和服务端达成一致约束的业务码。 |
@@ -325,7 +386,7 @@ Details of Processes:
     1685       0.53%           0.31%          0.22%          879838               59636            foundation     
 ```
 
-| | |
+| 主要信息字段 | 说明 |
 | -------- | -------- |
 | PID | 进程PID。 |
 | Total Usage | CPU使用率，Total Usage = User Space+Kernel Space。 |
@@ -385,9 +446,8 @@ client actions for app:
 
 （1）load 阶段事件（应用进程未创建举例）
 
-| | | |
-| -------- | -------- | -------- |
 | server | client | 描述 |
+| -------- | -------- | -------- |
 | AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | 开始。 |
 | AppMgrServiceInner::LoadAbility | -| 创建进程前。 |
 | AppMgrService::AttachApplication | -| 进程创建成功，进程attach。 |
@@ -408,9 +468,8 @@ client actions for app:
 
 （2）foreground 阶段事件，冷启动
 
-| | | |
-| -------- | -------- | -------- |
 | server | client | 描述 |
+| -------- | -------- | -------- |
 | AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. |  | 开始。 |
 | ServiceInner::UpdateAbilityState | -| 先调度应用前台。 |
 | AppRunningRecord::ScheduleForegroundRunning | -| 调度应用前台。 |
