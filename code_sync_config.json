@@ -14393,6 +14393,26 @@
 						"start_line":41
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/pages/Common.ets",
+				"functions":[
+					{
+						"end_line":213,
+						"name":"manage_dynamic_webview_components_core_functions",
+						"start_line":144
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/entry3ability/Entry3Ability.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs",
+						"start_line":48
+					}
+				]
 			}
 		]
 	},
