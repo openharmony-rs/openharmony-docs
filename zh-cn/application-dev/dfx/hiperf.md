@@ -197,27 +197,6 @@ See 'hiperf help [command]' for more information on a specific command.
     ```
 
 
-## debug应用
-
-使用 `hiperf record/stat -p [pid]` 命令采集的进程应为使用调试证书签名的应用。
-
-确认命令指定的应用是否为可调试应用，可执行hdc shell "bm dump -n bundlename | grep appProvisionType"查询，预期返回信息为"appProvisionType": "debug"。
-
-以包名com.example.myapplication为例，可执行如下命令查询：
-
-```shell
-hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
-```
-
-如包名对应的应用是可调试应用，预期返回信息如下：
-
-```shell
-"appProvisionType": "debug",
-```
-
-构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
-
-
 ## list命令
 
 展示当前系统支持的性能事件类型，事件类型可用于record和stat命令-e选项的参数。
@@ -262,6 +241,10 @@ Supported events for hardware:
 ## record命令
 
 采集指定进程或指定应用的性能数据，包括CPU周期、指令数、函数调用等信息，并且将采样数据保存到指定的文件中（默认路径以设备上运行 hiperf record -h/--help 时显示的 -o 参数说明为准）。
+
+> **注意：**
+>
+> 命令采集的进程应为[使用debug证书签名的应用](hiperf.md#hiperf采集没有debug证书签名的应用失败)。
 
 **record命令参数说明**
 
@@ -330,6 +313,10 @@ $ hiperf record -p 267 -d 10 -s dwarf
 ## stat命令
 
 监听用户指定的目标程序，周期性打印性能计数器的值。
+
+> **注意：**
+>
+> 命令采集的进程应为[使用debug证书签名的应用](hiperf.md#hiperf采集没有debug证书签名的应用失败)。
 
 **stat命令参数说明**
 
@@ -435,3 +422,38 @@ Usage: hiperf report [option] \<filename\>
 ```
 $ hiperf report -i /data/local/tmp/perf.data --limit-percent 1
 ```
+
+
+## 常见问题
+
+### hiperf采集没有debug证书签名的应用失败
+
+**现象描述**
+
+仅支持采集带有debug证书签名的应用，提示：only support debug application.
+
+**可能原因&amp;解决方法**
+
+**造成原因**：
+
+应用没有debug证书签名
+
+**可采取的解决方法**：
+
+使用`hiperf record/stat -p [pid]`命令时，被采集的进程必须是使用debug证书签名的应用。
+
+确认命令指定的应用是否为可调试应用，可执行hdc shell "bm dump -n bundlename | grep appProvisionType"查询，预期返回信息为"appProvisionType": "debug"。
+
+以包名com.example.myapplication为例，可执行如下命令查询：
+
+```shell
+hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
+```
+
+如包名对应的应用是可调试应用，预期返回信息如下：
+
+```shell
+"appProvisionType": "debug",
+```
+
+构建可调试应用需要使用debug证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
