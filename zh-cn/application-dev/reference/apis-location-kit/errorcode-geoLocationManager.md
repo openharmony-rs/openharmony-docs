@@ -82,7 +82,7 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 **可能原因**
 
-定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)较高。
+定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)值设定过小。
 
 **处理步骤**
 
