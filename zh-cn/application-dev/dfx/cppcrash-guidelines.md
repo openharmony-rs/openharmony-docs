@@ -199,7 +199,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Timestamp | 故障发生时间戳 | 8 | 是 | - |
 | Pid | 进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
-| HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 进程开启HiTraceChain功能，详见[HiTraceId](../reference/apis-performance-analysis-kit/capi-trace-h.md)。 |
+| HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 进程开启HiTraceChain功能，详见[HiTraceId](../reference/apis-performance-analysis-kit/capi-hitrace-hitraceid.md)。 |
 | Process name | 故障进程名 | 8 | 是 | - |
 | Process life time | 故障进程存活时间 | 8 | 是 | - |
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
