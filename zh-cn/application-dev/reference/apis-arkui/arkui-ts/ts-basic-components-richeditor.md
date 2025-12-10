@@ -52,11 +52,11 @@ RichEditor(options: RichEditorStyledStringOptions)
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
->  **说明：**
+> **说明：**
 >
->  - align属性只支持上方、中间和下方位置的对齐方式。
->  - 不支持[borderImage](ts-universal-attributes-border-image.md#borderimage)属性。
->  - 组件水平方向默认padding为16vp，竖直方向默认padding为8vp。
+> - align属性只支持上方、中间和下方位置的对齐方式。
+> - 不支持[borderImage](ts-universal-attributes-border-image.md#borderimage)属性。
+> - 组件水平方向默认padding为16vp，竖直方向默认padding为8vp。
 
 ### customKeyboard
 
@@ -239,7 +239,7 @@ enablePreviewText(enable: boolean)
 
 >  **说明：**
 >
->该接口在CAPI场景使用时默认关闭。可以在工程的module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段控>制是否启用预上屏，配置如下：
+>该接口在CAPI场景使用时默认关闭。可以在工程的module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段控制是否启用预上屏，配置如下：
 > ```json
 > "metadata": [
 >   {
