@@ -109,31 +109,11 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
 > 需要确认图像的宽（width）是否与行距（rowStride）一致，如果不一致可参考以下方式一和方式二进行预处理。
 
 方式一：去除imgComponent.byteBuffer中stride数据，拷贝得到新的buffer，调用不支持stride的接口处理buffer。
+
 <!-- @[adjust_bufferSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
-   
-   ``` TypeScript
-   // stride与width不一致。
-   const dstBufferSize = width * height * 1.5
-   const dstArr = new Uint8Array(dstBufferSize)
-   for (let j = 0; j < height * 1.5; j++) {
-     const srcBuf = new Uint8Array(imgComponent.byteBuffer, j * stride, width)
-     dstArr.set(srcBuf, j * width)
-   }
-   let pixelMap = await image.createPixelMap(dstArr.buffer, {
-     size: { height: height, width: width },
-     srcPixelFormat: 8,
-   })
-   ```
-   let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
-     size:{height: height, width: stride}, srcPixelFormat: 8});
-   // 裁剪多余的像素。
-   pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});
-   ```
 
+方式二：根据stride*height创建pixelMap，然后调用pixelMap的cropSync方法裁剪掉多余的像素。
 
-   ``` TypeScript
-   // 创建pixelMap，width宽传行距stride的值。
-   let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
-     size:{height: height, width: stride}, srcPixelFormat: 8});
-   // 裁剪多余的像素。
-   pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});
+<!-- @[adjust_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
+
+方式三：将原始imgComponent.byteBuffer和stride信息一起传给支持stride的接口处理。
