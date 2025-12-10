@@ -32,7 +32,7 @@
    <!-- @[ArkUI_Star_binding1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->
    
    ``` TypeScript
-   Star({ value: this.value, $value: (val: number) => { this.value = val; }})
+   Child({ value: this.value, $value: (val: number) => { this.value = val; } })
    ```
    上述语法可以简化为!!双向绑定语法糖。
    
