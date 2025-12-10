@@ -6,7 +6,7 @@
 <!--Tester: @lucuicui-->
 <!--Adviser: @HelloShuo-->
 
-说明：支持天气卡片使用玻璃材质，提升首眼高端精致
+支持天气卡片使用玻璃材质，提升首眼高端精致
 
 约束：
   - API version 22及以上版本。
@@ -18,7 +18,8 @@
 
 2、配置form_config.json
 
-- 配置form_config.json文件中的`transparencyEnabled`字段为`true`, `metadata`添加`visualEffectType`配置。
+- 在form_config.json文件中的`metadata`添加`visualEffectType`配置，`blurEffect`、`lightAnimationEffect`分别表示模糊高亮和玻璃特效。
+- 为启用透明卡片，需在form_config.json文件中添加`"transparencyEnabled": true`配置。
 
 ``` json
 {
@@ -255,7 +256,7 @@ struct WidgetCard {
         }
       default:
         console.info(this.TAG, `${propName} changed with form=${this.formId}.`);
-        break
+        break;
     }
   }
 }
