@@ -2363,7 +2363,7 @@ on(type: 'commonCommand', callback: (command: string, args: Record\<string, Obje
 | 参数名   | 类型  |   必填 | 说明     |
 | -------- | --------- | ---- | --------- |
 | type     | string    | 是   | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
-| callback | (command: string, args: Record\<string, Object>) => void         | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}) => void。|
+| callback | (command: string, args: Record\<string, Object>) => void         | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(command:string, args:{[key: string]: Object}) => void。|
 
 **错误码：**
 
