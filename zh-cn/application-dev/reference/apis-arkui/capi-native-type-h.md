@@ -590,7 +590,7 @@
 
 ### ArkUI_Alignment
 
-```
+```c
 enum ArkUI_Alignment
 ```
 
@@ -615,7 +615,7 @@ enum ArkUI_Alignment
 
 ### ArkUI_ImageRepeat
 
-```
+```c
 enum ArkUI_ImageRepeat
 ```
 
@@ -635,7 +635,7 @@ enum ArkUI_ImageRepeat
 
 ### ArkUI_FontStyle
 
-```
+```c
 enum ArkUI_FontStyle
 ```
 
@@ -653,7 +653,7 @@ enum ArkUI_FontStyle
 
 ### ArkUI_FontWeight
 
-```
+```c
 enum ArkUI_FontWeight
 ```
 
@@ -684,7 +684,7 @@ enum ArkUI_FontWeight
 
 ### ArkUI_TextAlignment
 
-```
+```c
 enum ArkUI_TextAlignment
 ```
 
@@ -704,7 +704,7 @@ enum ArkUI_TextAlignment
 
 ### ArkUI_TextVerticalAlignment
 
-```
+```c
 enum ArkUI_TextVerticalAlignment
 ```
 
@@ -724,7 +724,7 @@ enum ArkUI_TextVerticalAlignment
 
 ### ArkUI_TextContentAlign
 
-```
+```c
 enum ArkUI_TextContentAlign
 ```
 
@@ -743,7 +743,7 @@ enum ArkUI_TextContentAlign
 
 ### ArkUI_EnterKeyType
 
-```
+```c
 enum ArkUI_EnterKeyType
 ```
 
@@ -766,7 +766,7 @@ enum ArkUI_EnterKeyType
 
 ### ArkUI_TextInputType
 
-```
+```c
 enum ArkUI_TextInputType
 ```
 
@@ -793,7 +793,7 @@ enum ArkUI_TextInputType
 
 ### ArkUI_TextAreaType
 
-```
+```c
 enum ArkUI_TextAreaType
 ```
 
@@ -814,7 +814,7 @@ enum ArkUI_TextAreaType
 
 ### ArkUI_CancelButtonStyle
 
-```
+```c
 enum ArkUI_CancelButtonStyle
 ```
 
@@ -833,7 +833,7 @@ enum ArkUI_CancelButtonStyle
 
 ### ArkUI_XComponentType
 
-```
+```c
 enum ArkUI_XComponentType
 ```
 
@@ -851,7 +851,7 @@ enum ArkUI_XComponentType
 
 ### ArkUI_ProgressType
 
-```
+```c
 enum ArkUI_ProgressType
 ```
 
@@ -872,7 +872,7 @@ enum ArkUI_ProgressType
 
 ### ArkUI_TextDecorationType
 
-```
+```c
 enum ArkUI_TextDecorationType
 ```
 
@@ -892,7 +892,7 @@ enum ArkUI_TextDecorationType
 
 ### ArkUI_TextDecorationStyle
 
-```
+```c
 enum ArkUI_TextDecorationStyle
 ```
 
@@ -913,7 +913,7 @@ enum ArkUI_TextDecorationStyle
 
 ### ArkUI_TextCase
 
-```
+```c
 enum ArkUI_TextCase
 ```
 
@@ -932,7 +932,7 @@ enum ArkUI_TextCase
 
 ### ArkUI_CopyOptions
 
-```
+```c
 enum ArkUI_CopyOptions
 ```
 
@@ -952,7 +952,7 @@ enum ArkUI_CopyOptions
 
 ### ArkUI_ShadowType
 
-```
+```c
 enum ArkUI_ShadowType
 ```
 
@@ -970,7 +970,7 @@ enum ArkUI_ShadowType
 
 ### ArkUI_DatePickerMode
 
-```
+```c
 enum ArkUI_DatePickerMode
 ```
 
@@ -989,7 +989,7 @@ enum ArkUI_DatePickerMode
 
 ### ArkUI_TextPickerRangeType
 
-```
+```c
 enum ArkUI_TextPickerRangeType
 ```
 
@@ -1009,7 +1009,7 @@ enum ArkUI_TextPickerRangeType
 
 ### ArkUI_AccessibilityCheckedState
 
-```
+```c
 enum ArkUI_AccessibilityCheckedState
 ```
 
@@ -1027,7 +1027,7 @@ enum ArkUI_AccessibilityCheckedState
 
 ### ArkUI_AccessibilityActionType
 
-```
+```c
 enum ArkUI_AccessibilityActionType
 ```
 
@@ -1048,7 +1048,7 @@ enum ArkUI_AccessibilityActionType
 
 ### ArkUI_EdgeEffect
 
-```
+```c
 enum ArkUI_EdgeEffect
 ```
 
@@ -1067,7 +1067,7 @@ enum ArkUI_EdgeEffect
 
 ### ArkUI_BarState
 
-```
+```c
 enum ArkUI_BarState
 ```
 
@@ -1086,7 +1086,7 @@ enum ArkUI_BarState
 
 ### ArkUI_EffectEdge
 
-```
+```c
 enum ArkUI_EffectEdge
 ```
 
@@ -1104,7 +1104,7 @@ enum ArkUI_EffectEdge
 
 ### ArkUI_ScrollDirection
 
-```
+```c
 enum ArkUI_ScrollDirection
 ```
 
@@ -1124,7 +1124,7 @@ enum ArkUI_ScrollDirection
 
 ### ArkUI_ScrollSnapAlign
 
-```
+```c
 enum ArkUI_ScrollSnapAlign
 ```
 
@@ -1144,7 +1144,7 @@ enum ArkUI_ScrollSnapAlign
 
 ### ArkUI_ScrollBarDisplayMode
 
-```
+```c
 enum ArkUI_ScrollBarDisplayMode
 ```
 
@@ -1163,7 +1163,7 @@ enum ArkUI_ScrollBarDisplayMode
 
 ### ArkUI_Axis
 
-```
+```c
 enum ArkUI_Axis
 ```
 
@@ -1181,7 +1181,7 @@ enum ArkUI_Axis
 
 ### ArkUI_StickyStyle
 
-```
+```c
 enum ArkUI_StickyStyle
 ```
 
@@ -1201,7 +1201,7 @@ enum ArkUI_StickyStyle
 
 ### ArkUI_ContentClipMode
 
-```
+```c
 enum ArkUI_ContentClipMode
 ```
 
@@ -1220,7 +1220,7 @@ enum ArkUI_ContentClipMode
 
 ### ArkUI_WaterFlowLayoutMode
 
-```
+```c
 enum ArkUI_WaterFlowLayoutMode
 ```
 
@@ -1238,7 +1238,7 @@ enum ArkUI_WaterFlowLayoutMode
 
 ### ArkUI_BorderStyle
 
-```
+```c
 enum ArkUI_BorderStyle
 ```
 
@@ -1257,7 +1257,7 @@ enum ArkUI_BorderStyle
 
 ### ArkUI_HitTestMode
 
-```
+```c
 enum ArkUI_HitTestMode
 ```
 
@@ -1279,7 +1279,7 @@ enum ArkUI_HitTestMode
 
 ### ArkUI_ShadowStyle
 
-```
+```c
 enum ArkUI_ShadowStyle
 ```
 
@@ -1301,7 +1301,7 @@ enum ArkUI_ShadowStyle
 
 ### ArkUI_AnimationCurve
 
-```
+```c
 enum ArkUI_AnimationCurve
 ```
 
@@ -1330,7 +1330,7 @@ enum ArkUI_AnimationCurve
 
 ### ArkUI_SwiperArrow
 
-```
+```c
 enum ArkUI_SwiperArrow
 ```
 
@@ -1349,7 +1349,7 @@ Swiper导航点箭头枚举值。
 
 ### ArkUI_SwiperNestedScrollMode
 
-```
+```c
 enum ArkUI_SwiperNestedScrollMode
 ```
 
@@ -1367,7 +1367,7 @@ Swiper组件和父组件的嵌套滚动模式。
 
 ### ArkUI_PageFlipMode
 
-```
+```c
 enum ArkUI_PageFlipMode
 ```
 
@@ -1385,7 +1385,7 @@ Swiper组件鼠标滚轮翻页模式。
 
 ### ArkUI_SwiperAnimationMode
 
-```
+```c
 enum ArkUI_SwiperAnimationMode
 ```
 
@@ -1404,7 +1404,7 @@ Swiper组件跳转到目标index的动画模式。
 
 ### ArkUI_AccessibilityMode
 
-```
+```c
 enum ArkUI_AccessibilityMode
 ```
 
@@ -1424,7 +1424,7 @@ enum ArkUI_AccessibilityMode
 
 ### ArkUI_TextCopyOptions
 
-```
+```c
 enum ArkUI_TextCopyOptions
 ```
 
@@ -1444,7 +1444,7 @@ enum ArkUI_TextCopyOptions
 
 ### ArkUI_TextHeightAdaptivePolicy
 
-```
+```c
 enum ArkUI_TextHeightAdaptivePolicy
 ```
 
@@ -1463,7 +1463,7 @@ enum ArkUI_TextHeightAdaptivePolicy
 
 ### ArkUI_ScrollNestedMode
 
-```
+```c
 enum ArkUI_ScrollNestedMode
 ```
 
@@ -1483,7 +1483,7 @@ enum ArkUI_ScrollNestedMode
 
 ### ArkUI_ScrollEdge
 
-```
+```c
 enum ArkUI_ScrollEdge
 ```
 
@@ -1503,7 +1503,7 @@ enum ArkUI_ScrollEdge
 
 ### ArkUI_ScrollAlignment
 
-```
+```c
 enum ArkUI_ScrollAlignment
 ```
 
@@ -1523,7 +1523,7 @@ enum ArkUI_ScrollAlignment
 
 ### ArkUI_ScrollState
 
-```
+```c
 enum ArkUI_ScrollState
 ```
 
@@ -1542,7 +1542,7 @@ enum ArkUI_ScrollState
 
 ### ArkUI_SliderBlockStyle
 
-```
+```c
 enum ArkUI_SliderBlockStyle
 ```
 
@@ -1561,7 +1561,7 @@ enum ArkUI_SliderBlockStyle
 
 ### ArkUI_SliderDirection
 
-```
+```c
 enum ArkUI_SliderDirection
 ```
 
@@ -1579,7 +1579,7 @@ enum ArkUI_SliderDirection
 
 ### ArkUI_SliderStyle
 
-```
+```c
 enum ArkUI_SliderStyle
 ```
 
@@ -1598,7 +1598,7 @@ enum ArkUI_SliderStyle
 
 ### ArkUI_CheckboxShape
 
-```
+```c
 enum ArkUI_CheckboxShape
 ```
 
@@ -1616,7 +1616,7 @@ enum ArkUI_CheckboxShape
 
 ### ArkUI_AnimationPlayMode
 
-```
+```c
 enum ArkUI_AnimationPlayMode
 ```
 
@@ -1636,7 +1636,7 @@ enum ArkUI_AnimationPlayMode
 
 ### ArkUI_ImageSize
 
-```
+```c
 enum ArkUI_ImageSize
 ```
 
@@ -1655,7 +1655,7 @@ enum ArkUI_ImageSize
 
 ### ArkUI_AdaptiveColor
 
-```
+```c
 enum ArkUI_AdaptiveColor
 ```
 
@@ -1673,7 +1673,7 @@ enum ArkUI_AdaptiveColor
 
 ### ArkUI_ColorMode
 
-```
+```c
 enum ArkUI_ColorMode
 ```
 
@@ -1692,7 +1692,7 @@ enum ArkUI_ColorMode
 
 ### ArkUI_SystemColorMode
 
-```
+```c
 enum ArkUI_SystemColorMode
 ```
 
@@ -1710,7 +1710,7 @@ enum ArkUI_SystemColorMode
 
 ### ArkUI_BlurStyle
 
-```
+```c
 enum ArkUI_BlurStyle
 ```
 
@@ -1739,7 +1739,7 @@ enum ArkUI_BlurStyle
 
 ### ArkUI_BlurStyleActivePolicy
 
-```
+```c
 enum ArkUI_BlurStyleActivePolicy
 ```
 
@@ -1758,7 +1758,7 @@ enum ArkUI_BlurStyleActivePolicy
 
 ### ArkUI_VerticalAlignment
 
-```
+```c
 enum ArkUI_VerticalAlignment
 ```
 
@@ -1777,7 +1777,7 @@ enum ArkUI_VerticalAlignment
 
 ### ArkUI_HorizontalAlignment
 
-```
+```c
 enum ArkUI_HorizontalAlignment
 ```
 
@@ -1796,7 +1796,7 @@ enum ArkUI_HorizontalAlignment
 
 ### ArkUI_TextOverflow
 
-```
+```c
 enum ArkUI_TextOverflow
 ```
 
@@ -1816,7 +1816,7 @@ enum ArkUI_TextOverflow
 
 ### ArkUI_ImageSpanAlignment
 
-```
+```c
 enum ArkUI_ImageSpanAlignment
 ```
 
@@ -1837,7 +1837,7 @@ enum ArkUI_ImageSpanAlignment
 
 ### ArkUI_ObjectFit
 
-```
+```c
 enum ArkUI_ObjectFit
 ```
 
@@ -1869,7 +1869,7 @@ enum ArkUI_ObjectFit
 
 ### ArkUI_ImageInterpolation
 
-```
+```c
 enum ArkUI_ImageInterpolation
 ```
 
@@ -1889,7 +1889,7 @@ enum ArkUI_ImageInterpolation
 
 ### ArkUI_DynamicRangeMode
 
-```
+```c
 enum ArkUI_DynamicRangeMode
 ```
 
@@ -1908,7 +1908,7 @@ enum ArkUI_DynamicRangeMode
 
 ### ArkUI_ImageRotateOrientation
 
-```
+```c
 enum ArkUI_ImageRotateOrientation
 ```
 
@@ -1933,7 +1933,7 @@ enum ArkUI_ImageRotateOrientation
 
 ### ArkUI_BlendMode
 
-```
+```c
 enum ArkUI_BlendMode
 ```
 
@@ -1979,7 +1979,7 @@ enum ArkUI_BlendMode
 
 ### ArkUI_Direction
 
-```
+```c
 enum ArkUI_Direction
 ```
 
@@ -1998,7 +1998,7 @@ enum ArkUI_Direction
 
 ### ArkUI_ItemAlignment
 
-```
+```c
 enum ArkUI_ItemAlignment
 ```
 
@@ -2020,7 +2020,7 @@ enum ArkUI_ItemAlignment
 
 ### ArkUI_ColorStrategy
 
-```
+```c
 enum ArkUI_ColorStrategy
 ```
 
@@ -2039,7 +2039,7 @@ enum ArkUI_ColorStrategy
 
 ### ArkUI_FlexAlignment
 
-```
+```c
 enum ArkUI_FlexAlignment
 ```
 
@@ -2061,7 +2061,7 @@ enum ArkUI_FlexAlignment
 
 ### ArkUI_FlexDirection
 
-```
+```c
 enum ArkUI_FlexDirection
 ```
 
@@ -2081,7 +2081,7 @@ enum ArkUI_FlexDirection
 
 ### ArkUI_FlexWrap
 
-```
+```c
 enum ArkUI_FlexWrap
 ```
 
@@ -2100,7 +2100,7 @@ enum ArkUI_FlexWrap
 
 ### ArkUI_Visibility
 
-```
+```c
 enum ArkUI_Visibility
 ```
 
@@ -2119,7 +2119,7 @@ enum ArkUI_Visibility
 
 ### ArkUI_CalendarAlignment
 
-```
+```c
 enum ArkUI_CalendarAlignment
 ```
 
@@ -2138,7 +2138,7 @@ enum ArkUI_CalendarAlignment
 
 ### ArkUI_MaskType
 
-```
+```c
 enum ArkUI_MaskType
 ```
 
@@ -2159,7 +2159,7 @@ enum ArkUI_MaskType
 
 ### ArkUI_ClipType
 
-```
+```c
 enum ArkUI_ClipType
 ```
 
@@ -2179,7 +2179,7 @@ enum ArkUI_ClipType
 
 ### ArkUI_ShapeType
 
-```
+```c
 enum ArkUI_ShapeType
 ```
 
@@ -2199,7 +2199,7 @@ enum ArkUI_ShapeType
 
 ### ArkUI_LinearGradientDirection
 
-```
+```c
 enum ArkUI_LinearGradientDirection
 ```
 
@@ -2225,7 +2225,7 @@ enum ArkUI_LinearGradientDirection
 
 ### ArkUI_WordBreak
 
-```
+```c
 enum ArkUI_WordBreak
 ```
 
@@ -2245,7 +2245,7 @@ enum ArkUI_WordBreak
 
 ### ArkUI_EllipsisMode
 
-```
+```c
 enum ArkUI_EllipsisMode
 ```
 
@@ -2264,7 +2264,7 @@ enum ArkUI_EllipsisMode
 
 ### ArkUI_ImageRenderMode
 
-```
+```c
 enum ArkUI_ImageRenderMode
 ```
 
@@ -2282,7 +2282,7 @@ enum ArkUI_ImageRenderMode
 
 ### ArkUI_TransitionEdge
 
-```
+```c
 enum ArkUI_TransitionEdge
 ```
 
@@ -2302,7 +2302,7 @@ enum ArkUI_TransitionEdge
 
 ### ArkUI_FinishCallbackType
 
-```
+```c
 enum ArkUI_FinishCallbackType
 ```
 
@@ -2320,7 +2320,7 @@ enum ArkUI_FinishCallbackType
 
 ### ArkUI_ListItemAlignment
 
-```
+```c
 enum ArkUI_ListItemAlignment
 ```
 
@@ -2339,7 +2339,7 @@ enum ArkUI_ListItemAlignment
 
 ### ArkUI_BlendApplyType
 
-```
+```c
 enum ArkUI_BlendApplyType
 ```
 
@@ -2357,7 +2357,7 @@ enum ArkUI_BlendApplyType
 
 ### ArkUI_LengthMetricUnit
 
-```
+```c
 enum ArkUI_LengthMetricUnit
 ```
 
@@ -2377,7 +2377,7 @@ enum ArkUI_LengthMetricUnit
 
 ### ArkUI_TextInputContentType
 
-```
+```c
 enum ArkUI_TextInputContentType
 ```
 
@@ -2426,7 +2426,7 @@ enum ArkUI_TextInputContentType
 
 ### ArkUI_BarrierDirection
 
-```
+```c
 enum ArkUI_BarrierDirection
 ```
 
@@ -2446,7 +2446,7 @@ enum ArkUI_BarrierDirection
 
 ### ArkUI_RelativeLayoutChainStyle
 
-```
+```c
 enum ArkUI_RelativeLayoutChainStyle
 ```
 
@@ -2465,7 +2465,7 @@ enum ArkUI_RelativeLayoutChainStyle
 
 ### ArkUI_TextInputStyle
 
-```
+```c
 enum ArkUI_TextInputStyle
 ```
 
@@ -2483,7 +2483,7 @@ enum ArkUI_TextInputStyle
 
 ### ArkUI_KeyboardAppearance
 
-```
+```c
 enum ArkUI_KeyboardAppearance
 ```
 
@@ -2503,7 +2503,7 @@ enum ArkUI_KeyboardAppearance
 
 ### ArkUI_TextDataDetectorType
 
-```
+```c
 enum ArkUI_TextDataDetectorType
 ```
 
@@ -2523,7 +2523,7 @@ enum ArkUI_TextDataDetectorType
 
 ### ArkUI_ButtonType
 
-```
+```c
 enum ArkUI_ButtonType
 ```
 
@@ -2543,7 +2543,7 @@ enum ArkUI_ButtonType
 
 ### ArkUI_RenderFit
 
-```
+```c
 enum ArkUI_RenderFit
 ```
 
@@ -2575,7 +2575,7 @@ enum ArkUI_RenderFit
 
 ### ArkUI_SwiperIndicatorType
 
-```
+```c
 enum ArkUI_SwiperIndicatorType
 ```
 
@@ -2593,7 +2593,7 @@ enum ArkUI_SwiperIndicatorType
 
 ### ArkUI_AnimationDirection
 
-```
+```c
 enum ArkUI_AnimationDirection
 ```
 
@@ -2613,7 +2613,7 @@ enum ArkUI_AnimationDirection
 
 ### ArkUI_ListItemSwipeActionState
 
-```
+```c
 enum ArkUI_ListItemSwipeActionState
 ```
 
@@ -2632,7 +2632,7 @@ enum ArkUI_ListItemSwipeActionState
 
 ### ArkUI_ListItemSwipeEdgeEffect
 
-```
+```c
 enum ArkUI_ListItemSwipeEdgeEffect
 ```
 
@@ -2650,7 +2650,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 
 ### ArkUI_ListItemSwipeActionDirection
 
-```
+```c
 enum ArkUI_ListItemSwipeActionDirection
 ```
 
@@ -2667,7 +2667,7 @@ ListItem划出菜单的展开方向。
 
 ### ArkUI_AnimationStatus
 
-```
+```c
 enum ArkUI_AnimationStatus
 ```
 
@@ -2687,7 +2687,7 @@ enum ArkUI_AnimationStatus
 
 ### ArkUI_AnimationFillMode
 
-```
+```c
 enum ArkUI_AnimationFillMode
 ```
 
@@ -2707,7 +2707,7 @@ enum ArkUI_AnimationFillMode
 
 ### ArkUI_ErrorCode
 
-```
+```c
 enum ArkUI_ErrorCode
 ```
 
@@ -2772,7 +2772,7 @@ enum ArkUI_ErrorCode
 
 ### ArkUI_ScrollSource
 
-```
+```c
 enum ArkUI_ScrollSource
 ```
 
@@ -2796,7 +2796,7 @@ enum ArkUI_ScrollSource
 
 ### ArkUI_SafeAreaType
 
-```
+```c
 enum ArkUI_SafeAreaType
 ```
 
@@ -2815,7 +2815,7 @@ enum ArkUI_SafeAreaType
 
 ### ArkUI_SafeAreaEdge
 
-```
+```c
 enum ArkUI_SafeAreaEdge
 ```
 
@@ -2835,7 +2835,7 @@ enum ArkUI_SafeAreaEdge
 
 ### ArkUI_FocusMove
 
-```
+```c
 enum ArkUI_FocusMove
 ```
 
@@ -2857,7 +2857,7 @@ enum ArkUI_FocusMove
 
 ### ArkUI_ListItemGroupArea
 
-```
+```c
 enum ArkUI_ListItemGroupArea
 ```
 
@@ -2878,7 +2878,7 @@ enum ArkUI_ListItemGroupArea
 
 ### ArkUI_KeyboardAvoidMode
 
-```
+```c
 enum ArkUI_KeyboardAvoidMode
 ```
 
@@ -2896,7 +2896,7 @@ enum ArkUI_KeyboardAvoidMode
 
 ### ArkUI_HoverModeAreaType
 
-```
+```c
 enum ArkUI_HoverModeAreaType
 ```
 
@@ -2914,7 +2914,7 @@ enum ArkUI_HoverModeAreaType
 
 ### ArkUI_ExpandMode
 
-```
+```c
 enum ArkUI_ExpandMode
 ```
 
@@ -2933,7 +2933,7 @@ enum ArkUI_ExpandMode
 
 ### ArkUI_NavDestinationState
 
-```
+```c
 enum ArkUI_NavDestinationState
 ```
 
@@ -2958,7 +2958,7 @@ enum ArkUI_NavDestinationState
 
 ### ArkUI_RouterPageState
 
-```
+```c
 enum ArkUI_RouterPageState
 ```
 
@@ -2979,7 +2979,7 @@ enum ArkUI_RouterPageState
 
 ### ArkUI_UIState
 
-```
+```c
 enum ArkUI_UIState
 ```
 
@@ -3000,7 +3000,7 @@ enum ArkUI_UIState
 
 ### ArkUI_FocusWrapMode
 
-```
+```c
 enum ArkUI_FocusWrapMode
 ```
 
@@ -3018,7 +3018,7 @@ enum ArkUI_FocusWrapMode
 
 ### ArkUI_ItemFillPolicy
 
-```
+```c
 enum ArkUI_ItemFillPolicy
 ```
 
@@ -3038,7 +3038,7 @@ enum ArkUI_ItemFillPolicy
 
 ### ArkUI_ScrollSnapAnimationSpeed
 
-```
+```c
 enum ArkUI_ScrollSnapAnimationSpeed
 ```
 
@@ -3056,7 +3056,7 @@ enum ArkUI_ScrollSnapAnimationSpeed
 
 ### ArkUI_EdgeDirection
 
-```
+```c
 enum ArkUI_EdgeDirection
 ```
 
@@ -3077,7 +3077,7 @@ enum ArkUI_EdgeDirection
 
 ### ArkUI_CornerDirection
 
-```
+```c
 enum ArkUI_CornerDirection
 ```
 
@@ -3098,7 +3098,7 @@ enum ArkUI_CornerDirection
 
 ### ArkUI_LayoutPolicy
 
-```
+```c
 enum ArkUI_LayoutPolicy
 ```
 
@@ -3116,7 +3116,7 @@ enum ArkUI_LayoutPolicy
 
 ### ArkUI_PixelRoundCalcPolicy
 
-```
+```c
 enum ArkUI_PixelRoundCalcPolicy
 ```
 
@@ -3134,7 +3134,7 @@ enum ArkUI_PixelRoundCalcPolicy
 
 ### ArkUI_GridItemAlignment
 
-```
+```c
 enum ArkUI_GridItemAlignment
 ```
 **描述：**
@@ -3151,7 +3151,7 @@ GridItem对齐方式枚举。
 
 ### ArkUI_GridItemStyle
 
-```
+```c
 enum ArkUI_GridItemStyle
 ```
 
@@ -3169,7 +3169,7 @@ GridItem样式枚举。
 
 ### ArkUI_HoverEffect
 
-```
+```c
 enum ArkUI_HoverEffect
 ```
 
@@ -3189,7 +3189,7 @@ enum ArkUI_HoverEffect
 
 ### ArkUI_FocusPriority
 
-```
+```c
 enum ArkUI_FocusPriority
 ```
 
@@ -3208,7 +3208,7 @@ enum ArkUI_FocusPriority
 
 ### ArkUI_MenuPolicy
 
-```
+```c
 enum ArkUI_MenuPolicy
 ```
 
@@ -3226,7 +3226,7 @@ enum ArkUI_MenuPolicy
 
 ### ArkUI_ResponseRegionSupportedTool
 
-```
+```c
 enum ArkUI_ResponseRegionSupportedTool
 ```
 
@@ -3246,7 +3246,7 @@ enum ArkUI_ResponseRegionSupportedTool
 
 ### ArkUI_TextMenuItemId
 
-```c
+```cc
 enum ArkUI_TextMenuItemId
 ```
 
@@ -3435,7 +3435,7 @@ enum ArkUI_RenderStrategy
 
 ### OH_ArkUI_LayoutConstraint_Create()
 
-```
+```c
 ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()
 ```
 
@@ -3454,7 +3454,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()
 
 ### OH_ArkUI_LayoutConstraint_Copy()
 
-```
+```c
 ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)
 ```
 
@@ -3480,7 +3480,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstra
 
 ### OH_ArkUI_LayoutConstraint_Dispose()
 
-```
+```c
 void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)
 ```
 
@@ -3506,7 +3506,7 @@ void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)
 
 ### OH_ArkUI_LayoutConstraint_GetMaxWidth()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)
 ```
 
@@ -3532,7 +3532,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Cons
 
 ### OH_ArkUI_LayoutConstraint_GetMinWidth()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)
 ```
 
@@ -3558,7 +3558,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Cons
 
 ### OH_ArkUI_LayoutConstraint_GetMaxHeight()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)
 ```
 
@@ -3584,7 +3584,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Con
 
 ### OH_ArkUI_LayoutConstraint_GetMinHeight()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)
 ```
 
@@ -3610,7 +3610,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Con
 
 ### OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)
 ```
 
@@ -3636,7 +3636,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutCon
 
 ### OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)
 ```
 
@@ -3662,7 +3662,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutCo
 
 ### OH_ArkUI_LayoutConstraint_SetMaxWidth()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3683,7 +3683,7 @@ void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, i
 
 ### OH_ArkUI_LayoutConstraint_SetMinWidth()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3704,7 +3704,7 @@ void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, i
 
 ### OH_ArkUI_LayoutConstraint_SetMaxHeight()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3725,7 +3725,7 @@ void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, 
 
 ### OH_ArkUI_LayoutConstraint_SetMinHeight()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3746,7 +3746,7 @@ void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, 
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3767,7 +3767,7 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* 
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3788,7 +3788,7 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint*
 
 ### OH_ArkUI_DrawContext_GetCanvas()
 
-```
+```c
 void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)
 ```
 
@@ -3814,7 +3814,7 @@ void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)
 
 ### OH_ArkUI_DrawContext_GetSize()
 
-```
+```c
 ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)
 ```
 
@@ -3840,7 +3840,7 @@ ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)
 
 ### OH_ArkUI_WaterFlowSectionOption_Create()
 
-```
+```c
 ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 ```
 
@@ -3859,7 +3859,7 @@ ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 
 ### OH_ArkUI_WaterFlowSectionOption_Dispose()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)
 ```
 
@@ -3879,7 +3879,7 @@ void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* optio
 
 ### OH_ArkUI_WaterFlowSectionOption_SetSize()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option,int32_t size)
 ```
 
@@ -3900,7 +3900,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* optio
 
 ### OH_ArkUI_WaterFlowSectionOption_GetSize()
 
-```
+```c
 int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)
 ```
 
@@ -3926,7 +3926,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* op
 
 ### OH_ArkUI_WaterFlowSectionOption_SetItemCount()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option,int32_t index, int32_t itemCount)
 ```
 
@@ -3948,7 +3948,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* 
 
 ### OH_ArkUI_WaterFlowSectionOption_GetItemCount()
 
-```
+```c
 int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -3975,7 +3975,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOptio
 
 ### OH_ArkUI_WaterFlowSectionOption_SetCrossCount()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option,int32_t index, int32_t crossCount)
 ```
 
@@ -3997,7 +3997,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption*
 
 ### OH_ArkUI_WaterFlowSectionOption_GetCrossCount()
 
-```
+```c
 int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -4024,7 +4024,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOpti
 
 ### OH_ArkUI_WaterFlowSectionOption_SetColumnGap()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option,int32_t index, float columnGap)
 ```
 
@@ -4046,7 +4046,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* 
 
 ### OH_ArkUI_WaterFlowSectionOption_GetColumnGap()
 
-```
+```c
 float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -4073,7 +4073,7 @@ float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption*
 
 ### OH_ArkUI_WaterFlowSectionOption_SetRowGap()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option,int32_t index, float rowGap)
 ```
 
@@ -4095,7 +4095,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* opt
 
 ### OH_ArkUI_WaterFlowSectionOption_GetRowGap()
 
-```
+```c
 float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -4122,7 +4122,7 @@ float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* op
 
 ### OH_ArkUI_WaterFlowSectionOption_SetMargin()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)
 ```
 
@@ -4147,7 +4147,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* opt
 
 ### OH_ArkUI_WaterFlowSectionOption_GetMargin()
 
-```
+```c
 ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -4174,7 +4174,7 @@ ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOpt
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkUI_WaterFlowSectionOption* option,int32_t index, float(*callback)(int32_t itemIndex))
 ```
 
@@ -4196,7 +4196,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData(ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData,float (*callback)(int32_t itemIndex, void* userData))
 ```
 
@@ -4219,7 +4219,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 
 ### OH_ArkUI_GuidelineOption_Create()
 
-```
+```c
 ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 ```
 
@@ -4245,7 +4245,7 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 
 ### OH_ArkUI_GuidelineOption_Dispose()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)
 ```
 
@@ -4265,7 +4265,7 @@ void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)
 
 ### OH_ArkUI_GuidelineOption_SetId()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char* value, int32_t index)
 ```
 
@@ -4287,7 +4287,7 @@ void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char
 
 ### OH_ArkUI_GuidelineOption_SetDirection()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, ArkUI_Axis value, int32_t index)
 ```
 
@@ -4309,7 +4309,7 @@ void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, Ark
 
 ### OH_ArkUI_GuidelineOption_SetPositionStart()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline, float value, int32_t index)
 ```
 
@@ -4331,7 +4331,7 @@ void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline,
 
 ### OH_ArkUI_GuidelineOption_SetPositionEnd()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, float value, int32_t index)
 ```
 
@@ -4353,7 +4353,7 @@ void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, f
 
 ### OH_ArkUI_GuidelineOption_GetId()
 
-```
+```c
 const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
@@ -4380,7 +4380,7 @@ const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int
 
 ### OH_ArkUI_GuidelineOption_GetDirection()
 
-```
+```c
 ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
@@ -4407,7 +4407,7 @@ ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guidelin
 
 ### OH_ArkUI_GuidelineOption_GetPositionStart()
 
-```
+```c
 float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
@@ -4434,7 +4434,7 @@ float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline
 
 ### OH_ArkUI_GuidelineOption_GetPositionEnd()
 
-```
+```c
 float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
@@ -4461,7 +4461,7 @@ float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, 
 
 ### OH_ArkUI_BarrierOption_Create()
 
-```
+```c
 ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 ```
 
@@ -4487,7 +4487,7 @@ ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 
 ### OH_ArkUI_BarrierOption_Dispose()
 
-```
+```c
 void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)
 ```
 
@@ -4507,7 +4507,7 @@ void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)
 
 ### OH_ArkUI_BarrierOption_SetId()
 
-```
+```c
 void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)
 ```
 
@@ -4529,7 +4529,7 @@ void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char*
 
 ### OH_ArkUI_BarrierOption_SetDirection()
 
-```
+```c
 void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkUI_BarrierDirection value, int32_t index)
 ```
 
@@ -4551,7 +4551,7 @@ void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkU
 
 ### OH_ArkUI_BarrierOption_SetReferencedId()
 
-```
+```c
 void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)
 ```
 
@@ -4573,7 +4573,7 @@ void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, c
 
 ### OH_ArkUI_BarrierOption_GetId()
 
-```
+```c
 const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int32_t index)
 ```
 
@@ -4600,7 +4600,7 @@ const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int3
 
 ### OH_ArkUI_BarrierOption_GetDirection()
 
-```
+```c
 ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* barrierStyle, int32_t index)
 ```
 
@@ -4627,7 +4627,7 @@ ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* 
 
 ### OH_ArkUI_BarrierOption_GetReferencedId()
 
-```
+```c
 const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierStyle, int32_t index , int32_t referencedIndex)
 ```
 
@@ -4655,7 +4655,7 @@ const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierS
 
 ### OH_ArkUI_BarrierOption_GetReferencedIdSize()
 
-```
+```c
 int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierStyle, int32_t index)
 ```
 
@@ -4682,7 +4682,7 @@ int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierS
 
 ### OH_ArkUI_AlignmentRuleOption_Create()
 
-```
+```c
 ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()
 ```
 
@@ -4701,7 +4701,7 @@ ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()
 
 ### OH_ArkUI_AlignmentRuleOption_Dispose()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -4721,7 +4721,7 @@ void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)
 
 ### OH_ArkUI_AlignmentRuleOption_SetStart()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)
 ```
 
@@ -4743,7 +4743,7 @@ void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, co
 
 ### OH_ArkUI_AlignmentRuleOption_SetEnd()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)
 ```
 
@@ -4765,7 +4765,7 @@ void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, cons
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)
 ```
 
@@ -4787,7 +4787,7 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption*
 
 ### OH_ArkUI_AlignmentRuleOption_SetTop()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)
 ```
 
@@ -4809,7 +4809,7 @@ void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, cons
 
 ### OH_ArkUI_AlignmentRuleOption_SetBottom()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)
 ```
 
@@ -4831,7 +4831,7 @@ void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, c
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterVertical()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)
 ```
 
@@ -4853,7 +4853,7 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* o
 
 ### OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* option, float horizontal)
 ```
 
@@ -4874,7 +4874,7 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* o
 
 ### OH_ArkUI_AlignmentRuleOption_SetBiasVertical()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* option, float vertical)
 ```
 
@@ -4895,7 +4895,7 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* opt
 
 ### OH_ArkUI_AlignmentRuleOption_GetStartId()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -4921,7 +4921,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* o
 
 ### OH_ArkUI_AlignmentRuleOption_GetStartAlignment()
 
-```
+```c
 ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -4947,7 +4947,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_A
 
 ### OH_ArkUI_AlignmentRuleOption_GetEndId()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -4973,7 +4973,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* opt
 
 ### OH_ArkUI_AlignmentRuleOption_GetEndAlignment()
 
-```
+```c
 ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -4999,7 +4999,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_Ali
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5025,7 +5025,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRu
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal()
 
-```
+```c
 ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5051,7 +5051,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizon
 
 ### OH_ArkUI_AlignmentRuleOption_GetTopId()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5077,7 +5077,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* opt
 
 ### OH_ArkUI_AlignmentRuleOption_GetTopAlignment()
 
-```
+```c
 ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5103,7 +5103,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_Align
 
 ### OH_ArkUI_AlignmentRuleOption_GetBottomId()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5129,7 +5129,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* 
 
 ### OH_ArkUI_AlignmentRuleOption_GetBottomAlignment()
 
-```
+```c
 ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5155,7 +5155,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_Al
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5181,7 +5181,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRule
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical()
 
-```
+```c
 ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5207,7 +5207,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(
 
 ### OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal()
 
-```
+```c
 float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5233,7 +5233,7 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* 
 
 ### OH_ArkUI_AlignmentRuleOption_GetBiasVertical()
 
-```
+```c
 float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -5259,7 +5259,7 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* op
 
 ### OH_ArkUI_SwiperIndicator_Create()
 
-```
+```c
 ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType type)
 ```
 
@@ -5285,7 +5285,7 @@ ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType
 
 ### OH_ArkUI_SwiperIndicator_Dispose()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5305,7 +5305,7 @@ void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)
 
 ### OH_ArkUI_SwiperIndicator_SetStartPosition()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5326,7 +5326,7 @@ void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator,
 
 ### OH_ArkUI_SwiperIndicator_GetStartPosition()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5352,7 +5352,7 @@ float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator
 
 ### OH_ArkUI_SwiperIndicator_SetTopPosition()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5373,7 +5373,7 @@ void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, f
 
 ### OH_ArkUI_SwiperIndicator_GetTopPosition()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5399,7 +5399,7 @@ float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)
 
 ### OH_ArkUI_SwiperIndicator_SetEndPosition()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5420,7 +5420,7 @@ void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, f
 
 ### OH_ArkUI_SwiperIndicator_GetEndPosition()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5446,7 +5446,7 @@ float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)
 
 ### OH_ArkUI_SwiperIndicator_SetBottomPosition()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5467,7 +5467,7 @@ void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator
 
 ### OH_ArkUI_SwiperIndicator_GetBottomPosition()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5493,7 +5493,7 @@ float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicato
 
 ### OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator, int32_t ignoreSize)
 ```
 
@@ -5514,7 +5514,7 @@ void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indic
 
 ### OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom()
 
-```
+```c
 int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5540,7 +5540,7 @@ int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* in
 
 ### OH_ArkUI_SwiperIndicator_SetItemWidth()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5561,7 +5561,7 @@ void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, flo
 
 ### OH_ArkUI_SwiperIndicator_GetItemWidth()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5587,7 +5587,7 @@ float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)
 
 ### OH_ArkUI_SwiperIndicator_SetItemHeight()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5608,7 +5608,7 @@ void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, fl
 
 ### OH_ArkUI_SwiperIndicator_GetItemHeight()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetItemHeight(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5634,7 +5634,7 @@ float OH_ArkUI_SwiperIndicator_GetItemHeight(ArkUI_SwiperIndicator* indicator)
 
 ### OH_ArkUI_SwiperIndicator_SetSelectedItemWidth()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5655,7 +5655,7 @@ void OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(ArkUI_SwiperIndicator* indica
 
 ### OH_ArkUI_SwiperIndicator_GetSelectedItemWidth()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5681,7 +5681,7 @@ float OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(ArkUI_SwiperIndicator* indic
 
 ### OH_ArkUI_SwiperIndicator_SetSelectedItemHeight()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5702,7 +5702,7 @@ void OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(ArkUI_SwiperIndicator* indic
 
 ### OH_ArkUI_SwiperIndicator_GetSelectedItemHeight()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5728,7 +5728,7 @@ float OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(ArkUI_SwiperIndicator* indi
 
 ### OH_ArkUI_SwiperIndicator_SetMask()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetMask(ArkUI_SwiperIndicator* indicator, int32_t mask)
 ```
 
@@ -5749,7 +5749,7 @@ void OH_ArkUI_SwiperIndicator_SetMask(ArkUI_SwiperIndicator* indicator, int32_t 
 
 ### OH_ArkUI_SwiperIndicator_GetMask()
 
-```
+```c
 int32_t OH_ArkUI_SwiperIndicator_GetMask(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5775,7 +5775,7 @@ int32_t OH_ArkUI_SwiperIndicator_GetMask(ArkUI_SwiperIndicator* indicator)
 
 ### OH_ArkUI_SwiperIndicator_SetColor()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetColor(ArkUI_SwiperIndicator* indicator, uint32_t color)
 ```
 
@@ -5796,7 +5796,7 @@ void OH_ArkUI_SwiperIndicator_SetColor(ArkUI_SwiperIndicator* indicator, uint32_
 
 ### OH_ArkUI_SwiperIndicator_GetColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5822,7 +5822,7 @@ uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)
 
 ### OH_ArkUI_SwiperIndicator_SetSelectedColor()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator, uint32_t selectedColor)
 ```
 
@@ -5843,7 +5843,7 @@ void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator,
 
 ### OH_ArkUI_SwiperIndicator_GetSelectedColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5869,7 +5869,7 @@ uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indica
 
 ### OH_ArkUI_SwiperIndicator_SetMaxDisplayCount()
 
-```
+```c
 int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indicator, int32_t maxDisplayCount)
 ```
 
@@ -5896,7 +5896,7 @@ int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 
 ### OH_ArkUI_SwiperIndicator_GetMaxDisplayCount()
 
-```
+```c
 int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5922,7 +5922,7 @@ int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 
 ### OH_ArkUI_SwiperDigitIndicator_Create()
 
-```
+```c
 ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()
 ```
 
@@ -5941,7 +5941,7 @@ ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()
 
 ### OH_ArkUI_SwiperDigitIndicator_Destroy()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -5961,7 +5961,7 @@ void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator* indicator
 
 ### OH_ArkUI_SwiperDigitIndicator_SetStartPosition()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
@@ -5982,7 +5982,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* 
 
 ### OH_ArkUI_SwiperDigitIndicator_GetStartPosition()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6008,7 +6008,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator*
 
 ### OH_ArkUI_SwiperDigitIndicator_SetTopPosition()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
@@ -6029,7 +6029,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* in
 
 ### OH_ArkUI_SwiperDigitIndicator_GetTopPosition()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6055,7 +6055,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* i
 
 ### OH_ArkUI_SwiperDigitIndicator_SetEndPosition()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
@@ -6076,7 +6076,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* in
 
 ### OH_ArkUI_SwiperDigitIndicator_GetEndPosition()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6102,7 +6102,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* i
 
 ### OH_ArkUI_SwiperDigitIndicator_SetBottomPosition()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
@@ -6123,7 +6123,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator*
 
 ### OH_ArkUI_SwiperDigitIndicator_GetBottomPosition()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6149,7 +6149,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator
 
 ### OH_ArkUI_SwiperDigitIndicator_SetFontColor()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t color)
 ```
 
@@ -6170,7 +6170,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indi
 
 ### OH_ArkUI_SwiperDigitIndicator_GetFontColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6196,7 +6196,7 @@ uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* 
 
 ### OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t selectedColor)
 ```
 
@@ -6217,7 +6217,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor(ArkUI_SwiperDigitIndicat
 
 ### OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6243,7 +6243,7 @@ uint32_t OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor(ArkUI_SwiperDigitInd
 
 ### OH_ArkUI_SwiperDigitIndicator_SetFontSize()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)
 ```
 
@@ -6264,7 +6264,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontSize(ArkUI_SwiperDigitIndicator* indic
 
 ### OH_ArkUI_SwiperDigitIndicator_GetFontSize()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6290,7 +6290,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indi
 
 ### OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)
 ```
 
@@ -6311,7 +6311,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicato
 
 ### OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6337,7 +6337,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicat
 
 ### OH_ArkUI_SwiperDigitIndicator_SetFontWeight()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight fontWeight)
 ```
 
@@ -6358,7 +6358,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontWeight(ArkUI_SwiperDigitIndicator *ind
 
 ### OH_ArkUI_SwiperDigitIndicator_GetFontWeight()
 
-```
+```c
 ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6384,7 +6384,7 @@ ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIn
 
 ### OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight selectedFontWeight)
 ```
 
@@ -6405,7 +6405,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndica
 
 ### OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight()
 
-```
+```c
 ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6431,7 +6431,7 @@ ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_Swipe
 
 ### OH_ArkUI_SwiperArrowStyle_Create()
 
-```
+```c
 ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()
 ```
 
@@ -6450,7 +6450,7 @@ ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()
 
 ### OH_ArkUI_SwiperArrowStyle_Destroy()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
@@ -6470,7 +6470,7 @@ void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle* arrowStyle)
 
 ### OH_ArkUI_SwiperArrowStyle_SetShowBackground()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showBackground)
 ```
 
@@ -6491,7 +6491,7 @@ void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle* arrowSt
 
 ### OH_ArkUI_SwiperArrowStyle_GetShowBackground()
 
-```
+```c
 int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
@@ -6517,7 +6517,7 @@ int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arro
 
 ### OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showSidebarMiddle)
 ```
 
@@ -6538,7 +6538,7 @@ void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arro
 
 ### OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle()
 
-```
+```c
 int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
@@ -6564,7 +6564,7 @@ int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* a
 
 ### OH_ArkUI_SwiperArrowStyle_SetBackgroundSize()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle, float backgroundSize)
 ```
 
@@ -6585,7 +6585,7 @@ void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowSt
 
 ### OH_ArkUI_SwiperArrowStyle_GetBackgroundSize()
 
-```
+```c
 float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
@@ -6611,7 +6611,7 @@ float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle* arrowS
 
 ### OH_ArkUI_SwiperArrowStyle_SetBackgroundColor()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t backgroundColor)
 ```
 
@@ -6632,7 +6632,7 @@ void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle* arrowS
 
 ### OH_ArkUI_SwiperArrowStyle_GetBackgroundColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
@@ -6658,7 +6658,7 @@ uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* ar
 
 ### OH_ArkUI_SwiperArrowStyle_SetArrowSize()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, float arrowSize)
 ```
 
@@ -6679,7 +6679,7 @@ void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, 
 
 ### OH_ArkUI_SwiperArrowStyle_GetArrowSize()
 
-```
+```c
 float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
@@ -6705,7 +6705,7 @@ float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)
 
 ### OH_ArkUI_SwiperArrowStyle_SetArrowColor()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t arrowColor)
 ```
 
@@ -6726,7 +6726,7 @@ void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle,
 
 ### OH_ArkUI_SwiperArrowStyle_GetArrowColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperArrowStyle_GetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
@@ -6752,7 +6752,7 @@ uint32_t OH_ArkUI_SwiperArrowStyle_GetArrowColor(ArkUI_SwiperArrowStyle* arrowSt
 
 ### OH_ArkUI_SwiperIndicator_SetSpace()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float space)
 ```
 
@@ -6773,7 +6773,7 @@ void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float s
 
 ### OH_ArkUI_SwiperIndicator_GetSpace()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -6799,7 +6799,7 @@ float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)
 
 ### OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator, int32_t ignoreSize)
 ```
 
@@ -6820,7 +6820,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndica
 
 ### OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom()
 
-```
+```c
 int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6846,7 +6846,7 @@ int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitInd
 
 ### OH_ArkUI_ListItemSwipeActionItem_Create()
 
-```
+```c
 ArkUI_ListItemSwipeActionItem* OH_ArkUI_ListItemSwipeActionItem_Create()
 ```
 
@@ -6865,7 +6865,7 @@ ArkUI_ListItemSwipeActionItem* OH_ArkUI_ListItemSwipeActionItem_Create()
 
 ### OH_ArkUI_ListItemSwipeActionItem_Dispose()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_Dispose(ArkUI_ListItemSwipeActionItem* item)
 ```
 
@@ -6885,7 +6885,7 @@ void OH_ArkUI_ListItemSwipeActionItem_Dispose(ArkUI_ListItemSwipeActionItem* ite
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetContent()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* item, ArkUI_NodeHandle node)
 ```
 
@@ -6906,7 +6906,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* 
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item, float distance)
 ```
 
@@ -6927,7 +6927,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeA
 
 ### OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance()
 
-```
+```c
 float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item)
 ```
 
@@ -6953,7 +6953,7 @@ float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipe
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeActionItem* item, void (*callback)())
 ```
 
@@ -6974,7 +6974,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeAc
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(void* userData))
 ```
 
@@ -6996,7 +6996,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_Lis
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnAction()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem* item, void (*callback)())
 ```
 
@@ -7017,7 +7017,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem*
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(void* userData))
 ```
 
@@ -7039,7 +7039,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwip
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeActionItem* item, void (*callback)())
 ```
 
@@ -7060,7 +7060,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeAct
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(void* userData))
 ```
 
@@ -7082,7 +7082,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_List
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeActionItem* item,void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState))
 ```
 
@@ -7103,7 +7103,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeAction
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState, void* userData))
 ```
 
@@ -7125,7 +7125,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListIte
 
 ### OH_ArkUI_ListItemSwipeActionOption_Create()
 
-```
+```c
 ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()
 ```
 
@@ -7144,7 +7144,7 @@ ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()
 
 ### OH_ArkUI_ListItemSwipeActionOption_Dispose()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption* option)
 ```
 
@@ -7164,7 +7164,7 @@ void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption*
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetStart()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)
 ```
 
@@ -7185,7 +7185,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEnd()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* option,ArkUI_ListItemSwipeActionItem* item)
 ```
 
@@ -7206,7 +7206,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* 
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionOption* option,ArkUI_ListItemSwipeEdgeEffect edgeEffect)
 ```
 
@@ -7227,7 +7227,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionO
 
 ### OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect()
 
-```
+```c
 int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActionOption* option)
 ```
 
@@ -7253,7 +7253,7 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeActionOption* option,void (*callback)(float offset))
 ```
 
@@ -7274,7 +7274,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeAct
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_ListItemSwipeActionOption* option,void* userData, void (*callback)(float offset, void* userData))
 ```
 
@@ -7296,7 +7296,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_List
 
 ### OH_ArkUI_ListItemSwipeAction_Expand()
 
-```
+```c
 int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListItemSwipeActionDirection direction)
 ```
 
@@ -7325,7 +7325,7 @@ int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListIte
 
 ### OH_ArkUI_ListItemSwipeAction_Collapse()
 
-```
+```c
 int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)
 ```
 
@@ -7349,7 +7349,7 @@ int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_AccessibilityState_Create()
 
-```
+```c
 ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)
 ```
 
@@ -7368,7 +7368,7 @@ ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)
 
 ### OH_ArkUI_AccessibilityState_Dispose()
 
-```
+```c
 void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)
 ```
 
@@ -7388,7 +7388,7 @@ void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)
 
 ### OH_ArkUI_AccessibilityState_SetDisabled()
 
-```
+```c
 void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, int32_t isDisabled)
 ```
 
@@ -7409,7 +7409,7 @@ void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, in
 
 ### OH_ArkUI_AccessibilityState_IsDisabled()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityState_IsDisabled(ArkUI_AccessibilityState* state)
 ```
 
@@ -7435,7 +7435,7 @@ int32_t OH_ArkUI_AccessibilityState_IsDisabled(ArkUI_AccessibilityState* state)
 
 ### OH_ArkUI_AccessibilityState_SetSelected()
 
-```
+```c
 void OH_ArkUI_AccessibilityState_SetSelected(ArkUI_AccessibilityState* state, int32_t isSelected)
 ```
 
@@ -7456,7 +7456,7 @@ void OH_ArkUI_AccessibilityState_SetSelected(ArkUI_AccessibilityState* state, in
 
 ### OH_ArkUI_AccessibilityState_IsSelected()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityState_IsSelected(ArkUI_AccessibilityState* state)
 ```
 
@@ -7482,7 +7482,7 @@ int32_t OH_ArkUI_AccessibilityState_IsSelected(ArkUI_AccessibilityState* state)
 
 ### OH_ArkUI_AccessibilityState_SetCheckedState()
 
-```
+```c
 void OH_ArkUI_AccessibilityState_SetCheckedState(ArkUI_AccessibilityState* state, int32_t checkedState)
 ```
 
@@ -7503,7 +7503,7 @@ void OH_ArkUI_AccessibilityState_SetCheckedState(ArkUI_AccessibilityState* state
 
 ### OH_ArkUI_AccessibilityState_GetCheckedState()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityState_GetCheckedState(ArkUI_AccessibilityState* state)
 ```
 
@@ -7529,7 +7529,7 @@ int32_t OH_ArkUI_AccessibilityState_GetCheckedState(ArkUI_AccessibilityState* st
 
 ### OH_ArkUI_AccessibilityValue_Create()
 
-```
+```c
 ArkUI_AccessibilityValue* OH_ArkUI_AccessibilityValue_Create(void)
 ```
 
@@ -7548,7 +7548,7 @@ ArkUI_AccessibilityValue* OH_ArkUI_AccessibilityValue_Create(void)
 
 ### OH_ArkUI_AccessibilityValue_Dispose()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_Dispose(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7568,7 +7568,7 @@ void OH_ArkUI_AccessibilityValue_Dispose(ArkUI_AccessibilityValue* value)
 
 ### OH_ArkUI_AccessibilityValue_SetMin()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetMin(ArkUI_AccessibilityValue* value, int32_t min)
 ```
 
@@ -7589,7 +7589,7 @@ void OH_ArkUI_AccessibilityValue_SetMin(ArkUI_AccessibilityValue* value, int32_t
 
 ### OH_ArkUI_AccessibilityValue_GetMin()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetMin(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7615,7 +7615,7 @@ int32_t OH_ArkUI_AccessibilityValue_GetMin(ArkUI_AccessibilityValue* value)
 
 ### OH_ArkUI_AccessibilityValue_SetMax()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetMax(ArkUI_AccessibilityValue* value, int32_t max)
 ```
 
@@ -7636,7 +7636,7 @@ void OH_ArkUI_AccessibilityValue_SetMax(ArkUI_AccessibilityValue* value, int32_t
 
 ### OH_ArkUI_AccessibilityValue_GetMax()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetMax(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7662,7 +7662,7 @@ int32_t OH_ArkUI_AccessibilityValue_GetMax(ArkUI_AccessibilityValue* value)
 
 ### OH_ArkUI_AccessibilityValue_SetCurrent()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetCurrent(ArkUI_AccessibilityValue* value, int32_t current)
 ```
 
@@ -7683,7 +7683,7 @@ void OH_ArkUI_AccessibilityValue_SetCurrent(ArkUI_AccessibilityValue* value, int
 
 ### OH_ArkUI_AccessibilityValue_GetCurrent()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetCurrent(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7709,7 +7709,7 @@ int32_t OH_ArkUI_AccessibilityValue_GetCurrent(ArkUI_AccessibilityValue* value)
 
 ### OH_ArkUI_AccessibilityValue_SetRangeMin()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, int32_t rangeMin)
 ```
 
@@ -7730,7 +7730,7 @@ void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, in
 
 ### OH_ArkUI_AccessibilityValue_GetRangeMin()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7756,7 +7756,7 @@ int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value)
 
 ### OH_ArkUI_AccessibilityValue_SetRangeMax()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, int32_t rangeMax)
 ```
 
@@ -7777,7 +7777,7 @@ void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, in
 
 ### OH_ArkUI_AccessibilityValue_GetRangeMax()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7803,7 +7803,7 @@ int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value)
 
 ### OH_ArkUI_AccessibilityValue_SetRangeCurrent()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value, int32_t rangeCurrent)
 ```
 
@@ -7824,7 +7824,7 @@ void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value
 
 ### OH_ArkUI_AccessibilityValue_GetRangeCurrent()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7850,7 +7850,7 @@ int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* va
 
 ### OH_ArkUI_AccessibilityValue_SetText()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)
 ```
 
@@ -7871,7 +7871,7 @@ void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const 
 
 ### OH_ArkUI_AccessibilityValue_GetText()
 
-```
+```c
 const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7897,7 +7897,7 @@ const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString()
 
-```
+```c
 ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)
 ```
 
@@ -7923,7 +7923,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(c
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor()
 
-```
+```c
 ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)
 ```
 
@@ -7949,7 +7949,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_Dispose()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -7969,7 +7969,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* image
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetWidth()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)
 ```
 
@@ -7990,7 +7990,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imag
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetWidth()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -8016,7 +8016,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* i
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetHeight()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t height)
 ```
 
@@ -8037,7 +8037,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* ima
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetHeight()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -8063,7 +8063,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* 
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetTop()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t top)
 ```
 
@@ -8084,7 +8084,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageI
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetTop()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -8110,7 +8110,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* ima
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetLeft()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t left)
 ```
 
@@ -8131,7 +8131,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* image
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetLeft()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -8157,7 +8157,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* im
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetDuration()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)
 ```
 
@@ -8178,7 +8178,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* i
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetDuration()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -8204,7 +8204,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Create()
 
-```
+```c
 ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 ```
 
@@ -8223,7 +8223,7 @@ ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Dispose()
 
-```
+```c
 void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)
 ```
 
@@ -8243,7 +8243,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* opt
 
 ### OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize()
 
-```
+```c
 int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)
 ```
 
@@ -8270,7 +8270,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 
 ### OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize()
 
-```
+```c
 float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)
 ```
 
@@ -8296,7 +8296,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Resize()
 
-```
+```c
 void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)
 ```
 
@@ -8317,7 +8317,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Splice()
 
-```
+```c
 int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)
 ```
 
@@ -8346,7 +8346,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 
 ### OH_ArkUI_ListChildrenMainSizeOption_UpdateSize()
 
-```
+```c
 int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)
 ```
 
@@ -8374,7 +8374,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 
 ### OH_ArkUI_ListChildrenMainSizeOption_GetMainSize()
 
-```
+```c
 float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)
 ```
 
@@ -8401,7 +8401,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 
 ### OH_ArkUI_CustomSpanMeasureInfo_Create()
 
-```
+```c
 ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 ```
 
@@ -8420,7 +8420,7 @@ ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 
 ### OH_ArkUI_CustomSpanMeasureInfo_Dispose()
 
-```
+```c
 void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 ```
 
@@ -8440,7 +8440,7 @@ void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 
 ### OH_ArkUI_CustomSpanMeasureInfo_GetFontSize()
 
-```
+```c
 float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)
 ```
 
@@ -8466,7 +8466,7 @@ float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* in
 
 ### OH_ArkUI_CustomSpanMetrics_Create()
 
-```
+```c
 ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 ```
 
@@ -8485,7 +8485,7 @@ ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 
 ### OH_ArkUI_CustomSpanMetrics_Dispose()
 
-```
+```c
 void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)
 ```
 
@@ -8505,7 +8505,7 @@ void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)
 
 ### OH_ArkUI_CustomSpanMetrics_SetWidth()
 
-```
+```c
 int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)
 ```
 
@@ -8532,7 +8532,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 
 ### OH_ArkUI_CustomSpanMetrics_SetHeight()
 
-```
+```c
 int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)
 ```
 
@@ -8559,7 +8559,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 
 ### OH_ArkUI_CustomSpanDrawInfo_Create()
 
-```
+```c
 ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)
 ```
 
@@ -8578,7 +8578,7 @@ ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)
 
 ### OH_ArkUI_CustomSpanDrawInfo_Dispose()
 
-```
+```c
 void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8598,7 +8598,7 @@ void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetXOffset()
 
-```
+```c
 float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8624,7 +8624,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetLineTop()
 
-```
+```c
 float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8650,7 +8650,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetLineBottom()
 
-```
+```c
 float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8676,7 +8676,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetBaseline()
 
-```
+```c
 float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8702,7 +8702,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 
 ### OH_ArkUI_CustomProperty_Destroy()
 
-```
+```c
 void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)
 ```
 
@@ -8722,7 +8722,7 @@ void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)
 
 ### OH_ArkUI_CustomProperty_GetStringValue()
 
-```
+```c
 const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)
 ```
 
@@ -8748,7 +8748,7 @@ const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)
 
 ### OH_ArkUI_HostWindowInfo_GetName()
 
-```
+```c
 const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)
 ```
 
@@ -8774,7 +8774,7 @@ const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)
 
 ### OH_ArkUI_HostWindowInfo_Destroy()
 
-```
+```c
 void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)
 ```
 
@@ -8794,7 +8794,7 @@ void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)
 
 ### OH_ArkUI_ActiveChildrenInfo_Destroy()
 
-```
+```c
 void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)
 ```
 
@@ -8814,7 +8814,7 @@ void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)
 
 ### OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)
 ```
 
@@ -8841,7 +8841,7 @@ ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildren
 
 ### OH_ArkUI_ActiveChildrenInfo_GetCount()
 
-```
+```c
 int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 ```
 
@@ -8867,7 +8867,7 @@ int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 
 ### OH_ArkUI_ProgressLinearStyleOption_Create()
 
-```
+```c
 ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)
 ```
 
@@ -8886,7 +8886,7 @@ ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)
 
 ### OH_ArkUI_ProgressLinearStyleOption_Destroy()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -8906,7 +8906,7 @@ void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption*
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)
 ```
 
@@ -8927,7 +8927,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLin
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)
 ```
 
@@ -8948,7 +8948,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinea
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyleOption* option, float strokeWidth)
 ```
 
@@ -8969,7 +8969,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyle
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyleOption* option, float strokeRadius)
 ```
 
@@ -8990,7 +8990,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyl
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled()
 
-```
+```c
 bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -9016,7 +9016,7 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLin
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled()
 
-```
+```c
 bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -9042,7 +9042,7 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinea
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth()
 
-```
+```c
 float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -9068,7 +9068,7 @@ float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyl
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius()
 
-```
+```c
 float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -9094,7 +9094,7 @@ float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearSty
 
 ### OH_ArkUI_CreateSnapshotOptions()
 
-```
+```c
 ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 ```
 
@@ -9113,7 +9113,7 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 ### OH_ArkUI_DestroySnapshotOptions()
 
-```
+```c
 void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 ```
 
@@ -9133,7 +9133,7 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 
 ### OH_ArkUI_SnapshotOptions_SetScale()
 
-```
+```c
 int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)
 ```
 
@@ -9160,7 +9160,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 
 ### OH_ArkUI_CrossLanguageOption_Create()
 
-```
+```c
 ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)
 ```
 
@@ -9179,7 +9179,7 @@ ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)
 
 ### OH_ArkUI_CrossLanguageOption_Destroy()
 
-```
+```c
 void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)
 ```
 
@@ -9199,7 +9199,7 @@ void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)
 
 ### OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus()
 
-```
+```c
 void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)
 ```
 
@@ -9220,7 +9220,7 @@ void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageO
 
 ### OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus()
 
-```
+```c
 bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)
 ```
 
@@ -9246,7 +9246,7 @@ bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageO
 
 ### OH_ArkUI_VisibleAreaEventOptions_Create()
 
-```
+```c
 ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 ```
 
@@ -9265,7 +9265,7 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 
 ### OH_ArkUI_VisibleAreaEventOptions_Dispose()
 
-```
+```c
 void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)
 ```
 
@@ -9285,7 +9285,7 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetRatios()
 
-```
+```c
 int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)
 ```
 
@@ -9313,7 +9313,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval()
 
-```
+```c
 int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)
 ```
 
@@ -9340,7 +9340,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport()
 
-```
+```c
 int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)
 ```
 
@@ -9366,7 +9366,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetRatios()
 
-```
+```c
 int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)
 ```
 
@@ -9394,7 +9394,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
 
-```
+```c
 int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)
 ```
 
@@ -9421,7 +9421,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_Visible
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport()
 
-```
+```c
 bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)
 ```
 
@@ -9446,7 +9446,7 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 
 ### OH_ArkUI_TextPickerRangeContentArray_Create()
 
-```
+```c
 ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)
 ```
 
@@ -9472,7 +9472,7 @@ ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(i
 
 ### OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex()
 
-```
+```c
 void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)
 ```
 
@@ -9494,7 +9494,7 @@ void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeCo
 
 ### OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex()
 
-```
+```c
 void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)
 ```
 
@@ -9516,7 +9516,7 @@ void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeCo
 
 ### OH_ArkUI_TextPickerRangeContentArray_Destroy()
 
-```
+```c
 void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)
 ```
 
@@ -9536,7 +9536,7 @@ void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentAr
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_Create()
 
-```
+```c
 ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)
 ```
 
@@ -9562,7 +9562,7 @@ ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContent
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex()
 
-```
+```c
 void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)
 ```
 
@@ -9584,7 +9584,7 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascad
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex()
 
-```
+```c
 void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)
 ```
 
@@ -9606,7 +9606,7 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCasca
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_Destroy()
 
-```
+```c
 void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePickerRangeContentArray* handle)
 ```
 
@@ -9626,7 +9626,7 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePicker
 
 ### OH_ArkUI_EmbeddedComponentOption_Create()
 
-```
+```c
 ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
 ```
 
@@ -9645,7 +9645,7 @@ ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
 
 ### OH_ArkUI_EmbeddedComponentOption_Dispose()
 
-```
+```c
 void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)
 ```
 
@@ -9665,7 +9665,7 @@ void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* opt
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnError()
 
-```
+```c
 void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, const char* name, const char* message))
 ```
 
@@ -9687,7 +9687,7 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* 
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnTerminated()
 
-```
+```c
 void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, AbilityBase_Want* want))
 ```
 
@@ -9708,7 +9708,7 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 
 ### OH_ArkUI_PositionEdges_Create()
 
-```
+```c
 ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
 ```
 
@@ -9727,7 +9727,7 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
 
 ### OH_ArkUI_PositionEdges_Copy()
 
-```
+```c
 ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edges)
 ```
 
@@ -9751,7 +9751,7 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edge
 
 ### OH_ArkUI_PositionEdges_Dispose()
 
-```
+```c
 void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)
 ```
 
@@ -9769,7 +9769,7 @@ void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)
 
 ### OH_ArkUI_PositionEdges_SetTop()
 
-```
+```c
 void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)
 ```
 
@@ -9788,7 +9788,7 @@ void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)
 
 ### OH_ArkUI_PositionEdges_GetTop()
 
-```
+```c
 int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 ```
 
@@ -9813,7 +9813,7 @@ int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 
 ### OH_ArkUI_PositionEdges_SetLeft()
 
-```
+```c
 void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)
 ```
 
@@ -9832,7 +9832,7 @@ void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)
 
 ### OH_ArkUI_PositionEdges_GetLeft()
 
-```
+```c
 int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 ```
 
@@ -9858,7 +9858,7 @@ int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 
 ### OH_ArkUI_PositionEdges_SetBottom()
 
-```
+```c
 void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 ```
 
@@ -9877,7 +9877,7 @@ void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 
 ### OH_ArkUI_PositionEdges_GetBottom()
 
-```
+```c
 int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)
 ```
 
@@ -9902,7 +9902,7 @@ int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* valu
 
 ### OH_ArkUI_PositionEdges_SetRight()
 
-```
+```c
 void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)
 ```
 
@@ -9921,7 +9921,7 @@ void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)
 
 ### OH_ArkUI_PositionEdges_GetRight()
 
-```
+```c
 int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)
 ```
 
@@ -9946,7 +9946,7 @@ int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value
 
 ### OH_ArkUI_PixelRoundPolicy_Create()
 
-```
+```c
 ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 ```
 
@@ -9964,7 +9964,7 @@ ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 
 ### OH_ArkUI_PixelRoundPolicy_Dispose()
 
-```
+```c
 void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)
 ```
 
@@ -9982,7 +9982,7 @@ void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)
 
 ### OH_ArkUI_PixelRoundPolicy_SetTop()
 
-```
+```c
 void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
@@ -10001,7 +10001,7 @@ void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 
 ### OH_ArkUI_PixelRoundPolicy_GetTop()
 
-```
+```c
 int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
@@ -10026,7 +10026,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
-```
+```c
 void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
@@ -10045,7 +10045,7 @@ void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_Pi
 
 ### OH_ArkUI_PixelRoundPolicy_GetStart()
 
-```
+```c
 int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
@@ -10070,7 +10070,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
-```
+```c
 void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
@@ -10089,7 +10089,7 @@ void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 ### OH_ArkUI_PixelRoundPolicy_GetBottom()
 
-```
+```c
 int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
@@ -10114,7 +10114,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
-```
+```c
 void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
@@ -10133,7 +10133,7 @@ void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 
 ### OH_ArkUI_PixelRoundPolicy_GetEnd()
 
-```
+```c
 int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
@@ -10158,7 +10158,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 ### OH_ArkUI_ContentTransitionEffect_Create()
 
-```
+```c
 ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)
 ```
 
@@ -10182,7 +10182,7 @@ ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t t
 
 ### OH_ArkUI_GridLayoutOptions_Create()
 
-```
+```c
 ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 ```
 
@@ -10200,7 +10200,7 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 
 ### OH_ArkUI_GridLayoutOptions_Dispose()
 
-```
+```c
 void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 ```
 
@@ -10220,7 +10220,7 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 ### OH_ArkUI_GridLayoutOptions_SetIrregularIndexes()
 
-```
+```c
 int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)
 ```
 
@@ -10247,7 +10247,7 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 ### OH_ArkUI_GridLayoutOptions_GetIrregularIndexes()
 
-```
+```c
 int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)
 ```
 
@@ -10274,7 +10274,7 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback()
 
-```
+```c
 void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize (*callback)(int32_t itemIndex, void* userData))
 ```
 
@@ -10295,7 +10295,7 @@ Grid布局选项通过GridItem索引获取指定Item占用的行列数。
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback()
 
-```
+```c
 void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (*callback)(int32_t itemIndex, void* userData))
 ```
 
@@ -10315,7 +10315,7 @@ Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的�
 | ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | 根据index获取指定Item的起始行列和占用的行列数。<br>   itemIndex：GridItem索引值。 |
 ### OH_ArkUI_ShowCounterConfig_Create()
 
-```
+```c
 ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()
 ```
 
@@ -10335,7 +10335,7 @@ ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()
 
 ### OH_ArkUI_ShowCounterConfig_Dispose()
 
-```
+```c
 void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)
 ```
 
@@ -10355,7 +10355,7 @@ void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)
 
 ### OH_ArkUI_ShowCounterConfig_SetCounterTextColor()
 
-```
+```c
 void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* config, uint32_t color)
 ```
 
@@ -10376,7 +10376,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* con
 
 ### OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor()
 
-```
+```c
 void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config, uint32_t color)
 ```
 
@@ -10397,7 +10397,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterCon
 
 ### OH_ArkUI_ShowCounterConfig_GetCounterTextColor()
 
-```
+```c
 uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig* config)
 ```
 
@@ -10424,7 +10424,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig*
 
 ### OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor()
 
-```
+```c
 uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config)
 ```
 
@@ -10450,7 +10450,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounte
 
 ### OH_ArkUI_SelectionOptions_Create()
 
-```
+```c
 ArkUI_SelectionOptions OH_ArkUI_SelectionOptions_Create()
 ```
 
@@ -10470,7 +10470,7 @@ ArkUI_SelectionOptions OH_ArkUI_SelectionOptions_Create()
 
 ### OH_ArkUI_SelectionOptions_Dispose()
 
-```
+```c
 void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)
 ```
 
@@ -10489,7 +10489,7 @@ void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)
 
 ### OH_ArkUI_SelectionOptions_SetMenuPolicy()
 
-```
+```c
 void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, ArkUI_MenuPolicy menuPolicy)
 ```
 
@@ -10509,7 +10509,7 @@ void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, Ar
 
 ### OH_ArkUI_SelectionOptions_GetMenuPolicy()
 
-```
+```c
 ArkUI_MenuPolicy  OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions* options)
 ```
 

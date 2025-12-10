@@ -173,7 +173,7 @@
 
 ### ArkUI_NodeType
 
-```
+```c
 enum ArkUI_NodeType
 ```
 
@@ -229,7 +229,7 @@ enum ArkUI_NodeType
 
 ### ArkUI_NodeAttributeType
 
-```
+```c
 enum ArkUI_NodeAttributeType
 ```
 
@@ -762,7 +762,7 @@ enum ArkUI_NodeAttributeType
 
 ### ArkUI_NodeEventType
 
-```
+```c
 enum ArkUI_NodeEventType
 ```
 
@@ -907,7 +907,7 @@ enum ArkUI_NodeEventType
 
 ### ArkUI_NodeDirtyFlag
 
-```
+```c
 enum ArkUI_NodeDirtyFlag
 ```
 
@@ -926,7 +926,7 @@ enum ArkUI_NodeDirtyFlag
 
 ### ArkUI_NodeCustomEventType
 
-```
+```c
 enum ArkUI_NodeCustomEventType
 ```
 
@@ -949,7 +949,7 @@ enum ArkUI_NodeCustomEventType
 
 ### ArkUI_NodeAdapterEventType
 
-```
+```c
 enum ArkUI_NodeAdapterEventType
 ```
 
@@ -970,7 +970,7 @@ enum ArkUI_NodeAdapterEventType
 
 ### ArkUI_NodeContentEventType
 
-```
+```c
 enum ArkUI_NodeContentEventType
 ```
 
@@ -988,7 +988,7 @@ enum ArkUI_NodeContentEventType
 
 ### ArkUI_InspectorErrorCode
 
-```
+```c
 enum ArkUI_InspectorErrorCode
 ```
 
@@ -1009,7 +1009,7 @@ inspector错误码的枚举。
 
 ### OH_ArkUI_NodeEvent_GetEventType()
 
-```
+```c
 ArkUI_NodeEventType OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event)
 ```
 
@@ -1035,7 +1035,7 @@ ArkUI_NodeEventType OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetTargetId()
 
-```
+```c
 int32_t OH_ArkUI_NodeEvent_GetTargetId(ArkUI_NodeEvent* event)
 ```
 
@@ -1061,7 +1061,7 @@ int32_t OH_ArkUI_NodeEvent_GetTargetId(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetNodeHandle()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeEvent_GetNodeHandle(ArkUI_NodeEvent* event)
 ```
 
@@ -1087,7 +1087,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeEvent_GetNodeHandle(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetInputEvent()
 
-```
+```c
 ArkUI_UIInputEvent* OH_ArkUI_NodeEvent_GetInputEvent(ArkUI_NodeEvent* event)
 ```
 
@@ -1113,7 +1113,7 @@ ArkUI_UIInputEvent* OH_ArkUI_NodeEvent_GetInputEvent(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetNodeComponentEvent()
 
-```
+```c
 ArkUI_NodeComponentEvent* OH_ArkUI_NodeEvent_GetNodeComponentEvent(ArkUI_NodeEvent* event)
 ```
 
@@ -1139,7 +1139,7 @@ ArkUI_NodeComponentEvent* OH_ArkUI_NodeEvent_GetNodeComponentEvent(ArkUI_NodeEve
 
 ### OH_ArkUI_NodeEvent_GetStringAsyncEvent()
 
-```
+```c
 ArkUI_StringAsyncEvent* OH_ArkUI_NodeEvent_GetStringAsyncEvent(ArkUI_NodeEvent* event)
 ```
 
@@ -1165,7 +1165,7 @@ ArkUI_StringAsyncEvent* OH_ArkUI_NodeEvent_GetStringAsyncEvent(ArkUI_NodeEvent* 
 
 ### OH_ArkUI_NodeEvent_GetTextChangeEvent()
 
-```
+```c
 ArkUI_TextChangeEvent* OH_ArkUI_NodeEvent_GetTextChangeEvent(ArkUI_NodeEvent* event)
 ```
 
@@ -1191,7 +1191,7 @@ ArkUI_TextChangeEvent* OH_ArkUI_NodeEvent_GetTextChangeEvent(ArkUI_NodeEvent* ev
 
 ### OH_ArkUI_NodeEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_NodeEvent_GetUserData(ArkUI_NodeEvent* event)
 ```
 
@@ -1217,7 +1217,7 @@ void* OH_ArkUI_NodeEvent_GetUserData(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetNumberValue()
 
-```
+```c
 int32_t OH_ArkUI_NodeEvent_GetNumberValue(ArkUI_NodeEvent* event, int32_t index, ArkUI_NumberValue* value)
 ```
 
@@ -1245,7 +1245,7 @@ int32_t OH_ArkUI_NodeEvent_GetNumberValue(ArkUI_NodeEvent* event, int32_t index,
 
 ### OH_ArkUI_NodeEvent_GetStringValue()
 
-```
+```c
 int32_t OH_ArkUI_NodeEvent_GetStringValue(ArkUI_NodeEvent* event, int32_t index, char** string, int32_t* stringSize)
 ```
 
@@ -1274,7 +1274,7 @@ int32_t OH_ArkUI_NodeEvent_GetStringValue(ArkUI_NodeEvent* event, int32_t index,
 
 ### OH_ArkUI_NodeEvent_SetReturnNumberValue()
 
-```
+```c
 int32_t OH_ArkUI_NodeEvent_SetReturnNumberValue(ArkUI_NodeEvent* event, ArkUI_NumberValue* value, int32_t size)
 ```
 
@@ -1302,7 +1302,7 @@ int32_t OH_ArkUI_NodeEvent_SetReturnNumberValue(ArkUI_NodeEvent* event, ArkUI_Nu
 
 ### OH_ArkUI_NodeAdapter_Create()
 
-```
+```c
 ArkUI_NodeAdapterHandle OH_ArkUI_NodeAdapter_Create()
 ```
 
@@ -1321,7 +1321,7 @@ ArkUI_NodeAdapterHandle OH_ArkUI_NodeAdapter_Create()
 
 ### OH_ArkUI_NodeAdapter_Dispose()
 
-```
+```c
 void OH_ArkUI_NodeAdapter_Dispose(ArkUI_NodeAdapterHandle handle)
 ```
 
@@ -1341,7 +1341,7 @@ void OH_ArkUI_NodeAdapter_Dispose(ArkUI_NodeAdapterHandle handle)
 
 ### OH_ArkUI_NodeAdapter_SetTotalNodeCount()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_SetTotalNodeCount(ArkUI_NodeAdapterHandle handle, uint32_t size)
 ```
 
@@ -1368,7 +1368,7 @@ int32_t OH_ArkUI_NodeAdapter_SetTotalNodeCount(ArkUI_NodeAdapterHandle handle, u
 
 ### OH_ArkUI_NodeAdapter_GetTotalNodeCount()
 
-```
+```c
 uint32_t OH_ArkUI_NodeAdapter_GetTotalNodeCount(ArkUI_NodeAdapterHandle handle)
 ```
 
@@ -1394,7 +1394,7 @@ uint32_t OH_ArkUI_NodeAdapter_GetTotalNodeCount(ArkUI_NodeAdapterHandle handle)
 
 ### OH_ArkUI_NodeAdapter_RegisterEventReceiver()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_RegisterEventReceiver(
 ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapterEvent* event))
 ```
@@ -1423,7 +1423,7 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 
 ### OH_ArkUI_NodeAdapter_UnregisterEventReceiver()
 
-```
+```c
 void OH_ArkUI_NodeAdapter_UnregisterEventReceiver(ArkUI_NodeAdapterHandle handle)
 ```
 
@@ -1443,7 +1443,7 @@ void OH_ArkUI_NodeAdapter_UnregisterEventReceiver(ArkUI_NodeAdapterHandle handle
 
 ### OH_ArkUI_NodeAdapter_ReloadAllItems()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_ReloadAllItems(ArkUI_NodeAdapterHandle handle)
 ```
 
@@ -1469,7 +1469,7 @@ int32_t OH_ArkUI_NodeAdapter_ReloadAllItems(ArkUI_NodeAdapterHandle handle)
 
 ### OH_ArkUI_NodeAdapter_ReloadItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_ReloadItem(
 ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 ```
@@ -1498,7 +1498,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 ### OH_ArkUI_NodeAdapter_RemoveItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_RemoveItem(
 ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 ```
@@ -1527,7 +1527,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 ### OH_ArkUI_NodeAdapter_InsertItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_InsertItem(
 ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 ```
@@ -1556,7 +1556,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 ### OH_ArkUI_NodeAdapter_MoveItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_MoveItem(ArkUI_NodeAdapterHandle handle, uint32_t from, uint32_t to)
 ```
 
@@ -1584,7 +1584,7 @@ int32_t OH_ArkUI_NodeAdapter_MoveItem(ArkUI_NodeAdapterHandle handle, uint32_t f
 
 ### OH_ArkUI_NodeAdapter_GetAllItems()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_GetAllItems(ArkUI_NodeAdapterHandle handle, ArkUI_NodeHandle** items, uint32_t* size)
 ```
 
@@ -1612,7 +1612,7 @@ int32_t OH_ArkUI_NodeAdapter_GetAllItems(ArkUI_NodeAdapterHandle handle, ArkUI_N
 
 ### OH_ArkUI_NodeAdapterEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_NodeAdapterEvent_GetUserData(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1638,7 +1638,7 @@ void* OH_ArkUI_NodeAdapterEvent_GetUserData(ArkUI_NodeAdapterEvent* event)
 
 ### OH_ArkUI_NodeAdapterEvent_GetType()
 
-```
+```c
 ArkUI_NodeAdapterEventType OH_ArkUI_NodeAdapterEvent_GetType(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1664,7 +1664,7 @@ ArkUI_NodeAdapterEventType OH_ArkUI_NodeAdapterEvent_GetType(ArkUI_NodeAdapterEv
 
 ### OH_ArkUI_NodeAdapterEvent_GetRemovedNode()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetRemovedNode(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1690,7 +1690,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetRemovedNode(ArkUI_NodeAdapterEvent
 
 ### OH_ArkUI_NodeAdapterEvent_GetItemIndex()
 
-```
+```c
 uint32_t OH_ArkUI_NodeAdapterEvent_GetItemIndex(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1716,7 +1716,7 @@ uint32_t OH_ArkUI_NodeAdapterEvent_GetItemIndex(ArkUI_NodeAdapterEvent* event)
 
 ### OH_ArkUI_NodeAdapterEvent_GetHostNode()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetHostNode(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1742,7 +1742,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetHostNode(ArkUI_NodeAdapterEvent* e
 
 ### OH_ArkUI_NodeAdapterEvent_SetItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapterEvent_SetItem(ArkUI_NodeAdapterEvent* event, ArkUI_NodeHandle node)
 ```
 
@@ -1769,7 +1769,7 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetItem(ArkUI_NodeAdapterEvent* event, ArkUI_N
 
 ### OH_ArkUI_NodeAdapterEvent_SetNodeId()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapterEvent_SetNodeId(ArkUI_NodeAdapterEvent* event, int32_t id)
 ```
 
@@ -1796,7 +1796,7 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetNodeId(ArkUI_NodeAdapterEvent* event, int32
 
 ### OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure()
 
-```
+```c
 ArkUI_LayoutConstraint* OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1822,7 +1822,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(Ar
 
 ### OH_ArkUI_NodeCustomEvent_GetPositionInLayout()
 
-```
+```c
 ArkUI_IntOffset OH_ArkUI_NodeCustomEvent_GetPositionInLayout(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1848,7 +1848,7 @@ ArkUI_IntOffset OH_ArkUI_NodeCustomEvent_GetPositionInLayout(ArkUI_NodeCustomEve
 
 ### OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw()
 
-```
+```c
 ArkUI_DrawContext* OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1874,7 +1874,7 @@ ArkUI_DrawContext* OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(ArkUI_NodeCusto
 
 ### OH_ArkUI_NodeCustomEvent_GetEventTargetId()
 
-```
+```c
 int32_t OH_ArkUI_NodeCustomEvent_GetEventTargetId(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1900,7 +1900,7 @@ int32_t OH_ArkUI_NodeCustomEvent_GetEventTargetId(ArkUI_NodeCustomEvent* event)
 
 ### OH_ArkUI_NodeCustomEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_NodeCustomEvent_GetUserData(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1926,7 +1926,7 @@ void* OH_ArkUI_NodeCustomEvent_GetUserData(ArkUI_NodeCustomEvent* event)
 
 ### OH_ArkUI_NodeCustomEvent_GetNodeHandle()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeCustomEvent_GetNodeHandle(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1952,7 +1952,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeCustomEvent_GetNodeHandle(ArkUI_NodeCustomEvent* e
 
 ### OH_ArkUI_NodeCustomEvent_GetEventType()
 
-```
+```c
 ArkUI_NodeCustomEventType OH_ArkUI_NodeCustomEvent_GetEventType(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1978,7 +1978,7 @@ ArkUI_NodeCustomEventType OH_ArkUI_NodeCustomEvent_GetEventType(ArkUI_NodeCustom
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo()
 
-```
+```c
 int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo(ArkUI_NodeCustomEvent* event, ArkUI_CustomSpanMeasureInfo* info)
 ```
 
@@ -2005,7 +2005,7 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo(ArkUI_NodeCustomEvent*
 
 ### OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics()
 
-```
+```c
 int32_t OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics(ArkUI_NodeCustomEvent* event, ArkUI_CustomSpanMetrics* metrics)
 ```
 
@@ -2032,7 +2032,7 @@ int32_t OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics(ArkUI_NodeCustomEvent* eve
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo()
 
-```
+```c
 int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo(ArkUI_NodeCustomEvent* event, ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -2059,7 +2059,7 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo(ArkUI_NodeCustomEvent* ev
 
 ### ArkUI_NodeContentCallback()
 
-```
+```c
 typedef void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event)
 ```
 
@@ -2079,7 +2079,7 @@ typedef void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event)
 
 ### OH_ArkUI_NodeContent_RegisterCallback()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, ArkUI_NodeContentCallback callback)
 ```
 
@@ -2106,7 +2106,7 @@ int32_t OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, A
 
 ### OH_ArkUI_NodeContentEvent_GetEventType()
 
-```
+```c
 ArkUI_NodeContentEventType OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeContentEvent* event)
 ```
 
@@ -2132,7 +2132,7 @@ ArkUI_NodeContentEventType OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeCont
 
 ### OH_ArkUI_NodeContentEvent_GetNodeContentHandle()
 
-```
+```c
 ArkUI_NodeContentHandle OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)
 ```
 
@@ -2158,7 +2158,7 @@ ArkUI_NodeContentHandle OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_Nod
 
 ### OH_ArkUI_NodeContent_SetUserData()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)
 ```
 
@@ -2185,7 +2185,7 @@ int32_t OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* 
 
 ### OH_ArkUI_NodeContent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)
 ```
 
@@ -2211,7 +2211,7 @@ void* OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)
 
 ### OH_ArkUI_NodeContent_AddNode()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)
 ```
 
@@ -2238,7 +2238,7 @@ int32_t OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_Node
 
 ### OH_ArkUI_NodeContent_RemoveNode()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)
 ```
 
@@ -2265,7 +2265,7 @@ int32_t OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_N
 
 ### OH_ArkUI_NodeContent_InsertNode()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node, int32_t position)
 ```
 
@@ -2293,7 +2293,7 @@ int32_t OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_N
 
 ### OH_ArkUI_NodeUtils_GetLayoutSize()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutSize(ArkUI_NodeHandle node, ArkUI_IntSize* size)
 ```
 
@@ -2320,7 +2320,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutSize(ArkUI_NodeHandle node, ArkUI_IntSize* s
 
 ### OH_ArkUI_NodeUtils_GetLayoutPosition()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutPosition(ArkUI_NodeHandle node, ArkUI_IntOffset* localOffset)
 ```
 
@@ -2347,7 +2347,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPosition(ArkUI_NodeHandle node, ArkUI_IntOff
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInWindow()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInWindow(ArkUI_NodeHandle node, ArkUI_IntOffset* globalOffset)
 ```
 
@@ -2374,7 +2374,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInWindow(ArkUI_NodeHandle node, ArkU
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInScreen()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInScreen(ArkUI_NodeHandle node, ArkUI_IntOffset* screenOffset)
 ```
 
@@ -2401,7 +2401,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInScreen(ArkUI_NodeHandle node, ArkU
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay(ArkUI_NodeHandle node, ArkUI_IntOffset* offset)
 ```
 
@@ -2428,7 +2428,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay(ArkUI_NodeHandle nod
 
 ### OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow(ArkUI_NodeHandle node, ArkUI_IntOffset* translateOffset)
 ```
 
@@ -2455,7 +2455,7 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow(ArkUI_NodeHandle nod
 
 ### OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen(ArkUI_NodeHandle node, ArkUI_IntOffset* translateOffset)
 ```
 
@@ -2482,7 +2482,7 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen(ArkUI_NodeHandle nod
 
 ### OH_ArkUI_NodeUtils_AddCustomProperty()
 
-```
+```c
 void OH_ArkUI_NodeUtils_AddCustomProperty(ArkUI_NodeHandle node, const char* name, const char* value)
 ```
 
@@ -2504,7 +2504,7 @@ void OH_ArkUI_NodeUtils_AddCustomProperty(ArkUI_NodeHandle node, const char* nam
 
 ### OH_ArkUI_NodeUtils_RemoveCustomProperty()
 
-```
+```c
 void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* name)
 ```
 
@@ -2525,7 +2525,7 @@ void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* 
 
 ### OH_ArkUI_NodeUtils_GetCustomProperty()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* name, ArkUI_CustomProperty** handle)
 ```
 
@@ -2553,7 +2553,7 @@ int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* 
 
 ### OH_ArkUI_NodeUtils_GetParentInPageTree()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)
 ```
 
@@ -2579,7 +2579,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_NodeUtils_GetActiveChildrenInfo()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_ActiveChildrenInfo** handle)
 ```
 
@@ -2606,7 +2606,7 @@ int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_Ac
 
 ### OH_ArkUI_NodeUtils_GetCurrentPageRootNode()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node)
 ```
 
@@ -2632,7 +2632,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node
 
 ### OH_ArkUI_NodeUtils_IsCreatedByNDK()
 
-```
+```c
 bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)
 ```
 
@@ -2658,7 +2658,7 @@ bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_NodeUtils_GetNodeType()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)
 ```
 
@@ -2684,7 +2684,7 @@ int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_NodeUtils_GetWindowInfo()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetWindowInfo(ArkUI_NodeHandle node, ArkUI_HostWindowInfo** info)
 ```
 
@@ -2711,7 +2711,7 @@ int32_t OH_ArkUI_NodeUtils_GetWindowInfo(ArkUI_NodeHandle node, ArkUI_HostWindow
 
 ### OH_ArkUI_NodeUtils_MoveTo()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_MoveTo(ArkUI_NodeHandle node, ArkUI_NodeHandle target_parent, int32_t index)
 ```
 
@@ -2739,7 +2739,7 @@ int32_t OH_ArkUI_NodeUtils_MoveTo(ArkUI_NodeHandle node, ArkUI_NodeHandle target
 
 ### OH_ArkUI_NativeModule_InvalidateAttributes()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_InvalidateAttributes(ArkUI_NodeHandle node)
 ```
 
@@ -2769,7 +2769,7 @@ int32_t OH_ArkUI_NativeModule_InvalidateAttributes(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_List_CloseAllSwipeActions()
 
-```
+```c
 int32_t OH_ArkUI_List_CloseAllSwipeActions(ArkUI_NodeHandle node, void* userData, void (*onFinish)(void* userData))
 ```
 
@@ -2797,7 +2797,7 @@ int32_t OH_ArkUI_List_CloseAllSwipeActions(ArkUI_NodeHandle node, void* userData
 
 ### OH_ArkUI_GetContextByNode()
 
-```
+```c
 ArkUI_ContextHandle OH_ArkUI_GetContextByNode(ArkUI_NodeHandle node)
 ```
 
@@ -2823,7 +2823,7 @@ ArkUI_ContextHandle OH_ArkUI_GetContextByNode(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_RegisterSystemColorModeChangeEvent()
 
-```
+```c
 int32_t OH_ArkUI_RegisterSystemColorModeChangeEvent(ArkUI_NodeHandle node,void* userData, void (*onColorModeChange)(ArkUI_SystemColorMode colorMode, void* userData))
 ```
 
@@ -2851,7 +2851,7 @@ int32_t OH_ArkUI_RegisterSystemColorModeChangeEvent(ArkUI_NodeHandle node,void* 
 
 ### OH_ArkUI_UnregisterSystemColorModeChangeEvent()
 
-```
+```c
 void OH_ArkUI_UnregisterSystemColorModeChangeEvent(ArkUI_NodeHandle node)
 ```
 
@@ -2871,7 +2871,7 @@ void OH_ArkUI_UnregisterSystemColorModeChangeEvent(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_RegisterSystemFontStyleChangeEvent()
 
-```
+```c
 int32_t OH_ArkUI_RegisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node,void* userData, void (*onFontStyleChange)(ArkUI_SystemFontStyleEvent* event, void* userData))
 ```
 
@@ -2899,7 +2899,7 @@ int32_t OH_ArkUI_RegisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node,void* 
 
 ### OH_ArkUI_UnregisterSystemFontStyleChangeEvent()
 
-```
+```c
 void OH_ArkUI_UnregisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node)
 ```
 
@@ -2919,7 +2919,7 @@ void OH_ArkUI_UnregisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale()
 
-```
+```c
 float OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale(const ArkUI_SystemFontStyleEvent* event)
 ```
 
@@ -2945,7 +2945,7 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale(const ArkUI_SystemFontStyle
 
 ### OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale()
 
-```
+```c
 float OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(const ArkUI_SystemFontStyleEvent* event)
 ```
 
@@ -2971,7 +2971,7 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(const ArkUI_SystemFontSty
 
 ### OH_ArkUI_RegisterLayoutCallbackOnNodeHandle()
 
-```
+```c
 int32_t OH_ArkUI_RegisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node,void* userData, void (*onLayoutCompleted)(void* userData))
 ```
 
@@ -2999,7 +2999,7 @@ int32_t OH_ArkUI_RegisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node,void* 
 
 ### OH_ArkUI_RegisterDrawCallbackOnNodeHandle()
 
-```
+```c
 int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node,void* userData, void (*onDrawCompleted)(void* userData))
 ```
 
@@ -3027,7 +3027,7 @@ int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node,void* us
 
 ### OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle()
 
-```
+```c
 int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)
 ```
 
@@ -3053,7 +3053,7 @@ int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_UnregisterDrawCallbackOnNodeHandle()
 
-```
+```c
 int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)
 ```
 
@@ -3079,7 +3079,7 @@ int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_GetNodeSnapshot()
 
-```
+```c
 int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* snapshotOptions,OH_PixelmapNative** pixelmap)
 ```
 
@@ -3107,7 +3107,7 @@ int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* s
 
 ### OH_ArkUI_NodeUtils_GetAttachedNodeHandleById()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetAttachedNodeHandleById(const char* id, ArkUI_NodeHandle* node)
 ```
 
@@ -3134,7 +3134,7 @@ int32_t OH_ArkUI_NodeUtils_GetAttachedNodeHandleById(const char* id, ArkUI_NodeH
 
 ### OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(const uint32_t uniqueId, ArkUI_NodeHandle* node)
 ```
 
@@ -3161,7 +3161,7 @@ int32_t OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(const uint32_t uniqueId, ArkU
 
 ### OH_ArkUI_NodeUtils_GetNodeUniqueId()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqueId)
 ```
 
@@ -3188,7 +3188,7 @@ int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqu
 
 ### OH_ArkUI_NativeModule_AdoptChild()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)
 ```
 
@@ -3213,7 +3213,7 @@ int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle
 
 ### OH_ArkUI_NativeModule_RemoveAdoptedChild()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)
 ```
 
@@ -3238,7 +3238,7 @@ int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_No
 
 ### OH_ArkUI_NativeModule_IsInRenderState()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInRenderState)
 ```
 
@@ -3263,7 +3263,7 @@ int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInR
 
 ### OH_ArkUI_NodeUtils_SetCrossLanguageOption()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_CrossLanguageOption* option)
 ```
 
@@ -3290,7 +3290,7 @@ int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 
 ### OH_ArkUI_NodeUtils_GetCrossLanguageOption()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_CrossLanguageOption* option)
 ```
 
@@ -3317,7 +3317,7 @@ int32_t OH_ArkUI_NodeUtils_GetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 
 ### OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(ArkUI_NodeHandle node, uint32_t* index)
 ```
 
@@ -3344,7 +3344,7 @@ int32_t OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(ArkUI_NodeHandle node
 
 ### OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(ArkUI_NodeHandle node, uint32_t* index)
 ```
 
@@ -3371,7 +3371,7 @@ int32_t OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(ArkUI_NodeHandle node,
 
 ### OH_ArkUI_NodeUtils_GetChildWithExpandMode()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetChildWithExpandMode(ArkUI_NodeHandle node, int32_t position,ArkUI_NodeHandle* subnode, uint32_t expandMode)
 ```
 
@@ -3400,7 +3400,7 @@ int32_t OH_ArkUI_NodeUtils_GetChildWithExpandMode(ArkUI_NodeHandle node, int32_t
 
 ### OH_ArkUI_NodeUtils_GetPositionToParent()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntOffset* globalOffset)
 ```
 
@@ -3427,7 +3427,7 @@ int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntO
 
 ### OH_ArkUI_AddSupportedUIStates()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiStates,void (statesChangeHandler)(int32_t currentStates, void* userData), bool excludeInner, void* userData)
 ```
 
@@ -3457,7 +3457,7 @@ ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiS
 
 ### OH_ArkUI_RemoveSupportedUIStates()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_RemoveSupportedUIStates(ArkUI_NodeHandle node, int32_t uiStates)
 ```
 
@@ -3484,7 +3484,7 @@ ArkUI_ErrorCode OH_ArkUI_RemoveSupportedUIStates(ArkUI_NodeHandle node, int32_t 
 
 ### OH_ArkUI_RunTaskInScope()
 
-```
+```c
 int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, void(*callback)(void* userData))
 ```
 
@@ -3512,7 +3512,7 @@ int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, v
 
 ### OH_ArkUI_PostAsyncUITask()
 
-```
+```c
 int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskData,
     void (*asyncUITask)(void* asyncUITaskData), void (*onFinish)(void* asyncUITaskData))
 ```
@@ -3540,7 +3540,7 @@ int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskD
 
 ### OH_ArkUI_PostUITask()
 
-```
+```c
 int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (*task)(void* taskData))
 ```
 **描述：**
@@ -3567,7 +3567,7 @@ int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (*
 
 ### OH_ArkUI_PostUITaskAndWait()
 
-```
+```c
 int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, void (*task)(void* taskData))
 ```
 **描述：**
@@ -3596,7 +3596,7 @@ int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, 
 
 ### OH_ArkUI_NativeModule_RegisterCommonEvent()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void* userData, void (*callback)(ArkUI_NodeEvent* event))
 ```
 **描述：**
@@ -3624,7 +3624,7 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_N
 
 ### OH_ArkUI_NativeModule_UnregisterCommonEvent()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)
 ```
 **描述：**
@@ -3650,7 +3650,7 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI
 
 ### OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node, float* ratios, int32_t size, float expectedUpdateInterval, void* userData, void (*callback)(ArkUI_NodeEvent* event))
 ```
 **描述：**
@@ -3678,7 +3678,7 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(Ar
 
 ### OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node)
 ```
 **描述：**
@@ -3701,7 +3701,7 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(
 
 ### OH_ArkUI_Swiper_FinishAnimation()
 
-```
+```c
 int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)
 ```
 
@@ -3727,7 +3727,7 @@ int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_SetForceDarkConfig()
 
-```
+```c
 int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDark, ArkUI_NodeType nodeType, uint32_t (*colorInvertFunc)(uint32_t color))
 ```
 
@@ -3756,7 +3756,7 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 
 ### OH_ArkUI_NodeEvent_GetTouchTestInfo()
 
-```
+```c
 ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEvent)
 ```
 
