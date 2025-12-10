@@ -12,7 +12,7 @@
 - \@Param装饰的变量能够从父组件传入初始化，如果传入的数据源是状态变量，数据源的修改会同步给\@Param。
 
 - \@Param装饰的变量变化时，会刷新使用该变量的组件。
-- \@Param支持观察Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰date类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内置类型。
+- \@Param支持观察Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰Array类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内置类型。
 - \@Param支持null、undefined以及[联合类型](#联合类型)。
 
 在静态语言上下文中使用时，需要导入装饰器：
@@ -82,7 +82,7 @@ import { Param } from '@ohos.arkui.stateManagement';
   }
   ```
 
-- 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖\@ObservedV2和\@Trace装饰器。
+- 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2和\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰器。
 
   ```ts
   'use static'
