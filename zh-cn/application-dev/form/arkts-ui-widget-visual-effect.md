@@ -18,8 +18,7 @@
 
 2、配置form_config.json
 
-- 配置form_config.json文件中的`transparencyEnabled`字段为`true`。
-- 配置form_config.json文件中的`metadata`添加`visualEffectType`配置，`blurEffect`、`lightAnimationEffect`分别表示模糊高亮与玻璃特效 。
+- 配置form_config.json文件中的`transparencyEnabled`字段为`true`, `metadata`添加`visualEffectType`配置。
 
 ``` json
 {
@@ -77,8 +76,7 @@
     // Called to notify the form provider to update a specified form.
     let style: Record<string, Object> = {};
     if (wantParams?.visualEffectType) {
-
-      style.visualEffectType = String(wantParams?.visualEffectType|| 'none');
+      style.visualEffectType = wantParams?.visualEffectType;
       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(style);
       formProvider.updateForm(formId, formData).then(() => {
         hilog.warn(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
