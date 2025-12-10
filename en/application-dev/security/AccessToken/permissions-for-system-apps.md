@@ -5173,6 +5173,20 @@ Allows an application to simulate user operations.
 
 **Valid since**: 20
 
+## ohos.permission.ACCESS_ANCO_APP_DATA
+
+Allows an application to access the directories of compatible applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 22
+
 ## ohos.permission.MANAGE_SELF_SKILLS
 
 Allows an application to manage its skills configuration.

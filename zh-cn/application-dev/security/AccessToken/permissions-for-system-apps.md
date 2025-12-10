@@ -5212,6 +5212,20 @@
 
 **起始版本**：20
 
+## ohos.permission.ACCESS_ANCO_APP_DATA
+
+允许应用访问兼容应用目录。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**： Phone | PC/2in1 | Tablet
+
+**起始版本**：22
+
 ## ohos.permission.MANAGE_SELF_SKILLS
 
 允许应用管理本应用的skills配置。
