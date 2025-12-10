@@ -30,7 +30,7 @@
    @Param与@Event装饰器配合使用的双向绑定语法糖。
    
    ``` TypeScript
-   Star({ value: this.value, $value: (val: number) => { this.value = val; }})
+   Child({ value: this.value, $value: (val: number) => { this.value = val; } })
    ```
 
    上述语法可以简化为!!双向绑定语法糖。
