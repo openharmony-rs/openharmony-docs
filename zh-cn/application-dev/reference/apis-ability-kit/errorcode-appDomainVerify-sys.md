@@ -26,5 +26,5 @@ An internal error has occurred in the system service.
 
 **处理步骤**
 
-1. 确认系统内存是否足够，设备使用的系统版本是否存在异常，
+1. 确认系统内存是否足够，设备使用的系统版本是否存在异常。
 2. 尝试重启设备。
