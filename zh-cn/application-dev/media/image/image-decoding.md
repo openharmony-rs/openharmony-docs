@@ -193,7 +193,7 @@
 
 - [图片编辑（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEdit)
 
-- [图片编辑（JS）](https://gitcode.com/openharmony/codelabs/blob/master/Media/ImageEditorTemplate)
+- [图片编辑（JS）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEditorTemplate)
 
 <!--RP1-->
 <!--RP1End-->
