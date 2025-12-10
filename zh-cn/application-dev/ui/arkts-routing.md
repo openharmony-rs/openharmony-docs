@@ -637,7 +637,7 @@ export struct MyComponent {
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import '@ohos/library/src/main/ets/pages/Index'; // 引入共享包中的命名路由页面
+import 'library/src/main/ets/pages/Index'; // 引入共享包中的命名路由页面
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0xF811;
 const TAG = '[Sample_ArkTSRouter]';
@@ -662,7 +662,7 @@ struct Index {
                   data3: [123, 456, 789]
                 }
               }
-            })
+            });
           } catch (err) {
             let message = (err as BusinessError).message;
             let code = (err as BusinessError).code;
