@@ -22,27 +22,33 @@
 1. 在entry/src/main/ets/创建目录notificationsubscriberextability。
 
 2. 在entry/src/main/ets/notificationsubscriberextability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
-```ts
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
-
-  const DOMAIN = 0x0000;
-  const TAG = 'NotificationSubscriberExtAbility';
-
-  export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-    onDestroy(): void {
-      hilog.info(DOMAIN, 'testTag', `${TAG} onDestroy`);
-    }
-
-    onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
-      hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
-    }
-
-    onCancelMessages(hashCodes: Array<string>): void {
-      hilog.info(DOMAIN, 'testTag', `${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
-    }
-  }
-```
+   <!--@[huidiao_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
+   // ...
+   const DOMAIN = 0x0000;
+   
+   export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
+     // ...
+     onDestroy(): void {
+       hilog.info(DOMAIN, 'testTag', 'onDestroy');
+       // ...
+     }
+     // ...
+     onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
+       hilog.info(DOMAIN, 'testTag', `on receive message ${JSON.stringify(notificationInfo)}`)
+       // ...
+     }
+     // ...
+     onCancelMessages(hashCodes: Array<string>): void {
+       hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
+       // ...
+     }
+     // ...
+   }
+   ```
 3. 连接穿戴设备，使用[蓝牙模块](../connectivity/connectivity-kit-intro.md#蓝牙简介)接口获取地址，然后通过[subscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionsubscribe)/[unsubscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionunsubscribe)接口订阅或取消订阅通知。
 
 4. 实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后，还需要在合适的时机调用[OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示。建议在设备管理页面提供一个通知授权的按钮，用户点击按钮则调用[OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口。
