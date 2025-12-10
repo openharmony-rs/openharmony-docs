@@ -9,6 +9,7 @@
 说明：支持天气卡片使用玻璃材质，提升首眼高端精致
 
 约束：
+  - API version 22及以上版本。
   - 内部开放，仅系统应用支持。
   - 设备都支持模糊提亮，仅vosa、delphi 这类高级机型支持玻璃特效。
 
@@ -17,7 +18,8 @@
 
 2、配置form_config.json
 
-- 配置form_config.json文件中的`transparencyEnabled`字段为`true`, `metadata`添加`visualEffectType`配置。
+- 配置form_config.json文件中的`transparencyEnabled`字段为`true`。
+- 配置form_config.json文件中的`metadata`添加`visualEffectType`配置，`blurEffect`、`lightAnimationEffect`分别表示模糊高亮与玻璃特效 。
 
 ``` json
 {
@@ -73,14 +75,17 @@
 ``` TypeScript
   onUpdateForm(formId: string, wantParams?: Record<string, Object>) {
     // Called to notify the form provider to update a specified form.
-    let clockStyle: Record<string, Object> = {};
-    clockStyle.visualEffectType = String(wantParams?.visualEffectType|| 'none');
-    let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(clockStyle);
-    formProvider.updateForm(formId, formData).then(() => {
-      hilog.warn(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId}`, err);
-    });
+    let style: Record<string, Object> = {};
+    if (wantParams?.visualEffectType) {
+
+      style.visualEffectType = String(wantParams?.visualEffectType|| 'none');
+      let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(style);
+      formProvider.updateForm(formId, formData).then(() => {
+        hilog.warn(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
+      }).catch((err: BusinessError) => {
+        hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId}`, err);
+      });
+    }
   }
 ```
 
@@ -180,7 +185,6 @@ struct WidgetCard {
                 .id(`WidgetCard_1`)
                 .fontFeature('\"ss10\" on')
                 .accessibilityLevel('no')
-                .visibility(Visibility.Hidden)
           }
           this.effectRender(this)
         }
@@ -256,5 +260,9 @@ struct WidgetCard {
 }
 ```
 
+> **说明：**
+>
+> - 这里需要注意使用系统应用证书进行签名打包。
+
 ### 运行结果
-![WidgetvisualEffect](figures/WidgetCustomFontDemo.gif)
+![WidgetvisualEffect](figures/WidgetVisualEffect.gif)
