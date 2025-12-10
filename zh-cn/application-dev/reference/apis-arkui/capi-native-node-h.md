@@ -3712,7 +3712,7 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | UI实例对象指针。<br>  如果该值为null，则该功能适用于整个应用进程。|
 | bool forceDark | 是否使用反色能力。取值为true：组件使用反色能力，取值为false：组件不使用反色能力。 |
 | [ArkUI_NodeType](#arkui_nodetype) | 指定使能反色能力生效组件的类型范围。<br>   ARKUI_NODE_UNDEFINED代表对所有组件类型生效。 |
-| colorInvertFunc | 开发者自定义反色算法函数。 |
+| colorInvertFunc | 开发者自定义反色算法函数。<br> 如果该值为nullptr，则对组件使用系统默认反色算法，即三原色取反。 |
 
 **返回：**
 
