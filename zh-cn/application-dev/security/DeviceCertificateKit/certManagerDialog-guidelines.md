@@ -52,6 +52,7 @@
 ``` TypeScript
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { UIContext } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 async function certificateManagerDialogSample() {
