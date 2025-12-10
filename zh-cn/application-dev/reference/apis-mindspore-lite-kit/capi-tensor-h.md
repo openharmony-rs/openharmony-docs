@@ -58,7 +58,7 @@
 
 ### OH_AI_TensorCreate()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType type, const int64_t *shape,size_t shape_num, const void *data, size_t data_len)
 ```
 
@@ -88,7 +88,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType
 
 ### OH_AI_TensorDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_TensorDestroy(OH_AI_TensorHandle *tensor)
 ```
 
@@ -107,7 +107,7 @@ OH_AI_API void OH_AI_TensorDestroy(OH_AI_TensorHandle *tensor)
 
 ### OH_AI_TensorClone()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)
 ```
 
@@ -132,7 +132,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorSetName()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetName(OH_AI_TensorHandle tensor, const char *name)
 ```
 
@@ -152,7 +152,7 @@ OH_AI_API void OH_AI_TensorSetName(OH_AI_TensorHandle tensor, const char *name)
 
 ### OH_AI_TensorGetName()
 
-```
+```c
 OH_AI_API const char *OH_AI_TensorGetName(const OH_AI_TensorHandle tensor)
 ```
 
@@ -177,7 +177,7 @@ OH_AI_API const char *OH_AI_TensorGetName(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorSetDataType()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetDataType(OH_AI_TensorHandle tensor, OH_AI_DataType type)
 ```
 
@@ -197,7 +197,7 @@ OH_AI_API void OH_AI_TensorSetDataType(OH_AI_TensorHandle tensor, OH_AI_DataType
 
 ### OH_AI_TensorGetDataType()
 
-```
+```c
 OH_AI_API OH_AI_DataType OH_AI_TensorGetDataType(const OH_AI_TensorHandle tensor)
 ```
 
@@ -222,7 +222,7 @@ OH_AI_API OH_AI_DataType OH_AI_TensorGetDataType(const OH_AI_TensorHandle tensor
 
 ### OH_AI_TensorSetShape()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetShape(OH_AI_TensorHandle tensor, const int64_t *shape, size_t shape_num)
 ```
 
@@ -243,7 +243,7 @@ OH_AI_API void OH_AI_TensorSetShape(OH_AI_TensorHandle tensor, const int64_t *sh
 
 ### OH_AI_TensorGetShape()
 
-```
+```c
 OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, size_t *shape_num)
 ```
 
@@ -269,7 +269,7 @@ OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, s
 
 ### OH_AI_TensorSetFormat()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetFormat(OH_AI_TensorHandle tensor, OH_AI_Format format)
 ```
 
@@ -289,7 +289,7 @@ OH_AI_API void OH_AI_TensorSetFormat(OH_AI_TensorHandle tensor, OH_AI_Format for
 
 ### OH_AI_TensorGetFormat()
 
-```
+```c
 OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)
 ```
 
@@ -314,7 +314,7 @@ OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorSetData()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)
 ```
 
@@ -334,7 +334,7 @@ OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)
 
 ### OH_AI_TensorGetData()
 
-```
+```c
 OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)
 ```
 
@@ -359,7 +359,7 @@ OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorGetMutableData()
 
-```
+```c
 OH_AI_API void *OH_AI_TensorGetMutableData(const OH_AI_TensorHandle tensor)
 ```
 
@@ -384,7 +384,7 @@ OH_AI_API void *OH_AI_TensorGetMutableData(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorGetElementNum()
 
-```
+```c
 OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)
 ```
 
@@ -409,7 +409,7 @@ OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorGetDataSize()
 
-```
+```c
 OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)
 ```
 
@@ -434,7 +434,7 @@ OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorSetUserData()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *data, size_t data_size)
 ```
 
@@ -461,7 +461,7 @@ OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *
 
 ### OH_AI_TensorGetAllocator()
 
-```
+```c
 OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tensor)
 ```
 
@@ -486,7 +486,7 @@ OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tens
 
 ### OH_AI_TensorSetAllocator()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TensorSetAllocator(OH_AI_TensorHandle tensor, OH_AI_AllocatorHandle allocator)
 ```
 

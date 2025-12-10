@@ -237,7 +237,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-删除媒体文件，删除的文件进入到回收站，使用Promise方式返回结果。
+删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -295,7 +295,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-删除媒体文件，删除的文件进入到回收站，使用Promise方式返回结果。
+删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -356,7 +356,9 @@ getAsset(): PhotoAsset
 
 获取当前资产变更请求中的资产。
 
-**注意**：对于创建资产的变更请求，在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效之前，该接口返回null。
+> **注意：**
+>
+> 对于创建资产的变更请求，在调用接口[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)的提交生效之前，该接口会返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -459,9 +461,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getWriteCacheHandler(): Promise&lt;number&gt;
 
-获取临时文件写句柄。
+获取临时文件写句柄。使用Promise异步回调。
 
-**注意**：对于同一个资产变更请求，不支持在成功获取临时文件写句柄后，重复调用该接口。
+> **注意：**
+>
+> 对于同一个资产变更请求，不支持在成功获取临时文件写句柄后，重复调用该接口。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -514,7 +518,9 @@ addResource(type: ResourceType, fileUri: string): void
 
 通过[fileUri](../apis-core-file-kit/js-apis-file-fileuri.md)从应用沙箱添加资源。
 
-**注意**：对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
+> **注意：**
+>
+> 对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -566,7 +572,9 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 
 通过ArrayBuffer数据添加资源。
 
-**注意**：对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
+> **注意：**
+>
+> 对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

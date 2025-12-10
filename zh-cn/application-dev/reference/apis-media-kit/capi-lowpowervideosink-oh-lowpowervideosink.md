@@ -1,5 +1,9 @@
 # OH_LowPowerVideoSink
 
+```c
+typedef struct OH_LowPowerVideoSink OH_LowPowerVideoSink
+```
+
 ## 概述
 
 LowPowerVideoSink声明。

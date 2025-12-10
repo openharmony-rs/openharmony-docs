@@ -183,7 +183,7 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 >
 > 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的ComponentUtils对象。
 
-  ```ts
+```ts
 import { matrix4, componentUtils } from '@kit.ArkUI';
 
 @Entry
@@ -225,6 +225,6 @@ struct Utils {
     }.margin({left: 50})
   }
 }
-  ```
+```
 
-  ![componentget](figures/getRectangleById.gif) 
+![componentget](figures/getRectangleById.gif) 

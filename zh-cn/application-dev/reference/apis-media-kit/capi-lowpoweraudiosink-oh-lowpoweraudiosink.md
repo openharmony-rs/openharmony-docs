@@ -1,5 +1,9 @@
 # OH_LowPowerAudioSink
 
+```c
+typedef struct OH_LowPowerAudioSink OH_LowPowerAudioSink
+```
+
 ## 概述
 
 LowPowerAudioSink的声明。

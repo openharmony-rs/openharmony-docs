@@ -74,7 +74,7 @@ Stack容器内子组件不设置zIndex的效果。
 
 Stack容器子组件设置zIndex后的效果。
 
-![zindex.png](figures/zindex.png)
+![zindex.PNG](figures/zindex.png)
 
 ### 示例2（动态修改zIndex属性）
 

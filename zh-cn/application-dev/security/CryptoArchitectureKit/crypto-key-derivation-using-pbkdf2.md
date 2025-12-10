@@ -81,7 +81,6 @@
 
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   function kdfSync() {
     let spec: cryptoFramework.PBKDF2Spec = {

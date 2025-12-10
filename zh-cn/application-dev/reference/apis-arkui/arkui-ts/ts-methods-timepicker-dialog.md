@@ -173,7 +173,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog 24小时制")
+      Button("TimePickerDialog 12小时制")
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -497,6 +497,7 @@ struct TimePickerDialogExample {
 struct TimePickerDialogExample {
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("TimePickerDialog")
@@ -531,6 +532,7 @@ struct TimePickerDialogExample {
 struct TimePickerDialogExample {
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("TimePickerDialog")

@@ -10,7 +10,7 @@ AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，�
 
 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行视频录制。
 
-在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应该严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。
+在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。
 
 **图1** 录制状态变化示意图
 
@@ -168,7 +168,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    >
    > - 配置参数之前需要确保完成对应权限的申请，请参考[申请权限](#申请权限)。
    >
-   > - prepare接口的入参OH_AVRecorder_Config中设置音视频相关的配置参数，如示例代码所示。
+   > - prepare接口的入参OH_AVRecorder_Config中设置的音视频相关的配置参数，如示例代码所示。
    >
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，视频比特率、分辨率、帧率以实际硬件设备支持的范围为准。
    >
@@ -222,8 +222,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         SetConfig(*config);
     
         // 1.设置URL（fileGenerationMode选择APP_CREATE时设置）。
-        const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-        int32_t outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
+        const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+        int32_t outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
         std::string fileUrl = "fd://" + std::to_string(outputFd);
         config->url = const_cast<char *>(fileUrl.c_str());
         OH_LOG_INFO(LOG_APP, "config.url is: %s", const_cast<char *>(fileUrl.c_str()));
@@ -444,8 +444,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       SetConfig(*config);
 
       // 1.1设置URL（fileGenerationMode选择APP_CREATE时设置）。
-      const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-      g_outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
+      const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+      g_outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
       std::string fileUrl = "fd://" + std::to_string(g_outputFd);
       config->url = const_cast<char *>(fileUrl.c_str());
 

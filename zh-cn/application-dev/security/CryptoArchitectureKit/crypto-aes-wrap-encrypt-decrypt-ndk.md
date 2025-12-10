@@ -26,7 +26,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 **加密**
 
-1. 调用[OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES-128-WRAP'，创建对称密钥类型为AES-128-WRAP的Cipher实例，用于加密操作。
+1. 调用[OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES128-WRAP'，创建对称密钥类型为AES128-WRAP的Cipher实例，用于加密操作。
 
 2. 调用[OH_CryptoSymCipherParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_create)创建参数对象，并调用[OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam)设置加密参数。
 
@@ -36,7 +36,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 **解密**
 
-1. 调用[OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES-128-WRAP'，创建对称密钥类型为AES-128-WRAP的Cipher实例，用于解密操作。
+1. 调用[OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES128-WRAP'，创建对称密钥类型为AES128-WRAP的Cipher实例，用于解密操作。
 
 2. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为解密（CRYPTO_DECRYPT_MODE），指定解密密钥（OH_CryptoSymKey）和对应的解密参数（OH_CryptoSymCipherParams），初始化解密Cipher实例。
 
@@ -62,7 +62,7 @@ static OH_Crypto_ErrCode doTestAesWrap()
     Crypto_DataBlob decData = {.data = nullptr, .len = 0};
     char *plainText = const_cast<char *>("this is test!");
     Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
-    uint8_t iv[16] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4, 3, 1, 0, 10}; // 示例代码iv值，开发者可使用安全随机数生成。
+    uint8_t iv[8] = {1, 2, 4, 12, 3, 4, 2, 3}; // 示例代码iv值，开发者可使用安全随机数生成。
     Crypto_DataBlob ivBlob = {.data = iv, .len = sizeof(iv)};
     // 生成对称密钥。
     OH_Crypto_ErrCode ret;
@@ -87,7 +87,7 @@ static OH_Crypto_ErrCode doTestAesWrap()
     }
     
     // 加密。
-    ret = OH_CryptoSymCipher_Create("AES-128-WRAP", &encCtx);
+    ret = OH_CryptoSymCipher_Create("AES128-WRAP", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -101,7 +101,7 @@ static OH_Crypto_ErrCode doTestAesWrap()
     }
     
     // 解密。
-    ret = OH_CryptoSymCipher_Create("AES-128-WRAP", &decCtx);
+    ret = OH_CryptoSymCipher_Create("AES128-WRAP", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }

@@ -38,7 +38,7 @@
 
 ### DDK_RetCode
 
-```
+```c
 enum DDK_RetCode
 ```
 

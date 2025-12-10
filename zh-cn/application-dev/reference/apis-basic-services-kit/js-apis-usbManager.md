@@ -159,16 +159,18 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function connectDevice() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-console.info(`devicepipe = ${devicepipe}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  console.info(`devicepipe = ${devicepipe}`);
+}
 ```
 
 ## usbManager.hasRight
@@ -205,16 +207,19 @@ hasRight(deviceName: string): boolean
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function hasRight(): boolean {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return false;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let right: boolean = usbManager.hasRight(device.name);
-console.info(`${right}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let right: boolean = usbManager.hasRight(device.name);
+  console.info(`${right}`);
+  return right;
+}
 ```
 
 ## usbManager.requestRight
@@ -249,16 +254,18 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  return;
-  console.info(`device list is empty`);
-}
+function requestRight() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name).then(ret => {
-  console.info(`requestRight = ${ret}`);
-});
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name).then(ret => {
+    console.info(`requestRight = ${ret}`);
+  });
+}
 ```
 
 ## usbManager.removeRight
@@ -293,15 +300,19 @@ removeRight(deviceName: string): boolean
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function removeRight(): boolean {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return false;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-if (usbManager.removeRight(device.name)) {
-  console.info(`Succeed in removing right`);
+  let device: usbManager.USBDevice = devicesList[0];
+  if (usbManager.removeRight(device.name)) {
+    console.info(`Succeed in removing right`);
+    return true;
+  }
+  return false;
 }
 ```
 
@@ -344,18 +355,20 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function claimInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number= usbManager.claimInterface(devicepipe, interfaces);
-console.info(`claimInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number= usbManager.claimInterface(devicepipe, interfaces);
+  console.info(`claimInterface = ${ret}`);
+}
 ```
 
 ## usbManager.releaseInterface
@@ -395,19 +408,21 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function releaseInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number = usbManager.claimInterface(devicepipe, interfaces);
-ret = usbManager.releaseInterface(devicepipe, interfaces);
-console.info(`releaseInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number= usbManager.claimInterface(devicepipe, interfaces);
+  ret = usbManager.releaseInterface(devicepipe, interfaces);
+  console.info(`releaseInterface = ${ret}`);
+}
 ```
 
 ## usbManager.setConfiguration
@@ -443,18 +458,20 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function setConfiguration() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let config: usbManager.USBConfiguration = device.configs[0];
-let ret: number= usbManager.setConfiguration(devicepipe, config);
-console.info(`setConfiguration = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let config: usbManager.USBConfiguration = device.configs[0];
+  let ret: number= usbManager.setConfiguration(devicepipe, config);
+  console.info(`setConfiguration = ${ret}`);
+}
 ```
 
 ## usbManager.setInterface
@@ -496,19 +513,21 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function setInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number = usbManager.claimInterface(devicepipe, interfaces);
-ret = usbManager.setInterface(devicepipe, interfaces);
-console.info(`setInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  ret = usbManager.setInterface(devicepipe, interfaces);
+  console.info(`setInterface = ${ret}`);
+}
 ```
 
 ## usbManager.getRawDescriptor
@@ -543,15 +562,17 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function getRawDescriptor() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+}
 ```
 
 ## usbManager.getFileDescriptor
@@ -586,18 +607,20 @@ getFileDescriptor(pipe: USBDevicePipe): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function getFileDescriptor() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-let ret: number = usbManager.getFileDescriptor(devicepipe);
-console.info(`getFileDescriptor = ${ret}`);
-let closeRet: number = usbManager.closePipe(devicepipe);
-console.info(`closePipe = ${closeRet}`);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  let ret: number = usbManager.getFileDescriptor(devicepipe);
+  console.info(`getFileDescriptor = ${ret}`);
+  let closeRet: number = usbManager.closePipe(devicepipe);
+  console.info(`closePipe = ${closeRet}`);
+}
 ```
 
 ## usbManager.controlTransfer<sup>(deprecated)</sup>
@@ -655,17 +678,19 @@ let param: PARA = {
   data: new Uint8Array(18)
 };
 
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function controlTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-console.info(`controlTransfer = ${ret}`);
-})
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
+  console.info(`controlTransfer = ${ret}`);
+  })
+}
 ```
 
 ## usbManager.usbControlTransfer<sup>12+</sup>
@@ -721,17 +746,19 @@ let param: PARA = {
   data: new Uint8Array(18)
 };
 
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function usbControlTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
-console.info(`usbControlTransfer = ${ret}`);
-})
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
+  console.info(`usbControlTransfer = ${ret}`);
+  })
+}
 ```
 
 ## usbManager.bulkTransfer
@@ -782,25 +809,27 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function bulkTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
 
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-for (let i = 0; i < device.configs[0].interfaces.length; i++) {
-  if (device.configs[0].interfaces[i].endpoints[0].attributes == 2) {
-    let endpoint: usbManager.USBEndpoint = device.configs[0].interfaces[i].endpoints[0];
-    let interfaces: usbManager.USBInterface = device.configs[0].interfaces[i];
-    let ret: number = usbManager.claimInterface(devicepipe, interfaces);
-    let buffer =  new Uint8Array(128);
-    usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
-      console.info(`bulkTransfer = ${ret}`);
-    });
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  for (let i = 0; i < device.configs[0].interfaces.length; i++) {
+    if (device.configs[0].interfaces[i].endpoints[0].attributes == 2) {
+      let endpoint: usbManager.USBEndpoint = device.configs[0].interfaces[i].endpoints[0];
+      let interfaces: usbManager.USBInterface = device.configs[0].interfaces[i];
+      let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+      let buffer =  new Uint8Array(128);
+      usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
+        console.info(`bulkTransfer = ${ret}`);
+      });
+    }
   }
 }
 ```
@@ -849,42 +878,44 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-//获取endpoint端点地址。
-let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
-  return value.direction === 0 && value.type === 2
-})
-//获取设备的第一个id。
-let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
-
-let transferParams: usbManager.UsbDataTransferParams = {
-  devPipe: devicepipe,
-  flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
-  endpoint: 1,
-  type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
-  timeout: 2000,
-  length: 10, 
-  callback: () => {},
-  userData: new Uint8Array(10),
-  buffer: new Uint8Array(10),
-  isoPacketCount: 0,
-};
-try {
-  transferParams.endpoint=endpoint?.address as number;
-  transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-    console.info('callBackData =' +JSON.stringify(callBackData));
+function usbSubmitTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
   }
-  usbManager.usbSubmitTransfer(transferParams); 
-  console.info('USB transfer request submitted.');
-} catch (error) {
-  console.error('USB transfer failed:', error);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  //获取endpoint端点地址。
+  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+    return value.direction === 0 && value.type === 2
+  })
+  //获取设备的第一个id。
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+
+  let transferParams: usbManager.UsbDataTransferParams = {
+    devPipe: devicepipe,
+    flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+    endpoint: 1,
+    type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
+    timeout: 2000,
+    length: 10, 
+    callback: () => {},
+    userData: new Uint8Array(10),
+    buffer: new Uint8Array(10),
+    isoPacketCount: 0,
+  };
+  try {
+    transferParams.endpoint=endpoint?.address as number;
+    transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
+      console.info('callBackData =' +JSON.stringify(callBackData));
+    }
+    usbManager.usbSubmitTransfer(transferParams); 
+    console.info('USB transfer request submitted.');
+  } catch (error) {
+    console.error('USB transfer failed:', error);
+  }
 }
 ```
 
@@ -930,42 +961,44 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-//获取endpoint端点地址。
-let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
-  return value.direction === 0 && value.type === 2
-})
-//获取设备的第一个id。
-let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
-let transferParams: usbManager.UsbDataTransferParams = {
-  devPipe: devicepipe,
-  flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
-  endpoint: 1,
-  type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
-  timeout: 2000,
-  length: 10, 
-  callback: () => {},
-  userData: new Uint8Array(10),
-  buffer: new Uint8Array(10),
-  isoPacketCount: 0,
-};
-try {
-  transferParams.endpoint=endpoint?.address as number;
-  transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-    console.info('callBackData =' +JSON.stringify(callBackData));
+function usbCancelTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
   }
-  usbManager.usbSubmitTransfer(transferParams);
-  usbManager.usbCancelTransfer(transferParams);
-  console.info('USB transfer request submitted.');
-} catch (error) {
-  console.error('USB transfer failed:', error);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  //获取endpoint端点地址。
+  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+    return value.direction === 0 && value.type === 2
+  })
+  //获取设备的第一个id。
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+  let transferParams: usbManager.UsbDataTransferParams = {
+    devPipe: devicepipe,
+    flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+    endpoint: 1,
+    type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
+    timeout: 2000,
+    length: 10, 
+    callback: () => {},
+    userData: new Uint8Array(10),
+    buffer: new Uint8Array(10),
+    isoPacketCount: 0,
+  };
+  try {
+    transferParams.endpoint=endpoint?.address as number;
+    transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
+      console.info('callBackData =' +JSON.stringify(callBackData));
+    }
+    usbManager.usbSubmitTransfer(transferParams);
+    usbManager.usbCancelTransfer(transferParams);
+    console.info('USB transfer request submitted.');
+  } catch (error) {
+    console.error('USB transfer failed:', error);
+  }
 }
 ```
 
@@ -1005,16 +1038,18 @@ closePipe(pipe: USBDevicePipe): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function closePipe() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-let ret: number = usbManager.closePipe(devicepipe);
-console.info(`closePipe = ${ret}`);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  let ret: number = usbManager.closePipe(devicepipe);
+  console.info(`closePipe = ${ret}`);
+}
 ```
 
 ## usbManager.hasAccessoryRight<sup>14+</sup>
@@ -1323,19 +1358,21 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.error(`device list is empty`);
-  return;
-}
+function resetUsbDevice() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.error(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-try {
-  let ret: boolean = usbManager.resetUsbDevice(devicepipe);
-  console.info(`resetUsbDevice  = ${ret}`);
-} catch (err) {
-  console.error(`resetUsbDevice failed: ` + err);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  try {
+    let ret: boolean = usbManager.resetUsbDevice(devicepipe);
+    console.info(`resetUsbDevice  = ${ret}`);
+  } catch (err) {
+    console.error(`resetUsbDevice failed: ` + err);
+  }
 }
 ```
 

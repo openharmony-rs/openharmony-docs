@@ -146,7 +146,7 @@ applySelectedAttribute?(instance: T): void
 4. 不支持[gesture](../../../ui/arkts-gesture-events-binding.md)类型的属性。
 5. 不支持[stateStyles](./ts-universal-attributes-polymorphic-style.md)属性。
 6. 不支持已废弃属性。
-<!--Del-->
+   <!--Del-->
 7. 不支持系统组件属性。<!--DelEnd-->
 
 不支持或者未实现的属性在使用时会抛出"Method not implemented."、"is not callable"、"Builder is not supported."等异常信息。具体Modifier支持范围可参考[属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。

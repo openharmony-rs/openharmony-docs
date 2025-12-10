@@ -72,6 +72,23 @@ GridRow(option?: GridRowOptions)
 
 栅格在不同宽度设备类型下，栅格列数。
 
+> **说明：**
+>
+> - API version 20之前，仅配置部分断点下GridRow组件的栅格列数，取已配置的更小断点的栅格列数补全未配置的栅格列数。若未配置更小断点的栅格列数，以默认栅格列数12补全未配置的栅格列数。
+>   <!--code_no_check-->
+>   ```ts
+>     columns: {xs:2, md:4, lg:8} // 等于配置 columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
+>     columns: {md:4, lg:8} // 等于配置 columns: {xs:12, sm:12, md:4, lg:8, xl:8, xxl:8}
+>   ```
+> - API version 20及以后，仅配置部分断点下GridRow组件的栅格列数，取已配置的更小断点的栅格列数补全未配置的栅格列数。若未配置更小断点的栅格列数，取已配置的更大断点的栅格列数补全未配置的栅格列数。
+>   <!--code_no_check-->
+>   ```ts
+>     columns: {xs:2, md:4, lg:8} // 等于配置 columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
+>     columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xxl:8}
+>   ```
+> - 建议手动配置不同断点下GridRow组件的栅格列数，避免默认补全的栅格列数的布局效果不符合预期。
+> - 每列栅格的宽度为GridRow的内容区大小减去栅格子组件的间距gutter， 再除以总的栅格列数。比如，宽800px的GridRow设置columns为12，gutter设置为10px， padding设置为20px，那么每列栅格的宽度为(800 - 20 * 2 - 10 * 11) / 12。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -87,22 +104,6 @@ GridRow(option?: GridRowOptions)
 | xl  | number | 否    | 是  | 在栅格大小为xl的设备上，栅格容器组件的栅格列数。    |
 | xxl | number | 否    | 是  | 在栅格大小为xxl的设备上，栅格容器组件的栅格列数。    |
 
-**说明：**
-- API version 20之前，仅配置部分断点下GridRow组件的栅格列数，取已配置的更小断点的栅格列数补全未配置的栅格列数。若未配置更小断点的栅格列数，以默认栅格列数12补全未配置的栅格列数。
-  <!--code_no_check-->
-  ```ts
-  columns: {xs:2, md:4, lg:8} // 等于配置 columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
-  columns: {md:4, lg:8} // 等于配置 columns: {xs:12, sm:12, md:4, lg:8, xl:8, xxl:8}
-  ```
-- API version 20及以后，仅配置部分断点下GridRow组件的栅格列数，取已配置的更小断点的栅格列数补全未配置的栅格列数。若未配置更小断点的栅格列数，取已配置的更大断点的栅格列数补全未配置的栅格列数。
-  <!--code_no_check-->
-  ```ts
-  columns: {xs:2, md:4, lg:8} // 等于配置 columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
-  columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xxl:8}
-  ```
-- 建议手动配置不同断点下GridRow组件的栅格列数，避免默认补全的栅格列数的布局效果不符合预期。
-- 每列栅格的宽度为GridRow的内容区大小减去栅格子组件的间距gutter， 再除以总的栅格列数。比如，宽800px的GridRow设置columns为12，gutter设置为10px， padding设置为20px，那么每列栅格的宽度为(800 - 20 * 2 - 10 * 11) / 12。
-
 ## GridRowSizeOption
 
 栅格在不同宽度设备类型下，gutter的大小。
@@ -115,12 +116,12 @@ GridRow(option?: GridRowOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| xs  | [Length](ts-types.md#length) | 否  | 是   | 在最小宽度类型设备上，栅格子组件的间距。    |
-| sm  | [Length](ts-types.md#length) | 否  | 是   | 在小宽度类型设备上，栅格子组件的间距。      |
-| md  | [Length](ts-types.md#length) | 否  | 是   | 在中等宽度类型设备上，栅格子组件的间距。    |
-| lg  | [Length](ts-types.md#length) | 否  | 是   | 在大宽度类型设备上，栅格子组件的间距。      |
-| xl  | [Length](ts-types.md#length) | 否  | 是   | 在特大宽度类型设备上，栅格子组件的间距。    |
-| xxl | [Length](ts-types.md#length) | 否  | 是   | 在超大宽度类型设备上，栅格子组件的间距。    |
+| xs  | [Length](ts-types.md#length) | 否  | 是   | 在最小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
+| sm  | [Length](ts-types.md#length) | 否  | 是   | 在小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp      |
+| md  | [Length](ts-types.md#length) | 否  | 是   | 在中等宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
+| lg  | [Length](ts-types.md#length) | 否  | 是   | 在大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp      |
+| xl  | [Length](ts-types.md#length) | 否  | 是   | 在特大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
+| xxl | [Length](ts-types.md#length) | 否  | 是   | 在超大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
 
 ## BreakPoints
 
@@ -139,11 +140,11 @@ GridRow(option?: GridRowOptions)
 <!--code_no_check-->
 ```ts
   // 启用xs、sm、md共3个断点
-  breakpoints: {value: ["100vp", "200vp"]}
+  breakpoints: {value: ['100vp', '200vp']}
   // 启用xs、sm、md、lg共4个断点，断点范围值必须单调递增
-  breakpoints: {value: ["320vp", "600vp", "840vp"]}
+  breakpoints: {value: ['320vp', '600vp', '840vp']}
   // 启用xs、sm、md、lg、xl共5个断点，断点范围数量不可超过断点可取值数量-1
-  breakpoints: {value: ["320vp", "600vp", "840vp", "1080vp"]}
+  breakpoints: {value: ['320vp', '600vp', '840vp', '1080vp']}
 ```
 
 ## BreakpointsReference枚举说明
@@ -165,29 +166,26 @@ GridRow(option?: GridRowOptions)
 
 栅格元素排列方向。
 
+> **说明：**
+>
+> - 栅格元素仅支持Row/RowReverse排列，不支持column/ColumnReverse方向排列。
+> - 栅格子组件仅能通过span、offset计算子组件位置与大小。多个子组件span超过规定列数时自动换行。
+> - 单个元素span大小超过最大列数时后台默认span为最大column数。
+> - 新一行的Offset加上子组件的span超过总列数时，将下一个子组件在新的一行放置。
+> - 例：Item1: GridCol({ span: 6 })， Item2: GridCol({ span: 8, offset:11 })。 
+>
+>   ![figures/gridRowOffsetToNextLine.png](figures/gridRowOffsetToNextLine.png)
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| Row | 栅格元素按照行方向排列。 |
-| RowReverse | 栅格元素按照逆序行方向排列。 |
-
-**说明：**
-* 栅格元素仅支持Row/RowReverse排列，不支持column/ColumnReverse方向排列。
-* 栅格子组件仅能通过span、offset计算子组件位置与大小。多个子组件span超过规定列数时自动换行。
-* 单个元素span大小超过最大列数时后台默认span为最大column数。
-* 新一行的Offset加上子组件的span超过总列数时，将下一个子组件在新的一行放置。
-* 例：Item1: GridCol({ span: 6 })， Item2: GridCol({ span: 8, offset:11 })  
-
-|1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     | 10    | 11    | 12    |
-| ----- | ------ | ---- | ---- | -----|-----|---------|--------|------|------- |------- |------- |
-| $\circ$ | $\circ$ | $\circ$ | $\circ$ | $\circ$|$\circ$| - |  - |  - |  -  | -  | -  |
-| -     | -     | -     | -     | -     |       |       |       |       |       |   |   |
-| $\circ$ | $\circ$ | $\circ$ | $\circ$ | $\circ$|$\circ$|$\circ$|$\circ$|  |   |   |   |
+| 名称 | 值   | 说明 |
+| -------- | ---- | -------- |
+| Row | 0 | 栅格元素按照行方向排列。 |
+| RowReverse | 1 | 栅格元素按照逆序行方向排列。 |
 
 ## 属性
 
@@ -236,7 +234,9 @@ onBreakpointChange(callback: (breakpoints: string) => void)
 
 ## 示例
 
-栅格布局的基本用法。
+### 示例1（栅格布局的基本用法）
+
+本示例展示GridRow组件的基本用法。
 
 ```ts
 // xxx.ets
@@ -251,16 +251,16 @@ struct GridRowExample {
       GridRow({
         columns: 5,
         gutter: { x: 5, y: 10 },
-        breakpoints: { value: ["400vp", "600vp", "800vp"],
+        breakpoints: { value: ['400vp', '600vp', '800vp'],
           reference: BreakpointsReference.WindowSize },
         direction: GridRowDirection.Row
       }) {
         ForEach(this.bgColors, (color: Color) => {
           GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 }, offset: 0, order: 0 }) {
-            Row().width("100%").height("20vp")
+            Row().width('100%').height('20vp')
           }.borderColor(color).borderWidth(2)
         })
-      }.width("100%").height("100%")
+      }.width('100%').height('100%')
       .onBreakpointChange((breakpoint) => {
         this.currentBp = breakpoint
       })
@@ -271,3 +271,71 @@ struct GridRowExample {
 ```
 
 ![figures/gridrow.png](figures/gridrow.png)
+
+### 示例2（AlignItems的基本用法）
+
+本示例展示GridCol组件在不同alignItems对齐方式下的效果。
+
+```ts
+@ComponentV2
+struct AlignItemsDemo {
+  bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink];
+  @Param alignment: ItemAlign = ItemAlign.Start; // 接收父组件传入的alignItems属性值
+
+  ToString(alignment: ItemAlign): string {
+    switch (alignment) {
+      case ItemAlign.Start:
+        return "ItemAlign.Start";
+      case ItemAlign.Center:
+        return "ItemAlign.Center";
+      case ItemAlign.End:
+        return "ItemAlign.End";
+      case ItemAlign.Stretch:
+        return "ItemAlign.Stretch";
+      default:
+        return "ItemAlign.Auto";
+    }
+  }
+
+  build() {
+    Column() {
+      Text(this.ToString(this.alignment))
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+        .alignSelf(ItemAlign.Start)
+      GridRow({
+        columns: 5,
+        gutter: { x: 5, y: 10 },
+      }) {
+        ForEach(this.bgColors, (color: Color, index: number) => {
+          GridCol({ span: 1 }) {
+            Row() {
+            }.width('100%').height(`${(index + 1) * 20}%`) // GridCol设置不同的高度，方便观察alignItems属性的效果
+          }.borderColor(color).borderWidth(2)
+        })
+      }
+      .border({ color: '#880606', width: 2 })
+      .alignItems(this.alignment)
+      .width('100%')
+    }
+    .height("20%")
+  }
+}
+
+@Entry
+@ComponentV2
+struct GridRowExample {
+  alignmentArray: ItemAlign[] = [ItemAlign.Start, ItemAlign.Center, ItemAlign.End, ItemAlign.Stretch];
+
+  build() {
+    Column({ space: 15 }) {
+      ForEach(this.alignmentArray, (ele: ItemAlign) => {
+        AlignItemsDemo({ alignment: ele })
+      })
+    }.width('80%').margin({ left: 10, top: 5, bottom: 5 }).height("100%")
+  }
+}
+```
+
+![figures/gridrow_alignitems.png](figures/gridrow_alignitems.png)

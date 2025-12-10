@@ -86,8 +86,8 @@ getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDesc
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                       |	
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |	
+| 参数名   | 类型                                                         | 必填 | 说明                                       |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
 | callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](#avsessiondescriptor)\>\>\> | 是   | 回调函数。返回所有会话描述的只读对象。 |
 
 **错误码：**
@@ -133,8 +133,8 @@ getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVS
 
 **参数：**
 
-| 参数名   | 类型    | 必填 | 说明                                                             |	
-| -------- | ------ | ---- | -----------------------------------------------------------------|	
+| 参数名   | 类型    | 必填 | 说明                                                             |
+| -------- | ------ | ---- | -----------------------------------------------------------------|
 | maxSize  | number | 否   | 指定获取描述符数量的最大值，可选范围是0-10，不填则取默认值，默认值为3。|
 
 **返回值：**
@@ -188,7 +188,7 @@ getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\
 **参数：**
 
 | 参数名   | 类型                                                                            | 必填 | 说明                                                             |	
-| -------- | ------------------------------------------------------------------------------ | ---- | -----------------------------------------------------------------|	
+| -------- | ------------------------------------------------------------------------------ | ---- |-----------------------------------------------------------------|
 | maxSize  | number                                                                         | 是  | 指定获取描述符数量的最大值，可选范围是0-10。|	
 | callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](#avsessiondescriptor)\>\>\> | 是   | 回调函数。返回所有会话描述的只读对象。                              |
 
@@ -196,7 +196,7 @@ getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
-| 错误码ID | 错误信息 
+| 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 |  permission denied. |
 | 202 |  Not System App.  |
@@ -238,9 +238,9 @@ getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Promise\<Array\
 
 **参数：**
 
-| 参数名   | 类型    | 必填 | 说明                                                             |	
-| -------- | ------ | ---- | ---------------------------------------------------------------|	
-| maxSize  | number | 是   | 指定获取歌曲列表数量的最大值，暂与获取歌单数量无关。                     |	
+| 参数名   | 类型    | 必填 | 说明                                                             |
+| -------- | ------ | ---- | ---------------------------------------------------------------|
+| maxSize  | number | 是   | 指定获取歌曲列表数量的最大值，暂与获取歌单数量无关。                     |
 | maxAppSize | number | 是   | 指定获取歌曲列表所属应用数量的最大值，暂与获取歌单数量无关。             |
 
 **返回值：**
@@ -285,9 +285,9 @@ getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number, callback: AsyncCa
 **参数：**
 
 | 参数名   | 类型                                                                            | 必填 | 说明                                                             |	
-| -------- | ----------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------|	
+| -------- | ----------------------------------------------------------------------------- | ---- |---------------------------------------------------------------|
 | maxSize  | number                                                                        | 是   | 指定获取歌曲列表数量的最大值，暂与获取歌单数量无关。                      |	
-| maxAppSize | number                                                                      | 是   | 指定获取歌曲列表所属应用数量的最大值，暂与获取歌单数量无关。               |	
+| maxAppSize | number                                                                      | 是   | 指定获取歌曲列表所属应用数量的最大值，暂与获取歌单数量无关。               |
 | callback | AsyncCallback<Array<Readonly<[AVQueueInfo](#avqueueinfo11)\>\>\> | 是   | 回调函数。返回所有历史播放歌单的只读对象。                              |
 
 **错误码：**
@@ -329,8 +329,8 @@ createController(sessionId: string): Promise\<AVSessionController>
 
 **参数：**
 
-| 参数名    | 类型   | 必填 | 说明     |	
-| --------- | ------ | ---- | -------- |	
+| 参数名    | 类型   | 必填 | 说明     |
+| --------- | ------ | ---- | -------- |
 | sessionId | string | 是   | 会话ID，如果提供 'default'，系统将创建一个默认控制器，用于控制系统默认会话。 |
 
 **返回值：**
@@ -380,8 +380,8 @@ createController(sessionId: string, callback: AsyncCallback\<AVSessionController
 **参数：**
 
 | 参数名    | 类型                                                        | 必填 | 说明                                                         |	
-| --------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |	
-| sessionId | string                                                      | 是   | 会话ID，如果提供 'default'，系统将创建一个默认控制器，用于控制系统默认会话。                                                     |	
+| --------- | ----------------------------------------------------------- | ---- |------------------------------------------------------------ |
+| sessionId | string                                                      | 是   | 会话ID，如果提供 'default'，系统将创建一个默认控制器，用于控制系统默认会话。                                                     |
 | callback  | AsyncCallback<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\> | 是   | 回调函数。返回会话控制器实例，可查看会话ID，<br>并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
 
 **错误码：**
@@ -428,9 +428,9 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 **参数：**
 
-| 参数名        | 类型           | 必填 | 说明 |	
-| ------------ | -------------- |------|------|	
-| session      | [SessionToken](#sessiontoken) &#124; 'all' | 是   | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |	
+| 参数名        | 类型           | 必填 | 说明 |
+| ------------ | -------------- |------|------|
+| session      | [SessionToken](#sessiontoken) &#124; 'all' | 是   | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
 | audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\> | 是   | 媒体设备列表。  |
 
 **返回值：**
@@ -493,9 +493,9 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 **参数：**
 
-| 参数名       | 类型                                         | 必填 | 说明                                                         |	
-| ------------ |--------------------------------------------| ---- | ------------------------------------------------------------ |	
-| session      | [SessionToken](#sessiontoken) &#124; 'all' | 是   | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |	
+| 参数名       | 类型                                         | 必填 | 说明                                                         |
+| ------------ |--------------------------------------------| ---- | ------------------------------------------------------------ |
+| session      | [SessionToken](#sessiontoken) &#124; 'all' | 是   | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
 | audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\>   | 是   | 媒体设备列表。 |	
 | callback     | AsyncCallback\<void>     | 是   | 回调函数。当投播成功，err为undefined，否则返回错误对象。      |
 
@@ -552,9 +552,9 @@ startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 
 **参数：**
 
-| 参数名        | 类型           | 必填 | 说明 |	
-| ------------ | -------------- |------|------|	
-| bundleName   | string         | 是   | 指定应用包名。 |	
+| 参数名        | 类型           | 必填 | 说明 |
+| ------------ | -------------- |------|------|
+| bundleName   | string         | 是   | 指定应用包名。 |
 | assetId      |string           | 是   | 指定媒体ID。  |
 
 **返回值：**
@@ -587,6 +587,55 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 });
 ```
 
+## avSession.startAVPlayback<sup>22+</sup>
+
+startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise\<void>
+
+启动媒体播放应用程序。使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名        | 类型                                                   | 必填 | 说明         |	
+| ------------ |------------------------------------------------------|----|------------|	
+| bundleName   | string                                               | 是  | 指定启动的应用包名。 |	
+| assetId      | string                                               | 是  | 指定启动的媒体ID。 |
+| info      | [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) | 是  | 指定相关的命令信息。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avSession.startAVPlayback("com.example.myapplication", "121278", "entry").then(() => {
+  console.info('startAVPlayback : SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## avSession.getDistributedSessionController<sup>18+</sup>
 
 getDistributedSessionController(distributedSessionType: DistributedSessionType): Promise<Array\<AVSessionController>>
@@ -601,9 +650,9 @@ getDistributedSessionController(distributedSessionType: DistributedSessionType):
 
 **参数：**
 
-| 参数名    | 类型                                                                      | 必填 | 说明      |	
-| --------- |-------------------------------------------------------------------------| ---- |---------|	
-| distributedSessionType | [DistributedSessionType](#distributedsessiontype18) | 是   | 远端会话类型。 |	
+| 参数名    | 类型                                                                      | 必填 | 说明      |
+| --------- |-------------------------------------------------------------------------| ---- |---------|
+| distributedSessionType | [DistributedSessionType](#distributedsessiontype18) | 是   | 远端会话类型。 |
 
 **返回值：**
 
@@ -666,9 +715,9 @@ on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): voi
 
 **参数：**
 
-| 参数名    | 类型                   | 必填 | 说明                                                         |	
-| -------- | ---------------------- | ---- | ------------------------------------------------------------ |	
-| type     | string                 | 是   | 事件回调类型，支持的事件是'sessionCreate'：会话创建事件，检测到会话创建时触发。|	
+| 参数名    | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                 | 是   | 事件回调类型，支持的事件是'sessionCreate'：会话创建事件，检测到会话创建时触发。|
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
@@ -706,9 +755,9 @@ on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): vo
 
 **参数：**
 
-| 参数名   | 类型            | 必填 | 说明                                                         |	
-| -------- | ---------------| ---- | ------------------------------------------------------------ |	
-| type     | string         | 是   | 事件回调类型，支持的事件包括是`'sessionDestroy'`：会话销毁事件，检测到会话销毁时触发。|	
+| 参数名   | 类型            | 必填 | 说明                                                         |
+| -------- | ---------------| ---- | ------------------------------------------------------------ |
+| type     | string         | 是   | 事件回调类型，支持的事件包括是`'sessionDestroy'`：会话销毁事件，检测到会话销毁时触发。|
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
@@ -745,10 +794,10 @@ on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): 
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                         |	
-| -------- | --------------------| ---- | ------------------------------------------------------------ |	
-| type     | string      | 是   | 事件回调类型，支持的事件包括是 `'topSessionChange'`：最新会话的变化事件，检测到最新的会话改变时触发。|	
-| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 是   | 回调函数。参数为会话相关描述。 |	
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | --------------------| ---- | ------------------------------------------------------------ |
+| type     | string      | 是   | 事件回调类型，支持的事件包括是 `'topSessionChange'`：最新会话的变化事件，检测到最新的会话改变时触发。|
+| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -784,9 +833,9 @@ off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): v
 
 **参数：**
 
-| 参数名   | 类型       | 必填 | 说明       |	
-| -------- | ----------| ---- | ----------|	
-| type     | string    | 是   | 事件回调类型，支持的事件为：`'sessionCreate'`。|	
+| 参数名   | 类型       | 必填 | 说明       |
+| -------- | ----------| ---- | ----------|
+| type     | string    | 是   | 事件回调类型，支持的事件为：`'sessionCreate'`。|
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                               |
 
 **错误码：**
@@ -819,9 +868,9 @@ off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): 
 
 **参数：**
 
-| 参数名   | 类型        | 必填 | 说明                      |	
-| -------- | -----------| ---- | -------------------------|	
-| type     | string     | 是   | 事件回调类型，支持的事件为`'sessionDestroy'`。|	
+| 参数名   | 类型        | 必填 | 说明                      |
+| -------- | -----------| ---- | -------------------------|
+| type     | string     | 是   | 事件回调类型，支持的事件为`'sessionDestroy'`。|
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
 
 **错误码：**
@@ -854,9 +903,9 @@ off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void)
 
 **参数：**
 
-| 参数名   | 类型              | 必填 | 说明                        |	
-| -------- | -----------------| ---- | ---------------------------- |	
-| type     | string           | 是   | 事件回调类型，支持的事件为`'topSessionChange'`。|	
+| 参数名   | 类型              | 必填 | 说明                        |
+| -------- | -----------------| ---- | ---------------------------- |
+| type     | string           | 是   | 事件回调类型，支持的事件为`'topSessionChange'`。|
 | callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -887,9 +936,9 @@ on(type: 'sessionServiceDie', callback: () => void): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                         |	
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |	
-| type     | string               | 是   | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件，检测到会话的服务死亡时触发。 |	
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| type     | string               | 是   | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件，检测到会话的服务死亡时触发。 |
 | callback | callback: () => void | 是   | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。                                |
 
 **错误码：**
@@ -922,9 +971,9 @@ off(type: 'sessionServiceDie', callback?: () => void): void
 
 **参数：**
 
-| 参数名    | 类型                    | 必填  |      说明                                               |	
-| ------   | ---------------------- | ---- | ------------------------------------------------------- |	
-| type     | string                 | 是    | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件。|	
+| 参数名    | 类型                    | 必填  |      说明                                               |
+| ------   | ---------------------- | ---- | ------------------------------------------------------- |
+| type     | string                 | 是    | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件。|
 | callback | callback: () => void   | 否    | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。            |
 
 **错误码：**
@@ -958,9 +1007,9 @@ on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionT
 
 **参数：**
 
-| 参数名   | 类型                                                                                  | 必填 | 说明                                                                       |	
-| -------- |-------------------------------------------------------------------------------------| ---- |--------------------------------------------------------------------------|	
-| type     | string                                                                              | 是   | 事件回调类型，支持的事件为 `'distributedSessionChange'`：最新远端分布式会话的变化事件，检测到最新的会话改变时触发。 |	
+| 参数名   | 类型                                                                                  | 必填 | 说明                                                                       |
+| -------- |-------------------------------------------------------------------------------------| ---- |--------------------------------------------------------------------------|
+| type     | string                                                                              | 是   | 事件回调类型，支持的事件为 `'distributedSessionChange'`：最新远端分布式会话的变化事件，检测到最新的会话改变时触发。 |
 | distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | 是   | 远端会话类型。                                                                  |	
 | callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 是   | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。            |
 
@@ -997,7 +1046,7 @@ off(type: 'distributedSessionChange', distributedSessionType: DistributedSession
 **参数：**
 
 | 参数名   | 类型                                                                                  | 必填 | 说明                                                            |	
-| -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|	
+| -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|
 | type     | string                                                                              | 是  | 事件回调类型，支持的事件为`'distributedSessionChange'`。                    |	
 | distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | 是  | 远端会话类型。                                                       |	
 | callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 否  | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
@@ -1032,8 +1081,8 @@ sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                  |	
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------- |	
-| event    | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是   | 按键事件。                            |	
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------- |
+| event    | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是   | 按键事件。                            |
 | callback | AsyncCallback\<void>                                         | 是   | 回调函数。当事件发送成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -1080,9 +1129,9 @@ sendSystemAVKeyEvent(event: KeyEvent): Promise\<void>
 
 **参数：**
 
-| 参数名 | 类型                            | 必填 | 说明       |	
-| ------ | ------------------------------- | ---- | ---------- |	
-| event  | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是   | 按键事件。 |	
+| 参数名 | 类型                            | 必填 | 说明       |
+| ------ | ------------------------------- | ---- | ---------- |
+| event  | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是   | 按键事件。 |
 
 
 **返回值：**
@@ -1133,9 +1182,9 @@ sendSystemControlCommand(command: AVControlCommand, callback: AsyncCallback\<voi
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| command  | [AVControlCommand](arkts-apis-avsession-i.md#avcontrolcommand10) | 是   | AVSession的相关命令和命令相关参数。   |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| command  | [AVControlCommand](arkts-apis-avsession-i.md#avcontrolcommand10) | 是   | AVSession的相关命令和命令相关参数。   |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -1193,8 +1242,8 @@ sendSystemControlCommand(command: AVControlCommand): Promise\<void>
 
 **参数：**
 
-| 参数名  | 类型                                  | 必填 | 说明                                |	
-| ------- | ------------------------------------- | ---- | ----------------------------------- |	
+| 参数名  | 类型                                  | 必填 | 说明                                |
+| ------- | ------------------------------------- | ---- | ----------------------------------- |
 | command | [AVControlCommand](arkts-apis-avsession-i.md#avcontrolcommand10) | 是   | AVSession的相关命令和命令相关参数。 |
 
 **返回值：**
@@ -1266,8 +1315,8 @@ startCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
 
@@ -1311,9 +1360,9 @@ startCastDeviceDiscovery(filter: number, callback: AsyncCallback\<void>): void
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| filter | number | 是 | 进行设备发现的过滤条件，由ProtocolType的组合而成。 |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| filter | number | 是 | 进行设备发现的过滤条件，由ProtocolType组合而成。 |	
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -1352,9 +1401,9 @@ startCastDeviceDiscovery(filter?: number, drmSchemes?: Array\<string>): Promise\
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| filter | number | 否 | 进行设备发现的过滤条件，由ProtocolType的组合而成。 |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| filter | number | 否 | 进行设备发现的过滤条件，由ProtocolType组合而成。 |
 | drmSchemes | Array\<string> | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。 <br/>从API version 12开始支持该可选参数。|
 
 **返回值：**
@@ -1398,8 +1447,8 @@ stopCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当成功停止搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -1472,9 +1521,9 @@ setDiscoverable(enable: boolean, callback: AsyncCallback\<void>): void
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| enable | boolean | 是 | 是否允许本设备被发现。true：允许被发现，false：不允许被发现。 |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| enable | boolean | 是 | 是否允许本设备被发现。true表示允许被发现，false表示不允许被发现。 |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -1512,9 +1561,9 @@ setDiscoverable(enable: boolean): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| enable | boolean | 是 | 是否允许本设备被发现。true：允许被发现，false：不允许被发现。 |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| enable | boolean | 是 | 是否允许本设备被发现。true表示允许被发现，false表示不允许被发现。 |
 
 **返回值：**
 
@@ -1555,9 +1604,9 @@ on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                         |	
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |	
-| type     | string               | 是   | 事件回调类型，支持事件`'deviceAvailable'`，有设备被发现时触发回调。 |	
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| type     | string               | 是   | 事件回调类型，支持事件`'deviceAvailable'`，有设备被发现时触发回调。 |
 | callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 是   | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。                                |
 
 **错误码：**
@@ -1591,9 +1640,9 @@ off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => void): voi
 
 **参数：**
 
-| 参数名    | 类型                    | 必填  |      说明                                               |	
-| ------   | ---------------------- | ---- | ------------------------------------------------------- |	
-| type     | string                 | 是    | 事件回调类型，支持事件`'deviceAvailable'`：设备发现回调。|	
+| 参数名    | 类型                    | 必填  |      说明                                               |
+| ------   | ---------------------- | ---- | ------------------------------------------------------- |
+| type     | string                 | 是    | 事件回调类型，支持事件`'deviceAvailable'`：设备发现回调。|
 | callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | 否    | 用于返回设备信息。|
 **错误码：**
 
@@ -1622,9 +1671,9 @@ on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                         |	
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |	
-| type     | string               | 是   | 事件回调类型，支持事件`'deviceOffline'`，有设备下线时触发回调。 |	
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| type     | string               | 是   | 事件回调类型，支持事件`'deviceOffline'`，有设备下线时触发回调。 |
 | callback | (deviceId: string) => void | 是   | 回调函数，参数deviceId是设备的ID。当监听事件注册成功，err为undefined，否则返回错误对象。  |
 
 **错误码：**
@@ -1660,9 +1709,9 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 **参数：**
 
-| 参数名    | 类型                    | 必填  |      说明                                               |	
-| ------   | ---------------------- | ---- | ------------------------------------------------------- |	
-| type     | string                 | 是    | 事件回调类型，支持事件`'deviceOffline'`：设备下线回调。|	
+| 参数名    | 类型                    | 必填  |      说明                                               |
+| ------   | ---------------------- | ---- | ------------------------------------------------------- |
+| type     | string                 | 是    | 事件回调类型，支持事件`'deviceOffline'`：设备下线回调。|
 | callback | (deviceId: string) => void | 否   | 回调函数，参数deviceId是设备的ID。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
 
 **错误码：**
@@ -1697,8 +1746,8 @@ getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController
 **参数：**
 
 | 参数名    | 类型                                                        | 必填 | 说明                                                         |	
-| --------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |	
-| sessionId | string                    | 是   |用于指定要获取的投播控制器的sessionId。 |	
+| --------- | ----------------------------------------------------------- | ---- |------------------------------------------------------------ |
+| sessionId | string                    | 是   |用于指定要获取的投播控制器的sessionId。 |
 | callback  | AsyncCallback<[AVCastController](#avcastcontroller10)\> | 是   | 回调函数，返回投播控制器实例。 |
 
 **错误码：**
@@ -1766,8 +1815,8 @@ getAVCastController(sessionId: string): Promise\<AVCastController>
 
 **参数：**
 
-| 参数名    | 类型                       | 必填 | 说明                                                         |	
-| --------- | ------------------------- | ---- | ------------------------------------------------------------ |	
+| 参数名    | 类型                       | 必填 | 说明                                                         |
+| --------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | sessionId | string                    | 是   |用于指定要获取的投播控制器的sessionId。 |
 
 **返回值：**
@@ -1837,10 +1886,10 @@ startCasting(session: SessionToken, device: OutputDeviceInfo, callback: AsyncCal
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| session      | [SessionToken](#sessiontoken) | 是   | 会话令牌。SessionToken表示单个token。 |	
-| device | [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)                        | 是   | 设备相关信息。 |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| session      | [SessionToken](#sessiontoken) | 是   | 会话令牌。SessionToken表示单个token。 |
+| device | [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)                        | 是   | 设备相关信息。 |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功并启动投播，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -1894,9 +1943,9 @@ startCasting(session: SessionToken, device: OutputDeviceInfo): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| session      | [SessionToken](#sessiontoken) | 是   | 会话令牌。SessionToken表示单个token。 |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| session      | [SessionToken](#sessiontoken) | 是   | 会话令牌。SessionToken表示单个token。 |
 | device | [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)                        | 是   | 设备相关信息。 |
 
 **返回值：**
@@ -1951,9 +2000,9 @@ stopCasting(session: SessionToken, callback: AsyncCallback\<void>): void
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| session      | [SessionToken](#sessiontoken) | 是   | 会话令牌。SessionToken表示单个token。 | 	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| session      | [SessionToken](#sessiontoken) | 是   | 会话令牌。SessionToken表示单个token。 |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当成功结束投播，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -1995,9 +2044,9 @@ stopCasting(session: SessionToken): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| session      | [SessionToken](#sessiontoken) | 是   | 会话令牌。SessionToken表示单个token。 |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| session      | [SessionToken](#sessiontoken) | 是   | 会话令牌。SessionToken表示单个token。 |
 
 **返回值：**
 
@@ -2042,9 +2091,9 @@ startDeviceLogging(url: string, maxSize?: number): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |	
-| -------- | ------------------------------------- | ---- | ------------------------------------- |	
-| url | string                   | 是   | 目标文件描述符（打开文件的唯一标识）。 |	
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| url | string                   | 是   | 目标文件描述符（打开文件的唯一标识）。 |
 | maxSize | number                   | 否   | 写入最大日志大小（以KB为单位）。 |
 
 **返回值：**
@@ -2130,8 +2179,8 @@ on(type: 'deviceLogEvent', callback: Callback\<DeviceLogEventCode>): void
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |	
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'deviceLogEvent'`。 |	
+| -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
+| type     | string                                                       | 是   | 事件回调类型，支持事件`'deviceLogEvent'`。 |
 | callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | 是   | 回调函数，参数DeviceLogEventCode是当前设备日志返回值。                      |
 
 **错误码：**
@@ -2166,8 +2215,8 @@ off(type: 'deviceLogEvent', callback?: Callback\<DeviceLogEventCode>): void
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |	
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'deviceLogEvent'`。 |	
+| -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
+| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'deviceLogEvent'`。 |
 | callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | 否  | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。            |
 
 **错误码：**
@@ -2217,7 +2266,7 @@ on(type: 'deviceStateChanged', callback: Callback\<DeviceState\>): void
 **参数：**
 
 | 参数名   | 类型                                                          | 必填  | 说明                                                         |	
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
+| -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'deviceStateChanged'`，投播设备连接状态发生变化时触发回调。 |	
 | callback | (callback: [DeviceState](#devicestate20)) => void            | 是   | 回调函数，参数DeviceState包含投播设备ID、连接状态码、连接错误码和系统雷达错误码。|
 
@@ -2289,8 +2338,8 @@ setDisplaySurface(surfaceId: string): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                                                | 必填 | 说明                         |	
-| -------- | --------------------------------------------------- | ---- | ---------------------------- |	
+| 参数名   | 类型                                                | 必填 | 说明                         |
+| -------- | --------------------------------------------------- | ---- | ---------------------------- |
 | surfaceId | string | 是   | 设置播放的surfaceId。 |
 
 **返回值：**
@@ -2343,10 +2392,10 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 
 **参数：**
 
-| 参数名   | 类型                                                | 必填 | 说明                         |	
-| -------- | --------------------------------------------------- | ---- | ---------------------------- |	
-| callback | AsyncCallback\<void> | 是   | 回调函数，返回当前设置结果。 |	
-| surfaceId | string | 是   | 设置播放的surfaceId。 |	
+| 参数名   | 类型                                                | 必填 | 说明                         |
+| -------- | --------------------------------------------------- | ---- | ---------------------------- |
+| callback | AsyncCallback\<void> | 是   | 回调函数，返回当前设置结果。 |
+| surfaceId | string | 是   | 设置播放的surfaceId。 |
 
 **错误码：**
 
@@ -2398,7 +2447,7 @@ on(type: 'videoSizeChange', callback: (width:number, height:number) => void): vo
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
+| -------- | ------------------------------------------------------------ | ---- |---- |
 | type     | string      | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当video尺寸更改时，触发该事件。 |
 | callback | (width:number, height:number) => void    | 是   | 回调函数，返回video的宽度和高度。     |
 
@@ -2433,7 +2482,7 @@ off(type: 'videoSizeChange'): void
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明      |
-| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
+| -------- | ------------------------------------------------------------ | ---- |---- |
 | type     | string  | 是   | 取消对应的监听事件，支持事件`'videoSizeChange'`。    |
 
 **错误码：**

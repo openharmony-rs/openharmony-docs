@@ -413,6 +413,7 @@ decoration:{
 当overflow设置为TextOverflow.MARQUEE时，该功能不会生效。
 
 当copyOption设置为CopyOptions.None时，点击实体弹出的菜单不包含选择文本、复制、翻译、分享和搜索功能。当copyOption不为CopyOptions.None，且textSelectable设置为TextSelectableMode.UNSELECTABLE时，仍然具有实体复制功能，但不包含选择文本功能。
+<!--RP2--><!--RP2End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1229,7 +1230,7 @@ textOverflow(options: TextOverflowOptions)
 
 - 折行规则参考[lineBreakStrategy](#linebreakstrategy12)。该属性在[wordBreak](#wordbreak11)不等于WordBreak.BREAK_ALL的时候生效，不支持连词符。
 
-- 从API version 11开始，建议优先组合[textOverflow](#textoverflow)和[wordBreak](#wordbreak11)属性来设置截断方式，具体详见[示例4设置文本断行及折行](#示例4设置文本断行及折行)。
+- 从API version 11开始，建议优先组合[textOverflow](#textoverflow)和[wordBreak](#wordbreak11)属性来设置截断方式，具体详见[示例4设置文本断行及折行](#示例4设置文本断行及折行)<!--RP1--><!--RP1End-->。
 
 当TextOverflowOptions设置为TextOverflow.MARQUEE时：
 
@@ -1281,7 +1282,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 设置文字阴影效果。
 
-不支持fill字段和智能取色模式。
+不支持ShadowOptions对象中的type、fill字段和color字段的智能取色模式。
 
 从API version 11开始，该接口支持以数组形式入参，实现多重文字阴影。
 
@@ -1367,7 +1368,7 @@ WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}、maxLines组合使
 | RIGHT_CLICK | 0 | 通过鼠标右键触发菜单弹出。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | LONG_PRESS  | 1 | 通过长按触发菜单弹出。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | SELECT | 2 | 通过鼠标选中触发菜单弹出。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| DEFAULT<sup>15+</sup> | 3 | 注册此类型的菜单，但未注册RIGHT_CLICK、LONG_PRESS、SELECT时，右键、长按、鼠标选中均会触发并显示此类型对应的菜单。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| DEFAULT<sup>15+</sup> | 3 | 注册此类型的菜单，但未注册RIGHT_CLICK、LONG_PRESS、SELECT时，右键、长按、鼠标、[selection](#selection11)选中均会触发并显示此类型对应的菜单。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 >  **说明：**
 >
@@ -1964,34 +1965,35 @@ struct TextExample5 {
   @State end: number = 20;
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
-      Text(this.text)
-        .fontSize(12)
-        .border({ width: 1 })
-        .lineHeight(20)
-        .margin(30)
-        .copyOption(CopyOptions.InApp)
-        .selection(this.start, this.end)
-        .onCopy((value: string) => {
-          this.onCopy = value;
-        })
-        .draggable(true)
-        .caretColor(Color.Red)
-        .selectedBackgroundColor(Color.Grey)
-        .enableHapticFeedback(true)
-      Button('Set text selection')
-        .margin({ left: 20 })
-        .onClick(() => {
-          // 变更文本选中起始点、终点
-          this.start = 10;
-          this.end = 30;
-        })
-      Text(this.onCopy).fontSize(12).margin(10).key('copy')
-    }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
+        Text(this.text)
+          .fontSize(12)
+          .border({ width: 1 })
+          .lineHeight(20)
+          .margin(30)
+          .copyOption(CopyOptions.InApp)
+          .selection(this.start, this.end)
+          .onCopy((value: string) => {
+            this.onCopy = value;
+          })
+          .draggable(true)
+          .caretColor(Color.Red)
+          .selectedBackgroundColor(Color.Grey)
+          .enableHapticFeedback(true)
+        Button('Set text selection')
+          .onClick(() => {
+            // 变更文本选中起始点、终点
+            this.start = 10;
+            this.end = 30;
+          })
+        Text(this.onCopy).fontSize(12).margin(10).key('copy')
+      }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    }.width('100%')
   }
 }
 ```
-![](figures/setTextSelection.png)
+![](figures/setTextSelection.gif)
 
 ### 示例6（设置文本自适应和缩放倍数限制范围）
 
@@ -2138,6 +2140,12 @@ struct TextExample8 {
           },
           onAppear: () => {
             console.info(`自定义选择菜单弹出时回调`);
+          },
+          onMenuShow: () => {
+            console.info(`自定义选择菜单显示时回调`);
+          },
+          onMenuHide: () => {
+            console.info(`自定义选择菜单隐藏时回调`);
           }
         })
         .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK)

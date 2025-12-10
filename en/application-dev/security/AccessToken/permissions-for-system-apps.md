@@ -17,6 +17,18 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+Allows an application to subscribe to the startup broadcast.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
 Allows a window to be displayed with animation for an atomic service without the loading dialog box.
@@ -292,6 +304,30 @@ Allows a system application to set themes, including wallpapers, icons, skins, A
 **Enable via ACL**: true
 
 **Valid since**: 11
+
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+Allows an application to read the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+Allows an application to set the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
 
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
@@ -3837,6 +3873,18 @@ Allows a modal UIExtension to unhide non-secure windows.
 
 **Valid since**: 12
 
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+Allows a UIExtensionAbility to be displayed on the locked screen.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 14
+
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
 Allows a system service to access distributed modems.
@@ -5150,3 +5198,27 @@ Allows an application to capture screenshots, including privacy windows.
 **Supported devices**: general devices
 
 **Valid since**: 13
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+Allows a system application to set the launch reason when starting another application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18
+
+## ohos.permission.ACCESS_SUPER_HUB
+
+Allows an application to access Super Hub.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 12

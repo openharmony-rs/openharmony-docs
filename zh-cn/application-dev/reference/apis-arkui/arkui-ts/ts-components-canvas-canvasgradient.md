@@ -51,12 +51,12 @@ addColorStop(offset: number, color: string): void
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
+          .backgroundColor('rgb(213,213,213)')
           .onReady(() => {
             let grad = this.context.createLinearGradient(50, 0, 300, 100)
-            grad.addColorStop(0.0, '#ff0000')
-            grad.addColorStop(0.5, '#ffffff')
-            grad.addColorStop(1.0, '#00ff00')
+            grad.addColorStop(0.0, 'rgb(39,135,217)')
+            grad.addColorStop(0.5, 'rgb(255,238,240)')
+            grad.addColorStop(1.0, 'rgb(23,169,141)')
             this.context.fillStyle = grad
             this.context.fillRect(0, 0, 400, 400)
           })
@@ -66,7 +66,7 @@ addColorStop(offset: number, color: string): void
     }
   }
   ```
-  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.jpeg)
+  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.png)
 
  
  ## addColorStop<sup>20+</sup>
@@ -104,7 +104,7 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 **示例：**
 
 通过addColorStop设置指定色域的渐变断点值，包括偏移和颜色。设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9)。
-  ```ts
+```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ColorMetrics } from '@kit.ArkUI'
@@ -154,6 +154,6 @@ struct AddColorStop {
     .height('100%')
   }
 }
-  ```
-  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032517.png)
+```
+![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032517.png)
 

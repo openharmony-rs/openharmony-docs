@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_Ref__* JSVM_Ref
+```
+
 ## 概述
 
 表示JavaScript值的引用。

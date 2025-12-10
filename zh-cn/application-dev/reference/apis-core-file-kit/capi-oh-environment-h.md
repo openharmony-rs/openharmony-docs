@@ -35,7 +35,7 @@ environment模块接口定义，使用environment提供的native接口，获取�
 
 ### OH_Environment_GetUserDownloadDir()
 
-```
+```c
 FileManagement_ErrCode OH_Environment_GetUserDownloadDir(char **result)
 ```
 
@@ -62,7 +62,7 @@ FileManagement_ErrCode OH_Environment_GetUserDownloadDir(char **result)
 
 ### OH_Environment_GetUserDesktopDir()
 
-```
+```c
 FileManagement_ErrCode OH_Environment_GetUserDesktopDir(char **result)
 ```
 
@@ -89,7 +89,7 @@ FileManagement_ErrCode OH_Environment_GetUserDesktopDir(char **result)
 
 ### OH_Environment_GetUserDocumentDir()
 
-```
+```c
 FileManagement_ErrCode OH_Environment_GetUserDocumentDir(char **result)
 ```
 

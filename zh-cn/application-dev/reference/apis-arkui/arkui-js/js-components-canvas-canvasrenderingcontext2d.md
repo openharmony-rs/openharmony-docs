@@ -77,12 +77,12 @@
 
 ### fillStyle
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
   <canvas ref="canvas" style="width: 200px; height: 150px; "></canvas>
 </div>
-  ```
+```
 
 ```js
 // xxx.js
@@ -411,7 +411,7 @@ export default {
 </div>
 ```
 
-  ```js
+```js
 // xxx.js
 export default {
   onShow() {
@@ -430,20 +430,20 @@ export default {
     ctx.fillRect(150, 50, 50, 50);
   }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001213192781](figures/zh-cn_image_0000001213192781.png)
+![zh-cn_image_0000001213192781](figures/zh-cn_image_0000001213192781.png)
 
   示例中，新绘制内容是蓝色矩形，现有绘制内容是红色矩形。
 
 ### shadowBlur
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
   <canvas ref="canvas" style="width: 200px; height: 150px; "></canvas>
 </div>
-  ```
+```
 
 ```js
 // xxx.js

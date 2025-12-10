@@ -10,7 +10,7 @@
 
 在状态管理框架的演进过程中，分别于API version 7和API version 12推出了状态管理V1和V2两个版本。对于已经使用状态管理V1的应用，如果有诉求向状态管理V2迁移，可参考[状态管理V1和V2迁移文档](./arkts-v1-v2-migration.md)。
 
-对于大型应用，迁移过程中会遇到V1V2混用的场景，在API version 19之前，混用场景有相对严格的校验，主要表现在复杂对象的传递上，具体规则可参考[自定义组件混用场景指导](./arkts-custom-component-mixed-scenarios.md)。为了帮助开发者顺利地向V2迁移，从API version 19开始，减少了对V1V2混用场景的约束。具体变更可参考[校验规则](#校验规则)。同时提供新的方法[enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)来帮助开发者解决在迁移过程中遇到的混用问题。
+对于大型应用，迁移过程中会遇到V1V2混用的场景，在API version 19之前，混用场景有相对严格的校验，主要表现在复杂对象的传递上，具体规则可参考[自定义组件混用场景指导](./arkts-custom-component-mixed-scenarios.md)。为了帮助开发者顺利地向V2迁移，从API version 19开始，减少了对V1V2混用场景的约束。具体变更可参考[校验规则](#校验规则)。同时提供新的方法[enableV2Compatibility](../../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)来帮助开发者解决在迁移过程中遇到的混用问题。
 
 > **说明：**
 >
@@ -19,12 +19,13 @@
 
 ## 校验规则
 在API version 19以前，状态管理V1V2的混用规则可以总结为：
-1. V1装饰器不能和[@ObserveV2](./arkts-new-observedV2-and-trace.md)一起使用。
+1. V1装饰器不能和[@ObservedV2](./arkts-new-observedV2-and-trace.md)一起使用。
 2. V2装饰器不能和[@Observed](./arkts-observed-and-objectlink.md)一起使用。
 3. V1->V2只能传简单类型，不允许传复杂类型，包括built-in类型Array、Map、Set、Date。
 4. V2->V1可以传简单类型和普通class，不允许传built-in类型Array、Map、Set、Date。
+5. V1中[\@Link](./arkts-link.md)遵循其原本初始化规则，只能被V1状态变量初始化，详情见[\@Link初始化规则](./arkts-link.md#变量的传递访问规则说明)。
 
-从API version 19开始，仅第1条规则依旧禁止，第2-4条规则均放开校验。具体编译期校验见下表。
+从API version 19开始，第1、5条规则依旧禁止，第2-4条规则放开校验。具体编译期校验见下表。
 
 | 场景  | API version 19以前 | API version 19及以后  |
 |------|----|------|
@@ -38,11 +39,12 @@
 | \@ObjectLink被非\@Observed装饰的class初始化  | 报错 | 不报错 |
 
 依旧禁止第1条，是因为\@ObservedV2/\@Trace有自己独立的观察能力，不仅可以在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中使用，也可以独立在[\@Component](./arkts-create-custom-components.md#component)中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
+依旧禁止第5条，是因为V1中\@Link仅能和V1状态变量建立双向同步关系，而V2中如果想实现双向同步，可以使用[@Param](./arkts-new-param.md)[@Event](./arkts-new-event.md)，具体例子见[\@Link和\@Param\@Event迁移示例](./arkts-v1-v2-migration-inner-component.md#link---paramevent)。
 
 ## 新增接口
 ### makeV1Observed
 
-[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)将不可观察的对象包装成状态管理V1可观察的对象，能力等同于@Observed，其返回值可初始化@ObjectLink。
+[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)将不可观察的对象包装成状态管理V1可观察的对象，能力等同于@Observed，其返回值可初始化@ObjectLink。
 
 >**说明：**
 >
@@ -58,12 +60,12 @@
 - 不支持[collections类型](../../reference/apis-arkts/arkts-apis-arkts-collections.md)和[\@Sendable](../../arkts-utils/arkts-sendable.md)装饰的class。
 - 不支持非object类型。
 - 不支持undefined、null。
-- 不支持\@ObservedV2、[makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved)的返回值和V2装饰器装饰的built-in类型的变量（Array、Map、Set和Date）。
+- 不支持\@ObservedV2、[makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)的返回值和V2装饰器装饰的built-in类型的变量（Array、Map、Set和Date）。
 
 
 ### enableV2Compatibility
 
-[enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)将V1的状态变量使能V2的观察能力，即让V1状态变量可以在\@ComponentV2中观察到变化。
+[enableV2Compatibility](../../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)将V1的状态变量使能V2的观察能力，即让V1状态变量可以在\@ComponentV2中观察到变化。
 
 >**说明：**
 >
@@ -78,11 +80,11 @@
 - 不支持非object类型。
 - 不支持undefined、null。
 - 不支持非V1的状态变量数据。
-- 不支持\@ObservedV2、[makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved)的返回值和V2装饰器装饰的built-in类型的变量（Array、Map、Set和Date）。
+- 不支持\@ObservedV2、[makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)的返回值和V2装饰器装饰的built-in类型的变量（Array、Map、Set和Date）。
 
 ## 混用范式
 
-基于[enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)接口，V1V2混用范式如下：
+基于[enableV2Compatibility](../../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)接口，V1V2混用范式如下：
 
 ### V1->V2
 - V1的状态变量传递给V2的[\@Param](./arkts-new-param.md)，调用`UIUtils.enableV2Compatibility`使V1的状态变量可在\@ComponentV2中有观察能力。完整示例见[常见场景](#常见场景)。
