@@ -548,6 +548,28 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。 |
 
+### compressLeadingPunctuation<sup>23+</sup>
+
+compressLeadingPunctuation(enabled: Optional\<boolean>)
+
+设置是否开启行首标点符号压缩。
+
+>  **说明：**
+>
+>  行首标点符号默认不压缩。
+>
+> 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持[OnDidChangeCallback](ts-text-common.md#ondidchangecallback12)、[StyledStringChangedListener](ts-text-common.md#styledstringchangedlistener12)、[StyledStringChangeValue](ts-text-common.md#styledstringchangevalue12)和以下事件：
@@ -6325,3 +6347,45 @@ struct RichEditorExample {
 }
 ```
 ![richEditorIncludeFontPadding](figures/richEditorIncludeFontPadding.gif)
+
+### 示例36（设置开启行首标点符号压缩）
+该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)属性设置行首标点符号压缩。
+
+从API version 23开始，新增compressLeadingPunctuation属性。
+
+```ts
+@Entry
+@Component
+struct CompressLeadingPunctuationDemo {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  @State compressLeadingPunctuation: boolean = false;
+  @State text: string = '「0123456789\n『0123456789\n（0123456789\n《0123456789\n〈0123456789\n【0123456789\n〖0123456789\n〔0123456789\n［0123456789\n｛0123456789';
+
+  build() {
+    Column() {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(this.text)
+        })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .borderWidth(1)
+        .borderColor(Color.Green)
+        .align(Alignment.Center)
+        .height("30%")
+        .width("50%")
+
+      Column() {
+        Button("开启行首标点符号压缩").onClick(() => {
+          this.compressLeadingPunctuation = true
+        }).margin({ top: 10 })
+        Button("关闭行首标点符号压缩").onClick(() => {
+          this.compressLeadingPunctuation = false
+        }).margin({ top: 10 })
+      }
+    }.width("100%").padding(20)
+  }
+}
+```
+![CompressLeadingPunctuation](figures/richEditorCompressLeadingPunctuation.gif)
