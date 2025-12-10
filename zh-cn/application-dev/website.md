@@ -2119,7 +2119,7 @@
               - [JSVM通用调优实践](napi/jsvm-optimizations.md)
         - JSVM性能调试指导<!--jsvm-performance-->
             - [使用HiSmartPerf采集V8 trace](napi/use-jsvm-about-v8-trace.md)
-            - [使用DevTools分析网页内存情况](napi/use-jsvm-about-analyze-memory-usage.md)
+            - [使用DevTools进行网页内存分析](napi/use-jsvm-about-analyze-memory-usage.md)
       - Longque-JS-API<!--longque-->
         - [Longque-JS-API使用指导](napi/use-longque-js-api.md)
       - OpenMP支持<!--openmp-->
