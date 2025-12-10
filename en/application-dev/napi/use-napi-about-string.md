@@ -117,7 +117,7 @@ CPP code:
 
 static napi_value CreateStringUtf8(napi_env env, napi_callback_info info) 
 {
-    const char *str = u8"Hello, World!, succeed in creating create UTF-8 string! 111";
+    const char *str = u8"Hello, World!, successes to create create UTF-8 string! 111";
     size_t length = strlen(str);                                        
     napi_value result = nullptr;
     napi_status status = napi_create_string_utf8(env, str, length, &result);
@@ -212,7 +212,7 @@ CPP code:
 
 static napi_value CreateStringUtf16(napi_env env, napi_callback_info info)
 {
-    const char16_t  *str = u"Hello, World!, succeed in creating create UTF-16 string! 111";
+    const char16_t  *str = u"Hello, World!, successes to create create UTF-16 string! 111";
     size_t length = NAPI_AUTO_LENGTH;
     napi_value result = nullptr;
     napi_status status = napi_create_string_utf16(env, str, length, &result);
@@ -307,7 +307,7 @@ CPP code:
 
 static napi_value CreateStringLatin1(napi_env env, napi_callback_info info)
 {
-    const char *str = "Hello, World! éçñ, succeed in creating create Latin1 string! 111";
+    const char *str = "Hello, World! éçñ, successes to create create Latin1 string! 111";
     size_t length = NAPI_AUTO_LENGTH;
     napi_value result = nullptr;
     napi_status status = napi_create_string_latin1(env, str, length, &result);
