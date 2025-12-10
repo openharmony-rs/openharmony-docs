@@ -134,7 +134,7 @@ struct Index {
           .onClick(() => {
             const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
             if (!isNeedGetPermissionFromUser()) {
-              hilog.info(0xFF00, '[Sample_pasteboard]', 'No neded to bring up the permission pop-up window');
+              hilog.info(0xFF00, '[Sample_pasteboard]', 'No need to bring up the permission pop-up window');
               return;
             }
             let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
