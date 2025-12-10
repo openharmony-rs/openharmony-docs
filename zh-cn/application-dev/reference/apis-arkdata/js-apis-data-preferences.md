@@ -2390,24 +2390,49 @@ dataPreferences.flush((err: BusinessError) => {
 dataPreferences.off('dataChange', keys, observer);
 ```
 
-## ValueType
+## RecordData<sup>22+</sup>
 
-type ValueType = number | string | boolean | Array\<number> | Array\<string> | Array\<boolean> | Uint8Array | object | bigint
+type RecordData = undefined \| null \| Object \| Record\<string, RecordData> \| Array\<RecordData>
 
-表示支持的值类型。
+RecordData是一个联合类型，用于层级和每层数量都不确定的对象结构。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
+**ArkTS-Sta起始版本：** 22
+
 | 类型                       | 说明                |
 |--------------------------|-------------------|
-| number                   | 表示值类型为数字。         |
+| undefined                | 表示值类型为未定义。  |
+| null                     | 表示值类型为空。|
+| Object                   | 表示值类型为对象。    |
+| boolean                  | 表示值类型为布尔值。        |
+| Record\<string, RecordData>   | 表示值类型为键值对类型。键的类型为string，值的类型为RecordData。|
+| Array\<RecordData>           | 表示值类型为RecordData类型的数组。    |
+
+## ValueType<sup>22+</sup>
+
+type ValueType = long | double | string | boolean | Array\<long> | Array\<double> | Array\<string> | Array\<boolean> | Uint8Array | RecordData | bigint
+
+表示支持的值类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                       | 说明                |
+|--------------------------|-------------------|
+| long                     | 表示值类型为long类型数字。  |
+| double                   | 表示值类型为double类型数字。|
 | string                   | 表示值类型为字符串。        |
 | boolean                  | 表示值类型为布尔值。        |
-| Array\<number>           | 表示值类型为数字类型的数组。    |
+| Array\<long>             | 表示值类型为数字类型的数组。    |
+| Array\<double>           | 表示值类型为数字类型的数组。    |
 | Array\<boolean>          | 表示值类型为布尔类型的数组。    |
 | Array\<string>           | 表示值类型为字符串类型的数组。   |
-| Uint8Array<sup>11+</sup> | 表示值类型为8位无符号整型的数组。 |
-| object<sup>12+</sup>     | 表示值类型为对象。 |
-| bigint<sup>12+</sup>     | 表示值类型为任意精度格式的整数。  |
+| Uint8Array               | 表示值类型为8位无符号整型的数组。 |
+| RecordData               | 表示值类型为[RecordData](#recordData22)。        |
+| bigint                   | 表示值类型为任意精度格式的整数。  |
