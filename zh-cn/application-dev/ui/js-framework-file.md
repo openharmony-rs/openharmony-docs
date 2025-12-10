@@ -64,12 +64,12 @@ JS FA应用的JS模块（entry/src/main/js/module）的典型开发目录结构�
 - CSS样式文件中通过url()函数创建&lt;url&gt;数据类型，如：url(/common/xxx.png)。
 
 > **说明：**
+>
 > 当代码文件A需要引用代码文件B时：
 >
 > - 如果代码文件A和文件B位于同一目录，则代码文件B引用资源文件时可使用相对路径，也可使用绝对路径。
 >
 > - 如果代码文件A和文件B位于不同目录，则代码文件B引用资源文件时必须使用绝对路径。因为Webpack打包时，代码文件B的目录会发生变化。
->
 >
 > - 在js文件中通过数据绑定的方式指定资源文件路径时，必须使用绝对路径。
 
@@ -90,4 +90,5 @@ JS FA应用的JS模块（entry/src/main/js/module）的典型开发目录结构�
 
 | 格式                                       | 支持的文件类型       |
 | ---------------------------------------- | ------------- |
-| H.264&nbsp;AVC<br/>Baseline&nbsp;Profile&nbsp;(BP) | .3gp<br/>.mp4 |
+| H.264&nbsp;AVC | .3gp |
+| Baseline&nbsp;Profile&nbsp;(BP) | .mp4 |
