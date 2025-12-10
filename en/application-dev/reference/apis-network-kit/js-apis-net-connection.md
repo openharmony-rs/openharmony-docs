@@ -538,7 +538,7 @@ Obtains the list of all connected networks. This API uses an asynchronous callba
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Yes| Callback used to return the result. If the list of all connected networks is obtained successfully, **error** is **undefined** and **data** is the list of activated data networks. Otherwise, **error** is an error object.|
+| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Yes| Callback used to return the result. If the list of all connected networks is obtained successfully, **error** is **undefined** and **data** is the list of activated data networks. Otherwise, **error** is an error object. If Wi-Fi and cellular data are both enabled, and no application specifies the use of cellular data, only Wi-Fi is activated. In this case, only the NetHandle of Wi-Fi is returned. The NetHandle of Wi-Fi and cellular data can be obtained at the same time only when a specific application enables the cellular network.|
 
 **Error codes**
 
@@ -2635,7 +2635,7 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 
 | Name  | Type                                             | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                            | Yes  | Host name to resolve.                                          |
+| host     | string                                            | Yes  | Host name to resolve. For example, www.example.com.                                          |
 | callback | AsyncCallback\<Array\<[NetAddress](#netaddress)>> | Yes  | Callback used to return the result. If all IP addresses are successfully obtained, **error** is **undefined**, and **data** is the list of all obtained IP addresses. Otherwise, **error** is an error object.|
 
 **Error codes**
@@ -2661,7 +2661,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
     if (error) {
       console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
@@ -2688,7 +2688,7 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | Yes  | Host name to resolve.|
+| host   | string | Yes  | Host name to resolve. For example, www.example.com.|
 
 **Return value**
 
@@ -2718,7 +2718,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2739,7 +2739,7 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 | Name  | Type                                     | Mandatory| Description                                                        |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                    | Yes  | Host name to resolve.                                          |
+| host     | string                                    | Yes  | Host name to resolve. For example, www.example.com.                                          |
 | callback | AsyncCallback\<[NetAddress](#netaddress)> | Yes  | Callback used to return the result. If the first IP address is obtained successfully, **error** is **undefined**, and **data** is the first obtained IP address. Otherwise, **error** is an error object.|
 
 **Error codes**
@@ -2765,7 +2765,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
     if (error) {
       console.error(`Failed to get address. Code:${error.code}, message:${error.message}`);
@@ -2790,7 +2790,7 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | Yes  | Host name to resolve.|
+| host   | string | Yes  | Host name to resolve. For example, www.example.com.|
 
 **Return value**
 
@@ -2820,7 +2820,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });

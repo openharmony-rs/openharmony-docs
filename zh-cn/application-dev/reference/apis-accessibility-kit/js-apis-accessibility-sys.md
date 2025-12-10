@@ -25,7 +25,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 无障碍事件类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 
 | 名称                     | 值                    |说明|
@@ -106,7 +108,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 无障碍节点元素是指，UI界面上可执行无障碍操作的一些组件，例如：按钮、文本输入框等组件。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |

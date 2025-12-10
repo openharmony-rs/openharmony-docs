@@ -12,7 +12,7 @@ You can set the interpolator to implement the animation effect.
 
 ## Creating an Animation Object
 
-Use createAnimator to create an animation object and set the animation attributes by using the options parameter.
+Use **createAnimator** to create an **animation** object and set the animation attributes by using the **options** parameter.
 
 ```html
 <!-- xxx.hml -->
@@ -65,7 +65,7 @@ export default {
       iterations: 2,
       begin: 0,
       end: 180
-    };// Set attributes.
+    };// Set parameters.
     this.animation = this.getUIContext().createAnimator(options);// Create an animation.
   },
   playAnimation() {
@@ -82,16 +82,16 @@ export default {
 
 > **NOTE**
 >
-> - When you use createAnimator to create an animation object, you must pass the options parameter.
+> - When you use **createAnimator** to create an animation object, you must pass the **options** parameter.
 >
-> - begin indicates the start point of the animation interpolation. If it is not set, the default value 0 is used.
+> - **begin** indicates the start point of the animation interpolation. If it is not set, the default value **0** is used.
 >
-> - end indicates the end point of the animation interpolation. If it is not set, the default value 1 is used.
+> - **end** indicates the end point of the animation interpolation. If it is not set, the default value **1** is used.
 
 
 ## Adding Animation Events and Calling Methods
 
-The animator supports events and methods, which you can use to customize the animation effect. Events include frame, cancel, repeat, and finish. Methods include update, play, pause, cancel, reverse, and finish. For details about the supported events and methods, see [createAnimator](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator).
+The **animator** supports events and methods, which you can use to customize the animation effect. Events include **frame**, **cancel**, **repeat**, and **finish**. Methods include **update**, **play**, **pause**, **cancel**, **reverse**, and **finish**. For details about the events and APIs supported by **animator**, see [createAnimator](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator).
 
 ```html
 <!-- xxx.hml -->
@@ -208,10 +208,10 @@ export default {
       end: 180
     };
     this.animation.update(newoptions);
-    this.animation.play();// Play this animation.
+    this.animation.play();// Play the animation.
   },
   pauseAnimation() {
-    this.animation.pause();// Pause this animation.
+    this.animation.pause();// Pause the animation.
   },
   finishAnimation() {
     var _this= this;
@@ -221,13 +221,13 @@ export default {
         message: 'finish'
       });
     };
-    this.animation.finish(); // Finish this animation.
+    this.animation.finish(); // Finish the animation.
   },
   cancelAnimation() {
-    this.animation.cancel(); // Cancel this animation.
+    this.animation.cancel(); // Cancel the animation.
   },
   reverseAnimation() {
-    this.animation.reverse(); // Reverse this animation.
+    this.animation.reverse(); // Reverse the animation.
   }
 }
 ```
@@ -236,4 +236,4 @@ export default {
 
 > **NOTE**
 >
-> When calling the update method, you can use it to update the animation parameters. The input parameters are the same as those of [createAnimator](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator).
+> When calling the [reset](../reference/apis-arkui/js-apis-animator.md#reset9) API, you can use it to update the animation parameters. The input parameters are the same as those of [createAnimator](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator).

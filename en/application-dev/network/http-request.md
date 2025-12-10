@@ -27,7 +27,7 @@ The following table lists the functions supported by the HTTP request. The optio
 | Basic    | Setting the request method                     | Specifies the request method, including **GET**, **POST**, **HEAD**, **PUT**, **DELETE**, **TRACE**, **CONNECT**, and **OPTIONS**. The default value is **GET**. |  API version 6  |
 | Basic    | Setting additional data of the request                | Specifies additional data can be carried with the request. This parameter is not used by default.| API version 6    |
 | Basic    | Setting the read timeout interval                | Specifies the total time from the start to the end of a request, including DNS resolution, connection setup, and transmission. The default value is **60000**, in ms.|  API version 6   |
-| Basic    | Sets a connection timeout interval.                | Specifies the connection timeout interval. The default value is **60000**, in ms.|  API version 6   |
+| Basic    | Setting the connection timeout interval                | Specifies the connection timeout interval. The default value is **60000**, in ms.|  API version 6   |
 | Basic    | Setting the HTTP request header                 | Specifies the HTTP request header. If the request method is **POST**, **PUT**, **DELETE**, or left empty, the default value is {'content-Type': 'application/json'}. Otherwise, the default value is {'content-Type': 'application/x-www-form-urlencoded'}.|  API version 6   |
 | Basic    | Setting the response data type               | Specifies the type of the HTTP response data. This parameter is not used by default. If this parameter is set, the system returns the specified type of data preferentially.|  API version 9   |
 | Basic    | Setting the priority of concurrent requests             |  Specifies the priority of concurrent HTTP/HTTPS requests. A larger value indicates a higher priority. The value ranges from 1 to 1000. The default value is **1**.|  API version 9   |
@@ -400,33 +400,6 @@ The following is an example of prebuilt certificate public key hash values:
 }
 ```
 
-The following is an example configuration for overall and host name–based HTTP access:
-
-```
-{
-  "network-security-config": {
-    "base-config": {
-      "cleartextTrafficPermitted": true
-    },
-    "domain-config": [
-      {
-        "domains": [
-          {
-            "include-subdomains": true,
-            "name": "example.com"
-          }
-        ],
-        "cleartextTrafficPermitted": false
-      }
-    ],
-    "component-config": {
-    	"Network Kit": true,
-    	"ArkWeb": true
-    }
-  }
-}
-```
-
 The following is an example configuration of the certificate pin:
 
 ```
@@ -473,7 +446,6 @@ The following is an example configuration of the certificate pin:
 |pin                        | array           |Certificate public key hash. The value can contain any number of items. An item must contain one **digest-algorithm** and **digest**.|
 |digest-algorithm           | string          |Digest algorithm used to generate hashes. Currently, only `sha256` is supported.                                   |
 |digest                     | string          |Public key hash.|
-|cleartextTrafficPermitted  | boolean          |Whether plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite.|
 
 ### Configuring Untrusted User-Installed CA Certificates
 
@@ -488,4 +460,59 @@ By default, the system trusts the prebuilt CA certificates and user-installed CA
   "trust-current-user-ca" : false // Set whether to trust the certificate installed by the current user. The default value is true.
 }
 ```
+### Configuring Plaintext HTTP Access Permissions
 
+This configuration item is used to control whether HTTP requests can be transmitted in plaintext. The following is an example of configuring plaintext HTTP access permissions (including application, component, and domain name configurations) and the description of each field. For more network connection security configurations, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
+> **NOTE**
+>
+> The configuration priority rules are as follows: **component-config** > **domain-config** > **base-config**. The configuration with a higher priority overrides the configuration with a lower priority.
+
+
+```
+// src/main/resources/base/profile/network_config.json
+{
+  "network-security-config": {
+    "base-config": {
+      "cleartextTrafficPermitted": true // Optional, supported since API 20.
+    },
+    "domain-config": [
+      {
+        "domains": [
+          {
+            "include-subdomains": true,
+            "name": "example.com"
+          }
+        ],
+        "cleartextTrafficPermitted": false // Optional, supported since API 20.
+      }
+    ],
+    "component-config": {
+    	"Network Kit": true, // Optional, supported since API 20.
+    	"ArkWeb": false // Optional, supported since API 20.
+    }
+  }
+}
+```
+
+**Description of fields**
+
+| Field                     | Type           | Mandatory| Description                                  |
+| --------------------------| --------------- |--------- |-------------------------------------- |
+|base-config                     | array          | No| Indicates the plaintext configuration of the application scope. This field has the lowest priority.|
+|cleartextTrafficPermitted  | boolean          |No| Whether plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite.|
+|domain-config                     | array          | No|  Indicates the plaintext configuration of each domain. The value can contain any number of items. Each item must contain one **domains**. If rules conflict in the same domain, the first matched rule is used. The priority is lower than that of **component-config**.|
+|include-subdomains         | boolean         | No| Whether a rule applies to subdomains. The value **true** indicates that the rule applies to subdomains, and the value **false** indicates the opposite. The default value is **false**.|
+|name         | string         | No| Main domain name.|
+|component-config                    | array          |  No| Indicates the plaintext configuration of each component. This field has the highest priority.|
+|Network Kit                 | boolean          |No| Whether plaintext transmission is disabled in Network Kit. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **true**.|
+|ArkWeb                    | boolean          |No| Whether plaintext transmission is disabled in ArkWeb. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **false**.|
+
+## Samples
+
+The following sample is provided to help you better understand how to develop the HTTP data request feature:
+
+* [Upload and Download (ArkTS) (API10)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/UploadAndDownLoad)
+
+* [Http (ArkTS) (API10) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http)
+
+* [Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)

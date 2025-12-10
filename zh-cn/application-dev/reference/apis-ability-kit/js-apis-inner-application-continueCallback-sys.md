@@ -1,4 +1,10 @@
 # ContinueCallback (系统接口)
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 表示跨设备迁移Mission完成后，返回迁移结果的回调函数，迁移Mission详见：[continueMission接口](js-apis-distributedMissionManager-sys.md#distributedmissionmanagercontinuemission)。
 
@@ -40,12 +46,12 @@ distributedMissionManager.continueMission(
   },
   {
     onContinueDone(result: number) {
-      console.log(`onContinueDone, result: ${JSON.stringify(result)}`);
+      console.info(`onContinueDone, result: ${JSON.stringify(result)}`);
     }
   }, (error: BusinessError) => {
   if (error && error.code) {
     console.error(`continueMission failed, error.code: ${error.code}, error.message: ${error.message}`);
   }
-  console.log(`continueMission finished`);
+  console.info(`continueMission finished`);
 });
 ```

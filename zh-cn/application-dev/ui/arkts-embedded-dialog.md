@@ -97,7 +97,7 @@ function customDialogBuilder(uiContext: UIContext) {
     Row() {
       Button("Next").onClick(() => {
         // 在弹窗内部进行路由跳转。
-        uiContext.getRouter().pushUrl({url: 'pages/Next'});
+        uiContext.getRouter().pushUrl({ url: 'pages/Next' });
       })
       Blank().width(50)
       Button("Close").onClick(() => {
@@ -121,11 +121,11 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text(this.message).id("test_text")
+        Text(this.message).id('test_text')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            const node: FrameNode | null = this.getUIContext().getFrameNodeById("test_text") || null;
+            const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
             this.uiContext.getPromptAction().openCustomDialog({
               builder: () => {
                 this.customDialogComponent();
