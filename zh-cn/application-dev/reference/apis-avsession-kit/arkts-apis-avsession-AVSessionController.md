@@ -2098,7 +2098,7 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: Record\<String
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'sessionEvent'`。    |
-| callback | sessionEvent: string, args: Record\<String, Object> => void       | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对sessionEvent事件的监听。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(sessionEvent: string, args: {[key: string]: Object}) => void。|
+| callback | sessionEvent: string, args: Record\<String, Object> => void       | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(sessionEvent: string, args: {[key: string]: Object}) => void。|
 
 **错误码：**
 
