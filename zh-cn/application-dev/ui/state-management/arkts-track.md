@@ -82,17 +82,17 @@ struct Index {
 > 当UI刷新时，会执行组件的属性设置方法，利用这一机制可以通过观察`getFontSize`方法是否被调用来判断当前组件是否刷新。
 
 - UI首次渲染完成，观察到输出如下日志：
-  ```
+  ```text
   Component 1 render
   Component 2 render
   ```
 - 当点击`Button('change name')`时，即使只修改了`info.name`，观察日志发现两个Text组件仍会重新渲染。组件```Text(`age: ${this.info.age}`)```并未使用`name`属性，但仍因为`info.name`的改变而刷新，因此这次刷新是冗余的。日志输出如下：
-  ```
+  ```text
   Component 1 render
   Component 2 render
   ```
 - 同理，点击`Button('change age')`，也会触发```Text(`name: ${this.info.name}`)```的刷新。日志输出如下：
-  ```
+  ```text
   Component 1 render
   Component 2 render
   ```
@@ -212,7 +212,7 @@ struct AddLog {
 
 - API version 19及以后，\@Track使用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)的UI中，不会引起运行时报错，但依旧不会刷新，详见[常见场景](./arkts-v1-v2-mixusage.md#observed装饰的class)。
 
-- 建议开发者不要混用包含\@Track的class对象和不包含\@Track的class对象，如联合类型中、类继承中等。
+- 建议开发者不要混用包含\@Track的class对象和不包含\@Track的class对象，如联合类型中、类继承中等，容易在UI中误用非\@Track装饰的属性，导致运行时报错。
 
 
 ## 使用场景

@@ -35,7 +35,8 @@
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
-  let res = UIUtils.getTarget(2); // 非对象类型入参，直接返回传入值，错误用法
+  let resNumber = UIUtils.getTarget(2); //非对象类型入参，编译时报错
+  let resObject = UIUtils.getTarget(2 as Object); // 非对象类型入参，绕过编译拦截，直接返回传入值，错误用法
   ```
   
   <!-- @[ApplicationLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewOne.ets) -->

@@ -236,6 +236,10 @@ struct BasketModifier {
 
 4. \@Link shopBasket的改变，新增了数组项，ForEach组件会执行item Builder，渲染构建新的Item项；\@State totalPurchase改变，对应的Text组件也重新渲染；重新渲染是异步发生的。
 
+效果图如下：
+
+![watch_001](figures/watch_001.gif)
+
 ### \@Watch的触发时机
 
 为了展示\@Watch回调触发时间是根据状态变量真正变化的时间，本示例在子组件中同时使用\@Link和[\@ObjectLink](./arkts-observed-and-objectlink.md)装饰器，分别观察不同的状态对象。通过在父组件中更改状态变量并观察\@Watch回调的先后顺序，来表明@Watch触发的时机与赋值、同步的关系。
@@ -326,7 +330,7 @@ struct ChildComponent {
 1. 当点击按钮切换任务状态时，父组件首先更新了被\@ObjectLink关联的taskB，然后更新了被\@Link关联的taskA。
 
 2. 观察到日志依次显示：
-    ```
+    ```text
     观测到父组件任务属性变化: taskB
     观测到父组件任务属性变化: taskA
     观测到子组件@Link关联的任务属性变化: taskA
