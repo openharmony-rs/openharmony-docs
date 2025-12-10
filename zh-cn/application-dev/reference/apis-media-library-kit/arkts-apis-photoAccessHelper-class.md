@@ -60,6 +60,7 @@ PhotoSelectOptions extends BaseSelectOptions
 | subWindowName<sup>12+</sup>       | string | 否   | 是 | 子窗口名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | 否   | 是 | 完成按钮显示的内容。<br>完成按钮指在界面右下方，用户点击表示图片选择已完成的按钮。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。     |
 | contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | 否   | 是 | 用于恢复上次退出时PhotoPicker现场的信息。<br>上次完成选择时photoPicker将返回contextRecoveryInfo给应用，应用可使用返回的contextRecoveryInfo，在下次启动时恢复上次使用picker，最后浏览的宫格界面。 <br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。     |
+| isDestroyedWithNavigation<sup>23+</sup>       | boolean | 否   | 是 | 是否支持跟随Navigation销毁，true表示支持，false表示不支持，默认为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 ## PhotoSelectResult
 
 返回图库选择后的结果集。
