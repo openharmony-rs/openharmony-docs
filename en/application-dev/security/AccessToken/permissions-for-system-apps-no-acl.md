@@ -185,18 +185,6 @@ Allows a UIExtensionAbility to be displayed on the locked screen.
 
 **Valid since**: 14
 
-## ohos.permission.USE_USER_ACCESS_MANAGER
-
-Allows an application to query and configure user identity authentication policies, and verify the authentication result.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 18
-
 ## ohos.permission.ACCESS_USER_ACCOUNT_INFO
 
 Allows a system application to access user account information.
