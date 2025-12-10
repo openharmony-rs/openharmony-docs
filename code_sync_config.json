@@ -22613,7 +22613,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets",
 				"functions":[
 					{
-						"end_line":148,
+						"end_line":157,
 						"name":"liveform_MyLiveFormPage",
 						"start_line":15
 					}
