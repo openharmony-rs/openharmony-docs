@@ -169,8 +169,8 @@ getDataSummary(): Array\<Summary>
 **示例：**
 
 ```ts
-let summarys: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
-console.info(`Drag interaction summarys: ${summarys}`);
+let summary: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
+console.info(`Drag interaction summary: ${summary}`);
 ```
 
 ## dragInteraction.setDragSwitchState<sup>18+</sup>
