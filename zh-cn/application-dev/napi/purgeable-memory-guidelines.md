@@ -1,5 +1,14 @@
 # 内存管理purgeable内存开发指导
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
+
+Purgeable Memory指可以随时丢弃的内存，此内存区域用于存放那些很容易通过重新计算构建出来的数据，该数据在系统低内存时可以被直接释放，用户访问的时候再重新构建。Purgeable Memory适用于存放大块（至少4K）且恢复代价较小的数据，它在系统压力较大时优先回收（这里指对匿名页采用类似文件页的drop的形式，而不是压缩），再次使用时需要用户自己恢复数据再使用。
+
 ## 场景介绍
 
 OpenHarmony提供Purgeable Memory内存管理机制，开发者可以使用相关接口创建PurgeableMemory对象，从而管理purgeable内存。
