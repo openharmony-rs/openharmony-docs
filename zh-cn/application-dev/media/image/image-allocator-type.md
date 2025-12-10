@@ -130,7 +130,8 @@ stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-ap
 应用可使用[onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)监听系统内存变化情况。
 
 PixelMap申请像素内存的计算规则如下所示。
-```
+
+``` TypeScript
 pixels_size(像素内存大小) = stride(图片像素存储宽度) * height(图片像素高度)
 ```
 
