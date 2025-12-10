@@ -354,7 +354,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 
 | 参数名 | 类型                   | 必填 | 说明                                                         |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
-| data   | Record\<string, Object> | 是   | 应用程序填充的自定义数据。服务端仅解析key为'customData'，且Object为string类型的对象。 |
+| data   | Record\<string, Object> | 是   | 应用程序填充的自定义数据。<br>服务端仅解析key：string为'customData'，且Object为string类型的对象。 |
 
 **返回值：**
 
@@ -880,7 +880,7 @@ aVCastController.release().then(() => {
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
+on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
 
 设置播放状态变化的监听事件。
 
@@ -895,7 +895,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   | Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注播放状态所有字段变化；Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\> 表示关注Array中的字段变化。 |
+| filter   |  Array\<string>\|'all'| 是   | 'all' 表示关注播放状态所有字段变化；Array\<string> 表示关注Array中的字段变化。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof AVPlaybackState> \| 'all'。|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。                      |
 
 **错误码：**
@@ -1350,7 +1350,7 @@ aVCastController.off('seekDone');
 
 ## on('validCommandChange')<sup>11+</sup>
 
-on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>)
+on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>): void
 
 会话支持的有效命令变化监听事件。
 
@@ -1367,11 +1367,10 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1386,7 +1385,7 @@ aVCastController.on('validCommandChange', (validCommands: avSession.AVCastContro
 
 ## off('validCommandChange')<sup>11+</sup>
 
-off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>)
+off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>): void
 
 取消会话有效命令变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1401,11 +1400,10 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2102,7 +2100,7 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
@@ -2135,7 +2133,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 

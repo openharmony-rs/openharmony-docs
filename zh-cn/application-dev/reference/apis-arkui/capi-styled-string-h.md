@@ -51,7 +51,7 @@
 
 ### OH_ArkUI_StyledString_Create()
 
-```
+```c
 ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* style, OH_Drawing_FontCollection* collection)
 ```
 
@@ -76,7 +76,7 @@ ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* sty
 
 ### OH_ArkUI_StyledString_Destroy()
 
-```
+```c
 void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)
 ```
 
@@ -94,7 +94,7 @@ void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)
 
 ### OH_ArkUI_StyledString_PushTextStyle()
 
-```
+```c
 void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_TextStyle* style)
 ```
 
@@ -113,7 +113,7 @@ void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_
 
 ### OH_ArkUI_StyledString_AddText()
 
-```
+```c
 void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* content)
 ```
 
@@ -132,7 +132,7 @@ void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* conte
 
 ### OH_ArkUI_StyledString_PopTextStyle()
 
-```
+```c
 void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)
 ```
 
@@ -150,7 +150,7 @@ void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)
 
 ### OH_ArkUI_StyledString_CreateTypography()
 
-```
+```c
 OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString* handle)
 ```
 

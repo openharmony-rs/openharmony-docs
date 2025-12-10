@@ -69,7 +69,7 @@
 
 ### DrawableDescriptor_AnimationStatus
 
-```
+```c
 enum DrawableDescriptor_AnimationStatus
 ```
 
@@ -91,7 +91,7 @@ enum DrawableDescriptor_AnimationStatus
 
 ### OH_ArkUI_DrawableDescriptor_CreateFromPixelMap()
 
-```
+```c
 ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_PixelmapNativeHandle pixelMap)
 ```
 
@@ -117,7 +117,7 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_Pixe
 
 ### OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap()
 
-```
+```c
 ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap(OH_PixelmapNativeHandle* array, int32_t size)
 ```
 
@@ -144,7 +144,7 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap
 
 ### OH_ArkUI_DrawableDescriptor_Dispose()
 
-```
+```c
 void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -164,7 +164,7 @@ void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescr
 
 ### OH_ArkUI_DrawableDescriptor_GetStaticPixelMap()
 
-```
+```c
 OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -190,7 +190,7 @@ OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_Draw
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray()
 
-```
+```c
 OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -216,7 +216,7 @@ OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(Ar
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -242,7 +242,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableD
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationDuration()
 
-```
+```c
 void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t duration)
 ```
 
@@ -263,7 +263,7 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* 
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationDuration()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -289,7 +289,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescripto
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationIteration()
 
-```
+```c
 void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t iteration)
 ```
 
@@ -310,7 +310,7 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor*
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationIteration()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -336,7 +336,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescript
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t size)
 ```
 
@@ -362,7 +362,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDes
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t* size)
 ```
 
@@ -388,7 +388,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDes
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t autoPlay)
 ```
 
@@ -414,7 +414,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescripto
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* autoPlay)
 ```
 
@@ -439,7 +439,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescripto
 
 ### OH_ArkUI_DrawableDescriptor_CreateAnimationController()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDescriptor* drawableDescriptor, ArkUI_NodeHandle node, ArkUI_DrawableDescriptor_AnimationController** controller)
 ```
 
@@ -466,7 +466,7 @@ int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDesc
 
 ### OH_ArkUI_DrawableDescriptor_DisposeAnimationController()
 
-```
+```c
 void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
@@ -484,7 +484,7 @@ void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescri
 
 ### OH_ArkUI_DrawableDescriptor_StartAnimation()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
 ```
 
@@ -508,7 +508,7 @@ int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_Anim
 
 ### OH_ArkUI_DrawableDescriptor_StopAnimation()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
 ```
 
@@ -532,7 +532,7 @@ int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_Anima
 
 ### OH_ArkUI_DrawableDescriptor_ResumeAnimation()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
 ```
 
@@ -556,7 +556,7 @@ int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_Ani
 
 ### OH_ArkUI_DrawableDescriptor_PauseAnimation()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
 ```
 
@@ -580,7 +580,7 @@ int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_Anim
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationStatus()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_AnimationController* controller, DrawableDescriptor_AnimationStatus* status);
 ```
 

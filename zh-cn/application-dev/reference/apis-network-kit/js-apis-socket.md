@@ -7955,7 +7955,9 @@ listen(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 
 绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，创建和初始化TLS会话，实现建立连接过程，加载证书秘钥并验证，使用callback方式作为异步方法。
 
-**注意：**IP地址设置为0.0.0.0时，可以监听本机所有地址。
+>**注意：**
+>
+>IP地址设置为0.0.0.0时，可以监听本机所有地址。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -8739,11 +8741,11 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
   console.info("listen callback success");
+  tlsServer.on('connect', (data: socket.TLSSocketConnection) => {
+    console.info(JSON.stringify(data));
+  });
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
-});
-tlsServer.on('connect', (data: socket.TLSSocketConnection) => {
-  console.info(JSON.stringify(data))
 });
 ```
 

@@ -27,11 +27,11 @@ typedef struct {...} JSVM_PropertyDescriptor
 | 名称 | 描述 |
 | -- | -- |
 | const char* utf8name | 描述属性键值的可选字符串，UTF-8编码。必须为属性提供utf8name或name之一。 |
-| JSVM_Value name | 可选的JSVM_Value，指向用作属性键的JavaScript字符串或符号。必须为属性提供utf8name或name之一。 |
-| JSVM_Callback method | 设置此项使属性描述符对象的value属性成为method表示的JavaScript函数。 |
-| JSVM_Callback getter | 执行对属性的获取访问时调用的函数。 |
-| JSVM_Callback setter | 执行属性的设置访问时调用的函数。 |
-| JSVM_Value value | 如果属性是数据属性，则通过属性的get访问检索到的值。 |
-| JSVM_PropertyAttributes attributes | 与特定属性关联的属性。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) name | 可选的JSVM_Value，指向用作属性键的JavaScript字符串或符号。必须为属性提供utf8name或name之一。 |
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct8h.md) method | 设置此项使属性描述符对象的value属性成为method表示的JavaScript函数。 |
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct8h.md) getter | 执行对属性的获取访问时调用的函数。 |
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct8h.md) setter | 执行属性的设置访问时调用的函数。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 如果属性是数据属性，则通过属性的get访问检索到的值。 |
+| [JSVM_PropertyAttributes](capi-jsvm-types-h.md#jsvm_propertyattributes) attributes | 与特定属性关联的属性。 |
 
 

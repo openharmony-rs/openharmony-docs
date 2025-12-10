@@ -79,7 +79,7 @@
 
 ### Http_ErrCode
 
-```
+```c
 enum Http_ErrCode
 ```
 
@@ -128,7 +128,7 @@ enum Http_ErrCode
 
 ### Http_ResponseCode
 
-```
+```c
 enum Http_ResponseCode
 ```
 
@@ -179,7 +179,7 @@ enum Http_ResponseCode
 
 ### Http_AddressFamilyType
 
-```
+```c
 enum Http_AddressFamilyType
 ```
 
@@ -197,7 +197,7 @@ enum Http_AddressFamilyType
 
 ### Http_HttpProtocol
 
-```
+```c
 enum Http_HttpProtocol
 ```
 
@@ -216,7 +216,7 @@ HTTP协议版本号枚举定义。
 
 ### Http_CertType
 
-```
+```c
 enum Http_CertType
 ```
 
@@ -234,7 +234,7 @@ enum Http_CertType
 
 ### Http_ProxyType
 
-```
+```c
 enum Http_ProxyType
 ```
 
@@ -255,7 +255,7 @@ enum Http_ProxyType
 
 ### Http_ResponseCallback()
 
-```
+```c
 typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode)
 ```
 
@@ -275,7 +275,7 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 
 ### Http_OnDataReceiveCallback()
 
-```
+```c
 typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 ```
 
@@ -295,7 +295,7 @@ typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 
 ### Http_OnProgressCallback()
 
-```
+```c
 typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize)
 ```
 
@@ -315,7 +315,7 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 
 ### Http_OnHeaderReceiveCallback()
 
-```
+```c
 typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 ```
 
@@ -334,7 +334,7 @@ typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 
 ### Http_OnVoidCallback()
 
-```
+```c
 typedef void (*Http_OnVoidCallback)(void)
 ```
 

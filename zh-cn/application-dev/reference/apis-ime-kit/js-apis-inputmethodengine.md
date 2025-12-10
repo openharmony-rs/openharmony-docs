@@ -4023,6 +4023,8 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback&lt;void&gt;): voi
 > **说明**
 >
 > 输入法应用调用该接口向编辑框发送扩展编辑操作，编辑框监听相应事件[on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10)，从而进一步做出处理。
+>
+> 编辑框响应[ExtendAction](#extendaction10)的PASTE命令时，需要编辑框应用申请[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)权限。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4066,6 +4068,8 @@ sendExtendAction(action: ExtendAction): Promise&lt;void&gt;
 >**说明**
 >
 > 输入法应用调用该接口向编辑框发送扩展编辑操作，编辑框监听相应事件[on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10)，从而进一步做出处理。
+>
+> 编辑框响应[ExtendAction](#extendaction10)的PASTE命令时，需要编辑框应用申请[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)权限。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

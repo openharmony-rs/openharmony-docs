@@ -6,8 +6,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
-typedef struct {...} OH_NativeBuffer_Smpte2086
+```c
+typedef struct OH_NativeBuffer_Smpte2086 {...} OH_NativeBuffer_Smpte2086
 ```
 ## 概述
 

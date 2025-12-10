@@ -1,4 +1,4 @@
-# 使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和原生应用通信场景
+# 使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @libing23232323-->
@@ -8,9 +8,9 @@
 
 ## 概述
 
-浏览器的扩展程序（extension）支持与系统上安装的原生应用交换消息，原生应用向扩展提供服务，帮助扩展实现一些原生应用才具备的能力，常见的例子是密码管理器：原生应用负责存储和加密你的密码信息，以便浏览器扩展程序自动填充网页中的表单字段。
+浏览器的扩展程序（extension）支持与系统上安装的应用交换消息，应用向扩展提供服务，帮助扩展实现一些应用才具备的能力，常见的例子是密码管理器：应用负责存储和加密你的密码信息，以便浏览器扩展程序自动填充网页中的表单字段。
 
-从API version 21开始，支持开发者在原生应用中使用[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)组件，为浏览器扩展提供后台服务能力。
+从API version 21开始，支持开发者在应用中使用[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)组件，为浏览器扩展提供后台服务能力。
 浏览器扩展通过[WebExtensions runtime API](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions/API/runtime)连接WebNativeMessagingExtensionAbility，双方通信是通过共享pipe文件描述符后调用IO接口实现。
 
 
@@ -20,7 +20,7 @@
 >
 > 本文将浏览器扩展调用WebExtension接口runtime.connectNative建立的连接称为NativeMessaging连接。
 >
-> NativeMessaging面向两类开发者：原生应用开发者和浏览器应用开发者。两者均需要了解WebNativeMessagingExtensionAbility运作机制，但关注的场景和接口不同。原生应用开发者关注[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)组件的使用，负责相关业务开发；浏览器应用开发者负责建立NativeMessaging连接，关注[WebNativeMessagingExtensionManager](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md)相关接口。
+> NativeMessaging面向两类开发者：应用开发者和浏览器应用开发者。两者均需要了解WebNativeMessagingExtensionAbility运作机制，但关注的场景和接口不同。应用开发者关注[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)组件的使用，负责相关业务开发；浏览器应用开发者负责建立NativeMessaging连接，关注[WebNativeMessagingExtensionManager](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md)相关接口。
 >
 > 本文会在具体的描述中，特意标注需要哪类开发者关注。
 
@@ -38,7 +38,7 @@ WebNativeMessagingExtensionAbility组件当前仅支持2in1设备。
 
 - WebNativeMessagingExtensionAbility仅支持拉起本应用的UIAbility，不支持拉起其他应用UIAbility或者其他类型ExtensionAbility。
 
-- WebNativeMessagingExtensionAbility仅用于浏览器扩展与原生应用通信场景，不支持如后台服务等其他场景使用。
+- WebNativeMessagingExtensionAbility仅用于浏览器扩展与应用通信场景，不支持如后台服务等其他场景使用。
 
 ## 运作机制
 
@@ -46,29 +46,29 @@ WebNativeMessagingExtensionAbility组件当前仅支持2in1设备。
 
 ![](figures/connect-native-detail.png)
 - **流程：**
-1. **浏览器扩展**调用runtime.connectNative接口传入原生应用包名，来创建NativeMessaging连接。
-2. **浏览器应用**调用[dataShare](../database/share-config.md)获取原生应用配置信息，包括WebNativeMessagingExtension的名称，和限制访问规则（是否允许某个扩展访问该WebNativeMessagingExtension）。
+1. **浏览器扩展**调用runtime.connectNative接口传入应用包名，来创建NativeMessaging连接。
+2. **浏览器应用**调用[dataShare](../database/share-config.md)获取应用配置信息，包括WebNativeMessagingExtension的名称，和限制访问规则（是否允许某个扩展访问该WebNativeMessagingExtension）。
 3. **浏览器应用**创建两组pipe作为收发双向通道，调用[WebNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)接口，拉起WebNativeMessagingExtension并创建一条NativeMessaging连接，并将pipe的收发文件描述符作为参数传输过去。
-4. **原生应用**WebNativeMessagingExtensionAbility被拉起，[WebNativeMessagingExtensionAbility.onConnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#onconnectnative)生命周期回调触发，获取pipe的文件描述符。
-5. **原生应用**监听读端的文件描述符，获取浏览器扩展发过来的消息指令，并通过写端的文件描述符发送回去。
-6. **原生应用**使用[WebNativeMessagingExtensionContext.startAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md#startability)拉起本应用的UIAbility图形界面。
+4. **应用**WebNativeMessagingExtensionAbility被拉起，[WebNativeMessagingExtensionAbility.onConnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#onconnectnative)生命周期回调触发，获取pipe的文件描述符。
+5. **应用**监听读端的文件描述符，获取浏览器扩展发过来的消息指令，并通过写端的文件描述符发送回去。
+6. **应用**使用[WebNativeMessagingExtensionContext.startAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md#startability)拉起本应用的UIAbility图形界面。
 
 > **说明**
 >
-> WebNativeMessagingExtensionAbility为单实例独立进程，多次调用connectNative接口仅拉起一个实例，同时触发多次onConnectNative回调，需要**原生应用**管理多会话场景。
+> WebNativeMessagingExtensionAbility为单实例独立进程，多次调用connectNative接口仅拉起一个实例，同时触发多次onConnectNative回调，需要**应用**管理多会话场景。
 >
 
-### dataShare存放原生应用extension配置信息
-原生应用集成WebNativeMessagingExtensionAbility时，需要通过dataShare能力向浏览器应用提供extension配置。该配置用于浏览器应用判断允许访问的扩展及指定要拉起的WebNativeMessagingExtensionAbility名称。
+### dataShare存放应用extension配置信息
+应用集成WebNativeMessagingExtensionAbility时，需要通过dataShare能力向浏览器应用提供extension配置。该配置用于浏览器应用判断允许访问的扩展及指定要拉起的WebNativeMessagingExtensionAbility名称。
 
 extension配置采用json字符串格式
-- extensionAbility属性：字符串，WebNativeMessagingExtensionAbility名称，用于填充want中abilityName字段，一个原生应用仅有一个WebNativeMessagingExtensionAbility。
+- extensionAbility属性：字符串，WebNativeMessagingExtensionAbility名称，用于填充want中abilityName字段，一个应用仅有一个WebNativeMessagingExtensionAbility。
 - allowed_origins属性：数组，允许访问该WebNativeMessagingExtensionAbility的浏览器扩展url信息，可以配置多条，不同浏览器的扩展有不同的scheme协议，例如华为浏览器使用chrome-extension协议头。
 
 extension配置格式：
 ```json
 {
-  // 原生应用包名
+  // 应用包名
   "name": "com.example.myapplication",
   // 具体描述
   "description": "Send message to native app.",
@@ -95,9 +95,9 @@ extension配置存放在[dataShare配置项](../database/share-config.md#modulej
 - [terminateSelf](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md#terminateself)：WebNativeMessagingExtensionAbility可以主动退出，触发后会销毁所有NativeMessaging连接。
 
 ### 消息格式和限制
-NativeMessaging连接使用的具体格式，每个消息都使用 JSON 进行序列化，编码为 UTF-8，并在前面附加 32 位消息长度（采用原生字节顺序）。来自WebNativeMessagingExtensionAbility的单个消息的大小上限为 1 MB，这主要是为了保护浏览器免受行为异常的原生应用影响。发送到WebNativeMessagingExtensionAbility的消息大小上限为 64 MB。
+NativeMessaging连接使用的具体格式，每个消息都使用 JSON 进行序列化，编码为 UTF-8，并在前面附加 32 位消息长度（采用原生字节顺序）。来自WebNativeMessagingExtensionAbility的单个消息的大小上限为 1 MB，这主要是为了保护浏览器免受行为异常的应用影响。发送到WebNativeMessagingExtensionAbility的消息大小上限为 64 MB。
 
-### 实现一个connectNative的扩展（原生应用开发者）
+### 实现一个connectNative的扩展（应用开发者）
 > **说明**
 >
 > 需按w3c标准配置manifest.json和background.js实现通信。
@@ -145,52 +145,52 @@ function sendMessageToNative() {
 **实现配置background.js**
 
 1. 使用chrome.runtime.connectNative链接
-``` ts
-var port = null;
-//监听来自main.js的信息
-chrome.runtime.onMessage.addListener(
-  function (request, sender, sendResponse) {
-    if (request.type == "sendMessage") {
-      if (port == null) {
-        connectToNativeHost();
-      }
-      port.postMessage(request.message); //向应用程序发送信息
-    }
-    return true; //保持消息通道开放
-});
-function connectToNativeHost() {
-  var bundleName = "com.example.app"; //插件对应应用的bundleName
-  port = chrome.runtime.connectNative(bundleName); //根据bundleName名得到通信端口port
-  port.onMessage.addListener(onNativeMessage); //监听native应用程序是否发来消息
-  port.onDisconnect.addListener(onDisconnected); //监听是否断开连接
-}
-//接收到来自native程序的消息时触发
-async function onNativeMessage(message) {
-  console.info('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); //示例中的pong
-}
-//断开连接时触发
-function onDisconnected() {
-  port = null;
-}
-```
-
+   ``` ts	
+     var port = null;	
+   //监听来自main.js的信息	
+   chrome.runtime.onMessage.addListener(	
+     function (request, sender, sendResponse) {	
+       if (request.type == "sendMessage") {	
+         if (port == null) {	
+           connectToNativeHost();	
+         }	
+         port.postMessage(request.message); //向应用程序发送信息	
+       }	
+       return true; //保持消息通道开放	
+   });	
+   function connectToNativeHost() {	
+     var bundleName = "com.example.app"; //插件对应应用的bundleName	
+     port = chrome.runtime.connectNative(bundleName); //根据bundleName名得到通信端口port	
+     port.onMessage.addListener(onNativeMessage); //监听native应用程序是否发来消息	
+     port.onDisconnect.addListener(onDisconnected); //监听是否断开连接	
+   }	
+   //接收到来自native程序的消息时触发	
+   async function onNativeMessage(message) {	
+     console.info('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); //示例中的pong	
+   }	
+   //断开连接时触发	
+   function onDisconnected() {	
+     port = null;	
+   }	
+   ```
+ 
 2. 使用chrome.runtime.sendNativeMessage链接
-``` ts
-function sendNativeMessage() {
-  var bundleName = "com.example.app"; //插件对应应用的bundleName
-  var nativeMessage = "ping"; //插件要发给应用的内容
-  chrome.runtime.sendNativeMessage(
-    bundleName,
-    {message: nativeMessage},
-    function(response) {
-      // 收到一次应用回复的信息后断开链接
-      console.info("sendNativeMessage收到原生应用程序响应:", JSON.stringify(response));
-    }
-  )
-}
-```
+   ``` ts
+   function sendNativeMessage() {
+     var bundleName = "com.example.app"; //插件对应应用的bundleName
+     var nativeMessage = "ping"; //插件要发给应用的内容
+     chrome.runtime.sendNativeMessage(
+       bundleName,
+       {message: nativeMessage},
+       function(response) {
+         // 收到一次应用回复的信息后断开链接
+       console.info("sendNativeMessage收到应用程序响应:", JSON.stringify (response));
+       }
+    )
+   }
+   ```
 
-### 实现一个WebNativeMessagingExtensionAbility（原生应用开发者）
+### 实现一个WebNativeMessagingExtensionAbility（应用开发者）
 在DevEco Studio工程中手动新建一个WebNativeMessagingExtensionAbility组件，具体步骤如下：
 1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为MyWebNativeMessageExtAbility。
 
@@ -198,14 +198,14 @@ function sendNativeMessage() {
 
     其目录结构如下所示：
 
-    ```
+   ```yml
     ├── ets
     │ ├── MyWebNativeMessageExtAbility
     │ │   ├── MyWebNativeMessageExtAbility.ets
     └
-    ```
+   ```
 3. 在MyWebNativeMessageExtAbility.ets文件中，增加导入[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)的依赖包，自定义类继承WebNativeMessagingExtensionAbility组件并实现生命周期回调。
-  ```ts
+   ```ts
     import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import {buffer, util} from '@kit.ArkTS';
@@ -261,35 +261,35 @@ function sendNativeMessage() {
         hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
       }
     };
-  ```
+   ```
 4. 在工程Module的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册WebNativeMessagingExtensionAbility组件。设置type标签为“webNativeMessaging”，srcEntry标签指向组件代码路径。
 
-    ```json
-    {
-      "module": {
-        // ...
-        "extensionAbilities": [
-          {
-            "name": "MyWebNativeMessageExtAbility",
-            "description": "webNativeMessaging",
-            "type": "webNativeMessaging",
-            "exported": true,
-            "srcEntry": "./ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets"
-          }
-        ]
-      }
-    }
-    ```
+   ```json
+   {
+     "module": {
+       // ...
+       "extensionAbilities": [
+         {
+           "name": "MyWebNativeMessageExtAbility",
+           "description": "webNativeMessaging",
+           "type": "webNativeMessaging",
+           "exported": true,
+           "srcEntry": "./ets/MyWebNativeMessageExtAbility/ MyWebNativeMessageExtAbility.ets"
+         }
+       ]
+     }
+   }
+   ```
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中配置crossAppSharedConfig，定义共享配置项，共享配置文件需放置在工程resources/base/profile目录下，并通过$资源访问方式引用。
-```json
-  {
-    "module": {
-      "crossAppSharedConfig": "$profile:shared_config"
-    }
-  }
-```
+   ```json
+   {
+     "module": {
+       "crossAppSharedConfig": "$profile:shared_config"
+     }
+   }
+   ```
 
-6.在shared_config.json添加[extension配置](#datashare存放原生应用extension配置信息)
+6.在shared_config.json添加[extension配置](#datashare存放应用extension配置信息)。
 
 ```json
   {
@@ -364,9 +364,9 @@ function sendNativeMessage() {
         console.error('Error getting config:', error);
       }
     }
-  ```
+   ```
 2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)创建NativeMessage，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
-  ```ts
+   ```ts
     import { UIAbility, Want, common } from '@kit.AbilityKit';
     import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
@@ -404,14 +404,14 @@ function sendNativeMessage() {
         console.info(`inner callback error Message: ${JSON.stringify(error)}`);
       }
     }
-  ```
+   ```
 
 3. 需要销毁NativeMessaging连接时，调用[webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerdisconnectnative)。
-  ```ts
+   ```ts
     import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
     function disconnencNative(connectId: number) : void {
       console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
       webNativeMessagingExtensionManager.disconnectNative(connectId);
     }
-  ```
+   ```

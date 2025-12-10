@@ -57,7 +57,7 @@
 
 ### OH_ImageReceiver_OnCallback()
 
-```
+```c
 typedef void (*OH_ImageReceiver_OnCallback)(OH_ImageReceiverNative *receiver)
 ```
 
@@ -69,7 +69,7 @@ typedef void (*OH_ImageReceiver_OnCallback)(OH_ImageReceiverNative *receiver)
 
 ### OH_ImageReceiver_ImageArriveCallback()
 
-```
+```c
 typedef void (*OH_ImageReceiver_ImageArriveCallback)(OH_ImageReceiverNative *receiver, void *userData)
 ```
 
@@ -81,7 +81,7 @@ ImageArrive事件的回调方法。
 
 ### OH_ImageReceiverOptions_Create()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverOptions_Create(OH_ImageReceiverOptions **options)
 ```
 
@@ -106,7 +106,7 @@ Image_ErrorCode OH_ImageReceiverOptions_Create(OH_ImageReceiverOptions **options
 
 ### OH_ImageReceiverOptions_GetSize()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options, Image_Size* size)
 ```
 
@@ -132,7 +132,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options
 
 ### OH_ImageReceiverOptions_SetSize()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options, Image_Size size)
 ```
 
@@ -158,7 +158,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 
 ### OH_ImageReceiverOptions_GetCapacity()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* options, int32_t* capacity)
 ```
 
@@ -184,7 +184,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* opt
 
 ### OH_ImageReceiverOptions_SetCapacity()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* options, int32_t capacity)
 ```
 
@@ -210,7 +210,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* opt
 
 ### OH_ImageReceiverOptions_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options)
 ```
 
@@ -235,7 +235,7 @@ Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options
 
 ### OH_ImageReceiverNative_Create()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, OH_ImageReceiverNative** receiver)
 ```
 
@@ -261,7 +261,7 @@ Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, 
 
 ### OH_ImageReceiverNative_GetReceivingSurfaceId()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNative* receiver, uint64_t* surfaceId)
 ```
 
@@ -287,7 +287,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNat
 
 ### OH_ImageReceiverNative_ReadLatestImage()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)
 ```
 
@@ -315,7 +315,7 @@ Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* r
 
 ### OH_ImageReceiverNative_ReadNextImage()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)
 ```
 
@@ -343,7 +343,7 @@ Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* rec
 
 ### OH_ImageReceiverNative_On()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_On(OH_ImageReceiverNative* receiver, OH_ImageReceiver_OnCallback callback)
 ```
 
@@ -371,7 +371,7 @@ Image_ErrorCode OH_ImageReceiverNative_On(OH_ImageReceiverNative* receiver, OH_I
 
 ### OH_ImageReceiverNative_Off()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_Off(OH_ImageReceiverNative* receiver)
 ```
 
@@ -398,7 +398,7 @@ Image_ErrorCode OH_ImageReceiverNative_Off(OH_ImageReceiverNative* receiver)
 
 ### OH_ImageReceiverNative_GetSize()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver, Image_Size* size)
 ```
 
@@ -424,7 +424,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver,
 
 ### OH_ImageReceiverNative_GetCapacity()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_GetCapacity(OH_ImageReceiverNative* receiver, int32_t* capacity)
 ```
 
@@ -450,7 +450,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetCapacity(OH_ImageReceiverNative* recei
 
 ### OH_ImageReceiverNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)
 ```
 
@@ -475,7 +475,7 @@ Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)
 
 ### OH_ImageReceiverNative_OnImageArrive()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative *receiver,OH_ImageReceiver_ImageArriveCallback callback, void *userData)
 ```
 
@@ -502,7 +502,7 @@ Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative *rec
 
 ### OH_ImageReceiverNative_OffImageArrive()
 
-```
+```c
 Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *receiver,OH_ImageReceiver_ImageArriveCallback callback)
 ```
 

@@ -42,7 +42,7 @@
 
 ### OH_AttachOptions_Create()
 
-```
+```c
 InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 ```
 
@@ -57,7 +57,7 @@ InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool showKeyboard | 表示是否显示键盘。 |
+| bool showKeyboard | 表示绑定时是否显示键盘。true - 表示绑定完成时需要显示键盘。false - 表示绑定完成时不需要显示键盘。 |
 
 **返回：**
 
@@ -67,7 +67,7 @@ InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 
 ### OH_AttachOptions_CreateWithRequestKeyboardReason()
 
-```
+```c
 InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)
 ```
 
@@ -82,7 +82,7 @@ InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool showKeyboard | 表示是否显示键盘。 |
+| bool showKeyboard | 表示绑定时是否显示键盘。true - 表示绑定完成时需要显示键盘。false - 表示绑定完成时不需要显示键盘。 |
 | [InputMethod_RequestKeyboardReason](capi-inputmethod-types-capi-h.md#inputmethod_requestkeyboardreason) requestKeyboardReason |  表示请求键盘输入的原因。 |
 
 **返回：**
@@ -93,7 +93,7 @@ InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool
 
 ### OH_AttachOptions_Destroy()
 
-```
+```c
 void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)
 ```
 
@@ -112,7 +112,7 @@ void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)
 
 ### OH_AttachOptions_IsShowKeyboard()
 
-```
+```c
 InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)
 ```
 
@@ -138,7 +138,7 @@ InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions 
 
 ### OH_AttachOptions_GetRequestKeyboardReason()
 
-```
+```c
 InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)
 ```
 

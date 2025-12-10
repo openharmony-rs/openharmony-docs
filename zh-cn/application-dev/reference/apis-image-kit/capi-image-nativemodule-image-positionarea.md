@@ -6,8 +6,8 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-```
-typedef struct {...} Image_PositionArea
+```c
+typedef struct Image_PositionArea {...} Image_PositionArea
 ```
 
 ## 概述

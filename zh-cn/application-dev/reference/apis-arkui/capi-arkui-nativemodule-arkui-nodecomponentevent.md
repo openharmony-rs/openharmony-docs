@@ -1,6 +1,6 @@
 # ArkUI_NodeComponentEvent
 
-```
+```c
 typedef struct {...} ArkUI_NodeComponentEvent
 ```
 

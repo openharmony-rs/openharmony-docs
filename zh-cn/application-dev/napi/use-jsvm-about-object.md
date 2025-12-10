@@ -78,7 +78,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // 样例测试js
 const char* srcCallNative = R"JS(const myObject = {};
     const proto = getPrototype(myObject);
-    console.log(proto === Object.prototype);)JS";
+    console.info(proto === Object.prototype);)JS";
 ```
 <!-- @[oh_jsvm_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/getprototype/src/main/cpp/hello.cpp) -->
 
@@ -498,7 +498,9 @@ JSVM CheckObjectTypeTag:1
 ### OH_JSVM_CreateExternal
 
 创建一个包装了外部指针的JavaScript对象。
-**注意**：JavaScript对象被垃圾回收时，包装的外部指针指向的内容不被GC直接管理，仅调用传入的第三个参数对应的函数（如果传入时不为nullptr）。
+> **注意：**
+>
+> JavaScript对象被垃圾回收时，包装的外部指针指向的内容不被GC直接管理，仅调用传入的第三个参数对应的函数（如果传入时不为nullptr）。
 
 cpp部分代码：
 

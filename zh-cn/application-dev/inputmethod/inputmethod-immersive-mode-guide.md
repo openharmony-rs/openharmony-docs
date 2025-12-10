@@ -19,24 +19,31 @@
 ## 接入指导
 1. 前台应用[设置编辑框沉浸模式](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#keyboardappearance15)。示例代码如下。
 
-<!-- @[input_case_input_KeyboardAppearance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
-
-``` TypeScript
-      TextArea({placeholder: '沉浸模式'})
-        .keyboardAppearance(KeyboardAppearance.IMMERSIVE)
-
-      TextArea({placeholder: '非沉浸模式'})
-        .keyboardAppearance(KeyboardAppearance.NONE_IMMERSIVE)
-```
+   <!-- @[input_case_input_KeyboardAppearance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
+   
+   ``` TypeScript
+   TextArea({placeholder: '沉浸模式'})
+     .keyboardAppearance(KeyboardAppearance.IMMERSIVE)
+   
+   TextArea({placeholder: '非沉浸模式'})
+     .keyboardAppearance(KeyboardAppearance.NONE_IMMERSIVE)
+   ```
 
 
 2. 输入法应用[订阅编辑框属性变化事件](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oneditorattributechanged10)，通过回调参数EditorAttribute中的immersiveMode字段感知前台应用期望的沉浸模式。示例代码如下。
 
-<!-- @[input_case_input_immersiveModeeditorAttributeChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
-```
+   <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
+   inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+     console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
+     if (attr.immersiveMode == 1) {
+       this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+       console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
+     }
+   })
+   ```
 
 
 3. 输入法应用[设置沉浸模式](../reference/apis-ime-kit/js-apis-inputmethodengine.md#setimmersivemode15)。 
@@ -47,18 +54,16 @@
 
    设置沉浸模式，示例代码如下。setImmersiveMode接口需使用[createPanel](../reference/apis-ime-kit/js-apis-inputmethodengine.md#createpanel10)获取到Panel实例后，通过实例调用。
    
-<!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
-    // [Start input_case_input_immersiveModeeditorAttributeChanged]
-    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
-      // [End input_case_input_immersiveModeeditorAttributeChanged]
-      console.log('recv editorAttributeChanged, immersiveMode: ', JSON.stringify(attr.immersiveMode));
-      if (attr.immersiveMode == 1) {
-        this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
-        console.log('recv editorAttributeChanged, panel:', JSON.stringify(this.panel?.getImmersiveMode()));
-      }
-    })
-```
+   <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
+   inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+     console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
+     if (attr.immersiveMode == 1) {
+       this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+       console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
+     }
+   })
+   ```
 

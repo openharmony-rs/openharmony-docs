@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct ArkUI_GestureEventTargetInfo ArkUI_GestureEventTargetInfo
 ```
 

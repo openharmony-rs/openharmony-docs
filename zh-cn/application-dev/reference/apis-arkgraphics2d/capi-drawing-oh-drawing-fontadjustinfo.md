@@ -5,8 +5,9 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-```
-typedef struct {...} OH_Drawing_FontAdjustInfo
+
+```c
+typedef struct OH_Drawing_FontAdjustInfo {...} OH_Drawing_FontAdjustInfo
 ```
 
 ## 概述

@@ -65,7 +65,7 @@
 
 ### MediaLibrary_ErrorCode
 
-```
+```c
 enum MediaLibrary_ErrorCode
 ```
 
@@ -89,7 +89,7 @@ enum MediaLibrary_ErrorCode
 
 ### MediaLibrary_DeliveryMode
 
-```
+```c
 enum MediaLibrary_DeliveryMode
 ```
 
@@ -113,7 +113,7 @@ enum MediaLibrary_DeliveryMode
 
 ### MediaLibrary_MediaType
 
-```
+```c
 enum MediaLibrary_MediaType
 ```
 
@@ -130,7 +130,7 @@ enum MediaLibrary_MediaType
 
 ### MediaLibrary_MediaSubType
 
-```
+```c
 enum MediaLibrary_MediaSubType
 ```
 
@@ -148,7 +148,7 @@ enum MediaLibrary_MediaSubType
 
 ### MediaLibrary_ResourceType
 
-```
+```c
 enum MediaLibrary_ResourceType
 ```
 
@@ -165,7 +165,7 @@ enum MediaLibrary_ResourceType
 
 ### MediaLibrary_ImageFileType
 
-```
+```c
 enum MediaLibrary_ImageFileType
 ```
 
@@ -182,7 +182,7 @@ enum MediaLibrary_ImageFileType
 
 ### MediaLibrary_MediaQuality
 
-```
+```c
 enum MediaLibrary_MediaQuality
 ```
 
@@ -207,7 +207,7 @@ enum MediaLibrary_MediaQuality
 
 ### MediaLibrary_MediaContentType
 
-```
+```c
 enum MediaLibrary_MediaContentType
 ```
 
@@ -227,7 +227,7 @@ enum MediaLibrary_MediaContentType
 
 ### OH_MediaLibrary_OnDataPrepared()
 
-```
+```c
 typedef void (*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_RequestId requestId)
 ```
 
@@ -247,7 +247,7 @@ typedef void (*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_Requ
 
 ### OH_MediaLibrary_OnImageDataPrepared()
 
-```
+```c
 typedef void (*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result,MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_ImageSourceNative* imageSourceNative)
 ```
 
@@ -270,7 +270,7 @@ typedef void (*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode resul
 
 ### OH_MediaLibrary_OnMovingPhotoDataPrepared()
 
-```
+```c
 typedef void (*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result,MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_MovingPhoto* movingPhoto)
 ```
 

@@ -1336,9 +1336,7 @@ try {
 
 setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 
-创建悬浮窗、模态窗或WindowType窗口类型为系统窗口时，可以调用该接口使能窗口获取避让区[AvoidArea](arkts-apis-window-i.md#avoidarea7)。
-
-该接口一般适用于此场景：应用于创建上述类型窗口并希望获取避让区信息时，需要在创建窗口后调用该接口设置使能该窗口，再调用[getWindowAvoidArea()](#getwindowavoidarea9)或[on('avoidAreaChange')](#onavoidareachange9)获取或监听避让区。
+创建全局悬浮窗、模态窗或WindowType窗口类型为系统窗口时，调用该接口使能后才可以通过[getWindowAvoidArea()](#getwindowavoidarea9)获取窗口避让区信息或通过[on('avoidAreaChange')](#onavoidareachange9)监听窗口避让区变化。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -8891,7 +8889,7 @@ struct Index {
 
 enableDrag(enable: boolean): Promise&lt;void&gt;
 
-使能/禁止拖拽窗口，仅对子窗及系统窗口生效。使用Promise异步回调。
+使能/禁止拖拽窗口，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效。使用Promise异步回调。
 
 使能后，将允许通过鼠标操作或触摸对窗口进行拉伸操作。
 
@@ -8942,7 +8940,7 @@ try {
 
 startMoving(): Promise&lt;void&gt;
 
-[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，对主窗、子窗和系统窗口生效。非自由窗口状态下，仅对子窗、系统窗口生效。用于开始移动窗口，使用Promise异步回调。
+[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效。非自由窗口状态下，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效。用于开始移动窗口，使用Promise异步回调。
 
 仅在[onTouch](./arkui-ts/ts-universal-events-touch.md#touchevent对象说明)事件（其中，事件类型必须为TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。
 
@@ -9432,7 +9430,7 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
+try {
   let promise = windowClass.setWindowCornerRadius(1.0);
   promise.then(() => {
     console.info('Succeeded in setting window corner radius.');

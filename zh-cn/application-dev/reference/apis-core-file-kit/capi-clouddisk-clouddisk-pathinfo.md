@@ -7,7 +7,7 @@
 <!--Adviser: @foryourself-->
 
 ```c
-typedef struct {...} CloudDisk_PathInfo
+typedef struct CloudDisk_PathInfo {...} CloudDisk_PathInfo
 ```
 
 ## 概述
