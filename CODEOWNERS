@@ -106,6 +106,11 @@ zh-cn/application-dev/application-models/uiability-lifecycle.md @huipeizi @wende
 zh-cn/application-dev/application-models/uiability-startup-adjust.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/application-models/uiserviceextension.md @huipeizi @li-weifeng2024 @lixueqing513
 
+[开发-Ability Kit-分布式]
+zh-cn/application-dev/application-models/inter-device-interaction-hop-overview.md @hu-zhiqiong @gsxiaowen @hanjiawei
+zh-cn/application-dev/application-models/hop-cross-device-migration.md @hu-zhiqiong @gsxiaowen @hanjiawei
+zh-cn/application-dev/application-models/hop-multi-device-collaboration.md @hu-zhiqiong @gsxiaowen @hanjiawei
+
 [开发-Ability Kit-包管理]
 zh-cn/application-dev/application-models/canopenlink.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
 zh-cn/application-dev/application-models/application-component-configuration-stage.md @Brilliantry_Rui  @hanfeng6  @kongjing2   
@@ -640,10 +645,10 @@ zh-cn/application-dev/form/  @HelloShuo @ylsnow  @cmz001   @zhaoshaohua_eiln @ta
 
 
 [开发-mechanicManager]
-zh-cn/application-dev/mechanicManager/camera-tracking-guide.md @hobbycao @saga2025 @zhaodengqi @foryourself
-zh-cn/application-dev/mechanicManager/mechanic-kit-intro.md @hobbycao @saga2025 @zhaodengqi @foryourself
-zh-cn/application-dev/mechanicManager/Readme-CN.md @hobbycao @saga2025 @zhaodengqi @foryourself
-zh-cn/application-dev/mechanicManager/rotation-control-guide-sys.md @hobbycao @saga2025 @zhaodengqi @foryourself
+zh-cn/application-dev/mechanicManager/camera-tracking-guide.md @hobbycao @saga2025 @zhaodengqi @hu-zhiqiong
+zh-cn/application-dev/mechanicManager/mechanic-kit-intro.md @hobbycao @saga2025 @zhaodengqi @hu-zhiqiong
+zh-cn/application-dev/mechanicManager/Readme-CN.md @hobbycao @saga2025 @zhaodengqi @hu-zhiqiong
+zh-cn/application-dev/mechanicManager/rotation-control-guide-sys.md @hobbycao @saga2025 @zhaodengqi @hu-zhiqiong
 
 
 [开发-FFRT]
@@ -964,7 +969,7 @@ zh-cn/application-dev/reference/apis-ability-kit/capi-bundle-manager-common-h.md
 zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-abilityresourceinfo.md @Brilliantry_Rui  @hanfeng6  @kongjing2
 
 [API参考-Ability Kit-分布式]
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedMissionManager.md @chenmingJay @nan-xiansen @iceice1001
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedMissionManager.md @chenmingJay @nan-xiansen @iceice1001 
 
 [API参考-Ability Kit-访问控制]
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-abilityAccessCtrl.md @zengyawen
@@ -2067,10 +2072,10 @@ zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager
 
 
 [API参考-mechanicManager]
-zh-cn/application-dev/reference/apis-mechanic-kit/errorcode-mechanic.md @hobbycao @saga2025 @zhaodengqi @foryourself
-zh-cn/application-dev/reference/apis-mechanic-kit/js-apis-mechanicManager-sys.md @hobbycao @saga2025 @zhaodengqi @foryourself
-zh-cn/application-dev/reference/apis-mechanic-kit/js-apis-mechanicManager.md @hobbycao @saga2025 @zhaodengqi @foryourself
-zh-cn/application-dev/reference/apis-mechanic-kit/Readme-CN.md @hobbycao @saga2025 @zhaodengqi @foryourself
+zh-cn/application-dev/reference/apis-mechanic-kit/errorcode-mechanic.md @hobbycao @saga2025 @zhaodengqi @hu-zhiqiong
+zh-cn/application-dev/reference/apis-mechanic-kit/js-apis-mechanicManager-sys.md @hobbycao @saga2025 @zhaodengqi @hu-zhiqiong
+zh-cn/application-dev/reference/apis-mechanic-kit/js-apis-mechanicManager.md @hobbycao @saga2025 @zhaodengqi @hu-zhiqiong
+zh-cn/application-dev/reference/apis-mechanic-kit/Readme-CN.md @hobbycao @saga2025 @zhaodengqi @hu-zhiqiong
 
 
 [API参考-FFRT]
@@ -2315,14 +2320,17 @@ zh-cn/application-dev/reference/apis-multimodalawareness-kit/errorcode-deviceSta
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/errorcode-metadataBinding.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/errorcode-motion.md @hu-zhiqiong @zou_ye @judan @dilligencer
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/errorcode-userStatus.md @hu-zhiqiong @zou_ye @judan @dilligencer
+zh-cn/application-dev/reference/apis-multimodalawareness-kit/errorcode-spatialAwareness.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
+zh-cn/application-dev/reference/apis-multimodalawareness-kit/errorcode-onScreen.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-deviceStatus.md @hu-zhiqiong @zou_ye @judan @dilligencer
-zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding-sys.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md @hu-zhiqiong @zou_ye @judan @dilligencer
-zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-motion.md @hu-zhiqiong @zou_ye @judan @dilligencer
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-stationary.md @hu-zhiqiong @zou_ye @judan @dilligencer
-
-
+zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-motion.md @hu-zhiqiong @zou_ye @judan @dilligencer
+zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding-sys.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
+zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-deviceStatus-sys.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
+zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-onScreen-sys.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
+zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-spatialAwareness-sys.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
 
 [API参考-Network Kit]
 zh-cn/application-dev/reference/apis-network-kit/ @zhang_yixin13 @guo-min_net @tongxilin 
@@ -2348,22 +2356,29 @@ zh-cn/application-dev/reference/apis-user-authentication-kit/ @zengyawen
 
 
 [API参考-Sensor Service Kit]
-zh-cn/application-dev/reference/apis-sensor-service-kit/Readme-CN.md @hu-zhiqiong @butterls @murphy84 @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-sensor-sys.md @hu-zhiqiong @butterls @murphy84 @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-sensor.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-vibrator.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-system-sensor.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-system-vibrate.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/_sensor.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/_vibrator.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/oh_sensor_8h.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/oh_sensor_type_8h.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/vibrator_8h.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/vibrator_type_8h.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/_vibrator_attribute.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/_vibrator_file_description.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/errorcode-sensor.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
-zh-cn/application-dev/reference/apis-sensor-service-kit/errorcode-vibrator.md @hu-zhiqiong @murphy84 @butterls @star-wind-snow-and-rain
+zh-cn/application-dev/reference/apis-sensor-service-kit/Readme-CN.md @hu-zhiqiong @butterls @murphy84
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-sensor-sys.md @hu-zhiqiong @butterls @murphy84
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-sensor.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-vibrator.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-system-sensor.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-system-vibrate.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/errorcode-sensor.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/errorcode-vibrator.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-oh-sensor-h.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-oh-sensor-type-h.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-h.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-type-h.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-info.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-event.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionid.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionattribute.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-subscriber.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-vibrator-attribute.md @hu-zhiqiong @murphy84 @butterls
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-vibrator-filedescription.md @hu-zhiqiong @murphy84 @butterls
+
+
 
 
 [API参考-Telephony Kit]
