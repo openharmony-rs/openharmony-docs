@@ -5083,22 +5083,6 @@ Allows an application to access the sandbox directories of other extended applic
 
 **Valid since**: 19
 
-## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
-
-Allows an HAP to load independent binary .so files with different owner IDs.
-
-With this permission, the HAP can load independent binary .so files with a developer certificate or an ad-hoc signature.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Valid since**: 20
-
 ## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
 
 Allows a system application to query the certificate information of independent binary programs.
