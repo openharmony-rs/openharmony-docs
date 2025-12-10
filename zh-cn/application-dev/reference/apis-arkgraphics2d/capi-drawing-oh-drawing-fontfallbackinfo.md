@@ -6,7 +6,7 @@
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 ```c
-typedef struct {...} OH_Drawing_FontFallbackInfo
+typedef struct OH_Drawing_FontFallbackInfo {...} OH_Drawing_FontFallbackInfo
 ```
 
 ## 概述

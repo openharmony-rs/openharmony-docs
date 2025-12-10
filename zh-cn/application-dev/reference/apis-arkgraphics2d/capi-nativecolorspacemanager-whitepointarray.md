@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-struct WhitePointArray {...}
+typedef struct WhitePointArray {...} WhitePointArray
 ```
 
 ## 概述

@@ -8,7 +8,7 @@
 <!--Adviser: @ningningW-->
 
 ```c
-typedef struct {...} DateTimeRule
+typedef struct DateTimeRule {...} DateTimeRule
 ```
 
 ## 概述
