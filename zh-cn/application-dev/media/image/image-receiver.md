@@ -105,11 +105,11 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
 
 通过[image.Component](../../reference/apis-image-kit/arkts-apis-image-i.md#component9)解析图片的buffer数据。
 
-   > **注意：**
-   > 需要确认图像的宽（width）是否与行距（rowStride）一致，如果不一致可参考以下方式一和方式二进行预处理。
+> **注意：**
+> 需要确认图像的宽（width）是否与行距（rowStride）一致，如果不一致可参考以下方式一和方式二进行预处理。
 
-   方式一：去除imgComponent.byteBuffer中stride数据，拷贝得到新的buffer，调用不支持stride的接口处理buffer。
-   <!-- @[adjust_bufferSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
+方式一：去除imgComponent.byteBuffer中stride数据，拷贝得到新的buffer，调用不支持stride的接口处理buffer。
+<!-- @[adjust_bufferSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
    
    ``` TypeScript
    // stride与width不一致。
