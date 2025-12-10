@@ -17,18 +17,6 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
-## ohos.permission.RECEIVER_STARTUP_COMPLETED
-
-允许应用订阅开机广播。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：9
-
 ## ohos.permission.SYSTEM_LIGHT_CONTROL
 
 允许控制系统灯，包括打开、关闭等操作。
@@ -184,18 +172,6 @@
 **ACL使能**：false
 
 **起始版本**：11
-
-## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
-
-允许UIExtensionAbility显示在锁屏之上。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：14
 
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 

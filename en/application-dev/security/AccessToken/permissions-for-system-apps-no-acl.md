@@ -17,18 +17,6 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting the permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
-## ohos.permission.RECEIVER_STARTUP_COMPLETED
-
-Allows an application to subscribe to the startup broadcast.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 9
-
 ## ohos.permission.SYSTEM_LIGHT_CONTROL
 
 Allows an application to control lights, including turning on and off lights.
@@ -184,18 +172,6 @@ Allows a system service to enable distributed hardware resources.
 **Enable via ACL**: false
 
 **Valid since**: 11
-
-## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
-
-Allows a UIExtensionAbility to be displayed on the locked screen.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 14
 
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 

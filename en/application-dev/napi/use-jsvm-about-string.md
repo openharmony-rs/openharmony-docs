@@ -209,7 +209,7 @@ Expected result:
 ```cpp
 JSVM GetValueStringUtf16 success: ahello.
 ```
-**Note**: The **arg** parameter of **getValueStringUtf16(arg)** must be a string. Otherwise, the API call fails.
+**NOTE**<br>The **arg** parameter of **getValueStringUtf16(arg)** must be a string. Otherwise, the API call fails.
 
 ### OH_JSVM_CreateStringUtf16
 
@@ -320,7 +320,7 @@ Expected output (The ISO-8859-1 encoding does not support Chinese characters. If
 
 ![GetValueStringLatin1](figures/jsvm_about_string_GetValueStringLatin1.png)
 
-**Note**: The input parameter **arg** of **getValueStringLatin1(arg)** must be a string. Otherwise, the API fails to be called.
+**NOTE**<br>The input parameter **arg** of **getValueStringLatin1(arg)** must be a string. Otherwise, the API fails to be called.
 
 ### OH_JSVM_CreateStringLatin1
 

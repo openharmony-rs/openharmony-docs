@@ -17,7 +17,7 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
 
 | API                                    | Description                                      |
 | ---------------------------------------- | ------------------------------------------ |
-| [napi_create_strong_sendable_reference](../reference/native-lib/napi.md#napi_create_strong_sendable_reference)    | Creates a Sendable strong reference to a Sendable ArkTS object.|
+| napi_create_strong_sendable_reference    | Creates a Sendable strong reference to a Sendable ArkTS object.|
 | napi_delete_strong_sendable_reference   | Deletes a Sendable strong reference.                       |
 | napi_get_strong_sendable_reference_value| Obtains the ArkTS object value associated with a Sendable strong reference.  |
 

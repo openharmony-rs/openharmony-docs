@@ -290,7 +290,7 @@ try {
 
 Call **napi_typeof** to obtain the ArkTS type of an ArkTS value.
 
-**Note**: **napi_typeof** can determine the following types:  
+**NOTE**<br>**napi_typeof** can determine the following types.  
 |Type| 
 |-----|
 |undefined|
