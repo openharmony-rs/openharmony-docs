@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-自定义组件生命周期，即用[@Component](arkts-create-custom-components.md#component)或[@ComponentV2](arkts-new-componentV2.md)装饰的自定义组件的生命周期，提供以下生命周期接口：
+自定义组件生命周期，即用[@Component](arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件的生命周期，提供以下生命周期接口：
 
 
 - [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)：组件即将出现时回调该接口，具体时机为在创建自定义组件的新实例后，在执行其build函数之前执行。
@@ -42,7 +42,7 @@
 
 ## 自定义组件重新渲染
 
-当触发事件（比如点击）改变状态变量时，或者LocalStorage / AppStorage中的属性更改，并导致绑定的状态变量更改其值时：
+当触发事件（比如点击）改变状态变量时，或者[LocalStorage](./arkts-localstorage.md) / [AppStorage](./arkts-appstorage.md)中的属性更改，并导致绑定的状态变量更改其值时：
 
 1. 框架观察到变化，启动重新渲染。
 
@@ -62,8 +62,11 @@
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-```ts
-// Index.ets
+<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Entry
 @Component
 struct Parent {
@@ -72,17 +75,17 @@ struct Parent {
 
   // 组件生命周期
   aboutToAppear() {
-    console.info('Parent aboutToAppear');
+    hilog.info(0x0000, 'testTag', 'Parent aboutToAppear');
   }
 
   // 组件生命周期
   onDidBuild() {
-    console.info('Parent onDidBuild');
+    hilog.info(0x0000, 'testTag', 'Parent onDidBuild');
   }
 
   // 组件生命周期
   aboutToDisappear() {
-    console.info('Parent aboutToDisappear');
+    hilog.info(0x0000, 'testTag', 'Parent aboutToDisappear');
   }
 
   build() {
@@ -109,17 +112,17 @@ struct Child {
 
   // 组件生命周期
   aboutToDisappear() {
-    console.info('Child aboutToDisappear');
+    hilog.info(0x0000, 'testTag', 'Child aboutToDisappear');
   }
 
   // 组件生命周期
   onDidBuild() {
-    console.info('Child onDidBuild');
+    hilog.info(0x0000, 'testTag', 'Child onDidBuild');
   }
 
   // 组件生命周期
   aboutToAppear() {
-    console.info('Child aboutToAppear');
+    hilog.info(0x0000, 'testTag', 'Child aboutToAppear');
   }
 
   build() {
@@ -169,6 +172,6 @@ Parent onDidBuild
 Child aboutToAppear
 Child onDidBuild
 ```
-当showchild为默认值true时，该示例的生命周期流程图如下所示：
+当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-demo2.png)

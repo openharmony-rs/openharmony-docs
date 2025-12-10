@@ -14,10 +14,29 @@
 
 ## 导入模块
 
+> **说明：**
+>
+> - ArcSwiperAttribute是用于配置ArcSwiper组件属性的关键接口。API version 21及之前版本，导入ArcSwiper组件后需要开发者手动导入ArcSwiperAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入ArcSwiper组件后，会自动导入ArcSwiperAttribute，无需开发者手动导入ArcSwiperAttribute。
+>
+> - 如果开发者手动导入ArcSwiperAttribute，DevEco Studio会显示置灰，API version 21及之前版本删除会编译报错，从API version 22开始，删除对功能无影响。
+
+API version 21及之前版本：
+
 ```ts
 import {
   ArcSwiper,
   ArcSwiperAttribute,
+  ArcDotIndicator,
+  ArcDirection,
+  ArcSwiperController
+} from '@kit.ArkUI';
+```
+
+API version 22及之后版本：
+
+```ts
+import { 
+  ArcSwiper, 
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
@@ -116,7 +135,7 @@ vertical(isVertical: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| isVertical  | Optional\<boolean> | 是   | 是否为纵向滑动。true为纵向滑动，false为横向滑动。<br/>默认值：false |
+| isVertical  | Optional\<boolean> | 是   | 是否为纵向滑动。<br/>true: 纵向滑动；false: 横向滑动。<br/>默认值：false |
 
 ### disableSwipe
 
@@ -268,7 +287,7 @@ arcDirection(direction: Optional\<ArcDirection>): ArcDotIndicator
 
 | 参数名    | 类型                                     | 必填 | 说明                                                         |
 | --------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| direction | [Optional\<ArcDirection>](#arcdirection) | 是   | 设置弧形指示器的方向。<br/>默认值：ArcDirection.SIX_CLOCK_DIRECTION，6点钟方向。 |
+| direction | Optional\<[ArcDirection](#arcdirection-1)> | 是   | 设置弧形指示器的方向。<br/>默认值：ArcDirection.SIX_CLOCK_DIRECTION，6点钟方向。 |
 
 **返回值：** 
 
@@ -290,7 +309,7 @@ itemColor(color: Optional\<ResourceColor>): ArcDotIndicator
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional\<ResourceColor>](ts-types.md#resourcecolor) | 是   | 设置弧形指示器中，未选中导航点的颜色。<br/>默认值：'#A9FFFFFF' |
+| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 设置弧形指示器中，未选中导航点的颜色。<br/>默认值：'#A9FFFFFF' |
 
 **返回值：** 
 
@@ -312,7 +331,7 @@ selectedItemColor(color: Optional\<ResourceColor>): ArcDotIndicator
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional\<ResourceColor>](ts-types.md#resourcecolor) | 是   | 设置弧形指示器中，选中导航点的颜色。<br/>默认值：'#FF5EA1FF' |
+| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 设置弧形指示器中，选中导航点的颜色。<br/>默认值：'#FF5EA1FF' |
 
 **返回值：** 
 
@@ -334,7 +353,7 @@ backgroundColor(color: Optional\<ResourceColor>): ArcDotIndicator
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional\<ResourceColor>](ts-types.md#resourcecolor) | 是   | 设置弧形指示器被长按时，弧形指示器的颜色。<br/>默认值：'#FF404040' |
+| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 设置弧形指示器被长按时，弧形指示器的颜色。<br/>默认值：'#FF404040' |
 
 **返回值：** 
 
@@ -356,7 +375,7 @@ maskColor(color: Optional\<LinearGradient>): ArcDotIndicator
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [Optional\<LinearGradient>](ts-basic-components-datapanel.md#lineargradient10) | 是   | 设置弧形指示器的遮罩渐变色。<br/>起始颜色默认值：'#00000000'<br/>结束颜色默认值：'#FF000000' |
+| color  | Optional\<[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)> | 是   | 设置弧形指示器的遮罩渐变色。<br/>起始颜色默认值：'#00000000'<br/>结束颜色默认值：'#FF000000' |
 
 **返回值：** 
 
@@ -466,7 +485,7 @@ onChange(handler: Optional\<IndexChangedHandler>)
 
 当前显示子组件的索引变化时触发该事件，返回值为当前显示子组件的索引值。
 
-ArcSwiper组件结合LazyForEach使用时，不能在onChange事件里触发子页面UI的刷新。
+ArcSwiper组件结合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，不能在onChange事件里触发子页面UI的刷新。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -476,7 +495,7 @@ ArcSwiper组件结合LazyForEach使用时，不能在onChange事件里触发子�
 
 | 参数名  | 类型                                                   | 必填 | 说明                     |
 | ------- | ------------------------------------------------------ | ---- | ------------------------ |
-| handler | [Optional\<IndexChangedHandler>](#indexchangedhandler) | 是   | 当前显示元素的索引回调。 |
+| handler | Optional\<[IndexChangedHandler](#indexchangedhandler)> | 是   | 当前显示元素的索引回调。 |
 
 ### onAnimationStart
 
@@ -492,7 +511,7 @@ onAnimationStart(handler: Optional\<AnimationStartHandler>)
 
 | 参数名  | 类型                                                       | 必填 | 说明                   |
 | ------- | ---------------------------------------------------------- | ---- | ---------------------- |
-| handler | [Optional\<AnimationStartHandler>](#animationstarthandler) | 是   | 切换动画开始时的回调。 |
+| handler | Optional\<[AnimationStartHandler](#animationstarthandler)> | 是   | 切换动画开始时的回调。 |
 
 ### onAnimationEnd
 
@@ -500,7 +519,7 @@ onAnimationEnd(handler: Optional\<AnimationEndHandler>)
 
 切换动画结束时触发该回调。
 
-当ArcSwiper切换动效结束时触发，包括动画过程中手势中断，通过SwiperController调用finishAnimation。参数为动画结束后的index值，多列ArcSwiper时，index为最左侧组件的索引。
+当ArcSwiper切换动效结束时触发，包括动画过程中手势中断，通过[SwiperController](ts-container-swiper.md#swipercontroller)调用finishAnimation。参数为动画结束后的index值，多列ArcSwiper时，index为最左侧组件的索引。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -510,7 +529,7 @@ onAnimationEnd(handler: Optional\<AnimationEndHandler>)
 
 | 参数名  | 类型                                                   | 必填 | 说明                       |
 | ------- | ------------------------------------------------------ | ---- | -------------------------- |
-| handler | [Optional\<AnimationEndHandler>](#animationendhandler) | 是   | 切换动画结束时触发该回调。 |
+| handler | Optional\<[AnimationEndHandler](#animationendhandler)> | 是   | 切换动画结束时触发该回调。 |
 
 ### onGestureSwipe
 
@@ -526,7 +545,7 @@ onGestureSwipe(handler: Optional\<GestureSwipeHandler>)
 
 | 参数名  | 类型                                                   | 必填 | 说明                                   |
 | ------- | ------------------------------------------------------ | ---- | -------------------------------------- |
-| handler | [Optional\<GestureSwipeHandler>](#gestureswipehandler) | 是   | 在页面跟手滑动过程中，逐帧触发该回调。 |
+| handler | Optional\<[GestureSwipeHandler](#gestureswipehandler)> | 是   | 在页面跟手滑动过程中，逐帧触发该回调。 |
 
 ### customContentTransition
 
@@ -556,12 +575,18 @@ ArcSwiper自定义切换动画相关信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| timeout | number | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的finishTransition接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
+| timeout | number | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
 | transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | 否 | 否 | 自定义切换动画具体内容。 |
 
 ## SwiperContentTransitionProxy
 
 ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画视窗内的页面信息，同时，也可以通过调用该对象的finishTransition接口通知ArcSwiper组件页面自定义动画已结束。
+
+>**说明：** 
+>
+> - 假设当前选中的子组件的索引为0，从第0页切换到第1页的动画过程中，每帧都会对视窗内所有页面触发回调，当视窗内有第0页和第1页两页时，每帧会触发两次回调。其中第一次回调的selectedIndex为0，index为0，position为当前帧第0页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第0页的长度；第二次回调的selectedIndex仍为0，index为1，position为当前帧第1页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第1页的长度。
+>
+> - 若动画曲线为弹簧插值曲线，从第0页切换到第1页的动画过程中，可能会因为离手时的位置和速度，先过滑到第2页，再回弹到第1页，该过程中每帧会对视窗内第1页和第2页触发回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -575,17 +600,6 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 | index | number | 否 | 否 | 视窗内页面的索引。 |
 | position | number | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
 | mainAxisLength | number | 否 | 否 | index对应页面在主轴方向上的长度。 |
-
->**说明：** 
->
->假设当前选中的子组件的索引为0，从第0页切换到第1页的动画过程中，每帧都会对视窗内所有页面触发回调，当视窗内有第0
->页和第1页两页时，每帧会触发两次回调。其中第一次回调的selectedIndex为0，index为0，position为当前帧第0页相对于动画开
->始前第0页的移动比例，mainAxisLength为主轴方向上第0页的长度；第二次回调的selectedIndex仍为0，index为1，position为当
->前帧第1页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第1页的长度。
->
->若动画曲线为弹簧插值曲线，从第0页切换到第1页的动画过程中，可能会因为离手时的位置和速度，先过滑到第2页，再回弹到
->第1页，该过程中每帧会对视窗内第1页和第2页触发回调。
-
 
 ### finishTransition
 
@@ -606,11 +620,12 @@ finishTransition(): void
 import {
   CircleShape,
   ArcSwiper,
-  ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
+  ArcSwiperAttribute, 
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
 } from '@kit.ArkUI';
+// 从API Version 22开始，无需手动导入ArcSwiperAttribute。具体请参考ArcSwiper的导入模块说明。
 
 class MyDataSource implements IDataSource {
   private list: Color[] = [];

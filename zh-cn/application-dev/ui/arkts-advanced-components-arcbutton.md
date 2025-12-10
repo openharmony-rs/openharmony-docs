@@ -13,17 +13,18 @@
 ## 创建按钮
 
 ArcButton通过调用以下接口来创建。
+<!-- @[button_align_top](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
 
-  ```ts
+``` TypeScript
 ArcButton({
-    options: new ArcButtonOptions({
-      label: 'OK',
-      position: ArcButtonPosition.TOP_EDGE,
-      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT
-    })
+  options: new ArcButtonOptions({
+    label: 'OK',
+    position: ArcButtonPosition.TOP_EDGE,
+    styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+  // ···
+  })
 })
-  ```
-
+```
   其中，[label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮文字，[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮类型，[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮样式。
 
   ![top](figures/ArcButtonTop.png)
@@ -35,33 +36,36 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 - 下弧形按钮（默认类型）。
 
   通过将[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置为ArcButtonPosition.BOTTOM_EDGE，可以将按钮设置为下弧形按钮。
-
-  ```ts
+  <!-- @[button_align_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
+  
+  ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
       label: 'OK',
       position: ArcButtonPosition.BOTTOM_EDGE,
-      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+    // ···
     })
+  
   })
   ```
-
   ![bottom](figures/ArcButtonBottom.png)
 
 - 上弧形按钮。
 
   通过将[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置为ArcButtonPosition.TOP_EDGE，可以将按钮设置为上弧形按钮。
-
-  ```ts
+  <!-- @[button_align_top](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
+  
+  ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
       label: 'OK',
       position: ArcButtonPosition.TOP_EDGE,
-      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+    // ···
     })
   })
   ```
-
   ![top](figures/ArcButtonTOP_EDGE.png)
 
 ## 自定义样式
@@ -69,8 +73,9 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 - 设置背景色。
 
   使用[backgroundColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置按钮的背景色。
-
-  ```ts
+  <!-- @[button_bcg_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonBcgColor.ets) -->
+  
+  ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
       label: 'OK',
@@ -79,14 +84,14 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
     })
   })
   ```
-
   ![custom_bg](figures/ArcButtonCustom_bg.png)
 
 - 设置文本颜色。
 
   使用[fontColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置按钮的文本颜色。
-
-  ```ts
+  <!-- @[button_font_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonFontColor.ets) -->
+  
+  ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
       label: 'OK',
@@ -96,14 +101,14 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
     })
   })
   ```
-
   ![custom_font](figures/ArcButtonCustom_font.png)
 
 - 设置阴影颜色。
 
   使用[shadowEnabled](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性启用按钮阴影，并通过[shadowColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置按钮的阴影颜色。
-
-  ```ts
+  <!-- @[button_shadow_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonShadow.ets) -->
+  
+  ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
       label: 'OK',
@@ -112,34 +117,37 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
     })
   })
   ```
-
   ![custom_shadow](figures/ArcButtonCustom_shadow.png)
 
 ## 添加事件
 
 - 绑定onClick事件来响应点击操作后的自定义行为。
-
-  ```ts
+  <!-- @[button_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
+  
+  ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
       label: 'OK',
+    // ···
       onClick: () => {
-        console.info('ArcButton onClick')
-      }
+        hilog.info(DOMAIN, TAG, 'ArcButton onClick');
+      },
     })
   })
   ```
-
 - 绑定onTouch事件来响应触摸操作后的自定义行为。
-
-  ```ts
+  <!-- @[button_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
+  
+  ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
       label: 'OK',
+    // ···
       onTouch: (event: TouchEvent) => {
-        console.info('ArcButton onTouch')
+        hilog.info(DOMAIN, TAG, 'ArcButton onTouch');
       }
     })
+  
   })
   ```
 
@@ -148,22 +156,21 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 在亮度设置界面，进度条显示当前亮度为30%。点击重置后，亮度值将被重置为默认的50%。
 
 运行该示例需要Wearable设备的支持。在src/main目录下的工程配置文件[module.json5](../quick-start/module-configuration-file.md)中[deviceTypes标签](../quick-start/module-configuration-file.md#devicetypes标签)内配置wearable。
+<!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) -->
 
-```json
-// module.json5
-{
-  "module": {
-    // ...
-    "deviceTypes": [
-      "wearable",
-      "phone"
-    ]
-    // ...
-  }
+``` JSON5
+"module": {
+  // ···
+  "deviceTypes": [
+    "wearable"
+  ],
+  // ···
 }
 ```
 
-```ts
+<!-- @[brightness_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonBrightness.ets) -->
+
+``` TypeScript
 import { LengthMetrics, LengthUnit, ArcButton, ArcButtonOptions, ArcButtonStyleMode } from '@kit.ArkUI';
 
 @Entry
@@ -174,7 +181,8 @@ struct BrightnessPage {
 
   build() {
     RelativeContainer() {
-      Text('设置亮度')
+      // $r('app.string.Reset')需要替换为开发者所需的资源文件
+      Text($r('app.string.Brightness'))
         .fontColor(Color.White)
         .id('id_brightness_set_text')
         .fontSize(24)
@@ -214,7 +222,8 @@ struct BrightnessPage {
 
       ArcButton({
         options: new ArcButtonOptions({
-          label: '重置',
+          // $r('app.string.Reset')需要替换为开发者所需的资源文件
+          label: $r('app.string.Reset'),
           styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
           fontSize: new LengthMetrics(19, LengthUnit.FP),
           onClick: () => {
@@ -232,6 +241,5 @@ struct BrightnessPage {
     .backgroundColor(Color.Black)
   }
 }
-  ```
-
-  ![example](figures/example_normal.png)
+```
+![example](figures/example_normal.png)

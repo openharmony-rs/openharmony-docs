@@ -34,7 +34,7 @@
                 try {
                   let context = this.getUIContext().getHostContext() as Context;
                 // 通话开始时创建voice_call类型的avsession。
-                let session: AVSessionManager.AVSession = await AVSessionManager.createAVSession(context, 'voiptest', 'voice_call');
+                let session: avSession.AVSession = await avSession.createAVSession(context, 'voiptest', 'voice_call');
                 } catch (err) {
                   console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
                 }
@@ -203,7 +203,7 @@
    }
    ```
 
-## 切换通话输入设备（仅在PC/2in设备可用）
+## 切换通话输入设备（仅在PC/2in1设备可用）
 
 系统不再提供音频输入设备切换的API，如果需要在应用内切换音频输入设备，并实现AVInputCastPicker组件，相关参数可参考[@ohos.multimedia.avInputCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md) 和 [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。
 

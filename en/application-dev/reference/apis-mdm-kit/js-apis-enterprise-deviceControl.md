@@ -1,4 +1,4 @@
-# @ohos.enterprise.deviceControl (Device Control)
+# @ohos.enterprise.deviceControl (Device Control Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
@@ -62,7 +62,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {

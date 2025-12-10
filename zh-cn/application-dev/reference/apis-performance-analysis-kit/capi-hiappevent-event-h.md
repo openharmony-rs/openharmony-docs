@@ -41,13 +41,14 @@
 | [EVENT_MAIN_THREAD_JANK](#event_main_thread_jank) "MAIN_THREAD_JANK"                                       | 主线程超时事件。<br>**起始版本：** 12    |
 | [EVENT_APP_HICOLLIE](#event_app_hicollie) "APP_HICOLLIE"                                                   | 任务执行超时事件。<br>**起始版本：** 18   |
 | [EVENT_APP_KILLED](#event_app_killed) "APP_KILLED"                                                         | 应用终止事件。<br>**起始版本：** 20      |
+| [EVENT_AUDIO_JANK_FRAME](#event_audio_jank_frame) "AUDIO_JANK_FRAME"                                       | 音频卡顿事件。<br>**起始版本：** 21      |
 | [DOMAIN_OS](#domain_os) "OS"                                                                               | OS作用域。<br>**起始版本：** 12        |
 
 ## 宏定义说明
 
 ### EVENT_USER_LOGIN
 
-```
+```c
 #define EVENT_USER_LOGIN "hiappevent.user_login"
 ```
 
@@ -59,7 +60,7 @@
 
 ### EVENT_USER_LOGOUT
 
-```
+```c
 #define EVENT_USER_LOGOUT "hiappevent.user_logout"
 ```
 
@@ -71,7 +72,7 @@
 
 ### EVENT_DISTRIBUTED_SERVICE_START
 
-```
+```c
 #define EVENT_DISTRIBUTED_SERVICE_START "hiappevent.distributed_service_start"
 ```
 
@@ -83,7 +84,7 @@
 
 ### EVENT_APP_CRASH
 
-```
+```c
 #define EVENT_APP_CRASH "APP_CRASH"
 ```
 
@@ -95,7 +96,7 @@
 
 ### EVENT_APP_FREEZE
 
-```
+```c
 #define EVENT_APP_FREEZE "APP_FREEZE"
 ```
 
@@ -107,7 +108,7 @@
 
 ### EVENT_APP_LAUNCH
 
-```
+```c
 #define EVENT_APP_LAUNCH "APP_LAUNCH"
 ```
 
@@ -119,7 +120,7 @@
 
 ### EVENT_SCROLL_JANK
 
-```
+```c
 #define EVENT_SCROLL_JANK "SCROLL_JANK"
 ```
 
@@ -131,7 +132,7 @@
 
 ### EVENT_CPU_USAGE_HIGH
 
-```
+```c
 #define EVENT_CPU_USAGE_HIGH "CPU_USAGE_HIGH"
 ```
 
@@ -143,7 +144,7 @@ CPU高负载事件。
 
 ### EVENT_BATTERY_USAGE
 
-```
+```c
 #define EVENT_BATTERY_USAGE "BATTERY_USAGE"
 ```
 
@@ -155,7 +156,7 @@ CPU高负载事件。
 
 ### EVENT_RESOURCE_OVERLIMIT
 
-```
+```c
 #define EVENT_RESOURCE_OVERLIMIT "RESOURCE_OVERLIMIT"
 ```
 
@@ -167,7 +168,7 @@ CPU高负载事件。
 
 ### EVENT_ADDRESS_SANITIZER
 
-```
+```c
 #define EVENT_ADDRESS_SANITIZER "ADDRESS_SANITIZER"
 ```
 
@@ -179,7 +180,7 @@ CPU高负载事件。
 
 ### EVENT_MAIN_THREAD_JANK
 
-```
+```c
 #define EVENT_MAIN_THREAD_JANK "MAIN_THREAD_JANK"
 ```
 
@@ -191,7 +192,7 @@ CPU高负载事件。
 
 ### EVENT_APP_HICOLLIE
 
-```
+```c
 #define EVENT_APP_HICOLLIE "APP_HICOLLIE"
 ```
 
@@ -203,7 +204,7 @@ CPU高负载事件。
 
 ### EVENT_APP_KILLED
 
-```
+```c
 #define EVENT_APP_KILLED "APP_KILLED"
 ```
 
@@ -213,9 +214,21 @@ CPU高负载事件。
 
 **起始版本：** 20
 
+### EVENT_AUDIO_JANK_FRAME
+
+```c
+#define EVENT_AUDIO_JANK_FRAME "AUDIO_JANK_FRAME"
+```
+
+**描述**
+
+音频卡顿事件。
+
+**起始版本：** 21
+
 ### DOMAIN_OS
 
-```
+```c
 #define DOMAIN_OS "OS"
 ```
 

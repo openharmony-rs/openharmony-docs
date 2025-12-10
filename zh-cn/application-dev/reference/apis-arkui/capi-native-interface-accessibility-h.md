@@ -2,16 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
 声明用于访问Native Accessibility的API，提供无障碍相关能力。
-
-
-**相关示例：** <!--RP1-->[AccessibilityCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)<!--RP1End-->
 
 **引用文件：** <arkui/native_interface_accessibility.h>
 
@@ -22,6 +19,8 @@
 **起始版本：** 13
 
 **相关模块：** [ArkUI_Accessibility](capi-arkui-accessibility.md)
+
+**相关示例：** <!--RP1-->[AccessibilityCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)<!--RP1End-->
 
 ## 汇总
 
@@ -117,7 +116,7 @@
 
 ### ArkUI_Accessibility_ActionType
 
-```
+```c
 enum ArkUI_Accessibility_ActionType
 ```
 
@@ -148,7 +147,7 @@ Accessibility操作类型的枚举。
 
 ### ArkUI_AccessibilityEventType
 
-```
+```c
 enum ArkUI_AccessibilityEventType
 ```
 
@@ -179,7 +178,7 @@ Accessibility事件类型的枚举。
 
 ### ArkUI_AcessbilityErrorCode
 
-```
+```c
 enum ArkUI_AcessbilityErrorCode
 ```
 
@@ -199,7 +198,7 @@ Accessibility错误代码状态的枚举。
 
 ### ArkUI_AccessibilitySearchMode
 
-```
+```c
 enum ArkUI_AccessibilitySearchMode
 ```
 
@@ -220,7 +219,7 @@ Accessibility搜索类型的枚举。
 
 ### ArkUI_AccessibilityFocusType
 
-```
+```c
 enum ArkUI_AccessibilityFocusType
 ```
 
@@ -239,7 +238,7 @@ Accessibility焦点类型的枚举。
 
 ### ArkUI_AccessibilityFocusMoveDirection
 
-```
+```c
 enum ArkUI_AccessibilityFocusMoveDirection
 ```
 
@@ -265,7 +264,7 @@ Accessibility焦点移动方向的枚举。
 
 ### OH_ArkUI_AccessibilityProviderRegisterCallback()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)
 ```
 
@@ -292,7 +291,7 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvid
 
 ### OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId, ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)
 ```
 
@@ -320,7 +319,7 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* i
 
 ### OH_ArkUI_SendAccessibilityAsyncEvent()
 
-```
+```c
 void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo, void (*callback)(int32_t errorCode))
 ```
 
@@ -342,7 +341,7 @@ void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider,
 
 ### OH_ArkUI_AddAndGetAccessibilityElementInfo()
 
-```
+```c
 ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI_AccessibilityElementInfoList* list)
 ```
 
@@ -368,7 +367,7 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI
 
 ### OH_ArkUI_AccessibilityElementInfoSetElementId()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t elementId)
 ```
 
@@ -395,7 +394,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElement
 
 ### OH_ArkUI_AccessibilityElementInfoSetParentId()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t parentId)
 ```
 
@@ -422,7 +421,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementI
 
 ### OH_ArkUI_AccessibilityElementInfoSetComponentType()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityElementInfo* elementInfo, const char* componentType)
 ```
 
@@ -449,7 +448,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityEle
 
 ### OH_ArkUI_AccessibilityElementInfoSetContents()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementInfo* elementInfo, const char* contents)
 ```
 
@@ -476,7 +475,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementI
 
 ### OH_ArkUI_AccessibilityElementInfoSetHintText()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementInfo* elementInfo, const char* hintText)
 ```
 
@@ -503,7 +502,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementI
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityText()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityText)
 ```
 
@@ -530,7 +529,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_Accessibilit
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityDescription)
 ```
 
@@ -556,7 +555,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_Acces
 
 ### OH_ArkUI_AccessibilityElementInfoSetChildNodeIds()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)
 ```
 
@@ -583,7 +582,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElem
 
 ### OH_ArkUI_AccessibilityElementInfoSetOperationActions()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_AccessibilityElementInfo* elementInfo,int32_t operationCount, ArkUI_AccessibleAction* operationActions)
 ```
 
@@ -612,7 +611,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_Accessibility
 
 ### OH_ArkUI_AccessibilityElementInfoSetScreenRect()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRect* screenRect)
 ```
 
@@ -639,7 +638,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElemen
 
 ### OH_ArkUI_AccessibilityElementInfoSetCheckable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElementInfo* elementInfo, bool checkable)
 ```
 
@@ -666,7 +665,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElement
 
 ### OH_ArkUI_AccessibilityElementInfoSetChecked()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementInfo* elementInfo, bool checked)
 ```
 
@@ -693,7 +692,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 
 ### OH_ArkUI_AccessibilityElementInfoSetFocusable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElementInfo* elementInfo, bool focusable)
 ```
 
@@ -720,7 +719,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElement
 
 ### OH_ArkUI_AccessibilityElementInfoSetFocused()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool isFocused)
 ```
 
@@ -747,7 +746,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementIn
 
 ### OH_ArkUI_AccessibilityElementInfoSetVisible()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementInfo* elementInfo, bool isVisible)
 ```
 
@@ -773,7 +772,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementIn
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)
 ```
 
@@ -799,7 +798,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_Accessibi
 
 ### OH_ArkUI_AccessibilityElementInfoSetSelected()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementInfo* elementInfo, bool selected)
 ```
 
@@ -826,7 +825,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementI
 
 ### OH_ArkUI_AccessibilityElementInfoSetClickable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool clickable)
 ```
 
@@ -853,7 +852,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElement
 
 ### OH_ArkUI_AccessibilityElementInfoSetLongClickable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)
 ```
 
@@ -880,7 +879,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityEle
 
 ### OH_ArkUI_AccessibilityElementInfoSetEnabled()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementInfo* elementInfo, bool isEnabled)
 ```
 
@@ -907,7 +906,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementIn
 
 ### OH_ArkUI_AccessibilityElementInfoSetIsPassword()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElementInfo* elementInfo, bool isPassword)
 ```
 
@@ -934,7 +933,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElemen
 
 ### OH_ArkUI_AccessibilityElementInfoSetScrollable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElementInfo* elementInfo, bool scrollable)
 ```
 
@@ -961,7 +960,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElemen
 
 ### OH_ArkUI_AccessibilityElementInfoSetEditable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementInfo* elementInfo, bool editable)
 ```
 
@@ -988,7 +987,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementI
 
 ### OH_ArkUI_AccessibilityElementInfoSetIsHint()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)
 ```
 
@@ -1015,7 +1014,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInf
 
 ### OH_ArkUI_AccessibilityElementInfoSetRangeInfo()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRangeInfo* rangeInfo)
 ```
 
@@ -1042,7 +1041,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 
 ### OH_ArkUI_AccessibilityElementInfoSetGridInfo()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)
 ```
 
@@ -1069,7 +1068,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementI
 
 ### OH_ArkUI_AccessibilityElementInfoSetGridItemInfo()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)
 ```
 
@@ -1096,7 +1095,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElem
 
 ### OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)
 ```
 
@@ -1123,7 +1122,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_Accessibilit
 
 ### OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)
 ```
 
@@ -1150,7 +1149,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityE
 
 ### OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)
 ```
 
@@ -1177,7 +1176,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 
 ### OH_ArkUI_AccessibilityElementInfoSetStartItemIndex()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)
 ```
 
@@ -1204,7 +1203,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityEl
 
 ### OH_ArkUI_AccessibilityElementInfoSetEndItemIndex()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)
 ```
 
@@ -1231,7 +1230,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 
 ### OH_ArkUI_AccessibilityElementInfoSetItemCount()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)
 ```
 
@@ -1258,7 +1257,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)
 ```
 
@@ -1285,7 +1284,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)
 ```
 
@@ -1312,7 +1311,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_Accessibili
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)
 ```
 
@@ -1339,7 +1338,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_Accessibili
 
 ### OH_ArkUI_AccessibilityElementInfoSetZIndex()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)
 ```
 
@@ -1366,7 +1365,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)
 ```
 
@@ -1393,7 +1392,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 
 ### OH_ArkUI_AccessibilityElementInfoSetBackgroundColor()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)
 ```
 
@@ -1420,7 +1419,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 
 ### OH_ArkUI_AccessibilityElementInfoSetBackgroundImage()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)
 ```
 
@@ -1447,7 +1446,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 
 ### OH_ArkUI_AccessibilityElementInfoSetBlur()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)
 ```
 
@@ -1474,7 +1473,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo*
 
 ### OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)
 ```
 
@@ -1501,7 +1500,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 
 ### OH_ArkUI_CreateAccessibilityElementInfo()
 
-```
+```c
 ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)
 ```
 
@@ -1520,7 +1519,7 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)
 
 ### OH_ArkUI_DestoryAccessibilityElementInfo()
 
-```
+```c
 void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -1540,7 +1539,7 @@ void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* el
 
 ### OH_ArkUI_CreateAccessibilityEventInfo()
 
-```
+```c
 ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)
 ```
 
@@ -1559,7 +1558,7 @@ ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)
 
 ### OH_ArkUI_DestoryAccessibilityEventInfo()
 
-```
+```c
 void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)
 ```
 
@@ -1579,7 +1578,7 @@ void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventI
 
 ### OH_ArkUI_AccessibilityEventSetEventType()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityEventType eventType)
 ```
 
@@ -1606,7 +1605,7 @@ int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* ev
 
 ### OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)
 ```
 
@@ -1633,7 +1632,7 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 
 ### OH_ArkUI_AccessibilityEventSetRequestFocusId()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo,  int32_t requestFocusId)
 ```
 
@@ -1660,7 +1659,7 @@ int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInf
 
 ### OH_ArkUI_AccessibilityEventSetElementInfo()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -1687,7 +1686,7 @@ int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* 
 
 ### OH_ArkUI_FindAccessibilityActionArgumentByKey()
 
-```
+```c
 int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)
 ```
 

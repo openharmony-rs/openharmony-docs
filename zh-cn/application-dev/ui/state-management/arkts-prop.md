@@ -8,7 +8,7 @@
 
 \@Prop装饰的变量可以和父组件建立单向同步关系。
 
-在阅读\@Prop文档前，建议开发者首先了解[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+在阅读\@Prop文档前，建议开发者首先了解[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
 > **说明：**
 >
@@ -46,7 +46,7 @@
 
  初始化规则图示：
 
-![zh-cn_image_0000001552972029](figures/zh-cn_image_0000001552972029.png)
+![prop-initialization](figures/prop-initialization.png)
 
 ## 观察变化和行为表现
 
@@ -54,7 +54,7 @@
 
 \@Prop装饰的数据可以观察到以下变化。
 
-- 当装饰支持类型，可以观察到赋值的变化。
+- 当装饰支持类型，可以观察到赋值的变化。简单类型完整示例请参考[父组件\@State到子组件\@Prop简单数据类型同步](#父组件state到子组件prop简单数据类型同步)。
 
   ```ts
   // 简单类型
@@ -67,47 +67,65 @@
   this.title = new Model('Hi');
   ```
 
-- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即object.keys(observedObject)返回的所有属性。
+- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考[从父组件中的\@State类对象属性到\@Prop简单类型的同步](#从父组件中的state类对象属性到prop简单类型的同步)。
 
-```ts
-class Info {
-  public value: string;
-  constructor(value: string) {
-    this.value = value;
+  <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  
+  ``` TypeScript
+  // 定义嵌套类
+  class Info {
+    public value: string;
+  
+    constructor(value: string) {
+      this.value = value;
+    }
   }
-}
-class Model {
-  public value: string;
-  public info: Info;
-  constructor(value: string, info: Info) {
-    this.value = value;
-    this.info = info;
+  
+  class Model {
+    public value: string;
+    public info: Info;
+  
+    constructor(value: string, info: Info) {
+      this.value = value;
+      this.info = info;
+    }
   }
-}
+  ```
+  <!-- @[prop_twentyone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  
+  ``` TypeScript
+  @Prop title: Model;
+  ```
+  <!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  
+  ``` TypeScript
+  // 可以观察到第一层的变化
+  this.title.value = 'Hi';
+  ```
+  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  
+  ``` TypeScript
+  // 观察不到第二层的变化
+  this.title.info.value = 'ArkUI';
+  ```
 
-@Prop title: Model;
-// 可以观察到第一层的变化
-this.title.value = 'Hi';
-// 观察不到第二层的变化
-this.title.info.value = 'ArkUI';
-```
 
 对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考[@Prop嵌套场景](#prop嵌套场景)。
 
-- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。
+- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。数组类型完整示例请参考[父组件\@State数组项到子组件\@Prop简单数据类型同步](#父组件state数组项到子组件prop简单数据类型同步)。
 
-```ts
-// @Prop装饰的对象为数组时
-@Prop title: string[];
-// 数组自身的赋值可以观察到
-this.title = ['1'];
-// 数组项的赋值可以观察到
-this.title[0] = '2';
-// 删除数组项可以观察到
-this.title.pop();
-// 新增数组项可以观察到
-this.title.push('3');
-```
+  ```ts
+  // @Prop装饰的对象为数组时
+  @Prop title: string[];
+  // 数组自身的赋值可以观察到
+  this.title = ['1'];
+  // 数组项的赋值可以观察到
+  this.title[0] = '2';
+  // 删除数组项可以观察到
+  this.title.pop();
+  // 新增数组项可以观察到
+  this.title.push('3');
+  ```
 
 对于\@State和\@Prop的同步场景：
 
@@ -140,7 +158,9 @@ this.title.push('3');
 
 以下示例中，当@State装饰的变量message改变时，Father组件会刷新。由于Son组件使用@Prop接收了该变量，因此Father组件刷新的过程中会使用message的最新值去更新@Prop的值。@Prop更新后，会触发Son组件的刷新。
 
-```ts
+<!-- @[prop_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageOne.ets) -->
+
+``` TypeScript
 @Component
 struct Son {
   @Prop message: string = 'Hi';
@@ -173,6 +193,9 @@ struct Father {
 
 - \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)等通过NAPI提供的复杂类型，由于有部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据。
 
+- \@Prop不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@Prop装饰Function类型变量的校验，编译期会报错。
+
 ## 使用场景
 
 ### 父组件\@State到子组件\@Prop简单数据类型同步
@@ -181,7 +204,9 @@ struct Father {
 
 ParentComponent的状态变量countDownStartValue的变化将重置CountDownComponent的count。
 
-```ts
+<!-- @[prop_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwo.ets) -->
+
+``` TypeScript
 @Component
 struct CountDownComponent {
   @Prop count: number = 0;
@@ -218,7 +243,6 @@ struct ParentComponent {
       Button(`-1  - Nuggets in New Game`).onClick(() => {
         this.countDownStartValue -= 1;
       })
-
       CountDownComponent({ count: this.countDownStartValue, costOfOneAttempt: 2 })
     }
   }
@@ -241,7 +265,9 @@ struct ParentComponent {
 
 父组件中@State如果装饰数组类型的变量，其数组项也可以初始化@Prop。以下示例中，父组件Index中@State装饰数组arr，将其数组项初始化子组件Child中@Prop装饰的value。
 
-```ts
+<!-- @[prop_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFour.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Prop value: number = 0;
@@ -287,6 +313,7 @@ struct Index {
 }
 ```
 
+
 初始渲染创建6个子组件实例，每个\@Prop装饰的变量初始化都在本地拷贝了一份数组项。子组件onClick事件处理程序会更改局部变量值。
 
 如果点击界面上的“1”六次，“2”五次、“3”四次，将所有变量的本地取值都变为“7”。
@@ -327,7 +354,9 @@ struct Index {
 
 在此示例中，图书类可以使用\@Observed装饰器，但不是必须的，只有在嵌套结构时需要此装饰器。这一点会在[从父组件中的\@State数组项到\@Prop class类型的同步](#从父组件中的state数组项到prop-class类型的同步)说明。
 
-```ts
+<!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) -->
+
+``` TypeScript
 class Book {
   public title: string;
   public pages: number;
@@ -371,7 +400,13 @@ struct Library {
 
 以下示例中，更改了\@State装饰的allBooks数组中Book对象的属性，但点击“Mark read for everyone”时，没有触发UI更新。这是因为该属性是第二层的嵌套属性，\@State装饰器只能观察到第一层属性，不会观察到此属性更改，所以框架不会更新ReaderComp。
 
-```ts
+<!-- @[prop_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSix.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleProp]';
 let nextId: number = 1;
 
 // @Observed
@@ -460,7 +495,7 @@ struct Library {
           if (this.allBooks.length > 0) {
             this.allBooks.shift();
           } else {
-            console.info('length <= 0');
+            hilog.info(DOMAIN, TAG, 'length <= 0');
           }
         })
       Button('Mark read for everyone')
@@ -508,7 +543,9 @@ class Book {
 
 - \@Prop customCounter2有本地初始化，在这种情况下，\@Prop依旧允许但非强制父组件同步数据源给\@Prop。
 
-```ts
+<!-- @[prop_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeven.ets) -->
+
+``` TypeScript
 @Component
 struct MyComponent {
   @Prop customCounter: number;
@@ -547,7 +584,7 @@ struct MainProgram {
     Column() {
       Row() {
         Column() {
-          // customCounter必须从父组件初始化，因为MyComponent的customCounter成员变量缺少本地初始化；此处，customCounter2可以不做初始化。
+          // customCounter必须从父组件初始化，因为MyComponent的customCounter成员变量缺少本地初始化；此处，customCounter2可以不做初始化
           MyComponent({ customCounter: this.mainCounter })
           // customCounter2也可以从父组件初始化，父组件初始化的值会覆盖子组件customCounter2的本地初始化的值
           MyComponent({ customCounter: this.mainCounter, customCounter2: this.mainCounter })
@@ -571,13 +608,16 @@ struct MainProgram {
 }
 ```
 
+
 ![Video-prop-UsageScenario-two](figures/Video-prop-UsageScenario-two.gif)
 
 ### \@Prop嵌套场景
 
 在嵌套场景下，每一层都要用\@Observed装饰，且每一层都要被\@Prop接收，这样才能观察到嵌套场景。
 
-```ts
+<!-- @[prop_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEight.ets) -->
+
+``` TypeScript
 // 以下是嵌套类对象的数据结构。
 @Observed
 class Son {
@@ -602,7 +642,9 @@ class Father {
 
 以下组件层次结构展示了\@Prop嵌套场景的数据结构。
 
-```ts
+<!-- @[prop_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Person {
@@ -625,6 +667,7 @@ struct Person {
           .margin(12)
           .fontColor('#FFFFFF')
           .onClick(() => {
+            // person被@State装饰，@State无法观测到嵌套类型的变化，直接点击该按钮，此时title已经发生变化，但是无法被观测到。
             this.person.son.title = 'ArkUI';
           })
         Text(this.person.name)
@@ -637,6 +680,7 @@ struct Person {
           .textAlign(TextAlign.Center)
           .fontColor('#e6000000')
           .onClick(() => {
+            // 点击该按钮，此次变化会被观测到，同时能够观察到Button('change Son title')点击后的效果。
             this.person.name = 'Bye';
           })
         Text(this.person.son.title)
@@ -689,7 +733,9 @@ struct Child {
 
 在下面的示例中，value类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
+<!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Prop value: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
@@ -746,7 +792,9 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
+<!-- @[prop_eleven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEleven.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Prop message: Set<number> = new Set([0, 1, 2, 3, 4]);
@@ -796,7 +844,9 @@ struct SetSample {
 
 在下面的示例中，selectedDate类型为Date，点击Button改变Date的值，视图会随之刷新。
 
-```ts
+<!-- @[prop_twelve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwelve.ets) -->
+
+``` TypeScript
 @Component
 struct DateComponent {
   @Prop selectedDate: Date = new Date('');
@@ -845,7 +895,6 @@ struct ParentComponent {
 
       DateComponent({ selectedDate: this.parentSelectedDate })
     }
-
   }
 }
 ```
@@ -854,7 +903,14 @@ struct ParentComponent {
 
 @Prop支持联合类型和undefined和null，在下面的示例中，animal类型为Animals | undefined，点击父组件Zoo中的Button改变animal的属性或者类型，Child中也会对应刷新。
 
-```ts
+<!-- @[prop_thirteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageThirteen.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleProp]';
+
 class Animals {
   public name: string;
 
@@ -896,7 +952,7 @@ struct Zoo {
     Column() {
       Text(`Parents' animals are  ${this.animal instanceof Animals ? this.animal.name : 'undefined'}`).fontSize(30)
 
-      Child({animal: this.animal})
+      Child({ animal: this.animal })
 
       Button('Parents change animals into dogs')
         .onClick(() => {
@@ -904,7 +960,7 @@ struct Zoo {
           if (this.animal instanceof Animals) {
             this.animal.name = 'Dog';
           } else {
-            console.info('num is undefined, cannot change property');
+            hilog.info(DOMAIN, TAG, 'num is undefined, cannot change property');
           }
         })
 
@@ -918,234 +974,4 @@ struct Zoo {
 }
 ```
 
-## 常见问题
-
-### \@Prop装饰状态变量未初始化错误
-
-\@Prop需要被初始化，如果没有进行本地初始化的，则必须通过父组件进行初始化。如果进行了本地初始化，那么是可以不通过父组件进行初始化的。
-
-【反例】
-
-```ts
-@Observed
-class Commodity {
-  public price: number = 0;
-
-  constructor(price: number) {
-    this.price = price;
-  }
-}
-
-@Component
-struct PropChild {
-  @Prop fruit: Commodity; // 未进行本地初始化
-
-  build() {
-    Text(`PropChild fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State fruit: Commodity[] = [new Commodity(1)];
-
-  build() {
-    Column() {
-      Text(`Parent fruit ${this.fruit[0].price}`)
-        .onClick(() => {
-          this.fruit[0].price += 1;
-        })
-
-      // @Prop本地没有初始化，也没有从父组件初始化
-      PropChild()
-    }
-  }
-}
-```
-
-【正例】
-
-```ts
-@Observed
-class Commodity {
-  public price: number = 0;
-
-  constructor(price: number) {
-    this.price = price;
-  }
-}
-
-@Component
-struct PropChild1 {
-  @Prop fruit: Commodity; // 未进行本地初始化
-
-  build() {
-    Text(`PropChild1 fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Component
-struct PropChild2 {
-  @Prop fruit: Commodity = new Commodity(1); // 进行本地初始化
-
-  build() {
-    Text(`PropChild2 fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State fruit: Commodity[] = [new Commodity(1)];
-
-  build() {
-    Column() {
-      Text(`Parent fruit ${this.fruit[0].price}`)
-        .onClick(() => {
-          this.fruit[0].price += 1;
-        })
-
-      // @PropChild1本地没有初始化，必须从父组件初始化
-      PropChild1({ fruit: this.fruit[0] })
-      // @PropChild2本地进行了初始化，可以不从父组件初始化，也可以从父组件初始化
-      PropChild2()
-      PropChild2({ fruit: this.fruit[0] })
-    }
-  }
-}
-```
-
-### 使用a.b(this.object)形式调用，不会触发UI刷新
-
-在build方法内，当@Prop装饰的变量是Object类型、且通过a.b(this.object)形式调用时，b方法内传入的是this.object的原始对象，修改其属性，无法触发UI刷新。如下例中，通过静态方法Score.changeScore1或者this.changeScore2修改自定义组件Child中的this.score.value时，UI不会刷新。
-
-【反例】
-
-```ts
-class Score {
-  value: number;
-  constructor(value: number) {
-    this.value = value;
-  }
-
-  static changeScore1(param1:Score) {
-    param1.value += 1;
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State score: Score = new Score(1);
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Parent is ${this.score.value}.`)
-        .fontSize(30)
-        .fontColor(Color.Red)
-      Child({ score: this.score })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct Child {
-  @Prop score: Score;
-
-  changeScore2(param2:Score) {
-    param2.value += 2;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Child is ${this.score.value}.`)
-        .fontSize(30)
-      Button(`changeScore1`)
-        .onClick(()=>{
-          // 通过静态方法调用，无法触发UI刷新
-          Score.changeScore1(this.score);
-        })
-      Button(`changeScore2`)
-        .onClick(()=>{
-          // 使用this通过自定义组件内部方法调用，无法触发UI刷新
-          this.changeScore2(this.score);
-        })
-    }
-  }
-}
-```
-
-可以通过如下先赋值、再调用新赋值的变量的方式为this.score加上Proxy代理，实现UI刷新。
-
-【正例】
-
-```ts
-class Score {
-  value: number;
-  constructor(value: number) {
-    this.value = value;
-  }
-
-  static changeScore1(score:Score) {
-    score.value += 1;
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State score: Score = new Score(1);
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Parent is ${this.score.value}.`)
-        .fontSize(30)
-        .fontColor(Color.Red)
-      Child({ score: this.score })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct Child {
-  @Prop score: Score;
-
-  changeScore2(score:Score) {
-    score.value += 2;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Child is ${this.score.value}.`)
-        .fontSize(30)
-      Button(`changeScore1`)
-        .onClick(()=>{
-          // 通过赋值添加 Proxy 代理
-          let score1 = this.score;
-          Score.changeScore1(score1);
-        })
-      Button(`changeScore2`)
-        .onClick(()=>{
-          // 通过赋值添加 Proxy 代理
-          let score2 = this.score;
-          this.changeScore2(score2);
-        })
-    }
-  }
-}
-```
 <!--no_check-->

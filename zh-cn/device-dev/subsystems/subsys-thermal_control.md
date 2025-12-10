@@ -8,7 +8,7 @@ OpenHarmony默认提供了热管控的特性。设备在使用的过程中如果
 
 ### 约束与限制
 
-产品定制的配置路径，需要根据[配置策略](https://gitee.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
+产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
 
@@ -24,11 +24,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 开发步骤 
 
-本文以[DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍热管控的定制方法。
+本文以[DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍热管控的定制方法。
 
-1. 在产品目录[（/vendor/hihope/rk3568）](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)下创建thermal文件夹。
+1. 在产品目录[（/vendor/hihope/rk3568）](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)下创建thermal文件夹。
 
-2. 参考[默认热管控的配置文件夹](https://gitee.com/openharmony/powermgr_thermal_manager/tree/master/services/native/profile)创建目标profile文件夹，并安装到`//vendor/hihope/rk3568/thermal`，文件格式如下：
+2. 参考[默认热管控的配置文件夹](https://gitcode.com/openharmony/powermgr_thermal_manager/tree/master/services/native/profile)创建目标profile文件夹，并安装到`//vendor/hihope/rk3568/thermal`，文件格式如下：
      
     ```text
     profile
@@ -36,7 +36,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ├── thermal_service_config.xml
     ```
 
-3. 参考[默认热管控的配置文件夹中的thermal_service_config.xml](https://gitee.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/thermal_service_config.xml)编写定制的thermal_service_config.xml。包含热管控配置说明及定制后的热管控配置如下：
+3. 参考[默认热管控的配置文件夹中的thermal_service_config.xml](https://gitcode.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/thermal_service_config.xml)编写定制的thermal_service_config.xml。包含热管控配置说明及定制后的热管控配置如下：
 
     **表1** 热管控配置说明
 
@@ -84,7 +84,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     </action>
     ```
 
-4. 参考[默认热管控配置文件夹中的BUILD.gn](https://gitee.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将thermal_service_config.xml打包到`/vendor/etc/thermal_config`目录下
+4. 参考[默认热管控配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将thermal_service_config.xml打包到`/vendor/etc/thermal_config`目录下
 
     ```shell
     import("//build/ohos.gni")                      # 引用build/ohos.gni
@@ -97,7 +97,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ```
 
-5. 将编译目标添加到[ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
+5. 将编译目标添加到[ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
 
     ```json
     {
@@ -128,7 +128,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 调测验证 
 
-OpenHarmony从5.0.0 Release版本起，支持温度模拟调测功能。下述操作通过模拟温度变化实现温度等级的跃迁，以此来验证热管控策略的定制能力。下述调测验证步骤，默认定制的thermal_service_config.xml按照[默认热管控的配置文件夹中的thermal_service_config.xml](https://gitee.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/thermal_service_config.xml)配置。
+OpenHarmony从5.0.0 Release版本起，支持温度模拟调测功能。下述操作通过模拟温度变化实现温度等级的跃迁，以此来验证热管控策略的定制能力。下述调测验证步骤，默认定制的thermal_service_config.xml按照[默认热管控的配置文件夹中的thermal_service_config.xml](https://gitcode.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/thermal_service_config.xml)配置。
 
 1. 开机后，进入shell命令行：
     ```shell
@@ -233,7 +233,7 @@ OpenHarmony从5.0.0 Release版本起，支持温度模拟调测功能。下述�
     ```
 
 ## 参考 
-开发过程中可参考的配置文件路径：[默认热管控源码路径](https://gitee.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/thermal_service_config.xml)
+开发过程中可参考的配置文件路径：[默认热管控源码路径](https://gitcode.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/thermal_service_config.xml)
 
 打包路径：`/vendor/etc/thermal_config/hdf`
 

@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 - [Form Kit简介](formkit-overview.md)
 - ArkTS卡片开发（推荐）<!--arkts-ui-->
   - [ArkTS卡片概述](arkts-form-overview.md)
@@ -18,6 +18,7 @@
       - [ArkTS卡片为组件添加动效](arkts-ui-widget-page-animation.md)
       - [ArkTS卡片使用画布组件绘制自定义图形](arkts-ui-widget-page-custom-drawing.md)
       - [ArkTS卡片界面适配深浅色模式](arkts-ui-widget-dark-light-color-adapt.md)
+      - [ArkTS卡片使用自定义字体](arkts-ui-widget-load-custom-font.md)
     - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
       - [ArkTS卡片页面刷新概述](arkts-ui-widget-interaction-overview.md)
       - [ArkTS卡片主动刷新](arkts-ui-widget-active-refresh.md)
@@ -38,6 +39,8 @@
       - [卡片编辑开发指导](arkts-ui-widget-event-formeditextensionability.md)
     - 应用内请求卡片加桌<!--arkts-ui-widget-add-->
       - [应用内拉起卡片管理加桌](arkts-ui-widget-open-formmanager.md)
+    <!--RP1--><!--RP1End-->
+    <!--RP2--><!--RP2End-->
   <!--Del--> 
   - [ArkTS卡片使用方开发指导（仅对系统应用开放）](widget-host-development-guide-sys.md)
   <!--DelEnd-->

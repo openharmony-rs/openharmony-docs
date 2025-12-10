@@ -63,6 +63,10 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 需要搭配[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)中的[StartImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12)和[StopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12)一起使用。
 不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中CustomBuilder属性将失效。该特性依赖设备能力。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -101,7 +105,7 @@ Canvas组件初始化完成或者发生大小变化时的事件回调，支持[a
 
 ### 示例1（使用CanvasRenderingContext2D中的方法）
 
-该示例实现了如何在Canvas组件使用CanvasRenderingContext2D中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)中的方法进行绘制。
 
 ```ts
 // xxx.ets
@@ -130,7 +134,7 @@ struct CanvasExample {
 
 ### 示例2（使用DrawingRenderingContext中的方法）
 
-该示例实现了如何在Canvas组件使用DrawingRenderingContext中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[DrawingRenderingContext](./ts-drawingrenderingcontext.md)中的方法进行绘制。
 
 ```ts
 // xxx.ets
@@ -159,7 +163,7 @@ struct CanvasExample {
 
 ### 示例3（使用attributeModifier动态设置Canvas组件的属性及方法）
 
-该示例展示了如何使用attributeModifier动态设置Canvas组件的enableAnalyzer属性和onReady方法。
+该示例展示了如何使用[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置Canvas组件的[enableAnalyzer](#enableanalyzer12)属性和[onReady](#onready)方法。
 
 ```ts
 // xxx.ets

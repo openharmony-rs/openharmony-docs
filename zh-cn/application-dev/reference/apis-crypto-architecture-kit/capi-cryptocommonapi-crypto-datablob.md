@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct Crypto_DataBlob {...} Crypto_DataBlob
+```
+
 ## 概述
 
 加解密数据结构体。

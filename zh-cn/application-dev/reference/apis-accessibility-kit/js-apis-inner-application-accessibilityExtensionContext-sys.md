@@ -35,14 +35,16 @@ class EntryAbility extends AccessibilityExtensionAbility {
 无障碍节点元素执行特定操作时，为操作提供具体设置的参数值。
 详见[无障碍节点元素可执行的操作](./js-apis-accessibility-sys.md#accessibilityaction)。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
 | setText             | string | 否   |是 |设置组件文本时文本内容。                 |
 | selectTextBegin     | string | 否  | 是|选定组件内文本时的起始坐标，如：'2'。        |
 | selectTextEnd       | string | 否   | 是|选定组件内文本时的结束坐标，如：'8'。      |
-| selectTextInForWard | bool   | 否    | 是|选定组件内文本时是否向前选择，如：true。      |
+| selectTextInForWard | boolean   | 否    | 是|表示选定组件内文本时是否向前选择。true表示向前选择，false表示不向前选择。      |
 | offset              | string | 否   | 是|设置光标的偏移量，如：'1'。    |
 | spanId              | string | 否   |是 |对超链接文本进行点击操作时文本编号。                |
 | scrollType          | string | 否   | 是|组件滚动类型，包括'fullScreen'（全屏）和'halfScreen'（半屏）。 |
@@ -57,7 +59,9 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 辅助功能网格信息。
 详见[AccessibilityElement.currentItem](#accessibilityelement12)。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
@@ -70,7 +74,9 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 辅助功能超链接文本信息。
 详见[AccessibilityElement.spans](#accessibilityelement12)。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
@@ -80,12 +86,63 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 | accessibilityDescription          | string | 否  | 否|超链接文本的辅助功能描述。        |
 | accessibilityLevel          | string | 否  | 否|超链接文本的辅助功能级别。        |
 
+## FocusRule<sup>23+</sup>
+
+type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' | 'checkSelf' | 'checkSelfBypassDescendants'
+
+表示查找可聚焦节点时，如何判断起始节点及其子节点的聚焦能力。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 类型            | 说明          |
+| -------- | ------- |
+| 'bypassSelf'       | 表示跳过对起始节点的检查，只检查其子节点。值固定为'bypassSelf'字符串。|
+| 'bypassSelfDescendants'     | 表示跳过对起始节点及其所有子节点的检查。值固定为'bypassSelfDescendants'字符串。|
+| 'checkSelf'     | 表示先检查起始节点是否可以聚焦，如果可以则直接使用；如果不能聚焦，则继续检查其子节点。值固定为'checkSelf'字符串。|
+| 'checkSelfBypassDescendants' | 表示先检查起始节点是否可以聚焦，如果可以则使用；如果不能聚焦，则跳过所有子节点的检查。值固定为'checkSelfBypassDescendants'字符串。|
+
+## FocusCondition<sup>23+</sup>
+
+type FocusCondition = 'forward' | 'backward' | 'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'
+
+表示查询可聚焦节点方式。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 类型       | 说明      |
+| -------- | ------- |
+| 'forward'       | 表示当前节点下一个可聚焦节点，值固定为'forward' 字符串。|
+| 'backward'     | 表示当前节点上一个可聚焦节点，值固定为'backward'字符串。|
+| 'findLast'     | 表示查找起始节点的子节点中的最后一个节点，值固定为'findLast'字符串。|
+| 'getForwardScrollAncestor' | 表示查找支持前向滚动父组件，值固定为'getForwardScrollAncestor'字符串。|
+| 'getBackwardScrollAncestor'| 表示查找支持后向滚动父组件，值固定为'getBackwardScrollAncestor'字符串。|
+| 'getScrollableAncestor' | 表示查找支持任意滚动父组件，值固定为'getScrollableAncestor'字符串。|
+
+## FocusMoveResult<sup>23+</sup>
+
+查询无障碍节点返回值类型。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 名称                  | 类型     | 只读  |可选| 说明                                |
+| ------------------- | ------ | ---- | ----|--------------------------------- |
+| target | Array<[AccessibilityElement](#accessibilityelement12)> | 否 | 否 | 查询返回的无障碍节点。|
+| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | 否 | 否 | 查询无障碍节点返回结果类型。|
+
 
 ## startAbility<sup>12+</sup>
 
-startAbility(want: Want): Promise\<void>;
+startAbility(want: Want): Promise\<void>
 
 提供拉起前台页面的能力。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -107,31 +164,65 @@ startAbility(want: Want): Promise\<void>;
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
-let want: Want = {
-  bundleName: 'com.huawei.hmos.photos',
-  abilityName: 'com.huawei.hmos.photos.MainAbility'
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let want: Want = {
+      bundleName: 'com.huawei.hmos.photos',
+      abilityName: 'com.huawei.hmos.photos.MainAbility'
+    }
+
+    this.context.startAbility(want).then(() => {
+      console.info(`startAbility Succeeded enable ability`);
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
 }
-
-axContext.startAbility(want).then(() => {
-  console.info(`startAbility Succeeded enable ability`);
-}).catch((err: BusinessError) => {
-  console.error(`startAbility failed to enable ability, Code is ${err.code}, message is ${err.message}`);
-});
 ```
 
 ## AccessibilityExtensionContext.getElements<sup>18+</sup>
 
-getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>;
+getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>
 
 提供批量查询节点的能力。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -160,24 +251,57 @@ getElements(windowId: number, elementId?: number): Promise<Array&lt;Accessibilit
 **示例：**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowId: number = 10;
-let elementId: number = 10;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
-});
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 10;
+    let elementId: number = 10;
+
+    this.context.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
+      console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## AccessibilityExtensionContext.getDefaultFocusedElementIds<sup>18+</sup>
 
-getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>;
+getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>
 
 提供查询应用自定义默认焦点的能力。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -205,16 +329,46 @@ getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>;
 **示例：**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowId: number = 10;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
-  console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
-});
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 10;
+
+    this.context.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
+      console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## AccessibilityExtensionContext.holdRunningLockSync<sup>20+</sup>
@@ -224,6 +378,8 @@ holdRunningLockSync(): void
 持有RunningLock锁，持锁后，屏幕不会自动灭屏。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -239,13 +395,42 @@ holdRunningLockSync(): void
 **示例：**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.holdRunningLockSync();
-} catch (err) {
-  console.error(`Failed to hold RunningLock, Code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.holdRunningLockSync();
+    } catch (err) {
+      console.error(`Failed to hold RunningLock, Code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -257,6 +442,8 @@ unholdRunningLockSync(): void
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **错误码：**
@@ -271,13 +458,42 @@ unholdRunningLockSync(): void
 **示例：**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.unholdRunningLockSync();
-} catch (err) {
-  console.error(`Failed to unhold RunningLock, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.unholdRunningLockSync();
+    } catch (err) {
+      console.error(`Failed to hold RunningLock, Code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -290,6 +506,8 @@ on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 此注册函数需要与[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)配合使用，如果不调用[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -312,15 +530,44 @@ on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.on('preDisconnect', () => {
-    console.info(`To do something before accessibilityExtension disconnect.`);
-  });
-} catch (err) {
-  console.error(`Failed to register, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.on('preDisconnect', () => {
+        console.info(`To do something before accessibilityExtension disconnect.`);
+      });
+    } catch (err) {
+      console.error(`Failed to register, code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -331,6 +578,8 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 取消已经向无障碍服务注册的预关闭回调函数，无障碍服务关闭该扩展服务前不再执行该回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -353,15 +602,44 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.off('preDisconnect', () => {
-    console.info(`To do something before accessibilityExtension disconnect.`);
-  });
-} catch (err) {
-  console.error(`Failed to unRegister, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.off('preDisconnect', () => {
+        console.info(`To do something before accessibilityExtension disconnect.`);
+      });
+    } catch (err) {
+      console.error(`Failed to unRegister, code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -374,6 +652,8 @@ notifyDisconnect(): void
 此函数需要与注册预关闭接口[on('preDisconnect')](#accessibilityextensioncontextonpredisconnect20)配合使用，如果没有调用过注册预关闭函数，直接调用此函数不生效。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -389,13 +669,42 @@ notifyDisconnect(): void
 **示例：**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.notifyDisconnect();
-} catch (err) {
-  console.error(`Failed to notify accessibility, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.notifyDisconnect();
+    } catch (err) {
+      console.error(`Failed to notify accessibility, code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -406,6 +715,8 @@ getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
 获取当前获得焦点的元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -427,14 +738,45 @@ getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
 **示例：**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-  console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
-});
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    this.context.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
+      console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## getRootInActiveWindow<sup>20+</sup>
@@ -444,6 +786,8 @@ getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#acce
 获取活动窗口根元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -469,16 +813,47 @@ getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#acce
 **示例：**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowId: number = 0;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-  console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
-});
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 0;
+
+    this.context.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
+      console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## getAccessibilityWindowsSync<sup>20+</sup>
@@ -488,6 +863,8 @@ getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#
 获取窗口列表。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -513,25 +890,56 @@ getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#
 **示例：**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  let displayId: number = 0;
-  let windowList = context?.getAccessibilityWindowsSync(displayId);
-  if (windowList) {
-    for (let window of windowList) {
-      console.info(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
-    }
-  }
-} catch (err) {
-  console.error(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      let displayId: number = 0;
+      let windowList = this.context.getAccessibilityWindowsSync(displayId);
+      if (windowList) {
+        for (let window of windowList) {
+          console.info(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
+        }
+      }
+    } catch (err) {
+      console.error(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
+    }
+  }
 }
 ```
 
 ## AccessibilityElement<sup>12+</sup>
 
 无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用 [AccessibilityExtensionContext.getAccessibilityFocusedElement()](#getaccessibilityfocusedelement20) 或 [AccessibilityExtensionContext.getRootInActiveWindow()](#getrootinactivewindow20) 来获取一个 **AccessibilityElement** 实例。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -586,6 +994,7 @@ try {
 | offset<sup>20+</sup>             | number              | 否  | 是  | 内容区域相对于可滚动组件（如List和Grid）顶部坐标的像素偏移量。<br>默认值：0。|
 | textType<sup>20+</sup>             | string                                                             | 否  | 是  | 元素的无障碍文本类型，由组件的accessibilityTextHint属性配置。|
 | accessibilityText<sup>20+</sup> | string                                                  | 否  | 是  | 元素的无障碍文本信息。|
+| accessibilityStateDescription<sup>23+</sup> | string                                      | 否  | 是  | 元素的自定义无障碍状态播报文本信息。<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | hotArea<sup>20+</sup>             | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)                                                              | 否  | 是  | 元素的可触摸区域。|
 | customComponentType<sup>20+</sup>             | string                                                             | 否  | 是  | 自定义组件类型。|
 | accessibilityNextFocusId<sup>20+</sup>             | number                | 否  | 是  | 下一个要获得焦点的组件的ID。<br>默认值：-1。|
@@ -606,31 +1015,63 @@ try {
 
 **示例：**
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-let windowId: number = 10;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-  console.info("AccessibilityElement.checkable: " + element.checkable)
-  console.info("AccessibilityElement.checked: " + element.checked)
-  console.info("AccessibilityElement.clickable: " + element.clickable)
-  console.info("AccessibilityElement.componentId: " + element.componentId)
-  console.info("AccessibilityElement.componentType: " + element.componentType)
-  console.info("AccessibilityElement.contents: " + element.contents)
-  console.info("AccessibilityElement.currentIndex: " + element.currentIndex)
-  console.info("AccessibilityElement.description: " + element.description)
-  // ....
-}).catch((err) => {
-  console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
-})
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 10;
+
+    this.context.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
+      console.info("AccessibilityElement.checkable: " + element.checkable)
+      console.info("AccessibilityElement.checked: " + element.checked)
+      console.info("AccessibilityElement.clickable: " + element.clickable)
+      console.info("AccessibilityElement.componentId: " + element.componentId)
+      console.info("AccessibilityElement.componentType: " + element.componentType)
+      console.info("AccessibilityElement.contents: " + element.contents)
+      console.info("AccessibilityElement.currentIndex: " + element.currentIndex)
+      console.info("AccessibilityElement.description: " + element.description)
+      // ....
+    }).catch((err: BusinessError) => {
+      console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
+    })
+  }
+}
 ```
 
 ### enableScreenCurtain<sup>12+</sup>
 
-enableScreenCurtain(isEnable: boolean): void;
+enableScreenCurtain(isEnable: boolean): void
 
 提供开启/关闭幕帘屏的能力。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -684,7 +1125,7 @@ export default class AccessibilityManager {
       console.error('context is not available!');
       return;
     }
-    this.context.getWindowRootElement().then((rootElement: AccessibilityElement) => {
+    this.context.getRootInActiveWindow().then((rootElement: AccessibilityElement) => {
       console.info(`Succeeded in get root element of the window, ${JSON.stringify(rootElement)}`);
       rootElement.enableScreenCurtain(true);
       console.info(`Succeeded in enableScreenCurtain`);
@@ -697,9 +1138,11 @@ export default class AccessibilityManager {
 
 ### findElement('elementId')<sup>12+</sup>
 
-findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>;
+findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>
 
-根据elementId查询当前活动窗口下的节点元素，使用Promise异步回调。
+根据elementId查询当前活动窗口下的节点元素。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -727,6 +1170,7 @@ findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement
 **示例：**
 
 ```ts
+import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 //elementId为10
@@ -742,9 +1186,11 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 
 ### findElement('textType')<sup>12+</sup>
 
-findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>;
+findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据节点配置的accessibilityTextHint无障碍文本类型查询所有节点元素，使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -772,6 +1218,7 @@ findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityE
 **示例：**
 
 ```ts
+import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // condition的内容需要与目标组件accessibilityTextHint属性的type字段值保持一致
@@ -787,9 +1234,11 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 
 ### getCursorPosition<sup>12+</sup>
 
-getCursorPosition(): Promise\<number>;
+getCursorPosition(): Promise\<number>
 
 获取文本组件中光标位置，使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -814,9 +1263,11 @@ rootElement.getCursorPosition().then((data: number) => {
 
 ### getCursorPosition<sup>12+</sup>
 
-getCursorPosition(callback: AsyncCallback\<number>): void;
+getCursorPosition(callback: AsyncCallback\<number>): void
 
 获取文本组件中光标位置，使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -844,11 +1295,13 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
 
 ### executeAction<sup>20+</sup>
 
-executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<void>;
+executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<void>
 
 根据action指定的操作类型和parameters传入的参数，执行特定操作。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -856,7 +1309,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 | 参数名         | 类型                                     | 必填   | 说明                                                       |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| 是    | 无障碍节点可执行的操作。
+| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| 是    | 无障碍节点可执行的操作。|
 | parameters | [Parameter](#parameter20) | 否    | 执行操作时设置的参数值，默认为空。                            |
 
 **返回值：**
@@ -878,8 +1331,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 **示例：**
 ```ts
 //无参数Action示例：
-import { BusinessError } from '@kit.BasicServicesKit';
-import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+import { AccessibilityAction } from '@kit.AccessibilityKit';
 
 // rootElement是AccessibilityElement的实例
 // Action描述中无明确要求的，均为无参数Action
@@ -895,7 +1347,6 @@ try {
 
 ```ts
 //有参数Action示例：
-import { BusinessError } from '@kit.BasicServicesKit'; 
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
@@ -914,7 +1365,6 @@ try {
 
 ```ts
 //有参数Action示例：
-import { BusinessError } from '@kit.BasicServicesKit';
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
@@ -931,11 +1381,13 @@ try {
 
 ### getParent<sup>20+</sup>
 
-getParent(): Promise\<AccessibilityElement>;
+getParent(): Promise\<AccessibilityElement>
 
 获取无障碍节点元素的父元素。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -958,27 +1410,28 @@ getParent(): Promise\<AccessibilityElement>;
 
 ```ts
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
   console.info(`element parent id: ${element.parentId}`);
   element.getParent().then((parent: AccessibilityElement) => {
     console.info(`parent element's parent id: ${parent.parentId}`);
-  }).catch((err) => {
+  }).catch((err: BusinessError) => {
     console.error(`getParent failed, code: ${err.code}, message: ${err.message}`);
   })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### getChildren<sup>20+</sup>
 
-getChildren(): Promise\<Array\<AccessibilityElement>>;
+getChildren(): Promise\<Array\<AccessibilityElement>>
 
 获取元素的子元素列表。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1001,27 +1454,28 @@ getChildren(): Promise\<Array\<AccessibilityElement>>;
 
 ```ts
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
   console.info(`element childrenIds: ${element.childrenIds}`);
   element.getChildren().then((children: AccessibilityElement[]) => {
     console.info(`children element's size: ${children.length}`);
-  }).catch((err) => {
+  }).catch((err: BusinessError) => {
     console.error(`getChildren failed, code: ${err.code}, message: ${err.message}`);
   })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### getRoot<sup>20+</sup>
 
-getRoot(): Promise\<AccessibilityElement>;
+getRoot(): Promise\<AccessibilityElement>
 
 获取活动窗口中的根元素。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1044,14 +1498,13 @@ getRoot(): Promise\<AccessibilityElement>;
 
 ```ts
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let windows: AccessibilityWindow[] = axContext.getAccessibilityWindowsSync()
 for (let window of windows) {
   console.info(`window id: ${window.windowId}`);
   window.getRoot().then((root: AccessibilityElement) => {
     console.info(`root element's componentId: ${root.componentId}`);
-  }).catch((err) => {
+  }).catch((err: BusinessError) => {
     console.error(`getRoot failed, code: ${err.code}, message: ${err.message}`);
   })
 }
@@ -1059,11 +1512,13 @@ for (let window of windows) {
 
 ### findElementByContent<sup>20+</sup>
 
-findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>;
+findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据内容查找元素。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1102,28 +1557,29 @@ findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>;
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementByContent('connect').then((elements: AccessibilityElement[]) => {
         console.info("findElementByContent size=" + elements.length)
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementByContent failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### findElementByFocusDirection<sup>20+</sup>
 
-findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>;
+findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>
 
 根据焦点方向查找元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1167,26 +1623,27 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementByFocusDirection('up').then((element: AccessibilityElement) => {
         console.info("findElementByFocusDirection UP componentId: " + element.componentId);
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementByFocusDirection UP failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### findElementsByAccessibilityHintText<sup>20+</sup>
 
-findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>;
+findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据提示文本查找元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1230,28 +1687,29 @@ findElementsByAccessibilityHintText(condition: string): Promise\<Array\<Accessib
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementsByAccessibilityHintText('location').then((elements: AccessibilityElement[]) => {
         console.info("findElementsByAccessibilityHintText size=" + elements.length)
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementsByAccessibilityHintText failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### findElementById<sup>20+</sup>
 
-findElementById(condition: number): Promise\<AccessibilityElement>;
+findElementById(condition: number): Promise\<AccessibilityElement>
 
 根据元素 ID 查找元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1295,15 +1753,79 @@ findElementById(condition: number): Promise\<AccessibilityElement>;
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementById(0).then((element: AccessibilityElement) => {
         console.info("findElementById componentId: " + element.componentId);
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementById failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+### findElementsByCondition<sup>23+</sup>
+
+findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<FocusMoveResult>
+
+查询满足条件的可聚焦节点。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 名称 | 类型 | 必填 | 描述 |
+| -------- | ---- | -------- | ------------------------------------------------------------ |
+| rule | [FocusRule](#focusrule23) | 是| 检查当前节点及其子节点的规则。 |
+| condition | [FocusCondition](#focuscondition23) | 是| 表示查询可聚焦节点方式。 |
+
+**返回值：**
+
+| 类型                                      | 描述                   |
+| ---------------------------------------- | --------------------- |
+| Promise\<[FocusMoveResult](#focusmoveresult23)> | Promise对象，返回查询结果对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息                                    |
+| ------- | ---------------------------------------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+
+import { AccessibilityElement } from '@kit.AccessibilityKit';
+
+axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
+    focus.findElementsByCondition("bypassSelf", "forward").then((res: FocusMoveResult) => {
+        console.info("findElementsByCondition result: " + res.result);
+    }).catch((err: BusinessError) => {
+        console.error(`findElementsByCondition failed, code: ${err.code}, message: ${err.message}`);
+    })
+}).catch((err: BusinessError) => {
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+})
+```
+
+## ElementAttributeValues<sup>9+</sup>
+
+节点元素具备的属性名称及属性值类型信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+### 属性
+
+| 名称                   | 类型                                                              | 只读 | 可选 | 说明              |
+|----------------------|--------------------------------------------------------------------|------|------|-------------------|
+| accessibilityStateDescription<sup>23+</sup> | string                                      | 否   | 是   | 元素的自定义无障碍状态播报文本信息。<br>**模型约束**：此接口仅可在Stage模型下使用。|

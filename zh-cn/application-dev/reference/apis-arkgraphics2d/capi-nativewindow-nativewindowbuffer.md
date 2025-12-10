@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```c
+typedef struct NativeWindowBuffer OHNativeWindowBuffer
+```
+
 ## 概述
 
 提供对OHNativeWindowBuffer的访问功能。

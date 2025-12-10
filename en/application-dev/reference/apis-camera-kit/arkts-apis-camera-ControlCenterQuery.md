@@ -6,12 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+ControlCenterQuery is used to check whether the camera controller is supported.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 20.
-
-ControlCenterQuery is used to check whether the camera controller is supported.
 
 ## Modules to Import
 

@@ -1,10 +1,10 @@
-# &lt;input&gt; Development
+# input Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **&lt;input&gt;** component provides an interactive way to receive user input of various types, including **date**, **checkbox**, and **button**. For details, see [input](../reference/apis-arkui/arkui-js/js-components-basic-input.md).
 
@@ -109,15 +109,13 @@ export default {
 
 
 > **NOTE**
-> - For wearables, the input type can only be **button**, **radio**, or **checkbox**.
 >
 > - The settings of **checked** take effect only when the input type is set to **checkbox** or **radio**. The default value of **checked** is **false**.
 
 
-## Event Binding
+## Binding Events
 
   Add the **search** and **translate** events to the **&lt;input&gt;** component.
-
 ```html
 <!-- xxx.hml -->
 <div class="content">

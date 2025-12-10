@@ -7,13 +7,14 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-子标题，用于列表项顶部，将该组列表划分为一个区块，子标题名称用来概括该区块内容。也可以用于内容项顶部，子标题名称用来概括该区块内容。
+子标题，用于列表项或内容项顶部，将该列表或内容划分为一个区块，子标题名称用来概括该区块内容。
 
 
 > **说明：**
 >
-> 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 如果SubHeader设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeader本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeader设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -26,10 +27,6 @@ import { SubHeader } from '@kit.ArkUI';
 ## 子组件
 
 无
-
-## 属性
-
-不支持[通用属性](ts-component-general-attributes.md)。
 
 > **说明：**
 >
@@ -50,9 +47,9 @@ TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, conten
 
 | 名称 | 类型 | 必填 | 装饰器类型         | 说明 |
 | -------- | -------- | -------- |---------------| -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 图标设置项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 图标设置项。<br/>当使用secondaryTitle属性时，设置icon属性才会生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | iconSymbolOptions<sup>12+</sup> | [SymbolOptions](#symboloptions12) | 否 | -             | icon为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 标题内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 标题内容。<br />当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 副标题内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | select | [SelectOptions](#selectoptions) | 否 | -             | select内容以及事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | operationType | [OperationType](#operationtype) | 否 | \@Prop        | 操作区(右侧)元素样式。<br/>默认值：OperationType.BUTTON<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -66,6 +63,8 @@ TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, conten
 
 
 ## OperationType
+
+定义子标题操作区的元素样式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

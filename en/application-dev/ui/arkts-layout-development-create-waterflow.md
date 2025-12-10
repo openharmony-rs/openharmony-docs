@@ -1,7 +1,18 @@
 # Creating a Waterfall Flow (WaterFlow)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangyuhao-->
+<!--Designer: @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 You can use the [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) component in ArkUI to create a waterfall flow layout, which is commonly used to display image collections, especially in e-commerce and news applications.
-The WaterFlow component supports conditional rendering, loop rendering (rendering of repeated content), and lazy loading to generate child components.
+ArkUI provides the WaterFlow container component for building a waterfall layout. The WaterFlow component supports conditional rendering, cyclic rendering, and lazy loading to generate subcomponents.
+
+> **NOTE**
+>
+> This topic presents key code excerpts. For complete executable code, see the [WaterFlow example](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#example).
 
 ## Layout and Constraints
 
@@ -21,58 +32,59 @@ In the horizontal layout, each child node is placed in the row with the smallest
 
 The waterfall flow layout is often used for infinite scrolling feeds. You can add new data to [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md) in the [onReachEnd](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#onreachend) event callback when the **WaterFlow** component reaches the end position, and create a footer that indicates loading new data (using the [LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md) component).
 
-```ts
-  @Builder
-  itemFoot() {
-    Row() {
-      LoadingProgress()
-        .color(Color.Blue).height(50).aspectRatio(1).width('20%')
-      Text(`Loading`)
-        .fontSize(20)
-        .width('30%')
-        .height(50)
-        .align(Alignment.Center)
-        .margin({ top: 2 })
-    }.width('100%').justifyContent(FlexAlign.Center)
-  }
+<!-- @[WaterFlowInfiniteScrolling_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrolling.ets) -->
 
-  build() {
-    Column({ space: 2 }) {
-      WaterFlow({ footer: this.itemFoot(), layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
-        LazyForEach(this.dataSource, (item: number) => {
-          FlowItem() {
-            ReusableFlowItem({ item: item })
-          }
-          .width('100%')
-          .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
-          .backgroundColor(this.colors[item % 5])
-        }, (item: string) => item)
+``` TypeScript
+@Builder
+itemFoot() {
+  Row() {
+    LoadingProgress()
+      .color(Color.Blue).height(50).aspectRatio(1).width('20%')
+    Text(`Loading`)
+      .fontSize(20)
+      .width('30%')
+      .height(50)
+      .align(Alignment.Center)
+      .margin({ top: 2 })
+  }.width('100%').justifyContent(FlexAlign.Center)
+}
+
+build() {
+  NavDestination() {
+    Column({ space: 12 }) {
+      // Replace $r('app.string.WaterFlowInfiniteScrolling_title') with the resource file you use.
+      ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrolling_title') }) {
+        WaterFlow({ footer: this.itemFoot(), layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+          LazyForEach(this.dataSource, (item: number) => {
+            FlowItem() {
+              ReusableFlowItem({ item: item })
+            }
+            .width('100%')
+            .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
+            .backgroundColor(this.colors[item % 5])
+          }, (item: string) => item)
+        }
+        .columnsTemplate('1fr '.repeat(this.columns))
+        .backgroundColor(0xFAEEE0)
+        .width('100%')
+        .height('100%')
+        .layoutWeight(1)
+        // Load data once the component reaches the bottom.
+        .onReachEnd(() => {
+          setTimeout(() => {
+            this.dataSource.addNewItems(100);
+          }, 1000)
+        })
       }
-      .columnsTemplate('1fr '.repeat(this.columns))
-      .backgroundColor(0xFAEEE0)
-      .width('100%')
-      .height('100%')
-      .layoutWeight(1)
-      // Load data once the component reaches the bottom.
-      .onReachEnd(() => {
-        setTimeout(() => {
-          this.dataSource.addNewItems();
-        }, 1000);
-      })
     }
+    .width('100%')
+    .height('100%')
+    .padding({ left: 12, right: 12 })
   }
-
-  // Method in WaterFlowDataSource to append count-specified elements to the data
-  public addNewItems(count: number): void {
-    let len = this.dataArray.length;
-    for (let i = 0; i < count; i++) {
-      this.dataArray.push(this.dataArray.length);
-    }
-    this.listeners.forEach(listener => {
-      listener.onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }]);
-    })
-  }
-
+  .backgroundColor('#f1f2f3')
+  // Replace $r('app.string.WaterFlowInfiniteScrolling_title') with the resource file you use.
+  .title($r('app.string.WaterFlowInfiniteScrolling_title'))
+}
 ```
 
 Always add data to the end of the data array (**dataArray**) instead of modifying the array directly using the **onDataReloaded()** API of **LazyForEach**.
@@ -87,34 +99,47 @@ Triggering data loading at **onReachEnd()** can cause noticeable pause when the 
 
 To enable smooth infinite scrolling, you need to adjust the timing of adding new data. For example, you can preload new data when there are still several items left to be traversed in **LazyForEach**. The following code monitors the scroll position (distance of the last displayed child node from the end of the dataset) in the [onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#onscrollindex11) API of **WaterFlow** and pre-loads new data at the right time to achieve smooth infinite scrolling.
 
-```ts
-  build() {
-    Column({ space: 2 }) {
-      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
-        LazyForEach(this.dataSource, (item: number) => {
-          FlowItem() {
-            ReusableFlowItem({ item: item })
-          }
-          .width('100%')
-          .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
-          .backgroundColor(this.colors[item % 5])
-        }, (item: string) => item)
-      }
-      .columnsTemplate('1fr '.repeat(this.columns))
-      .backgroundColor(0xFAEEE0)
-      .width('100%')
-      .height('100%')
-      .layoutWeight(1)
-      // Pre-load data when approaching the bottom.
-      .onScrollIndex((first: number, last: number) => {
-        if (last + 20 >= this.dataSource.totalCount()) {
-          setTimeout(() => {
-            this.dataSource.addNewItems(100);
-          }, 1000);
+<!-- @[waterFlowInfiniteScrollingEarly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrollingEarly.ets) -->
+
+``` TypeScript
+build() {
+  NavDestination() {
+    Column({ space: 12 }) {
+      // Replace $r('app.string.WaterFlowInfiniteScrollingEarly_title') with the resource file you use.
+      ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrollingEarly_title') }) {
+        WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+          LazyForEach(this.dataSource, (item: number) => {
+            FlowItem() {
+              ReusableFlowItem({ item: item })
+            }
+            .width('100%')
+            .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
+            .backgroundColor(this.colors[item % 5])
+          }, (item: string) => item)
         }
-      })
+        .columnsTemplate('1fr '.repeat(this.columns))
+        .backgroundColor(0xFAEEE0)
+        .width('100%')
+        .height('100%')
+        .layoutWeight(1)
+        // Pre-load data when approaching the bottom.
+        .onScrollIndex((first: number, last: number) => {
+          if (last + 20 >= this.dataSource.totalCount()) {
+            setTimeout(() => {
+              this.dataSource.addNewItems(100);
+            }, 1000);
+          }
+        })
+      }
     }
+    .width('100%')
+    .height('100%')
+    .padding({ left: 12, right: 12 })
   }
+  .backgroundColor('#f1f2f3')
+  // Replace $r('app.string.WaterFlowInfiniteScrollingEarly_title') with the resource file you use.
+  .title($r('app.string.WaterFlowInfiniteScrollingEarly_title'))
+}
 ```
 
 ![](figures/waterflow-demo2.gif)
@@ -123,10 +148,9 @@ To enable smooth infinite scrolling, you need to adjust the timing of adding new
 
 Dynamically adjusting the column count allows applications to switch between list and waterfall flow modes or adapt to screen width changes. For faster transitions, use the sliding window layout mode.
 
-```ts
-// Use a state variable to manage the column count and trigger layout updates.
-@State columns: number = 2;
+<!-- @[waterFlowDynamicSwitchover_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowDynamicSwitchover.ets) -->
 
+``` TypeScript
 @Reusable
 @Component
 struct ReusableListItem {
@@ -142,49 +166,70 @@ struct ReusableListItem {
         .objectFit(ImageFit.Fill)
         .height(100)
         .aspectRatio(1)
-      Text("N" + this.item).fontSize(12).height('16').layoutWeight(1).textAlign(TextAlign.Center)
+      Text('N' + this.item).fontSize(12).height('16').layoutWeight(1).textAlign(TextAlign.Center)
     }
   }
 }
 
+@Entry
+@Component
+export struct WaterFlowDynamicSwitchover {
+  // Use a state variable to manage the column count and trigger layout updates.
+  @State columns: number = 2;
+
+// ···
   build() {
-    Column({ space: 2 }) {
-      Button('Switch Columns').fontSize(20).onClick(() => {
-        if (this.columns === 2) {
-          this.columns = 1;
-        } else {
-          this.columns = 2;
-        }
-      })
-      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
-        LazyForEach(this.dataSource, (item: number) => {
-          FlowItem() {
-            if (this.columns === 1) {
-              ReusableListItem({ item: item })
-            } else {
-              ReusableFlowItem({ item: item })
+    NavDestination() {
+      Column({ space: 12 }) {
+        // Replace $r('app.string.WaterFlowDynamicSwitchover_title') with the resource file you use.
+        ComponentCard({ title: $r('app.string.WaterFlowDynamicSwitchover_title') }) {
+          Column({ space: 2 }) {
+            Button('Switch Columns').fontSize(20).onClick(() => {
+              if (this.columns === 2) {
+                this.columns = 1;
+              } else {
+                this.columns = 2;
+              }
+            })
+            WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+              LazyForEach(this.dataSource, (item: number) => {
+                FlowItem() {
+                  if (this.columns === 1) {
+                    ReusableListItem({ item: item })
+                  } else {
+                    ReusableFlowItem({ item: item })
+                  }
+                }
+                .width('100%')
+                .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
+                .backgroundColor(this.colors[item % 5])
+              }, (item: string) => item)
             }
+            .columnsTemplate('1fr '.repeat(this.columns))
+            .backgroundColor(0xFAEEE0)
+            .width('100%')
+            .height('100%')
+            .layoutWeight(1)
+            // Pre-load data when approaching the bottom.
+            .onScrollIndex((first: number, last: number) => {
+              if (last + 20 >= this.dataSource.totalCount()) {
+                setTimeout(() => {
+                  this.dataSource.addNewItems(100);
+                }, 1000);
+              }
+            })
+            // ···
           }
-          .width('100%')
-          .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
-          .backgroundColor(this.colors[item % 5])
-        }, (item: string) => item)
+        }
       }
-      .columnsTemplate('1fr '.repeat(this.columns))
-      .backgroundColor(0xFAEEE0)
       .width('100%')
       .height('100%')
-      .layoutWeight(1)
-      // Pre-load data when approaching the bottom.
-      .onScrollIndex((first: number, last: number) => {
-        if (last + 20 >= this.dataSource.totalCount()) {
-          setTimeout(() => {
-            this.dataSource.addNewItems(100);
-          }, 1000);
-        }
-      })
     }
+    .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.WaterFlowDynamicSwitchover_title') with the resource file you use.
+    .title($r('app.string.WaterFlowDynamicSwitchover_title'))
   }
+}
 ```
 
 ![](figures/waterflow-columns.gif)
@@ -199,10 +244,12 @@ When child nodes from different sections can be integrated into a single data so
 
 Each **WaterFlow** section can individually set its own number of columns, row spacing, column spacing, margin, and total number of child nodes. The following code can achieve the above effect:
 
-```ts
+<!-- @[waterFlowGroupingMixing_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowGroupingMixing.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct WaterFlowDemo {
+export struct WaterFlowGroupingMixing {
   minSize: number = 80;
   maxSize: number = 180;
   colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
@@ -259,51 +306,59 @@ struct WaterFlowDemo {
   }
 
   build() {
-    WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW, sections: this.sections }) {
-      LazyForEach(this.dataSource, (item: number) => {
-        FlowItem() {
-          if (item === 0) {
-            Grid() {
-              ForEach(this.gridItems, (day: number) => {
-                GridItem() {
-                  Text('GridItem').fontSize(14).height(16)
-                }.backgroundColor(0xFFC0CB)
-              }, (day: number) => day.toString())
+    NavDestination() {
+      // Replace $r('app.string.WaterFlowGroupingMixing_title') with the resource file you use.
+      ComponentCard({ title: $r('app.string.WaterFlowGroupingMixing_title') }) {
+        WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW, sections: this.sections }) {
+          LazyForEach(this.dataSource, (item: number) => {
+            FlowItem() {
+              if (item === 0) {
+                Grid() {
+                  ForEach(this.gridItems, (day: number) => {
+                    GridItem() {
+                      Text('GridItem').fontSize(14).height(16)
+                    }.backgroundColor(0xFFC0CB)
+                  }, (day: number) => day.toString())
+                }
+                .height('30%')
+                .rowsGap(5)
+                .columnsGap(5)
+                .columnsTemplate('1fr '.repeat(5))
+                .rowsTemplate('1fr '.repeat(3))
+              } else {
+                ReusableFlowItem({ item: item })
+              }
             }
-            .height('30%')
-            .rowsGap(5)
-            .columnsGap(5)
-            .columnsTemplate('1fr '.repeat(5))
-            .rowsTemplate('1fr '.repeat(3))
-          } else {
-            ReusableFlowItem({ item: item })
-          }
+            .width('100%')
+            .aspectRatio(item != 0 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
+            .backgroundColor(item != 0 ? this.colors[item % 5] : Color.White)
+          }, (item: string) => item)
         }
-        .width('100%')
-        .aspectRatio(item != 0 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
-        .backgroundColor(item != 0 ? this.colors[item % 5] : Color.White)
-      }, (item: string) => item)
-    }
-    .backgroundColor(0xFAEEE0)
-    .height('100%')
-    // Pre-load data when approaching the bottom.
-    .onScrollIndex((first: number, last: number) => {
-      if (last + 20 >= this.dataSource.totalCount()) {
-        setTimeout(() => {
-          this.dataSource.addNewItems(100);
-          // Update the itemCount values for sections after adding data.
-          this.twoColumnSection.itemsCount += 100;
-          this.sections.update(1, this.twoColumnSection);
-        }, 1000);
+        .backgroundColor(0xFAEEE0)
+        .height('100%')
+        // Pre-load data when approaching the bottom.
+        .onScrollIndex((first: number, last: number) => {
+          if (last + 20 >= this.dataSource.totalCount()) {
+            setTimeout(() => {
+              this.dataSource.addNewItems(100);
+              // Update the itemCount values for sections after adding data.
+              this.twoColumnSection.itemsCount += 100;
+              this.sections.update(1, this.twoColumnSection);
+            }, 1000);
+          }
+        })
+        .margin(10)
       }
-    })
-    .margin(10)
+    }.backgroundColor('#f1f2f3')
+    // Replace $r('app.string.WaterFlowGroupingMixing_title') with the resource file you use.
+    .title($r('app.string.WaterFlowGroupingMixing_title'))
   }
 }
 ```
 
 >**NOTE**
 >
->Footers are not supported with **WaterFlowSections**; use the last section as a footer instead.
+>Footers are not supported in mixed section layouts. Use the last section as a footer instead.
 >
->Always update the corresponding **itemsCount** when adding or removing data to maintain layout consistency.
+>Always update the corresponding **itemCount** when adding or removing data to maintain layout consistency.
+

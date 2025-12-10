@@ -196,9 +196,7 @@ Enumerates the component operation event types that can be listened for.
 | COMPONENT_LONG_CLICKED | 2    | Component long-clicked event.|
 | COMPONENT_SCROLL_START | 3    | Component scroll start event.|
 | COMPONENT_SCROLL_END  | 4    | Component scroll end event.  |
-| COMPONENT_TEXT_CHANGED | 5    | Component text changed event.|
-| COMPONENT_HOVER_ENTER | 6    | Event triggered when the mouse pointer hovers over a component and enters it.|
-| COMPONENT_HOVER_EXIT | 7    | Event triggered when the mouse pointer hovers over a component and leaves it.|
+| COMPONENT_TEXT_CHANGED | 5    | Text change event of the [text input component](../../ui/arkts-common-components-text-input.md).|
 
 
 ## WindowChangeOptions<sup>22+</sup>
@@ -324,7 +322,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
+
+let on: On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
 ```
 
 ### id<sup>9+</sup>
@@ -362,14 +361,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('123'); // Use the static constructor ON to create an On object and specify the id attribute of the target component.
+let on: On = ON.id('123'); // Use the static constructor ON to create an On object and specify the id attribute of the target component.
 ```
 
 ### id<sup>18+</sup>
 
 id(id: string, pattern: MatchPattern): On
 
-Specifies the ID attribute of the target component.
+Specifies the **id** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -401,7 +400,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('id', MatchPattern.REG_EXP_ICASE) // Use case-insensitive regular expression to match the ID attribute value of the component.
+let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE) // Use case-insensitive regular expression to match the ID attribute value of the component.
 ```
 
 ### type<sup>9+</sup>
@@ -438,14 +437,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
+
+let on: On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
 ```
 
 ### type<sup>18+</sup>
 
 type(tp: string, pattern: MatchPattern): On
 
-Specifies the type attribute of the target component.
+Specifies the **type** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -476,7 +476,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON, MatchPattern } from '@kit.TestKit';
-let on:On = ON.type('Button', MatchPattern.EQUALS); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
+
+let on: On = ON.type('Button', MatchPattern.EQUALS); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
 ```
 
 ### clickable<sup>9+</sup>
@@ -513,7 +514,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.clickable(true); // Use the static constructor ON to create an On object and specify the clickable attribute of the target component.
+
+let on: On = ON.clickable(true); // Use the static constructor ON to create an On object and specify the clickable attribute of the target component.
 ```
 
 ### longClickable<sup>9+</sup>
@@ -550,7 +552,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.longClickable(true); // Use the static constructor ON to create an On object and specify the longClickable attribute of the target component.
+
+let on: On = ON.longClickable(true); // Use the static constructor ON to create an On object and specify the longClickable attribute of the target component.
 ```
 
 ### scrollable<sup>9+</sup>
@@ -587,7 +590,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.scrollable(true); // Use the static constructor ON to create an On object and specify the scrollable attribute of the target component.
+
+let on: On = ON.scrollable(true); // Use the static constructor ON to create an On object and specify the scrollable attribute of the target component.
 ```
 
 ### enabled<sup>9+</sup>
@@ -624,7 +628,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.enabled(true); // Use the static constructor ON to create an On object and specify the enabled attribute of the target component.
+
+let on: On = ON.enabled(true); // Use the static constructor ON to create an On object and specify the enabled attribute of the target component.
 ```
 
 ### focused<sup>9+</sup>
@@ -661,7 +666,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.focused(true); // Use the static constructor ON to create an On object and specify the focused attribute of the target component.
+
+let on: On = ON.focused(true); // Use the static constructor ON to create an On object and specify the focused attribute of the target component.
 ```
 
 ### selected<sup>9+</sup>
@@ -698,7 +704,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.selected(true); // Use the static constructor ON to create an On object and specify the selected attribute of the target component.
+
+let on: On = ON.selected(true); // Use the static constructor ON to create an On object and specify the selected attribute of the target component.
 ```
 
 ### checked<sup>9+</sup>
@@ -735,7 +742,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checked(true); // Use the static constructor ON to create an On object and specify the checked attribute of the target component.
+
+let on: On = ON.checked(true); // Use the static constructor ON to create an On object and specify the checked attribute of the target component.
 ```
 
 ### checkable<sup>9+</sup>
@@ -772,7 +780,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checkable(true); // Use the static constructor ON to create an On object and specify the checkable attribute of the target component.
+
+let on: On = ON.checkable(true); // Use the static constructor ON to create an On object and specify the checkable attribute of the target component.
 ```
 
 ### isBefore<sup>9+</sup>
@@ -811,7 +820,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located before the given attribute component.
-let on:On = ON.type('Button').isBefore(ON.text('123')); // Search for the first <Button> component located before the component whose text is 123.
+let on: On = ON.type('Button').isBefore(ON.text('123')); // Search for the first <Button> component located before the component whose text is 123.
 ```
 
 ### isAfter<sup>9+</sup>
@@ -850,7 +859,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located after the given attribute component.
-let on:On = ON.type('Text').isAfter(ON.text('123'));  // Search for the first <Text> component located after the component whose text is 123.
+let on: On = ON.type('Text').isAfter(ON.text('123'));  // Search for the first <Text> component located after the component whose text is 123.
 ```
 
 ### within<sup>10+</sup>
@@ -887,8 +896,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
+
 // Use the static constructor ON to create an On object and specify that the target component is located within the given attribute component.
-let on:On = ON.text('java').within(ON.type('Scroll'));  // Search for the child component whose text is java within the <Scroller> component.
+let on: On = ON.text('java').within(ON.type('Scroll'));  // Search for the child component whose text is java within the <Scroller> component.
 ```
 
 ### inWindow<sup>10+</sup>
@@ -925,7 +935,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.inWindow('com.uitestScene.acts'); // Use the static constructor ON to create an On object and specify that the target component is located within the given application window.
+
+let on: On = ON.inWindow('com.uitestScene.acts'); // Use the static constructor ON to create an On object and specify that the target component is located within the given application window.
 ```
 
 ### description<sup>11+</sup>
@@ -963,7 +974,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.description('123'); // Use the static constructor ON to create an On object and specify the description attribute of the target component.
+
+let on: On = ON.description('123'); // Use the static constructor ON to create an On object and specify the description attribute of the target component.
 ```
 
 ### hint<sup>18+</sup>
@@ -1000,9 +1012,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
- import { MatchPattern, On, ON } from '@kit.TestKit';
- 
- let on:On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
+import { MatchPattern, On, ON } from '@kit.TestKit';
+
+let on: On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
 ```
 
 ### belongingDisplay<sup>20+</sup>
@@ -1038,9 +1050,9 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
- import { On, ON } from '@kit.TestKit';
- 
- let on:On = ON.belongingDisplay(0); // Use the static constructor ON to create an On object and specify the ID of the display to which the target component belongs.
+import { On, ON } from '@kit.TestKit';
+
+let on: On = ON.belongingDisplay(0); // Use the static constructor ON to create an On object and specify the ID of the display to which the target component belongs.
 ```
 
 ### originalText<sup>20+</sup>
@@ -1083,7 +1095,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 ```ts
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.originalText('123'); // Use the static constructor ON to create an On object and specify the originalText attribute of the target component.
+let on: On = ON.originalText('123'); // Use the static constructor ON to create an On object and specify the originalText attribute of the target component.
 ```
 
 ## Component<sup>9+</sup>
@@ -1120,8 +1132,9 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, ON, Component } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   await button.click();
 }
@@ -1155,7 +1168,8 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
-import {Component, Driver, ON } from '@kit.TestKit';
+import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1192,6 +1206,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1228,6 +1243,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1268,6 +1284,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1304,6 +1321,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1340,6 +1358,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1376,6 +1395,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1412,10 +1432,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isClickable()) {
+  if (await button.isClickable()) {
     console.info('This button can be Clicked');
   } else {
     console.info('This button can not be Clicked');
@@ -1452,10 +1473,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isLongClickable()) {
+  if (await button.isLongClickable()) {
     console.info('This button can longClick');
   } else {
     console.info('This button can not longClick');
@@ -1492,10 +1514,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isChecked()) {
+  if (await checkBox.isChecked()) {
     console.info('This checkBox is checked');
   } else {
     console.info('This checkBox is not checked');
@@ -1532,10 +1555,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isCheckable()) {
+  if (await checkBox.isCheckable()) {
     console.info('This checkBox is checkable');
   } else {
     console.info('This checkBox is not checkable');
@@ -1572,10 +1596,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.scrollable(true));
-  if(await scrollBar.isScrollable()) {
+  if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
     console.info('This scrollBar can not be operated');
@@ -1613,10 +1638,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isEnabled()) {
+  if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
     console.info('This button can not be operated');
@@ -1638,7 +1664,7 @@ Checks whether the component is focused. This API uses a promise to return the r
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1653,10 +1679,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isFocused()) {
+  if (await button.isFocused()) {
     console.info('This button is focused');
   } else {
     console.info('This button is not focused');
@@ -1693,10 +1720,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isSelected()) {
+  if (await button.isSelected()) {
     console.info('This button is selected');
   } else {
     console.info('This button is not selected');
@@ -1740,6 +1768,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1821,6 +1850,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1876,7 +1906,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-Scrolls on this component to search for the target component. This API is applicable to components that support scrolling and uses a promise to return the result.
+Scrolls on a scrollable component to search for the target component. You can specify the scrolling direction and the offset between the scrolling start and end points and the component border. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1910,6 +1940,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1953,6 +1984,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1996,6 +2028,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -2041,6 +2074,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2085,6 +2119,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2128,6 +2163,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2164,6 +2200,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2199,6 +2236,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('TextInput'));
@@ -2246,11 +2284,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-Obtains the original text information of this component.
-
-> **NOTE**
->
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
+Obtains the original text information of this component. If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2260,7 +2294,7 @@ Obtains the original text information of this component.
 
 | Type            | Description                             |
 | ---------------- | --------------------------------- |
-| Promise\<string> | Promise used to return the original text information of the component.|
+| Promise\<string> | Promise used to return the text information of the component.|
 
 **Error codes**
 
@@ -2316,6 +2350,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
 }
@@ -2356,6 +2391,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.delayMs(1000);
@@ -2397,6 +2433,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.text('next page'));
@@ -2438,6 +2475,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let buttonList: Array<Component> = await driver.findComponents(ON.text('next page'));
@@ -2479,9 +2517,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
 }
 ```
 
@@ -2521,9 +2560,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.waitForComponent(ON.text('next page'),500);
+  let button: Component = await driver.waitForComponent(ON.text('next page'), 500);
 }
 ```
 
@@ -2563,6 +2603,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.assertComponentExist(ON.text('next page'));
@@ -2597,6 +2638,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack();
@@ -2638,6 +2680,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack(0);
@@ -2768,6 +2811,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.triggerCombineKeys(2072, 2047, 2035);
@@ -2855,9 +2899,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.click(100,100);
+  await driver.click(100, 100);
 }
 ```
 
@@ -2939,9 +2984,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.doubleClick(100,100);
+  await driver.doubleClick(100, 100);
 }
 ```
 
@@ -3023,9 +3069,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.longClick(100,100);
+  await driver.longClick(100, 100);
 }
 ```
 
@@ -3090,7 +3137,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.                      |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.                      |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3111,9 +3158,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipe(100,100,200,200,600);
+  await driver.swipe(100, 100, 200, 200, 600);
 }
 ```
 
@@ -3133,7 +3181,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3157,7 +3205,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800);
 }
 ```
 
@@ -3181,7 +3229,7 @@ Drags from the start coordinate point to the target coordinate point. This API u
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3227,7 +3275,7 @@ Drags from the start point to the target point. You can specify the drag speed a
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -3252,7 +3300,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500);
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800, 1500);
 }
 ```
 
@@ -3276,7 +3324,7 @@ Captures the current screen and saves it as a PNG image to the specified path. T
 
 | Type             | Description                                       |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the screen capture operation is successful, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -3291,6 +3339,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');
@@ -3377,6 +3426,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, DisplayRotation } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotation(DisplayRotation.ROTATION_180);
@@ -3411,6 +3461,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { DisplayRotation, Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let rotation: DisplayRotation = await driver.getDisplayRotation();
@@ -3496,6 +3547,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotationEnabled(false);
@@ -3607,6 +3659,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let density = await driver.getDisplayDensity();
@@ -3683,6 +3736,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.wakeUpDisplay();
@@ -3719,6 +3773,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressHome();
@@ -3805,9 +3860,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled: boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000, 5000);
 }
 ```
 
@@ -3852,7 +3908,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.fling({x: 500, y: 480},{x: 450, y: 480}, 5, 600);
+  await driver.fling({ x: 500, y: 480 }, { x: 450, y: 480 }, 5, 600);
 }
 ```
 
@@ -3896,16 +3952,16 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
   await driver.injectMultiPointerAction(pointers);
 }
 ```
@@ -3946,6 +4002,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.fling(UiDirection.DOWN, 10000);
@@ -3956,7 +4013,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-Simulates a fling operation on a specified display with the specified direction and speed.
+Simulates a fling operation on a display with the specified direction and speed.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4032,9 +4089,15 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {left: 0, top: 0, right: 100, bottom: 100});
+  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {
+    left: 0,
+    top: 0,
+    right: 100,
+    bottom: 100
+  });
 }
 ```
 
@@ -4075,10 +4138,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4124,7 +4188,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072);
 }
 ```
 
@@ -4166,7 +4230,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveTo({x:100, y:100});
+  await driver.mouseMoveTo({ x: 100, y: 100 });
 }
 ```
 
@@ -4248,7 +4312,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072,20);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072, 20);
 }
 ```
 
@@ -4289,10 +4353,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDoubleClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseDoubleClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4333,10 +4398,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4378,11 +4444,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
 }
 ```
 
@@ -4426,7 +4492,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveWithTrack({x:100, y:100}, {x:200, y:200}, 600);
+  await driver.mouseMoveWithTrack({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4472,7 +4538,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4519,7 +4585,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600, 2000);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600, 2000);
 }
 ```
 
@@ -4559,8 +4625,9 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
   await driver.inputText(point, '123');
@@ -4610,7 +4677,7 @@ async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
-  await driver.inputText(point, '123', {paste: true, addition: false});
+  await driver.inputText(point, '123', { paste: true, addition: false });
 }
 
 async function demo_Chinese() {
@@ -4662,9 +4729,58 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+}
+```
+
+### touchPadTwoFingersScroll<sup>22+</sup>
+
+touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
+
+Simulates a two-finger scroll gesture on the touchpad.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 17000005 is returned.
+
+**Parameters**
+
+| Name| Type                                           | Mandatory| Description                   |
+| ------ |-----------------------------------------------|----|-----------------------|
+| point       | [Point](#point9) | Yes  | Point of the mouse cursor when the two-finger scrolling is performed on the touchpad.                                           |
+| direction   | [UiDirection](#uidirection10)                 | Yes | Direction of two-finger scrolling on the touchpad.          |
+| d           | number           | Yes  | Number of grids scrolled by two fingers on the touchpad. A grid indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
+| speed       | number           | No  | Speed of two-finger scrolling on the touchpad, in cell/second. The value is an integer ranging from 1 to 500. If the value is not within the range, the default value **20** is used.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000005 | This operation is not supported.        |
+| 17000007 | Parameter verification failed.     |
+
+**Example**
+
+```ts
+import { Driver, UiDirection } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.touchPadTwoFingersScroll({ x: 100, y: 100 }, UiDirection.UP, 20, 10);
 }
 ```
 
@@ -4703,9 +4819,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penClick({x: 100, y: 100});
+  await driver.penClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4745,9 +4862,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penLongClick({x: 100, y: 100}, 0.5);
+  await driver.penLongClick({ x: 100, y: 100 }, 0.5);
 }
 ```
 
@@ -4787,9 +4905,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penDoubleClick({x: 100, y: 100});
+  await driver.penDoubleClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4830,10 +4949,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
- import { Driver } from '@kit.TestKit';
+import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
+  await driver.penSwipe({ x: 100, y: 100 }, { x: 100, y: 500 }, 600, 0.5);
 }
 ```
 
@@ -4875,11 +4995,12 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, PointerMatrix } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let pointer = PointerMatrix.create(1, 8);
   for (let step = 0; step < 8; step++) {
-    pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
+    pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
   await driver.injectPenPointerAction(pointer, 600, 0.5);
 }
@@ -4931,6 +5052,251 @@ async function demo() {
   await driver.crownRotate(50, 30);
   // Rotate 20 ticks counterclockwise at a speed of 30 ticks per second.
   await driver.crownRotate(-20, 30);
+}
+```
+
+### knuckleKnock<sup>22+</sup>
+
+knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
+
+Simulates a knuckle knock on the display.
+
+> **NOTE**
+> 
+> If the knuckle gesture is disabled on the device<!--RP4--><!--RP4End-->, 17000005 is returned.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called on phones and tablets that support knuckle operations. On other devices, the error code 17000005 is returned.
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | Array<[Point](#point9)>   | Yes  | Array of knuckle knock coordinates on the display. The array length can be 1 or 2.        |
+| times     | number   | Yes  | Number of consecutive knocks on the display. The value can be 1 or 2.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, Point } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Simulate a single-knuckle double-knock gesture.
+  let points: Array<Point> = [{ x: 100, y: 100 }];
+  await driver.knuckleKnock(points, 2);
+}
+```
+
+### injectKnucklePointerAction<sup>22+</sup>
+
+injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise<\void>
+
+Simulates a multi-point knuckle scrolling operation.
+
+> **NOTE**
+> 
+> If the knuckle gesture is disabled on the device<!--RP4--><!--RP4End-->, 17000005 is returned.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called on phones and tablets that support knuckle operations. On other devices, the error code 17000005 is returned.
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
+| speed    | number                           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, PointerMatrix } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Simulate a knuckle gesture to draw an S on the screen.
+  let pointers: PointerMatrix = PointerMatrix.create(1, 6);
+  pointers.setPoint(0, 0, { x: 750, y: 300 });
+  pointers.setPoint(0, 1, { x: 500, y: 100 });
+  pointers.setPoint(0, 2, { x: 250, y: 300 });
+  pointers.setPoint(0, 3, { x: 750, y: 800 });
+  pointers.setPoint(0, 4, { x: 500, y: 1000 });
+  pointers.setPoint(0, 5, { x: 250, y: 800 });
+  await driver.injectKnucklePointerAction(pointers);
+}
+```
+
+### isComponentPresentWhenLongClick<sup>22+</sup>
+
+isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
+
+Long-clicks at the specified coordinates and checks whether the target component exists.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | Yes  | Attributes of the target component.|
+| point  | [Point](#point9) | Yes  | Coordinates of the long-clicked point.|
+| duration   | number     | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<boolean> | Promise used to return whether the target component exists during the long-press operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenLongClick(ON.id('123'), { x: 100, y: 100 }, 2000);
+}
+```
+
+### isComponentPresentWhenDrag<sup>22+</sup>
+
+isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
+
+Drags from the start point to the end point and checks whether the target component exists.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | Yes  | Attributes of the target component.|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<boolean> | Promise used to return whether the target component exists during the drag operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenDrag(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000, 2000);
+}
+```
+
+### isComponentPresentWhenSwipe<sup>22+</sup>
+
+isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
+
+Swipes from the start point to the end point and checks whether the target component exists.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | Yes  | Attributes of the target component.|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<boolean> | Promise used to return whether the target component exists during the swipe operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenSwipe(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000);
 }
 ```
 
@@ -5012,16 +5378,16 @@ import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
 }
 ```
 
@@ -5062,7 +5428,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let name: string = await window.getBundleName();
 }
 ```
@@ -5096,9 +5462,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let rect = await window.getBounds();
 }
 ```
@@ -5132,9 +5499,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let title = await window.getTitle();
 }
 ```
@@ -5168,9 +5536,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let mode = await window.getWindowMode();
 }
 ```
@@ -5204,9 +5573,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isFocused();
 }
 ```
@@ -5240,9 +5610,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isActived();
 }
 ```
@@ -5276,9 +5647,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.focus();
 }
 ```
@@ -5323,9 +5695,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.moveTo(100, 100);
 }
 ```
@@ -5369,9 +5742,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resize(100, 100, ResizeDirection.LEFT);
 }
 ```
@@ -5408,9 +5782,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.split();
 }
 ```
@@ -5447,9 +5822,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.maximize();
 }
 ```
@@ -5486,9 +5862,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.minimize();
 }
 ```
@@ -5525,9 +5902,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resume();
 }
 ```
@@ -5564,9 +5942,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let driver: Driver = Driver.create();
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.close();
 }
 ```
@@ -5600,9 +5979,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let focused = await window.isActive();
 }
 ```
@@ -5639,7 +6019,7 @@ import { UiWindow, Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let id = await window.getDisplayId();
 }
 ```
@@ -5680,8 +6060,8 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer:  UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -5723,7 +6103,7 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let observer: UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -5736,7 +6116,7 @@ async function demo() {
 
 once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback\<UIElementInfo>): void
 
-Starts listening for window change events of the specified type with extended configuration supported. This API triggers a callback when a specified window change event is detected.
+Starts listening for window change events of the specified type with extended configuration supported. This API triggers a callback when a specified window change event is detected. This API can be used only in [free windows](../../windowmanager/window-terminology.md#free-windows) mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5770,9 +6150,9 @@ async function demo() {
   let observer: UIEventObserver = driver.createUIEventObserver();
   let options: WindowChangeOptions = {
     timeout: 20000,
-    bundleName: "com.example.myapplication"  // Use the actual bundle name.
+    bundleName: 'com.example.myapplication'  // Use the actual bundle name.
   }
-  let callback = (UIElementInfo: UIElementInfo)=> {
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -5823,7 +6203,7 @@ async function demo() {
     timeout: 20000,
     on: ON.id('123')  // Use the actual component ID.
   };
-  let callback = (UIElementInfo: UIElementInfo)=> {
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -5848,6 +6228,7 @@ This class is deprecated since API version 9. You are advised to use [On<sup>9+<
 
 ```ts
 import { BY } from '@kit.TestKit';
+
 BY.text('123').type('Button');
 ```
 
@@ -5878,6 +6259,7 @@ This API is deprecated since API version 9. You are advised to use [text<sup>9+<
 
 ```ts
 import { BY, By } from '@kit.TestKit';
+
 let by: By = BY.text('123'); // Use the static constructor BY to create a By object and specify the text attribute of the target component.
 ```
 
@@ -5908,6 +6290,7 @@ This API is deprecated since API version 9. You are advised to use [id<sup>9+</s
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.key('123'); // Use the static constructor BY to create a By object and specify the key attribute of the target component.
 ```
 
@@ -5938,6 +6321,7 @@ This API is deprecated since API version 9.
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.id(123); // Use the static constructor BY to create a By object and specify the id attribute of the target component.
 ```
 
@@ -5968,6 +6352,7 @@ This API is deprecated since API version 9. You are advised to use [type<sup>9+<
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.type('Button'); // Use the static constructor BY to create a By object and specify the type attribute of the target component.
 ```
 
@@ -5998,6 +6383,7 @@ This API is deprecated since API version 9. You are advised to use [clickable<su
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.clickable(true); // Use the static constructor BY to create a By object and specify the clickable attribute of the target component.
 ```
 
@@ -6028,6 +6414,7 @@ This API is deprecated since API version 9. You are advised to use [scrollable<s
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.scrollable(true); // Use the static constructor BY to create a By object and specify the scrollable attribute of the target component.
 ```
 
@@ -6057,6 +6444,7 @@ This API is deprecated since API version 9. You are advised to use [enabled<sup>
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.enabled(true); // Use the static constructor BY to create a By object and specify the enabled attribute of the target component.
 ```
 
@@ -6086,6 +6474,7 @@ This API is deprecated since API version 9. You are advised to use [focused<sup>
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.focused(true); // Use the static constructor BY to create a By object and specify the focused attribute of the target component.
 ```
 
@@ -6115,6 +6504,7 @@ This API is deprecated since API version 9. You are advised to use [selected<sup
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.selected(true); // Use the static constructor BY to create a By object and specify the selected attribute of the target component.
 ```
 
@@ -6207,6 +6597,7 @@ This API is deprecated since API version 9. You are advised to use [click<sup>9+
 
 ```ts
 import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6234,6 +6625,7 @@ This API is deprecated since API version 9. You are advised to use [doubleClick<
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6261,6 +6653,7 @@ This API is deprecated since API version 9. You are advised to use [longClick<su
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6288,6 +6681,7 @@ This API is deprecated since API version 9.
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6315,6 +6709,7 @@ This API is deprecated since API version 9. You are advised to use [getId<sup>9+
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6342,6 +6737,7 @@ This API is deprecated since API version 9. You are advised to use [getText<sup>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6369,6 +6765,7 @@ This API is deprecated since API version 9. You are advised to use [getType<sup>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6396,6 +6793,7 @@ This API is deprecated since API version 9. You are advised to use [isClickable<
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6427,6 +6825,7 @@ This API is deprecated since API version 9. You are advised to use [isScrollable
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.scrollable(true));
@@ -6459,6 +6858,7 @@ This API is deprecated since API version 9. You are advised to use [isEnabled<su
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6491,6 +6891,7 @@ This API is deprecated since API version 9. You are advised to use [isFocused<su
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6522,6 +6923,7 @@ This API is deprecated since API version 9. You are advised to use [isSelected<s
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6559,6 +6961,7 @@ This API is deprecated since API version 9. You are advised to use [inputText<su
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let text: UiComponent = await driver.findComponent(BY.text('hello world'));
@@ -6592,6 +6995,7 @@ This API is deprecated since API version 9. You are advised to use [scrollSearch
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.type('Scroll'));
@@ -6626,6 +7030,7 @@ This API is deprecated since API version 9. You are advised to use [create<sup>9
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
 }
@@ -6657,6 +7062,7 @@ This API is deprecated since API version 9. You are advised to use [delayMs<sup>
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.delayMs(1000);
@@ -6689,6 +7095,7 @@ This API is deprecated since API version 9. You are advised to use [findComponen
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.text('next page'));
@@ -6721,6 +7128,7 @@ This API is deprecated since API version 9. You are advised to use [findComponen
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let buttonList: Array<UiComponent> = await driver.findComponents(BY.text('next page'));
@@ -6763,6 +7171,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { UiDriver, BY } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.assertComponentExist(BY.text('next page'));
@@ -6789,6 +7198,7 @@ This API is deprecated since API version 9. You are advised to use [pressBack<su
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.pressBack();
@@ -6925,6 +7335,7 @@ This API is deprecated since API version 9. You are advised to use [longClick<su
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.longClick(100, 100);
@@ -6994,6 +7405,7 @@ This API is deprecated since API version 9. You are advised to use [screenCap<su
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');

@@ -1,5 +1,12 @@
 # @ohos.hilog (HiLog)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liuyifeifei;@buzhenwang-->
+<!--Designer: @shenchenkai-->
+<!--Tester: @liyang2235-->
+<!--Adviser: @foryourself-->
+
 The HiLog subsystem allows your applications or services to output logs based on the specified type, level, and format string. Such logs help you learn the running status of applications and better debug programs.
 
 > **NOTE**
@@ -44,7 +51,7 @@ hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 
 ## LogLevel
 
-Log level.
+Enumerates the log levels.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -231,7 +238,11 @@ setMinLogLevel(level: LogLevel): void
 
 Sets the minimum log level.
 
-If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
+> **NOTE**
+>
+> If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
+>
+> This function does not take effect for debug applications.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -272,6 +283,74 @@ The log result is as follows:
 ```
 <!--RP1End-->
 
+## hilog.setLogLevel<sup>21+</sup>
+
+setLogLevel(level: LogLevel, prefer: PreferStrategy): void
+
+Sets the minimum log level of the current application process.
+
+You can configure different preference strategies using the **prefer** parameter. The **PREFER_CLOSE_LOG** strategy has the same effect as the **setMinLogLevel()** function.
+
+> **NOTE**
+>
+> This function does not take effect for debug applications.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+**Parameters**
+
+| Name| Type                 | Mandatory| Description                                                        |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| level  | [LogLevel](#loglevel) | Yes  | Log level.                                                  |
+| prefer  | [PreferStrategy](#preferstrategy21) | Yes  | Preference strategy.                                                  |
+
+## PreferStrategy<sup>21+</sup>
+
+Enumerates the preference strategies.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+| Name |   Value  | Description                                                        |
+| ------ | --------------------- | ------------------------------------------------------------ |
+| UNSET_LOGLEVEL | 0 | The setting is cleared. The system-controlled minimum log level takes effect.|
+| PREFER_CLOSE_LOG | 1 | The larger value of the new log level and the system-controlled minimum log level takes effect.|
+| PREFER_OPEN_LOG | 2 | The smaller value of the new log level and the system-controlled minimum log level takes effect.|
+
+**Example**
+
+The following example describes how to print five HiLog logs of different levels and call the **setLogLevel** API twice when the global log level is **INFO**:
+
+```js
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
+hilog.setLogLevel(hilog.LogLevel.WARN, hilog.PreferStrategy.PREFER_OPEN_LOG);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
+hilog.error(0x0001, 'testTag', 'this is an error level log, id: %{public}d', 3);
+hilog.setLogLevel(hilog.LogLevel.DEBUG, hilog.PreferStrategy.PREFER_CLOSE_LOG);
+hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
+```
+
+The first log is printed properly because the global log level is **INFO**.
+
+When the minimum log level of the process is set to **WARN** and the **PREFER_OPEN_LOG** is strategy selected, the actual minimum log level is **INFO**. Therefore, the second and third logs can be printed properly.
+
+When the minimum log level of the process is set to **DEBUG** and the **PREFER_CLOSE_LOG** strategy is selected (equivalent to **hilog.setMinLogLevel(hilog.LogLevel.DEBUG)**), the fourth log cannot be printed because the global log level is **INFO**. The fifth log can be printed.
+
+<!--RP2-->
+The log result is as follows:
+```
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 2
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
+```
+<!--RP2End-->
+
+
 ## Parameter Format
 
 Parameters in the log are printed in the following format:
@@ -307,7 +386,7 @@ hilog.info(0x0001, "jsHilogTest", "print bigNum: %{public}d %{public}i", bigNum,
 hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 ```
 
-**Log printing result**:
+**Log result**:
 ```
 08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}
 08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}

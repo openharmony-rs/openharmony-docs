@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_DisplayHdrFormat
+```
+
 ## Overview
 
 The struct describes all the HDR formats supported by a display.

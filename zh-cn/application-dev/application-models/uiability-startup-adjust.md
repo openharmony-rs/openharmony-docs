@@ -18,13 +18,16 @@
     - "entities"列表中包含"entity.system.browsable"。
     - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考[uri匹配](explicit-implicit-want-mappings.md#uri匹配规则)，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
 
-    ```json
+    <!-- @[domainVerify_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
+    
+    ``` JSON5
     {
       "module": {
-        // ...
+        // ···
         "abilities": [
+        // ···
           {
-            // ...
+            // ···
             "skills": [
               {
                 "entities": [
@@ -39,11 +42,13 @@
                     "host": "www.example.com"
                   }
                 ],
-              "domainVerify": true
+                "domainVerify": true
               }
             ]
-          }
-        ]
+          },
+        // ···
+        ],
+        // ···
       }
     }
     ```
@@ -52,17 +57,19 @@
     - 当options中的appLinkingOnly为true时，匹配到的应用会经过应用市场域名检查（需联网）返回域名校验检查的唯一匹配项或未匹配结果。
     - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则改为使用Deep Linking的方式拉起目标应用。
 
-    ```ts
+    <!-- @[want_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage1.ets) --> 
+    
+    ``` TypeScript
     import { common, OpenLinkOptions } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const TAG: string = '[UIAbilityComponentsOpenLink]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Index {
+    struct WantAbilityPage1 {
       build() {
         Button('start link', { type: ButtonType.Capsule, stateEffect: true })
           .width('87%')
@@ -84,23 +91,24 @@
             //       hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
             //     })
             // } catch (paramError) {
-            //   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code}, message is ${paramError.message}`);
+            //   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code},\
+            //   message is ${paramError.message}`);
             // }
-            let link: string = "https://www.example.com";
+            let link: string = 'https://www.example.com';
             let openLinkOptions: OpenLinkOptions = {
               // 匹配的abilities选项是否需要通过App Linking域名校验，匹配到唯一配置过的应用ability
               appLinkingOnly: true,
               // 同want中的parameter，用于传递的参数
-              parameters: {demo_key: "demo_value"}
+              parameters: {demo_key: 'demo_value'}
             };
-
+    
             try {
               context.openLink(link, openLinkOptions)
                 .then(() => {
                   hilog.info(DOMAIN_NUMBER, TAG, 'open link success.');
                 }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN_NUMBER, TAG, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                })
+                hilog.error(DOMAIN_NUMBER, TAG, `open link failed. Code is ${err.code}, message is ${err.message}`);
+              })
             } catch (paramError) {
               hilog.error(DOMAIN_NUMBER, TAG, `Failed to start link. Code is ${paramError.code}, message is ${paramError.message}`);
             }
@@ -117,13 +125,16 @@
     - "entities"列表中包含"entity.system.browsable"。
     - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考[uri匹配](explicit-implicit-want-mappings.md#uri匹配规则)，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
 
-    ```json
+    <!-- @[pull_results](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
+    
+    ``` JSON5
     {
       "module": {
-        // ...
+        // ···
         "abilities": [
+        // ···
           {
-            // ...
+            // ···
             "skills": [
               {
                 "entities": [
@@ -138,11 +149,13 @@
                     "host": "www.example.com"
                   }
                 ],
-              "domainVerify": true
+                "domainVerify": true
               }
             ]
-          }
-        ]
+          },
+        // ···
+        ],
+        // ···
       }
     }
     ```
@@ -151,17 +164,19 @@
     - 当options中的appLinkingOnly为true时，匹配到的应用会经过应用市场域名检查（需联网）返回域名校验检查的唯一匹配项或未匹配结果。
     - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则改为使用Deep Linking的方式拉起目标应用。
 
-    ```ts
+    <!-- @[want_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage2.ets) --> 
+    
+    ``` TypeScript
     import { common, OpenLinkOptions } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const TAG: string = '[UIAbilityComponentsOpenLink]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Index {
+    struct WantAbilityPage2 {
       build() {
         Button('start link', { type: ButtonType.Capsule, stateEffect: true })
           .width('87%')
@@ -178,25 +193,26 @@
             // try {
             //   context.startAbilityForResult(want)
             //     .then((data) => {
-            //       hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success. data:' + JSON.stringify(data));
+            //       hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success. data: ' + JSON.stringify(data));
             //     }).catch((err: BusinessError) => {
             //       hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
             //     })
             // } catch (paramError) {
-            //   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code}, message is ${paramError.message}`);
+            //   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code}, \
+            //   message is ${paramError.message}`);
             // }
-            let link: string = "https://www.example.com";
+            let link: string = 'https://www.example.com';
             let openLinkOptions: OpenLinkOptions = {
               // 匹配的abilities选项是否需要通过App Linking域名校验，匹配到唯一配置过的应用ability
               appLinkingOnly: true,
               // 同want中的parameter，用于传递的参数
-              parameters: {demo_key: "demo_value"}
+              parameters: {demo_key: 'demo_value'}
             };
-
+    
             try {
               context.openLink(link, openLinkOptions, (err, data) => {
                 // AbilityResult回调函数，仅在被启动的UIAbility终止时触发
-                hilog.info(DOMAIN_NUMBER, TAG, 'open link success. Callback result:' + JSON.stringify(data));
+                hilog.info(DOMAIN_NUMBER, TAG, 'open link success. Callback result: ' + JSON.stringify(data));
               }).then(() => {
                 hilog.info(DOMAIN_NUMBER, TAG, 'open link success.');
               }).catch((err: BusinessError) => {

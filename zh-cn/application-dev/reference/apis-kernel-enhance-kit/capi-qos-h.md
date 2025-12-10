@@ -40,8 +40,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_QOS_GEWU_INVALID_SESSION_ID (static_cast<OH_QoS_GewuSession>(0xffffffffU)) | 无效会话句柄，用于错误返回。<br>**起始版本：** 20 |
-| OH_QOS_GEWU_INVALID_REQUEST_ID (static_cast<OH_QoS_GewuRequest>(0xffffffffU)) | 无效请求句柄，用于错误返回。<br>**起始版本：** 20 |
+| OH_QOS_GEWU_INVALID_SESSION_ID (static_cast\<OH_QoS_GewuSession\>(0xffffffffU)) | 无效会话句柄，用于错误返回。<br>**起始版本：** 20 |
+| OH_QOS_GEWU_INVALID_REQUEST_ID (static_cast\<OH_QoS_GewuRequest\>(0xffffffffU)) | 无效请求句柄，用于错误返回。<br>**起始版本：** 20 |
 
 ### 函数
 
@@ -51,7 +51,7 @@
 | [int OH_QoS_ResetThreadQoS()](#oh_qos_resetthreadqos) | - | 取消当前线程的QoS等级。 |
 | [int OH_QoS_GetThreadQoS(QoS_Level *level)](#oh_qos_getthreadqos) | - | 获得当前线程的QoS等级。 |
 | [typedef void (\*OH_QoS_GewuOnResponse)(void* context, const char* response)](#oh_qos_gewuonresponse) | OH_QoS_GewuOnResponse | 用于接收回复的回调。 |
-| [OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes)](#oh_qos_gewucreatesession) | - | 创建格物会话。会话对象的声明周期从CreateSession函数返回开始，到调用DestroySession为止。会话属性的json字符串。该json字符串支持以下字段：- model: string. 表示会话使用的模型的路径。`attributes` json字符串例子：<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;"model": "/data/storage/el2/base/files/qwen2/"<br>&nbsp;}  |
+| [OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes)](#oh_qos_gewucreatesession) | - | 创建格物会话。会话对象的生命周期从CreateSession函数返回开始，到调用DestroySession为止。会话属性的json字符串。该json字符串支持以下字段：- model: string. 表示会话使用的模型的路径。`attributes` json字符串例子：<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;"model": "/data/storage/el2/base/files/qwen2/"<br>&nbsp;}  |
 | [OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session)](#oh_qos_gewudestroysession) | - | 销毁格物会话。建议用户应当等待至所有请求都已完成或中止，然后再调用该接口来销毁会话。如果调用该接口时还有正在进行的请求，那些请求将会被中止，且用户不会再收到回复。注意，在调用完该接口后，会话对象无法再被使用。 |
 | [OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_GewuRequest request)](#oh_qos_gewuabortrequest) | - | 停止指定的请求。成功调用该函数后，client不会再收到该请求的回复，且该请求句柄无法再被使用。 |
 | [OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession session, const char* request, OH_QoS_GewuOnResponse callback, void* context)](#oh_qos_gewusubmitrequest) | - | 提交请求。请求的json字符串，支持以下字段：- messages: array. 表示消息的数组其中每个元素支持以下字段：- role: string. 消息的角色类型。- "developer": 开发者或系统提供的指示。- "user":用户输入。- "assistant": 模型生成结果。- content: string. 消息内容。- stream: boolean or null; 可选。是否使能流式推理，默认为非流式。json字符串例子：<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;"messages": [<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role": "developer",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"content": "Your are a helpful assistant."<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role": "user",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"content": "What is OpenHarmony"<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;&nbsp;"stream": true<br>}  |
@@ -67,7 +67,7 @@
 
 ### QoS_Level
 
-```
+```c
 enum QoS_Level
 ```
 
@@ -88,7 +88,7 @@ enum QoS_Level
 
 ### OH_QoS_GewuErrorCode
 
-```
+```c
 enum OH_QoS_GewuErrorCode
 ```
 
@@ -114,7 +114,7 @@ enum OH_QoS_GewuErrorCode
 
 ### OH_QoS_SetThreadQoS()
 
-```
+```c
 int OH_QoS_SetThreadQoS(QoS_Level level)
 ```
 
@@ -143,7 +143,7 @@ int OH_QoS_SetThreadQoS(QoS_Level level)
 
 ### OH_QoS_ResetThreadQoS()
 
-```
+```c
 int OH_QoS_ResetThreadQoS()
 ```
 
@@ -166,7 +166,7 @@ int OH_QoS_ResetThreadQoS()
 
 ### OH_QoS_GetThreadQoS()
 
-```
+```c
 int OH_QoS_GetThreadQoS(QoS_Level *level)
 ```
 
@@ -195,7 +195,7 @@ int OH_QoS_GetThreadQoS(QoS_Level *level)
 
 ### OH_QoS_GewuOnResponse()
 
-```
+```c
 typedef void (*OH_QoS_GewuOnResponse)(void* context, const char* response)
 ```
 
@@ -214,7 +214,7 @@ typedef void (*OH_QoS_GewuOnResponse)(void* context, const char* response)
 
 ### OH_QoS_GewuCreateSession()
 
-```
+```c
 OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes)
 ```
 
@@ -238,7 +238,7 @@ OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes)
 
 ### OH_QoS_GewuDestroySession()
 
-```
+```c
 OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session)
 ```
 
@@ -262,7 +262,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session)
 
 ### OH_QoS_GewuAbortRequest()
 
-```
+```c
 OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_GewuRequest request)
 ```
 
@@ -287,7 +287,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 
 ### OH_QoS_GewuSubmitRequest()
 
-```
+```c
 OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession session, const char* request, OH_QoS_GewuOnResponse callback, void* context)
 ```
 

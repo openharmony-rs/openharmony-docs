@@ -2,7 +2,7 @@
 
 ## cl.bundlemanager.1 Name Change of the Bundle Manager Distributed Query Module
 
-The name of the bundle manager distributed query module in API version 9 is changed from **ohos.bundle.distributedBundle** to **[ohos.bundle.distributedBundleManager](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.distributedBundleManager.d.ts)**. The APIs remain unchanged.
+The name of the bundle manager distributed query module in API version 9 is changed from **ohos.bundle.distributedBundle** to **[ohos.bundle.distributedBundleManager](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.distributedBundleManager.d.ts)**. The APIs remain unchanged.
 
 **Change Impacts**
 

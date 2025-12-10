@@ -319,7 +319,7 @@ type SegmentButtonItemArray = Array\<SegmentButtonTextItem> | Array\<SegmentButt
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息。
+> SegmentButtonItemOptionsArray仅支持保存2到5个按钮信息元素。
 
 ### constructor
 
@@ -367,7 +367,7 @@ push(...items: SegmentButtonItemArray): number
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息。若超过按钮数量个数的限制，此方法将无效。
+>分段按钮组件数组仅支持保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，添加按钮信息元素失败。
 
 ### pop
 
@@ -389,7 +389,7 @@ pop(): SegmentButtonItemOptions | undefined
 
 >**说明：**
 >
->分段按钮组件仅支持2到5个按钮，SegmentButtonItemOptionsArray只保存2到5个按钮信息，若超过按钮信息个数限制，此方法将无效。
+>分段按钮组件数组仅支持保存2到5个按钮信息，若移除后按钮组件数量不在个数限制范围内，移除按钮信息元素失败。 
 
 ### shift
 
@@ -411,13 +411,13 @@ shift(): SegmentButtonItemOptions | undefined
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息，若超过按钮信息个数限制时，此方法将无效。
+>分段按钮组件数组仅支持保存2到5个按钮信息，若移除后按钮组件数量不在个数限制范围内，移除按钮信息元素失败。 
 
 ### unshift
 
 unshift(...items: SegmentButtonItemArray): number
 
-在数组开头添加新的元素，返回添加元素后数组的长度。
+在数组开头添加一个新的元素，返回添加元素后数组的长度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -440,7 +440,7 @@ unshift(...items: SegmentButtonItemArray): number
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息，若超过按钮信息个数限制，此方法将无效。
+>分段按钮组件数组仅支持保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，添加按钮信息元素失败。 
 
 ### splice
 
@@ -471,7 +471,7 @@ splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[])
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息，若超过按钮信息个数限制，此方法将无效。
+>分段按钮组件数组仅保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，不再删除和替换按钮信息元素。
 
 ### create
 

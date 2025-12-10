@@ -6,17 +6,17 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-轴事件指组件被鼠标滚轮滚动或触控板双指沿特定方向（轴）滑动时触发的事件。“轴”指二维坐标系中的方向，分为水平（X轴）和垂直（Y轴）。
+轴事件是指当鼠标或触控板等带指针输入设备的指针位于组件区域内时，因操作滚轮或触控板双指沿特定方向（轴）滑动时触发的事件。“轴”指二维坐标系中的方向，分为水平（X轴）和垂直（Y轴）。
 
 >  **说明：**
 >
->  从API Version 17开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  本模块首批接口从API version 17开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## onAxisEvent
 
 onAxisEvent(event: Callback\<AxisEvent>): T
 
-鼠标滚轮滚动或触控板双指滑动时触发该回调。
+鼠标滚轮滚动或触控板双指轻触滑动、双指捏合时触发该回调。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -132,7 +132,7 @@ hasAxis(axisType: AxisType): boolean
 
 ## 示例
 
-该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[axisPinch](./ts-gesture-customize-judge.md#baseevent8)和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](#hasaxis22)判断轴事件是否包含指定的轴类型。
+该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[axisPinch](./ts-gesture-customize-judge.md#属性)和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](#hasaxis22)判断轴事件是否包含指定的轴类型。
 
 ```ts
 // xxx.ets

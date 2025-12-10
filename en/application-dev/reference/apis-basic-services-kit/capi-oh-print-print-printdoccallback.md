@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct {...} Print_PrintDocCallback
+```
+
 ## Overview
 
 Defines the print job callback struct.

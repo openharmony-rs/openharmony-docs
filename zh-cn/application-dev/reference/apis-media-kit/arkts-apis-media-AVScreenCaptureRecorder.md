@@ -54,15 +54,27 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
+import { media } from '@kit.MediaKit';
 
-public getFileFd(): number {
-    let filesDir = '/data/storage/el2/base/haps';
-    let file = fs.openSync(filesDir + '/screenCapture.mp4', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    return file.fd;
-}
+// 初始化avScreenCaptureRecorder。
+let avScreenCaptureRecorder!: media.AVScreenCaptureRecorder;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in createAVScreenCaptureRecorder');
+  } else {
+    console.error('Failed to createAVScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// 创建文件。
+let filesDir = '/data/storage/el2/base/haps';
+let file = fs.openSync(filesDir + '/screenCapture.mp4', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 
 let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
-    fd: this.getFileFd(), // 文件需要先由调用者创建，通常是MP4文件，赋予写权限，将文件fd传给此参数。
+    fd: file.fd, // 文件需要先由调用者创建，通常是MP4文件，赋予写权限，将文件fd传给此参数。
     frameWidth: 640,
     frameHeight: 480
     // 补充其他参数。

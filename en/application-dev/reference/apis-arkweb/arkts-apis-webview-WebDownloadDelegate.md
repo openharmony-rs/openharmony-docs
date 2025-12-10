@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebDownloadDelegate** object to notify users of the download state.
 
@@ -70,7 +70,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // Serialize the failed download to a byte array.
               this.failedData = webDownloadItem.serialize();
             })
@@ -172,7 +172,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // Serialize the failed download to a byte array.
               this.failedData = webDownloadItem.serialize();
             })
@@ -274,7 +274,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // Serialize the failed download to a byte array.
               this.failedData = webDownloadItem.serialize();
             })
@@ -376,7 +376,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // Serialize the failed download to a byte array.
               this.failedData = webDownloadItem.serialize();
             })

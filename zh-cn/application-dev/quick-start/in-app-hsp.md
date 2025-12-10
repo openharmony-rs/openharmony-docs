@@ -9,9 +9,12 @@
 HSP（Harmony Shared Package）是动态共享包，包含代码、C++库、资源和配置文件，通过HSP可以实现代码和资源的共享。HSP不支持独立发布上架，而是跟随宿主应用的APP包一起发布，与宿主应用同进程，具有相同的包名和生命周期。
 > **说明：**
 > 
-> 应用内HSP：在编译过程中与应用包名（bundleName）强耦合，只能给某个特定的应用使用，本页面介绍应用内HSP。
+> * 应用内HSP：在编译过程中与应用包名（bundleName）强耦合，只能给某个特定的应用使用。
 > 
-> [集成态HSP](integrated-hsp.md)：构建、发布过程中，不与特定的应用包名耦合；使用时，工具链支持自动将集成态HSP的包名替换成宿主应用包名，并且会重新签名生成一个新的HSP包，作为宿主应用的安装包，这个新的HSP也属于宿主应用HAP的应用内HSP。
+> * [集成态HSP](integrated-hsp.md)：构建、发布过程中，不与特定的应用包名耦合；使用时，工具链支持自动将集成态HSP的包名替换成宿主应用包名，并且会重新签名生成一个新的HSP包，作为宿主应用的安装包，这个新的HSP也属于宿主应用HAP的应用内HSP。
+>
+> * 指南和API参考文档中如无特殊说明，默认HSP都为应用内HSP。
+>
 
 ## 使用场景
 - 多个HAP/HSP共用的代码和资源放在同一个HSP中，可以提高代码、资源的可重用性和可维护性，同时编译打包时也只保留一份HSP代码和资源，能够控制应用包的大小。
@@ -36,13 +39,13 @@ HSP（Harmony Shared Package）是动态共享包，包含代码、C++库、资�
 
 ## 创建
 使用DevEco Studio创建一个用于调用C++代码的HSP模块。并在“Configure New Module”页面中启用“Enable native”选项。详见[创建HSP模块](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hsp#section7717162312546)，以创建一个名为`library`的HSP模块为例。基本的工程目录结构如下：
-```
+```txt
 MyApplication
 ├── library
 │   ├── src
 │   │   └── main
 |   |       ├── cpp
-|   |       |   ├── CMakeLists.txt    //C++原生代码编译的配置文件 
+|   |       |   ├── CMakeLists.txt    //C++代码编译的配置文件 
 |   |       |   └── napi_init.cpp     //NAPI模块初始化的C++文件
 │   │       ├── ets
 │   │       │   └── pages
@@ -87,11 +90,8 @@ export struct MyTitleBar {
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
-// [StartExclude in_app_hsp_010]
 ```
-
 
 
 ### 导出类和方法
@@ -118,13 +118,11 @@ export function minus(a: number, b: number): number {
 
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
-<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { Log, add, minus } from './src/main/ets/utils/test';
-// [StartExclude in_app_hsp_010]
 ```
 
 ### 导出native方法
@@ -145,15 +143,12 @@ export function nativeMulti(a: number, b: number): number {
 
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
-<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
-
-
 ### 通过$r访问HSP中的资源
 在组件中，经常需要使用字符串、图片等资源。HSP中的组件需要使用资源时，一般将其所用资源放在HSP包内，而非放在HSP的使用方处，以符合高内聚低耦合的原则。
 
@@ -166,15 +161,15 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 <!-- @[in_app_hsp_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-        // library/src/main/ets/pages/Index.ets
-        // 正确用例
-        Image($r('app.media.example'))
-          .id('example')
-          .borderRadius('48px')
-        // // 错误用例
-        Image("../../resources/base/media/example.png")
-          .id('example')
-          .borderRadius('48px')
+// library/src/main/ets/pages/Index.ets
+// 正确用例
+Image($r('app.media.example'))
+  .id('example')
+  .borderRadius('48px')
+// // 错误用例
+Image("../../resources/base/media/example.png")
+  .id('example')
+  .borderRadius('48px')
 ```
 
 
@@ -208,12 +203,8 @@ export class ResManager{
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { ResManager } from './src/main/ets/ResManager';
-// [StartExclude in_app_hsp_010]
 ```
-
-
 
 ## 使用
 
@@ -227,18 +218,19 @@ export { ResManager } from './src/main/ets/ResManager';
 
 ``` TypeScript
 // library/index.ets
-// ···
+// ...
 export { Log, add, minus } from './src/main/ets/utils/test';
-// ···
+// ...
 export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
-// ···
+// ...
 export { ResManager } from './src/main/ets/ResManager';
-// ···
+// ...
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
-// [End in_app_hsp_006]
 ```
 
 在使用方的代码中，可以这样使用：
+
+<!--deprecated_code_no_check-->
 
 <!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
 
@@ -461,7 +453,7 @@ export struct Library_Menu {
 
 
 需要在library模块下新增route_map.json文件（library/src/main/resources/base/profile/route_map.json）。
-```
+```json
 {
   "routerMap": [
     {
@@ -498,4 +490,4 @@ export struct Library_Menu {
 ```
 
 
-页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-navigation.md#路由操作)。
+页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-jump.md#路由操作)。

@@ -269,7 +269,7 @@ Sets the background color of the security component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [ResourceColor](ts-types.md#resourcecolor) |Yes|Background color of the security component. If the alpha value of the upper eight bits of the background color of the security component is less than 0x1a (for example, 0x1800ff00), the system will forcibly adjust this alpha value to 0xff.<br>Default value: **$r('sys.color.icon_emphasize')**.|
+| value | [ResourceColor](ts-types.md#resourcecolor) |Yes|Background color of the security component. If the alpha value of the upper 8 bits of the background color of the security component is less than 0x1a (for example, 0x1800ff00), the system will forcibly adjust this alpha value to 0xff.<br>Default value: **$r('sys.color.icon_emphasize')**.|
 
 **Return value**
 
@@ -1102,7 +1102,7 @@ struct Index {
                   Text('No need to adjust the text automatically')
                 }.width('90%')
 
-                //The text can be completely displayed in the current layout without adjustment.
+                // The text can be completely displayed in the current layout without adjustment.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })

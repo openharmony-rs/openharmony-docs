@@ -66,7 +66,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getAllNetworkInterfaces(wantTemp, (err, result) => {
@@ -126,7 +126,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getAllNetworkInterfaces(wantTemp).then((result) => {
@@ -179,7 +179,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -241,7 +241,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -295,7 +295,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -357,7 +357,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -411,7 +411,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -473,7 +473,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -528,7 +528,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -591,7 +591,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -646,7 +646,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -717,7 +717,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace with actual values.
@@ -778,7 +778,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getGlobalProxy(wantTemp, (err, result) => {
@@ -838,7 +838,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getGlobalProxy(wantTemp).then(() => {
@@ -891,7 +891,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.AddFilterRule = {
   // Replace with actual values.
@@ -965,7 +965,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.AddFilterRule = {
   // Replace with actual values.
@@ -1031,7 +1031,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.RemoveFilterRule = {
   // Replace with actual values.
@@ -1103,7 +1103,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.RemoveFilterRule = {
   // Replace with actual values.
@@ -1166,7 +1166,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.listIptablesFilterRules(wantTemp, (err, result) => {
@@ -1226,7 +1226,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.listIptablesFilterRules(wantTemp).then((result) => {

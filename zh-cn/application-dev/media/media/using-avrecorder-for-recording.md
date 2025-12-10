@@ -99,7 +99,7 @@
      audioBitrate: 112000, // 音频比特率。
      audioChannels: 2, // 音频声道数。
      audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC、MP3和G711MU。
-     aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API 22开始支持AAC_HE和AAC_HE_V2。
+     aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API version 22开始支持AAC_HE和AAC_HE_V2。
      audioSampleRate: 48000, // 音频采样率。
      fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4、M4A、MP3、WAV、AMR和AAC。
    };
@@ -170,6 +170,8 @@
 
   参考以下示例，完成“开始录制-暂停录制-恢复录制-停止录制”的完整流程。
 
+  使用当前示例代码时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
@@ -206,7 +208,7 @@ async function audioRecording(context: common.Context): Promise<void> {
     audioBitrate: 112000, // 音频比特率。
     audioChannels: 2, // 音频声道数。
     audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC、MP3和G711MU。
-    aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API 22开始支持AAC_HE和AAC_HE_V2。
+    aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API version 22开始支持AAC_HE和AAC_HE_V2。
     audioSampleRate: 48000, // 音频采样率。
     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4、M4A、MP3、WAV、AMR和AAC。
   };

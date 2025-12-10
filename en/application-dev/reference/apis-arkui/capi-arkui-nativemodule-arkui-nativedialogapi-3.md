@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -44,7 +44,7 @@ Provides a collection of native-side custom dialog box APIs provided by ArkUI.
 | [int32_t (\*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)](#setcustomshadow) | Sets the shadow of the custom dialog box's backdrop.|
 | [int32_t (\*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)](#setbackgroundblurstyle) | Sets the backdrop blur style of the custom dialog box.|
 | [int32_t (\*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)](#setkeyboardavoidmode) | Sets the keyboard avoidance mode of the custom dialog box.|
-| [int32_t (\*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)](#enablehovermode) | Sets whether the enable the hover mode for the custom dialog box.|
+| [int32_t (\*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)](#enablehovermode) | Sets whether the custom dialog box responds when the device is in semi-folded mode.|
 | [int32_t (\*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)](#sethovermodearea) | Sets the default display area of the custom dialog box in hover mode.|
 | [int32_t (\*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)](#setfocusable) | Sets whether the custom dialog box can gain focus.|
 | [int32_t (\*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)](#setbackgroundblurstyleoptions) | Sets the background blur effect of the custom dialog box.|
@@ -497,7 +497,7 @@ int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode
 **Description**
 
 
-Sets whether the enable the hover mode for the custom dialog box.
+Sets whether the custom dialog box responds when the device is in semi-folded mode.
 
 > **NOTE**
 >
@@ -510,7 +510,7 @@ Sets whether the enable the hover mode for the custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  bool enableHoverMode | Whether to respond when the device is in semi-folded mode. The default value is **false**. The value **true** means to enable the hover mode, and **false** means the opposite.|
+|  bool enableHoverMode | Whether to respond when the device is in semi-folded mode. The default value is **false**. The value **true** means to respond when the device is in semi-folded mode, and **false** means the opposite.|
 
 **Returns**
 

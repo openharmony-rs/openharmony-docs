@@ -827,9 +827,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(): Promise\<void\>
 
-Clears up the application data and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only by the main thread.
+
 
 > **NOTE**
+> 
+> For details about the application file path, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The figure shows only the application file paths in the EL1 and EL2 directories. For the application file paths in other directories, refer to EL1.
 >
 > This API stops the application process. After the application process is stopped, all subsequent callbacks will not be triggered.
 
@@ -867,9 +870,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(callback: AsyncCallback\<void\>): void
 
-Clears up the application data and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+
 
 > **NOTE**
+> 
+> For details about the application file path, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The figure shows only the application file paths in the EL1 and EL2 directories. For the application file paths in other directories, refer to EL1.
 >
 > This API stops the application process. After the application process is stopped, all subsequent callbacks will not be triggered.
 
@@ -948,6 +954,7 @@ import { common, Want } from '@kit.AbilityKit';
 @Component
 struct Index {
   @State message: string = 'restartApp';
+  private context = this.getUIContext().getHostContext()?.getApplicationContext() as common.ApplicationContext;
 
   build() {
     RelativeContainer() {
@@ -964,10 +971,9 @@ struct Index {
             bundleName: 'com.example.myapplication',
             abilityName: 'EntryAbility'
           };
-          let appcontext: common.ApplicationContext = getContext().getApplicationContext() as common.ApplicationContext;
-          if (appcontext) {
+          if (this.context) {
             try {
-              appcontext.restartApp(want);
+              this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
             }

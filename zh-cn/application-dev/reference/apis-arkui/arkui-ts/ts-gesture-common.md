@@ -579,7 +579,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 | pinchCenterX | number | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的x轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | pinchCenterY | number | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的y轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | speed<sup>8+</sup> | number | 否 | 否  |快滑手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s，用于SwipeGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| fingerList<sup>8+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 否  |输入源为触屏产生的手势，fingerList中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerList中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerList只会携带一条记录。<br/>**说明：**<br/>手指索引编号与位置对应，即fingerList[index]的id为index。先按下且未参与当前手势触发的手指在fingerList中对应位置为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| fingerList<sup>8+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 否  |输入源为触屏产生的手势，fingerList中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerList中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerList只会携带一条记录。<br/>**说明：**<br/>1. 手指索引编号与位置对应，即fingerList[index]的id为index。先按下且未参与当前手势触发的手指在fingerList中对应位置为空。<br/>2. 当使用键盘或手柄触发手势时，不存在手指信息，fingerList为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 是  |由触屏产生的手势，fingerInfos中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerInfos中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerInfos只会携带一条记录。<br/> **说明：**<br/>fingerInfos只会记录参与触摸的有效手指信息，先按下但未参与当前手势触发的手指在fingerInfos中不会显示。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | velocityX<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | velocityY<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -616,20 +616,22 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 定义手势类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                   |
 | ----- | -------- | ------------------------------- |
-| TAP_GESTURE   | 0 | 点击手势。|
-| LONG_PRESS_GESTURE  | 1 | 长按手势。|
-| PAN_GESTURE    | 2 | 滑动手势。|
-| PINCH_GESTURE   | 3 | 捏合手势。|
-| SWIPE_GESTURE    | 4 | 快滑手势。|
-| ROTATION_GESTURE   | 5 | 旋转手势。|
-| DRAG    | 6 | 拖拽。|
-| CLICK   | 7 | 点击。|
+| TAP_GESTURE   | 0 | 点击手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| LONG_PRESS_GESTURE  | 1 | 长按手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| PAN_GESTURE    | 2 | 滑动手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| PINCH_GESTURE   | 3 | 捏合手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| SWIPE_GESTURE    | 4 | 快滑手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ROTATION_GESTURE   | 5 | 旋转手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| DRAG    | 6 | 拖拽。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| CLICK   | 7 | 点击。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| BOX_SELECT_GESTURE<sup>23+</sup>   | 8 | 滚动类容器鼠标框选手势，是一种特殊的滑动手势，用于在滚动容器中通过鼠标拖拽创建选择区域，批量选择多个元素。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| WEB_SCROLL_GESTURE<sup>23+</sup>   | 9 | Web组件滚动手势，是一种特殊的滑动手势，用于控制Web组件内的滚动行为。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| TEXT_FIELD_SELECT_GESTURE<sup>23+</sup>   | 10 | 文本选择手势，是一种特殊的滑动手势，用于在输入框组件中通过拖拽选择文本内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| CONTEXT_MENU_HOVER_GESTURE<sup>23+</sup>   | 11 | 上下文菜单悬停手势是一种特殊的长按手势，用于在长按过程中触发菜单的hoverScale动画效果（需启用[ContextMenuAnimationOptions](./ts-universal-attributes-menu.md#contextmenuanimationoptions11)的hoverScaleInterruption属性以支持该行为）。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## GestureInfo<sup>11+</sup>对象说明
 

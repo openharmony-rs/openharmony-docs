@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_ContentTransitionEffect ArkUI_ContentTransitionEffect
+```
+
 ## 概述
 
 内容过渡效果。

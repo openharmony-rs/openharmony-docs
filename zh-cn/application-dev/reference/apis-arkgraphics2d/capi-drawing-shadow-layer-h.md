@@ -31,7 +31,7 @@
 
 ### OH_Drawing_ShadowLayerCreate()
 
-```
+```c
 OH_Drawing_ShadowLayer* OH_Drawing_ShadowLayerCreate(float blurRadius, float x, float y, uint32_t color)
 ```
 
@@ -61,7 +61,7 @@ OH_Drawing_ShadowLayer* OH_Drawing_ShadowLayerCreate(float blurRadius, float x, 
 
 ### OH_Drawing_ShadowLayerDestroy()
 
-```
+```c
 void OH_Drawing_ShadowLayerDestroy(OH_Drawing_ShadowLayer* shadowLayer)
 ```
 

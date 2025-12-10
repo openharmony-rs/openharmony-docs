@@ -42,7 +42,7 @@ struct ReusableComponent {
     // 这里可以释放比较占内存的内容或其他非必要资源引用，避免一直占用内存
     console.info('ReusableComponent aboutToRecycle called');
   }
-  aboutToReuse(param: ESObject): void {
+  aboutToReuse(params: ESObject): void {
     console.info('ReusableComponent aboutToReuse called');
     this.val = params.val ?? 'Hello World'; // 对@State变量重新赋值
   }

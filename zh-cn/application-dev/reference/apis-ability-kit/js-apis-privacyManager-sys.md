@@ -773,7 +773,7 @@ off(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callbac
 | 参数名             | 类型                   | 必填 | 说明                                                          |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | 是   | 取消订阅事件类型，固定为'activeStateChange'，权限使用状态变更事件。   |
-| permissionList | Array&lt;Permissions&gt;   | 是   | 取消订阅的权限名列表，为空时表示订阅所有的权限状态变化，必须与on的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
+| permissionList | Array&lt;Permissions&gt;   | 是   | 取消订阅的权限名列表，为空时表示订阅所有的权限状态变化，必须与[on](#privacymanageron)的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | 否 | 取消订阅指定tokenId与指定权限名状态变更事件的回调。|
 
 **错误码：**
@@ -786,7 +786,7 @@ off(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callbac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionList is not in the listening list. |
-| 12100004 | The API is not used in pair with 'on'. |
+| 12100004 | The API is not used in pair with "on". |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
 
@@ -952,11 +952,11 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 | 名称       | 类型             | 只读 | 可选 | 说明                                       |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| status  | number         | 否    | 否    | 访问状态。                                 |
-| lockScreenStatus<sup>11+</sup>  | number         | 否    | 是    | 访问时的锁屏状态。<br> - 1，表示非锁屏场景使用权限。<br> - 2，表示锁屏场景使用权限。                                 |
+| status  | number         | 否    | 否    | 访问状态。 |
+| lockScreenStatus<sup>11+</sup>  | number         | 否    | 是    | 访问时的锁屏状态。<br> - 1，表示非锁屏场景使用权限。<br> - 2，表示锁屏场景使用权限。 |
 | timestamp | number         | 否    | 否    | 访问时的时间戳，单位：ms。 |
-| accessDuration  | number         | 否    | 否    | 访问时长，单位：ms。                                 |
-| count<sup>11+</sup> | number | 否 | 是    | 成功或失败次数。
+| accessDuration  | number         | 否    | 否    | 访问时长，单位：ms。 |
+| count<sup>11+</sup> | number | 否 | 是    | 成功或失败次数。 |
 | usedType<sup>12+</sup> | [PermissionUsedType](#permissionusedtype12) | 否 | 是    | 敏感权限访问方式。 |
 
 ## PermissionActiveStatus

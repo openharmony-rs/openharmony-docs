@@ -41,7 +41,7 @@ RelativeContainer()
 
 guideLine(value: Array&lt;GuideLineStyle&gt;)
 
-设置RelativeContainer容器内的辅助线，Array中每个项目即为一条guideLine。
+设置RelativeContainer容器内的[辅助线](../../../ui/arkts-layout-development-relative-layout.md#使用辅助线辅助定位子组件)，Array中每个项目即为一条guideLine。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -57,7 +57,7 @@ guideLine(value: Array&lt;GuideLineStyle&gt;)
 
 barrier(value: Array&lt;BarrierStyle&gt;)
 
-设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier。
+设置RelativeContainer容器内的[屏障](../../../ui/arkts-layout-development-relative-layout.md#多个组件的屏障)，Array中每个项目即为一条barrier。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -134,12 +134,12 @@ barrier参数，用于定义一条barrier的id、方向和生成时所依赖的�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                          |
-| ------ | ----------------------------- |
-| LEFT | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最左侧。|
-| RIGHT | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最右侧。|
-| TOP  | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最上方。|
-| BOTTOM  | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最下方。|
+| 名称     | 值   | 说明                          |
+| ------ | ---- | ----------------------------- |
+| LEFT | 0 | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最左侧。|
+| RIGHT | 1 | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最右侧。|
+| TOP  | 2 | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最上方。|
+| BOTTOM  | 3 | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最下方。|
 
 ## LocalizedBarrierStyle<sup>12+</sup>对象说明
 
@@ -262,7 +262,7 @@ struct Index {
 
 ### 示例2（子组件设置外边距）
 
-本示例展示了容器内子组件设置外边距的用法。
+本示例展示容器内子组件设置外边距的方法。
 
 ```ts
 @Entry

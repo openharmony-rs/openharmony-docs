@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_FontMgr OH_Drawing_FontMgr
+```
+
 ## Overview
 
 Defines a struct for the font manager, which is used for font management.

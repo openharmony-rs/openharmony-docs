@@ -47,7 +47,7 @@
 
 ### OH_ImageProcessing_InitializeEnvironment()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_InitializeEnvironment(void)
 ```
 
@@ -67,7 +67,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_InitializeEnvironment(void)
 
 ### OH_ImageProcessing_DeinitializeEnvironment()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_DeinitializeEnvironment(void)
 ```
 
@@ -87,7 +87,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_DeinitializeEnvironment(void)
 
 ### OH_ImageProcessing_IsColorSpaceConversionSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsColorSpaceConversionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo)
 ```
 
@@ -113,7 +113,7 @@ bool OH_ImageProcessing_IsColorSpaceConversionSupported(const ImageProcessing_Co
 
 ### OH_ImageProcessing_IsCompositionSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsCompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* sourceGainmapInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo)
 ```
 
@@ -140,7 +140,7 @@ bool OH_ImageProcessing_IsCompositionSupported(const ImageProcessing_ColorSpaceI
 
 ### OH_ImageProcessing_IsDecompositionSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsDecompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo,const ImageProcessing_ColorSpaceInfo* destinationGainmapInfo)
 ```
 
@@ -167,7 +167,7 @@ bool OH_ImageProcessing_IsDecompositionSupported(const ImageProcessing_ColorSpac
 
 ### OH_ImageProcessing_IsMetadataGenerationSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsMetadataGenerationSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo)
 ```
 
@@ -192,7 +192,7 @@ bool OH_ImageProcessing_IsMetadataGenerationSupported(const ImageProcessing_Colo
 
 ### OH_ImageProcessing_Create()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Create(OH_ImageProcessing** imageProcessor, int32_t type)
 ```
 
@@ -218,7 +218,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Create(OH_ImageProcessing** imagePr
 
 ### OH_ImageProcessing_Destroy()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Destroy(OH_ImageProcessing* imageProcessor)
 ```
 
@@ -243,7 +243,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Destroy(OH_ImageProcessing* imagePr
 
 ### OH_ImageProcessing_SetParameter()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_SetParameter(OH_ImageProcessing* imageProcessor,const OH_AVFormat* parameter)
 ```
 
@@ -269,7 +269,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_SetParameter(OH_ImageProcessing* im
 
 ### OH_ImageProcessing_GetParameter()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* imageProcessor,OH_AVFormat* parameter)
 ```
 
@@ -295,7 +295,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* im
 
 ### OH_ImageProcessing_ConvertColorSpace()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)
 ```
 
@@ -311,18 +311,18 @@ ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessin
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 ### OH_ImageProcessing_Compose()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* sourceGainmap, OH_PixelmapNative* destinationImage)
 ```
 
@@ -338,19 +338,19 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imagePr
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_COMPOSITION类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceGainmap | 指向输入Gainmap的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceGainmap | 指向输入Gainmap的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 ### OH_ImageProcessing_Decompose()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage, OH_PixelmapNative* destinationGainmap)
 ```
 
@@ -366,19 +366,19 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* image
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_DECOMPOSITION类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationGainmap | 指向输出Gainmap的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationGainmap | 指向输出Gainmap的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 ### OH_ImageProcessing_GenerateMetadata()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage)
 ```
 
@@ -394,17 +394,17 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_METADATA_GENERATION类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 ### OH_ImageProcessing_EnhanceDetail()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_EnhanceDetail(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)
 ```
 
@@ -420,13 +420,13 @@ ImageProcessing_ErrorCode OH_ImageProcessing_EnhanceDetail(OH_ImageProcessing* i
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。该实例应该由IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER类型创建。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | 指向输入图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | 指向输出图片的指针，指向的OH_PixelmapNative需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间时不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果图片处理成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当图片为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。<br> 当图片的某些属性无效时，返回IMAGE_PROCESSING_ERROR_INVALID_VALUE，例如图片的色彩空间是不支持的。<br> 当该图片处理不支持时，返回IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br> 当该图片处理中返回错误时，返回IMAGE_PROCESSING_ERROR_PROCESS_FAILED。<br> 当内存分配失败时，返回IMAGE_PROCESSING_ERROR_NO_MEMORY。 |
 
 

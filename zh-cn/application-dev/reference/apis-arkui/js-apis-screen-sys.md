@@ -446,6 +446,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -453,7 +454,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 screen.createVirtualScreen(option, (err: BusinessError, data: screen.Screen) => {
   const errCode: number = err.code;
@@ -513,6 +515,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -520,7 +523,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -623,7 +627,7 @@ screen.destroyVirtualScreen(screenId).then(() => {
 
 setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-设置虚拟屏幕的surface，使用callback异步回调。
+设置虚拟屏幕的surface，表示当前虚拟屏用于显示对应surface中的内容，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -636,7 +640,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | screenId  | number                    | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
-| surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义。                                                |
+| surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -653,25 +657,49 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 **示例：**
 
 ```ts
+//Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
-let surfaceId: string = '2048';
-screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
-  const errCode: number = err.code;
-  if (errCode) {
-    console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
-    return;
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
+    const errCode: number = err.code;
+    if (errCode) {
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      return;
+    }
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    });
   }
-  console.info('Succeeded in setting the surface for the virtual screen.');
-});
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## screen.setVirtualScreenSurface
 
 setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
-设置虚拟屏幕的surface，使用Promise异步回调。
+设置虚拟屏幕的surface，表示当前虚拟屏用于显示对应surface中的内容，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -684,7 +712,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | screenId  | number | 是   | 屏幕的id，该参数仅支持整数输入。    |
-| surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义。 |
+| surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 
 **返回值：**
 
@@ -706,15 +734,39 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+//Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
-let surfaceId: string = '2048';
-screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
-  console.info('Succeeded in setting the surface for the virtual screen.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
-});
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## screen.setScreenPrivacyMaskImage<sup>19+</sup>
@@ -1362,6 +1414,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | height    | number   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为整数。 |
 | density   | number   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
+| supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
 
 ## Screen
 
@@ -1425,6 +1478,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1432,7 +1486,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1494,6 +1549,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1501,7 +1557,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1556,6 +1613,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1563,7 +1621,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1626,6 +1685,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1633,7 +1693,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1690,6 +1751,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1697,7 +1759,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1760,6 +1823,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1767,7 +1831,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {

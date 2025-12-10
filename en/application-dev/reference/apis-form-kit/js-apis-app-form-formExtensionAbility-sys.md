@@ -1,12 +1,18 @@
 # @ohos.app.form.FormExtensionAbility (FormExtensionAbility) (System API)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 The **FormExtensionAbility** module provides lifecycle callbacks invoked when a widget is created, destroyed, or updated.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs of this module can be used only in the stage model.
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.FormExtensionAbility (FormExtensionAbility)](./js-apis-app-form-formExtensionAbility.md).
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can be used only in the stage model.
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.FormExtensionAbility (FormExtensionAbility)](./js-apis-app-form-formExtensionAbility.md).
 
 ## Modules to Import
 
@@ -43,7 +49,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onShareForm(formId: string) {
-    console.log(`FormExtensionAbility onShareForm, formId: ${formId}`);
+    console.info(`FormExtensionAbility onShareForm, formId: ${formId}`);
     let wantParams: Record<string, Object> = {
       'temperature': '20',
       'time': '2022-8-8 09:59',
@@ -82,7 +88,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAcquireFormData(formId: string) {
-    console.log(`FormExtensionAbility onAcquireFormData, formId: ${formId}`);
+    console.info(`FormExtensionAbility onAcquireFormData, formId: ${formId}`);
     let wantParams: Record<string, Object> = {
       'temperature': '20',
       'time': '2022-8-8 09:59',

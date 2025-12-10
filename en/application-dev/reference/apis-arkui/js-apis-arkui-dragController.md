@@ -4,9 +4,9 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **dragController** module provides APIs for initiating drag actions. When receiving a gesture event, such as a touch or long-press event, an application can initiate a drag action and carry drag information therein.
+This module provides APIs for initiating drag actions. When receiving a gesture event, such as a touch or long-press event, an application can initiate a drag action and carry drag information therein.
 
 > **NOTE**
 >
@@ -40,11 +40,11 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 **Parameters**
 
-| Name  | Type                                                        | Read-Only| Optional| Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ---- |------------------------------------------------------------ |
-| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | No |  No  | Object to be dragged.<br>**NOTE**<br>The global builder is not supported. If the [Image](arkui-ts/ts-basic-components-image.md) component is used in the builder, enable synchronous loading, that is, set the [syncLoad](arkui-ts/ts-basic-components-image.md#syncload8) attribute of the component to **true**. The builder is used only to generate the image displayed during the current dragging. If the root component of the builder has zero width or height, it will cause failure in drag image generation, which in turn breaks the entire drag operation. Changes to the builder, if any, apply to the next dragging, but not to the current dragging.|
-| dragInfo | [DragInfo](#draginfo)                                        | No |  No  | Drag information.                                                  |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DragEventParam](#drageventparam12)&gt; | No |  No  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the **DragEventParam** object obtained. Otherwise, **err** is an error object.                                   |
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
+| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | Yes  | Object to be dragged.<br>**NOTE**<br>The global builder is not supported. If the [Image](arkui-ts/ts-basic-components-image.md) component is used in the builder, enable synchronous loading, that is, set the [syncLoad](arkui-ts/ts-basic-components-image.md#syncload8) attribute of the component to **true**. The builder is used only to generate the image displayed during the current dragging. If the root component of the builder has zero width or height, it will cause failure in drag image generation, which in turn breaks the entire drag operation. Changes to the builder, if any, apply to the next dragging, but not to the current dragging.|
+| dragInfo | [DragInfo](#draginfo)                                        | Yes  | Drag information.                                                  |
+| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DragEventParam](#drageventparam12)&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the **DragEventParam** object obtained. Otherwise, **err** is an error object.                                   |
 
 **Error codes**
 
@@ -153,10 +153,10 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 **Parameters**
 
-| Name  | Type                                                        | Read-Only |  Optional| Description                            |
-| -------- | ------------------------------------------------------------ | ---- | ---- | -------------------------------- |
-| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | No |  No  | Object to be dragged.|
-| dragInfo | [DragInfo](#draginfo)                                        | No |  No  | Drag information.                      |
+| Name  | Type                                                        | Mandatory| Description                            |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | Yes  | Object to be dragged.|
+| dragInfo | [DragInfo](#draginfo)                                        | Yes  | Drag information.                      |
 
 **Return value**
 
@@ -313,10 +313,10 @@ Creates a drag action object for initiating drag and drop operations. You need t
 
 **Parameters**
 
-| Name  | Type                                                        | Read-Only |  Optional| Description                            |
-| --------      | ------------------------------------------------------------ | ---- | ---- | -------------------------------- |
-| customArray  | Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)&gt; | No |  No  | Object to be dragged.|
-| dragInfo | [DragInfo](#draginfo)                                        | No |  No  | Drag information.                      |
+| Name  | Type                                                        | Mandatory| Description                            |
+| --------      | ------------------------------------------------------------ | ---- | -------------------------------- |
+| customArray  | Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)&gt; | Yes  | Object to be dragged.|
+| dragInfo | [DragInfo](#draginfo)                                        | Yes  | Drag information.                      |
 
 **Return value**
 
@@ -707,10 +707,10 @@ Subscribes to drag state changes.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name    | Type | Read-Only |  Optional  | Description            |
-| ------ | ------ | ------- | ------- | ---------------- |
-|  type  | string | No |  No     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | No |  No     | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
+| Name    | Type | Mandatory  | Description            |
+| ------ | ------ | ------- | ---------------- |
+|  type  | string | Yes     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | Yes     | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
 
 **Example**
 
@@ -789,10 +789,10 @@ Unsubscribes from drag state changes.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name    | Type | Read-Only |  Optional   | Description            |
-| ------ | ------ | ------- | ------- | ---------------- |
-|  type  | string | No |  No     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | No |  Yes   | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
+| Name    | Type | Mandatory   | Description            |
+| ------ | ------ | ------- | ---------------- |
+|  type  | string | Yes     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | No   | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
 
 **Example**
 
@@ -956,9 +956,9 @@ Sets the foreground color of the drag preview. This API does not work in the **O
 
 **Parameters**
 
-| Name  | Type                            | Read-Only |  Optional| Description                    |
-| -------- | -------------------------------- | ---- | ---- | ------------------------ |
-| color    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No |  No  |      Foreground color of the drag preview.                   |
+| Name  | Type                            | Mandatory| Description                    |
+| -------- | -------------------------------- | ---- | ------------------------ |
+| color    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | Yes  |      Foreground color of the drag preview.                   |
 
 **Example**
 
@@ -976,10 +976,10 @@ Applies a foreground color animation to the drag preview. This API does not work
 
 **Parameters**
 
-| Name  | Type                            | Read-Only |  Optional| Description                              |
-| -------- | -------------------------------- | ---- | ---- | -----------------------------------|
-| options  | [AnimationOptions](#animationoptions11)                | No |  No  | Animation settings.                          |
-| handler  | () => void                         | No |  No  | Callback used to change attributes such as the background mask color. |
+| Name  | Type                            | Mandatory| Description                              |
+| -------- | -------------------------------- | ---- | -----------------------------------|
+| options  | [AnimationOptions](#animationoptions11)                | Yes  | Animation settings.                          |
+| handler  | () => void                         | Yes  | Callback used to change attributes such as the background mask color. |
 
 **Example**
 
@@ -1223,6 +1223,6 @@ Updates the hover detection configuration. This API is effective only when the h
 
 **Parameters**
 
-| Name    | Type         | Read-Only |  Optional     | Description                        |
-| :----- | -------- | ---- | ---- | --------------------------------------------- |
-| config | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)         |  No |  No  | New configuration for hover detection.  |
+| Name    | Type         | Mandatory     | Description                        |
+| :----- | -------- | ---- | --------------------------------------------- |
+| config | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)         |  Yes  | New configuration for hover detection.  |

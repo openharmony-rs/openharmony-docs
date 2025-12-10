@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **uiAppearance** module provides basic capabilities for managing the system appearance. It allows for color mode configuration currently, and will introduce more features over time.
 

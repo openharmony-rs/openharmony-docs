@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```c
+typedef struct Sensor_Subscriber Sensor_Subscriber
+```
+
 ## 概述
 
 定义传感器订阅者信息。

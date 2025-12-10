@@ -46,12 +46,14 @@
 | [OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, size_t* pSize)](#oh_drawing_rectgetarraysize) | 用于获取矩形数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的大小。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray, size_t index,OH_Drawing_Rect** rect)](#oh_drawing_rectgetarrayelement) | 用于获取矩形数组对象中指定索引的矩形对象。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)](#oh_drawing_rectdestroyarray) | 用于销毁矩形数组对象并回收该对象占有的内存。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other, bool* isContains)](#oh_drawing_rectcontains) | 用于判断一个矩形是否完全包含另外一个矩形。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectInset(OH_Drawing_Rect* rect, float left, float top, float right, float bottom)](#oh_drawing_rectinset) | 将指定的值添加到矩形边界。 |
 
 ## 函数说明
 
 ### OH_Drawing_RectCreate()
 
-```
+```c
 OH_Drawing_Rect* OH_Drawing_RectCreate(float left, float top, float right, float bottom)
 ```
 
@@ -81,7 +83,7 @@ OH_Drawing_Rect* OH_Drawing_RectCreate(float left, float top, float right, float
 
 ### OH_Drawing_RectIntersect()
 
-```
+```c
 bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)
 ```
 
@@ -109,7 +111,7 @@ bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* othe
 
 ### OH_Drawing_RectJoin()
 
-```
+```c
 bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)
 ```
 
@@ -137,7 +139,7 @@ bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)
 
 ### OH_Drawing_RectSetLeft()
 
-```
+```c
 void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)
 ```
 
@@ -159,7 +161,7 @@ void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)
 
 ### OH_Drawing_RectSetTop()
 
-```
+```c
 void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)
 ```
 
@@ -181,7 +183,7 @@ void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)
 
 ### OH_Drawing_RectSetRight()
 
-```
+```c
 void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)
 ```
 
@@ -203,7 +205,7 @@ void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)
 
 ### OH_Drawing_RectSetBottom()
 
-```
+```c
 void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)
 ```
 
@@ -225,7 +227,7 @@ void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)
 
 ### OH_Drawing_RectGetLeft()
 
-```
+```c
 float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)
 ```
 
@@ -252,7 +254,7 @@ float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetTop()
 
-```
+```c
 float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)
 ```
 
@@ -279,7 +281,7 @@ float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetRight()
 
-```
+```c
 float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)
 ```
 
@@ -306,7 +308,7 @@ float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetBottom()
 
-```
+```c
 float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)
 ```
 
@@ -333,7 +335,7 @@ float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetHeight()
 
-```
+```c
 float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)
 ```
 
@@ -360,7 +362,7 @@ float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetWidth()
 
-```
+```c
 float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)
 ```
 
@@ -387,7 +389,7 @@ float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectCopy()
 
-```
+```c
 void OH_Drawing_RectCopy(OH_Drawing_Rect* sRect, OH_Drawing_Rect* dRect)
 ```
 
@@ -409,7 +411,7 @@ void OH_Drawing_RectCopy(OH_Drawing_Rect* sRect, OH_Drawing_Rect* dRect)
 
 ### OH_Drawing_RectDestroy()
 
-```
+```c
 void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)
 ```
 
@@ -430,7 +432,7 @@ void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectCreateArray()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)
 ```
 
@@ -457,7 +459,7 @@ OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)
 
 ### OH_Drawing_RectGetArraySize()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, size_t* pSize)
 ```
 
@@ -485,7 +487,7 @@ OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, si
 
 ### OH_Drawing_RectGetArrayElement()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray, size_t index,OH_Drawing_Rect** rect)
 ```
 
@@ -514,7 +516,7 @@ OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray,
 
 ### OH_Drawing_RectDestroyArray()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)
 ```
 
@@ -540,3 +542,60 @@ OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br> 返回OH_DRAWING_SUCCESS，表示执行成功。<br> 返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数rectArray为空。 |
 
 
+### OH_Drawing_RectContains()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other, bool* isContains)
+```
+
+**描述**
+
+用于判断一个矩形是否完全包含另外一个矩形。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。此矩形用于判断是否包含另一个矩形（other）。 |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* other | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。此矩形用于判断是否被另一个矩形（rect）所包含。 |
+| bool* isContains | 表示一个矩形是否完全包含另外一个矩形的结果，作为出参使用。true表示rect完全包含other，false表示rect不完全包含other。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数rect或other或isContains为空。 |
+
+### OH_Drawing_RectInset()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_RectInset(OH_Drawing_Rect* rect, float left, float top, float right, float bottom)
+```
+
+**描述**
+
+将指定的值添加到矩形边界。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。 |
+| float left | 添加到矩形左边界的值（矩形左上角横坐标）。 |
+| float top | 添加到矩形上边界的值（矩形左上角纵坐标）。 |
+| float right | 添加到矩形右边界的值（矩形右下角横坐标）。 |
+| float bottom | 添加到矩形下边界的值（矩形右下角纵坐标）。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数rect为空。 |

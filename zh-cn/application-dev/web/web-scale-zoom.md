@@ -22,7 +22,7 @@ Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调�
 >
 > 在PC/2in1设备上，`viewport`标签不生效，仅能通过设置`zoomAccess`为`false`来禁用手势缩放。
 > 
-> 以上方法仅能控制缩放功能的开关，但如果网页在`viewport`标签中设置了`minimum-scale`和`maximum-scale`，那么缩放的范围也会受到这两个属性的限制，当最大、最小值相等时，网页也是不能缩放的。目前，ArkWeb暂未提供强制缩放页面的功能。
+> 以上方法仅能控制缩放功能的开关，但如果网页在`viewport`标签中设置了`minimum-scale`和`maximum-scale`，那么缩放的范围也会受到这两个属性的限制，当最大、最小值相等时，网页也是不能缩放的。
 >
 > 另外，网页的内容宽度也会限制缩小的比例。
 
@@ -45,9 +45,13 @@ struct WebComponent {
 }
 ```
 
+### 启用/禁用手势强制缩放
+
+通过属性[forceEnableZoom](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forceenablezoom21)控制网页强制缩放功能，当设置为`true`时，手势缩放行为不受`minimum-scale`和`maximum-scale`以及`user-scalable=no`的限制。
+
 ### 启用/禁用网页键盘鼠标缩放
 
-ArkWeb默认支持通过`Ctrl`+按键`'-'/'+'` 或者 `Ctrl`+鼠标滚轮进行缩放。应用可以通过拦截键盘事件来阻止按键缩放，当前暂未支持拦截`Ctrl`+鼠标滚轮缩放。
+ArkWeb默认支持通过`Ctrl`+按键`'-'/'+'` 或者 `Ctrl`+鼠标滚轮进行缩放。应用可以通过拦截键盘事件来阻止按键缩放。
 
 通过拦截键盘事件来阻止按键缩放：
 
@@ -110,10 +114,7 @@ struct WebComponent {
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebManagementZooming]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebManagementZooming_';
+
 @Entry
 @Component
 struct WebComponent {
@@ -123,7 +124,7 @@ struct WebComponent {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
         .onScaleChange((event) => {
-          hilog.info(DOMAIN, TAG, BUNDLE, 'onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
         })
     }
   }
@@ -149,10 +150,7 @@ struct WebComponent {
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebManagementZooming]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebManagementZooming_';
+
 @Entry
 @Component
 struct WebComponent {
@@ -164,7 +162,7 @@ struct WebComponent {
           try {
             this.controller.zoomIn();
           } catch (error) {
-            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Button('zoomOut')
@@ -172,7 +170,7 @@ struct WebComponent {
           try {
             this.controller.zoomOut();
           } catch (error) {
-            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -191,10 +189,7 @@ struct WebComponent {
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebManagementZooming]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebManagementZooming_';
+
 @Entry
 @Component
 struct WebComponent {
@@ -213,7 +208,7 @@ struct WebComponent {
           try {
             this.controller.zoom(this.factor);
           } catch (error) {
-            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -237,10 +232,7 @@ factor = 100 * targetFactor / pageFactor
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebManagementZooming]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebManagementZooming_';
+
 @Entry
 @Component
 struct WebComponent {
@@ -264,13 +256,13 @@ struct WebComponent {
             let factor = this.targetFactor * this.intNumber / this.pageFactor;
             this.controller.zoom(factor);
           } catch (error) {
-            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
         .zoomAccess(true)
         .onScaleChange((event) => {
-          hilog.error(DOMAIN, TAG, BUNDLE, 'onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          console.error('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           this.pageFactor = event.newScale;
         })
     }

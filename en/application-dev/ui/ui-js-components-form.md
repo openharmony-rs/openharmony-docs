@@ -1,12 +1,13 @@
-# \<form> Development
+# form Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **\<form>** component allows the content in [\<Input>](../reference/apis-arkui/arkui-js/js-components-basic-input.md) components to be submitted and reset. For details, see [form](../reference/apis-arkui/arkui-js/js-components-container-form.md).
+The **\<form>** component allows the content in [\<input>](../reference/apis-arkui/arkui-js/js-components-basic-input.md) components to be submitted and reset. For details, see [form](../reference/apis-arkui/arkui-js/js-components-container-form.md).
+
 
 ## Creating a \<form> Component
 
@@ -144,7 +145,7 @@ export default{
 
 Select an option and submit or reset the form data.
 
-Create two [\<Input>](../reference/apis-arkui/arkui-js/js-components-basic-input.md) components, set their **type** attribute to **checkbox** and **radio**, and use the **onsubmit** and **onreset** events of the **\<form>** component to submit and reset the form data, respectively.
+Create two [\<input>](../reference/apis-arkui/arkui-js/js-components-basic-input.md) components, set their **type** attribute to **checkbox** and **radio**, and use the **onsubmit** and **onreset** events of the **\<form>** component to submit and reset the form data, respectively.
 
 ```html
 <!-- xxx.hml -->

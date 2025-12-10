@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_Point2D
+```
+
 ## Overview
 
 This struct describes a two-dimensional coordinate point.

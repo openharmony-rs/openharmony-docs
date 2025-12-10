@@ -142,29 +142,29 @@ Extended components provide optional but important mechanism for extending kerne
 
 ## Usage<a name="section741617511812"></a>
 
-OpenHarmony LiteOS Cortex-A supports the  [Hi3516D V300](https://gitee.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-appendix-hi3516.md). You can develop and run your applications based on this development board.
+OpenHarmony LiteOS Cortex-A supports the  [Hi3516D V300](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-appendix-hi3516.md). You can develop and run your applications based on this development board.
 
 ### Preparations<a name="section1579912573329"></a>
 
-You need to [set up the compilation environment](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-pkg-prepare.md) on Linux.
+You need to [set up the compilation environment](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-pkg-prepare.md) on Linux.
 
 
 ### Source Code Acquisition<a name="section11443189655"></a>
 
-Download and decompress a set of source code on a Linux server to acquire the  [source code](https://gitee.com/openharmony/docs/blob/master/en/device-dev/get-code/sourcecode-acquire.md).
+Download and decompress a set of source code on a Linux server to acquire the  [source code](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/get-code/sourcecode-acquire.md).
 
 ### Compilation and Building<a name="section2081013992812"></a>
 
 For details about how to develop the first application, see:
 
--   [Developing the First Example Program Running on Hi3516](https://gitee.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-pkg-3516-running.md)
+-   [Developing the First Example Program Running on Hi3516](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-pkg-3516-running.md)
 
 ## Repositories Involved<a name="section1371113476307"></a>
 
-[Kernel subsystem](https://gitee.com/openharmony/docs/blob/master/en/readme/kernel.md)
+[Kernel subsystem](https://gitcode.com/openharmony/docs/blob/master/en/readme/kernel.md)
 
-[drivers\_liteos](https://gitee.com/openharmony/drivers_liteos/blob/master/README.md)
+[drivers\_liteos](https://gitcode.com/openharmony/drivers_liteos/blob/master/README.md)
 
-[kernel\_liteos\_a](https://gitee.com/openharmony/kernel_liteos_a/blob/master/README.md)
+[kernel\_liteos\_a](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/README.md)
 
 

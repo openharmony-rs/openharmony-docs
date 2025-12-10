@@ -28,6 +28,28 @@ ConsoleMessage的信息级别。
 | Log   | 5 | 日志级别。 |
 | Warn  | 3 | 警告级别。 |
 
+## ConsoleMessageSource<sup>23+</sup>
+
+ConsoleMessage的日志来源。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称            | 值 | 说明    |
+| --------------- | -- | -------- |
+| XML             | 0  | 由Web的 XML/HTML 解析器生成的日志（如 HTML 语法错误、XML 格式异常），比如HTML 标签未闭合导致的解析警告。 |
+| JAVASCRIPT      | 1  | 执行JavaScript发生异常，比如 JS 语法错误、运行时异常。 |
+| NETWORK         | 2  | 加载网页资源失败，比如资源（JS/CSS/ 图片）404 加载失败。 |
+| CONSOLE_API     | 3  | 网页调用W3C console接口，比如console.warn，console.error。 |
+| STORAGE         | 4  | 存储相关模块（LocalStorage、SessionStorage、IndexedDB、Cookie）生成的日志（如存储配额超限、操作异常）。 |
+| RENDERING       | 5  | 渲染引擎（如 Blink）生成的日志（如 CSS 样式无效、布局异常、渲染性能警告）。 |
+| SECURITY        | 6  | 违反网页安全策略，HTTPS 证书错误、混合内容（HTTP 资源在 HTTPS 页面加载）。 |
+| OTHER           | 7  | 其它，比如Web扩展插件产生的日志。 |
+| DEPRECATION     | 8  | 使用了过期语法，比如slider-vertical。 |
+| WORKER          | 9  | service worker，shared worker里面的错误，比如service worker navigation preload预加载请求未完成前被中断。 |
+| VIOLATION       | 10 | 违反规则，比如一段js执行超过50ms。 |
+| INTERVENTION    | 11 | 当Web检测到某些可能危害用户体验、安全或性能的代码行为时，会主动介入并阻止或修改该行为，同时通过带有 kIntervention 的消息告知开发者。比如在没有用户交互的网页里面，触发DispatchBeforeUnload事件。 |
+| RECOMMENDATION  | 12 | 检测到不符合Web安全最佳实践的代码行为，提供改进建议。比如当页面中使用了可能存在 XSS 风险的 API（如 innerHTML、eval() 等），但未遵循 Trusted Types 安全规范时。 |
+
 ## MixedMode
 
 混合内容模式。
@@ -350,7 +372,7 @@ Web布局模式的配置。
 | RESIZE_VISUAL      | 0 | 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。   |
 | RESIZE_CONTENT     | 1 | 默认值，软键盘避让时，同时调整可视视口和布局视口的大小。 |
 | OVERLAYS_CONTENT   | 2 | 不调整任何视口大小，不会触发软键盘避让。   |
-| RETURN_TO_UICONTEXT<sup>22+</sup> | 2 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
 
 ## WebElementType<sup>13+</sup>
 
@@ -459,3 +481,62 @@ Web布局模式的配置。
 | ----------- | -- | ------------------ |
 | DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | 以17点检测法进行页面检测。当检测点命中已经渲染了且有意义的节点，则认为有命中。有意义的节点指的是图片，视频和文字节点。<br>当无命中，或少于用户设置阈值命中时，则认为是白屏或者近似白屏。<br>其中，检测的17个点位包括：<br>中心点 (1个)： 位于页面的几何中心。<br>内部网格交点 (16个)：在页面区域内定义一个5×5 的均匀网格，这16个点即为页面内4条垂直等分线和4条水平等分线的交点。         |
 
+## CredentialType<sup>22+</sup>
+
+凭证类型。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| CREDENTIAL_USER        | 2 | 用户凭证。         |
+| CREDENTIAL_APP        | 3 | 应用凭证。         |
+| CREDENTIAL_UKEY        | 4 | ukey凭证。         |
+
+## PinVerifyResult<sup>22+</sup>
+
+PIN码认证结果。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| PIN_VERIFICATION_SUCCESS        | 0 | 成功。         |
+| PIN_VERIFICATION_FAILED        | 1 | 失败。         |
+
+## CameraCaptureState<sup>23+</sup>
+
+定义摄像头使用状态的值。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称   | 值   | 说明         |
+| ------ | ---- | ------------ |
+| NONE   | 0    | 摄像头未工作。 |
+| PAUSED | 1    | 摄像头暂停中。 |
+| ACTIVE | 2    | 摄像头捕获中。 |
+
+## MicrophoneCaptureState<sup>23+</sup>
+
+定义麦克风使用状态的值。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称   | 值   | 说明         |
+| ------ | ---- | ------------ |
+| NONE   | 0    | 麦克风未工作。 |
+| PAUSED | 1    | 麦克风暂停中。 |
+| ACTIVE | 2    | 麦克风捕获中。 |
+
+## NavigationPolicy<sup>23+</sup>
+
+WebView中新窗口的打开方式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                           | 值 | 说明           |
+| ----------------------------- | -- | ------------ |
+| NEW_POPUP                     | 0 | 在新弹窗中打开。   |
+| NEW_WINDOW                    | 1 | 在新窗口中打开。   |
+| NEW_BACKGROUND_TAB            | 2 | 在新标签页中以后台方式打开。 |
+| NEW_FOREGROUND_TAB            | 3 | 在新标签页中以前台方式打开。 |

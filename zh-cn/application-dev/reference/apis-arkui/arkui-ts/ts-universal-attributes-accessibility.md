@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -51,6 +51,10 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 通过accessibilityPreferred启用优先拼接无障碍文本进行朗读后，将优先拼接其子组件的无障碍文本属性作为组件的合并文本。若某一子组件未设置无障碍文本，则继续拼接该子组件的通用文本属性，若该子组件没有通用文本属性，则忽略该子组件不进行拼接。
 
 从API version 22开始，通过stateController和actionController参数，可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 14开始，该接口支持在ArkTS卡片中使用。
 
@@ -101,6 +105,10 @@ accessibilityText(text: Resource):T
 
 设置无障碍文本，支持通过[Resource](ts-types.md#resource)引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -150,6 +158,10 @@ accessibilityDescription(description: Resource):T
 
 设置无障碍说明，支持通过[Resource](ts-types.md#resource)引用资源文件。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -198,6 +210,10 @@ accessibilityVirtualNode(builder: CustomBuilder):T
 
 设置无障碍虚拟子节点。对自绘制组件传入一个自定义的CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。如使用画布组件[Canvas](./ts-components-canvas-canvas.md)时，可以通过虚拟节点设置相应位置和大小匹配的占位组件，让无障碍服务识别到对应区域的自绘制信息。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -222,6 +238,10 @@ accessibilityChecked(isCheck: boolean):T
 
 无障碍节点是否选中的状态维护，用于支持多选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 13开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
@@ -245,6 +265,10 @@ accessibilityChecked(isCheck: boolean):T
 accessibilitySelected(isSelect: boolean):T
 
 无障碍节点是否选中的状态维护，用于支持单选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 13开始，该接口支持在ArkTS卡片中使用。
 
@@ -545,6 +569,10 @@ accessibilityTextHint(value: string):T
 
 设置组件的文本提示信息，供无障碍辅助应用查询。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -593,6 +621,54 @@ accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel):T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前对象。 |
+
+## accessibilityStateDescription<sup>23+</sup>
+
+accessibilityStateDescription(description: string | Resource | undefined): T
+
+设置组件的状态播报文本，用于屏幕朗读场景下清晰说明组件当前的实时状态。屏幕朗读时会优先播报该状态文本。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| description  | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>undefined：播报文本默认为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## accessibilityActionOptions<sup>23+</sup>
+
+accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
+
+设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明) \| undefined | 是   | 无障碍操作的参数，用于限制或者修改无障碍操作下的滑动行为。<br/>AccessibilityActionOptions中的scrollStep用于设置无障碍操作下的滑动步数。<br/>取值为undefined时按1处理。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
 
 ## 示例
 
@@ -892,6 +968,63 @@ struct Index {
       .width('80%')
       .border({ color : Color.Black, width : 2 })
 
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例7（设置无障碍组件状态播报信息）
+
+该示例主要通过[accessibilityStateDescription](ts-universal-attributes-accessibility.md#accessibilitystatedescription23)接口修改组件的状态播报。在开启无障碍功能后，组件发生聚焦或者点击后，屏幕朗读进行组件的状态信息播报。
+
+从API version 23开始，新增accessibilityStateDescription接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isSelected: boolean = false;
+
+  build() {
+    Column({ space: 20 }) {
+      Button(this.isSelected ? '已点赞' : '未点赞')
+        .accessibilityLevel('yes')
+        .onClick(() => {
+          this.isSelected = !this.isSelected;
+        })
+        .accessibilityStateDescription(this.isSelected ? '已点赞' : '未点赞')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+### 示例8（设置无障碍操作选项修改组件滚动步长）
+
+本示例主要演示如何通过[accessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明)中的scrollStep参数，自定义组件的滚动步长。以下将以slider组件在屏幕朗读场景下滑动距离变化为例进行说明。
+
+从API version 23开始，新增AccessibilityActionOptions。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 20 }) {
+      Row() {
+        Slider({
+          min: 0,
+          max: 100,
+          style: SliderStyle.OutSet
+        })
+          // 调整屏幕朗读手势下slider滑动的步长
+          .accessibilityActionOptions({ scrollStep : 10 })
+      }
+      .width('80%')
     }
     .height('100%')
     .width('100%')

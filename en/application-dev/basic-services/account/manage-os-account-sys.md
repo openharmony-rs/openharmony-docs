@@ -38,7 +38,6 @@ For details about complete system account information, see [OsAccountInfo](../..
 import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 ```
 
-
 3. Obtain an **AccountManager** instance.
 
    <!-- @[obtain_account_management_single_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
@@ -63,12 +62,14 @@ Use [createOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-
     let type: osAccount.OsAccountType = osAccount.OsAccountType.NORMAL;
 
     accountManager.createOsAccount(name, type, (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
-      console.info(`createOsAccount code is ${err.code}, message is ${err.message}`);
-      console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
-	// ···
+      if (err) {
+        console.error(`createOsAccount code is ${err.code}, message is ${err.message}`);
+      } else {
+        this.createLocalId = osAccountInfo.localId;
+        console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
+      }
     });
 ```
-
 
 ## Obtaining All System Accounts
 
@@ -82,12 +83,13 @@ Use [queryAllCreatedOsAccounts](../../reference/apis-basic-services-kit/js-apis-
 
 ``` TypeScript
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
-      console.info(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
-      console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
-	// ···
+      if (err) {
+        console.info(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
+      }
     });
 ```
-
 
 ## Obtaining Information of a System Account
 
@@ -102,12 +104,13 @@ Use [queryOsAccountById](../../reference/apis-basic-services-kit/js-apis-osAccou
 ``` TypeScript
     let localId: number = 100;
     accountManager.queryOsAccountById(localId, (err: BusinessError, accountInfo: osAccount.OsAccountInfo)=>{
-      console.info(`queryOsAccountById code is ${err.code}, message is ${err.message}`);
-      console.info('queryOsAccountById accountInfo:' + JSON.stringify(accountInfo));
-	// ···
+      if (err) {
+        console.error(`queryOsAccountById code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('queryOsAccountById accountInfo:' + JSON.stringify(accountInfo));
+      }
     });
 ```
-
 
 ## Changing the ProfilePhoto and Nickname of a System Account
 
@@ -121,18 +124,19 @@ Change the profile photo and nickname of a system account as required.
 
 ``` TypeScript
     let localId: number = 100;
-	// ···
     let newPhoto: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
       'Cxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACwSURBVDhPvZLBDYMwDEV/ugsXRjAT0EHCOuFIBwkbdIRewi6unbiAyoGgSn1SFH85+Y'+
       'q/4ljARW62X+LHS8uIzjm4dXUYF+utzBikB52Jo5e5iEPKqpACk7R9NM2RvWm5tIkD2czLCUFNKLD6IjdMHFHDzws285MgGrT0xCtp3WOKHo'+
       '+7q0mP0DZW9pNmoEFUzrQjp5cCnaen2kSJXLFD8ghbXyZCMQf/8e8Ns1XVAG/XAgqKzVnJFAAAAABJRU5ErkJggg=='
 
     accountManager.setOsAccountProfilePhoto(localId, newPhoto, (err: BusinessError)=>{
-      console.info(`setOsAccountProfilePhoto code is ${err.code}, message is ${err.message}`);
-	// ···
+      if(err) {
+        console.error(`setOsAccountProfilePhoto code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('Successfully updated system account avatar');
+      }
     });
 ```
-
 
 2. Use [setOsAccountName](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountname) to change the system account name.
 

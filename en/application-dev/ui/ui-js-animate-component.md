@@ -1,12 +1,17 @@
 # Component Animation
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Create and run an animation shortcut on the component. For details, see [Universal Methods](../reference/apis-arkui/arkui-js/js-components-common-methods.md).
 
 
 ## Obtaining an Animation Object
 
-Call the **animate** method to obtain an animation object, which supports animation attributes, methods, and events.
+Call the **animate** method to obtain an **animation** object, which supports animation attributes, methods, and events.
 
 ```html
 <!-- xxx.hml -->
@@ -63,7 +68,7 @@ export default {
 
 > **NOTE**
 > - When using the animate method, you must pass the keyframes and options parameters.
-> - If animate is called multiple times and the replace policy is used, parameters passed to the last call will take effect.
+> - If **animate** is called multiple times and the **replace** policy is used, parameters passed to the last call will take effect.
 
 
 ## Setting Animation Parameters
@@ -143,7 +148,7 @@ export default {
 > **NOTE**
 > - The sequence of **translate**, **scale**, and **rotate** affects the animation effect.
 > 
-> - **transformOrigin** works only for scale and rotate.
+> - **transformOrigin** works only for **scale** and **rotate**.
 
 Set the animation attributes by using the **options** parameter.
 

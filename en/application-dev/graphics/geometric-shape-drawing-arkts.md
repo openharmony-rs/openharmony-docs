@@ -49,8 +49,9 @@ Points can be drawn on the canvas only using a brush. You can use the drawPoint(
 
 A simple example is as follows:
 
-```ts
-// ShapeDrawing.ets
+<!-- @[arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+``` TypeScript
 // Set the brush.
 let pen = new drawing.Pen();
 // Set the color
@@ -60,15 +61,16 @@ pen.setStrokeWidth(40);
 // Set the stroke effect of the paint.
 canvas.attachPen(pen);
 // Draw five points.
-canvas.drawPoint(200, 200);
-canvas.drawPoint(400, 400);
-canvas.drawPoint(600, 600);
-canvas.drawPoint(800, 800);
-canvas.drawPoint(1000, 1000);
+canvas.drawPoint(VALUE_200, VALUE_200);
+canvas.drawPoint(VALUE_400, VALUE_400);
+canvas.drawPoint(VALUE_600, VALUE_600);
+canvas.drawPoint(VALUE_800, VALUE_800);
+canvas.drawPoint(VALUE_1000, VALUE_1000);
 // Remove the stroke effect.
 canvas.detachPen();
 ```
-<!-- [arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+The effect is as follows:
 
 ![Screenshot_20241129174520171](figures/Screenshot_20241129174520171.jpg)
 
@@ -80,8 +82,10 @@ You can use a paint or brush to draw an arc on the canvas. The drawArc() API is 
 Drawing an arc requires a rectangle ([common2D.Rect](../reference/apis-arkgraphics2d/js-apis-graphics-common2D.md#rect)) and two parameters, which indicate the start angle (startAngle) and sweep angle (sweepAngle) of the arc.
 
 The following is a simple example of drawing an arc using a paint:
-```ts
-// ShapeDrawing.ets
+
+<!-- @[arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+``` TypeScript
 // Create a pen.
 let pen = new drawing.Pen();
 // Set the color
@@ -97,17 +101,18 @@ pen.setStrokeWidth(20);
 canvas.attachPen(pen);
 // Create a rectangle.
 const rect: common2D.Rect = {
-  left: 100,
-  top: 200,
-  right: 1000,
-  bottom: 600
+  left: VALUE_100,
+  top: VALUE_200,
+  right: VALUE_1000,
+  bottom: VALUE_600
 };
 // Draw a rectangle.
 canvas.drawArc(rect, 0, 180);
 // Remove the stroke effect.
 canvas.detachPen();
 ```
-<!-- [arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+The effect is as follows:
 
 ![image_0000002194025289](figures/image_0000002194025289.png)
 
@@ -119,8 +124,9 @@ You can use a paint or brush to draw a circle on the canvas. The drawCircle() AP
 Drawing a circle requires the x and y coordinates of the circle center and the radius of the circle.
 
 The following example uses a brush to draw a circle.
-```ts
-// ShapeDrawing.ets
+<!-- @[arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+``` TypeScript
 // Create a pen.
 let pen = new drawing.Pen();
 // Set the color
@@ -135,11 +141,12 @@ pen.setStrokeWidth(20);
 // Set the stroke effect of the paint.
 canvas.attachPen(pen);
 // Draw a circle.
-canvas.drawCircle(630, 630, 500);
+canvas.drawCircle(VALUE_630, VALUE_630, VALUE_500);
 // Remove the stroke effect.
 canvas.detachPen();
 ```
-<!-- [arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+The effect is as follows:
 
 ![Screenshot_20241129172555673](figures/Screenshot_20241129172555673.jpg)
 
@@ -158,10 +165,11 @@ The following describes the APIs and implementation of drawing a path. For detai
 
 The following example uses a brush and a brush to draw a five-pointed star.
 
-```ts
-// ShapeDrawing.ets
-let height_ = 1800;
-let width_ = 1800;
+<!-- @[arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+``` TypeScript
+let height_ = VALUE_1800;
+let width_ = VALUE_1800;
 let len = height_ / 4;
 let aX = width_ / 3;
 let aY = height_ / 6;
@@ -209,7 +217,8 @@ canvas.detachBrush();
 // Remove the stroke effect.
 canvas.detachPen();
 ```
-<!-- [arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+The effect is as follows:
 
 ![Screenshot_20241129164326302](figures/Screenshot_20241129164326302.jpg)
 
@@ -222,8 +231,9 @@ Currently, a rectangle region and a path region can be set by using the setRect(
 
 The following uses a brush to draw a combined region of rectangles as an example:
 
-```ts
-// ShapeDrawing.ets
+<!-- @[arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+``` TypeScript
 // Create a brush.
 let brush = new drawing.Brush();
 // Set the color
@@ -232,10 +242,10 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 canvas.attachBrush(brush);
 // Create region1 in the upper left corner.
 let region1 = new drawing.Region();
-region1.setRect(100, 100, 600, 600);
+region1.setRect(VALUE_100, VALUE_100, VALUE_600, VALUE_600);
 // Create region2 in the lower right corner.
 let region2 = new drawing.Region();
-region2.setRect(300, 300, 900, 900);
+region2.setRect(VALUE_300, VALUE_300, VALUE_900, VALUE_900);
 // Combine the two regions in XOR mode.
 region1.op(region2, drawing.RegionOp.XOR);
 // Draw the regions.
@@ -243,7 +253,8 @@ canvas.drawRegion(region1);
 // Remove the fill effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+The effect is as follows:
 
 ![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
 
@@ -254,8 +265,9 @@ You can use a brush or pen to draw a rectangle on the canvas. Use the drawRect()
 
 The following is a simple example of drawing a rectangle using a brush:
 
-```ts
-// ShapeDrawing.ets
+<!-- @[arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+``` TypeScript
 // Create a brush.
 let brush = new drawing.Brush();
 // Set the color
@@ -263,11 +275,12 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // Set the brush filling effect.
 canvas.attachBrush(brush);
 // Draw a rectangle.
-canvas.drawRect(200, 200, 1000, 700);
+canvas.drawRect(VALUE_200, VALUE_200, VALUE_1000, VALUE_700);
 // Remove the fill effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+The effect is as follows:
 
 ![image_0000002194110921](figures/image_0000002194110921.png)
 
@@ -286,8 +299,9 @@ The rounded rectangle object is constructed using new drawing.RoundRect() API. T
 
 The following is a simple example of drawing a rounded rectangle using a brush:
 
-```ts
-// ShapeDrawing.ets
+<!-- @[arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+``` TypeScript
 // Create a brush.
 let brush = new drawing.Brush();
 // Set the color
@@ -296,10 +310,10 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 canvas.attachBrush(brush);
 // Create a rectangle object.
 let rect: common2D.Rect = {
-  left: 200,
-  top: 200,
-  right: 1000,
-  bottom: 700
+  left: VALUE_200,
+  top: VALUE_200,
+  right: VALUE_1000,
+  bottom: VALUE_700
 };
 console.info('rect:', rect.right);
 // Create a rounded rectangle object.
@@ -309,7 +323,8 @@ canvas.drawRoundRect(rrect);
 // Remove the filling effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+The effect is as follows:
 
 ![image_0000002158584406](figures/image_0000002158584406.png)
 
@@ -318,5 +333,5 @@ canvas.detachBrush();
 
 The following samples are available for Drawing (ArkTS) development:
 
-- [ArkTSGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

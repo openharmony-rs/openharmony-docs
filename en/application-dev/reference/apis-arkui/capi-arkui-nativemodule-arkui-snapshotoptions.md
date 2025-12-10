@@ -1,4 +1,10 @@
 # ArkUI_SnapshotOptions
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 

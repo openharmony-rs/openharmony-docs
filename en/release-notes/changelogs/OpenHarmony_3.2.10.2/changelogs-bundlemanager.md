@@ -2,7 +2,7 @@
 
 ## cl.bundlemanager.1 Field Change of the ApplicationInfo Struct in API Version 9
 
-The **ApplicationInfo** struct [bundleManager/applicationInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) in API version 9 has field changes, with the **systemApp** field being added and the **entryDir** field being deleted.
+The **ApplicationInfo** struct [bundleManager/applicationInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) in API version 9 has field changes, with the **systemApp** field being added and the **entryDir** field being deleted.
 
 **Change Impact**<br>
 There is no impact on applications that use the APIs of versions earlier than 9. The applications that use the APIs of version 9 need to adapt new modules and APIs.
@@ -19,7 +19,7 @@ Import the bundle manager query module and use the **systemApp** field in the **
 
 ## cl.bundlemanager.2 Field Change of the HapModuleInfo Struct in API Version 9
 
-The **moduleSourceDir** field is deleted from the **HapModuleInfo** struct [bundleManager/hapModuleInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) in API version 9.
+The **moduleSourceDir** field is deleted from the **HapModuleInfo** struct [bundleManager/hapModuleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) in API version 9.
 
 **Change Impact**<br>
 There is no impact on applications that use the APIs of versions earlier than 9. The applications that use the APIs of version 9 need to adapt new modules and APIs.

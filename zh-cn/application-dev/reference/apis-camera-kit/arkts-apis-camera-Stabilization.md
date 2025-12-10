@@ -6,19 +6,17 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **说明：**
->
-> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本Interface首批接口从API version 11开始支持。
-
 Stabilization 继承自 [StabilizationQuery](arkts-apis-camera-StabilizationQuery.md)。
 
 提供设备在录像模式下设置视频防抖的操作。
 
- > **说明：**
- >
- > 需要会话中有录像流（[VideoOutput](arkts-apis-camera-VideoOutput.md)）的前提下，才可以对视频进行防抖设置，
- > 其中[VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)中的枚举HIGH需要在[Profile](arkts-apis-camera-i.md#profile)的分辨率为1920*1080的场景下生效。
+需要会话中有录像流（[VideoOutput](arkts-apis-camera-VideoOutput.md)）的前提下，才可以对视频进行防抖设置，
+其中[VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)中的枚举HIGH需要在[Profile](arkts-apis-camera-i.md#profile)的分辨率为1920*1080的场景下生效。
+
+> **说明：**
+>
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Interface首批接口从API version 11开始支持。
 
 ## 导入模块
 

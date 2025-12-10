@@ -9,7 +9,10 @@
 
 HUKS提供了接口供业务获取指定密钥的相关属性。在获取指定密钥属性前，需要确保已在HUKS中生成或导入持久化存储的密钥。
 >**说明：**
+>
 > <!--RP1-->轻量级设备<!--RP1End-->不支持获取密钥属性功能。
+
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
 
 ## 开发步骤
 
@@ -78,7 +81,11 @@ async function getKeyItemProperties(keyAlias: string, emptyOptions: huks.HuksOpt
   try {
     await huks.getKeyItemProperties(keyAlias, emptyOptions)
       .then((data) => {
-        console.info(`promise: getKeyItemProperties success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+        if (data.properties) {
+          data.properties.forEach(param => {
+            console.info(`promise: getKeyItemProperties, currnt tag ${param.tag} value is ${param.value}`)
+          });
+        }
         ret = true;
       }).catch((error: BusinessError) => {
         console.error(`promise: getKeyItemProperties failed, errCode : ${error.code}, errMsg : ${error.message}`);

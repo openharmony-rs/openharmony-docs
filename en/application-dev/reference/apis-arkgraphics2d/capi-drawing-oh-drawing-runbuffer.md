@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_RunBuffer
+```
+
 ## Overview
 
 This struct describes a run, which provides storage for glyphs and positions.

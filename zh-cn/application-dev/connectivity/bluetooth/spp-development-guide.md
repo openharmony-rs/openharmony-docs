@@ -61,7 +61,7 @@ console.info('startConnect after ' + peerDevice);
 **2. 传输数据**<br>
 
 **2.1 发送数据**<br>
-待客户端和服务端建立的连接建立成功后，即可向服务端发送数据。
+待客户端和服务端连接建立成功后，即可向服务端发送数据。
 ```ts
 let clientNumber = 1; // 注意：该值需要的是客户端发起连接时，异步callback获取到的客户端socket id，此处是伪代码id
 let arrayBuffer = new ArrayBuffer(2);
@@ -76,7 +76,7 @@ try {
 ```
 
 **2.2 接收数据**<br>
-待客户端和服务端建立的连接建立成功后，即可接收服务端的数据。通过订阅读取数据接口[socket.on('sppRead')](../../reference/apis-connectivity-kit/js-apis-bluetooth-socket.md#socketonsppread)实现。
+待客户端和服务端连接建立成功后，即可接收服务端的数据。通过订阅读取数据接口[socket.on('sppRead')](../../reference/apis-connectivity-kit/js-apis-bluetooth-socket.md#socketonsppread)实现。
 ```ts
 let clientNumber = 1; // 注意：该值需要的是客户端发起连接时，异步callback获取到的客户端socket id，此处是伪代码id
 

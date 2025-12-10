@@ -1,20 +1,25 @@
 # Developing Animations
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-
-Animations are classified into [Static Animation](#static-animation) and [Continuous Animation](#continuous-animation).
+Animations are classified into [static animation](#static-animation) and [continuous animation](#continuous-animation).
 
 
 ## Static Animation
 
-The transform attributes are the core of the static animation. A static animation can transform in the following three ways and only once in each way at a time:
+The **transform** attributes are the core of the static animation. A static animation can transform in the following three ways and only once in each way at a time:
 
-- translate: moves a specified component horizontally or vertically.
+- **translate**: moves a specified component horizontally or vertically.
 
-- scale: scales a specified component horizontally or vertically to the required scale.
+- **scale**: scales a specified component horizontally or vertically to the required scale.
 
-- rotate: rotates a specified component by a specified angle along the horizontal axis, vertical axis, or center point.
+- **rotate**: rotates a specified component by a specified angle along the horizontal axis, vertical axis, or center point.
 
-For more information, see [Component Methods](../reference/apis-arkui/arkui-js/js-components-common-methods.md). The following is an example:
+For more information, see [Animation Styles](../reference/apis-arkui/arkui-js/js-components-common-animation.md). The following is an example:
 
 ```html
 <!-- xxx.hml -->
@@ -59,6 +64,7 @@ For more information, see [Component Methods](../reference/apis-arkui/arkui-js/j
 }
 ```
 
+
 **Figure 1** Static animation
 
 ![en-us_image_0000001071134933](figures/en-us_image_0000001071134933.png)
@@ -70,17 +76,17 @@ The static animation has only the start and end states. To set the transition st
 
 The core of a continuous animation is animation attributes, which define the start and end states of the animation and the curve of time and speed. Animation attributes can implement the following effects:
 
-- **animation-name**: background color, opacity, width, height, and transformation type applied to the element after the animation is executed
+- **animation-name**: background color, opacity, width, height, and transformation type applied to the element after the animation is executed.
 
-- **animation-delay** and **animation-duration**: element delay and duration after the animation is executed
+- **animation-delay** and **animation-duration**: element delay and duration after the animation is executed.
 
-- **animation-timing-function**: speed curve of an animation, which makes the animation more fluent
+- **animation-timing-function**: speed curve of an animation, which makes the animation more fluent.
 
-- **animation-iteration-count**: number of animation playback times
+- **animation-iteration-count**: number of animation playback times.
 
-- **animation-fill-mode**: whether to restore the initial state after the animation is executed
+- **animation-fill-mode**: whether to restore the initial state after the animation is executed.
 
-To use the animation attributes, you need to define a @keyframes rule in the .css file, set the animation transition effect in **@keyframes**, and invoke the effect through a style class in the .hml file. The following is an example for **animation-name**:
+Using **animation** attributes requires defining a keyframe in the CSS file first. Within the keyframe, set the animation transition effect, and then call it in the HML file through a style class. The following is an example for **animation-name**:
 
 ```html
 <!-- xxx.hml -->
@@ -158,6 +164,6 @@ export default {
 }
 ```
 
-**Figure 2** Continuous animation effect
+**Figure 2** Continuous animation
 
 ![en-us_image_0000001063148757](figures/en-us_image_0000001063148757.gif)

@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_RenderNode* ArkUI_RenderNodeHandle
+```
+
 ## 概述
 
 定义渲染节点指针。

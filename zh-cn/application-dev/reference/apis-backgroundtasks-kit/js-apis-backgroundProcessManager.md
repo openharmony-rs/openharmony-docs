@@ -4,7 +4,7 @@
 <!--Subsystem: Resourceschedule-->
 <!--Owner: @hongjianfeng-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 本模块提供了后台子进程管控接口。开发者可以通过本模块接口对子进程进行压制、解压制，避免子进程过多占用系统资源，导致系统使用卡顿。本模块接口仅对通过[OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)接口创建的子进程生效。
@@ -200,6 +200,56 @@ try {
     });
 } catch (error) {
     console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## backgroundProcessManager.getPowerSaveMode<sup>22+</sup>
+
+getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
+
+获取进程能效模式。使用Promise异步回调。
+
+**设备行为差异：** 该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
+
+**需要权限：** ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
+
+**系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
+
+**参数：**
+
+| 参数名      | 类型      | 必填      | 说明      |
+|-------------|-----------|-----------|-----------|
+| pid         | number    | 是        | 进程号。<br>取值范围：大于0的整数。  |
+
+**返回值：**
+
+| 类型             | 说明               |
+| -------------- | ---------------- |
+| Promise<[PowerSaveMode](#powersavemode20)> | Promise对象。返回进程能效模式状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[backgroundProcessManager错误码](errorcode-backgroundProcessManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID    | 错误信息             |
+|----------|------------------|
+| 201      | Permission denied. |
+| 801      | Capability not supported. |
+| 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
+// 请开发者替换为实际的进程号
+let pid = 33333;
+try {
+    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
+        console.info("getPowerSaveMode: " + result.toString());
+    });
+} catch (error) {
+    console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 

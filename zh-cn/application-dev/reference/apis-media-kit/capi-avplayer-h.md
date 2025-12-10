@@ -67,7 +67,7 @@
 | [bool OH_AVPlayer_IsPlaying(OH_AVPlayer *player)](#oh_avplayer_isplaying) | - | 判断播放器是否在播放。 |
 | [bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)](#oh_avplayer_islooping) | - | 判断是否循环播放。 |
 | [OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)](#oh_avplayer_setlooping) | - | 设置循环播放。 |
-| [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | 设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。 |
+| [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | 设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API version 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。 |
 | [OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_selecttrack) | - | 选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨迹。<br> 设置生效后，原音轨将失效。请设置字幕处于准备/播放/暂停/完成状态，并将音轨设置为准备状态。 |
 | [OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_deselecttrack) | - | 取消选择当前音频或字幕轨道。 |
 | [OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType, int32_t *index)](#oh_avplayer_getcurrenttrack) | - | 获取当前有效的轨道索引。请将状态设置为准备/正在播放/暂停/完成。 |
@@ -83,7 +83,7 @@
 
 ### Player_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*Player_MediaKeySystemInfoCallback)(OH_AVPlayer *player, DRM_MediaKeySystemInfo* mediaKeySystemInfo)
 ```
 
@@ -102,7 +102,7 @@ typedef void (*Player_MediaKeySystemInfoCallback)(OH_AVPlayer *player, DRM_Media
 
 ### OH_AVPlayer_Create()
 
-```
+```c
 OH_AVPlayer *OH_AVPlayer_Create(void)
 ```
 
@@ -122,7 +122,7 @@ OH_AVPlayer *OH_AVPlayer_Create(void)
 
 ### OH_AVPlayer_SetURLSource()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)
 ```
 
@@ -149,7 +149,7 @@ OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)
 
 ### OH_AVPlayer_SetFDSource()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)
 ```
 
@@ -178,7 +178,7 @@ OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t of
 
 ### OH_AVPlayer_SetDataSource()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer *player, OH_AVDataSourceExt* datasrc, void* userData)
 ```
 
@@ -206,7 +206,7 @@ OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer *player, OH_AVDataSourceExt* 
 
 ### OH_AVPlayer_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Prepare(OH_AVPlayer *player)
 ```
 
@@ -232,7 +232,7 @@ OH_AVErrCode OH_AVPlayer_Prepare(OH_AVPlayer *player)
 
 ### OH_AVPlayer_Play()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Play(OH_AVPlayer *player)
 ```
 
@@ -258,7 +258,7 @@ OH_AVErrCode OH_AVPlayer_Play(OH_AVPlayer *player)
 
 ### OH_AVPlayer_Pause()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Pause(OH_AVPlayer *player)
 ```
 
@@ -284,7 +284,7 @@ OH_AVErrCode OH_AVPlayer_Pause(OH_AVPlayer *player)
 
 ### OH_AVPlayer_Stop()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Stop(OH_AVPlayer *player)
 ```
 
@@ -310,7 +310,7 @@ OH_AVErrCode OH_AVPlayer_Stop(OH_AVPlayer *player)
 
 ### OH_AVPlayer_Reset()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Reset(OH_AVPlayer *player)
 ```
 
@@ -336,7 +336,7 @@ OH_AVErrCode OH_AVPlayer_Reset(OH_AVPlayer *player)
 
 ### OH_AVPlayer_Release()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)
 ```
 
@@ -362,7 +362,7 @@ OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)
 
 ### OH_AVPlayer_ReleaseSync()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_ReleaseSync(OH_AVPlayer *player)
 ```
 
@@ -388,7 +388,7 @@ OH_AVErrCode OH_AVPlayer_ReleaseSync(OH_AVPlayer *player)
 
 ### OH_AVPlayer_SetVolume()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float rightVolume)
 ```
 
@@ -416,7 +416,7 @@ OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float 
 
 ### OH_AVPlayer_SetLoudnessGain()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain)
 ```
 
@@ -443,7 +443,7 @@ OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain
 
 ### OH_AVPlayer_Seek()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Seek(OH_AVPlayer *player, int32_t mSeconds, AVPlayerSeekMode mode)
 ```
 
@@ -471,7 +471,7 @@ OH_AVErrCode OH_AVPlayer_Seek(OH_AVPlayer *player, int32_t mSeconds, AVPlayerSee
 
 ### OH_AVPlayer_GetCurrentTime()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTime)
 ```
 
@@ -498,7 +498,7 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTim
 
 ### OH_AVPlayer_GetVideoWidth()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetVideoWidth(OH_AVPlayer *player, int32_t *videoWidth)
 ```
 
@@ -525,7 +525,7 @@ OH_AVErrCode OH_AVPlayer_GetVideoWidth(OH_AVPlayer *player, int32_t *videoWidth)
 
 ### OH_AVPlayer_GetVideoHeight()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetVideoHeight(OH_AVPlayer *player, int32_t *videoHeight)
 ```
 
@@ -552,7 +552,7 @@ OH_AVErrCode OH_AVPlayer_GetVideoHeight(OH_AVPlayer *player, int32_t *videoHeigh
 
 ### OH_AVPlayer_SetPlaybackSpeed()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed speed)
 ```
 
@@ -579,7 +579,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed s
 
 ### OH_AVPlayer_SetPlaybackRate()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 ```
 
@@ -606,7 +606,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 
 ### OH_AVPlayer_GetPlaybackSpeed()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed *speed)
 ```
 
@@ -633,7 +633,7 @@ OH_AVErrCode OH_AVPlayer_GetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed *
 
 ### OH_AVPlayer_SetAudioRendererInfo()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetAudioRendererInfo(OH_AVPlayer *player, OH_AudioStream_Usage streamUsage)
 ```
 
@@ -660,7 +660,7 @@ OH_AVErrCode OH_AVPlayer_SetAudioRendererInfo(OH_AVPlayer *player, OH_AudioStrea
 
 ### OH_AVPlayer_SetVolumeMode()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_VolumeMode volumeMode)
 ```
 
@@ -687,7 +687,7 @@ OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_Volum
 
 ### OH_AVPlayer_SetAudioInterruptMode()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetAudioInterruptMode(OH_AVPlayer *player, OH_AudioInterrupt_Mode interruptMode)
 ```
 
@@ -714,7 +714,7 @@ OH_AVErrCode OH_AVPlayer_SetAudioInterruptMode(OH_AVPlayer *player, OH_AudioInte
 
 ### OH_AVPlayer_SetAudioEffectMode()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetAudioEffectMode(OH_AVPlayer *player, OH_AudioStream_AudioEffectMode effectMode)
 ```
 
@@ -741,7 +741,7 @@ OH_AVErrCode OH_AVPlayer_SetAudioEffectMode(OH_AVPlayer *player, OH_AudioStream_
 
 ### OH_AVPlayer_SelectBitRate()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)
 ```
 
@@ -768,7 +768,7 @@ OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)
 
 ### OH_AVPlayer_SetVideoSurface()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetVideoSurface(OH_AVPlayer *player, OHNativeWindow *window)
 ```
 
@@ -795,7 +795,7 @@ OH_AVErrCode OH_AVPlayer_SetVideoSurface(OH_AVPlayer *player, OHNativeWindow *wi
 
 ### OH_AVPlayer_GetDuration()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetDuration(OH_AVPlayer *player, int32_t *duration)
 ```
 
@@ -822,7 +822,7 @@ OH_AVErrCode OH_AVPlayer_GetDuration(OH_AVPlayer *player, int32_t *duration)
 
 ### OH_AVPlayer_GetState()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetState(OH_AVPlayer *player, AVPlayerState *state)
 ```
 
@@ -849,7 +849,7 @@ OH_AVErrCode OH_AVPlayer_GetState(OH_AVPlayer *player, AVPlayerState *state)
 
 ### OH_AVPlayer_IsPlaying()
 
-```
+```c
 bool OH_AVPlayer_IsPlaying(OH_AVPlayer *player)
 ```
 
@@ -875,7 +875,7 @@ bool OH_AVPlayer_IsPlaying(OH_AVPlayer *player)
 
 ### OH_AVPlayer_IsLooping()
 
-```
+```c
 bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)
 ```
 
@@ -901,7 +901,7 @@ bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)
 
 ### OH_AVPlayer_SetLooping()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)
 ```
 
@@ -918,7 +918,7 @@ OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| bool loop | 循环播放开关。 |
+| bool loop | 循环播放开关。true表示开启循环播放，false表示关闭循环播放。  |
 
 **返回：**
 
@@ -928,17 +928,21 @@ OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)
 
 ### OH_AVPlayer_SetPlayerCallback()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)
 ```
 
 **描述**
 
-设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。
+设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API version 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
+
+**废弃版本：** 12
+
+**替代接口：** [OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)
 
 **参数：**
 
@@ -955,7 +959,7 @@ OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback
 
 ### OH_AVPlayer_SelectTrack()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 ```
 
@@ -982,7 +986,7 @@ OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 
 ### OH_AVPlayer_DeselectTrack()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)
 ```
 
@@ -1009,7 +1013,7 @@ OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)
 
 ### OH_AVPlayer_GetCurrentTrack()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType, int32_t *index)
 ```
 
@@ -1037,7 +1041,7 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType,
 
 ### OH_AVPlayer_SetMediaKeySystemInfoCallback()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetMediaKeySystemInfoCallback(OH_AVPlayer *player, Player_MediaKeySystemInfoCallback callback)
 ```
 
@@ -1064,7 +1068,7 @@ OH_AVErrCode OH_AVPlayer_SetMediaKeySystemInfoCallback(OH_AVPlayer *player, Play
 
 ### OH_AVPlayer_GetMediaKeySystemInfo()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetMediaKeySystemInfo(OH_AVPlayer *player, DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 
@@ -1091,7 +1095,7 @@ OH_AVErrCode OH_AVPlayer_GetMediaKeySystemInfo(OH_AVPlayer *player, DRM_MediaKey
 
 ### OH_AVPlayer_SetDecryptionConfig()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySession *mediaKeySession, bool secureVideoPath)
 ```
 
@@ -1109,7 +1113,7 @@ OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySessio
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | [MediaKeySession](capi-avplayer-mediakeysession.md) *mediaKeySession | 具有解密功能的媒体密钥会话实例。 |
-| bool secureVideoPath | 是否需要安全解码器。 |
+| bool secureVideoPath | 是否需要安全解码器。true表示需要安全解码器，false表示不需要安全解码器。 |
 
 **返回：**
 
@@ -1119,7 +1123,7 @@ OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySessio
 
 ### OH_AVPlayer_SetOnInfoCallback()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer *player, OH_AVPlayerOnInfoCallback callback, void *userData)
 ```
 
@@ -1147,7 +1151,7 @@ OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer *player, OH_AVPlayerOnInf
 
 ### OH_AVPlayer_SetOnErrorCallback()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnErrorCallback callback, void *userData)
 ```
 
@@ -1175,7 +1179,7 @@ OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnEr
 
 ### OH_AVPlayer_GetMediaDescription()
 
-```
+```c
 OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)
 ```
 
@@ -1201,7 +1205,7 @@ OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)
 
 ### OH_AVPlayer_GetTrackDescription()
 
-```
+```c
 OH_AVFormat *OH_AVPlayer_GetTrackDescription(OH_AVPlayer *player, uint32_t index)
 ```
 

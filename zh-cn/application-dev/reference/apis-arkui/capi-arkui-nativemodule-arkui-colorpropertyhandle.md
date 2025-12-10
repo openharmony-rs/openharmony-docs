@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_ColorProperty* ArkUI_ColorPropertyHandle
+```
+
 ## 概述
 
 定义颜色属性指针。

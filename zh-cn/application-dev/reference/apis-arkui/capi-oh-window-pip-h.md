@@ -68,12 +68,13 @@
 | [int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)](#oh_pictureinpicture_unregisterallresizelisteners) | - | 关闭所有画中画窗口尺寸变化事件的监听。 |
 | [int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY,uint32_t width, uint32_t height)](#oh_pictureinpicture_setpipinitialsurfacerect) | - | 设置画中画拉起动效开始时的位置和大小，可用于实现一镜到底效果。 |
 | [int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)](#oh_pictureinpicture_unsetpipinitialsurfacerect) | - | 取消已设置的画中画拉起动效的起始位置和大小。 |
+| [int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)](#oh_pictureinpicture_setparentwindowid) | - | 设置画中画主窗口ID。 |
 
 ## 枚举类型说明
 
 ### PictureInPicture_PipTemplateType
 
-```
+```c
 enum PictureInPicture_PipTemplateType
 ```
 
@@ -92,7 +93,7 @@ enum PictureInPicture_PipTemplateType
 
 ### PictureInPicture_PipControlGroup
 
-```
+```c
 enum PictureInPicture_PipControlGroup
 ```
 
@@ -119,7 +120,7 @@ enum PictureInPicture_PipControlGroup
 
 ### PictureInPicture_PipControlType
 
-```
+```c
 enum PictureInPicture_PipControlType
 ```
 
@@ -143,7 +144,7 @@ enum PictureInPicture_PipControlType
 
 ### PictureInPicture_PipControlStatus
 
-```
+```c
 enum PictureInPicture_PipControlStatus
 ```
 
@@ -162,7 +163,7 @@ enum PictureInPicture_PipControlStatus
 
 ### PictureInPicture_PipState
 
-```
+```c
 enum PictureInPicture_PipState
 ```
 
@@ -186,7 +187,7 @@ enum PictureInPicture_PipState
 
 ### WebPipStartPipCallback()
 
-```
+```c
 typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId)
 ```
 
@@ -207,7 +208,7 @@ typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId,
 
 ### WebPipLifecycleCallback()
 
-```
+```c
 typedef void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode)
 ```
 
@@ -228,7 +229,7 @@ typedef void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_
 
 ### WebPipControlEventCallback()
 
-```
+```c
 typedef void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)
 ```
 
@@ -249,7 +250,7 @@ typedef void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPictu
 
 ### WebPipResizeCallback()
 
-```
+```c
 typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint32_t height, double scale)
 ```
 
@@ -271,7 +272,7 @@ typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint
 
 ### OH_PictureInPicture_CreatePipConfig()
 
-```
+```c
 int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfig)
 ```
 
@@ -296,7 +297,7 @@ int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfi
 
 ### OH_PictureInPicture_DestroyPipConfig()
 
-```
+```c
 int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConfig)
 ```
 
@@ -321,7 +322,7 @@ int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConf
 
 ### OH_PictureInPicture_SetPipMainWindowId()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipConfig, uint32_t mainWindowId)
 ```
 
@@ -347,7 +348,7 @@ int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipCon
 
 ### OH_PictureInPicture_SetPipTemplateType()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipTemplateType pipTemplateType)
 ```
 
@@ -373,7 +374,7 @@ int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipCon
 
 ### OH_PictureInPicture_SetPipRect()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uint32_t width, uint32_t height)
 ```
 
@@ -400,7 +401,7 @@ int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uin
 
 ### OH_PictureInPicture_SetPipControlGroup()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipControlGroup* controlGroup, uint8_t controlGroupLength)
 ```
 
@@ -427,7 +428,7 @@ int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipCon
 
 ### OH_PictureInPicture_SetPipNapiEnv()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipNapiEnv(PictureInPicture_PipConfig pipConfig, void* env)
 ```
 
@@ -453,7 +454,7 @@ int32_t OH_PictureInPicture_SetPipNapiEnv(PictureInPicture_PipConfig pipConfig, 
 
 ### OH_PictureInPicture_CreatePip()
 
-```
+```c
 int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint32_t* controllerId)
 ```
 
@@ -479,7 +480,7 @@ int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint
 
 ### OH_PictureInPicture_DeletePip()
 
-```
+```c
 int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)
 ```
 
@@ -504,7 +505,7 @@ int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)
 
 ### OH_PictureInPicture_StartPip()
 
-```
+```c
 int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)
 ```
 
@@ -529,7 +530,7 @@ int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)
 
 ### OH_PictureInPicture_StopPip()
 
-```
+```c
 int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)
 ```
 
@@ -554,7 +555,7 @@ int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)
 
 ### OH_PictureInPicture_UpdatePipContentSize()
 
-```
+```c
 int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t width, uint32_t height)
 ```
 
@@ -581,7 +582,7 @@ int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t
 
 ### OH_PictureInPicture_UpdatePipControlStatus()
 
-```
+```c
 int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)
 ```
 
@@ -608,7 +609,7 @@ int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, Pictur
 
 ### OH_PictureInPicture_SetPipControlEnabled()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureInPicture_PipControlType controlType, bool enabled)
 ```
 
@@ -635,7 +636,7 @@ int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureI
 
 ### OH_PictureInPicture_RegisterStartPipCallback()
 
-```
+```c
 int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)
 ```
 
@@ -661,7 +662,7 @@ int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebP
 
 ### OH_PictureInPicture_UnregisterStartPipCallback()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)
 ```
 
@@ -687,7 +688,7 @@ int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, We
 
 ### OH_PictureInPicture_UnregisterAllStartPipCallbacks()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId)
 ```
 
@@ -712,7 +713,7 @@ int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId
 
 ### OH_PictureInPicture_RegisterLifecycleListener()
 
-```
+```c
 int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)
 ```
 
@@ -738,7 +739,7 @@ int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, Web
 
 ### OH_PictureInPicture_UnregisterLifecycleListener()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)
 ```
 
@@ -764,7 +765,7 @@ int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, W
 
 ### OH_PictureInPicture_UnregisterAllLifecycleListeners()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerId)
 ```
 
@@ -789,7 +790,7 @@ int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerI
 
 ### OH_PictureInPicture_RegisterControlEventListener()
 
-```
+```c
 int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)
 ```
 
@@ -815,7 +816,7 @@ int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, 
 
 ### OH_PictureInPicture_UnregisterControlEventListener()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)
 ```
 
@@ -841,7 +842,7 @@ int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId
 
 ### OH_PictureInPicture_UnregisterAllControlEventListeners()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controllerId)
 ```
 
@@ -866,7 +867,7 @@ int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controll
 
 ### OH_PictureInPicture_RegisterResizeListener()
 
-```
+```c
 int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)
 ```
 
@@ -892,7 +893,7 @@ int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPip
 
 ### OH_PictureInPicture_UnregisterResizeListener()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)
 ```
 
@@ -918,7 +919,7 @@ int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebP
 
 ### OH_PictureInPicture_UnregisterAllResizeListeners()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)
 ```
 
@@ -942,7 +943,7 @@ int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)
 
 ### OH_PictureInPicture_SetPipInitialSurfaceRect()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY,uint32_t width, uint32_t height)
 ```
 
@@ -970,7 +971,7 @@ int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int3
 
 ### OH_PictureInPicture_UnsetPipInitialSurfaceRect()
 
-```
+```c
 int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)
 ```
 
@@ -991,3 +992,34 @@ int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。<br>返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+
+### OH_PictureInPicture_SetParentWindowId()
+
+```c
+int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)
+```
+
+**描述**
+
+设置画中画主窗口ID。
+
+在拉起画中画前，需调用[OH_PictureInPicture_SetPipMainWindowId()](#oh_pictureinpicture_setpipmainwindowid)设置拉起画中画的主窗口ID。
+
+当画中画的主窗口改变时（如浏览器多个页签在同一个窗口的场景下，在此窗口的A页签下拉起画中画后，将A页签拖出形成一个新的窗口时），需调用该接口设置画中画主窗口ID为新窗口ID，以保证画中画可还原至正确的主窗口（即拉起画中画的主窗口）。
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint32_t controllerId | 画中画控制器Id，为非负整数。 |
+| uint32_t windowId | 表示画中画父窗口Id，为非负整数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。<br>返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。<br>返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |

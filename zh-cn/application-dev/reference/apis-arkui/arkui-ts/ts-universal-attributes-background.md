@@ -20,7 +20,9 @@ background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions):
 
 >**说明：**
 >
-> 不支持[onAppear](./ts-universal-events-show-hide.md#onappear)和[onDisappear](./ts-universal-events-show-hide.md#ondisappear)等和节点挂载/卸载相关的事件。
+> - 不支持[onAppear](./ts-universal-events-show-hide.md#onappear)和[onDisappear](./ts-universal-events-show-hide.md#ondisappear)等和节点挂载/卸载相关的事件。
+>
+> - 从API version 20开始，该接口仅当content的入参类型为ResourceColor时支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -155,7 +157,7 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, repeat?: ImageRepeat): T
 
 | 参数名 | 类型                                            | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap<sup>12+</sup>](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | 是   | 图片地址，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg和gif类型的图片。 |
+| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap<sup>12+</sup>](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | 是   | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。|
 | repeat | [ImageRepeat](ts-appendix-enums.md#imagerepeat) | 否   | 设置背景图片的重复样式，默认不重复。当设置的背景图片为透明底色图片，且同时设置了backgroundColor时，二者叠加显示，背景颜色在最底部。 |
 
 **返回值：**
@@ -170,6 +172,10 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 
 设置组件的背景图片。与[backgroundImage](#backgroundimage)相比，增加了设置图片同步或异步加载方式的能力。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -180,7 +186,7 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 
 | 参数名 | 类型                                            | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | 是   | 图片地址，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg、gif和webp等类型的动图。 |
+| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | 是   | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
 | options | [BackgroundImageOptions](ts-universal-attributes-image-effect.md#backgroundimageoptions18) | 否   | 设置背景图选项。 |
 
 **返回值：**
@@ -205,7 +211,7 @@ backgroundImageSize(value: SizeOptions | ImageSize): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [SizeOptions](ts-types.md#sizeoptions)&nbsp;\|&nbsp;[ImageSize](ts-appendix-enums.md#imagesize) | 是   | 设置背景图像的高度和宽度。默认保持原图的比例不变。<br/>width和height取值范围： [0, +∞)<br/>**说明：** <br/>width和height均设置为小于或等于0的值时，按值为0显示。当width和height中只有一个值未设置或者设置为小于等于0的值时，另一个会根据图片原始宽高比进行调整。 |
+| value  | [SizeOptions](ts-types.md#sizeoptions)&nbsp;\|&nbsp;[ImageSize](ts-appendix-enums.md#imagesize) | 是   | 设置背景图像的高度和宽度。默认保持原图的比例不变。<br/>width和height取值范围： [0, +∞)<br/>ImageSize用于控制图片缩放显示模式，如保持比例、填充边界等。<br/>**说明：** <br/>width和height均设置为小于或等于0的值时，按值为0显示。当width和height中只有一个值未设置或者设置为小于等于0的值时，另一个会根据图片原始宽高比进行调整。 |
 
 **返回值：**
 
@@ -248,11 +254,11 @@ backgroundImagePosition(value: Position | Alignment): T
 | Thin                 | - | 轻薄材质模糊。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | Regular              | - | 普通厚度材质模糊。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Thick                | - | 厚材质模糊。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。    |
-| BACKGROUND_THIN<sup>10+</sup>       | - | 近距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BACKGROUND_REGULAR<sup>10+</sup>    | - | 中距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BACKGROUND_THICK<sup>10+</sup>      | - | 远距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BACKGROUND_ULTRA_THICK<sup>10+</sup> | - | 超远距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| NONE<sup>10+</sup> | - | 关闭模糊。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| BACKGROUND_THIN<sup>10+</sup>       | 3 | 近距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| BACKGROUND_REGULAR<sup>10+</sup>    | 4 | 中距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| BACKGROUND_THICK<sup>10+</sup>      | 5 | 远距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| BACKGROUND_ULTRA_THICK<sup>10+</sup> | 6 | 超远距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| NONE<sup>10+</sup> | 7 | 关闭模糊。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | COMPONENT_ULTRA_THIN<sup>11+</sup> | 8 | 组件超轻薄材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | COMPONENT_THIN<sup>11+</sup> | 9 | 组件轻薄材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | COMPONENT_REGULAR<sup>11+</sup> | 10 | 组件普通材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -455,7 +461,7 @@ backgroundEffect(options: BackgroundEffectOptions): T
 
 | 参数名  | 类型                                                  | 必填 | 说明                                       |
 | ------- | ----------------------------------------------------- | ---- | ------------------------------------------ |
-| options | [BackgroundEffectOptions](#backgroundeffectoptions11) | 是   | 设置组件背景属性包括：饱和度，亮度，颜色。 |
+| options | [BackgroundEffectOptions](#backgroundeffectoptions11) | 是   | 设置组件背景属性包括：背景模糊半径、亮度、饱和度和颜色等参数。 |
 
 **返回值：**
 
@@ -477,7 +483,7 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>): T
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | Optional\<[BackgroundEffectOptions](#backgroundeffectoptions11)> | 是   | 设置组件背景属性包括：饱和度，亮度，颜色。<br/>当options的值为undefined时，恢复为无效果的背景。 |
+| options | Optional\<[BackgroundEffectOptions](#backgroundeffectoptions11)> | 是   | 设置组件背景属性包括：背景模糊半径、亮度、饱和度和颜色等参数。<br/>当options的值为undefined时，恢复为无效果的背景。 |
 
 **返回值：**
 
@@ -503,7 +509,7 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | Optional\<[BackgroundEffectOptions](#backgroundeffectoptions11)> | 是   | 设置组件背景属性包括：饱和度，亮度，颜色。<br/>当options的值为undefined时，恢复为无效果的背景。 |
+| options | Optional\<[BackgroundEffectOptions](#backgroundeffectoptions11)> | 是   | 设置组件背景属性包括：背景模糊半径、亮度、饱和度和颜色等参数。<br/>当options的值为undefined时，恢复为无效果的背景。 |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
 **返回值：**
@@ -524,7 +530,7 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 | saturation   | number        |   否   |   是   |  饱和度，取值范围：[0, +∞)，默认为1。推荐取值范围：[0, 50]。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
 | brightness   | number        |   否   |   是   |  亮度，取值范围：[0, +∞)，默认为1。推荐取值范围：[0, 2]。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | color        | [ResourceColor](ts-types.md#resourcecolor)         |   否   |  是   |   颜色，默认透明色。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| adaptiveColor | [AdaptiveColor](ts-universal-attributes-foreground-blur-style.md#adaptivecolor10枚举说明) |   否  |  是  | 背景模糊效果使用的取色模式,默认为DEFAULT。使用AVERAGE时color必须带有透明度，取色模式才生效。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| adaptiveColor | [AdaptiveColor](ts-universal-attributes-foreground-blur-style.md#adaptivecolor枚举说明) |   否  |  是  | 背景模糊效果使用的取色模式，默认为DEFAULT。使用AVERAGE时color必须带有透明度，取色模式才生效。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | blurOptions  | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) |   否   |  是   |   灰阶模糊参数，默认为[0,0]。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | policy<sup>14+</sup>    | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | 否  |  是  | 模糊激活策略。<br/> 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE <br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor)  | 否   |  是  | 模糊不生效时使用的背景色。该参数需配合policy参数使用。当policy使模糊失效时，控件模糊效果会被移除，如果设置了inactiveColor会使用inactiveColor作为控件背景色。<br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -745,6 +751,7 @@ struct BackgroundBlurStyleDemo {
     }
     .height('100%')
     .width('100%')
+    // $r('app.media.bg')需要替换为开发者所需的图像资源文件
     .backgroundImage($r('app.media.bg'))
     .backgroundImageSize(ImageSize.Cover)
   }
@@ -809,6 +816,7 @@ struct BackgroundBrightnessDemo {
     }
     .width('100%')
     .height('100%')
+    // $r('app.media.image')需要替换为开发者所需的图像资源文件
     .backgroundImage($r('app.media.image'))
     .backgroundImageSize(ImageSize.Cover)
   }
@@ -841,14 +849,14 @@ struct BlurEffectsExample {
   build() {
     Column({ space: 10 }) {
       // 对字体进行模糊
-      Text('font blur').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      Text('font').fontSize(15).fontColor(0xCCCCCC).width('90%')
       Flex({ alignItems: ItemAlign.Center }) {
-        Text('original text').margin(10)
-        Text('blur text')
+        Text('original').margin(10)
+        Text('blur')
           .blur(5).margin(10)
-        Text('blur text')
+        Text('blur')
           .blur(10, undefined).margin(10) // 内容模糊半径为5，禁用系统自适应优化策略。
-        Text('blur text')
+        Text('blur')
           .blur(15).margin(10)
       }.width('90%').height(40)
       .backgroundColor(0xF9CF93)
@@ -861,6 +869,7 @@ struct BlurEffectsExample {
         .height(40)
         .fontSize(16)
         .backdropBlur(3)
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件
         .backgroundImage($r('app.media.image'))
         .backgroundImageSize({ width: 1200, height: 160 })
     }.width('100%').margin({ top: 5 })
@@ -872,7 +881,7 @@ struct BlurEffectsExample {
 
 ### 示例6（设置文字异形模糊效果）
 
-该示例通过blendMode和backgroundEffect实现文字异形模糊效果。<br/>
+该示例通过[blendMode](./ts-universal-attributes-image-effect.md#blendmode11)和backgroundEffect实现文字异形模糊效果。<br/>
 如果出现漏线问题，开发者应首先确保两个blendMode所在组件大小严格相同。如果确认相同，可能是组件边界落在浮点数坐标上导致，可尝试设置[pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround)通用属性，使产生的白线、暗线两侧的组件边界对齐到整数像素坐标上。
 
 ```ts
@@ -891,6 +900,7 @@ struct Index {
   @State briVal: number = 1.5;
   build() {
     Stack() {
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
       Column() {
         Column({ space: 0 }) {
@@ -980,6 +990,7 @@ struct BackGroundBlur {
     Column({ space: 5 }) {
       // backgroundBlurStyle通过枚举值的方式设置模糊参数
       Stack() {
+        // $r('app.media.test')需要替换为开发者所需的图像资源文件
         Image($r('app.media.test'))
           .width(this.imageSize)
           .height(this.imageSize)
@@ -991,6 +1002,7 @@ struct BackGroundBlur {
 
       // backgroundEffect 可以自定义设置 模糊半径，亮度，饱和度等参数
       Stack() {
+        // $r('app.media.test')需要替换为开发者所需的图像资源文件
         Image($r('app.media.test'))
           .width(this.imageSize)
           .height(this.imageSize)
@@ -1002,6 +1014,7 @@ struct BackGroundBlur {
 
       // backdropBlur 只能设置模糊半径和灰阶参数
       Stack() {
+        // $r('app.media.test')需要替换为开发者所需的图像资源文件
         Image($r('app.media.test'))
           .width(this.imageSize)
           .height(this.imageSize)

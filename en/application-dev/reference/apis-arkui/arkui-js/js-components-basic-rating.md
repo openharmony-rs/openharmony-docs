@@ -1,4 +1,10 @@
 # rating
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -78,7 +84,7 @@ The [universal methods](js-components-common-methods.md) are supported.
   justify-content: center;
   align-items: center;
 }
-rating {
+.rating {
   width: 200px;
 }
 ```

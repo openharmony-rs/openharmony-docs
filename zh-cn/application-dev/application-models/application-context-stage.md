@@ -39,79 +39,91 @@
 
 [ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)在基类Context的基础上提供了监听应用内应用组件的生命周期的变化、监听系统内存变化、监听应用内系统环境变化、设置应用语言、设置应用颜色模式、清除应用自身数据的同时撤销应用向用户申请的权限等能力，在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)、[ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)、[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)中均可以获取。
 
-  ```ts
-  import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+<!-- @[application_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryexampleability/EntryAbility.ets) -->
 
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      let applicationContext = this.context.getApplicationContext();
-      //...
-    }
+``` TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let applicationContext = this.context.getApplicationContext();
   }
-  ```
+}
+```
+
 
 ### 获取AbilityStageContext（模块级别的上下文）
 
 [AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)和基类Context相比，额外提供[HapModuleInfo](../reference/apis-ability-kit/js-apis-bundleManager-hapModuleInfo.md)、[Configuration](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)等信息。
 
-  ```ts
-  import { AbilityStage } from '@kit.AbilityKit';
+<!-- @[abilityStageContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/abilitystagecontextability/MyAbilityStage.ets) -->
 
-  export default class MyAbilityStage extends AbilityStage {
-    onCreate(): void {
-      let abilityStageContext = this.context;
-      //...
-    }
+``` TypeScript
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    let abilityStageContext = this.context;
+    //...
   }
-  ```
+}
+```
 
 ### 获取本应用中其他Module的Context（模块级别的上下文）
 
 调用[createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12)方法，获取本应用中其他Module的Context。获取到其他Module的Context之后，即可获取到相应Module的资源信息。
 
-  ```ts
-  import { common, application } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[createModuleContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/CreateModuleContext.ets) -->
 
-  let storageEventCall = new LocalStorage();
+``` TypeScript
+import { common, application } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  @Entry(storageEventCall)
-  @Component
-  struct Page_Context {
-    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+const TAG = '[CreateModuleContext]';
+const DOMAIN = 0xF811;
 
-    build() {
-      Column() {
-        //...
-        List({ initialIndex: 0 }) {
-          ListItem() {
-            Row() {
-              //...
-            }
-            .onClick(() => {
-              let moduleName2: string = 'entry';
-              application.createModuleContext(this.context, moduleName2)
-                .then((data: common.Context) => {
-                  console.info(`CreateModuleContext success, data: ${JSON.stringify(data)}`);
-                  if (data !== null) {
-                    this.getUIContext().getPromptAction().showToast({
-                      message: ('成功获取Context')
-                    });
-                  }
-                })
-                .catch((err: BusinessError) => {
-                  console.error(`CreateModuleContext failed, err code:${err.code}, err msg: ${err.message}`);
-                });
-            })
+let storageEventCall = new LocalStorage();
+
+@Entry(storageEventCall)
+@Component
+struct CreateModuleContext {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+    // ···
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
           }
-          //...
+          .onClick(() => {
+            let moduleName2: string = 'entry';
+            application.createModuleContext(this.context, moduleName2)
+              .then((data: common.Context) => {
+                hilog.info(DOMAIN, TAG, `CreateModuleContext success, data: ${JSON.stringify(data)}`);
+                if (data !== null) {
+                  this.getUIContext().getPromptAction().showToast({
+                    // $r('app.string.success_message')需要替换为开发者所需的资源文件
+                    message: $r('app.string.success_message')
+                  });
+                }
+              })
+              .catch((err: BusinessError) => {
+                hilog.error(DOMAIN, TAG, `CreateModuleContext failed, err code:${err.code}, err msg: ${err.message}`);
+              });
+          })
         }
-        //...
+        // ···
       }
-      //...
+    // ···
     }
+    // ···
   }
-  ```
+}
+```
+
 
 ### 获取UIAbilityContext（UIAbility组件的上下文）
 
@@ -120,26 +132,29 @@
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
 
-  ```ts
+  <!-- @[ui_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/uiAbilitycontextability/UIAbilityContextAbility.ets) -->
+
+  ``` TypeScript
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       // 获取UIAbility实例的上下文
       let context = this.context;
-      // ...
     }
   }
   ```
 
 - 在页面中获取UIAbility实例的上下文信息。
 
-  ```ts
+  <!-- @[ui_ability_eventHub_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/EventHub.ets) -->
+
+  ``` TypeScript
   import { common, Want } from '@kit.AbilityKit'; // 导入依赖资源context模块
 
   @Entry
   @Component
-  struct Page_EventHub {
+  struct EventHub {
     // 定义context变量
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
@@ -152,20 +167,23 @@
 
     // 页面展示
     build() {
-      // ...
+      // ···
     }
   }
   ```
 
+
   也可以在导入依赖资源context模块后，在具体使用[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)前进行变量定义。
 
 
-  ```ts
+  <!-- @[ui_ability_basic_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsBasicUsage.ets) -->
+
+  ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
 
   @Entry
   @Component
-  struct Page_UIAbilityComponentsBasicUsage {
+  struct UIAbilityComponentsBasicUsage {
     startAbilityTest(): void {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       let want: Want = {
@@ -176,24 +194,30 @@
 
     // 页面展示
     build() {
-      // ...
+      // ···
     }
   }
   ```
 
+
 - 当业务完成后，开发者如果想要终止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
-  ```ts
+  <!-- @[ui_ability_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsUsage.ets) -->
+
+  ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
+  const TAG = '[UIAbilityComponentsUsage]';
+  const DOMAIN = 0xF811;
   @Entry
   @Component
-  struct Page_UIAbilityComponentsBasicUsage {
+  struct UIAbilityComponentsUsage {
     // 页面展示
     build() {
       Column() {
-        //...
+      // ···
         Button('FuncAbilityB')
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -201,17 +225,17 @@
               context.terminateSelf((err: BusinessError) => {
                 if (err.code) {
                   // 处理业务逻辑错误
-                  console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
+                  hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
                   return;
                 }
                 // 执行正常业务
-                console.info(`terminateSelf succeed.`);
+                hilog.info(DOMAIN, TAG, `terminateSelf succeed.`);
               });
             } catch (err) {
               // 捕获同步的参数错误
               let code = (err as BusinessError).code;
               let message = (err as BusinessError).message;
-              console.error(`terminateSelf failed, code is ${code}, message is ${message}.`);
+              hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${code}, message is ${message}.`);
             }
           })
       }
@@ -219,18 +243,20 @@
   }
   ```
 
+
 ### 获取ExtensionAbilityContext (ExtensionAbility组件的上下文)
 
 获取特定场景[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)。以FormExtensionContext为例，表示卡片服务的上下文环境，继承自ExtensionContext，提供卡片服务相关的接口能力。
 
-```ts
+<!-- @[extension_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/extensionability/MyFormExtensionAbility.ets) -->
+
+``` TypeScript
 import { FormExtensionAbility, formBindingData } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
     let formExtensionContext = this.context;
-    // ...
     let dataObj1: Record<string, string> = {
       'temperature': '11c',
       'time': '11:00'
@@ -240,6 +266,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 }
 ```
+
 
 
 ## Context的典型使用场景
@@ -261,19 +288,21 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 如果需要跨包获取资源对象，可以参考[资源访问](../quick-start/resource-categories-and-access.md#资源访问)。
 
-  ```ts
-  import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+<!-- @[scene_entry_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrysceneability/EntryAbility.ets) -->
 
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      // 获取ResourceManager（资源管理）
-      let resourceManager = this.context.getApplicationContext().resourceManager;
-      // 获取applicationInfo（当前应用信息）
-      let applicationInfo = this.context.getApplicationContext().applicationInfo;
-      //...
-    }
+``` TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 获取ResourceManager（资源管理）
+    let resourceManager = this.context.getApplicationContext().resourceManager;
+    // 获取applicationInfo（当前应用信息）
+    let applicationInfo = this.context.getApplicationContext().applicationInfo;
   }
-  ```
+}
+```
+
 
 ### 获取应用文件路径
 
@@ -308,55 +337,57 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 - **获取应用缓存目录**
 
-  ```ts
+  <!-- @[app_context_cache_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextCache.ets) -->
+  
+  ``` TypeScript
   import { common } from '@kit.AbilityKit';
-
-  const TAG: string = '[Page_Context]';
-  const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   @Entry
   @Component
-  struct Index {
+  struct ApplicationContextCache {
     @State message: string = 'Hello World';
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+  
     build() {
       Row() {
         Column() {
           Text(this.message)
-          // ...
+          // ···
           Button() {
             Text('create file')
-              // ...
+          // ···
               .onClick(() => {
                 let applicationContext = this.context.getApplicationContext();
                 // 获取应用缓存路径
                 let cacheDir = applicationContext.cacheDir;
               })
           }
-          // ...
+          // ···
         }
-        // ...
+      // ···
       }
-      // ...
+      // ···
     }
   }
   ```
 
+
 - **获取应用文件目录**
 
-  ```ts
+  <!-- @[app_context_file_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextFile.ets) -->
+
+  ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { buffer } from '@kit.ArkTS';
   import { fileIo, ReadOptions } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  const TAG: string = '[Page_Context]';
+  const TAG: string = '[ApplicationContextFile]';
   const DOMAIN_NUMBER: number = 0xFF00;
 
   @Entry
   @Component
-  struct Index {
+  struct ApplicationContextFile {
     @State message: string = 'Hello World';
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
@@ -364,10 +395,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       Row() {
         Column() {
           Text(this.message)
-          // ...
+          // ···
           Button() {
             Text('create file')
-              // ...
+        		// ···
               .onClick(() => {
                 let applicationContext = this.context.getApplicationContext();
                 // 获取应用文件路径
@@ -376,7 +407,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
                 // 文件不存在时创建并打开文件，文件存在时打开文件
                 let file = fileIo.openSync(filesDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
                 // 写入一段内容至文件
-                let writeLen = fileIo.writeSync(file.fd, "Try to write str.");
+                let writeLen = fileIo.writeSync(file.fd, 'Try to write str.');
                 hilog.info(DOMAIN_NUMBER, TAG, `The length of str is: ${writeLen}`);
                 // 创建一个大小为1024字节的ArrayBuffer对象，用于存储从文件中读取的数据
                 let arrayBuffer = new ArrayBuffer(1024);
@@ -394,14 +425,15 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
                 fileIo.closeSync(file);
               })
           }
-          // ...
+          // ···
         }
-        // ...
+      // ···
       }
-      // ...
+      // ···
     }
   }
   ```
+
 
 ### 获取和修改加密分区
 
@@ -417,8 +449,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 要实现获取和设置当前加密分区，可以通过读写[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)的`area`属性来实现。
 
-```ts
-// EntryAbility.ets
+<!-- @[ability_area_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryareaability/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility, contextConstant, AbilityConstant, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
@@ -445,23 +478,26 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-```ts
-// Index.ets
+
+<!-- @[scene_area_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/AreaContext.ets) -->
+
+``` TypeScript
+// AreaContext.ets
 import { contextConstant, common } from '@kit.AbilityKit';
 
 @Entry
 @Component
-struct Page_Context {
+struct AreaContext {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   build() {
     Column() {
-      //...
+    // ···
       List({ initialIndex: 0 }) {
-        //...
+        // ···
         ListItem() {
           Row() {
-            //...
+            // ···
           }
           .onClick(() => {
             // 存储普通信息前，切换到EL1设备级加密
@@ -474,10 +510,10 @@ struct Page_Context {
             // 存储普通信息
           })
         }
-        //...
+        // ···
         ListItem() {
           Row() {
-            //...
+            // ···
           }
           .onClick(() => {
             // 存储敏感信息前，切换到EL2用户级加密
@@ -490,14 +526,15 @@ struct Page_Context {
             // 存储敏感信息
           })
         }
-        //...
+        // ···
       }
-      //...
+    // ···
     }
-    //...
+    // ···
   }
 }
 ```
+
 
 ### 监听应用前后台变化
 
@@ -505,18 +542,24 @@ struct Page_Context {
 
 以[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
 
-```ts
+<!-- @[lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets) -->
+
+``` TypeScript
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+const TAG = '[LifecycleAbility]';
+const DOMAIN = 0xF811;
 
 export default class LifecycleAbility extends UIAbility {
   onCreate() {
     let applicationStateChangeCallback: ApplicationStateChangeCallback = {
       onApplicationForeground() {
-        console.info('applicationStateChangeCallback onApplicationForeground');
+        hilog.info(DOMAIN, TAG, 'applicationStateChangeCallback onApplicationForeground');
       },
       onApplicationBackground() {
-        console.info('applicationStateChangeCallback onApplicationBackground');
+        hilog.info(DOMAIN, TAG, 'applicationStateChangeCallback onApplicationBackground');
       }
     }
 
@@ -526,9 +569,9 @@ export default class LifecycleAbility extends UIAbility {
       // 2.通过applicationContext注册应用前后台状态监听
       applicationContext.on('applicationStateChange', applicationStateChangeCallback);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      hilog.error(DOMAIN, TAG, `error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
-    console.info('Register applicationStateChangeCallback');
+    hilog.info(DOMAIN, TAG, 'Register applicationStateChangeCallback');
   }
 }
 ```
@@ -539,18 +582,20 @@ export default class LifecycleAbility extends UIAbility {
 
 每次注册回调函数时，都会返回一个监听生命周期的ID，此ID会自增1。以[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
 
-```ts
+<!-- @[entry_lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrylifecycleability/EntryLifecycleAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, AbilityLifecycleCallback, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import  { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[LifecycleAbility]';
+const TAG: string = '[EntryLifecycleAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-export default class LifecycleAbility extends UIAbility {
+export default class EntryLifecycleAbility extends UIAbility {
   // 定义生命周期ID
-  lifecycleId: number = -1;
+  private lifecycleId: number = -1;
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // 定义生命周期回调对象
@@ -609,7 +654,6 @@ export default class LifecycleAbility extends UIAbility {
 
     hilog.info(DOMAIN_NUMBER, TAG, `register callback number: ${this.lifecycleId}`);
   }
-  //...
   onDestroy(): void {
     // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();

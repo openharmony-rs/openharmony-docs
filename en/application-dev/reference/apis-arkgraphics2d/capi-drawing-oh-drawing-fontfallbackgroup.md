@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} OH_Drawing_FontFallbackGroup
+```
+
 ## Overview
 
 This struct describes the information about a font fallback group.

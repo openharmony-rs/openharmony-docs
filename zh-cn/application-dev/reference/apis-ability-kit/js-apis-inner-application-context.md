@@ -70,6 +70,8 @@ createModuleContext(moduleName: string): Context
 > - 仅支持获取本应用中其他Module的Context和应用内HSP的Context，不支持获取其他应用的Context。
 >
 > - 从 API Version 12 开始废弃，建议使用[application.createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12)替代，否则可能导致资源获取异常。
+>
+> - 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 

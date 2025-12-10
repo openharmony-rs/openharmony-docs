@@ -83,6 +83,8 @@ getPlayingState(deviceId: string): PlayingState
 
 获取本端和对端设备间的媒体音频播放状态。
 
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取媒体音频播放状态。
+
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -244,6 +246,8 @@ try {
 | CODEC_BIT_RATE_640000  | 6 | 640kbps |
 | CODEC_BIT_RATE_960000  | 7 | 960kbps |
 | CODEC_BIT_RATE_ABR  | 8 | 自适应码率（根据网络条件自动调整）。|
+| CODEC_BIT_RATE_1500000<sup>21+</sup>  | 9 | 1500kbps |
+| CODEC_BIT_RATE_2300000<sup>21+</sup>  | 10 | 2300kbps |
 
 ## CodecFrameLength<sup>19+</sup>
 

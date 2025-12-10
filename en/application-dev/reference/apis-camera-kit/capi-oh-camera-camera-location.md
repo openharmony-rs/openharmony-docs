@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_Location {...} Camera_Location
+```
+
 ## Overview
 
 The struct describes the location where a photo is taken.

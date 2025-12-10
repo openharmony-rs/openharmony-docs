@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Curves** module provides APIs for interpolation calculation to create step, cubic Bezier, and spring curves.
 
@@ -121,9 +121,9 @@ Creates a cubic Bezier curve, with x-coordinates automatically normalized betwee
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| x1     | number | Yes  | X coordinate of the first point on the Bezier curve.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handed as **0**. A value greater than 1 is handed as **1**.|
+| x1     | number | Yes  | X coordinate of the first point on the Bezier curve.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**.|
 | y1     | number | Yes  | Y coordinate of the first point on the Bezier curve.<br>Value range: (-∞, +∞)         |
-| x2     | number | Yes  | X coordinate of the second point on the Bezier curve.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handed as **0**. A value greater than 1 is handed as **1**.|
+| x2     | number | Yes  | X coordinate of the second point on the Bezier curve.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**.|
 | y2     | number | Yes  | Y coordinate of the second point on the Bezier curve.<br>Value range: (-∞, +∞)         |
 
 **Return value**
@@ -265,7 +265,7 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 
 | Type                          | Description            |
 | ---------------------------------- | ---------------- |
-| [ICurve](#icurve9) | Curve.<br>**NOTE**<br>The spring animation curve is physics-based. Its duration depends on the **interpolatingSpring** parameters, rather than the **duration** parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). The time cannot be normalized. Therefore, the interpolation cannot be obtained using the [interpolate](#interpolate9) function of the curve.|
+| [ICurve](#icurve9) | Curve.<br>Note: The spring animation curve is physics-based. Its duration depends on the **interpolatingSpring** parameters, rather than the **duration** parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). The time cannot be normalized. Therefore, the interpolation cannot be obtained using the [interpolate](#interpolate9) function of the curve.|
 
 **Example**
 
@@ -288,7 +288,7 @@ Creates a custom curve.
 
 | Name     | Type                        | Mandatory| Description                                                        |
 | ----------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| interpolate | (fraction: number) => number | Yes  | Custom interpolation callback.<br>**fraction**: input x value for interpolation when the animation starts. Value range: [0, 1]<br>The return value is the y value of the curve. Value range: [0, 1]<br>**NOTE**<br>If **fraction** is **0**, the return value **0** corresponds to the animation start point; any other return value means that the animation jumps at the start point.<br>If **fraction** is **1**, the return value **1** corresponds to the animation end point; any other return value means that the end value of the animation is not the value of the state variable, which will result in an effect of transition from that end value to the value of the state variable.|
+| interpolate | (fraction: number) => number | Yes  | Custom interpolation callback.<br>**fraction**: input x value for interpolation when the animation starts. Value range: [0, 1].<br>The return value is the y value of the curve. Value range: [0, 1].<br>**NOTE**<br>If **fraction** is **0**, the return value **0** corresponds to the animation start point; any other return value means that the animation jumps at the start point.<br>If **fraction** is **1**, the return value **1** corresponds to the animation end point; any other return value means that the end value of the animation is not the value of the state variable, which will result in an effect of transition from that end value to the value of the state variable.|
 
 **Return value**
 

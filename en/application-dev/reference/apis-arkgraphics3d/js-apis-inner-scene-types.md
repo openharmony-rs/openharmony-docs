@@ -14,7 +14,7 @@ The module provides common data types in 3D graphics.
 
 ## Modules to Import
 ```ts
-import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, PrimitiveTopology, CustomGeometry, CubeGeometry, PlaneGeometry, SphereGeometry, Position3, Rotation3, Scale3 } from '@kit.ArkGraphics3D';
+import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, PrimitiveTopology, CustomGeometry, CubeGeometry, PlaneGeometry, SphereGeometry, CylinderGeometry, Position3, Rotation3, Scale3 } from '@kit.ArkGraphics3D';
 ```
 
 ## Vec2
@@ -112,6 +112,7 @@ Enumerates the geometry types.
 | CUBE | 1 | Cube.|
 | PLANE | 2 | Plane.|
 | SPHERE | 3 | Sphere.|
+| CYLINDER<sup>23+</sup> | 4 | Cylinder.|
 
 ## GeometryDefinition<sup>18+</sup>
 An abstract class used to define the properties of specific geometry types.
@@ -174,6 +175,26 @@ A sphere geometry type that inherits from [GeometryDefinition](#geometrydefiniti
 | radius | number | No| No| Radius of the sphere, measured in the world coordinate system's units (for example, cm, m, or km). The value must be greater than 0.|
 | segmentCount | number | No| No| Number of segments dividing the sphere along latitude and longitude. The value must be greater than 0.|
 
+## CylinderGeometry<sup>23+</sup>
+
+A cylinder geometry type that inherits from [GeometryDefinition](#geometrydefinition18).
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name| Type| Read Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| radius | number | No| No| Base radius of the cylinder. The value must be greater than 0.|
+| height | number | No| No| Height of the cylinder. The value must be greater than 0.|
+| segmentCount | number | No| No| Number of segments around the circumference of the cylinder. The value must be an integer greater than or equal to 3. If a floating-point number is provided, it is automatically rounded down. This value directly affects the smoothness of the curved surface. A higher number results in more polygons and a smoother appearance, whereas a lower number results in visible faceting. Note that a very high value can increase the time required to create the geometry and may cause thread blocking.|
+
+> **NOTE**
+>
+> You must ensure that all three parameters are set correctly. Invalid values may prevent cylinder creation or cause undefined behavior.
+
+For example, with radius=0.5, height=1, and segmentCount=20, the mesh and UV layout of the generated cylinder are shown below.
+
+![cylinder](figures/cylinder.png)
+
 ## Position3
 type Position3 = Vec3
 
@@ -199,7 +220,7 @@ Rotation of an object in 3D space. The value is of the [Vec3](#vec3) type.
 ## Scale3
 type Scale3 = Vec3
 
-Scaling of an object in 3D space. The type is [Vec3](#vec3).
+Scaling of an object in 3D space. The value is of the [Vec3](#vec3) type.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 

@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides APIs to create and display toasts, dialog boxes, action menus, and custom popups.
 
@@ -34,7 +34,7 @@ Creates and displays a toast.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -98,7 +98,7 @@ Displays a toast. This API uses a promise to return the toast ID for use with **
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -169,7 +169,7 @@ Closes the specified toast.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Popup Window Error Codes](errorcode-promptAction.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -200,7 +200,7 @@ Creates and displays a dialog box. This API uses an asynchronous callback to ret
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -280,7 +280,7 @@ Creates and displays a dialog box. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -348,7 +348,7 @@ Creates and displays an action menu. This API uses an asynchronous callback to r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                          |
 | -------- | ---------------------------------- |
@@ -425,7 +425,7 @@ Creates and displays an action menu. This API uses a promise to return the resul
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -497,7 +497,7 @@ Opens a custom dialog box corresponding to **dialogContent**. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -632,7 +632,7 @@ Note that using **[isModal](js-apis-promptAction.md#basedialogoptions11) = true*
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -730,7 +730,7 @@ Closes a custom dialog box corresponding to **dialogContent**. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -828,7 +828,7 @@ Updates a custom dialog box corresponding to **dialogContent**. This API uses a 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -926,7 +926,7 @@ Creates and displays a custom dialog box. This API uses a promise to return the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -963,7 +963,7 @@ The dialog box ID can be included in the dialog box content for related operatio
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1066,7 +1066,7 @@ Closes the specified custom dialog box.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1323,7 +1323,7 @@ Creates and displays a popup with the specified content. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1449,7 +1449,7 @@ Updates the style of the popup corresponding to the provided **content**. This A
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1485,7 +1485,7 @@ Closes the popup corresponding to the provided **content**. This API uses a prom
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1533,7 +1533,7 @@ Opens a menu with the specified content. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1618,7 +1618,7 @@ Updates the style of the menu corresponding to the provided **content**. This AP
 | ------- | ---------------------------------------- | ---- | ------- |
 | content | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content displayed in the menu.|
 | options | [MenuOptions](./arkui-ts/ts-universal-attributes-menu.md#menuoptions10) | Yes| Style of the menu.<br>**NOTE**<br>1. Updating for the following is not supported: **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.<br>2. The mask style can be updated by configuring [MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md#menumasktype20). However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value.|
-| partialUpdate | boolean | No| Whether to update the menu in incremental mode.<br>Default value: **false**<br>**NOTE**<br>1. **true**: incremental update, where the specified properties in **options** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **options** are restored to default values.|
+| partialUpdate | boolean | No| Whether to update the menu in incremental mode. Default value: **false**.<br>**NOTE**<br>1. **true**: incremental update, where the specified properties in **options** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **options** are restored to default values.|
 
 **Return value**
 
@@ -1628,7 +1628,7 @@ Updates the style of the menu corresponding to the provided **content**. This AP
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1718,7 +1718,7 @@ Closes the menu corresponding to the provided content. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1800,7 +1800,7 @@ This API is deprecated since API version 11. You are advised to use [showActionM
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |

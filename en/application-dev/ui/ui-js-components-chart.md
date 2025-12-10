@@ -1,10 +1,10 @@
-# &lt;chart&gt; Development
+# chart Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **&lt;chart&gt;** component displays line charts, gauge charts, and bar charts. For details, see [chart](../reference/apis-arkui/arkui-js/js-components-basic-chart.md).
 
@@ -153,7 +153,7 @@ Define the chart type using the **type** attribute, for example, setting a chart
 // xxx.js
 export default {
   data: {
-    title:"Type display",
+    title: "Type display",
     barData: [
       {
         fillColor: '#3848e8',
@@ -259,7 +259,7 @@ export default {
     lineData: [
       {
         strokeColor: '#0081ff',
-        fillColor: '#cce5ff',  // Fill color
+        fillColor: '#cce5ff', // Fill color
         data: [463, 250, 251, 254, 431, 354, 225, 396, 295, 328, 491, 205, 313, 275, 475, 553, 491, 380, 357, 416],
         gradient: true,
       }
@@ -306,9 +306,9 @@ export default {
 
 > **NOTE**
 > - The **options** attribute supports the settings of bar charts and line charts but does not support those of gauge charts.
-> 
+>
 > - The **datasets** attribute supports the datasets for bar charts and line charts but does not support those of gauge charts.
-> 
+>
 > - Only line charts support **series**.
 
 
@@ -515,7 +515,7 @@ export default {
     this.barData = this.barData.splice(0, this.barGroup + 1);
   },
   changes(e) {
-    console.log("Tab index: " + e.index);
+    console.info("Tab index: " + e.index);
   },
 }
 

@@ -46,7 +46,7 @@ Triggered after a new instance of the custom component is created and before its
 
 onDidBuild?(): void
 
-Invoked after the **build()** function of the custom component is executed. You can use this callback for actions that do not directly affect the UI, such as tracking data reporting. Do not change state variables or use functions (such as **animateTo**) in **onDidBuild**. Otherwise, unstable UI performance may result.
+Triggered after the **build()** function of the custom component is executed. You can use this callback for actions that do not directly affect the UI, such as tracking data reporting.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -72,7 +72,7 @@ Invoked when this component is about to disappear. Do not change state variables
 
 onPageShow?(): void
 
-Triggered each time a router-managed page (only custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is displayed, including scenarios such as route navigation and the application returning to the foreground.
+Triggered each time a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is displayed, including scenarios such as route navigation and the application returning to the foreground.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -82,7 +82,7 @@ Triggered each time a router-managed page (only custom components decorated with
 
 onPageHide?(): void
 
-Triggered each time when a page is hidden, including scenarios such as route redirection and applications entering the background.
+Triggered each time a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is hidden, including scenarios such as route navigation and the application moving to the background.
 
 > **NOTE**
 >
@@ -96,7 +96,7 @@ Triggered each time when a page is hidden, including scenarios such as route red
 
 onBackPress?(): void | boolean
 
-Triggered when the user clicks the back button (only effective for router-managed pages). The value **true** means that the page executes its own return logic, and **false** (default) means that the default return logic is used.
+Triggered when a user clicks the back button on a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)). The value **true** means that the page executes its own return logic, and **false** (default) means that the default return logic is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -146,7 +146,7 @@ struct IndexComponent {
 
 onNewParam?(param: ESObject): void
 
-Triggered when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9). This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack.
+This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack. Triggered when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -622,7 +622,7 @@ Defines the transition animation to play when the user accesses this page or is 
 
 onFormRecycle?(): string
 
-Triggered when a widget is recycled. The widget provider can return the data that needs to be saved by the widget management service. The data is transferred to the widget provider through the [onFormRecover](#onformrecover11) API when the widget is restored.
+Triggered when the widget is recycled. The widget provider can return the data to be saved by the widget manager. This data is passed back to the widget provider using the [onFormRecover](#onformrecover11) API when the widget is recovered.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -634,7 +634,7 @@ Triggered when a widget is recycled. The widget provider can return the data tha
 
 | Type               | Description       |
 | ------------------- | ---------   |
-| string | Data that needs to be saved by the widget management service.|
+| string | Data that the widget provider requests the widget manager to save.|
 
 **Example**
 ```ts
@@ -687,7 +687,7 @@ struct WidgetCard {
 
 onFormRecover?(statusData: string): void
 
-The onFormRecover callback function is executed when the widget is recovered. The widget provider can obtain the data saved by the widget management service when the widget is recycled. The data can be saved to the widget management service by using the [onFormRecycle](#onformrecycle11) callback function.
+Triggered when the widget is recovered. The widget provider can obtain the data saved by the widget manager during widget recycling. This data can be saved to the widget manager using the [onFormRecycle](#onformrecycle11) callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -699,7 +699,7 @@ The onFormRecover callback function is executed when the widget is recovered. Th
 
 | Name   | Type                                      | Mandatory   | Description        |
 |--------|------------------------------------------|------------|-------------------------|
-| statusData | string | Yes    | Data stored by the Widget Manager service when the widget is recycled.|
+| statusData | string | Yes    | Data saved by the widget manager during widget recycling.|
 
 **Example**
 ```ts

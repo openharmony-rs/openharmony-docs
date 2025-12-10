@@ -632,7 +632,9 @@ export const getNumbers = (): string[] => {
 1、应用启动时提前创建首页。
 ```typescript
 // EntryAbility.ets  
-
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
 import { ControllerManager } from '../builder/CustomerController';
 import { getNumbers } from '../builder/CustomerBuilder';
 
@@ -648,7 +650,7 @@ export default class EntryAbility extends UIAbility {
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
-    window.getLastWindow(this.context, (err: BusinessError, data) => {
+    window.getLastWindow(this.context, (err: BusinessError<void>, data) => {
       if (err.code) {
         console.error('Failed to obtain top window. Cause:' + JSON.stringify(err));
         return;

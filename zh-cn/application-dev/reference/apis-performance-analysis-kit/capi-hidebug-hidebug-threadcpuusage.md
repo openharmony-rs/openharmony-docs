@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
+```
+
 ## 概述
 
 应用程序所有线程的CPU使用率结构体定义。

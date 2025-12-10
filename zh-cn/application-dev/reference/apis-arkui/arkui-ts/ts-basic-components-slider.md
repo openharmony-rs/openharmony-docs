@@ -56,7 +56,7 @@ Slider(options?: SliderOptions)
 
 ## SliderStyle枚举说明
 
-滑动条滑块在滑轨上显示的样式。
+滑动条滑块在滑轨上显示的样式，具体样式请参考[Slider组件滑块与滑轨是如何对齐的](../../../ui/arkts-select-component-faq.md#slider组件滑块与滑轨是如何对齐的)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,6 +143,55 @@ trackColor(value: ResourceColor | LinearGradient)
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10) | 是   | 滑轨的背景颜色。<br/>默认值：`$r('sys.color.ohos_id_color_component_normal')`<br/>**说明：** <br/>1. 设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。<br/>2. 该接口中的LinearGradient类型不支持在原子化服务中使用。 |
+
+### trackColorMetrics<sup>23+</sup>
+
+trackColorMetrics(color: ColorMetricsLinearGradient)
+
+设置滑轨轨道的线性渐变背景颜色。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| color  | [ColorMetricsLinearGradient](#colormetricslineargradient23) | 是   | 滑轨轨道的线性渐变背景颜色描述。<br/>设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点值为空，则渐变色设置无效，轨道背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
+
+## ColorMetricsLinearGradient<sup>23+</sup>
+
+滑轨轨道的线性渐变背景颜色。
+
+### constructor<sup>23+</sup>
+
+constructor(colorStops: ColorMetricsStop[])
+
+使用一组渐变颜色断点创建线性渐变。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名         | 类型 | 必填 | 说明 |
+| ------------- | ------- | ---- | -------- |
+| colorStops | [ColorMetricsStop](#colormetricsstop23)[] | 是 | 线性渐变颜色断点数组。每个元素用于描述一个颜色及其在渐变中的偏移量。 |
+
+## ColorMetricsStop<sup>23+</sup>
+
+线性渐变颜色断点类型，用于描述渐进色颜色断点。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型 | 只读 | 可选 | 说明 |
+| ------------- | ------- | ---- | -------- | -------- |
+| color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。|
+| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值，如果数据值小于0则置为0，如果数据值大于1则置为1。<br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ### selectedColor
 
@@ -393,38 +442,6 @@ stepSize(value: Length)
 | ------ | ---------------------------- | ---- | ------------------------------------- |
 | value  | [Length](ts-types.md#length) | 是   | 刻度大小（直径）。 <br/>默认值：'4vp'<br/>取值范围：[0, [trackThickness](#trackthickness8)) |
 
-### minLabel<sup>(deprecated)</sup>
-
-minLabel(value: string)
-
-设置最小值。
-
-从API Version 9开始废弃，使用min替代。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型   | 必填 | 说明     |
-| ------ | ------ | ---- | -------- |
-| value  | string | 是   | 最小值。 |
-
-### maxLabel<sup>(deprecated)</sup>
-
-maxLabel(value: string)
-
-设置最大值。
-
-从API Version 9开始废弃，使用max替代。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型   | 必填 | 说明     |
-| ------ | ------ | ---- | -------- |
-| value  | string | 是   | 最大值。 |
-
 ### sliderInteractionMode<sup>12+</sup>
 
 sliderInteractionMode(value: SliderInteraction)
@@ -526,6 +543,10 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 设置旋转表冠的灵敏度。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -592,6 +613,42 @@ showSteps(value: boolean, options?: SliderShowStepOptions)
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
 | value | boolean | 是 | 当前是否显示步长刻度值。<br/>true：显示刻度值；false：不显示刻度值。<br />默认值：false |
 | options | [SliderShowStepOptions](#slidershowstepoptions20) | 否 | 刻度点无障碍文本的配置选项，用于设置与无障碍功能相关的属性。<br/>默认值：null |
+
+### minLabel<sup>(deprecated)</sup>
+
+minLabel(value: string)
+
+设置最小值。
+
+> **说明：** 
+>
+> 从API Version 9开始废弃，使用[SliderOptions](#slideroptions对象说明)中的min属性替代。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明     |
+| ------ | ------ | ---- | -------- |
+| value  | string | 是   | 最小值。 |
+
+### maxLabel<sup>(deprecated)</sup>
+
+maxLabel(value: string)
+
+设置最大值。
+
+> **说明：** 
+>
+> 从API Version 9开始废弃，使用[SliderOptions](#slideroptions对象说明)中的max属性替代。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明     |
+| ------ | ------ | ---- | -------- |
+| value  | string | 是   | 最大值。 |
 
 ## SliderCustomContentOptions<sup>20+</sup>
 
@@ -1675,3 +1732,47 @@ struct SliderExample {
 ```
 
 ![slider_8](figures/slider_8.png)
+
+### 示例9（设置滑轨的背景颜色）
+
+该示例通过[trackColorMetrics](#trackcolormetrics23)设置滑轨背景色为渐变色。
+
+从API version 23开始，新增trackColorMetrics接口。
+
+```ts
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SliderExample {
+  @State greenColor: ColorMetrics = ColorMetrics.colorWithSpace(ColorSpace.DISPLAY_P3, 0.0, 1.0, 0.0, 1);
+  @State yellowColor: ColorMetrics = ColorMetrics.colorWithSpace(ColorSpace.DISPLAY_P3, 1.0, 1.0, 0.0, 1);
+  @State inSetValueOne: number = 40;
+  @State color: ColorMetricsLinearGradient =
+    new ColorMetricsLinearGradient([{ color: this.greenColor, offset: 0 }, { color: this.yellowColor, offset: 1 }])
+
+  build() {
+    Column({ space: 8 }) {
+      Slider({
+        value: this.inSetValueOne,
+        min: 0,
+        max: 100,
+        style: SliderStyle.InSet
+      }).margin('10')
+        .width('80%')
+        .blockColor('#FF0000')
+        .trackColorMetrics(this.color)
+        .selectedColor('#4169E1')
+        .showTips(true)
+        .onChange((value: number, mode: SliderChangeMode) => {
+          this.inSetValueOne = value;
+          console.info('value:' + value + 'mode:' + mode.toString());
+        })
+    }.alignItems(HorizontalAlign.Center)
+    .width('100%')
+  }
+}
+```
+
+![slider_9](figures/slider_9.png)

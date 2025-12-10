@@ -9,7 +9,7 @@
 
 ## Overview
 
-After creating or obtaining a canvas, you can perform graphics operations and status processing based on the canvas. Canvas operations are optional. You can perform canvas operations as required. You need to perform canvas operations before drawing. Only in this way, the canvas operations take effect.
+After creating or obtaining a canvas, you can perform graphics operations and state processing based on the canvas. Canvas operations are optional. You can perform canvas operations as required. You need to perform canvas operations before drawing. Only in this way, the canvas operations take effect.
 
 Common canvas operations are as follows:
 
@@ -60,26 +60,27 @@ Use the OH_Drawing_CanvasClipRect API to crop a rectangle. There are four input 
 
 - The fourth parameter indicates whether anti-aliasing is required.
 
-```c++
-// sample_graphics.cpp
+
+<!-- @[ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a brush object.
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // Set the brush fill color to blue.
 OH_Drawing_BrushSetColor(brush, 0xff0000ff);
 // Set the brush on the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(400, 400, 1200, 1200);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value400_, value400_, value1200_, value1200_);
 // Crop the rectangle.
 OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::INTERSECT, true);
-OH_Drawing_Point *point = OH_Drawing_PointCreate(600, 600);
+OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
 //Draw a circle.
-OH_Drawing_CanvasDrawCircle(canvas, point, 600);
+OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
 //Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
 //Destroy the brush object and reclaim the memory occupied by the brush object.
 OH_Drawing_BrushDestroy(brush);
 ```
-<!-- [ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | Original image| Cropped image|
 | -------- | -------- |
@@ -117,27 +118,27 @@ Use the OH_Drawing_MatrixCreateTranslation() API to translate the canvas. The AP
 
 The following figure shows a simple example.
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the fill color.
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // Set the brush on the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a matrix object that translates 300 px in the horizontal and vertical directions.
-OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(300, 300);
+OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(value300_, value300_);
 // Apply the matrix transformation to the canvas.
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // Draw a rectangle.
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 300, 700, 600);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
 ```
-<!-- [ndk_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | Original image| Image after translation|
 | -------- | -------- |
@@ -150,27 +151,27 @@ Use the OH_Drawing_MatrixCreateRotation() API to rotate the canvas. The API acce
 
 The following figure shows a simple example.
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the fill color.
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // Set the brush on the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a rotation matrix object. The three parameters are the rotation angle and the coordinates of the rotation center.
-OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateRotation(45, 200, 300);
-// Perform matrix transformation on the canvas.
+OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateRotation(45, value200_, value300_);
+// Apply the matrix transformation to the canvas.
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // Draw a rectangle.
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 300, 700, 600);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
 ```
-<!-- [ndk_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | Original image| Rotated image|
 | -------- | -------- |
@@ -183,26 +184,26 @@ Use the OH_Drawing_MatrixCreateScale() API to scale the canvas. The API accepts 
 
 The following figure shows a simple example.
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the fill color.
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // Set the brush on the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 //Create a scaling matrix object. The four parameters are the coordinates of the rotation center and the scaling factors in the horizontal and vertical directions.
-OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, 200, 300);
-//Perform matrix transformation on the canvas.
+OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, value200_, value300_);
+// Apply the matrix transformation to the canvas.
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // Draw a rectangle.
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 300, 700, 600);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 ```
-<!-- [ndk_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | Original image| Image after zooming in|
 | -------- | -------- |
@@ -227,12 +228,13 @@ The following table lists the APIs used for saving and restoring the canvas stat
 
 ### How to Develop
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a paint object.
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // Set the stroke color of the paint.
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // Set the stroke width to 20.
 OH_Drawing_PenSetWidth(pen, 20);
 // Set the paint on the canvas.
@@ -242,13 +244,13 @@ OH_Drawing_CanvasSave(canvas);
 OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(2, 2, 2, 2);
 // Zoom in on the canvas.
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
-OH_Drawing_Point* point = OH_Drawing_PointCreate(300, 300);
+OH_Drawing_Point* point = OH_Drawing_PointCreate(value300_, value300_);
 // Draw a circle. Because the zoom-in operation has been performed, a large circle is drawn.
-OH_Drawing_CanvasDrawCircle(canvas, point, 200);
+OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
 // Restore the canvas to the original status.
 OH_Drawing_CanvasRestore(canvas);
 // Draw a circle. Because the canvas has been restored to the original status, a small circle is drawn.
-OH_Drawing_CanvasDrawCircle(canvas, point, 200);
+OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
 // Remove the paint from the canvas.
 OH_Drawing_CanvasDetachPen(canvas);
 // Destroy the paint object and reclaim the memory.
@@ -256,7 +258,6 @@ OH_Drawing_PenDestroy(pen);
 OH_Drawing_PointDestroy(point);
 OH_Drawing_MatrixDestroy(matrix);
 ```
-<!-- [ndk_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![image_0000002158744186](figures/image_0000002158744186.png)
 
@@ -265,5 +266,5 @@ OH_Drawing_MatrixDestroy(matrix);
 
 The following table lists the examples for developing Drawing (C/C++).
 
-- [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

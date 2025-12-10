@@ -47,6 +47,10 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 组件插入显示和删除隐藏的过渡效果。同[transition](#transition)相比，增加了转场动画结束的回调。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -76,10 +80,10 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 | 名称     | 值 | 说明     |
 | ------ | ------ | ------ |
-| TOP    | - | 窗口的上边缘。 |
-| BOTTOM | - | 窗口的下边缘。 |
-| START  | - | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
-| END    | - | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
+| TOP    | 0 | 窗口的上边缘。 |
+| BOTTOM | 1 | 窗口的下边缘。 |
+| START  | 2 | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
+| END    | 3 | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
 
 ## TransitionEffect<sup>10+</sup>对象说明
 
@@ -98,7 +102,7 @@ TransitionEffect以函数的形式指定转场效果。提供了以下接口：
 | IDENTITY | [TransitionEffect](#transitioneffect10对象说明)\<"identity"> | 是 | 否| 禁用转场效果。 |
 | OPACITY | [TransitionEffect](#transitioneffect10对象说明)\<"opacity"> | 是 | 否| 为组件添加透明度转场效果，出现时透明度从0到1、消失时透明度从1到0，相当于TransitionEffect.opacity(0)。 |
 | SLIDE | [TransitionEffect](#transitioneffect10对象说明)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; }> | 是 | 否 | 相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。 |
-| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"> | 是 | 否 | 指定出现时从右先缩小再放大侧滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
+| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"> | 是 | 否 | 指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
 
 >  **说明：**
 >

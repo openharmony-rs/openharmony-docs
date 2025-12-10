@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A key event is triggered when a focusable component, such as **Button**, receives input from a keyboard, remote control, or any other key-based input devices. For normally non-focusable components (such as **Text** and **Image**), set **focusable** to **true** to enable key event handling.
 For details about the process and specific timing of the key event triggering, see [Key Event Data Flow](../../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).

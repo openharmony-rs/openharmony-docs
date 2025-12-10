@@ -582,7 +582,7 @@ renderGroup(value: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。当前控件的不透明度不为1时绘制效果可能有差异。<br/>默认值：false <br/> false表示不进行离屏渲染直接绘制。 |
+| value  | boolean | 是   | 设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。当前控件的不透明度不为1时绘制效果可能有差异。<br/>默认值：false <br/> false表示不进行离屏渲染直接绘制。<br/> true表示进行离屏渲染后再与父控件融合绘制。 |
 
 **返回值：**
 
@@ -606,7 +606,7 @@ renderGroup(isGroup: Optional\<boolean>): T
 
 | 参数名  | 类型               | 必填 | 说明                                                         |
 | ------- | ------------------ | ---- | ------------------------------------------------------------ |
-| isGroup | Optional\<boolean> | 是   | 设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。当前控件的不透明度不为1时绘制效果可能有差异。<br/>默认值：false<br/>当isGroup的值为undefined时，恢复为不开启整体离屏渲染绘制后再与父控件融合绘制的效果。 |
+| isGroup | Optional\<boolean> | 是   | 设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。当前控件的不透明度不为1时绘制效果可能有差异。<br/>默认值：false<br/> false表示不进行离屏渲染直接绘制。<br/> true表示进行离屏渲染后再与父控件融合绘制。<br/>当isGroup的值为undefined时，恢复为不开启整体离屏渲染绘制后再与父控件融合绘制的效果。 |
 
 **返回值：**
 
@@ -695,7 +695,7 @@ useShadowBatching(value: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 控件内部子节点的阴影进行同层绘制，同层元素阴影重叠。<br/>默认值：false<br/>**说明：**<br/>1. 默认不开启，如果子节点的阴影半径较大，节点各自的阴影会互相重叠。 当开启时，元素的阴影将不会重叠。<br/>2. 不推荐useShadowBatching嵌套使用，如果嵌套使用，只会对当前的子节点生效，无法递推。 |
+| value  | boolean | 是   | 控件内部子节点的阴影是否进行同层绘制。<br/>默认值：false<br/> true：控件内部子节点的阴影进行同层绘制，子节点的阴影不会产生重叠覆盖效果。<br/> false：控件内部子节点的阴影不进行同层绘制，子节点的阴影重叠区域有覆盖效果。<br/>**说明：**<br/>1. 默认不开启，如果子节点的阴影半径较大，阴影有重叠区域，后绘制的子节点阴影会覆盖在之前绘制的子节点阴影之上。 当开启时，子节点的阴影将同时绘制，不会产生覆盖效果。<br/>2. 不推荐useShadowBatching嵌套使用，如果嵌套使用，只会对当前的子节点生效，无法递推。 |
 
 **返回值：**
 
@@ -719,7 +719,7 @@ useShadowBatching(use: Optional\<boolean>): T
 
 | 参数名 | 类型               | 必填 | 说明                                                         |
 | ------ | ------------------ | ---- | ------------------------------------------------------------ |
-| use    | Optional\<boolean> | 是   | 控件内部子节点的阴影进行同层绘制，同层元素阴影重叠。<br/>默认值：false<br/>**说明：**<br/>1. 默认不开启，如果子节点的阴影半径较大，节点各自的阴影会互相重叠。 当开启时，元素的阴影将不会重叠。<br/>2. 不推荐useShadowBatching嵌套使用，如果嵌套使用，只会对当前的子节点生效，无法递推。<br/>当use的值为undefined时，恢复为不使用元素阴影重叠的效果。 |
+| use    | Optional\<boolean> | 是   | 控件内部子节点的阴影是否进行同层绘制。<br/>默认值：false<br/> true：控件内部子节点的阴影进行同层绘制，子节点的阴影不会产生重叠覆盖效果。<br/> false：控件内部子节点的阴影不进行同层绘制，子节点的阴影重叠区域有覆盖效果。<br/>**说明：**<br/>1. 默认不开启，如果子节点的阴影半径较大，阴影有重叠区域，后绘制的子节点阴影会覆盖在之前绘制的子节点阴影之上。 当开启时，子节点的阴影将同时绘制，不会产生覆盖效果。<br/>2. 不推荐useShadowBatching嵌套使用，如果嵌套使用，只会对当前的子节点生效，无法递推。<br/>当use的值为undefined时，恢复为不使用元素阴影重叠的效果。 |
 
 **返回值：**
 
@@ -900,8 +900,8 @@ systemBarEffect(): T
 
 | 名称       | 值 | 说明                                   |
 | -------- | ------ | ---------------------------------- |
-| COLOR    | - | 颜色。                                    |
-| BLUR     | - | 模糊。                                    |
+| COLOR    | 0 | 颜色。                                    |
+| BLUR     | 1 | 模糊。                                    |
 
 
 ## ShadowOptions对象说明
@@ -912,11 +912,11 @@ systemBarEffect(): T
 
 | 名称      | 类型                                       | 只读 | 可选   | 说明                                       |
 | ------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| radius  | number \| [Resource](ts-types.md#resource) | 否 | 否    | 阴影模糊半径。<br/>取值范围：[0, +∞)<br/>单位：px<br/>**说明：**  <br/>设置小于0的值时，按值为0处理。<br/>如需使用vp单位的数值可用[vp2px](ts-pixel-units.md#像素单位转换)进行转换。<br/>如果radius为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| radius  | number \| [Resource](ts-types.md#resource) | 否 | 否    | 阴影模糊半径。<br/>取值范围：[0, +∞)<br/>单位：px<br/>**说明：**  <br/>设置小于0的值时，按值为0处理。<br/>如需使用vp单位的数值可用[vp2px](ts-pixel-units.md#vp2pxdeprecated)进行转换。<br/>如果radius为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | type<sup>10+</sup> | [ShadowType](#shadowtype10枚举说明)  |      否 | 是    | 阴影类型。<br/>默认为COLOR。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)\| [ColoringStrategy<sup>11+</sup> ](ts-appendix-enums.md#coloringstrategy10) | 否  | 是  | 阴影的颜色。<br/>默认为黑色。 <br/>**说明：** <br/>从API version 11开始，该接口支持使用ColoringStrategy实现智能取色，智能取色功能不支持在ArkTS卡片、[textShadow](ts-basic-components-text.md#textshadow10)中使用。<br/>当前仅支持平均取色和主色取色，智能取色区域为shadow绘制区域。<br/>支持使用'average'字符串触发智能平均取色模式，支持使用'primary'字符串触发智能主色模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
-| offsetX | number \| [Resource](ts-types.md#resource) | 否  | 是  | 阴影的X轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](ts-pixel-units.md#像素单位转换)进行转换。<br/>如果offsetX为Resource类型，则传入的值需为number类型。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| offsetY | number \| [Resource](ts-types.md#resource) | 否 | 是   | 阴影的Y轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](ts-pixel-units.md#像素单位转换)进行转换。<br/>如果offsetY为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
+| offsetX | number \| [Resource](ts-types.md#resource) | 否  | 是  | 阴影的X轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](ts-pixel-units.md#vp2pxdeprecated)进行转换。<br/>如果offsetX为Resource类型，则传入的值需为number类型。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| offsetY | number \| [Resource](ts-types.md#resource) | 否 | 是   | 阴影的Y轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](ts-pixel-units.md#vp2pxdeprecated)进行转换。<br/>如果offsetY为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
 | fill<sup>11+</sup>     | boolean                                    | 否  | 是  | 阴影是否内部填充。true表示阴影在内部填充，false表示阴影在外部填充。<br/>默认为false。<br/>**说明：**<br/>[textShadow](ts-basic-components-text.md#textshadow10)中该字段不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 ## ShadowStyle<sup>10+</sup>枚举说明
@@ -927,12 +927,12 @@ systemBarEffect(): T
 
 | 名称                | 值 | 说明     |
 | ----------------- | ---- | ------ |
-| OUTER_DEFAULT_XS  | - | 超小阴影。  |
-| OUTER_DEFAULT_SM  | - | 小阴影。   |
-| OUTER_DEFAULT_MD  | - | 中阴影。   |
-| OUTER_DEFAULT_LG  | - | 大阴影。   |
-| OUTER_FLOATING_SM | - | 浮动小阴影。 |
-| OUTER_FLOATING_MD | - | 浮动中阴影。 |
+| OUTER_DEFAULT_XS  | 0 | 超小阴影。  |
+| OUTER_DEFAULT_SM  | 1 | 小阴影。   |
+| OUTER_DEFAULT_MD  | 2 | 中阴影。   |
+| OUTER_DEFAULT_LG  | 3 | 大阴影。   |
+| OUTER_FLOATING_SM | 4 | 浮动小阴影。 |
+| OUTER_FLOATING_MD | 5 | 浮动中阴影。 |
 
 ## BlendMode<sup>11+</sup>枚举说明
 
@@ -1044,6 +1044,10 @@ freeze(value: boolean): T
 
 设置当前控件和子控件是否整体离屏渲染绘制后重复绘制缓存，不再进行内部属性更新。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1065,6 +1069,10 @@ freeze(value: boolean): T
 freeze(freeze: Optional\<boolean>): T
 
 设置当前控件和子控件是否整体离屏渲染绘制后重复绘制缓存，不再进行内部属性更新。与[freeze](#freeze12)相比，freeze参数新增了对undefined类型的支持。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1179,7 +1187,7 @@ struct ImageEffectsExample {
 
 ### 示例2（设置组件线性渐变模糊效果）
 
-该示例主要演示通过linearGradientBlur设置组件的内容线性渐变模糊效果。
+该示例主要演示通过[linearGradientBlur](#lineargradientblur12)设置组件的内容线性渐变模糊效果。
 
 ```ts
 // xxx.ets
@@ -1207,7 +1215,7 @@ struct ImageExample1 {
 
 ### 示例3（设置离屏渲染效果）
 
-该示例主要演示通过renderGroup来设置组件是否先整体离屏渲染绘制后，再与父控件融合绘制。
+该示例主要演示通过[renderGroup](#rendergroup10)来设置组件是否先整体离屏渲染绘制后，再与父控件融合绘制。
 
 ```ts
 // xxx.ets
@@ -1260,7 +1268,7 @@ struct RenderGroupExample {
 
 ### 示例4（当前组件内容与下方画布内容混合）
 
-该示例主要演示通过blendMode将当前组件内容与下方画布内容混合。
+该示例主要演示通过[blendMode](#blendmode11)将当前组件内容与下方画布内容混合。
 
 ```ts
 // xxx.ets
@@ -1305,7 +1313,7 @@ struct Index {
 
 ### 示例5（前景智能取反色）
 
-该示例主要通过InvertOptions来实现前景智能取反色。
+该示例主要通过[InvertOptions](#invertoptions11对象说明)来实现前景智能取反色。
 
 ```ts
 // xxx.ets
@@ -1345,7 +1353,7 @@ struct Index {
 
 ### 示例6（设置同层阴影不重叠效果）
 
-该示例主要通过useShadowBatching搭配shadow实现同层阴影不重叠效果。
+该示例主要通过[useShadowBatching](#useshadowbatching11)搭配[shadow](#shadow)实现同层阴影不重叠效果。
 
 ```ts
 // xxx.ets
@@ -1441,7 +1449,7 @@ struct UseShadowBatchingExample {
 
 ### 示例7（设置组件图像球面效果）
 
-该示例主要演示通过sphericalEffect设置组件的图像球面效果。
+该示例主要演示通过[sphericalEffect](#sphericaleffect12)设置组件的图像球面效果。
 
 ```ts
 // xxx.ets
@@ -1478,7 +1486,7 @@ struct SphericalEffectExample {
 
 ### 示例8（设置组件图像渐亮效果）
 
-该示例主要演示通过lightUpEffect设置组件的图像渐亮效果。
+该示例主要演示通过[lightUpEffect](#lightupeffect12)设置组件的图像渐亮效果。
 
 ```ts
 // xxx.ets
@@ -1514,7 +1522,7 @@ struct LightUpExample {
 
 ### 示例9（设置组件图像边缘像素扩展效果）
 
-该示例主要演示通过pixelStretchEffect设置组件的图像边缘像素扩展效果。
+该示例主要演示通过[pixelStretchEffect](#pixelstretcheffect12)设置组件的图像边缘像素扩展效果。
 
 ```ts
 // xxx.ets
@@ -1552,7 +1560,7 @@ struct PixelStretchExample {
 
 ### 示例10（系统导航条智能反色）
 
-该示例主要演示通过systemBarEffect来实现系统导航条智能反色。
+该示例主要演示通过[systemBarEffect](#systembareffect12)来实现系统导航条智能反色。
 
 ```ts
 // xxx.ets

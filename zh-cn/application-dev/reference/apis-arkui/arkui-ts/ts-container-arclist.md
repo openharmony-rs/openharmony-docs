@@ -16,8 +16,23 @@
 
 ## 导入模块
 
+> **说明：**
+>
+> - ArcListAttribute是用于配置ArcList组件属性的关键接口。API version 21及之前版本，导入ArcList组件后需要开发者手动导入ArcListAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入ArcList组件后，会自动导入ArcListAttribute，无需开发者手动导入ArcListAttribute。
+>
+> - 如果开发者手动导入ArcListAttribute，DevEco Studio会显示置灰，API version 21及之前版本删除会编译报错，从API version 22开始，删除对功能无影响。
+
+
+API version 21及之前版本：
+
 ```ts
 import { ArcList, ArcListAttribute } from '@kit.ArkUI';
+```
+
+API version 22及之后版本：
+
+```ts
+import { ArcList } from '@kit.ArkUI';
 ```
 
 ## 子组件
@@ -175,7 +190,7 @@ fadingEdge(enable: Optional&lt;boolean&gt;)
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable | Optional&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
+| enable | Optional&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
 
 ### friction
 
@@ -349,7 +364,7 @@ onScrollStop(handler: Optional\<VoidCallback>)
 
 onWillScroll(handler: Optional\<OnWillScrollCallback>)
 
-列表划动时每帧开始前触发，返回当前帧将要滑动的偏移量和当前滑动状态。返回的偏移量为计算得到的将要滑动的偏移量值，并非最终实际滑动偏移。
+列表滑动时每帧开始前触发，返回当前帧将要滑动的偏移量和当前滑动状态。返回的偏移量为计算得到的将要滑动的偏移量值，并非最终实际滑动偏移。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -359,7 +374,7 @@ onWillScroll(handler: Optional\<OnWillScrollCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| handler | [Optional\<OnWillScrollCallback>](ts-container-scrollable-common.md#onwillscrollcallback12) | 是 | 列表划动时每帧开始前触发的回调。 |
+| handler | [Optional\<OnWillScrollCallback>](ts-container-scrollable-common.md#onwillscrollcallback12) | 是 | 列表滑动时每帧开始前触发的回调。 |
 
 > **说明：** 
 > 
@@ -420,14 +435,16 @@ type ArcScrollIndexHandler = (start: number, end: number, center: number) => voi
 // xxx.ets
 import { ComponentContent, LengthMetrics } from '@kit.ArkUI';
 import { UIContext, CircleShape } from '@kit.ArkUI';
+// 从API version 22开始，无需手动导入ArcListAttribute和ArcListItemAttribute。具体请参考ArcList、ArcListItem的导入模块说明。
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@kit.ArkUI';
 
 @Builder
 function buildText() {
   Column() {
-    Text("header")
+    Text('header')
       .fontSize('60px')
       .fontWeight(FontWeight.Bold)
+      .fontColor(Color.Black)
   }.margin(0)
 }
 

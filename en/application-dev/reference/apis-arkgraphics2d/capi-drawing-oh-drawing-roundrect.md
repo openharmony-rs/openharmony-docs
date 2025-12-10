@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_RoundRect OH_Drawing_RoundRect
+```
+
 ## Overview
 
 Defines a struct for a rounded rectangle.

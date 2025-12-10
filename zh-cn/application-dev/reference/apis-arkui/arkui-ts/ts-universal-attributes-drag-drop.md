@@ -18,7 +18,10 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 - 默认支持拖入能力的组件（目标组件可响应拖入数据）：[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)，开发者可通过设置这些组件的[allowDrop](ts-universal-attributes-drag-drop.md#allowdrop)属性为null来禁用对默认拖入能力的支持。
 
-<!--RP1--><!--RP1End-->其他支持拖出能力的组件需要开发者将draggable属性设置为true，并在onDragStart等接口中实现数据传输相关内容，才能正确处理拖拽。
+- 不支持拖出能力的组件（不可从组件上拖出数据）：[ArcScrollBar](./ts-basic-components-arcscrollbar.md)、[MultiNavigation](./ohos-arkui-advanced-MultiNavigation.md)、[ToolBarItem](./ts-basic-components-toolbaritem.md)、[ArcSlider](./ohos-arkui-advanced-ArcSlider.md)、[Span](./ts-basic-components-span.md)、[ImageSpan](./ts-basic-components-imagespan.md)、[ContainerSpan](./ts-basic-components-containerspan.md)、[SymbolSpan](./ts-basic-components-symbolSpan.md)、[ArcAlphabetIndexer](./ts-container-arc-alphabet-indexer.md)、[OffscreenCanvas](./ts-components-offscreencanvas.md)、[Menu](./ts-basic-components-menu.md)、[MenuItem](./ts-basic-components-menuitem.md)、[MenuItemGroup](./ts-basic-components-menuitemgroup.md)、[PasteButton](./ts-security-components-pastebutton.md)、[SaveButton](./ts-security-components-savebutton.md)、[WithTheme](./ts-container-with-theme.md)、[NavPushPathHelper](./ohos-atomicservice-NavPushPathHelper.md)、[ContentSlot](./ts-components-contentSlot.md)、[Chip](./ohos-arkui-advanced-Chip.md)、[ExceptionPrompt](./ohos-arkui-advanced-ExceptionPrompt.md)、[Filter](./ohos-arkui-advanced-Filter.md)、[FormMenu](./ohos-arkui-advanced-formmenu.md)、[Popup](./ohos-arkui-advanced-Popup.md)、[SelectionMenu](./ohos-arkui-advanced-SelectionMenu.md)、[SplitLayout](./ohos-arkui-advanced-SplitLayout.md)以及所有弹窗类组件。
+
+<!--RP1--><!--RP1End-->
+其他支持拖出能力的组件需要开发者将draggable属性设置为true，并在[onDragStart](./ts-universal-events-drag-drop.md#ondragstart)等接口中实现数据传输相关内容，才能正确处理拖拽。
 
 > **说明：**
 >
@@ -26,7 +29,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 ## allowDrop
 
-allowDrop(value: Array&lt;UniformDataType&gt; | null): T
+allowDrop(value: Array&lt;UniformDataType&gt; | null | Array&lt;string&gt;): T
 
 设置该组件上允许落入的数据类型。如果未设置allowDrop，组件将默认接受所有数据类型。
 
@@ -38,7 +41,7 @@ allowDrop(value: Array&lt;UniformDataType&gt; | null): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                            |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> | 是   | 设置该组件上允许落入的数据类型。从API version 12开始，允许设置成null使该组件不接受所有的数据类型。|
+| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> \| Array\<string><sup>23+</sup> | 是   | 设置该组件上允许落入的数据类型。从API version 12开始，允许设置成null使该组件不接受所有的数据类型。从API version 23开始，支持设置自定义数据类型Array\<string>，自定义数据类型为应用自行定义的数据类型字符串，字符串无明确格式要求，但不应与UniformDataType标准类型格式重复，建议以易记易区分为原则来定义。|
 
 **返回值：**
 
@@ -96,6 +99,10 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 
 自定义组件拖拽过程中的预览图，仅用于设置浮起效果或者禁用浮起效果。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -119,6 +126,10 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 设置拖拽过程中预览图处理模式，数量角标的显示以及预览图浮起的交互模式。不支持onItemDragStart拖拽方式。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -127,7 +138,7 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 | 参数名 | 类型                                                            | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DragPreviewOptions](#dragpreviewoptions11)<sup>11+</sup>      | 是   | 设置拖拽过程中预览图处理模式及数量角标的显示。|
+| value  | [DragPreviewOptions](#dragpreviewoptions11-1)<sup>11+</sup>      | 是   | 设置拖拽过程中预览图处理模式及数量角标的显示。|
 | options<sup>12+</sup>| [DragInteractionOptions](#draginteractionoptions12)<sup>12+</sup>| 否   | 设置拖拽过程中预览图浮起的交互模式。<br/>默认值：空|
 
 **返回值：**
@@ -148,6 +159,8 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 | sizeChangeEffect<sup>19+</sup> | [DraggingSizeChangeEffect](#draggingsizechangeeffect19枚举说明)<sup>19+</sup> | 否 | 是 | 用于选择长按浮起图与拖拽预览图过渡效果。<br/>默认值：DraggingSizeChangeEffect.DEFAULT。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 ## DragPreviewMode<sup>11+</sup>枚举说明
+
+设置拖拽预览图的显示模式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,6 +252,7 @@ struct ImageExample {
       Text('Image拖拽')
         .fontSize('30dp')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // $r('app.media.icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.icon'))
           .width(100)
           .height(100)
@@ -384,6 +398,7 @@ struct DragPreviewDemo{
   build() {
     Row() {
       Column() {
+        // ('/resource/image.jpeg')需要替换为开发者所需的图像资源文件
         Image('/resource/image.jpeg')
           .width("30%")
           .draggable(true)
@@ -414,11 +429,13 @@ struct dragPreviewOptionsDemo{
   build() {
     Row() {
       Column() {
+        // ('/resource/image.jpeg')需要替换为开发者所需的图像资源文件
         Image('/resource/image.jpeg')
           .margin({ top: 10 })
           .width("30%")
           .draggable(true)
           .dragPreviewOptions({ mode: DragPreviewMode.AUTO })
+        // ('/resource/image.jpeg')需要替换为开发者所需的图像资源文件
         Image('/resource/image.jpeg')
           .margin({ top: 10 })
           .width("30%")
@@ -551,6 +568,7 @@ struct dragPreviewOptionsDemo{
               this.OpacityIndex = 0
             }
           })
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件
         Image($r('app.media.image'))
           .margin({ top: 10 })
           .width("100%")
@@ -949,6 +967,7 @@ struct Index {
 
   @Builder
   MyPreview() {
+    // $r('app.media.image')需要替换为开发者所需的图像资源文件
     Image($r('app.media.image'))
       .width(100)
       .height(100)
@@ -957,6 +976,7 @@ struct Index {
   @Builder
   MyMenuPreview() {
     Column() {
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
         .width(100)
         .height(100)
@@ -987,6 +1007,7 @@ struct Index {
       Scroll() {
         Column() {
           Text("no ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW")
+          // $r('app.media.image')需要替换为开发者所需的图像资源文件
           Image($r('app.media.image'))
             .width(200)
             .height(200)
@@ -997,6 +1018,7 @@ struct Index {
             .draggable(true)
 
           Text("ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW")
+          // $r('app.media.image')需要替换为开发者所需的图像资源文件
           Image($r('app.media.image'))
             .width(200)
             .height(200)
@@ -1029,6 +1051,7 @@ struct Index {
 
   @Builder
   MyPreview() {
+    // $r('app.media.image')需要替换为开发者所需的图像资源文件
     Image($r('app.media.image'))
       .width(200)
       .height(200)
@@ -1037,6 +1060,7 @@ struct Index {
   @Builder
   MyMenuPreviewSame() {
     Column() {
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
         .width(300)
         .height(300)
@@ -1046,6 +1070,7 @@ struct Index {
   @Builder
   MyMenuPreview() {
     Column() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
       Image($r('app.media.startIcon'))
         .width(300)
         .height(300)
@@ -1072,6 +1097,7 @@ struct Index {
     Column() {
       Text("sizeChangeEffect: SIZE_TRANSITION，长按弹出菜单，拖拽移动后菜单预览图过渡到预览图，有缩放无叠加效果")
         .margin({ top: 10 })
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
         .width(200)
         .height(200)
@@ -1086,6 +1112,7 @@ struct Index {
 
       Text("sizeChangeEffect: SIZE_CONTENT_TRANSITION，长按弹出菜单，拖拽移动后菜单预览图和拖拽预览图两层叠加过渡")
         .margin({ top: 10 })
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
         .width(200)
         .height(200)
@@ -1105,3 +1132,132 @@ struct Index {
 ```
 
 ![sizeChangeEffect.gif](figures/sizeChangeEffect.gif)
+
+### 示例12（设置自定义组件落入）
+从API version 23开始，示例12通过组件的[onDragStart](ts-universal-events-drag-drop.md#ondragstart)接口传递其类型，并在目标组件的[allowDrop](#allowdrop)属性中设置允许该类型落入，即可实现自定义组件的拖拽落入功能。
+```ts
+import { unifiedDataChannel } from '@kit.ArkData';
+
+@Entry
+@Component
+struct CustomExample {
+  // 用于存储已放置的组件信息
+  @State droppedItems: Array<string> = []
+
+  build() {
+    Column() {
+      // 标题
+      Text('自定义组件拖拽落入')
+        .fontSize(25)
+        .fontWeight(FontWeight.Bold)
+        .margin(10)
+
+      // 拖拽区域和放置区域的容器
+      Row() {
+        // 左侧 - 拖拽起始区域
+        Column() {
+          Text('拖拽源区域')
+            .fontSize(18)
+            .fontWeight(FontWeight.Medium)
+            .margin(10)
+
+          // 自定义组件 - 可拖拽
+          CustomCard({ title: '自定义卡片', color: Color.Blue })
+            .draggable(true)
+            .onDragStart((event: DragEvent) => {
+              // 构造符合UnifiedData类型的数据
+              let customCardData : Record<string, string> = {
+                'uniformDataType' : 'custom.card',
+                'value' : '自定义卡片'
+              }
+              let unifiedRecord = new unifiedDataChannel.UnifiedRecord('custom.card', customCardData);
+              let unifiedData = new unifiedDataChannel.UnifiedData(unifiedRecord);
+              event.setData(unifiedData);
+            })
+        }
+        .backgroundColor(Color.White)
+        .border({ color: '#ff0e0303', width: 1 })
+        .width('40%')
+        .height(300)
+
+        // 右侧 - 放置区域
+        Column() {
+          Text('放置区域')
+            .fontSize(18)
+            .fontWeight(FontWeight.Medium)
+            .margin(10)
+
+          // 放置区域内容
+          if (this.droppedItems.length === 0) {
+            Text('将组件拖到此处')
+              .fontSize(16)
+              .opacity(0.6)
+          } else {
+            // 显示已放置的组件
+            ForEach(this.droppedItems, (item: string) => {
+              CustomCard({ title: item, color: Color.Blue })
+            }, (item: string) => item)
+          }
+        }
+        .backgroundColor(Color.White)
+        .border({ color: '#ff0e0303', width: 1 })
+        .width('40%')
+        .height(300)
+        // 允许放置的类型 - 字符串数组形式
+        .allowDrop(['custom.card'])
+        .onDrop((event: DragEvent) => {
+          console.info('setData onDrop success');
+          let data = event.getData()
+          let arr: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
+          if (arr.length > 0) {
+            if (arr[0].getTypes()[0] === 'custom.card') {
+              let customCardData = arr[0].getValue() as Record<string, string>;
+              this.droppedItems.push(customCardData.value)
+            }
+          }
+        })
+      }
+      .justifyContent(FlexAlign.SpaceAround)
+      .width('100%')
+      .height('70%')
+
+      // 操作说明
+      Text('操作说明：长按左侧卡片并拖拽到右侧区域')
+        .fontSize(14)
+        .opacity(0.7)
+        .margin(10)
+    }
+    .width('100%')
+    .height('65%')
+    .backgroundColor('#f8f9fa')
+  }
+}
+
+// 自定义卡片组件
+@Component
+struct CustomCard {
+  title: string = '默认标题'
+  color: Color = Color.Gray
+
+  build() {
+    Column() {
+      Text(this.title)
+        .fontSize(16)
+        .fontColor(Color.White)
+        .fontWeight(FontWeight.Medium)
+        .margin(5)
+
+      Text('这是一个自定义组件')
+        .fontColor(Color.White)
+        .fontSize(14)
+        .opacity(0.7)
+    }
+    .backgroundColor(this.color)
+    .borderRadius(12)
+    .width(120)
+    .height(100)
+  }
+}
+```
+
+![customComponentAllowDrop.gif](figures/customComponentAllowDrop.gif)

@@ -42,7 +42,7 @@ Adds the applications that are not allowed to run by the current or specified us
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
 | appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: In API version 21 and later versions, [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) can be transferred. [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) is recommended. In API version 20 and earlier versions, only [appId](../../quick-start/common_problem_of_application.md#what-is-appid) can be transferred.|
-| accountId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
+| accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
 
@@ -65,7 +65,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -97,7 +97,7 @@ Removes the applications that are not allowed to run by the current user or spec
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
 | appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: Starting from API version 21, elements in the array support the use of both [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). Only the passed **appId** (or **appIdentifier**) will be removed, and the **appIdentifier** (or **appId**) of the same application will not be removed. In API version 20 and earlier versions, only **appId** can be transferred.|
-| accountId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
+| accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
 
@@ -119,7 +119,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -150,7 +150,7 @@ Obtains applications that are not allowed to run by the current user or specifie
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| accountId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
+| accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Return value**
 
@@ -178,7 +178,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -215,7 +215,7 @@ Adds the applications that are allowed to run under specified users.
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
 | appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of [unique identifiers](../../quick-start/common_problem_of_application.md#what-is-appidentifier) of an application. You can call [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) to obtain **bundleInfo.signatureInfo.appIdentifier**.<br>Value range:<br> - The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
 
@@ -238,7 +238,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let appIdentifiers: Array<string> = ['0123456789123456789'];
@@ -269,7 +269,7 @@ Removes the applications that are allowed to run by the specified user.
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
 | appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of [unique identifiers](../../quick-start/common_problem_of_application.md#what-is-appidentifier) of an application. You can obtain the **bundleInfo.signatureInfo.appIdentifier** by calling the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API. Value range: The array length cannot exceed 200.|
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
 
@@ -291,7 +291,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let appIdentifiers: Array<string> = ['0123456789123456789'];
@@ -321,7 +321,7 @@ Obtains the list of applications allowed to run by a specified user.
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Return value**
 
@@ -348,7 +348,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -400,13 +400,13 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let autoStartApps: Array<Want> = [
   {
     // Replace it as required.
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   }
 ];
 
@@ -459,13 +459,13 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let autoStartApps: Array<Want> = [
   {
     // Replace it as required.
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   }
 ];
 
@@ -496,7 +496,7 @@ Removes the specified application from the auto-start application list of a spec
 | ------------- | ------------------------------------------------------------ | ---- | ---------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.  |
 | autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. **Want** must contain **bundleName** and **abilityName**.|
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
 
@@ -517,14 +517,14 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let autoStartApps: Array<Want> = [
   // Replace it as required.
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   }
 ];
 
@@ -582,7 +582,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -613,7 +613,7 @@ Adds a list of applications that automatically start upon system startup for a s
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.                        |
 | autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. The array can contain a maximum of 10 applications. **Want** must contain **bundleName** and **abilityName**.|
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 | disallowModify | boolean | Yes  | Whether to disable the user from manually disabling automatic application startup. The value **true** indicates that auto-start is disabled, and the value **false** indicates the opposite.<!--RP1--><!--RP1End-->|
 
 **Error codes**
@@ -635,14 +635,14 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let autoStartApps: Array<Want> = [
   // Replace it as required.
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   }
 ];
 
@@ -673,7 +673,7 @@ Checks the auto-start applications for the specified user.
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Return value**
 
@@ -700,7 +700,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -731,7 +731,7 @@ Checks whether the auto-start of an application is disabled for the specified us
 | ------ | ------------------------------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
 | autoStartApp | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Auto-start applications to add. **Want** must contain **bundleName** and **abilityName**.|
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Return value**
 
@@ -758,13 +758,13 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let autoStartApp: Want = {
   // Replace it as required.
   bundleName: 'com.example.autoStartApplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -795,7 +795,7 @@ Adds applications to the keep-alive list; once added, the application processes 
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
 | bundleNames    | Array&lt;string&gt;                                     | Yes  | Array of application bundle names, which specifies the applications to be kept alive. A maximum of 5 applications are supported.<!--RP5--><!--RP5End-->                                    |
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
 
@@ -820,7 +820,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let bundleNames: Array<string> = ['com.example.myapplication'];
@@ -853,7 +853,7 @@ Adds applications to the keep-alive list; once added, the application processes 
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
 | bundleNames    | Array&lt;string&gt;                                     | Yes  | Array of application bundle names, which specifies the applications to be kept alive. A maximum of 5 applications are supported.<br>Applications must be installed under user 1 (a user who supports single-instance running of third-party applications) and have integrated [background services](../../application-models/app-service-extension-ability.md#implementing-a-background-service)<!--RP3--><!--RP3End-->. Otherwise, the error code 9201005 will be reported. |
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 | disallowModify | boolean | Yes  | Whether to forbid users to manually cancel the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End--> |
 
 **Error codes**
@@ -878,7 +878,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace it as required.
@@ -913,7 +913,7 @@ Removes a specified application from the keep-alive list.
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
 | bundleNames    | Array&lt;string&gt;                                     | Yes  | Application bundle name array, which specifies the applications to be kept alive. A maximum of five applications are supported.                                  |
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
 
@@ -935,7 +935,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let bundleNames: Array<string> = ['com.example.myapplication'];
@@ -968,7 +968,7 @@ Obtains the bundle name of the keep-alive application.
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Return value**
 
@@ -996,7 +996,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -1025,7 +1025,7 @@ Checks whether the application is forbidden to cancel the keep-alive status.
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the user ID.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 | bundleName | string | Yes| Bundle name.|
 
 **Return value**
@@ -1053,7 +1053,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace it as required.
@@ -1087,7 +1087,7 @@ Clears all application data.
 | admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
 | bundleName | string                                                  | Yes  | Bundle name of the application whose data needs to be cleared.|
 | appIndex | number                                                    | Yes  | Index of the application clone. The value is an integer greater than or equal to 0.<br> You can call [getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14) of @ohos.bundle.bundleManager to obtain the index.|
-| accountId | number                                                   | Yes  | User ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+| accountId | number                                                   | Yes  | Account ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
 
@@ -1108,7 +1108,7 @@ import { applicationManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let bundleName: string = 'com.example.exampleapplication';
@@ -1162,7 +1162,7 @@ import { applicationManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -1218,7 +1218,7 @@ import { applicationManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -1269,7 +1269,7 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-Sets the features of kiosk mode. When [kiosk mode is activated](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode), the system disables capabilities such as the notification center, control center, and recent tasks panel by default. This API can be used to disable or restore some capabilities.
+Sets the features of kiosk mode. When [kiosk mode is activated](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode), the system disables capabilities such as the notification center, control panel, and recent tasks panel by default. This API can be used to disable or restore some capabilities.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_KIOSK
 
@@ -1282,7 +1282,7 @@ Sets the features of kiosk mode. When [kiosk mode is activated](../apis-ability-
 | Name      | Type                                                   | Mandatory| Description                  |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.        |
-| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | Yes  | Features of kiosk mode.<br> If an empty array is passed, the system will clear all previously configured features and restore kiosk mode to its default state, where capabilities such as the notification center, control center, and recent tasks panel are disabled.|
+| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | Yes  | Features of kiosk mode.<br> If an empty array is passed, the system will clear all previously configured features and restore kiosk mode to its default state, where capabilities such as the notification center, control panel, and recent tasks panel are disabled.|
 
 **Error codes**
 
@@ -1304,7 +1304,7 @@ import { applicationManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let kioskFeatures: Array<applicationManager.KioskFeature> = [];
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_NOTIFICATION_CENTER);
@@ -1328,4 +1328,364 @@ Defines the features of the kiosk mode.
 | Name                       | Value | Description   |
 | ----------------------------| ----| ------------------------------- |
 | ALLOW_NOTIFICATION_CENTER   | 1   | Allow access to the notification center.|
-| ALLOW_CONTROL_CENTER        | 2   | Allow access to the control center.|
+| ALLOW_CONTROL_CENTER        | 2   | Allow access to the control panel.|
+
+## applicationManager.addUserNonStopApps<sup>22+</sup>
+
+addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
+
+Adds applications to the non-stoppable application list for a specified user. This policy only applies to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
+Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
+<br>Non-stoppable applications cannot be closed by swiping up in the task center. After a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name       | Type                                                        | Mandatory| Description                                  |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.                        |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | Yes  | Array of non-stoppable applications. A maximum of 10 applications can be added to the non-stoppable application list. This limit is not divided among users. Specifically, the total number of such applications added by all users cannot exceed 10. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for a specified user via this API.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let applicationInstances: Array<common.ApplicationInstance> = [
+  // Replace it as required.
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.addUserNonStopApps(wantTemp, applicationInstances);
+  console.info('Succeeded in adding UserNonStop applications.');
+} catch(err) {
+  console.error(`Failed to add UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.removeUserNonStopApps<sup>22+</sup>
+
+removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
+
+Removes the non-stoppable application list for a specified user. If the parameter list includes uninstalled applications, the removal will still succeed. Installed applications will be removed from the list, while uninstalled ones will not impact the removal process.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name       | Type                                                        | Mandatory| Description                                  |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.                        |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | Yes  | Array of non-stoppable applications.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let applicationInstances: Array<common.ApplicationInstance> = [
+  // Replace it as required.
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.removeUserNonStopApps(wantTemp, applicationInstances);
+  console.info('Succeeded in removing UserNonStop applications.');
+} catch(err) {
+  console.error(`Failed to remove UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getUserNonStopApps<sup>22+</sup>
+
+getUserNonStopApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
+
+Obtains the non-stoppable application list of all users on the current device.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name       | Type                                                        | Mandatory| Description                                  |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.                        |
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | Array of non-stoppable applications.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(wantTemp);
+  console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.addFreezeExemptedApps<sup>22+</sup>
+
+addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
+
+Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
+Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
+<br>Freezing operations include suspending the target application, and managing software resource agents, hardware resource agents, and high-power consumption.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name       | Type                                                        | Mandatory| Description                                  |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.                        |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | Yes  | Array of the background freeze-exempt application list. A maximum of 10 applications can be added to the list. This limit is not divided among users. Specifically, the total number of such applications added by all users cannot exceed 10. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for a specified user via this API.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let applicationInstances: Array<common.ApplicationInstance> = [
+  // Replace it as required.
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.addFreezeExemptedApps(wantTemp, applicationInstances);
+  console.info('Succeeded in adding FreezeExempted applications.');
+} catch(err) {
+  console.error(`Failed to add FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.removeFreezeExemptedApps<sup>22+</sup>
+
+removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
+
+Removes the background freeze-exempt application list for a specified user. If the parameter list includes uninstalled applications, the removal will still succeed. Installed applications will be removed from the list, while uninstalled ones will not impact the removal process.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name       | Type                                                        | Mandatory| Description                                  |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.                        |
+| applicationInstances | Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | Yes  | Array of the background freeze-exempt application list.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let applicationInstances: Array<common.ApplicationInstance> = [
+  // Replace it as required.
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.removeFreezeExemptedApps(wantTemp, applicationInstances);
+  console.info('Succeeded in removing FreezeExempted applications.');
+} catch(err) {
+  console.error(`Failed to remove FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getFreezeExemptedApps<sup>22+</sup>
+
+getFreezeExemptedApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
+
+Obtains the background freeze-exempt application list of all users on the current device.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name       | Type                                                        | Mandatory| Description                                  |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.                        |
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | Array of the background freeze-exempt application list.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<common.ApplicationInstance> = applicationManager.getFreezeExemptedApps(wantTemp);
+  console.info(`Succeeded in getting FreezeExempted applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```

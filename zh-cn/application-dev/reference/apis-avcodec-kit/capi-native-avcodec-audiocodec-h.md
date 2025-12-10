@@ -60,7 +60,7 @@
 
 ### OH_AudioCodec_CreateByMime()
 
-```
+```c
 OH_AVCodec *OH_AudioCodec_CreateByMime(const char *mime, bool isEncoder)
 ```
 
@@ -88,7 +88,7 @@ OH_AVCodec *OH_AudioCodec_CreateByMime(const char *mime, bool isEncoder)
 
 ### OH_AudioCodec_CreateByName()
 
-```
+```c
 OH_AVCodec *OH_AudioCodec_CreateByName(const char *name)
 ```
 
@@ -115,7 +115,7 @@ OH_AVCodec *OH_AudioCodec_CreateByName(const char *name)
 
 ### OH_AudioCodec_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Destroy(OH_AVCodec *codec)
 ```
 
@@ -142,7 +142,7 @@ OH_AVErrCode OH_AudioCodec_Destroy(OH_AVCodec *codec)
 
 ### OH_AudioCodec_RegisterCallback()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)
 ```
 
@@ -171,7 +171,7 @@ OH_AVErrCode OH_AudioCodec_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallbac
 
 ### OH_AudioCodec_Configure()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Configure(OH_AVCodec *codec, const OH_AVFormat *format)
 ```
 
@@ -199,7 +199,7 @@ OH_AVErrCode OH_AudioCodec_Configure(OH_AVCodec *codec, const OH_AVFormat *forma
 
 ### OH_AudioCodec_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Prepare(OH_AVCodec *codec)
 ```
 
@@ -226,7 +226,7 @@ OH_AVErrCode OH_AudioCodec_Prepare(OH_AVCodec *codec)
 
 ### OH_AudioCodec_Start()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Start(OH_AVCodec *codec)
 ```
 
@@ -253,7 +253,7 @@ OH_AVErrCode OH_AudioCodec_Start(OH_AVCodec *codec)
 
 ### OH_AudioCodec_Stop()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Stop(OH_AVCodec *codec)
 ```
 
@@ -280,7 +280,7 @@ OH_AVErrCode OH_AudioCodec_Stop(OH_AVCodec *codec)
 
 ### OH_AudioCodec_Flush()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Flush(OH_AVCodec *codec)
 ```
 
@@ -307,7 +307,7 @@ OH_AVErrCode OH_AudioCodec_Flush(OH_AVCodec *codec)
 
 ### OH_AudioCodec_Reset()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Reset(OH_AVCodec *codec)
 ```
 
@@ -334,7 +334,7 @@ OH_AVErrCode OH_AudioCodec_Reset(OH_AVCodec *codec)
 
 ### OH_AudioCodec_GetOutputDescription()
 
-```
+```c
 OH_AVFormat *OH_AudioCodec_GetOutputDescription(OH_AVCodec *codec)
 ```
 
@@ -361,7 +361,7 @@ OH_AVFormat *OH_AudioCodec_GetOutputDescription(OH_AVCodec *codec)
 
 ### OH_AudioCodec_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_SetParameter(OH_AVCodec *codec, const OH_AVFormat *format)
 ```
 
@@ -389,7 +389,7 @@ OH_AVErrCode OH_AudioCodec_SetParameter(OH_AVCodec *codec, const OH_AVFormat *fo
 
 ### OH_AudioCodec_PushInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -417,7 +417,7 @@ OH_AVErrCode OH_AudioCodec_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 ### OH_AudioCodec_FreeOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -445,7 +445,7 @@ OH_AVErrCode OH_AudioCodec_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 
 ### OH_AudioCodec_IsValid()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_IsValid(OH_AVCodec *codec, bool *isValid)
 ```
 
@@ -473,7 +473,7 @@ OH_AVErrCode OH_AudioCodec_IsValid(OH_AVCodec *codec, bool *isValid)
 
 ### OH_AudioCodec_SetDecryptionConfig()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession,bool secureAudio)
 ```
 
@@ -502,7 +502,7 @@ OH_AVErrCode OH_AudioCodec_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySessio
 
 ### OH_AudioCodec_QueryInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -531,7 +531,7 @@ OH_AVErrCode OH_AudioCodec_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *
 
 ### OH_AudioCodec_GetInputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_AudioCodec_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -559,7 +559,7 @@ OH_AVBuffer *OH_AudioCodec_GetInputBuffer(struct OH_AVCodec *codec, uint32_t ind
 
 ### OH_AudioCodec_QueryOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -588,7 +588,7 @@ OH_AVErrCode OH_AudioCodec_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t 
 
 ### OH_AudioCodec_GetOutputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_AudioCodec_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 

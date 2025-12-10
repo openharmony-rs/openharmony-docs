@@ -55,10 +55,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ProcessWeb]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ProcessWeb_';
+    
     @Entry
     @Component
     struct WebComponent {
@@ -69,14 +66,14 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
           Button('getRenderProcessMode')
             .onClick(() => {
               let mode = webview.WebviewController.getRenderProcessMode();
-              hilog.info(DOMAIN, TAG, BUNDLE, 'getRenderProcessMode: ' + mode);
+              console.info('getRenderProcessMode: ' + mode);
             })
           Button('setRenderProcessMode')
             .onClick(() => {
               try {
                 webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE);
               } catch (error) {
-                hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as     BusinessError).message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as     BusinessError).message}`);
               }
             })
           Web({ src: 'www.example.com', controller: this.controller })
@@ -91,10 +88,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ProcessWeb]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ProcessWeb_';
+    
     @Entry
     @Component
     struct WebComponent {
@@ -105,7 +99,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
           Button('terminateRenderProcess')
             .onClick(() => {
               let result = this.controller.terminateRenderProcess();
-              hilog.info(DOMAIN, TAG, BUNDLE, 'terminateRenderProcess result: ' + result);
+              console.info('terminateRenderProcess result: ' + result);
             })
           Web({ src: 'www.example.com', controller: this.controller })
         }
@@ -119,10 +113,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ProcessWeb]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ProcessWeb_';
+    
     @Entry
     @Component
     struct WebComponent {
@@ -133,7 +124,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
           Web({ src: 'chrome://crash/', controller: this.controller })
             .onRenderExited((event) => {
               if (event) {
-                hilog.info(DOMAIN, TAG, BUNDLE, 'reason:' + event.renderExitReason);
+                console.info('reason:' + event.renderExitReason);
               }
             })
         }
@@ -149,10 +140,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ProcessWeb]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ProcessWeb_';
+    
     @Entry
     @Component
     struct WebComponent {
@@ -162,7 +150,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
         Column() {
           Web({ src: 'www.example.com', controller: this.controller })
             .onRenderProcessNotResponding((data) => {
-              hilog.info(DOMAIN, TAG, BUNDLE, 'onRenderProcessNotResponding: [jsStack]= ' + data.jsStack +
+              console.info('onRenderProcessNotResponding: [jsStack]= ' + data.jsStack +
                 ', [process]=' + data.pid + ', [reason]=' + data.reason);
             })
         }
@@ -174,10 +162,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ProcessWeb]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ProcessWeb_';
+    
     @Entry
     @Component
     struct WebComponent {
@@ -187,7 +172,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
         Column() {
           Web({ src: 'www.example.com', controller: this.controller })
             .onRenderProcessResponding(() => {
-              hilog.info(DOMAIN, TAG, BUNDLE, 'onRenderProcessResponding again');
+              console.info('onRenderProcessResponding again');
             })
         }
       }

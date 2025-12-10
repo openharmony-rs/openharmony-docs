@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_MetadataOutput Camera_MetadataOutput
+```
+
 ## 概述
 
 元数据输出对象。<br> 可以使用[OH_CameraManager_CreateMetadataOutput](capi-camera-manager-h.md#oh_cameramanager_createmetadataoutput)方法创建指针。

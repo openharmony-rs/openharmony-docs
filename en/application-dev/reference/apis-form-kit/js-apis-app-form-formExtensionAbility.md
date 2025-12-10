@@ -1,19 +1,25 @@
 # @ohos.app.form.FormExtensionAbility (FormExtensionAbility)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @HelloShuo-->
 
 The **FormExtensionAbility** module provides lifecycle callbacks invoked when a widget is created, destroyed, or updated.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The formExtensionAbility is cleared after 10 seconds of inactivity.
+> - The formExtensionAbility is cleared after 10 seconds of inactivity.
 >
-> The following modules cannot be referenced in the FormExtensionAbility, as doing so may cause the program to exit abnormally:
-> - @ohos.ability.particleAbility (ParticleAbility)
-> - @ohos.multimedia.audio (Audio Management)
-> - @ohos.multimedia.camera (Camera Management)
-> - @ohos.multimedia.media (Media)
-> - @ohos.resourceschedule.backgroundTaskManager (Background Task Management)
+> - The following modules cannot be referenced in the FormExtensionAbility, as doing so may cause the program to exit abnormally:
+>   - @ohos.ability.particleAbility (ParticleAbility)
+>   - @ohos.multimedia.audio (Audio Management)
+>   - @ohos.multimedia.camera (Camera Management)
+>   - @ohos.multimedia.media (Media)
+>   - @ohos.resourceschedule.backgroundTaskManager (Background Task Management)
 
 
 ## Modules to Import
@@ -36,9 +42,9 @@ Widget extension class. It provides APIs to notify the widget provider that a wi
 
 **System capability**: SystemCapability.Ability.Form
 
-| Name   | Type                                                        | Readable| Writable| Description                                                        |
+| Name   | Type                                                        | Read-Only| Optional| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | Yes  | No  | Context of the FormExtensionAbility. This context is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | No  | No  | Context of the FormExtensionAbility. This context is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ### FormExtensionAbility.onAddForm
 
@@ -88,7 +94,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onCastToNormalForm(formId: string): void
 
-Called to notify the widget provider that a temporary widget is being converted to a normal one.
+Called to notify the widget provider that a temporary widget has been converted to a normal one. Temporary widgets and normal widgets are concepts of the widget host. Temporary widgets have a brief existence, appearing following particular events or user interactions and vanishing automatically upon task completion. Normal widgets maintain a lasting presence, continuing to exist unless explicitly removed or altered by the user. Function widgets developed in normal cases are normal widgets. Currently, the widget host does not use temporary widgets.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -109,6 +115,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onCastToNormalForm(formId: string) {
+    // Called to notify the widget provider that a temporary widget has been converted to a normal one. You need to perform operations as required.
     console.log(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
   }
 };
@@ -141,7 +148,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onUpdateForm(formId: string, wantParams?: Record<string, Object>) {
-    console.log(`FormExtensionAbility onUpdateForm, formId: ${formId},
+    console.info(`FormExtensionAbility onUpdateForm, formId: ${formId},
         wantPara: ${wantParams?.['ohos.extra.param.key.host_bg_inverse_color']}`);
     let param: Record<string, string> = {
       'temperature': '22c',
@@ -149,7 +156,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     }
     let obj2: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
     formProvider.updateForm(formId, obj2).then(() => {
-      console.log(`FormExtensionAbility context updateForm`);
+      console.info(`FormExtensionAbility context updateForm`);
     }).catch((error: BusinessError) => {
       console.error(`FormExtensionAbility context updateForm failed, data: ${error}`);
     });
@@ -189,7 +196,7 @@ function getObjKeys(obj: Object): string[] {
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onChangeFormVisibility(newStatus: Record<string, number>) {
-    console.log(`FormExtensionAbility onChangeFormVisibility, newStatus: ${newStatus}`);
+    console.info(`FormExtensionAbility onChangeFormVisibility, newStatus: ${newStatus}`);
     let param: Record<string, string> = {
       'temperature': '22c',
       'time': '22:00'
@@ -199,9 +206,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     let keys: string[] = getObjKeys(newStatus);
 
     for (let i: number = 0; i < keys.length; i++) {
-      console.log(`FormExtensionAbility onChangeFormVisibility, key: ${keys[i]}, value= ${newStatus[keys[i]]}`);
+      console.info(`FormExtensionAbility onChangeFormVisibility, key: ${keys[i]}, value= ${newStatus[keys[i]]}`);
       formProvider.updateForm(keys[i], obj2).then(() => {
-        console.log(`FormExtensionAbility context updateForm`);
+        console.info(`FormExtensionAbility context updateForm`);
       }).catch((error: BusinessError) => {
         console.error(`Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
       });
@@ -236,7 +243,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
-    console.log(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
   }
 };
 ```
@@ -266,7 +273,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onRemoveForm(formId: string) {
-    console.log(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
+    console.info(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
   }
 };
 ```
@@ -299,7 +306,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
     // This lifecycle callback is triggered only when the configuration is updated while the FormExtensionAbility is alive.
     // If no operation is performed within 10 seconds after a FormExtensionAbility instance is created, the instance will be deleted.
-    console.log(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
+    console.info(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
   }
 };
 ```
@@ -320,7 +327,7 @@ Called to notify the widget provider that the widget host is requesting the widg
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Description of the widget state, including the bundle name, ability name, module name, widget name, and widget dimension.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Description of the widget state, including the bundle name, ability name, module name, and widget name.|
 
 **Return value**
 
@@ -336,7 +343,7 @@ import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAcquireFormState(want: Want) {
-    console.log(`FormExtensionAbility onAcquireFormState, want: ${want}`);
+    console.info(`FormExtensionAbility onAcquireFormState, want: ${want}`);
     return formInfo.FormState.UNKNOWN;
   }
 };
@@ -361,7 +368,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onStop() {
-    console.log(`FormExtensionAbility onStop`);
+    console.info(`FormExtensionAbility onStop`);
   }
 }
 ```
@@ -372,8 +379,10 @@ onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): v
 
 Called when the widget location changes.
 
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
 **Model restriction**: This API can be used only in the stage model.
-  
+
 **System capability**: SystemCapability.Ability.Form
 
 **Parameters**

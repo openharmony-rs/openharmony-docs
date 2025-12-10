@@ -28,20 +28,22 @@
 
 Stack组件为容器组件，容器内可包含各种子元素。其中子元素默认进行居中堆叠。子元素被约束在Stack下，进行自己的样式定义以及排列。
 
-```ts
+<!-- @[StackLayoutExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutExample.ets) -->
+
+``` TypeScript
 // xxx.ets
-let MTop:Record<string,number> = { 'top': 50 }
+let mTop:Record<string,number> = { 'top': 50 }
 
 @Entry
 @Component
-struct StackExample {
+struct StackLayoutExample {
   build() {
     Column(){
       Stack({ }) {
         Column(){}.width('90%').height('100%').backgroundColor('#ff58b87c')
         Text('text').width('60%').height('60%').backgroundColor('#ffc3f6aa')
         Button('button').width('30%').height('30%').backgroundColor('#ff8ff3eb').fontColor('#000')
-      }.width('100%').height(150).margin(MTop)
+      }.width('100%').height(150).margin(mTop)
     }
   }
 }
@@ -59,11 +61,13 @@ Stack组件通过[alignContent参数](../reference/apis-arkui/arkui-ts/ts-contai
 
 ![zh-cn_image_0000001562940621](figures/zh-cn_image_0000001562940621.png)
 
-```ts
+<!-- @[StackLayoutAlignContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutAlignContent.ets) -->
+
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
-struct StackExample {
+struct StackAlignContentExample {
   build() {
     Stack({ alignContent: Alignment.TopStart }) {
       Text('Stack').width('90%').height('100%').backgroundColor('#e1dede').align(Alignment.BottomEnd)
@@ -80,39 +84,49 @@ Stack容器中兄弟组件显示层级关系可以通过[Z序控制](../referenc
 
   在层叠布局中，如果后面子元素尺寸大于前面子元素尺寸，则前面子元素完全隐藏。
 
-```ts
+<!-- @[StackLayoutNozIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutNozIndex.ets) -->
+
+``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    Text('Stack子元素1').textAlign(TextAlign.End).fontSize(20)
+    //'app.string.stack_num1'资源文件中的value值为'Stack子元素1'
+    Text($r('app.string.stack_num1')).textAlign(TextAlign.End).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306)
 
   Column() {
-    Text('Stack子元素2').fontSize(20)
+    //'app.string.stack_num2'资源文件中的value值为'Stack子元素2'
+    Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink)
 
   Column() {
-    Text('Stack子元素3').fontSize(20)
+    //'app.string.stack_num3'资源文件中的value值为'Stack子元素3'
+    Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
 ![zh-cn_image_0000001511900544](figures/zh-cn_image_0000001511900544.png)
 
-上图中，最后的子元素3的尺寸大于前面的所有子元素，所以，前面两个元素完全隐藏。改变子元素1，子元素2的zIndex属性后，可以将元素展示出来。
+上图中，最后的子元素3的尺寸大于前面的所有子元素，所以，前面两个元素完全隐藏。改变子元素1、子元素2的zIndex属性后，可以将元素展示出来。
 
 
-```ts
+<!-- @[StackLayoutzIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutzIndex.ets) -->
+
+``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    Text('Stack子元素1').fontSize(20)
+    //'app.string.stack_num1'资源文件中的value值为'Stack子元素1'
+    Text($r('app.string.stack_num1')).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306).zIndex(2)
 
   Column() {
-    Text('Stack子元素2').fontSize(20)
+    //'app.string.stack_num2'资源文件中的value值为'Stack子元素2'
+    Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink).zIndex(1)
 
   Column() {
-    Text('Stack子元素3').fontSize(20)
+    //'app.string.stack_num3'资源文件中的value值为'Stack子元素3'
+    Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
@@ -125,7 +139,9 @@ Stack({ alignContent: Alignment.BottomStart }) {
 使用层叠布局快速搭建页面。
 
 
-```ts
+<!-- @[StackLayoutSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutSceneExample.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct StackSample {
@@ -147,9 +163,12 @@ struct StackSample {
       }.width('100%').height('100%')
 
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        Text('联系人').fontSize(16)
-        Text('设置').fontSize(16)
-        Text('短信').fontSize(16)
+        //'app.string.contacts'资源文件中的value值为'联系人'
+        Text($r('app.string.contacts')).fontSize(16)
+        //'app.string.setting'资源文件中的value值为'设置'
+        Text($r('app.string.setting')).fontSize(16)
+        //'app.string.text_message'资源文件中的value值为'短信'
+        Text($r('app.string.text_message')).fontSize(16)
       }
       .width('50%')
       .height(50)

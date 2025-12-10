@@ -415,3 +415,43 @@ struct SpanExample {
 ```
 
 ![imagespan](figures/image_span_alt.gif)
+### 示例6（使用supportSvg2属性时，SVG图片的显示效果）
+
+从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效。
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('属性字符串不支持svg2')
+        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+        Text('属性字符串支持svg2')
+        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .supportSvg2(true)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![styledString_17](figures/styledString_17.png)

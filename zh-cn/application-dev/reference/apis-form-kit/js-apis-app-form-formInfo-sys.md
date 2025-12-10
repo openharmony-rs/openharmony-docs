@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 formInfo模块提供了卡片信息和状态等相关类型和枚举。
 
@@ -28,9 +28,9 @@ import { formInfo } from '@kit.FormKit';
 | 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
 | previewImages<sup>18+</sup> | Array&lt;number&gt; | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| enableBlurBackground<sup>18+</sup>  | boolean               | 是    | 是     | 卡片是否使用模糊背板。 |
+| enableBlurBackground<sup>18+</sup>  | boolean               | 是    | 是     | 卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。|
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|是|是|卡片渲染模式。|
-| resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | groupId<sup>20+</sup> | string     | 是    | 是     | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享。例如，卡片A和B的groupId相同且resizable均为true，则卡片A可以调整为卡片A和B的supportDimensions配置中的任意尺寸。<br>推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 
@@ -65,7 +65,7 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
-| 名称        | 类型                 | 可读    | 可写    | 说明                                                         |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
 | hostBundleName  | string               | 是    | 否     | 使用方卡片所属包的Bundle名称。                   |
 | visibilityType  | [VisibilityType](js-apis-app-form-formInfo.md#visibilitytype)               | 是    | 否     | 卡片当前可见类型枚举。                   |
@@ -82,13 +82,13 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
-| 名称        | 类型                 | 可读    | 可写    | 说明                                                         |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| bundleName  | string               | 是    | 是     | 提供方卡片所属包的Bundle名称。  |
-| formName    | string               | 是    | 是     | 卡片名称。                     |
-| moduleName  | string               | 是    | 是     | 卡片所属模块的模块名称。        |
-| abilityName | string               | 是    | 是     | 卡片所属的Ability名称。        |
-| isUnusedIncluded<sup>11+</sup> | boolean               | 是    | 是     | 是否包含未使用的卡片。<br/>-&nbsp;true：包含未使用的卡片。<br/>-&nbsp;false：不包含未使用的卡片。<br/>默认值：false。        |
+| bundleName  | string               | 否    | 否     | 提供方卡片所属包的Bundle名称。  |
+| formName    | string               | 否    | 是     | 卡片名称。                     |
+| moduleName  | string               | 否    | 是     | 卡片所属模块的模块名称。        |
+| abilityName | string               | 否    | 是     | 卡片所属的Ability名称。        |
+| isUnusedIncluded<sup>11+</sup> | boolean               | 否    | 是     | 是否包含未使用的卡片。<br/>-&nbsp;true：包含未使用的卡片。<br/>-&nbsp;false：不包含未使用的卡片。<br/>默认值：false。        |
 
 
 ## FormInfoFilter
@@ -121,7 +121,7 @@ import { formInfo } from '@kit.FormKit';
 | FORM_CENTER_NEGATIVE_SCREEN  | 4    | 表示卡片位于负一屏的服务中心。   |
 | FORM_MANAGER_NEGATIVE_SCREEN | 5    | 表示卡片位于负一屏的卡片管理器。 |
 | SCREEN_LOCK                  | 6    | 表示卡片位于锁屏。               |
-| AI_SUGGESTION                | 7    | 表示卡片位于小艺建议推荐区。     |
+| AI_SUGGESTION                | 7    | 表示卡片位于AI智慧助手推荐区。     |
 
 ## PublishFormResult<sup>12+</sup>
 
@@ -129,10 +129,10 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称    | 类型                                          | 可读 | 可写 | 说明                       |
+| 名称    | 类型                                          | 只读 | 可选 | 说明                       |
 | ------- | --------------------------------------------- | ---- | ---- | -------------------------- |
-| code    | [PublishFormErrorCode](#publishformerrorcode12) | 是   | 否   | 发布卡片加桌错误码。       |
-| message | string                                        | 是   | 否   | 设置卡片加桌结果返回信息。 |
+| code    | [PublishFormErrorCode](#publishformerrorcode12) | 否   | 否   | 发布卡片加桌错误码。       |
+| message | string                                        | 否   | 否   | 设置卡片加桌结果返回信息。 |
 
 ## PublishFormErrorCode<sup>12+</sup>
 
@@ -257,7 +257,7 @@ import { formInfo } from '@kit.FormKit';
 let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
   (formId: string): Promise<formInfo.Rect> => {
     return new Promise<formInfo.Rect>((resolve: Function) => {
-      console.log(`formId is ${formId}`);
+      console.info(`formId is ${formId}`);
       let formRect: formInfo.Rect = {left: 0, top: 0, width: 0, height: 0};
       resolve(formRect);
     })

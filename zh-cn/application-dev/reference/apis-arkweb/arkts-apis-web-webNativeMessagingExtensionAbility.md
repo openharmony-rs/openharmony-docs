@@ -15,7 +15,7 @@ WebNativeMessagingExtensionAbility为开发者提供Web原生消息通信的能�
 ## 导入模块
 
 ```ts
-import WebNativeMessagingExtensionAbility from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility } from '@kit.ArkWeb';
 ```
 
 ## WebNativeMessagingExtensionAbility
@@ -56,7 +56,7 @@ import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb'
 export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
   onConnectNative(info: ConnectionInfo): void {
     console.info('Web Native connection established!');
-    console.info(`Connnection ID: ${info.connectionId}`);
+    console.info(`Connection ID: ${info.connectionId}`);
     console.info(`Caller bundle: ${info.bundleName}`);
     // 在此处处理连接建立后的业务逻辑
   }
@@ -87,7 +87,7 @@ import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb'
 export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
   onDisconnectNative(info: ConnectionInfo): void {
     console.info('Web Native connection closed!');
-    console.info(`Connnection ID: ${info.connectionId}`);
+    console.info(`Connection ID: ${info.connectionId}`);
     // 在此处处理连接断开后的清理工作
   }
 }

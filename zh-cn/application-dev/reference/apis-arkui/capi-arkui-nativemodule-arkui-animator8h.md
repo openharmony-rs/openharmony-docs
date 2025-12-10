@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_Animator* ArkUI_AnimatorHandle
+```
+
 ## 概述
 
 定义animator动画对象指针。

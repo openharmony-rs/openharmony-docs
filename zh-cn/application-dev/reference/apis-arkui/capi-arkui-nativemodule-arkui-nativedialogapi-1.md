@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_NativeDialogAPI_1
+```
+
 ## 概述
 
 ArkUI提供的Native侧自定义弹窗接口集合。
@@ -45,7 +49,7 @@ ArkUI提供的Native侧自定义弹窗接口集合。
 
 ### create()
 
-```
+```c
 ArkUI_NativeDialogHandle (*create)()
 ```
 
@@ -65,7 +69,7 @@ ArkUI_NativeDialogHandle (*create)()
 
 ### dispose()
 
-```
+```c
 void (*dispose)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -76,7 +80,7 @@ void (*dispose)(ArkUI_NativeDialogHandle handle)
 
 ### setContent()
 
-```
+```c
 int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)
 ```
 
@@ -103,7 +107,7 @@ int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)
 
 ### removeContent()
 
-```
+```c
 int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -129,7 +133,7 @@ int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)
 
 ### setContentAlignment()
 
-```
+```c
 int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)
 ```
 
@@ -158,7 +162,7 @@ int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignmen
 
 ### resetContentAlignment()
 
-```
+```c
 int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -184,7 +188,7 @@ int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 
 ### setModalMode()
 
-```
+```c
 int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)
 ```
 
@@ -211,7 +215,7 @@ int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)
 
 ### setAutoCancel()
 
-```
+```c
 int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)
 ```
 
@@ -238,7 +242,7 @@ int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)
 
 ### setMask()
 
-```
+```c
 int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)
 ```
 
@@ -266,7 +270,7 @@ int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const Ar
 
 ### setBackgroundColor()
 
-```
+```c
 int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)
 ```
 
@@ -293,7 +297,7 @@ int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgrou
 
 ### setCornerRadius()
 
-```
+```c
 int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight,float bottomLeft, float bottomRight)
 ```
 
@@ -323,7 +327,7 @@ int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float
 
 ### setGridColumnCount()
 
-```
+```c
 int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount)
 ```
 
@@ -350,7 +354,7 @@ int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount
 
 ### enableCustomStyle()
 
-```
+```c
 int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomStyle)
 ```
 
@@ -367,7 +371,7 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  bool enableCustomStyle | true:宽度自适应子节点，圆角为0，弹窗背景色透明；false:高度自适应子节点，宽度由栅格系统定义, 圆角半径24vp。 |
+|  bool enableCustomStyle | 弹窗容器样式是否可以自定义。<br/>默认值：false<br/>true：弹窗容器样式不能自定义，宽度自适应子节点，圆角为0，弹窗背景色透明；false：弹窗容器样式可以自定义，高度自适应子节点，宽度由栅格系统定义，圆角半径24vp，PC/2in1设备避让屏幕边缘以及窗口标题栏。 |
 
 **返回：**
 
@@ -377,7 +381,7 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 
 ### enableCustomAnimation()
 
-```
+```c
 int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)
 ```
 
@@ -404,7 +408,7 @@ int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCus
 
 ### registerOnWillDismiss()
 
-```
+```c
 int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)
 ```
 
@@ -431,7 +435,7 @@ int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDi
 
 ### show()
 
-```
+```c
 int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)
 ```
 
@@ -454,7 +458,7 @@ int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)
 
 ### close()
 
-```
+```c
 int32_t (*close)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -477,7 +481,7 @@ int32_t (*close)(ArkUI_NativeDialogHandle handle)
 
 ### registerOnWillDismissWithUserData()
 
-```
+```c
 int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))
 ```
 

@@ -1,10 +1,10 @@
-# LiveFormExtensionContext（仅对系统应用开放）
+# LiveFormExtensionContext (系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
@@ -37,7 +37,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 
 LiveFormExtensionContext是LiveFormExtensionAbility的上下文环境。
 
-### connectServiceExtensionAbility<sup>22+<sup>
+### connectServiceExtensionAbility<sup>21+<sup>
 
 connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
 
@@ -66,7 +66,7 @@ ServiceExtensionAbility提供后台服务扩展能力，支持后台运行并对
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回连接id，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability22)传入该连接id来断开连接。 |
+| number | 返回连接id，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability21)传入该连接id来断开连接。 |
 
 **错误码：**
 
@@ -101,18 +101,17 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 import { Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
-import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-  private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+  private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
     // 2.获取LiveFormExtensionContext
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
-    this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+    this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
     if (!this.liveFormContext) {
         console.info('MyLiveFormPage liveFormContext is empty');
         return;
@@ -159,7 +158,7 @@ struct MyLiveFormPage {
 }
 ```
 
-### disconnectServiceExtensionAbility<sup>22+<sup>
+### disconnectServiceExtensionAbility<sup>21+<sup>
 
 disconnectServiceExtensionAbility(connectionId: number): Promise\<void>
 
@@ -177,7 +176,7 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connectionId | number | 是 | 连接的ServiceExtensionAbility的连接id，即[connectServiceExtensionAbility](#connectserviceextensionability22)返回的connectionId。 |
+| connectionId | number | 是 | 连接的ServiceExtensionAbility的连接id，即[connectServiceExtensionAbility](#connectserviceextensionability21)返回的connectionId。 |
 
 **返回值：**
 
@@ -213,20 +212,20 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 ```
 ```ts
 // pages/MyLiveFormPage.ets
+import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
-import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-  private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+  private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
     // 2.获取LiveFormExtensionContext
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
-    this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+    this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
     if (!this.liveFormContext) {
         console.info('MyLiveFormPage liveFormContext is empty');
         return;

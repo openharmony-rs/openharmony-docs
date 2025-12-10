@@ -27,9 +27,9 @@ The following table lists the common APIs for creating a canvas. For details abo
 | OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas (OH_Drawing_Surface \*) | Obtains a canvas from an **OH_Drawing_Surface** object.|
 
 
-## Obtaining the Canvas That Can Be Directly Displayed
+## Obtaining a Canvas That Can Be Directly Displayed
 
-Obtain the canvas that can be directly displayed through XComponent.
+Obtain a canvas that can be directly displayed through the XComponent.
 
 1. Add the link library.
 

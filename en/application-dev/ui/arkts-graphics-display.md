@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. This is where the **Image** component comes in handy. The **Image** component supports a wide range of image formats, including PNG, JPG, BMP, SVG, GIF, and HEIF, but does not support APNG and SVGA. For details, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 
@@ -18,7 +18,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor)
 
 This API obtains a local or online image from the data source specified by **src**. For details about how to load the data source, see [Loading Image Resources](#loading-image-resources).
 
-For details about how to resolve white block issues during image loading, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution). For details about how to address slow image loading, see [Optimizing Preset Image Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-texture-compression-improve-performance).
+For details about how to resolve white block issues during image loading, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution).
 
 
 ## Loading Image Resources

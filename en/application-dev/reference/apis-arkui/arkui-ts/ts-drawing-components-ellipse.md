@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Ellipse** component is used to draw an ellipse.
 
@@ -31,10 +31,11 @@ Ellipse(options?: EllipseOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [EllipseOptions](ts-drawing-components-ellipse.md#ellipseoptions18) | No| Dimensions for drawing an ellipse.<br>The values undefined and null are regarded as invalid values.|
+| options | [EllipseOptions](ts-drawing-components-ellipse.md#ellipseoptions18) | No| Dimensions for drawing an ellipse.<br>The **undefined** and **null** values are treated as invalid.|
 
 ## EllipseOptions<sup>18+</sup>
-Describes the dimensions for drawing an ellipse.
+
+This object is used to describe the drawing attributes of the Ellipse component.
 
 > **NOTE**
 >
@@ -125,7 +126,7 @@ Sets stroke dashes. This attribute can be dynamically set using [attributeModifi
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Stroke dashes.<br>Default value: [] (empty array)<br>Default unit: vp<br>If the value is undefined or null, the default value is used.|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the ellipse outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp<br>If the value is undefined or null, the default value is used.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
@@ -233,7 +234,7 @@ Sets the stroke width. This attribute can be dynamically set using the [attribut
 
 | Name| Type                        | Mandatory| Description                    |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>Default unit: vp<br>If the value is undefined, null, or NaN, the default value is used. If the value is Infinity, the value 0 is used.|
+| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>If the value is undefined, null, or NaN, the default value is used. If the value is Infinity, the value 0 is used.|
 
 ### antiAlias
 

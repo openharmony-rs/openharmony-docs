@@ -1,11 +1,17 @@
-# Button Development
+# button Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **Button** component can be used to set a capsule, circle, text, arc, or download button. For details, see [button](../reference/apis-arkui/arkui-js/js-components-basic-button.md).
+The **\<button>** component can be used to set a capsule, circle, text, arc, or download button. For details, see [button](../reference/apis-arkui/arkui-js/js-components-basic-button.md).
 
 
-## Creating a Button Component
+## Creating a \<button> Component
 
-Create a **Button** component in the .hml file under **pages/index**.
+Create a **\<button>** component in the .hml file under **pages/index**.
 
 ```html
 <!-- xxx.hml -->
@@ -31,7 +37,7 @@ Create a **Button** component in the .hml file under **pages/index**.
 
 ## Setting the Button Type
 
-Set the **type** attribute of the **Button** component to **circle**, **text**, or any other supported value.
+Set the **type** attribute of the **\<button>** component to **circle**, **text**, or any other supported value.
 
 
 ```html
@@ -75,7 +81,7 @@ Set the **type** attribute of the **Button** component to **circle**, **text**, 
 
 > **NOTE**
 > 
->If the icon used by the **Button** component is from the cloud, you must declare the **ohos.permission.INTERNET** permission in the **config.json** file under the **resources** folder.
+>If the icon used by the **\<button>** component is from the cloud, you must declare the **ohos.permission.INTERNET** permission in the **config.json** file under the **resources** folder.
 
 
 Sample code for declaring the **ohos.permission.INTERNET** permission in the **config.json** file under the **resources** folder:
@@ -93,7 +99,7 @@ Sample code for declaring the **ohos.permission.INTERNET** permission in the **c
 
 ## Showing the Download Progress
 
-Add the **progress** method to the **Button** component to display the download progress in real time.
+Add the **progress** method to the **\<button>** component to display the download progress in real time.
 
 ```html
 <!-- xxx.hml -->
@@ -212,7 +218,6 @@ Switch between the button types for different types of text.
   justify-content: center;
   margin-left: 30px;
   margin-right: 30px;
-  justify-content: space-around;
 }
 .input-text {
   height: 80px;
@@ -239,7 +244,7 @@ Switch between the button types for different types of text.
   color: #ffffff;
 }
 .color-3 {
-  background-color: #0598db;;
+  background-color: #0598db;
 }
 ```
 

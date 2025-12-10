@@ -32,5 +32,47 @@ type NetBearType = connection.NetBearType
 | ------ | ------------------------------------------------------------ |
 | [connection.NetBearType](./js-apis-net-connection.md#netbeartype) | 网络类型。 |
 
+## policy.showAppNetPolicySettings<sup>22+</sup>
 
+showAppNetPolicySettings(context: Context): Promise\<void>
+
+当需要设置当前应用能否使用Wi-Fi/蜂窝联网时，调用该接口可以打开当前应用的联网设置界面，以设置应用的联网权限。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**设备行为差异**：该接口在Phone、2in1、Tablet设备中可正常调用，在其他设备调用不生效。
+
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| context    | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | Stage模型的应用上下文（仅支持UIAbilityContext和ExtensionContext）。 |
+
+**返回值：**
+
+| 类型                                                    | 说明                          |
+| ------------------------------------------------------- | ----------------------------- |
+| Promise\<void>  |Promise对象。无返回结果的Promise对象。|
+
+**示例：**
+
+>**说明：** 
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+<!--code_no_check-->
+```ts
+import { policy } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+policy.showAppNetPolicySettings(context).then(() => {
+    console.info("showAppNetPolicySettings success");
+}).catch(() => {
+    console.error("showAppNetPolicySettings failed");
+    }
+)
+```
 

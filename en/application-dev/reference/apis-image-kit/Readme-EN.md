@@ -1,4 +1,10 @@
 # Image Kit
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS APIs<!--image-arkts-->
   - @ohos.multimedia.image (Image Processing)<!--js-apis-image-->
@@ -109,6 +115,8 @@
     - [ImageEffect_Size](capi-imageeffect-imageeffect-size.md)
     - [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)
     - [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)
+    - [Image_PositionArea](capi-image-nativemodule-image-positionarea.md)
+    - [Image_Scale](capi-image-nativemodule-image-scale.md)
 - Error Codes<!--image-arkts-errcode-->
   - [Image Error Codes](errorcode-image.md)
   - [Video Processing Engine Error Codes](errorcode-videoprocessingengine.md)

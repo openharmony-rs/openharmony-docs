@@ -9,6 +9,9 @@
 
 - ArkTS API<!--arkgraphics-arkts-->
   - [@ohos.effectKit (图像效果)](js-apis-effectKit.md)
+  <!--Del-->
+  - [@ohos.effectKit (图像效果)(系统接口)](js-apis-effectKit-sys.md)
+  <!--DelEnd-->
   - [@ohos.graphics.colorSpaceManager (色彩管理)](js-apis-colorSpaceManager.md)
   - [@ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)](js-apis-sendableColorSpaceManager.md)
   - [@ohos.graphics.common2D (2D图形通用数据类型)](js-apis-graphics-common2D.md)
@@ -17,7 +20,7 @@
     - [模块描述](arkts-apis-graphics-drawing.md)
     - [Class (Brush)](arkts-apis-graphics-drawing-Brush.md)
     - [Class (Canvas)](arkts-apis-graphics-drawing-Canvas.md)
-    - [Class (ClorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
+    - [Class (ColorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
     - [Class (Font)](arkts-apis-graphics-drawing-Font.md)
     - [Class (ImageFilter)](arkts-apis-graphics-drawing-ImageFilter.md)
     - [Class (Lattice)](arkts-apis-graphics-drawing-Lattice.md)
@@ -118,6 +121,8 @@
     - [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)
     - [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md)
     - [OH_NativeBuffer_Planes](capi-oh-nativebuffer-oh-nativebuffer-planes.md)
+    - [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)
+    - [OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md)
     - [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md)
     - [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md)
     - [DisplaySoloist_ExpectedRateRange](capi-nativedisplaysoloist-displaysoloist-expectedraterange.md)
@@ -150,7 +155,6 @@
     - [Rect](capi-nativewindow-rect.md)
     - [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md)
     - [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md)
-    - [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)
     - [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)
     - [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)
     - [NativePixelMap_](capi-drawing-nativepixelmap-.md)

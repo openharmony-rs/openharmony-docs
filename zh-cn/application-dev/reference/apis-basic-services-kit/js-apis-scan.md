@@ -565,7 +565,7 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| batchMode | boolean | 是 | 是否使用批处理模式。 |
+| batchMode | boolean | 是 | 是否使用批处理模式。true表示使用批处理模式，false表示不使用批处理模式。 |
 
 **返回值：**
 | **类型** | **说明** |
@@ -716,7 +716,7 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名 | **类型** | **必填** | **说明** |
+| **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
 | callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 否 | 回调函数，返回扫描仪设备发现信息。 |

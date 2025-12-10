@@ -1,10 +1,10 @@
-# &lt;menu&gt; Development
+# menu Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Armstrong15-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The &lt;menu&gt; component serves as a temporary pop-up window to display operations that users can perform. For details, see [menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md).
@@ -90,7 +90,7 @@ Set the style for the **&lt;menu&gt;** component, such as the font color, size, 
   height: 85px;
   border-radius: 12px;
 }
-menu{
+.menu{
   text-color: blue;
   font-size: 35px;
   letter-spacing: 2px;

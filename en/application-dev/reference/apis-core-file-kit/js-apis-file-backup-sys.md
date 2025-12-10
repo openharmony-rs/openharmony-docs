@@ -101,8 +101,8 @@ Represents an incremental backup object, which inherits from [IncrementalBackupT
 
 ## File
 
-Defines a file object, which
-inherits [FileMeta](#filemeta) and [FileData](#filedata).
+Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](#filedata).
+ 
 
 > **NOTE**
 >
@@ -112,8 +112,8 @@ inherits [FileMeta](#filemeta) and [FileData](#filedata).
 
 ## File<sup>12+</sup>
 
-Defines a file object, which
-inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
+Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
+ 
 
 > **NOTE**
 >
@@ -849,7 +849,7 @@ A constructor used to create a **SessionBackup** instance.
 
 | Name  | Type                                 | Mandatory| Description                |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| callback | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the backup process.|
+| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the backup process.|
 
 **Example**
 
@@ -1834,7 +1834,7 @@ A constructor used to create a **SessionRestore** instance.
 
 | Name  | Type                                 | Mandatory| Description                |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| callback | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the data restore process.|
+| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the data restore process.|
 
 **Example**
 
@@ -3146,7 +3146,7 @@ A constructor used to create an **IncrementalBackupSession** instance.
 
 | Name  | Type                                 | Mandatory| Description                    |
 | -------- | ------------------------------------- | ---- | ------------------------ |
-| callback | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the incremental backup process.|
+| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the incremental backup process.|
 
 **Error codes**
 

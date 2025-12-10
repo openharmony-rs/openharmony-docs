@@ -27,19 +27,23 @@
 下面以进度条通知发布更新为例。
 
 1. 导入模块。
+
+   <!-- @[update_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/UpdateNotification.ets) -->
    
-   ```ts
+   ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = '[PublishOperation]';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
 2. 发布进度条通知。
 
-   ```ts
+   <!-- @[pub_progress_bar_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/UpdateNotification.ets) -->
+   
+   ``` TypeScript
    let notificationRequest: notificationManager.NotificationRequest = {
      id: 5,
      content: {
@@ -55,12 +59,13 @@
        name: 'downloadTemplate',
        data: { title: 'File Title', fileName: 'music.mp4', progressValue: 50 }
      }
-   }
+   };
    
    // 发布通知
    notificationManager.publish(notificationRequest, (err: BusinessError) => {
      if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
        return;
      }
      hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
@@ -69,7 +74,9 @@
 
 3. 通过[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)接口携带updateOnly字段更新进度条通知。
 
-   ```ts
+   <!-- @[update_prog_only_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/UpdateNotification.ets) -->
+   
+   ``` TypeScript
    let notificationRequest: notificationManager.NotificationRequest = {
      id: 5,
      updateOnly: true,
@@ -86,12 +93,13 @@
        name: 'downloadTemplate',
        data: { title: 'File Title', fileName: 'music.mp4', progressValue: 99 }
      }
-   }
+   };
    
    // 更新发布通知
    notificationManager.publish(notificationRequest, (err: BusinessError) => {
      if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to update notification. Code is ${err.code}, message is ${err.message}`);
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to update notification. Code is ${err.code}, message is ${err.message}`);
        return;
      }
      hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in updating notification.');

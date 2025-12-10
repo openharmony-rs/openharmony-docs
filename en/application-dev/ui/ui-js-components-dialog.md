@@ -1,16 +1,17 @@
-# &lt;dialog&gt; Development
+# dialog Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+The **&lt;dialog&gt;** component is custom pop-up container for showing critical information or calling for an action. For details, see [dialog](../reference/apis-arkui/arkui-js/js-components-container-dialog.md).
 
 
 ## Creating a &lt;dialog&gt; Component
 
 Create a **&lt;dialog&gt;** component in the .hml file under **pages/index** and add **&lt;button&gt;** components to trigger the **&lt;dialog&gt;**. The **&lt;dialog&gt;** component supports only the **width**, **height**, **margin**, **margin-[left|top|right|bottom]**, and **margin-[start|end]** styles.
-
 ```html
 <!-- xxx.hml -->
 <div class="doc-page">

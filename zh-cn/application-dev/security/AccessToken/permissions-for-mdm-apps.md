@@ -252,32 +252,6 @@
 
 **起始版本**：10
 
-## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
-
-允许在企业设备上安装企业MDM应用包。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-<!--Del-->
-**ACL使能**：true<!--DelEnd-->
-
-**起始版本**：10
-
-## ohos.permission.INSTALL_SELF_BUNDLE
-
-允许企业MDM应用在企业设备上自升级。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-<!--Del-->
-**ACL使能**：true<!--DelEnd-->
-
-**起始版本**：10
-
 ## ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
 允许设备设置/取消浏览器策略。
@@ -673,3 +647,20 @@
 **起始版本**：20
 
 **变更信息**：在API20，该权限面向系统应用开放；从API 21开始，面向MDM应用开放。
+
+## ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+允许应用管理其他设备管理应用。
+
+获取该权限后，超级设备管理应用可管理其他设备管理应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：23

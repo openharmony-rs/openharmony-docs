@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This module provides API for creating and displaying toasts, dialog boxes, and action menus.
 
@@ -48,11 +48,11 @@ Shows a toast. This API uses a promise to return the toast ID.
 
 | Type            | Description                                |
 | ---------------- | ------------------------------------ |
-| Promise&lt;number&gt; | Promise that returns the toast ID for use with **closeToast**. |
+| Promise&lt;number&gt; | that returns the toast ID for use with **closeToast**.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -130,7 +130,7 @@ Closes the specified toast.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Popup Window Error Codes](errorcode-promptAction.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -200,9 +200,9 @@ Describes the options for showing the dialog box.
 | enableHoverMode<sup>14+</sup>     | boolean                                                      | No  | Yes | Whether to respond when the device is in semi-folded mode. The value **true** means to respond when the device is in semi-folded mode.<br>Default value: **false**, meaning not to respond when the device is in semi-folded mode.<br>**Atomic service API**: This API can be used in atomic services since API version 14.           |
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No  | Yes | Default display area of the dialog box in semi-folded mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the dialog box appearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onWillAppear**. The settings take effect next time the dialog box appears.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked when the dialog box appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.<br>3. When a dialog box is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.<br>4. If the dialog box is dismissed before its appearance animation is finished, the animation will be interrupted, and **onDidAppear** will not be invoked.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the dialog box appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.<br>3. When a dialog box is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.<br>4. If the dialog box is dismissed before its appearance animation is finished, the animation will be interrupted, and **onDidAppear** will not be invoked.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | onWillDisappear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the dialog box disappearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
-| onDidDisappear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked when the dialog box disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| onDidDisappear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the dialog box disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | levelMode<sup>15+</sup>       | [LevelMode](#levelmode15) | No  | Yes | Display level of the dialog box.<br>**NOTE**<br>- Default value: **LevelMode.OVERLAY**<br>- This parameter takes effect only when **showInSubWindow** is set to **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | levelUniqueId<sup>15+</sup>       | number | No  | Yes | [Unique ID](js-apis-arkui-frameNode.md#getuniqueid12) of the node under the display level for the page-level dialog box.<br>Value range: a number no less than 0<br>**NOTE**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | No  | Yes | Overlay effect for the page-level dialog box.<br>**NOTE**<br>- Default value: **ImmersiveMode.DEFAULT**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
@@ -236,9 +236,9 @@ Describes the options for showing the action menu.
 | levelUniqueId<sup>15+</sup>       | number | No  | Yes | [Unique ID](js-apis-arkui-frameNode.md#getuniqueid12) of the node under the display level for the page-level menu.<br>Value range: a number no less than 0<br>**NOTE**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | No  | Yes | Overlay effect for the page-level menu.<br>**NOTE**<br>- Default value: **ImmersiveMode.DEFAULT**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | onWillAppear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the menu appearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| onDidAppear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked when the menu appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. When a menu is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| onDidAppear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the menu appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. When a menu is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | onWillDisappear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the menu disappearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| onDidDisappear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked when the menu disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| onDidDisappear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the menu disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## ActionMenuSuccessResponse
 
@@ -474,7 +474,7 @@ Extends [BaseDialogOptions](#basedialogoptions11) to provide enhanced customizat
 | backgroundColor <sup>12+</sup>| [ResourceColor](arkui-ts/ts-types.md#resourcecolor)  | No| Yes| Background color of the dialog box.<br>Default value: **Color.Transparent**.<br>**NOTE**<br>When **backgroundColor** is set to a non-transparent color, **backgroundBlurStyle** must be set to **BlurStyle.NONE**; otherwise, the color display may not meet the expected effect.|
 | cornerRadius<sup>12+</sup>| [Dimension](arkui-ts/ts-types.md#dimension10) \| [BorderRadiuses](arkui-ts/ts-types.md#borderradiuses9) | No| Yes| Corner radius of the background.<br>You can set separate radiuses for the four corners.<br>Default value: **{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }**<br> The radius of the rounded corners is subject to the component size. Its maximum value is half of the component width or height. If the value is negative, the default value is used.<br> When set to a percentage, the value defines the radius as a percentage of the parent component's width or height.|
 | borderWidth<sup>12+</sup>| [Dimension](arkui-ts/ts-types.md#dimension10) \| [EdgeWidths](arkui-ts/ts-types.md#edgewidths9)  | No| Yes| Border width of the dialog box.<br>You can set the width for all four sides or set separate widths for individual sides.<br>Default value: **0**.<br>Unit: vp.<br> When set to a percentage, the value defines the border width as a percentage of the parent dialog box's width.<br>If the left and right borders are greater than its width, or the top and bottom borders are greater than its height, the dialog box may not display as expected.|
-| borderColor<sup>12+</sup> | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) \| [EdgeColors](arkui-ts/ts-types.md#edgecolors9)  | No| Yes| Border color of the dialog box.<br>Default value: **Color.Black**.<br> **borderColor** must be used with **borderWidth** in pairs.|
+| borderColor<sup>12+</sup> | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) \| [EdgeColors](arkui-ts/ts-types.md#edgecolors9)  | No| Yes| Border color of the dialog box.<br>Default value: **Color.Black**<br> **borderColor** must be used with **borderWidth** in pairs.|
 | borderStyle<sup>12+</sup> | [BorderStyle](arkui-ts/ts-appendix-enums.md#borderstyle) \| [EdgeStyles](arkui-ts/ts-types.md#edgestyles9)  | No| Yes| Border style of the dialog box.<br>Default value: **BorderStyle.Solid**.<br> **borderStyle** must be used with **borderWidth** in pairs.|
 | width<sup>12+</sup> | [Dimension](arkui-ts/ts-types.md#dimension10) | No  | Yes | Width of the dialog box.<br>**NOTE**<br>- Default maximum width of the dialog box: 400 vp<br>- Percentage-based configuration: The reference width of the dialog box is adjusted based on the width of the window where the dialog box is located.|
 | height<sup>12+</sup> | [Dimension](arkui-ts/ts-types.md#dimension10)  | No  | Yes | Height of the dialog box.<br>**NOTE**<br>- Default maximum height of the dialog box: 0.9 x (Window height – Safe area)<br>- When this parameter is set to a percentage, the reference height of the dialog box is the height of the window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.|
@@ -500,8 +500,8 @@ Defines the options of the dialog box.
 | transition<sup>12+</sup>          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10) | No  | Yes | Transition effect for the appearance and disappearance of the dialog box.<br>**NOTE**<br> 1. If this parameter is not set, the default effect is used.<br> 2. Touching the Back button during the appearance animation pauses the appearance animation and starts the disappearance animation. The final effect is one obtained after the curves of the appearance and disappearance animations are combined.<br> 3. Touching the Back button during the exit animation does not affect the animation playback. Touching the Back button again closes the application.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | dialogTransition<sup>19+</sup>          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10) | No  | Yes | Transition effect for the dialog box content. By default, there is no transition effect.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | maskTransition<sup>19+</sup>          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10) | No  | Yes | Transition effect for the mask. By default, there is no transition effect.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| onDidAppear<sup>12+</sup> | () => void | No| Yes| Event callback when the dialog box appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onDateAccept/onCancel/onDateChange) > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.<br>3. If the user dismisses the dialog box immediately after it appears, **onWillDisappear** is invoked before **onDidAppear**.<br>4. If the dialog box is dismissed before its appearance animation is finished, this callback is not invoked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onDidDisappear<sup>12+</sup> | () => void | No| Yes| Event callback when the dialog box disappears.<br>**NOTE**<br>The normal timing sequence is as follows: onWillAppear > onDidAppear > (onDateAccept/onCancel/onDateChange) > onWillDisappear > onDidDisappear.<br>This callback is not triggered if the dialog box disappearance animation is interrupted (for example, by page navigation).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| onDidAppear<sup>12+</sup> | () => void | No| Yes| Event callback after the dialog box appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onDateAccept/onCancel/onDateChange) > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.<br>3. If the user dismisses the dialog box immediately after it appears, **onWillDisappear** is invoked before **onDidAppear**.<br>4. If the dialog box is dismissed before its appearance animation is finished, this callback is not invoked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| onDidDisappear<sup>12+</sup> | () => void | No| Yes| Event callback after the dialog box disappears.<br>**NOTE**<br>The normal timing sequence is as follows: onWillAppear > onDidAppear > (onDateAccept/onCancel/onDateChange) > onWillDisappear > onDidDisappear.<br>This callback is not triggered if the dialog box disappearance animation is interrupted (for example, by page navigation).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onWillAppear<sup>12+</sup> | () => void | No| Yes| Event callback when the dialog box is about to appear.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onDateAccept/onCancel/onDateChange) > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onWillAppear**. The settings take effect next time the dialog box appears.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onWillDisappear<sup>12+</sup> | () => void | No| Yes| Event callback when the dialog box is about to disappear.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onDateAccept/onCancel/onDateChange) > onWillDisappear > onDidDisappear.<br>2. If the user dismisses the dialog box immediately after it appears, **onWillDisappear** is invoked before **onDidAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | keyboardAvoidMode<sup>12+</sup> | [KeyboardAvoidMode](./arkui-ts/ts-universal-attributes-popup.md#keyboardavoidmode12) | No| Yes| How the dialog box avoids the soft keyboard when it is brought up.<br>Default value: **KeyboardAvoidMode.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -571,7 +571,7 @@ Describes the menu item button in the action menu.
 
 ## Example
 
-This example demonstrates how to call **getState()** through **promptAction.DialogController** to obtain the current state of a dialog box.
+This example demonstrates how to call the **getState** API of **promptAction.DialogController** to obtain the current state of a dialog box, supported since API version 20.
 
 ```ts
 // xxx.ets
@@ -671,7 +671,11 @@ Creates and displays a toast.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
+
+> **NOTE**
+>
+> If error code 100001 is returned, indicating an ambiguous UI context, use the corresponding APIs from **UIContext** instead. For details, see [Using the UI Context API for UI Operations (UIContext)](../../ui/arkts-global-interface.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -745,7 +749,7 @@ Creates and displays a dialog box in the given settings. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -806,7 +810,7 @@ Creates and displays a dialog box. This API uses an asynchronous callback to ret
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -887,7 +891,7 @@ try {
 
 ![en-us_image_0002_showinsubwindow](figures/en-us_image_0002_showinsubwindow.jpg)
 
-This example demonstrates the usage of dialog box lifecycle callbacks.
+This example demonstrates how to use the **onDidAppear**, **onDidDisappear**, **onWillAppear**, and **onWillDisappear** properties of [ShowDialogOptions](#showdialogoptions) to implement the dialog box lifecycle callbacks, supported since API version 19.
 
 ```ts
 // xxx.ets
@@ -977,7 +981,7 @@ Creates and displays an action menu. This API uses an asynchronous callback to r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1021,7 +1025,7 @@ try {
 
 **Example 2**
 
-This example demonstrates how to configure the lifecycle callbacks for **showActionMenu**.
+This example demonstrates how to use the **onDidAppear**, **onDidDisappear**, **onWillAppear**, and **onWillDisappear** properties of [ActionMenuOptions](#actionmenuoptions) to implement the action menu lifecycle callbacks, supported since API version 19.
 
 ```ts
 import { promptAction } from '@kit.ArkUI';
@@ -1124,7 +1128,7 @@ Creates and displays an action menu in the given settings. This API uses a promi
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1195,7 +1199,7 @@ By default, the width of the dialog box in portrait mode is the width of the win
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1363,7 +1367,7 @@ This example shows how to implement a dialog box on a page.
 
 > **NOTE**
 >
-> Directly using **openCustomDialog** can lead to the issue of ambiguous UI context. To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) API through this object.
+> Directly using **openCustomDialog** can lead to the issue of ambiguous UI context. To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) API through this object.
 
 ```ts
 // Index.ets
@@ -1457,7 +1461,7 @@ Closes the specified custom dialog box.
 
 > **NOTE**
 >
-> - This API is supported since API version 11 and deprecated since API version 18. Directly using **closeCustomDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12-1) API through this object.
+> - This API is supported since API version 11 and deprecated since API version 18. Directly using **closeCustomDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12-1) API through this object.
 >
 > - Since API version 12, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
 
@@ -1473,7 +1477,7 @@ Closes the specified custom dialog box.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [promptAction Error Codes](errorcode-promptAction.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

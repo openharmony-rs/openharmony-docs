@@ -1,10 +1,10 @@
-# &lt;toolbar&gt; Development
+# toolbar Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **&lt;toolbar&gt;** component shows actions available on the current screen and can be used for level-1 navigation. For details, see [toolbar](../reference/apis-arkui/arkui-js/js-components-basic-toolbar.md).
 
@@ -83,8 +83,6 @@ toolbar-item{
 ## Setting Styles
 
 Set the **position** style for the **&lt;toolbar&gt;** component and set the font color, size, and background color of **&lt;toolbar-item&gt;** child components.
-
-
 
 ```html
 <!-- xxx.hml -->
@@ -174,7 +172,7 @@ export default {
 
 > **NOTE**
 >
-> The **&lt;toolbar&gt;** component does not allow adding of events or methods, but its child components do.
+> The **\<toolbar>** component does not support the addition of events or methods, whereas its child component **\<toolbar-item>** does.
 
 
 ## Example Scenario

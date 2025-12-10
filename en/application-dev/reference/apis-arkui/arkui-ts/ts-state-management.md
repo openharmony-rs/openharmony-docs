@@ -1,4 +1,10 @@
 # State Management with Application-level Variables
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzq212050299-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 The state management module provides data storage, persistent data management, UIAbility data storage, and environment state required by applications.
 
@@ -17,17 +23,13 @@ T and S in this topic represent the types as described below.
 
 For details about how to use AppStorage, see [AppStorage: Storing Application-wide UI State](../../../ui/state-management/arkts-appstorage.md).
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### ref<sup>12+</sup>
 
 static ref\<T\>(propName: string): AbstractProperty\<T\> | undefined
 
-Returns a reference to the data corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the provided **propName** does not exist, this API returns **undefined**.
+Returns a reference to the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the provided **propName** does not exist, this API returns **undefined**.
 
-This API is similar to [link](#link10) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty) type.
+This API is similar to [link](#link10) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty12) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -43,7 +45,7 @@ This API is similar to [link](#link10) but does not require manually releasing t
 
 | Type                                  | Description                                                        |
 | -------------------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty) \| undefined | A reference to the property in AppStorage, or **undefined** if the property does not exist.|
+| [AbstractProperty&lt;T&gt;](#abstractproperty12) \| undefined | A reference to the property in AppStorage, or **undefined** if the property does not exist.|
 
 **Example**
 
@@ -58,9 +60,9 @@ refToPropA1?.set(48); // Synchronously updates AppStorage: refToPropA1.get() == 
 
 static setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
 
-Similar to the [ref](#ref12) API, returns a reference to the data corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If **propName** does not exist, this API creates and initializes the property in AppStorage using **defaultValue** and returns its reference. **defaultValue** must be of the **T** type and can be **null** or **undefined**.
+Similar to the [ref](#ref12) API, returns a reference to the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If **propName** does not exist, this API creates and initializes the property in AppStorage using **defaultValue** and returns its reference. **defaultValue** must be of the **T** type and can be **null** or **undefined**.
 
-This API is similar to [setAndLink](#setandlink10) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty) type.
+This API is similar to [setAndLink](#setandlink10) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty12) type.
 
 > **NOTE**
 >
@@ -75,13 +77,13 @@ This API is similar to [setAndLink](#setandlink10) but does not require manually
 | Name      | Type  | Mandatory| Description                                                    |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | Yes  | Property name in AppStorage.                                      |
-| defaultValue | T      | Yes  | Default value used to initialize **propName** in AppStorage if it does not exist. The value can be **null** or **undefined**.|
+| defaultValue | T      | Yes  | Default value used to initialize the property corresponding to **propName** in AppStorage if **propName** does not exist. The value can be **null** or **undefined**.|
 
 **Return value**
 
 | Type                     | Description                                                        |
 | ------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty) | Instance of **AbstractProperty&lt;T&gt;**, which is a reference to the property in AppStorage corresponding to **propName**.|
+| [AbstractProperty&lt;T&gt;](#abstractproperty12) | Instance of **AbstractProperty&lt;T&gt;**, which is a reference to the property in AppStorage corresponding to **propName**.|
 
 **Example**
 
@@ -144,7 +146,7 @@ Similar to the [link](#link10) API, establishes a two-way data binding with the 
 | Name      | Type  | Mandatory| Description                                                    |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | Yes  | Property name in AppStorage.                                      |
-| defaultValue | T      | Yes  | Default value used to initialize **propName** in AppStorage if it does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**.|
+| defaultValue | T      | Yes  | Default value used to initialize the property corresponding to **propName** in AppStorage if **propName** does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**.|
 
 **Return value**
 
@@ -209,7 +211,7 @@ Similar to the [prop](#prop10) API, establishes a one-way data binding with the 
 | Name      | Type  | Mandatory| Description                                                    |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | Yes  | Property name in AppStorage.                                      |
-| defaultValue | T      | Yes  | Default value used to initialize **propName** in AppStorage if it does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**.|
+| defaultValue | T      | Yes  | Default value used to initialize the property corresponding to **propName** in AppStorage if **propName** does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**.|
 
 **Return value**
 
@@ -465,7 +467,7 @@ If the given property does not exist in AppStorage, **undefined** is returned.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [link10+](#link10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [link](#link10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -497,7 +499,7 @@ Similar to the [Link](#linkdeprecated) API, establishes a two-way data binding w
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [setAndLink10+](#setandlink10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [setAndLink](#setandlink10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -506,7 +508,7 @@ Similar to the [Link](#linkdeprecated) API, establishes a two-way data binding w
 | Name      | Type  | Mandatory| Description                                                    |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | Yes  | Property name in AppStorage.                                      |
-| defaultValue | T      | Yes  | Default value used to initialize **propName** in AppStorage if it does not exist. The value cannot be **null** or **undefined**.|
+| defaultValue | T      | Yes  | Default value used to initialize the property corresponding to **propName** in AppStorage if **propName** does not exist. The value cannot be **null** or **undefined**.|
 
 **Return value**
 
@@ -530,7 +532,7 @@ Establishes a one-way data binding with the property corresponding to **propName
 > **NOTE**
 >
 > Prop supports only simple types.
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [prop10+](#prop10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [prop](#prop10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -562,7 +564,7 @@ Similar to the [Prop](#propdeprecated) API, establishes a one-way data binding w
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [setAndProp10+](#setandprop10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [setAndProp](#setandprop10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -571,7 +573,7 @@ Similar to the [Prop](#propdeprecated) API, establishes a one-way data binding w
 | Name      | Type  | Mandatory| Description                                                    |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | Yes  | Property name in AppStorage.                                      |
-| defaultValue | S      | Yes  | Default value used to initialize **propName** in AppStorage if it does not exist. The value cannot be **null** or **undefined**.|
+| defaultValue | S      | Yes  | Default value used to initialize the property corresponding to **propName** in AppStorage if **propName** does not exist. The value cannot be **null** or **undefined**.|
 
 **Return value**
 
@@ -593,7 +595,7 @@ Checks whether the property corresponding to **propName** exists in [AppStorage]
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [has10+](#has10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [has](#has10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -622,7 +624,7 @@ Obtains the value of the property corresponding to **propName** from [AppStorage
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [get10+](#get10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [get](#get10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -648,11 +650,11 @@ let value: number = AppStorage.Get('PropA') as number; // 47
 
 static Set&lt;T&gt;(propName: string, newValue: T): boolean
 
-Sets the value of the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md).
+Sets the value of the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the value of **newValue** is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property. Starting from API version 12, **newValue** can be **null** or **undefined**.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [set10+](#set10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [set](#set10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -661,13 +663,13 @@ Sets the value of the property corresponding to **propName** in [AppStorage](../
 | Name  | Type  | Mandatory| Description                       |
 | -------- | ------ | ---- | ------------------------------- |
 | propName | string | Yes  | Property name in AppStorage.         |
-| newValue | T      | Yes  | Property value, which cannot be **null** or **undefined**.|
+| newValue | T      | Yes  | Property value. Since API version 12, the value can be **null** or **undefined**.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| boolean | Returns **true** if the operation is successful; returns **false** if the property corresponding to **propName** does not exist in AppStorage, or the value to set is **undefined** or **null**.  |
+| boolean | Returns **true** if the operation is successful; returns **false** if the property corresponding to **propName** does not exist in AppStorage. Returns **true** if the assignment is successful.|
 
 **Example**
 ```ts
@@ -686,7 +688,7 @@ The value of **newValue** cannot be **null** or **undefined**.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [setOrCreate10+](#setorcreate10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [setOrCreate](#setorcreate10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -714,7 +716,7 @@ Subscribers include properties bound using [Link](#linkdeprecated) and [Prop](#p
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [delete10+](#delete10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [delete](#delete10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -748,7 +750,7 @@ Obtains all property names in [AppStorage](../../../ui/state-management/arkts-ap
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [keys10+](#keys10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [keys](#keys10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -773,7 +775,7 @@ Deletes all properties.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [clear10+](#clear10) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [clear](#clear10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -799,7 +801,7 @@ For details about the subscriber, see [delete](#delete10).
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [clear10+](#clear10) instead.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [clear](#clear10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -843,7 +845,7 @@ Checks whether the property corresponding to **propName** in [AppStorage](../../
 **Example**
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
-let res: boolean = AppStorage.IsMutable('simpleProp');
+let res: boolean = AppStorage.IsMutable('PropA');
 ```
 
 
@@ -855,7 +857,7 @@ Obtains the number of properties in [AppStorage](../../../ui/state-management/ar
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [size10+](#size10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [size](#size10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -877,12 +879,6 @@ let res: number = AppStorage.Size(); // 1
 
 For details about how to use LocalStorage on the UI, see [LocalStorage: UI State Storage](../../../ui/state-management/arkts-localstorage.md).
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### constructor<sup>9+</sup>
 
 constructor(initializingProperties?: Object)
@@ -899,7 +895,7 @@ Creates a [LocalStorage](../../../ui/state-management/arkts-localstorage.md) ins
 
 | Name                   | Type    | Mandatory  | Description                                    |
 | ---------------------- | ------ | ---- | ---------------------------------------- |
-| initializingProperties | Object | No   | Properties and values used to initialize the **LocalStorage** instance. The value cannot be **undefined**.|
+| initializingProperties | Object | No   | Properties and values used to initialize the **LocalStorage** instance. The value cannot be **undefined**. The default value is an empty object, meaning no properties are added to LocalStorage during initialization.|
 
 **Example**
 ```ts
@@ -916,9 +912,9 @@ Obtains the [LocalStorage](../../../ui/state-management/arkts-localstorage.md) i
 
 > **NOTE**
 > 
-> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getSharedLocalStorage](../js-apis-arkui-UIContext.md#getsharedlocalstorage12) in [UIContext](../js-apis-arkui-UIContext.md#uicontext) instead.
+> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12) in [UIContext](../arkts-apis-uicontext-uicontext.md) instead.
 >
-> The [getSharedLocalStorage](../js-apis-arkui-UIContext.md#getsharedlocalstorage12) API in [UIContext](../js-apis-arkui-UIContext.md#uicontext) is supported since API version 12.
+> Since API version 12, you can use the [getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12) API in [UIContext](../arkts-apis-uicontext-uicontext.md) to specify the UI execution context.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1079,11 +1075,11 @@ let res2: boolean = storage.setOrCreate('PropB', null); // true (API version 12 
 
 ### ref<sup>12+</sup>
 
-public ref\<T\>(propName: string): AbstractProperty\<T\> | undefined
+ref\<T\>(propName: string): AbstractProperty\<T\> | undefined
 
-Returns a reference to the data corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the provided **propName** does not exist, this API returns **undefined**.
+Returns a reference to the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the provided **propName** does not exist, this API returns **undefined**.
 
-This API is similar to [link](#link9) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty) type.
+This API is similar to [link](#link9) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty12) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1099,7 +1095,7 @@ This API is similar to [link](#link9) but does not require manually releasing th
 
 | Type                                  | Description                                                        |
 | -------------------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty) \| undefined | A reference to the property in LocalStorage, or **undefined** if the property does not exist.|
+| [AbstractProperty&lt;T&gt;](#abstractproperty12) \| undefined | A reference to the property in LocalStorage, or **undefined** if the property does not exist.|
 
 **Example**
 
@@ -1113,11 +1109,11 @@ refToPropA1?.set(48); // refToPropA1.get() == refToPropA2.get() == 48
 
 ### setAndRef<sup>12+</sup>
 
-public setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
+setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
 
-Similar to the [ref](#ref12-1) API, returns a reference to the data corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If **propName** does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its reference. **defaultValue** must be of the **T** type and can be **null** or **undefined**.
+Similar to the [ref](#ref12-1) API, returns a reference to the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If **propName** does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its reference. **defaultValue** must be of the **T** type and can be **null** or **undefined**.
 
-This API is similar to [setAndLink](#setandlink9) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty) type.
+This API is similar to [setAndLink](#setandlink9) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty12) type.
 
 > **NOTE**
 >
@@ -1132,13 +1128,13 @@ This API is similar to [setAndLink](#setandlink9) but does not require manually 
 | Name      | Type  | Mandatory| Description                                                    |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | Yes  | Property name in LocalStorage.                                    |
-| defaultValue | T      | Yes  | Default value used to initialize **propName** in LocalStorage if it does not exist. The value can be **null** or **undefined**.|
+| defaultValue | T      | Yes  | Default value used to initialize the property corresponding to **propName** in LocalStorage if **propName** does not exist. The value can be **null** or **undefined**.|
 
 **Return value**
 
 | Type                     | Description                                                        |
 | ------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty) | Instance of **AbstractProperty&lt;T&gt;**, which is a reference to the property in LocalStorage corresponding to **propName**.|
+| [AbstractProperty&lt;T&gt;](#abstractproperty12) | Instance of **AbstractProperty&lt;T&gt;**, which is a reference to the property in LocalStorage corresponding to **propName**.|
 
 **Example**
 
@@ -1208,7 +1204,7 @@ Similar to the [link](#link9) API, establishes a two-way data binding with the p
 | Name      | Type  | Mandatory| Description                                                    |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | Yes  | Property name in LocalStorage.                                    |
-| defaultValue | T      | Yes  | Default value used to initialize **propName** in LocalStorage if it does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**.|
+| defaultValue | T      | Yes  | Default value used to initialize the property corresponding to **propName** in LocalStorage if **propName** does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**.|
 
 **Return value**
 
@@ -1280,7 +1276,7 @@ Similar to the [prop](#prop9) API, establishes a one-way data binding with the p
 | Name      | Type  | Mandatory| Description                                                    |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | Yes  | Property name in LocalStorage.                                    |
-| defaultValue | S      | Yes  | Default value used to initialize **propName** in LocalStorage if it does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**.|
+| defaultValue | S      | Yes  | Default value used to initialize the property corresponding to **propName** in LocalStorage if **propName** does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**.|
 
 **Return value**
 
@@ -1435,7 +1431,7 @@ Obtains the [LocalStorage](../../../ui/state-management/arkts-localstorage.md) i
 
 > **NOTE**
 > 
-> This API is deprecated since API version 10. You are advised to use [getSharedLocalStorage](../js-apis-arkui-UIContext.md#getsharedlocalstorage12) in [UIContext](../js-apis-arkui-UIContext.md#uicontext) instead.
+> This API is deprecated since API version 10. You are advised to use [getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12) in [UIContext](../arkts-apis-uicontext-uicontext.md) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1454,11 +1450,9 @@ Obtains the [LocalStorage](../../../ui/state-management/arkts-localstorage.md) i
 let storage: LocalStorage = LocalStorage.GetShared();
 ```
 
-## AbstractProperty
+## AbstractProperty<sup>12+</sup>
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Provides a reference to properties stored in [AppStorage](../../../ui/state-management/arkts-appstorage.md) or [LocalStorage](../../../ui/state-management/arkts-localstorage.md).
 
 ### get<sup>12+</sup>
 
@@ -1553,11 +1547,7 @@ ref1?.info(); //  ref1.info()='PropA'
 
 ## SubscribedAbstractProperty
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Represents a synchronized property from [AppStorage](../../../ui/state-management/arkts-appstorage.md) or [LocalStorage](../../../ui/state-management/arkts-localstorage.md).
 
 ### get<sup>9+</sup>
 
@@ -1646,9 +1636,9 @@ let link = AppStorage.setAndLink('PropB', 49); // PropA -> 47, PropB -> 49
 link.aboutToBeDeleted();
 ```
 
-### info
+### info<sup>10+</sup>
 
-info(): string;
+info(): string
 
 Property name.
 
@@ -1670,16 +1660,12 @@ Defines a key-value pair object used to specify persistent properties and their 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type                                 | Mandatory| Description                                                    |
-| ------------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| key          | string                                | Yes  | Property name.                                                    |
-| defaultValue | number \| string \| boolean \| Object | Yes  | Default value used to initialize the property when it does not exist in PersistentStorage and AppStorage. Since API version 12, **defaultValue** can be **null** or **undefined**.|
+| Name      | Type                                 | Read-Only                           | Optional| Description                                                    |
+| ------------ | ------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| key          | string                                | No                              | No | Property name.                                                    |
+| defaultValue | number \| string \| boolean \| Object | No| No| Default value used to initialize the property when it does not exist in PersistentStorage and AppStorage. Since API version 12, **defaultValue** can be **null** or **undefined**.|
 
 ## PersistentStorage
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 For details about how to use PersistentStorage on the UI, see [PersistentStorage: Persisting Application State](../../../ui/state-management/arkts-persiststorage.md).
 
@@ -1806,7 +1792,7 @@ According to the preceding initialization process, if the property exists in App
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [persistProp10+](#persistprop10) instead.
+> This API is deprecated since API version 10. You are advised to use [persistProp](#persistprop10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1835,7 +1821,7 @@ Performs the reverse operation of [PersistProp](#persistpropdeprecated). Specifi
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [deleteProp10+](#deleteprop10) instead.
+> This API is deprecated since API version 10. You are advised to use [deleteProp](#deleteprop10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1853,13 +1839,13 @@ PersistentStorage.DeleteProp('highScore');
 
 ### PersistProps<sup>(deprecated)</sup>
 
-static PersistProps(properties: {key: string, defaultValue: any;}[]): void
+static PersistProps(properties: {key: string; defaultValue: any;}[]): void
 
 Persists multiple properties. This API is similar to [PersistProp](#persistpropdeprecated), but allows multiple properties to be persisted at once, making it suitable for initializing during application startup.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [persistProps10+](#persistprops10) instead.
+> This API is deprecated since API version 10. You are advised to use [persistProps](#persistprops10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1867,7 +1853,7 @@ Persists multiple properties. This API is similar to [PersistProp](#persistpropd
 
 | Name    | Type                              | Mandatory| Description                                                    |
 | ---------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| properties | {key: string, defaultValue: any}[] | Yes  | Array of properties to persist.<br>**key**: property name.<br>**defaultValue**: default value. The rules are the same as those of **PersistProp**.|
+| properties | {key: string; defaultValue: any}[] | Yes  | Array of properties to persist.<br>**key**: property name.<br>**defaultValue**: default value. The rules are the same as those of **PersistProp**.|
 
 **Example**
 
@@ -1883,7 +1869,7 @@ Returns an array of all persisted property names.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [keys10+](#keys10-1) instead.
+> This API is deprecated since API version 10. You are advised to use [keys](#keys10-1) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1905,18 +1891,14 @@ Defines a key-value pair object used to specify environment variable names and t
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type                       | Mandatory| Description                                                    |
-| ------------ | --------------------------- | ---- | ------------------------------------------------------------ |
-| key          | string                      | Yes  | Environment variable name. For details about the value range, see [Built-in Environment Variables](#built-in-environment-variables).|
-| defaultValue | number \| string \| boolean | Yes  | Default value used if the value of the specified environment variable key is not found in AppStorage.|
+| Name      | Type                       | Read-Only            | Optional| Description                                                    |
+| ------------ | --------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| key          | string                      | No                    | No | Environment variable name. For details about the value range, see [Built-in Environment Variables](#built-in-environment-variables).|
+| defaultValue | number \| string \| boolean | No| No | Default value used if the value of the specified environment variable key is not found in AppStorage.|
 
 ## Environment
 
-For details about how to use environment parameters, see [Environment: Querying the Device Environment](../../../ui/state-management/arkts-environment.md).
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+For details about how to use environment parameters, see [Environment: Device Environment Query](../../../ui/state-management/arkts-environment.md).
 
 ### envProp<sup>10+</sup>
 
@@ -2014,7 +1996,7 @@ It is incorrect to use AppStorage to read environment variables without invoking
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [envProp10+](#envprop10) instead.
+> This API is deprecated since API version 10. You are advised to use [envProp](#envprop10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2047,7 +2029,7 @@ Works in a way similar to the [EnvProp](#envpropdeprecated) API, with the differ
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [envProps10+](#envprops10) instead.
+> This API is deprecated since API version 10. You are advised to use [envProps](#envprops10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2055,7 +2037,7 @@ Works in a way similar to the [EnvProp](#envpropdeprecated) API, with the differ
 
 | Name| Type                                             | Mandatory| Description                            |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------ |
-| props  | {key: string, defaultValue: any}[] | Yes  | Array of key-value pairs consisting of system environment variables and default values.|
+| props  | {key: string;  defaultValue: any}[] | Yes  | Array of key-value pairs consisting of system environment variables and default values.|
 
 **Example**
 ```ts
@@ -2074,7 +2056,7 @@ Array of keys of environment variables.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [keys10+](#keys10-2) instead.
+> This API is deprecated since API version 10. You are advised to use [keys](#keys10-2) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2101,8 +2083,8 @@ let keys: Array<string> = Environment.Keys(); // keys contains accessibilityEnab
 | key                  | Type           | Description                                                        |
 | -------------------- | --------------- | ------------------------------------------------------------ |
 | accessibilityEnabled | string          | Whether to enable accessibility. If there is no value of **accessibilityEnabled** in the environment variables, the default value passed through APIs such as **envProp** and **envProps** is added to AppStorage.|
-| colorMode            | ColorMode       | Color mode. The options are as follows:<br>- **ColorMode.LIGHT**: light mode.<br>- **ColorMode.DARK**: dark mode.|
+| colorMode            | [ColorMode](./ts-state-management-environment-variables.md#colormode)       | Color mode. The options are as follows:<br>- **ColorMode.LIGHT**: light mode.<br>- **ColorMode.DARK**: dark mode.|
 | fontScale            | number          | Font scale.                                              |
 | fontWeightScale      | number          | Font weight scale.                                                  |
-| layoutDirection      | LayoutDirection | Layout direction. The options are as follows:<br>- **LayoutDirection.LTR**: from left to right.<br>- **LayoutDirection.RTL**: from right to left.<br>- **Auto**: follows the system settings.|
+| layoutDirection      | [LayoutDirection](./ts-state-management-environment-variables.md#layoutdirection) | Layout direction. The options are as follows:<br>- **LayoutDirection.LTR**: from left to right.<br>- **LayoutDirection.RTL**: from right to left.<br>- **Auto**: follows the system settings.|
 | languageCode         | string          | Current system language. The value is in lowercase, for example, **zh**.                            |

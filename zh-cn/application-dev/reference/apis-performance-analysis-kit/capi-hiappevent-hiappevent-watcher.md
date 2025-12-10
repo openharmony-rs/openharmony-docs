@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiAppEvent_Watcher HiAppEvent_Watcher
+```
+
 ## 概述
 
 用于接收app事件的监听器。

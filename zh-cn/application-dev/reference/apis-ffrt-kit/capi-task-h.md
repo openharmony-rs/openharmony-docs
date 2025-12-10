@@ -57,7 +57,7 @@
 
 ### ffrt_task_attr_init()
 
-```
+```c
 FFRT_C_API int ffrt_task_attr_init(ffrt_task_attr_t* attr)
 ```
 
@@ -82,7 +82,7 @@ FFRT_C_API int ffrt_task_attr_init(ffrt_task_attr_t* attr)
 
 ### ffrt_task_attr_set_name()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_name(ffrt_task_attr_t* attr, const char* name)
 ```
 
@@ -102,7 +102,7 @@ FFRT_C_API void ffrt_task_attr_set_name(ffrt_task_attr_t* attr, const char* name
 
 ### ffrt_task_attr_get_name()
 
-```
+```c
 FFRT_C_API const char* ffrt_task_attr_get_name(const ffrt_task_attr_t* attr)
 ```
 
@@ -127,7 +127,7 @@ FFRT_C_API const char* ffrt_task_attr_get_name(const ffrt_task_attr_t* attr)
 
 ### ffrt_task_attr_destroy()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_destroy(ffrt_task_attr_t* attr)
 ```
 
@@ -146,7 +146,7 @@ FFRT_C_API void ffrt_task_attr_destroy(ffrt_task_attr_t* attr)
 
 ### ffrt_task_attr_set_qos()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)
 ```
 
@@ -166,7 +166,7 @@ FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)
 
 ### ffrt_task_attr_get_qos()
 
-```
+```c
 FFRT_C_API ffrt_qos_t ffrt_task_attr_get_qos(const ffrt_task_attr_t* attr)
 ```
 
@@ -191,13 +191,15 @@ FFRT_C_API ffrt_qos_t ffrt_task_attr_get_qos(const ffrt_task_attr_t* attr)
 
 ### ffrt_task_attr_set_delay()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_us)
 ```
 
 **描述**
 
 设置任务延迟时间。
+
+设置任务的调度延迟后，任务的输入输出依赖关系不再生效。
 
 **起始版本：** 10
 
@@ -211,7 +213,7 @@ FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_
 
 ### ffrt_task_attr_get_delay()
 
-```
+```c
 FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr)
 ```
 
@@ -236,7 +238,7 @@ FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr)
 
 ### ffrt_task_attr_set_queue_priority()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_queue_priority(ffrt_task_attr_t* attr, ffrt_queue_priority_t priority)
 ```
 
@@ -256,7 +258,7 @@ FFRT_C_API void ffrt_task_attr_set_queue_priority(ffrt_task_attr_t* attr, ffrt_q
 
 ### ffrt_task_attr_get_queue_priority()
 
-```
+```c
 FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_task_attr_t* attr)
 ```
 
@@ -281,7 +283,7 @@ FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_ta
 
 ### ffrt_task_attr_set_stack_size()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_stack_size(ffrt_task_attr_t* attr, uint64_t size)
 ```
 
@@ -301,7 +303,7 @@ FFRT_C_API void ffrt_task_attr_set_stack_size(ffrt_task_attr_t* attr, uint64_t s
 
 ### ffrt_task_attr_get_stack_size()
 
-```
+```c
 FFRT_C_API uint64_t ffrt_task_attr_get_stack_size(const ffrt_task_attr_t* attr)
 ```
 
@@ -326,7 +328,7 @@ FFRT_C_API uint64_t ffrt_task_attr_get_stack_size(const ffrt_task_attr_t* attr)
 
 ### ffrt_this_task_update_qos()
 
-```
+```c
 FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)
 ```
 
@@ -351,7 +353,7 @@ FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)
 
 ### ffrt_this_task_get_qos()
 
-```
+```c
 FFRT_C_API ffrt_qos_t ffrt_this_task_get_qos(void)
 ```
 
@@ -369,7 +371,7 @@ FFRT_C_API ffrt_qos_t ffrt_this_task_get_qos(void)
 
 ### ffrt_this_task_get_id()
 
-```
+```c
 FFRT_C_API uint64_t ffrt_this_task_get_id(void)
 ```
 
@@ -387,7 +389,7 @@ FFRT_C_API uint64_t ffrt_this_task_get_id(void)
 
 ### ffrt_alloc_auto_managed_function_storage_base()
 
-```
+```c
 FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_t kind)
 ```
 
@@ -412,7 +414,7 @@ FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kin
 
 ### ffrt_submit_base()
 
-```
+```c
 FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps,const ffrt_task_attr_t* attr)
 ```
 
@@ -434,7 +436,7 @@ FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* i
 
 ### ffrt_submit_h_base()
 
-```
+```c
 FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps,const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 ```
 
@@ -462,7 +464,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 
 ### ffrt_submit_f()
 
-```
+```c
 FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps,const ffrt_task_attr_t* attr)
 ```
 
@@ -490,7 +492,7 @@ FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t
 
 ### ffrt_submit_h_f()
 
-```
+```c
 FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps,const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 ```
 
@@ -524,7 +526,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, c
 
 ### ffrt_task_handle_inc_ref()
 
-```
+```c
 FFRT_C_API uint32_t ffrt_task_handle_inc_ref(ffrt_task_handle_t handle)
 ```
 
@@ -549,7 +551,7 @@ FFRT_C_API uint32_t ffrt_task_handle_inc_ref(ffrt_task_handle_t handle)
 
 ### ffrt_task_handle_dec_ref()
 
-```
+```c
 FFRT_C_API uint32_t ffrt_task_handle_dec_ref(ffrt_task_handle_t handle)
 ```
 
@@ -574,7 +576,7 @@ FFRT_C_API uint32_t ffrt_task_handle_dec_ref(ffrt_task_handle_t handle)
 
 ### ffrt_task_handle_destroy()
 
-```
+```c
 FFRT_C_API void ffrt_task_handle_destroy(ffrt_task_handle_t handle)
 ```
 
@@ -593,7 +595,7 @@ FFRT_C_API void ffrt_task_handle_destroy(ffrt_task_handle_t handle)
 
 ### ffrt_wait_deps()
 
-```
+```c
 FFRT_C_API void ffrt_wait_deps(const ffrt_deps_t* deps)
 ```
 
@@ -612,7 +614,7 @@ FFRT_C_API void ffrt_wait_deps(const ffrt_deps_t* deps)
 
 ### ffrt_wait()
 
-```
+```c
 FFRT_C_API void ffrt_wait(void)
 ```
 

@@ -212,7 +212,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The permissionNames in the list are all invalid. |
 | 12100004 | The API is not used in pair with 'on'. |
 | 12100007 | The service is abnormal. |
 
@@ -263,7 +262,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation results. |
 
 **Example**
 
@@ -322,7 +322,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation results. |
 
 **Example**
 
@@ -384,7 +385,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
-| 12100010 | The request already exists. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100011 | All permissions in the permission list have been granted. |
 | 12100012 | The permission list contains the permission that has not been revoked by the user. |
 | 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. |
@@ -444,7 +445,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12100001 | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not support. |
-| 12100010 | The request already exists. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100013 | The specific global switch is already open. |
 
 **Example**
@@ -539,6 +540,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | ID| Error Message|
 | -------- | -------- |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission is invalid or not declared in the module.json file. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100014 | Unexpected permission. The permission is not a manual_settings permission. |
 
 **Example**

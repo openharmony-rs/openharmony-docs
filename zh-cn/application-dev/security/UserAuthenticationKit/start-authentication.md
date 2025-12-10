@@ -250,6 +250,9 @@
 
 以模应用方式拉起身份认证控件对用户进行身份认证：
 
+> **说明：**
+> 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+
 <!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript

@@ -10,20 +10,23 @@
 
 若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-  ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-  ```
+<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) -->
+
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
+```
 
 ## 通过不同的方式加载PDF文档
 
 在下面的示例中，Web组件创建时指定默认加载的网络PDF文档`https://www.example.com/test.pdf`。使用时需替换为真实可访问地址。
 
-```ts
-// xxx.ets
+<!-- @[web_module_create_load_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/PreviewPDF.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -33,13 +36,13 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ 
-      	src: 
-      	"https://www.example.com/test.pdf", 					// 方式一 加载网络PDF文档
-      	// this.getUIContext().getHostContext()!.filesDir + "/test.pdf", // 方式二 加载本地应用沙箱内PDF文档
-      	// "resource://rawfile/test.pdf", 						// 方式三 本地PDF文档 (格式一)
-      	// $rawfile('test.pdf'), 								// 方式三 本地PDF文档 (格式二)
-      	controller: this.controller 
+      Web({
+        src:
+        'https://www.example.com/test.pdf',                     // 方式一 加载网络PDF文档
+          // this.getUIContext().getHostContext()!.filesDir + '/test.pdf', // 方式二 加载本地应用沙箱内PDF文档
+          // 'resource://rawfile/test.pdf',                         // 方式三 本地PDF文档 (格式一)
+          // $rawfile('test.pdf'),                                 // 方式三 本地PDF文档 (格式二)
+          controller: this.controller
       })
         .domStorageAccess(true)
     }
@@ -49,7 +52,7 @@ struct WebComponent {
 
 PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航栏的展开状态，因此需要开启文档对象模型存储[domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)权限:
 
-  ```
+  ```ts
   Web().domStorageAccess(true)
   ```
 
@@ -90,18 +93,18 @@ PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航�
 
 当前支持如下参数: 
 
-| 语法		| 描述 |
+| 语法 | 描述 |
 | --------- | ---------- |
-| nameddest=destination 	|  指定PDF文档中的命名目标。 |
-| page=pagenum 	| 使用整数指定文档中的页码，文档第一页的pagenum值为1。| 
-| zoom=scale    zoom=scale,left,top	| 使用浮点或整数值设置缩放和滚动系数。例如：缩放值100表示缩放值为100%。 向左和向上滚动值位于坐标系中，0,0 表示可见页面的左上角，无论文档如何旋转。 |
-| toolbar=1 \| 0 	| 打开或关闭顶部工具栏。 | 
-| navpanes=1 \| 0 	| 打开或关闭侧边导航窗格。 | 
-| pdfbackgroundcolor=color 	| 从OpenHarmony 6.0系统版本开始，支持指定PDF文档背景色，color为标准的六位十六进制RGB（取值范围为000000~ffffff，例如白色为：ffffff）。 |
+| nameddest=destination |  指定PDF文档中的命名目标。 |
+| page=pagenum | 使用整数指定文档中的页码，文档第一页的pagenum值为1。| 
+| zoom=scale    zoom=scale,left,top | 使用浮点或整数值设置缩放和滚动系数。例如：缩放值100表示缩放值为100%。 向左和向上滚动值位于坐标系中，0,0 表示可见页面的左上角，无论文档如何旋转。 |
+| toolbar=1 \| 0 | 打开或关闭顶部工具栏。 | 
+| navpanes=1 \| 0 | 打开或关闭侧边导航窗格。 | 
+| pdfbackgroundcolor=color | 从OpenHarmony 6.0系统版本开始，支持指定PDF文档背景色，color为标准的六位十六进制RGB（取值范围为000000~ffffff，例如白色为：ffffff）。 |
 
 
 URL示例:
-```
+```txt
 https://example.com/test.pdf#nameddest=Chapter6  
 https://example.com/test.pdf#page=3  
 https://example.com/test.pdf#zoom=50  

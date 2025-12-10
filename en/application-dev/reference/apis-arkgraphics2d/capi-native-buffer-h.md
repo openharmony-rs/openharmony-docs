@@ -526,7 +526,7 @@ Sets a metadata value for an **OH_NativeBuffer** instance.<br>This function is n
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an **OH_NativeBuffer** instance.|
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Metadata type of [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md). For details about the available options, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
 | int32_t size | Size of the uint8_t vector. For details about the value range, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
-| metaData |  Pointer to the uint8_t vector.|
+| uint8_t *metadata |  Pointer to the uint8_t vector.|
 
 **Returns**
 
@@ -555,7 +555,7 @@ Obtains the metadata value of an **OH_NativeBuffer** instance.<br>This function 
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an **OH_NativeBuffer** instance.|
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Metadata type of [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md). For details about the available options, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
 | int32_t *size | Size of the uint8_t vector. For details about the value range, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
-| metaData |  Double pointer to the uint8_t vector.|
+| uint8_t **metadata |  Double pointer to the uint8_t vector.|
 
 **Returns**
 

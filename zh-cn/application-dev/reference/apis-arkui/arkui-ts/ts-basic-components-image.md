@@ -497,7 +497,9 @@ enableAnalyzer(enable:&nbsp;boolean)
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.INTERNET。
+> - 需要配置权限：ohos.permission.INTERNET。
+>
+> - 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -520,6 +522,10 @@ resizable(value: ResizableOptions)
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -572,6 +578,10 @@ dynamicRangeMode(value: DynamicRangeMode)
 orientation(orientation: ImageRotateOrientation)
 
 设置图像内容的显示方向。
+
+该属性对[alt](#alt)占位图不生效。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -627,7 +637,7 @@ Image组件创建后，不支持动态修改该属性的值。
 
 contentTransition(transition: ContentTransitionEffect)
 
-图片内容发生变化时，会触发过渡动效，OPACITY为淡入淡出效果，IDENTITY为无动画效果。
+图片内容发生变化时，触发过渡动效。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -637,7 +647,7 @@ contentTransition(transition: ContentTransitionEffect)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>对动态图片资源不生效。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
 
 ## ImageContent<sup>12+</sup>
 
@@ -733,6 +743,8 @@ contentTransition(transition: ContentTransitionEffect)
 ## ImageRotateOrientation<sup>14+</sup>
 
 期望的图像内容显示方向。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -857,15 +869,15 @@ onComplete(callback: (event?: { width: number, height: number, componentWidth: n
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| width                        | number | 是   | 图片的宽。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| height                       | number | 是   | 图片的高。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| componentWidth               | number | 是   | 组件的宽。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| componentHeight              | number | 是   | 组件的高。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| loadingStatus                | number | 是   | 图片加载成功的状态值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
-| contentWidth<sup>10+</sup>   | number | 是   | 图片实际绘制的宽度。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentHeight<sup>10+</sup>  | number | 是   | 图片实际绘制的高度。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetX<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetY<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| width                        | number | 是   | 图片的宽。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| height                       | number | 是   | 图片的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| componentWidth               | number | 是   | 组件的宽。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| componentHeight              | number | 是   | 组件的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| loadingStatus                | number | 是   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| contentWidth<sup>10+</sup>   | number | 是   | 图片实际绘制的宽度。<br/>单位：px<br>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| contentHeight<sup>10+</sup>  | number | 是   | 图片实际绘制的高度。<br/>单位：px<br/>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| contentOffsetX<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：px<br/>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| contentOffsetY<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：px<br/>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
 
 ### onError<sup>9+</sup>
 
@@ -933,20 +945,19 @@ type ImageErrorCallback = (error: ImageError) => void
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型   | 只读 | 可选 | 说明                      |
 | --------------- | ------ | ---- | ------------------------- | ------------------------- |
-| componentWidth  | number | 否  | 否  | 组件的宽。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| componentHeight | number | 否  | 否  | 组件的高。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| componentWidth  | number | 否  | 否  | 组件的宽。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| componentHeight | number | 否  | 否  | 组件的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | message<sup>10+</sup>         | string | 否  | 否  | 报错信息。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | error<sup>20+</sup>         | [BusinessError\<void>](#businesserror20) | 否  | 是  | 图片加载异常返回的报错信息，其中code为错误码，message为错误信息。报错信息请参考以下错误信息的详细介绍。<br/>默认值：{ code : -1, message : "" }<br/>**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| downloadInfo<sup>23+</sup> | [RequestDownloadInfo](#requestdownloadinfo23) | 否 | 是 | 网络图片下载的详细信息，包含下载资源、网络、性能等信息。当图片来源为网络图片且下载失败时将携带此字段。<br/>默认值：null<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T> = BusinessError\<T>
+type BusinessError\<T = void> = BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
@@ -987,6 +998,24 @@ type BusinessError\<T> = BusinessError\<T>
 | 103200    | image data size is invalid.    | 数据加载 | 位图文件 |
 | 111000    | image source create failed.    | 数据解码 | 位图文件 |
 | 111001    | pixelmap create failed.        | 数据解码 | 位图文件 |
+
+## RequestDownloadInfo<sup>23+</sup>
+
+type RequestDownloadInfo = DownloadInfo
+
+用于描述网络图片加载失败或异常时的下载信息。该对象包含本次下载任务的资源信息、网络信息以及性能统计信息，可用于定位加载异常的具体原因。
+
+**需要权限：** ohos.permission.GET_NETWORK_INFO
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型  | 说明   |
+| ---- | ------ |
+| [DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20) | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
 
 ## 示例
 
@@ -2345,7 +2374,7 @@ struct Index {
 
 ### 示例27（使用ContentTransition属性实现图片淡入淡出切换效果）
 
-该示例演示了在点击图片切换图源时，通过设置[contentTransition](#contenttransition21)属性为淡入淡出效果，实现图片的平滑过渡。
+从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
 
 ```ts
 @Entry
@@ -2412,3 +2441,28 @@ struct ImageExample {
 }
 ```
 ![sandBox](figures/imagealt.gif)
+
+### 示例29（使用onError回调监听网络图片加载异常信息）
+
+该示例演示如何通过[onError](#onerror9)回调获取网络图片加载异常时的详细下载信息[ImageError](#imageerror9)。当图片加载失败时，可通过ImageError中的downloadInfo属性获取网络图片下载的详细信息，包括下载的资源信息、网络请求信息以及性能统计信息，有助于快速定位网络异常或资源错误原因。
+
+从API version 23开始，ImageError新增downloadInfo属性。
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .height(100)
+        .width(100)
+        .onError((e)=>{
+          console.info("DownLoadErrorInfo : " + JSON.stringify(e?.downloadInfo))
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```

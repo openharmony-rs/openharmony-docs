@@ -47,39 +47,43 @@
 > 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[API文档](../../reference/apis-asset-store-kit/js-apis-asset.md)。
 >
 > 在指定群组中删除一条关键资产的使用示例详见[删除群组关键资产](asset-js-group-access-control.md#删除群组关键资产)。
+>
+> 在删除前，需确保已有关键资产，可参考[指南文档](asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
 
 删除一条别名是demo_alias的关键资产。
 
-<!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+1. 引用头文件，定义工具函数。
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+   
+   ``` TypeScript
+   import { asset } from '@kit.AssetStoreKit';
+   import { util } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   function stringToArray(str: string): Uint8Array {
+     let textEncoder = new util.TextEncoder();
+     return textEncoder.encodeInto(str);
+   }
+   ```
 
-``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function removeAsset(): Promise<string> {
-  let result: string = '';
-  let query: asset.AssetMap = new Map();
-  query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 此处指定别名删除单条关键资产，也可不指定别名删除多条关键资产。
-  try {
-    await asset.remove(query).then(() => {
-      console.info(`Succeeded in removing Asset.`);
-      result = 'Succeeded in removing Asset';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to remove Asset';
-    });
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-    result = 'Failed to remove Asset';
-  }
-  return result;
-}
-```
+2. 参考如下示例代码，进行业务功能开发。
+   <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+   
+   ``` TypeScript
+   let query: asset.AssetMap = new Map();
+   query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 此处指定别名删除单条关键资产，也可不指定别名删除多条关键资产。
+   try {
+     asset.remove(query).then(() => {
+       console.info(`Succeeded in removing Asset.`);
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
+       // ...
+     });
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
+     // ...
+   }
+   ```
 

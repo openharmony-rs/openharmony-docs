@@ -3,8 +3,13 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--SE: @junjie_shi-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+```c
+typedef struct HiAppEvent_Config HiAppEvent_Config
+```
 
 ## Overview
 
@@ -12,6 +17,6 @@ Defines the configuration object used to set the conditions for triggering syste
 
 **Since**: 15
 
-**Related Module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-hiappevent.md)
 
-**Header File**: [hiappevent.h](capi-hiappevent-h.md)
+**Header file**: [hiappevent.h](capi-hiappevent-h.md)

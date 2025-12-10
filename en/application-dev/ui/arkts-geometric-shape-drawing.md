@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The drawing components are used to draw graphs on the page. The **Shape** component is the parent component of the drawing components. The attributes of **Shape** are universal attributes supported by all the drawing components. For details, see [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md).
@@ -152,7 +152,7 @@ The following examples demonstrate how to use **viewPort**:
   }
   ```
 
-  ![viewport (2)](figures/viewport (2).jpg)
+  ![viewport 2](figures/viewport2.jpg)
 
 - Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport. Then, apply a translation of 150 units right and 150 units down to the viewport.
 
@@ -184,7 +184,7 @@ The following examples demonstrate how to use **viewPort**:
   }
   ```
 
-  ![viewport (3)](figures/viewport (3).jpg)
+  ![viewport 3](figures/viewport3.jpg)
 
 
 ## Setting Styles
@@ -321,7 +321,6 @@ class DrawingRenderNode extends RenderNode {
   }
 
   async draw(context: DrawContext) {
-    console.log("Kee draw");
     const canvas = context.canvas;
     let pixelMap = ctx.getPixelMap(0, 0, 150, 150)
     const brush = new drawing.Brush(); // Only brush is supported. There is no drawing effect when pen is used.

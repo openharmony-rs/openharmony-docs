@@ -193,8 +193,10 @@ c;
 
 |xxx|xxx|xxx|xxx|   <-- 当前词法环境
 ```
-**注意：**<br>
-lexical相关的逻辑是编译器的内部实现。随着方舟编译器的演进，可能会出现新的涉及lexical指令的场景。现有的lexical指令场景也可能会因需求演进和代码重构而不再涉及lexical的相关指令。
+> **注意：**
+>
+> lexical相关的逻辑是编译器的内部实现。随着方舟编译器的演进，可能会出现新的涉及lexical指令的场景。现有的lexical指令场景也可能会因需求演进和代码重构而不再涉及lexical的相关指令。
+
 示例代码：
 ```ts
 // index.ts
@@ -248,21 +250,21 @@ class B {
 .function any .#~B=#B(any a0, any a1, any a2) {
 label_1: 
 label_0: 
-	callruntime.ldsendablevar 0x0, 0x0
-	sta v0
-	throw.undefinedifholewithname A
-	...
+    callruntime.ldsendablevar 0x0, 0x0
+    sta v0
+    throw.undefinedifholewithname A
+    ...
 label_2: 
 }
 
 .function any .func_main_0(any a0, any a1, any a2) {
 label_1: 
 label_0: 
-	callruntime.newsendableenv 0x1
-	...
-	callruntime.definesendableclass 0x0, .#~A=#A, _3, 0x0, v0
-	callruntime.stsendablevar 0x0, 0x0
-	...
+    callruntime.newsendableenv 0x1
+    ...
+    callruntime.definesendableclass 0x0, .#~A=#A, _3, 0x0, v0
+    callruntime.stsendablevar 0x0, 0x0
+    ...
 label_2: 
 }
 ```

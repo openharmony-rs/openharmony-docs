@@ -199,6 +199,8 @@ FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_
 
 Sets the task delay time.
 
+After the scheduling delay is set, the input and output dependencies of the task will not take effect.
+
 **Since**: 10
 
 
@@ -458,7 +460,7 @@ Submits a task, and obtains the task handle.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | Returns a non-null task handle if the task is submitted;<br>          returns a null pointer otherwise.|
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | Returns a non-null task handle if the task is submitted; returns a null pointer otherwise.|
 
 ### ffrt_submit_f()
 

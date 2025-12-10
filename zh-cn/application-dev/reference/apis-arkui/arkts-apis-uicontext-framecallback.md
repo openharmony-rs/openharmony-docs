@@ -91,7 +91,7 @@ onIdle(timeLeftInNano: number): void
 **示例：**
 
 ```ts
-import { FrameCallback } from '@ohos.arkui.UIContext';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyIdleCallback extends FrameCallback {
   private tag: string;

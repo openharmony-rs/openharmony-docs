@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_Statistic
+```
+
 ## Overview
 
 Defines a struct for the device-cloud sync statistics of a database table.

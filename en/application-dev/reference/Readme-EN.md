@@ -1,20 +1,20 @@
-# Development References
+# API References<!--api-reference-->
 <!--Kit: Common-->
 <!--Subsystem: Common-->
 <!--Owner: @RayShih-->
 <!--Designer: @RayShih-->
 <!--Tester: @RayShih-->
 <!--Adviser: @RayShih-->
-
-- [Development Description](development-intro-api.md)
-- [SystemCapability](syscap.md)
+- API Reference Overview<!--ref-overview-api-->
+  - [Development Description](development-intro-api.md)
+  - [SystemCapability](syscap.md)
 <!--Del-->
 - SystemCapability List<!--syscap-list-->
-    - [Phone](phone-syscap-list.md)
-    - [Tablet](tablet-syscap-list.md)
-    - [LiteWearable](litewearable-syscap-list.md)
-    - [TV](tv-syscap-list.md)
-    - [Wearable](wearable-syscap-list.md)
+  - [Phone](phone-syscap-list.md)
+  - [Tablet](tablet-syscap-list.md)
+  - [LiteWearable](litewearable-syscap-list.md)
+  - [TV](tv-syscap-list.md)
+  - [Wearable](wearable-syscap-list.md)
 <!--DelEnd-->
 - [Universal Error Codes](errorcode-universal.md)
 - [SDK Compilation Verification Error Codes](errorcode-sdk-compile.md)

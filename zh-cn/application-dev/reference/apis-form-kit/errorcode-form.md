@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 > **说明：**
 >
@@ -40,11 +40,13 @@ Service connection error.
 
 **可能原因**
 
-当前服务繁忙，或服务出现异常。
+1. 当前卡片处于初始化状态。
+2. 当前系统任务繁忙。
 
 **处理步骤**
 
-待服务重启后重试。
+1. 重试连接服务。
+2. 重启设备。
 
 ## 16500100 获取卡片配置信息失败
 
@@ -135,12 +137,8 @@ The form cannot be operated by the current application.
 **处理步骤**
 
 <!--Del-->
-1. 
-<!--DelEnd-->
-检查传入卡片ID，是否属于本应用。
-<!--Del-->
-2. 升级权限为SystemApp。
-<!--DelEnd-->
+1. 升级权限为SystemApp。
+2. <!--DelEnd-->检查传入卡片ID，是否属于本应用。
 
 ## 16501006 卡片渲染服务连接失败
 
@@ -264,7 +262,8 @@ Some internal server error occurs.
 
 **可能原因**
 
-系统业务内部执行异常。
+1. 当前系统繁忙。
+2. 当前系统数据内部数据异常。
 
 **处理步骤**
 

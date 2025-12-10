@@ -339,18 +339,16 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
  表示证书链在线校验证书吊销状态选项的枚举。
 
- **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
  **系统能力：** SystemCapability.Security.Cert
 
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
-| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。 |
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。必须声明ohos.permission.INTERNET权限。 |
-| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。 |
-| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。 |
-| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。 |
-| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。 |
+| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
+| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
 
 
 ## ValidationPolicyType<sup>12+</sup>
@@ -414,7 +412,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | date         | string                                            | 否   | 是  |表示需要校验证书的有效期。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | 否   | 否   |表示信任锚列表。  <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| trustSystemCa<sup>20+</sup>| boolean | 否   | 是  |表示需要使用系统预置CA证书校验证书链。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| trustSystemCa<sup>20+</sup>| boolean | 否   | 是  |表示是否使用系统预置CA证书校验证书链。true表示使用；false表示不使用。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | 否   | 是  |表示需要校验证书是否在证书吊销列表中。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | 否   | 是  |表示需要在线校验证证书吊销状态的参数对象。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | 否   | 是  |表示需要校验证书的策略类型。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -688,7 +686,9 @@ CMS封装数据的KeyAgree接收方信息。
 
 CMS封装数据的接收者信息。
 
-**说明**：至少需要设置一个接收者。
+> **说明：**
+>
+> 至少需要设置一个接收者。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -2206,13 +2206,28 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
+  'MIIEETCCAs6gAwIBAgIUKRqK4hH6D1p3NSuChKOwHnIVx74wOAYJKoZIhvcNAQEK\n' +
+  'MCugDTALBglghkgBZQMEAgGhGjAYBgkqhkiG9w0BAQgwCwYJYIZIAWUDBAIBMG0x\n' +
+  'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDAR0ZXN0MQ0wCwYDVQQHDAR4aWFuMQ0wCwYD\n' +
+  'VQQKDAR0ZXN0MQ0wCwYDVQQLDAR0ZXN0MQ0wCwYDVQQDDAR0ZXN0MRMwEQYJKoZI\n' +
+  'hvcNAQkBFgR0ZXN0MB4XDTI1MTAzMDAxNDAzMVoXDTI2MTAzMDAxNDAzMVowbTEL\n' +
+  'MAkGA1UEBhMCRU4xDTALBgNVBAgMBHRlc3QxDTALBgNVBAcMBHhpYW4xDTALBgNV\n' +
+  'BAoMBHRlc3QxDTALBgNVBAsMBHRlc3QxDTALBgNVBAMMBHRlc3QxEzARBgkqhkiG\n' +
+  '9w0BCQEWBHRlc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDaHZMj\n' +
+  'UCQm53hgVYQq+kbmgKOH4e+vrsoAeOaX8KEgCbJfwLVpF7lj3Ld2c52X31JxziJx\n' +
+  'D6rmGIk0Tp13/rNA/AZrmhbO/+PKKQiWQJpUbNI4A4scxELn9emLk8B3x76k8KGh\n' +
+  'E7Re0XgKxfbZXU4AOZ0+9sXAZrSOPc8hYEfpwkGl09EojRuqQ4uSzjN3ikasfkZx\n' +
+  'xM4twRPXiumC34+ep8Z1uxZy6MUClT2plNM8fAdfUwRY0lnKh2RjAJcK1lQBlPlW\n' +
+  'Qc7S0/ifFXxgh+sBt+4dq+pphm5R/i6MIMWZ0JUg6tUlh1iY3nLVMVz0Z+LT7JUS\n' +
+  '5ILjwwybwhtatFh5AgMBAAGjUzBRMB0GA1UdDgQWBBQM3AOhyH6sHP7CJAB/Z5Xy\n' +
+  '4VQxJzAfBgNVHSMEGDAWgBQM3AOhyH6sHP7CJAB/Z5Xy4VQxJzAPBgNVHRMBAf8E\n' +
+  'BTADAQH/MDgGCSqGSIb3DQEBCjAroA0wCwYJYIZIAWUDBAIBoRowGAYJKoZIhvcN\n' +
+  'AQEIMAsGCWCGSAFlAwQCAQOCAQEAXhXExMyEnkBs9c6syxL4H98b9VtatezhKsMY\n' +
+  'c4vTxw5D5IoN+SM+YS6wNKN1fh0fO8nZm7kHmB/KyxtdKja5cwGfhqwsY2NHOkK7\n' +
+  'X5jWkbS0hbGPjj0UZkYRfC63d76lEPqz/bvf5Lgsv+W/J3ZFFBCV4tiBVr1ubpEy\n' +
+  '/n+C1r2NMxOKfGOEdE8tPa5LiR85/MYFaaAvzHVX4irXsQmzXPJMaMWt2DJAAze3\n' +
+  'ro0L1Hcd3VKyh5fYowA6nCDpNkKtQnVG/102SOM8HBH7wMSMHpsDzZbTuWRNJ35J\n' +
+  'ach83y13Yx4Td+DVsZgNjl/7yeA+XdusunygAnqHqx2brCTaNw==\n' +
   '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
@@ -2278,14 +2293,24 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIDIjCCAgqgAwIBAgIUUb7sok900ODOxkyE1FzstJbKCSQwDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAxNTQ0NFoX\n' +
+    'DTI2MTAzMDAxNTQ0NFowGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv3+V/0Nl4rytCHNcb7PMpRbsxvOX\n' +
+    '8zxwfb+5McmJ8ZZj59My3oqF7YgFM1VgZjjwaz8HljXvoaxrUJWQEu6AYjIa5ywN\n' +
+    'duySyyNNgfbqiwUOVdUICh3WsEjvvxK+8f55L3xU0LybZxyEf0+31pc15SzCvTvv\n' +
+    'E0OC8n3bYr2Nn0mvwtMHIl0Dr6AZbP10B/KKk68oX9UYOlsp4y0GTEXVDt/9bScx\n' +
+    'PV2WvaKPWcrQoJVz1ys2RtyUgcwPiWugQdx54xHG6zIAMYptKxDaHgsOEtUR4J1p\n' +
+    'xP1Ih7fY2wFZkeyRZG05ivYVqSHzHQV9Z42i+KjzfJUsMQt9TosuSsDi1wIDAQAB\n' +
+    'o2AwXjAdBgNVHQ4EFgQUKF6T271JCNpwjwyCSzTSN66T95EwHwYDVR0jBBgwFoAU\n' +
+    'KF6T271JCNpwjwyCSzTSN66T95EwDwYDVR0TAQH/BAUwAwEB/zALBgNVHQ8EBAMC\n' +
+    'BaAwDQYJKoZIhvcNAQELBQADggEBACa9A6d/cdFb7h8EMmjs0l+3aIAI10EskgRT\n' +
+    '+WHZ8zi+Q94/WEsOJW8CXIquJ2SxjXvl/A4UgrnfQyN+4kgEg7hLyuugg1QTk0so\n' +
+    'Kj6tlG82Oxr/gjzxf3MMFhkzLpi2nUYu66HnskzAfI1XLuLz995qY0hCj9r2gUiX\n' +
+    '6GR0H4p9pO5h9Fx7pbyosr2sn/JZbo9j6fWSuuvqoedjEuIb8aRmB6kbUkjhh/Iz\n' +
+    '5htY+aYZz0pRSm2F93WLy6HBhPNdAmWOCpNXrynsRXDgCPKqeIasba8MBjXTsqvI\n' +
+    'mgbc4MCLhLciWi34u9NpkAGbkwYVLE6URw/o373mD9fqe214Jdw=\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2351,14 +2376,25 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIDNDCCAhygAwIBAgIUJBLt/gmdgnDAq21wWU4R7rzgE5cwDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAyMzMxOVoX\n' +
+    'DTI2MTAzMDAyMzMxOVowGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0p3wb2jK23w+mihsah0w4wRaJ1TC\n' +
+    'YC20ODjSHyyCL75XfR6n87DdXvb15a71hkD/1cdgDRxIO91hNu04Ru4MFL0CqgTM\n' +
+    'ERSwZZGVo9DzJSG5q22FgbIFPi+XpTPtKk7mOCggPsfIrV1G0OH9zTREWoZ2/fJD\n' +
+    'Pj0MiaPlYtS4Jolu0qDnRZjgP8yVdaV4Upvni1PNX60rZfhf5YC4yvkMmpnyoUOZ\n' +
+    'IS3I/QucXZaiwXAO4ziHjYXtlp2aeUnrWSoRs3sFrsIVGB9x0ZYjwCwiih9TqaBK\n' +
+    'SY1CKSQE5xjVP1uY5JwJ6A5N648J3JjGosYEsXT+WieJ4SGHafGa2DGd2wIDAQAB\n' +
+    'o3IwcDAdBgNVHQ4EFgQUDyuOK1aix/tBR3QViD7TYdrDUQEwHwYDVR0jBBgwFoAU\n' +
+    'DyuOK1aix/tBR3QViD7TYdrDUQEwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHSUEFjAU\n' +
+    'BggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAC0A7HqO/OL0\n' +
+    'Ve8HTUqM31hFxXYiqDum/gPiegXDA+9ixEP2Fjz8vmhe75FX5XOvCk0+FWRayoVw\n' +
+    'lc7TD7SfV/oHRZVY58H8+Qxe5Rf4xQfOBNpG81uz73gfq3zIbzfJXxWlUpnBs6Tf\n' +
+    'P44NZboLpgaA0eMI7NwZJyomZ98qOK3PmxBL9qATmDep2GM6VlOuapYh2fo8wFhY\n' +
+    'DSp2EmcbIN9F+RPNrP+BvM/x2ZBtBoSFLh8jQ+GnP6g26DL57JBuBemt00BuYLOg\n' +
+    'fF00YBUgwK9tIFfI5IAfrwEF8Y49XIzpXrHuMZZXbuESzQMBsAZAYqIgi2p5dAon\n' +
+    'gdg3C4I6QRY=\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2485,14 +2521,25 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIDRjCCAi6gAwIBAgIUU3RfsnV6Ur2a514YvAygbMvcjaowDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAyNDIyM1oX\n' +
+    'DTI2MTAzMDAyNDIyM1owGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5yQDXUKnsNTPkqwVzCjtaE+Q8Tla\n' +
+    'Qod6tb0fo044DLrYFvly6W10sqfvqZpuEfUuyzh/cs7279SoP8FYjnrykcE3yxqu\n' +
+    '3N6vNn6iXm3CQnjlqBVB7ChTcoXv8GEwHNXcjNTaX3FZQW62WAYLLER4I9/ZwE/N\n' +
+    'iqf+rJu5O2eRzZ4AFappCLquFSp6Yw5yyhenhNFd026dBf58ggpUs0H9DThxS3N3\n' +
+    'GFUs6JDiOJpxjbv+p7ns9MsryqewB8i5TCJjMJkcCg+2YyKFKYDv3mC4eoV71MU0\n' +
+    'DVoy7sBhs1naTV7joM+wGSOLcW3ee6K9qCp8zXmqN1tRJOYxm/JkVvi5oQIDAQAB\n' +
+    'o4GDMIGAMB0GA1UdDgQWBBTXIqHf66clGd8UhAr2SJSaukwphDAfBgNVHSMEGDAW\n' +
+    'gBTXIqHf66clGd8UhAr2SJSaukwphDAPBgNVHRMBAf8EBTADAQH/MC0GA1UdEQQm\n' +
+    'MCSCC2V4YW1wbGUuY29tgg93d3cuZXhhbXBsZS5jb22HBH8AAAEwDQYJKoZIhvcN\n' +
+    'AQELBQADggEBABI/bnHX9xqw/3RfvEqXp/ocmI0Dm7XwQZ6MS9XlTgYVp9rPYFbz\n' +
+    'eS79q47nV1SMKc6LDeLoDcHT04aYGsKrA0O/9VVFhb50S1JBoa3HrEe0Q5WD4k48\n' +
+    'GUJE2CaaO+MG3P9ZF4P3qxvPZ1PLoHr2B2YkaIMapjlNDUyTGLyWwPEuJSraBiXj\n' +
+    'hnl1C9D5Y7ss8zuh4zzJl8MtU36kk19BbBglZVE0H7KDGGhqqvEbIFBNZmqy2vb3\n' +
+    '7xSbXJL0/SQV+nr2Qvv8DU4XZJliJKVJHr3GkrqXRSFVVZ0ADNpEdLxFT0IF1X/T\n' +
+    'JiAZrIdZPozWsjUVtQ4KVMJj+D7canRVuCg=\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2562,14 +2609,23 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // 证书二进制数据，需业务自行赋值。
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIC9zCCAd+gAwIBAgIUS3GIfzu10vWzw2RSLbxTxxMfz/wwDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAyNDkzNFoX\n' +
+    'DTI2MTAzMDAyNDkzNFowGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvKGnKn9NZoFOzdffrCIE01dTCiIo\n' +
+    'XPweKanLs49ZaxpEJ48OCP4vs8qmedsW1pUMpe7kQQyRINZ5tvXyFbiBS1u4clN/\n' +
+    'nU+E8rhNMa+2LA2YOUH/fC1ikussXq+acqjEqRbM900QdkmPzJX3NcloGYwdVfAe\n' +
+    '3ENEXHaXvj1qrf6pF5mbdelnlp1TrjpnXT4sSQaKbFjZrNl+zTT4xbIxTHR0cB8S\n' +
+    'oOVc3jI57rtP6x0FcLWzE/LX1E8eUkCIHEapPjqsGzLNtJTJI8z9QLinFIRmjdSI\n' +
+    '0xS8Qj/QitrOswzjHie2fgaz1LZx76CZGExC5f6f3Em5hJx6rjYysmEZBQIDAQAB\n' +
+    'ozUwMzAxBgNVHRIEKjAogRJpc3N1ZXJAZXhhbXBsZS5jb22CEmlzc3Vlci5leGFt\n' +
+    'cGxlLmNvbTANBgkqhkiG9w0BAQsFAAOCAQEAI5UjPssP3VzV2m47ke2nytAsTt9Y\n' +
+    'DNYKhqM4qZVVaIj5BRmca1jJXnWAgV4uUbad92E7R8askfSuJkBVtLJD5kSMTQrK\n' +
+    '5vYPbZ/WSRKthSbMotcynz/vWjBh4XY7bmiZC71ZNBCq9ybWRNzv61D9N1CJOlr6\n' +
+    'W+1zCYq9dFDYf1nJ60qvkYHmzX3o0a1LHdiTHHvUZIIFXkJ50+NDIbruh8j8Lijk\n' +
+    'Eed63QMcrSfLuIIAgoPoWo8WK2+AmA3k3EoTRvci5Ck+HDlLULBhyCrp+QUvn6OR\n' +
+    'B7ZBoW+U/OIpNTI4rvsn3rcdkZAVcwRI0vV04IDB52jRzUArSi+08ggCiQ==\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -13467,7 +13523,6 @@ createCmsParser(): CmsParser
 **示例：**
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13627,7 +13682,6 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13768,7 +13822,6 @@ getContentType(): CmsContentType
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13921,7 +13974,6 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14062,7 +14114,6 @@ getContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14212,7 +14263,6 @@ getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +

@@ -1,5 +1,12 @@
 # @ohos.ai.intelligentVoice (Intelligent Voice) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @y00416036-->
+<!--Designer: @jinjunwen-->
+<!--Tester: @gx1016-->
+<!--Adviser: @fang-jinxu-->
+
 The **intelligentVoice** module provides the intelligent voice enrollment and voice wakeup functions. <!--Del-->Currently, the features are related to chips and are not supported on OpenHarmony yet.<!--DelEnd-->
 
 Its features are implemented by:
@@ -719,11 +726,11 @@ Defines an upload file, including the file type, file description, and content.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
-| Name  | Type                           |     Mandatory    | Description      |
-| ------ | ----------------------------- | -------------- | ---------- |
-| type | [UploadFileType](#uploadfiletype12) |        Yes      | File type.|
-| filesDescription | string |        Yes      | File description.|
-| filesContent | Array\<ArrayBuffer\> |        Yes      | File content.|
+| Name  | Type                           | Read-Only| Optional| Description      |
+| ------ | ----------------------------- |----|----| ---------- |
+| type | [UploadFileType](#uploadfiletype12) | No | No | File type.|
+| filesDescription | string | No | No | File description.|
+| filesContent | Array\<ArrayBuffer\> | No| No | File content.|
 
 ## WakeupSourceFile<sup>12+</sup>
 
@@ -731,10 +738,10 @@ Defines a wakeup resource file.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
-| Name  | Type                           |     Mandatory    | Description      |
-| ------ | ----------------------------- | -------------- | ---------- |
-| filePath | string |        Yes      | File path.|
-| fileContent | ArrayBuffer |        Yes      | File content.|
+| Name  | Type                           | Read-Only| Optional| Description      |
+| ------ | ----------------------------- |----|----| ---------- |
+| filePath | string | No | No | File path.|
+| fileContent | ArrayBuffer | No | No | File content.|
 
 ## EvaluationResultCode<sup>12+</sup>
 
@@ -765,10 +772,10 @@ Defines the wakeup word evaluation result.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
-| Name  | Type                           |     Mandatory    | Description      |
-| ------ | ----------------------------- | -------------- | ---------- |
-| score | number |        Yes      | Evaluation score of a custom wakeup keyword. The value ranges from 0 to 5.|
-| resultCode | [EvaluationResultCode](#evaluationresultcode12) |        Yes      | Evaluation result code.|
+| Name  | Type                           | Read-Only| Optional| Description      |
+| ------ | ----------------------------- |----|----| ---------- |
+| score | number | No | No | Evaluation score of a custom wakeup keyword. The value ranges from 0 to 5.|
+| resultCode | [EvaluationResultCode](#evaluationresultcode12) | No | No| Evaluation result code.|
 
 ## ServiceChangeType
 
@@ -798,9 +805,9 @@ Defines the descriptor of an intelligent voice enrollment engine.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
-| Name  | Type                           |     Mandatory    | Description      |
-| ------ | ----------------------------- | -------------- | ---------- |
-| wakeupPhrase | string |        Yes      | Wakeup phrase.|
+| Name  | Type                           | Read-Only| Optional| Description      |
+| ------ | ----------------------------- |----|----| ---------- |
+| wakeupPhrase | string | No | No | Wakeup phrase.|
 
 ## WakeupIntelligentVoiceEngineDescriptor
 
@@ -808,10 +815,10 @@ Defines the descriptor of an intelligent voice wakeup engine.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
-| Name  | Type                           |     Mandatory    | Description      |
-| ------ | ----------------------------- | -------------- | ---------- |
-| needReconfirm | boolean |        Yes      | Whether re-confirmation of the wakeup result is needed. The value **true** indicates that re-confirmation is needed, and the value **false** indicates the opposite.|
-| wakeupPhrase | string |        Yes      | Wakeup phrase.|
+| Name  | Type                           | Read-Only| Optional| Description      |
+| ------ | ----------------------------- |----|----| ---------- |
+| needReconfirm | boolean | No | No | Whether re-confirmation of the wakeup result is needed. The value **true** indicates that re-confirmation is needed, and the value **false** indicates the opposite.|
+| wakeupPhrase | string | No | No | Wakeup phrase.|
 
 ## EnrollEngineConfig
 
@@ -819,10 +826,10 @@ Defines the enrollment engine configuration.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
-| Name  | Type                           |     Mandatory    | Description      |
-| ------ | ----------------------------- | -------------- | ---------- |
-| language | string |        Yes      | Language supported by the enrollment engine. Only Chinese is supported currently, and the value is **zh**.|
-| region | string |        Yes      | Country/region supported by the enrollment engine. Only China is supported currently, and the value is **CN**.|
+| Name  | Type                           | Read-Only| Optional| Description      |
+| ------ | ----------------------------- |----|----| ---------- |
+| language | string | No | No | Language supported by the enrollment engine. Only Chinese is supported currently, and the value is **zh**.|
+| region | string | No | No | Country/region supported by the enrollment engine. Only China is supported currently, and the value is **CN**.|
 
 ## SensibilityType
 
@@ -843,10 +850,10 @@ Defines the HAP information for a wakeup application.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
-| Name  | Type                           |     Mandatory    | Description      |
-| ------ | ----------------------------- | -------------- | ---------- |
-| bundleName | string |        Yes      | Bundle name of the wakeup application.|
-| abilityName | string |        Yes      | Ability name of the wakeup application.|
+| Name  | Type                           | Read-Only| Optional| Description      |
+| ------ | ----------------------------- |----|----| ---------- |
+| bundleName | string | No | No | Bundle name of the wakeup application.|
+| abilityName | string | No | No | Ability name of the wakeup application.|
 
 ## WakeupIntelligentVoiceEventType
 
@@ -912,10 +919,10 @@ Defines the enrollment callback information.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
-| Name  | Type                           |     Mandatory    | Description      |
-| ------ | ----------------------------- | -------------- | ---------- |
-| result | [EnrollResult](#enrollresult) |        Yes      | Enrollment result.|
-| context | string |        Yes      | Context of the enrollment event.|
+| Name  | Type                           | Read-Only| Optional| Description      |
+| ------ | ----------------------------- |----|----| ---------- |
+| result | [EnrollResult](#enrollresult) | No | No | Enrollment result.|
+| context | string | No | No | Context of the enrollment event.|
 
 ## WakeupIntelligentVoiceEngineCallbackInfo
 
@@ -923,11 +930,11 @@ Defines the callback information for the intelligent voice wakeup engine.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
-| Name  | Type                           |     Mandatory    | Description      |
-| ------ | ----------------------------- | -------------- | ---------- |
-| eventId | [WakeupIntelligentVoiceEventType](#wakeupintelligentvoiceeventtype) |        Yes      | Event type of the intelligent voice wakeup engine.|
-| isSuccess | boolean |        Yes      | Wakeup result. The value **true** indicates that the wakeup is successful, and the value **false** indicates the opposite.|
-| context | string |        Yes      | Context of the wakeup event.|
+| Name  | Type                           | Read-Only| Optional| Description      |
+| ------ | ----------------------------- |----|----| ---------- |
+| eventId | [WakeupIntelligentVoiceEventType](#wakeupintelligentvoiceeventtype) | No | No | Event type of the intelligent voice wakeup engine.|
+| isSuccess | boolean | No | No | Whether the wakeup is successful. The value **true** indicates that the wakeup is successful, and the value **false** indicates the opposite.|
+| context | string | No | No | Context of the wakeup event.|
 
 ## EnrollIntelligentVoiceEngine
 
@@ -964,6 +971,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let regions: Array<string> | null = null;
+
 if (enrollIntelligentVoiceEngine != null) {
   (enrollIntelligentVoiceEngine as intelligentVoice.EnrollIntelligentVoiceEngine).getSupportedRegions((err: BusinessError, data: Array<string>) => {
     if (err) {
@@ -1010,7 +1018,7 @@ let regions: Array<string> | null = null;
 if (enrollIntelligentVoiceEngine != null) {
   (enrollIntelligentVoiceEngine as intelligentVoice.EnrollIntelligentVoiceEngine).getSupportedRegions().then((data: Array<string>) => {
     regions = data;
-    console.info('Succeeded in getting supported regions, regions:${regions}.');
+    console.info(`Succeeded in getting supported regions, regions:${regions}.`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get supported regions, Code:${err.code}, message:${err.message}`);
   });

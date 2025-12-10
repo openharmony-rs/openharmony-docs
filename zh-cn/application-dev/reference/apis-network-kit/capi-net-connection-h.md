@@ -57,7 +57,7 @@
 
 ### OH_NetConn_HasDefaultNet()
 
-```
+```c
 int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 ```
 
@@ -86,7 +86,7 @@ int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 
 ### OH_NetConn_GetDefaultNet()
 
-```
+```c
 int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 ```
 
@@ -115,7 +115,7 @@ int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 
 ### OH_NetConn_IsDefaultNetMetered()
 
-```
+```c
 int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 ```
 
@@ -144,7 +144,7 @@ int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 
 ### OH_NetConn_GetConnectionProperties()
 
-```
+```c
 int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *prop)
 ```
 
@@ -174,7 +174,7 @@ int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn
 
 ### OH_NetConn_GetNetCapabilities()
 
-```
+```c
 int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities)
 ```
 
@@ -204,7 +204,7 @@ int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetC
 
 ### OH_NetConn_GetDefaultHttpProxy()
 
-```
+```c
 int32_t OH_NetConn_GetDefaultHttpProxy(NetConn_HttpProxy *httpProxy)
 ```
 
@@ -231,7 +231,7 @@ int32_t OH_NetConn_GetDefaultHttpProxy(NetConn_HttpProxy *httpProxy)
 
 ### OH_NetConn_GetAddrInfo()
 
-```
+```c
 int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, struct addrinfo **res, int32_t netId)
 ```
 
@@ -264,7 +264,7 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 
 ### OH_NetConn_FreeDnsResult()
 
-```
+```c
 int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 ```
 
@@ -293,7 +293,7 @@ int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 
 ### OH_NetConn_GetAllNets()
 
-```
+```c
 int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 ```
 
@@ -322,7 +322,7 @@ int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 
 ### OHOS_NetConn_RegisterDnsResolver()
 
-```
+```c
 int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 ```
 
@@ -331,8 +331,6 @@ int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 注册自定义DNS解析器。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
-
-**需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 11
 
@@ -351,11 +349,11 @@ int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>         401 - 参数错误。 2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 401 - 参数错误。<br> 2100002 - 无法连接到服务。  2100003 - 内部错误。 |
 
 ### OHOS_NetConn_UnregisterDnsResolver()
 
-```
+```c
 int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 ```
 
@@ -364,8 +362,6 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 取消注册自定义DNS解析器。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
-
-**需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 11
 
@@ -377,11 +373,11 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>         401 - 参数错误。 2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
+| int32_t | 0 - 成功。<br>2100002 - 无法连接到服务。 <br> 2100003 - 内部错误。 |
 
 ### OH_NetConn_RegisterDnsResolver()
 
-```
+```c
 int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 ```
 
@@ -391,8 +387,6 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**需要权限：** ohos.permission.INTERNET
-
 **起始版本：** 13
 
 
@@ -400,17 +394,17 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 参数项 | 描述 |
 | -- | -- |
-| 指向自定义DNS解析器的指针。 |  |
+|[OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver   | 指向自定义DNS解析器的指针。  |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果码。<br>         NETMANAGER_EXT_SUCCESS 如果操作成功。<br>         NETMANAGER_ERR_PERMISSION_DENIED 缺少权限，请添加权限。<br>         NETMANAGER_ERR_PARAMETER_ERROR 参数错误。请输入正确的参数。 |
+| int32_t | 返回结果码。<br>         NETMANAGER_EXT_SUCCESS 如果操作成功。  <br>         NETMANAGER_ERR_PARAMETER_ERROR 参数错误。请输入正确的参数。 |
 
 ### OH_NetConn_UnregisterDnsResolver()
 
-```
+```c
 int32_t OH_NetConn_UnregisterDnsResolver(void)
 ```
 
@@ -420,19 +414,17 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**需要权限：** ohos.permission.INTERNET
-
 **起始版本：** 13
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>         401 - 参数错误。 2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
+| int32_t | 0 - 成功。<br>          2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
 
 ### OH_NetConn_BindSocket()
 
-```
+```c
 int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 ```
 
@@ -460,7 +452,7 @@ int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 
 ### OH_NetConn_SetAppHttpProxy()
 
-```
+```c
 int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)
 ```
 
@@ -487,7 +479,7 @@ int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)
 
 ### OH_NetConn_RegisterAppHttpProxyCallback()
 
-```
+```c
 int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange appHttpProxyChange, uint32_t *callbackId)
 ```
 
@@ -515,7 +507,7 @@ int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange ap
 
 ### OH_NetConn_UnregisterAppHttpProxyCallback()
 
-```
+```c
 void OH_NetConn_UnregisterAppHttpProxyCallback(uint32_t callbackId)
 ```
 
@@ -536,7 +528,7 @@ void OH_NetConn_UnregisterAppHttpProxyCallback(uint32_t callbackId)
 
 ### OH_NetConn_RegisterNetConnCallback()
 
-```
+```c
 int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetConn_NetConnCallback *netConnCallback,uint32_t timeout, uint32_t *callbackId)
 ```
 
@@ -568,7 +560,7 @@ int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetC
 
 ### OH_NetConn_RegisterDefaultNetConnCallback()
 
-```
+```c
 int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netConnCallback, uint32_t *callbackId)
 ```
 
@@ -598,7 +590,7 @@ int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netCo
 
 ### OH_NetConn_UnregisterNetConnCallback()
 
-```
+```c
 int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 ```
 
@@ -627,7 +619,7 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 
 ### OH_NetConn_SetPacUrl()
 
-```
+```c
 NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 ```
 
@@ -654,7 +646,7 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 
 ### OH_NetConn_GetPacUrl()
 
-```
+```c
 NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 ```
 
@@ -679,7 +671,7 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 
 ### OH_NetConn_QueryProbeResult()
 
-```
+```c
 int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)
 ```
 
@@ -708,7 +700,7 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 ### OH_NetConn_QueryTraceRoute()
 
-```
+```c
 int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *option,NetConn_TraceRouteInfo *traceRouteInfo)
 ```
 
@@ -727,7 +719,7 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 | -- | -- |
 | char *destination | 目的地址。 |
 | [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) *option | 路由参数选项。 |
-| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) *traceRouteInfo | 路由结果。需传入数组指针，数组大小代表路由跳数，默认30跳。 |
+| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) *traceRouteInfo | 路由结果。需传入数组指针，数组大小代表路由跳数，默认30跳。若自定义跳数，则需保证数组大小与option字段中的maxJumpNumber数值保持一致。 |
 
 **返回：**
 

@@ -60,6 +60,7 @@
   - [Event Reporting](hiappevent-event-reporting.md)
   <!--DelEnd-->
   - [HiAppEvent FAQs](hiappevent-faq.md)
+  - [Using FaultLogExtensionAbility to Subscribe to Events](fault-log-extension-app-events-arkts.md)
 - Performance Tracing<!--hitracemeter-->
   - [Introduction to HiTraceMeter](hitracemeter-intro.md)
   - [Using HiTraceMeter (ArkTS)](hitracemeter-guidelines-arkts.md)
@@ -85,11 +86,13 @@
 - Command Line Tools<!--perform-command-line-utilities-->
   - [hdc](hdc.md)
   - [hilog](hilog.md)
-  - [hidumper](hidumper.md)
+  - hidumper<!--hidumper-tool-->
+    - [hidumper](hidumper.md)
+    - [PrivacyManagerService](hidumper-PrivacyManagerService.md)
   - [hitrace](hitrace.md)
   - [hiperf](hiperf.md)
   - [hiprofiler](hiprofiler.md)
   - [uinput](uinput.md)
   <!--Del-->
-  - [hisysevent](hisysevent.md)
+  - [hisysevent (for System Applications Only)](hisysevent-sys.md)
   <!--DelEnd-->

@@ -115,7 +115,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
     - OH_AVCodecOnError：解码器运行错误。
-    - OH_AVCodecOnStreamChanged：码流信息变化回调，包括采样率变化、声道数变化、音频采样格式变化，支持检测此变化的解码格式有：<!--RP5--><!--RP5End-->AAC，FLAC，MP3，VORBIS。(API 15开始支持)
+    - OH_AVCodecOnStreamChanged：码流信息变化回调，包括采样率变化、声道数变化、音频采样格式变化，支持检测此变化的解码格式有：<!--RP5--><!--RP5End-->AAC，FLAC，MP3，VORBIS。(API version 15开始支持)
     - OH_AVCodecOnNeedInputBuffer：运行过程中需要新的输入数据，即解码器已准备好，可以输入数据。
     - OH_AVCodecOnNewOutputBuffer：运行过程中产生了新的输出数据，即解码完成。
 
@@ -241,35 +241,17 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    配置选项key值说明：
 
-   |             key              |       描述       |                AAC                 | Flac |               Vorbis               | MPEG(MP3) |       G711mu        |          AMR(amrnb、amrwb)         | APE |          G711a          |
-   | ---------------------------- | :--------------: | :--------------------------------: | :--: | :--------------------------------: | :--: | :-----------------: | :-------------------------------: | :--: | :----------------------: |
-   | OH_MD_KEY_AUD_SAMPLE_RATE    |      采样率      |                必须                | 必须 |                必须                 | 必须 |        必须          |                必须                | 必须 |           必须           |
-   | OH_MD_KEY_AUD_CHANNEL_COUNT  |      声道数      |                必须                | 必须 |                必须                 | 必须 |        必须          |                必须                | 必须 |           必须           |
-   | OH_MD_KEY_MAX_INPUT_SIZE     |    最大输入长度   |                可选                | 可选 |                可选                 | 可选 |        可选           |               可选                | 可选 |          可选            |
-   | OH_MD_KEY_AAC_IS_ADTS        |     是否adts     |             可选，默认1             |  -   |                 -                  |  -   |         -             |               -                  |  -  |         -                |
-   | OH_MD_KEY_AUDIO_SAMPLE_FORMAT   |  输出音频流格式  | 可选（SAMPLE_S16LE，SAMPLE_F32LE） | 可选 | 可选（SAMPLE_S16LE，SAMPLE_F32LE） |  可选 | 可选（默认SAMPLE_S16LE）| 可选（SAMPLE_S16LE，SAMPLE_F32LE）| 可选 | 可选（默认SAMPLE_S16LE）|
-   | OH_MD_KEY_BITRATE               |       码率      |                可选                | 可选 |                可选                | 可选 |         可选           |              可选                 | 可选 |         可选           |
-   | OH_MD_KEY_IDENTIFICATION_HEADER |    ID Header    |                 -                  |  -   |    必须（和Codec_Config二选一）    |  -   |          -            |                -                  |  -  |           -            |
-   | OH_MD_KEY_SETUP_HEADER          |   Setup Header  |                 -                  |  -   |    必须（和Codec_Config二选一）    |  -   |          -            |                -                 |  -  |            -            |
-   | OH_MD_KEY_CODEC_CONFIG          | 编解码器特定数据 |                可选                 |  -   |   必须（和上述ID和Setup二选一）    |  -   |           -            |                -                 | 可选 |           -            |
-   
+   <!--RP6-->
+   ![Audio decoder key configuration](figures/decoder_key.png)
+   <!--RP6End-->
+
    各音频解码类型参数范围说明：
 
-   | 音频解码类型 |                                          采样率(Hz)                                              | 声道数 |
-   | ----------- | ----------------------------------------------------------------------------------------------  | :----: |
-   | AAC         | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000                 |  1~8   |
-   | Flac        | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000、192000         |  1~8   |
-   | Vorbis      | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000、176400、192000 |  1~8   |
-   | MPEG(MP3)   | 8000、11025、12000、16000、22050、24000、32000、44100、48000                                     |  1~2   |
-   | G711mu      | 8000                                                                                            |   1    |
-   | AMR(amrnb)  | 8000                                                                                            |   1    |
-   | AMR(amrwb)  | 16000                                                                                           |   1    |
-   | APE         | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000、176400、192000 |  1~2   |
-   | G711a       | 8000、11025、12000、16000、22050、24000、32000、44100、48000                                     |  1~6   |
-   <!--RP4-->
-   <!--RP4End-->
+   <!--RP7-->
+   ![Audio decoder format range description](figures/decoder_format.png)
+   <!--RP7End-->
 
-   API20新增[采样率范围](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码（API20之后）：
+   从API version 20开始，支持[采样率范围](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
 
    | 音频解码类型 |    采样率(Hz)   |
    | ----------- | --------------- |
@@ -288,6 +270,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    constexpr uint32_t DEFAULT_MAX_INPUT_SIZE = 1152;
    // 配置是否为ADTS解码（aac解码时可选）。
    constexpr uint32_t DEFAULT_AAC_TYPE = 1;
+   // 配置划分音频数据块字节数，从API version 22开始支持，仅WMAV1、WMAV2、WMA PRO解码时必须配置。
+   constexpr int32_t DEFAULT_BLOCK_ALIGN = 1;
    OH_AVFormat *format = OH_AVFormat_Create();
    // 写入format。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
@@ -295,6 +279,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_MAX_INPUT_SIZE, DEFAULT_MAX_INPUT_SIZE);
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AAC_IS_ADTS, DEFAULT_AAC_TYPE);
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_BLOCK_ALIGN, DEFAULT_BLOCK_ALIGN);
    // 配置解码器。
    int32_t ret = OH_AudioCodec_Configure(audioDec_, format);
    if (ret != AV_ERR_OK) {
@@ -410,7 +395,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    需开发者填充完整的输入数据后调用。
 
-   如果是结束，需要对flags标识成AVCODEC_BUFFER_FLAGS_EOS。
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。
 
     ```c++
     uint32_t index = signal_->inQueue_.front();

@@ -24,35 +24,43 @@
     > **NOTE**
     >
     > Starting from API version 12, it is not recommended that third-party applications start other applications by specifying an ability (implicit Want mode). Instead, the [linking mode](app-startup-overview.md#application-links) is recommended.
-  
-  ```ts
-  import { Want } from '@kit.AbilityKit';
 
+  <!-- @[explicit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/WantOverview/entry/src/main/ets/pages/ExplicitPage.ets) -->
+  
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  // ···
+  
   let wantInfo: Want = {
     deviceId: '', // An empty deviceId indicates the local device.
-    bundleName: 'com.example.myapplication',
-    abilityName: 'FuncAbility',
-  }
+    bundleName: 'com.samples.wantoverview',
+    abilityName: 'ExplicitAbility',
+  };
   ```
+
   
 - **Implicit Want**: If **abilityName** is not specified in the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter when starting an application component, implicit Want is used.
   
   Implicit Want can be used when the object used to process the request is unclear and the current application wants to use a capability (defined by the [skills tag](../quick-start/module-configuration-file.md#skills)) provided by another application. The system matches all applications that declare to support the capability. For example, for a link open request, the system matches all applications that support the request and provides the available ones for users to select.
-  
-  
-  ```ts
-  import { Want } from '@kit.AbilityKit';
 
+
+  <!-- @[implicit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/WantOverview/entry/src/main/ets/pages/ImplicitPage.ets) -->
+  
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  // ···
+  
   let wantInfo: Want = {
     // Uncomment the line below if you want to implicitly query data only in the specific bundle.
     // bundleName: 'com.example.myapplication',
     action: 'ohos.want.action.search',
     // entities can be omitted.
-    entities: [ 'entity.system.browsable' ],
+    entities: ['entity.system.browsable'],
     uri: 'https://www.test.com:8080/query/student',
     type: 'text/plain',
   };
   ```
+
   
   > **NOTE**
   > - Depending on the application component matching result, the following cases may be possible when you attempt to use implicit Want to start the application component.

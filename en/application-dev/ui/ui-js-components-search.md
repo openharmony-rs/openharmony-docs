@@ -1,10 +1,10 @@
-# &lt;search&gt; Development
+# search Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **&lt;search&gt;** component provides an input area for users to search. For details, see [search](../reference/apis-arkui/arkui-js/js-components-basic-search.md).
@@ -256,7 +256,7 @@ export default {
   },
   change(e) {
     promptAction.showToast({
-      message: 'Content:'+ e.text,
+      message: 'Content:' + e.text,
       duration: 2000
     })
   }

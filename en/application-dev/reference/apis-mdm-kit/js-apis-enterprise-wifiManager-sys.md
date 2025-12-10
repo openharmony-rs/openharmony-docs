@@ -66,7 +66,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 wifiManager.isWifiActive(wantTemp, (err, result) => {
@@ -126,7 +126,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 wifiManager.isWifiActive(wantTemp).then((result) => {
@@ -179,7 +179,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let profile: wifiManager.WifiProfile = {
   // Replace with actual values.
@@ -246,7 +246,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let profile: wifiManager.WifiProfile = {
   // Replace with actual values.
@@ -309,7 +309,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: boolean = wifiManager.isWifiDisabled(wantTemp);
@@ -361,7 +361,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {

@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_MemoryStream OH_Drawing_MemoryStream
+```
+
 ## Overview
 
 Defines a struct for a memory stream.

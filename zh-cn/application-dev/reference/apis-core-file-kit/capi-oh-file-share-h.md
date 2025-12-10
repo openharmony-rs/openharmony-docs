@@ -34,7 +34,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [FileShare_OperationMode](#fileshare_operationmode) | FileShare_OperationMode | URI操作模式枚举值。 |
-| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | 授予或使能权限策略失败的URI对应的错误码枚举值。 |
+| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | 授予或使能权限策略失败的URI对应的错误码。 |
 
 ### 函数
 
@@ -51,7 +51,7 @@
 
 ### FileShare_OperationMode
 
-```
+```c
 enum FileShare_OperationMode
 ```
 
@@ -68,13 +68,13 @@ URI操作模式枚举值。
 
 ### FileShare_PolicyErrorCode
 
-```
+```c
 enum FileShare_PolicyErrorCode
 ```
 
 **描述**
 
-授予或使能权限策略失败的URI对应的错误码枚举值。
+授予或使能权限策略失败的URI对应的错误码。
 
 **起始版本：** 12
 
@@ -90,7 +90,7 @@ enum FileShare_PolicyErrorCode
 
 ### OH_FileShare_PersistPermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -119,7 +119,7 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 
 ### OH_FileShare_RevokePermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -148,7 +148,7 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 ### OH_FileShare_ActivatePermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -177,7 +177,7 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 
 ### OH_FileShare_DeactivatePermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -206,7 +206,7 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 ### OH_FileShare_CheckPersistentPermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum)
 ```
 
@@ -224,7 +224,7 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 | -- | -- |
 | [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 一个指向FileShare_PolicyInfo实例的指针。 |
 | unsigned int policyNum | FileShare_PolicyInfo实例数组的大小。 |
-| bool **result | 授权校验结果指针。请引用头文件malloc.h并使用free()进行资源释放。 |
+| bool **result | 授权校验结果指针。true表示有持久化授权；false表示不具有持久化授权。请引用头文件malloc.h并使用free()进行资源释放。 |
 | unsigned int *resultNum | 校验结果数组的大小。 |
 
 **返回：**
@@ -235,7 +235,7 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 
 ### OH_FileShare_ReleasePolicyErrorResult()
 
-```
+```c
 void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum)
 ```
 

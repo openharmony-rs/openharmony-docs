@@ -21,6 +21,8 @@ gestureModifier(modifier:&nbsp;GestureModifier): T
 >  **说明：**
 >
 >  gestureModifier不支持自定义组件。
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -73,7 +75,11 @@ class MyButtonModifier implements GestureModifier {
   applyGesture(event: UIGestureEvent): void {
     if (this.supportDoubleTap) {
       event.addGesture(
-        new TapGestureHandler({ count: 2, fingers: 1 })
+        new TapGestureHandler({
+          count: 2,
+          fingers: 1,
+          distanceThreshold: 100
+        })//从API version 23开始，新增distanceThreshold属性。
           .tag("aaa")
           .onAction((event: GestureEvent) => {
             console.info('Gesture Info is', JSON.stringify(event));

@@ -3,7 +3,7 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 本模块提供设备使用信息统计能力。

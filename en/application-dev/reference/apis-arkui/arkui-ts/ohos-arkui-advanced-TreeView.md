@@ -1,4 +1,10 @@
 # TreeView
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **TreeView** component represents a tree view used to display a hierarchical list of items. Each item can contain subitems, which may be expanded or collapsed.
@@ -9,10 +15,9 @@ This component is applicable in productivity applications, such as side navigati
 
 > **NOTE**
 >
-> This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This component is not supported on wearables.
-
+> - If the **TreeView** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **TreeView** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **TreeView** component.
 
 ## Modules to Import
 
@@ -25,9 +30,6 @@ import { TreeView } from "@kit.ArkUI";
 
 Not supported
 
-## Attributes
-The [universal attributes](ts-component-general-attributes.md) are not supported.
-
 ## TreeView
 
 TreeView({ treeController: TreeController })
@@ -37,6 +39,8 @@ TreeView({ treeController: TreeController })
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 
 | Name| Type| Mandatory| Description|
@@ -52,6 +56,8 @@ Implements a **TreeController** object, which can be bound to a tree view compon
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 
 ### addNode
 
@@ -64,8 +70,11 @@ Adds a child node to the selected node.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name| Type| Mandatory| Description|
+**Parameters**
+
+| Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | nodeParam | [NodeParam](#nodeparam) | No| Node information.|
 
@@ -85,6 +94,8 @@ Removes the selected node.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 
 ### modifyNode
 
@@ -97,6 +108,8 @@ Modifies the selected node.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 
 ### buildDone
 
@@ -107,6 +120,8 @@ Builds a tree view. After a node is added, this API must be called to save the t
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 
 ### refreshNode
@@ -119,9 +134,13 @@ Refreshes the tree view. You can call this API to update the information about t
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
+
+| Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| parentId | number | Yes| ID of the parent node.|
+| parentId | number | Yes| ID of the parent node.<br>The value must be greater than or equal to -1.|
 | parentSubTitle | [ResourceStr](ts-types.md#resourcestr) | Yes| Secondary text of the parent node.|
 | currentSubtitle | [ResourceStr](ts-types.md#resourcestr) | Yes| Secondary text of the current node.|
 
@@ -129,25 +148,29 @@ Refreshes the tree view. You can call this API to update the information about t
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description                                                                                                                                              |
-| -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------------------------------------------------|
-| parentNodeId | number | No| Parent node.<br>The value must be greater than or equal to -1.<br>Default value: -1. The root node ID is -1. If the value is less than -1, the setting does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                              |
-| currentNodeId | number | No| Current child node.<br>The value must be greater than or equal to -1.<br>The value cannot be the root node ID, cannot be null, and cannot be duplicated.<br>Default value: **-1**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| isFolder | boolean | No| Whether the node is a directory.<br> Default value: **false**.<br> **true**: The node is a directory.<br>**false**: The node is not a directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                        |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No| Icon.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                          |
-| symbolIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Symbol icon, which has higher priority than **icon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                      |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | No| Icon of the selected node.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                        |
-| symbolSelectedIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Symbol icon of the selected node., which has higher priority than **selectedIcon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                            |
-| editIcon | [ResourceStr](ts-types.md#resourcestr) | No| Edit icon.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                        |
-| symbolEditIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Symbol edit icon, which has a higher priority than **editIcon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                |
-| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| Primary title.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                         |
-| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| Secondary title.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                          |
-| container | () =&gt; void | No| Right-click child component bound to the node. The child component is decorated with @Builder.<br>Default value: **() =&gt; void**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                               |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description                                                                                                                                              |
+| -------- | -------- |---|---|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| parentNodeId | number | No| Yes| ID of the parent node.<br>The value must be greater than or equal to -1.<br>Default value: -1. The root node ID is -1. If the value is less than -1, the setting does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                              |
+| currentNodeId | number | No| Yes| Current child node ID.<br>The value must be greater than or equal to -1.<br>The value cannot be the root node ID or null. Otherwise, an exception is thrown. In addition, duplicate **currentNodeId** values are not allowed.<br>Default value: **-1**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| isFolder | boolean | No| Yes| Whether the node is a directory.<br>Default value: **false**.<br>**true**: The node is a directory. **false**: The node is not a directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                        |
+| icon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Icon.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                          |
+| symbolIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon, which has higher priority than **icon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                      |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Icon of the selected node.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                        |
+| symbolSelectedIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon of the selected node., which has higher priority than **selectedIcon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                            |
+| editIcon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Edit icon.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                        |
+| symbolEditIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol edit icon, which has a higher priority than **editIcon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                |
+| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Primary title.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                         |
+| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Secondary title.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                          |
+| container | () =&gt; void | No| Yes| Right-click child component bound to the node. The child component is decorated with @Builder.<br>Default value: **() =&gt; void**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                               |
 
 
 ## TreeListenerManager
 
 Implements a **TreeListenerManager** object, which can be bound to a **TreeView** component to listen for changes of tree nodes. One **TreeListenerManager** object can be bound to only one tree view component.
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 
 ### getInstance
@@ -159,6 +182,8 @@ Obtains a **TreeListenerManager** singleton object.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Return value**
 
@@ -176,6 +201,8 @@ Obtains a listener.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Return value**
 
@@ -199,7 +226,11 @@ Register a listener.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
+
+| Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | Yes| Listening type.|
 | callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | Yes| Node information.|
@@ -215,7 +246,11 @@ Registers a one-off listener.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
+
+| Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | Yes| Listening type.|
 | callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | Yes| Node information.|
@@ -232,8 +267,11 @@ Unregisters a listener.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name| Type| Mandatory| Description|
+**Parameters**
+
+| Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | Yes| Listening type.|
 | callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | No| Node information.|
@@ -243,6 +281,8 @@ Unregisters a listener.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
@@ -258,11 +298,13 @@ Unregisters a listener.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description                                      |
-| -------- | -------- | -------- |------------------------------------------|
-| currentNodeId | number | Yes| ID of the current child node.<br>The value must be greater than or equal to 0.             |
-| parentNodeId | number | No| ID of the current parent node.<br>The value must be greater than or equal to -1.<br>Default value: **-1**|
-| childIndex | number | No| Child index.<br>The value must be greater than or equal to -1.<br>Default value: **-1**  |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description                                      |
+| -------- | -------- |---|---|------------------------------------------|
+| currentNodeId | number | No| No| ID of the current child node.<br>The value must be greater than or equal to 0.             |
+| parentNodeId | number | No| Yes| ID of the current parent node.<br>The value must be greater than or equal to -1.<br>Default value: **-1**|
+| childIndex | number | No| Yes| Child index.<br>The value must be greater than or equal to -1.<br>Default value: **-1**  |
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.

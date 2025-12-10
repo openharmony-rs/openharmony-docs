@@ -289,7 +289,7 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-Minimizes all main windows on a display.
+Minimizes all main windows on a display. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1015,6 +1015,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300004  | This operation is not accessible.             |
 
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -2865,7 +2866,7 @@ export default class EntryAbility extends UIAbility {
 
 raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
-Moves the main window above another main window within the same application, with child windows following their parents' layer change. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. This API uses a promise to return the result.
+Moves the main window above another main window within the same application, with child windows following their parents' layer change. This API uses a promise to return the result.
 
 This API can be called only by the main window of a system application.
 
@@ -2879,7 +2880,7 @@ You need to pass the ID of the target main window. Both the calling window and t
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -3092,6 +3093,75 @@ export default class EntryAbility extends UIAbility {
         } catch (err) {
           console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
         }
+      });
+    });
+  }
+}
+```
+
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+Sets whether to enable the main window to raise itself by click. This API uses a promise to return the result.
+
+By default, clicking the main window raises both the main window and its associated child windows. Disabling this feature (by passing **false**) prevents the main window and its child windows from being raised when the main window is clicked, preserving their current state. However, clicking on a child window still raises both the child window and the main window together.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | Yes  | Whether to enable the main window to raise itself by click. **true** to enable, **false** otherwise.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((window: window.Window) => {
+      // Load the page corresponding to the main window.
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
       });
     });
   }
@@ -3623,7 +3693,7 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-Shows or hides the maximize, minimize, and split-screen buttons on the title bar of the main window. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Shows or hides the maximize, minimize, and split-screen buttons on the title bar of the main window.
 
 This API takes effect only for the title bar buttons (maximize, minimize, and split-screen) that are available in the current scenario.
 
@@ -3631,7 +3701,7 @@ This API takes effect only for the title bar buttons (maximize, minimize, and sp
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 

@@ -229,6 +229,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 | height    | number   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为正整数。 |
 | density   | number   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId，用户可自行定义，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。        |
+| supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
 
 ## Position<sup>20+</sup>
 
@@ -281,7 +282,7 @@ getDisplayByIdSync(displayId: number): Display
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed.|
-| 1400003 | This display manager service works abnormally. |
+| 1400003 | This display manager service works abnormally. Possible causes: Display is null, display id corresponding display does not exist. |
 
 **示例：**
 
@@ -409,7 +410,7 @@ getDefaultDisplaySync(): Display
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 1400001 | Invalid display or screen. |
+| 1400001 | Invalid display or screen. Possible cause: Display is not created or destroyed. |
 
 **示例：**
 
@@ -446,7 +447,7 @@ getPrimaryDisplaySync(): Display
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 1400001 | Invalid display or screen. |
+| 1400001 | Invalid display or screen. Possible cause: Invalid display id. |
 
 **示例：**
 
@@ -837,7 +838,7 @@ display.off('foldStatusChange', callback);
 
 ## display.on('brightnessInfoChange')<sup>22+</sup>
 
-on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 开启所有屏幕亮度信息变化的监听。如果屏幕不支持HDR，监听到的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
 
@@ -850,7 +851,7 @@ on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallb
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
-| callback | [BrightnessCallback](#brightnesscallback22)&lt;number， [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
 
 **错误码：**
 
@@ -865,9 +866,7 @@ on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallb
 **示例：**
 
 ```ts
-import { BrightnessCallback } from '@kit.BasicServicesKit';
-
-let callback = (id: number, data: display.BrightnessInfo) => {
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
@@ -879,7 +878,7 @@ try {
 
 ## display.off('brightnessInfoChange')<sup>22+</sup>
 
-off(type: 'brightnessInfoChange', callback?: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 关闭所有屏幕亮度信息状态变化的监听。
 
@@ -907,9 +906,7 @@ off(type: 'brightnessInfoChange', callback?: [BrightnessCallback](#brightnesscal
 **示例：**
 
 ```ts
-import { BrightnessCallback } from '@kit.BasicServicesKit';
-
-let callback = (id: number, data: display.BrightnessInfo) => {
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
@@ -1238,6 +1235,7 @@ class VirtualScreenConfig {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let config : VirtualScreenConfig = {
@@ -1245,7 +1243,8 @@ let config : VirtualScreenConfig = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 display.createVirtualScreen(config).then((screenId: number) => {
@@ -1306,7 +1305,7 @@ display.destroyVirtualScreen(screenId).then(() => {
 
 setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
-设置虚拟屏幕的surfaceId，使用Promise异步回调。
+设置虚拟屏幕的surfaceId，surfaceId用于标识一个surface，表示当前虚拟屏用于显示对应surface中的内容。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1317,7 +1316,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | screenId  | number | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。    |
-| surfaceId | string | 是   | 代表虚拟屏幕的surfaceId，用户可自行定义，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
+| surfaceId | string | 是   | 代表虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
 
 **返回值：**
 
@@ -1340,15 +1339,39 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+//Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
-let surfaceId: string = '2048';
-display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
-  console.info('Succeeded in setting the surface for the virtual screen.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set the surface for the virtual screen. Code:${err.code},message is ${err.message}`);
-});
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code},message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## display.makeUnique<sup>16+</sup>
@@ -1689,7 +1712,7 @@ getCutoutInfo(callback: AsyncCallback&lt;CutoutInfo&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 1400001 | Invalid display or screen. |
+| 1400001 | Invalid display or screen. Possible cause: 1. This display is abnormal. 2. Internal task error. |
 
 **示例：**
 
@@ -1770,7 +1793,7 @@ getAvailableArea(): Promise&lt;Rect&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1400001 | Invalid display or screen. |
+| 1400001 | Invalid display or screen. Possible cause: 1. This display is abnormal. 2. Internal task error. |
 
 **示例：**
 

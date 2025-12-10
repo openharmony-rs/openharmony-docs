@@ -1,7 +1,7 @@
 # 绑定手势方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -22,30 +22,31 @@
 
 gesture为通用的一种手势绑定方法，可以将手势绑定到对应的组件上。
 
-例如，可以将点击手势TapGesture通过gesture手势将方法绑定到Text组件上。
+例如，可以将点击手势TapGesture通过gesture方法将手势绑定到Text组件上。
 
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Text('Gesture').fontSize(28)
+  <!-- @[regular_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/Gesture.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct RegularBinding {
+    build() {
+      Column() {
+        Text('Gesture').fontSize(28)
         // 采用gesture手势绑定方法绑定TapGesture
-        .gesture(
-          TapGesture()
-            .onAction(() => {
-              console.info('TapGesture is onAction');
-            }))
+          .gesture(
+            TapGesture()
+              .onAction(() => {
+                hilog.info(DOMAIN, TAG,'TapGesture is onAction');
+              }))
+      }
+      .height(200)
+      .width(250)
     }
-    .height(200)
-    .width(250)
   }
-}
-```
-
+  ```
 
 ## priorityGesture（带优先级的手势绑定方法）
 
@@ -64,31 +65,33 @@ priorityGesture是带优先级的手势绑定方法，可以在组件上绑定�
 
 
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Text('Gesture').fontSize(28)
-        .gesture(
-          TapGesture()
-            .onAction(() => {
-              console.info('Text TapGesture is onAction');
-            }))
+  <!-- @[priority_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/PriorityGesture.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct PriorityBinding {
+    build() {
+      Column() {
+        Text('Gesture').fontSize(28)
+          .gesture(
+            TapGesture()
+              .onAction(() => {
+                hilog.info(DOMAIN, TAG,'Text TapGesture is onAction');
+              }))
+      }
+      .height(200)
+      .width(250)
+      // 设置为priorityGesture时，点击文本区域会忽略Text组件的TapGesture手势事件，优先响应父组件Column的TapGesture手势事件
+      .priorityGesture(
+        TapGesture()
+          .onAction(() => {
+            hilog.info(DOMAIN, TAG,'Column TapGesture is onAction');
+          }), GestureMask.IgnoreInternal)
     }
-    .height(200)
-    .width(250)
-    // 设置为priorityGesture时，点击文本区域会忽略Text组件的TapGesture手势事件，优先响应父组件Column的TapGesture手势事件
-    .priorityGesture(
-      TapGesture()
-        .onAction(() => {
-          console.info('Column TapGesture is onAction');
-        }), GestureMask.IgnoreInternal)
   }
-}
-```
+  ```
 
 
 ## parallelGesture（并行手势绑定方法）
@@ -104,28 +107,30 @@ parallelGesture是并行的手势绑定方法，可以在父子组件上绑定�
 
 
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Text('Gesture').fontSize(28)
-        .gesture(
-          TapGesture()
-            .onAction(() => {
-              console.info('Text TapGesture is onAction');
-            }))
+  <!-- @[parallel_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/ParallelGesture.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct ParallelBinding {
+    build() {
+      Column() {
+        Text('Gesture').fontSize(28)
+          .gesture(
+            TapGesture()
+              .onAction(() => {
+                hilog.info(DOMAIN, TAG,'Text TapGesture is onAction');
+              }))
+      }
+      .height(200)
+      .width(250)
+      // 设置为parallelGesture时，点击文本区域会同时响应父组件Column和子组件Text的TapGesture手势事件
+      .parallelGesture(
+        TapGesture()
+          .onAction(() => {
+            hilog.info(DOMAIN, TAG,'Column TapGesture is onAction');
+          }), GestureMask.Normal)
     }
-    .height(200)
-    .width(250)
-    // 设置为parallelGesture时，点击文本区域会同时响应父组件Column和子组件Text的TapGesture手势事件
-    .parallelGesture(
-      TapGesture()
-        .onAction(() => {
-          console.info('Column TapGesture is onAction');
-        }), GestureMask.Normal)
   }
-}
-```
+  ```

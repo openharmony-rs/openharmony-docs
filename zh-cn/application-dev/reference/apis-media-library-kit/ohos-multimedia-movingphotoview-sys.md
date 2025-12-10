@@ -62,7 +62,9 @@
 
 ```ts
 // 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// API version 21及之前版本导入方式：import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// API version 22及之后版本导入方式如下：
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 import { PixelMapFormat, DynamicRangeMode } from '@ohos.multimedia.movingphotoview';
 
 let data: photoAccessHelper.MovingPhoto

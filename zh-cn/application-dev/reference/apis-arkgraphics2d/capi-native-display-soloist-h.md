@@ -44,7 +44,7 @@
 
 ### OH_DisplaySoloist_FrameCallback()
 
-```
+```c
 typedef void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)
 ```
 
@@ -65,7 +65,7 @@ OH_DisplaySoloist回调函数类型。
 
 ### OH_DisplaySoloist_Create()
 
-```
+```c
 OH_DisplaySoloist* OH_DisplaySoloist_Create(bool useExclusiveThread)
 ```
 
@@ -90,7 +90,7 @@ OH_DisplaySoloist* OH_DisplaySoloist_Create(bool useExclusiveThread)
 
 ### OH_DisplaySoloist_Destroy()
 
-```
+```c
 int32_t OH_DisplaySoloist_Destroy(OH_DisplaySoloist* displaySoloist)
 ```
 
@@ -115,7 +115,7 @@ int32_t OH_DisplaySoloist_Destroy(OH_DisplaySoloist* displaySoloist)
 
 ### OH_DisplaySoloist_Start()
 
-```
+```c
 int32_t OH_DisplaySoloist_Start(OH_DisplaySoloist* displaySoloist, OH_DisplaySoloist_FrameCallback callback, void* data)
 ```
 
@@ -142,7 +142,7 @@ int32_t OH_DisplaySoloist_Start(OH_DisplaySoloist* displaySoloist, OH_DisplaySol
 
 ### OH_DisplaySoloist_Stop()
 
-```
+```c
 int32_t OH_DisplaySoloist_Stop(OH_DisplaySoloist* displaySoloist)
 ```
 
@@ -167,7 +167,7 @@ int32_t OH_DisplaySoloist_Stop(OH_DisplaySoloist* displaySoloist)
 
 ### OH_DisplaySoloist_SetExpectedFrameRateRange()
 
-```
+```c
 int32_t OH_DisplaySoloist_SetExpectedFrameRateRange(OH_DisplaySoloist* displaySoloist, DisplaySoloist_ExpectedRateRange* range)
 ```
 

@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef union {...} ArkUI_NumberValue
+```
+
 ## 概述
 
 ArkUI在Native侧的数字类型定义。

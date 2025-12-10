@@ -57,138 +57,138 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
 
    订阅崩溃事件，采用OnReceive类型观察者的订阅方式，观察者接收到事件后会立即触发OnReceive()回调。编辑“EntryAbility.ets”文件，定义OnReceive类型观察者相关方法：
 
-   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-    hiAppEvent.addWatcher({
-      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-      name: 'AppCrashWatcher',
-      // 订阅过滤条件，这里是订阅了系统事件中的崩溃事件
-      appEventFilters: [
-        {
-          domain: hiAppEvent.domain.OS,
-          names: [hiAppEvent.event.APP_CRASH]
-        }
-      ],
-      // 实现onReceive回调，监听到事件后实时回调
-      onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-        hilog.info(0x0000, 'testTag', 'AppEvents HiAppEvent success to read event with onReceive callback from ArkTS');
-        hilog.info(0x0000, 'testTag', `domain=${domain}`);
-        for (const eventGroup of appEventGroups) {
-          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventName=${eventGroup.name}`);
-          for (const eventInfo of eventGroup.appEventInfos) {
-            // 开发者可以获取到崩溃事件发生的时间戳
-            hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.time=${JSON.stringify(eventInfo.params['time'])}`);
-            // 开发者可以获取到崩溃应用的包名
-            hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.bundle_name=${JSON.stringify(eventInfo.params['bundle_name'])}`);
-            // 开发者可以获取到崩溃事件发生时的故障日志文件
-            hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
-          }
-        }
-      }
-    });
-```
+   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   
+   ``` TypeScript
+   hiAppEvent.addWatcher({
+     // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+     name: 'AppCrashWatcher',
+     // 订阅过滤条件，这里是订阅了系统事件中的崩溃事件
+     appEventFilters: [
+       {
+         domain: hiAppEvent.domain.OS,
+         names: [hiAppEvent.event.APP_CRASH]
+       }
+     ],
+     // 实现onReceive回调，监听到事件后实时回调
+     onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+       hilog.info(0x0000, 'testTag', 'AppEvents HiAppEvent success to read event with onReceive callback from ArkTS');
+       hilog.info(0x0000, 'testTag', `domain=${domain}`);
+       for (const eventGroup of appEventGroups) {
+         hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventName=${eventGroup.name}`);
+         for (const eventInfo of eventGroup.appEventInfos) {
+           // 开发者可以获取到崩溃事件发生的时间戳
+           hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.time=${JSON.stringify(eventInfo.params['time'])}`);
+           // 开发者可以获取到崩溃应用的包名
+           hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.bundle_name=${JSON.stringify(eventInfo.params['bundle_name'])}`);
+           // 开发者可以获取到崩溃事件发生时的故障日志文件
+           hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
+         }
+       }
+     }
+   });
+   ```
 
    订阅按钮点击事件，采用OnTrigger类型观察者的订阅方式。需满足triggerCondition设置的条件，才能触发OnTrigger()回调。编辑“EntryAbility.ets”文件，定义OnTrigger类型观察者相关方法：
 
-   <!-- @[AppEvent_Click_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-    hiAppEvent.addWatcher({
-      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-      name: 'ButtonClickWatcher',
-      // 开发者可以订阅感兴趣的应用事件，此处是订阅了按钮事件
-      appEventFilters: [{ domain: 'button' }],
-      // 开发者可以设置订阅回调触发的条件，此处是设置为事件打点数量满足1个
-      triggerCondition: { row: 1 },
-      // 开发者可以自行实现订阅回调函数，以便对订阅获取到的事件打点数据进行自定义处理
-      onTrigger: (curRow: number, curSize: number, holder: hiAppEvent.AppEventPackageHolder) => {
-        // 如果返回的holder对象为null，表示订阅过程发生异常。因此，在记录错误日志后直接返回
-        if (holder == null) {
-          hilog.error(0x0000, 'testTag', 'AppEvents HiAppEvent holder is null');
-          return;
-        }
-        hilog.info(0x0000, 'testTag', 'AppEvents HiAppEvent success to read event with onTrigger callback from ArkTS');
-        hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent onTrigger: curRow=%{public}d, curSize=%{public}d`, curRow, curSize);
-        let eventPkg: hiAppEvent.AppEventPackage | null = null;
-        // 根据设置阈值大小（默认为1条事件）去获取订阅事件包，直到将订阅数据全部取出
-        // 返回的事件包对象为null，表示当前订阅数据已被全部取出，此次订阅回调触发结束
-        while ((eventPkg = holder.takeNext()) != null) {
-          // 开发者可以对事件包中的事件打点数据进行自定义处理，此处是将事件打点数据打印在日志中
-          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.packageId=%{public}d`, eventPkg.packageId);
-          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.row=%{public}d`, eventPkg.row);
-          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.size=%{public}d`, eventPkg.size);
-          for (const eventInfo of eventPkg.data) {
-            hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.info=%{public}s`, eventInfo);
-          }
-        }
-      }
-    });
-```
+   <!-- @[AppEvent_Click_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   
+   ``` TypeScript
+   hiAppEvent.addWatcher({
+     // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+     name: 'ButtonClickWatcher',
+     // 开发者可以订阅感兴趣的应用事件，此处是订阅了按钮事件
+     appEventFilters: [{ domain: 'button' }],
+     // 开发者可以设置订阅回调触发的条件，此处是设置为事件打点数量满足1个
+     triggerCondition: { row: 1 },
+     // 开发者可以自行实现订阅回调函数，以便对订阅获取到的事件打点数据进行自定义处理
+     onTrigger: (curRow: number, curSize: number, holder: hiAppEvent.AppEventPackageHolder) => {
+       // 如果返回的holder对象为null，表示订阅过程发生异常。因此，在记录错误日志后直接返回
+       if (holder == null) {
+         hilog.error(0x0000, 'testTag', 'AppEvents HiAppEvent holder is null');
+         return;
+       }
+       hilog.info(0x0000, 'testTag', 'AppEvents HiAppEvent success to read event with onTrigger callback from ArkTS');
+       hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent onTrigger: curRow=%{public}d, curSize=%{public}d`, curRow, curSize);
+       let eventPkg: hiAppEvent.AppEventPackage | null = null;
+       // 根据设置阈值大小（默认为1条事件）去获取订阅事件包，直到将订阅数据全部取出
+       // 返回的事件包对象为null，表示当前订阅数据已被全部取出，此次订阅回调触发结束
+       while ((eventPkg = holder.takeNext()) != null) {
+         // 开发者可以对事件包中的事件打点数据进行自定义处理，此处是将事件打点数据打印在日志中
+         hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.packageId=%{public}d`, eventPkg.packageId);
+         hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.row=%{public}d`, eventPkg.row);
+         hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.size=%{public}d`, eventPkg.size);
+         for (const eventInfo of eventPkg.data) {
+           hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.info=%{public}s`, eventInfo);
+         }
+       }
+     }
+   });
+   ```
 
 3. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，导入依赖模块：
 
-   <!-- @[EventSub_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[EventSub_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 4. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，新增“WatchAppCrash ArkTS&C++”按钮触发崩溃事件；新增“writeEvent ArkTS”按钮，在按钮点击的函数中进行事件打点。示例代码如下：
 
    触发崩溃事件。
 
-   <!-- @[AppEvent_Crash_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-        Button('WatchAppCrash ArkTS&C++')
-          .type(ButtonType.Capsule)
-          .margin({
-            top: 20
-          })
-          .backgroundColor('#0D9FFB')
-          .width('80%')
-          .height('5%')
-          .onClick(() => {
-            // 在按钮点击函数中构造一个crash场景，触发崩溃事件
-            let result: object = JSON.parse('');
-          })
-```
+   <!-- @[AppEvent_Crash_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   Button('WatchAppCrash ArkTS&C++')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // 在按钮点击函数中构造一个crash场景，触发崩溃事件
+       let result: object = JSON.parse('');
+     })
+   ```
 
    在按钮点击的函数中进行事件打点。
 
-   <!-- @[AppEvent_Click_ArkTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-        Button('writeEvent ArkTS')
-          .type(ButtonType.Capsule)
-          .margin({
-            top: 20
-          })
-          .backgroundColor('#0D9FFB')
-          .width('80%')
-          .height('5%')
-          .onClick(() => {
-            // 在按钮点击函数中进行事件打点，以记录按钮点击事件
-            let eventParams: Record<string, number> = {'clickTime': 100};
-            let eventInfo: hiAppEvent.AppEventInfo = {
-              // 事件领域定义
-              domain: 'button',
-              // 事件名称定义
-              name: 'click',
-              // 事件类型定义
-              eventType: hiAppEvent.EventType.BEHAVIOR,
-              // 事件参数定义
-              params: eventParams,
-            };
-            hiAppEvent.write(eventInfo).then(() => {
-              hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
-            }).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
-            });
-          })
-```
+   <!-- @[AppEvent_Click_ArkTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   Button('writeEvent ArkTS')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // 在按钮点击函数中进行事件打点，以记录按钮点击事件
+       let eventParams: Record<string, number> = {'clickTime': 100};
+       let eventInfo: hiAppEvent.AppEventInfo = {
+         // 事件领域定义
+         domain: 'button',
+         // 事件名称定义
+         name: 'click',
+         // 事件类型定义
+         eventType: hiAppEvent.EventType.BEHAVIOR,
+         // 事件参数定义
+         params: eventParams,
+       };
+       hiAppEvent.write(eventInfo).then(() => {
+         hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
+       }).catch((err: BusinessError) => {
+         hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
+       });
+     })
+   ```
 
 ## 调测验证
 

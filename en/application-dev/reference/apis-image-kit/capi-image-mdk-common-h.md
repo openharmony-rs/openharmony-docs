@@ -86,7 +86,7 @@ Enumerates the return values that may be used by the interface.
 | IMAGE_RESULT_ADD_PIXEL_MAP_FAILED = IMAGE_RESULT_BASE + 24 | Failed to add the PixelMap.|
 | IMAGE_RESULT_HW_DECODE_UNSUPPORT = IMAGE_RESULT_BASE + 25 | Hardware decoding is not supported.|
 | IMAGE_RESULT_DECODE_HEAD_ABNORMAL = IMAGE_RESULT_BASE + 26 | Failed to decode the image header.|
-| IMAGE_RESULT_DECODE_EXIF_UNSUPPORT = IMAGE_RESULT_BASE + 27 | Exchangeable Image File (EXIF) is not supported for image decoding.|
+| IMAGE_RESULT_DECODE_EXIF_UNSUPPORT = IMAGE_RESULT_BASE + 27 | Exchangeable Image File (Exif) is not supported for image decoding.|
 | IMAGE_RESULT_PROPERTY_NOT_EXIST = IMAGE_RESULT_BASE + 28 | The image property does not exist.|
 | IMAGE_RESULT_MEDIA_DATA_UNSUPPORT = IMAGE_RESULT_BASE + 30 | The media type is not supported.|
 | IMAGE_RESULT_MEDIA_TOO_LARGE = IMAGE_RESULT_BASE + 31 | The media is too large.|

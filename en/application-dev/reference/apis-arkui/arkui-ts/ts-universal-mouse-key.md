@@ -1,10 +1,10 @@
 # Mouse Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 If a mouse action triggers multiple events, the order of these events is fixed. By default, mouse events are transmitted transparently.
 
@@ -62,7 +62,7 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 ## Example
 
-This example demonstrates how to set a mouse event on a button. When the button is clicked using a mouse device, the **onMouse** event is triggered to obtain relevant mouse event parameters.
+This example demonstrates how to set a mouse event on a button. When the button is clicked using a mouse device, the [onMouse](#onmouse) event is triggered to obtain relevant mouse event parameters. Starting from API version 15, the [MouseEvent](#mouseevent) object provides access to the **targetDisplayId**, **rawDeltaX**, **rawDeltaY**, and **pressedButtons** parameters.
 For mouse wheel event examples, see [Axis Event](ts-universal-events-axis.md#example).
 
 ```ts

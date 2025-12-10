@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} WindowManager_Rect
+```
+
 ## Overview
 
 The struct describes the window rectangle, including the window position, width, and height.

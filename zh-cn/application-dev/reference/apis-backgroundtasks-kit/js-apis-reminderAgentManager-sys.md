@@ -4,7 +4,7 @@
 <!--Subsystem: Resourceschedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 本模块提供后台代理提醒的能力，即当应用被冻结或应用退出时，计时和提醒的功能将被系统服务代理。在开发过程中，开发者可以调用本模块接口创建定时提醒，提醒类型支持倒计时、日历、闹钟三种。
@@ -66,3 +66,14 @@ import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | rruleWantAgent<sup>12+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | 否 | 是 | 自定义重复日程，指明需要拉起的 Service Extension。 |
+
+## ReminderRequest
+
+代理提醒对象，用于设置提醒类型、响铃时长等具体信息。
+
+**系统能力：** SystemCapability.Notification.ReminderAgent
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| notDistributed<sup>23+</sup> | boolean | 否 | 是 | 通知是否强制进行全场景跨设备协同显示，默认为false。具体请参考[NotificationRequest.notDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)。<br> - 设置为true时：通知仅在本设备上显示。<br> - 设置为false时：通知将在所有协同设备上显示。<br> **系统接口：** 此接口为系统接口。 |
+| forceDistributed<sup>23+</sup> | boolean | 否 | 是 | 通知是否不进行全场景跨设备协同显示，默认为false。具体请参考[NotificationRequest.forceDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)。<br> - 设置为true时：通知将在所有协同设备上显示。<br> - 设置为false时：通知将按照协同管控名单显示。<br> **系统接口：** 此接口为系统接口。 |

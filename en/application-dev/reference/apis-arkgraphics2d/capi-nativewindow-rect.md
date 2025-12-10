@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+struct Rect { ... }
+```
+
 ## Overview
 
 If **rects** is a null pointer, the buffer size is the same as the size of the dirty region by default.

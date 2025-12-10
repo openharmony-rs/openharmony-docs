@@ -151,7 +151,7 @@ If no font is specified, the default system font HarmonyOS Sans is used to displ
    OH_Drawing_TextStyle* textStyle = OH_Drawing_CreateTextStyle();
    ```
 
-5. Obtain system font information. Obtain the font family name of the system font and set the system font in the text style.
+5. [Obtaining system font information](#obtaining-system-font-information). Obtain the font family name of the system font and set the system font in the text style.
    <!-- @[custom_font_c_print_system_font_metrics_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++

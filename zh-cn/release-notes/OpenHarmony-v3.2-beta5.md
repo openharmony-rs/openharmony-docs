@@ -57,9 +57,9 @@ ArkUI适配了根据资源名称获取资源的能力。
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
   
    ```
    git config --global user.name "yourname"
@@ -70,7 +70,7 @@ ArkUI适配了根据资源名称获取资源的能力。
 4. 安装码云repo工具，可以执行如下命令。
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -79,18 +79,18 @@ ArkUI适配了根据资源名称获取资源的能力。
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta5 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta5 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta5 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta5 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -101,14 +101,14 @@ ArkUI适配了根据资源名称获取资源的能力。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-3.2-Beta5 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-3.2-Beta5 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta5 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta5 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -170,7 +170,7 @@ API变更清单请参考：[API差异报告](api-diff/v3.2-beta5/Readme-CN.md)
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### Samples
@@ -179,13 +179,13 @@ API变更清单请参考：[API差异报告](api-diff/v3.2-beta5/Readme-CN.md)
 
 | 子系统 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- | -------- |
-| 媒体子系统 | [二维码扫描](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/media/Scan) | 本示例展示二维码扫描，从文件中选择二维码图片进行解析和读取，识别二维码信息。 | ArkTs |
-| ArkUI | [一多应用市场首页](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/MultiDeviceAppDev/AppMarket) | 本示例展示了应用市场首页，其在小窗口和大窗口有不同的显示效果，体现一次开发、多端部署的能力。 | ArkTs |
-| 文件管理 | [文件管理](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/FileManager/FileIo) | 本示例主要展示了文件管理相关的功能，使用[mediaLibrary](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-medialibrary.md)、[userFileManager](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-userFileManager.md)、[fileio](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-fileio.md)等接口，实现了媒体库文件、应用沙箱内文件的添加和访问等功能。 | ArkTs |
-| 元能力 | [图库卡片](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/ability/GalleryForm) | 本示例是模拟图库卡片，实现对图库中的照片在卡片中显示，定时刷新卡片内容等功能。 | ArkTs |
+| 媒体子系统 | [二维码扫描](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/media/Scan) | 本示例展示二维码扫描，从文件中选择二维码图片进行解析和读取，识别二维码信息。 | ArkTs |
+| ArkUI | [一多应用市场首页](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/MultiDeviceAppDev/AppMarket) | 本示例展示了应用市场首页，其在小窗口和大窗口有不同的显示效果，体现一次开发、多端部署的能力。 | ArkTs |
+| 文件管理 | [文件管理](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/FileManager/FileIo) | 本示例主要展示了文件管理相关的功能，使用[mediaLibrary](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-medialibrary.md)、[userFileManager](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-userFileManager.md)、[fileio](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-fileio.md)等接口，实现了媒体库文件、应用沙箱内文件的添加和访问等功能。 | ArkTs |
+| 元能力 | [图库卡片](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/ability/GalleryForm) | 本示例是模拟图库卡片，实现对图库中的照片在卡片中显示，定时刷新卡片内容等功能。 | ArkTs |
 
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples)仓了解更多信息。
 
 
 ## 修复缺陷列表

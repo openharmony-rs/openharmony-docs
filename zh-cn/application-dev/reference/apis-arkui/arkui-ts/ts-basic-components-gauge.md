@@ -11,7 +11,7 @@
 
 >  **说明：**
 >
->  该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -20,9 +20,11 @@
 
 > **说明：**
 >
-> 建议使用文本组件构建当前数值文本和辅助文本。
+> - 支持的子组件类型：系统组件和自定义组件，支持条件渲染控制[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)，不支持循环渲染控制[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)。
 >
-> 若子组件宽高为百分比形式，则基准范围为以外圆环做为内切圆的矩形。
+> - 建议使用文本组件构建当前数值文本和辅助文本。
+>
+> - 若子组件宽高为百分比形式，则基准范围为以外圆环做为内切圆的矩形。
 
 
 ## 接口
@@ -169,6 +171,8 @@ description(value: CustomBuilder)
 
 设置说明内容。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -184,6 +188,8 @@ description(value: CustomBuilder)
 trackShadow(value: GaugeShadowOptions)
 
 设置阴影样式。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -201,6 +207,8 @@ indicator(value: GaugeIndicatorOptions)
 
 设置指针样式。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -216,6 +224,10 @@ indicator(value: GaugeIndicatorOptions)
 privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 设置隐私敏感。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -249,11 +261,15 @@ contentModifier(modifier: ContentModifier\<GaugeConfiguration>)
 
 GaugeShadowOptions继承自[MultiShadowOptions](ts-information-display-common.md#multishadowoptions)，具有MultiShadowOptions的全部属性。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 ## GaugeIndicatorOptions<sup>11+</sup>对象说明
 
 数据量规图表指针选项。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

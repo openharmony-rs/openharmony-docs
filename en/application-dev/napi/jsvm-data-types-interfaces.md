@@ -622,7 +622,7 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     JSVM_Script script;
     // Compile the JS code.
 	JSVM_ScriptOrigin origin {
-	    // In this example, the bundle name is helloworld, and the path of the source map is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
+	    // In this example, the bundle name is helloworld, and the path of the sourcemap is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
 	    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
 	    // Name of the source file.
 	    .resourceName = "index.js",
@@ -678,7 +678,7 @@ static void RunScript(JSVM_Env env, string& src,
     // Compile the JS code.
     if (withOrigin) {
 	    JSVM_ScriptOrigin origin {
-	        // In this example, the bundle name is helloworld, and the path of the source map is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
+	        // In this example, the bundle name is helloworld, and the path of the sourcemap is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
 		    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
 		    // Name of the source file.
 		    .resourceName = "index.js",
@@ -913,7 +913,7 @@ However, in many cases, you may need to adjust the lifecycle to be shorter or lo
 | OH_JSVM_CloseEscapableHandleScope| Closes an escapable handle scope.|
 | OH_JSVM_EscapeHandle| Promotes a handle to a JS object so that it is valid for the lifetime of the outer scope.|
 | OH_JSVM_CreateReference| Creates a new reference with the specified reference count to the value passed in. The reference allows objects to be used and shared in different contexts and effectively monitors the lifecycle of the object.|
-| OH_JSVM_DeleteReference| Release the reference created by **OH_JSVM_CreateReference**. This allows objects to be correctly released and reclaimed when they are no longer required, avoiding memory leaks.|
+| OH_JSVM_DeleteReference| Releases the reference created by **OH_JSVM_CreateReference**. This allows objects to be correctly released and reclaimed when they are no longer required, avoiding memory leaks.|
 | OH_JSVM_ReferenceRef| Increments the reference count of the reference created by **OH_JSVM_CreateReference** so that the object referenced will not be released.|
 | OH_JSVM_ReferenceUnref| Decrements the reference count of the reference created by **OH_JSVM_CreateReference** so that the object can be correctly released and reclaimed when it is not referenced.|
 | OH_JSVM_GetReferenceValue| Obtains the object referenced by **OH_JSVM_CreateReference**.|
@@ -1357,7 +1357,7 @@ Set, get, delete, and check properties of a JS object.
 |OH_JSVM_HasElement | Checks whether a JS object has an element at the specified index.|
 |OH_JSVM_DeleteElement | Deletes the element at the specified index from a JS object.|
 |OH_JSVM_DefineProperties |  Defines multiple properties for a JS object.|
-|OH_JSVM_ObjectFreeze | Freeze a JS object. Once a JS object is frozen, new properties cannot be added to it, existing properties cannot be removed, the enumerability, configurability, or writability of existing properties cannot be changed, and the values of existing properties cannot be changed.|
+|OH_JSVM_ObjectFreeze | Freezes a JS object. Once a JS object is frozen, new properties cannot be added to it, existing properties cannot be removed, the enumerability, configurability, or writability of existing properties cannot be changed, and the values of existing properties cannot be changed.|
 |OH_JSVM_ObjectSeal | Seals a JS object. Once a JS object is sealed, new properties cannot be added to it and all existing properties are marked as unconfigurable.|
 |OH_JSVM_ObjectSetPrototypeOf | Sets a prototype for a given object.|
 |OH_JSVM_ObjectGetPrototypeOf | Obtains the prototype of a JS object.|

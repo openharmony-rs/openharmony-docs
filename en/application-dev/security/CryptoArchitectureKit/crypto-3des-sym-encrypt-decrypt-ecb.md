@@ -1,4 +1,4 @@
-# Encryption and Decryption with a 3DES Asymmetric Key Pair (ArkTS)
+# Encryption and Decryption with a 3DES Symmetric Key Pair (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

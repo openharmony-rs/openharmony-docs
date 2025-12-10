@@ -6,6 +6,10 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} OH_NativeBundle_ElementName
+```
+
 ## 概述
 
 elementName信息。
