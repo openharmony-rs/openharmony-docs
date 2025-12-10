@@ -1,0 +1,8 @@
+| Change Type | Old Version | New Version | d.ts File |
+| ---- | ------ | ------ | -------- |
+|New API |NA|Class name: taskpool;<br>API declaration: function execute\<A extends Array\<Object>, R>(func: (...args: A) => R \| Promise\<R>, ...args: A): Promise\<R>;<br>Differences: function execute\<A extends Array\<Object>, R>(func: (...args: A) => R \| Promise\<R>, ...args: A): Promise\<R>;|api/@ohos.taskpool.d.ts|
+|New API |NA|Class name: taskpool;<br>API declaration: function execute\<A extends Array\<Object>, R>(task: GenericsTask\<A, R>, priority?: Priority): Promise\<R>;<br>Differences: function execute\<A extends Array\<Object>, R>(task: GenericsTask\<A, R>, priority?: Priority): Promise\<R>;|api/@ohos.taskpool.d.ts|
+|New API |NA|Class name: taskpool;<br>API declaration: function executeDelayed\<A extends Array\<Object>, R>(delayTime: number, task: GenericsTask\<A, R>, priority?: Priority): Promise\<R>;<br>Differences: function executeDelayed\<A extends Array\<Object>, R>(delayTime: number, task: GenericsTask\<A, R>, priority?: Priority): Promise\<R>;|api/@ohos.taskpool.d.ts|
+|New API |NA|Class name: taskpool;<br>API declaration: function executePeriodically\<A extends Array\<Object>, R>(period: number, task: GenericsTask\<A, R>, priority?: Priority): void;<br>Differences: function executePeriodically\<A extends Array\<Object>, R>(period: number, task: GenericsTask\<A, R>, priority?: Priority): void;|api/@ohos.taskpool.d.ts|
+|New API |NA|Class name: taskpool;<br>API declaration: class GenericsTask<br>Differences: class GenericsTask|api/@ohos.taskpool.d.ts|
+|New API |NA|Class name: ParseReturnType;<br>API declaration: MAP = 1<br>Differences: MAP = 1|arkts/@arkts.utils.d.ets|
