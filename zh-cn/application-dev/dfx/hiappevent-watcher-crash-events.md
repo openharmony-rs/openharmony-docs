@@ -20,6 +20,10 @@
 
 - [订阅崩溃事件（C/C++）](hiappevent-watcher-crash-events-ndk.md)。
 
+> **说明：**
+>
+> 崩溃事件支持在[应用分身](../quick-start/app-clone.md)场景下和在原子化服务场景下使用HiAppEvent进行订阅，从API version 22开始支持在[输入法应用](../inputmethod/inputmethod-application-guide.md)场景下使用HiAppEvent进行订阅。
+
 ## 检测原理
 
 ### NativeCrash崩溃类型检测原理
