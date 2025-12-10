@@ -46,9 +46,9 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_picturemetadata_create) | 创建OH_PictureMetadata指针。 |
-| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | 根据key获取Metadata的单条属性。 |
+| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | 根据key获取Metadata的单条属性。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。 |
 | [Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_setproperty) | 根据key修改Metadata的单条属性。 |
-| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | 获取图片元数据的属性值。输出的value.data以字符串结束符结尾。 |
+| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | 获取图片元数据的属性值。输出的value.data以字符串结束符'\0'结尾。 |
 | [Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)](#oh_picturemetadata_release) | 释放OH_PictureMetadata指针。 |
 | [Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)](#oh_picturemetadata_clone) | 拷贝元数据。 |
 
@@ -240,6 +240,7 @@ enum Image_ErrorCode
 | IMAGE_UNSUPPORTED_CONVERSION = 7600203 | 不支持的转换。 |
 | IMAGE_INVALID_REGION = 7600204 | 无效区域。 |
 | IMAGE_UNSUPPORTED_MEMORY_FORMAT = 7600205 |  不支持的内存格式。<br>**起始版本：** 13 |
+| IMAGE_INVALID_PARAMETER = 7600206 |  无效参数。<br>**起始版本：** 19 |
 | IMAGE_UNSUPPORTED_DATA_FORMAT = 7600207 |  不支持的数据格式。<br>**起始版本：** 22 |
 | IMAGE_ALLOC_FAILED = 7600301 | 申请内存失败。 |
 | IMAGE_COPY_FAILED = 7600302 | 内存拷贝失败。 |
@@ -294,7 +295,7 @@ pixelmap内存分配类型。
 | -- | -- |
 | IMAGE_ALLOCATOR_MODE_AUTO = 0 | 系统决定创建pixelmap时分配内存的类型。 |
 | IMAGE_ALLOCATOR_MODE_DMA = 1 | 分配DMA类型的内存Buffer。 |
-| IMAGE_ALLOCATOR_MODE_DMA = 2 | 使用共享内存创建pixelmap。 |
+| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | 使用共享内存创建pixelmap。 |
 
 
 ## 函数说明
@@ -332,7 +333,7 @@ Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Ima
 
 **描述**
 
-根据key获取Metadata的单条属性。
+根据key获取Metadata的单条属性。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。
 
 **起始版本：** 13
 
@@ -384,7 +385,7 @@ Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metad
 
 **描述**
 
-获取图片元数据的属性值。输出的value.data以字符串结束符结尾。
+获取图片元数据的属性值。输出的value.data以字符串结束符'\0'结尾。
 
 **起始版本：** 19
 
