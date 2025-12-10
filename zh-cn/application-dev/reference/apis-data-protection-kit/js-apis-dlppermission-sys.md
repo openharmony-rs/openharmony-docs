@@ -441,7 +441,7 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| dlpProperty | [DLPProperty](js-apis-dlppermission.md/#dlpproperty21) | 否 | 否 | 表示DLP文件授权相关信息。 |
+| dlpProperty | [DLPProperty](js-apis-dlppermission.md#dlpproperty21) | 否 | 否 | 表示DLP文件授权相关信息。 |
 
 ### addDLPLinkFile
 
@@ -1246,7 +1246,7 @@ recoverDLPFile(plaintextFd: number): Promise&lt;void&gt;
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
-| 19100002 | Credential task error. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 | 19100005 | Credential authentication server error. |
@@ -1328,7 +1328,7 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback&lt;void&gt;): void
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
-| 19100002 | Credential task error. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 | 19100005 | Credential authentication server error. |
@@ -1558,7 +1558,7 @@ generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty
 | -------- | -------- | -------- | -------- |
 | plaintextFd | number | 是 | 待加密明文文件的fd。 |
 | ciphertextFd | number | 是 | 目标加密文件的fd。 |
-| property | [DLPProperty](js-apis-dlppermission.md/#dlpproperty21) | 是 | 授权用户信息：授权用户列表、owner账号、联系人账号。 |
+| property | [DLPProperty](js-apis-dlppermission.md#dlpproperty21) | 是 | 授权用户信息：授权用户列表、owner账号、联系人账号。 |
 
 **返回值：**
 
@@ -1642,7 +1642,7 @@ DLP管理应用调用该接口，将明文文件加密生成权限受控文件�
 | -------- | -------- | -------- | -------- |
 | plaintextFd | number | 是 | 待加密明文文件的fd。 |
 | ciphertextFd | number | 是 | 目标加密文件的fd。 |
-| property | [DLPProperty](js-apis-dlppermission.md/#dlpproperty21) | 是 | 授权用户信息：授权用户列表、owner账号、联系人账号。 |
+| property | [DLPProperty](js-apis-dlppermission.md#dlpproperty21) | 是 | 授权用户信息：授权用户列表、owner账号、联系人账号。 |
 | callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | 是 | 回调函数。返回DLPFile对象。 |
 
 **错误码：**
