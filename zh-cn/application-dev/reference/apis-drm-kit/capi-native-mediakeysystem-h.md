@@ -55,7 +55,7 @@
 
 ### MediaKeySystem_Callback()
 
-```
+```c
 typedef  Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)
 ```
 
@@ -83,7 +83,7 @@ MediaKeySystem事件触发时将调用的回调，不返回MediaKeySystem实例�
 
 ### OH_MediaKeySystem_Callback()
 
-```
+```c
 typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)
 ```
 
@@ -112,7 +112,7 @@ MediaKeySystem事件触发时将调用的回调，返回MediaKeySystem实例，�
 
 ### OH_MediaKeySystem_SetCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)
 ```
 
@@ -138,7 +138,7 @@ Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_Med
 
 ### OH_MediaKeySystem_GetMediaKeySystems()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *infos, uint32_t *count)
 ```
 
@@ -164,7 +164,7 @@ Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *
 
 ### OH_MediaKeySystem_IsSupported()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported(const char *name)
 ```
 
@@ -190,7 +190,7 @@ bool OH_MediaKeySystem_IsSupported(const char *name)
 
 ### OH_MediaKeySystem_IsSupported2()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 ```
 
@@ -216,7 +216,7 @@ bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 
 ### OH_MediaKeySystem_IsSupported3()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType,DRM_ContentProtectionLevel contentProtectionLevel)
 ```
 
@@ -243,7 +243,7 @@ bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType,DRM_C
 
 ### OH_MediaKeySystem_Create()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKeySystem)
 ```
 
@@ -269,7 +269,7 @@ Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKey
 
 ### OH_MediaKeySystem_SetConfigurationString()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySystem,const char *configName, const char *value)
 ```
 
@@ -296,7 +296,7 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySys
 
 ### OH_MediaKeySystem_GetConfigurationString()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySystem,const char *configName, char *value, int32_t valueLen)
 ```
 
@@ -324,7 +324,7 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySys
 
 ### OH_MediaKeySystem_SetConfigurationByteArray()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKeySystem,const char *configName, uint8_t *value, int32_t valueLen)
 ```
 
@@ -352,7 +352,7 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKey
 
 ### OH_MediaKeySystem_GetConfigurationByteArray()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKeySystem,const char *configName, uint8_t *value, int32_t *valueLen)
 ```
 
@@ -380,7 +380,7 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKey
 
 ### OH_MediaKeySystem_GetStatistics()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_Statistics *statistics)
 ```
 
@@ -406,7 +406,7 @@ Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_
 
 ### OH_MediaKeySystem_GetMaxContentProtectionLevel()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *mediaKeySystem,DRM_ContentProtectionLevel *contentProtectionLevel)
 ```
 
@@ -432,7 +432,7 @@ Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *media
 
 ### OH_MediaKeySystem_SetMediaKeySystemCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKeySystem,MediaKeySystem_Callback callback)
 ```
 
@@ -458,7 +458,7 @@ Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKey
 
 ### OH_MediaKeySystem_CreateMediaKeySession()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySystem,DRM_ContentProtectionLevel *level, MediaKeySession **mediaKeySession)
 ```
 
@@ -485,7 +485,7 @@ Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySyst
 
 ### OH_MediaKeySystem_GenerateKeySystemRequest()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeySystem, uint8_t *request,int32_t *requestLen, char *defaultUrl, int32_t defaultUrlLen)
 ```
 
@@ -514,7 +514,7 @@ Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeyS
 
 ### OH_MediaKeySystem_ProcessKeySystemResponse()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeySystem,uint8_t *response, int32_t responseLen)
 ```
 
@@ -541,7 +541,7 @@ Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeyS
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyIds()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySystem,DRM_OfflineMediakeyIdArray *offlineMediaKeyIds)
 ```
 
@@ -567,7 +567,7 @@ Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySyst
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeySystem,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, DRM_OfflineMediaKeyStatus *status)
 ```
 
@@ -595,7 +595,7 @@ Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeyS
 
 ### OH_MediaKeySystem_ClearOfflineMediaKeys()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)
 ```
 
@@ -622,7 +622,7 @@ Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySyst
 
 ### OH_MediaKeySystem_GetCertificateStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem,DRM_CertificateStatus *certStatus)
 ```
 
@@ -648,7 +648,7 @@ Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySyste
 
 ### OH_MediaKeySystem_Destroy()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)
 ```
 

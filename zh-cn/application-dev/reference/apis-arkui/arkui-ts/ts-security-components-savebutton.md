@@ -56,7 +56,7 @@ SaveButton(options: SaveButtonOptions)
 > **说明：**
 >
 > - icon或text需至少传入一个。<br>
-> - 如果icon、text都不传入，[SaveButton](#savebutton-1)中的options参数不生效，创建的SaveButton为默认样式，默认样式：
+> - 如果icon、text都不传入，SaveButton中的options参数不生效，创建的SaveButton为默认样式，默认样式：
 >
 >   SaveIconStyle默认样式为FULL_FILLED；
 >

@@ -47,7 +47,7 @@
 
 ### OH_AVRecorder_Create()
 
-```
+```c
 OH_AVRecorder *OH_AVRecorder_Create(void)
 ```
 
@@ -67,7 +67,7 @@ OH_AVRecorder *OH_AVRecorder_Create(void)
 
 ### OH_AVRecorder_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config *config)
 ```
 
@@ -95,7 +95,7 @@ OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config
 
 ### OH_AVRecorder_GetAVRecorderConfig()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_GetAVRecorderConfig(OH_AVRecorder *recorder, OH_AVRecorder_Config **config)
 ```
 
@@ -123,7 +123,7 @@ OH_AVErrCode OH_AVRecorder_GetAVRecorderConfig(OH_AVRecorder *recorder, OH_AVRec
 
 ### OH_AVRecorder_GetInputSurface()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWindow **window)
 ```
 
@@ -151,7 +151,7 @@ OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWind
 
 ### OH_AVRecorder_UpdateRotation()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotation)
 ```
 
@@ -179,7 +179,7 @@ OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotat
 
 ### OH_AVRecorder_Start()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Start(OH_AVRecorder *recorder)
 ```
 
@@ -206,7 +206,7 @@ OH_AVErrCode OH_AVRecorder_Start(OH_AVRecorder *recorder)
 
 ### OH_AVRecorder_Pause()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Pause(OH_AVRecorder *recorder)
 ```
 
@@ -233,7 +233,7 @@ OH_AVErrCode OH_AVRecorder_Pause(OH_AVRecorder *recorder)
 
 ### OH_AVRecorder_Resume()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Resume(OH_AVRecorder *recorder)
 ```
 
@@ -260,7 +260,7 @@ OH_AVErrCode OH_AVRecorder_Resume(OH_AVRecorder *recorder)
 
 ### OH_AVRecorder_Stop()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Stop(OH_AVRecorder *recorder)
 ```
 
@@ -287,7 +287,7 @@ OH_AVErrCode OH_AVRecorder_Stop(OH_AVRecorder *recorder)
 
 ### OH_AVRecorder_Reset()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Reset(OH_AVRecorder *recorder)
 ```
 
@@ -314,7 +314,7 @@ OH_AVErrCode OH_AVRecorder_Reset(OH_AVRecorder *recorder)
 
 ### OH_AVRecorder_Release()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Release(OH_AVRecorder *recorder)
 ```
 
@@ -341,7 +341,7 @@ OH_AVErrCode OH_AVRecorder_Release(OH_AVRecorder *recorder)
 
 ### OH_AVRecorder_GetAvailableEncoder()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRecorder_EncoderInfo **info,int32_t *length)
 ```
 
@@ -370,7 +370,7 @@ OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRec
 
 ### OH_AVRecorder_SetStateCallback()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnStateChange callback, void *userData)
 ```
 
@@ -399,7 +399,7 @@ OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecord
 
 ### OH_AVRecorder_SetErrorCallback()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnError callback, void *userData)
 ```
 
@@ -428,7 +428,7 @@ OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecord
 
 ### OH_AVRecorder_SetUriCallback()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnUri callback, void *userData)
 ```
 
@@ -457,7 +457,7 @@ OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder
 
 ### OH_AVRecorder_SetWillMuteWhenInterrupted()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)
 ```
 

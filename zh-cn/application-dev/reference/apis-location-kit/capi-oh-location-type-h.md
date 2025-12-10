@@ -57,7 +57,7 @@
 
 ### Location_ResultCode
 
-```
+```c
 enum Location_ResultCode
 ```
 
@@ -78,7 +78,7 @@ enum Location_ResultCode
 
 ### Location_UseScene
 
-```
+```c
 enum Location_UseScene
 ```
 
@@ -97,7 +97,7 @@ enum Location_UseScene
 
 ### Location_PowerConsumptionScene
 
-```
+```c
 enum Location_PowerConsumptionScene
 ```
 
@@ -115,7 +115,7 @@ enum Location_PowerConsumptionScene
 
 ### Location_SourceType
 
-```
+```c
 enum Location_SourceType
 ```
 
@@ -137,7 +137,7 @@ enum Location_SourceType
 
 ### OH_LocationInfo_GetBasicInfo()
 
-```
+```c
 Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)
 ```
 
@@ -161,7 +161,7 @@ Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)
 
 ### OH_LocationInfo_GetAdditionalInfo()
 
-```
+```c
 Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)
 ```
 
@@ -187,7 +187,7 @@ Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, c
 
 ### Location_InfoCallback()
 
-```
+```c
 typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)
 ```
 
@@ -206,7 +206,7 @@ typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)
 
 ### OH_Location_CreateRequestConfig()
 
-```
+```c
 Location_RequestConfig* OH_Location_CreateRequestConfig(void)
 ```
 
@@ -224,7 +224,7 @@ Location_RequestConfig* OH_Location_CreateRequestConfig(void)
 
 ### OH_Location_DestroyRequestConfig()
 
-```
+```c
 void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)
 ```
 
@@ -242,7 +242,7 @@ void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)
 
 ### OH_LocationRequestConfig_SetUseScene()
 
-```
+```c
 void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene)
 ```
 
@@ -261,7 +261,7 @@ void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig,
 
 ### OH_LocationRequestConfig_SetPowerConsumptionScene()
 
-```
+```c
 void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene)
 ```
 
@@ -280,7 +280,7 @@ void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* r
 
 ### OH_LocationRequestConfig_SetInterval()
 
-```
+```c
 void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval)
 ```
 
@@ -299,7 +299,7 @@ void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig,
 
 ### OH_LocationRequestConfig_SetCallback()
 
-```
+```c
 void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData)
 ```
 

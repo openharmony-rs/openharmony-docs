@@ -240,3 +240,95 @@ struct TouchTargetExample {
 ```
 
 ![touchtarget2.gif](figures/touchtarget2.gif)
+
+### 示例3（设置鼠标的触摸热区以响应点击事件）
+
+从API version 10开始，该示例通过[mouseResponseRegion](ts-universal-attributes-touch-target.md#mouseresponseregion10)设置鼠标的触摸热区以响应点击事件。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct MouseResponseRegionExample {
+  @State clickInfo: string = '点击热区触发事件';
+
+  build() {
+    Column({ space: 30 }) {
+      // 示例1：单个热区（仅按钮左半部分响应鼠标点击）
+      Text('热区：按钮左半区域（点击左半才触发）')
+        .fontSize(14)
+      Button('Button1（左半热区）')
+        .width(200)
+        .height(60)
+        // 鼠标热区：仅按钮左半部分（x/y相对组件自身，宽度50%）
+        .mouseResponseRegion({
+          // 热区相对组件的X坐标（左上角为原点）
+          x: 0,
+          // 热区相对组件的Y坐标
+          y: 0,
+          // 热区宽度（按钮的50%）
+          width: '50%',
+          // 热区高度（按钮的100%）
+          height: '100%'
+        })
+        .onClick(() => {
+          this.clickInfo = 'Button1 左半热区被点击';
+        })
+      // 示例2：多个热区（按钮左半 + 按钮下方区域都响应）
+      Text('热区：按钮左半 + 按钮下方区域（点击两处都触发）')
+        .fontSize(14)
+      Button('Button2（多热区）')
+        .width(200)
+        .height(60)
+        // 鼠标热区：数组形式，包含2个独立热区
+        .mouseResponseRegion([
+          // 热区1：按钮左半部分
+          {
+            x: 0,
+            y: 0,
+            width: '50%',
+            height: '100%'
+          },
+          // 热区2：按钮正下方区域（y=100%表示按钮底部，高度60vp）
+          {
+            x: 0,
+            y: '100%',
+            width: '100%',
+            height: 60
+          }
+        ])
+        .onClick(() => {
+          this.clickInfo = 'Button2 任一热区被点击';
+        })
+      // 示例3：热区在按钮外部（按钮右侧空白处响应）
+      Text('热区：按钮右侧外部（点击按钮右边空白处触发）')
+        .fontSize(14)
+      Button('Button3（右侧外热区）')
+        .width(200)
+        .height(60)
+        // 鼠标热区：按钮右侧外部区域（x=100%表示按钮右边缘）
+        .mouseResponseRegion({
+          // 热区X坐标：按钮右边缘
+          x: '100%',
+          y: 0,
+          // 热区宽度80vp
+          width: 80,
+          height: '100%'
+        })
+        .onClick(() => {
+          this.clickInfo = 'Button3 右侧外热区被点击';
+        })
+      // 显示点击结果
+      Text(this.clickInfo)
+        .fontSize(16)
+        .margin({ top: 20 })
+    }
+    .width('100%')
+    .height('100%')
+    // 整体居中显示
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![touchtarget3.gif](figures/touchtarget3.gif)

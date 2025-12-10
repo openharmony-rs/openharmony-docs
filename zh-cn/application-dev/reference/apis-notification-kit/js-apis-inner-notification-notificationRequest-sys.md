@@ -20,6 +20,7 @@
 
 | 名称                            | 类型                                                    |  只读 | 可选 | 说明                                                                    |
 |-------------------------------| -------------------------------------------------------- | ----- | --- |-----------------------------------------------------------------------|
+| trigger<sup>23+</sup>          | [Trigger](#trigger23) |   否  | 是  | 条件对象。 <br>**系统接口**：此接口为系统接口。 |
 | overlayIcon<sup>11+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知重叠图标。图像像素的总字节数不超过192KB。<br>**系统接口**：此接口为系统接口。                                                 |
 | classification                | string                                                   |   否  | 是  | 通知分类。<br>**系统接口**：此接口为系统接口。预留能力，暂未支持。                               |
 | isRemoveAllowed<sup>8+</sup>   | boolean                                                  |   否  | 是  | 通知是否能被移除（点击通知下方删除按钮无法删除，左滑不出现删除按钮）。默认为true。<br> - true：是。<br> - false：否。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.SET_UNREMOVABLE_NOTIFICATION |
@@ -90,3 +91,72 @@
 | content  | string | 否 | 是   | 聚合组摘要正文。              |
 | sceneName          | string        | 否 | 是   | 聚合场景名称。                   |
 | extraInfo  | {[key: string]: any} | 否 |  是   | 其他聚合信息。            |
+
+## MonitorEvent<sup>23+</sup>
+
+表示地理围栏的监控事件类型的枚举。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称           | 值  | 说明                               |
+| -------------- | --- | --------------------------------- |
+| MONITOR_TYPE_ENTRY | 1 | 进入地理围栏。 |
+| MONITOR_TYPE_LEAVE | 2 | 退出地理围栏。 |
+
+## CoordinateSystemType<sup>23+</sup>
+
+表示地理围栏坐标系类型的枚举。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称               | 值  | 说明             |
+| ------------------ | --- | ---------------- |
+| COORDINATE_TYPE_WGS84 | 1 | WGS84坐标系。 |
+| COORDINATE_TYPE_GCJ02 | 2 | GCJ02坐标系。 |
+
+## TriggerType<sup>23+</sup>
+
+表示触发条件的事件类型的枚举。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称         | 值  | 说明 |
+| ------------------ | ---------------- | ---- |
+| TRIGGER_TYPE_GEOFENCE | 1 | 地理围栏触发类型。 |
+
+## Geofence<sup>23+</sup>
+
+地理围栏的配置信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称      | 类型                 | 只读 | 可选 | 说明             |
+| --------- | -------------------- | ---- | ---- | ---------------- |
+| longitude | double | 否 | 否 | 地理围栏中心点经度。 |
+| latitude | double | 否 | 否 | 地理围栏中心点纬度。 |
+| radius | double | 否 | 否 | 围栏半径，单位米。 |
+| delayTime | int | 否 | 是 | 围栏延迟时间，单位秒，进入围栏后多久触发围栏。 |
+| coordinateSystemType | [coordinatesystemtype](#coordinatesystemtype23) | 否 | 否 | 中心点坐标系类型。  |
+| monitorEvent | [MonitorEvent](#monitorevent23) | 否   | 否 | 围栏触发条件类型。 |
+
+## Trigger<sup>23+</sup>
+
+触发条件的具体信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 类型                 | 只读 | 可选 | 说明                                     |
+| -------------------- | -------------------- | ---- | ---- | ---------------------------------------- |
+| type | [TriggerType](#triggertype23) | 否 | 否 | 条件类型。 |
+| condition | [Geofence](#geofence23) | 否 | 否 | 条件具体描述。 |
+| displayTime | int | 否 | 是 | 条件触发实况的展示时间，单位秒。 |
