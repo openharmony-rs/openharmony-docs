@@ -57,9 +57,9 @@ export default class StartupTask_001 extends StartupTask {
     // ...
   }
 
-  onDependencyCompleted(dependence: string, result: Object): void {
-    hilog.info(0x0000, 'testTag', 'StartupTask_001 onDependencyCompleted, dependence: %{public}s, result: %{public}s',
-      dependence, JSON.stringify(result));
+  onDependencyCompleted(dependency: string, result: Object): void {
+    hilog.info(0x0000, 'testTag', 'StartupTask_001 onDependencyCompleted, dependency: %{public}s, result: %{public}s',
+      dependency, JSON.stringify(result));
     // ...
   }
 }
@@ -104,7 +104,7 @@ export default class StartupTask_001 extends StartupTask {
     return "StartupTask_001";
   }
 
-  onDependencyCompleted(dependence: string, result: Object): void {
+  onDependencyCompleted(dependency: string, result: Object): void {
     // ...
   }
 }
