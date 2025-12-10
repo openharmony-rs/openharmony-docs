@@ -20,11 +20,13 @@
 
 ## 开发步骤
 
+完整的工程示例详见[SelectionAppSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/SelectionService/SelectionAppSample)。
+
 1. 创建划词应用工程。
 
-    1. 在DevEco Studio工程Module对应的ets目录下，右键选择“New > Directory”，新建一个目录，并命名为ServiceExtAbility。
+    1.1 在DevEco Studio工程Module对应的ets目录下，右键选择“New > Directory”，新建一个目录，并命名为ServiceExtAbility。
 
-    2. 在目录pages下，从菜单栏创建两个page文件MainPanel.ets和MenuPanel.ets。在ServiceExtAbility目录下，右键选择“New > File”，新建SelectionExtensionAbility.ts。目录如下：
+    1.2 在目录pages下，从菜单栏创建两个page文件MainPanel.ets和MenuPanel.ets。在ServiceExtAbility目录下，右键选择“New > File”，新建SelectionExtensionAbility.ts。目录如下：
 
     ```
     /src/main/
@@ -80,7 +82,7 @@
     ```
     上述代码中，划词扩展被拉起时会触发[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。部分操作可参见下面3、4、5步。
 
-3. 在划词扩展被拉起时，使用划词Ability接口监听划词事件。监听到划词事件后，可以通过[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md#getselectioncontent)接口获取选中的文本内容。
+3. 在划词扩展被拉起时，使用划词Ability接口监听划词事件。监听到划词事件后，可以通过[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md#getselectioncontent22)接口获取选中的文本内容。
     ```ts
     selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
       try {
@@ -92,6 +94,7 @@
     ```
 
 4. 在划词扩展被拉起时，使用划词Ability接口创建划词窗口。
+    <!--code_no_check-->
     ```ts
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
@@ -141,9 +144,11 @@
 
 1. 设置系统参数以配置划词。
 
-    1. 打开划词开关。
-    2. 选择当前应用为划词应用。
-    3. 设置划词触发方式。
+    1.1 打开划词开关。
+    
+    1.2 选择当前应用为划词应用。
+    
+    1.3 设置划词触发方式。
 
 2. 通过日志观察划词服务拉起SelectionExtensionAbility过程。
 

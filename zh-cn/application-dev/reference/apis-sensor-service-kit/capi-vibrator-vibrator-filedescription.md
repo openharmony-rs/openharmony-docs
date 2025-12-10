@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```c
+typedef struct Vibrator_FileDescription { ... } Vibrator_FileDescription
+```
+
 ## 概述
 
 振动文件描述。

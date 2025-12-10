@@ -91,7 +91,7 @@ Test Node-API napi_is_arraybuffer: false
 
 ### napi_get_arraybuffer_info
 
-获取ArrayBuffer的底层数据缓冲区和长度。
+获取ArrayBuffer的底层数据缓冲区和长度。接口只能处理ArrayBuffer类型，请勿将其他类型传入接口。若想从Uint8Array类型中取到ArrayBuffer，需要在ArkTS侧执行.buffer()操作。
 
 cpp部分代码
 

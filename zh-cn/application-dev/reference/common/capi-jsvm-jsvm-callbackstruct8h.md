@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef JSVM_CallbackStruct* JSVM_Callback
+```
+
 ## 概述
 
 用户提供的native函数的函数指针类型，这些函数通过JSVM-API接口暴露给JavaScript。

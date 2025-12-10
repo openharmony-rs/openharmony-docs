@@ -87,9 +87,9 @@ build() {
 }
 ```
 
-在此处应通过在数据末尾添加元素的方式来新增数据，不可直接修改dataArray后通过LazyForEach的onDataReloaded()方法通知瀑布流重新加载数据。
+在此处应通过在数据末尾添加元素的方式来新增数据，不可直接修改dataArray后通过LazyForEach的[onDataReloaded](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)方法通知瀑布流重新加载数据。
 
-由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用`onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])`通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
+由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用[`onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])`](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatasetchange12)通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
 
 ![](figures/waterflow-demo1.gif)
 
@@ -240,7 +240,7 @@ export struct WaterFlowDynamicSwitchover {
 
 ![](figures/waterflow-sections1.png)
 
-如果能够将不同部分的子节点整合到一个数据源中，那么通过设置 WaterFlowSections，可以在一个 WaterFlow 容器内实现混合布局。与嵌套滚动相比，这种方法可以简化滚动事件处理等应用逻辑。
+如果能够将不同部分的子节点整合到一个数据源中，那么通过设置[WaterFlowSections](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowsections12)，可以在一个 WaterFlow 容器内实现混合布局。与嵌套滚动相比，这种方法可以简化滚动事件处理等应用逻辑。
 
 每个瀑布流分组可以分别设置自己的列数、行间距、列间距、margin和子节点总数，如下代码可以实现上述效果：
 

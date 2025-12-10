@@ -21,11 +21,11 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 ## 顺序识别
 
-顺序识别组合手势对应的GestureMode为Sequence。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势组仅有最后一个手势可以响应onActionEnd。
+顺序识别组合手势对应的GestureMode为Sequence。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势中仅有最后一个手势可以响应onActionEnd。
 
 以一个由长按手势和滑动手势组合而成的顺序识别手势为例：
 
-在一个Column组件上绑定了translate属性，通过修改该属性可以设置组件的位置移动。然后在该组件上绑定LongPressGesture和PanGesture组合而成的Sequence组合手势。当触发LongPressGesture时，更新显示的数字。当长按后进行拖动时，根据滑动手势的回调函数，实现组件的拖动。
+在一个Column组件上绑定了[translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)属性，通过修改该属性可以设置组件的位置移动。然后在该组件上绑定[LongPressGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md)和[PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)组合而成的Sequence组合手势。当触发LongPressGesture时，更新显示的数字。当长按后进行拖动时，根据滑动手势的回调函数，实现组件的拖动。
 
   <!-- @[sequence_identification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Sequence.ets) -->
   

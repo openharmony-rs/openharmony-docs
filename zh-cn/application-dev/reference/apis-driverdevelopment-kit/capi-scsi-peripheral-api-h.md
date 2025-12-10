@@ -44,7 +44,7 @@
 
 ### OH_ScsiPeripheral_Init()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Init(void)
 ```
 
@@ -64,7 +64,7 @@ int32_t OH_ScsiPeripheral_Init(void)
 
 ### OH_ScsiPeripheral_Release()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Release(void)
 ```
 
@@ -84,7 +84,7 @@ int32_t OH_ScsiPeripheral_Release(void)
 
 ### OH_ScsiPeripheral_Open()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPeripheral_Device **dev)
 ```
 
@@ -113,7 +113,7 @@ int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPe
 
 ### OH_ScsiPeripheral_Close()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 ```
 
@@ -140,7 +140,7 @@ int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 
 ### OH_ScsiPeripheral_TestUnitReady()
 
-```
+```c
 int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripheral_TestUnitReadyRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -169,7 +169,7 @@ int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripher
 
 ### OH_ScsiPeripheral_Inquiry()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_InquiryRequest *request,ScsiPeripheral_InquiryInfo *inquiryInfo, ScsiPeripheral_Response *response)
 ```
 
@@ -199,7 +199,7 @@ int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_Inq
 
 ### OH_ScsiPeripheral_ReadCapacity10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeripheral_ReadCapacityRequest *request,ScsiPeripheral_CapacityInfo *capacityInfo, ScsiPeripheral_Response *response)
 ```
 
@@ -229,7 +229,7 @@ int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeriphe
 
 ### OH_ScsiPeripheral_RequestSense()
 
-```
+```c
 int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeripheral_RequestSenseRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -258,7 +258,7 @@ int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeriphera
 
 ### OH_ScsiPeripheral_Read10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -287,7 +287,7 @@ int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORe
 
 ### OH_ScsiPeripheral_Write10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -316,7 +316,7 @@ int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IOR
 
 ### OH_ScsiPeripheral_Verify10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_VerifyRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -345,7 +345,7 @@ int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_Ve
 
 ### OH_ScsiPeripheral_SendRequestByCdb()
 
-```
+```c
 int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPeripheral_Request *request,ScsiPeripheral_Response *response)
 ```
 
@@ -374,7 +374,7 @@ int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPerip
 
 ### OH_ScsiPeripheral_CreateDeviceMemMap()
 
-```
+```c
 int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t size,ScsiPeripheral_DeviceMemMap **devMmap)
 ```
 
@@ -403,7 +403,7 @@ int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t 
 
 ### OH_ScsiPeripheral_DestroyDeviceMemMap()
 
-```
+```c
 int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap)
 ```
 
@@ -430,7 +430,7 @@ int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMm
 
 ### OH_ScsiPeripheral_ParseBasicSenseInfo()
 
-```
+```c
 int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseDataLen,ScsiPeripheral_BasicSenseInfo *senseInfo)
 ```
 

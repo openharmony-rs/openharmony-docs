@@ -226,7 +226,7 @@ export default function abilityTest() {
 * 查看测试结果
 
 1. 在命令行模式执行过程中，框架会打印如下日志信息。
-    ```
+    ```txt
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -255,7 +255,7 @@ export default function abilityTest() {
     | OHOS_REPORT_STATUS_CODE | 当前用例执行状态。1表示用例开始执行，0表示用例执行通过，-1表示用例执行报错，-2表示用例执行失败。|
     | OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
 2. 命令行执行完成后，框架会打印如下相关日志信息。
-    ```
+    ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
     OHOS_REPORT_CODE: 0
     
@@ -284,7 +284,9 @@ export default function abilityTest() {
 |  it          | 定义一条测试用例。          |
 |  beforeAll         | 在测试套内定义一个预置条件，在所有测试用例开始前执行且仅执行一次。                        |
 |  beforeEach        | 在测试套内定义一个预置条件，在每条测试用例开始前执行，执行次数与it定义的测试用例数一致。          |
+| beforeEachIt | 在测试套内定义一个单元预置条件，在每条测试用例开始前执行。<br/>外层测试套定义的beforeEachIt会在内部测试套中的测试用例执行前执行。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
 |  afterEach         | 在测试套内定义一个单元清理条件，在每条测试用例结束后执行，执行次数与it定义的测试用例数一致。          |
+| afterEachIt | 在测试套内定义一个单元预置条件，在每条测试用例结束后执行。<br/>外层测试套定义的afterEachIt会在内部测试套中的测试用例执行结束后执行。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
 |  afterAll          | 在测试套内定义一个清理条件，在所有测试用例结束后执行且仅执行一次。                        |
 |  beforeItSpecified | 在测试套内定义一个单元预置条件，仅在指定测试用例开始前执行。<br>**说明**：从@ohos/hypium 1.0.15版本开始支持。 |
 |  afterItSpecified  | 在测试套内定义一个单元清理条件，仅在指定测试用例结束后执行。<br>**说明**：从@ohos/hypium 1.0.15版本开始支持。 |
@@ -606,10 +608,13 @@ interface PromiseInfo {
 
 **基础类**
 
-Mockit是Mock的基础类，用于指定需要Mock的实例和函数。
+MockKit是Mock的基础类，用于指定需要Mock的实例和函数。
+
 | 接口名 | 功能说明                 |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mock某个类实例中的函数，支持使用异步函数。                                                 |
+| mockPrivateFunc | Mock某个类的实例上的私有方法。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
+| mockProperty | Mock某个类的实例上的属性。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
 | verify | 验证函数在对应参数下的执行行为是否符合预期，返回一个VerificationMode类。 |
 | ignoreMock | 使用ignoreMock可以还原实例中被Mock后的函数，对被Mock后的函数有效。                                                                                                   |
 | clear | 用例执行完毕后，对被Mock对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
@@ -651,11 +656,11 @@ ArgumentMatchers用于用户自定义函数参数，当开发者想基于某类�
 | anyBoolean | 设定用户传任何boolean类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyBoolean方式调用。                                                                               |
 | anyFunction | 设定用户传任何function类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyFunction方式调用。                                                                             |
 | anyNumber | 设定用户传任何数字类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyNumber方式调用。                                                                                     |
-| anyObj | 设定用户传任何对象类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyObj方式调用。 
+| anyObj | 设定用户传任何对象类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyObj方式调用。 |
 
 | 接口名 | 功能说明    |
 | --- |--------------|                                           
-| matchRegexs | 设定用户传任何符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.matchRegexs(Regex)方式调用。 
+| matchRegexs | 设定用户传任何符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.matchRegexs(Regex)方式调用。 |
 
 
 > **说明：**

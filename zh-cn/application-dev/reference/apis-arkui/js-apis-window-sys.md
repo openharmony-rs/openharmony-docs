@@ -981,9 +981,7 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
 
 ## window.getSnapshot<sup>12+</sup>
 
-ArkTS-Dyn: getSnapshot(windowId: number): Promise<image.PixelMap>
-
-ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
+getSnapshot(windowId: number): Promise<image.PixelMap>
 
 获取指定窗口相同尺寸截图，使用Promise异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](arkts-apis-window-Window.md#setwindowprivacymode9)接口设置），截图结果为白屏。
 
@@ -991,14 +989,10 @@ ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 | 参数名   | 类型   | 必填  | 说明         |
 | -------- | ------ | ----- | ------------ |
-| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 窗口Id。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
+| windowId | number | 是    | 窗口Id。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
 
 **返回值：**
 | 类型                    | 说明                            |
@@ -1018,8 +1012,6 @@ ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -1036,28 +1028,6 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to get snapshot. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@ohos.base';
-import { image } from '@ohos.multimedia.image';
-
-try {
-  // 此处仅示意，请使用getWindowProperties获取对应窗口ID再进行使用
-  let windowId: int = 40;
-  let promise = window.getSnapshot(windowId);
-  promise.then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in getting snapshot window. Pixel bytes number:' + pixelMap.getPixelBytesNumber());
-    pixelMap.release();
-  }).catch((err: Error) =>{
-    console.error(`Failed to get snapshot. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  let error = exception as BusinessError;
-  console.error(`Failed to get snapshot. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -3137,10 +3107,6 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 
 **设备行为差异：** 该接口在2in1设备中调用不生效也不报错，在其他设备中可正常调用。
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型                      | 必填 | 说明       |
@@ -3162,8 +3128,6 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 | 1300004 | Unauthorized operation. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -3202,56 +3166,6 @@ export default class EntryAbility extends UIAbility {
         });
       } catch (exception) {
         console.error(`Failed to hide the non-system floating windows. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@ohos.app.ability.UIAbility';
-import { Want } from '@ohos.app.ability.Want';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    // 加载主窗口对应的页面
-    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null) => {
-      const errCode = err?.code;
-      if (errCode) {
-        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
-        return;
-      }
-      console.info('Succeeded in loading the content.');
-    });
-
-    // 获取应用主窗口。
-    let mainWindow: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError<void> | null, data) => {
-      const errCode = err?.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
-        return;
-      }
-      mainWindow = data;
-      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-
-      let shouldHide = true;
-      try {
-        // 调用带callback参数的hideNonSystemFloatingWindows接口
-        mainWindow?.hideNonSystemFloatingWindows(shouldHide, (err: BusinessError<void> | null) => {
-          const errCode = err?.code;
-          if (errCode) {
-            console.error(`Failed to hide the non-system floating windows. Cause code: ${err?.code}, message: ${err?.message}`);
-            return;
-          }
-          console.info('Succeeded in hiding the non-system floating windows.');
-        });
-      } catch (exception) {
-        let error = exception as BusinessError;
-        console.error(`Failed to hide the non-system floating windows. Cause code: ${error.code}, message: ${error.message}`);
       }
     });
   }
@@ -3770,6 +3684,109 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
+
+### setRotationLocked<sup>22+</sup>
+
+setRotationLocked(locked: boolean): Promise&lt;void&gt;
+
+仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
+
+> **说明：**
+>
+> - 如果在锁定期间主窗口通过[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
+>
+> - 如果在锁定期间sensor方向发生了变化，则解除旋转锁定后还原到最后一次的sensor方向。
+>
+> - 如果在锁定期间应用调用[setOrientation()](./js-apis-screen-sys.md#setorientation)设置屏幕方向，忽略该次屏幕方向设置。
+>
+> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../windowmanager/window-rotation.md#窗口旋转简介)。
+>
+> - 不影响应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)orientation属性设置的启动方向。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| locked | boolean | 是   | 设置是否锁定旋转，true表示锁定旋转，false表示解除锁定。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300029 | This window type is invalid. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let locked: boolean = true;
+let promise = windowClass.setRotationLocked(locked);
+promise.then(() => {
+  console.info('set rotation locked success.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set rotation locked. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getRotationLocked<sup>22+</sup>
+
+getRotationLocked(): boolean
+
+仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| boolean | 当前系统窗是否设置旋转锁定。true表示当前系统窗已锁定旋转；false表示当前系统窗未锁定旋转。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300029 | This window type is invalid. |
+
+**示例：**
+
+```ts
+try {
+  let locked = windowClass.getRotationLocked();
+  console.info('Succeeded in getting rotation locked.');
+} catch (exception) {
+  console.error(`Failed to get rotation locked. Cause code: ${exception.code}, message: ${exception.message}`);
+};
 ```
 
 ### setWindowType<sup>(deprecated)</sup>

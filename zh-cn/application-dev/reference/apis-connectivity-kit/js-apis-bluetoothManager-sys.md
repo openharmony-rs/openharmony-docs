@@ -20,7 +20,7 @@
 ## 导入模块
 
 ```js
-import bluetoothManager from '@ohos.bluetoothManager';
+import { bluetoothManager } from '@kit.ConnectivityKit';
 ```
 
 

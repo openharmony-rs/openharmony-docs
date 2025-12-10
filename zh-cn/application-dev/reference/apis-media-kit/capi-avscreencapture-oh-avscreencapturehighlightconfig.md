@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVScreenCaptureHighlightConfig {...} OH_AVScreenCaptureHighlightConfig
+```
+
 ## 概述
 
 表示高亮边框的样式，包括高亮边框的模式、边框宽度和边框颜色。

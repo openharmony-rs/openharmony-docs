@@ -80,3 +80,31 @@ The operation does not comply with the device security policy, such as the devic
 **处理步骤**
 
 更换企业设备调用此API。
+
+## 29700006 入参校验失败
+
+**错误信息**
+
+The input parameters validation failed.
+
+**可能原因**
+
+参数格式异常或参数范围无效。
+
+**处理步骤**
+
+检查接口入参格式或范围。
+
+## 29700007 无可用授权证书
+
+**错误信息**
+
+No Available certificate for authorization
+
+**可能原因**
+
+没有可用的授权证书。
+
+**处理步骤**
+
+安装有效证书凭据。

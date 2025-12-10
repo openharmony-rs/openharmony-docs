@@ -68,7 +68,7 @@
 |napi_ref_threadsafe_function | 否 |
 |napi_add_async_cleanup_hook | 否 |
 |napi_remove_async_cleanup_hook | 否 |
-node_api_get_module_file_name | 否 |
+|node_api_get_module_file_name | 否 |
 |napi_get_last_error_info | 否 |
 |napi_get_undefined | 否 |
 |napi_get_null | 否 |
@@ -350,7 +350,7 @@ node_api_get_module_file_name | 否 |
 
 - 编译配置
 1. CMakeLists.txt文件需要按照如下配置
-    ```
+    ```txt
     // CMakeLists.txt
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.5.0)

@@ -512,7 +512,7 @@ arrayList.forEach((value: number, index?: number) => {
 
 sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
-对ArrayList中的元素排序。
+根据指定比较器所定义的顺序，对ArrayList中的元素进行排序。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

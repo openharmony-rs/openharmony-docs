@@ -802,10 +802,10 @@ static clearMonitor(target: object, path: string | string[], monitorCallback?: M
 在下面的示例中：
 1. 在`ObservedClass`的构造方法中，添加对`age`属性的同步监听回调`onChange`。
 2. 点击Text组件，触发`age`自增，`onChange`的监听回调函数被触发。打印日志如下。
-<!--code_no_check-->
-```
-ObservedClass property age change from 10 to 11
-```
+   <!--code_no_check-->
+   ```
+   ObservedClass property age change from 10 to 11
+   ```
 3. 点击`clear monitor`，删除`age`的监听函数`onChange`。
 4. 再次点击Text组件，触发`age`自增，`onChange`不会被触发。
 
@@ -856,7 +856,7 @@ struct Index {
 
 static applySync\<T\>(task: TaskCallback): T
 
-同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed计算](../../ui/state-management/arkts-new-Computed.md)、[@Monitor回调](../../ui/state-management/arkts-new-monitor.md)以及重新渲染UI节点，详见[applySync/flushUpdates/flushUIUpdates接口：同步刷新](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)。
+同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed计算](../../ui/state-management/arkts-new-computed.md)、[@Monitor回调](../../ui/state-management/arkts-new-monitor.md)以及重新渲染UI节点，详见[applySync/flushUpdates/flushUIUpdates接口：同步刷新](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

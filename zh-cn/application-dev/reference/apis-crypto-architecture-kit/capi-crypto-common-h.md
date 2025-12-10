@@ -46,7 +46,7 @@
 
 ### OH_Crypto_ErrCode
 
-```
+```c
 enum OH_Crypto_ErrCode
 ```
 
@@ -67,7 +67,7 @@ enum OH_Crypto_ErrCode
 
 ### Crypto_CipherMode
 
-```
+```c
 enum Crypto_CipherMode
 ```
 
@@ -87,7 +87,7 @@ enum Crypto_CipherMode
 
 ### OH_Crypto_FreeDataBlob()
 
-```
+```c
 void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 ```
 

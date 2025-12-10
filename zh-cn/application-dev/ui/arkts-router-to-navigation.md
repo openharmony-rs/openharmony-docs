@@ -517,14 +517,23 @@ Router可以通过命名路由的方式实现跨包跳转。
    }
    ```
 
-2. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
+2. 使用命名路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
+
+   ```ts
+   "dependencies": {
+       "library": "file:../library",
+       // ...
+   }
+   ```
+
+3. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
 
    <!-- @[router_hsp12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp12.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import('library/src/main/ets/pages/routerToNavigation/router/Index');  // 引入共享包中的命名路由页面
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   import('library/src/main/ets/pages/routerToNavigation/router/Index'); // 引入共享包中的命名路由页面
    const DOMAIN = 0xF811;
    const TAG = '[Sample_ArkTSRouter]';
    
@@ -539,8 +548,7 @@ Router可以通过命名路由的方式实现跨包跳转。
            .margin({ top: 20 })
            .backgroundColor('#ccc')
            .onClick(() => { // 点击跳转到其他共享包中的页面
-             try {
-               this.getUIContext().getRouter().pushNamedRoute({
+             this.getUIContext().getRouter().pushNamedRoute({
                  name: 'myPage',
                  params: {
                    data1: 'message',
@@ -549,11 +557,14 @@ Router可以通过命名路由的方式实现跨包跳转。
                    }
                  }
                })
-             } catch (err) {
-               let message = (err as BusinessError).message
-               let code = (err as BusinessError).code
-               hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
-             }
+               .then(() => {
+                 hilog.info(DOMAIN, TAG, 'pushNamedRoute succeeded.');
+               })
+               .catch((err: BusinessError) => {
+                 let code = err.code;
+                 let message = err.message;
+                 hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
+               });
            })
        }
        .width('100%')
@@ -587,7 +598,16 @@ Navigation作为路由组件，默认支持跨包跳转。
    export { PageInHSP } from './src/main/ets/pages/PageInHSP'
    ```
 
-3. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
+3. 使用跨包路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
+
+   ```ts
+   "dependencies": {
+       "library": "file:../library",
+       // ...
+   }
+   ```
+
+4. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
 
    <!-- @[router_hsp23](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp23.ets) -->
    
