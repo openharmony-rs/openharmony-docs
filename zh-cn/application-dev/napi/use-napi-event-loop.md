@@ -16,7 +16,7 @@
 
 ### 示例代码
 - 功能实现
-  <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
+  <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->  
   
   ``` C++
   #include "napi/native_api.h"
