@@ -153,7 +153,7 @@ struct WidgetCard {
   aboutToAppear(): void {
     this.sceneController.setSceneParams(this.params, false);
 
-    this.whiteEffect = uiEffect?.createEffect();
+    this.whiteEffect = uiEffect.createEffect();
     let whiteBlender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
       cubicRate: 0,
       quadraticRate: 0,
