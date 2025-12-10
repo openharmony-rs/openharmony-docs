@@ -5937,14 +5937,14 @@ isPriorityEnabled(): Promise\<boolean\>
 **示例：**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  let result = await notificationManager.isPriorityEnabled();
-  console.info(`isPriorityEnabled: ${result}`);
-} catch (e) {
-  console.info(`isPriorityEnabled error: ${e}`);
-}
+notificationManager.isPriorityEnabled().then((result : boolean) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled result is ${result}`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setPriorityEnabled<sup>23+</sup>
@@ -5986,13 +5986,14 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 **示例：**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  await notificationManager.setPriorityEnabled(false);
-} catch (e) {
-  console.error(`setPriorityEnabled error: ${e}`);
-}
+notificationManager.setPriorityEnabled(false).then(() => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled success`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.isPriorityEnabledByBundle<sup>23+</sup>
@@ -6035,15 +6036,15 @@ isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
 **示例：**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-  let result : notificationManager.PriorityEnableStatus = await notificationManager.isPriorityEnabledByBundle(bundleOption);
-  console.info(`isPriorityEnabledByBundle: ${result}`);
-} catch (e) {
-  console.error(`isPriorityEnabledByBundle error: ${e}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle result is ${result}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setPriorityEnabledByBundle<sup>23+</sup>
@@ -6087,14 +6088,15 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 **示例：**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-  await notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus);
-} catch (e) {
-  console.error(`setPriorityEnabledByBundle error: ${e}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.getBundlePriorityConfig<sup>23+</sup>
@@ -6137,22 +6139,22 @@ getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
 **示例：**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-  let value: string = await notificationManager.getBundlePriorityConfig(bundleOption);
-  console.info(`getBundlePriorityConfig value: ${value}`);
-} catch (e) {
-  console.error(`getBundlePriorityConfig error: ${e}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig value is ${value}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setBundlePriorityConfig<sup>23+</sup>
 
 setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 
-获取应用的优先功能配置。
+设置应用的优先功能配置。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6189,14 +6191,15 @@ setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 **示例：**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-  notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1');
-} catch (e) {
-  console.error(`setBundlePriorityConfig error: ${e}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.onBadgeNumberQuery<sup>22+</sup>
