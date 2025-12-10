@@ -244,7 +244,7 @@ Supported events for hardware:
 
 > **注意：**
 >
-> 命令采集的进程应为"使用调试证书签名的应用"。
+> 命令采集的进程应为"使用debug证书签名的应用"。
 
 **record命令参数说明**
 
@@ -316,7 +316,7 @@ $ hiperf record -p 267 -d 10 -s dwarf
 
 > **注意：**
 >
-> 命令采集的进程应为"使用调试证书签名的应用"。
+> 命令采集的进程应为"使用debug证书签名的应用"。
 
 **stat命令参数说明**
 
@@ -426,17 +426,17 @@ $ hiperf report -i /data/local/tmp/perf.data --limit-percent 1
 
 ## 常见问题
 
-### 无法确认应用是否为可调式应用
+### hiperf采集没有debug证书签名的应用失败
 
 **现象描述**
 
-无法确认命令指定的应用是否为可调式应用
+仅支持采集带有debug证书签名的应用，提示：only support debug application.
 
 **可能原因&amp;解决方法**
 
 **造成原因**：
 
-应用更新后不确定是否还在可调式应用的范畴中
+应用没有debug证书签名
 
 **可采取的解决方法**：
 
