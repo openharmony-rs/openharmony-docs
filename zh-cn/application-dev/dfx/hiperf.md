@@ -244,7 +244,7 @@ Supported events for hardware:
 
 > **注意：**
 >
-> 命令采集的进程应为"使用debug证书签名的应用"。
+> 命令采集的进程应为[使用debug证书签名的应用](hiperf.md#hiperf采集没有debug证书签名的应用失败)。
 
 **record命令参数说明**
 
@@ -316,7 +316,7 @@ $ hiperf record -p 267 -d 10 -s dwarf
 
 > **注意：**
 >
-> 命令采集的进程应为"使用debug证书签名的应用"。
+> 命令采集的进程应为[使用debug证书签名的应用](hiperf.md#hiperf采集没有debug证书签名的应用失败)。
 
 **stat命令参数说明**
 
