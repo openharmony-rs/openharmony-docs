@@ -10,9 +10,9 @@
 
 ### JSVM_Status
 
-    Defines an enum for the execution statuses of a JSVM-API call.
+Defines an enum for the execution statuses of a JSVM-API call.
 
-    Each time a JSVM-API function is called, a value of **JSVM_Status** is returned to indicate the execution result.
+Each time a JSVM-API function is called, a value of **JSVM_Status** is returned to indicate the execution result.
 
 ```c++
     typedef enum {
@@ -396,7 +396,9 @@ Using **JSVM_InitOptions**
 
 JSVM provides multiple configuration options, allowing you to flexibly configure the behavior of **OH_JSVM_Init**. You can use the **OH_JSVM_GetVMInfo** API to obtain the V8 engine version corresponding to the current JSVM version. The options supported by the JSVM are the same as those supported by the corresponding V8 engine version. For details about how to use the **OH_JSVM_GetVMInfo** API, see [Obtaining the JSVM-API Version Using JSVM-API](use-jsvm-about-version.md).
 
-**Note**: You are advised to use only the default configuration options of the JSVM unless otherwise required.
+> **NOTE**
+>
+> - You are advised to use only the default configuration options of the JSVM unless otherwise required.
 
 Example:
 Initialize a JSVM in normal mode.
@@ -900,7 +902,7 @@ if (status != JSVM_OK) // An exception occurs when the execution fails.
 
 When JSVM-API calls are made, handles to objects in the heap for the underlying VM may be returned as **JSVM_Value**s. These handles must hold the objects live until they are no longer required by the native code. Otherwise, the objects will be collected.
 
- When an object handle is returned, it is associated with a scope. The lifecycle of the default scope is tied to the lifecycle of the native method call. By default, a handle remains valid and the object associated with it will be held live for the lifecycle of the native method call.
+When an object handle is returned, it is associated with a scope. The lifecycle of the default scope is tied to the lifecycle of the native method call. By default, a handle remains valid and the object associated with it will be held live for the lifecycle of the native method call.
 
 However, in many cases, you may need to adjust the lifecycle to be shorter or longer than that of the native method. The following describes the JSVM-API methods that can be used to change the lifecycle of a handle.
 
@@ -1917,7 +1919,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
     OH_JSVM_SetNamedProperty(env, instanceValue, "str11", setvalueName);
     OH_JSVM_SetNamedProperty(env, instanceValue, "str123", setvalueName);
 
-    // Obtain a property.
+    // Obtain properties.
     JSVM_Value valueName = nullptr;
     OH_JSVM_GetNamedProperty(env, instanceValue, "str11", &valueName);
     char str[100];
@@ -1957,7 +1959,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
     OH_JSVM_CreateUint32(env, index, &jsIndex1);
     OH_JSVM_SetProperty(env, instanceValue, jsIndex1, setvalueName);
 
-    // Obtain a property.
+    // Obtain properties.
     JSVM_Value valueName1 = nullptr;
     OH_JSVM_GetProperty(env, instanceValue, jsIndex, &valueName1);
     char str1[100];
@@ -2075,17 +2077,17 @@ for (int i = 0; i < 1000000; ++i) {
 }
 JSVM_HeapStatistics mem;
 OH_JSVM_GetHeapStatistics(vm, &mem); // Obtain the heap statistics of the VM.
-OH_LOG_INFO(LOG_APP, " %{public}zu\n", mem.usedHeapSize); // After the requested memory is allocated, the memory is of the maximum size.
+OH_LOG_INFO(LOG_APP, "%{public}zu\n", mem.usedHeapSize); // After the requested memory is allocated, the memory is of the maximum size.
 OH_JSVM_CloseHandleScope (env, tmpscope); // Close the handle scope.
 
 OH_JSVM_GetHeapStatistics(vm, &mem);
-OH_LOG_INFO(LOG_APP, " %{public}zu\n", mem.usedHeapSize); // After the scope is closed, GC is not performed immediately.
+OH_LOG_INFO(LOG_APP, "%{public}zu\n", mem.usedHeapSize); // After the scope is closed, GC is not performed immediately.
 
 // Notify the VM of the memory pressure level and selectively trigger GC.
 OH_JSVM_MemoryPressureNotification(env, JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL); // The memory pressure is in the critical state.
 
 OH_JSVM_GetHeapStatistics(vm, &mem);
-OH_LOG_INFO(LOG_APP, " %{public}zu\n", mem.usedHeapSize); // After GC is triggered.
+OH_LOG_INFO(LOG_APP, "%{public}zu\n", mem.usedHeapSize); // After GC is triggered.
 ```
 
 Example

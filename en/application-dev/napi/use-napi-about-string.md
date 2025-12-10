@@ -12,7 +12,7 @@ This topic walks you through on how to use Node-API to convert data between nati
 
 ## Basic Concepts
 
-Strings are a common data type in programming. They are used to store and manipulate text data, and can be employed to represent and process character sequences, build user interface (UI) elements such as tags, buttons, and text boxes, as well as to process user input and validate and format data. Different encodings support different character sets and languages. Major encoding schemes include the following:
+Strings are a common data type in programming. They are used to store and manipulate text data, represent and process character sequences, build user interface (UI) elements such as tags, buttons, and text boxes, process user input, and validate and format data. Different encodings support different character sets and languages. Major encoding schemes include the following:
 
 - ASCII<br>ASCII is one of the earliest character encoding schemes. It uses 7 bits to represent English letters, digits, and some basic symbols. It serves as the foundation for encoding schemes.
 - UTF-8<br>UTF-8 is a variable-length encoding scheme that can represent any Unicode character. It uses 8 bits per character and uses byte sequences of different lengths depending on the range of the character. UTF-8 is widely used for web content.
@@ -378,6 +378,7 @@ static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info inf
     );
     if (status != napi_ok) {
         // Error handling.
+        delete[] str;
         napi_throw_error(env, nullptr, "Failed to create utf16 string");
         return nullptr;
     }
@@ -430,6 +431,7 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
     std::copy(source, source + charLength, str);
     // When the created string is reclaimed by GC at the end of its lifecycle in ArkTS, the StringFinalizerASCII(str, finalize_hint) function is called.
     // If finalize_callback is set to nullptr, no callback function is called. You need to manage the lifecycle of the external resource str.
+    // napi_create_external_string_ascii requires that the input string must not contain the null character '\0' within the specified length range. Otherwise, unexpected behavior may occur.
     napi_status status = napi_create_external_string_ascii(
         env,
         str,                    // External string buffer.
@@ -440,6 +442,7 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
     );
     if (status != napi_ok) {
         // Error handling.
+        delete[] str;
         napi_throw_error(env, nullptr, "Failed to create ascii string");
         return nullptr;
     }
