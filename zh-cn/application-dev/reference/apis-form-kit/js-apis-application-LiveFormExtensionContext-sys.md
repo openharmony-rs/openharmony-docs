@@ -109,9 +109,9 @@ import { rpc } from '@kit.IPCKit';
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-// 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
-// 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
-// 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
+  // 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+  // 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
+  // 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
   private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
