@@ -902,7 +902,7 @@
             - [ArkTS卡片界面适配深浅色模式](form/arkts-ui-widget-dark-light-color-adapt.md)
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
             <!--Del-->
-            - [ArkTS卡片玻璃特效适配](form/arkts-ui-widget-visual-effect.md)
+            - [ArkTS卡片玻璃特效适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect.md)
             <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)

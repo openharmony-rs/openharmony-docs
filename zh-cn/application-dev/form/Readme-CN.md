@@ -20,7 +20,7 @@
       - [ArkTS卡片界面适配深浅色模式](arkts-ui-widget-dark-light-color-adapt.md)
       - [ArkTS卡片使用自定义字体](arkts-ui-widget-load-custom-font.md)
       <!--Del-->
-      - [ArkTS卡片玻璃特效适配](arkts-ui-widget-visual-effect.md)
+      - [ArkTS卡片玻璃特效适配（仅对系统应用开放）](arkts-ui-widget-visual-effect.md)
       <!--DelEnd-->
     - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
       - [ArkTS卡片页面刷新概述](arkts-ui-widget-interaction-overview.md)
