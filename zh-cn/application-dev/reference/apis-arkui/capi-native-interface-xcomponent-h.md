@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @ZhangYu-Coder-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -141,6 +141,7 @@
 | -- | -- |
 | const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | ArkUI XComponent的id最大长度。<br>**起始版本：** 8 |
 | const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10 | 触摸事件中的可识别的触摸点个数最大值。<br>**起始版本：** 8 |
+| OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER 10 | 最大支持10个触摸点。<br>**起始版本：** 8 |
 
 ## 枚举类型说明
 
@@ -263,16 +264,6 @@ enum OH_NativeXComponent_MouseEventAction
 
 鼠标事件动作。
 
-> **说明：**
->
-> OH_NATIVEXCOMPONENT_MOUSE_CANCEL表示鼠标事件被取消，通常在以下场景被触发：
->
-> 1.组件失去焦点：当前持有焦点的XComponent因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。
->
-> 2.事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。
->
-> 3.异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。
-
 **起始版本：** 9
 
 | 枚举项 | 描述                              |
@@ -281,7 +272,7 @@ enum OH_NativeXComponent_MouseEventAction
 | OH_NATIVEXCOMPONENT_MOUSE_PRESS = 1 | 鼠标按键按下时触发鼠标事件。                  |
 | OH_NATIVEXCOMPONENT_MOUSE_RELEASE = 2 | 鼠标按键松开时触发鼠标事件。                  |
 | OH_NATIVEXCOMPONENT_MOUSE_MOVE = 3 | 鼠标在屏幕上移动时触发鼠标事件。                |
-| OH_NATIVEXCOMPONENT_MOUSE_CANCEL = 4 | 鼠标按键被取消时触发鼠标事件。<br>**起始版本：** 18 |
+| OH_NATIVEXCOMPONENT_MOUSE_CANCEL = 4 | 鼠标按键被取消时触发鼠标事件。<br>**起始版本：** 18 <br> **说明：** OH_NATIVEXCOMPONENT_MOUSE_CANCEL表示鼠标事件被取消，通常在以下场景被触发：<br>1.组件失去焦点：当前持有焦点的XComponent因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br> 2.事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br>3.异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。|
 
 ### OH_NativeXComponent_MouseEventButton
 

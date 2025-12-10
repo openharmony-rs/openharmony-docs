@@ -1581,6 +1581,8 @@ export default class EntryAbility extends UIAbility {
 | wantAgentBundleName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的包名。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。        |
 | wantAgentAbilityName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的ability名称。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。 |
 | suspendState | boolean   | 否    | 否    | 申请的长时任务是否处于暂停状态。true表示处于暂停状态，false表示处于激活状态。|
+| bundleName<sup>23+</sup> | string   | 否    | 是    | 应用包名。          |
+| appIndex<sup>23+</sup>   | number   | 否    | 是    | 应用分身ID。               |
 
 ## ContinuousTaskRequest<sup>21+</sup>
 
@@ -1801,6 +1803,7 @@ export default class EntryAbility extends UIAbility {
 | SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | 通话，通知类型为普通文本通知。            |
 | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | 媒体处理，例如：应用在后台导出媒体文件，通知类型为普通文本通知。    |
 | SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  | 10 | 视频投播，例如：应用使用三方投播组件在后台进行投播，通知类型为普通文本通知。  |
+| SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup>  | 11 | 运动，例如：应用在后台有室内跑步场景，通知类型为普通文本通知。  |
 
 **长时任务主类型与子类型对照表：**
 
@@ -1815,7 +1818,7 @@ export default class EntryAbility extends UIAbility {
 | MODE_VOIP                         | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_TASK_KEEPING                 | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup><br/>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup>  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup> <br/>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup>  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup> <br/>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  <br/>SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup> |
 
 ## UserAuthResult<sup>22+</sup>
 

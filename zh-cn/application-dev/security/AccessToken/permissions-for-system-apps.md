@@ -17,6 +17,18 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+允许应用订阅开机广播。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
 允许应用市场跳过loading弹框并为原子化服务提前打开窗口，并在窗口内部显示加载动效。
@@ -292,6 +304,30 @@
 **ACL使能**：true
 
 **起始版本**：11
+
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+允许应用读取无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+允许应用设置无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
 
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
@@ -5271,3 +5307,27 @@
 **ACL使能**：true
 
 **起始版本**：12
+
+## ohos.permission.ACCESS_USER_ACCOUNT_INFO
+
+允许系统应用获取账号提供的数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
+
+## ohos.permission.USE_USER_ACCESS_MANAGER
+
+允许应用查询和配置用户身份认证策略、校验用户身份认证结果。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18

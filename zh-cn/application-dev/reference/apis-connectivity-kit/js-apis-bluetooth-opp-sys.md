@@ -81,6 +81,12 @@ sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&
 | deviceId | string | 是    | 接收端的蓝牙MAC地址。 |
 | fileHolds | Array&lt;[FileHolder](#fileholder)&gt;| 是    | 发送的文件数据，依据插入Array的次序进行发送。 |
 
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
@@ -150,6 +156,12 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 | accept | boolean | 是    | 表示是否接受接收文件。true表示接受，false表示不接受。 |
 | fileFd | number| 是    | 接收的文件描述符，接收过程中需要保持开启。 |
 
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
@@ -175,15 +187,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs} from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // 创建fileHolders
+let file: fs.File | undefined = undefined;
 try {
     let oppProfile = opp.createOppServerProfile();
     let pathDir = "/test.jpg"; // 应用根据实际情况填写路径
-    let file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
     oppProfile.setIncomingFileConfirmation(true, file.fd);
-    // 接收完成后关闭  
-    fs.close(file.fd);
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+} finally {
+  // 接收完成后关闭  
+  if (file) {
+    fs.close(file.fd);
+  }
 }
 ```
 
@@ -408,6 +424,12 @@ cancelTransfer(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
@@ -450,6 +472,12 @@ getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransfe
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;[OppTransferInformation](#opptransferinformation)&gt; | Promise对象。返回当前传输的文件信息对象。 |
 
 **错误码**：
 
@@ -499,6 +527,12 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 | 参数名     | 类型                          | 必填   | 说明                       |
 | ------- | --------------------------- | ---- | ------------------------ |
 | uri | string | 是    | 最后一个接收文件的URI。 |
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码**：
 

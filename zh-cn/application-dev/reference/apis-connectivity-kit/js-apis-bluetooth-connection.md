@@ -237,7 +237,7 @@ pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|201 | Permission denied.                 |              |
+|201 | Permission denied.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |

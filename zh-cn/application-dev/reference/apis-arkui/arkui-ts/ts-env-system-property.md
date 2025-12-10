@@ -38,7 +38,7 @@ struct Index {
 ```
 
 ## EnvDecorator
-type EnvDecorator = (value: string) => PropertyDecorator
+declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 
 定义@Env装饰器类型。
 
@@ -50,7 +50,7 @@ type EnvDecorator = (value: string) => PropertyDecorator
 
 | 参数名   | 类型                  | 必填 | 说明          |
 | -------- | -------------------- | ---- | --------- |
-| value    |      string          | 是   |      环境变量属性名。    |
+| value    |      [SystemProperties](./ts-env-system-property.md#systemproperties)          | 是   |      环境变量属性名。    |
 
 **返回值：**
 

@@ -393,3 +393,65 @@ try {
   console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
 ```
+
+## shortcutManager.setShortcutsEnabled<sup>23+</sup>
+
+setShortcutsEnabled(shortcutsInfo: Array\<ShortcutInfo>, isEnabled: boolean): Promise\<void>
+
+设置启用或禁用传入的静态快捷方式。使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_SHORTCUTS
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明         |
+| ---------- | ------ | ---- | -------------- |
+|  shortcutsInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待启用或禁用的静态快捷方式。  |
+| isEnabled    | boolean| 是   | 快捷方式是否启用。true：快捷方式启用；false：快捷方式禁用。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 201 | Verify permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 801 | Capability not support. |
+| 17700001 | The specified bundle name is not found.|
+| 17700070 | The specified shortcut id is illegal.|
+
+**示例：**
+
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 请开发者替换为实际的快捷方式id、bundleName。
+const bundleName = "com.example.myapplication";
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, appIndex: 0, sourceType: 1 },
+  { id: "2", bundleName: bundleName, appIndex: 0, sourceType: 1 }
+]
+
+try {
+  shortcutManager.setShortcutsEnabled(arrShortcutInfo, false)
+    .then(() => {
+      console.info('setShortcutsEnabled success');
+    }).catch((err: Error) => {
+      console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+    });
+} catch (err) {
+  console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+}
+```

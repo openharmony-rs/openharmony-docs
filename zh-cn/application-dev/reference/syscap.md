@@ -127,7 +127,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 	import { geoLocationManager } from '@kit.LocationKit';
 
 	try {
-	geolocationManager.getCurrentLocation((location) => {
+	geoLocationManager.getCurrentLocation((location) => {
 		console.info('current location: ' + JSON.stringify(location));
 	});
 	} catch(err) {

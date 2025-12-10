@@ -17,6 +17,18 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+Allows an application to subscribe to the startup broadcast.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
 Allows a window to be displayed with animation for an atomic service without the loading dialog box.
@@ -292,6 +304,30 @@ Allows a system application to set themes, including wallpapers, icons, skins, A
 **Enable via ACL**: true
 
 **Valid since**: 11
+
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+Allows an application to read the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+Allows an application to set the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
 
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
@@ -5232,3 +5268,15 @@ Allows an application to access Super Hub.
 **Enable via ACL**: true
 
 **Valid since**: 12
+
+## ohos.permission.USE_USER_ACCESS_MANAGER
+
+Allows an application to query and configure user identity authentication policies, and verify the authentication result.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18

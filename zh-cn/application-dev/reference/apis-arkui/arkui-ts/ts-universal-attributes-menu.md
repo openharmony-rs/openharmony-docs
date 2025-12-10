@@ -151,6 +151,35 @@ bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuO
 |---|---|
 |T|返回当前组件。|
 
+## bindContextMenu<sup>23+</sup>
+
+bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, options?: ContextMenuOptions): T
+
+给组件绑定菜单，控制菜单显隐的触发方式为长按或右键点击，弹出的菜单需自定义样式和内容。
+
+>  **说明：**
+>
+>  - 不支持在输入法类型窗口中使用bindContextMenu（默认子窗实现），详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>
+>  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名       | 类型                                               | 必填 | 说明                             |
+| ------------ | -------------------------------------------------- | ---- | -------------------------------- |
+| content      | [CustomBuilderT](ts-types.md#custombuildertt23)[\<ResponseType>](ts-appendix-enums.md#responsetype8)&nbsp;\|&nbsp; undefined  | 是   | 自定义菜单内容构造器。入参为触发菜单的方式，开发者可据此实现差异化的内容。当传入undefined时，解除绑定关系，无菜单弹出。           |
+| options      | [ContextMenuOptions](#contextmenuoptions10)        | 否   | 配置弹出菜单的参数。             |
+
+**返回值：**
+
+|类型|说明|
+|---|---|
+|T|返回当前组件。|
+
 ## MenuElement
 
 菜单项的图标、文本和交互信息。
@@ -1283,3 +1312,56 @@ struct Index {
 ```
 
 ![bindMenu-CustomBuilder](figures/bindMenuWithCustomBuilder.gif)
+
+### 示例19 （根据触发方式弹出不同内容的菜单）
+
+该示例通过在[bindContextMenu](#bindcontextmenu23)中传入CustomBuilderT\<ResponseType>给目标组件绑定菜单，组件会在UI函数中返回弹出菜单的触发方式，开发者可根据返回的触发方式实现差异化显示。
+
+从API version 23开始，新增了bindContextMenu入参类型为CustomBuilderT\<T>的接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State longPress: string = 'LONG_PRESS';
+  @State rightClick: string = 'RIGHT_CLICK';
+
+  @Builder
+  MenuBuilderWithParam(type: ResponseType) {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('Current ResponseType = ' + (type === 0 ? 'RIGHT_CLICK' : 'LONG_PRESS'))
+      Divider().height(10)
+      if (type === ResponseType.LongPress) {
+        Text('Item: ' + this.longPress)
+          .fontSize(20)
+          .width(200)
+          .height(20)
+          .textAlign(TextAlign.Center)
+      }
+      if (type === ResponseType.RightClick) {
+        Text('Item: ' + this.rightClick)
+          .fontSize(20)
+          .width(200)
+          .height(20)
+          .textAlign(TextAlign.Center)
+      }
+    }
+  }
+
+  build() {
+    Stack() {
+      Button('BindContextMenu长按和右键点击触发菜单')
+        .bindContextMenu(this.MenuBuilderWithParam, {
+          enableArrow: true,
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#f0f0f0')
+  }
+}
+
+```
+
+![bindContextMenuWithType](figures/bindContextMenuWithType.gif)
