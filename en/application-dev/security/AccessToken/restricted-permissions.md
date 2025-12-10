@@ -948,3 +948,21 @@ With this permission, the application can access public user paths without showi
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 22
+
+## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
+
+Allows an application to load shared libraries signed with binary certificates.
+
+<!--RP61--><!--RP61End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 20
+
+**Changelog**: This permission is available only to system applications in API versions 20 to 21. From API version 22, it's also available to normal applications.

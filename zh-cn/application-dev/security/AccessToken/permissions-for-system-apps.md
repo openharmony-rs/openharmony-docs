@@ -5152,22 +5152,6 @@
 
 **起始版本**：19
 
-## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
-
-允许HAP加载具有不同ownerid的独立二进制SO。
-
-该SO指具有开发者证书或AdHoc签名的独立二进制SO。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：PC/2in1
-
-**起始版本**：20
-
 ## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
 
 允许系统应用查询独立二进制程序的证书信息。
