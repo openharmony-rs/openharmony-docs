@@ -84,6 +84,7 @@ Web组件使用HTTPDNS的模式。
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 14
+
 **ArkTS-Sta起始版本：** 22
 
 | 名称 | 值 | 说明 |
