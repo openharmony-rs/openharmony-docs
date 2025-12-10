@@ -11,9 +11,9 @@
 
 声明与矩形网格对象相关的函数。
 
-**库：** libnative_drawing.so
+**引用文件：** <native_drawing/drawing_lattice.h>
 
-**引用文件：** native_drawing/drawing_lattice.h
+**库：** libnative_drawing.so
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

@@ -11,7 +11,7 @@
 
 声明与路径操作迭代器对象相关的函数。
 
-**引用文件：** native_drawing/drawing_path_iterator.h
+**引用文件：** <native_drawing/drawing_path_iterator.h>
 
 **库：** libnative_drawing.so
 
