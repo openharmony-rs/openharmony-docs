@@ -114,6 +114,4 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
 
 方式二：根据stride*height创建pixelMap，然后调用pixelMap的cropSync方法裁剪掉多余的像素。
 
-<!-- @[adjust_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
-
-方式三：将原始imgComponent.byteBuffer和stride信息一起传给支持stride的接口处理。
+<!-- @[adjust_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->
