@@ -918,3 +918,19 @@ This permission is applicable only to network connection or identification, not 
 **Device**: general devices
 
 **Since**: 22
+
+## ohos.permission.ACCESS_USER_FULL_DISK
+
+Allows an application to access public user paths without displaying any pop-up.
+
+With this permission, the application can access public user paths without showing pop-up each time.
+
+<!--RP60--><!--RP60End-->
+
+**Permission level**：system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 22
