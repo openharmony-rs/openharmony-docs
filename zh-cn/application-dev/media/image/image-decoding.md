@@ -191,7 +191,7 @@
 
 针对图片解码开发，有以下相关实例可供参考：
 
-- [图片编辑（ArkTS）](https://gitcode.com/openharmony/codelabs/blob/master/Media/ImageEdit)
+- [图片编辑（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEdit)
 
 - [图片编辑（JS）](https://gitcode.com/openharmony/codelabs/blob/master/Media/ImageEditorTemplate)
 
