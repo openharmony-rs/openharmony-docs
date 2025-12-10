@@ -12,10 +12,6 @@ The **Emitter** module provides the capabilities of sending and processing inter
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
-## Required Permissions
-
-None.
-
 ## emitter.on
 
 on(event: InnerEvent, callback: Callback\<EventData\>): void
@@ -655,7 +651,7 @@ Describes the event emit priority.
 
 | Name    | Type                           | Read Only| Optional| Description          |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
-| priority | [EventPriority](#eventpriority) | No  | Yes  | Event priority. The default value is **EventPriority.LOW**.|
+| priority | [EventPriority](#eventpriority) | No  | Yes  | Event priority. The default value is **EventPriority.LOW**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## GenericEventData<T\><sup>12+</sup>
 

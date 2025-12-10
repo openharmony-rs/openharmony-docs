@@ -122,7 +122,7 @@ In forcible dark mode, the high-brightness color value is converted to a color v
 | Disabled| No impact| - | The web page uses the color scheme supported by **color-scheme**.|
 | Enabled| Disabled| - | The web page uses the color scheme supported by **color-scheme** and the style defined in **@media (prefers-color-scheme: dark)**.|
 | Enabled| Enabled| Dark mode is supported| The web page uses the dark color scheme and the style defined in **@media (prefers-color-scheme: dark)**.|
-| Enabled| Enabled| Dark color is not supported| The web page converts the color value of the hight-brightness elements based on the algorithm. If a style is defined in **@media (prefers-color-scheme: dark)**, the color value is converted based on the defined style.|
+| Enabled| Enabled| Dark mode is not supported| The web page converts the color value of the hight-brightness elements based on the algorithm. If a style is defined in **@media (prefers-color-scheme: dark)**, the color value is converted based on the defined style.|
 
 The [forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9) API takes effect only when the web dark mode is enabled. In the following example, the application sets the web dark mode to follow the system. When the system dark mode is enabled, the web page enters the forcible dark mode.
 

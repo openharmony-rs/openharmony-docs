@@ -77,7 +77,7 @@ Describes the button style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                     | Type                                         | Read Only| Optional| Description                                                      |
+| Name                     | Type                                         | Read-Only| Optional| Description                                                      |
 | ------------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | type                      | [ButtonType](#buttontype)             | No  | Yes | Button display style.<br>Default value: **ButtonType.ROUNDED_RECTANGLE**.<br>API version 18 and later: The default value is **ButtonType.ROUNDED_RECTANGLE**. Versions earlier than API version 18: The default value is **ButtonType.Capsule**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | stateEffect               | boolean                                       | No  | Yes | Whether to enable the pressed state effect when the button is clicked.<br>**true**: Enable the pressed state effect. **false**: Disable the pressed state effect.<br>Default value: **true**.<br>**NOTE**<br>When the pressed state effect is enabled and a custom pressed state style is configured, the resulting color displayed after pressing is a composite blend of the original background color and the newly defined pressed state color.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -373,7 +373,7 @@ Enumerates the button types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type                                                        | Read Only| Optional| Description                                                        |
+| Name                | Type                                                        | Read-Only| Optional| Description                                                        |
 | -------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No  | Yes  | Display mode when the label text is too long. Text is clipped at the transition between words. To clip text in the middle of a word, add zero-width spaces between characters.<br>Default value: **TextOverflow.Ellipsis**|
 | maxLines             | number                                                       | No  | Yes  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. If there is extra text, you can use **overflow** to specify how it is displayed.<br>Default value: **1**<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the default value is used.|
@@ -436,7 +436,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   | Read Only | Optional| Description             |
+| Name | Type   | Read-Only | Optional| Description             |
 | ------ | ------ | ---------------- | ---------------- | ---------------- |
 | label | string | No| No| Text label of the button.<br>Note: If the text is longer than the width of the button, it is truncated.|
 | pressed | boolean | No| No| Whether the button is pressed.<br>**true**: pressed; **false**: not pressed.<br>Default value: **false**.<br>**NOTE**<br>This setting applies to the original button size, not to any new component constructed using the builder.|

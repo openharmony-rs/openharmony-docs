@@ -265,7 +265,7 @@ When all the data of the application is ready, the service starts to restore the
     const restoreApps: string[] = [
       "com.example.hiworld",
     ]
-    // You can obtain the capability file based on the actual situation. The following is an example only.
+    // You can obtain the capability file based on actual situation. The following is an example only.
     // You can also construct capability files as required.
     let fileData = await backup.getLocalCapabilities();
     await g_session.appendBundles(fileData.fd, restoreApps);

@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs.
 
@@ -2530,7 +2530,7 @@ Obtains the clipping shape for this RenderNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.clip
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
 
@@ -2830,7 +2830,7 @@ Obtains the metric unit used by attributes of this RenderNode.
 ```ts
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
-import { LengthMetricsUnit } from '@ohos.arkui.node';
+import { LengthMetricsUnit } from '@kit.ArkUI';
 
 // Extend RenderNode to configure the metric unit for node attributes.
 class BaseRenderNode extends RenderNode {

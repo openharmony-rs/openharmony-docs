@@ -14,6 +14,8 @@
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 如果ToolBarV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ToolBarV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ToolBarV2设置通用属性和通用事件。
+>
+> - 系统切换深浅色模式，工具栏背景色不支持自动切换。
 
 ## 导入模块
 
@@ -62,7 +64,7 @@ ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 
 | 名称                           | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                                                                  |
 | ---------------------------- | ----------------------------------------------- | -- | -- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| content                      | [ToolBarV2ItemText](#toolbarv2itemtext)         | 否  | 否 | 工具栏子项的文本。<br />装饰器类型：@Trace |                                                                                                                                                                                                           |
+| content                      | [ToolBarV2ItemText](#toolbarv2itemtext)         | 否  | 否 | 工具栏子项的文本。<br />装饰器类型：@Trace                                                                                                                                                                                                           |
 | action                       | [ToolBarV2ItemAction](#toolbarv2itemaction)     | 否  | 是  | 工具栏子项点击事件。 <br ></div>默认无点击事件。<br />装饰器类型：@Trace                                                                                                                                                                                      |
 | icon                         | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | 否  | 是 | 工具栏子项的图标。<br ></div>默认不显示图标。<br />装饰器类型：@Trace                                                                                                                                                                                        |
 | state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | 否  | 是 | 工具栏子项的状态。<br />默认为ToolBarV2ItemState.ENABLE。<br />装饰器类型：@Trace                                                                                                                                                                           |
@@ -267,9 +269,6 @@ backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
 自定义绘制工具栏背景色的接口，若重载该方法则可进行工具栏背景色的自定义绘制。
 
-> **说明：**
->
-> 通过该接口设置后，如果系统切换深浅色模式，工具栏背景色不支持自动切换。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **shape** module provides **clipShape** and **maskShape** APIs to allow you to pass in various shapes.
 
@@ -181,7 +181,7 @@ Sets the radius width of the rectangle border corners.
 
 | Name        | Type                                              | Mandatory| Description                                        |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rWidth | number  \|  string | Yes| Radius width of the rectangle border corners.<br> If the value is of the number type, the value range is [0, +∞). If the value is of the string type, the value range is [Length](arkui-ts/ts-types.md#length).| 
+| rWidth | number  \|  string | Yes| Radius width of the rectangle border corners.<br> When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkui-ts/ts-types.md#length) type specification.| 
 
 **Return value**
 
@@ -205,7 +205,7 @@ Sets the radius height of the rectangle border corners.
 
 | Name        | Type                                              | Mandatory| Description                                        |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rHeight | number  \|  string | Yes| Radius height of the rectangle border corners.<br> If the value is of the number type, the value range is [0, +∞). If the value is of the string type, the value range is [Length](arkui-ts/ts-types.md#length).|
+| rHeight | number  \|  string | Yes| Radius height of the rectangle border corners.<br> When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkui-ts/ts-types.md#length) type specification.|
 
 **Return value**
 

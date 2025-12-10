@@ -18,7 +18,7 @@ The target is not a custom component instance or V2 class instance.
 
 **Description**
 
-This error code is reported when the target object parameter for [addMonitor](./js-apis-StateManagement.md) or [clearMonitor](./js-apis-StateManagement.md) is invalid.
+This error code is reported when the target object parameter for [addMonitor](./js-apis-stateManagement.md#addmonitor20) or [clearMonitor](./js-apis-stateManagement.md#clearmonitor20) is invalid.
 
 **Possible Causes**
 

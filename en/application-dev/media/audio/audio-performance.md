@@ -23,7 +23,7 @@ Different performance metrics often cannot be optimized simultaneously due to ha
 
 Therefore, the audio channel in the system is not static. To cater to different user scenarios, the system offers a variety of channel options with different focuses: some prioritize power saving, others focus on response speed, and some aim for a balanced approach.
 
-The choice of channels depends on the scenario, but the system cannot directly perceive the specific use case for the audio functionality developed by the application. Therefore, you need to accurately provide the corresponding scenario information through **StreamUsage** and **SourceType**. The system selects the default audio channel configuration based on the scenario for the output or input channel. If the default configuration is insufficient, you can also adjust it through separate settings APIs.
+The system cannot directly perceive the specific use case for the audio functionality developed by the application. Therefore, you should specify [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) and [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) to provide the corresponding scenario information. The system selects the default audio channel configuration based on the scenario for the output or input channel. If the default configuration is insufficient, you can also adjust it through separate settings APIs.
 
 ### Low-Latency Audio Playback and Recording
 

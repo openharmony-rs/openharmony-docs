@@ -3365,8 +3365,7 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckResult((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
             console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
           })
       }
@@ -3403,8 +3402,7 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckFinish((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
             console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
           })
       }
@@ -4740,6 +4738,6 @@ onRenderExited(callback: (event?: { detail: object }) => boolean)
 
 **参数：**
 
-| 参数名              | 类型                                     | 必填   | 说明             |
+| 参数名  | 类型  | 必填  | 说明 |
 | ---------------- | ---------------------------------------- | ---- | ---------------- |
 | callback |(event?: { detail: object }) => boolean | 是    | 渲染过程退出时触发。 |

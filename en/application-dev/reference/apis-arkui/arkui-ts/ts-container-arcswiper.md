@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ArcSwiper** component is designed for circular screens to display child components in a carousel-like manner.
 
@@ -578,13 +578,9 @@ Implements the proxy object returned during the execution of the custom page tra
 
 >**NOTE**
 >
->For example, when the currently selected child component's index is **0**, in the animation process of switching from page 0 to page 1, a callback will be triggered for all pages within the viewport on each frame.
->When there are two pages, page 0 and page 1, in the viewport, two callbacks will be triggered per frame. The first callback will have **selectedIndex** as **0**, **index** as **0**, **position** representing the movement ratio of page 0 relative to its position before the animation started at the current frame,
->and **mainAxisLength** representing the length of page 0 along the main axis. The second callback will still have **selectedIndex** as **0**, **index** as **1**, **position** representing the movement ratio of page 1 relative to page 0 before the animation started at the current frame,
->and **mainAxisLength** representing the length of page 1 along the main axis.
+> - For example, when the index of the currently selected child component is 0, during a transition animation from page 0 to page 1, the callback is triggered for all pages within the viewport on every frame. When pages 0 and 1 are both in the viewport, the callback is triggered twice per frame. In the first callback, selectedIndex is 0, index is 0, position is the moving ratio of page 0 in the current frame to page 0 before the animation starts, and mainAxisLength is the length of page 0 along the main axis. In the second callback, selectedIndex is still 0, index is 1, position is the moving ratio of page 1 in the current frame to page 0 before the animation starts, and mainAxisLength is the length of page 1 along the main axis.
 >
->If the animation curve is a spring interpolation curve, during the transition animation from page 0 to page 1, due to the position and velocity when the user lifts their finger off the screen, animation may overshoot and slide past to page 2, then bounce back to page 1.
->Throughout this process, a callback is triggered for pages 1 and 2 within the viewport on every frame.
+> - If the animation curve is a spring interpolation curve, during the transition animation from page 0 to page 1, due to the position and velocity when the user lifts their finger off the screen, animation may overshoot and slide past to page 2, then bounce back to page 1. Throughout this process, a callback is triggered for pages 1 and 2 within the viewport on every frame.
 
 
 ### finishTransition

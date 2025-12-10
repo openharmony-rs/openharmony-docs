@@ -24,3 +24,5 @@ The **ffrt_queue_attr_t** struct describes a serial queue attribute.
 | Name| Description|
 | -- | -- |
 | uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Storage size of a serial queue attribute.|
+
+

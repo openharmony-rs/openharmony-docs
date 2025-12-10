@@ -46,7 +46,7 @@
       - [Enums](arkts-apis-uicontext-e.md)
       - [Types](arkts-apis-uicontext-t.md)
     - [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)
-    - [@ohos.arkui.StateManagement (State Management)](js-apis-StateManagement.md)
+    - [@ohos.arkui.StateManagement (State Management)](js-apis-stateManagement.md)
     - [@ohos.curves (Interpolation Calculation)](js-apis-curve.md)
     - [@ohos.font (Custom Font Registration)](js-apis-font.md)
     - [@ohos.matrix4 (Matrix Transformation)](js-apis-matrix4.md)
@@ -708,7 +708,7 @@
 - Error Codes<!--arkui-arkts-errcode-->
   - UI<!--arkui-ui-arkts-errcode-->
     - [API Call Error Codes](errorcode-internal.md)
-    - [promptAction Error Codes](errorcode-promptAction.md)
+    - [Popup Window Error Codes](errorcode-promptAction.md)
     - [Router Error Codes](errorcode-router.md)
     - [Drag Event Error Codes](errorcode-drag-event.md)
     - [AI Image Analyzer Error Codes](arkui-ts/errorcode-image-analyzer.md)

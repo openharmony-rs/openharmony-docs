@@ -54,12 +54,12 @@ ChipOptions定义Chip的样式及具体式样参数。
 | size            | [ChipSize](#chipsize) \| [SizeOptions](ts-types.md#sizeoptions) | 否  | 是  | Chip尺寸。<br/>默认值：ChipSize.NORMAL<br/>SizeOptions类型参数不支持百分比设置，异常值按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：[适老化](../../../ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。 |
 | enabled         | boolean                                                      | 否  | 是  | Chip是否可选中。<br>默认值：true。<br>true：操作块可选中；false：操作块不可选中。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activated<sup>12+</sup>    | boolean                                        | 否  | 是  | Chip是否为激活态。<br>默认值：false。<br>true：操作块为激活态；false：操作块为非激活态。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| prefixIcon      | [PrefixIconOptions](#prefixiconoptions)                      | 否  | 是  | 前缀图标属性。<br>默认值：不显示前缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| prefixSymbol<sup>12+</sup>  | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | 否  | 是  | 前缀图标属性，symbol类型。<br>默认值：不显示前缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| prefixIcon      | [PrefixIconOptions](#prefixiconoptions)                      | 否  | 是  | 前缀图标属性。<br>默认值：不显示前缀图标。<br>值为undefined时，按默认值处理。<br/> prefixIcon和prefixSymbol同时设置时，显示prefixSymbol的效果，prefixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| prefixSymbol<sup>12+</sup>  | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | 否  | 是  | 前缀图标属性，symbol类型。<br>默认值：不显示前缀图标。<br>值为undefined时，按默认值处理。<br/> prefixIcon和prefixSymbol同时设置时，显示prefixSymbol的效果，prefixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | label           | [LabelOptions](#labeloptions)                                | 否  | 否  | 文本属性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| suffixIcon      | [SuffixIconOptions](#suffixiconoptions)                      | 否  | 是  | 后缀图标属性。<br>默认值：不显示后缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| suffixSymbol<sup>12+</sup>   | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | 否  | 是  | 后缀图标属性，symbol类型。<br>默认值：不显示后缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | 否 | 是 | symbol类型后缀图标属性的无障碍朗读功能属性。<br>默认值：不显示后缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| suffixIcon      | [SuffixIconOptions](#suffixiconoptions)                      | 否  | 是  | 后缀图标属性。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br/> suffixIcon和suffixSymbol同时设置时，显示suffixSymbol的效果，suffixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| suffixSymbol<sup>12+</sup>   | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | 否  | 是  | 后缀图标属性，symbol类型。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br/> suffixIcon和suffixSymbol同时设置时，显示suffixSymbol的效果，suffixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | 否 | 是 | symbol类型后缀图标属性的无障碍朗读功能属性。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否  | 是  | Chip背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activatedBackgroundColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)          | 否  | 是  | Chip激活时的背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_emphasize')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | borderRadius    | [Dimension](ts-types.md#dimension10)                         | 否  | 是  | Chip背景圆角半径大小，不支持百分比。<br/>默认值：$r('sys.float.ohos_id_corner_radius_button')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -479,13 +479,6 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
-        prefixIcon: {
-          // 'app.media.chips'仅作示例，请替换为实际使用图片。
-          src: $r('app.media.chips'),
-          size: { width: 16, height: 16 },
-          fillColor: Color.Blue,
-          activatedFillColor: $r('sys.color.ohos_id_color_text_primary_contrary')
-        },
         prefixSymbol: {
           normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Green]),
           activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Red]),

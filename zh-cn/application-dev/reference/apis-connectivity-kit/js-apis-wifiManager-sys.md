@@ -34,7 +34,7 @@ enableSemiWifi(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -60,6 +60,10 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 设置是否始终允许扫描。
 
+- 该接口控制设备是否可以在WLAN开关关闭时支持热点扫描功能。
+- 启用后即使WLAN开关关闭，系统仍可以扫描附近的WLAN热点。
+- 主要用于支持网络发现和位置定位等场景。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
@@ -68,7 +72,7 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isScanAlwaysAllowed | boolean | 是 | 是否始终允许扫描。true:允许扫描，&nbsp;false:不允许扫描 |
 
@@ -76,7 +80,7 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
   | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -109,7 +113,7 @@ getScanAlwaysAllowed(): boolean
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | boolean| 是否始终允许扫描。 true 表示允许触发扫描，false表示在禁用wifi时不允许触发扫描。|
 
@@ -117,7 +121,7 @@ getScanAlwaysAllowed(): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -144,7 +148,7 @@ WLAN配置信息。
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | creatorUid | number | 否 | 是 | 创建用户的ID。 <br /> **系统接口：** 此接口为系统接口。 |
 | disableReason | number | 否 | 是 | 禁用原因： <br /> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br /> 3 - DHCP失败，4 - 暂时无互联网连接 <br /> 5 - 认证无凭据，6 - 永久无互联网连接 <br /> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br /> 9 - 认证无订阅，10 - 私有EAP认证错误 <br /> 11 - 未找到网络，12 - 连续失败 <br /> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br /> 15 - 解除关联原因，16 - 禁用网络选择最大值<br /> **系统接口：** 此接口为系统接口。 |
@@ -153,6 +157,7 @@ WLAN配置信息。
 | randomMacAddr | string | 否 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 |
 | ipType | [IpType](#iptype9) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
 | staticIp | [IpConfig](#ipconfig9) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
+| startWifiDetection<sup>21+</sup> | void | 否 | 是 | 发起一次WiFi网络探测。<br /> **系统接口：** 此接口为系统接口。|
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
 | configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
@@ -182,7 +187,7 @@ IP配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | number | 否 | 否 | IP地址。 |
 | gateway | number | 否 | 否 | 网关。 |
@@ -199,12 +204,12 @@ Wifi 代理配置。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | proxyMethod | ProxyMethod | 否 | 是 | 代理方法。 |
 | pacWebAddress | string | 否 | 是 | 自动配置代理的PAC web 地址。 |
 | serverHostName | string | 否 | 是 | 手动配置代理的服务器主机名。 |
-| serverPort | number | 是 | 否 | 手动配置代理的服务器端口。 |
+| serverPort | number | 否 | 是 | 手动配置代理的服务器端口。 |
 | exclusionObjects | string | 否 | 是 | 手动配置代理的排除对象，对象用“,”分隔。|
 
 ## ProxyMethod<sup>10+</sup>
@@ -236,7 +241,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig9) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
@@ -244,30 +249,30 @@ connectToDevice(config: WifiDeviceConfig): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled.|
+| 2501001  | WLAN STA disabled.|
 
 **示例：**
 ```ts
-import { wifiManager } from '@kit.ConnectivityKit';
+	import { wifiManager } from '@kit.ConnectivityKit';
 
-try {
-	let config:wifiManager.WifiDeviceConfig = {
-		ssid : "****",
-		preSharedKey : "****",
-		securityType : 3
-	}
-	wifiManager.connectToDevice(config);
+	try {
+		let config:wifiManager.WifiDeviceConfig = {
+			ssid : "****",
+			preSharedKey : "****",
+			securityType : 3
+		}
+		wifiManager.connectToDevice(config);
 				
-} catch (error) {
-	console.error("failed:" + JSON.stringify(error));
-}
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
 ```
 
 ## WifiLinkedInfo<sup>9+</sup>
@@ -324,7 +329,7 @@ getSupportedFeatures(): number
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | number | 支持的特性值。 |
 
@@ -347,7 +352,7 @@ getSupportedFeatures(): number
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -367,6 +372,7 @@ try {
 
 ```
 
+
 ## wifiManager.getWifiDetailState<sup>12+</sup>
 
 getWifiDetailState(): WifiDetailState
@@ -381,7 +387,7 @@ getWifiDetailState(): WifiDetailState
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | [WifiDetailState](#wifidetailstate12) | Wifi枚举状态。 |
 
@@ -389,7 +395,7 @@ getWifiDetailState(): WifiDetailState
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -444,7 +450,7 @@ reassociate(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -479,7 +485,7 @@ reconnect(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -512,13 +518,13 @@ updateNetwork(config: WifiDeviceConfig): number
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfig9) | 是 | WLAN配置信息。 |
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | number | 返回更新的网络配置ID，如果值为-1表示更新失败。 |
 
@@ -526,7 +532,7 @@ updateNetwork(config: WifiDeviceConfig): number
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -566,7 +572,7 @@ disableNetwork(netId: number): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | netId | number | 是 | 网络配置ID。 |
 
@@ -574,7 +580,7 @@ disableNetwork(netId: number): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -589,9 +595,53 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
 	let netId = 0;
-	wifiManager.disableNetwork(netId);		
+	wifiManager.disableNetwork(netId);	
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+	console.error(`failed: ${JSON.stringify(error)}`);
+}
+```
+
+## wifiManager.disableNetwork<sup>23+</sup>
+
+disableNetwork(netId: int, blockDuration: int): void
+
+禁用网络连接，将已连接的网络断开，且在设置的时间范围内无法自动回连。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | netId | int | 是 | 网络配置ID。 |
+  | blockDuration | int | 是 | 禁用网络时长，单位：秒。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码 | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+| 2501001  | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+	let netId = 0;
+	let blockDuration = 300;
+	wifiManager.disableNetwork(netId, blockDuration);	
+} catch (error) {
+	console.error(`failed: ${JSON.stringify(error)}`);
 }
 ```
 
@@ -611,7 +661,7 @@ removeAllNetwork(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -644,7 +694,7 @@ get5GChannelList(): Array&lt;number&gt;
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | &nbsp;Array&lt;number&gt; | 设备支持的5G信道列表。 |
 
@@ -652,7 +702,7 @@ get5GChannelList(): Array&lt;number&gt;
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -686,7 +736,7 @@ getDisconnectedReason(): DisconnectedReason
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -694,7 +744,7 @@ getDisconnectedReason(): DisconnectedReason
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | [DisconnectedReason](#disconnectedreason-10) | 最近断开的原因 |
 
@@ -712,7 +762,7 @@ try {
 
 ## DisconnectedReason <sup>10+</sup>
 
-表示wifi断开原因的枚举。
+表示WLAN断开原因的枚举，用于诊断网络连接问题和优化连接策略。
 
 **系统接口：** 此接口为系统接口。
 
@@ -728,9 +778,9 @@ try {
 
 startPortalCertification(): void
 
-**系统接口：** 此接口为系统接口。
+启动Portal认证流程，用于处理需要Web页面认证的公共WLAN网络（如酒店、机场、咖啡厅等场所的网络）。
 
-启动portal认证。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -740,7 +790,7 @@ startPortalCertification(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -760,13 +810,48 @@ try {
 }
 ```
 
+## wifiManager.startWifiDetection<sup>21+</sup>
+
+startWifiDetection(): void
+
+发起WiFi网络探测。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |错误信息 |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed. |
+| 2501001  | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+	wifiManager.startWifiDetection();
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+```
+
 ## wifiManager.enableHiLinkHandshake<sup>12+</sup>
 
 enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDeviceConfig): void
 
-**系统接口：** 此接口为系统接口。
-
 设置是否使能hiLink。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -774,7 +859,7 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isHiLinkEnable | boolean | 是 | 是否使能hiLink。true:使能，&nbsp;false:去使能。 |
 | bssid | string | 是 | 热点的mac地址，例如：00:11:22:33:44:55。 |
@@ -784,7 +869,7 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -829,7 +914,7 @@ factoryReset(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -863,7 +948,7 @@ enableHotspot(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -897,7 +982,7 @@ disableHotspot(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -919,7 +1004,7 @@ try {
 
 isHotspotDualBandSupported(): boolean
 
-检查在某些情况下是否能够操作Wi-Fi热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
+检查当前设备的WLAN热点功能是否支持双频段（同时支持2.4GHz和5GHz频段）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -929,7 +1014,7 @@ isHotspotDualBandSupported(): boolean
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | true:支持，&nbsp;false:不支持。|
 
@@ -937,7 +1022,7 @@ isHotspotDualBandSupported(): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -960,7 +1045,7 @@ try {
 
 isOpenSoftApAllowed(): boolean
 
-热点是否支持双频。
+检查在某些情况下是否能够操作WLAN热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
 
 **系统接口：** 此接口为系统接口。
 
@@ -970,7 +1055,7 @@ isOpenSoftApAllowed(): boolean
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | true:允许，&nbsp;false:不允许。|
 
@@ -978,7 +1063,7 @@ isOpenSoftApAllowed(): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1001,7 +1086,7 @@ try {
 
 setHotspotConfig(config: HotspotConfig): void
 
-设置热点配置信息。
+设置WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1011,7 +1096,7 @@ setHotspotConfig(config: HotspotConfig): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | config | [HotspotConfig](#hotspotconfig9) | 是 | 热点配置信息。 |
 
@@ -1019,7 +1104,7 @@ setHotspotConfig(config: HotspotConfig): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1055,7 +1140,7 @@ try {
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。 |
 | securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| 否 | 否 | 加密类型。 |
@@ -1069,7 +1154,7 @@ try {
 
 getHotspotConfig(): HotspotConfig
 
-获取热点配置信息。
+获取WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1079,7 +1164,7 @@ getHotspotConfig(): HotspotConfig
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | [HotspotConfig](#hotspotconfig9) | 热点的配置信息。 |
 
@@ -1087,7 +1172,7 @@ getHotspotConfig(): HotspotConfig
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1110,7 +1195,7 @@ try {
 
 getStations(): &nbsp;Array&lt;StationInfo&gt;
 
-获取连接的设备。
+获取当前连接到本设备热点的所有设备信息列表。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1124,7 +1209,7 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | &nbsp;Array&lt;[StationInfo](#stationinfo9)&gt; | 连接的设备数组。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的macAddress为真实设备地址，否则为随机设备地址。 |
 
@@ -1132,7 +1217,7 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1153,13 +1238,13 @@ try {
 
 ## StationInfo<sup>9+</sup>
 
-接入的设备信息。
+接入的设备信息。包含连接到WLAN网络的设备详细信息。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | name | string | 否 | 否 | 设备名称。 |
 | macAddress | string | 否 | 否 | MAC地址。 |
@@ -1180,7 +1265,7 @@ addHotspotBlockList(stationInfo: StationInfo)
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | stationInfo | [StationInfo](#stationinfo9) | 是 | 将添加到热点的阻止列表中的设备。 |
 
@@ -1188,7 +1273,7 @@ addHotspotBlockList(stationInfo: StationInfo)
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1228,7 +1313,7 @@ delHotspotBlockList(stationInfo: StationInfo)
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | stationInfo | [StationInfo](#stationinfo9) | 是 | 将从热点的阻止列表中删除的设备。 |
 
@@ -1236,7 +1321,7 @@ delHotspotBlockList(stationInfo: StationInfo)
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1265,7 +1350,7 @@ try {
 
 getHotspotBlockList(): Array&lt;StationInfo&gt;
 
-获取热点的阻止列表。
+获取当前WLAN热点的黑名单设备列表。该接口返回被热点拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1275,7 +1360,7 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | &nbsp;Array&lt;[StationInfo](#stationinfo9)&gt; | 热点的阻止列表。 |
 
@@ -1283,7 +1368,7 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
   | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1308,7 +1393,9 @@ try {
 
 deletePersistentGroup(netId: number): void
 
-删除永久组。
+删除指定网络ID的永久WLAN组配置。该接口用于清除已保存的WLAN网络配置信息，使其不再自动连接。
+
+- 根据网络ID删除之前与P2P设备建立的永久组信息，后续与该P2P设备进行P2P连接时需要重新进行P2P协商。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1319,7 +1406,7 @@ deletePersistentGroup(netId: number): void
 **参数：**
 
 
-  | **参数名** | **类型** | 必填 | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | netId | number | 是 | 组的ID。 |
 
@@ -1327,7 +1414,7 @@ deletePersistentGroup(netId: number): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1374,7 +1461,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1404,7 +1491,7 @@ wifiManager.getP2pGroups().then(data => {
 
 getP2pGroups(callback: AsyncCallback&lt;Array&lt;WifiP2pGroupInfo&gt;&gt;): void
 
-获取创建的所有P2P群组信息，使用callback方式作为异步方法。
+获取创建的所有P2P群组信息，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1426,7 +1513,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1448,7 +1535,7 @@ setDeviceName(devName: string): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | devName | string | 是 | 设备名称。 |
 
@@ -1456,7 +1543,7 @@ setDeviceName(devName: string): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1477,11 +1564,12 @@ try {
 }
 ```
 
+
 ## wifiManager.on('streamChange')<sup>9+</sup>
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
-注册WIFI流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册WLAN流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1491,7 +1579,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
 | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回0:无，1：向下，2：向上，3：双向。 |
@@ -1500,7 +1588,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1512,7 +1600,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WIFI流变更事件。
+取消注册WLAN流变更事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1522,7 +1610,7 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
 | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回0:无，1：向下，2：向上，3：双向。 |
@@ -1531,7 +1619,7 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1554,11 +1642,12 @@ wifiManager.on("streamChange", recvStreamChangeFunc);
 wifiManager.off("streamChange", recvStreamChangeFunc);
 
 ```
+
 ## wifiManager.on('deviceConfigChange')<sup>9+</sup>
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
-注册WIFI设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册WLAN设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1568,7 +1657,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"deviceConfigChange"字符串。 |
 | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回值为 0: 添加配置。1: 更改配置。2: 删除配置。 |
@@ -1577,7 +1666,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1589,7 +1678,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WIFI设备配置更改事件。
+取消注册WLAN设备配置更改事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1599,7 +1688,7 @@ off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"deviceConfigChange"字符串。 |
 | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回值为 0: 添加配置。1: 更改配置。2: 删除配置。|
@@ -1608,7 +1697,7 @@ off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1636,7 +1725,7 @@ wifi.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
-注册wifi热点sta加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。
+注册WLAN热点STA加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1646,7 +1735,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
 | callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。 |
@@ -1655,7 +1744,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1667,7 +1756,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta加入事件。
+取消注册WLAN热点的STA加入事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1677,7 +1766,7 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
 | callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
@@ -1686,7 +1775,7 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1714,7 +1803,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
-注册wifi热点sta离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。
+注册WLAN热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1724,16 +1813,16 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf]&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1745,7 +1834,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta离开事件。
+取消注册WLAN热点STA离开事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1755,16 +1844,16 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-| callback | Callback&lt;StationInf]&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |

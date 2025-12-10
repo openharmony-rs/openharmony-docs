@@ -81,7 +81,7 @@ static show(options?: CalendarDialogOptions): void
 @Entry
 @Component
 struct CalendarPickerDialogExample {
-  private selectedDate: Date = new Date('2024-04-23');
+  private selectedDate: Date = new Date('2024-03-24');
 
   build() {
     Column() {
@@ -95,13 +95,16 @@ struct CalendarPickerDialogExample {
             backgroundBlurStyle: BlurStyle.NONE,
             shadow: ShadowStyle.OUTER_FLOATING_SM,
             onAccept: (value) => {
+              // 点击弹窗中的“确定”按钮时触发该回调，value表示选中的日期值。
               this.selectedDate = value;
               console.info("calendar onAccept:" + JSON.stringify(value));
             },
             onCancel: () => {
+              // 点击弹窗中的“取消”按钮时触发该回调。
               console.info("calendar onCancel");
             },
             onChange: (value) => {
+              // 选择弹窗中日期使当前选中项改变时触发该回调，value表示选中的日期值。
               console.info("calendar onChange:" + JSON.stringify(value));
             },
             onDidAppear: () => {
@@ -275,7 +278,7 @@ struct CalendarPickerDialogExample {
 struct CalendarPickerDialogExample {
   private selectedDate: Date = new Date('2025-01-01');
   private startDate: Date = new Date('2024-01-10');
-  private endDate: Date = new Date('2025-1-10');
+  private endDate: Date = new Date('2025-01-10');
 
   build() {
     Column() {
@@ -341,7 +344,8 @@ struct CalendarPickerDialogExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
-      Image($r('app.media.bg'))
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg')) 
       Column() {
         Button("Show CalendarPicker Dialog")
           .margin(20)
@@ -379,6 +383,7 @@ struct CalendarPickerDialogExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("Show CalendarPicker Dialog")

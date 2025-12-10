@@ -355,7 +355,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
-根据智慧分析类型获取指定分析结果数据。
+根据智慧分析类型获取指定分析结果数据。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -424,7 +424,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getFaceId(): Promise\<string>
 
-获取人像相册或合影相册的封面人脸标识。
+获取人像相册或合影相册的封面人脸标识。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 

@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -138,7 +138,7 @@ Defines the pointer style.
 
 |Type|Description|
 | -- | -- |
-|[pointer.PointerStyle](../apis-input-kit/js-apis-pointer.md#pointerstyle) |Defines the pointer style.|
+|[pointer.PointerStyle](../apis-input-kit/js-apis-pointer.md#pointerstyle) |Pointer style.|
 
 ## Context<sup>12+</sup>
 

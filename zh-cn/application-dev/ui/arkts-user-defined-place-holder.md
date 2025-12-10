@@ -83,7 +83,8 @@ import { FrameNode, NodeController, Size, UIContext } from '@kit.ArkUI';
 import { getOrCreateNode } from "./common";
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TEST_TAG: string = "NodeContainer";
+const TAG: string = "NodeContainer";
+const DOMAIN = 0xF811;
 
 class MyNodeController extends NodeController {
   private isShow: boolean = false;

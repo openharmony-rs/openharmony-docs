@@ -24,3 +24,5 @@ The **ffrt_condattr_t** struct describes a condition variable attribute.
 | Name| Description|
 | -- | -- |
 | long storage | Storage size of a condition variable attribute.|
+
+

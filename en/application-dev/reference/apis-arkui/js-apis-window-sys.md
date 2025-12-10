@@ -1015,6 +1015,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300004  | This operation is not accessible.             |
 
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';

@@ -162,25 +162,25 @@ static show(options?: TextPickerDialogOptions)
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button("TextPickerDialog:" + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
-              value: this.v,
+              value: this.selectedValue,
               defaultPickerItemHeight: 40,
               onAccept: (value: TextPickerResult) => {
                 // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
+                this.selectedValue = value.value as string;
                 console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
               },
               onCancel: () => {
@@ -226,12 +226,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button("TextPickerDialog:" + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -269,7 +269,7 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
+                this.selectedValue = value.value as string;
                 console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
               },
               onCancel: () => {
@@ -313,12 +313,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button("TextPickerDialog:" + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -332,7 +332,7 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
+                this.selectedValue = value.value as string;
                 console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
               },
               onCancel: () => {
@@ -379,12 +379,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button("TextPickerDialog:" + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -397,7 +397,7 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
+                this.selectedValue = value.value as string;
                 console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
               }
             });
@@ -421,12 +421,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button("TextPickerDialog:" + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -443,7 +443,7 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
+                this.selectedValue = value.value as string;
                 console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
               }
             });
@@ -467,12 +467,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button("TextPickerDialog:" + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -486,7 +486,7 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
+                this.selectedValue = value.value as string;
                 console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
               }
             });
@@ -511,25 +511,25 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button("TextPickerDialog:" + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
-              value: this.v,
+              value: this.selectedValue,
               canLoop: false,
               onAccept: (value: TextPickerResult) => {
                 // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
+                this.selectedValue = value.value as string;
                 console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
               }
             });
@@ -591,6 +591,7 @@ struct TextPickerExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("TextPickerDialog")
@@ -628,6 +629,7 @@ struct TextPickerExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("TextPickerDialog")

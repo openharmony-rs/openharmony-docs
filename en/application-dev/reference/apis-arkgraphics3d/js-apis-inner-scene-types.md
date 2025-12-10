@@ -199,7 +199,7 @@ Rotation of an object in 3D space. The value is of the [Vec3](#vec3) type.
 ## Scale3
 type Scale3 = Vec3
 
-Scaling of an object in 3D space. The type is [Vec3](#vec3).
+Scaling of an object in 3D space. The value is of the [Vec3](#vec3) type.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 

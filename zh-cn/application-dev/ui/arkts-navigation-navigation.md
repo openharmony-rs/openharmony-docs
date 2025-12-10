@@ -62,7 +62,9 @@ Navigation组件通过mode属性设置页面的显示模式。
   将mode属性设置为NavigationMode.Split，Navigation组件即可设置为分栏显示模式。
 
 
-  ```ts
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0x0000;
   @Entry
   @Component
   struct NavigationExample {
@@ -70,8 +72,8 @@ Navigation组件通过mode属性设置页面的显示模式。
       'value': "func",
       'icon': "./image/ic_public_highlights.svg",  // 当前目录image文件夹下的图标资源
       'action': () => {}
-    }
-    @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+    };
+    @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
     private arr: number[] = [1, 2, 3];
 
     @Builder
@@ -87,7 +89,7 @@ Navigation组件通过mode属性设置页面的显示模式。
 
     build() {
       Column() {
-        Navigation(this.pageInfos) {
+        Navigation(this.navPathStack) {
           TextInput({ placeholder: 'search...' })
             .width("90%")
             .height(40)
@@ -105,7 +107,7 @@ Navigation组件通过mode属性设置页面的显示模式。
                   .fontWeight(500)
                   .textAlign(TextAlign.Center)
                   .onClick(() => {
-                    this.pageInfos.pushPath({ name: "NavDestinationTitle" + item });
+                    this.navPathStack.pushPath({ name: 'NavDestinationTitle' + item });
                   })
               }
             }, (item: number) => item.toString())
@@ -149,8 +151,8 @@ Navigation组件通过mode属性设置页面的显示模式。
   // PageOne.ets
   @Component
   export struct pageOneTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-
+    @Consume('navPathStack') navPathStack: NavPathStack;
+    context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
         Column() {
@@ -158,8 +160,10 @@ Navigation组件通过mode属性设置页面的显示模式。
         }.width('100%').height('100%')
       }.title("NavDestinationTitle1")
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
+        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+          JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -168,8 +172,8 @@ Navigation组件通过mode属性设置页面的显示模式。
   // PageTwo.ets
   @Component
   export struct pageTwoTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-
+    @Consume('navPathStack') navPathStack: NavPathStack;
+    context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
         Column() {
@@ -177,8 +181,10 @@ Navigation组件通过mode属性设置页面的显示模式。
         }.width('100%').height('100%')
       }.title("NavDestinationTitle2")
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
+        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+          JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -187,8 +193,8 @@ Navigation组件通过mode属性设置页面的显示模式。
   // PageThree.ets
   @Component
   export struct pageThreeTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-
+    @Consume('navPathStack') navPathStack: NavPathStack;
+    context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
         Column() {
@@ -196,8 +202,10 @@ Navigation组件通过mode属性设置页面的显示模式。
         }.width('100%').height('100%')
       }.title("NavDestinationTitle3")
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
+        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+          JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -256,44 +264,52 @@ Navigation组件通过mode属性设置页面的显示模式。
 
 ![菜单栏2](figures/菜单栏2.jpg)
 
-```ts
-let TooTmp: NavigationMenuItem = {'value': "", 'icon': "./image/ic_public_highlights.svg", 'action': ()=> {}}
-Navigation() {
-  // ...
-}
-.menus([TooTmp,
-  TooTmp,
-  TooTmp])
-```
+   ``` TypeScript
+   let toolTmp: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
+     'action': () => {}
+   };
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         .menus([toolTmp, toolTmp, toolTmp])
+   ```
 
 图片也可以引用resources中的资源。
 
-```ts
-let TooTmp: NavigationMenuItem = {'value': "", 'icon': "resources/base/media/ic_public_highlights.svg", 'action': ()=> {}}
-Navigation() {
-  // ...
-}
-.menus([TooTmp,
-  TooTmp,
-  TooTmp])
-```
+   ``` TypeScript
+   let toolTmp: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'resources/base/media/ic_public_add.svg',
+     'action': () => {}
+   };
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         .menus([toolTmp, toolTmp, toolTmp])
+   ```
 
 **图6** 设置了4个图标的菜单栏  
 
 ![菜单栏](figures/菜单栏.jpg)
 
-```ts
-let TooTmp: NavigationMenuItem = {'value': "", 'icon': "./image/ic_public_highlights.svg", 'action': ()=> {}}
-Navigation() {
-  // ...
-}
-// 竖屏最多支持显示3个图标，多余的图标会被放入自动生成的更多图标。
-.menus([TooTmp,
-  TooTmp,
-  TooTmp,
-  TooTmp])
-```
-
+   
+   ``` TypeScript
+   let toolTmp: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
+     'action': () => {}
+   };
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         // 竖屏最多支持显示3个图标，多余的图标会被放入自动生成的更多图标
+         .menus([toolTmp, toolTmp, toolTmp, toolTmp])
+   ```
 
 ## 设置工具栏
 
@@ -304,14 +320,19 @@ Navigation() {
 
 ![free3](figures/free3.jpg)
 
-```ts
-let TooTmp: ToolbarItem = {'value': "func", 'icon': "./image/ic_public_highlights.svg", 'action': ()=> {}};
-let TooBar: ToolbarItem[] = [TooTmp,TooTmp,TooTmp];
-Navigation() {
-  // ...
-}
-.toolbarConfiguration(TooBar)
-```
+   ``` TypeScript
+   let toolTmp: ToolbarItem = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',
+     'action': () => {}
+   };
+   let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         .toolbarConfiguration(tooBar)
+   ```
 
 ## 路由操作
 
@@ -378,7 +399,7 @@ NavPathStack通过Push相关的接口（如[pushPath](../reference/apis-arkui/ar
 
 ### 页面返回
 
-NavPathStack通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)相关接口去实现页面返回功能。
+NavPathStack通过pop相关接口（如[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop10)、[popToName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoname10)、[popToIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoindex10)、[clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10)）去实现页面返回功能。
 
 ```ts
 // 返回到上一页
@@ -921,13 +942,13 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 实现方案：
 
-```ts
-import { pageOneTmp } from './pageOne';
-
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0000;
 @Entry
 @Component
 struct NavigationExample {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private arr: number[] = [1, 2];
 
   @Builder
@@ -941,7 +962,7 @@ struct NavigationExample {
 
   build() {
     Column() {
-      Navigation(this.pageInfos) {
+      Navigation(this.navPathStack) {
         TextInput({ placeholder: 'search...' })
           .width("90%")
           .height(40)
@@ -957,7 +978,7 @@ struct NavigationExample {
                 .fontWeight(500)
                 .textAlign(TextAlign.Center)
                 .onClick(() => {
-                  this.pageInfos.pushPath({ name: "NavDestinationTitle" + item });
+                  this.navPathStack.pushPath({ name: 'NavDestinationTitle' + item });
                 })
             }
           }, (item: number) => item.toString())
@@ -965,7 +986,8 @@ struct NavigationExample {
         .width("90%")
         .margin({ top: 12 })
       }
-      .title("主标题")
+      // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件
+      .title($r('app.string.mainTitle'))
       .navDestination(this.pageMap)
       .mode(NavigationMode.Split)
     }
@@ -976,8 +998,8 @@ struct NavigationExample {
 
 @Component
 export struct pageTwoTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
-
+  @Consume('navPathStack') navPathStack: NavPathStack;
+  context = this.getUIContext().getHostContext();
   build() {
     NavDestination() {
       Column() {
@@ -985,8 +1007,10 @@ export struct pageTwoTmp {
       }.width('100%').height('100%')
     }.title("NavDestinationTitle2")
     .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+        JSON.stringify(popDestinationInfo));
       return true;
     })
   }
@@ -995,8 +1019,8 @@ export struct pageTwoTmp {
 // pageOne.ets
 @Component
 export struct pageOneTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
-
+  @Consume('navPathStack') navPathStack: NavPathStack;
+  context = this.getUIContext().getHostContext();
   build() {
     NavDestination() {
       Column() {
@@ -1004,8 +1028,10 @@ export struct pageOneTmp {
       }.width('100%').height('100%')
     }.title("NavDestinationTitle1")
     .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+        JSON.stringify(popDestinationInfo));
       return true;
     })
   }
@@ -1026,12 +1052,12 @@ export struct pageOneTmp {
 @Entry
 @Component
 struct NavigationDemo {
-  @Provide('pathInfos') pathInfos: NavPathStack = new NavPathStack();
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
 
   build() {
     Column() {
-      Navigation(this.pathInfos) {
+      Navigation(this.navPathStack) {
         TextInput({ placeholder: '输入关键字搜索' })
           .width('90%')
           .height(40)
@@ -1083,7 +1109,7 @@ struct NavigationDemo {
             }
             .width('100%')
             .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`, '详情页面参数'); // 将name指定的NaviDestination页面信息入栈,传递的参数为param
+              this.navPathStack.pushPathByName(`${item}`, '详情页面参数'); // 将name指定的NaviDestination页面信息入栈,传递的参数为param
             })
           }, (item: string): string => item)
         }
@@ -1121,7 +1147,7 @@ export function PageOneBuilder(name: string, param: string) {
 
 @Component
 export struct PageOne {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   @State value: string = '';
 
@@ -1152,14 +1178,14 @@ export struct PageOne {
           .margin({ top: 50 })
           .onClick(() => {
             //弹出路由栈栈顶元素，返回上个页面
-            this.pathInfos.pop();
+            this.navPathStack.pop();
           })
       }
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }
@@ -1180,7 +1206,7 @@ export function PageTwoBuilder(name: string) {
 
 @Component
 export struct PageTwo {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
 
@@ -1232,7 +1258,7 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`, '页面设置参数');
+              this.navPathStack.pushPathByName(`${item}`, '页面设置参数');
             })
           }, (item: string): string => item)
         }
@@ -1245,7 +1271,7 @@ export struct PageTwo {
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }

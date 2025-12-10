@@ -1,4 +1,10 @@
 # grid-container
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lanshouren-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -43,7 +49,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 >
 > The px unit is applicable when **autoDesignWidth** is set to **true** in the "js" tag.<sup>6+</sup>
 
-
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -54,11 +59,9 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | align-items | string | stretch | No| How items are aligned along the cross axis in a flex container. Available values are as follows:<br>- **stretch**: Items are stretched to the same height or width as the container in the cross axis direction.<br>- **flex-start**: Items are aligned to the start of the cross axis.<br>- **flex-end**: Items are aligned to the end of the cross axis.<br>- **center**: Items are aligned in the center of the cross axis.|
 | align-content | string | flex-start | No| Multi-row alignment mode when there is extra space in the cross axis. Available values are as follows:<br>- **flex-start**: All rows are packed towards the start of the cross axis. The start edge of the cross axis of the first row is aligned with the start edge of the cross axis of the container. All subsequent rows are aligned with the previous row.<br>- **flex-end**: All rows are packed towards the end of the cross axis. The end of the cross axis of the last row is aligned with the end of the cross axis of the container. All subsequent rows are aligned with the previous row.<br>- **center**: All rows are packed towards the center of the container. Rows are close to each other and aligned with the center of the container. The spacing between the start edge of the container's cross axis and the first row is equal to the spacing between the end edge of the container's cross axis and the last row.<br>- **space-between**: All rows are evenly distributed in the container. The spacing between two adjacent rows is the same. The start and end edges of the container's cross axis are aligned with the edges of the first and last rows, respectively.<br>- **space-around**: All rows are evenly distributed in the container, and the spacing between two adjacent lines is the same. The spacing between the start edge of the container's cross axis and the first row and that between the end edge and the last row are half of the spacing between two adjacent rows.|
 
-
 ## Events
 
 The [universal events](js-components-common-events.md) are supported.
-
 
 ## Methods
 
@@ -66,10 +69,10 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
-| getColumns | - | Returns the number of columns in the grid.|
-| getColumnWidth | - | Returns the column width of the grid.|
-| getGutterWidth | - | Returns the gutter width between columns of the grid.|
-| getSizeType | - | Returns the size-responsive type of the grid container (xs\|sm\|md\|lg).|
+| getColumns | (result: number) => void | Obtains the number of columns in the grid. **result** indicates the number of columns in the grid.|
+| getColumnWidth | (result: number) => void | Obtains the column width of the grid. **result** indicates the column width of the grid.|
+| getGutterWidth | (result: number) => void | Obtains the gutter width between columns of the grid. **result** indicates the gutter width between columns of the grid.|
+| getSizeType | (result: number) => void | Obtains the size-responsive type of the grid (xs\|sm\|md\|lg). **result** indicates the size-responsive type of the grid.|
 
 
 ## Example

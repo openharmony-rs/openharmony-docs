@@ -20,15 +20,15 @@ You can use this module to manage and obtain the application [context](../../app
 import { application } from '@kit.AbilityKit';
 ```
 
-
-
-
-
 ## application.createModuleContext<sup>12+</sup>
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
 Creates the context for a module. The [resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration) in the created module context inherits from the input context, making it convenient for you to access [application resources across HAP/HSP packages](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources). This API uses a promise to return the result.
+
+> **NOTE**
+>
+> Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the **createModuleContext** API to create multiple context instances, as this may negatively impact user experience.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -86,7 +86,9 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContext(): ApplicationContext
 
-Obtains the application context. This API provides context access independent of the base class **Context**. Each call creates a new ApplicationContext instance.
+Obtains the application context. This API provides context access independent of the base class **Context**.
+
+Repeated calls to this API generate a new ApplicationContext object.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -352,13 +354,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-
-
-
-
-	
-
-
-
-

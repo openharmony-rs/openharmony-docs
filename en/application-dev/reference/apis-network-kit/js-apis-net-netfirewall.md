@@ -25,7 +25,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 getNetFirewallPolicy(userId: number): Promise\<NetFirewallPolicy>
 
-Obtains a firewall policy.
+Obtains a firewall policy. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NET_FIREWALL
 
@@ -75,7 +75,7 @@ netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolic
 
 updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
 
-Updates a firewall rule.
+Updates a firewall rule. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -152,7 +152,7 @@ netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
 
 removeNetFirewallRule(userId: number, ruleId: number): Promise\<void>
 
-Removes a firewall rule.
+Removes a firewall rule. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -202,7 +202,7 @@ netFirewall.removeNetFirewallRule(100, 1).then(() => {
 
 getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<FirewallRulePage>
 
-Obtains firewall rules by user ID. You need to specify the pagination query parameter when calling this API.
+Obtains firewall rules by user ID. You need to specify the pagination query parameter when calling this API. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NET_FIREWALL
 
@@ -257,7 +257,7 @@ netFirewall.getNetFirewallRules(100, ruleParam).then((result: netFirewall.Firewa
 
 getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
 
-Obtains a firewall rule based on the specified user ID and rule ID.
+Obtains a firewall rule based on the specified user ID and rule ID. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NET_FIREWALL
 
@@ -307,7 +307,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
-Sets a firewall policy.
+Sets a firewall policy. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -361,7 +361,7 @@ netFirewall.setNetFirewallPolicy(100, policy).then(() => {
 
 addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
-Adds a firewall rule.
+Adds a firewall rule. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -516,7 +516,7 @@ Defines a firewall rule.
 | direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | No|No|Interception direction, which can be inbound or outbound.                                        |
 | action      | [FirewallRuleAction](#firewallruleaction)                   | No|No|Action.                                                        |
 | type        | [NetFirewallRuleType](#netfirewallruletype)                 | No|No|Rule type.                                                    |
-| isEnabled   | boolean                                                     | No|No|Whether to enable the rule. The value **true** means to enable the rule, and the value **false** means the opposite.                                                    |
+| isEnabled   | boolean                                                     | No|No|Whether to enable the item. The value **true** means to enable the firewall rule, and the value **false** means the opposite.                                                    |
 | id          | number                                                      | No|Yes| Firewall rule ID.                                                      |
 | description | string                                                      | No|Yes|Firewall rule description. This parameter is optional and can contain a maximum of 256 characters.                               |
 | appUid      | number                                                      | No|Yes|Application or service UID.                                           |
@@ -632,7 +632,7 @@ Enumerates firewall rule sorting orders.
 
 | Name       | Type  |Read-Only|Optional| Description                                            |
 | ----------- | -------|----|------|------------------------------------------|
-| type        | number | No|No|**1**: IP address or subnet. When a single IP address is used, the mask is 32.<br>**2**: IP address segment. |
+| type        | number | No|No|**1**: IP address or subnet. When a single IP address is used, the mask is 32.<br>**2**: IP address segment.<br>|
 | family      | number | No| Yes|**1**: The IP address family is **IPv4**.<br>**2**: The IP address family is **IPv6**.<br>The default value is **IPv4**. Other values are not supported currently.     |
 | address     | string | No| Yes|IP address. This parameter is mandatory and valid only when type is set to **1**.                  |
 | mask        | number | No|Yes|IPv4: subnet mask.<br>IPv6: address prefix.<br>This parameter is mandatory and valid only when type is set to **1**.      |
@@ -658,7 +658,7 @@ Defines the domain information of a firewall rule.
 
 | Name        | Type   | Read-Only| Optional|Description                                     |
 | ------------ | --------|------|-----|------------------------------------- |
-| isWildcard   | boolean | No | No|Whether to contain wildcards. The value **true** means to contain wildcards; and the value **false** means the opposite.                         |
+| isWildcard   | boolean | No | No|Whether to contain wildcards. The value **true** means to contain wildcards, and the value **false** means the opposite.                         |
 | domain       | string  | No |No|DNS domain. If **isWildcard** is **false**, you need to specify the complete domain name.|
 
 ## NetFirewallDnsParams

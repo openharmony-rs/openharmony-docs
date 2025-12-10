@@ -353,7 +353,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                  // 创建节点控制器、设置参数并rebuild。
+                  // 创建节点控制器、设置参数。
                   let nodeController = new MyNodeController()
                   // embed.info.width和embed.info.height单位是px格式，需要转换成ets侧的默认单位vp。
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -667,7 +667,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                  const componentId = embed.info?.id?.toString() as string
                  if (embed.status == NativeEmbedStatus.CREATE) {
                    console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                   // 创建节点控制器、设置参数并rebuild。
+                   // 创建节点控制器、设置参数。
                    let nodeController = new MyNodeController()
                    // embed.info.width和embed.info.height单位是px格式，需要转换成ets侧的默认单位vp。
                    nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -912,7 +912,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info))
-                  // 创建节点控制器，设置参数并rebuild。
+                  // 创建节点控制器，设置参数。
                   let nodeController = new MyNodeController()
                   // 1. embed.info.width和embed.info.height单位是px格式，需要转换成ets侧的默认单位vp。
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string, type : embed.info?.type as string,
@@ -1298,7 +1298,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                  // 创建节点控制器、设置参数并rebuild。
+                  // 创建节点控制器、设置参数。
                   let nodeController = new MyNodeController()
                   // embed.info.width和embed.info.height单位是px格式，需要转换成ets侧的默认单位vp。
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,

@@ -31,6 +31,54 @@ The ArkUI framework follows specific rules for key generation in **ForEach**, wh
 > 2. Do not use the data item **index** as the key, as this can cause [unexpected rendering results](#unexpected-rendering-results) and [reduced rendering performance](#reduced-rendering-performance).
 > 3. If the **index** parameter is declared in the **itemGenerator** function but omitted from the **keyGenerator** function, the framework automatically appends the index to the **keyGenerator** function's return value to form the final key. This behavior can lead to the duplicate key issues described previously. To avoid this issue, ensure the **index** parameter is explicitly declared in the **keyGenerator** function.
 
+Key value generation example:
+
+```ts
+interface ChildItemType {
+  str: string;
+  num: number;
+}
+
+@Entry
+@Component
+struct Index {
+  @State simpleList: Array<ChildItemType> = [
+    { str: 'one', num: 1 },
+    { str: 'two', num: 2 },
+    { str: 'three', num: 3 }
+  ];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.simpleList, (item: ChildItemType, index: number) => {
+          ChildItem({ str: item.str, num: index }) // Use the index parameter in the component generation function.
+        }, (item: ChildItemType, index: number) => {
+          return item.str; // It is recommended that the UI-related data property str be used in the key generation function.
+        })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+  }
+}
+
+@Component
+struct ChildItem {
+  @Prop str: string = '';
+  @Prop num: number = 0;
+
+  build() {
+    Text(this.str)
+      .fontSize(50)
+  }
+}
+```
+
+In the preceding example, when the component generation function declares index, you are advised to declare the index parameter in the key generation function to avoid unexpected rendering results and rendering performance deterioration. It is recommended that you use UI-related data attributes in the key generation function. In this example, the data attribute str is related to the UI display, so you are advised to use it as the return value of the key generation function.
+
 ## Component Creation Rules
 
 After the key generation rules are determined, the **itemGenerator** function – the second parameter in **ForEach** – creates a component for each array item of the data source based on the rules. Component creation involves two scenarios: [initial rendering](#initial-rendering) and [non-initial rendering](#non-initial-rendering).
@@ -73,7 +121,7 @@ struct ChildItem {
 
 The figure below shows the effect.
 
-**Figure 2** Initial rendering result for the ForEach data source without duplicate keys 
+**Figure 2** Initial rendering result for the ForEach data items duplicate keys 
 ![ForEach-CaseStudy-1stRender-NoDup](figures/ForEach-CaseStudy-1stRender-NoDup.png)
 
 In the preceding code, the return value of the **keyGenerator** function is **item**. During **ForEach** rendering, keys (**one**, **two**, and **three**) are generated in sequence for the array items, and the corresponding **ChildItem** components are created and rendered to the UI.
@@ -264,7 +312,7 @@ class Article {
 @Entry
 @Component
 struct ArticleListView {
-  @State isListReachEnd: boolean = false;
+  isListReachEnd: boolean = false;
   @State articleList: Array<Article> = [
     new Article('001', 'Article 1', 'Abstract'),
     new Article('002', 'Article 2', 'Abstract'),
@@ -468,7 +516,7 @@ In this example, the **Article** class is decorated by the @Observed decorator. 
 2. The article instance is an @ObjectLink decorated state variable. Changes to its property values trigger the re-rendering of the **ArticleCard** component, which then reads the new values of **isLiked** and **likesCount**.
 
 ### Drag-and-Drop Sorting
-By using **ForEach** within a **List** component and setting up the [onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove) event, you can implement drag-and-drop sorting. When the drag-and-drop gesture is released, if any item's position changes, the **onMove** event is triggered, which reports the original index and target index of the relocated item. In the **onMove** event, the data source must be updated based on the reported start index and target index. Before and after the data source is modified, the key value of each item must remain unchanged to ensure that the drop animation can be executed properly.
+By using **ForEach** within a **List** component and setting up the [onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove) event, you can implement drag-and-drop sorting. When the drag-and-drop gesture is released, if any component's position changes, the **onMove** event is triggered, which reports the original index and target index of the relocated component. In the **onMove** event, the data source must be updated based on the reported start index and target index. Before and after the data source is modified, the key value of each item must remain unchanged to ensure that the drop animation can be executed properly.
 
 ```ts
 @Entry
@@ -536,9 +584,9 @@ If the two lines in the **onMove** event handler are commented out, the effect o
 - When dealing with a large number of child components, **ForEach** can lead to performance issues such as lag or jank. In such cases, consider using [LazyForEach](./arkts-rendering-control-lazyforeach.md) instead. For details about the best practice, see [Performance Optimization Using LazyForEach](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-lazyforeach-optimization).
 - When array items are objects, do not replace old items with new objects of the same content. If an item changes but the key remains the same, the framework may not detect the change, leading to [unrendered data updates](#data-changes-failing-to-trigger-rendering).
 
-## Common Pitfalls
+## Incorrect Use Cases
 
-Incorrect usage of **ForEach** keys can lead to functional and performance issues, causing unexpected rendering behavior. For detailed examples, see [Unexpected Rendering Results](#unexpected-rendering-results) and [Reduced Rendering Performance](#reduced-rendering-performance).
+Incorrect usage of **ForEach** keys will result in functional and performance issues. For detailed examples, see [Unexpected Rendering Results](#unexpected-rendering-results) and [Reduced Rendering Performance](#reduced-rendering-performance).
 
 ### Unexpected Rendering Results
 

@@ -226,6 +226,10 @@ struct imageBitmapExamplePage {
 Worker线程在onmessage中接收到主线程postMessage发送的ImageBitmap，并进行绘制。
 
 ```ts
+import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+import { image } from '@kit.ImageKit';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
   if (e.data.myImage) {
     let img: ImageBitmap = e.data.myImage

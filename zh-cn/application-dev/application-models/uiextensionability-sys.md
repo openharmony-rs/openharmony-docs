@@ -32,7 +32,7 @@
 当应用中存在多个UIExtensionAbility实例，这些实例可以为多个独立进程，也可以共用同一个进程，还可以分为多组、同组实例共用同一个进程。通过[module.json5](../quick-start/module-configuration-file.md)配置文件中的extensionProcessMode字段，即可为选择对应的进程模型，三种模型对比如下：
 | 进程模型 | extensionProcessMode字段配置 | 说明 |
 | --------| --------| --------|
-| 同一bundle中所有UIExtensionAbility共进程 |bundle|	UIExtensionAbility实例之间的通信无需跨IPC通信；实例之间的状态不独立，会存在相互影响。|
+| 同一bundle中所有UIExtensionAbility共进程 |bundle| UIExtensionAbility实例之间的通信无需跨IPC通信；实例之间的状态不独立，会存在相互影响。|
 | 相同name的UIExtensionAbility共进程 | type |将同UIExtensionAbility类配置在同一个进程下，便于应用针对UIExtensionAbility类型对实例进行管理。|
 | 每个UIExtensionAbility为独立进程 | instance | UIExtensionAbility实例之间的状态不会彼此影响，安全性更高；实例之间只能通过跨进程进行通信。 |
 ### Bundle中的所有UIExtensionAbility共进程

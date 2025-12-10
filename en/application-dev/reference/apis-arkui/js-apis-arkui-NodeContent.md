@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **NodeContent** module implements a manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md) components in ArkUI.
 

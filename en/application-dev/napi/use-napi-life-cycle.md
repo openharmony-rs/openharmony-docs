@@ -46,11 +46,13 @@ If you are just starting out with Node-API, see [Node-API Development Process](u
 
 ### napi_open_handle_scope and napi_close_handle_scope
 
-Use **napi_open_handle_scope** to create a context and use **napi_close_handle_scope** to close the context. You can use these two APIs to manage the **napi_value** lifecycle of an ArkTS object, which prevents the object from being incorrectly garbage-collected. 
-Properly using these two APIs can minimize lifecycle and prevent memory leaks.
+Use **napi_open_handle_scope** to create a context and use **napi_close_handle_scope** to close the context. You can use these two APIs to manage the **napi_value** lifecycle of an ArkTS object, which prevents the object from being incorrectly garbage-collected.  
+Note that the API supports only the single-layer nested scope structure. There is only one active scope at any time, and all newly created handles will be associated with that scope. Scopes must be closed in the reverse order of opening. In addition, all scopes created in the native method must be closed before the method returns.
 
-For details about the code, see:
-[Lifecycle Management](napi-guidelines.md#lifecycle-management)
+For details about the code of lifecycle management, see:
+[Lifecycle Management](napi-guidelines.md#lifecycle-management) 
+ 
+ 
 
 CPP code:
 

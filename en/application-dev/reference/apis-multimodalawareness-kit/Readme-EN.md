@@ -20,7 +20,7 @@
 - Error Codes<!--multimodal-awareness-arkts-errcode-->
   - [Motion Awareness Error Codes](errorcode-motion.md)
   - [Metadata Binding Error Codes](errorcode-metadataBinding.md)
-  - [Device Status Awareness Error Codes] (errorcode-deviceStatus.md)
+  - [Device Status Awareness Error Codes](errorcode-deviceStatus.md)
   - [User Status Awareness Error Codes](errorcode-userStatus.md)
   <!--Del-->
   - [Onscreen Awareness Error Codes](errorcode-onScreen.md)

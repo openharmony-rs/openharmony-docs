@@ -60,9 +60,9 @@
         - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
         - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
         - [\@Event装饰器：组件输出](state-management/arkts-new-event.md)
-        - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)
+        - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
         - [\@Monitor装饰器：状态变量修改监听](state-management/arkts-new-monitor.md)
-        - [\@Computed装饰器：计算属性](state-management/arkts-new-Computed.md)
+        - [\@Computed装饰器：计算属性](state-management/arkts-new-computed.md)
         - [\@Type装饰器: 标记类属性的类型](state-management/arkts-new-type.md)
         - [\@ReusableV2装饰器：组件复用](state-management/arkts-new-reusableV2.md)
       - 其他状态管理<!--arkts-new-other-state-mgmt-->
@@ -73,7 +73,7 @@
         - [getTarget接口：获取状态管理框架代理前的原始对象](state-management/arkts-new-getTarget.md)
         - [makeObserved接口：将非观察数据变为可观察数据](state-management/arkts-new-makeObserved.md)
         - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
-      - [MVVM模式（状态管理V2）](state-management/arkts-mvvm-V2.md)
+      - [MVVM模式（状态管理V2）](state-management/arkts-mvvm-v2.md)
     - V1V2混用指导<!--v1v2-mixing-->
       - [自定义组件混用场景指导](state-management/arkts-custom-component-mixed-scenarios.md)
       - [状态管理V1V2混用文档](state-management/arkts-v1-v2-mixusage.md)
@@ -353,5 +353,6 @@
   - UI开发常见问题<!--ui-development-faq-->
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
+    - [使用文本常见问题](arkts-text-faq.md)
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->

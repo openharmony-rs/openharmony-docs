@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **ComponentContent** represents an entity encapsulation of component content, which can be created and transmitted outside of UI components. It allows you to encapsulate and decouple dialog box components. Its underlying implementation uses BuilderNode. For details, see [BuilderNode](js-apis-arkui-builderNode.md).
 
@@ -214,8 +214,7 @@ struct Index {
 
 reuse(param?: Object): void
 
-Reuses the custom component in ComponentContent. For details about component reuse, see [\@Reusable Decorator: Reusing Components](../../ui/state-management/arkts-reusable.md). For details about the scenarios involving **ComponentContent** unbinding, see [Canceling the Reference to the Entity Node](../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node).
-
+Triggers component reuse for custom components under this **ComponentContent**. For details about component reuse, see [\@Reusable Decorator: Reusing Components](../../ui/state-management/arkts-reusable.md). For details about the scenarios involving **ComponentContent** unbinding, see [Canceling the Reference to the Entity Node](../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -225,13 +224,13 @@ Reuses the custom component in ComponentContent. For details about component reu
 
 | Name| Type  | Mandatory| Description                                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | No  | Parameters of the builder function encapsulated in the **WrappedBuilder** object. The parameter type must be the same as that passed in **constructor**.|
+| param  | Object | No  | Parameter for **ComponentContent** reuse. This parameter is passed to all top-level custom components within the **ComponentContent** during reuse and must include all required constructor parameters for each component; otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. Default value: **undefined**, in which case the custom components in the **ComponentContent** will use their original construction data source.|
 
 ### recycle
 
 recycle(): void
 
-- Recycles the custom component in ComponentContent. Component recycling is part of the component reuse mechanism. For details, see [\@Reusable Decorator: Reusing Components](../../ui/state-management/arkts-reusable.md).
+- Triggers recycling of custom components under this **ComponentContent**. Component recycling is part of the component reuse mechanism. For details, see [\@Reusable Decorator: Reusing Components](../../ui/state-management/arkts-reusable.md).
 - **ComponentContent** completes the reuse event transfer between internal and external custom components through **reuse** and **recycle**. For specific usage scenarios, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -692,7 +691,7 @@ struct Index {
 
 inheritFreezeOptions(enabled: boolean): void
 
-Checks whether the ComponentContent object is set to inherit the freezing policy of the custom component in the parent component. If the inheritance status is set to false, the freezing policy of the ComponentContent object is false. which means its associated node remains unfrozen even in an inactive state.
+Checks whether this **BuilderNode** object inherits the freeze policy from its parent component's custom components. If the inheritance status is set to false, the freezing policy of the ComponentContent object is false. which means its associated node remains unfrozen even in an inactive state.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.

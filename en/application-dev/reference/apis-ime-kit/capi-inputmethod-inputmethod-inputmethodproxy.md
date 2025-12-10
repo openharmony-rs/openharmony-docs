@@ -15,3 +15,4 @@ Input method proxy object, which can be used to call the method for using the in
 **Related module**: [InputMethod](capi-inputmethod.md)
 
 **Header file**: [inputmethod_inputmethod_proxy_capi.h](capi-inputmethod-inputmethod-proxy-capi-h.md)
+

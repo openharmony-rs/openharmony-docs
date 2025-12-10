@@ -40,13 +40,13 @@ Variables decorated with \@Prop have the following features:
 
 | Transfer/Access         | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Initialization from the parent component    | If initialization is performed locally, this operation is optional. The initialization behavior is the same as that in [\@State](./arkts-state.md#variable-transferaccess-rules). If local initialization cannot be performed, this operation is mandatory. An @Prop decorated variable can be initialized from a regular variable (whose change does not trigger UI re-render). or an [\@State](arkts-state.md), [\@Link](arkts-link.md), @Prop, [\@Provide](arkts-provide-and-consume.md), [\@Consume](arkts-provide-and-consume.md), [\@ObjectLink](arkts-observed-and-objectlink.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@StorageProp](arkts-appstorage.md#storageprop), [\@LocalStorageLink](arkts-localstorage.md#localstoragelink), or [\@LocalStorageProp](arkts-localstorage.md#localstorageprop) decorated variable in its parent component.|
+| Initialization from the parent component    | If initialization is performed locally, this operation is optional. The initialization behavior is the same as that in [\@State](./arkts-state.md#variable-transferaccess-rules). If local initialization cannot be performed, this operation is mandatory. An @Prop decorated variable can be initialized from a regular variable (whose change does not trigger UI re-render) or an [\@State](arkts-state.md), [\@Link](arkts-link.md), @Prop, [\@Provide](arkts-provide-and-consume.md), [\@Consume](arkts-provide-and-consume.md), [\@ObjectLink](arkts-observed-and-objectlink.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@StorageProp](arkts-appstorage.md#storageprop), [\@LocalStorageLink](arkts-localstorage.md#localstoragelink), or [\@LocalStorageProp](arkts-localstorage.md#localstorageprop) decorated variable in its parent component.|
 |Child component initialization| \@Prop can be used for initialization of a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
 | Access from outside the component| Private, accessible only within the component.                |
 
  The following figure shows the initialization rules.
 
-![en-us_image_0000001552972029](figures/en-us_image_0000001552972029.png)
+![prop-initialization](figures/prop-initialization.png)
 
 ## Observed Changes and Behavior
 
@@ -319,7 +319,7 @@ After **replace entire arr** is clicked, the following information is displayed:
 
 - Because **this.arr[0]** has been changed, the **Child({value: this.arr[0]})** component synchronizes the update of **this.arr[0]** to the instance's \@Prop decorated variable. The same happens for **Child({value: this.arr[1]})** and **Child({value: this.arr[2]})**.
 
-- The change of **this.arr** causes **ForEach** to update: According to the diff algorithm, the array item with the ID **3** is retained in this update, array items with IDs **1** and **2** are deleted, and array items with IDs **4** and **5** are added. The array before and after the update is **[1, 2, 3]** and **[3, 4, 5]**, respectively. This implies that the **Child** instance generated for item **3** is moved to the first place, but not updated. In this case, the component value corresponding to **3** is **7**, and the final render result of **ForEach** is **7**, **4**, and **5**.
+- The change of **this.arr** causes **ForEach** to update. Both the original and updated **this.arr** contain an item with value **3**: **[3, 4, 5]** changes to **[1, 2, 3]**. According to the diff algorithm, item **3** is retained in this update, items **1** and **2** are deleted, and items **4** and **5** are added. This implies that the **Child** instance generated for item **3** is moved to the first place, but not updated. In this case, the component value corresponding to **3** is **7**, and the final render result of **ForEach** is **7**, **4**, and **5**.
 
 ### Synchronizing from \@State Class Object Properties to \@Prop Simple Data Types
 
@@ -625,6 +625,7 @@ struct Person {
           .margin(12)
           .fontColor('#FFFFFF')
           .onClick(() => {
+            // person is decorated with @State, but @State cannot observe changes in nested objects. When this button is clicked directly, the title changes but cannot be observed.
             this.person.son.title = 'ArkUI';
           })
         Text(this.person.name)
@@ -637,6 +638,7 @@ struct Person {
           .textAlign(TextAlign.Center)
           .fontColor('#e6000000')
           .onClick(() => {
+            // Clicking this button triggers an observable change, and also reveals the effect of the previous "Change Son Title" button click.
             this.person.name = 'Bye';
           })
         Text(this.person.son.title)

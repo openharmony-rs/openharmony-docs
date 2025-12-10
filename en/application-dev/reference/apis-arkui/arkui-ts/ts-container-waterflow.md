@@ -5,7 +5,7 @@
 <!--Owner: @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **WaterFlow** component is a water flow container that consists of cells formed by rows and columns and arranges items of different sizes from top to bottom according to the preset rules.
 
@@ -556,6 +556,10 @@ onScrollIndex(event: (first: number, last: number) => void)
 Triggered when the first or last item displayed in the component changes. It is triggered once when the component is initialized.
 
 This event is triggered when either of the preceding indexes changes.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1345,7 +1349,7 @@ struct WaterFlowDemo {
     }
   }
 
-  //Component lifecycle: Initialize data and restore the previous column settings.
+  // Component lifecycle: Initialize data and restore the previous column settings.
   aboutToAppear() {
     // Read the last switched column count.
     let lastCount = AppStorage.get<number>('columnsCount');
@@ -1628,7 +1632,7 @@ struct WaterFlowDemo {
 
 ### Example 7: Setting and Changing the Footer Component in the WaterFlow Component
 
-This example demonstrates how to set and dynamically change the footer component in the **WaterFlow** component using **footerContent**. The footer component is updated using the **update** API of **ComponentContent**.
+Starting from API version 18, this example demonstrates the implementation of setting a footer component for the **WaterFlow** component through the **footerContent** API of [WaterFlowOptions](#waterflowoptions). Update the footer component using the update feature of [ComponentContent](../js-apis-arkui-ComponentContent.md).
 
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 

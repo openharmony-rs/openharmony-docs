@@ -21,14 +21,18 @@ When an application is backgrounded or closed, the system can still send schedul
 
 > **NOTE**
 >
-> When the reminder time arrives, the notification center displays the relevant reminder. The reminder remains active and unexpired unless the user touches the CLOSE button, at which point the reminder becomes expired.
+> - When the reminder time arrives, the notification center displays the relevant reminder. The reminder remains active and unexpired unless the user touches the CLOSE button, at which point the reminder becomes expired.
 >
-> For a recurring reminder (for example, a daily reminder), the reminder is always valid regardless of whether the user touches the CLOSE button.
+> - For a recurring reminder (for example, a daily reminder), the reminder is always valid regardless of whether the user touches the CLOSE button.
 
 - **Redirection limit**: The application that is redirected to upon a click on the notification must be the application that requested the agent-powered reminder.
 
 ## Relationship with Other Kits
 - When the preset time arrives, notifications created by Notification Kit will be displayed in the notification center. For details about notification styles, see [Notification Style](../notification/notification-overview.md#notification-style).
+
+## Emulator Support
+
+This capability is supported by the Emulator since API version 20.
 
 ## Available APIs
 

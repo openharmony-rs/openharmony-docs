@@ -30,7 +30,7 @@ Adds the device access permission for the application. System applications are g
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [addDeviceAccessRight](#adddeviceaccessright12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [addDeviceAccessRight](#adddeviceaccessright12) instead.
 
 **System API**: This is a system API.
 
@@ -76,7 +76,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getFunctionsFromString](#getfunctionsfromstring12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getFunctionsFromString](#getfunctionsfromstring12) instead.
 
 **System API**: This is a system API.
 
@@ -118,7 +118,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getStringFromFunctions](#getstringfromfunctions12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getStringFromFunctions](#getstringfromfunctions12) instead.
 
 **System API**: This is a system API.
 
@@ -160,7 +160,7 @@ Sets the current USB function list in Device mode. This API uses a promise to re
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setDeviceFunctions](#setdevicefunctions12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setDeviceFunctions](#setdevicefunctions12) instead.
 
 **System API**: This is a system API.
 
@@ -207,7 +207,7 @@ Obtains the numeric mask combination for the USB function list in Device mode. W
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getDeviceFunctions](#getdevicefunctions12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getDeviceFunctions](#getdevicefunctions12) instead.
 
 **System API**: This is a system API.
 
@@ -242,7 +242,7 @@ Obtains the list of all physical USB ports. When the developer mode is disabled,
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getPortList](#getportlist12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [getPortList](#getportlist12) instead.
 
 **System API**: This is a system API.
 
@@ -318,7 +318,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 **NOTE**
 
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setPortRoleTypes](#setportroletypes12).
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setPortRoleTypes](#setportroletypes12) instead.
 
 **System API**: This is a system API.
 
@@ -735,6 +735,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let portId: number = 1;
 usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
   console.info('usb setPortRoleTypes successfully.');

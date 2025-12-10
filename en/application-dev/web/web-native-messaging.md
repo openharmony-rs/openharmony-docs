@@ -209,7 +209,7 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
     import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import {buffer, util} from '@kit.ArkTS';
-    import fs from '@ohos.file.fs';
+    import { fileIo as fs } from '@kit.CoreFileKit';
 
     const TAG: string = '[MyWebNativeMessageExtAbility]';
     const DOMAIN_NUMBER: number = 0xFF00;
@@ -313,7 +313,7 @@ The browser implements the extension runtime APIs, starts the WebNativeMessaging
 
 1. When receiving a NativeMessaging connection creation request, the browser obtains the extension configuration of the target application through the [get() API](../reference/apis-arkdata/js-apis-data-dataShare.md#get20), reads the name of WebNativeMessagingExtensionAbility and the list of extensions that can be accessed, and checks whether the access is allowed.
   ```ts
-    import dataShare from '@ohos.data.dataShare';
+    import { dataShare } from '@kit.ArkData';
 
     interface ExtensionConfig {
       abilityName:string;

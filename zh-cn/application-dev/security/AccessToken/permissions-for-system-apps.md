@@ -17,6 +17,18 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+允许应用订阅开机广播。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
 允许应用市场跳过loading弹框并为原子化服务提前打开窗口，并在窗口内部显示加载动效。
@@ -292,6 +304,30 @@
 **ACL使能**：true
 
 **起始版本**：11
+
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+允许应用读取无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+允许应用设置无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
 
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
@@ -876,6 +912,30 @@
 允许应用调用系统资源投射能力。
 
 **权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+允许在企业设备上安装企业MDM应用包。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+允许企业MDM应用在企业设备上自升级。
+
+**权限级别**：system_core
 
 **授权方式**：系统授权（system_grant）
 
@@ -3837,6 +3897,18 @@
 
 **起始版本**：12
 
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+允许UIExtensionAbility显示在锁屏之上。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：14
+
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
 允许系统服务访问虚拟Modem。
@@ -5092,3 +5164,39 @@
 **支持设备**：General
 
 **起始版本**：20
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+允许系统应用拉起其他应用时设置拉起原因。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
+
+## ohos.permission.ACCESS_SUPER_HUB
+
+允许应用拉起"中转站"。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：12
+
+## ohos.permission.USE_USER_ACCESS_MANAGER
+
+允许应用查询和配置用户身份认证策略、校验用户身份认证结果。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18

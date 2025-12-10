@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Text** component is used to display a piece of textual information.
 
@@ -44,171 +44,101 @@ Text(content?: string | Resource , value?: TextOptions)
 
 In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
 
-### textAlign
-
-textAlign(value: TextAlign)
-
-Sets the horizontal alignment mode of the text.
-
-The text takes up the full width of the **Text** component.
-
-The vertical position of the text paragraph can be controlled by the [align](ts-universal-attributes-location.md#align) attribute, but the horizontal position cannot be controlled by **align** in this component. The specific effects are as follows:
-
-- **Alignment.TopStart**, **Alignment.Top**, **Alignment.TopEnd**: Content aligns to the top.
-
-- **Alignment.Start**, **Alignment.Center**, **Alignment.End**: Content is centered vertically.
-
-- **Alignment.BottomStart**, **Alignment.Bottom**, **Alignment.BottomEnd:** Content aligns to the bottom.
-
-When **textAlign** is set to **TextAlign.JUSTIFY**, the [wordBreak](#wordbreak11) property must be configured according to the text content. The last line of text aligns to the start horizontally and does not participate in justification.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                       | Mandatory| Description                                                      |
-| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | [TextAlign](ts-appendix-enums.md#textalign) | Yes  | Horizontal alignment of the text.<br>Default value: **TextAlign.Start**.<br>Default value on wearable devices: **TextAlign.Center**.|
-
->  **NOTE** 
->
->  **textAlign** only adjusts the overall text layout and does not affect character display order. For character display order adjustment, see [Bidirectional Text Layout and Alignment](../../../ui/arkts-internationalization.md#bidirectional-text-layout-and-alignment).
-
-### textVerticalAlign<sup>20+</sup>
-
-textVerticalAlign(textVerticalAlign: Optional\<TextVerticalAlign>)
-
-Sets the vertical alignment of text paragraphs.
-
-When this and is used together with [halfLeading](#halfleading12), **halfLeading** does not take effect.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                       | Mandatory| Description                                                      |
-| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| textVerticalAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)> | Yes  | Vertical alignment of text paragraphs.<br>Default value: **TextVerticalAlign.BASELINE**.|
-
-### textOverflow
-
-textOverflow(options: TextOverflowOptions)
-
-Sets the display mode when the text is too long.
-
-When [TextOverflowOptions](#textoverflowoptions18) is set to **TextOverflow.None**, **TextOverflow.Clip**, or **TextOverflow.Ellipsis**:
-
-- **TextOverflow.None** or **TextOverflow.Clip**: Text is truncated when it exceeds the maximum number of lines.
-
-- **TextOverflow.Ellipsis**: Overflowing text is replaced with an ellipsis (...).
-
-- This must be used with [maxLines](#maxlines) for the settings to take effect.
-
-- Line breaking behavior is controlled by [wordBreak](#wordbreak11). By default, it uses **WordBreak.BREAK_WORD**, which truncates by word (for example, English text is truncated word-by-word). To truncate by character, set **wordBreak** to **WordBreak.BREAK_ALL**.
-
-- Line wrapping behavior is governed by [lineBreakStrategy](#linebreakstrategy12), which takes effect only when [wordBreak](#wordbreak11) is not **WordBreak.BREAK_ALL**. Hyphens are not supported.
-
-- Since API version 11, it is recommended that you configure both [textOverflow](#textoverflow) and [wordBreak](#wordbreak11) to control truncation behavior. For details, see [Example 4](#example-4-setting-text-wrapping-and-line-breaking)<!--RP1--><!--RP1End-->.
-
-When **TextOverflowOptions** is set to **TextOverflow.MARQUEE**:
-
-- Text scrolls horizontally within a single line.
-
-- [maxLines](#maxlines) and[copyOption](#copyoption9) are ignored.
-
-- The [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute of the **Text** component defaults to **true**.
-
-- [CustomSpan](ts-universal-styled-string.md#customspan) is not supported in marquee mode.
-
-- Behavior of [textAlign](#textalign): If the text does not scroll, **textAlign** applies; if the text scrolls, **textAlign** is ignored.
-
-- Since API version 12, **TextOverflow.MARQUEE** is available for the **ImageSpan** component, where the text and images are allowed to scroll within a single line.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description                                                        |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [TextOverflowOptions](#textoverflowoptions18) | Yes  | Display mode when the text is too long.|
-
-### maxLines
-
-maxLines(value: number)
-
-Sets the maximum number of lines in the text.
-
-By default, text is automatically folded. If this attribute is specified, the text will not exceed the specified number of lines. If there is extra text, you can use [textOverflow](#textoverflow) to specify how it is displayed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description            |
-| ------ | ------ | ---- | ---------------- |
-| value  | number | Yes  | Maximum number of lines in the text.<br>**NOTE**<br>Value range: [0, *INT32_MAX*]<br>If this parameter is set to **0**, no text content is displayed.|
-
-### lineHeight
-
-lineHeight(value: number | string | Resource)
-
-Sets the text line height.
-
-If the value is less than or equal to **0**, the line height is unrestricted and adapts to the font size. When the value is a number, the unit is fp. When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description            |
-| ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Text line height.|
-
->  **NOTE**
->  
->  If certain characters have significantly taller glyphs than others on the same line, layout anomalies such as clipping, overlap, or misalignment may occur. In this case, adjust component attributes such as height and line height to ensure proper layout rendering.
-
-### decoration
-
-decoration(value: DecorationStyleInterface)
-
-Sets the color, type, and style of the text decoration.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description                                                        |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decoration.<br>Default value:<br>{<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>}<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
-
->  **NOTE**
->
->  When the bottom contour of a character intersects with the decoration, underline avoidance is triggered, commonly affecting characters like "g", "j", "y", "q", and "p."
->
->  If the decoration color is set to **Color.Transparent**, it inherits the text color of the first character in each line. If the decoration color is set to **"#00FFFFFF"**, the line becomes fully transparent.
+**Layout Alignment**
+
+| Attribute| Description|
+|------|------|
+| baselineOffset | Sets the offset of the text baseline.|
+| halfLeading<sup>12+</sup> | Sets whether the text is vertically centered.|
+| textAlign | Sets the horizontal alignment mode of the text.|
+| textContentAlign<sup>21+</sup> | Sets the vertical alignment of the text content area within the component.|
+| textVerticalAlign<sup>20+</sup> | Sets the vertical alignment of text paragraphs.|
+
+**Font Style**
+
+| Attribute| Description|
+|------|------|
+| decoration | Sets the color, type, and style of the text decoration.|
+| font<sup>10+</sup> | Sets the text style,|
+| font<sup>12+</sup> | Sets the font style, with support for font settings.|
+| fontColor | Sets the font color.|
+| fontFamily | Sets the font family.|
+| fontFeature<sup>12+</sup> | Sets the font feature, for example, monospaced digits.|
+| fontSize | Sets the text size.|
+| fontStyle | Sets the font style.|
+| fontWeight | Sets the font weight.|
+| fontWeight<sup>12+</sup> | Sets the text font weight, with support for font settings.|
+| letterSpacing | Sets the letter spacing for a text style.|
+| shaderStyle<sup>20+</sup> | Sets the gradient or solid color effect.|
+| textCase | Sets the text case.|
+| textShadow<sup>10+</sup> | Sets the text shadow.|
+
+**Text Overflow, Line Break, and Line Feed**
+
+| Attribute| Description|
+|------|------|
+| ellipsisMode<sup>11+</sup> | Sets the ellipsis position.|
+| lineBreakStrategy<sup>12+</sup> | Sets the line break rule.|
+| marqueeOptions<sup>18+</sup> | Sets the marquee effect for text.|
+| textOverflow | Sets the display mode when the text is too long.|
+| wordBreak<sup>11+</sup> | Sets the word break rule.|
+
+**Line and Paragraph**
+
+| Attribute| Description|
+|------|------|
+| enableAutoSpacing<sup>20+</sup> | Sets whether to enable automatic spacing between Chinese and Western characters.|
+| lineHeight | Sets the text line height.|
+| lineSpacing<sup>12+</sup> | Sets the line spacing for text.|
+| lineSpacing<sup>20+</sup> | Sets the line spacing for text. When **LineSpacingOptions** is not specified, line spacing is applied above the first line and below the last line by default.|
+| maxLines | Sets the maximum number of lines in the text.|
+| optimizeTrailingSpace<sup>20+</sup> | Sets whether to optimize trailing spaces.|
+| textIndent<sup>10+</sup> | Sets the indent of the first line text.|
+
+**Font Adaptation**
+
+| Attribute| Description|
+|------|------|
+| heightAdaptivePolicy<sup>10+</sup> | Sets the font size adjustment strategy for adaptive text layout.|
+| maxFontScale<sup>12+</sup> | Sets the maximum font scale factor for text.|
+| maxFontSize | Sets the maximum font size.|
+| minFontScale<sup>12+</sup> | Sets the minimum font scale factor for text.|
+| minFontSize | Sets the minimum font size.|
+
+**Text Selection and Copy**
+
+| Attributes| Description|
+|------|------|
+| caretColor<sup>14+</sup> | Sets the color of the text selection handle, also known as the caret, in the text box.|
+| copyOption<sup>9+</sup> | Sets whether copy and paste is allowed.|
+| draggable<sup>9+</sup> | Sets the drag effect of the selected text.|
+| selectedBackgroundColor<sup>14+</sup> | Sets the background color of the selected text.|
+| selection<sup>11+</sup> | Sets text selection.|
+| textSelectable<sup>12+</sup> | Sets whether the text is selectable and focusable.|
+
+**Text Recognition**
+
+| Attributes| Description|
+|------|------|
+| dataDetectorConfig<sup>11+</sup> | Configures text recognition settings.|
+| enableDataDetector<sup>11+</sup> | Enables recognition for special entities within the text.|
+
+**Custom Menu**
+
+| Attributes| Description|
+|------|------|
+| bindSelectionMenu<sup>11+</sup> | Sets the custom context menu on text selection.|
+| editMenuOptions<sup>12+</sup> | Sets the selection menu option extension.|
+
+**Other Features**
+
+| Attributes| Description|
+|------|------|
+| contentTransition<sup>20+</sup> | Text animation effect.|
+| enableHapticFeedback<sup>13+</sup> | Specifies whether to enable haptic feedback.|
+| privacySensitive<sup>12+</sup> | Sets whether to enable privacy mode on widgets.|
+
+The following describes the details of each API:
 
 ### baselineOffset
 
@@ -232,17 +162,93 @@ Positive values shift the text upwards, while negative values shift it downwards
 | ------ | -------------------------- | ---- | -------------------------------- |
 | value  | number \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Offset of the text baseline.<br>Default value: **0**<br>The Resource type is supported since API version 20.|
 
-### letterSpacing
+### bindSelectionMenu<sup>11+</sup>
 
-letterSpacing(value: number | ResourceStr)
+bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType,
+    options?: SelectionMenuOptions)
 
-Sets the letter spacing for a text style.
+Sets the custom context menu on text selection.
 
-If the value specified is a percentage or 0, the default value is used. When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
+The duration required for a long-press gesture is 600 ms for **bindSelectionMenu** and 800 ms for **bindContextMenu**. When both **bindSelectionMenu** and **bindContextMenu** are set and both are configured to be triggered by a long-press gesture, **bindSelectionMenu** is triggered first.
 
-Negative values compress text. Excessive compression may reduce content area to zero, hiding content.
+If the custom menu is too long, embed a [Scroll](./ts-container-scroll.md) component to prevent the keyboard from being blocked.
 
-This setting applies to every character, including those at line endings.
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+>
+> When [editMenuOptions](#editmenuoptions12) is used for configuring the context menu on text selection, the system's default style and trigger conditions are preserved.
+>
+> In contrast, when [bindSelectionMenu](#bindselectionmenu11) is used, both the menu style and the trigger conditions are fully customizable.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name      | Type                                                        | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| spanType     | [TextSpanType](#textspantype11)          | Yes  | Span type of the menu.<br>Default value: **TextSpanType.TEXT**              |
+| content      | [CustomBuilder](ts-types.md#custombuilder8)                  | Yes  | Content of the menu.                                            |
+| responseType | [TextResponseType](#textresponsetype11)  | Yes  | Response type of the menu.<br>Default value: **TextResponseType.LONG_PRESS**|
+| options      | [SelectionMenuOptions](ts-basic-components-richeditor.md#selectionmenuoptions) | No  | Options of the menu.                                            |
+
+### caretColor<sup>14+</sup>
+
+caretColor(color: ResourceColor)
+
+Sets the color of the text selection handle, also known as the caret, in the text box.
+
+**Atomic service API**: This API can be used in atomic services since API version 14.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                      | Mandatory| Description                                  |
+| ------ | ------------------------------------------ | ---- | -------------------------------------- |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the text selection handle.<br>Default value: **'#007DFF'**|
+
+### contentTransition<sup>20+</sup>
+
+contentTransition(transition: Optional\<ContentTransition>)
+
+Applies a transition animation to text content. Supports numeric flip animation via [NumericTextTransition](../arkui-ts/ts-text-common.md#numerictexttransition20).
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                            | Mandatory| Description                                                      |
+| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| transition  | Optional\<[ContentTransition](../arkui-ts/ts-text-common.md#contenttransition20)> | Yes  | Text animation effect.|
+
+### copyOption<sup>9+</sup>
+
+copyOption(value: CopyOptions)
+
+Sets whether copy and paste is allowed.
+
+Since API version 20, copied text from the **Text** component includes HTML-formatted content in the pasteboard.
+
+- When the **Text** component contains child elements, only [Span](ts-basic-components-span.md) and [ImageSpan](ts-basic-components-imagespan.md) support HTML-formatted pasteboard content.
+
+- For styled strings, refer to [toHtml](ts-universal-styled-string.md#tohtml14) for supported HTML conversion scope.
+
+When **copyOption** is set to **CopyOptions.InApp** or **CopyOptions.LocalDevice**:
+
+- A long press on the text will display a context menu that offers the copy and select-all options.
+
+- By default, selected text is draggable. To disable dragging, set **draggable** to **false**.
+
+- To support **Ctrl+C** copying, also set [textSelectable](#textselectable12) to **TextSelectableMode.SELECTABLE_FOCUSABLE**.
+
+The **Text** component listens for **onClick**, which is a non-bubbling event. To allow parent components to respond to clicks within the **Text** area, use [parallelGesture](ts-gesture-settings.md#parallelgesture) on the parent. For implementation guidance, see [Example 7: Setting Text Recognition](#example-7-setting-text-recognition).
+
+Because widgets do not have the long press event, the context menu will not be displayed when users long press text.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -252,25 +258,39 @@ This setting applies to every character, including those at line endings.
 
 **Parameters**
 
-| Name| Type                      | Mandatory| Description          |
-| ------ | -------------------------- | ---- | -------------- |
-| value  | number \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Default value: **0**<br>Unit: [fp](ts-pixel-units.md)<br>The Resource type is supported since API version 20.|
+| Name| Type                                            | Mandatory| Description                                                      |
+| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| value  | [CopyOptions](ts-appendix-enums.md#copyoptions9) | Yes  | Whether copy and paste is allowed.<br>Default value: **CopyOptions.None**|
 
-### minFontSize
+### dataDetectorConfig<sup>11+</sup>
 
-minFontSize(value: number | string | Resource)
+dataDetectorConfig(config: TextDataDetectorConfig)
 
-Sets the minimum font size.
+Configures text recognition settings, including entity types to detect, display styles for detected entities, and long-press preview options.
 
-When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
+This API must be used together with [enableDataDetector](#enabledatadetector11). It takes effect only when **enableDataDetector** is set to **true**.
 
-For the setting to take effect, this attribute must be used together with [maxFontSize](#maxfontsize) and [maxLines](#maxlines), or layout constraint settings.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
-When adaptive font sizing is used, the **fontSize** settings do not take effect.
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-If the value of **minFontSize** is less than or equal to 0, the adaptive font sizing feature is disabled. In such cases, the [fontSize](#fontsize) attribute is used instead. If **fontSize** is not explicitly set, its default value will apply.
+**Parameters**
 
-Since API version 18, adaptive font sizing is supported on child components and styled strings, and text segments without an explicitly defined font size will automatically adjust based on the available space.
+| Name| Type                                                       | Mandatory| Description                                                        |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| config | [TextDataDetectorConfig](ts-text-common.md#textdatadetectorconfig11) | Yes  | Text recognition configuration.|
+
+### decoration
+
+decoration(value: DecorationStyleInterface)
+
+Sets the color, type, and style of the text decoration.
+
+>  **NOTE**
+>
+>  When the bottom contour of a character intersects with the decoration, underline avoidance is triggered, commonly affecting characters like "g", "j", "y", "q", and "p."
+>
+>  If the decoration color is set to **Color.Transparent**, it inherits the text color of the first character in each line. If the decoration color is set to **"#00FFFFFF"**, the line becomes fully transparent.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -280,27 +300,19 @@ Since API version 18, adaptive font sizing is supported on child components and 
 
 **Parameters**
 
-| Name| Type                                                        | Mandatory| Description              |
-| ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Minimum font size.<br>Unit: [fp](ts-pixel-units.md)|
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decoration.<br>Default value:<br>{<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>}<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
 
-### maxFontSize
+### draggable<sup>9+</sup>
 
-maxFontSize(value: number | string | Resource)
+draggable(value: boolean)
 
-Sets the maximum font size.
+Sets the drag effect of the selected text.
 
-When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
+This attribute cannot be used together with the [onDragStart](ts-universal-events-drag-drop.md#ondragstart) event.
 
-For the setting to take effect, this attribute must be used together with [minFontSize](#minfontsize) and [maxLines](#maxlines), or layout constraint settings.
-
-When adaptive font sizing is used, the **fontSize** settings do not take effect.
-
-If the value of **maxFontSize** is less than or equal to 0 or is less than the value of **minFontSize**, the adaptive font sizing feature is disabled. In such cases, the [fontSize](#fontsize) attribute is used instead. If **fontSize** is not explicitly set, its default value will apply.
-
-Since API version 18, adaptive font sizing is supported on child components and styled strings, and text segments without an explicitly defined font size will automatically adjust based on the available space.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+If set to **true**, **draggable** must be used in conjunction with [CopyOptions](ts-appendix-enums.md#copyoptions9). When **copyOptions** is set to **CopyOptions.InApp** or **CopyOptions.LocalDevice**, the selected text becomes draggable and can be copied into a text box.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -308,17 +320,142 @@ Since API version 18, adaptive font sizing is supported on child components and 
 
 **Parameters**
 
-| Name| Type                                                        | Mandatory| Description              |
-| ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Maximum font size.<br>Unit: [fp](ts-pixel-units.md)|
+| Name| Type   | Mandatory| Description                                |
+| ------ | ------- | ---- | ------------------------------------ |
+| value  | boolean | Yes  | Drag effect of the selected text.<br>**true**: The selected text is draggable. **false**: The selected text is not draggable.<br>Default value: **false**|
 
-### textCase
+### editMenuOptions<sup>12+</sup>
 
-textCase(value: TextCase)
+editMenuOptions(editMenu: EditMenuOptions)
 
-Sets the text case.
+Sets the extended options of the custom context menu on selection, including the text content, icon, and callback.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+When [disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or [disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the context menu on selection, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](./ts-text-common.md#oncreatemenu12) callback of **editMenuOptions**.
+
+>  **NOTE**
+>
+>  When [editMenuOptions](#editmenuoptions12) is used for configuring the context menu on text selection, the system's default style and trigger conditions are preserved.
+>
+>  In contrast, when [bindSelectionMenu](#bindselectionmenu11) is used, both the menu style and the trigger conditions are fully customizable.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                         | Mandatory| Description                                         |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions) | Yes  | Extended options of the custom context menu on selection.|
+
+### ellipsisMode<sup>11+</sup>
+
+ellipsisMode(value: EllipsisMode)
+
+Sets the ellipsis position.
+
+For the settings to work, **overflow** must be set to **TextOverflow.Ellipsis** and **maxLines** must be specified. Setting **ellipsisMode** alone does not take effect.
+
+**EllipsisMode.START** and **EllipsisMode.CENTER** take effect only when text overflows in a single line.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                               | Mandatory| Description                                     |
+| ------ | --------------------------------------------------- | ---- | ----------------------------------------- |
+| value  | [EllipsisMode](ts-appendix-enums.md#ellipsismode11) | Yes  | Ellipsis position.<br>Default value: **EllipsisMode.END**|
+
+### enableAutoSpacing<sup>20+</sup>
+
+enableAutoSpacing(enabled: Optional\<boolean>)
+
+Sets whether to enable automatic spacing between Chinese and Western characters.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                              |
+| ------ | ------- | ---- | ---------------------------------- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false**.|
+
+### enableDataDetector<sup>11+</sup>
+
+enableDataDetector(enable: boolean)
+
+Enables recognition for special entities within the text.
+
+This API only works on devices that provide text recognition.
+
+If enableDataDetector is set to true and [dataDetectorConfig](#datadetectorconfig11) is not set, all types of entities are recognized by default. The recognized entities are in blue with blue underlines.
+
+```ts
+color: '#ff007dff'
+decoration:{
+  type: TextDecorationType.Underline,
+  color: '#ff007dff',
+  style: TextDecorationStyle.SOLID
+}
+```
+
+Touching and right-clicking an entity opens a context menu with actions based on entity type, while left-clicking triggers the first menu option directly.
+
+This API does not work when **overflow** is set to **TextOverflow.MARQUEE**.
+
+When **copyOption** is set to **CopyOptions.None**, the menu displayed after an entity is clicked does not provide the text selection, copy, translation, or sharing functionality. When **copyOption** is not set to **CopyOptions.None**, and **textSelectable** is set to **TextSelectableMode.UNSELECTABLE**, the entity still has the copy functionality but does not provide the text selection feature.
+<!--RP2--><!--RP2End-->
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean | Yes  | Whether to enable text recognition.<br>**true**: Enable text recognition. **false**: Disable text recognition.<br>Default value: **false**.|
+
+### enableHapticFeedback<sup>13+</sup>
+
+enableHapticFeedback(isEnabled: boolean)
+
+Specifies whether to enable haptic feedback.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
+>
+> To enable haptic feedback, you must declare the ohos.permission.VIBRATE permission under **requestPermissions** in the **module.json5** file of the project.
+> ```json
+> "requestPermissions": [
+>  {
+>     "name": "ohos.permission.VIBRATE",
+>  }
+> ]
+> ```
+
+**Atomic service API**: This API can be used in atomic services since API version 13.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                              |
+| ------ | ------- | ---- | ---------------------------------- |
+| isEnabled | boolean | Yes  | Whether to enable haptic feedback.<br>**true** to enable, **false** otherwise.<br>Default value: **true**.|
+
+### font<sup>10+</sup>
+
+font(value: Font)
+
+Sets the text style,
+
+covering the font size, font width, font family, and font style.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -326,9 +463,30 @@ Sets the text case.
 
 **Parameters**
 
-| Name| Type                                     | Mandatory| Description                                     |
-| ------ | ----------------------------------------- | ---- | ----------------------------------------- |
-| value  | [TextCase](ts-appendix-enums.md#textcase) | Yes  | Text case.<br>Default value: **TextCase.Normal**|
+| Name| Type   | Mandatory| Description      |
+| ------ | ------- | ---- | ---------- |
+| value  | [Font](ts-types.md#font) | Yes  | Text style.|
+
+### font<sup>12+</sup>
+
+font(fontValue: Font, options?: FontSettingOptions)
+
+Sets the font style, with support for font settings.
+
+It is only effective for the **Text** component, not for its child components.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                         | Mandatory| Description                                         |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| fontValue | [Font](ts-types.md#font) | Yes | Text style.|
+| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12) | No | Font settings.|
 
 ### fontColor
 
@@ -347,6 +505,73 @@ Sets the font color.
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
 | value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value: **'#e6182431'**.<br>Default value on wearable devices: **'#c5ffffff'**.|
+
+### fontFamily
+
+fontFamily(value: string | Resource)
+
+Sets the font family.
+
+> **NOTE**
+>
+> You can use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                | Mandatory| Description                                                        |
+| ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | string \| [Resource](ts-types.md#resource) | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>To specify multiple fonts, separate them with commas (,), and fonts are applied in priority order. Example: **'Arial, HarmonyOS Sans'**.|
+
+### fontFeature<sup>12+</sup>
+
+fontFeature(value: string)
+
+Sets the font feature, for example, monospaced digits.
+
+Format: normal \| \<feature-tag-value\>
+
+Format of **\<feature-tag-value\>**: \<string\> \[ \<integer\> \| on \| off ]
+
+There can be multiple **\<feature-tag-value\>** values, which are separated by commas (,).
+
+For example, the input format for monospaced clock fonts is "ss01" on.
+
+>  **NOTE**
+>
+>  The **Text** component cannot contain both text and the child component **Span** or **ImageSpan**. If both of them exist, only the content in **Span** or **ImageSpan** is displayed.
+>
+>  The typesetting engine rounds down the value of [width](ts-universal-attributes-size.md#width) to ensure that the value is an integer. If the typesetting engine rounds up the value instead, the right side of the text may be clipped.
+>
+>  When multiple **Text** components are placed in the [Row](ts-container-row.md) container with no specific layout or space allocation settings configured, the components are laid out based on the maximum size of the container. To make sure the sum of the components' main axis sizes does not exceed the main axis size of the container, you can set [layoutWeight](ts-universal-attributes-size.md#layoutweight) or use the [flex layout](ts-universal-attributes-flex-layout.md).
+>
+>  The system's default font supports the following liga ligatures: Th, fb, ff, fb, ffb, ffh, ffi, ffk, ffl, fh, fi, fk, fl, rf, rt, rv, rx, and ry. These ligatures may interfere with the expected rendering of spans and styled strings. To avoid such inconsistencies, consider disabling the liga feature.
+>
+>  Text rendering behavior is closely tied to the font file in use. For instance, the system's default font supports 8-punctuation compression only for left-side punctuation marks. Right-side punctuation, including exclamation marks, enumeration commas, and question marks, is not affected by this feature.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description          |
+| ------ | ------ | ---- | -------------- |
+| value  | string | Yes  | Font feature.|
+
+The figure below shows the font feature list.
+
+![alt text](figures/arkts-fontfeature.png)
+
+Font features are advanced OpenType typographic capabilities such as ligatures, monospacing, and stylistic alternates. These features are typically utilized with custom fonts and require support from the font file itself.
+For more information about the font features, see [Low-level font feature settings control: the font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop) and [The Complete CSS Demo for OpenType Features](https://sparanoid.com/lab/opentype-features/).
 
 ### fontSize
 
@@ -402,139 +627,42 @@ Sets the font weight. If the value is too large, the text may be clipped dependi
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**.<br>Default value on wearable devices: **FontWeight.Regular**.<br>The Resource type is supported since API version 20.|
 
-### fontFamily
+### fontWeight<sup>12+</sup>
 
-fontFamily(value: string | Resource)
+fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptions)
 
-Sets the font family.
+Sets the text font weight, with support for font settings.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+It is only effective for the **Text** component, not for its child components.<!--RP4--><!--RP4End-->
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                | Mandatory| Description                                                        |
-| ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| [Resource](ts-types.md#resource) | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>To specify multiple fonts, separate them with commas (,), and fonts are applied in priority order. Example: **'Arial, HarmonyOS Sans'**.|
-
-> **NOTE**
->
-> You can use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
-
-### copyOption<sup>9+</sup>
-
-copyOption(value: CopyOptions)
-
-Sets whether copy and paste is allowed.
-
-Since API version 20, copied text from the **Text** component includes HTML-formatted content in the pasteboard.
-
-- When the **Text** component contains child elements, only [Span](ts-basic-components-span.md) and [ImageSpan](ts-basic-components-imagespan.md) support HTML-formatted pasteboard content.
-
-- For styled strings, refer to [toHtml](ts-universal-styled-string.md#tohtml14) for supported HTML conversion scope.
-
-When **copyOption** is set to **CopyOptions.InApp** or **CopyOptions.LocalDevice**:
-
-- A long press on the text will display a context menu that offers the copy and select-all options.
-
-- By default, selected text is draggable. To disable dragging, set **draggable** to **false**.
-
-- To support **Ctrl+C** copying, also set [textSelectable](#textselectable12) to **TextSelectableMode.SELECTABLE_FOCUSABLE**.
-
-The **Text** component listens for **onClick**, which is a non-bubbling event. To allow parent components to respond to clicks within the **Text** area, use [parallelGesture](ts-gesture-settings.md#parallelgesture) on the parent. For implementation guidance, see [Example 7: Setting Text Recognition](#example-7-setting-text-recognition).
-
-Because widgets do not have the long press event, the context menu will not be displayed when users long press text.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name| Type                                            | Mandatory| Description                                                      |
-| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | [CopyOptions](ts-appendix-enums.md#copyoptions9) | Yes  | Whether copy and paste is allowed.<br>Default value: **CopyOptions.None**|
+| Name| Type                                         | Mandatory| Description                                         |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| weight | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| [ResourceStr](ts-types.md#resourcestr) | Yes | Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>The Resource type is supported since API version 20.|
+| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12) | No | Font settings.<br>When enableVariableFontWeight is set to false, variable font weight adjustment is disabled. If weight is set to an integer multiple of 100 within the range of [100, 900], the font weight is weight. If weight is not an integer multiple of 100, the default value 400 is used.<br>When enableVariableFontWeight is set to true, variable font weight adjustment is enabled. If weight is set to any integer in the range of [100, 900], the font weight is weight.|
 
-### contentTransition<sup>20+</sup>
+### halfLeading<sup>12+</sup>
 
-contentTransition(transition: Optional\<ContentTransition>)
+halfLeading(halfLeading: boolean)
 
-Applies a transition animation to text content. Supports numeric flip animation via [NumericTextTransition](../arkui-ts/ts-text-common.md#numerictexttransition20).
+Sets whether the text is vertically centered.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                            | Mandatory| Description                                                      |
-| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| transition  | Optional\<[ContentTransition](../arkui-ts/ts-text-common.md#contenttransition20)> | Yes  | Text animation effect.|
-
-### draggable<sup>9+</sup>
-
-draggable(value: boolean)
-
-Sets the drag effect of the selected text.
-
-This attribute cannot be used together with the [onDragStart](ts-universal-events-drag-drop.md#ondragstart) event.
-
-If set to **true**, **draggable** must be used in conjunction with [CopyOptions](ts-appendix-enums.md#copyoptions9). When **copyOptions** is set to **CopyOptions.InApp** or **CopyOptions.LocalDevice**, the selected text becomes draggable and can be copied into a text box.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description                                |
-| ------ | ------- | ---- | ------------------------------------ |
-| value  | boolean | Yes  | Drag effect of the selected text.<br>**true**: The selected text is draggable. **false**: The selected text is not draggable.<br>Default value: **false**|
-
-### font<sup>10+</sup>
-
-font(value: Font)
-
-Sets the text style,
-
-covering the font size, font width, font family, and font style.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description      |
-| ------ | ------- | ---- | ---------- |
-| value  | [Font](ts-types.md#font) | Yes  | Text style.|
-
-### textShadow<sup>10+</sup>
-
-textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
-
-Sets the text shadow.
-
-This API does not work with the **fill** attribute or coloring strategy.
-
-Since API version 11, this API supports input parameters in an array to implement multiple text shadows.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 10.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description          |
-| ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \|  Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&gt;<sup>11+</sup> | Yes  | Text shadow.|
+| Name| Type                                         | Mandatory| Description                                         |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| halfLeading | boolean | Yes | Whether the text is vertically centered.<br>Half leading is the leading split in half and applied equally to the top and bottom edges. The value **true** means that half leading is enabled, and **false** means the opposite.<br>Default value: **false**|
 
 ### heightAdaptivePolicy<sup>10+</sup>
 
@@ -560,31 +688,19 @@ The available modes are as follows:
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | Yes  | How the adaptive height is determined for the text.<br>Default value: **TextHeightAdaptivePolicy.MAX_LINES_FIRST**|
 
-### textIndent<sup>10+</sup>
+### letterSpacing
 
-textIndent(value: Length)
+letterSpacing(value: number | ResourceStr)
 
-Sets the indent of the first line text.
+Sets the letter spacing for a text style.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+If the value specified is a percentage or 0, the default value is used. When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Negative values compress text. Excessive compression may reduce content area to zero, hiding content.
 
-**Parameters**
+This setting applies to every character, including those at line endings.
 
-| Name| Type                        | Mandatory| Description                        |
-| ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Indent of the first line text.<br>Default value: **0**|
-
-### wordBreak<sup>11+</sup>
-
-wordBreak(value: WordBreak)
-
-Sets the word break rule.
-
-By default, when **wordBreak** is not called or is set to **WordBreak.BREAK_WORD**, text is truncated by word. For example, English text is broken at word boundaries.
-
-To truncate by character, with the excess part displayed as an ellipsis (...), use **WordBreak.BREAK_ALL** in combination with **{overflow: TextOverflow.Ellipsis}** and **maxLines**.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -592,48 +708,15 @@ To truncate by character, with the excess part displayed as an ellipsis (...), u
 
 **Parameters**
 
-| Name| Type                                         | Mandatory| Description                                         |
-| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| value  | [WordBreak](ts-appendix-enums.md#wordbreak11) | Yes  | Word break rule.<br>Default value: **WordBreak.BREAK_WORD**|
+| Name| Type                      | Mandatory| Description          |
+| ------ | -------------------------- | ---- | -------------- |
+| value  | number \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Default value: **0**<br>Unit: [fp](ts-pixel-units.md)<br>The Resource type is supported since API version 20.|
 
-### selection<sup>11+</sup>
+### lineBreakStrategy<sup>12+</sup>
 
-selection(selectionStart: number, selectionEnd: number)
+lineBreakStrategy(strategy: LineBreakStrategy)
 
-Sets text selection.
-
-The selected text is highlighted, and selection handles are displayed with a context menu.
-
-When **copyOption** is set to **CopyOptions.None**, the **selection** attribute is not effective.
-
-When **overflow** is set to **TextOverflow.MARQUEE**, the **selection** attribute is not effective.
-
-If the value of **selectionStart** is greater than or equal to that of **selectionEnd**, no text will be selected. The value range is [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value is less than 0, the value **0** will be used. If the value is greater than **textSize**, **textSize** will be used.
-
-If the selection range falls within a truncated or invisible area, selection is ignored. When truncation is disabled, selection can extend beyond the parent component's bounds.
-
-You can listen for selection changes using [onTextSelectionChange](#ontextselectionchange11).
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name        | Type  | Mandatory| Description                                |
-| -------------- | ------ | ---- | ------------------------------------ |
-| selectionStart | number | Yes  | Start position of the selected text.<br>Default value: **-1**|
-| selectionEnd   | number | Yes  | End position of the selected text.<br>Default value: **-1**|
-
-### ellipsisMode<sup>11+</sup>
-
-ellipsisMode(value: EllipsisMode)
-
-Sets the ellipsis position.
-
-For the settings to work, **overflow** must be set to **TextOverflow.Ellipsis** and **maxLines** must be specified. Setting **ellipsisMode** alone does not take effect.
-
-**EllipsisMode.START** and **EllipsisMode.CENTER** take effect only when text overflows in a single line.
+Sets the line break rule. This attribute takes effect only when [wordBreak](#wordbreak11) is not **WordBreak.BREAK_ALL**. Hyphens are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -641,138 +724,33 @@ For the settings to work, **overflow** must be set to **TextOverflow.Ellipsis** 
 
 **Parameters**
 
-| Name| Type                                               | Mandatory| Description                                     |
-| ------ | --------------------------------------------------- | ---- | ----------------------------------------- |
-| value  | [EllipsisMode](ts-appendix-enums.md#ellipsismode11) | Yes  | Ellipsis position.<br>Default value: **EllipsisMode.END**|
+| Name  | Type                                                        | Mandatory| Description                                                   |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
+| strategy | [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) | Yes  | Line break rule.<br>Default value: **LineBreakStrategy.GREEDY**|
 
-### enableDataDetector<sup>11+</sup>
+### lineHeight
 
-enableDataDetector(enable: boolean)
+lineHeight(value: number | string | Resource)
 
-Enables recognition for special entities within the text.
+Sets the text line height.
 
-This API only works on devices that provide text recognition.
-
-If **enableDataDetector** is set to **true** and [dataDetectorConfig](#datadetectorconfig11) is not set, all types of entities will be recognized, and the **color** and **decoration** attributes of the recognized entities will be changed to the following styles:
-
-```ts
-color: '#ff007dff'
-decoration:{
-  type: TextDecorationType.Underline,
-  color: '#ff007dff',
-  style: TextDecorationStyle.SOLID
-}
-```
-
-Touching and right-clicking an entity opens a context menu with actions based on entity type, while left-clicking triggers the first menu option directly.
-
-This API does not work when **overflow** is set to **TextOverflow.MARQUEE**.
-
-When **copyOption** is set to **CopyOptions.None**, the menu displayed after an entity is clicked does not provide the text selection, copy, translation, or sharing functionality. When **copyOption** is not set to **CopyOptions.None**, and **textSelectable** is set to **TextSelectableMode.UNSELECTABLE**, the entity still has the copy functionality but does not provide the text selection feature.
-<!--RP2--><!--RP2End-->
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description                             |
-| ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean | Yes  | Whether to enable text recognition.<br>**true**: Enable text recognition. **false**: Disable text recognition.<br>Default value: **false**.|
-
-### dataDetectorConfig<sup>11+</sup>
-
-dataDetectorConfig(config: TextDataDetectorConfig)
-
-Configures text recognition settings, including entity types to detect, display styles for detected entities, and long-press preview options.
-
-This API must be used together with [enableDataDetector](#enabledatadetector11). It takes effect only when **enableDataDetector** is set to **true**.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                       | Mandatory| Description                                                        |
-| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| config | [TextDataDetectorConfig](ts-text-common.md#textdatadetectorconfig11) | Yes  | Text recognition configuration.|
-
-### bindSelectionMenu<sup>11+</sup>
-
-bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType,
-    options?: SelectionMenuOptions)
-
-Sets the custom context menu on text selection.
-
-The duration required for a long-press gesture is 600 ms for **bindSelectionMenu** and 800 ms for **bindContextMenu**. When both **bindSelectionMenu** and **bindContextMenu** are set and both are configured to be triggered by a long-press gesture, **bindSelectionMenu** is triggered first.
-
-If the custom menu is too long, embed a [Scroll](./ts-container-scroll.md) component to prevent the keyboard from being blocked.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name      | Type                                                        | Mandatory| Description                                                        |
-| ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| spanType     | [TextSpanType](#textspantype11)          | Yes  | Span type of the menu.<br>Default value: **TextSpanType.TEXT**              |
-| content      | [CustomBuilder](ts-types.md#custombuilder8)                  | Yes  | Content of the menu.                                            |
-| responseType | [TextResponseType](#textresponsetype11)  | Yes  | Response type of the menu.<br>Default value: **TextResponseType.LONG_PRESS**|
-| options      | [SelectionMenuOptions](ts-basic-components-richeditor.md) | No  | Options of the menu.                                            |
+If the value is less than or equal to **0**, the line height is unrestricted and adapts to the font size. When the value is a number, the unit is fp. When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
 
 >  **NOTE**
->
->  When [editMenuOptions](#editmenuoptions12) is used for configuring the context menu on text selection, the system's default style and trigger conditions are preserved.
->
->  In contrast, when [bindSelectionMenu](#bindselectionmenu11) is used, both the menu style and the trigger conditions are fully customizable.
+>  
+>  If certain characters have significantly taller glyphs than others on the same line, layout anomalies such as clipping, overlap, or misalignment may occur. In this case, adjust component attributes such as height and line height to ensure proper layout rendering.
 
-### fontFeature<sup>12+</sup>
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
-fontFeature(value: string)
-
-Sets the font feature, for example, monospaced digits.
-
-Format: normal \| \<feature-tag-value\>
-
-Format of **\<feature-tag-value\>**: \<string\> \[ \<integer\> \| on \| off ]
-
-There can be multiple **\<feature-tag-value\>** values, which are separated by commas (,).
-
-For example, the input format for monospaced clock fonts is "ss01" on.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| value  | string | Yes  | Font feature.|
-
-The figure below shows the font feature list.
-
-![alt text](figures/arkts-fontfeature.png)
-
-Font features are advanced OpenType typographic capabilities such as ligatures, monospacing, and stylistic alternates. These features are typically utilized with custom fonts and require support from the font file itself.
-For more information about the font features, see [Low-level font feature settings control: the font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop) and [The Complete CSS Demo for OpenType Features](https://sparanoid.com/lab/opentype-features/).
-
->  **NOTE**
->
->  The **Text** component cannot contain both text and the child component **Span** or **ImageSpan**. If both of them exist, only the content in **Span** or **ImageSpan** is displayed.
->
->  The typesetting engine rounds down the value of [width](ts-universal-attributes-size.md#width) to ensure that the value is an integer. If the typesetting engine rounds up the value instead, the right side of the text may be clipped.
->
->  When multiple **Text** components are placed in the [Row](ts-container-row.md) container with no specific layout or space allocation settings configured, the components are laid out based on the maximum size of the container. To make sure the sum of the components' main axis sizes does not exceed the main axis size of the container, you can set [layoutWeight](ts-universal-attributes-size.md#layoutweight) or use the [flex layout](ts-universal-attributes-flex-layout.md).
->
->  The system's default font supports the following liga ligatures: Th, fb, ff, ffb, ffh, ffi, ffk, ffl, fh, fi, fk. These ligatures may interfere with the expected rendering of spans and styled strings. To avoid such inconsistencies, consider disabling the liga feature.
->
->  Text rendering behavior is closely tied to the font file in use. For instance, the system's default font supports 8-punctuation compression only for left-side punctuation marks. Right-side punctuation, including exclamation marks, enumeration commas, and question marks, is not affected by this feature.
+| Name| Type                                                        | Mandatory| Description            |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Text line height.|
 
 ### lineSpacing<sup>12+</sup>
 
@@ -807,97 +785,23 @@ Sets the line spacing for text. When **LineSpacingOptions** is not specified, li
 | value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Line spacing. Values less than or equal to 0 are treated as the default value **0**.|
 | options  | [LineSpacingOptions](ts-text-common.md#linespacingoptions20) | No  | Line spacing configuration options.<br>Default value: **{ onlyBetweenLines: false }**.|
 
-### privacySensitive<sup>12+</sup>
+### marqueeOptions<sup>18+</sup>
 
-privacySensitive(supported: boolean)
+marqueeOptions(options: Optional\<TextMarqueeOptions>)
 
-Sets whether to enable privacy mode on widgets.
+Sets the marquee effect for text.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+The **marqueeOptions** settings take effect only when **textOverflow** is set to **TextOverflow.MARQUEE**.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name   | Type   | Mandatory| Description                                                        |
-| --------- | ------- | ---- | ------------------------------------------------------------ |
-| supported | boolean | Yes  | Whether to enable privacy mode on widgets.<br>Default value: **false**. The value **true** means to enable privacy mode, in which case text is obscured as hyphens (-).<br>**NOTE**<br>The value **null** means not to enable privacy mode on widgets.<br>Enabling privacy mode requires [widget framework support](./ts-universal-attributes-obscured.md).|
-
-### lineBreakStrategy<sup>12+</sup>
-
-lineBreakStrategy(strategy: LineBreakStrategy)
-
-Sets the line break rule. This attribute takes effect only when [wordBreak](#wordbreak11) is not **WordBreak.BREAK_ALL**. Hyphens are not supported.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                   |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| strategy | [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) | Yes  | Line break rule.<br>Default value: **LineBreakStrategy.GREEDY**|
-
-### textSelectable<sup>12+</sup>
-
-textSelectable(mode: TextSelectableMode)
-
-Sets whether the text is selectable and focusable.
-
-This attribute must be used in conjunction with [copyOption](#copyoption9).
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                         | Mandatory| Description                                         |
-| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| mode  | [TextSelectableMode](ts-appendix-enums.md#textselectablemode12) | Yes  | Whether the text is selectable and focusable.<br>Default value: **TextSelectableMode.SELECTABLE_UNFOCUSABLE**|
-
-### editMenuOptions<sup>12+</sup>
-
-editMenuOptions(editMenu: EditMenuOptions)
-
-Sets the extended options of the custom context menu on selection, including the text content, icon, and callback.
-
-When [disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or [disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the context menu on selection, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](./ts-text-common.md#oncreatemenu12) callback of **editMenuOptions**.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                         | Mandatory| Description                                         |
-| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions) | Yes  | Extended options of the custom context menu on selection.|
-
->  **NOTE**
->
->  When [editMenuOptions](#editmenuoptions12) is used for configuring the context menu on text selection, the system's default style and trigger conditions are preserved.
->
->  In contrast, when [bindSelectionMenu](#bindselectionmenu11) is used, both the menu style and the trigger conditions are fully customizable.
-
-### minFontScale<sup>12+</sup>
-
-minFontScale(scale: number | Resource)
-
-Sets the minimum font scale factor for text.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                         | Mandatory| Description                                         |
-| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Minimum font scale factor for text.<br>Value range: [0, 1].<br>**NOTE**<br>Values less than 0 are treated as 0, and values greater than 1 are treated as 1. Other invalid values do not take effect by default.|
+| Name| Type                                      | Mandatory| Description                                      |
+| ------ | ------------------------------------------ | ---- | ------------------------------------------ |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextMarqueeOptions](#textmarqueeoptions18)> | Yes| Marquee animation properties such as enable/disable, step size, loop count, and direction.|
 
 ### maxFontScale<sup>12+</sup>
 
@@ -915,11 +819,59 @@ Sets the maximum font scale factor for text.
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
 | scale  | number \| [Resource](ts-types.md#resource) | Yes  | Maximum font scale factor for text.<br>Value range: [1, +∞)<br>**NOTE**<br>Values less than 1 are treated as **1**. Other invalid values are ineffective by default.|
 
-### halfLeading<sup>12+</sup>
+### maxFontSize
 
-halfLeading(halfLeading: boolean)
+maxFontSize(value: number | string | Resource)
 
-Sets whether half leading is enabled.
+Sets the maximum font size.
+
+When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
+
+For the setting to take effect, this attribute must be used together with [minFontSize](#minfontsize) and [maxLines](#maxlines), or layout constraint settings.
+
+When adaptive font sizing is used, the **fontSize** settings do not take effect.
+
+If the value of **maxFontSize** is less than or equal to 0 or is less than the value of **minFontSize**, the adaptive font sizing feature is disabled. In such cases, the [fontSize](#fontsize) attribute is used instead. If **fontSize** is not explicitly set, its default value will apply.
+
+Since API version 18, adaptive font sizing is supported on child components and styled strings, and text segments without an explicitly defined font size will automatically adjust based on the available space.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description              |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Maximum font size.<br>Unit: [fp](ts-pixel-units.md)|
+
+### maxLines
+
+maxLines(value: number)
+
+Sets the maximum number of lines in the text.
+
+By default, text is automatically folded. If this attribute is specified, the text will not exceed the specified number of lines. If there is extra text, you can use [textOverflow](#textoverflow) to specify how it is displayed.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description            |
+| ------ | ------ | ---- | ---------------- |
+| value  | number | Yes  | Maximum number of lines in the text.<br>**NOTE**<br>Value range: [0, *INT32_MAX*]<br>If this parameter is set to **0**, no text content is displayed.|
+
+### minFontScale<sup>12+</sup>
+
+minFontScale(scale: number | Resource)
+
+Sets the minimum font scale factor for text.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -929,76 +881,35 @@ Sets whether half leading is enabled.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | boolean | Yes | Whether half leading is enabled.<br>Half leading is the leading split in half and applied equally to the top and bottom edges. The value **true** means that half leading is enabled, and **false** means the opposite.<br>Default value: **false**|
+| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Minimum font scale factor for text.<br>Value range: [0, 1].<br>**NOTE**<br>Values less than 0 are treated as 0, and values greater than 1 are treated as 1. Other invalid values do not take effect by default.|
 
-### font<sup>12+</sup>
+### minFontSize
 
-font(fontValue: Font, options?: FontSettingOptions)
+minFontSize(value: number | string | Resource)
 
-Sets the font style, with support for font settings.
+Sets the minimum font size.
 
-It is only effective for the **Text** component, not for its child components.
+When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+For the setting to take effect, this attribute must be used together with [maxFontSize](#maxfontsize) and [maxLines](#maxlines), or layout constraint settings.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+When adaptive font sizing is used, the **fontSize** settings do not take effect.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+If the value of **minFontSize** is less than or equal to 0, the adaptive font sizing feature is disabled. In such cases, the [fontSize](#fontsize) attribute is used instead. If **fontSize** is not explicitly set, its default value will apply.
 
-**Parameters**
+Since API version 18, adaptive font sizing is supported on child components and styled strings, and text segments without an explicitly defined font size will automatically adjust based on the available space.
 
-| Name| Type                                         | Mandatory| Description                                         |
-| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| fontValue | [Font](ts-types.md#font) | Yes | Text style.|
-| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12) | No | Font settings.|
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
-### fontWeight<sup>12+</sup>
-
-fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptions)
-
-Sets the text font weight, with support for font settings.
-
-It is only effective for the **Text** component, not for its child components.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name| Type                                         | Mandatory| Description                                         |
-| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| weight | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| [ResourceStr](ts-types.md#resourcestr) | Yes | Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>The Resource type is supported since API version 20.|
-| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12) | No | Font settings.|
-
-### enableHapticFeedback<sup>13+</sup>
-
-enableHapticFeedback(isEnabled: boolean)
-
-Specifies whether to enable haptic feedback.
-
-**Atomic service API**: This API can be used in atomic services since API version 13.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description                              |
-| ------ | ------- | ---- | ---------------------------------- |
-| isEnabled | boolean | Yes  | Whether to enable haptic feedback.<br>**true** to enable, **false** otherwise.<br>Default value: **true**.|
-
->  **NOTE**
->
->  To enable haptic feedback, you must declare the ohos.permission.VIBRATE permission under **requestPermissions** in the **module.json5** file of the project.
-> ```json
-> "requestPermissions": [
->  {
->     "name": "ohos.permission.VIBRATE",
->  }
-> ]
-> ```
+| Name| Type                                                        | Mandatory| Description              |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Minimum font size.<br>Unit: [fp](ts-pixel-units.md)|
 
 ### optimizeTrailingSpace<sup>20+</sup>
 
@@ -1026,21 +937,24 @@ When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrai
 | ---------------- | ------- | ---- | ----------------------------------------------- |
 | optimize         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to optimize trailing spaces.<br>**true** to optimize, **false** otherwise.<br>Default value: **false**.|
 
-### caretColor<sup>14+</sup>
+### privacySensitive<sup>12+</sup>
 
-caretColor(color: ResourceColor)
+privacySensitive(supported: boolean)
 
-Sets the color of the text selection handle, also known as the caret, in the text box.
+Sets whether to enable privacy mode on widgets.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name| Type                                      | Mandatory| Description                                  |
-| ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the text selection handle.<br>Default value: **'#007DFF'**|
+| Name   | Type   | Mandatory| Description                                                        |
+| --------- | ------- | ---- | ------------------------------------------------------------ |
+| supported | boolean | Yes  | Whether to enable privacy mode on widgets.<br>Default value: **false**. The value **true** means to enable privacy mode, in which case text is obscured as hyphens (-).<br>**NOTE**<br>The value **null** means not to enable privacy mode on widgets.<br>Enabling privacy mode requires widget framework support. The privacy mask type can be configured through [obscured](./ts-universal-attributes-obscured.md#obscured).|
+ 
 
 ### selectedBackgroundColor<sup>14+</sup>
 
@@ -1058,39 +972,34 @@ Sets the background color of the selected text. If the opacity is not set, a 20%
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
 | color  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the selected text.<br>Default value: **'#007DFF'**|
 
-### marqueeOptions<sup>18+</sup>
+### selection<sup>11+</sup>
 
-marqueeOptions(options: Optional\<TextMarqueeOptions>)
+selection(selectionStart: number, selectionEnd: number)
 
-Sets the marquee effect for text.
+Sets text selection.
 
-The **marqueeOptions** settings take effect only when **textOverflow** is set to **TextOverflow.MARQUEE**.
+The selected text is highlighted, and selection handles are displayed with a context menu.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+When [copyOption](#copyoption9) is set to **CopyOptions.None**, the **selection** attribute is not effective.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+When [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE**, the **selection** attribute is not effective.
 
-**Parameters**
+If the value of **selectionStart** is greater than or equal to that of **selectionEnd**, no text will be selected. The value range is [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value is less than 0, the value **0** will be used. If the value is greater than **textSize**, **textSize** will be used.
 
-| Name| Type                                      | Mandatory| Description                                      |
-| ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextMarqueeOptions](#textmarqueeoptions18)> | Yes| Marquee animation properties such as enable/disable, step size, loop count, and direction.|
+If the selection range falls within a truncated or invisible area, selection is ignored. If [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is set to **false**, the text that exceeds the parent component can be selected.
 
-### enableAutoSpacing<sup>20+</sup>
+You can listen for selection changes using [onTextSelectionChange](#ontextselectionchange11).
 
-enableAutoSpacing(enabled: Optional\<boolean>)
-
-Sets whether to enable automatic spacing between Chinese and Western characters.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description                              |
-| ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false**.|
+| Name        | Type  | Mandatory| Description                                |
+| -------------- | ------ | ---- | ------------------------------------ |
+| selectionStart | number | Yes  | Start position of the selected text.<br>Default value: **-1**|
+| selectionEnd   | number | Yes  | End position of the selected text.<br>Default value: **-1**|
 
 ### shaderStyle<sup>20+</sup>
 
@@ -1107,6 +1016,58 @@ Applies gradient or solid color effects to text. Supports [RadialGradientStyle](
 | Name    | Type                                        | Mandatory                            | Description                              |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
 | shader | [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | Yes| Shader effect.<br>Based on the input, the system applies a radial gradient ([RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)), linear gradient ([LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)), or solid color ([ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)).<br>**NOTE**<br>If [RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20) is used and the **center** parameter (from [RadialGradientOptions](./ts-universal-attributes-gradient-color.md#radialgradientoptions18)) is outside the component bounds, setting **repeating** to **true** enhances the gradient effect.|
+
+### textAlign
+
+textAlign(value: TextAlign)
+
+Sets the horizontal alignment mode of the text.
+
+The text takes up the full width of the **Text** component.
+
+The vertical position of the text paragraph can be controlled by the [align](ts-universal-attributes-location.md#align) attribute, but the horizontal position cannot be controlled by **align** in this component. The specific effects are as follows:
+
+- **Alignment.TopStart**, **Alignment.Top**, **Alignment.TopEnd**: Content aligns to the top.
+
+- **Alignment.Start**, **Alignment.Center**, **Alignment.End**: Content is centered vertically.
+
+- **Alignment.BottomStart**, **Alignment.Bottom**, **Alignment.BottomEnd:** Content aligns to the bottom.
+
+When **textAlign** is set to **TextAlign.JUSTIFY**, the [wordBreak](#wordbreak11) property must be configured according to the text content. The last line of text aligns to the start horizontally and does not participate in justification.
+
+>  **NOTE** 
+>
+>  **textAlign** only adjusts the overall text layout and does not affect character display order. For character display order adjustment, see [Bidirectional Text Layout and Alignment](../../../ui/arkts-internationalization.md#bidirectional-text-layout-and-alignment).
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                       | Mandatory| Description                                                      |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| value  | [TextAlign](ts-appendix-enums.md#textalign) | Yes  | Horizontal alignment of the text.<br>Default value: **TextAlign.Start**.<br>Default value on wearable devices: **TextAlign.Center**.|
+
+### textCase
+
+textCase(value: TextCase)
+
+Sets the text case.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                     | Mandatory| Description                                     |
+| ------ | ----------------------------------------- | ---- | ----------------------------------------- |
+| value  | [TextCase](ts-appendix-enums.md#textcase) | Yes  | Text case.<br>Default value: **TextCase.Normal**|
 
 ### textContentAlign<sup>21+</sup>
 
@@ -1125,6 +1086,146 @@ This API takes effect only when the height of the text content exceeds the compo
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | Yes  | Vertical alignment of the text.<br>If the value is **undefined** or invalid, alignment defaults to **Center**.|
+
+### textIndent<sup>10+</sup>
+
+textIndent(value: Length)
+
+Sets the indent of the first line text.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                        | Mandatory| Description                        |
+| ------ | ---------------------------- | ---- | ---------------------------- |
+| value  | [Length](ts-types.md#length) | Yes  | Indent of the first line text.<br>Default value: **0**|
+
+### textOverflow
+
+textOverflow(options: TextOverflowOptions)
+
+Sets the display mode when the text is too long.
+
+When [TextOverflowOptions](#textoverflowoptions18) is set to **TextOverflow.None**, **TextOverflow.Clip**, or **TextOverflow.Ellipsis**:
+
+- **TextOverflow.None** or **TextOverflow.Clip**: Text is truncated when it exceeds the maximum number of lines.
+
+- **TextOverflow.Ellipsis**: Overflowing text is replaced with an ellipsis (...).
+
+- This must be used with [maxLines](#maxlines) for the settings to take effect.
+
+- Line breaking behavior is controlled by [wordBreak](#wordbreak11). By default, it uses **WordBreak.BREAK_WORD**, which truncates by word (for example, English text is truncated word-by-word). To truncate by character, set **wordBreak** to **WordBreak.BREAK_ALL**.
+
+- Line wrapping behavior is governed by [lineBreakStrategy](#linebreakstrategy12), which takes effect only when [wordBreak](#wordbreak11) is not **WordBreak.BREAK_ALL**. Hyphens are not supported.
+
+- Since API version 11, it is recommended that you configure both [textOverflow](#textoverflow) and [wordBreak](#wordbreak11) to control truncation behavior. For details, see [Example 4](#example-4-setting-text-wrapping-and-line-breaking)<!--RP1--><!--RP1End-->.
+
+When **TextOverflowOptions** is set to **TextOverflow.MARQUEE**:
+
+- Text scrolls horizontally within a single line.
+
+- [maxLines](#maxlines) and[copyOption](#copyoption9) are ignored.
+
+- The [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute of the **Text** component defaults to **true**.
+
+- [CustomSpan](ts-universal-styled-string.md#customspan) is not supported in marquee mode.
+
+- Behavior of [textAlign](#textalign): If the text does not scroll, **textAlign** applies; if the text scrolls, **textAlign** is ignored.
+
+- Since API version 12, **TextOverflow.MARQUEE** is available for the **ImageSpan** component, where the text and images are allowed to scroll within a single line.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options | [TextOverflowOptions](#textoverflowoptions18) | Yes  | Display mode when the text is too long.|
+
+### textSelectable<sup>12+</sup>
+
+textSelectable(mode: TextSelectableMode)
+
+Sets whether the text is selectable and focusable.
+
+This attribute must be used in conjunction with [copyOption](#copyoption9).
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                         | Mandatory| Description                                         |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| mode  | [TextSelectableMode](ts-appendix-enums.md#textselectablemode12) | Yes  | Whether the text is selectable and focusable.<br>Default value: **TextSelectableMode.SELECTABLE_UNFOCUSABLE**|
+
+### textShadow<sup>10+</sup>
+
+textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
+
+Sets the text shadow.
+
+This API does not work with the **fill** attribute or coloring strategy.
+
+Since API version 11, this API supports input parameters in an array to implement multiple text shadows.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description          |
+| ------ | ------------------------------------------------------------ | ---- | -------------- |
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \|  Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&gt;<sup>11+</sup> | Yes  | Text shadow.|
+
+### textVerticalAlign<sup>20+</sup>
+
+textVerticalAlign(textVerticalAlign: Optional\<TextVerticalAlign>)
+
+Sets the vertical alignment of text paragraphs.
+
+When this and is used together with [halfLeading](#halfleading12), **halfLeading** does not take effect.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                       | Mandatory| Description                                                      |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| textVerticalAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)> | Yes  | Vertical alignment of text paragraphs.<br>Default value: **TextVerticalAlign.BASELINE**.|
+
+### wordBreak<sup>11+</sup>
+
+wordBreak(value: WordBreak)
+
+Sets the word break rule.
+
+By default, when **wordBreak** is not called or is set to **WordBreak.BREAK_WORD**, text is truncated by word. For example, English text is broken at word boundaries.
+
+To truncate by character, with the excess part displayed as an ellipsis (...), use **WordBreak.BREAK_ALL** in combination with **{overflow: TextOverflow.Ellipsis}** and **maxLines**.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                         | Mandatory| Description                                         |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| value  | [WordBreak](ts-appendix-enums.md#wordbreak11) | Yes  | Word break rule.<br>Default value: **WordBreak.BREAK_WORD**|
 
 ## TextSpanType<sup>11+</sup>
 
@@ -1300,7 +1401,7 @@ Binds to or updates the specified styled string.
 >
 >  Since API version 15, the **TextController** object retains the styled string. Once it is bound to a **Text** component, the stored content is automatically applied and rendered.
 >  
->  This behavior difference is especially relevant when you set styled strings in the [aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear) lifecycle callback. It is ineffective in API version 14 and earlier, but works as expected since API version 15. For best practices, see [Creating and Applying a StyledString Object](../../../ui/arkts-styled-string.md#creating-and-applying-a-styledstring-object).
+>  This behavior difference is especially relevant when you set styled strings in the [aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear) lifecycle callback. It is ineffective in API version 14 and earlier, but works as expected since API version 15. For best practices, see [Creating and Applying a StyledString or MutableStyledString Object](../../../ui/arkts-styled-string.md#creating-and-applying-a-styledstring-or-mutablestyledstring-object).
 
 
 
@@ -1336,7 +1437,7 @@ Describes the initialization options of the **Marquee** component.
 | fromStart          | boolean                                         | No | Yes| Whether the text scrolls from the start.<br>**true** to scroll from the start, **false** to scroll in reverse.<br>Default value: **true**.                                                 |
 | delay              | number                                          | No | Yes| Time interval between scroll movements.<br>Default value: **0**<br>Unit: ms.                                                            |
 | fadeout            | boolean                                         | No | Yes| Whether to apply a fade-out effect when the text is too long.<br>**true** to apply a fade-out effect when the text is too long, **false** otherwise.<br>With this parameter set to **true**: When the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied; If both ends have partially visible text, both ends will have the fade-out effect applied; The **clip** attribute is automatically locked to **true** and cannot be set to **false**.<br>Default value: **false**. |
-| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18) | No | Yes| Start policy of the marquee.<br>Default value: **MarqueeStartPolicy.DEFAULT**                                      |
+| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18) | No | Yes| Start policy of the marquee. The value of this attribute takes effect only when **start** is set to **true**.<br>Default value: **MarqueeStartPolicy.DEFAULT**                                      |
 
 ## MarqueeStartPolicy<sup>18+</sup>
 
@@ -1455,7 +1556,7 @@ This example showcases various text styles using the following attributes: [deco
 // xxx.ets
 @Extend(Text)
 function style() {
-  .font({ size: 12 })
+  .font({ size: 12 }, { enableVariableFontWeight: true })
   .border({ width: 1 })
   .padding(10)
   .width('100%')
@@ -1755,34 +1856,35 @@ struct TextExample5 {
   @State end: number = 20;
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
-      Text(this.text)
-        .fontSize(12)
-        .border({ width: 1 })
-        .lineHeight(20)
-        .margin(30)
-        .copyOption(CopyOptions.InApp)
-        .selection(this.start, this.end)
-        .onCopy((value: string) => {
-          this.onCopy = value;
-        })
-        .draggable(true)
-        .caretColor(Color.Red)
-        .selectedBackgroundColor(Color.Grey)
-        .enableHapticFeedback(true)
-      Button('Set text selection')
-        .margin({ left: 20 })
-        .onClick(() => {
-          // Change the start point and end point of the text selection.
-          this.start = 10;
-          this.end = 30;
-        })
-      Text(this.onCopy).fontSize(12).margin(10).key('copy')
-    }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
+        Text(this.text)
+          .fontSize(12)
+          .border({ width: 1 })
+          .lineHeight(20)
+          .margin(30)
+          .copyOption(CopyOptions.InApp)
+          .selection(this.start, this.end)
+          .onCopy((value: string) => {
+            this.onCopy = value;
+          })
+          .draggable(true)
+          .caretColor(Color.Red)
+          .selectedBackgroundColor(Color.Grey)
+          .enableHapticFeedback(true)
+        Button('Set text selection')
+          .onClick(() => {
+            // Change the start point and end point of the text selection.
+            this.start = 10;
+            this.end = 30;
+          })
+        Text(this.onCopy).fontSize(12).margin(10).key('copy')
+      }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    }.width('100%')
   }
 }
 ```
-![](figures/textExample5.png)
+
 
 ### Example 6: Setting Text Adaptation and Font Scale Factor Limits
 
@@ -1831,7 +1933,7 @@ struct TextExample6 {
 
 ### Example 7: Setting Text Recognition
 
-This example implements text recognition capabilities using the [enableDataDetector](#enabledatadetector11) and [dataDetectorConfig](#datadetectorconfig11) APIs, available since API version 11.
+This example implements text recognition capabilities using the [enableDataDetector](#enabledatadetector11) and [dataDetectorConfig](#datadetectorconfig11) APIs, available since API version 11. When [enableDataDetector](#enabledatadetector11) is set to **true** and [dataDetectorConfig](#datadetectorconfig11) is not set, the system identifies all entity types, changes the font color of identified entities to blue, and adds blue underlines.
 
 ```ts
 // xxx.ets
@@ -2044,18 +2146,18 @@ struct TextExample9 {
 
       Text('fontFeature').fontSize(9).fontColor(0xCCCCCC)
       // Set text features.
-      Text('This is ss01 on : 0123456789')
-        .fontFeature("\"ss01\" on")
+      Text('This is frac on : 1/2 2/3 3/4')
+        .fontFeature("\"frac\" on")
         .style()
-      Text('This is ss01 off: 0123456789')
-        .fontFeature("\"ss01\" off")
+      Text('This is frac off: 1/2 2/3 3/4')
+        .fontFeature("\"frac\" off")
         .style()
     }.height(300).width(350).padding({ left: 35, right: 35, top: 35 })
   }
 }
 ```
 
-![](figures/TextExample8.PNG)
+![](figures/fontFeature.png)
 
 ### Example 10: Obtaining Text Information
 
@@ -2198,6 +2300,14 @@ struct TextExample12 {
     };
     menuItems.push(item1);
     menuItems.unshift(item2);
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.askAI));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // Delete an element at the target index.
+    }
+    targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.TRANSLATE));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1);
+    }
     return menuItems;
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -2369,7 +2479,7 @@ struct ShaderColorStyle {
   }
 }
 ```
-![zh-cn_image_0000001219864149](figures/gradientcolor.png)
+![en-us_image_0000001219864149](figures/gradientcolor.png)
 
 ### Example 16: Configuring Trailing Space Optimization
 
