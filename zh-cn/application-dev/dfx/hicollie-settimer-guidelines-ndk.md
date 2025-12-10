@@ -151,7 +151,7 @@
 
 7. 在DevEco Studio的底部，切换到“Log->HiLog”窗口，设置日志的过滤条件为“testTag”。
 
-   （1）点击“testHiCollieTimerNdk”按钮执行程序，日志窗口打印任务id。
+   （1）点击“TestHiCollieTimerNdk”按钮执行程序，日志窗口打印任务id。
 
    ```
    .../testTag ... HiCollieTimer taskId: x
