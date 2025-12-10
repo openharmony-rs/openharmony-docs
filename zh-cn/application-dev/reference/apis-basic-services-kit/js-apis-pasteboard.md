@@ -119,7 +119,7 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/introduction-to-arkts.md#对象字面量)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
+| data | [Record](../../quick-start/introduction-to-arkts.md#record类型的对象字面量)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
 
 **返回值：**
 
@@ -536,7 +536,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions<sup>7+</sup> | ArkTS-Dyn:{[key:string]:object} </br> ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 22  |
+| additions<sup>7+</sup> | ArkTS-Dyn: {[key:string]:object} </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#record类型的对象字面量)<string, RecordData> | 否 | 是 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 22  |
 | mimeTypes<sup>7+</sup> | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 22  |
 | tag<sup>7+</sup> | string | 否 | 是 | 用户自定义标签。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 22 |
 | timestamp<sup>7+</sup> | ArkTS-Dyn:number </br> ArkTS-Sta:long | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 22 |
