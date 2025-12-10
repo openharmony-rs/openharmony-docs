@@ -1,4 +1,4 @@
-# @ohos.deviceStatus.dragInteraction（拖拽)(系统接口)
+# @ohos.deviceStatus.dragInteraction (拖拽)(系统接口)
 
 拖拽功能模块，提供注册和取消拖拽状态监听的能力。
 
@@ -162,8 +162,8 @@ getDataSummary(): Array\<Summary>
 **示例：**
 
 ```ts
-let summarys: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
-console.info(`Drag interaction summarys: ${summarys}`);
+let summary: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
+console.info(`Drag interaction summary: ${summary}`);
 ```
 
 ## dragInteraction.setDragSwitchState<sup>18+</sup>

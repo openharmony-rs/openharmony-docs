@@ -30,4 +30,4 @@ arkcompiler AOT使能方式
 
 **适配指导**
 
-参见[AOT编译使用指南](https://gitee.com/openharmony/arkcompiler_ets_runtime/blob/master/docs/aot-guide_zh.md)
+参见[AOT编译使用指南](https://gitcode.com/openharmony/arkcompiler_ets_runtime/blob/master/docs/aot-guide_zh.md)

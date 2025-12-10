@@ -226,7 +226,7 @@ export default function abilityTest() {
 * 查看测试结果
 
 1. 在命令行模式执行过程中，框架会打印如下日志信息。
-    ```
+    ```txt
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -234,7 +234,7 @@ export default function abilityTest() {
     OHOS_REPORT_STATUS: stream=
     OHOS_REPORT_STATUS: test=testExample
     OHOS_REPORT_STATUS_CODE: 1
-
+    
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -255,10 +255,10 @@ export default function abilityTest() {
     | OHOS_REPORT_STATUS_CODE | 当前用例执行状态。1表示用例开始执行，0表示用例执行通过，-1表示用例执行报错，-2表示用例执行失败。|
     | OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
 2. 命令行执行完成后，框架会打印如下相关日志信息。
-    ```
+    ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
     OHOS_REPORT_CODE: 0
-
+    
     OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
     OHOS_REPORT_STATUS: taskconsuming=16029
     ```
@@ -597,7 +597,7 @@ interface PromiseInfo {
 
 **基础类**
 
-Mockit是Mock的基础类，用于指定需要Mock的实例和函数。
+MockKit是Mock的基础类，用于指定需要Mock的实例和函数。
 | 接口名 | 功能说明                 |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mock某个类实例中的函数，支持使用异步函数。                                                 |

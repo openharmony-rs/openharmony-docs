@@ -37,7 +37,7 @@
 
 ### OH_ResourceManager_InitNativeResourceManager()
 
-```
+```c
 NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env, napi_value jsResMgr)
 ```
 
@@ -63,7 +63,7 @@ NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env
 
 ### OH_ResourceManager_ReleaseNativeResourceManager()
 
-```
+```c
 void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resMgr)
 ```
 
@@ -82,7 +82,7 @@ void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resM
 
 ### OH_ResourceManager_OpenRawDir()
 
-```
+```c
 RawDir *OH_ResourceManager_OpenRawDir(const NativeResourceManager *mgr, const char *dirName)
 ```
 
@@ -113,7 +113,7 @@ RawDir *OH_ResourceManager_OpenRawDir(const NativeResourceManager *mgr, const ch
 [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)
 ### OH_ResourceManager_OpenRawFile()
 
-```
+```c
 RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const char *fileName)
 ```
 
@@ -145,7 +145,7 @@ RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const 
 
 ### OH_ResourceManager_OpenRawFile64()
 
-```
+```c
 RawFile64 *OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, const char *fileName)
 ```
 
@@ -177,7 +177,7 @@ RawFile64 *OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, co
 
 ### OH_ResourceManager_IsRawDir()
 
-```
+```c
 bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *path)
 ```
 

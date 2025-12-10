@@ -670,5 +670,5 @@ struct Index {
 | 折叠态 | 展开态 | 悬停态 |
 | ----- | ------ | ------ |
 | ![](figures/foldsplitcontainer-7.png) | ![](figures/foldsplitcontainer-8.png) | ![](figures/foldsplitcontainer-11.png) |
-|                                       | ![](figures/foldsplitcontainer-9.png) | ![](figures/foldsplitcontainer-12.png) |
-|                                       | ![](figures/foldsplitcontainer-10.png) | ![](figures/foldsplitcontainer-13.png) |
+|               -                        | ![](figures/foldsplitcontainer-9.png) | ![](figures/foldsplitcontainer-12.png) |
+|               -                        | ![](figures/foldsplitcontainer-10.png) | ![](figures/foldsplitcontainer-13.png) |

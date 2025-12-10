@@ -84,8 +84,8 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 | 参数名                | 类型                                        | 必填 | 说明                             |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 自定义键盘。                     <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| options<sup>12+</sup> | [KeyboardOptions](#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| value                 | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 自定义键盘。                     |
+| options<sup>12+</sup> | [KeyboardOptions](#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。|
 
 ### bindSelectionMenu
 
@@ -1229,6 +1229,11 @@ getCaretRect(): RectResult | undefined
 
 RichEditor组件的控制器，继承自[RichEditorBaseController](#richeditorbasecontroller12)。
 
+
+> **说明：**
+>
+> 当内容的长度超过组件显示区域的高度时，调用插入接口（例如[addTextSpan](#addtextspan)、[addImageSpan](#addimagespan)、[addBuilderSpan](#addbuilderspan11)、[addSymbolSpan](#addsymbolspan11)），组件会自动滚动内容使得插入内容末尾可见。
+
 ### 导入对象
 
 ```
@@ -1552,6 +1557,11 @@ getSelection(): RichEditorRange
 setStyledString(styledString: StyledString): void
 
 设置富文本组件显示的属性字符串。
+
+> **说明：**
+>
+> - 调用该接口时，会全量替换富文本组件的StyledString，并重新渲染。
+> - 当内容超过组件本身区域时，组件会自动向上滚动内容直到末尾处可见。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

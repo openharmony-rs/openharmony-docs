@@ -91,8 +91,8 @@ createData(mimeType: string, value: ValueType): PasteData
 **示例2：**
 
   ```ts
- let dataText = 'hello';
- let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, dataText);
+  let dataText = 'hello';
+  let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, dataText);
   ```
 
 ## pasteboard.createData<sup>14+</sup>
@@ -175,16 +175,16 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 **示例1：**
 
   ```ts
-let dataXml = new ArrayBuffer(256);
-let pasteDataRecord: pasteboard.PasteDataRecord = pasteboard.createRecord('app/xml', dataXml);
+  let dataXml = new ArrayBuffer(256);
+  let pasteDataRecord: pasteboard.PasteDataRecord = pasteboard.createRecord('app/xml', dataXml);
   ```
 
 **示例2：**
 
   ```ts
-let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
-let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
-pasteData.replaceRecord(0, record);
+  let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+  let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
+  pasteData.replaceRecord(0, record);
   ```
 
 ## pasteboard.getSystemPasteboard
@@ -2725,7 +2725,7 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| data | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 是 | 	需要写入剪贴板中的数据。 |
+| data | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 是 | 需要写入剪贴板中的数据。 |
 
 **返回值：**
 
@@ -2906,7 +2906,7 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| patterns | [Array&lt;Pattern&gt;](#pattern13) | 是 | 	需要在剪贴板中检测的模式。 |
+| patterns | [Array&lt;Pattern&gt;](#pattern13) | 是 | 需要在剪贴板中检测的模式。 |
 
 **返回值：**
 

@@ -617,7 +617,7 @@ passwordRules(value: string)
 
 cancelButton(options: CancelButtonOptions)
 
-设置右侧清除按钮样式，仅支持图片类型的图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。
+设置右侧清除按钮样式，仅支持图片类型的图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。示例请参考[示例4（设置右侧清除按钮样式）](#示例4设置右侧清除按钮样式)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1033,12 +1033,12 @@ enableHapticFeedback(isEnabled: boolean)
 >  **说明：**
 >
 >  开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段以开启振动权限，配置如下：
-> ```json
-> "requestPermissions": [
->  {
->     "name": "ohos.permission.VIBRATE",
->  }
-> ]
+>  ```json
+>  "requestPermissions": [
+>   {
+>      "name": "ohos.permission.VIBRATE",
+>   }
+>  ]
 > ```
 
 ### autoCapitalizationMode<sup>20+</sup>
@@ -1173,7 +1173,7 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 cancelButton(symbolOptions: CancelButtonSymbolOptions)
 
-设置右侧清除按钮样式，仅支持symbol图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。
+设置右侧清除按钮样式，仅支持symbol图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。示例请参考[示例15（设置symbol类型清除按钮)](#示例15设置symbol类型清除按钮)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

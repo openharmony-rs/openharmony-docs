@@ -38,7 +38,7 @@ setNTPServer(admin: Want, server: string): void
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | server | string | 是 | NTP服务器地址（以","分隔，如"ntpserver1.com,ntpserver2.com"。最大长度96字节，包括结束符）。 |
 
 **错误码**：
@@ -89,7 +89,7 @@ getNTPServer(admin: Want): string
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -144,7 +144,7 @@ setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [OtaUpdatePolicy](#otaupdatepolicy) | 是 | 升级策略。 |
 
 **错误码**：
@@ -258,7 +258,7 @@ getOtaUpdatePolicy(admin: Want): OtaUpdatePolicy
 
 | 参数名 | 类型                                                    | 必填 | 说明               |
 | ------ | ------------------------------------------------------- | ---- | ------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -301,6 +301,9 @@ try {
 notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;void&gt;
 
 通知系统更新包信息。内网升级场景下，需要先调用该接口通知系统更新包，再调用[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)设置升级策略。
+> **说明：**
+> 
+> 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -312,7 +315,7 @@ notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;vo
 
 | 参数名 | 类型                                | 必填 | 说明           |
 | ------ | ----------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | packageInfo  | [UpdatePackageInfo](#updatepackageinfo) | 是   | 系统更新包信息。<br/>**说明：** 传入的UpdatePackageInfo.packages.path必须是“update”开头的zip压缩包，传入其他形式的文件会报9201004错误码。 |
 
 **返回值：**
@@ -414,7 +417,7 @@ getUpdateResult(admin: Want, version: string): Promise&lt;UpdateResult&gt;
 
 | 参数名 | 类型                                | 必填 | 说明           |
 | ------ | ----------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | version  | string | 是   | 更新包版本号。 |
 
 **返回值：**
@@ -468,7 +471,7 @@ getUpdateAuthData(admin: Want): Promise&lt;string&gt;
 
 | 参数名 | 类型                                | 必填 | 说明           |
 | ------ | ----------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -523,7 +526,7 @@ addDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol
 
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                   |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
 | protocols  | Array&lt;[NearLinkProtocol](#nearlinkprotocol20)&gt;               | 是   | 星闪协议列表。 |
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
 
@@ -588,7 +591,7 @@ removeDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProto
 
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                   |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
 | protocols  | Array&lt;[NearLinkProtocol](#nearlinkprotocol20)&gt;               | 是   | 星闪协议列表。 |
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
 
@@ -648,7 +651,7 @@ getDisallowedNearLinkProtocols(admin: Want, accountId: number): Array&lt;NearLin
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                   |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
 
 **返回值：**
@@ -709,7 +712,7 @@ setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 
 | 参数名   | 类型                                  | 必填  | 说明 |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | isEnable | boolean | 是 | 是否支持本地安装企业应用。true表示支持，false表示不支持。 |
 
 **错误码**：
@@ -763,7 +766,7 @@ getInstallLocalEnterpriseAppEnabled(admin: Want): boolean
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -820,7 +823,7 @@ setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | isAllowed | boolean | 是 | true表示设备重启后自动解锁，false表示设备重启后不自动解锁。 |
 
 **错误码**：
@@ -872,7 +875,7 @@ getAutoUnlockAfterReboot(admin: Want): boolean
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 

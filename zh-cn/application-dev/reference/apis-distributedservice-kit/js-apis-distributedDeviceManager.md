@@ -251,6 +251,7 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
   ```ts
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
   dmInstance.getAvailableDeviceList().then((data: Array<distributedDeviceManager.DeviceBasicInfo>) => {
     console.info('get available device info: ' + JSON.stringify(data));

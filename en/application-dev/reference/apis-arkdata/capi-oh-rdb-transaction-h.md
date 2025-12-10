@@ -46,7 +46,7 @@ Defines APIs and enums related to transactions.
 | [int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans)](#oh_rdbtrans_rollback) | Rolls back a transaction.                                      |
 | [int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row, int64_t *rowId)](#oh_rdbtrans_insert) | Inserts a row of data into a table.                      |
 | [int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row,Rdb_ConflictResolution resolution, int64_t *rowId)](#oh_rdbtrans_insertwithconflictresolution) | Inserts a row of data into a table with conflict resolutions.        |
-| [int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const OH_Data_VBuckets *rows,Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdbtrans_batchinsert) | Inserts a batch of data into a table.                  |
+| [int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const OH_Data_VBuckets *rows,Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdbtrans_batchinsert) | Inserts data into a table in batches.                  |
 | [int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const OH_Predicates *predicates,int64_t *changes)](#oh_rdbtrans_update) | Updates data in an RDB store based on specified conditions.              |
 | [int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH_VBucket *row,const OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdbtrans_updatewithconflictresolution) | Updates data in the database based on specified conditions and supports conflict resolution.|
 | [int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, int64_t *changes)](#oh_rdbtrans_delete) | Deletes data from the database based on the specified conditions.                |
@@ -263,7 +263,13 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 
 **Description**
 
-Inserts a batch of data into a table.
+Inserts data into a table in batches.
+
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code **RDB_E_INVALID_ARGS** is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+
+For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **Since**: 18
 

@@ -294,7 +294,7 @@ struct PanGestureExample {
       PanGesture(this.panOption)
         .onActionStart((event: GestureEvent) => {
           console.info('Pan start');
-          console.info('Pan start timeStamp is: ' + event.timestamp);
+          console.info(`Pan start timeStamp is: ${event.timestamp}`);
         })
         .onActionUpdate((event: GestureEvent) => {
           if (event) {
@@ -306,7 +306,7 @@ struct PanGestureExample {
           this.positionX = this.offsetX;
           this.positionY = this.offsetY;
           console.info('Pan end');
-          console.info('Pan end timeStamp is: ' + event.timestamp);
+          console.info(`Pan end timeStamp is: ${event.timestamp}`);
         })
       )
 

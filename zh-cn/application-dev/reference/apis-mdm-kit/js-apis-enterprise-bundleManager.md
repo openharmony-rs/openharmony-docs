@@ -38,7 +38,7 @@ addAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。                                                 |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
@@ -92,7 +92,7 @@ removeAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。                                                 |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
@@ -146,7 +146,7 @@ getAllowedInstallBundlesSync(admin: Want, accountId?: number): Array&lt;string&g
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
@@ -202,7 +202,7 @@ addDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。                                                 |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
@@ -256,7 +256,7 @@ removeDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, acc
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。                                                 |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
@@ -310,7 +310,7 @@ getDisallowedInstallBundlesSync(admin: Want, accountId?: number): Array&lt;strin
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
@@ -367,7 +367,7 @@ addDisallowedUninstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, acco
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。                                                 |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
@@ -421,7 +421,7 @@ removeDisallowedUninstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, a
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。                                                 |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
@@ -475,7 +475,7 @@ getDisallowedUninstallBundlesSync(admin: Want, accountId?: number): Array&lt;str
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
@@ -532,7 +532,7 @@ uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean
 
 | 参数名     | 类型                                                    | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | bundleName | string                                                  | 是   | 应用程序包名。                                                       |
 | userId     | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 | isKeepData | boolean                                                 | 否   | 是否保留包数据，true表示保留，false表示不保留。              |
@@ -580,6 +580,9 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, true).then(() => {
 install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam): Promise\<void>
 
 安装指定路径下的应用包。使用promise异步回调。</br>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。
+> **说明：**
+> 
+> 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -591,7 +594,7 @@ install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam):
 
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。         |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
 | hapFilePaths | Array\<string>                                          | 是   | 待安装应用包路径数组。 |
 | installParam | [InstallParam](#installparam)                           | 否   | 应用包安装参数。       |
 
@@ -681,7 +684,7 @@ getInstalledBundleList(admin: Want, accountId: number): Promise\<Array\<BundleIn
 
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。         |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
 | accountId    | number                                                  | 是   | 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
@@ -750,7 +753,7 @@ addInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes: Ar
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | appDistributionTypes  | Array&lt;[AppDistributionType](#appdistributiontype20)&gt;  | 是   | 应用程序签名证书的分发类型数组。 |
 
 **错误码**：
@@ -802,7 +805,7 @@ removeInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes:
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | appDistributionTypes  | Array&lt;[AppDistributionType](#appdistributiontype20)&gt;  | 是 | 应用程序签名证书的分发类型数组。 |
 
 **错误码**：
@@ -853,7 +856,7 @@ getInstallationAllowedAppDistributionTypes(admin: Want): Array&lt;AppDistributio
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 
 **返回值：**
 

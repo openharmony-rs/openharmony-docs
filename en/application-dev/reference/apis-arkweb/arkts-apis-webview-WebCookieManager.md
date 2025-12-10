@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Implements a **WebCookieManager** instance to manage behavior of cookies in **Web** components. All **Web** components in an application share a **WebCookieManager** instance.
+Implements a **WebCookieManager** instance to manage behavior of cookies in **Web** components. All **Web** components in an application share a **WebCookieManager** instance. The cookie format complies with the [RFC2965](https://www.rfc-editor.org/rfc/rfc2965) standard.
 
 > **NOTE**
 >

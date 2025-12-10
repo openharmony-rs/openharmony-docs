@@ -52,7 +52,7 @@ align(alignment: Alignment | LocalizedAlignment): T
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 是   | 设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。<br/>LocalizedAlignment只在[Shape](ts-drawing-components-shape.md)、[Button](ts-basic-components-button.md)、[GridItem](ts-container-griditem.md)、[FlowItem](ts-container-flowitem.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[PatternLock](ts-basic-components-patternlock.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[TextClock](ts-basic-components-textclock.md)、[TextTimer](ts-basic-components-texttimer.md)、[StepperItem](ts-basic-components-stepperitem.md)、[MenuItem](ts-basic-components-menuitem.md)、[Toggle](ts-basic-components-toggle.md)、[Checkbox](ts-basic-components-checkbox.md)、[ListItem](ts-container-listitem.md)中有效果。<br/>其中，除[ListItem](ts-container-listitem.md)与Alignment的效果保持一致以外，其他组件镜像切换均生效；其他设置LocalizedAlignment无效果的组件按其默认效果显示。<br/>默认值：Alignment.Center、LocalizedAlignment.CENTER<br/>**说明：** <br/>Alignment类型不支持镜像能力；LocalizedAlignment类型支持镜像能力，选择LocalizedAlignment中的枚举值，根据direction或系统语言方向的改变实现镜像切换。其中direction的优先级高于系统语言方向，当设置direction且不为auto时，LocalizedAlignment的镜像按照direction进行布局；当设置direction为auto或未设置时，LocalizedAlignment的镜像按照系统语言方向进行布局。<br/>align属性入参为undefined或null时按默认值处理，效果为居中显示。 |
+| alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 是   | 设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。<br/>LocalizedAlignment只在[Shape](ts-drawing-components-shape.md)、[Button](ts-basic-components-button.md)、[GridItem](ts-container-griditem.md)、[FlowItem](ts-container-flowitem.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[PatternLock](ts-basic-components-patternlock.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[TextClock](ts-basic-components-textclock.md)、[TextTimer](ts-basic-components-texttimer.md)、[StepperItem](ts-basic-components-stepperitem.md)、[MenuItem](ts-basic-components-menuitem.md)、[Toggle](ts-basic-components-toggle.md)、[Checkbox](ts-basic-components-checkbox.md)、[ListItem](ts-container-listitem.md)中有效果。<br/>其中，除[ListItem](ts-container-listitem.md)与Alignment的效果保持一致以外，其他组件镜像切换均生效；其他设置LocalizedAlignment无效果的组件按其默认效果显示。<br/>默认值：Alignment.Center、LocalizedAlignment.CENTER<br/>设置异常值按默认值处理，效果为居中显示。<br/>**说明：** <br/>Alignment类型不支持镜像能力；LocalizedAlignment类型支持镜像能力，选择LocalizedAlignment中的枚举值，根据direction或系统语言方向的改变实现镜像切换。其中direction的优先级高于系统语言方向，当设置direction且不为auto时，LocalizedAlignment的镜像按照direction进行布局；当设置direction为auto或未设置时，LocalizedAlignment的镜像按照系统语言方向进行布局。|
 
 **返回值：**
 
@@ -516,30 +516,68 @@ struct PositionExample2 {
 @Component
 struct Example3 {
   build() {
-    Column({ space: 20 }){
+    Column({ space: 20 }) {
       Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
       Row() {
-        Text('bottom:0, right:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({bottom: 0, right: 0})
-        Text('top:0, left:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({top: 0, left: 0})
-        Text('top:10%, left:50%').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({ top: '10%', left: '50%' })
-        Text('bottom:0, left:30').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({ bottom: 0, left: 30 })
+        Text('bottom:0, right:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, right: 0 })
+        Text('top:0, left:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: 0, left: 0 })
+        Text('top:10%, left:50%')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: '10%', left: '50%' })
+        Text('bottom:0, left:30')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, left: 30 })
       }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
 
 
       Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
       Row() {
-        Text('1').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+        Text('1')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
           .textAlign(TextAlign.Center)
-        Text('2 top:30, left:0').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).offset({top: 30, left: 0})
-        Text('3').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+        Text('2 top:30, left:0')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
           .textAlign(TextAlign.Center)
-        Text('4 bottom:10, right:30').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(12)
-          .textAlign(TextAlign.Center).offset({bottom: 10, right: 30})
+          .offset({ top: 30, left: 0 })
+        Text('3')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 bottom:10, right:30')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(12)
+          .textAlign(TextAlign.Center)
+          .offset({ bottom: 10, right: 30 })
       }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
     }.width('100%').margin({ top: 25 })
   }
