@@ -8,7 +8,7 @@
 
 支持天气卡片使用玻璃材质，提升首眼高端精致
 
-约束：
+**约束与限制**
   - API version 22及以上版本。
   - 内部开放，仅系统应用支持。
   - 设备都支持模糊提亮，仅vosa、delphi 这类高级机型支持玻璃特效。
@@ -16,7 +16,7 @@
 ## 开发步骤
 1. [创建ArkTS卡片](arkts-ui-widget-creation.md)。
 
-2、配置form_config.json
+2. 配置form_config.json
 
 - 在form_config.json文件中的`metadata`添加`visualEffectType`配置，`blurEffect`、`lightAnimationEffect`分别表示模糊高亮和玻璃特效。
 - 为启用透明卡片，需在form_config.json文件中添加`"transparencyEnabled": true`配置。
@@ -56,7 +56,7 @@
 }
 ```
 
-3、 根据沉浸模式开关状态，设置当前的卡片显示模式
+3. 根据沉浸模式开关状态，设置当前的卡片显示模式
 
 - 卡片提供方在[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)回调中，传递`visualEffectType`配置。
 
