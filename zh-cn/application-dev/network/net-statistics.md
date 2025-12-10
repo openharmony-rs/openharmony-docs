@@ -162,74 +162,74 @@
 1. 获取指定网卡历史流量信息。
 2. 获取指定应用历史流量信息。
 
-```ts
-import { statistics } from '@kit.NetworkKit';
+      ```ts
+      import { statistics } from '@kit.NetworkKit';
 
-class IfaceInfo {
-  iface: string = "wlan0"
-  startTime: number = 1685948465
-  endTime: number = 16859485670
-}
-// 获取指定网卡历史流量信息。
-statistics.getTrafficStatsByIface(new IfaceInfo()).then((statsInfo: statistics.NetStatsInfo) => {
-  console.info(
-    "getTrafficStatsByIface bytes of received = " +
-    JSON.stringify(statsInfo.rxBytes)
-  );
-  console.info(
-    "getTrafficStatsByIface bytes of sent = " +
-    JSON.stringify(statsInfo.txBytes)
-  );
-  console.info(
-    "getTrafficStatsByIface packets of received = " +
-    JSON.stringify(statsInfo.rxPackets)
-  );
-  console.info(
-    "getTrafficStatsByIface packets of sent = " +
-    JSON.stringify(statsInfo.txPackets)
-  );
-});
+      class IfaceInfo {
+        iface: string = "wlan0"
+        startTime: number = 1685948465
+        endTime: number = 16859485670
+      }
+      // 获取指定网卡历史流量信息。
+      statistics.getTrafficStatsByIface(new IfaceInfo()).then((statsInfo: statistics.NetStatsInfo) => {
+        console.info(
+          "getTrafficStatsByIface bytes of received = " +
+          JSON.stringify(statsInfo.rxBytes)
+        );
+        console.info(
+          "getTrafficStatsByIface bytes of sent = " +
+          JSON.stringify(statsInfo.txBytes)
+        );
+        console.info(
+          "getTrafficStatsByIface packets of received = " +
+          JSON.stringify(statsInfo.rxPackets)
+        );
+        console.info(
+          "getTrafficStatsByIface packets of sent = " +
+          JSON.stringify(statsInfo.txPackets)
+        );
+      });
 
-class UidInfo {
-  uid: number = 20010037
-  ifaceInfo: IfaceInfo = new IfaceInfo()
-}
+      class UidInfo {
+        uid: number = 20010037
+        ifaceInfo: IfaceInfo = new IfaceInfo()
+      }
 
-let uidInfo = new UidInfo()
+      let uidInfo = new UidInfo()
 
-// 获取指定应用历史流量信息。
-statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
-  console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
-  console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
-  console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
-  console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
-})
-```
+      // 获取指定应用历史流量信息。
+      statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
+        console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+        console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+        console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
+        console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
+      })
+      ```
 
 ## 订阅流量变化事件
 
 1. 订阅流量改变事件通知。
 2. 取消订阅流量改变事件通知。
 
-```ts
-import { statistics } from '@kit.NetworkKit';
+      ```ts
+      import { statistics } from '@kit.NetworkKit';
 
-class Data {
-  iface: string = ""
-  uid?: number = 0
-}
+      class Data {
+        iface: string = ""
+        uid?: number = 0
+      }
 
-let callback = (data: Data) => {
-  console.log('on netStatsChange, data:' + JSON.stringify(data));
-};
-// 订阅流量改变事件通知。
-statistics.on('netStatsChange', callback);
+      let callback = (data: Data) => {
+        console.log('on netStatsChange, data:' + JSON.stringify(data));
+      };
+      // 订阅流量改变事件通知。
+      statistics.on('netStatsChange', callback);
 
-// 取消订阅流量改变事件通知。可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
-statistics.off('netStatsChange', callback);
-statistics.off('netStatsChange');
-```
-<!--DelEnd-->
+      // 取消订阅流量改变事件通知。可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+      statistics.off('netStatsChange', callback);
+      statistics.off('netStatsChange');
+      ```
+      <!--DelEnd-->
 
 ## 相关实例
 
