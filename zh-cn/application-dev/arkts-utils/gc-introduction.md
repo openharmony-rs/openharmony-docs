@@ -18,7 +18,7 @@ GC（全称 Garbage Collection），即垃圾回收。在计算机领域，GC是
 
 - 优点：引用计数算法设计简单，而且会在对象成为垃圾时及时回收该部分内存，因此无需引入单独的暂停业务代码（Stop The World，STW）阶段。
 - 缺点：在对象操作时插入了计数环节，增加了内存分配和赋值的开销，影响性能。存在因循环引用而导致的内存泄漏问题。
-```
+```ts
 class Parent {
   constructor() {
     this.child = null;
@@ -87,7 +87,7 @@ ArkTS运行时采用传统的分代模型，将对象进行分类。大多数新
 
 ![image](./figures/generational-model.png)
 
-ArkTS运行时将新分配的对象直接分配到年轻代（Young Space）的From空间。经过一次GC后依然存活的对象，会移动到To空间。经过再次GC后依然存活的对象，会被移动到老年代（Old Space）。
+ArkTS运行时将新分配的对象直接分配到年轻代（Young Space，又称Semi Space）的From空间。经过一次GC后依然存活的对象，会移动到To空间。经过再次GC后依然存活的对象，会被移动到老年代（Old Space）。
 
 **混合算法**
 
@@ -118,7 +118,7 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 
 ![image](./figures/gc-heap-space.png)
 
-- Young Space：年轻代（Young Generation），存放新创建出来的对象，存活率低，主要使用复制算法进行内存回收。
+- Young Space：年轻代（Young Generation），又称Semi Space，存放新创建出来的对象，存活率低，主要使用复制算法进行内存回收。
 - OldSpace：老年代（Old Generation），存放年轻代多次回收仍存活的对象会被移动到该空间，根据场景混合多种算法进行内存回收。
 - HugeObjectSpace：大对象空间，使用单独的Region存放一个大对象的空间。
 - ReadOnlySpace：只读空间，存放运行期间的只读数据。
@@ -345,7 +345,7 @@ hdc shell reboot
 
 以下日志统计了GC完整执行后的信息，不同GC类型可能有所差异。在导出的日志文件中搜索关键词`[gc]`查看GC日志，或搜索关键词`ArkCompiler`查看更全面的虚拟机日志。
 
-```
+```ts
 // GC前对象实际占用大小（Region实际占用大小）->GC后对象实际占用大小（Region实际占用大小），总耗时（+concurrentMark耗时），GC触发原因。
 C03F00/ArkCompiler: [gc]  [ CompressGC ] 26.1164 (35) -> 7.10049 (10.5) MB, 160.626(+0)ms, Switch to background
 // GC运行时的各种状态以及应用名称

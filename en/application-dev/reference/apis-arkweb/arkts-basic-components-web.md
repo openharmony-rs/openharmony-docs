@@ -8,6 +8,8 @@
 
 The **Web** component can be used to display web pages. It can be used with the [@ohos.web.webview](arkts-apis-webview.md) module, which provides APIs for web control.
 
+<!--RP1--><!--RP1End-->
+
 > **NOTE**
 >
 > - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.

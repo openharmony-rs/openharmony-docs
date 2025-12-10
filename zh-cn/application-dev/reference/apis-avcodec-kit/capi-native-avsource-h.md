@@ -48,7 +48,7 @@
 
 ### OH_AVSource_CreateWithDataSource()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 ```
 
@@ -75,7 +75,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 ### OH_AVSource_CreateWithDataSourceExt()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)
 ```
 
@@ -103,7 +103,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource,
 
 ### OH_AVSource_CreateWithURI()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 ```
 
@@ -130,7 +130,7 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 ### OH_AVSource_CreateWithFD()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 ```
 
@@ -159,7 +159,7 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 
 ### OH_AVSource_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 ```
 
@@ -186,7 +186,7 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 ### OH_AVSource_GetSourceFormat()
 
-```
+```c
 OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 ```
 
@@ -213,7 +213,7 @@ OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 
 ### OH_AVSource_GetTrackFormat()
 
-```
+```c
 OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex)
 ```
 
@@ -241,7 +241,7 @@ OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex
 
 ### OH_AVSource_GetCustomMetadataFormat()
 
-```
+```c
 OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 ```
 

@@ -173,7 +173,7 @@
 
 ### ArkUI_NodeType
 
-```
+```c
 enum ArkUI_NodeType
 ```
 
@@ -229,7 +229,7 @@ enum ArkUI_NodeType
 
 ### ArkUI_NodeAttributeType
 
-```
+```c
 enum ArkUI_NodeAttributeType
 ```
 
@@ -245,7 +245,7 @@ enum ArkUI_NodeAttributeType
 | NODE_WIDTH = 0 | 宽度属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：宽度数值，单位为vp；<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：宽度数值，单位为vp；|
 | NODE_HEIGHT | 高度属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：高度数值，单位为vp；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：高度数值，单位为vp；|
 | NODE_BACKGROUND_COLOR | 背景色属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：背景色数值，0xargb格式，形如 0xFFFF0000 表示红色；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：背景色数值，0xargb格式，形如 0xFFFF0000 表示红色；|
-| NODE_BACKGROUND_IMAGE | 背景色图片属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: 图片地址，支持网络图片地址、本地图片地址、Base64或PixelMap对象。不支持SVG类型的图片。<br> .value[0]?.i32：可选值，repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)，默认值为ARKUI_IMAGE_REPEAT_NONE；<br> .object：PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: 图片地址，支持网络图片地址、本地图片地址、Base64或PixelMap对象。不支持SVG类型的图片。<br> .value[0].i32：repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)；<br> .object：PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；.object参数和.string参数二选一，不可同时设置。|
+| NODE_BACKGROUND_IMAGE | 背景色图片属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。<br> .value[0]?.i32：可选值，repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)，默认值为ARKUI_IMAGE_REPEAT_NONE；<br> .object：PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。<br> .value[0].i32：repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)；<br> .object：PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；.object参数和.string参数二选一，不可同时设置。|
 | NODE_PADDING | 内间距属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：<br> 1：上下左右四个位置的内间距值相等。<br> .value[0].f32：内间距数值，单位为vp；<br> 2：分别指定上下左右四个位置的内间距值。<br> .value[0].f32：上内间距数值，单位为vp；<br> .value[1].f32：右内间距数值，单位为vp；<br> .value[2].f32：下内间距数值，单位为vp；<br> .value[3].f32：左内间距数值，单位为vp；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：上内间距数值，单位为vp；<br> .value[1].f32：右内间距数值，单位为vp；<br> .value[2].f32：下内间距数值，单位为vp；<br> .value[3].f32：左内间距数值，单位为vp；|
 | NODE_ID | 组件ID属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: ID的内容；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: ID的内容；|
 | NODE_ENABLED | 设置组件是否可交互，支持属性设置，属性重置和属性获取。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：false表示不可交互，true表示可交互；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：0表示不可交互，1表示可交互；|
@@ -351,7 +351,18 @@ enum ArkUI_NodeAttributeType
 |NODE_HEIGHT_LAYOUTPOLICY = 106|设置组件高度布局策略，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32： 布局策略；参数类型为[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].i32： 布局策略；参数类型为[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。<br>**起始版本：** 21 |
 |NODE_POSITION_EDGES = 107|设置组件相对容器内容区边界的位置，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：组件相对容器内容区边界的位置；参数类型为[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object： 组件相对容器内容区边界的位置；参数类型为[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)。<br>**起始版本：** 21 |
 |NODE_PIXEL_ROUND = 109|设置组件的像素取整策略，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：组件的像素取整策略；参数类型为[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：组件的像素取整策略；参数类型为[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)。<br>**起始版本：** 21 |
+|NODE_HOVER_EFFECT = 112|定义组件被悬停时的效果。该属性可根据需要通过API进行设置、重置和获取。<br>设置该属性时，[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数的格式：<br> .value[0].i32：组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect)。默认值为<b>ARKUI_HOVER_EFFECT_AUTO</b>。<br>返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式：<br>.value[0].i32： 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect)。<br>**起始版本：** 23 |
+|NODE_FOCUS_SCOPE_ID = 113|将容器设置为具有特定标识符的焦点组，支持属性设置、属性重置和属性获取接口。<br>设置该属性时，[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数的格式：<br>.string：焦点作用域标识符。<br> .value[0].i32：该作用域是否为焦点组，默认值为0。取值范围为1或0。1表示设置为焦点组。0表示组件未被设置为焦点组。<br> .value[1].i32：箭头键是否可以将焦点从焦点组内部移至外部，仅当isGroup为true时有效，默认值为1。取值范围为1或0。1表示箭头键可以将焦点从焦点组内部移至外部，0表示箭头键无法将焦点从焦点组内部移至外部。<br>属性获取方法的返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.string：焦点作用域标识符。<br> .value[0].i32： 该作用域是否为焦点组，默认值为0。取值范围为1或0。1表示设置为焦点组。0表示组件未被设置为焦点组。<br> .value[1].i32： 箭头键是否可以将焦点从焦点组内部移至外部，仅当isGroup为true时有效，默认值为1。取值范围为1或0。1表示箭头键可以将焦点从焦点组内部移至外部，0表示箭头键无法将焦点从焦点组内部移至外部。<br>**起始版本：** 23 |
+|NODE_FOCUS_SCOPE_PRIORITY = 114|设置组件在特定焦点作用域内的焦点优先级，支持属性设置、属性重置和属性获取接口。<br>设置该属性时，[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数的格式：<br>.string：焦点作用域标识符。<br> .value[0].i32：焦点作用域内获焦优先级。参数类型为[ArkUI_FocusPriority](capi-native-type-h.md#arkui_focuspriority)。默认值为 <b>ARKUI_FOCUS_PRIORITY_AUTO</b>。<br>属性获取方法的返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.string：焦点作用域标识符。<br> .value[0].i32：焦点作用域优先级。参数类型为[ArkUI_FocusPriority](capi-native-type-h.md#arkui_focuspriority)。<br>**起始版本：** 23 |
+|NODE_ON_CLICK_EVENT_DISTANCE_THRESHOLD = 115|设置点击事件的距离阈值，支持属性设置、属性重置和属性获取接口。<br>设置该属性时，[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数的格式：<br> .value[0].f32：点击事件移动阈值。取值范围(0, +∞)。单位vp。<br>属性获取方法的返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].f32： 点击事件移动阈值。<br>**起始版本：** 23 |
 | NODE_RESPONSE_REGION_LIST = 116 | 设置组件事件的响应区域，支持属性设置，属性重置和属性获取接口。<br> 属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .data[0].i32：适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-native-type-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 <br> .data[1].f32：触摸点相对于组件左上角的x轴坐标，单位为vp。 <br> .data[2].f32：触摸点相对于组件左上角的y轴坐标，单位为vp。 <br> .data[3].f32：触摸热区的宽度，单位为百分比。 <br> .data[4].f32：触摸热区的高度，单位为百分比。 <br> .data[5...].f32：可以设置多个手势响应区域，顺序和上述一致。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .data[0].i32：适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-native-type-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 <br> .data[1].f32：触摸点相对于组件左上角的x轴坐标，单位为vp。 <br> .data[2].f32：触摸点相对于组件左上角的y轴坐标，单位为vp。 <br> .data[3].f32：触摸热区的宽度，单位为百分比。 <br> .data[4].f32：触摸热区的高度，单位为百分比。 <br> .data[5...].f32：可以设置多个手势响应区域，顺序和上述一致。<br>**起始版本：** 23  |
+|NODE_MONOPOLIZE_EVENTS = 117|定义独占事件属性，该属性可根据需要通过API进行设置、重置和获取。<br>设置该属性时，[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数的格式：<br> .value[0].i32：取值范围为1或0。1表示设置组件独占。0表示组件未设置独占属性。<br>返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式：<br>.value[0].i32：取值范围为1或0。1表示设置组件独占。0表示组件未设置独占属性。<br>**起始版本：** 23 |
+|NODE_CHAIN_WEIGHT = 118|父组件为RelativeContainer时，设置已形成链的组件的布局位置，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：组件在水平方向的布局权重，默认值：0。<br> 设置异常值时，按默认值显示。 <br> .value[1].f32：组件在竖直方向的布局权重，默认值：0。<br> 设置异常值时，按默认值显示。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：组件在水平方向的布局权重。 <br> .value[1].f32：组件在竖直方向的布局权重。<br>**起始版本：** 23 |
+|NODE_IGNORE_LAYOUT_SAFE_AREA = 119|设置扩展组件布局时的安全区域，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：扩展安全区域的类型。参数类型为[ArkUI_LayoutSafeAreaType](capi-native-type-h.md#arkui_layoutsafeareatype)，默认值：ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM。<br> 设置异常值时，按默认值显示。<br> .value[1].u32：扩展安全区域的方向。参数类型为[ArkUI_LayoutSafeAreaEdge](capi-native-type-h.md#arkui_layoutsafeareaedge)，默认值：ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL，例如：ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM。<br> 设置异常值时，按默认值显示。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].u32：扩展安全区域的类型。<br>.value[1].u32：扩展安全区域的方向。<br>**起始版本：** 23 |
+| NODE_DASH_WIDTH  = 120| 设置边框样式为虚线时虚线的长度，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：上边框虚线的长度，单位vp。<br/>.value[1].f32：右边框虚线的长度，单位vp。<br/>.value[2].f32：下边框虚线的长度，单位vp。<br/>.value[3].f32：左边框虚线的长度，单位vp。 <br/> 取值范围：[0, +∞)  <br/> 设置异常值时，按默认的虚线效果显示。 <br/> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：上边框虚线的长度，单位vp。<br/>.value[1].f32：右边框虚线的长度，单位vp。<br/>.value[2].f32：下边框虚线的长度，单位vp。<br/>.value[3].f32：左边框虚线的长度，单位vp。<br/>**起始版本：** 23|
+| NODE_DASH_GAP = 121| 设置边框样式为虚线时虚线的间隙，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：上边框虚线的间隙，单位vp。<br/>.value[1].f32：右边框虚线的间隙，单位vp。<br/>.value[2].f32：下边框虚线的间隙，单位vp。<br/>.value[3].f32：左边框虚线的间隙，单位vp。 <br/> 取值范围：[0, +∞) <br/> 设置异常值时，按默认的虚线效果显示。 <br/> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：上边框虚线的间隙，单位vp。<br/>.value[1].f32：右边框虚线的间隙，单位vp。<br/>.value[2].f32：下边框虚线的间隙，单位vp。<br/>.value[3].f32：左边框虚线的间隙，单位vp。<br/>**起始版本：** 23|
+|NODE_LAYOUT_GRAVITY = 122|设置Stack容器中子组件的对齐规则，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment)，默认值：ARKUI_ALIGNMENT_CENTER。 <br> 设置异常值时，按默认值显示。 <br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment)。 <br>**起始版本：** 23 |
+|NODE_BORDER_RADIUS_TYPE = 123|设置组件绘制圆角的模式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：组件绘制圆角的模式。参数类型为[ArkUI_RenderStrategy](capi-native-type-h.md#arkui_renderstrategy)，默认值：ARKUI_RENDERSTRATEGY_FAST。<br> 设置异常值时，按默认值显示。 <br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：组件绘制圆角的模式。参数类型为[ArkUI_RenderStrategy](capi-native-type-h.md#arkui_renderstrategy)。 <br>**起始版本：** 23 |
 | NODE_TEXT_CONTENT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT | Text组件设置文本内容属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string 表示文本内容。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string 表示文本内容。|
 | NODE_FONT_COLOR | 组件字体颜色属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：字体颜色数值，0xargb格式，形如 0xFFFF0000 表示红色；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：字体颜色数值，0xargb格式；|
 | NODE_FONT_SIZE | 组件字体大小属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：字体大小数值，单位为fp；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：字体大小数值，单位为fp；|
@@ -398,6 +409,10 @@ enum ArkUI_NodeAttributeType
 | NODE_TEXT_EDIT_MENU_OPTIONS = 1044 | 文本菜单扩展项，支持属性设置接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：文本菜单扩展项配置数据，参数类型为[ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)。<br>**起始版本：** 23 |
 | NODE_TEXT_BIND_SELECTION_MENU = 1045 | 自定义文本选择菜单，支持属性设置接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：自定义文本选择菜单配置数据，参数类型为[ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)。<br>**起始版本：** 23 |
 | NODE_TEXT_TEXT_SELECTION  = 1046 | 设置文本选择区域，设置后选中区域将被高亮显示，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：文本选择的起始位置。<br> .value[1].i32：文本选择的结束位置。<br> .object：选择选项。参数类型为[ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：文本选择的起始位置。<br> .value[1].i32：文本选择的结束位置。<br> .object：选择选项。参数类型为[ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)。 <br>**起始版本：** 23   |
+| NODE_TEXT_COMPRESS_LEADING_PUNCTUATION = 1048 | 文本行首标点压缩开关，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br> true表示开启行首标点压缩，false表示关闭行首标点压缩。默认值false。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br>**起始版本：** 23 |
+| NODE_TEXT_INCLUDE_FONT_PADDING = 1049 | 设置是否在首行和尾行增加间距以避免文字截断。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置是否在首行和尾行增加间距以避免文字截断。true表示开启增加间距，false表示关闭增加间距。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否在首行和尾行增加间距。true表示增加间距，false表示不增加间距。 <br>**起始版本：** 23 |
+| NODE_TEXT_FALLBACK_LINE_SPACING = 1050 | 针对多行文字叠加，支持行高基于文字实际高度自适应。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：支持行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否开启行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。 <br>**起始版本：** 23 |
+| NODE_TEXT_MARQUEE_OPTIONS = 1051 | 文本跑马灯模式配置项，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：文本跑马灯模式配置，参数类型为[ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：文本跑马灯模式配置，参数类型为[ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)。 <br>**起始版本：** 23   |
 | NODE_SPAN_CONTENT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SPAN | 文本内容属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .string 表示span的文本内容。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .string 表示span的文本内容。  |
 | NODE_SPAN_TEXT_BACKGROUND_STYLE | 文本背景色属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].u32 表示文本背景颜色，0xargb格式，形如0xFFFF0000 表示红色。 <br> 第二个参数为文本背景圆角设置，支持如下两种设置方式： <br> - .value[1].f32：四个方向的圆角半径统一设置，单位为vp。 <br> - .value[1].f32：设置左上角圆角半径，单位为vp。 <br> .value[2].f32：设置右上角圆角半径，单位为vp。 <br> .value[3].f32：设置左下角圆角半径，单位为vp。 <br> .value[4].f32：设置右下角圆角半径，单位为vp。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].u32：文本背景颜色，0xargb格式。 <br> .value[1].f32：左上角圆角半径，单位为vp。 <br> .value[2].f32：右上角圆角半径，单位为vp。 <br> .value[3].f32：左下角圆角半径，单位为vp。 <br> .value[4].f32：右下角圆角半径，单位为vp。 |
 | NODE_SPAN_BASELINE_OFFSET | 文本基线的偏移量属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：偏移量数值，单位为fp。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：偏移量数值，单位为fp。  |
@@ -479,6 +494,9 @@ enum ArkUI_NodeAttributeType
 | NODE_TEXT_INPUT_ENABLE_SELECTED_DATA_DETECTOR = 7038 | 开启选中词文本识别。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：开启选中词文本识别，true表示开启识别，false表示关闭识别。默认值：true。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否开启选中词文本识别。<br>**起始版本：** 22 |
 | NODE_TEXT_INPUT_SHOW_COUNTER = 7040 | 设置输入的字符数超过阈值时是否显示计数器并设置计数器样式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否开启计数器。值为true表示开启计数器，值为false表示不开启计数器。<br> .value[1]?.f32：可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]，小数时向下取整，若超出取值范围，则接口属性设置不生效。<br> 输入字符超出限制时高亮边框，true表示高亮边框，false表示为不高亮边框。<br> .object：计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为 [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否开启计数器。<br> .value[1].f32：可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]。<br> .value[2].i32：输入字符超出限制时高亮边框，true表示高亮边框，false表示为不高亮边框，默认高亮。<br> .object：计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)。<br>**起始版本：** 22   |
 | NODE_TEXT_INPUT_TEXT_CONTENT_CONTROLLER_BASE = 7041 | 用于设置或获取文本输入控制器。<br>设置属性[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：文本内容基础控制器。参数类型为[ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)。<br>返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式：<br>.object：文本内容基础控制器。参数类型为[ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)。<br>**起始版本：** 23       |
+| NODE_TEXT_INPUT_COMPRESS_LEADING_PUNCTUATION  = 7044 | 设置输入字符行首标点压缩开关，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br> true表示开启行首标点压缩，false表示关闭行首标点压缩。默认值false。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br>**起始版本：** 23 |
+| NODE_TEXT_INPUT_INCLUDE_FONT_PADDING = 7045 | 设置输入框内文字是否在首行和尾行增加间距以避免文字截断。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置输入框内文字是否在首行和尾行增加间距以避免文字截断。true表示开启增加间距，false表示关闭增加间距。默认值：false。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否在首行和尾行增加间距。true表示增加间距，false表示不增加间距。 <br>**起始版本：** 23 |
+| NODE_TEXT_INPUT_FALLBACK_LINE_SPACING = 7046 | 针对多行文字叠加，支持行高基于文字实际高度自适应。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：支持行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否开启行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。 <br>**起始版本：** 23 |
 | NODE_TEXT_AREA_PLACEHOLDER = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_AREA | 多行文本输入框的默认提示文本内容属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认提示文本的内容。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认提示文本的内容。 |
 | NODE_TEXT_AREA_TEXT | 多行文本输入框的默认文本内容属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认文本的内容。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认文本的内容。 |
 | NODE_TEXT_AREA_MAX_LENGTH | 输入框支持的最大文本数属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：最大文本数的数字。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：最大文本数的数字。|
@@ -516,6 +534,9 @@ enum ArkUI_NodeAttributeType
 | NODE_TEXT_AREA_SCROLL_BAR_COLOR = 8035 | 设置输入框滚动条颜色，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：滚动条颜色数值。0xargb类型。默认值：0x66182431，显示为灰色。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：滚动条颜色数值。<br>**起始版本：** 22 |
 | NODE_TEXT_AREA_CUSTOM_KEYBOARD = 8036 | 设置文本输入框的自定义键盘。支持属性设置、属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br> .value[0]?.i32：设置自定义键盘是否支持避让功能。<br>true表示支持避让，false表示不支持避让。<br>默认值：false<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br> .value[0].i32：设置自定义键盘是否支持避让功能。<br>**起始版本：** 22 |
 | NODE_TEXT_AREA_TEXT_CONTENT_CONTROLLER_BASE = 8037 | 用于设置或获取文本区域控制器。<br>设置属性[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：文本内容基础控制器，参数类型为[ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)。<br>获取属性时[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：文本内容基础控制器，参数类型为[ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)。<br>**起始版本：** 23
+| NODE_TEXT_AREA_COMPRESS_LEADING_PUNCTUATION  = 8040 | 设置输入字符行首标点压缩开关，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br> true表示开启行首标点压缩，false表示关闭行首标点压缩。默认值false。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br>**起始版本：** 23 |
+| NODE_TEXT_AREA_INCLUDE_FONT_PADDING = 8041 | 设置输入框内文字是否在首行和尾行增加间距以避免文字截断。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置输入框内文字是否在首行和尾行增加间距以避免文字截断。true表示开启增加间距，false表示关闭增加间距。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：输入框内文字是否在首行和尾行增加间距。true表示增加间距，false表示不增加间距。<br>**起始版本：** 23 |
+| NODE_TEXT_AREA_FALLBACK_LINE_SPACING = 8042 | 针对多行文字叠加，支持行高基于文字实际高度自适应。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：支持行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否开启行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。 <br>**起始版本：** 23 |
 | NODE_BUTTON_LABEL = MAX_NODE_SCOPE_NUM * ARKUI_NODE_BUTTON | button按钮的文本内容属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认文本的内容。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认文本的内容。 |
 | NODE_BUTTON_TYPE | Button按钮的样式属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置Button按钮的样式，参数类型[ArkUI_ButtonType](capi-native-type-h.md#arkui_buttontype)，默认值为ARKUI_BUTTON_TYPE_CAPSULE。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：获取Button按钮的样式，参数类型[ArkUI_ButtonType](capi-native-type-h.md#arkui_buttontype)，默认值为ARKUI_BUTTON_TYPE_CAPSULE。  |
 | NODE_BUTTON_MIN_FONT_SCALE | Button按钮的最小字体缩放倍数属性，支持属性设置，属性重置和属性获取。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32: 设置Button按钮的最小字体缩放倍数，默认单位fp。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32: 获取Button按钮的最小字体缩放倍数，默认单位fp。<br>**起始版本：** 18  |
@@ -683,9 +704,12 @@ enum ArkUI_NodeAttributeType
 | NODE_LIST_ITEM_GROUP_NODE_ADAPTER = 1005004 | ListItemGroup组件适配器，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：使用[ArkUI_NodeAdapter](capi-arkui-nativemodule-arkui-nodeadapter8h.md)对象作为适配器。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：返回值格式为[ArkUI_NodeAdapter](capi-arkui-nativemodule-arkui-nodeadapter8h.md)。 <br>**起始版本：** 15   |
 | NODE_COLUMN_ALIGN_ITEMS = MAX_NODE_SCOPE_NUM * ARKUI_NODE_COLUMN | 设置Column子组件在水平方向上的对齐格式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在水平方向上的对齐格式，数据类型[ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment)， <br> 默认值ARKUI_HORIZONTAL_ALIGNMENT_CENTER。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在水平方向上的对齐格式，数据类型[ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment)。  |
 | NODE_COLUMN_JUSTIFY_CONTENT | 设置Column子组件在垂直方向上的对齐格式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在垂直方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)， <br> 默认值ARKUI_FLEX_ALIGNMENT_START。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在垂直方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)。  |
+| NODE_LINEAR_LAYOUT_SPACE | 设置Column或Row子组件的间距，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：子组件之间的间距，单位vp，默认值：0。 <br/> 取值范围：[0, +∞)  <br> 设置异常值时，按默认值显示。<br/> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：子组件之间的间距，单位vp。<br/>**起始版本：** 23  |
+| NODE_LINEAR_LAYOUT_REVERSE | 设置Column或Row中沿主轴方向的子组件排列是否反向，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：主轴方向的子组件排列是否反向，默认值：false。值为true时，子组件在垂直方向上反转排列。值为false时，子组件在垂直方向上正序排列。 <br> 设置异常值时，按默认值显示。 <br/> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：主轴方向的子组件排列是否反向。<br/>**起始版本：** 23  |
 | NODE_ROW_ALIGN_ITEMS = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ROW | 设置Row子组件在垂直方向上的对齐格式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在垂直方向上的对齐格式，数据类型[ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment)， <br> 默认值ARKUI_VERTICAL_ALIGNMENT_CENTER。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在垂直方向上的对齐格式，数据类型[ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment)。  |
 | NODE_ROW_JUSTIFY_CONTENT | 设置Row子组件在水平方向上的对齐格式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在水平方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)， <br> 默认值ARKUI_FLEX_ALIGNMENT_START。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在水平方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)。   |
-| NODE_FLEX_OPTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_FLEX | 设置Flex属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0]?.i32：子组件在Flex容器上排列的方向[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)，默认值为ARKUI_FLEX_DIRECTION_ROW； <br> .value[1]?.i32：排列规则[ArkUI_FlexWrap](capi-native-type-h.md#arkui_flexwrap)，默认值为ARKUI_FLEX_WRAP_NO_WRAP； <br> .value[2]?.i32：主轴上的对齐格式[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START； <br> .value[3]?.i32：交叉轴上的对齐格式[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_START； <br> .value[4]?.i32：	交叉轴中有额外的空间时，多行内容的对齐方式[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START； <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在Flex容器上排列的方向的枚举值； <br> .value[1].i32：排列规则的枚举值； <br> .value[2].i32：主轴上的对齐格式的枚举值； <br> .value[3].i32：交叉轴上的对齐格式的枚举值； <br> .value[4].i32：交叉轴中有额外的空间时，多行内容的对齐方式的枚举值；  |
+| NODE_FLEX_OPTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_FLEX | 设置Flex属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0]?.i32：子组件在Flex容器上排列的方向[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)，默认值为ARKUI_FLEX_DIRECTION_ROW； <br> .value[1]?.i32：排列规则[ArkUI_FlexWrap](capi-native-type-h.md#arkui_flexwrap)，默认值为ARKUI_FLEX_WRAP_NO_WRAP； <br> .value[2]?.i32：主轴上的对齐格式[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START； <br> .value[3]?.i32：交叉轴上的对齐格式[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_START； <br> .value[4]?.i32：交叉轴中有额外的空间时，多行内容的对齐方式[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START； <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件在Flex容器上排列的方向的枚举值； <br> .value[1].i32：排列规则的枚举值； <br> .value[2].i32：主轴上的对齐格式的枚举值； <br> .value[3].i32：交叉轴上的对齐格式的枚举值； <br> .value[4].i32：交叉轴中有额外的空间时，多行内容的对齐方式的枚举值；  |
+| NODE_FLEX_SPACE | 设置Flex容器内子组件的间距，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：Flex容器主轴方向的间距，单位vp，默认值：0。 <br/> 取值范围：[0, +∞)  <br> 设置异常值时，按默认值显示。 <br/>.value[1].f32：Flex容器交叉轴方向的间距，单位vp，默认值：0。<br/> 取值范围：[0, +∞)  <br> 设置异常值时，按默认值显示。 <br/>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：Flex容器主轴方向的间距，单位vp。<br/>.value[1].f32：Flex容器交叉轴方向的间距，单位vp。<br/>**起始版本：** 23  |
 | NODE_REFRESH_REFRESHING = MAX_NODE_SCOPE_NUM * ARKUI_NODE_REFRESH | 设置组件是否正在刷新，支持属性设置，属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0].i32：参数类型为1或者0，1表示正在刷新，0表示不在刷新。默认值：0<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：参数类型为1或者0，1表示正在刷新，0表示不在刷新。 |
 | NODE_REFRESH_CONTENT | 设置下拉区域的自定义内容，支持属性设置和重置。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br> .object：参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。  |
 | NODE_REFRESH_PULL_DOWN_RATIO = 1009002 | 设置下拉跟手系数，支持属性设置，属性重置和属性获取接口。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br> .value[0].f32：下拉跟手系数,有效值为0-1之间的值。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：下拉跟手系数,有效值为0-1之间的值。   |
@@ -716,13 +740,13 @@ enum ArkUI_NodeAttributeType
 | NODE_GRID_CACHED_COUNT | Grid组件Adapter缓存数量，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：配合Grid组件Adapter使用，设置Adapter中的缓存数量。 |
 | NODE_GRID_FOCUS_WRAP_MODE = 1013006 | Grid组件走焦换行模式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid组件走焦换行模式，参数类型[ArkUI_FocusWrapMode](capi-native-type-h.md#arkui_focuswrapmode)。默认值：FOCUS_WRAP_MODE_DEFAULT<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32: Grid组件走焦换行模式，参数类型[ArkUI_FocusWrapMode](capi-native-type-h.md#arkui_focuswrapmode)。<br>**起始版本：** 20  |
 | NODE_GRID_SYNC_LOAD = 1013007 | Grid组件是否同步加载子节点，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid组件是否同步加载子节点。0：分帧加载，1：同步加载。默认值：1<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid组件是否同步加载子节点。0：分帧加载，1：同步加载。<br>**起始版本：** 20   |
-| NODE_GRID_ALIGN_ITEMS = 1013008 | 设置Grid中GridItem的对齐方式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid中GridItem的对齐方式，参数类型[ArkUI_GridItemAlignment](capi-native-type-h.md#arkui_griditemalignment)。默认值：GRID_ITEM_ALIGNMENT_DEFAULT。<br> 设置异常值时，按默认值显示。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid中GridItem的对齐方式，参数类型[ArkUI_GridItemAlignment](capi-native-type-h.md#arkui_griditemalignment)。<br>**起始版本：** 22   |
+| NODE_GRID_ALIGN_ITEMS = 1013008 | 设置Grid中GridItem的对齐方式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid中GridItem的对齐方式，参数类型[ArkUI_GridItemAlignment](capi-native-type-h.md#arkui_griditemalignment)。默认值：GRID_ITEM_ALIGNMENT_DEFAULT。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid中GridItem的对齐方式，参数类型[ArkUI_GridItemAlignment](capi-native-type-h.md#arkui_griditemalignment)。<br>**起始版本：** 22   |
 | NODE_GRID_LAYOUT_OPTIONS = 1013009 | 设置Grid布局选项，支持属性设置，属性重置和属性获取接口。<br>属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br> .object：参数格式为[ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：返回值格式为[ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)。<br>**起始版本：** 22  |
 | NODE_GRID_COLUMN_TEMPLATE_ITEMFILLPOLICY = 1013010 | Grid组件的响应式列数布局策略，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：在不同断点规格下的列数，数据类型[ArkUI_ItemFillPolicy](capi-native-type-h.md#arkui_itemfillpolicy)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：在不同断点规格下的列数，数据类型[ArkUI_ItemFillPolicy](capi-native-type-h.md#arkui_itemfillpolicy)。<br>**起始版本：** 22   |
 | NODE_GRID_EDIT_MODE = 1013011 | Grid组件是否进入编辑模式，进入编辑模式可以通过NODE_GRID_ON_ITEM_DRAG_START事件拖拽GridItem。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid组件是否进入编辑模式。0：不可编辑，1：可以编辑。默认值：0<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid组件是否进入编辑模式。0：不可编辑，1：可以编辑。<br>**起始版本：** 23   |
 | NODE_GRID_DRAG_ANIMATION = 1013012 | Grid组件是否启用GridItem拖拽动画。支持属性设置，属性重置和属性获取接口。<br>仅在滚动模式下（只设置NODE_GRID_ROW_TEMPLATE、NODE_GRID_COLUMN_TEMPLATE其中一个）支持动画。<br>仅在大小规则的Grid中支持拖拽动画，跨行或跨列场景不支持。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid组件是否启用GridItem拖拽动画。0：不启用，1：启用。默认值：0<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid组件是否启用GridItem拖拽动画。0：不启用，1：启用。<br>**起始版本：** 23   |
 | NODE_GRID_MULTI_SELECTABLE = 1013013 | Grid组件是否启用鼠标框选。支持属性设置，属性重置和属性获取接口。<br>启用后在Grid范围内鼠标框选会触发GridItem的NODE_GRID_ITEM_EVENT_ON_SELECT事件。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid组件是否启用鼠标框选。0：不启用，1：启用。默认值：0<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：Grid组件是否启用鼠标框选。0：不启用，1：启用。<br>**起始版本：** 23   |
-|  NODE_GRID_ITEM_STYLE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_GRID_ITEM | 设置GridItem样式，支持属性设置，属性重置和属性获取。<br>属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br> .value[0].i32：GridItem样式，参数类型[ArkUI_GridItemStyle](capi-native-type-h.md#arkui_griditemstyle)。默认值：GRID_ITEM_STYLE_NONE。<br> 设置异常值时，按默认值显示。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：GridItem样式，参数类型[ArkUI_GridItemStyle](capi-native-type-h.md#arkui_griditemstyle)。<br>**起始版本：** 22   |
+|  NODE_GRID_ITEM_STYLE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_GRID_ITEM | 设置GridItem样式，支持属性设置，属性重置和属性获取。<br>属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br> .value[0].i32：GridItem样式，参数类型[ArkUI_GridItemStyle](capi-native-type-h.md#arkui_griditemstyle)。默认值：GRID_ITEM_STYLE_NONE。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：GridItem样式，参数类型[ArkUI_GridItemStyle](capi-native-type-h.md#arkui_griditemstyle)。<br>**起始版本：** 22   |
 |  NODE_GRID_ITEM_SELECTABLE = 1014001 | 设置GridItem是否可以被鼠标框选。支持属性设置，属性重置和属性获取接口。<br>属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br> .value[0].i32：GridItem是否可以被鼠标框选。0：不可以，1：可以。默认值：1<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：GridItem是否可以被鼠标框选。0：不可以，1：可以。<br>**起始版本：** 23   |
 |  NODE_GRID_ITEM_SELECTED = 1014002 | 设置GridItem选中状态。支持属性设置，属性重置和属性获取接口。<br>属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br> .value[0].i32：GridItem选中状态。0：未选中，1：已选中。默认值：0<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：GridItem选中状态。0：未选中，1：已选中。<br>**起始版本：** 23   |
 | NODE_TEXT_PICKER_COLUMN_WIDTHS = 15009 | 设置每一个选择项列宽，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32: 设置的第1个选择项列宽，为总宽度的百分比。默认情况下，所有选择项的列宽相等。<br> .value[1]?.f32: 设置的第2个选择项列宽，为总宽度的百分比。默认情况下，所有选择项的列宽相等。<br> .value[2]?.f32: 设置的第3个选择项列宽，为总宽度的百分比。默认情况下，所有选择项的列宽相等。<br> ...<br> .value[n]?.f32: 设置的第n+1个选择项列宽，为总宽度的百分比。默认情况下，所有选择项的列宽相等。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> value[0].f32: 第1列宽度，总宽度的百分比。<br> value[1].f32: 第2列宽度，总宽度的百分比。<br> value[2].f32: 第3列宽度，总宽度的百分比。<br> ...<br> value[n].f32: 第n+1列宽度，总宽度的百分比。<br>**起始版本：** 18  |
@@ -738,7 +762,7 @@ enum ArkUI_NodeAttributeType
 
 ### ArkUI_NodeEventType
 
-```
+```c
 enum ArkUI_NodeEventType
 ```
 
@@ -883,7 +907,7 @@ enum ArkUI_NodeEventType
 
 ### ArkUI_NodeDirtyFlag
 
-```
+```c
 enum ArkUI_NodeDirtyFlag
 ```
 
@@ -902,7 +926,7 @@ enum ArkUI_NodeDirtyFlag
 
 ### ArkUI_NodeCustomEventType
 
-```
+```c
 enum ArkUI_NodeCustomEventType
 ```
 
@@ -925,7 +949,7 @@ enum ArkUI_NodeCustomEventType
 
 ### ArkUI_NodeAdapterEventType
 
-```
+```c
 enum ArkUI_NodeAdapterEventType
 ```
 
@@ -946,7 +970,7 @@ enum ArkUI_NodeAdapterEventType
 
 ### ArkUI_NodeContentEventType
 
-```
+```c
 enum ArkUI_NodeContentEventType
 ```
 
@@ -964,7 +988,7 @@ enum ArkUI_NodeContentEventType
 
 ### ArkUI_InspectorErrorCode
 
-```
+```c
 enum ArkUI_InspectorErrorCode
 ```
 
@@ -985,7 +1009,7 @@ inspector错误码的枚举。
 
 ### OH_ArkUI_NodeEvent_GetEventType()
 
-```
+```c
 ArkUI_NodeEventType OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event)
 ```
 
@@ -1011,7 +1035,7 @@ ArkUI_NodeEventType OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetTargetId()
 
-```
+```c
 int32_t OH_ArkUI_NodeEvent_GetTargetId(ArkUI_NodeEvent* event)
 ```
 
@@ -1037,7 +1061,7 @@ int32_t OH_ArkUI_NodeEvent_GetTargetId(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetNodeHandle()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeEvent_GetNodeHandle(ArkUI_NodeEvent* event)
 ```
 
@@ -1063,7 +1087,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeEvent_GetNodeHandle(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetInputEvent()
 
-```
+```c
 ArkUI_UIInputEvent* OH_ArkUI_NodeEvent_GetInputEvent(ArkUI_NodeEvent* event)
 ```
 
@@ -1089,7 +1113,7 @@ ArkUI_UIInputEvent* OH_ArkUI_NodeEvent_GetInputEvent(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetNodeComponentEvent()
 
-```
+```c
 ArkUI_NodeComponentEvent* OH_ArkUI_NodeEvent_GetNodeComponentEvent(ArkUI_NodeEvent* event)
 ```
 
@@ -1115,7 +1139,7 @@ ArkUI_NodeComponentEvent* OH_ArkUI_NodeEvent_GetNodeComponentEvent(ArkUI_NodeEve
 
 ### OH_ArkUI_NodeEvent_GetStringAsyncEvent()
 
-```
+```c
 ArkUI_StringAsyncEvent* OH_ArkUI_NodeEvent_GetStringAsyncEvent(ArkUI_NodeEvent* event)
 ```
 
@@ -1141,7 +1165,7 @@ ArkUI_StringAsyncEvent* OH_ArkUI_NodeEvent_GetStringAsyncEvent(ArkUI_NodeEvent* 
 
 ### OH_ArkUI_NodeEvent_GetTextChangeEvent()
 
-```
+```c
 ArkUI_TextChangeEvent* OH_ArkUI_NodeEvent_GetTextChangeEvent(ArkUI_NodeEvent* event)
 ```
 
@@ -1167,7 +1191,7 @@ ArkUI_TextChangeEvent* OH_ArkUI_NodeEvent_GetTextChangeEvent(ArkUI_NodeEvent* ev
 
 ### OH_ArkUI_NodeEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_NodeEvent_GetUserData(ArkUI_NodeEvent* event)
 ```
 
@@ -1193,7 +1217,7 @@ void* OH_ArkUI_NodeEvent_GetUserData(ArkUI_NodeEvent* event)
 
 ### OH_ArkUI_NodeEvent_GetNumberValue()
 
-```
+```c
 int32_t OH_ArkUI_NodeEvent_GetNumberValue(ArkUI_NodeEvent* event, int32_t index, ArkUI_NumberValue* value)
 ```
 
@@ -1221,7 +1245,7 @@ int32_t OH_ArkUI_NodeEvent_GetNumberValue(ArkUI_NodeEvent* event, int32_t index,
 
 ### OH_ArkUI_NodeEvent_GetStringValue()
 
-```
+```c
 int32_t OH_ArkUI_NodeEvent_GetStringValue(ArkUI_NodeEvent* event, int32_t index, char** string, int32_t* stringSize)
 ```
 
@@ -1250,7 +1274,7 @@ int32_t OH_ArkUI_NodeEvent_GetStringValue(ArkUI_NodeEvent* event, int32_t index,
 
 ### OH_ArkUI_NodeEvent_SetReturnNumberValue()
 
-```
+```c
 int32_t OH_ArkUI_NodeEvent_SetReturnNumberValue(ArkUI_NodeEvent* event, ArkUI_NumberValue* value, int32_t size)
 ```
 
@@ -1278,7 +1302,7 @@ int32_t OH_ArkUI_NodeEvent_SetReturnNumberValue(ArkUI_NodeEvent* event, ArkUI_Nu
 
 ### OH_ArkUI_NodeAdapter_Create()
 
-```
+```c
 ArkUI_NodeAdapterHandle OH_ArkUI_NodeAdapter_Create()
 ```
 
@@ -1297,7 +1321,7 @@ ArkUI_NodeAdapterHandle OH_ArkUI_NodeAdapter_Create()
 
 ### OH_ArkUI_NodeAdapter_Dispose()
 
-```
+```c
 void OH_ArkUI_NodeAdapter_Dispose(ArkUI_NodeAdapterHandle handle)
 ```
 
@@ -1317,7 +1341,7 @@ void OH_ArkUI_NodeAdapter_Dispose(ArkUI_NodeAdapterHandle handle)
 
 ### OH_ArkUI_NodeAdapter_SetTotalNodeCount()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_SetTotalNodeCount(ArkUI_NodeAdapterHandle handle, uint32_t size)
 ```
 
@@ -1344,7 +1368,7 @@ int32_t OH_ArkUI_NodeAdapter_SetTotalNodeCount(ArkUI_NodeAdapterHandle handle, u
 
 ### OH_ArkUI_NodeAdapter_GetTotalNodeCount()
 
-```
+```c
 uint32_t OH_ArkUI_NodeAdapter_GetTotalNodeCount(ArkUI_NodeAdapterHandle handle)
 ```
 
@@ -1370,7 +1394,7 @@ uint32_t OH_ArkUI_NodeAdapter_GetTotalNodeCount(ArkUI_NodeAdapterHandle handle)
 
 ### OH_ArkUI_NodeAdapter_RegisterEventReceiver()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_RegisterEventReceiver(
 ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapterEvent* event))
 ```
@@ -1399,7 +1423,7 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 
 ### OH_ArkUI_NodeAdapter_UnregisterEventReceiver()
 
-```
+```c
 void OH_ArkUI_NodeAdapter_UnregisterEventReceiver(ArkUI_NodeAdapterHandle handle)
 ```
 
@@ -1419,7 +1443,7 @@ void OH_ArkUI_NodeAdapter_UnregisterEventReceiver(ArkUI_NodeAdapterHandle handle
 
 ### OH_ArkUI_NodeAdapter_ReloadAllItems()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_ReloadAllItems(ArkUI_NodeAdapterHandle handle)
 ```
 
@@ -1445,7 +1469,7 @@ int32_t OH_ArkUI_NodeAdapter_ReloadAllItems(ArkUI_NodeAdapterHandle handle)
 
 ### OH_ArkUI_NodeAdapter_ReloadItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_ReloadItem(
 ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 ```
@@ -1474,7 +1498,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 ### OH_ArkUI_NodeAdapter_RemoveItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_RemoveItem(
 ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 ```
@@ -1503,7 +1527,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 ### OH_ArkUI_NodeAdapter_InsertItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_InsertItem(
 ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 ```
@@ -1532,7 +1556,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 ### OH_ArkUI_NodeAdapter_MoveItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_MoveItem(ArkUI_NodeAdapterHandle handle, uint32_t from, uint32_t to)
 ```
 
@@ -1560,7 +1584,7 @@ int32_t OH_ArkUI_NodeAdapter_MoveItem(ArkUI_NodeAdapterHandle handle, uint32_t f
 
 ### OH_ArkUI_NodeAdapter_GetAllItems()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapter_GetAllItems(ArkUI_NodeAdapterHandle handle, ArkUI_NodeHandle** items, uint32_t* size)
 ```
 
@@ -1588,7 +1612,7 @@ int32_t OH_ArkUI_NodeAdapter_GetAllItems(ArkUI_NodeAdapterHandle handle, ArkUI_N
 
 ### OH_ArkUI_NodeAdapterEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_NodeAdapterEvent_GetUserData(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1614,7 +1638,7 @@ void* OH_ArkUI_NodeAdapterEvent_GetUserData(ArkUI_NodeAdapterEvent* event)
 
 ### OH_ArkUI_NodeAdapterEvent_GetType()
 
-```
+```c
 ArkUI_NodeAdapterEventType OH_ArkUI_NodeAdapterEvent_GetType(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1640,7 +1664,7 @@ ArkUI_NodeAdapterEventType OH_ArkUI_NodeAdapterEvent_GetType(ArkUI_NodeAdapterEv
 
 ### OH_ArkUI_NodeAdapterEvent_GetRemovedNode()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetRemovedNode(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1666,7 +1690,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetRemovedNode(ArkUI_NodeAdapterEvent
 
 ### OH_ArkUI_NodeAdapterEvent_GetItemIndex()
 
-```
+```c
 uint32_t OH_ArkUI_NodeAdapterEvent_GetItemIndex(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1692,7 +1716,7 @@ uint32_t OH_ArkUI_NodeAdapterEvent_GetItemIndex(ArkUI_NodeAdapterEvent* event)
 
 ### OH_ArkUI_NodeAdapterEvent_GetHostNode()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetHostNode(ArkUI_NodeAdapterEvent* event)
 ```
 
@@ -1718,7 +1742,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetHostNode(ArkUI_NodeAdapterEvent* e
 
 ### OH_ArkUI_NodeAdapterEvent_SetItem()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapterEvent_SetItem(ArkUI_NodeAdapterEvent* event, ArkUI_NodeHandle node)
 ```
 
@@ -1745,7 +1769,7 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetItem(ArkUI_NodeAdapterEvent* event, ArkUI_N
 
 ### OH_ArkUI_NodeAdapterEvent_SetNodeId()
 
-```
+```c
 int32_t OH_ArkUI_NodeAdapterEvent_SetNodeId(ArkUI_NodeAdapterEvent* event, int32_t id)
 ```
 
@@ -1772,7 +1796,7 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetNodeId(ArkUI_NodeAdapterEvent* event, int32
 
 ### OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure()
 
-```
+```c
 ArkUI_LayoutConstraint* OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1798,7 +1822,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(Ar
 
 ### OH_ArkUI_NodeCustomEvent_GetPositionInLayout()
 
-```
+```c
 ArkUI_IntOffset OH_ArkUI_NodeCustomEvent_GetPositionInLayout(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1824,7 +1848,7 @@ ArkUI_IntOffset OH_ArkUI_NodeCustomEvent_GetPositionInLayout(ArkUI_NodeCustomEve
 
 ### OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw()
 
-```
+```c
 ArkUI_DrawContext* OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1850,7 +1874,7 @@ ArkUI_DrawContext* OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(ArkUI_NodeCusto
 
 ### OH_ArkUI_NodeCustomEvent_GetEventTargetId()
 
-```
+```c
 int32_t OH_ArkUI_NodeCustomEvent_GetEventTargetId(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1876,7 +1900,7 @@ int32_t OH_ArkUI_NodeCustomEvent_GetEventTargetId(ArkUI_NodeCustomEvent* event)
 
 ### OH_ArkUI_NodeCustomEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_NodeCustomEvent_GetUserData(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1902,7 +1926,7 @@ void* OH_ArkUI_NodeCustomEvent_GetUserData(ArkUI_NodeCustomEvent* event)
 
 ### OH_ArkUI_NodeCustomEvent_GetNodeHandle()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeCustomEvent_GetNodeHandle(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1928,7 +1952,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeCustomEvent_GetNodeHandle(ArkUI_NodeCustomEvent* e
 
 ### OH_ArkUI_NodeCustomEvent_GetEventType()
 
-```
+```c
 ArkUI_NodeCustomEventType OH_ArkUI_NodeCustomEvent_GetEventType(ArkUI_NodeCustomEvent* event)
 ```
 
@@ -1954,7 +1978,7 @@ ArkUI_NodeCustomEventType OH_ArkUI_NodeCustomEvent_GetEventType(ArkUI_NodeCustom
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo()
 
-```
+```c
 int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo(ArkUI_NodeCustomEvent* event, ArkUI_CustomSpanMeasureInfo* info)
 ```
 
@@ -1981,7 +2005,7 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo(ArkUI_NodeCustomEvent*
 
 ### OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics()
 
-```
+```c
 int32_t OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics(ArkUI_NodeCustomEvent* event, ArkUI_CustomSpanMetrics* metrics)
 ```
 
@@ -2008,7 +2032,7 @@ int32_t OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics(ArkUI_NodeCustomEvent* eve
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo()
 
-```
+```c
 int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo(ArkUI_NodeCustomEvent* event, ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -2035,7 +2059,7 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo(ArkUI_NodeCustomEvent* ev
 
 ### ArkUI_NodeContentCallback()
 
-```
+```c
 typedef void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event)
 ```
 
@@ -2055,7 +2079,7 @@ typedef void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event)
 
 ### OH_ArkUI_NodeContent_RegisterCallback()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, ArkUI_NodeContentCallback callback)
 ```
 
@@ -2082,7 +2106,7 @@ int32_t OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, A
 
 ### OH_ArkUI_NodeContentEvent_GetEventType()
 
-```
+```c
 ArkUI_NodeContentEventType OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeContentEvent* event)
 ```
 
@@ -2108,7 +2132,7 @@ ArkUI_NodeContentEventType OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeCont
 
 ### OH_ArkUI_NodeContentEvent_GetNodeContentHandle()
 
-```
+```c
 ArkUI_NodeContentHandle OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)
 ```
 
@@ -2134,7 +2158,7 @@ ArkUI_NodeContentHandle OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_Nod
 
 ### OH_ArkUI_NodeContent_SetUserData()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)
 ```
 
@@ -2161,7 +2185,7 @@ int32_t OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* 
 
 ### OH_ArkUI_NodeContent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)
 ```
 
@@ -2187,7 +2211,7 @@ void* OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)
 
 ### OH_ArkUI_NodeContent_AddNode()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)
 ```
 
@@ -2210,11 +2234,11 @@ int32_t OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_Node
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 23开始支持。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。 |
 
 ### OH_ArkUI_NodeContent_RemoveNode()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)
 ```
 
@@ -2241,7 +2265,7 @@ int32_t OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_N
 
 ### OH_ArkUI_NodeContent_InsertNode()
 
-```
+```c
 int32_t OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node, int32_t position)
 ```
 
@@ -2265,11 +2289,11 @@ int32_t OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_N
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 23开始支持。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。 |
 
 ### OH_ArkUI_NodeUtils_GetLayoutSize()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutSize(ArkUI_NodeHandle node, ArkUI_IntSize* size)
 ```
 
@@ -2296,7 +2320,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutSize(ArkUI_NodeHandle node, ArkUI_IntSize* s
 
 ### OH_ArkUI_NodeUtils_GetLayoutPosition()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutPosition(ArkUI_NodeHandle node, ArkUI_IntOffset* localOffset)
 ```
 
@@ -2323,7 +2347,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPosition(ArkUI_NodeHandle node, ArkUI_IntOff
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInWindow()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInWindow(ArkUI_NodeHandle node, ArkUI_IntOffset* globalOffset)
 ```
 
@@ -2350,7 +2374,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInWindow(ArkUI_NodeHandle node, ArkU
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInScreen()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInScreen(ArkUI_NodeHandle node, ArkUI_IntOffset* screenOffset)
 ```
 
@@ -2377,7 +2401,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInScreen(ArkUI_NodeHandle node, ArkU
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay(ArkUI_NodeHandle node, ArkUI_IntOffset* offset)
 ```
 
@@ -2404,7 +2428,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay(ArkUI_NodeHandle nod
 
 ### OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow(ArkUI_NodeHandle node, ArkUI_IntOffset* translateOffset)
 ```
 
@@ -2431,7 +2455,7 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow(ArkUI_NodeHandle nod
 
 ### OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen(ArkUI_NodeHandle node, ArkUI_IntOffset* translateOffset)
 ```
 
@@ -2458,7 +2482,7 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen(ArkUI_NodeHandle nod
 
 ### OH_ArkUI_NodeUtils_AddCustomProperty()
 
-```
+```c
 void OH_ArkUI_NodeUtils_AddCustomProperty(ArkUI_NodeHandle node, const char* name, const char* value)
 ```
 
@@ -2480,7 +2504,7 @@ void OH_ArkUI_NodeUtils_AddCustomProperty(ArkUI_NodeHandle node, const char* nam
 
 ### OH_ArkUI_NodeUtils_RemoveCustomProperty()
 
-```
+```c
 void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* name)
 ```
 
@@ -2501,7 +2525,7 @@ void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* 
 
 ### OH_ArkUI_NodeUtils_GetCustomProperty()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* name, ArkUI_CustomProperty** handle)
 ```
 
@@ -2529,7 +2553,7 @@ int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* 
 
 ### OH_ArkUI_NodeUtils_GetParentInPageTree()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)
 ```
 
@@ -2555,7 +2579,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_NodeUtils_GetActiveChildrenInfo()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_ActiveChildrenInfo** handle)
 ```
 
@@ -2582,7 +2606,7 @@ int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_Ac
 
 ### OH_ArkUI_NodeUtils_GetCurrentPageRootNode()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node)
 ```
 
@@ -2608,7 +2632,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node
 
 ### OH_ArkUI_NodeUtils_IsCreatedByNDK()
 
-```
+```c
 bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)
 ```
 
@@ -2634,7 +2658,7 @@ bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_NodeUtils_GetNodeType()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)
 ```
 
@@ -2660,7 +2684,7 @@ int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_NodeUtils_GetWindowInfo()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetWindowInfo(ArkUI_NodeHandle node, ArkUI_HostWindowInfo** info)
 ```
 
@@ -2687,7 +2711,7 @@ int32_t OH_ArkUI_NodeUtils_GetWindowInfo(ArkUI_NodeHandle node, ArkUI_HostWindow
 
 ### OH_ArkUI_NodeUtils_MoveTo()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_MoveTo(ArkUI_NodeHandle node, ArkUI_NodeHandle target_parent, int32_t index)
 ```
 
@@ -2711,11 +2735,11 @@ int32_t OH_ArkUI_NodeUtils_MoveTo(ArkUI_NodeHandle node, ArkUI_NodeHandle target
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 23开始支持。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。 |
 
 ### OH_ArkUI_NativeModule_InvalidateAttributes()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_InvalidateAttributes(ArkUI_NodeHandle node)
 ```
 
@@ -2740,12 +2764,12 @@ int32_t OH_ArkUI_NativeModule_InvalidateAttributes(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>    [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>    [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 
 ### OH_ArkUI_List_CloseAllSwipeActions()
 
-```
+```c
 int32_t OH_ArkUI_List_CloseAllSwipeActions(ArkUI_NodeHandle node, void* userData, void (*onFinish)(void* userData))
 ```
 
@@ -2773,7 +2797,7 @@ int32_t OH_ArkUI_List_CloseAllSwipeActions(ArkUI_NodeHandle node, void* userData
 
 ### OH_ArkUI_GetContextByNode()
 
-```
+```c
 ArkUI_ContextHandle OH_ArkUI_GetContextByNode(ArkUI_NodeHandle node)
 ```
 
@@ -2799,7 +2823,7 @@ ArkUI_ContextHandle OH_ArkUI_GetContextByNode(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_RegisterSystemColorModeChangeEvent()
 
-```
+```c
 int32_t OH_ArkUI_RegisterSystemColorModeChangeEvent(ArkUI_NodeHandle node,void* userData, void (*onColorModeChange)(ArkUI_SystemColorMode colorMode, void* userData))
 ```
 
@@ -2827,7 +2851,7 @@ int32_t OH_ArkUI_RegisterSystemColorModeChangeEvent(ArkUI_NodeHandle node,void* 
 
 ### OH_ArkUI_UnregisterSystemColorModeChangeEvent()
 
-```
+```c
 void OH_ArkUI_UnregisterSystemColorModeChangeEvent(ArkUI_NodeHandle node)
 ```
 
@@ -2847,7 +2871,7 @@ void OH_ArkUI_UnregisterSystemColorModeChangeEvent(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_RegisterSystemFontStyleChangeEvent()
 
-```
+```c
 int32_t OH_ArkUI_RegisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node,void* userData, void (*onFontStyleChange)(ArkUI_SystemFontStyleEvent* event, void* userData))
 ```
 
@@ -2875,7 +2899,7 @@ int32_t OH_ArkUI_RegisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node,void* 
 
 ### OH_ArkUI_UnregisterSystemFontStyleChangeEvent()
 
-```
+```c
 void OH_ArkUI_UnregisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node)
 ```
 
@@ -2895,7 +2919,7 @@ void OH_ArkUI_UnregisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale()
 
-```
+```c
 float OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale(const ArkUI_SystemFontStyleEvent* event)
 ```
 
@@ -2921,7 +2945,7 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale(const ArkUI_SystemFontStyle
 
 ### OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale()
 
-```
+```c
 float OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(const ArkUI_SystemFontStyleEvent* event)
 ```
 
@@ -2947,7 +2971,7 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(const ArkUI_SystemFontSty
 
 ### OH_ArkUI_RegisterLayoutCallbackOnNodeHandle()
 
-```
+```c
 int32_t OH_ArkUI_RegisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node,void* userData, void (*onLayoutCompleted)(void* userData))
 ```
 
@@ -2975,7 +2999,7 @@ int32_t OH_ArkUI_RegisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node,void* 
 
 ### OH_ArkUI_RegisterDrawCallbackOnNodeHandle()
 
-```
+```c
 int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node,void* userData, void (*onDrawCompleted)(void* userData))
 ```
 
@@ -3003,7 +3027,7 @@ int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node,void* us
 
 ### OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle()
 
-```
+```c
 int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)
 ```
 
@@ -3029,7 +3053,7 @@ int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_UnregisterDrawCallbackOnNodeHandle()
 
-```
+```c
 int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)
 ```
 
@@ -3055,7 +3079,7 @@ int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_GetNodeSnapshot()
 
-```
+```c
 int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* snapshotOptions,OH_PixelmapNative** pixelmap)
 ```
 
@@ -3083,7 +3107,7 @@ int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* s
 
 ### OH_ArkUI_NodeUtils_GetAttachedNodeHandleById()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetAttachedNodeHandleById(const char* id, ArkUI_NodeHandle* node)
 ```
 
@@ -3110,7 +3134,7 @@ int32_t OH_ArkUI_NodeUtils_GetAttachedNodeHandleById(const char* id, ArkUI_NodeH
 
 ### OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(const uint32_t uniqueId, ArkUI_NodeHandle* node)
 ```
 
@@ -3137,7 +3161,7 @@ int32_t OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(const uint32_t uniqueId, ArkU
 
 ### OH_ArkUI_NodeUtils_GetNodeUniqueId()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqueId)
 ```
 
@@ -3164,7 +3188,7 @@ int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqu
 
 ### OH_ArkUI_NativeModule_AdoptChild()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)
 ```
 
@@ -3172,7 +3196,7 @@ int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle
 
 当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -3189,7 +3213,7 @@ int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle
 
 ### OH_ArkUI_NativeModule_RemoveAdoptedChild()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)
 ```
 
@@ -3197,7 +3221,7 @@ int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_No
 
 移除被接纳的目标附属节点。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -3214,7 +3238,7 @@ int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_No
 
 ### OH_ArkUI_NativeModule_IsInRenderState()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInRenderState)
 ```
 
@@ -3239,7 +3263,7 @@ int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInR
 
 ### OH_ArkUI_NodeUtils_SetCrossLanguageOption()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_CrossLanguageOption* option)
 ```
 
@@ -3266,7 +3290,7 @@ int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 
 ### OH_ArkUI_NodeUtils_GetCrossLanguageOption()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_CrossLanguageOption* option)
 ```
 
@@ -3293,7 +3317,7 @@ int32_t OH_ArkUI_NodeUtils_GetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 
 ### OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(ArkUI_NodeHandle node, uint32_t* index)
 ```
 
@@ -3320,7 +3344,7 @@ int32_t OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(ArkUI_NodeHandle node
 
 ### OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(ArkUI_NodeHandle node, uint32_t* index)
 ```
 
@@ -3347,7 +3371,7 @@ int32_t OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(ArkUI_NodeHandle node,
 
 ### OH_ArkUI_NodeUtils_GetChildWithExpandMode()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetChildWithExpandMode(ArkUI_NodeHandle node, int32_t position,ArkUI_NodeHandle* subnode, uint32_t expandMode)
 ```
 
@@ -3376,7 +3400,7 @@ int32_t OH_ArkUI_NodeUtils_GetChildWithExpandMode(ArkUI_NodeHandle node, int32_t
 
 ### OH_ArkUI_NodeUtils_GetPositionToParent()
 
-```
+```c
 int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntOffset* globalOffset)
 ```
 
@@ -3403,7 +3427,7 @@ int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntO
 
 ### OH_ArkUI_AddSupportedUIStates()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiStates,void (statesChangeHandler)(int32_t currentStates, void* userData), bool excludeInner, void* userData)
 ```
 
@@ -3420,7 +3444,7 @@ ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiS
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标节点。 |
-| int32_t uiStates | 目标节点需要处理的目标UI状态。所有目标UI状态的组合结果可以通过“\|”操作来计算。例如：targetUIStates = ArkUI_UIState::PRESSED | ArkUI_UIState::FOCUSED。 |
+| int32_t uiStates | 目标节点需要处理的目标UI状态。所有目标UI状态的组合结果可以通过“\|”操作来计算。例如：targetUIStates = ArkUI_UIState::PRESSED \| ArkUI_UIState::FOCUSED。 |
 | void (statesChangeHandler)(int32_t currentStates, void* userData) | UI状态改变处理函数。返回当前UI状态，该值是所有当前状态枚举值“\|”计算的结果，可以通过执行“&”操作来确定状态。例如：if (currentStates & ArkUI_UIState::PRESSED == ArkUI_UIState::PRESSED)。但是，对于正常状态检查，应直接使用等号。例如：if (currentStates == ArkUI_UIState::NORMAL) |
 |  bool excludeInner | 禁止内部默认状态样式的标志。​​true​​表示禁用系统内部的默认样式，false表示不禁用。|
 |  void* userData | onDrawCompleted回调函数中使用的自定义数据。 |
@@ -3433,7 +3457,7 @@ ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiS
 
 ### OH_ArkUI_RemoveSupportedUIStates()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_RemoveSupportedUIStates(ArkUI_NodeHandle node, int32_t uiStates)
 ```
 
@@ -3460,7 +3484,7 @@ ArkUI_ErrorCode OH_ArkUI_RemoveSupportedUIStates(ArkUI_NodeHandle node, int32_t 
 
 ### OH_ArkUI_RunTaskInScope()
 
-```
+```c
 int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, void(*callback)(void* userData))
 ```
 
@@ -3488,7 +3512,7 @@ int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, v
 
 ### OH_ArkUI_PostAsyncUITask()
 
-```
+```c
 int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskData,
     void (*asyncUITask)(void* asyncUITaskData), void (*onFinish)(void* asyncUITaskData))
 ```
@@ -3516,7 +3540,7 @@ int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskD
 
 ### OH_ArkUI_PostUITask()
 
-```
+```c
 int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (*task)(void* taskData))
 ```
 **描述：**
@@ -3539,11 +3563,11 @@ int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (*
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) context对象无效或task为空指针。
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) context对象无效或task为空指针。 |
 
 ### OH_ArkUI_PostUITaskAndWait()
 
-```
+```c
 int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, void (*task)(void* taskData))
 ```
 **描述：**
@@ -3568,11 +3592,11 @@ int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) context对象无效或task为空指针。
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) context对象无效或task为空指针。 |
 
 ### OH_ArkUI_NativeModule_RegisterCommonEvent()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void* userData, void (*callback)(ArkUI_NodeEvent* event))
 ```
 **描述：**
@@ -3596,11 +3620,11 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_N
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE](capi-native-type-h.md#arkui_errorcode) 暂不支持该事件类型。
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE](capi-native-type-h.md#arkui_errorcode) 暂不支持该事件类型。 |
 
 ### OH_ArkUI_NativeModule_UnregisterCommonEvent()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)
 ```
 **描述：**
@@ -3622,11 +3646,11 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE](capi-native-type-h.md#arkui_errorcode) 暂不支持该事件类型。
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE](capi-native-type-h.md#arkui_errorcode) 暂不支持该事件类型。 |
 
 ### OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node, float* ratios, int32_t size, float expectedUpdateInterval, void* userData, void (*callback)(ArkUI_NodeEvent* event))
 ```
 **描述：**
@@ -3650,11 +3674,11 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(Ar
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent()
 
-```
+```c
 int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node)
 ```
 **描述：**
@@ -3673,11 +3697,11 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_Swiper_FinishAnimation()
 
-```
+```c
 int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)
 ```
 
@@ -3703,7 +3727,7 @@ int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_SetForceDarkConfig()
 
-```
+```c
 int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDark, ArkUI_NodeType nodeType, uint32_t (*colorInvertFunc)(uint32_t color))
 ```
 
@@ -3732,7 +3756,7 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 
 ### OH_ArkUI_NodeEvent_GetTouchTestInfo()
 
-```
+```c
 ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEvent)
 ```
 

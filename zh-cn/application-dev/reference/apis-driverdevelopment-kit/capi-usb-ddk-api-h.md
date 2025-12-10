@@ -48,7 +48,7 @@
 
 ### OH_Usb_Init()
 
-```
+```c
 int32_t OH_Usb_Init(void)
 ```
 
@@ -68,7 +68,7 @@ int32_t OH_Usb_Init(void)
 
 ### OH_Usb_Release()
 
-```
+```c
 void OH_Usb_Release(void)
 ```
 
@@ -82,7 +82,7 @@ void OH_Usb_Release(void)
 
 ### OH_Usb_ReleaseResource()
 
-```
+```c
 int32_t OH_Usb_ReleaseResource(void)
 ```
 
@@ -102,7 +102,7 @@ int32_t OH_Usb_ReleaseResource(void)
 
 ### OH_Usb_GetDeviceDescriptor()
 
-```
+```c
 int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor *desc)
 ```
 
@@ -130,7 +130,7 @@ int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor
 
 ### OH_Usb_GetConfigDescriptor()
 
-```
+```c
 int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struct UsbDdkConfigDescriptor ** const config)
 ```
 
@@ -159,7 +159,7 @@ int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struc
 
 ### OH_Usb_FreeConfigDescriptor()
 
-```
+```c
 void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const config)
 ```
 
@@ -180,7 +180,7 @@ void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const con
 
 ### OH_Usb_ClaimInterface()
 
-```
+```c
 int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_t *interfaceHandle)
 ```
 
@@ -209,7 +209,7 @@ int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_
 
 ### OH_Usb_ReleaseInterface()
 
-```
+```c
 int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle)
 ```
 
@@ -236,7 +236,7 @@ int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle)
 
 ### OH_Usb_SelectInterfaceSetting()
 
-```
+```c
 int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingIndex)
 ```
 
@@ -264,7 +264,7 @@ int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingI
 
 ### OH_Usb_GetCurrentInterfaceSetting()
 
-```
+```c
 int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t *settingIndex)
 ```
 
@@ -292,7 +292,7 @@ int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t *set
 
 ### OH_Usb_SendControlReadRequest()
 
-```
+```c
 int32_t OH_Usb_SendControlReadRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup *setup,uint32_t timeout, uint8_t *data, uint32_t *dataLen)
 ```
 
@@ -323,7 +323,7 @@ int32_t OH_Usb_SendControlReadRequest(uint64_t interfaceHandle, const struct Usb
 
 ### OH_Usb_SendControlWriteRequest()
 
-```
+```c
 int32_t OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup *setup,uint32_t timeout, const uint8_t *data, uint32_t dataLen)
 ```
 
@@ -354,7 +354,7 @@ int32_t OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct Us
 
 ### OH_Usb_SendPipeRequest()
 
-```
+```c
 int32_t OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMap *devMmap)
 ```
 
@@ -382,7 +382,7 @@ int32_t OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMa
 
 ### OH_Usb_SendPipeRequestWithAshmem()
 
-```
+```c
 int32_t OH_Usb_SendPipeRequestWithAshmem(const struct UsbRequestPipe *pipe, DDK_Ashmem *ashmem)
 ```
 
@@ -410,7 +410,7 @@ int32_t OH_Usb_SendPipeRequestWithAshmem(const struct UsbRequestPipe *pipe, DDK_
 
 ### OH_Usb_CreateDeviceMemMap()
 
-```
+```c
 int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap)
 ```
 
@@ -439,7 +439,7 @@ int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMa
 
 ### OH_Usb_DestroyDeviceMemMap()
 
-```
+```c
 void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 ```
 
@@ -460,7 +460,7 @@ void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 
 ### OH_Usb_GetDevices()
 
-```
+```c
 int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices)
 ```
 

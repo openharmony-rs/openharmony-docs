@@ -90,7 +90,7 @@ Set the style for the **&lt;menu&gt;** component, such as the font color, size, 
   height: 85px;
   border-radius: 12px;
 }
-menu{
+.menu{
   text-color: blue;
   font-size: 35px;
   letter-spacing: 2px;

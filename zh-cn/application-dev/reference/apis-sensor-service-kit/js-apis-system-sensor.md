@@ -13,7 +13,9 @@ sensor模块提供订阅传感器数据基本能力，主要包含查询传感�
 
 > **说明：**
 >
-> - 从API Version 8开始，该接口不再维护，推荐使用新接口[`@ohos.sensor`](js-apis-sensor.md)。
+> - 模块维护策略：
+>     - 对于Lite Wearable设备类型，该模块长期维护，正常使用。
+>     - 对于支持该模块的其他设备类型，该模块从API version 8开始不再维护，推荐使用新接口[@ohos.sensor](js-apis-sensor.md)。
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 该功能使用需要对应硬件支持，仅支持真机调试。
 
@@ -30,6 +32,8 @@ import { Sensor } from '@kit.SensorServiceKit';
  subscribeAccelerometer(options: subscribeAccelerometerOptions): void
 
 观察加速度数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#accelerometer9)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -69,6 +73,8 @@ unsubscribeAccelerometer(): void
 
 取消订阅加速度数据。
 
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#accelerometerdeprecated-2)。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **需要权限**：ohos.permission.ACCELEROMETER，该权限为系统权限
@@ -84,6 +90,8 @@ Sensor.unsubscribeAccelerometer();
  subscribeCompass(options: SubscribeCompassOptions): void
 
 订阅罗盘数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#orientationdeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -118,6 +126,8 @@ unsubscribeCompass(): void
 
 取消订阅罗盘。
 
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#orientationdeprecated-2)。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **示例**：
@@ -131,6 +141,8 @@ Sensor.unsubscribeCompass();
  subscribeProximity(options: SubscribeProximityOptions): void
 
 订阅距离感应数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#proximitydeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -165,6 +177,8 @@ unsubscribeProximity(): void
 
 取消订阅距离感应。
 
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#proximitydeprecated-2)。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **示例**：
@@ -178,6 +192,8 @@ Sensor.unsubscribeProximity();
  subscribeLight(options: SubscribeLightOptions): void
 
 订阅环境光线感应数据变化。再次调用时，会覆盖前一次调用效果，即仅最后一次调用生效。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#ambient_lightdeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -212,6 +228,8 @@ unsubscribeLight(): void
 
 取消订阅环境光线感应。
 
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#ambient_lightdeprecated-2)。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **示例**：
@@ -225,6 +243,8 @@ Sensor.unsubscribeLight();
  subscribeStepCounter(options: SubscribeStepCounterOptions): void
 
 订阅计步传感器数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#pedometerdeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -261,6 +281,8 @@ unsubscribeStepCounter(): void
 
 取消订阅计步传感器。
 
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#pedometerdeprecated-2)。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
@@ -277,6 +299,8 @@ Sensor.unsubscribeStepCounter();
 subscribeBarometer(options: SubscribeBarometerOptions): void
 
 订阅气压计传感器数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#barometerdeprecated-1)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -312,6 +336,8 @@ unsubscribeBarometer(): void
 
 取消订阅气压计传感器。
 
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#barometerdeprecated-2)。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **示例**：
@@ -326,6 +352,8 @@ Sensor.unsubscribeBarometer();
  subscribeHeartRate(options: SubscribeHeartRateOptions): void
 
 订阅心率传感器数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#heart_ratedeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -363,6 +391,8 @@ unsubscribeHeartRate(): void
 
 取消订阅心率传感器。
 
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#heart_ratedeprecated-2)。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **需要权限**：ohos.permission.READ_HEALTH_DATA
@@ -378,6 +408,8 @@ Sensor.unsubscribeHeartRate();
  subscribeOnBodyState(options: SubscribeOnBodyStateOptions): void
 
 订阅设备佩戴状态。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#wear_detectiondeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -411,6 +443,8 @@ Sensor.subscribeOnBodyState(subscribeOnBodyStateOptions);
 unsubscribeOnBodyState(): void
 
 取消订阅设备佩戴状态。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#wear_detectiondeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -458,6 +492,8 @@ Sensor.getOnBodyState(getOnBodyStateOptions);
 
 针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
 
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#orientationdeprecated)。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **参数**：
@@ -494,6 +530,8 @@ unsubscribeDeviceOrientation(): void
 
 取消订阅设备方向传感器数据。
 
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#orientationdeprecated-2)。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **示例**：
@@ -509,6 +547,8 @@ Sensor.unsubscribeDeviceOrientation();
 观察陀螺仪传感器数据变化。
 
 针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#gyroscopedeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -547,6 +587,8 @@ Sensor.subscribeGyroscope(subscribeGyroscopeOptions);
 unsubscribeGyroscope(): void
 
 取消订阅陀螺仪传感器数据。
+
+除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#gyroscopedeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 

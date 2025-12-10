@@ -171,6 +171,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | malloc_free_matching_interval | int | 匹配间隔，单位：s，指在相应时间间隔内，将malloc和free进行匹配。匹配到的就不进行落盘。 | 在匹配间隔内，分配并释放了的调用栈不被记录，减少了抓栈服务进程的开销。此参数设置的值大于0时，就不能将statistics_interval参数设置为true。 | 
 | offline_symbolization | bool | 是否开启离线符号化。<br/>true：使用离线符号化。<br/>false：使用在线符号化。 | 使用离线符号化时，根据IP匹配符号的操作在网页端（smartperf）完成，优化了native daemon的性能，减少了调优时的进程卡顿。但离线符号化会将符号表写入trace文件，导致文件大小比在线符号化时更大。 |
 | sample_interval | int | 采样大小。 | 设置此参数时开启采样模式。采样模式下对于malloc size小于采样大小进行概率性统计。调用栈分配内存大小越大，出现次数越高，被统计的几率越大。 | 
+| restrace_tag | string | 需要抓取的GPU图形内存的类型 | 可重复添加。当前仅支持设置为"RES_GPU_VK"、"RES_GPU_GLES_BUFFER"、"RES_GPU_GLES_IMAGE"、"RES_GPU_CL_BUFFER"和"RES_GPU_CL_IMAGE"，用于指定抓取vulkan、OpenGLES、OpenCL、image和buffer类型的GPU内存分配栈。<br/>**说明**：从API version 21开始，支持该参数。|
 
 **结果分析**
 
@@ -693,7 +694,50 @@ $ hiprofiler_cmd \
 CONFIG
 ```
 
+抓取指定进程的GPU图形内存调用栈（需要使用最新smartperf release版本解析文件，下载链接：[smartperf](https://gitcode.com/openharmony/developtools_smartperf_host/releases))。
 
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 30 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  save_file: false
+  smb_pages: 16384
+  max_stack_depth: 20
+  pid: 11237
+  string_compressed: true
+  fp_unwind: true
+  blocked: true
+  callframe_compress: true
+  record_accurately: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_GPU_VK"
+  restrace_tag: "RES_GPU_GLES_BUFFER"
+  restrace_tag: "RES_GPU_GLES_IMAGE"
+  restrace_tag: "RES_GPU_CL_BUFFER"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  }
+}
+CONFIG
+```
+命令中使用了malloc_disable参数用于过滤nativeheap抓栈的数据；添加的restrace_tag参数中没有"RES_GPU_CL_IMAGE", 则不抓取OpenCL image类型的GPU内存分配栈。
 
 ## 常见问题
 
@@ -717,7 +761,7 @@ CONFIG
 
 **可能原因&amp;解决方法**
 
-需要检查生成文件的路径是否在/data/local/tmp/目录下。如果目标路径是/data/local/tmp下的一个文件夹，则尝试对文件夹执行chmod 777操作。如果是user版本使用nativehook或者network profiler抓取no debug应用，也抓不到数据（参考changelog https://gitcode.com/openharmony/docs/pulls/57419）。
+需要检查生成文件的路径是否在/data/local/tmp/目录下。如果目标路径是/data/local/tmp下的一个文件夹，则尝试对文件夹执行chmod 777操作。如果是user版本使用nativehook或者network profiler插件抓取的应用不是[使用调试证书签名的应用](#使用调试证书签名的应用)，也抓不到数据。
 
 ### 调优数据疑似不准确
 

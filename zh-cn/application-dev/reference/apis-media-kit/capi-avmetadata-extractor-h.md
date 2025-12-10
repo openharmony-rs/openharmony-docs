@@ -42,7 +42,7 @@
 
 ### OH_AVMetadataExtractor_Create()
 
-```
+```c
 OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)
 ```
 
@@ -62,7 +62,7 @@ OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)
 
 ### OH_AVMetadataExtractor_SetFDSource()
 
-```
+```c
 OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor,int32_t fd, int64_t offset, int64_t size)
 ```
 
@@ -92,7 +92,7 @@ OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extracto
 
 ### OH_AVMetadataExtractor_FetchMetadata()
 
-```
+```c
 OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extractor, OH_AVFormat* avMetadata)
 ```
 
@@ -122,7 +122,7 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extrac
 
 ### OH_AVMetadataExtractor_FetchAlbumCover()
 
-```
+```c
 OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extractor, OH_PixelmapNative** pixelMap)
 ```
 
@@ -152,7 +152,7 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extr
 
 ### OH_AVMetadataExtractor_Release()
 
-```
+```c
 OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)
 ```
 

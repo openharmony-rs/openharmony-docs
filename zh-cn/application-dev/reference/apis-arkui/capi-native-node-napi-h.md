@@ -55,7 +55,7 @@
 
 ### OH_ArkUI_GetNodeHandleFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle)
 ```
 
@@ -83,7 +83,7 @@ int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, 
 
 ### OH_ArkUI_GetContextFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_ContextHandle* context)
 ```
 
@@ -111,7 +111,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 
 ### OH_ArkUI_GetNodeContentFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)
 ```
 
@@ -139,7 +139,7 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 
 ### OH_ArkUI_GetDrawableDescriptorFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)
 ```
 
@@ -167,7 +167,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value val
 
 ### OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)
 ```
 
@@ -195,7 +195,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 
 ### OH_ArkUI_GetNavigationId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -224,7 +224,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, in
 
 ### OH_ArkUI_GetNavDestinationName()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -253,7 +253,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buff
 
 ### OH_ArkUI_GetNavStackLength()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)
 ```
 
@@ -280,7 +280,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* lengt
 
 ### OH_ArkUI_GetNavDestinationNameByIndex()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int32_t index, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -310,7 +310,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int
 
 ### OH_ArkUI_GetNavDestinationId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -339,7 +339,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer
 
 ### OH_ArkUI_GetNavDestinationState()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)
 ```
 
@@ -366,7 +366,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_Nav
 
 ### OH_ArkUI_GetNavDestinationIndex()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)
 ```
 
@@ -393,7 +393,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* 
 
 ### OH_ArkUI_GetNavDestinationParam()
 
-```
+```c
 napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)
 ```
 
@@ -419,7 +419,7 @@ napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_GetRouterPageIndex()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)
 ```
 
@@ -446,7 +446,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* inde
 
 ### OH_ArkUI_GetRouterPageName()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -475,7 +475,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, 
 
 ### OH_ArkUI_GetRouterPagePath()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -504,7 +504,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, 
 
 ### OH_ArkUI_GetRouterPageState()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterPageState* state)
 ```
 
@@ -531,7 +531,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterP
 
 ### OH_ArkUI_GetRouterPageId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -560,7 +560,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, in
 
 ### OH_ArkUI_InitModuleForArkTSEnv()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)
 ```
 
@@ -586,7 +586,7 @@ ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)
 
 ### OH_ArkUI_NotifyArkTSEnvDestroy()
 
-```
+```c
 void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)
 ```
 
@@ -606,7 +606,7 @@ void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)
 
 ### OH_ArkUI_PostFrameCallback()
 
-```
+```c
 int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData,void (*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))
 ```
 
@@ -636,7 +636,7 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 
 ### OH_ArkUI_PostIdleCallback()
 
-```
+```c
 int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,void (*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))
 ```
 

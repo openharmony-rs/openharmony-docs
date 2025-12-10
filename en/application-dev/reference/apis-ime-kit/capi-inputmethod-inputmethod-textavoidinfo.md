@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_TextAvoidInfo InputMethod_TextAvoidInfo
+```
+
 ## Overview
 
 Information used by the input box to avoid the keyboard.

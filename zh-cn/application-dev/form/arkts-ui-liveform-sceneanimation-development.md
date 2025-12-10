@@ -77,7 +77,7 @@
     // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-    import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    import { common } from '@kit.AbilityKit';
     // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -97,7 +97,7 @@
       private formId: string | undefined = undefined;
       private formRect: formInfo.Rect | undefined = undefined;
       private formBorderRadius: number | undefined = undefined;
-      private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+      private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
     
       aboutToAppear(): void {
         this.uiContext = this.getUIContext();
@@ -113,7 +113,7 @@
         this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
         this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
         this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
-        this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+        this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
       }
     
       // 执行动效
@@ -263,6 +263,7 @@
               // $r('app.float.font_size')需开发者根据实际情况替换相应的资源或值
               .fontSize($r('app.float.font_size'))
               .fontWeight(FontWeight.Medium)
+              // $r('sys.color.font_primary')需开发者根据实际情况替换相应的资源或值
               .fontColor($r('sys.color.font_primary'))
           }
           .width('100%')

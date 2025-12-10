@@ -208,7 +208,7 @@ Wifi 代理配置。
 | proxyMethod | ProxyMethod | 否 | 是 | 代理方法。 |
 | pacWebAddress | string | 否 | 是 | 自动配置代理的PAC web 地址。 |
 | serverHostName | string | 否 | 是 | 手动配置代理的服务器主机名。 |
-| serverPort | number | 是 | 否 | 手动配置代理的服务器端口。 |
+| serverPort | number | 否 | 是 | 手动配置代理的服务器端口。 |
 | exclusionObjects | string | 否 | 是 | 手动配置代理的排除对象，对象用“,”分隔。|
 
 ## ProxyMethod<sup>10+</sup>

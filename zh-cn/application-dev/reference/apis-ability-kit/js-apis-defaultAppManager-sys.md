@@ -881,3 +881,97 @@ try {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```
+
+## defaultAppManager.setDefaultApplicationForAppClone<sup>23+</sup>
+
+setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: number, userId?: number): void
+
+以同步方法将分身应用设置为打开相应type类型的默认应用。
+
+**需要权限：** ohos.permission.SET_DEFAULT_APPLICATION 或 (ohos.permission.SET_DEFAULT_APPLICATION 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+- 当userId为当前用户时，需要申请ohos.permission.SET_DEFAULT_APPLICATION。
+- 当userId不是当前用户时，需要同时申请ohos.permission.SET_DEFAULT_APPLICATION 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**系统接口：**  此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                                      |
+| ----------- | ------ | ---- | --------------------------------------- |
+| type        | string | 是   | 要设置的应用类型，支持取值包括：[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值、[MIMEType](../../database/uniform-data-type-list.md#基础类型)类型、或[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。|
+| elementName | [ElementName](js-apis-bundleManager-elementName.md#elementname-1) | 是 | 要设置为默认应用的组件信息，仅使用其中的bundleName、abilityName、moduleName属性，且三个属性必须设置。                           |
+| appIndex    | number | 是   | 表示分身应用的索引。<br>取值范围：1、2、3、4、5。 |
+| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>默认值：调用方所在用户Id。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | ---------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 801 | Capability not supported. |
+| 17700004 | The specified user ID is not found.            |
+| 17700025 | The specified type is invalid.                 |
+| 17700028 | The specified ability does not match the type. |
+| 17700061 | AppIndex not in valid range. |
+
+**示例：**
+
+```ts
+import { defaultAppManager } from '@kit.AbilityKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+let appIndex = 1;
+try {
+  defaultAppManager.setDefaultApplicationForAppClone(defaultAppManager.ApplicationType.BROWSER, {
+    // 请开发者替换为实际的bundleName、moduleName和abilityName
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, appIndex);
+  console.info('Operation successful.');
+} catch (error) {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+};
+
+let userId = 100;
+try {
+  defaultAppManager.setDefaultApplicationForAppClone(defaultAppManager.ApplicationType.BROWSER, {
+    // 请开发者替换为实际的bundleName、moduleName和abilityName
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, appIndex, userId);
+  console.info('Operation successful.');
+} catch (error) {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+};
+
+try {
+  defaultAppManager.setDefaultApplicationForAppClone("image/png", {
+    // 请开发者替换为实际的bundleName、moduleName和abilityName
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, appIndex, userId);
+  console.info('Operation successful.');
+} catch (error) {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+};
+
+try {
+  defaultAppManager.setDefaultApplicationForAppClone(uniformTypeDescriptor.UniformDataType.AVI, {
+    // 请开发者替换为实际的bundleName、moduleName和abilityName
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, appIndex, userId);
+  console.info('Operation successful.');
+} catch (error) {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+};
+```

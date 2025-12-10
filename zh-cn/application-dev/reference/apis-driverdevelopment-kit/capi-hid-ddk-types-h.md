@@ -61,7 +61,7 @@
 
 ### Hid_DeviceProp
 
-```
+```c
 enum Hid_DeviceProp
 ```
 
@@ -103,7 +103,7 @@ enum Hid_EventType
 
 ### Hid_SynEvent
 
-```
+```c
 enum Hid_SynEvent
 ```
 
@@ -122,7 +122,7 @@ enum Hid_SynEvent
 
 ### Hid_KeyCode
 
-```
+```c
 enum Hid_KeyCode
 ```
 
@@ -247,7 +247,7 @@ enum Hid_KeyCode
 
 ### Hid_AbsAxes
 
-```
+```c
 enum Hid_AbsAxes
 ```
 
@@ -288,7 +288,7 @@ enum Hid_AbsAxes
 
 ### Hid_RelAxes
 
-```
+```c
 enum Hid_RelAxes
 ```
 
@@ -316,7 +316,7 @@ enum Hid_RelAxes
 
 ### Hid_MscEvent
 
-```
+```c
 enum Hid_MscEvent
 ```
 
@@ -337,7 +337,7 @@ enum Hid_MscEvent
 
 ### Hid_DdkErrCode
 
-```
+```c
 enum Hid_DdkErrCode
 ```
 
@@ -364,7 +364,7 @@ HID DDK错误码定义。
 
 ### Hid_ReportType
 
-```
+```c
 enum Hid_ReportType
 ```
 
@@ -383,7 +383,7 @@ enum Hid_ReportType
 
 ### HID_MAX_REPORT_BUFFER_SIZE
 
-```
+```c
 HID_MAX_REPORT_BUFFER_SIZE (16 * 1024 - 1)
 ```
 

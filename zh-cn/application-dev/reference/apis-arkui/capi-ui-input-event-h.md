@@ -161,7 +161,7 @@
 
 ### ArkUI_UIInputEvent_Type
 
-```
+```c
 enum ArkUI_UIInputEvent_Type
 ```
 
@@ -182,7 +182,7 @@ UI输入事件类型定义。
 
 ### anonymous1
 
-```
+```c
 enum anonymous1
 ```
 
@@ -202,7 +202,7 @@ enum anonymous1
 
 ### anonymous2
 
-```
+```c
 enum anonymous2
 ```
 
@@ -224,7 +224,7 @@ enum anonymous2
 
 ### anonymous3
 
-```
+```c
 enum anonymous3
 ```
 
@@ -245,7 +245,7 @@ enum anonymous3
 
 ### HitTestMode
 
-```
+```c
 enum HitTestMode
 ```
 
@@ -259,15 +259,15 @@ enum HitTestMode
 | 枚举项 | 描述 |
 | -- | -- |
 | HTM_DEFAULT = 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。 |
-| HTM_BLOCK | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
-| HTM_TRANSPARENT | 自身和子节点都响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。 |
-| HTM_NONE | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
-| HTM_BLOCK_HIERARCHY | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br>**起始版本：** 20 |
-| HTM_BLOCK_DESCENDANTS | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br>**起始版本：** 20 |
+| HTM_BLOCK = 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
+| HTM_TRANSPARENT = 2 | 自身和子节点都响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。 |
+| HTM_NONE = 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
+| HTM_BLOCK_HIERARCHY = 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br>**起始版本：** 20 |
+| HTM_BLOCK_DESCENDANTS = 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br>**起始版本：** 20 |
 
 ### anonymous4
 
-```
+```c
 enum anonymous4
 ```
 
@@ -288,7 +288,7 @@ enum anonymous4
 
 ### anonymous5
 
-```
+```c
 enum anonymous5
 ```
 
@@ -310,7 +310,7 @@ enum anonymous5
 
 ### ArkUI_ModifierKeyName
 
-```
+```c
 enum ArkUI_ModifierKeyName
 ```
 
@@ -330,7 +330,7 @@ enum ArkUI_ModifierKeyName
 
 ### anonymous6
 
-```
+```c
 enum anonymous6
 ```
 
@@ -351,10 +351,21 @@ enum anonymous6
 | UI_FOCUS_AXIS_EVENT_ABS_BRAKE = 5 | 游戏手柄BRAKE轴。 |
 | UI_FOCUS_AXIS_EVENT_ABS_HAT0X = 6 | 游戏手柄HAT0X轴。 |
 | UI_FOCUS_AXIS_EVENT_ABS_HAT0Y = 7 | 游戏手柄HAT0Y轴。 |
+| UI_FOCUS_AXIS_EVENT_ABS_RX = 8 | 游戏手柄RX轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_RY = 9 | 游戏手柄RY轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_THROTTLE = 10 | 游戏手柄THROTTLE轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_RUDDER = 11 | 游戏手柄RUDDER轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_WHEEL = 12 | 游戏手柄WHEEL轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT1X = 13 | 游戏手柄HAT1X轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT1Y = 14 | 游戏手柄HAT1Y轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT2X = 15 | 游戏手柄HAT2X轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT2Y = 16 | 游戏手柄HAT2Y轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT3X = 17 | 游戏手柄HAT3X轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT3Y = 18 | 游戏手柄HAT3Y轴。<br>**起始版本：** 23 |
 
 ### ArkUI_InteractionHand
 
-```
+```c
 enum ArkUI_InteractionHand
 ```
 
@@ -373,7 +384,7 @@ enum ArkUI_InteractionHand
 
 ### anonymous7
 
-```
+```c
 enum anonymous7
 ```
 
@@ -394,7 +405,7 @@ enum anonymous7
 
 ### anonymous8
 
-```
+```c
 enum anonymous8
 ```
 
@@ -413,7 +424,7 @@ enum anonymous8
 
 ### ArkUI_CoastingAxisEventPhase
 
-```
+```c
 enum ArkUI_CoastingAxisEventPhase
 ```
 
@@ -433,7 +444,7 @@ enum ArkUI_CoastingAxisEventPhase
 
 ### ArkUI_TouchTestStrategy
 
-```
+```c
 enum ArkUI_TouchTestStrategy
 ```
 
@@ -454,7 +465,7 @@ enum ArkUI_TouchTestStrategy
 
 ### OH_ArkUI_UIInputEvent_GetType()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetType(const ArkUI_UIInputEvent* event)
 ```
 
@@ -480,7 +491,7 @@ int32_t OH_ArkUI_UIInputEvent_GetType(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetAction()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetAction(const ArkUI_UIInputEvent* event)
 ```
 
@@ -506,7 +517,7 @@ int32_t OH_ArkUI_UIInputEvent_GetAction(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetSourceType()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 ```
 
@@ -532,7 +543,7 @@ int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetToolType()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 ```
 
@@ -558,7 +569,7 @@ int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetEventTime()
 
-```
+```c
 int64_t OH_ArkUI_UIInputEvent_GetEventTime(const ArkUI_UIInputEvent* event)
 ```
 
@@ -584,7 +595,7 @@ int64_t OH_ArkUI_UIInputEvent_GetEventTime(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetPointerCount()
 
-```
+```c
 uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)
 ```
 
@@ -610,7 +621,7 @@ uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetPointerId()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -637,7 +648,7 @@ int32_t OH_ArkUI_PointerEvent_GetPointerId(const ArkUI_UIInputEvent* event, uint
 
 ### OH_ArkUI_PointerEvent_GetChangedPointerId()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetChangedPointerId(const ArkUI_UIInputEvent* event, uint32_t* pointerIndex)
 ```
 
@@ -664,7 +675,7 @@ int32_t OH_ArkUI_PointerEvent_GetChangedPointerId(const ArkUI_UIInputEvent* even
 
 ### OH_ArkUI_PointerEvent_GetX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -690,7 +701,7 @@ float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetXByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -717,7 +728,7 @@ float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -743,7 +754,7 @@ float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetYByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -770,7 +781,7 @@ float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetWindowX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -796,7 +807,7 @@ float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetWindowXByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -823,7 +834,7 @@ float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetWindowY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -849,7 +860,7 @@ float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetWindowYByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetWindowYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -876,7 +887,7 @@ float OH_ArkUI_PointerEvent_GetWindowYByIndex(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetDisplayX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -902,7 +913,7 @@ float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetDisplayXByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetDisplayXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -929,7 +940,7 @@ float OH_ArkUI_PointerEvent_GetDisplayXByIndex(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetDisplayY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -955,7 +966,7 @@ float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetDisplayYByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetDisplayYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -982,7 +993,7 @@ float OH_ArkUI_PointerEvent_GetDisplayYByIndex(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1008,7 +1019,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1035,7 +1046,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1061,7 +1072,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1088,7 +1099,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetPressure()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1115,7 +1126,7 @@ float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetTiltX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1142,7 +1153,7 @@ float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t p
 
 ### OH_ArkUI_PointerEvent_GetTiltY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1169,7 +1180,7 @@ float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t p
 
 ### OH_ArkUI_PointerEvent_GetRollAngle()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, double* rollAngle)
 ```
 
@@ -1196,7 +1207,7 @@ int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, doub
 
 ### OH_ArkUI_PointerEvent_GetTouchAreaWidth()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1223,7 +1234,7 @@ float OH_ArkUI_PointerEvent_GetTouchAreaWidth(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetTouchAreaHeight()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1250,7 +1261,7 @@ float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetInteractionHand()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetInteractionHand(const ArkUI_UIInputEvent *event, ArkUI_InteractionHand *hand)
 ```
 
@@ -1277,7 +1288,7 @@ int32_t OH_ArkUI_PointerEvent_GetInteractionHand(const ArkUI_UIInputEvent *event
 
 ### OH_ArkUI_PointerEvent_GetInteractionHandByIndex()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetInteractionHandByIndex(const ArkUI_UIInputEvent *event, int32_t pointerIndex, ArkUI_InteractionHand *hand)
 ```
 
@@ -1305,7 +1316,7 @@ int32_t OH_ArkUI_PointerEvent_GetInteractionHandByIndex(const ArkUI_UIInputEvent
 
 ### OH_ArkUI_PointerEvent_GetHistorySize()
 
-```
+```c
 uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1331,7 +1342,7 @@ uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetHistoryEventTime()
 
-```
+```c
 int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* event, uint32_t historyIndex)
 ```
 
@@ -1358,7 +1369,7 @@ int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* even
 
 ### OH_ArkUI_PointerEvent_GetHistoryPointerCount()
 
-```
+```c
 uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* event, uint32_t historyIndex)
 ```
 
@@ -1385,7 +1396,7 @@ uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* 
 
 ### OH_ArkUI_PointerEvent_GetHistoryPointerId()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1413,7 +1424,7 @@ int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* even
 
 ### OH_ArkUI_PointerEvent_GetHistoryX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1441,7 +1452,7 @@ float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetHistoryY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1469,7 +1480,7 @@ float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetHistoryWindowX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1497,7 +1508,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetHistoryWindowY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1525,7 +1536,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetHistoryDisplayX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1553,7 +1564,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetHistoryDisplayY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1581,7 +1592,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1609,7 +1620,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1637,7 +1648,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetHistoryPressure()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1665,7 +1676,7 @@ float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetHistoryTiltX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1693,7 +1704,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uin
 
 ### OH_ArkUI_PointerEvent_GetHistoryTiltY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1721,7 +1732,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uin
 
 ### OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1749,7 +1760,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1777,7 +1788,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* 
 
 ### OH_ArkUI_AxisEvent_GetVerticalAxisValue()
 
-```
+```c
 double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1803,7 +1814,7 @@ double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_AxisEvent_GetHorizontalAxisValue()
 
-```
+```c
 double OH_ArkUI_AxisEvent_GetHorizontalAxisValue(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1829,7 +1840,7 @@ double OH_ArkUI_AxisEvent_GetHorizontalAxisValue(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_AxisEvent_GetPinchAxisScaleValue()
 
-```
+```c
 double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1855,7 +1866,7 @@ double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_AxisEvent_GetAxisAction()
 
-```
+```c
 int32_t OH_ArkUI_AxisEvent_GetAxisAction(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1881,7 +1892,7 @@ int32_t OH_ArkUI_AxisEvent_GetAxisAction(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_AxisEvent_HasAxis()
 
-```
+```c
 int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis)
 ```
 
@@ -1908,7 +1919,7 @@ int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis
 
 ### OH_ArkUI_PointerEvent_SetInterceptHitTestMode()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* event, HitTestMode mode)
 ```
 
@@ -1935,7 +1946,7 @@ int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* 
 
 ### OH_ArkUI_MouseEvent_GetMouseButton()
 
-```
+```c
 int32_t OH_ArkUI_MouseEvent_GetMouseButton(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1961,7 +1972,7 @@ int32_t OH_ArkUI_MouseEvent_GetMouseButton(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_MouseEvent_GetMouseAction()
 
-```
+```c
 int32_t OH_ArkUI_MouseEvent_GetMouseAction(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1987,7 +1998,7 @@ int32_t OH_ArkUI_MouseEvent_GetMouseAction(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_SetStopPropagation()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)
 ```
 
@@ -2014,7 +2025,7 @@ int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_UIInputEvent_GetDeviceId()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2040,7 +2051,7 @@ int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetPressedKeys()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetPressedKeys(const ArkUI_UIInputEvent* event, int32_t* pressedKeyCodes, int32_t* length)
 ```
 
@@ -2068,7 +2079,7 @@ int32_t OH_ArkUI_UIInputEvent_GetPressedKeys(const ArkUI_UIInputEvent* event, in
 
 ### OH_ArkUI_FocusAxisEvent_GetAxisValue()
 
-```
+```c
 double OH_ArkUI_FocusAxisEvent_GetAxisValue(const ArkUI_UIInputEvent* event, int32_t axis)
 ```
 
@@ -2095,7 +2106,7 @@ double OH_ArkUI_FocusAxisEvent_GetAxisValue(const ArkUI_UIInputEvent* event, int
 
 ### OH_ArkUI_FocusAxisEvent_SetStopPropagation()
 
-```
+```c
 int32_t OH_ArkUI_FocusAxisEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)
 ```
 
@@ -2122,7 +2133,7 @@ int32_t OH_ArkUI_FocusAxisEvent_SetStopPropagation(const ArkUI_UIInputEvent* eve
 
 ### OH_ArkUI_UIInputEvent_GetModifierKeyStates()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetModifierKeyStates(const ArkUI_UIInputEvent* event, uint64_t* keys)
 ```
 
@@ -2149,7 +2160,7 @@ int32_t OH_ArkUI_UIInputEvent_GetModifierKeyStates(const ArkUI_UIInputEvent* eve
 
 ### OH_ArkUI_AxisEvent_SetPropagation()
 
-```
+```c
 int32_t OH_ArkUI_AxisEvent_SetPropagation(const ArkUI_UIInputEvent* event, bool propagation)
 ```
 
@@ -2176,7 +2187,7 @@ int32_t OH_ArkUI_AxisEvent_SetPropagation(const ArkUI_UIInputEvent* event, bool 
 
 ### OH_ArkUI_AxisEvent_GetScrollStep()
 
-```
+```c
 int32_t OH_ArkUI_AxisEvent_GetScrollStep(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2202,7 +2213,7 @@ int32_t OH_ArkUI_AxisEvent_GetScrollStep(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetWidth()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetWidth(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2228,7 +2239,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetWidth(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetHeight()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetHeight(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2254,7 +2265,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetHeight(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetPositionX()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetPositionX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2280,7 +2291,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetPositionX(const ArkUI_UIInputEvent* ev
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetPositionY()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetPositionY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2306,7 +2317,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetPositionY(const ArkUI_UIInputEvent* ev
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2332,7 +2343,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX(const ArkUI_UIInputEve
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2358,7 +2369,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY(const ArkUI_UIInputEve
 
 ### OH_ArkUI_PointerEvent_GetPressedTimeByIndex()
 
-```
+```c
 int64_t OH_ArkUI_PointerEvent_GetPressedTimeByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -2385,7 +2396,7 @@ int64_t OH_ArkUI_PointerEvent_GetPressedTimeByIndex(const ArkUI_UIInputEvent* ev
 
 ### OH_ArkUI_MouseEvent_GetRawDeltaX()
 
-```
+```c
 float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2411,7 +2422,7 @@ float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_MouseEvent_GetRawDeltaY()
 
-```
+```c
 float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2437,7 +2448,7 @@ float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_MouseEvent_GetPressedButtons()
 
-```
+```c
 int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, int32_t* pressedButtons, int32_t* length)
 ```
 
@@ -2465,7 +2476,7 @@ int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, i
 
 ### OH_ArkUI_UIInputEvent_GetTargetDisplayId()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetTargetDisplayId(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2491,7 +2502,7 @@ int32_t OH_ArkUI_UIInputEvent_GetTargetDisplayId(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_HoverEvent_IsHovered()
 
-```
+```c
 bool OH_ArkUI_HoverEvent_IsHovered(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2517,7 +2528,7 @@ bool OH_ArkUI_HoverEvent_IsHovered(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_CreateClonedEvent()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_CreateClonedEvent(const ArkUI_UIInputEvent* event, ArkUI_UIInputEvent** clonedEvent)
 ```
 
@@ -2544,7 +2555,7 @@ int32_t OH_ArkUI_PointerEvent_CreateClonedEvent(const ArkUI_UIInputEvent* event,
 
 ### OH_ArkUI_PointerEvent_DestroyClonedEvent()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_DestroyClonedEvent(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2570,7 +2581,7 @@ int32_t OH_ArkUI_PointerEvent_DestroyClonedEvent(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_PointerEvent_SetClonedEventLocalPosition()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPosition(const ArkUI_UIInputEvent* event, float x, float y)
 ```
 
@@ -2598,7 +2609,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPosition(const ArkUI_UIInputEve
 
 ### OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)
 ```
 
@@ -2627,7 +2638,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex(const ArkUI_UII
 
 ### OH_ArkUI_PointerEvent_SetClonedEventActionType()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventActionType(const ArkUI_UIInputEvent* event, int32_t actionType)
 ```
 
@@ -2654,7 +2665,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventActionType(const ArkUI_UIInputEvent*
 
 ### OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId(const ArkUI_UIInputEvent* event, int32_t fingerId)
 ```
 
@@ -2681,7 +2692,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId(const ArkUI_UIInputE
 
 ### OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputEvent* event, int32_t fingerId, int32_t pointerIndex)
 ```
 
@@ -2709,7 +2720,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputE
 
 ### OH_ArkUI_PointerEvent_PostClonedEvent()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)
 ```
 
@@ -2736,7 +2747,7 @@ int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI
 
 ### OH_ArkUI_UIInputEvent_GetLatestStatus()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()
 ```
 
@@ -2755,7 +2766,7 @@ ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()
 
 ### OH_ArkUI_UIInputEvent_GetCoastingAxisEvent()
 
-```
+```c
 ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInputEvent* event)
 ```
 **描述：**
@@ -2785,7 +2796,7 @@ ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInpu
 
 ### OH_ArkUI_CoastingAxisEvent_GetEventTime()
 
-```
+```c
 int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent* event)
 ```
 **描述：**
@@ -2808,7 +2819,7 @@ int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent* event)
 
 ### OH_ArkUI_CoastingAxisEvent_GetPhase()
 
-```
+```c
 ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingAxisEvent* event)
 ```
 **描述：**
@@ -2831,7 +2842,7 @@ ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingA
 
 ### OH_ArkUI_CoastingAxisEvent_GetDeltaY
 
-```
+```c
 float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent* event)
 ```
 **描述：**
@@ -2854,7 +2865,7 @@ float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent* event)
 
 ### OH_ArkUI_CoastingAxisEvent_GetDeltaX
 
-```
+```c
 float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent* event)
 ```
 **描述：**
@@ -2877,7 +2888,7 @@ float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent* event)
 
 ### OH_ArkUI_CoastingAxisEvent_SetPropagation()
 
-```
+```c
 int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent* event, bool propagation)
 ```
 **描述：**
@@ -2901,7 +2912,7 @@ int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent* event
 
 ### OH_ArkUI_TouchTestInfo_GetTouchTestInfoList
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo* info,
     ArkUI_TouchTestInfoItemArray* array, int32_t* size);
 ```
@@ -2927,7 +2938,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo*
 
 ### OH_ArkUI_TouchTestInfoItem_GetX
 
-```
+```c
 float OH_ArkUI_TouchTestInfoItem_GetX(const ArkUI_TouchTestInfoItem* info);
 ```
 **描述：**
@@ -2950,7 +2961,7 @@ float OH_ArkUI_TouchTestInfoItem_GetX(const ArkUI_TouchTestInfoItem* info);
 
 ### OH_ArkUI_TouchTestInfoItem_GetY
 
-```
+```c
 float OH_ArkUI_TouchTestInfoItem_GetY(const ArkUI_TouchTestInfoItem* info);
 ```
 **描述：**
@@ -2973,7 +2984,7 @@ float OH_ArkUI_TouchTestInfoItem_GetY(const ArkUI_TouchTestInfoItem* info);
 
 ### OH_ArkUI_TouchTestInfoItem_GetWindowX
 
-```
+```c
 float OH_ArkUI_TouchTestInfoItem_GetWindowX(const ArkUI_TouchTestInfoItem* info);
 ```
 **描述：**
@@ -2996,7 +3007,7 @@ float OH_ArkUI_TouchTestInfoItem_GetWindowX(const ArkUI_TouchTestInfoItem* info)
 
 ### OH_ArkUI_TouchTestInfoItem_GetWindowY
 
-```
+```c
 float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info);
 ```
 **描述：**
@@ -3020,7 +3031,7 @@ float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info)
 
 ### OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent
 
-```
+```c
 float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoItem* info);
 ```
 **描述：**
@@ -3043,7 +3054,7 @@ float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoI
 
 ### OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent
 
-```
+```c
 float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoItem* info);
 ```
 **描述：**
@@ -3066,7 +3077,7 @@ float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoI
 
 ### OH_ArkUI_TouchTestInfoItem_GetChildRect
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInfoItem* info, ArkUI_Rect* childRect);
 ```
 **描述：**
@@ -3090,7 +3101,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInf
 
 ### OH_ArkUI_TouchTestInfoItem_GetChildId
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoItem* info, char* buffer,
     int32_t bufferSize);
 ```
@@ -3117,7 +3128,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoI
 
 ### OH_ArkUI_TouchTestInfo_SetTouchResultStrategy
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInfo* info, ArkUI_TouchTestStrategy strategy);
 ```
 **描述：**
@@ -3141,7 +3152,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInf
 
 ### OH_ArkUI_TouchTestInfo_SetTouchResultId
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* info, const char* id);
 ```
 **描述：**
