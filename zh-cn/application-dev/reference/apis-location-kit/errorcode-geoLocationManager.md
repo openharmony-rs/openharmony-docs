@@ -82,15 +82,15 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 **可能原因**
 
-定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)阈值设定较低。
+定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)较高。
 
 **处理步骤**
 
 请将定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)适当放宽，可参考如下场景建议：
 
-1.当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为ACCURACY时，建议设置maxAccuracy为大于10的值。
+- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为ACCURACY时，建议设置maxAccuracy为大于10的值。
 
-2.当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
+- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
 
 ### 3. 获取缓存位置失败
 
@@ -122,15 +122,15 @@ Failed to obtain the geographical location.
 
 **可能原因**
 
-1.GNSS信号弱，导致定位超时。
+- GNSS信号弱，导致定位超时。
 
-2.系统时间设置错误，导致获取位置失败。
+- 系统时间设置错误，导致获取位置失败。
 
 **处理步骤**
 
-1.请移动至开阔地带再发起定位。
+- 请移动至开阔地带再发起定位。
 
-2.请在“日期和时间”页面勾选自动设置。
+- 请在“日期和时间”页面勾选自动设置。
 
 
 ## 3301300 逆地理编码查询失败
