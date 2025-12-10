@@ -671,12 +671,12 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 | --------- | ------ | ---- | ----- | -------------- |
 | businessName   | string | 否 | 否 | 业务名称。    |
 | size | number  |否 | 否 | 业务空间占用大小，单位为Byte。  |
-| flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示。true表示单独显示，false表示不单独显示。备注：如果flag为false，则businessName必须是某个应用包名，此项业务占用在“设置-存储”界面会被叠加到该应用的空间占用大小中。 |
+| flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示，true表示单独显示，false表示不单独显示。 |
 
 ## storageStatistics.setExtBundleStats<sup>23+</sup>
 setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
-应用主动上报各自的空间占用大小，以Promise方式返回。
+系统中的业务上报自身的空间占用信息，以Promise方式返回。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -689,7 +689,7 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
   | userId | number | 是   | 用户id。                       |
-  | stats   | stats: ExtBundleStats | 是   | 业务的空间占用信息。 |
+  | stats   | stats: ExtBundleStats | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
 
@@ -731,7 +731,7 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 ## storageStatistics.getExtBundleStats<sup>23+</sup>
 getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleStats&gt;
 
-查询指定业务空间的占用信息，以Promise方式返回。
+获取指定业务的空间占用信息，以Promise方式返回。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -750,7 +750,7 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;ExtBundleStats&gt; | Promise对象，返回指定业务空间的占用信息。 |
+  | Promise&lt;ExtBundleStats&gt; | Promise对象，返回系统中指定业务的空间占用信息。 |
 
 **错误码：**
 
@@ -782,7 +782,7 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 ## storageStatistics.getAllExtBundleStats<sup>23+</sup>
 getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
-查询所有业务的空间占用信息，以Promise方式返回。
+获取系统中所有业务的空间占用信息，以Promise方式返回。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -800,7 +800,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;Array&lt;ExtBundleStats&gt;&gt; | Promise对象，返回用户所有业务空间的占用情况。 |
+  | Promise&lt;Array&lt;ExtBundleStats&gt;&gt; | Promise对象，返回系统中所有业务的空间占用信息。 |
 
 **错误码：**
 
@@ -836,7 +836,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
-| path   | string | 否 | 否 | 全路径名。    |
+| path   | string | 否 | 否 | 磁盘中的路径名。    |
 | totalSize | number  |否 | 否 | 路径占用的空间大小，单位是Byte。  |
 | totalCnt  | number | 否 | 否 | 路径下目录&文件数量。 |
 
@@ -874,15 +874,9 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
-  let extBundleStats: storageStatistics.ExtBundleStats = {
-    businessName: 'com.example.storagedemo',
-    size: 10000,
-    flag: true
-  }
-  storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
-    console.info("setExtBundleStats successfully");
+  storageStatistics.listUserdataDirInfo().then((dirInfos: storageStatistics.UserdataDirInfo[]) => {
+    console.info("listUserdataDirInfo successfully.");
   }).catch((err: BusinessError) => {
-    console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+    console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
