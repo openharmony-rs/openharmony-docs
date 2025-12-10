@@ -50,7 +50,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 ## AlbumType
 
-枚举，相册类型，表示是用户相册还是系统预置相册。
+枚举，相册类型。例如，用户相册、系统预置相册或由应用创建的相册。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
