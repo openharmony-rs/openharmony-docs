@@ -395,7 +395,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 9. （可选）调用OH_AudioCodec_Flush()刷新解码器。
 
-    调用OH_AudioCodec_Flush()后，解码器仍处于运行态，但会清空当前队列，释放已解码的数据。刷新前获取到的输入输出buffer都无法接续使用。
+    调用OH_AudioCodec_Flush()后，解码器仍处于运行态，但会清空当前队列，释放已解码的数据。刷新前获取到的输入输出buffer都无法继续使用。
 
     此时需要调用OH_AudioCodec_Start()重新开始解码。
 

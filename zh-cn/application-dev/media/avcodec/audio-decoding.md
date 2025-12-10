@@ -55,7 +55,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 ### 开发步骤
 
-1. 添加头文件。
+1. 添加所需的头文件。
 
     ```cpp
     #include <multimedia/player_framework/native_avcodec_audiocodec.h>
@@ -122,7 +122,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    开发者可以通过处理该回调报告的信息，确保解码器正常运转。
 
    > **注意：**
-   > 回调中不建议进行耗时操作。
+   >
+   > 请勿在回调中进行耗时操作。
 
     ```cpp
     // OH_AVCodecOnError回调函数的实现。
@@ -428,7 +429,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    
 10. 调用OH_AudioCodec_FreeOutputBuffer()，释放解码后的数据。
 
-    在取走解码PCM码流后，就应及时调用OH_AudioCodec_FreeOutputBuffer()进行释放。
+    在获取解码PCM码流后，就应及时调用OH_AudioCodec_FreeOutputBuffer()进行释放。
 
     ```c++
     uint32_t index = signal_->outQueue_.front();
@@ -463,8 +464,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     使用情况：
 
-    * 在文件EOS之后，需要调用刷新。
-    * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid 为true）调用。
+    * 在文件流结束（EOS）之后，需要调用刷新。
+    * 在执行过程中遇到可恢复的错误时（即OH_AudioCodec_IsValid()为true）调用。
 
     ```c++
     // 刷新解码器 audioDec_。
@@ -481,7 +482,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 12. （可选）调用OH_AudioCodec_Reset()重置解码器。
 
-    调用OH_AudioCodec_Reset()后，解码器回到初始化的状态，需要调用OH_AudioCodec_Configure()重新配置，然后调用OH_AudioCodec_Start()重新开始解码。
+    调用OH_AudioCodec_Reset()后，解码器回到初始化状态，需要调用OH_AudioCodec_Configure()重新配置，然后调用OH_AudioCodec_Start()重新开始解码。
 
     ```c++
     // 重置解码器 audioDec_。
@@ -498,7 +499,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 13. 调用OH_AudioCodec_Stop()停止解码器。
 
-    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started），但需要注意的是，如果编解码器之前已输入数据，则需要重新输入编解码器数据。
+    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入输出buffer都无法继续使用，需要在启动后重新获取输入输出buffer。
 
     ```c++
     // 终止解码器 audioDec_。
@@ -511,10 +512,11 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 14. 调用OH_AudioCodec_Destroy()销毁解码器实例，释放资源。
 
     > **说明：**
-    >不要重复销毁解码器
+    >
+    > 禁止重复销毁解码器。
 
     ```c++
-    // 调用OH_AudioCodec_Destroy, 注销解码器。
+    // 调用OH_AudioCodec_Destroy, 销毁解码器。
     int32_t ret = OH_AudioCodec_Destroy(audioDec_);
     if (ret != AV_ERR_OK) {
         // 异常处理。
