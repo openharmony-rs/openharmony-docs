@@ -831,6 +831,63 @@ File available not found exception.
 2. 检查是否有程序（如压缩软件、文件管理器）占用文件，关闭相关进程后重试。
 3. 检查并调整文件的访问权限，例如当前用户可以读取、修改、删除文件。
 
+### 10016001 校验应用属性失败
+**错误信息**
+
+App fields is invalid.
+
+**错误描述**
+
+打包App时，校验应用属性失败。
+
+**可能原因**
+
+1. 有两个HAP的minCompatibleVersionCode属性值不相同。
+2. 有两个HAP的targetAPIVersion属性值不相同。
+3. 有两个HAP的minAPIVersion属性值不相同。
+4. 有两个HAP的debug属性值不相同。
+5. HAP的minCompatibleVersionCode/targetAPIVersion/minAPIVersion属性值小于某HSP。
+6. HAP的debug属性值为false时，存在HSP的debug属性值为true。
+
+**处理步骤**
+
+根据日志中“Error Message:”信息，确认错误信息及存在问题的HAP/HSP名。
+1. 确保参与打包的HAP的minCompatibleVersionCode属性值相同。
+2. 确保参与打包的HAP的targetApiVersion属性值相同。
+3. 确保参与打包的HAP的minApiVersion属性值相同。
+4. 确保参与打包的HAP的debug属性值相同。
+5. 确保HAP的minCompatibleVersionCode/targetApiVersion/minApiVersion属性值大于等于所有HSP的对应属性值。
+6. 确保HAP的debug属性值为false时，所有HSP的debug属性值为false。
+
+### 10016002 HAP/HSP属性不同
+**错误信息**
+
+Some app variable is different.
+
+**错误描述**
+
+打包App时，HAP/HSP属性不同。
+
+**可能原因**
+
+1. 当前参与打包的HAP/HSP中，存在模块的bundleName与其他模块不一致。
+2. 当前参与打包的HAP/HSP中，存在模块的bundleType与其他模块不一致。
+3. 当前参与打包的HAP/HSP中，存在模块的versionCode与其他模块不一致。
+4. 当前参与打包的HAP/HSP中，存在模块的apiReleaseType（[app.json5](../quick-start/app-configuration-file.md)配置文件中的属性）与其他模块不一致。
+5. 当前参与打包的HAP/HSP中，存在模块的targetBundleName（app.json5配置文件中的属性）与其他模块不一致。
+6. 当前参与打包的HAP/HSP中，存在模块的targetPriority（app.json5配置文件中的属性）与其他模块不一致。
+7. 当前参与打包的HAP中，存在模块的multiAppMode（app.json5配置文件中的属性）与其他模块不一致。
+
+**处理步骤**
+
+1. 确保当前参与打包的HAP/HSP的bundleName一致。
+2. 确保当前参与打包的HAP/HSP的bundleType一致。
+3. 确保当前参与打包的HAP/HSP的versionCode一致。
+4. 确保当前参与打包的HAP/HSP的releaseType一致。
+5. 确保当前参与打包的HAP/HSP的targetBundleName一致。
+6. 确保当前参与打包的HAP/HSP的targetPriority一致。
+7. 确保当前参与打包的HAP的multiAppMode一致。
+
 ### 10016003 分发策略相交校验失败
 **错误信息**
 
