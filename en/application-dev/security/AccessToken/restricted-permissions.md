@@ -945,8 +945,6 @@ Allows an application to load shared libraries signed with binary certificates.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
-
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
