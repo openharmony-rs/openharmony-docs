@@ -186,7 +186,7 @@ type SizeChangeCallback = (size: window.Size, keyboardArea?: KeyboardArea) => vo
 
 > **说明：**
 >
-> 从API version9开始支持，API version 23开始废弃，建议使用[InputMethodAbility](#inputmethodability)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility](#inputmethodability)替代。
 
 下列API均需使用[getInputMethodEngine](#inputmethodenginegetinputmethodenginedeprecated)获取到InputMethodEngine实例后，通过实例调用。
 
@@ -198,7 +198,7 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, textInputCli
 
 > **说明：**
 >
-> 从API version 9开始支持，API version 23开始废弃，建议使用[on('inputStart')](#oninputstart9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[on('inputStart')](#oninputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -228,7 +228,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputC
 
 > **说明：**
 >
-> 从API version 9开始支持，API version 23开始废弃，建议使用[off('inputStart')](#offinputstart9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[off('inputStart')](#offinputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -257,7 +257,7 @@ on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 
 > **说明：**
 >
-> 从API version 9开始支持，API version 23开始废弃，建议使用[on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -287,7 +287,7 @@ off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 
 > **说明：**
 >
-> 从API version 9开始支持，API version 23开始废弃，建议使用[off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
