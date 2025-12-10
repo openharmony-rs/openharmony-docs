@@ -5,8 +5,9 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-```
-typedef struct {...} OH_OnFrameAvailableListener
+
+```c
+typedef struct OH_OnFrameAvailableListener {...} OH_OnFrameAvailableListener
 ```
 
 ## 概述

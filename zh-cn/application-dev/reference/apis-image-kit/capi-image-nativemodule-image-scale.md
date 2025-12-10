@@ -8,7 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} Image_Scale
+typedef struct Image_Scale {...} Image_Scale
 ```
 
 ## 概述

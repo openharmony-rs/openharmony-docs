@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct VkSurfaceCreateInfoOHOS {...} VkSurfaceCreateInfoOHOS
+```
+
 ## 概述
 
 包含创建Vulkan Surface时必要的参数。

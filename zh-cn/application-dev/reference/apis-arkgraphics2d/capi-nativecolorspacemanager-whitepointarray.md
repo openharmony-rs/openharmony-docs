@@ -6,8 +6,8 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-```
-struct WhitePointArray {...}
+```c
+typedef struct WhitePointArray {...} WhitePointArray
 ```
 
 ## 概述

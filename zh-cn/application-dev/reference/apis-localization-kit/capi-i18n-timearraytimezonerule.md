@@ -8,7 +8,7 @@
 <!--Adviser: @ningningW-->
 
 ```c
-typedef struct {...} TimeArrayTimeZoneRule
+typedef struct TimeArrayTimeZoneRule {...} TimeArrayTimeZoneRule
 ```
 
 ## 概述
