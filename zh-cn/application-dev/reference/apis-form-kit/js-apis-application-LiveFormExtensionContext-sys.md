@@ -98,6 +98,9 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 ```
 ```ts
 // pages/MyLiveFormPage.ets
+// 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+// 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
+// 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
 import { Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
@@ -106,11 +109,17 @@ import { rpc } from '@kit.IPCKit';
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
+// 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+// 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
+// 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
   private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
     // 2.获取LiveFormExtensionContext
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
+    // 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    // 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
+    // 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
     this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
     if (!this.liveFormContext) {
         console.info('MyLiveFormPage liveFormContext is empty');
@@ -212,6 +221,9 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 ```
 ```ts
 // pages/MyLiveFormPage.ets
+// 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+// 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
+// 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
@@ -220,11 +232,17 @@ import { rpc } from '@kit.IPCKit';
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
+  // 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+  // 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
+  // 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
   private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
     // 2.获取LiveFormExtensionContext
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
+    // 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    // 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
+    // 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
     this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
     if (!this.liveFormContext) {
         console.info('MyLiveFormPage liveFormContext is empty');
