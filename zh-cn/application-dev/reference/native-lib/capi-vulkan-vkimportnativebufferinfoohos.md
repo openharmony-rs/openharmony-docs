@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct VkImportNativeBufferInfoOHOS {...} VkImportNativeBufferInfoOHOS
+```
+
 ## 概述
 
 包含了OH_NativeBuffer结构体的指针。
