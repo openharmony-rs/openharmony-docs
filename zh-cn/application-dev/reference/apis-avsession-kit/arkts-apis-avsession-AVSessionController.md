@@ -2268,7 +2268,7 @@ on(type: 'extrasChange', callback: (extras: Record\<string, Object>) => void): v
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'extrasChange'`：当媒体提供方设置自定义媒体数据包时，触发该事件。 |
-| callback | (extras: Record\<string, Object>) => void         | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。<br>该参数为可选参数，若不填写该参数，则认为取消所有对sessionEvent事件的监听。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(extras: {[key: string]: Object}) => void。|
+| callback | (extras: Record\<string, Object>) => void         | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(extras: {[key: string]: Object}) => void。|
 
 **错误码：**
 
