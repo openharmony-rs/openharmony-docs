@@ -3241,6 +3241,8 @@ getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 通过克隆后的资产URI列表获取当前uri。使用Promise异步回调。
 
+为控制数据库表空间占用规模，当前每次克隆时都会自动将上次存储的克隆数据进行清除，所以该接口只保存最近一次克隆时用户新/旧设备uri的对应关系。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
@@ -3297,6 +3299,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
 通过克隆后的相册URI列表获取当前uri。使用Promise异步回调。
+
+为控制数据库表空间占用规模，当前每次克隆时都会自动将上次存储的克隆数据进行清除，所以该接口只保存最近一次克隆时用户新/旧设备uri的对应关系。
 
 **系统接口：** 此接口为系统接口。
 
