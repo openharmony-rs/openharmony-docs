@@ -83,6 +83,10 @@ Web组件使用HTTPDNS的模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
 | MEMORY_PRESSURE_LEVEL_MODERATE | 1 | 中等内存压力等级。这个等级下，Web内核会尝试释放重新分配开销较小且不需要立即使用的缓存。 |
