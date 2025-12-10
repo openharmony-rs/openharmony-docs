@@ -20,15 +20,15 @@ V8 trace collection is controlled by the **web.debug.rcs** switch, which is disa
 ### Collecting V8 Trace
 1. To collect V8 trace, you need to enable **web.debug.rcs** before starting the web page. Run the following command before starting the web page:
 
-``` shell
-hdc shell setenforce 0
-hdc shell param set web.debug.rcs true
-```
+   ``` shell
+   hdc shell setenforce 0
+   hdc shell param set web.debug.rcs true
+   ```
 2. When a web page is started, "RCS is on" is displayed in HiLog.
 3. Use hitrace to capture traces of the corresponding scenario. For details about how to use hitrace, see [hitrace](../dfx/hitrace.md).
 4. Use HiSmartPerf to parse the captured traces. The trace points prefixed with **RCS_** are supported by HiSmartPerf.
 5. To view the trace data of **compile**, **runtime**, **builtin**, and **JS_Execution**, use the following keywords to filter the data:
-- **compile**: **RCS_v8.compile**
-- **runtime**: **RCS_V8.Runtime**
-- **builtin**: **RCS_v8.runtime_V8.Builtin**
-- **JS_Execution**: **RCS_JS_Execution**
+   - **compile**: **RCS_v8.compile**
+   - **runtime**: **RCS_V8.Runtime**
+   - **builtin**: **RCS_v8.runtime_V8.Builtin**
+   - **JS_Execution**: **RCS_JS_Execution**
