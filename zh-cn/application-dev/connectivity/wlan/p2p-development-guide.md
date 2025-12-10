@@ -40,35 +40,35 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 
 ### 创建/删除P2P群组
 1. import需要的Wi-Fi模块。
-<!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-
-``` TypeScript
-import { wifiManager } from '@kit.ConnectivityKit';
-```
+   <!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
+   
+   ``` TypeScript
+   import { wifiManager } from '@kit.ConnectivityKit';
+   ```
 2. 开启设备的Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 创建/删除P2P群组。
-<!-- @[createGrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-
-``` TypeScript
-async createGroup() {
-  try {
-    let deviceInfo = await wifiManager.getP2pLocalDevice()
-    let config:wifiManager.WifiP2PConfig = {
-      deviceAddress: deviceInfo.deviceAddress,
-      netId: this.netId,
-      passphrase: this.passphrase,
-      groupName: this.groupName,
-      goBand: this.goBand,
-    }
-    hilog.info(`deviceAddress: ${config.deviceAddress}, netId: ${config.netId}, pwd: ${config.passphrase}, gpname: ${config.groupName}, goBand: ${config.goBand}`)
-    wifiManager.createGroup(config)
-    promptAction.showToast({ message : 'createGroup success' })
-  } catch (e) {
-    hilog.info(TAG, `createGroup Error: ${JSON.stringify(e)}`)
-  }
-}
-```
+   <!-- @[createGrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
+   
+   ``` TypeScript
+   async createGroup() {
+     try {
+       let deviceInfo = await wifiManager.getP2pLocalDevice();
+       let config:wifiManager.WifiP2PConfig = {
+         deviceAddress: deviceInfo.deviceAddress,
+         netId: this.netId,
+         passphrase: this.passphrase,
+         groupName: this.groupName,
+         goBand: this.goBand,
+       }
+       hilog.info(`deviceAddress: ${config.deviceAddress}, netId: ${config.netId}, pwd: ${config.passphrase}, gpname: ${config.groupName}, goBand: ${config.goBand}`);
+       await wifiManager.createGroup(config);
+       promptAction.showToast({ message : 'createGroup success' });
+     } catch (e) {
+       hilog.info(TAG, `createGroup Error: ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 5. 示例代码：
 
    ```ts
@@ -111,52 +111,52 @@ async createGroup() {
 
 ### 建立P2P连接
 1. import需要的Wi-Fi模块。
-<!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-
-``` TypeScript
-import { wifiManager } from '@kit.ConnectivityKit';
-```
+   <!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
+   
+   ``` TypeScript
+   import { wifiManager } from '@kit.ConnectivityKit';
+   ```
 2. 开启设备的Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 注册"p2pPeerDeviceChange"事件回调，并在回调实现中执行P2P连接。
-<!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
-
-``` TypeScript
-connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
-  promptAction.showToast({ message : 'connect to device' })
-  hilog.info(TAG , `connect deviceAddress=${ p2pScanInfo.deviceAddress }`)
-  hilog.info(TAG , `p2pScanInfo:` + JSON.stringify(p2pScanInfo))
-  let config: wifi.WifiP2PConfig = {
-    deviceAddress : p2pScanInfo.deviceAddress,
-    netId : - 2 ,
-    deviceAddressType: 1,
-    passphrase : '' ,
-    groupName : '' ,
-    goBand : 0
-  }
-  wifi.p2pConnect(config)
-}
-```
+   <!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
+   
+   ``` TypeScript
+   connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
+     promptAction.showToast({ message : 'connect to device' });
+     hilog.info(TAG , `connect deviceAddress=${ p2pScanInfo.deviceAddress }`);
+     hilog.info(TAG , `p2pScanInfo:` + JSON.stringify(p2pScanInfo));
+     let config: wifi.WifiP2PConfig = {
+       deviceAddress : p2pScanInfo.deviceAddress,
+       netId : - 2 ,
+       deviceAddressType: 1,
+       passphrase : '' ,
+       groupName : '' ,
+       goBand : 0
+     }
+     wifi.p2pConnect(config);
+   }
+   ```
 5. 开始P2P设备发现。
-<!-- @[discover_p2p_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
-
-``` TypeScript
-aboutToAppear() {
-  // 如果wifi是开的，就记录下状态，然后扫描p2p设备，并获取连接信息
-  if (!wifi.isWifiActive()) {
-    promptAction.showToast({ message : 'place active wifi' })
-    return
-  }
-  this.isSwitchOn = true;
-  wifi.startDiscoverDevices()
-  this.addListener();
-}
-
-aboutToDisappear() {
-  wifi.off('p2pPeerDeviceChange')
-  wifi.off('p2pConnectionChange')
-}
-```
+   <!-- @[discover_p2p_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
+   
+   ``` TypeScript
+   aboutToAppear() {
+     // 如果wifi是开的，就记录下状态，然后扫描p2p设备，并获取连接信息
+     if (!wifi.isWifiActive()) {
+       promptAction.showToast({ message : 'place active wifi' });
+       return;
+     }
+     this.isSwitchOn = true;
+     wifi.startDiscoverDevices();
+     this.addListener();
+   }
+   
+   aboutToDisappear() {
+     wifi.off('p2pPeerDeviceChange');
+     wifi.off('p2pConnectionChange');
+   }
+   ```
 6. 示例代码：
 
    ```ts
