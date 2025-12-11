@@ -71,4 +71,79 @@ Deep Linking与App Linking均可以使用[openLink](../reference/apis-ability-ki
 ![Deep Linking拉起指定应用示意图](figures/DeepLinking-launch.png)
 
 <!--RP1-->
+openLink方式启动其他应用：可以通过将OpenLinkOptions中的hideFailureTipDialog字段设置为true，取消弹框提示。示例如下：
+```js
+import { common, OpenLinkOptions, wantConstant, CompletionHandler, bundleManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN = 0xeeee;
+const TAG: string = '[openLinkDemo]';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'I am caller';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Button('start browser', { type: ButtonType.Capsule, stateEffect: true })
+          .width('87%')
+          .height('5%')
+          .margin({ bottom: '12vp' })
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let link: string = 'https://www.example.com';
+            let completionHandler: CompletionHandler = {
+              onRequestSuccess: (elementName: bundleManager.ElementName, message: string): void => {
+                console.info(`${elementName.bundleName}-${elementName.moduleName}-${elementName.abilityName} start succeeded: ${message}`);
+              },
+              onRequestFailure: (elementName: bundleManager.ElementName, message: string): void => {
+                console.error(`${elementName.bundleName}-${elementName.moduleName}-${elementName.abilityName} start failed: ${message}`);
+              }
+            };
+            let openLinkOptions: OpenLinkOptions = {
+              appLinkingOnly: false,
+              // hideFailureTipDialog字段需要在appLinkingOnly字段是false时才生效
+              hideFailureTipDialog: true,
+              parameters: {
+                [wantConstant.Params.CONTENT_TITLE_KEY]: 'contentTitle',
+                keyString: 'str',
+                keyNumber: 200,
+                keyBool: false,
+                keyObj: {
+                  keyObjKey: 'objValue',
+                }
+              },
+              completionHandler: completionHandler
+            };
+            try {
+              context.openLink(
+                link,
+                openLinkOptions,
+                (err, result) => {
+                  hilog.error(DOMAIN, TAG, `openLink callback error.code: ${JSON.stringify(err)}`);
+                  hilog.info(DOMAIN, TAG, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
+                  hilog.info(DOMAIN, TAG, `openLink callback result data: ${JSON.stringify(result.want)}`);
+                }
+              ).then(() => {
+                hilog.info(DOMAIN, TAG, `open link success.`);
+              }).catch((err: BusinessError) => {
+                hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(err.code)}`);
+              });
+            } catch (e) {
+              hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(e.code)}`);
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 <!--RP1End-->
