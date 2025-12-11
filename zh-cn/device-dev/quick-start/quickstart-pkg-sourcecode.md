@@ -59,7 +59,7 @@
 
 - **OpenHarmony发布分支代码获取**
   
-   OpenHarmony各个版本发布分支的源码获取方式请参考[Release-Notes](../../release-notes/Readme.md)。
+   OpenHarmony各个版本发布分支的源码获取方式请参考[Release-Notes](https://gitcode.com/openharmony/docs/blob/master/zh-cn/release-notes/Readme.md)。
 
 
 - **OpenHarmony主干代码获取**
