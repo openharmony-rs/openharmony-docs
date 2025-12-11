@@ -93,7 +93,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    若接口返回false，则说明当前平台不支持GSKV模式，请使用XML模式进行数据存储。
 
-<!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)--> 
+   <!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)--> 
    ``` TypeScript
    let isGskvSupported = preferences.isStorageTypeSupported(preferences.StorageType.GSKV);
    Logger.info('Is gskv supported on this platform: ' + isGskvSupported);
@@ -103,8 +103,13 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    针对默认的XML存储模式，使用getPreferencesSync()方法获取Preferences实例。
 
+   context的定义如下：
+   <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+
+   针对默认的XML存储模式，使用getPreferencesSync()方法获取Preferences实例。
+
    <!--Del-->Stage模型示例：<!--DelEnd-->
-<!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
    ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -138,7 +143,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    若希望使用GSKV存储模式且当前平台支持该模式，可以通过以下方式获取GSKV存储模式的Preferences实例。需要注意的是，当选择某一存储模式后，不允许再对存储模式进行切换。
    <!--Del-->Stage模型示例：<!--DelEnd-->
 
-<!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
    ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -182,7 +187,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    示例代码如下所示：
    
-<!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
    ``` TypeScript
    import { util } from '@kit.ArkTS';
@@ -204,7 +209,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    示例代码如下所示：
 
-<!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
    ``` TypeScript
    let val = dataPreferences.getSync('startup', 'default');
@@ -220,7 +225,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    使用deleteSync()方法删除指定键值对，示例代码如下所示：
 
-<!--@[DeleteSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[DeleteSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
    ``` TypeScript
    dataPreferences.deleteSync('startup');
@@ -230,7 +235,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    应用存入数据到Preferences实例后，可以使用flush()方法实现数据持久化。示例代码如下所示：
 
-<!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
    ``` TypeScript
    dataPreferences.flush((err: BusinessError) => {
@@ -250,7 +255,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    示例代码如下所示：
 
-<!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
    ``` TypeScript
    let observer = (key: string) => {
@@ -279,7 +284,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    针对GSKV存储模式，订阅的Key值发生变更后（无需调用flush），observer被触发回调。
 
    示例代码如下所示：
-<!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
    ``` TypeScript
    let observer = (key: string) => {
@@ -307,9 +312,12 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    >
    > - 在GSKV模式中，该接口不支持与其他接口并发调用（包括多进程），否则会出现不可预期行为。
 
+   context的定义如下：
+   <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+
    示例代码如下所示：
 
-<!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
    ``` TypeScript
    let options: preferences.Options = { name: 'myStore' };
