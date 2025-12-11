@@ -3932,7 +3932,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3944,7 +3944,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
