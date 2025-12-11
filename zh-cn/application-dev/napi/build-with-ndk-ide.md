@@ -22,7 +22,7 @@ NDK通过CMake和Ninja编译应用的C/C++代码，编译过程如下图所示�
 
 通过DevEco Studio模板工程创建的NDK工程中，包含默认生成的CMakeLists.txt脚本，如下所示：
 
-```
+```txt
 # the minimum version of CMake.
 cmake_minimum_required(VERSION 3.4.1)
 project(MyApplication) 
@@ -48,7 +48,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so)
 ## externalNativeOptions
 
 模块级build-profile.json5中externalNativeOptions参数是NDK工程C/C++文件编译配置的入口，可以通过path指定CMake脚本路径、arguments配置CMake参数、cppFlags配置C++编译器参数、abiFilters配置编译架构等。
-```
+```json
 "apiType": "stageMode",
 "buildOption": {
   "arkOptions": {
