@@ -764,7 +764,7 @@ Defines the mouse pointer position for screen hopping.
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
 | Name          | Type           | Read-Only| 	Optional| Description                          |
-| ---------      | -------------- | ---- | ---- | ------------------------       |
+| ---------------- | -------------- | ---- | ---- | ------------------------------ |
 | displayX       | number         | No  | No  | Position of the mouse pointer on the X coordinate of the screen.|
 | displayY       | number         | No  | No  | Position of the mouse pointer on the Y coordinate of the screen.|
 | displayWidth   | number         | No  | No  | Screen width, in pixels.                     |
