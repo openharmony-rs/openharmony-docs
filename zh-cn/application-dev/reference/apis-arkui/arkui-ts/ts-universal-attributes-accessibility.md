@@ -50,8 +50,6 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 
 通过accessibilityPreferred启用优先拼接无障碍文本进行朗读后，将优先拼接其子组件的无障碍文本属性作为组件的合并文本。若某一子组件未设置无障碍文本，则继续拼接该子组件的通用文本属性，若该子组件没有通用文本属性，则忽略该子组件不进行拼接。
 
-从API version 22开始，通过stateController和actionController参数，可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。
-
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -877,52 +875,3 @@ struct Index {
 ```
 
 ![accessibilityFocusDrawLevel](figures/accessibilityFocusDrawLevel.png)
-
-### 示例6（设置无障碍聚合功能下的子组件状态和操作接管功能）
-
-该示例主要演示使用accessibilityGroup的可选参数stateControllerRoleType或者stateControllerId来选择一个特定子组件接管其无障碍状态信息，可选参数actionControllerRoleType或者actionControllerId来选择一个特定子组件接管其无障碍控制操作。
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State isSelected: boolean = false;
-
-  build() {
-    Column({ space: 20 }) {
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
-        Text("是否开启功能")
-        Toggle({ type: ToggleType.Switch, isOn: false })
-          .selectedColor('#007DFF')
-          .switchPointColor('#FFFFFF')
-          .onChange((isOn: boolean) => {
-            console.info('Component status:' + isOn);
-          })
-      }
-      .accessibilityGroup(true, {stateControllerRoleType : AccessibilityRoleType.TOGGLER,
-                                 actionControllerRoleType : AccessibilityRoleType.TOGGLER})
-      .width('80%')
-      .border({ color : Color.Black, width : 2 })
-
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
-        Text("是否开启功能")
-        Toggle({ type: ToggleType.Switch, isOn: false })
-          .selectedColor('#007DFF')
-          .switchPointColor('#FFFFFF')
-          .onChange((isOn: boolean) => {
-            console.info('Component status:' + isOn);
-          })
-          .id("TestToggle")
-      }
-      .accessibilityGroup(true, {stateControllerId : "TestToggle",
-                                 actionControllerId : "TestToggle"})
-      .width('80%')
-      .border({ color : Color.Black, width : 2 })
-
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
