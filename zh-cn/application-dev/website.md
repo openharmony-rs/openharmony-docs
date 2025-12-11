@@ -5633,7 +5633,6 @@
           - [OH_NativeBuffer_Plane](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer-plane.md)
           - [OH_NativeBuffer_Planes](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer-planes.md)
           - [OH_NativeBuffer](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer.md)
-          - [OHIPCParcel](reference/apis-arkgraphics2d/capi-oh-nativebuffer-ohipcparcel.md)
           - [ColorSpacePrimaries](reference/apis-arkgraphics2d/capi-nativecolorspacemanager-colorspaceprimaries.md)
           - [WhitePointArray](reference/apis-arkgraphics2d/capi-nativecolorspacemanager-whitepointarray.md)
           - [DisplaySoloist_ExpectedRateRange](reference/apis-arkgraphics2d/capi-nativedisplaysoloist-displaysoloist-expectedraterange.md)
