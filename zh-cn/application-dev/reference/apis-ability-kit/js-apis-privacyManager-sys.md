@@ -106,7 +106,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 | permissionName | Permissions | 是   | 应用权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | successCount | number | 是   | 访问成功的次数。 |
 | failCount | number | 是   | 访问失败的次数。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当添加使用记录成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当添加使用记录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -213,7 +213,7 @@ getPermissionUsedRecord(request: PermissionUsedRequest, callback: AsyncCallback&
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
 | request | [PermissionUsedRequest](#permissionusedrequest) | 是 | 查询权限使用记录的请求。 |
-| callback | AsyncCallback<[PermissionUsedResponse](#permissionusedresponse)> | 是 | 回调函数。当查询记录成功时，err为undefined，data为查询到的权限使用记录；否则为错误对象。 |
+| callback | AsyncCallback<[PermissionUsedResponse](#permissionusedresponse)> | 是 | 回调函数。当查询记录成功，err为undefined，data为查询到的权限使用记录；否则为错误对象。 |
 
 **错误码：**
 
@@ -502,7 +502,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, callback: Asy
 | -------------- | --------------------- | ---- | ------------------------------------ |
 | tokenID        | number                | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
 | permissionName | Permissions                | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
-| callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当开始使用权限成功时，err为undefined，否则为错误对象。 |
+| callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当开始使用权限成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -670,7 +670,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions, callback: Asyn
 | -------------- | --------------------- | ---- | ------------------------------------ |
 | tokenID        | number                | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
 | permissionName | Permissions                | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
-| callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止使用权限成功时，err为undefined，否则为错误对象。 |
+| callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止使用权限成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
