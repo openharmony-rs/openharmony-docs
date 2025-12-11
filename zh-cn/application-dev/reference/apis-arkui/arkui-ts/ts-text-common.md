@@ -1146,6 +1146,18 @@ constructor(options?: NumericTextTransitionOptions)
 | -------- | -------- | -------- | -------- | -------- |
 | constraintWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 设置被计算文本布局宽度。若不设置则宽度为单行布局所占最大宽度值。 |
 
+## SelectedDragPreviewStyle<sup>23+</sup>对象说明
+
+文本拖拽时的背板样式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| color | [ResourceColor](ts-types.md#resourcecolor)  | 否 | 是 | 用于设置文本拖拽时的背板颜色。<br/>默认值：跟随主题。默认主题时，浅色模式显示白色，深色模式显示黑色。 |
+
 ## TextContentAlign<sup>21+</sup>
 
 文本内容区垂直对齐方向。
