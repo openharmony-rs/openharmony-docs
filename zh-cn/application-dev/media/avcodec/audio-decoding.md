@@ -464,7 +464,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     使用情况：
 
-    * 在文件流结束（EOS）之后，需要调用刷新。
+    * 在解码输出buffer属性为AVCODEC_BUFFER_FLAGS_EOS后，若想重新使用相同配置进行解码时，需要调用刷新。
     * 在执行过程中遇到可恢复的错误时（即OH_AudioCodec_IsValid()为true）调用。
 
     ```c++
