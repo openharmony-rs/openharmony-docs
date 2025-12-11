@@ -320,7 +320,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 11. 查询指定bundleName的应用的使用优先级群组，返回查询的优先级分组结果，需要配置ohos.permission.BUNDLE_ACTIVE_INFO权限。
 
-     ```ts
+    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 
     // 有bundleName异步promise方式
@@ -340,7 +340,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
             console.info('BUNDLE_ACTIVE queryAppGroup callback succeeded. result: ' + JSON.stringify(res));
         }
     });
-     ```
+    ```
 
 12. 给指定bundleName的应用的优先级分组设置成newGroup。 需要配置ohos.permission.BUNDLE_ACTIVE_INFO权限。
 
