@@ -68,32 +68,32 @@ const REQUEST_CODE = 99; // 与扩展外设客户端约定请求码。
 6. 在DriverExtAbility.ets文件中，增加导入[DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)的依赖包，该包提供了onInit()、onRelease()、onConnect()和onDisconnect()生命周期回调，自定义类继承[DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)并根据需要重写需要的生命周期回调。
 
     <!-- @[driver_service_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
-
-``` TypeScript
-export default class DriverExtAbility extends DriverExtensionAbility {
-  onInit(want: Want) {
-    console.info('testTag', `onInit, want: ${want.abilityName}`);
-  }
-
-  onRelease() {
-    console.info('testTag', `onRelease`);
-  }
-
-  onConnect(want: Want) {
-    console.info('testTag', `onConnect, want: ${want.abilityName}`);
-    return new StubTest('test');
-  }
-
-  onDisconnect(want: Want) {
-    console.info('testTag', `onDisconnect, want: ${want.abilityName}`);
-  }
-
-  onDump(params: Array<string>) {
-    console.info('testTag', `onDump, params:` + JSON.stringify(params));
-    return ['params'];
-  }
-}
-```
+    
+    ``` TypeScript
+    export default class DriverExtAbility extends DriverExtensionAbility {
+      onInit(want: Want) {
+        console.info('testTag', `onInit, want: ${want.abilityName}`);
+      }
+    
+      onRelease() {
+        console.info('testTag', `onRelease`);
+      }
+    
+      onConnect(want: Want) {
+        console.info('testTag', `onConnect, want: ${want.abilityName}`);
+        return new StubTest('test');
+      }
+    
+      onDisconnect(want: Want) {
+        console.info('testTag', `onDisconnect, want: ${want.abilityName}`);
+      }
+    
+      onDump(params: Array<string>) {
+        console.info('testTag', `onDump, params:` + JSON.stringify(params));
+        return ['params'];
+      }
+    }
+    ```
 
 7. 在工程Module对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中注册DriverExtensionAbility，type标签需要设置为“driver”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
