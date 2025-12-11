@@ -1,5 +1,12 @@
 # IPC Kit（进程间通信服务）<!--ipc-api-->
 
+<!--Kit: IPC Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @xdx19211@luodonghui0157-->
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @zhang_yixin13-->
+
 - ArkTS API<!--ipc-arkts-->
   - [@ohos.rpc (RPC通信)](js-apis-rpc.md)
 - C API<!--ipc-c-->
