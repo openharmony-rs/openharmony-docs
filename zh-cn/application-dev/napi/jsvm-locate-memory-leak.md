@@ -48,7 +48,7 @@ OH_JSVM_GetReferenceValue(env, reference, &result);
 
 ## JS引擎堆内存泄漏定位
 ### 典型场景
-1. 全局变量滥用，导致dom元素未释放。
+1. 全局变量滥用，导致DOM元素未释放。
 ```js
 const elements = [];
 function createElements() {
