@@ -19,7 +19,7 @@
 
 ## 开发步骤
 ### 密钥生成和数据加密
-<!-- @[fingerprint_access_user_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
+<!-- @[fingerprint_access_key_generation_and_encryption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
 
 ``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
