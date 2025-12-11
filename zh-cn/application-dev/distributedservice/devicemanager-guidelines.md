@@ -151,45 +151,45 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 5. 注册发现设备的回调，调用发现接口发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。
    
    <!-- @[start_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
-
-``` TypeScript
-  startDeviceDiscovery(): void {
-    if (typeof (this.deviceManager) == 'undefined') {
-      logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-      promptAction.showToast({
-        message: 'deviceManager has not initialized'
-      });
-      return;
-    }
-    let self = this;
-    try {
-      this.deviceManager.on('discoverSuccess', (data) => {
-        if (data == null) {
-          return;
-        }
-        logger.info('[DeviceManager.RemoteDeviceModel] deviceFound data=' + JSON.stringify(data));
-        self.deviceFound(data);
-      })
-      this.deviceManager.on('discoverFailure', (data) => {
-        logger.info('[DeviceManager.RemoteDeviceModel] discoverFail data=' + JSON.stringify(data));
-      })
-	// ···
-      let discoverParam: Record<string, number> = {
-        'discoverTargetType': 1
-      };
-      let filterOptions: Record<string, number> = this.getFilterOptions();
-      logger.info('[DeviceManager.RemoteDeviceModel] startDeviceDiscovery filterOptions = ' + JSON.stringify(filterOptions));
-      if (Object.entries(filterOptions).length == 0) {
-        this.deviceManager.startDiscovering(discoverParam);
-      } else {
-        this.deviceManager.startDiscovering(discoverParam, filterOptions);
-      }
-    } catch (err) {
-      let e: BusinessError = err as BusinessError;
-      logger.error('[DeviceManager.RemoteDeviceModel] startDeviceDiscovery failed err: ' + e.toString());
-    }
-  }
-```
+   
+   ``` TypeScript
+   startDeviceDiscovery(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       promptAction.showToast({
+         message: 'deviceManager has not initialized'
+       });
+       return;
+     }
+     let self = this;
+     try {
+       this.deviceManager.on('discoverSuccess', (data) => {
+         if (data == null) {
+           return;
+         }
+         logger.info('[DeviceManager.RemoteDeviceModel] deviceFound data=' + JSON.stringify(data));
+         self.deviceFound(data);
+       })
+       this.deviceManager.on('discoverFailure', (data) => {
+         logger.info('[DeviceManager.RemoteDeviceModel] discoverFail data=' + JSON.stringify(data));
+       })
+       // ...
+       let discoverParam: Record<string, number> = {
+         'discoverTargetType': 1
+       };
+       let filterOptions: Record<string, number> = this.getFilterOptions();
+       logger.info('[DeviceManager.RemoteDeviceModel] startDeviceDiscovery filterOptions = ' + JSON.stringify(filterOptions));
+       if (Object.entries(filterOptions).length == 0) {
+         this.deviceManager.startDiscovering(discoverParam);
+       } else {
+         this.deviceManager.startDiscovering(discoverParam, filterOptions);
+       }
+     } catch (err) {
+       let e: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] startDeviceDiscovery failed err: ' + e.toString());
+     }
+   }
+   ```
 
 
 ## 设备绑定开发指导
