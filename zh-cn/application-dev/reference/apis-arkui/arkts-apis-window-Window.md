@@ -2276,7 +2276,11 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。子窗口调用后不生效。
+设置窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅支持主窗口调用且生效，其他窗口类型调用后不生效。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，支持主窗口和WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口调用且生效，其他窗口类型调用后不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -10238,8 +10242,8 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 ```ts
 try {
   let originalValue: number = 0;
-  let fromType: Window.RotationInfoType = Window.RotationInfoType.WINDOW_ORIENTATION;
-  let toType: Window.RotationInfoType = Window.RotationInfoType.DISPLAY_ORIENTATION;
+  let fromType: window.RotationInfoType = window.RotationInfoType.WINDOW_ORIENTATION;
+  let toType: window.RotationInfoType = window.RotationInfoType.DISPLAY_ORIENTATION;
   let convertedValue: number = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
   console.info(`Convert ${originalValue} of type: ${fromType} to ${convertedValue} of type: ${toType}`);
 } catch (exception) {
