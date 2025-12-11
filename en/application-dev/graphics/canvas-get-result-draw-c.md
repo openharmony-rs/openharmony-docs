@@ -39,7 +39,7 @@ Obtain a canvas that can be directly displayed through the XComponent.
    // CMakeLists.txt
    target_link_libraries(entry PUBLIC libnative_drawing.so)
    ```
-   <!-- [ndk_graphics_draw_cmake_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
+   <!-- [ndk_graphics_draw_cmake_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
 
 2. Imports the header files required for dependency.
 
@@ -47,13 +47,13 @@ Obtain a canvas that can be directly displayed through the XComponent.
    // sample_graphics.h
    #include <native_drawing/drawing_canvas.h>
    ```
-   <!-- [ndk_graphics_draw_include_native_drawing_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   <!-- [ndk_graphics_draw_include_native_drawing_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
 
    ```c++
    // sample_graphics.cpp
    #include <native_drawing/drawing_surface.h>
    ```
-   <!-- [ndk_graphics_draw_include_native_drawing_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_include_native_drawing_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 3. Obtains the BufferHandle object from the NativeWindow corresponding to XComponent. For details about NativeWindow APIs, see _native_window_ (../reference/apis-arkgraphics2d/capi-nativewindow.md).
 
@@ -77,7 +77,7 @@ Obtain a canvas that can be directly displayed through the XComponent.
    
    BufferHandle* bufferHandle = OH_NativeWindow_GetBufferHandleFromNative(buffer);
    ```
-   <!-- [ndk_graphics_draw_get_buffer_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_get_buffer_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 4. Obtain the memory address of the buffer handle.
 
@@ -85,7 +85,7 @@ Obtain a canvas that can be directly displayed through the XComponent.
    // sample_graphics.cpp
    uint32_t* mappedAddr = static_cast<uint32_t *>(mmap(bufferHandle->virAddr, bufferHandle->size, PROT_READ | PROT_WRITE, MAP_SHARED, bufferHandle->fd, 0));
    ```
-   <!-- [ndk_graphics_draw_get_mapped_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_get_mapped_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 5. Creates a window canvas.
 
@@ -104,7 +104,7 @@ Obtain a canvas that can be directly displayed through the XComponent.
    OH_Drawing_Canvas* screenCanvas = OH_Drawing_CanvasCreate();
    OH_Drawing_CanvasBind(screenCanvas, cScreenBitmap_);
    ```
-   <!-- [ndk_graphics_draw_create_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_create_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 6. Customize drawing operations using the Canvas obtained in the previous step.
 
@@ -115,7 +115,7 @@ Obtain a canvas that can be directly displayed through the XComponent.
    Region region {nullptr, 0};
    OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, buffer, fenceFd, region);
    ```
-   <!-- [ndk_graphics_draw_native_window_flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_native_window_flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
 ## Obtaining and Displaying the Off-Screen Canvas
@@ -136,7 +136,7 @@ Method 1: Create a Canvas by binding a bitmap.
    #include <native_drawing/drawing_canvas.h>
    #include <native_drawing/drawing_bitmap.h>
    ```
-   <!-- [ndk_graphics_draw_include_native_drawing_canvas_and_bitmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   <!-- [ndk_graphics_draw_include_native_drawing_canvas_and_bitmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
 
 2. Create a CPU-based Canvas. You need to create a bitmap object by calling OH_Drawing_BitmapCreate() (for details, see [Image Drawing](pixelmap-drawing-c.md)) and bind the bitmap to the Canvas by calling OH_Drawing_CanvasBind() so that the content drawn by the Canvas can be output to the bitmap.
 
@@ -155,7 +155,7 @@ Method 1: Create a Canvas by binding a bitmap.
    // Bind the canvas to the bitmap. The content drawn on the canvas is output to the memory of the bound bitmap.
    OH_Drawing_CanvasBind(bitmapCanvas, bitmap);
    ```
-   <!-- [ndk_graphics_draw_create_canvas_by_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_create_canvas_by_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
    To set the background color to white, perform the following steps:
 
@@ -163,7 +163,7 @@ Method 1: Create a Canvas by binding a bitmap.
    // sample_graphics.cpp
    OH_Drawing_CanvasClear(bitmapCanvas, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
    ```
-   <!-- [ndk_graphics_draw_clear_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_clear_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 3. Draw the bitmap created in the previous step on the window canvas (obtained in # Obtaining a Canvas That Can Be Directly Displayed).
 
@@ -171,7 +171,7 @@ Method 1: Create a Canvas by binding a bitmap.
    // sample_graphics.cpp
    OH_Drawing_CanvasDrawBitmap(screenCanvas, bitmap, 0, 0);
    ```
-   <!-- [ndk_graphics_draw_drawing_to_window_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_drawing_to_window_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
 
@@ -186,7 +186,7 @@ A pixel map is a unified data structure used to represent images in the system. 
    // CMakeLists.txt
    target_link_libraries(entry PUBLIC libhilog_ndk.z.so libpixelmap.so)
    ```
-   <!-- [ndk_graphics_draw_cmake_pixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
+   <!-- [ndk_graphics_draw_cmake_pixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
 
 2. Imports the header files required for dependency.
 
@@ -194,13 +194,13 @@ A pixel map is a unified data structure used to represent images in the system. 
    // sample_graphics.cpp
    #include <multimedia/image_framework/image/pixelmap_native.h>
    ```
-   <!-- [ndk_graphics_draw_include_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_include_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
    ```c++
    // sample_graphics.cpp
    #include <native_drawing/drawing_pixel_map.h>
    ```
-   <!-- [ndk_graphics_draw_include_drawing_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_include_drawing_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
 3. You need to create a pixel map object by calling OH_Drawing_PixelMapGetFromOhPixelMapNative() (for details, see [Drawing](pixelmap-drawing-c.md)), and create a canvas with the pixel map object by calling OH_Drawing_CanvasCreateWithPixelMap().
@@ -228,7 +228,7 @@ A pixel map is a unified data structure used to represent images in the system. 
    // Create a Canvas object.
    OH_Drawing_Canvas* pixelmapCanvas = OH_Drawing_CanvasCreateWithPixelMap(pixelMap);
    ```
-   <!-- [ndk_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
    To set the background color to white, perform the following steps:
 
@@ -250,7 +250,7 @@ A pixel map is a unified data structure used to represent images in the system. 
    // Draw the pixel map.
    OH_Drawing_CanvasDrawPixelMapRect(screenCanvas, pixelMap, src, dst, samplingOptions);
    ```
-   <!-- [ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
 ### Creating and Displaying a Canvas with the GPU Backend
@@ -263,7 +263,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    // CMakeLists.txt
    libEGL.so
    ```
-   <!-- [ndk_graphics_draw_cmake_EGL](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
+   <!-- [ndk_graphics_draw_cmake_EGL](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
 
 2. Import the dependency header file.
 
@@ -272,14 +272,14 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    #include <EGL/egl.h>
    #include <EGL/eglext.h>
    ```
-   <!-- [ndk_graphics_draw_include_egl_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   <!-- [ndk_graphics_draw_include_egl_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
 
    ```c++
    // sample_graphics.cpp
    #include <native_drawing/drawing_gpu_context.h>
    #include <native_drawing/drawing_surface.h>
    ```
-   <!-- [ndk_graphics_draw_include_native_drawing_surface_and_gpu_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_include_native_drawing_surface_and_gpu_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 3. Initializes an EGL context.
 
@@ -291,7 +291,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    EGLContext mEGLContext = EGL_NO_CONTEXT;
    EGLSurface mEGLSurface = nullptr;
    ```
-   <!-- [ndk_graphics_draw_initialize_egl_context_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   <!-- [ndk_graphics_draw_initialize_egl_context_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
 
    ```c++
    // sample_graphics.cpp
@@ -356,7 +356,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
       return 0;
    }
    ```
-   <!-- [ndk_graphics_draw_initialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_initialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 4. Creates a GPU backend canvas. The GPU backend canvas can be obtained only through the surface object. You need to create a surface first. For details about the surface APIs, see [drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md). Create a drawing context by calling OH_Drawing_GpuContextCreateFromGL, create a surface using the context, and obtain the canvas from the surface by calling OH_Drawing_SurfaceGetCanvas.
 
@@ -376,7 +376,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    // Create a canvas object.
    OH_Drawing_Canvas* gpuCanvas = OH_Drawing_SurfaceGetCanvas(surface);
    ```
-   <!-- [ndk_graphics_draw_create_canvas_by_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_create_canvas_by_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
    To set the background to white, perform the following steps:
 
@@ -384,7 +384,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    // sample_graphics.cpp
    OH_Drawing_CanvasClear(gpuCanvas, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
    ```
-   <!-- [ndk_graphics_draw_clear_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_clear_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 5. Copy the drawing result in the previous step to the window canvas (obtained in #).
 
@@ -395,7 +395,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, dstPixels, 4 * cWidth);
    OH_Drawing_CanvasDrawBitmap(screenCanvas, bitmap, 0, 0);
    ```
-   <!-- [ndk_graphics_draw_drawing_to_window_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_drawing_to_window_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 6. After using the EGL context, destroy it.
 
@@ -414,12 +414,12 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
       mEGLDisplay = NULL;
    }
    ```
-   <!-- [ndk_graphics_draw_deinitialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   <!-- [ndk_graphics_draw_deinitialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 <!--RP1-->
 ## Samples
 
 The following sample is available for Drawing (C/C++):
 
-- [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->
