@@ -16,6 +16,7 @@
     - [ipc_error_code.h](capi-ipc-error-code-h.md)
     - [ipc_kit.h](capi-ipc-kit-h.md)
   - 结构体<!--ipc-struct-->
+    - [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)
     - [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md)
     - [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md)
     - [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md)
