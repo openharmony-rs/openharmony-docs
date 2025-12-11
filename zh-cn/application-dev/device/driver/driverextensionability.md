@@ -98,90 +98,90 @@
 7. 在工程Module对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中注册DriverExtensionAbility，type标签需要设置为“driver”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
    <!-- @[driver_service_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/module.json5) --> 
-    
-    ``` JSON5
-    {
-      "module": {
-        "name": "entry",
-        "type": "entry",
-        "description": "$string:module_desc",
-        "mainElement": "EntryAbility",
-        "deviceTypes": [
-          "default"
-        ],
-        "requestPermissions": [
-          {
-            "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // 此处为扩展外设相关权限，必须配置。
-          }
-        ],
-        "deliveryWithInstall": true,
-        "installationFree": false,
-        "pages": "$profile:main_pages",
-        "abilities": [
-          {
-            "name": "EntryAbility",
-            "srcEntry": "./ets/entryability/EntryAbility.ets",
-            "description": "$string:EntryAbility_desc",
-            "icon": "$media:layered_image",
-            "label": "$string:EntryAbility_label",
-            "startWindowIcon": "$media:startIcon",
-            "startWindowBackground": "$color:start_window_background",
-            "exported": true,
-            "skills": [
-              {
-                "entities": [
-                  "entity.system.home"
-                ],
-                "actions": [
-                  "ohos.want.action.home"
-                ]
-              }
-            ]
-          }
-        ],
-        "extensionAbilities": [
-          {
-            "name": "DriverExtAbility",
-            "icon": "$media:startIcon",
-            "description": "driver",
-            "type": "driver",
-            "exported": true,
-            "srcEntry": "./ets/driverextability/DriverExtAbility.ets",
-            "metadata": [
-              {
-                "name": "bus", // 必填项，所属总线。
-                "value": "USB"
-              },
-              {
-                "name": "desc", // 选填项，必要的驱动描述。
-                "value": "the sample of driverExtensionAbility"
-              },
-              {
-                "name": "vendor", // 选填项，驱动厂商名称。
-                "value": "string"
-              },
-              {
-                "name": "vid", // 支持 USB vendor id 列表，填写16进制，此处为4817的16进制。
-                "value": "0x12D1"
-              },
-              {
-                "name": "pid", // 支持的 USB product id 列表，填写16进制，此处为4258的16进制。
-                "value": "0x10A2"
-              },
-              {
-                "name": "launchOnBind", // 选填项，延迟拉起驱动。此处“true”表示延迟拉起，“false”表示即时拉起，配置错误或不配置，默认为“false”。
-                "value": "true"
-              },
-              {
-                "name": "ohos.permission.ACCESS_DDK_ALLOWED", // 选填项，允许应用访问。此处“true”表示允许访问，“false”表示不允许访问，配置错误或不配置，默认为“false”。
-                "value": "true"
-              }
-            ]
-          }
-        ]
-      }
-    }
-    ```
+   
+   ``` JSON5
+   {
+     "module": {
+       "name": "entry",
+       "type": "entry",
+       "description": "$string:module_desc",
+       "mainElement": "EntryAbility",
+       "deviceTypes": [
+         "default"
+       ],
+       "requestPermissions": [
+         {
+           "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // 此处为扩展外设相关权限，必须配置。
+         }
+       ],
+       "deliveryWithInstall": true,
+       "installationFree": false,
+       "pages": "$profile:main_pages",
+       "abilities": [
+         {
+           "name": "EntryAbility",
+           "srcEntry": "./ets/entryability/EntryAbility.ets",
+           "description": "$string:EntryAbility_desc",
+           "icon": "$media:layered_image",
+           "label": "$string:EntryAbility_label",
+           "startWindowIcon": "$media:startIcon",
+           "startWindowBackground": "$color:start_window_background",
+           "exported": true,
+           "skills": [
+             {
+               "entities": [
+                 "entity.system.home"
+               ],
+               "actions": [
+                 "ohos.want.action.home"
+               ]
+             }
+           ]
+         }
+       ],
+       "extensionAbilities": [
+         {
+           "name": "DriverExtAbility",
+           "icon": "$media:startIcon",
+           "description": "driver",
+           "type": "driver",
+           "exported": true,
+           "srcEntry": "./ets/driverextability/DriverExtAbility.ets",
+           "metadata": [
+             {
+               "name": "bus", // 必填项，所属总线。
+               "value": "USB"
+             },
+             {
+               "name": "desc", // 选填项，必要的驱动描述。
+               "value": "the sample of driverExtensionAbility"
+             },
+             {
+               "name": "vendor", // 选填项，驱动厂商名称。
+               "value": "string"
+             },
+             {
+               "name": "vid", // 支持 USB vendor id 列表，填写16进制，此处为4817的16进制。
+               "value": "0x12D1"
+             },
+             {
+               "name": "pid", // 支持的 USB product id 列表，填写16进制，此处为4258的16进制。
+               "value": "0x10A2"
+             },
+             {
+               "name": "launchOnBind", // 选填项，延迟拉起驱动。此处“true”表示延迟拉起，“false”表示即时拉起，配置错误或不配置，默认为“false”。
+               "value": "true"
+             },
+             {
+               "name": "ohos.permission.ACCESS_DDK_ALLOWED", // 选填项，允许应用访问。此处“true”表示允许访问，“false”表示不允许访问，配置错误或不配置，默认为“false”。
+               "value": "true"
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
 
 8. 完成客户端和驱动示例代码开发后，请参考[使用本地真机运行应用/元服务](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-device)，将Hap导入设备中，并点击hap中的Hello，查看是否会转变为Hello world，即实现ipc通信功能。
 
