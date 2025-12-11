@@ -1012,9 +1012,9 @@ getBadgeNumber(): Promise\<long\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getBadgeNumber().then((badgeNumber) => {
-  hilog.info(0x0000, 'testTag', `Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+  console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+  console.info(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
 });
 ```
 

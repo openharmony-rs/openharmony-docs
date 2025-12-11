@@ -20,11 +20,19 @@ import { common } from '@kit.AbilityKit';
 
 ## ConnectOptions
 
-### onConnect
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| onConnect | [OnConnectFn](#onconnectfn23) | 否    | 否    | 与指定的后台服务成功建立连接时，会触发该回调。<br/>**说明**：<br/>从API version 23开始，原来的onConnect()方法变更为当前属性，调用方式不变。 |
+| onDisconnect | [OnDisconnectFn](#ondisconnectfn23) | 否    | 否    | 与指定的后台服务成功断开连接时，会触发该回调。<br/>**说明**：<br/>从API version 23开始，原来的onDisconnect()方法变更为当前属性，调用方式不变。 |
+| onFailed | [OnFailedFn](#onfailedfn23) | 否    | 否    | 与指定的后台服务建立连接失败时，会触发该回调。<br/>**说明**：<br/>从API version 23开始，原来的onFailed()方法变更为当前属性，调用方式不变。 |
 
-建立连接时的回调函数。
+## OnConnectFn<sup>23+</sup>
+
+type OnConnectFn = (elementName: ElementName, remote: rpc.IRemoteObject) => void
+
+与指定的后台服务成功建立连接时，会触发该回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -66,11 +74,11 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-### onDisconnect
+## OnDisconnectFn<sup>23+</sup>
 
-onDisconnect(elementName: ElementName): void
+type OnDisconnectFn = (elementName: ElementName) => void
 
-断开连接时的回调函数。
+与指定的后台服务成功断开连接时，会触发该回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -111,11 +119,11 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-### onFailed
+## OnFailedFn<sup>23+</sup>
 
-onFailed(code: number): void
+type OnFailedFn = (code: int) => void
 
-连接失败时的回调函数。
+与指定的后台服务建立连接失败时，会触发该回调，返回连接失败的错误码。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

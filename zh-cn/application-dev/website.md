@@ -5586,11 +5586,13 @@
           - [drawing_gpu_context.h](reference/apis-arkgraphics2d/capi-drawing-gpu-context-h.md)
           - [drawing_image.h](reference/apis-arkgraphics2d/capi-drawing-image-h.md)
           - [drawing_image_filter.h](reference/apis-arkgraphics2d/capi-drawing-image-filter-h.md)
+          - [drawing_lattice.h](reference/apis-arkgraphics2d/capi-drawing-lattice-h.md)
           - [drawing_mask_filter.h](reference/apis-arkgraphics2d/capi-drawing-mask-filter-h.md)
           - [drawing_matrix.h](reference/apis-arkgraphics2d/capi-drawing-matrix-h.md)
           - [drawing_memory_stream.h](reference/apis-arkgraphics2d/capi-drawing-memory-stream-h.md)
           - [drawing_path.h](reference/apis-arkgraphics2d/capi-drawing-path-h.md)
           - [drawing_path_effect.h](reference/apis-arkgraphics2d/capi-drawing-path-effect-h.md)
+          - [drawing_path_iterator.h](reference/apis-arkgraphics2d/capi-drawing-path-iterator-h.md)
           - [drawing_pen.h](reference/apis-arkgraphics2d/capi-drawing-pen-h.md)
           - [drawing_pixel_map.h](reference/apis-arkgraphics2d/capi-drawing-pixel-map-h.md)
           - [drawing_point.h](reference/apis-arkgraphics2d/capi-drawing-point-h.md)
@@ -5687,6 +5689,8 @@
           - [OH_Drawing_Region](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-region.md)
           - [OH_Drawing_Brush](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-brush.md)
           - [OH_Drawing_Path](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-path.md)
+          - [OH_Drawing_PathIterator](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pathiterator.md)
+          - [OH_Drawing_Lattice](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)
           - [OH_Drawing_Bitmap](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-bitmap.md)
           - [OH_Drawing_Point](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-point.md)
           - [OH_Drawing_PixelMap](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pixelmap.md)
@@ -5734,6 +5738,9 @@
           - [SceneNode](reference/apis-arkgraphics3d/js-apis-inner-scene-nodes.md)
           - [SceneType](reference/apis-arkgraphics3d/js-apis-inner-scene-types.md)
           - [SceneResources](reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md)
+          <!--Del-->
+          - [SceneResources (系统接口)](reference/apis-arkgraphics3d/js-apis-inner-scene-resources-sys.md)
+          <!--DelEnd-->
           - [ScenePostProcessSettings](reference/apis-arkgraphics3d/js-apis-inner-scene-post-process-settings.md)
   - 应用服务<!--application-service-reference-->
     <!--Del-->

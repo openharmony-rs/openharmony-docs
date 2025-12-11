@@ -679,7 +679,7 @@ export default class MyAbility extends UIAbility {
 
 ## ApplicationContext.killAllProcesses
 
-killAllProcesses(callback: AsyncCallback\<void\>)
+killAllProcesses(callback: AsyncCallback\<void\>): void
 
 终止应用的所有进程，进程退出时不会正常执行完整的应用生命周期流程。使用callback异步回调。仅支持主线程调用。
 
@@ -1014,7 +1014,7 @@ getCurrentAppCloneIndex(): number
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 16000011 | The context does not exist. |
-| 16000071 | App clone is not supported. |
+| 16000071 | The MultiAppMode is not App_CLONE. |
 
 以上错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
 

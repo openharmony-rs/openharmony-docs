@@ -1081,7 +1081,8 @@ hnpPackages示例：
     "hnpPackages": [
       {
         "package": "hnpsample.hnp",
-        "type": "public"
+        "type": "public",
+        "independentSign": true
       }
     ],
     // ...

@@ -22,6 +22,10 @@
 
 - [订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)
 
+> **说明：**
+>
+> 应用冻屏事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+
 ## 事件字段说明
 
 ### params字段说明
@@ -66,6 +70,12 @@
 | thread_name | string | 线程名。 |
 | tid | number | 线程id。 |
 | frames | object[] | 线程调用栈，详见frame属性。 |
+| state | string | 线程运行状态。读取自/proc/pid/stat的state的值。<br>**说明**：从API version 23开始支持。 |
+| utime | number | 线程在用户态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的utime的值。<br>**说明**：从API version 23开始支持。|
+| stime | number | 线程在内核态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的stime的值。<br>**说明**：从API version 23开始支持。|
+| priority | number | 实时优先级。读取自/proc/pid/stat的priority的值。<br>**说明**：从API version 23开始支持。|
+| nice | number | 静态优先级。读取自/proc/pid/stat的nice的值。<br>**说明**：从API version 23开始支持。|
+| clk | number | 每秒的时钟嘀嗒次数。使用sysconf(_SC_CLK_TCK)获取，获取失败时使用默认值100。通过嘀嗒数除以该值可以计算得到运行时间（单位：秒）。<br>**说明**：从API version 23开始支持。|
 
 ### frame字段说明
 

@@ -565,9 +565,11 @@
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：PC/2in1
+**支持设备**：PC/2in1 | Tablet
 
 **起始版本**：20
+
+**变更信息：** API 20-22，该权限仅支持在PC/2in1设备上申请；从API 23 开始，增加支持在平板上申请。
 
 ## ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN
 

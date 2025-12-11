@@ -81,11 +81,66 @@ function destroy(): void {
 ## Shader
 着色器，继承自[SceneResource](#sceneresource-1)。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | 是 | 否 | 着色器输入。 |
+
+### setShaderInputs<sup>23+</sup>
+
+setShaderInputs(inputs: Record<string, number \| Vec2 \| Vec3 \| Vec4 \| Image>): void
+
+设置[Shader](#shader)的输入，该接口性能优于直接设置inputs属性。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | 是 | 一个字符串到值的映射，用于设置shader输入。 |
+
+**示例：**
+```ts
+import { Image, MaterialType, Scene, SceneResourceFactory, Shader, ShaderMaterial } from '@kit.ArkGraphics3D';
+
+function setinputs(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+  scene.then(async (result: Scene) => {
+    if (result) {
+      let rf : SceneResourceFactory | null = await result.getResourceFactory();
+      if (!rf) {
+        return;
+      }
+      // 创建材质和shader
+      let material: ShaderMaterial | null = await rf.createMaterial({name: "CustomMaterial"}, MaterialType.SHADER);
+      let shader : Shader | null = await rf.createShader(
+        {name: "CustomShader", uri: $rawfile("shaders/custom_shader/custom_material_sample.shader")});
+      if (!material || !shader) {
+        return;
+      }
+      // 加载纹理资源
+      let image : Image | null = await rf.createImage({name: "envImg", uri: $rawfile("custom_image.jpg")});
+      if (!image) {
+        return;
+      }
+      // 绑定shader到纹理上
+      material.colorShader = shader;
+      // 设置shader输入
+      material.colorShader.setShaderInputs({
+        "uTime": 1.0,
+        "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
+        "uTexture": image
+      })
+    }
+  });
+}
+```
 
 ## MaterialType
 场景中物体材质类型枚举，定义材质的渲染方式。

@@ -466,6 +466,167 @@ struct Index {
 ```
 <!--  -->
 
+## 复用和释放离线Web组件
+
+通过复用和释放离线Web组件，可以优化内存占用，降低应用因内存占用过高被系统查杀的概率。
+
+> **说明：**
+> - 每个窗口推荐只使用一个Web组件。
+> - 建议复用离线Web组件。
+> - 建议释放不需要的离线Web组件。
+
+### 复用离线Web组件
+
+应用有多个UI页面都需要显示Web内容时，建议复用离线Web组件，减少组件创建和销毁的性能消耗以及创建多个Web组件的内存占用。
+
+**复用方法**：
+1. 离线Web组件不再被使用时，调用WebController的loadUrl方法加载about:blank空页面，为下次其他UI页面复用这个离线Web组件做准备。
+2. 新UI页面复用这个离线Web组件时，再调用WebController的loadUrl方法加载需要的Web页面。
+
+### 释放离线Web组件
+
+应用退至后台，或者明确在特定时间段内不再需要使用离线Web组件时，建议释放该组件以减少应用的内存占用。
+
+> **说明：**
+> - 仅当离线Web组件未绑定到UI页面时，才能释放该组件，否则可能导致`NodeContainer`组件显示空白。
+> - 可以通过`NodeController`的`onBind`和`onUnbind`回调来跟踪离线Web组件的绑定状态。
+
+**代码实现：**
+
+<!-- @[manage_dynamic_webview_components_core_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/pages/Common.ets) -->
+
+``` TypeScript
+// 创建Map保存所需要的NodeController
+let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
+
+// 创建保存uiContext的全局变量
+let globalUiContext: UIContext | undefined = undefined;
+
+// 创建Set保存已释放的离线组件url信息
+let recycledNWebs: Set<ResourceStr> = new Set()
+
+// 初始化需要UIContext 需在Ability获取
+export const createNWeb = (url: ResourceStr, uiContext: UIContext) => {
+  // 创建NodeController
+  console.info('createNWeb, url = ' + url);
+  if (!globalUiContext) {
+    globalUiContext = uiContext;
+  }
+  if (getNWeb(url)) {
+    console.info('createNWeb, already exit this node, url:' + url);
+    return;
+  }
+
+  let baseNode = new MyNodeController();
+  // 初始化自定义Web组件
+  baseNode.initWeb(url, uiContext);
+  nodeMap.set(url, baseNode);
+  recycledNWebs.delete(url);
+}
+
+// 自定义释放/回收离线Web组件的接口，可作为释放离线Web组件函数使用，释放成功返回true
+// 当离线组件没有被NodeContainer绑定时，允许安全释放，否则节点在不重绘时会显示空白
+export const recycleNWeb = (url: ResourceStr, force: boolean = false): boolean => {
+  console.info('recycleNWeb, url = ' + url);
+  let baseNode = nodeMap.get(url);
+  if (!baseNode) {
+    console.info('no such node, url = ' + url);
+    return false;
+  }
+  if (!force && baseNode.isBound()) {
+    console.info('the node is in bound and not force, can not delete');
+    return false;
+  }
+  baseNode.rootNode?.dispose();
+  baseNode.rebuild();
+  nodeMap.delete(url);
+  recycledNWebs.add(url);
+  return true;
+}
+
+// 自定义释放所有离线Web组件的接口
+export const recycleNWebs = (force: boolean = false) => {
+  nodeMap.forEach((_node: MyNodeController | undefined, url: ResourceStr) => {
+    recycleNWeb(url, force);
+  });
+}
+
+// 自定义恢复之前释放离线Web组件的接口
+export const restoreNWebs = (uiContext: UIContext | undefined = undefined) => {
+  if (!uiContext) {
+    uiContext = globalUiContext;
+  }
+  for (let url of recycledNWebs) {
+    if (uiContext) {
+      createNWeb(url, uiContext);
+    }
+  }
+  recycledNWebs.clear()
+}
+```
+<!--  -->
+
+### 复用和释放离线Web组件完整示例
+
+**示例功能说明**
+
+本示例演示了如何复用和释放离线Web组件，以及如何执行预渲染。需要注意的是，示例中使用了多个离线Web组件，这仅用于完整演示相关功能和离线Web组件的使用方法，原则上每个窗口推荐只使用一个Web组件。示例主要演示了以下功能：
+
+1. 对比离线Web组件执行预渲染和不执行预渲染的效果。
+2. 在应用退后台时，释放离线Web组件的具体实现步骤。
+3. 复用离线Web组件的具体实现步骤。
+
+示例演示了如何让应用退后台释放离线Web组件以及切前台恢复离线Web组件，在UIAbility的onBackground和onForeground回调中分别进行了离线Web组件的释放和恢复。 
+
+<!-- @[entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
+
+``` TypeScript
+onForeground(): void {
+  // Ability has brought to foreground
+  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  restoreNWebs()
+}
+
+onBackground(): void {
+  // Ability has back to background
+  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  recycleNWebs()
+}
+```
+
+<!--  -->
+
+**UI页面功能说明**
+
+示例包括Index页面、Home页面、Page1页面和Page2页面4个UI页面，其中每个UI页面的核心功能如下：
+
+* Index页面作为入口页面，演示页面跳转、离线Web组件的回收，恢复及统计信息展示。
+  * 用于跳转至Home页面的按钮；
+  * 回收离线Web组件按钮（仅回收没有被绑定的离线Web组件）。
+  * 强制回收离线Web组件按钮（演示强制回收所有离线Web组件，包括已绑定和未绑定的组件，会导致对应的NodeContainer白屏）。
+  * 恢复离线Web组件按钮。
+  * 显示离线Web组件的数量、状态及URL等详细信息。
+* Home页面为UI主页，演示离线Web组件的创建，预渲染的执行方法和时机：
+  * 页面在创建时会创建3个离线组件，其中一个加载指定网页并进行预渲染，另外两个为空白离线Web组件。
+  * 页面提供导航按钮用于跳转至Page1或Page2页面。
+* Page1页面同时显示了两个Web页面，每个页面使用了一个离线Web组件，加载并显示相同URL的内容。该页面用于演示预渲染与不预渲染的效果对比，以及如何复用离线组件。
+  * 第一个离线Web组件执行了预渲染，可以直接显示页面内容，比第二个离线Web组件更快。 
+  * 第二个离线Web组件是复用空闲的离线Web组件，其在UI页面的aboutToAppear的生命周期中动态加载这个url。
+
+  ![web-offline-preload-compare](figures/offline-nweb-preload-compare.gif)
+
+* Page2页面显示单个Web页面，使用复用空闲离线Web组件的方式加载指定url。
+  * Page2页面可以通过传入参数加载指定url，并允许用户在加载后跳转到其他url。
+  * Page2会在NavDestination的onWillHide回调中，让当前Web组件加载空白页并取消与当前UI的关联，为下次复用做准备。
+  * Page2页面支持嵌套，即使有多层UI页面嵌套，由于采用复用离线Web组件的方式，Web组件数量不会增加。
+
+![web-offline-reuse-recycle-restore](figures/offline-nweb-reuse-recycle-restore.gif)
+
+**完整示例**
+
+[复用和释放离线Web组件示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3)
+
+
 ## 常见白屏问题排查
 
 1.排查应用上网权限配置。

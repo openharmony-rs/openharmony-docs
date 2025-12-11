@@ -16,6 +16,10 @@
 
 - [订阅踩内存事件（C/C++）](hiappevent-watcher-address-sanitizer-events-ndk.md)
 
+> **说明：**
+>
+> 地址越界事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。不支持在原子化服务场景下使用 HiAppEvent 进行订阅。
+
 ## 检测原理
 
 详见[地址越界类问题检测](address-sanitizer-guidelines.md)。

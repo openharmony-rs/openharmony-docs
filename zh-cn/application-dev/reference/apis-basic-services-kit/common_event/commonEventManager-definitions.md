@@ -1274,7 +1274,26 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 **取值：** "usual.event.PRIVACY_STATE_CHANGED"
 
+## Multimodalinput Kit
+Multimodalinput Kit面向应用发布如下系统公共事件。
 
+### COMMON_EVENT_TABLET_MODE_CHANGED<sup>22+<sup>
+
+表示可感知支架开合的设备，例如具有支架的平板电脑，
+其支架开合状态变化时，将会触发事件通知服务发布该系统公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**取值：** "usual.event.TABLET_MODE_CHANGED "
+
+### COMMON_EVENT_LID_STATE_CHANGED<sup>22+<sup>
+
+表示可感知开合盖子的设备，例如具有开合盖子的笔记本电脑，
+其开合盖状态变化时，将会触发事件通知服务发布该系统公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**取值：** "usual.event.LID_STATE_CHANGED"
 
 ## 预留公共事件
 

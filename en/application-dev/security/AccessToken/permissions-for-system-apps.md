@@ -3903,6 +3903,18 @@ Allows a modal UIExtension to unhide non-secure windows.
 
 **Valid since**: 12
 
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+Allows a UIExtensionAbility to be displayed on the locked screen.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 14
+
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
 Allows a system service to access distributed modems.
@@ -3925,7 +3937,7 @@ Allows a system application to obtain eSIM profile information and data written 
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3937,7 +3949,7 @@ Allows a system application to modify the eSIM profile and upgrade the eSIM.
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.CAMERA_BACKGROUND
 

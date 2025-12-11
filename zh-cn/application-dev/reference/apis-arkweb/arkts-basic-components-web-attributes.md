@@ -3928,6 +3928,72 @@ enableImageAnalyzer(enable: boolean)
   </html>
   ```
 
+## enableAutoFill<sup>23+</sup>
+
+enableAutoFill(value: boolean)
+
+设置是否启用网页自动填充，默认开启。
+
+<!--RP1-->
+> **说明：**
+>
+> 本接口的自动填充功能，依赖“智能填充服务”和“密码填充服务”的支持。
+<!--RP1End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| value  | boolean | 是   | 是否启用网页自动填充，true表示启用，false表示不启用。<br>传入undefined或null时为true。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableAutoFill(true)
+      }
+    }
+  }
+  ```
+
+  加载的html文件：
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
+      <title>自动填充测试</title>
+    </head>
+    <body>
+      <h4 align="center">自动填充测试</h4>
+      <form method="post" action="">
+        <div align="center">
+          <label for="name" style="width: 120px; display: inline-block; text-align: end;">姓名:</label>
+          <input type="text" id="name" autocomplete="name"/><br/><br/>
+          <label for="tel-national" style="width: 120px; display: inline-block; text-align: end;">手机号:</label>
+          <input type="text" id="tel-national" autocomplete="tel-national"/><br/><br/>
+        </div>
+        <div align="center">
+          <button type="submit" style="width: 80px">提交</button>
+        </div>
+      </form>
+    </body>
+  </html>
+  ```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
