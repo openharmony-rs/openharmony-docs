@@ -213,44 +213,44 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 3. 选择不可信设备id，发起设备绑定。
 
    <!-- @[bind_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
-
-``` TypeScript
-  authenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
-    logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice ' + JSON.stringify(device));
-    if (typeof (this.deviceManager) == 'undefined') {
-      logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-      promptAction.showToast({
-        message: 'deviceManager has not initialized'
-      });
-      return;
-    }
-
-    for (let i = 0; i < this.discoverList.length; i++) {
-      if (this.discoverList[i].deviceId != device.deviceId) {
-        continue;
-      }
-
-      let bindParam: Record<string, number | string> = {
-        'bindLevel': 3,
-        'bindType': 1, // PIN码认证
-        'targetPkgName': 'ohos.samples.etsdevicemanager',
-        'appName': 'DeviceManager',
-      };
-      try {
-        this.deviceManager.bindTarget(device.deviceId, bindParam, (err: BusinessError, data: Object) => {
-          if (err) {
-            logger.error('[DeviceManager.RemoteDeviceModel] authenticateDevice error:' + JSON.stringify(err));
-            return;
-          }
-          logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice succeed:' + JSON.stringify(data));
-        })
-      } catch (err) {
-        let e: BusinessError = err as BusinessError;
-        logger.error('[DeviceManager.RemoteDeviceModel] authenticateDevice failed err: ' + e.toString());
-      }
-    }
-  }
-```
+   
+   ``` TypeScript
+   authenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
+     logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice ' + JSON.stringify(device));
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       promptAction.showToast({
+         message: 'deviceManager has not initialized'
+       });
+       return;
+     }
+   
+     for (let i = 0; i < this.discoverList.length; i++) {
+       if (this.discoverList[i].deviceId != device.deviceId) {
+         continue;
+       }
+   
+       let bindParam: Record<string, number | string> = {
+         'bindLevel': 3,
+         'bindType': 1, // PIN码认证
+         'targetPkgName': 'ohos.samples.etsdevicemanager',
+         'appName': 'DeviceManager',
+       };
+       try {
+         this.deviceManager.bindTarget(device.deviceId, bindParam, (err: BusinessError, data: Object) => {
+           if (err) {
+             logger.error('[DeviceManager.RemoteDeviceModel] authenticateDevice error:' + JSON.stringify(err));
+             return;
+           }
+           logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice succeed:' + JSON.stringify(data));
+         })
+       } catch (err) {
+         let e: BusinessError = err as BusinessError;
+         logger.error('[DeviceManager.RemoteDeviceModel] authenticateDevice failed err: ' + e.toString());
+       }
+     }
+   }
+   ```
 
 
 
