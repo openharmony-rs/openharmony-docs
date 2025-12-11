@@ -439,67 +439,71 @@ struct Index {
 
   build() {
     Column() {
-      Row({ space: 20 }) {
-        Text(this.message)
-          .width(400)
-          .height(80)
-          .fontSize(23)
-      }.margin(25)
-    }
-    .margin(50)
-    .width(400)
-    .height(200)
-    .borderWidth(2)
-    .gesture(TapGesture())
-    .gesture(LongPressGesture())
-    .gesture(PanGesture({ direction: PanDirection.Vertical }))
-    .gesture(PinchGesture())
-    .gesture(RotationGesture())
-    .gesture(SwipeGesture({ direction: SwipeDirection.Horizontal }))
-    // 给组件绑定自定义手势识别器判定回调
-    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
-      others: Array<GestureRecognizer>) => {
-      if (current) {
-        // 判断是否为滑动手势
-        if (current.getType() === GestureControl.GestureType.PAN_GESTURE) {
-          let target = current as PanRecognizer;
-          this.message = 'PanGesture\ndistance:' + target.getPanGestureOptions().getDistance() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // 判断是否为长按手势
-        if (current.getType() === GestureControl.GestureType.LONG_PRESS_GESTURE) {
-          let target = current as LongPressRecognizer;
-          this.message = 'LongPressGesture\nfingers:' + target.getFingerCount() + '\nisFingerCountLimited:' +
-          target.isFingerCountLimit() + '\nrepeat:' + target.isRepeat() + '\nduration:' + target.getDuration();
-        }
-        // 判断是否为捏合手势
-        if (current.getType() === GestureControl.GestureType.PINCH_GESTURE) {
-          let target = current as PinchRecognizer;
-          this.message = 'PinchGesture\ndistance:' + target.getDistance() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // 判断是否为点击手势
-        if (current.getType() === GestureControl.GestureType.TAP_GESTURE) {
-          let target = current as TapRecognizer;
-          this.message = 'TapGesture\ncount:' + target.getTapCount() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // 判断是否为旋转手势
-        if (current.getType() === GestureControl.GestureType.ROTATION_GESTURE) {
-          let target = current as RotationRecognizer;
-          this.message = 'RotationGesture\nangle:' + target.getAngle() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // 判断是否为快滑手势
-        if (current.getType() === GestureControl.GestureType.SWIPE_GESTURE) {
-          let target = current as SwipeRecognizer;
-          this.message = 'SwipeGesture\ndirection:' + target.getDirection() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit() + '\nspeed:' +
-          target.getVelocityThreshold();
-        }
+      Column() {
+        Row({ space: 20 }) {
+          Text(this.message)
+            .width('100%')
+            .height(80)
+            .fontSize(23)
+        }.margin(25)
       }
-      return GestureJudgeResult.CONTINUE;
-    })
+      .margin(25)
+      .padding(20)
+      .width('90%')
+      .height(250)
+      .borderWidth(2)
+      .gesture(TapGesture())
+      .gesture(LongPressGesture())
+      .gesture(PanGesture({ direction: PanDirection.Vertical }))
+      .gesture(PinchGesture())
+      .gesture(RotationGesture())
+      .gesture(SwipeGesture({ direction: SwipeDirection.Horizontal }))
+      // 给组件绑定自定义手势识别器判定回调
+      .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+        others: Array<GestureRecognizer>) => {
+        if (current) {
+          // 判断是否为滑动手势
+          if (current.getType() === GestureControl.GestureType.PAN_GESTURE) {
+            let target = current as PanRecognizer;
+            this.message = 'PanGesture\ndistance:' + target.getPanGestureOptions().getDistance() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // 判断是否为长按手势
+          if (current.getType() === GestureControl.GestureType.LONG_PRESS_GESTURE) {
+            let target = current as LongPressRecognizer;
+            this.message = 'LongPressGesture\nfingers:' + target.getFingerCount() + '\nisFingerCountLimited:' +
+            target.isFingerCountLimit() + '\nrepeat:' + target.isRepeat() + '\nduration:' + target.getDuration();
+          }
+          // 判断是否为捏合手势
+          if (current.getType() === GestureControl.GestureType.PINCH_GESTURE) {
+            let target = current as PinchRecognizer;
+            this.message = 'PinchGesture\ndistance:' + target.getDistance() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // 判断是否为点击手势
+          if (current.getType() === GestureControl.GestureType.TAP_GESTURE) {
+            let target = current as TapRecognizer;
+            this.message = 'TapGesture\ncount:' + target.getTapCount() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // 判断是否为旋转手势
+          if (current.getType() === GestureControl.GestureType.ROTATION_GESTURE) {
+            let target = current as RotationRecognizer;
+            this.message = 'RotationGesture\nangle:' + target.getAngle() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // 判断是否为快滑手势
+          if (current.getType() === GestureControl.GestureType.SWIPE_GESTURE) {
+            let target = current as SwipeRecognizer;
+            this.message = 'SwipeGesture\ndirection:' + target.getDirection() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit() + '\nspeed:' +
+            target.getVelocityThreshold();
+          }
+        }
+        return GestureJudgeResult.CONTINUE;
+      })
+    }
+    .padding(15)
   }
 }
 ```
