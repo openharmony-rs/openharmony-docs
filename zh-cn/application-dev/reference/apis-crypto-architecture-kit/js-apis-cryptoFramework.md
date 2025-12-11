@@ -769,7 +769,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | info | Uint8Array | 否   | 否   | 附加信息。 |
-| keySize | int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
 
 > **说明：**
 >
