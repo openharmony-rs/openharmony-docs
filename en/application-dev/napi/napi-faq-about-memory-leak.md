@@ -39,6 +39,7 @@ The following code shows how to register **env_cleanup** to ensure that **tsfn**
 
 ```cpp
 //napi_init.cpp
+#include "napi/native_api.h"
 #include <hilog/log.h> // To output logs, link libhilog_ndk.z.so.
 #include <thread> // Include the thread module to create and manage threads.
 #include <unistd.h> // Include unistd.h to suspend the execution of the calling thread.
@@ -180,13 +181,18 @@ napi_value MyTsfnDemo(napi_env env, napi_callback_info info) {
 };
 ```
 
+```ts
+//Index.d.ts
+export const myTsfnDemo: () => void;
+```
+
 The following is the main thread logic, which creates worker threads and instruct them to execute tasks.
 
 ```ts
 // Main thread Index.ets
-import worker, { MessageEvents } from '@ohos.worker';
+import  {worker, MessageEvents } from '@kit.ArkTS';
 
-const mWorker = new worker.ThreadWorker('../workers/Worker');
+const mWorker = new worker.ThreadWorker('../workers/worker');
 mWorker.onmessage = (e: MessageEvents) => {
     const action: string | undefined = e.data?.action;
     if (action === 'kill') {
@@ -203,7 +209,7 @@ The following is the worker thread logic, which triggers native tasks.
 
 ```ts
 // worker.ets
-import worker, { ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@ohos.worker';
+import  {worker, ThreadWorkerGlobalScope, MessageEvents} from '@kit.ArkTS';
 import napiModule from 'libentry.so'; // libentry.so is the module name of the Node-API library.
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;

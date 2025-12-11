@@ -29,29 +29,29 @@ This topic describes how to use Debugger, CPU Profiler, and Heap Snapshot.
 
 1. Configure the permission for accessing the Internet in the **module.json** file of the application project.
 
-```
-"requestPermissions": [{
-  "name": "ohos.permission.INTERNET",
-  "reason": "$string:app_name",
-  "usedScene": {
-    "abilities": [
-      "FromAbility"
-    ],
-    "when": "inuse"
-  }
-}]
-```
+   ```json
+   "requestPermissions": [{
+     "name": "ohos.permission.INTERNET",
+     "reason": "$string:app_name",
+     "usedScene": {
+       "abilities": [
+         "FromAbility"
+       ],
+       "when": "inuse"
+     }
+   }]
+   ```
 
 2. To prevent the pause during the debugging process from being falsely reported as no response, enable the DevEco Studio debug mode by referring to [Starting and Debugging an App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5) without setting breakpoints or run JSVM-API in threads except the main thread.
-```cpp
-// Run the JSVM sample code in a non-main thread.
-static napi_value RunTest(napi_env env, napi_callback_info info)
-{
-    std::thread testJSVMThread(TestJSVM);
-    testJSVMThread.detach();
-    return  nullptr;
-}
-```
+   ```cpp
+   // Run the JSVM sample code in a non-main thread.
+   static napi_value RunTest(napi_env env, napi_callback_info info)
+   {
+       std::thread testJSVMThread(TestJSVM);
+       testJSVMThread.detach();
+       return  nullptr;
+   }
+   ```
 3. Call **OH_JSVM_OpenInspector** to open an inspector instance on the specified host and port. For example, call **OH_JSVM_OpenInspector(env, "localhost", 9225)** to create a socket on local port 9225 of the device.
 4. Call **OH_JSVM_WaitForDebugger** to wait for the setup of a socket connection.
 5. Check whether the port on the device is enabled successfully. For example, run **hdc shell "netstat -anp | grep 9225"**. If the status of port 9225 is **LISTEN**, the port is enabled.
@@ -139,18 +139,18 @@ void TestJSVM() {
 
 1. Configure the permission for accessing the Internet in the **module.json** file of the application project.
 
-```
-"requestPermissions": [{
-  "name": "ohos.permission.INTERNET",
-  "reason": "$string:app_name",
-  "usedScene": {
-    "abilities": [
-      "FromAbility"
-    ],
-    "when": "inuse"
-  }
-}]
-```
+   ```json
+   "requestPermissions": [{
+     "name": "ohos.permission.INTERNET",
+     "reason": "$string:app_name",
+     "usedScene": {
+       "abilities": [
+         "FromAbility"
+       ],
+       "when": "inuse"
+     }
+   }]
+   ```
 
 2. To prevent the pause during the debugging process from being falsely reported as no response, [enable the DevEco Studio debug mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5) without setting breakpoints or run JSVM-API in threads except the main thread.
 3. Enable the inspector port and connect to devtools for debugging.<br>Before executing the JS code, call **OH_JSVM_OpenInspector** to open an inspector instance on the specified host and port and create a socket. For example, call **OH_JSVM_OpenInspectorWithName (env, 123, "test")** to create a TCP socket and the corresponding unixdomain port.
@@ -179,7 +179,7 @@ In addition to opening the URL specified by the **devtoolsFrontendUrl** field fo
 1. On Google Chrome, enter **chrome://inspect/#devices** in the address box and press **Enter**. On the page displayed, select the following options:
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png"/></div>
 2. Run **hdc fport** [*Port number on the developer's PC*] [*Port number on a device*] to forward a port. 
-Example: **hdc fport tcp:9227 tcp:9226**
+   Example: **hdc fport tcp:9227 tcp:9226**
 3. Click **Port forwarding**, enter the port number on the PC in the left text box and the port number on the device in the right text box, and click **Done**, as shown in the figure below.
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png"/></div>
 4. Click **Configure**, enter the port number on the PC, for example, **localhost:9227**, and click **Done**, as shown in the figure below.
