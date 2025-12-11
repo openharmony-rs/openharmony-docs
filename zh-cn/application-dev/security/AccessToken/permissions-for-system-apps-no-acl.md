@@ -172,15 +172,3 @@
 **ACL使能**：false
 
 **起始版本**：11
-
-## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
-
-允许UIExtensionAbility显示在锁屏之上。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：14
