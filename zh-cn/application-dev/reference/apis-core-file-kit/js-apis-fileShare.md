@@ -1,10 +1,19 @@
 # @ohos.fileshare (文件分享)
 
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @lvzhenjie; @ren_ze_hua-->
+<!--Designer: @chenxi0605; @JerryH1011-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @foryourself-->
+
 该模块提供文件分享能力，提供系统应用将公共目录文件统一资源标志符（Uniform Resource Identifier，URI）以读写权限授权给其他应用的接口，授权后应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行相关open、read、write等操作，实现文件分享。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -17,6 +26,10 @@ import fileShare from '@ohos.fileshare';
 枚举，授予或使能权限的URI访问模式。
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称  | 值   | 说明  |
 | ----- |-----|-----|
@@ -32,6 +45,10 @@ import fileShare from '@ohos.fileshare';
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称  | 值   | 说明        |
 | ----- |-----|-----------|
 | PERSISTENCE_FORBIDDEN  | 1   | URI禁止被持久化。 |
@@ -45,6 +62,10 @@ import fileShare from '@ohos.fileshare';
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称| 类型| 必填 | 说明|
 |--------|--------|--------|---------|
 | uri     | string| 是  | 授予或使能权限失败的URI。|
@@ -57,6 +78,10 @@ import fileShare from '@ohos.fileshare';
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称  | 类型  | 必填  | 说明                                                   |
 |------|-------|------|------------------------------------------------------|
 | uri| string | 是   | 需要授予或使能权限的URI。                                       |
@@ -68,6 +93,10 @@ import fileShare from '@ohos.fileshare';
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型  | 必填  | 说明  |
 |------|-------|-----|--------|
 | path          | string        | 是   | 需要查询的path。|
@@ -78,6 +107,10 @@ import fileShare from '@ohos.fileshare';
 枚举，所查询策略信息对应的授权模式。
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称  | 值   | 说明        |
 | ----- |-----|-----------|
