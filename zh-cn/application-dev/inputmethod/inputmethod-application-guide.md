@@ -29,16 +29,16 @@
 
 2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ts、InputMethodService.ts、Index.ets以及KeyboardKeyData.ts。目录如下：
 
-``` 
-/src/main/
-├── ets/InputMethodExtensionAbility
-│       └──model/KeyboardController.ts			# 显示键盘
-│       └──InputMethodService.ts				# 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
-│       └──pages
-│         └── Index.ets						# 绘制键盘，添加输入删除功能
-│         └── KeyboardKeyData.ts			    # 键盘属性定义
-├── resources/base/profile/main_pages.json  
-```
+   ``` 
+   /src/main/
+   ├── ets/InputMethodExtensionAbility
+   │       └──model/KeyboardController.ts			# 显示键盘
+   │       └──InputMethodService.ts				# 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
+   │       └──pages
+   │         └── Index.ets						# 绘制键盘，添加输入删除功能
+   │         └── KeyboardKeyData.ts			    # 键盘属性定义
+   ├── resources/base/profile/main_pages.json  
+   ```
 
 ## 文件介绍
 
@@ -926,13 +926,13 @@ struct Index {
 
 5. main_pages.json文件。对应ets/InputMethodExtensionAbility/pages/路径下键盘的绘制页面。
 
-``` JSON
-{
-  "src": [
-    "InputMethodExtensionAbility/pages/Index"
-  ]
-}
-```
+   ``` JSON
+   {
+     "src": [
+       "InputMethodExtensionAbility/pages/Index"
+     ]
+   }
+   ```
 
 6. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
 

@@ -122,5 +122,5 @@ export struct CustomInput {
 ```
 
 
-   ## 示例效果图
+## 示例效果图
   ![示例效果图](./figures/image-1.png)
