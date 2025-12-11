@@ -698,7 +698,7 @@ AppMod finish
 应用卸载功能在设备端集成bm模块[卸载命令（uninstall）](../tools/bm-tool.md#卸载命令uninstall)，简化了卸载流程，开发者可以在电脑端直接执行命令完成应用卸载。命令格式如下：
 
 ```shell
-hdc uninstall [-n|-m|-k|-s|-v|-u|-h] bundlename
+hdc uninstall [-n|-k|-s|-h] bundlename
 ```
 
 **参数**：
@@ -707,11 +707,8 @@ hdc uninstall [-n|-m|-k|-s|-v|-u|-h] bundlename
 | -------- | -------- |
 | bundlename | 应用安装包。 |
 | -n | 可选参数，指定Bundle名称卸载应用。|
-| -m | 可选参数，应用模块名称，指定卸载应用的一个模块。默认卸载所有模块。 |
 | -k | 可选参数，卸载应用时保存应用数据。默认卸载应用时不保存应用数据。 |
 | -s | 根据场景判断，卸载应用间HSP时必选参数，其他场景为可选参数。卸载指定的共享库。|
-| -v | 可选参数，指定共享包的版本号。默认卸载同包名的所有共享包。 |
-| -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下卸载应用。 |
 | -h | 可选参数，bm模块[卸载命令（uninstall）](../tools/bm-tool.md#卸载命令uninstall)帮助信息。 |
 
 **返回信息**：
@@ -722,10 +719,6 @@ hdc uninstall [-n|-m|-k|-s|-v|-u|-h] bundlename
 | 具体卸载失败原因。 | 失败情况下返回卸载失败信息。 |
 
 **使用方法**：
-
-> **注意：**
->
-> 执行uninstall命令使用bm模块命令参数，对-m，-v和-u参数需参数值组合使用的情况，需将参数变量和参数值放在引号内使用，如"-m entry"，"-v 100001"和"-u 100"，防止参数解析异常导致命令执行失败。
 
 ```shell
 # 卸载com.ohos.example包示例
@@ -738,28 +731,13 @@ $ hdc uninstall -n com.ohos.example
 [Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 
-# 卸载com.ohos.example包示例（-m为bm模块uninstall命令支持参数，指定卸载应用的一个模块）
-$ hdc uninstall -n "-m entry" com.ohos.example
-[Info]App uninstall path: msg:uninstall bundle successfully.
-AppMod finish
-
 # 卸载com.ohos.example包示例（-k为bm模块uninstall命令支持参数，卸载应用时保存应用数据）
-$ hdc uninstall -n -k com.ohos.example
+$ hdc uninstall -k com.ohos.example
 [Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 
 # 卸载com.ohos.example包示例（-s为bm模块uninstall命令支持参数，卸载hsp时为必选参数）
-$ hdc uninstall -n -s com.ohos.example
-[Info]App uninstall path: msg:uninstall bundle successfully.
-AppMod finish
-
-# 卸载com.ohos.example包示例（-v为bm模块uninstall命令支持参数，指定共享包的版本号）
-$ hdc uninstall -n "-v 100001" com.ohos.example
-[Info]App uninstall path: msg:uninstall bundle successfully.
-AppMod finish
-
-# 卸载com.ohos.example包示例（-u为bm模块uninstall命令支持参数，指定用户id）
-$ hdc uninstall -n "-u 100" com.ohos.example
+$ hdc uninstall -s com.ohos.example
 [Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 ```
@@ -1436,7 +1414,7 @@ hdc -l 5 start
 | 平台 | 路径 | 备注 |
 | -------- | -------- | -------- |
 | Windows | %temp%\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp<br/>（实际使用请替换用户名变量）。 |
-| Linux | /tmp/ |  |
+| Linux | /tmp/ | - |
 | MacOS | $TMPDIR/ | 实际路径可通过echo $TMPDIR查看，执行cd $TMPDIR命令可直接跳转至相应目录。 |
 
 日志文件类型包括：
@@ -1446,7 +1424,7 @@ hdc -l 5 start
 | 实时日志 | hdc.log | 实时记录服务器进程日志。 | 每次重启hdc服务进程，将会重命名原有日志并记录新的hdc.log。 |
 | 历史日志临时文件 | hdc-%Y%m%d-%H%M%S.log | 转储历史日志归档生成的中间文件。 | 以时间2024年9月19日16:18:57.921为例，对应时间格式为：20240919-161857921，生成的日志临时文件名为：hdc-20240919-161857921.log。 |
 | 历史日志归档文件 | hdc-%Y%m%d-%H%M%S.log.tgz | 压缩存储历史日志。 | 归档文件为.tgz类型压缩文件，可使用解压工具进行解压查看。以历史日志临时文件名hdc-20240919-161857921.log为例，对应的历史日志归档文件名为：hdc-20240919-161857921.log.tgz，历史日志归档文件生成后，对应的历史日志临时文件将自动删除。 |
-| 实时日志缓存临时文件 | .hdc.cache.log | 实时日志产生的临时缓存。 |  |
+| 实时日志缓存临时文件 | .hdc.cache.log | 实时日志产生的临时缓存。 | - |
 
 ### 设备端日志
 
@@ -1504,8 +1482,8 @@ hdc file recv /data/log/hilog {local_path}            # 获取hilog已落盘日�
 | 平台 | 路径 | 备注 |
 | -------- | -------- | -------- |
 | Windows | %temp%\hdc_cmd\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp\hdc_cmd\<br/>（实际使用请替换用户名变量）。 |
-| Linux | /tmp/hdc_cmd/ |  |
-| MacOS | $TMPDIR/hdc_cmd/ |  |
+| Linux | /tmp/hdc_cmd/ | - |
+| MacOS | $TMPDIR/hdc_cmd/ | - |
 
 ### OHOS_HDC_ENCRYPT_CHANNEL
 
