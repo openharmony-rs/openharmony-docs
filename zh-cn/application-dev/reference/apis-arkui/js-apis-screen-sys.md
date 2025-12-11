@@ -1000,7 +1000,7 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | number           | 是  | 主屏的id，该参数应为非负整数。 如果输入的数字包含小数部分，向下取整|
+| primaryScreenId   | number           | 是  | 主屏的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整|
 | secondaryScreenId | number           | 是  | 扩展屏幕的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
