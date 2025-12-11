@@ -91,17 +91,14 @@
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
    import SppClientManager from '../utils/SppClientManager'
-   
    const DOMAIN = 0x0000;
    
    export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
      private sppClientManager: SppClientManager | undefined;
-   
      onDestroy(): void {
        hilog.info(DOMAIN, 'testTag', 'onDestroy');
        this.sppClientManager!.stopConnect();
      }
-   
      //Called back when a notification is published.
      onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
        hilog.info(DOMAIN, 'testTag', `on receive message ${JSON.stringify(notificationInfo)}`)
@@ -120,7 +117,6 @@
            }
          })
      }
-   
      // Sends a publish notification and retries once upon failure.
      private sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
        try {
@@ -152,7 +148,6 @@
            }
          })
      }
-   
      // Retries a cancel operation if it fails.
      private sendCancelWithRetry(hashCodes: string[]) {
        try {
