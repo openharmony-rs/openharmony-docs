@@ -33,7 +33,7 @@ The [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExt
 When multiple UIExtensionAbility instances exist in an application, these instances can run in independent processes or share one process. They can also be grouped, and each group share one process. You can select a process model based on the **extensionProcessMode** field in the [module.json5](../quick-start/module-configuration-file.md) file. The table below describes the comparison between the process models.
 | Process Model| extensionProcessMode Field Value| Description|
 | --------| --------| --------|
-| One process for all UIExtensionAbility instances in the same bundle|bundle|	The UIExtensionAbility instances do not need to communicate with each other across IPCs. Their statuses are dependent and affect each other.|
+| One process for all UIExtensionAbility instances in the same bundle|bundle| The UIExtensionAbility instances do not need to communicate with each other across IPCs. Their statuses are dependent and affect each other.|
 | One process for all UIExtensionAbility instances with the same name| type |The UIExtensionAbility instances of the same type are configured in the same process so that your application can manage them by type.|
 | One process for each UIExtensionAbility instance| instance | The UIExtensionAbility instances communicate with each other only across IPCs. Their statuses do not affect each other, which is more secure.|
 ### One Process for All UIExtensionAbility Instances in the Bundle

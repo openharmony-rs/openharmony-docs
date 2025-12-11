@@ -916,10 +916,11 @@ onCollaborate(wantParam: Record&lt;string, Object&gt;): AbilityConstant.Collabor
 
 Callback invoked to return the collaboration result in multi-device collaboration scenarios.
 
- **NOTE**
-- This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
-- When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
-- During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
+> **NOTE**
+>
+> - This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
+> - When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
+> - During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -1595,8 +1596,6 @@ Defines the callback that is invoked when the stub on the target UIAbility is di
 ### (msg: string)<sup>10+</sup>
 
 (msg: string): void
-
-Defines the callback that is invoked when the remote UIAbility state changes in the collaboration scenario.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 

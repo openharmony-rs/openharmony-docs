@@ -41,6 +41,10 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
 Obtains the UIAbility running information. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> If the application has requested the ohos.permission.GET_RUNNING_INFO permission, it can obtain the UIAbility running information of all applications; otherwise, it can obtain the UIAbility running information of the current application.
+
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -90,7 +94,8 @@ Restarts the current atomic service.
 >
 > - Currently, atomic services can be started only in an independent window.
 >
-> - The interval between two calls of this API cannot be less than 3 seconds.
+> - If you call this API or [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+
 
 **Model restriction**: This API can be used only in the stage model.
 
