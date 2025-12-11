@@ -183,7 +183,7 @@
 
 ## 扩展设备能力
 
-扩展外设管理目前提供了HID DDK、USB DDK、USB Serical DDK和SCSI Peripheral DDK四种能力，用于扩展外设专项驱动的开发。具体使用方法，请参考：
+扩展外设管理目前提供了HID DDK、USB DDK、USB Serial DDK和SCSI Peripheral DDK四种能力，用于扩展外设专项驱动的开发。具体使用方法，请参考：
 
 * [开发适用HID协议的设备驱动](hid-ddk-guidelines.md)
 * [开发适用USB协议的设备驱动](usb-ddk-guidelines.md)
