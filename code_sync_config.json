@@ -18682,7 +18682,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template5/MotionBlurTest.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":55,
 						"name":"animationBlur_template5_start",
 						"start_line":15
 					}
