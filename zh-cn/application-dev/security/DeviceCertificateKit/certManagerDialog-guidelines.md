@@ -48,29 +48,30 @@
 3. 拉起证书管理界面。
 
    <!-- @[certificate_management_dialog_box_development_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerDialogSample.ets) -->
-
-``` TypeScript
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-async function certificateManagerDialogSample() {
-  /* context为应用的上下文信息，由调用方自行获取，此处仅为示例 */
-  let context: common.Context = getContext();
-  /* pageType为页面类型，此处赋值PAGE_MAIN，即拉起证书管理主界面 */
-  let pageType: certificateManagerDialog.CertificateDialogPageType =
-    certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
-  try {
-    certificateManagerDialog.openCertificateManagerDialog(context, pageType).then(() => {
-      console.info('Succeeded in opening certificate manager dialog.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to open certificate manager dialog. Code: ${err.code}, message: ${err.message}`);
-    })
-  } catch (error) {
-    console.error(`Failed to open certificate manager dialog. Code: ${error.code}, message: ${error.message}`);
-  }
-}
-```
+   
+   ``` TypeScript
+   import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { UIContext } from '@kit.ArkUI';
+   import { common } from '@kit.AbilityKit';
+   
+   async function certificateManagerDialogSample() {
+     /* context为应用的上下文信息，由调用方自行获取，此处仅为示例 */
+     let context: common.Context = new UIContext().getHostContext() as common.Context;
+     /* pageType为页面类型，此处赋值PAGE_MAIN，即拉起证书管理主界面 */
+     let pageType: certificateManagerDialog.CertificateDialogPageType =
+       certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
+     try {
+       certificateManagerDialog.openCertificateManagerDialog(context, pageType).then(() => {
+         console.info('Succeeded in opening certificate manager dialog.');
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to open certificate manager dialog. Code: ${err.code}, message: ${err.message}`);
+       })
+     } catch (error) {
+       console.error(`Failed to open certificate manager dialog. Code: ${error.code}, message: ${error.message}`);
+     }
+   }
+   ```
 
 
 4. 调用安装证书对话框接口进行证书安装、调用删除证书对话框接口进行证书删除、调用查看证书详情的对话框接口、展示证书的详情。以上场景仅2in1设备支持。
