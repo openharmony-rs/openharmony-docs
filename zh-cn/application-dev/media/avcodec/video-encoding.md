@@ -998,8 +998,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     OH_AVCodecBufferAttr info;
     info.size = frameSize;
     info.offset = 0;
-    info.pts = 0;
     // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
+    info.pts = 0;
     info.flags = AVCODEC_BUFFER_FLAGS_EOS;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
     if (setBufferRet != AV_ERR_OK) {
