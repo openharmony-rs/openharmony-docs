@@ -1493,19 +1493,3 @@ testNapi.testNapiWrapEnhance();
 **napi_create_strong_reference, napi_delete_strong_reference, napi_get_value_strong_reference**
 
 [Creating a Strong Reference to an ArkTS Object Using Node-API Extension APIs](use-napi-about-strong-reference.md)
-
-## Creating Sendable Strong References Using Node-API
-
-### Available APIs
-
-| API                                    | Description                                      |
-| ---------------------------------------- | ------------------------------------------ |
-| napi_create_strong_sendable_reference    | Creates a Sendable strong reference to a Sendable ArkTS object.|
-| napi_delete_strong_sendable_reference    | Deletes a Sendable strong reference.                       |
-| napi_get_strong_sendable_reference_value | Obtains the ArkTS object value associated with a Sendable strong reference.  |
-
-### Example
-
-**napi_create_strong_sendable_reference, napi_delete_strong_sendable_reference, napi_get_strong_sendable_reference_value**
-
-[Creating a Sendable Strong Reference to an ArkTS Object Using Node-API Extension APIs](use-napi-about-sendable-reference.md)
