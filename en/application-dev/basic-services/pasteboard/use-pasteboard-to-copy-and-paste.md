@@ -53,23 +53,28 @@ After obtaining URI data using the **getData** API, use the [fs.copy](../../refe
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-// ···
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// ...
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-
-// ···
+// ...
+  export async function setPlainData(content: string): Promise<void> {
     let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
     await systemPasteboard.setData(pasteData);
-    // ···
+  }
+  export async function getPlainData(): Promise<string> {
     // Read data from the system pasteboard.
     let data = await systemPasteboard.getData();
+    // Obtain the number of records from the pasteboard.
     let recordCount = data.getRecordCount();
+    // Obtain the corresponding record information from the pasteboard data.
     let result = '';
     for (let i = 0; i < recordCount; i++) {
       let record = data.getRecord(i).toPlainText();
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
-      result = record;
+      result += record;
     }
+    return result;
+  }
 ```
 
 
@@ -83,12 +88,12 @@ Currently, the following basic data types are supported for copy and paste: text
 
 For details about the APIs, see [API Reference](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12).
 
-| Name| Description                                                                                                                                       |
-| -------- |----------------------------------------------------------------------------------------------------------------------------------------|
-| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | Writes the data of a unified data object to the system pasteboard. |
-| setUnifiedDataSync(data: udc.UnifiedData): void | Writes the data of a unified data object to the system pasteboard. This API returns the result synchronously.                                                                                                                         |
-| getUnifiedData(): Promise\<udc.UnifiedData\> | Reads the data of a unified data object from the system pasteboard.                                                                                                                         |
-| getUnifiedDataSync(): udc.UnifiedData | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously. |
+| Name| Description                                                                                                  |
+| -------- |---------------------------------------------------------------------------------------------------|
+| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | Writes the data of a unified data object to the system pasteboard.                  |
+| setUnifiedDataSync(data: udc.UnifiedData): void | Writes the data of a unified data object to the system pasteboard. This API returns the result synchronously.         |
+| getUnifiedData(): Promise\<udc.UnifiedData\> | Reads the data of a unified data object from the system pasteboard.                          |
+| getUnifiedDataSync(): udc.UnifiedData | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously.                 |
 
 ### Example
 
@@ -96,10 +101,10 @@ For details about the APIs, see [API Reference](../../reference/apis-basic-servi
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-
-// ···
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// ...
   // 1. Construct a PlainText data object.
   export async function handleUniformData() {
     let plainText: uniformDataStruct.PlainText = {
