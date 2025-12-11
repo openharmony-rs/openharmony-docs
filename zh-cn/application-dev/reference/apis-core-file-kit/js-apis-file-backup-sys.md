@@ -1103,12 +1103,12 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo as fs, backup } from '@kit.CoreFileKit';
 
-  interface scanedInfos { //用于解析扫描结果
-    scaned: [];
+  interface scannedInfos { //用于解析扫描结果
+    scanned: [];
     scanning: string;
   }
 
-  interface ScanedInfo { //用于解析单个应用的扫描结果
+  interface ScannedInfo { //用于解析单个应用的扫描结果
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -1155,9 +1155,9 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
     },
     onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名
       console.info('dataSizeCallback success');
-      const jsonObj: scanedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
+      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
       if (jsonObj) {
-        const infos: ScanedInfo [] = jsonObj.scaned;
+        const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
           console.info('name: ' + infos[i].bundleName);
           console.info('dataSize: ' + infos[i].dataSize);
@@ -1186,7 +1186,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 ```json
 {
- "scaned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
+ "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
      {
          "name": "com.example.hiworld", // 应用名称
          "dataSize": 1006060, // 数据量大小
@@ -3410,12 +3410,12 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
   import { fileIo as fs, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  interface scanedInfos { // 用于解析扫描结果
-    scaned: [];
+  interface scannedInfos { // 用于解析扫描结果
+    scanned: [];
     scanning: string;
   }
 
-  interface ScanedInfo { // 用于解析单个应用的扫描结果
+  interface ScannedInfo { // 用于解析单个应用的扫描结果
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -3462,9 +3462,9 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
     },
     onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名
       console.info('dataSizeCallback success');
-      const jsonObj: scanedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
+      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
       if (jsonObj) {
-        const infos: ScanedInfo [] = jsonObj.scaned;
+        const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
           console.info('name: ' + infos[i].bundleName);
           console.info('dataSize: ' + infos[i].dataSize);
@@ -3494,7 +3494,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 ```json
 {
- "scaned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
+ "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
      {
          "name": "com.example.hiworld", // 应用名称
          "dataSize": 1006060, // 数据量大小
