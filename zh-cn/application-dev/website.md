@@ -4001,10 +4001,11 @@
           - [ipc_error_code.h](reference/apis-ipc-kit/capi-ipc-error-code-h.md)
           - [ipc_kit.h](reference/apis-ipc-kit/capi-ipc-kit-h.md)
         - 结构体<!--ipc-struct-->
-            - [OH_IPC_MessageOption](reference/apis-ipc-kit/capi-ohipcremoteobject-oh-ipc-messageoption.md)
-            - [OHIPCRemoteProxy](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md)
-            - [OHIPCRemoteStub](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)
-            - [OHIPCDeathRecipient](reference/apis-ipc-kit/capi-ohipcremoteobject-ohipcdeathrecipient.md)
+          - [OHIPCParcel](reference/apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)
+          - [OH_IPC_MessageOption](reference/apis-ipc-kit/capi-ohipcremoteobject-oh-ipc-messageoption.md)
+          - [OHIPCRemoteProxy](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md)
+          - [OHIPCRemoteStub](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)
+          - [OHIPCDeathRecipient](reference/apis-ipc-kit/capi-ohipcremoteobject-ohipcdeathrecipient.md)
       - 错误码<!--ipc-arkts-errcode-->
         - [RPC错误码](reference/apis-ipc-kit/errorcode-rpc.md)
     - Localization Kit（本地化开发服务）<!--localization-api-->
