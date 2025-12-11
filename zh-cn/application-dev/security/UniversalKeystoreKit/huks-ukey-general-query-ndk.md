@@ -11,7 +11,7 @@
 
 ## 在CMake脚本中链接相关动态库
 ```txt
-target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
+target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
 ```
 
 ## 开发步骤

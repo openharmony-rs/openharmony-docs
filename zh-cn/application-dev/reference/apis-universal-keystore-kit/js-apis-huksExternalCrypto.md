@@ -244,7 +244,7 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
+const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"userid\":100, \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
     .then((data) => {

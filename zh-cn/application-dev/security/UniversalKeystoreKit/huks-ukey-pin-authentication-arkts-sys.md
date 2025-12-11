@@ -35,7 +35,7 @@ let uid: number = 3511
 async function authUkeyPin(): Promise<void> {
   try {
     /* 1.假设已打开的资源如下 */
-    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
+    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\", \"userid\":100, \"index\":{\"key\":\"testKey\"}}";
 
     /* 2.构造参数 */
     const pin = "123456";
