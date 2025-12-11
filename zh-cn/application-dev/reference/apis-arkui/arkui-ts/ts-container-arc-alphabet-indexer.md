@@ -331,20 +331,6 @@ import {
   ArcAlphabetIndexerAttribute
 } from '@kit.ArkUI';
 
-@Builder
-function buildText() {
-  Stack() {
-    Text("head")
-      .fontSize(30)
-      .padding(10)
-      .backgroundColor(0xF9CF93)
-      .border({ width: '1px', color: Color.Black })
-
-    Divider().width('100%').height('1px')
-  }
-  .alignContent(Alignment.Bottom)
-}
-
 @Entry
 @Component
 struct ArcListAndIndexer {

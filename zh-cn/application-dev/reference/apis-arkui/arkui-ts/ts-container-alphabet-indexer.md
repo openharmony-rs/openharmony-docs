@@ -302,7 +302,7 @@ popupUnselectedColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                    |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431，显示为深暗蓝色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引未选中项文本颜色。 <br/>默认值：#FF182431，显示为深暗蓝色。 |
 
 ### popupItemFont<sup>10+</sup>
 
@@ -436,7 +436,7 @@ enableHapticFeedback(value: boolean)
 
 | 参数名         | 类型                                                  | 必填 | 说明                         |
 |-------------|-----------------------------------------------------|----|----------------------------|
-| value | boolean | 是  | 是否支持触控反馈。<br/>true：支持触控反馈。<br/>false：不支持触控反馈。<br/>默认值：true<br/>开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段开启振动权限，配置如下：<br/>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
+| value | boolean | 是  | 是否支持触控反馈。<br/>true：支持触控反馈。<br/>false：不支持触控反馈。<br/>默认值：true<br/>开启触控反馈时，需要在工程的module.json5中配置[requestPermissions](../../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)字段开启振动权限，配置如下：<br/>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 ## IndexerAlign枚举说明
 
@@ -448,8 +448,8 @@ enableHapticFeedback(value: boolean)
 | -------- | --- | ----- |
 | Left | 0 | 提示弹窗显示在索引条右侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | Right | 1 | 提示弹窗显示在索引条左侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| START<sup>12+</sup> | 2 | 在LTR场景下，提示弹窗显示在索引条右侧的位置。在RTL场景下，提示弹窗显示在索引条左侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| END<sup>12+</sup> | 3 | 在LTR场景下，提示弹窗显示在索引条左侧的位置。在RTL场景下，提示弹窗显示在索引条右侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| START<sup>12+</sup> | 2 | 在从左到右（LTR）场景下，提示弹窗显示在索引条右侧的位置。在RTL场景下，提示弹窗显示在索引条左侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| END<sup>12+</sup> | 3 | 在从左到右（LTR）场景下，提示弹窗显示在索引条左侧的位置。在RTL场景下，提示弹窗显示在索引条右侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 ## 事件
 
@@ -649,8 +649,8 @@ struct AlphabetIndexerSample {
           .itemBorderRadius(14) // 设置索引项背板圆角半径
           .popupBackgroundBlurStyle(BlurStyle.NONE) // 设置提示弹窗的背景模糊材质
           .popupTitleBackground(0xCCCCCC) // 设置提示弹窗一级索引项背景颜色
-          .popupSelectedColor(0x00FF00) // 提示弹窗二级索引未选中项文本颜色
-          .popupUnselectedColor(0x0000FF) // 提示弹窗二级索引选中项文本颜色
+          .popupSelectedColor(0x00FF00) // 提示弹窗二级索引选中项文本颜色
+          .popupUnselectedColor(0x0000FF) // 提示弹窗二级索引未选中项文本颜色
           .popupItemFont({ size: 30, style: FontStyle.Normal }) // 提示弹窗二级索引项文本样式
           .popupItemBackgroundColor(0xCCCCCC) // 提示弹窗二级索引项背景颜色
           .onSelect((index: number) => {
