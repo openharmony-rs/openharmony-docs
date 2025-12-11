@@ -34,10 +34,10 @@
    ```
 
    上述语法可以简化为!!双向绑定语法糖。
-
-   ``` TypeScript
-   Star({ value: this.value!! })
-   ```
+    
+    ``` TypeScript
+    Star({ value: this.value!! })
+    ```
 
 2. 使用`@Param value`与`@Event $value`语法实现自定义组件双向绑定。
 
