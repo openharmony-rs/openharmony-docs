@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **WithTheme** component is designed to customize the theme style for a specific part of an application page. It allows for the setting of light and dark modes for child components, as well as the use of custom color schemes.
 
@@ -48,10 +48,10 @@ Defines the default theme and color mode for components within the **WithTheme**
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                              | Mandatory| Description               |
-|------------------------|---------------------------------------------------------| ---- |------------------------------------------------------------------|
-| theme     | [CustomTheme](#customtheme)    | No  | Default theme for components in the **WithTheme** scope.<br> Default value: **undefined**, indicating that the styles will follow the system's default theme.|
-| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No  | Color mode for components in the **WithTheme** scope.<br>Default value: **ThemeColorMode.SYSTEM**      |
+| Name       | Type                              | Read-Only | Optional| Description               |
+|------------------------|---------------------------------------------------------| ---- | ---- |------------------------------------------------------------------|
+| theme     | [CustomTheme](#customtheme)    | No| Yes | Default theme for components in the **WithTheme** scope.<br> Default value: **undefined**, indicating that the styles will follow the system's default theme.|
+| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No| Yes | Color mode for components in the **WithTheme** scope.<br>Default value: **ThemeColorMode.SYSTEM**      |
 
 ## CustomTheme
 

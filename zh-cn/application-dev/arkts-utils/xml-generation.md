@@ -86,7 +86,7 @@ XML模块的API接口可以参考[@ohos.xml](../reference/apis-arkts/js-apis-xml
 
    输出结果如下：
 
-   ```
+   ```xml
    <?xml version="1.0" encoding="utf-8"?><bookstore>
      <book category="COOKING">
        <title lang="en">Everyday</title>
@@ -127,7 +127,7 @@ XML模块的API接口可以参考[@ohos.xml](../reference/apis-arkts/js-apis-xml
    let arrayBuffer = DySerializer.getOutput();
    ```
 
-4. 使用Uint8Array操作ArrayBuffer，并调用TextDecoder对Uint8Array解码后输出。
+3. 使用Uint8Array操作ArrayBuffer，并调用TextDecoder对Uint8Array解码后输出。
 
    ```ts
    let uint8Array: Uint8Array = new Uint8Array(arrayBuffer);
@@ -137,7 +137,7 @@ XML模块的API接口可以参考[@ohos.xml](../reference/apis-arkts/js-apis-xml
 
    输出结果如下：
 
-   ```
+   ```xml
    <?xml version="1.0" encoding="utf-8"?>
    <bookstore>
      <book category="COOKING">

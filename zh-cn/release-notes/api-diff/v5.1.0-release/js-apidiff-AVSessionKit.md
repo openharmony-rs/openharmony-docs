@@ -1,0 +1,49 @@
+| 操作 | 旧版本 | 新版本 | d.ts文件 |
+| ---- | ------ | ------ | -------- |
+|API废弃版本变更|类名：AVSession；<br>API声明：on(type: 'playFromAssetId', callback: (assetId: number) => void): void;<br>差异内容：20|类名：AVSession；<br>API声明：on(type: 'playFromAssetId', callback: (assetId: number) => void): void;<br>差异内容：NA|api/@ohos.multimedia.avsession.d.ts|
+|API废弃版本变更|类名：AVSession；<br>API声明：off(type: 'playFromAssetId', callback?: (assetId: number) => void): void;<br>差异内容：20|类名：AVSession；<br>API声明：off(type: 'playFromAssetId', callback?: (assetId: number) => void): void;<br>差异内容：NA|api/@ohos.multimedia.avsession.d.ts|
+|自定义类型变更|类名：avSession；<br>API声明：type AVControlCommandType = 'play' \| 'pause' \| 'stop' \| 'playNext' \| 'playPrevious' \| 'fastForward' \| 'rewind' \| 'seek' \| 'setSpeed' \| 'setLoopMode' \| 'toggleFavorite' \| 'playFromAssetId' \| 'playWithAssetId' \| 'answer' \| 'hangUp' \| 'toggleCallMute' \| 'setTargetLoopMode';<br>差异内容：'play' \| 'pause' \| 'stop' \| 'playNext' \| 'playPrevious' \| 'fastForward' \| 'rewind' \| 'seek' \| 'setSpeed' \| 'setLoopMode' \| 'toggleFavorite' \| 'playFromAssetId' \| 'playWithAssetId' \| 'answer' \| 'hangUp' \| 'toggleCallMute' \| 'setTargetLoopMode'|类名：avSession；<br>API声明：type AVControlCommandType = 'play' \| 'pause' \| 'stop' \| 'playNext' \| 'playPrevious' \| 'fastForward' \| 'rewind' \| 'seek' \| 'setSpeed' \| 'setLoopMode' \| 'toggleFavorite' \| 'playFromAssetId' \| 'answer' \| 'hangUp' \| 'toggleCallMute';<br>差异内容：'play' \| 'pause' \| 'stop' \| 'playNext' \| 'playPrevious' \| 'fastForward' \| 'rewind' \| 'seek' \| 'setSpeed' \| 'setLoopMode' \| 'toggleFavorite' \| 'playFromAssetId' \| 'answer' \| 'hangUp' \| 'toggleCallMute'|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：global；<br>API声明：export declare struct AVInputCastPicker<br>差异内容：export declare struct AVInputCastPicker|NA|api/@ohos.multimedia.avInputCastPicker.d.ets|
+|删除API|类名：AVInputCastPicker；<br>API声明：@Prop<br>    customPicker?: CustomBuilder;<br>差异内容：@Prop<br>    customPicker?: CustomBuilder;|NA|api/@ohos.multimedia.avInputCastPicker.d.ets|
+|删除API|类名：AVInputCastPicker；<br>API声明：onStateChange?: OnPickerStateCallback;<br>差异内容：onStateChange?: OnPickerStateCallback;|NA|api/@ohos.multimedia.avInputCastPicker.d.ets|
+|删除API|类名：global；<br>API声明：export type OnPickerStateCallback = (state: AVCastPickerState) => void;<br>差异内容：export type OnPickerStateCallback = (state: AVCastPickerState) => void;|NA|api/@ohos.multimedia.avInputCastPicker.d.ets|
+|删除API|类名：ProtocolType；<br>API声明：TYPE_CAST_PLUS_AUDIO = 8<br>差异内容：TYPE_CAST_PLUS_AUDIO = 8|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSession；<br>API声明：on(type: 'playWithAssetId', callback: Callback\<string>): void;<br>差异内容：on(type: 'playWithAssetId', callback: Callback\<string>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSession；<br>API声明：off(type: 'playWithAssetId', callback?: Callback\<string>): void;<br>差异内容：off(type: 'playWithAssetId', callback?: Callback\<string>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSession；<br>API声明：on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void;<br>差异内容：on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSession；<br>API声明：off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void;<br>差异内容：off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSession；<br>API声明：on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void;<br>差异内容：on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSession；<br>API声明：off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void;<br>差异内容：off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSession；<br>API声明：sendCustomData(data: Record\<string, Object>): Promise\<void>;<br>差异内容：sendCustomData(data: Record\<string, Object>): Promise\<void>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVCastController；<br>API声明：getSupportedDecoders(): Promise\<Array\<DecoderType>>;<br>差异内容：getSupportedDecoders(): Promise\<Array\<DecoderType>>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVCastController；<br>API声明：getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLevel>;<br>差异内容：getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLevel>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVCastController；<br>API声明：getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>;<br>差异内容：getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVCastController；<br>API声明：getSupportedPlaySpeeds(): Promise\<Array\<number>>;<br>差异内容：getSupportedPlaySpeeds(): Promise\<Array\<number>>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVCastController；<br>API声明：sendCustomData(data: Record\<string, Object>): Promise\<void>;<br>差异内容：sendCustomData(data: Record\<string, Object>): Promise\<void>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVCastController；<br>API声明：on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void;<br>差异内容：on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVCastController；<br>API声明：off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void;<br>差异内容：off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：avSession；<br>API声明：interface AudioCapabilities<br>差异内容：interface AudioCapabilities|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AudioCapabilities；<br>API声明：readonly streamInfos: Array\<audio.AudioStreamInfo>;<br>差异内容：readonly streamInfos: Array\<audio.AudioStreamInfo>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：avSession；<br>API声明：enum DecoderType<br>差异内容：enum DecoderType|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：DecoderType；<br>API声明：OH_AVCODEC_MIMETYPE_VIDEO_AVC = 'video/avc'<br>差异内容：OH_AVCODEC_MIMETYPE_VIDEO_AVC = 'video/avc'|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：DecoderType；<br>API声明：OH_AVCODEC_MIMETYPE_VIDEO_HEVC = 'video/hevc'<br>差异内容：OH_AVCODEC_MIMETYPE_VIDEO_HEVC = 'video/hevc'|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：DecoderType；<br>API声明：OH_AVCODEC_MIMETYPE_AUDIO_VIVID = 'audio/av3a'<br>差异内容：OH_AVCODEC_MIMETYPE_AUDIO_VIVID = 'audio/av3a'|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：avSession；<br>API声明：enum ResolutionLevel<br>差异内容：enum ResolutionLevel|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：ResolutionLevel；<br>API声明：RESOLUTION_480P = 0<br>差异内容：RESOLUTION_480P = 0|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：ResolutionLevel；<br>API声明：RESOLUTION_720P = 1<br>差异内容：RESOLUTION_720P = 1|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：ResolutionLevel；<br>API声明：RESOLUTION_1080P = 2<br>差异内容：RESOLUTION_1080P = 2|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：ResolutionLevel；<br>API声明：RESOLUTION_2K = 3<br>差异内容：RESOLUTION_2K = 3|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：ResolutionLevel；<br>API声明：RESOLUTION_4K = 4<br>差异内容：RESOLUTION_4K = 4|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVMetadata；<br>API声明：readonly bundleIcon?: image.PixelMap;<br>差异内容：readonly bundleIcon?: image.PixelMap;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVMetadata；<br>API声明：singleLyricText?: string;<br>差异内容：singleLyricText?: string;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVMediaDescription；<br>API声明：pcmSrc?: boolean;<br>差异内容：pcmSrc?: boolean;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVMediaDescription；<br>API声明：launchClientData?: string;<br>差异内容：launchClientData?: string;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：DeviceInfo；<br>API声明：supportedPullClients?: Array\<number>;<br>差异内容：supportedPullClients?: Array\<number>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：DeviceInfo；<br>API声明：audioCapabilities?: AudioCapabilities;<br>差异内容：audioCapabilities?: AudioCapabilities;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：avSession；<br>API声明：type ExtraInfo = {<br>        [key: string]: Object;<br>    };<br>差异内容：type ExtraInfo = {<br>        [key: string]: Object;<br>    };|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSessionController；<br>API声明：getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>;<br>差异内容：getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSessionController；<br>API声明：sendCustomData(data: Record\<string, Object>): Promise\<void>;<br>差异内容：sendCustomData(data: Record\<string, Object>): Promise\<void>;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSessionController；<br>API声明：on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void;<br>差异内容：on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除API|类名：AVSessionController；<br>API声明：off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void;<br>差异内容：off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void;|NA|api/@ohos.multimedia.avsession.d.ts|
+|删除kit|类名：global；<br>API声明：api\@ohos.multimedia.avInputCastPicker.d.ets<br>差异内容：AVSessionKit|类名：global；<br>API声明：<br>差异内容：NA|api/@ohos.multimedia.avInputCastPicker.d.ets|
+|删除导出符号|类名：global；<br>API声明：export type OnPickerStateCallback = (state: AVCastPickerState) => void;<br>差异内容：export type OnPickerStateCallback = (state: AVCastPickerState) => void;|类名：global；<br>API声明：<br>差异内容：NA|api/@ohos.multimedia.avInputCastPicker.d.ets|

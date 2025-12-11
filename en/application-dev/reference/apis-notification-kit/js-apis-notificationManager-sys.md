@@ -983,7 +983,7 @@ notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
 
 setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
-Sets the notification slot for a specified application. This API uses a promise to return the result.
+Sets the slot flags for a specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3389,7 +3389,7 @@ notificationManager.setNotificationEnableSlot(
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncCallback\<boolean\>): void
 
-Checks whether a specified notification slot type is enabled for a specified application. This API uses an asynchronous callback to return the result.
+Checks whether a notification slot type is enabled for the specified application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3446,7 +3446,7 @@ notificationManager.isNotificationSlotEnabled(
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolean\>  
 
-Checks whether a specified notification slot type is enabled for a specified application. This API uses a promise to return the result.
+Checks whether a notification slot type is enabled for the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -5059,7 +5059,7 @@ Checks whether a device enables cross-device notification. This API uses a promi
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.  |
 
 **Error codes**
 
@@ -5118,7 +5118,7 @@ Sets whether the device of a specified type enables cross-device notification. T
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no result.  |
 
 **Error codes**
 
@@ -5171,7 +5171,7 @@ Obtains the device types that enable cross-device notification. This API uses a 
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<Array\<string\>\> | Promise used to return the result.|
+| Promise\<Array\<string\>\> | Promise used to return the result.  |
 
 **Error codes**
 
@@ -5206,7 +5206,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## notificationManager.setRingtoneInfoByBundle<sup>22+</sup>
+## notificationManager.setRingtoneInfoByBundle<sup>21+</sup>
 
 setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
 
@@ -5223,7 +5223,7 @@ Sets the custom ringtone information for an application. This API uses a promise
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
-| ringtoneInfo | [RingtoneInfo](#ringtoneinfo22) | Yes  | Custom ringtone information.|
+| ringtoneInfo | [RingtoneInfo](#ringtoneinfo21) | Yes  | Custom ringtone information.|
 
 **Return value**
 
@@ -5265,18 +5265,18 @@ export default class EntryAbility extends UIAbility {
         ringtoneUri: "ringtoneUri",
       }
       notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
-        hilog.info(0x0000, 'testTag', 'setRingtoneInfoByBundle ,bundle:' + JSON.stringify(bundle) + 'ringtoneInfoJSON' + JSON.stringify(ringtoneInfo));
+        console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON: ' ${JSON.stringify(ringtoneInfo)}`);
       }).catch((err: BusinessError) => {
-        console.error(`setRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+         console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
       });
     } catch (err) {
-      console.error(`setRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+      console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
     }
   }
 }
 ```
 
-## notificationManager.getRingtoneInfoByBundle<sup>22+</sup>
+## notificationManager.getRingtoneInfoByBundle<sup>21+</sup>
 
 getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
@@ -5298,7 +5298,7 @@ Obtains the custom ringtone information of an application. This API uses a promi
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<[RingtoneInfo](#ringtoneinfo22)\> | Promise used to return the result.|
+| Promise\<[RingtoneInfo](#ringtoneinfo21)\> | Promise used to return the result.|
 
 **Error codes**
 
@@ -5325,16 +5325,631 @@ export default class EntryAbility extends UIAbility {
 
   onForeground(): void {
     try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
       notificationManager.getRingtoneInfoByBundle(bundle)
         .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
-          hilog.info(0x0000, 'testTag', 'getRingtoneInfoByBundle success: ' + this.ringtoneInfo);
+          console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
         }).catch((err: BusinessError) => {
-          console.error(`getRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+        console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
       });
     } catch (err) {
-      console.error(`getRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+      console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
     }
   }
+}
+```
+
+## notificationManager.setBadgeDisplayStatusByBundles<sup>21+</sup>
+
+setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<void\>
+
+Batch sets whether to display badges for specified applications. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| badges   | Map<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean> | Yes  | List containing bundle names and badge display statuses.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. | 
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let badges = new Map<notificationManager.BundleOption, boolean>();
+let bundle: notificationManager.BundleOption = {
+    bundle: 'bundleName',
+};
+badges.set(bundle, true);
+
+notificationManager.setBadgeDisplayStatusByBundles(badges).then(() => {
+    hilog.info(0x0000, 'testTag', 'setBadgeDisplayStatusByBundles success.');
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getBadgeDisplayStatusByBundles<sup>21+</sup>
+
+getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean>>
+
+Batch obtains the display statuses of application badges. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes  | Bundles whose badge display statuses are to be obtained.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>> | Promise used to return the bundles and the badge display statuses obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
+    data.forEach((value, key) => {
+        hilog.info(0x0000, 'testTag', `Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
+    });
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `getBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setReminderInfoByBundles<sup>21+</sup>
+
+setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Promise\<void\>
+
+Batch sets reminders for specified applications. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| reminderInfos | Array<[NotificationReminderInfo](#notificationreminderinfo21)> | Yes| Reminders to be set.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
+    {
+        bundle: bundle,
+        reminderFlags: 59,
+        silentReminderEnabled: false
+    }
+];
+notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
+    hilog.info(0x0000, 'testTag', 'setReminderInfoByBundles success.');
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getReminderInfoByBundles<sup>21+</sup>
+
+getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<NotificationReminderInfo\>\>
+
+Batch obtains reminders of specified applications. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes | Bundles whose reminders are to be obtained.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise<Array<[NotificationReminderInfo](#notificationreminderinfo21)>> | Promise used to return the application reminders obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
+    hilog.info(0x0000, 'testTag', `Reminder data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `getReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isPriorityEnabled<sup>23+</sup>
+
+isPriorityEnabled(): Promise\<boolean\>
+
+Checks whether the priority notification is enabled.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<boolean\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**Example**
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+
+try {
+  let result = await notificationManager.isPriorityEnabled();
+  console.info(`isPriorityEnabled: ${result}`);
+} catch (e) {
+  console.info(`isPriorityEnabled error: ${e}`);
+}
+```
+
+## notificationManager.setPriorityEnabled<sup>23+</sup>
+
+setPriorityEnabled(enable: boolean): Promise\<void\>
+
+Sets the enabling status of the priority notification.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| enable   | boolean | Yes | Whether to enable the priority notification.<br> - **true**: The priority notification is enabled.<br> - **false**: The priority notification is disabled.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**Example**
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+
+try {
+  await notificationManager.setPriorityEnabled(false);
+} catch (e) {
+  console.error(`setPriorityEnabled error: ${e}`);
+}
+```
+
+## notificationManager.isPriorityEnabledByBundle<sup>23+</sup>
+
+isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
+
+Checks whether the priority notification for a specified application is enabled.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<[PriorityEnableStatus](#priorityenablestatus23)\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**Example**
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+
+try {
+  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+  let result : notificationManager.PriorityEnableStatus = await notificationManager.isPriorityEnabledByBundle(bundleOption);
+  console.info(`isPriorityEnabledByBundle: ${result}`);
+} catch (e) {
+  console.error(`isPriorityEnabledByBundle error: ${e}`);
+}
+```
+
+## notificationManager.setPriorityEnabledByBundle<sup>23+</sup>
+
+setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableStatus): Promise\<void\>
+
+Sets the enabling status of the priority notification for an application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | Yes| Whether the priority notification for an application is enabled.<br> - **DISABLE**: The priority notification is disabled.<br> - **ENABLE_BY_INTELLIGENT**: The priority notification can be enabled through intelligent recognition, user keyword matching, or application rule matching.<br> - **ENABLE**: The priority notification is enabled for all applications.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**Example**
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+
+try {
+  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+  await notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus);
+} catch (e) {
+  console.error(`setPriorityEnabledByBundle error: ${e}`);
+}
+```
+
+## notificationManager.getBundlePriorityConfig<sup>23+</sup>
+
+getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
+
+Obtains the priority configuration of an application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<string\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**Example**
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+
+try {
+  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+  let value: string = await notificationManager.getBundlePriorityConfig(bundleOption);
+  console.info(`getBundlePriorityConfig value: ${value}`);
+} catch (e) {
+  console.error(`getBundlePriorityConfig error: ${e}`);
+}
+```
+
+## notificationManager.setBundlePriorityConfig<sup>23+</sup>
+
+setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
+
+Obtains the priority configuration of an application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+| value | string | Yes| Priority configuration of an application.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**Example**
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+
+try {
+  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+  notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1');
+} catch (e) {
+  console.error(`setBundlePriorityConfig error: ${e}`);
+}
+```
+
+## notificationManager.onBadgeNumberQuery<sup>22+</sup>
+
+onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
+
+Registers a callback for querying the number of application badges.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<long\> | Yes | Number of target application badges.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try{
+    notificationManager.onBadgeNumberQuery(
+        async (bundleOption: notificationManager.BundleOption) => {
+            return 1;
+        }
+    );
+} catch(err) {
+    hilog.info(0x0000, 'testTag', `onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## notificationManager.offBadgeNumberQuery<sup>22+</sup>
+
+offBadgeNumberQuery(): void
+
+Unregisters the callback for querying the number of application badges.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try{
+    notificationManager.offBadgeNumberQuery();
+} catch(err) {
+    hilog.info(0x0000, 'testTag', `offBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -5530,7 +6145,7 @@ Describes the bundle information of an application that enables cross-device col
 | uid          | number | No| No| UID of the application.         |
 | enable       | boolean| No| Yes| Whether the application enables cross-device collaboration. The value **true** indicates that the cross-device collaboration is enabled, and the value **false** indicates the opposite.     |
 
-## RingtoneType<sup>22+</sup>
+## RingtoneType<sup>21+</sup>
 
 Enumerates the custom ringtone types.
 
@@ -5545,7 +6160,7 @@ Enumerates the custom ringtone types.
 | RINGTONE_TYPE_ONLINE  | 2   | Online ringtone.           |
 | RINGTONE_TYPE_NONE   | 3   | Non-custom ringtone.                |
 
-## RingtoneInfo<sup>22+</sup>
+## RingtoneInfo<sup>21+</sup>
 
 Describes the custom ringtone information.
 
@@ -5555,7 +6170,58 @@ Describes the custom ringtone information.
 
 | Name   | Type    | Read-Only| Optional| Description                    |
 | ------- | ------- | ---- | ---- | ----------------------- |
-| ringtoneType | [ringtoneType](#ringtonetype22)  |  No | No  | Type of the ringtone.|
+| ringtoneType | [RingtoneType](#ringtonetype21)  |  No | No  | Type of the ringtone.|
 | ringtoneTitle | string  |  No | Yes  | Title of the ringtone. |
 | ringtoneFileName | string  |  No | Yes  | File name of the ringtone. |
 | ringtoneUri | string  |  No | Yes  | URI of the ringtone. |
+
+## NotificationReminderInfo<sup>21+</sup>
+
+Describes the information about the application reminder.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name     | Type   | Read-Only| Optional| Description          |
+| --------- | ------ | ---- | ---- | ------------- |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| No| Bundle information of the application.|
+| reminderFlags | long | No| No| Reminder flag.|
+| silentReminderEnabled | boolean | No| No| Whether the silent reminder is enabled. The value **true** indicates that the silent reminder is enabled, and the value **false** indicates the opposite.|
+
+## PriorityNotificationType<sup>23+</sup>
+
+Describes the priority type of a notification.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name                | Value | Description                              |
+| --------------------| --- | --------------------------------- |
+| PAYMENT_DUE   | "PAYMENT_DUE"   | Payment and repayment.                |
+| TRANSACTION_ALERT   | "TRANSACTION_ALERT"   | Account balance reminder.                |
+| EXPRESS_PROGRESS   | "EXPRESS_PROGRESS"   | Express progress.                |
+| MISS_CALL   | "MISS_CALL"   | Missed call.                |
+| TRAVEL_ALERT   | "TRAVEL_ALERT"   | Abnormal traveling.                |
+| ACCOUNT_ALERT   | "ACCOUNT_ALERT"   | Account security.                |
+| APPOINTMENT_REMINDER   | "APPOINTMENT_REMINDER"   | Appointment reminder.                |
+| TRAFFIC_NOTICE   | "TRAFFIC_NOTICE"   | Traffic violation.                |
+| KEY_PROGRESS   | "KEY_PROGRESS"   | Key progress.                |
+| PUBLIC_EVENT   | "PUBLIC_EVENT"   | Important common event.                |
+| IOT_WARNING   | "IOT_WARNING"   | IoT warning.                |
+| CUSTOM_KEYWORD   | "CUSTOM_KEYWORD"   | Custom keyword.                |
+
+## PriorityEnableStatus<sup>23+</sup>
+
+Describes the enabling status of the priority notification for an application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name                | Value | Description                              |
+| --------------------| --- | --------------------------------- |
+| DISABLE    | 0   | The priority notification is disabled.                |
+| ENABLE_BY_INTELLIGENT  | 1  | The priority notification is enabled by intelligent recognition.           |
+| ENABLE   | 2   | The priority notification is enabled for all applications.                |

@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct OH_Pasteboard OH_Pasteboard
+```
+
 ## Overview
 
 Defines the pasteboard object to operate the system pasteboard.

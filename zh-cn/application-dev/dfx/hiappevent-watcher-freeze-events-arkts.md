@@ -159,5 +159,31 @@
 
 2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
 
+## 从Faultlogger接口迁移应用冻屏事件
+
+[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用, 不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅应用冻屏事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅应用冻屏事件。
+
+在Faultlogger的[FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)里定义的APP_FREEZE即为应用冻屏故障类型。
+
+在hiAppEvent的hiAppEvent.addWatcher接口中设置事件名称为hiAppEvent.event.APP_FREEZE、事件领域为hiAppEvent.domain.OS，可以订阅应用冻屏事件。
+
+通过[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params字段说明)中exception字段的name子字段可以区分具体是哪种应用冻屏事件。
+
+[FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo)与[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params字段说明)的字段对应关系如下：
+| Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | 说明 |
+| --- | --- | --- |
+| pid | pid | 无。 |
+| uid | uid | 无。 |
+| type | excption字段中的name子字段 | 类型不同，Faultlogger中是故障类型枚举，hiAppEvent中是字符串类型。 |
+| timestamp | time | 无。 |
+| module | bundle_name | 无。 |
+| fullLog | external_log | fullLog为故障日志全文。external_log为故障日志文件在应用沙箱中的具体路径(/data/storage/el2/log/)，访问该路径的文件，可以得到故障日志全文。 |
+| reason | external_log文件内容中的Reason字段 | 无。 |
+| summary | external_log文件内容中特定段落 | APP_FREEZE的summary对应external_log文件中从appfreeze:进程名所在行到DisplayPowerInfo:所在行的这一段内容。 |
+
+[FaultLogger.query(使用callback回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)和[FaultLogger.query(使用Promise回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
+
+查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到应用冻屏事件](#验证观察者是否订阅到应用冻屏事件)，了解使用hiAppEvent订阅应用冻屏事件（ArkTS）的具体步骤。
+
 <!--RP1-->
 <!--RP1End-->

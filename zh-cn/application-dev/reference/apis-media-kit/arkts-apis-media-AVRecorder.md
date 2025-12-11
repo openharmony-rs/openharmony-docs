@@ -112,7 +112,7 @@ prepare(config: AVRecorderConfig): Promise\<void>
 
 **需要权限：** ohos.permission.MICROPHONE
 
-不涉及音频录制时，可以不需要获ohos.permission.MICROPHONE权限。
+不涉及音频录制时，可以不需要获取ohos.permission.MICROPHONE权限。
 
 使用相机视频录制还需要与相机模块配合，相机模块接口的使用详情见[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
 
@@ -938,7 +938,7 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback\<number>): void
 
 在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
 
-调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。即，如果在1s的时刻获取了一次最大振幅，在2s时再获取到的最大振幅时1-2s这个区间里面的最大值。
+调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。例如，在1s时获取了一次最大振幅，到2s时再获取到的最大振幅是1-2s这个区间里面的最大值。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -978,11 +978,11 @@ avRecorder.getAudioCapturerMaxAmplitude((err: BusinessError, amplitude: number) 
 
 getAudioCapturerMaxAmplitude(): Promise\<number>
 
-获取当前音频最大振幅参数。使用Promise异步回调。
+获取当前音频最大振幅。使用Promise异步回调。
 
 在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
 
-调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。即，如果在1s的时刻获取了一次最大振幅，在2s时再获取到的最大振幅时1-2s这个区间里面的最大值。
+调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。例如，在1s时获取了一次最大振幅，到2s时再获取到的最大振幅是1-2s这个区间里面的最大值。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 

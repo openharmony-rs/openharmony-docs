@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_AI_TensorHandleArray {...} OH_AI_TensorHandleArray
+```
+
 ## 概述
 
 张量数组结构体，用于存储张量数组指针和张量数组长度。

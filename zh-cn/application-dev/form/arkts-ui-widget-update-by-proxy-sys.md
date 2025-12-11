@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 卡片代理刷新是一种通过系统应用刷新卡片的机制。卡片提供方不在运行时，仍然可以通过开启了数据共享能力的系统应用完成卡片数据的更新。
 
@@ -26,12 +26,10 @@
 卡片提供方处理流程（图中蓝色箭头）：
 
 1. 卡片提供方在卡片提供方的配置文件`form_config.json`中配置`dataProxyEnabled`字段为`true`，以开启卡片代理刷新功能。
-> **说明：**
->
-> 卡片代理刷新开启后，[定时刷新](arkts-ui-widget-passive-refresh.md#卡片定时刷新)失效。
-
+    > **说明：**
+    >
+    > 卡片代理刷新开启后，[定时刷新](arkts-ui-widget-passive-refresh.md#卡片定时刷新)失效。
 2. 卡片提供方在[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)回调中，把数据提供方定义的`key + subscriberId`返回给卡片管理服务。
-
 3. 卡片管理服务解析卡片提供方的订阅信息，并向数据管理服务注册订阅实例。
 
 卡片代理刷新运行流程（图中红色箭头）：
@@ -131,7 +129,7 @@
     @Component
     struct WidgetProcessDataCard {
       // $r('app.string.loading')需要替换为开发者所需的资源文件
-      @LocalStorageProp('datashareproxy://com.samples.widgetupdatebyproxy/weather') city: ResourceStr = 
+      @LocalStorageProp('datashareproxy://com.samples.widgetupdatebyproxy/weather') city: ResourceStr =
         $r('app.string.loading');
     
       build() {

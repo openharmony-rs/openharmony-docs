@@ -71,6 +71,8 @@
 
 - [ohos.permission.MEDIA_LOCATION](permissions-for-all-user.md#ohospermissionmedia_location)
 
+<!--RP4--><!--RP4End-->
+
 ## 音乐和音频
 
 - [ohos.permission.WRITE_AUDIO](restricted-permissions.md#ohospermissionwrite_audio)

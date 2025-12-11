@@ -37,7 +37,7 @@ createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promi
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| Promise\<[PixelMap](#pixelmap)> | 返回Pixelmap。<br>当创建的pixelmap大小超过原图大小时，返回原图pixelmap大小。|
+| Promise\<[PixelMap](#pixelmap)> | 返回PixelMap。<br>当创建的PixelMap大小超过原图大小时，返回原图PixelMap大小。|
 
 **示例：**
 
@@ -147,7 +147,7 @@ async function Demo() {
     let ret: MySequence = new MySequence(pixelMap);
     data.readParcelable(ret);
 
-    // 获取到pixelmap。
+    // 获取到Pixelmap。
     let unmarshPixelmap = ret.pixel_map;
   }
 }
@@ -956,7 +956,7 @@ createAlphaPixelmap(): Promise\<PixelMap>
 
 | 类型                             | 说明                        |
 | -------------------------------- | --------------------------- |
-| Promise\<[PixelMap](#pixelmap)> | Promise实例，返回pixelmap。 |
+| Promise\<[PixelMap](#pixelmap)> | Promise实例，返回PixelMap。 |
 
 **示例：**
 
@@ -1188,7 +1188,7 @@ rotate(angle: number): Promise\<void>
 
 > **说明：**
 >
-> - 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
+> - 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动校正。例如，-100度与260度效果相同。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1233,7 +1233,7 @@ rotateSync(angle: number): void
 
 > **说明：**
 >
-> - 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
+> - 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动校正。例如，-100度与260度效果相同。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。

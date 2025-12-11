@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_MemoryLimit {...} HiDebug_MemoryLimit
+```
+
 ## 概述
 
 应用程序进程内存限制结构类型定义。

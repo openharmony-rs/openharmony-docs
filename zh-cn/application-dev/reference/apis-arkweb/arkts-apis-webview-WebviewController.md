@@ -5107,7 +5107,7 @@ struct WebComponent {
 
 setDownloadDelegate(delegate: WebDownloadDelegate): void
 
-为当前的Web组件设置一个WebDownloadDelegate，该delegate用来接收页面内触发的下载与下载的进展。
+为当前的Web组件设置一个WebDownloadDelegate，该delegate用来接收页面内触发的下载进度的委托。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -5115,7 +5115,7 @@ setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进回调的委托。 |
+| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进度的委托。 |
 
 **错误码：**
 
@@ -5865,6 +5865,10 @@ enableAdsBlock(enable: boolean): void
 
 启用广告过滤功能。
 
+> **说明：**
+>
+> - 广告过滤功能需要release包，使用debug包不生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -6401,7 +6405,7 @@ setScrollable(enable: boolean, type?: ScrollType): void
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
 | enable     | boolean   | 是   | 表示是否将网页设置为允许滚动。<br>true表示设置为允许滚动，false表示禁止滚动。<br>默认值：true。 |
-| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。|
+| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。<br/>**说明：**<br/>传入undefined会抛出异常错误码401。|
 
 **错误码：**
 
@@ -7374,8 +7378,10 @@ struct WebComponent {
   }
 }
 ```
+
 加载的html文件。
- ```html
+
+```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -7405,7 +7411,7 @@ struct WebComponent {
     </script>
   </body>
 </html>
- ```
+```
 
 ## stopCamera<sup>12+</sup>
 
@@ -7604,7 +7610,7 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
    }
    ```
 
-JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
+   JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
 4. 编写业务用组件代码。
 
@@ -8033,11 +8039,10 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed.                                     |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 | 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.  |
 
@@ -8530,7 +8535,7 @@ setUrlTrustList(urlTrustList: string): void
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。路径列表中的路径必须满足以下路径格式之一：
+设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。路径列表中的路径必须满足以下路径格式之一：
 
 1.应用文件目录的子目录（应用文件目录通过Ability Kit中的[Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
 
@@ -10268,6 +10273,40 @@ static getActiveWebEngineVersion(): ArkWebEngineVersion
 
 请参考[setActiveWebEngineVersion](#setactivewebengineversion20)。
 
+## isActiveWebEngineEvergreen<sup>23+</sup>
+
+static isActiveWebEngineEvergreen(): boolean
+
+判断当前系统是否正在使用常青内核，即系统的最新内核。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ------ |
+| boolean | 表示是否正在使用常青内核。正在使用返回true，否则返回false。 |
+
+**示例：**
+
+本示例以EntryAbility为例，实现了在Ability创建阶段判断应用是否正在使用常青内核的功能。
+
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info("EntryAbility onCreate")
+    if (webview.WebviewController.isActiveWebEngineEvergreen()) {
+      console.info("Active Web Engine is Evergreen")
+    }
+    console.info("EntryAbility onCreate done")
+  }
+}
+```
+
 ## setAutoPreconnect<sup>21+</sup>
 
 static setAutoPreconnect(enabled: boolean): void
@@ -10352,7 +10391,7 @@ static getSiteIsolationMode(): SiteIsolationMode
 
 | 类型                                      | 说明                                                         |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | 站点隔离模式类型。<br>getSiteIsolationMode()查询当前生效的站点隔离模式。
+| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | 站点隔离模式类型。<br>getSiteIsolationMode()查询当前生效的站点隔离模式。|
 
 
 **示例：**
@@ -10504,3 +10543,172 @@ struct WebComponent {
   }
 }
 ```
+
+## resumeMicrophone<sup>23+</sup>
+
+resumeMicrophone(): void
+
+恢复当前网页麦克风捕获。使用麦克风功能前请在module.json5中添加权限: ohos.permission.MICROPHONE，具体权限的添加方法请参考[在配置文件中声明权限](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  uiContext: UIContext = this.getUIContext();
+
+  aboutToAppear(): void {
+    let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+      console.info('data:' + JSON.stringify(data));
+      console.info('data permissions:' + data.permissions);
+      console.info('data authResults:' + data.authResults);
+    })
+  }
+
+  build() {
+    Column() {
+      Button("resumeMicrophone").onClick(() => {
+        try {
+          this.controller.resumeMicrophone();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("pauseMicrophone").onClick(() => {
+        try {
+          this.controller.pauseMicrophone();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("stopMicrophone").onClick(() => {
+        try {
+          this.controller.stopMicrophone();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onPermissionRequest((event) => {
+          if (event) {
+            this.uiContext.showAlertDialog({
+              title: 'title',
+              message: 'text',
+              primaryButton: {
+                value: 'deny',
+                action: () => {
+                  event.request.deny();
+                }
+              },
+              secondaryButton: {
+                value: 'onConfirm',
+                action: () => {
+                  event.request.grant(event.request.getAccessibleResource());
+                }
+              },
+              cancel: () => {
+                event.request.deny();
+              }
+            })
+          }
+        })
+        .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo) => {
+          console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
+        })
+    }
+  }
+}
+```
+
+加载的html文件。
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="UTF-8">
+ </head>
+ <body>
+   <video id="video" width="400px" height="400px" autoplay="autoplay">
+   </video>
+   <input type="button" title="HTML5麦克风" value="开启麦克风" onclick="getMedia()" />
+   <script>
+     function getMedia() {
+       let constraints = {
+         video: {
+           width: 500,
+           height: 500
+         },
+         audio: true
+       }
+       let video = document.getElementById("video");
+       let promise = navigator.mediaDevices.getUserMedia(constraints);
+       promise.then(function(MediaStream) {
+         video.srcObject = MediaStream;
+         video.play();
+       })
+     }
+   </script>
+ </body>
+</html>
+```
+
+## pauseMicrophone<sup>23+</sup>
+
+pauseMicrophone(): void
+
+暂停当前网页麦克风捕获。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+完整示例代码参考[resumeMicrophone](#resumemicrophone23)。
+
+## stopMicrophone<sup>23+</sup>
+
+stopMicrophone(): void
+
+停止当前网页麦克风捕获。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+完整示例代码参考[resumeMicrophone](#resumemicrophone23)。

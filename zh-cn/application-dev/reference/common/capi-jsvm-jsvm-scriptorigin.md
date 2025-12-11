@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_ScriptOrigin
+```
+
 ## 概述
 
 某段JavaScript代码的原始信息，如sourceMap路径、源文件名、源文件中的起始行/列号等。

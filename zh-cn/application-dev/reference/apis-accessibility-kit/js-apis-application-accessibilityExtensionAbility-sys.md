@@ -23,7 +23,9 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 无障碍事件信息。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -64,7 +66,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityConnect(): void {
-    console.log('AxExtensionAbility onAccessibilityConnect');
+    console.info('AxExtensionAbility onAccessibilityConnect');
   }
 }
 ```
@@ -98,7 +100,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityDisconnect(): void {
-    console.log('AxExtensionAbility onAccessibilityDisconnect');
+    console.info('AxExtensionAbility onAccessibilityDisconnect');
   }
 }
 ```
@@ -137,9 +139,9 @@ import { AccessibilityExtensionAbility, AccessibilityEventInfo, AccessibilityEve
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityEventInfo(event: AccessibilityEventInfo): void {
-    console.log('AxExtensionAbility onAccessibilityEventInfo');
+    console.info('AxExtensionAbility onAccessibilityEventInfo');
     if (event.eventType === AccessibilityEventType.TYPE_CLICK) {
-      console.log('AxExtensionAbility onAccessibilityEventInfo: click');
+      console.info('AxExtensionAbility onAccessibilityEventInfo: click');
     }
   }
 }
@@ -185,9 +187,9 @@ import { KeyEvent, KeyCode } from '@kit.InputKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean {
-    console.log('AxExtensionAbility onAccessibilityKeyEvent');
+    console.info('AxExtensionAbility onAccessibilityKeyEvent');
     if (keyEvent.key.code === KeyCode.KEYCODE_VOLUME_UP) {
-      console.log('AxExtensionAbility onAccessibilityKeyEvent: intercept 16');
+      console.info('AxExtensionAbility onAccessibilityKeyEvent: intercept 16');
       return true;
     }
     return false;

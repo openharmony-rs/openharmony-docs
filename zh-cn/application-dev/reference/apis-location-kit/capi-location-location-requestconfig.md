@@ -6,6 +6,10 @@
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
 
+```c
+typedef struct Location_RequestConfig Location_RequestConfig
+```
+
 ## 概述
 
 定义位置请求参数的结构体。

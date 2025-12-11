@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVDemuxer OH_AVDemuxer
+```
+
 ## Overview
 
 The struct describes a native object for the OH_AVDemuxer interface.

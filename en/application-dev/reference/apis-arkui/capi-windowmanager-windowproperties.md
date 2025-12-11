@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} WindowManager_WindowProperties
+```
+
 ## Overview
 
 The struct describes the window properties.

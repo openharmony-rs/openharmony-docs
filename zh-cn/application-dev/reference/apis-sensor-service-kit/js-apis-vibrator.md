@@ -27,7 +27,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -181,7 +181,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -559,7 +559,7 @@ stopVibration(callback: AsyncCallback&lt;void&gt;): void
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -607,7 +607,7 @@ stopVibration(): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -718,7 +718,7 @@ stopVibrationSync(): void
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1157,8 +1157,8 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 | deviceId            | number  | 否  | 否  | 设备ID。     |
 | vibratorId          | number  | 否  | 否  | 马达ID。     |
 | deviceName          | string  | 否  | 否  | 设备名称。     |
-| isHdHapticSupported | boolean | 否  | 否  | 是否支持高清振动。 |
-| isLocalVibrator     | boolean | 否  | 否  | 是否为本地设备。  |
+| isHdHapticSupported | boolean | 否  | 否  | 是否支持高清振动，true为支持，false为不支持。 |
+| isLocalVibrator     | boolean | 否  | 否  | 是否为本地设备，true为本地设备，false为非本地设备。 |
 
 
 ## vibrator.isHdHapticSupported<sup>12+</sup>
@@ -1173,7 +1173,7 @@ isHdHapticSupported(): boolean
 
 | 类型    | 说明                                                      |
 | ------- | --------------------------------------------------------- |
-| boolean | 返回对象，当返回true表示支持高清振动，返回false不支持。。 |
+| boolean | 返回对象，当返回true表示支持高清振动，返回false不支持。 |
 
 **错误码**：
 
@@ -1422,7 +1422,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 类型                                  | 说明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
-| [VibrateTime](#vibratetime9)          | 按照指定时长触发马达振动。<br/>**原子化服务API：** 从API Version 11开始，该接口支持在原子化服务中使用。 |
+| [VibrateTime](#vibratetime9)          | 按照指定时长触发马达振动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [VibratePreset](#vibratepreset9)      | 按照预置振动类型触发马达振动。                               |
 | [VibrateFromFile](#vibratefromfile10) | 按照自定义振动配置文件触发马达振动。                         |
 | [VibrateFromPattern<sup>18+</sup>](#vibratefrompattern18)      | 按照自定义振动效果触发马达振动。                             |
@@ -1431,7 +1431,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 指定时长振动类型。
 
-**原子化服务API**：从API Version 11开始，该接口在支持原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口在支持原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1566,14 +1566,14 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 马达振动属性。
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
 | 名称                   | 类型             | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ---------------- | ---- | ---- | ------------------------------------------------------------ |
 | id                     | number           | 否   | 是   | 马达ID， 默认值为0。                                         |
-| deviceId<sup>19+</sup> | number           | 否   | 是   | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API Version 19开始，该接口支持在原子化服务中使用。 |
+| deviceId<sup>19+</sup> | number           | 否   | 是   | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
 | usage                  | [Usage](#usage9) | 否   | 否   | 马达振动的使用场景。默认值为'unknown'，取值范围只允许在[Usage](#usage9)提供的类型中选取。 |
 
 ## Usage<sup>9+</sup>
@@ -1582,7 +1582,7 @@ type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' | '
 
 振动使用场景。
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 <!--RP1-->
@@ -1607,7 +1607,7 @@ vibrate(duration: number): Promise&lt;void&gt;
 
 按照指定持续时间触发马达振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1644,7 +1644,7 @@ vibrate(duration: number, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定持续时间触发马达振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1679,7 +1679,7 @@ vibrate(effectId: EffectId): Promise&lt;void&gt;
 
 按照预置振动效果触发马达振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1717,7 +1717,7 @@ vibrate(effectId: EffectId, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定振动效果触发马达振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1751,7 +1751,7 @@ stop(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 按照指定模式停止马达的振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1798,7 +1798,7 @@ stop(stopMode: VibratorStopMode, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定模式停止马达的振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 

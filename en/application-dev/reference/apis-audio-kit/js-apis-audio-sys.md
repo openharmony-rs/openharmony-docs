@@ -462,6 +462,19 @@ Enumerates the device types.
 | BLUETOOTH_SPP<sup>22+</sup> | 33 | Bluetooth device connected using the Serial Port Profile (SPP).|
 | NEARLINK_PORT<sup>22+</sup> | 34 | NearLink device connected using the PORT.                    |
 
+## AudioDevcieSelectStrategy<sup>21+</sup>
+
+Enumerates the device selection strategies.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+| Name                        | Value    | Description                             |
+|----------------------------| ------ |---------------------------------|
+| SELECT_STRATEGY_DEFAULT | 0 | Default device selection strategy.|
+| SELECT_STRATEGY_INDEPENDENT | 1 | Independent device selection strategy.| 
+
 ## PolicyType<sup>12+</sup>
 
 Enumerates the types of mute policies.
@@ -485,7 +498,7 @@ Describes audio capturer configurations.
 
 | Name                               | Type                                                                  | Read-Only| Optional| Description                                                                                                                                                                                                       |
 | ----------------------------------- |----------------------------------------------------------------------| ---- |---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | No| Yes| Preferred input device for this audio capturer.<br>The device must be an input device, and the source type in **capturerInfo** must be [SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8) or [SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8). Otherwise, this parameter is ignored.<br>1. If the caller does not specify a preferred device, the system automatically selects a suitable input device.<br>2. When the caller specifies a preferred device for creating a voice recognition or transcription stream:<br>(1) If the preferred device is online, the audio capturer uses it. If the device disconnects during operation, the system automatically switches to another available capture device.<br>(2) If the preferred device is offline, the audio capturer automatically selects another capture device. If the preferred device goes online during operation, the system automatically switches to the preferred device.<br>3. You can call [getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11) to obtain the capture device in use.|
+| preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | No| Yes| Preferred input device for this audio capturer.<br>The device must be an input device, and the source type in **capturerInfo** must be [SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8) or [SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8). Otherwise, this parameter is ignored.<br>1. If the caller does not specify a preferred device, the system automatically selects a suitable input device.<br>2. When the caller specifies a preferred device for creating a voice recognition or transcription stream:<br>(1) If the preferred device is online, the audio capturer uses it. If the device disconnects during operation, the system automatically switches to another available capturer.<br>(2) If the preferred device is offline, the audio capturer automatically selects another capturer. If the preferred device goes online during operation, the system automatically switches to the preferred device.<br>3. You can call [getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11) to obtain the capturer in use.|
 
                                                                                                   
 
@@ -2251,7 +2264,7 @@ Selects an audio output device based on the filter criteria. Currently, only one
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | Yes  | Filter criteria.              |
-| outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Output device.              |
+| outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Information about the output device.              |
 | callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -2308,7 +2321,7 @@ Selects an audio output device based on the filter criteria. Currently, only one
 | Name                | Type                                                        | Mandatory| Description                     |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
 | filter                | [AudioRendererFilter](#audiorendererfilter9)                 | Yes  | Filter criteria.              |
-| outputAudioDevices    | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Output device.              |
+| outputAudioDevices    | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Information about the output device.              |
 
 **Return value**
 
@@ -2353,6 +2366,76 @@ async function selectOutputDeviceByFilter(){
     console.error(`Result ERROR: ${err}`);
   })
 }
+```
+
+### selectOutputDeviceByFilter<sup>21+</sup>
+
+selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors, strategy: AudioDevcieSelectStrategy): Promise&lt;void&gt;
+
+Selects an audio output device based on the filter criteria and device selection strategy. Currently, only one output device can be selected. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name                | Type                                                        | Mandatory| Description                     |
+| ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| filter                | [AudioRendererFilter](#audiorendererfilter9)                 | Yes  | Filter criteria.              |
+| outputAudioDevices    | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Information about the output device.              |
+| strategy                | [AudioDevcieSelectStrategy](#audiodevcieselectstrategy21)                 | Yes  | Device selection strategy.              |
+
+**Return value**
+
+| Type                 | Description                        |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, audio.AudioDevcieSelectStrategy.SELECT_STRATEGY_INDEPENDENT).then(() => {
+  console.info('Succeeded in selecting output device by filter.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to select output device by filter. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### selectInputDeviceByFilter<sup>18+</sup>
@@ -2481,6 +2564,98 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
+### on('preferredOutputDeviceChangeByFilter')<sup>21+</sup>
+
+on(type: 'preferredOutputDeviceChangeByFilter', filter: AudioRendererFilter, callback: Callback\<AudioDeviceDescriptors>): void
+
+Subscribes to changes in the highest-priority output device based on specified filter criteria. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string | Yes  | Event type. The event **'preferredOutputDeviceChangeByFilter'** is triggered when the output device with the highest priority is changed.|
+| filter | [AudioRendererFilter](#audiorendererfilter9)  | Yes  | Filter criteria.|
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | Yes  | Callback used to return the information about the output device with the highest priority.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendererFilter, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+});
+```
+
+### off('preferredOutputDeviceChangeByFilter')<sup>21+</sup>
+
+off(type: 'preferredOutputDeviceChangeByFilter', callback?: Callback\<AudioDeviceDescriptors>): void
+
+Unsubscribes from changes in the highest-priority output device based on specified filter criteria. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string | Yes  | Event type. The event **'preferredOutputDeviceChangeByFilter'** is triggered when the output device with the highest priority is changed.|
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | No| Callback used to return the information about the output device with the highest priority.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+// Cancel all subscriptions to the event.
+audioRoutingManager.off('preferredOutputDeviceChangeByFilter');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let preferredOutputDeviceChangeByFilterCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in using on or off function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+};
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendererFilter, preferredOutputDeviceChangeByFilterCallback);
+
+audioRoutingManager.off('preferredOutputDeviceChangeByFilter', preferredOutputDeviceChangeByFilterCallback);
+```
+
 ### getPreferredInputDeviceByFilter<sup>18+</sup>
 
 getPreferredInputDeviceByFilter(filter: AudioCapturerFilter): AudioDeviceDescriptors
@@ -2545,6 +2720,8 @@ Excludes output devices. Once this API is successfully called, audio will no lon
 > This API can exclude only external output devices, but not local output devices.
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
+
+Starting from API version 23, his API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
 
 **System API**: This is a system API.
 
@@ -2613,6 +2790,8 @@ Restores previously excluded output devices. Once this API is called successfull
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
 
+Starting from API version 23, his API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -2679,6 +2858,8 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 Restores all previously excluded output devices that are used for a specific purpose. Once this API is called successfully, the audio output device can be reselected.
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
+
+Starting from API version 23, his API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
 
 **System API**: This is a system API.
 
@@ -2807,10 +2988,11 @@ Describes an audio device.
 | interruptGroupId<sup>9+</sup> | number                     | Yes  | No  | ID of the interruption group to which the device belongs.<br> **System capability**: SystemCapability.Multimedia.Audio.Device|
 | volumeGroupId<sup>9+</sup>    | number                     | Yes  | No  | ID of the volume group to which the device belongs.<br> **System capability**: SystemCapability.Multimedia.Audio.Device|
 | dmDeviceType<sup>18+</sup>    | number                     | Yes  | Yes| Subtype ID of the device.<br> **System capability**: SystemCapability.Multimedia.Audio.Core|
+| highQualityRecordingSupported<sup>21+</sup>    | boolean                     | Yes  | Yes| Whether high-quality recording is supported. **true** if supported, **false** otherwise.<br> **System capability**: SystemCapability.Multimedia.Audio.Core|
 
 ## AudioRendererFilter<sup>9+</sup>
 
-Implements filter criteria. Before calling **selectOutputDeviceByFilter**, you must obtain an AudioRendererFilter instance.
+Describes the audio renderer filter criteria.
 
 **System API**: This is a system API.
 
@@ -4801,10 +4983,10 @@ Sets a rendering target for the audio renderer. This API uses a promise to retur
 > - After the rendering target is changed to a mode other than [PLAYBACK](#rendertarget22):
 >   - The audio routing and interruption policies of the audio renderer cannot be managed using the [AudioSessionManager](arkts-apis-audio-AudioSessionManager.md) APIs.
 >   - The device type of the audio renderer will be set to [SYSTEM_PRIVATE](arkts-apis-audio-e.md#devicetype).
->   - If [Start](arkts-apis-audio-AudioRenderer.md#start8) is called and the audio scene is not [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
->   - If [getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8) or [getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10) is called, error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
->   - If [getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19) or [getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19) is called, error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
->   - If [setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) is called, error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
+>   - If [Start](arkts-apis-audio-AudioRenderer.md#start8) is called and the audio scene is not [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), error code [6800301](errorcode-audio.md#6800301-system-error) is returned.
+>   - If [getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8) or [getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10) is called, error code [6800301](errorcode-audio.md#6800301-system-error) is returned.
+>   - If [getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19) or [getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19) is called, error code [6800301](errorcode-audio.md#6800301-system-error) is returned.
+>   - If [setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) is called, error code [6800301](errorcode-audio.md#6800301-system-error) is returned.
 
 **Required permissions**: ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
 
@@ -4837,6 +5019,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 6800101 | Parameter verification failed. |
 | 6800103 | Operation not permit at running and release state. |
 | 6800104 | Current renderer is not supported to set target. |
+| 6800301 | Audio client call audio service error, System error. |
 
 **Example**
 

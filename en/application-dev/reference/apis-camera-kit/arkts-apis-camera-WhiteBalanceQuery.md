@@ -6,12 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+WhiteBalanceQuery provides APIs to check whether a white balance mode is supported and obtain the white balance mode range supported.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 20.
-
-WhiteBalanceQuery provides APIs to check whether a white balance mode is supported and obtain the white balance mode range supported.
 
 ## Modules to Import
 

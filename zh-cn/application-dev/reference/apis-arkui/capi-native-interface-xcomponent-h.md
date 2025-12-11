@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @ZhangYu-Coder-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -141,12 +141,13 @@
 | -- | -- |
 | const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | ArkUI XComponent的id最大长度。<br>**起始版本：** 8 |
 | const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10 | 触摸事件中的可识别的触摸点个数最大值。<br>**起始版本：** 8 |
+| OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER 10 | 最大支持10个触摸点。<br>**起始版本：** 8 |
 
 ## 枚举类型说明
 
 ### anonymous
 
-```
+```c
 enum anonymous
 ```
 
@@ -165,7 +166,7 @@ enum anonymous
 
 ### ArkUI_XComponent_ImageAnalyzerState
 
-```
+```c
 enum ArkUI_XComponent_ImageAnalyzerState
 ```
 
@@ -186,7 +187,7 @@ XComponent图像AI分析状态码.
 
 ### OH_NativeXComponent_TouchEventType
 
-```
+```c
 enum OH_NativeXComponent_TouchEventType
 ```
 
@@ -200,14 +201,14 @@ enum OH_NativeXComponent_TouchEventType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_DOWN = 0 | 手指按下时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_UP | 手指抬起时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_MOVE | 手指按下状态下在屏幕上移动时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_CANCEL | 触摸事件取消时触发事件。 |
-| OH_NATIVEXCOMPONENT_UNKNOWN | 无效的触摸类型。 |
+| OH_NATIVEXCOMPONENT_UP = 1 | 手指抬起时触发触摸事件。 |
+| OH_NATIVEXCOMPONENT_MOVE = 2 | 手指按下状态下在屏幕上移动时触发触摸事件。 |
+| OH_NATIVEXCOMPONENT_CANCEL = 3 | 触摸事件取消时触发事件。 |
+| OH_NATIVEXCOMPONENT_UNKNOWN = 4 | 无效的触摸类型。 |
 
 ### OH_NativeXComponent_TouchPointToolType
 
-```
+```c
 enum OH_NativeXComponent_TouchPointToolType
 ```
 
@@ -221,18 +222,18 @@ enum OH_NativeXComponent_TouchPointToolType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0 | 未识别工具类型。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER | 表示用手指。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN | 表示用触笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER | 表示用橡皮擦。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH | 表示用画笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL | 表示用铅笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH | 表示用气笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE | 表示用鼠标。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS | 表示用晶状体。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER = 1 | 表示用手指。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN = 2 | 表示用触笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER = 3 | 表示用橡皮擦。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH = 4 | 表示用画笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL = 5 | 表示用铅笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH = 6 | 表示用气笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE = 7 | 表示用鼠标。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS = 8 | 表示用晶状体。 |
 
 ### OH_NativeXComponent_EventSourceType
 
-```
+```c
 enum OH_NativeXComponent_EventSourceType
 ```
 
@@ -246,15 +247,15 @@ enum OH_NativeXComponent_EventSourceType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0 | 未知的输入源类型。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE | 表示输入源生成鼠标多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN | 表示输入源生成一个触摸屏多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD | 表示输入源生成一个触摸板多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK | 表示输入源生成一个操纵杆多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD | 表示输入源生成一个键盘事件。<br>**起始版本：** 10 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE = 1 | 表示输入源生成鼠标多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN = 2 | 表示输入源生成一个触摸屏多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD = 3 | 表示输入源生成一个触摸板多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK = 4 | 表示输入源生成一个操纵杆多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD = 5 | 表示输入源生成一个键盘事件。<br>**起始版本：** 10 |
 
 ### OH_NativeXComponent_MouseEventAction
 
-```
+```c
 enum OH_NativeXComponent_MouseEventAction
 ```
 
@@ -268,14 +269,14 @@ enum OH_NativeXComponent_MouseEventAction
 | 枚举项 | 描述                              |
 | -- |---------------------------------|
 | OH_NATIVEXCOMPONENT_MOUSE_NONE = 0 | 无效鼠标事件。                         |
-| OH_NATIVEXCOMPONENT_MOUSE_PRESS | 鼠标按键按下时触发鼠标事件。                  |
-| OH_NATIVEXCOMPONENT_MOUSE_RELEASE | 鼠标按键松开时触发鼠标事件。                  |
-| OH_NATIVEXCOMPONENT_MOUSE_MOVE | 鼠标在屏幕上移动时触发鼠标事件。                |
-| OH_NATIVEXCOMPONENT_MOUSE_CANCEL | 鼠标按键被取消时触发鼠标事件。<br>**起始版本：** 18 |
+| OH_NATIVEXCOMPONENT_MOUSE_PRESS = 1 | 鼠标按键按下时触发鼠标事件。                  |
+| OH_NATIVEXCOMPONENT_MOUSE_RELEASE = 2 | 鼠标按键松开时触发鼠标事件。                  |
+| OH_NATIVEXCOMPONENT_MOUSE_MOVE = 3 | 鼠标在屏幕上移动时触发鼠标事件。                |
+| OH_NATIVEXCOMPONENT_MOUSE_CANCEL = 4 | 鼠标按键被取消时触发鼠标事件。<br>**起始版本：** 18 <br> **说明：** OH_NATIVEXCOMPONENT_MOUSE_CANCEL表示鼠标事件被取消，通常在以下场景被触发：<br>1.组件失去焦点：当前持有焦点的XComponent因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br> 2.事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br>3.异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。|
 
 ### OH_NativeXComponent_MouseEventButton
 
-```
+```c
 enum OH_NativeXComponent_MouseEventButton
 ```
 
@@ -297,7 +298,7 @@ enum OH_NativeXComponent_MouseEventButton
 
 ### OH_NativeXComponent_TouchEvent_SourceTool
 
-```
+```c
 enum OH_NativeXComponent_TouchEvent_SourceTool
 ```
 
@@ -326,7 +327,7 @@ enum OH_NativeXComponent_TouchEvent_SourceTool
 
 ### OH_NativeXComponent_GetXComponentId()
 
-```
+```c
 int32_t OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, char* id, uint64_t* size)
 ```
 
@@ -354,7 +355,7 @@ int32_t OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, char
 
 ### OH_NativeXComponent_GetXComponentSize()
 
-```
+```c
 int32_t OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, const void* window, uint64_t* width, uint64_t* height)
 ```
 
@@ -383,7 +384,7 @@ int32_t OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, co
 
 ### OH_NativeXComponent_GetXComponentOffset()
 
-```
+```c
 int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, const void* window, double* x, double* y)
 ```
 
@@ -412,7 +413,7 @@ int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, 
 
 ### OH_NativeXComponent_GetTouchEvent()
 
-```
+```c
 int32_t OH_NativeXComponent_GetTouchEvent(OH_NativeXComponent* component, const void* window, OH_NativeXComponent_TouchEvent* touchEvent)
 ```
 
@@ -440,7 +441,7 @@ int32_t OH_NativeXComponent_GetTouchEvent(OH_NativeXComponent* component, const 
 
 ### OH_NativeXComponent_GetTouchPointToolType()
 
-```
+```c
 int32_t OH_NativeXComponent_GetTouchPointToolType(OH_NativeXComponent* component, uint32_t pointIndex,OH_NativeXComponent_TouchPointToolType* toolType)
 ```
 
@@ -468,7 +469,7 @@ int32_t OH_NativeXComponent_GetTouchPointToolType(OH_NativeXComponent* component
 
 ### OH_NativeXComponent_GetTouchPointTiltX()
 
-```
+```c
 int32_t OH_NativeXComponent_GetTouchPointTiltX(OH_NativeXComponent* component, uint32_t pointIndex, float* tiltX)
 ```
 
@@ -496,7 +497,7 @@ int32_t OH_NativeXComponent_GetTouchPointTiltX(OH_NativeXComponent* component, u
 
 ### OH_NativeXComponent_GetTouchPointTiltY()
 
-```
+```c
 int32_t OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, uint32_t pointIndex, float* tiltY)
 ```
 
@@ -524,7 +525,7 @@ int32_t OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, u
 
 ### OH_NativeXComponent_GetTouchPointWindowX()
 
-```
+```c
 int32_t OH_NativeXComponent_GetTouchPointWindowX(OH_NativeXComponent* component, uint32_t pointIndex, float* windowX)
 ```
 
@@ -552,7 +553,7 @@ int32_t OH_NativeXComponent_GetTouchPointWindowX(OH_NativeXComponent* component,
 
 ### OH_NativeXComponent_GetTouchPointWindowY()
 
-```
+```c
 int32_t OH_NativeXComponent_GetTouchPointWindowY(OH_NativeXComponent* component, uint32_t pointIndex, float* windowY)
 ```
 
@@ -580,7 +581,7 @@ int32_t OH_NativeXComponent_GetTouchPointWindowY(OH_NativeXComponent* component,
 
 ### OH_NativeXComponent_GetTouchPointDisplayX()
 
-```
+```c
 int32_t OH_NativeXComponent_GetTouchPointDisplayX(OH_NativeXComponent* component, uint32_t pointIndex, float* displayX)
 ```
 
@@ -608,7 +609,7 @@ int32_t OH_NativeXComponent_GetTouchPointDisplayX(OH_NativeXComponent* component
 
 ### OH_NativeXComponent_GetTouchPointDisplayY()
 
-```
+```c
 int32_t OH_NativeXComponent_GetTouchPointDisplayY(OH_NativeXComponent* component, uint32_t pointIndex, float* displayY)
 ```
 
@@ -636,7 +637,7 @@ int32_t OH_NativeXComponent_GetTouchPointDisplayY(OH_NativeXComponent* component
 
 ### OH_NativeXComponent_GetHistoricalPoints()
 
-```
+```c
 int32_t OH_NativeXComponent_GetHistoricalPoints(OH_NativeXComponent* component, const void* window,int32_t* size, OH_NativeXComponent_HistoricalPoint** historicalPoints)
 ```
 
@@ -665,7 +666,7 @@ int32_t OH_NativeXComponent_GetHistoricalPoints(OH_NativeXComponent* component, 
 
 ### OH_NativeXComponent_GetMouseEvent()
 
-```
+```c
 int32_t OH_NativeXComponent_GetMouseEvent(OH_NativeXComponent* component, const void* window, OH_NativeXComponent_MouseEvent* mouseEvent)
 ```
 
@@ -693,7 +694,7 @@ int32_t OH_NativeXComponent_GetMouseEvent(OH_NativeXComponent* component, const 
 
 ### OH_NativeXComponent_RegisterCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterCallback(OH_NativeXComponent* component, OH_NativeXComponent_Callback* callback)
 ```
 
@@ -720,7 +721,7 @@ int32_t OH_NativeXComponent_RegisterCallback(OH_NativeXComponent* component, OH_
 
 ### OH_NativeXComponent_RegisterMouseEventCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterMouseEventCallback(OH_NativeXComponent* component, OH_NativeXComponent_MouseEvent_Callback* callback)
 ```
 
@@ -747,7 +748,7 @@ int32_t OH_NativeXComponent_RegisterMouseEventCallback(OH_NativeXComponent* comp
 
 ### OH_NativeXComponent_GetExtraMouseEventInfo()
 
-```
+```c
 int32_t OH_NativeXComponent_GetExtraMouseEventInfo(OH_NativeXComponent* component, OH_NativeXComponent_ExtraMouseEventInfo** extraMouseEventInfo)
 ```
 
@@ -774,7 +775,7 @@ int32_t OH_NativeXComponent_GetExtraMouseEventInfo(OH_NativeXComponent* componen
 
 ### OH_NativeXComponent_GetMouseEventModifierKeyStates()
 
-```
+```c
 int32_t OH_NativeXComponent_GetMouseEventModifierKeyStates(OH_NativeXComponent_ExtraMouseEventInfo* extraMouseEventInfo, uint64_t* keys)
 ```
 
@@ -801,7 +802,7 @@ int32_t OH_NativeXComponent_GetMouseEventModifierKeyStates(OH_NativeXComponent_E
 
 ### OH_NativeXComponent_RegisterFocusEventCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterFocusEventCallback(OH_NativeXComponent* component, void (*callback)(OH_NativeXComponent* component, void* window))
 ```
 
@@ -828,7 +829,7 @@ int32_t OH_NativeXComponent_RegisterFocusEventCallback(OH_NativeXComponent* comp
 
 ### OH_NativeXComponent_RegisterKeyEventCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterKeyEventCallback(OH_NativeXComponent* component, void (*callback)(OH_NativeXComponent* component, void* window))
 ```
 
@@ -855,7 +856,7 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallback(OH_NativeXComponent* compon
 
 ### OH_NativeXComponent_RegisterBlurEventCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterBlurEventCallback(OH_NativeXComponent* component, void (*callback)(OH_NativeXComponent* component, void* window))
 ```
 
@@ -882,7 +883,7 @@ int32_t OH_NativeXComponent_RegisterBlurEventCallback(OH_NativeXComponent* compo
 
 ### OH_NativeXComponent_GetKeyEvent()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEvent(OH_NativeXComponent* component, OH_NativeXComponent_KeyEvent** keyEvent)
 ```
 
@@ -909,7 +910,7 @@ int32_t OH_NativeXComponent_GetKeyEvent(OH_NativeXComponent* component, OH_Nativ
 
 ### OH_NativeXComponent_GetKeyEventAction()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEventAction(OH_NativeXComponent_KeyEvent* keyEvent, OH_NativeXComponent_KeyAction* action)
 ```
 
@@ -936,7 +937,7 @@ int32_t OH_NativeXComponent_GetKeyEventAction(OH_NativeXComponent_KeyEvent* keyE
 
 ### OH_NativeXComponent_GetKeyEventCode()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEventCode(OH_NativeXComponent_KeyEvent* keyEvent, OH_NativeXComponent_KeyCode* code)
 ```
 
@@ -963,7 +964,7 @@ int32_t OH_NativeXComponent_GetKeyEventCode(OH_NativeXComponent_KeyEvent* keyEve
 
 ### OH_NativeXComponent_GetKeyEventSourceType()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEventSourceType(OH_NativeXComponent_KeyEvent* keyEvent, OH_NativeXComponent_EventSourceType* sourceType)
 ```
 
@@ -990,7 +991,7 @@ int32_t OH_NativeXComponent_GetKeyEventSourceType(OH_NativeXComponent_KeyEvent* 
 
 ### OH_NativeXComponent_GetKeyEventDeviceId()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEventDeviceId(OH_NativeXComponent_KeyEvent* keyEvent, int64_t* deviceId)
 ```
 
@@ -1017,7 +1018,7 @@ int32_t OH_NativeXComponent_GetKeyEventDeviceId(OH_NativeXComponent_KeyEvent* ke
 
 ### OH_NativeXComponent_GetKeyEventTimestamp()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEventTimestamp(OH_NativeXComponent_KeyEvent* keyEvent, int64_t* timestamp)
 ```
 
@@ -1044,7 +1045,7 @@ int32_t OH_NativeXComponent_GetKeyEventTimestamp(OH_NativeXComponent_KeyEvent* k
 
 ### OH_NativeXComponent_GetKeyEventModifierKeyStates()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEventModifierKeyStates(OH_NativeXComponent_KeyEvent* keyEvent, uint64_t* keys)
 ```
 
@@ -1071,7 +1072,7 @@ int32_t OH_NativeXComponent_GetKeyEventModifierKeyStates(OH_NativeXComponent_Key
 
 ### OH_NativeXComponent_GetKeyEventNumLockState()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent* keyEvent, bool* isNumLockOn)
 ```
 
@@ -1098,7 +1099,7 @@ int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent
 
 ### OH_NativeXComponent_GetKeyEventCapsLockState()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEvent* keyEvent, bool* isCapsLockOn)
 ```
 
@@ -1125,7 +1126,7 @@ int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEven
 
 ### OH_NativeXComponent_GetKeyEventScrollLockState()
 
-```
+```c
 int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEvent* keyEvent, bool* isScrollLockOn)
 ```
 
@@ -1152,7 +1153,7 @@ int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEv
 
 ### OH_NativeXComponent_SetExpectedFrameRateRange()
 
-```
+```c
 int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* component, OH_NativeXComponent_ExpectedRateRange* range)
 ```
 
@@ -1179,7 +1180,7 @@ int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* compo
 
 ### OH_NativeXComponent_RegisterOnFrameCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* component,void (*callback)(OH_NativeXComponent* component, uint64_t timestamp, uint64_t targetTimestamp))
 ```
 
@@ -1206,7 +1207,7 @@ int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* compone
 
 ### OH_NativeXComponent_UnregisterOnFrameCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* component)
 ```
 
@@ -1232,7 +1233,7 @@ int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* compo
 
 ### OH_NativeXComponent_AttachNativeRootNode()
 
-```
+```c
 int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)
 ```
 
@@ -1263,7 +1264,7 @@ int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component,
 
 ### OH_NativeXComponent_DetachNativeRootNode()
 
-```
+```c
 int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)
 ```
 
@@ -1294,7 +1295,7 @@ int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component,
 
 ### OH_NativeXComponent_RegisterUIInputEventCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterUIInputEventCallback(OH_NativeXComponent *component,void (*callback)(OH_NativeXComponent *component, ArkUI_UIInputEvent *event,ArkUI_UIInputEvent_Type type),ArkUI_UIInputEvent_Type type)
 ```
 
@@ -1322,7 +1323,7 @@ int32_t OH_NativeXComponent_RegisterUIInputEventCallback(OH_NativeXComponent *co
 
 ### OH_NativeXComponent_RegisterOnTouchInterceptCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterOnTouchInterceptCallback(OH_NativeXComponent* component, HitTestMode (*callback)(OH_NativeXComponent* component, ArkUI_UIInputEvent* event))
 ```
 
@@ -1349,7 +1350,7 @@ int32_t OH_NativeXComponent_RegisterOnTouchInterceptCallback(OH_NativeXComponent
 
 ### OH_NativeXComponent_SetNeedSoftKeyboard()
 
-```
+```c
 int32_t OH_NativeXComponent_SetNeedSoftKeyboard(OH_NativeXComponent* component, bool needSoftKeyboard)
 ```
 
@@ -1376,7 +1377,7 @@ int32_t OH_NativeXComponent_SetNeedSoftKeyboard(OH_NativeXComponent* component, 
 
 ### OH_NativeXComponent_RegisterSurfaceShowCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterSurfaceShowCallback(OH_NativeXComponent* component, void (*callback)(OH_NativeXComponent* component, void* window))
 ```
 
@@ -1403,7 +1404,7 @@ int32_t OH_NativeXComponent_RegisterSurfaceShowCallback(OH_NativeXComponent* com
 
 ### OH_NativeXComponent_RegisterSurfaceHideCallback()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterSurfaceHideCallback(OH_NativeXComponent* component, void (*callback)(OH_NativeXComponent* component, void* window))
 ```
 
@@ -1430,7 +1431,7 @@ int32_t OH_NativeXComponent_RegisterSurfaceHideCallback(OH_NativeXComponent* com
 
 ### OH_NativeXComponent_GetTouchEventSourceType()
 
-```
+```c
 int32_t OH_NativeXComponent_GetTouchEventSourceType(OH_NativeXComponent* component, int32_t pointId, OH_NativeXComponent_EventSourceType* sourceType)
 ```
 
@@ -1458,7 +1459,7 @@ int32_t OH_NativeXComponent_GetTouchEventSourceType(OH_NativeXComponent* compone
 
 ### OH_NativeXComponent_GetNativeXComponent()
 
-```
+```c
 OH_NativeXComponent* OH_NativeXComponent_GetNativeXComponent(ArkUI_NodeHandle node)
 ```
 
@@ -1484,7 +1485,7 @@ OH_NativeXComponent* OH_NativeXComponent_GetNativeXComponent(ArkUI_NodeHandle no
 
 ### OH_NativeXComponent_GetNativeAccessibilityProvider()
 
-```
+```c
 int32_t OH_NativeXComponent_GetNativeAccessibilityProvider(OH_NativeXComponent* component, ArkUI_AccessibilityProvider** handle)
 ```
 
@@ -1511,7 +1512,7 @@ int32_t OH_NativeXComponent_GetNativeAccessibilityProvider(OH_NativeXComponent* 
 
 ### OH_NativeXComponent_RegisterKeyEventCallbackWithResult()
 
-```
+```c
 int32_t OH_NativeXComponent_RegisterKeyEventCallbackWithResult(OH_NativeXComponent* component, bool (*callback)(OH_NativeXComponent* component, void* window))
 ```
 
@@ -1538,7 +1539,7 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallbackWithResult(OH_NativeXCompone
 
 ### OH_ArkUI_XComponent_StartImageAnalyzer()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_StartImageAnalyzer(ArkUI_NodeHandle node, void* userData,void (*callback)(ArkUI_NodeHandle node, ArkUI_XComponent_ImageAnalyzerState statusCode, void* userData))
 ```
 
@@ -1566,7 +1567,7 @@ int32_t OH_ArkUI_XComponent_StartImageAnalyzer(ArkUI_NodeHandle node, void* user
 
 ### OH_ArkUI_XComponent_StopImageAnalyzer()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_StopImageAnalyzer(ArkUI_NodeHandle node)
 ```
 
@@ -1592,7 +1593,7 @@ int32_t OH_ArkUI_XComponent_StopImageAnalyzer(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_SurfaceHolder_Create()
 
-```
+```c
 OH_ArkUI_SurfaceHolder* OH_ArkUI_SurfaceHolder_Create(ArkUI_NodeHandle node)
 ```
 
@@ -1618,7 +1619,7 @@ OH_ArkUI_SurfaceHolder* OH_ArkUI_SurfaceHolder_Create(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_SurfaceHolder_Dispose()
 
-```
+```c
 void OH_ArkUI_SurfaceHolder_Dispose(OH_ArkUI_SurfaceHolder* surfaceHolder)
 ```
 
@@ -1638,7 +1639,7 @@ void OH_ArkUI_SurfaceHolder_Dispose(OH_ArkUI_SurfaceHolder* surfaceHolder)
 
 ### OH_ArkUI_SurfaceHolder_SetUserData()
 
-```
+```c
 int32_t OH_ArkUI_SurfaceHolder_SetUserData(OH_ArkUI_SurfaceHolder* surfaceHolder, void* userData)
 ```
 
@@ -1665,7 +1666,7 @@ int32_t OH_ArkUI_SurfaceHolder_SetUserData(OH_ArkUI_SurfaceHolder* surfaceHolder
 
 ### OH_ArkUI_SurfaceHolder_GetUserData()
 
-```
+```c
 void* OH_ArkUI_SurfaceHolder_GetUserData(OH_ArkUI_SurfaceHolder* surfaceHolder)
 ```
 
@@ -1691,7 +1692,7 @@ void* OH_ArkUI_SurfaceHolder_GetUserData(OH_ArkUI_SurfaceHolder* surfaceHolder)
 
 ### OH_ArkUI_SurfaceCallback_Create()
 
-```
+```c
 OH_ArkUI_SurfaceCallback* OH_ArkUI_SurfaceCallback_Create()
 ```
 
@@ -1710,7 +1711,7 @@ OH_ArkUI_SurfaceCallback* OH_ArkUI_SurfaceCallback_Create()
 
 ### OH_ArkUI_SurfaceCallback_Dispose()
 
-```
+```c
 void OH_ArkUI_SurfaceCallback_Dispose(OH_ArkUI_SurfaceCallback* callback)
 ```
 
@@ -1730,7 +1731,7 @@ void OH_ArkUI_SurfaceCallback_Dispose(OH_ArkUI_SurfaceCallback* callback)
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent()
 
-```
+```c
 void OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(OH_ArkUI_SurfaceCallback* callback,void (*onSurfaceCreated)(OH_ArkUI_SurfaceHolder* surfaceHolder))
 ```
 
@@ -1751,7 +1752,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(OH_ArkUI_SurfaceCallback* c
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent()
 
-```
+```c
 void OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(OH_ArkUI_SurfaceCallback* callback,void (*onSurfaceChanged)(OH_ArkUI_SurfaceHolder* surfaceHolder, uint64_t width, uint64_t height))
 ```
 
@@ -1772,7 +1773,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(OH_ArkUI_SurfaceCallback* c
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent()
 
-```
+```c
 void OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(OH_ArkUI_SurfaceCallback* callback,void (*onSurfaceDestroyed)(OH_ArkUI_SurfaceHolder* surfaceHolder))
 ```
 
@@ -1793,7 +1794,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(OH_ArkUI_SurfaceCallback*
 
 ### OH_ArkUI_SurfaceHolder_AddSurfaceCallback()
 
-```
+```c
 int32_t OH_ArkUI_SurfaceHolder_AddSurfaceCallback(OH_ArkUI_SurfaceHolder* surfaceHolder,OH_ArkUI_SurfaceCallback* callback)
 ```
 
@@ -1820,7 +1821,7 @@ int32_t OH_ArkUI_SurfaceHolder_AddSurfaceCallback(OH_ArkUI_SurfaceHolder* surfac
 
 ### OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback()
 
-```
+```c
 int32_t OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback(OH_ArkUI_SurfaceHolder* surfaceHolder,OH_ArkUI_SurfaceCallback* callback)
 ```
 
@@ -1847,7 +1848,7 @@ int32_t OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback(OH_ArkUI_SurfaceHolder* sur
 
 ### OH_ArkUI_XComponent_GetNativeWindow()
 
-```
+```c
 OHNativeWindow* OH_ArkUI_XComponent_GetNativeWindow(OH_ArkUI_SurfaceHolder* surfaceHolder)
 ```
 
@@ -1873,7 +1874,7 @@ OHNativeWindow* OH_ArkUI_XComponent_GetNativeWindow(OH_ArkUI_SurfaceHolder* surf
 
 ### OH_ArkUI_XComponent_SetAutoInitialize()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoInitialize)
 ```
 
@@ -1900,7 +1901,7 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 
 ### OH_ArkUI_XComponent_Initialize()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)
 ```
 
@@ -1926,7 +1927,7 @@ int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_XComponent_Finalize()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)
 ```
 
@@ -1952,7 +1953,7 @@ int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_XComponent_IsInitialized()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitialized)
 ```
 
@@ -1979,7 +1980,7 @@ int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitial
 
 ### OH_ArkUI_XComponent_SetExpectedFrameRateRange()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_NativeXComponent_ExpectedRateRange range)
 ```
 
@@ -2006,7 +2007,7 @@ int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_
 
 ### OH_ArkUI_XComponent_RegisterOnFrameCallback()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node,void (*callback)(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp))
 ```
 
@@ -2033,7 +2034,7 @@ int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node,void (
 
 ### OH_ArkUI_XComponent_UnregisterOnFrameCallback()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node)
 ```
 
@@ -2059,7 +2060,7 @@ int32_t OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_XComponent_SetNeedSoftKeyboard()
 
-```
+```c
 int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool needSoftKeyboard)
 ```
 
@@ -2086,7 +2087,7 @@ int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool need
 
 ### OH_ArkUI_AccessibilityProvider_Create()
 
-```
+```c
 ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHandle node)
 ```
 
@@ -2112,7 +2113,7 @@ ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHan
 
 ### OH_ArkUI_AccessibilityProvider_Dispose()
 
-```
+```c
 void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider)
 ```
 
@@ -2132,7 +2133,7 @@ void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provide
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent()
 
-```
+```c
 void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* callback,void (*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder))
 ```
 
@@ -2153,7 +2154,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* call
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent()
 
-```
+```c
 void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* callback,void (*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder))
 ```
 
@@ -2174,7 +2175,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* call
 
 ### OH_ArkUI_XComponentSurfaceConfig_Create()
 
-```
+```c
 ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()
 ```
 
@@ -2194,7 +2195,7 @@ ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()
 
 ### OH_ArkUI_XComponentSurfaceConfig_Dispose()
 
-```
+```c
 void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* config)
 ```
 
@@ -2214,7 +2215,7 @@ void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* con
 
 ### OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque()
 
-```
+```c
 void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig* config, bool isOpaque)
 ```
 
@@ -2235,7 +2236,7 @@ void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig*
 
 ### OH_ArkUI_SurfaceHolder_SetSurfaceConfig()
 
-```
+```c
 int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder* surfaceHolder, ArkUI_XComponentSurfaceConfig *config)
 ```
 

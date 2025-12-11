@@ -25,7 +25,7 @@ import { GesturePoint } from '@kit.AccessibilityKit';
 
 表示手势触摸点。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 

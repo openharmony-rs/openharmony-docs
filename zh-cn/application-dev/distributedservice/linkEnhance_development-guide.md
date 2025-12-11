@@ -123,7 +123,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       }
     }
     ```
-5. 当连接被连上时，需要保存connection对象。
+4. 当连接被连上时，需要保存connection对象。
     ```ts
     serverAcceptOnCallback = (connection: linkEnhance.Connection): void => {
       console.info(TAG + 'serverOnCallback');
@@ -148,7 +148,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       }
     }
     ```
-6. 断开连接并销毁Connection对象。
+5. 断开连接并销毁Connection对象。
     ```ts
     // 断连接。
     linkEnhanceDisconnect(connection: linkEnhance.Connection) {
@@ -162,7 +162,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       }
     }
     ```
-7. 停止服务并销毁server对象。
+6. 停止服务并销毁server对象。
     ```ts
     // Server端停止服务
     linkEnhanceStop(server: linkEnhance.Server) {
@@ -190,7 +190,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 1. 导入所需的模块。
     ```ts
-    import linkEnhance from '@kit.DistributedServiceKit';
+    import { linkEnhance } from '@kit.DistributedServiceKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 2. 在module.json5配置文件中配置分布式数据同步权限ohos.permission.DISTRIBUTED_DATASYNC。

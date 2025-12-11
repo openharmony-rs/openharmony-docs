@@ -567,7 +567,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | Field       | Type   | Description                        | Remarks|
 |-------------|---------|------------------------------| ---- |
 | name        | String  | Name of the default permission group.| NA   |
-| order       | String  | Sequence of the default permission group. | NA   |
+| order       | String  | Order of the default permission group. | NA   |
 | icon        | String  | Icon of the default permission group.| NA   |
 | label       | String  | Label of the default permission group.| NA   |
 | description | String  | Description of the default permission group.| NA   |

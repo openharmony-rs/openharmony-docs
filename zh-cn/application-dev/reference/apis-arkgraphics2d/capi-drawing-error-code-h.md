@@ -38,7 +38,7 @@
 
 ### OH_Drawing_ErrorCode
 
-```
+```c
 enum OH_Drawing_ErrorCode
 ```
 
@@ -62,7 +62,7 @@ enum OH_Drawing_ErrorCode
 
 ### OH_Drawing_ErrorCodeGet()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_ErrorCodeGet()
 ```
 
@@ -82,7 +82,7 @@ OH_Drawing_ErrorCode OH_Drawing_ErrorCodeGet()
 
 ### OH_Drawing_ErrorCodeReset()
 
-```
+```c
 void OH_Drawing_ErrorCodeReset(void)
 ```
 

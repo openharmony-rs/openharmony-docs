@@ -34,11 +34,11 @@ UDMF针对部分标准化数据类型定义的标准化数据结构如下所示�
 1. 导入对应模块。
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     // 1. 导入unifiedDataChannel和uniformTypeDescriptor模块。
     import { uniformDataStruct, uniformTypeDescriptor, unifiedDataChannel } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. 创建超链接数据记录。

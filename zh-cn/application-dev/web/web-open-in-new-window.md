@@ -7,10 +7,12 @@
 <!--Adviser: @HelloShuo-->
 
 
-Web组件提供了在新窗口打开页面的能力，开发者可以通过[multiWindowAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#multiwindowaccess9)接口来设置是否允许网页在新窗口打开。当有新窗口打开时，应用侧会在[onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9)接口中收到Web组件新窗口事件。开发者需要在此接口事件中新建窗口来处理Web组件的窗口请求。
+Web组件提供了在新窗口打开页面的能力，开发者可以通过[multiWindowAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#multiwindowaccess9)接口来设置是否允许网页在新窗口打开。当有新窗口打开时，应用侧会在[onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9)接口或[onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23)接口中收到Web组件新窗口事件。开发者需要在此接口事件中新建窗口来处理Web组件的窗口请求。
 
 
 > **说明：**
+>
+> - [onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23)接口为[onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9)接口的功能增强接口，`OnWindowNewExtEvent`比`OnWindowNewEvent`新增了[NavigationPolicy](../reference/apis-arkweb/arkts-basic-components-web-e.md#navigationpolicy23)和[WindowFeatures](../reference/apis-arkweb/arkts-basic-components-web-i.md#windowfeatures23)，用于通知应用新窗口的打开方式和位置大小信息。当在同一个Web组件上同时使用这两个接口时，只有[onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23)接口会被触发。 
 >
 > - [allowWindowOpenMethod()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#allowwindowopenmethod10)接口设置为true时，前端页面通过JavaScript函数调用的方式打开新窗口。
 >

@@ -2406,9 +2406,9 @@ Defines the download task information, which is the callback parameter of the [g
 
 ## request.agent
 
-### Constants<sup>21+</sup>
+### Constants
 
-**System capability**: SystemCapability.MiscServices.Download
+**System capability**: SystemCapability.Request.FileTransferAgent
 
 
 | Name| Type| Value| Description|
@@ -2662,7 +2662,7 @@ Describes the custom information of the notification bar.
 |------|--------|----|----|-------------------------------|
 | title   | string | No| Yes| Custom title, with a maximum of 1024 bytes. The default title is used if this parameter is not set.  |
 | text    | string | No| Yes| Custom body text, with a maximum of 3072 bytes. The default text is used if this parameter is not set.   |
-| visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on the [VISIBILITY constant](#constants21). The options are as follows:<br>- Only the completion notification is displayed. The parameter is **VISIBILITY_COMPLETION** or **1**. The corresponding notification is displayed after the task is complete or fails. <br>- Only the progress notification is displayed when the task is in progress. The parameter is **VISIBILITY_PROGRESS** or **2**. Completion notification is not displayed when the download task is complete or fails.<br>- The progress notification and completion notification are displayed. The parameter is **VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS** or **3**. The progress notification is displayed when the task is in progress. When the download task is complete or fails, the completion notification is displayed as well.<br>If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed.|
+| visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on the [VISIBILITY constant](#constants-1). The options are as follows:<br>- Only the completion notification is displayed. The parameter is **VISIBILITY_COMPLETION** or **1**. The corresponding notification is displayed after the task is complete or fails. <br>- Only the progress notification is displayed when the task is in progress. The parameter is **VISIBILITY_PROGRESS** or **2**. Completion notification is not displayed when the download task is complete or fails.<br>- The progress notification and completion notification are displayed. The parameter is **VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS** or **3**. The progress notification is displayed when the task is in progress. When the download task is complete or fails, the completion notification is displayed as well.<br>If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed.|
 | wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | No| Yes| Notification parameter, which is used to implement redirection after a task notification is tapped.|
 
 

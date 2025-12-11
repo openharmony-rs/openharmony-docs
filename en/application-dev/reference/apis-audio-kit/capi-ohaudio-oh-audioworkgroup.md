@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioWorkgroup OH_AudioWorkgroup
+```
+
 ## Overview
 
 The struct describes an audio group, which is used to group and manage key audio threads.

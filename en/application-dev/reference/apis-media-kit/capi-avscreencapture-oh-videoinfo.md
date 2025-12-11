@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_VideoInfo {...} OH_VideoInfo
+```
+
 ## Overview
 
 The struct describes the video information.

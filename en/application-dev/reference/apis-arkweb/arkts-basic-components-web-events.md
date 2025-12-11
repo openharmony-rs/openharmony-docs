@@ -419,6 +419,7 @@ Triggered to notify the host application of a JavaScript console message.
               console.info('getSourceId:' + event.message.getSourceId());
               console.info('getLineNumber:' + event.message.getLineNumber());
               console.info('getMessageLevel:' + event.message.getMessageLevel());
+              console.info('getSource:' + event.message.getSource());
             }
             return false;
           })
@@ -1812,6 +1813,112 @@ Interconnect with certificate management to implement two-way authentication.
     }
     ```
 
+## onVerifyPin<sup>22+</sup>
+onVerifyPin(callback: OnVerifyPinCallback)
+
+Triggered to notify the user of PIN verification. This API uses an asynchronous callback to return the result.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                 |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22) | Yes| Callback triggered to notify the user of PIN authentication. |
+
+  **Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+import certMgrDialog from '@ohos.security.certManagerDialog';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  controller: WebviewController = new webview.WebviewController();
+  uiContext : UIContext = this.getUIContext();
+  context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear(): void {
+    webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE)
+  }
+
+  build() {
+    Column() {
+      Button('Load the website that requires the client SSL certificate')
+        .onClick(() => {
+          this.controller.loadUrl("https://client.badssl.com")
+        })
+      Web({
+        src: "https://www.bing.com/",
+        controller: this.controller,
+      }).domStorageAccess(true)
+        .fileAccess(true)
+        .onPageBegin(event => {
+          console.info("extensions onpagebegin url " + event.url);
+        })
+        .onClientAuthenticationRequest((event) => {
+          // Receive the client certificate request event.
+          console.info(`onClientAuthenticationRequest`);
+          try {
+            let certTypes: Array<certMgrDialog.CertificateType> = [
+              certMgrDialog.CertificateType.CREDENTIAL_UKEY
+            ];
+            // Invoke the certificate management to open the certificate selection dialog box.
+            certMgrDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
+              .then((data: certMgrDialog.CertReference) => {
+                console.info(`openAuthorizeDialog request cred auth success`)
+                // Notify the web page that the UKey certificate is selected.
+                event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
+              }).catch((err: BusinessError) => {
+              console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(err)}`);
+            })
+          } catch (e) {
+            console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(e)}`);
+          }
+          return true;
+        })
+        .onVerifyPin((event) => {
+          // Receive the PIN verification request event.
+          console.info(`onVerifyPin`);
+          // Invoke the certificate management to open the PIN input box.
+          certMgrDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
+            .then(() => {
+              // Notify the web page that the PIN verification is successful.
+              console.info(`onVerifyPin success`);
+              event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
+            }).catch((err: BusinessError) => {
+            // Notify the web page that the PIN verification fails.
+            console.info(`onVerifyPin fail`);
+            event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
+          })
+        })
+        .onSslErrorEventReceive(e => {
+          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+        })
+        .onErrorReceive((event) => {
+          if (event) {
+            this.getUIContext().getPromptAction().showToast({
+              message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
+              alignment: Alignment.Center
+            })
+            console.info('getErrorInfo:' + event.error.getErrorInfo());
+            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.info('url:' + event.request.getRequestUrl());
+          }
+        })
+        .onTitleReceive(event  => {
+          console.info("title received " + event.title);
+        })
+
+    }
+  }
+}
+```
+
 ## onPermissionRequest<sup>9+</sup>
 
 onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
@@ -3000,7 +3107,7 @@ Triggered when the first meaningful paint occurs on the web page.
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onFirstMeaningfulPaint((details) => {
-            console.log("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
+            console.info("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
               ", [firstMeaningfulPaintTime]=" + details.firstMeaningfulPaintTime);
           })
       }
@@ -3357,18 +3464,6 @@ Called when the safe browsing check result is received.
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
-  export enum ThreatType {
-    UNKNOWN = -1,
-    THREAT_ILLEGAL = 0,
-    THREAT_FRAUD = 1,
-    THREAT_RISK = 2,
-    THREAT_WARNING = 3,
-  }
-
-  export class OnSafeBrowsingCheckResultCallback {
-    threatType: ThreatType = ThreatType.UNKNOWN;
-  }
-
   @Entry
   @Component
   struct WebComponent {
@@ -3378,9 +3473,8 @@ Called when the safe browsing check result is received.
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckResult((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
-            console.info("onSafeBrowsingCheckResult: [threatType]= " + json.threatType);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
+            console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
           })
       }
     }
@@ -3407,20 +3501,6 @@ Called when the safe browsing check is complete.
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
-  export enum ThreatType {
-    UNKNOWN = -1,
-    THREAT_ILLEGAL = 0,
-    THREAT_FRAUD = 1,
-    THREAT_RISK = 2,
-    THREAT_WARNING = 3,
-    THREAT_NONE = 4,
-    THREAT_UNPROCESSED = 5,
-  }
-
-  export class OnSafeBrowsingCheckResultCallback {
-    threatType: ThreatType = ThreatType.UNKNOWN;
-  }
-
   @Entry
   @Component
   struct WebComponent {
@@ -3430,9 +3510,8 @@ Called when the safe browsing check is complete.
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckFinish((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
-            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json.threatType);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
+            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
           })
       }
     }
@@ -4032,7 +4111,7 @@ Triggered before any editable element (such as the **input** tag) on the web pag
           // Traverse attributes.
           let attributeKeys = Object.keys(attributes)
           for (let i = 0; i < attributeKeys.length; i++) {
-            console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
           }
 
           if (attributes) {
@@ -4517,11 +4596,11 @@ Called when the **param** element embedded in the same-layer rendering tag **obj
               }
             })
             .onNativeEmbedObjectParamChange((event) => {
-              console.log("embed id: " + event.embedId);
+              console.info("embed id: " + event.embedId);
               let paramItems = event.paramItems;
               if (paramItems) {
                 for (let i = 0; i < paramItems.length; ++i) {
-                  console.log("param info: " + JSON.stringify(paramItems[i]));
+                  console.info("param info: " + JSON.stringify(paramItems[i]));
                 }
               }
             })
@@ -4764,7 +4843,7 @@ Called when a blank screen is detected in the **Web** component.
 
 | Name       | Type   | Mandatory  | Description         |
 | ---------- | ------- | ---- | ------------- |
-| callback | OnDetectBlankScreenCallback\<[BlankScreenDetectionEventInfo](./arkts-basic-components-web-i.md#blankscreendetectioneventinfo22)\> | Yes   | Callback triggered when a blank screen is detected in the **Web** component.|
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | Yes   | Callback triggered when a blank screen is detected in the **Web** component.|
 
 **Example**
 
@@ -4787,9 +4866,9 @@ Called when a blank screen is detected in the **Web** component.
             detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
           })
           .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
-            console.log(`Found blank screen on ${event.url}.`);
-            console.log(`The blank screen reason is ${event.blankScreenReason}.`);
-            console.log(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+            console.info(`Found blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.info(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
           })
       }
     }
@@ -4818,3 +4897,341 @@ For details, see [Lifecycle of the Web Component](../../web/web-event-sequence.m
 | Name             | Type                                    | Mandatory  | Description            |
 | ---------------- | ---------------------------------------- | ---- | ---------------- |
 | callback |(event?: { detail: object }) => boolean | Yes   | Callback triggered when the rendering process exits abnormally.|
+
+## onCameraCaptureStateChange<sup>23+</sup>
+
+onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
+
+Triggered to notify the user of the camera state on the current web page, which can be **None**, **Active**, or **Paused**. This API uses an asynchronous callback to return the result.
+
+You can use the **startCamera**, **stopCamera**, and **closeCamera** APIs to enable, pause, and stop the camera respectively. For details about how to use them, see [startCamera](arkts-apis-webview-WebviewController.md#startcamera12).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| Callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | Yes  | Callback triggered when the camera capture state changes. It returns the original and new states.|
+
+> **NOTE**
+> 
+> **Active** is returned when the camera is being used on the current web page.
+>
+> **Paused** is returned when the camera is paused on the current web page.
+> 
+> **None** is returned when the camera is not being used on the current web page.
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
+
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear(): void {
+      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+      atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
+        console.info('data:' + JSON.stringify(data));
+        console.info('data permissions:' + data.permissions);
+        console.info('data authResults:' + data.authResults);
+      })
+    }
+
+    build() {
+      Column() {
+        Button("startCamera").onClick(() => {
+          try {
+            this.controller.startCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("stopCamera").onClick(() => {
+          try {
+            this.controller.stopCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("closeCamera").onClick(() => {
+          try {
+            this.controller.closeCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  }
+                },
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  }
+                },
+                cancel: () => {
+                  event.request.deny();
+                }
+              })
+            }
+          })
+         .onCameraCaptureStateChange((event:CameraCaptureStateInfo)=>{
+            console.info("CameraCapture from ", event.originalState, " to ", event.newState);
+        })
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+   <head>
+     <meta charset="UTF-8">
+   </head>
+   <body>
+     <video id="video" width="400px" height="400px" autoplay="autoplay">
+     </video>
+     <input type="button" title="HTML5 camera" value="Enable camera" onclick="getMedia()"/>
+     <script>
+       function getMedia() {
+         let constraints = {
+           video: {
+             width: 500,
+             height: 500
+           },
+           audio: true
+         }
+         let video = document.getElementById("video");
+         let promise = navigator.mediaDevices.getUserMedia(constraints);
+         promise.then(function(MediaStream) {
+           video.srcObject = MediaStream;
+           video.play();
+         })
+       }
+     </script>
+   </body>
+  </html>
+  ```
+
+## onMicrophoneCaptureStateChange<sup>23+</sup>
+
+onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
+
+Triggered to notify the user of the microphone state on the current web page, which can be **None**, **Active**, or **Paused**. This API uses an asynchronous callback to return the result.
+
+You can use the **resumeMicrophone**, **pauseMicrophone**, and **stopMicrophone** APIs to resume, pause, and stop the microphone. For details about how to use them, see [resumeMicrophone](./arkts-apis-webview-WebviewController.md#resumemicrophone23).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| Callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | Yes  | Callback triggered when the microphone capture state changes. It returns the original and new states.|
+
+> **NOTE**
+> 
+> **Active** is returned when the current web page is using the microphone; **Paused** is returned when the current web page pauses using the microphone; **None** is returned when the current web page does not use the microphone.
+>
+> When the microphone is being used and the **pauseMicrophone** API is called, the current microphone pauses capturing. You can call the **resumeMicrophone** API using ArkWeb to resume the capture.
+> 
+> When the microphone is being used and the **stopMicrophone** API is called, the current microphone stops capturing. Capture cannot be resumed unless the frontend capture is restarted.
+> 
+> When the microphone is paused and the **resumeMicrophone** API is called, the current microphone continues capturing.
+> 
+> When the microphone is paused and the **stopMicrophone** API is called, the current microphone stops capturing. Capture cannot be resumed unless the frontend capture is restarted.
+> 
+> When the microphone is not in use, the microphone state does not change after the **resumeMicrophone** or **stopMicrophone** API is called.
+
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
+
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear(): void {
+      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+      atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+        console.info('data:' + JSON.stringify(data));
+        console.info('data permissions:' + data.permissions);
+        console.info('data authResults:' + data.authResults);
+      })
+    }
+
+    build() {
+      Column() {
+        Button("resumeMicrophone").onClick(() => {
+          try {
+            this.controller.resumeMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("pauseMicrophone").onClick(() => {
+          try {
+            this.controller.pauseMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("stopMicrophone").onClick(() => {
+          try {
+            this.controller.stopMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  }
+                },
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  }
+                },
+                cancel: () => {
+                  event.request.deny();
+                }
+              })
+            }
+          })
+          .onMicrophoneCaptureStateChange((event:MicrophoneCaptureStateInfo)=>{
+            console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
+        })
+      }
+    }
+  }    
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+   <head>
+     <meta charset="UTF-8">
+   </head>
+   <body>
+     <video id="video" width="400px" height="400px" autoplay="autoplay">
+     </video>
+     <input type="button" title="HTML5 microphone" value="Enable microphone" onclick="getMedia()" />
+     <script>
+       function getMedia() {
+         let constraints = {
+           video: {
+             width: 500,
+             height: 500
+           },
+           audio: true
+         }
+         let video = document.getElementById("video");
+         let promise = navigator.mediaDevices.getUserMedia(constraints);
+         promise.then(function(MediaStream) {
+           video.srcObject = MediaStream;
+           video.play();
+         })
+       }
+     </script>
+   </body>
+  </html>
+  ```
+
+## onTextSelectionChange<sup>23+</sup>
+
+onTextSelectionChange(callback: TextSelectionChangeCallback)
+
+Triggered when the text selection of the **Web** component changes. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - The gesture selection, mouse selection, and JS selection are supported.
+>
+> - This callback is triggered when the selection ends.
+>
+> - If the same selection is made using the same method as the previous one, this callback is not triggered. If the same selection is made using a different method from the previous one, this callback is triggered.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory  | Description                                  |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | [TextSelectionChangeCallback](./arkts-basic-components-web-t.md#textselectionchangecallback23) | Yes   | Callback triggered when the text selection changes.|
+
+**Example**
+
+  ```ts
+  // onTextSelectionChange.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onTextSelectionChange((selectionText: string) => {
+            console.info(`Selected text is ${selectionText}.`);
+          })
+      }
+    }
+  }
+  ```
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Example page</title>
+  </head>
+  <body>
+      Sample text
+  </body>
+  </html>
+  ```

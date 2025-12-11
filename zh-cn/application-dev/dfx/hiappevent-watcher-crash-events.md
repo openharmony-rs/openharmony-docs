@@ -102,6 +102,8 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | time | number | 事件触发时间，单位为ms。 |
 | crash_type | string | 崩溃类型，支持NativeCrash（native代码异常）和JsError（js代码异常）两种类型。检测方法请参见[CppCrash（NativeCrash）检测](cppcrash-guidelines.md)和[Js Crash（JsError）检测](jscrash-guidelines.md)。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台状态；false表示应用处于后台状态。 |
+| release_type | string | 标识应用打包时使用的SDK的发布类型。具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API version 23开始支持。 |
+| cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | pid | number | 应用的进程ID。 |

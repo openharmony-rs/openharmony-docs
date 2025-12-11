@@ -490,7 +490,7 @@ With this permission, the application can call APIs to perform virtual screen ma
 
 **Authorization mode**: system_grant
 
-**Since**: 18
+**Since**: 16
 
 ## ohos.permission.MANAGE_APN_SETTING
 
@@ -916,5 +916,35 @@ This permission is applicable only to network connection or identification, not 
 **Authorization mode**: system_grant
 
 **Device**: general devices
+
+**Since**: 22
+
+## ohos.permission.atomicService.MANAGE_AGING
+
+Allows an atomic service to request differentiated aging policies.
+
+<!--RP59--><!--RP59End-->
+
+**Permission level**：system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 23
+
+## ohos.permission.ACCESS_USER_FULL_DISK
+
+Allows an application to access public user paths without displaying any pop-up.
+
+With this permission, the application can access public user paths without showing pop-up each time.
+
+<!--RP60--><!--RP60End-->
+
+**Permission level**：system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 22

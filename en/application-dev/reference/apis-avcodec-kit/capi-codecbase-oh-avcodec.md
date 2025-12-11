@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVCodec OH_AVCodec
+```
+
 ## Overview
 
 The struct describes a native object for the audio and video codec interface.

@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_NativeStackFrame {...} HiDebug_NativeStackFrame
+```
+
 ## Overview
 
 Defines the native stack frame content.

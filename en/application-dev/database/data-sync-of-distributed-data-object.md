@@ -147,19 +147,19 @@ Most of the APIs for cross-device sync of distributed data objects are executed 
 | genSessionId(): string | Generates a session ID for distributed data objects.|
 | setSessionId(sessionId: string, callback: AsyncCallback&lt;void&gt;): void | Sets a session ID for data sync. Automatic sync is performed for devices with the same session ID on a trusted network.|
 | setSessionId(callback: AsyncCallback&lt;void&gt;): void | Exits all sessions.|
-| on(type: 'change', callback: (sessionId: string, fields: Array&lt;string&gt;) => void): void | Subscribes to data changes of the distributed data object.|
-| off(type: 'change', callback?: (sessionId: string, fields: Array&lt;string&gt;) => void): void | Unsubscribes from data changes of the distributed data object.|
-| on(type: 'status', callback: (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void): void | Subscribes to status changes of the distributed data object.|
-| off(type: 'status', callback?: (sessionId: string, networkId: string, status: 'online' \|'offline' ) => void): void | Unsubscribes from status changes of the distributed data object.|
+| on(type: 'change', callback: (sessionId: string, fields: Array&lt;string&gt;) => void): void | Subscribes to data changes of a distributed data object. |
+| off(type: 'change', callback?: (sessionId: string, fields: Array&lt;string&gt;) => void): void | Unsubscribes from data changes of a distributed data object. |
+| on(type: 'status', callback: (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void): void | Subscribes to status changes of a distributed data object. |
+| off(type: 'status', callback?: (sessionId: string, networkId: string, status: 'online' \|'offline' ) => void): void | Unsubscribes from status changes of a distributed data object. |
 | save(deviceId: string, callback: AsyncCallback&lt;SaveSuccessResponse&gt;): void | Saves a distributed data object.|
-| revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void | Revokes the saving of the distributed data object.|
+| revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void | Revokes the saving of a distributed data object. |
 | bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;void&gt;): void | Binds an asset and its RDB store.|
 | setAsset(assetKey: string, uri: string): void | Sets an asset.|
 | setAssets(assetKey: string, uris: Array&lt;string&gt;): void | Sets assets.|
-| on(type: 'change', callback: DataObserver&lt;void&gt;): void | Subscribes to data changes of this distributed data object.|
-| off(type: 'change', callback?: DataObserver&lt;void&gt;): void |  Unsubscribes from data changes of this distributed data object.|
-| on(type: 'status', callback: StatusObserver&lt;void&gt;): void | Subscribes to the status changes of this distributed data object.|
-| off(type: 'status', callback?: StatusObserver&lt;void&gt;): void | Unsubscribes from status changes of this distributed data object.|
+| on(type: 'change', callback: DataObserver&lt;void&gt;): void | Subscribes to data changes of a distributed data object. |
+| off(type: 'change', callback?: DataObserver&lt;void&gt;): void | Unsubscribes from data changes of a distributed data object. |
+| on(type: 'status', callback: StatusObserver&lt;void&gt;): void | Subscribes to the status changes of a distributed data object. |
+| off(type: 'status', callback?: StatusObserver&lt;void&gt;): void | Unsubscribes from status changes of a distributed data object. |
 
 
 ## How to Develop
@@ -184,7 +184,7 @@ Most of the APIs for cross-device sync of distributed data objects are executed 
 
 > **NOTE**
 >
-> - In cross-device migration, after **setSessionId()** is called on the source device to set **sessionId**, you should call **save()** to save data to the target device.
+> - During cross-device migration, after **setSessionId()** is called on the source device to set **sessionId**, you should call **save()** to save data to the target device. However, data can only be synced to the target device upon the first call of the **save()** API. This is because the migration task is completed immediately after data is obtained from the source device for the first time; subsequent data shall be subject to the target device and no further sync is required.
 > - When an application is launched as a result of a migration, the [onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore) lifecycle callback function, rather than [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate), is triggered following **onCreate()** or **onNewWant()**. This sequence occurs for both cold and hot starts. If you have performed some necessary initialization operations during application launch in **onWindowStageCreate()**, you must perform the same initialization operations in **onWindowStageRestore()** after the migration to avoid application exceptions.
 >
 <!--RP1-->

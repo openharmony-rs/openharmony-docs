@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_PreferencesOption OH_PreferencesOption
+```
+
 ## Overview
 
 Defines a struct for **Preferences** configuration.

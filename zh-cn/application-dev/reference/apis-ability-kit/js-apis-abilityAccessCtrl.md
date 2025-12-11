@@ -202,7 +202,7 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 | 参数名             | 类型                   | 必填 | 说明                                                          |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string         | 是   | 订阅事件类型，固定为'selfPermissionStateChange'，权限状态变更事件。  |
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与[on](#on18)的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 否 | 取消订阅指定tokenID与指定权限名状态变更事件的回调。|
 
 **错误码：**
@@ -212,7 +212,7 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100004 | The API is not used in pair with 'on'. |
+| 12100004 | The API is not used in pair with "on". |
 | 12100007 | The service is abnormal. |
 
 **示例：**
@@ -383,7 +383,6 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
 | 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100011 | All permissions in the permission list have been granted. |

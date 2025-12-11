@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption
 ```
 

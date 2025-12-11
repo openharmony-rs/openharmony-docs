@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-```
+```c
 typedef struct OH_CryptoSm2CiphertextSpec OH_CryptoSm2CiphertextSpec
 ```
 

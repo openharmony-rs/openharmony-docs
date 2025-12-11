@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can bind a sheet to a component through the **bindSheet** attribute. You can also set the sheet to the preset or custom height for when the component is inserted.
 

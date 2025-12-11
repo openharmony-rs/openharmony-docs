@@ -55,7 +55,7 @@
 
 ### OH_WindowManager_SetWindowStatusBarEnabled()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)
 ```
 
@@ -82,7 +82,7 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 
 ### OH_WindowManager_SetWindowStatusBarColor()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)
 ```
 
@@ -108,7 +108,7 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 
 ### OH_WindowManager_SetWindowNavigationBarEnabled()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)
 ```
 
@@ -135,7 +135,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 ### OH_WindowManager_GetWindowAvoidArea()
 
-```
+```c
 int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)
 ```
 
@@ -162,7 +162,7 @@ int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_Avoi
 
 ### OH_WindowManager_IsWindowShown()
 
-```
+```c
 int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)
 ```
 
@@ -188,7 +188,7 @@ int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)
 
 ### OH_WindowManager_ShowWindow()
 
-```
+```c
 int32_t OH_WindowManager_ShowWindow(int32_t windowId)
 ```
 
@@ -213,7 +213,7 @@ int32_t OH_WindowManager_ShowWindow(int32_t windowId)
 
 ### OH_WindowManager_SetWindowTouchable()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)
 ```
 
@@ -239,7 +239,7 @@ int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)
 
 ### OH_WindowManager_SetWindowFocusable()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)
 ```
 
@@ -265,7 +265,7 @@ int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)
 
 ### OH_WindowManager_SetWindowBackgroundColor()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* color)
 ```
 
@@ -291,7 +291,7 @@ int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* 
 
 ### OH_WindowManager_SetWindowBrightness()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 ```
 
@@ -317,7 +317,7 @@ int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 
 ### OH_WindowManager_SetWindowKeepScreenOn()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScreenOn)
 ```
 
@@ -343,7 +343,7 @@ int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScre
 
 ### OH_WindowManager_SetWindowPrivacyMode()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)
 ```
 
@@ -371,7 +371,7 @@ int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)
 
 ### OH_WindowManager_GetWindowProperties()
 
-```
+```c
 int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_WindowProperties* windowProperties)
 ```
 
@@ -397,7 +397,7 @@ int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_Win
 
 ### OH_WindowManager_Snapshot()
 
-```
+```c
 int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 ```
 
@@ -423,7 +423,7 @@ int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 
 ### OH_WindowManager_GetAllWindowLayoutInfoList()
 
-```
+```c
 int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId,WindowManager_Rect** windowLayoutInfoList, size_t* windowLayoutInfoSize)
 ```
 
@@ -450,7 +450,7 @@ int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId,WindowMana
 
 ### OH_WindowManager_ReleaseAllWindowLayoutInfoList()
 
-```
+```c
 void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowLayoutInfoList)
 ```
 
@@ -468,7 +468,7 @@ void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowL
 | [WindowManager_Rect](capi-windowmanager-rect.md)* windowLayoutInfoList | 指定屏幕上可见的窗口布局信息数组的数组指针，可通过[OH_WindowManager_GetAllWindowLayoutInfoList](capi-oh-window-h.md#oh_windowmanager_getallwindowlayoutinfolist)接口获取。 |
 ### OH_WindowManager_InjectTouchEvent()
 
-```
+```c
 int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)
 ```
 
@@ -495,7 +495,7 @@ int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* to
 
 ### OH_WindowManager_GetAllMainWindowInfo()
 
-```
+```c
 int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)
 ```
 
@@ -524,7 +524,7 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 
 ### OH_WindowManager_ReleaseAllMainWindowInfo()
 
-```
+```c
 void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* infoList)
 ```
 
@@ -542,7 +542,7 @@ void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* inf
 
 ### OH_WindowManager_WindowSnapshotCallback()
 
-```
+```c
 typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)
 ```
 
@@ -561,7 +561,7 @@ typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative*
 
 ### OH_WindowManager_GetMainWindowSnapshot()
 
-```
+```c
 int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)
 ```
 
@@ -592,7 +592,7 @@ int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t win
 
 ### OH_WindowManager_ReleaseMainWindowSnapshot()
 
-```
+```c
 void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)
 ```
 
@@ -610,7 +610,7 @@ void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapsho
 
 ### OH_WindowManager_LockCursor()
 
-```
+```c
 int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)
 ```
 
@@ -637,7 +637,7 @@ int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovemen
 
 ### OH_WindowManager_UnlockCursor()
 
-```
+```c
 int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 ```
 

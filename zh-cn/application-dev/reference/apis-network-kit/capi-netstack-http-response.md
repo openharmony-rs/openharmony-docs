@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_Response {...} Http_Response
+```
+
 ## 概述
 
 定义HTTP响应的结构体。

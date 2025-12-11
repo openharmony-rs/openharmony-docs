@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsAppItem OH_UdsAppItem
+```
+
 ## Overview
 
 Defines a struct for the unified data of the home screen icon type.

@@ -5,7 +5,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can use **SymbolGlyphModifier** to construct components and configure their attributes. Through **SymbolGlyphModifier**, you can access the attributes and style APIs of the encapsulated component.
 
@@ -25,7 +25,7 @@ Defines the **SymbolGlyphModifier**.
 
 constructor(src?: Resource)
 
-Constructs a **SymbolGlyphModifier** object.
+A constructor used to create a **SymbolGlyphModifier** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

@@ -17,6 +17,8 @@
 > 从API version 12开始，在\@ComponentV2装饰的自定义组件中支持使用\@Param装饰器。
 >
 > 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
@@ -393,7 +395,7 @@ struct Child {
 ## 限制条件
 
 \@Param装饰器存在以下使用限制：
-- \@Param装饰器只能在[\@ComponentV2](arkts-new-componentV2.md)装饰器的自定义组件中使用。
+- \@Param装饰器只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰器的自定义组件中使用。
 
   ```ts
   @ComponentV2

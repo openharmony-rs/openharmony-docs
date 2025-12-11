@@ -24,7 +24,7 @@
 >
 > 从API version 11开始，支持通过此参数配置[@Component](../../../ui/state-management/arkts-create-custom-components.md#component)组件冻结。例子可见[自定义组件冻结](../../../ui/state-management/arkts-custom-components-freeze.md)。
 >
-> 从API version 12开始，支持通过此参数配置[@ComponentV2](../../../ui/state-management/arkts-new-componentV2.md)组件冻结。例子可见[自定义组件冻结](../../../ui/state-management/arkts-custom-components-freezeV2.md)。
+> 从API version 12开始，支持通过此参数配置[@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)组件冻结。例子可见[自定义组件冻结](../../../ui/state-management/arkts-custom-components-freezeV2.md)。
 >
 
 | 名称 | 类型 | 只读 | 可选     | 说明   |

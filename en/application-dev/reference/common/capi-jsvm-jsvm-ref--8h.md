@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_Ref__* JSVM_Ref
+```
+
 ## Overview
 
 Defines the reference to the JavaScript value.

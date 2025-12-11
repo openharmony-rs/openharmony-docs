@@ -38,7 +38,7 @@ static setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进回调的委托。 |
+| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进度的委托。 |
 
 **示例：**
 

@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVScreenCapture_UserSelectionInfo OH_AVScreenCapture_UserSelectionInfo
+```
+
 ## 概述
 
 通过OH_AVScreenCapture_UserSelectionInfo获取用户在授权界面（选择界面）选择的参数。

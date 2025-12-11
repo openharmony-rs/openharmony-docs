@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
+```
+
 ## 概述
 
 当执行对象的getter、setter、deleter和enumerator操作时，该结构体中对应的函数回调将会触发。

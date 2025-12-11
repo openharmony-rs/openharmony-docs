@@ -21,6 +21,54 @@
 import { InsightIntentContext } from '@kit.AbilityKit';
 ```
 
+## 属性
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| instanceId<sup>23+</sup> | number | 否 | 否 | 意图实例唯一ID。用于通过[insightIntentProvider.sendExecuteResult接口](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendexecuteresult)和[insightIntentProvider.sendIntentResult接口](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendintentresult)返回指定意图的执行结果。|
+
+**示例：**
+
+  ```ts
+  import { InsightIntentExecutor, insightIntent, insightIntentProvider } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  export default class InsightIntentExecutorUI extends InsightIntentExecutor {
+    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+      hilog.info(0x0000, 'testTag', 'onExecuteInUIAbilityForegroundMode %{public}s', name);
+      let result: insightIntent.ExecuteResult;
+      result = {
+        code: 0,
+        result: {
+          message: 'Unsupported insight intent.',
+        },
+      };
+      try {
+        //通过意图实例唯一ID返回意图执行结果
+        insightIntentProvider.sendExecuteResult(this.context.instanceId, result)
+          .then(() => {
+            console.info('testTag setExecuteResult success');
+          })
+          .catch((error: BusinessError) => {
+            console.error('testTag setExecuteResult fail1, error code: ${JSON.stringify(error)}');
+          });
+      } catch (e) {
+        let code = (e as BusinessError).code;
+        let msg = (e as BusinessError).message;
+        console.error('testTag setExecuteResult fail2, error code: ${JSON.stringify(code)}, error msg: ${JSON.stringify(msg)}');
+      }
+      return result;
+    }
+  }
+  ```
+
 ## InsightIntentContext.startAbility
 
 startAbility(want: Want, callback: AsyncCallback\<void\>): void
@@ -176,6 +224,137 @@ startAbility(want: Want): Promise\<void\>
           message: 'Execute insight intent succeed.',
         }
       };
+      return result;
+    }
+  }
+  ```
+
+## InsightIntentContext.setReturnModeForUIAbilityForeground<sup>23+</sup>
+
+setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
+
+设置意图执行结果的返回形式，适用于执行模式为[UI_ABILITY_FOREGROUND](./js-apis-app-ability-insightIntent.md#executemode)的意图。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| returnMode | [insightIntent.ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23) | 是 | 意图执行结果的返回形式。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16000011      | The context does not exist. Possible causes: 1.The context is not insightIntentContext; 2.The context is not for UIAbility foreground insight intent execute mode. |
+
+**示例：**
+
+  ```ts
+  import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  export default class InsightIntentExecutorUI extends InsightIntentExecutor {
+    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+      hilog.info(0x0000, 'testTag', 'onExecuteInUIAbilityForegroundMode %{public}s', name);
+      let result: insightIntent.ExecuteResult;
+      result = {
+        code: 0,
+        result: {
+          message: 'Unsupported insight intent.',
+        },
+      };
+  
+      try {
+        this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
+      } catch (error) {
+        console.error('testTag setReturnModeForUIAbilityForeground fail, error code: ${JSON.stringify(error)}');
+      }
+  
+      let localStorageData: Record<string, number> = {
+        'insightId': this.context.instanceId,
+      };
+      let storage: LocalStorage = new LocalStorage(localStorageData);
+      pageLoader.loadContent('pages/UiabilityIndex', storage, (err, data) => {
+        if (err.code) {
+          hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        } else {
+          hilog.info(0x0000, 'testTag', '%{public}s', 'Succeeded in loading the content');
+        }
+      });
+      return result;
+    }
+  }
+  ```
+
+## InsightIntentContext.setReturnModeForUIExtensionAbility<sup>23+</sup>
+
+setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
+
+设置意图执行结果的返回形式，适用于执行模式为[UI_EXTENSION_ABILITY](./js-apis-app-ability-insightIntent.md#executemode)的意图。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| returnMode | [insightIntent.ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23) | 是 | 意图执行结果的返回形式。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16000011      | The context does not exist. Possible causes: 1.The context is not insightIntentContext; 2.The context is not for UIExtensionAbility insight intent execute mode. |
+
+**示例：**
+
+  ```ts
+  import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  export default class InsightIntentExecutorUI extends InsightIntentExecutor {
+    onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>,
+      pageLoader: UIExtensionContentSession): insightIntent.ExecuteResult {
+      hilog.info(0x0000, 'testTag', 'onExecuteInUIExtensionAbility %{public}s', name);
+      let result: insightIntent.ExecuteResult;
+      result = {
+        code: 0,
+        result: {
+          message: 'Unsupported insight intent.',
+        },
+      };
+      try {
+        this.context.setReturnModeForUIExtensionAbility(insightIntent.ReturnMode.FUNCTION)
+      } catch (error) {
+        console.error('testTag setReturnModeForUIExtensionAbility fail, error code: ${JSON.stringify(error)}');
+      }
+
+      try {
+        let localStorageData: Record<string, number> = {
+          'insightId': this.context.instanceId,
+        };
+        let storage: LocalStorage = new LocalStorage(localStorageData);
+        storage.setOrCreate('session', pageLoader);
+        pageLoader.loadContent('pages/UiextensionPage', storage);
+      } catch (err) {
+        console.log('testTag loadContent error: ' + JSON.stringify(err));
+      }
       return result;
     }
   }

@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct {...} Print_Range
+```
+
 ## Overview
 
 Defines the range to print.

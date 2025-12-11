@@ -393,7 +393,7 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：[0, +∞) |
+| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
 | unit   | [LengthUnit](#lengthunit12) | 否   | 长度属性的单位。 |
 
 ### px<sup>12+</sup>

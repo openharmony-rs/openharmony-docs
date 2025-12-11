@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_InputMethodProxy InputMethod_InputMethodProxy
+```
+
 ## 概述
 
 输入法代理对象。使用此对象可以用于调用使用输入法的方法。

@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetStack_Certificates {...} NetStack_Certificates
+```
+
 ## 概述
 
 定义证书信息。

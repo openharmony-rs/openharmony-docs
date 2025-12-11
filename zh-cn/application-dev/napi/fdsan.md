@@ -30,7 +30,7 @@ value用于标识实际的owner tag。
 
 ### fdsan_set_error_level
 
-```
+```c
 enum fdsan_error_level fdsan_set_error_level(enum fdsan_error_level new_level);
 ```
 
@@ -49,7 +49,7 @@ enum fdsan_error_level fdsan_set_error_level(enum fdsan_error_level new_level);
 
 ### fdsan_get_error_level
 
-```
+```c
 enum fdsan_error_level fdsan_get_error_level();
 ```
 
@@ -58,7 +58,7 @@ enum fdsan_error_level fdsan_get_error_level();
 **返回值：** 当前的error_level。
 
 ### fdsan_create_owner_tag
-```
+```c
 uint64_t fdsan_create_owner_tag(enum fdsan_owner_type type, uint64_t tag);
 ```
 **描述：** 通过传入的type和tag字段，拼接成一个有效的文件描述符的关闭tag。
@@ -78,7 +78,7 @@ uint64_t fdsan_create_owner_tag(enum fdsan_owner_type type, uint64_t tag);
 
 ### fdsan_exchange_owner_tag
 
-```
+```c
 void fdsan_exchange_owner_tag(int fd, uint64_t expected_tag, uint64_t new_tag);
 ```
 **描述：** 修改文件描述符的关闭tag。
@@ -99,7 +99,7 @@ void fdsan_exchange_owner_tag(int fd, uint64_t expected_tag, uint64_t new_tag);
 
 ### fdsan_close_with_tag
 
-```
+```c
 int fdsan_close_with_tag(int fd, uint64_t tag);
 ```
 **描述：** 根据tag描述符关闭文件描述符。
@@ -116,7 +116,7 @@ int fdsan_close_with_tag(int fd, uint64_t tag);
 **返回值：** 0或者-1，0表示close成功，-1表示close失败。
 
 ### fdsan_get_owner_tag
-```
+```c
 uint64_t fdsan_get_owner_tag(int fd);
 ```
 **描述：** 根据文件描述符获取tag信息。
@@ -132,7 +132,7 @@ uint64_t fdsan_get_owner_tag(int fd);
 **返回值：** 返回对应fd的tag。
 
 ### fdsan_get_tag_type
-```
+```c
 const char* fdsan_get_tag_type(uint64_t tag);
 ```
 **描述：** 根据tag计算出对应的type类型。
@@ -148,7 +148,7 @@ const char* fdsan_get_tag_type(uint64_t tag);
 **返回值：** 返回对应tag的type。
 
 ### fdsan_get_tag_value
-```
+```c
 uint64_t fdsan_get_tag_value(uint64_t tag);
 ```
 **描述：** 根据tag计算出对应的owner value。
@@ -167,7 +167,7 @@ uint64_t fdsan_get_tag_value(uint64_t tag);
 
 如何使用fdsan？这是一个简单的double-close问题：
 
-```
+```c++
 #include <unistd.h>
 #include <fcntl.h>
 #include <hilog/log.h>
@@ -250,7 +250,7 @@ void good_write()
 ### 日志信息
 使用fopen打开的每个文件描述符都需要有一个与之对应的 `tag` 。`fdsan` 在 `close` 时会检查关闭的 `fd` 是否与 `tag` 匹配，不匹配就会默认提示相关日志信息。下面是上述代码的日志信息：
 
-```
+```txt
 # hilog | grep MUSL-FDSAN
 04-30 15:03:41.760 10933  1624 E C03f00/MUSL-FDSAN: attempted to close file descriptor 43,                             expected to be unowned, actually owned by FILE* 0x00000000f7b90aa2
 ```
@@ -259,7 +259,7 @@ void good_write()
 
 此外，可以在代码中使用`fdsan_set_error_level`设置错误等级error_level。设置为Fatal之后，如果fdsan检测到错误，会提示日志信息并crash生成堆栈信息，用于定位。下面是 error_level 设置为Fatal之后生成的crash堆栈信息：
 
-```
+```txt
 Reason:Signal:SIGABRT(SI_TKILL)@0x0000076e from:1902:20010043
 Fault thread info:
 Tid:15312, Name:e.myapplication
@@ -277,7 +277,7 @@ Tid:15312, Name:e.myapplication
 ```
 此时，从crash信息中可以看到bad_close存在问题，同时crash中包含所有打开的文件，协助定位问题，提升效率。
 
-```
+```txt
 OpenFiles:
 0->/dev/null native object of unknown type 0
 1->/dev/null native object of unknown type 0

@@ -3365,7 +3365,7 @@ getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): vo
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
-| 202 | Non-system applications use system APIs.
+| 202 | Non-system applications use system APIs.         |
 | 8300001 | Invalid parameter value.                 |                    |
 | 8300002  | Operation failed. Cannot connect to service.                      |
 | 8300003 | System internal error.                               |

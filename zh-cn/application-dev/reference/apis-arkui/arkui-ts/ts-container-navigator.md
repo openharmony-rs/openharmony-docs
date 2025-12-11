@@ -105,7 +105,7 @@ target(value: string)
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | string | 是   | 转目标页面的路径。 |
+| value  | string | 是   | 跳转目标页面的路径。 |
 
 ### type
 type(value: NavigationType)

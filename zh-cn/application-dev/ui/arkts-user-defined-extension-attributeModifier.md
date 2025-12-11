@@ -335,7 +335,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute | [accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext12)     | -   | -  |
   | CommonAttribute | [accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription12)     | -   | -  |
   | CommonAttribute | [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)                | Method not implemented.   | 不支持animation相关属性。                 |
-  | CommonAttribute | [attributeModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifiert)        | -                         | attributeModifier不支持嵌套使用，不生效。 |
+  | CommonAttribute | [attributeModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)        | -                         | attributeModifier不支持嵌套使用，不生效。 |
   | CommonAttribute | [backgroundFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#backgroundfilter)         | is not callable           | -                                         |
   | CommonAttribute | [chainWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainweight14)              | is not callable           | -                                         |
   | CommonAttribute | [compositingFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#compositingfilter)        | is not callable           | -                                         |
@@ -357,7 +357,6 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute | [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet) | Method not implemented. | 不支持入参为CustomBuilder。 |
   | CommonAttribute | [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview15) | Builder is not supported. | 不支持入参为CustomBuilder。 |
   | CommonAttribute | [bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) | Method not implemented. | 不支持入参为CustomBuilder。 |
-  | CommonAttribute | [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | Method not implemented. | 不支持返回值为CustomBuilder。 |
   | CommonAttribute | [accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11) | is not callable | 不支持入参为CustomBuilder。 |
   | CommonAttribute | [chainWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainweight14) | - | - |
   | CheckboxGroup |  [contentModifier](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md#contentmodifier21)| - | - |
@@ -421,6 +420,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute | [accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13)    | 13 | 20 |
   | CommonAttribute | [background](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#background10) | 10 | 20|
   | CommonAttribute  | [visualEffect](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#visualeffect) | 12 | 20 |
+  | CommonAttribute | [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | 8 | 13 |
   | CommonAttribute  | [onVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange) | 9     | 20     |
   | CommonAttribute  | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | 12       | 20    |
   | CommonAttribute  | [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12)    | 12                  | 20             |

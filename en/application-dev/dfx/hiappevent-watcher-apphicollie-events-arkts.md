@@ -216,8 +216,6 @@ After the project crashes and exits, restart it. You can view the system event d
 
 ### Removing an Event Watcher
 
-1. Remove the event watcher.
-
 ```ts
 // Remove the event watcher to unsubscribe from events.
 hiAppEvent.removeWatcher(watcher);

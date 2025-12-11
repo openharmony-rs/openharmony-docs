@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309; @liyujie43-->
 <!--Designer: @liyi0309; @weixin_52725220-->
 <!--Tester: @lxl007; @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can apply a content modifier to a component to customize its content area using a style builder.
 

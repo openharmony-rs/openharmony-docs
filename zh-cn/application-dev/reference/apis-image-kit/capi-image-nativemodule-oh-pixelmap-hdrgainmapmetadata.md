@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_Pixelmap_HdrGainmapMetadata {...} OH_Pixelmap_HdrGainmapMetadata
 ```
 

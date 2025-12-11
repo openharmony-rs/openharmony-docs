@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NN_QuantParam {...} OH_NN_QuantParam
+```
+
 ## 概述
 
 量化信息。
@@ -14,7 +18,7 @@
 
 ![zh-cn_formulaimage_0000001405137102](figures/zh-cn_formulaimage_0000001405137102.png)
 
-其中s和z是量化参数，在OH_NN_QuanParam中通过scale和zeroPoint保存，r是浮点数，q是量化后的结果，q_min是量化后下界，q_max是量化后的上界，计算方式如下：
+其中s和z是量化参数，在OH_NN_QuantParam中通过scale和zeroPoint保存，r是浮点数，q是量化后的结果，q_min是量化后下界，q_max是量化后的上界，计算方式如下：
 
 ![zh-cn_formulaimage_0000001459019845](figures/zh-cn_formulaimage_0000001459019845.png)
 

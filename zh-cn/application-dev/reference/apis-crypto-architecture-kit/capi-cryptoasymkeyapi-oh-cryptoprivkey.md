@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-```
+```c
 typedef struct OH_CryptoPrivKey OH_CryptoPrivKey
 ```
 

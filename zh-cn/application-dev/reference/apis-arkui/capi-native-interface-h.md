@@ -44,7 +44,7 @@
 
 ### ArkUI_NativeAPIVariantKind
 
-```
+```c
 enum ArkUI_NativeAPIVariantKind
 ```
 
@@ -61,14 +61,14 @@ enum ArkUI_NativeAPIVariantKind
 | ARKUI_NATIVE_DIALOG | 弹窗相关接口类型，详见[native_dialog.h](./capi-native-dialog-h.md)中的[结构体](capi-native-dialog-h.md#结构体)类型定义。 |
 | ARKUI_NATIVE_GESTURE | 手势相关接口类型，详见[native_gesture.h](./capi-native-gesture-h.md)中的[结构体](capi-native-gesture-h.md#结构体)类型定义。 |
 | ARKUI_NATIVE_ANIMATE | 动画相关接口类型。详见[native_animate.h](./capi-native-animate-h.md)中的[结构体](capi-native-animate-h.md#结构体)类型定义。 |
-| ARKUI_MULTI_THREAD_NATIVE_NODE | 多线程UI组件相关接口类型，详见[native_node.h](./capi-native-node-h.md)中的[结构体](./capi-native-node-h.md#结构体)类型定义。 |
+| ARKUI_MULTI_THREAD_NATIVE_NODE | 多线程UI组件相关接口类型，详见[native_node.h](./capi-native-node-h.md)中的[结构体](./capi-native-node-h.md#结构体)类型定义。<br>**起始版本：** 22 |
 
 
 ## 函数说明
 
 ### OH_ArkUI_QueryModuleInterfaceByName()
 
-```
+```c
 void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName)
 ```
 
@@ -95,7 +95,7 @@ void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const
 
 ### OH_ArkUI_GetModuleInterface()
 
-```
+```c
 OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                             \
 do {                                                                                                 \
         void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \

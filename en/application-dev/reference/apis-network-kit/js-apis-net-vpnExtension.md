@@ -10,7 +10,16 @@
 This module implements virtual private network (VPN) management, such as starting and stopping a third-party VPN. Third-party VPNs refer to VPN services provided by third parties. They usually support more security and privacy functions and more comprehensive customization options. Currently, the VPN capabilities provided to third-party applications are primarily used for creating virtual NICs and configuring VPN routing information. The connection tunnel process and internal connection protocols need to be implemented by the applications themselves.
 
 > **NOTE**
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.<br>
+> The following modules cannot be referenced in the VpnExtensionAbility, as doing so may cause the program to exit abnormally:<br>
+> - [@ohos.contact (Contacts)](../apis-contacts-kit/js-apis-contact.md)<br>
+> - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md), [@ohos.geoLocationManager (Geolocation Manager)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
+> - [@ohos.multimedia.audio (Audio Management)](../apis-audio-kit/arkts-apis-audio.md)<br>
+> - [@ohos.multimedia.camera (Camera Management)](../apis-camera-kit/arkts-apis-camera.md)<br>
+> - [@ohos.telephony.call (Call)](../apis-telephony-kit/js-apis-call.md)<br>
+> - [@ohos.telephony.sim (SIM Management)](../apis-telephony-kit/js-apis-sim.md)<br>
+> - [@ohos.telephony.sms (SMS)](../apis-telephony-kit/js-apis-sms.md)<br>
 
 ## Modules to Import
 
@@ -65,7 +74,7 @@ Enables the VPN extension ability. This API uses a promise to return the result.
 
 | Name| Type                               | Mandatory| Description              |
 | ------ | ----------------------------------- | ---- | ------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information.|
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information.<br> Note: From API version 22, the **parameters** field in **want** can be passed when the VPN is started for the first time.|
 
 **Return value**
 
@@ -483,7 +492,7 @@ Destroys a VPN network based on the specified VPN ID. This API uses a promise to
 
 | Type           | Description                                                 |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -610,7 +619,7 @@ Defines the VPN configuration.
 
 | Name            | Type                                     | Read-only| Optional| Description                                      |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | No | No| IP addresses of vNICs.                                 |
+| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | No | No| IP addresses of vNICs. A maximum of 64 IP addresses are supported.                                 |
 | vpnId<sup>20+</sup>           | string | No| Yes| Unique VPN ID.| 
 | routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | No | Yes| Routes of vNICs. Currently, a maximum of 1024 routes can be configured.                 |
 | dnsAddresses        | Array\<string\>                                                 | No | Yes| IP address of the DNS server. After the IP address is configured, when the VPN is active and proxy-enabled applications access the Internet, the configured DNS server will be used for DNS queries.                                   |

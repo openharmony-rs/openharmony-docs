@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct {...} NativeChildProcess_Fd
+```
+
 ## Overview
 
 The struct describes the information about the file descriptor passed to the child process.

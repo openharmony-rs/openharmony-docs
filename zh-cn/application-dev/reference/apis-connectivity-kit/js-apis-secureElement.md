@@ -205,11 +205,11 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let seService: omapi.SEService;
 function seStateOnCb(data: omapi.ServiceState) {
-    console.log("omapi.on ServiceState: ", data);
+    console.info("omapi.on ServiceState: ", data);
 }
 
 function seStateOffCb(data: omapi.ServiceState) {
-    console.log("omapi.off ServiceState: ", data);
+    console.info("omapi.off ServiceState: ", data);
 }
 
 function secureElementDemo() {

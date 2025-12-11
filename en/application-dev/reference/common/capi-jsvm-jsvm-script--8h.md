@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_Script__* JSVM_Script
+```
+
 ## Overview
 
 Defines the JavaScript code.

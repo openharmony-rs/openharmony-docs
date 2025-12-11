@@ -151,6 +151,35 @@ bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuO
 |---|---|
 |T|返回当前组件。|
 
+## bindContextMenu<sup>23+</sup>
+
+bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, options?: ContextMenuOptions): T
+
+给组件绑定菜单，控制菜单显隐的触发方式为长按或右键点击，弹出的菜单需自定义样式和内容。
+
+>  **说明：**
+>
+>  - 不支持在输入法类型窗口中使用bindContextMenu（默认子窗实现），详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>
+>  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名       | 类型                                               | 必填 | 说明                             |
+| ------------ | -------------------------------------------------- | ---- | -------------------------------- |
+| content      | [CustomBuilderT](ts-types.md#custombuildertt23)[\<ResponseType>](ts-appendix-enums.md#responsetype8)&nbsp;\|&nbsp; undefined  | 是   | 自定义菜单内容构造器。入参为触发菜单的方式，开发者可据此实现差异化的内容。当传入undefined时，解除绑定关系，无菜单弹出。           |
+| options      | [ContextMenuOptions](#contextmenuoptions10)        | 否   | 配置弹出菜单的参数。             |
+
+**返回值：**
+
+|类型|说明|
+|---|---|
+|T|返回当前组件。|
+
 ## MenuElement
 
 菜单项的图标、文本和交互信息。
@@ -184,7 +213,7 @@ bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuO
 
 | 名称                  | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| offset                | [Position](ts-types.md#position)                            | 否   | 是  | 菜单弹出位置的偏移量，不会导致菜单显示超出屏幕范围。<br/>默认值：{ x: 0, y: 0 }，不支持设置百分比。<br/>**说明：** <br />菜单类型为相对⽗组件区域弹出时，⾃动根据菜单位置属性 (placement)将区域的宽或⾼计⼊偏移量中。<br/>offset最终取值与placement设置值的关系参见表1：同时设置offset与placement时菜单的偏移位置。<br/>未设置、异常值或者undefined时按默认{ x: 0, y: 0 }处理。若传入偏移量超出屏幕范围外，则会就近约束到屏幕范围内。<br/>如果菜单调整了显示位置（与placement初始值主方向不⼀致），则偏移值 (offset) 失效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| offset                | [Position](ts-types.md#position)                            | 否   | 是  | 菜单弹出位置的偏移量，不会导致菜单显示超出屏幕范围。<br/>默认值：{ x: 0, y: 0 }，不支持设置百分比。<br/>**说明：** <br />菜单类型为相对父组件区域弹出时，自动根据菜单位置属性 (placement)将区域的宽或高计入偏移量中。<br/>offset最终取值与placement设置值的关系参见表1：同时设置offset与placement时菜单的偏移位置。<br/>未设置、异常值或者undefined时按默认{ x: 0, y: 0 }处理。若传入偏移量超出屏幕范围外，则会就近约束到屏幕范围内。<br/>如果菜单调整了显示位置（与placement初始值主方向不一致），则偏移值 (offset) 失效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | placement             | [Placement](ts-appendix-enums.md#placement8)                 | 否   | 是  | 菜单组件优先显示的位置，当前位置显示不下时，会自动调整位置。<br/>**说明：**<br />placement值设置为undefined、null或没有设置此选项时，按未设置placement处理，当使用[bindMenu](#bindmenu11)，按默认值：Placement.BottomLeft设置，当使用[bindContextMenu<sup>8+</sup>](#bindcontextmenu8)，菜单跟随点击位置弹出；当使用[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)，按默认值：Placement.BottomLeft设置。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | enableArrow           | boolean                                                      | 否   | 是  | 是否显示箭头。如果菜单的大小和位置不足以放置箭头时，不会显示箭头。 <br/>默认值：false，不显示箭头。<br/>**说明：**<br />enableArrow为true时，placement未设置或者值为非法值，默认在目标物上方显示（此时菜单默认位置与接口的关系参见表3：enableArrow为true且placement未设置或者值为非法值的菜单默认位置），否则按照placement的位置优先显示。当前位置显示不下时，会自动调整位置，enableArrow为undefined时，不显示箭头。bindContextMenu从API version 10开始支持该属性；bindMenu从API version 12开始支持该属性。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | enableHoverMode<sup>18+</sup>      | boolean                                                      | 否   | 是  | 菜单组件是否响应悬停态（半折叠状态）变化，即在悬停态下是否触发避让折痕区域。<br/>默认值：false，2in1设备默认为true。未设置或者值为非法值时，生效默认值。<br/>**说明：** <br/>1. 如果菜单的弹出位置在悬停态折痕区域，菜单组件不会响应悬停态。<br/>2. 2in1设备从API version 20开始生效。<br/>3. 2in1设备仅在窗口瀑布模式下生效。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -967,7 +996,7 @@ struct MenuExample {
 
 该示例为bindContextMenu通过配置preview中hoverScale实现一镜到底过渡动效的基础上, 再配置hoverScaleInterruption（从API version 20开始）控制是否允许长按抬手取消菜单弹出。
 
- ```ts
+```ts
  // xxx.ets
 @Entry
 @Component
@@ -1017,7 +1046,7 @@ struct Index {
     }
   }
 }
- ```
+```
 
 ![hoverScaleInterruption](figures/hoverScaleInterruption.gif)
 
@@ -1283,3 +1312,56 @@ struct Index {
 ```
 
 ![bindMenu-CustomBuilder](figures/bindMenuWithCustomBuilder.gif)
+
+### 示例19 （根据触发方式弹出不同内容的菜单）
+
+该示例通过在[bindContextMenu](#bindcontextmenu23)中传入CustomBuilderT\<ResponseType>给目标组件绑定菜单，组件会在UI函数中返回弹出菜单的触发方式，开发者可根据返回的触发方式实现差异化显示。
+
+从API version 23开始，新增了bindContextMenu入参类型为CustomBuilderT\<T>的接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State longPress: string = 'LONG_PRESS';
+  @State rightClick: string = 'RIGHT_CLICK';
+
+  @Builder
+  MenuBuilderWithParam(type: ResponseType) {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('Current ResponseType = ' + (type === 0 ? 'RIGHT_CLICK' : 'LONG_PRESS'))
+      Divider().height(10)
+      if (type === ResponseType.LongPress) {
+        Text('Item: ' + this.longPress)
+          .fontSize(20)
+          .width(200)
+          .height(20)
+          .textAlign(TextAlign.Center)
+      }
+      if (type === ResponseType.RightClick) {
+        Text('Item: ' + this.rightClick)
+          .fontSize(20)
+          .width(200)
+          .height(20)
+          .textAlign(TextAlign.Center)
+      }
+    }
+  }
+
+  build() {
+    Stack() {
+      Button('BindContextMenu长按和右键点击触发菜单')
+        .bindContextMenu(this.MenuBuilderWithParam, {
+          enableArrow: true,
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#f0f0f0')
+  }
+}
+
+```
+
+![bindContextMenuWithType](figures/bindContextMenuWithType.gif)

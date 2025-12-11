@@ -84,22 +84,7 @@ let mMediaQueryList = mediaquery.matchMedia('(max-width: 466)');
 | ------- | ------- | ---- |---- | ----------------- |
 | media   | string  | 否|  是    | 序列化媒体查询条件，该参数为只读。 |
 | matches | boolean | 否|  是     | 匹配结果。 true表示满足查询条件，false表示不满足查询条件。            |
-
-### onchange
-
-onchange?: (matches: boolean) => void
-
-matches状态变化时的执行函数。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名     | 类型      | 必填   | 说明             |
-| ------- | ------- | ---- | -------------- |
-| matches | boolean | 是    | matches状态变化时值。true表示满足查询条件，false表示不满足查询条件。 |
+| onchange | (matches: boolean) => void | 否|  是     | 匹配结果发生变化时的执行函数。matches表示是否匹配媒体查询条件，true满足查询条件，false不满足查询条件。 |
 
 
 ### MediaQueryList.addListener

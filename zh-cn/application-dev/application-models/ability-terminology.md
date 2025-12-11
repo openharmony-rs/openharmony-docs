@@ -31,6 +31,11 @@ ArkTS子进程是指启动后系统默认创建ArkTS运行时环境的应用子�
 
 FA模型是早期的应用模型，为应用程序提供必备的组件与运行机制。在该模型中每个应用组件独享一个ArkTS引擎实例，适用于简单应用的开发。
 
+## I
+
+### InsightIntentProvider (意图提供方管理能力)
+
+[意图提供方管理能力](../reference/apis-ability-kit/js-apis-app-ability-insightIntentProvider.md)指通过声明标准意图或自定义意图，将业务功能接入意图框架的应用主体。
 
 ## M
 

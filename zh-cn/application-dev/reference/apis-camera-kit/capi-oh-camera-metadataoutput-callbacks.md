@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct MetadataOutput_Callbacks {...} MetadataOutput_Callbacks
 ```
 

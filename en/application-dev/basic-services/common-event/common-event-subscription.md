@@ -36,50 +36,61 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
 
 1. Import the **commonEventManager** module.
    
-   ```ts
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
 2. Create a **subscribeInfo** object. For details about the data types and parameters of the object, see [CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md).
    
-   ```ts
+   <!-- @[CreateSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // Used to save the created subscriber object for subsequent subscription and unsubscription.
    let subscriber: commonEventManager.CommonEventSubscriber | null = null;
    // Subscriber information. Replace the event field with the actual event name.
    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-       events: ['event'], // Subscribe to the common event screen-off.
+     events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // Subscribe to the screen-off event.
    };
    ```
 
 3. Create a subscriber object and save the returned object for subsequent operations such as subscription, unsubscription, and event callback.
    
-   ```ts
+   <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // Callback for subscriber creation.
-   commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-     if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-       return;
-     }
-     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
-     subscriber = data;
-   })
+   commonEventManager.createSubscriber(subscribeInfo,
+     (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+       if (err) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
+       subscriber = data;
+     })
    ```
 
 4. Create a subscription callback, which is triggered when an event is received. The data returned in the subscription callback contains information such as the common event name and data carried by the publisher. For details about the data types and parameters of the common event data, see [CommonEventData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventData.md).
    
-   ```ts
+   <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // Callback for common event subscription.
    if (subscriber !== null) {
      commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
        if (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
          return;
        }
-       console.info(`Succeeded in subscribing, data is ${JSON.stringify(data)}`);
+       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
      })
    } else {
      hilog.error(DOMAIN_NUMBER, TAG, `Need create subscriber`);

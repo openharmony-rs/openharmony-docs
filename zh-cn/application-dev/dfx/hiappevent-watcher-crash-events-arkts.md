@@ -262,5 +262,37 @@ HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_
 HiAppEvent eventInfo.params.log_over_limit=false
 HiAppEvent eventInfo.params.test_data=100
 ```
+
+## 从Faultlogger接口迁移崩溃事件
+
+[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用, 不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅崩溃事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅崩溃事件。
+
+在Faultlogger的[FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)里定义的CPP_CRASH和JS_CRASH都属于崩溃故障类型。
+
+在hiAppEvent的hiAppEvent.addWatcher接口中设置事件名称为hiAppEvent.event.APP_CRASH、事件领域为hiAppEvent.domain.OS，可以订阅崩溃事件。
+
+通过[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params字段说明)中的crash_type字段可以区分具体是哪种崩溃事件。
+
+两者对应关系如下：
+| Faultlogger.FaultType | hiAppEvent.AppEventInfo.params.crash_type |
+| --- | --- |
+| CPP_CRASH | NativeCrash |
+| JS_CRASH | JsError |
+
+[FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo)与[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params字段说明)的对应关系如下：
+| Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | 说明 |
+| --- | --- | --- |
+| pid | pid | 无 |
+| uid | uid | 无 |
+| type | crash_type | 类型不同，Faultlogger中是故障类型枚举，hiAppEvent中是字符串类型。 |
+| timestamp | time | 无 |
+| module | bundle_name | 无 |
+| fullLog | external_log | fullLog为故障日志全文。external_log为故障日志文件应用沙箱路径，访问该路径的文件，可以得到故障日志全文。 |
+| reason | external_log文件内容中的Reason字段 | 无 |
+| summary | external_log文件内容中的一部分 | CPP_CRASH的summary对应external_log文件内容中的Fault thread info字段；JS_CRASH的summary对应external_log文件内容中的Error name、Error message、 Stacktrace、HybridStack字段。 |
+
+[FaultLogger.query(使用callback回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)和[FaultLogger.query(使用Promise回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
+
+查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到崩溃事件](#验证观察者是否订阅到崩溃事件)，了解使用hiAppEvent订阅崩溃事件（ArkTS）的具体步骤。
 <!--RP1-->
 <!--RP1End-->

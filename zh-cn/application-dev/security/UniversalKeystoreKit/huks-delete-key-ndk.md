@@ -9,6 +9,8 @@
 
 为保证数据安全性，当不需要使用该密钥时，应该删除密钥。
 
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
+
 ## 在CMake脚本中链接相关动态库
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)

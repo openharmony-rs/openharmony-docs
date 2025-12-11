@@ -1,10 +1,10 @@
 # Polymorphic Style
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set state-specific styles for components.
 
@@ -16,7 +16,7 @@ You can set state-specific styles for components.
 >
 >  Polymorphic styles only support [universal attributes](ts-component-general-attributes.md). If a polymorphic style does not take effect, the attribute you are modifying might be a private attribute of the component, for example, [fontColor](./ts-universal-attributes-text-style.md) or [backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18) of the [TextInput](./ts-basic-components-textinput.md) component. In this case, you can use **attributeModifier** to dynamically set these component-specific attributes.
 >
->  Currently, the multi-state style implementation depends on the refresh mechanism of the custom component node. The builder does not have an independent custom parent node and cannot directly trigger the refresh. As a result, the polymorphic style cannot take effect in the builder. The solution is to encapsulate the polymorphic style into the custom component and place the component in @Builder to indirectly implement the polymorphic style. For details about the sample code, see [Example 3: Setting Polymorphic Styles for the Builder Component](#example-3-setting-polymorphic-styles-for-the-builder-component).
+>  Currently, the implementation of polymorphic styles relies on the refresh mechanism of custom component nodes. Since the builder does not have an independent custom parent node and cannot directly trigger refresh, polymorphic styles cannot be applied directly within the builder. The recommended solution is to encapsulate the polymorphic styles into a custom component and place this component within the @Builder to indirectly achieve the polymorphic style effect. For details about the sample code, see [Example 3: Setting Polymorphic Styles for the Builder Component](#example-3-setting-polymorphic-styles-for-the-builder-component).
 >  
 >  Polymorphic styles for the focused state are only applied when [focus activation](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is enabled.
 
@@ -25,6 +25,10 @@ You can set state-specific styles for components.
 stateStyles(value: StateStyles): T
 
 Sets the state-specific styles for the component.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -36,7 +40,7 @@ Sets the state-specific styles for the component.
 
 | Name| Type                               | Mandatory| Description                    |
 | ------ | ----------------------------------- | ---- | ------------------------ |
-| value  | [StateStyles](#statestyles) | Yes  | State-specific styles for the component.|
+| value  | [StateStyles](#statestyles-1) | Yes  | State-specific styles for the component.|
 
 **Return value**
 
@@ -263,7 +267,7 @@ struct Child {
   build() {
     Row()
       .zIndex(10)
-      .width(100)
+      .width(200)
       .height(200)
       .stateStyles({
         normal: {
@@ -277,8 +281,7 @@ struct Child {
 }
 
 @Builder
-function
-buildText() {
+function buildText() {
   Child()
 }
 
@@ -289,19 +292,23 @@ struct Index {
     new ComponentContent(this.getUIContext(), wrapBuilder(buildText));
 
   build() {
-    Button().onClick((event: ClickEvent) => {
-      this.getUIContext()
-        .getPromptAction()
-        .openCustomDialog(this.contentNode)
-        .then(() => {
-          console.info('OpenCustomDialog complete.')
-        })
-        .catch((error: BusinessError) => {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
-        })
-    })
+    Column() {
+      Button().margin({ top: 200 }).onClick((event: ClickEvent) => {
+        this.getUIContext()
+          .getPromptAction()
+          .openCustomDialog(this.contentNode)
+          .then(() => {
+            console.info('OpenCustomDialog complete.')
+          })
+          .catch((error: BusinessError) => {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+          })
+      })
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```

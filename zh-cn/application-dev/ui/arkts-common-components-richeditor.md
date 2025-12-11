@@ -412,50 +412,50 @@ Symbol内容暂不支持手势、复制、拖拽处理。
 <!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
 
-  infoShowController: RichEditorController = new RichEditorController();
-  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ···
-          RichEditor(this.options)
-            .onReady(() => {
-              // $r('app.string.AddEvent_Text_5')需要替换为开发者所需的资源文件
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_5')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+// ...
+        RichEditor(this.options)
+          .onReady(() => {
+            // $r('app.string.AddEvent_Text_5')需要替换为开发者所需的资源文件
+            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_5')), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
             })
-            .onWillChange((value: RichEditorChangeValue) => {
-              // $r('app.string.AddEvent_Text_6')需要替换为开发者所需的资源文件
-              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_6')) +
-              JSON.stringify(value), {
-                style: {
-                  fontColor: Color.Gray,
-                  fontSize: 10
-                }
-              })
-              return true;
+          })
+          .onWillChange((value: RichEditorChangeValue) => {
+            // $r('app.string.AddEvent_Text_6')需要替换为开发者所需的资源文件
+            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_6')) +
+            JSON.stringify(value), {
+              style: {
+                fontColor: Color.Gray,
+                fontSize: 10
+              }
             })
-            .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
-              // $r('app.string.AddEvent_Text_7')需要替换为开发者所需的资源文件
-              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
-              JSON.stringify(rangeBefore) + '\nrangeAfter：' + JSON.stringify(rangeBefore), {
-                style: {
-                  fontColor: Color.Gray,
-                  fontSize: 10
-                }
-              })
+            return true;
+          })
+          .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
+            // $r('app.string.AddEvent_Text_7')需要替换为开发者所需的资源文件
+            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
+            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeBefore), {
+              style: {
+                fontColor: Color.Gray,
+                fontSize: 10
+              }
             })
-            .width(300)
-            .height(50);
-          // $r('app.string.AddEvent_Text_4')需要替换为开发者所需的资源文件
-          Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
-          RichEditor(this.infoShowOptions)
-            .width(300)
-            .height(70);
+          })
+          .width(300)
+          .height(50);
+        // $r('app.string.AddEvent_Text_4')需要替换为开发者所需的资源文件
+        Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(70);
 ```
 
 ![alt text](figures/richeditor_image_ondid.gif)
@@ -530,7 +530,7 @@ Symbol内容暂不支持手势、复制、拖拽处理。
 
 ``` TypeScript
 import { pasteboard } from '@kit.BasicServicesKit';
-// ···
+// ...
 @Component
 struct on_cut_copy_paste {
   controller: RichEditorController = new RichEditorController();

@@ -389,7 +389,7 @@ enum Input_KeyCode
 | KEYCODE_BTN_7 = 3107 | 按键7<br/>**起始版本：** 22 |
 | KEYCODE_BTN_8 = 3108 | 按键8<br/>**起始版本：** 22 |
 | KEYCODE_BTN_9 = 3109 | 按键9<br/>**起始版本：** 22 |
-| KEYCODE_DAGGER_CLICK = 3211 | 智能手表智感窗按键单击<br/>**起始版本：** 18 |	
-| KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | 智能手表智感窗按键双击<br/>**起始版本：** 18 |	
+| KEYCODE_DAGGER_CLICK = 3211 | 智能手表智感窗按键单击<br/>**起始版本：** 18 |
+| KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | 智能手表智感窗按键双击<br/>**起始版本：** 18 |
 | KEYCODE_DAGGER_LONG_PRESS = 3213 | 智能手表智感窗按键长按<br/>**起始版本：** 18 |
 | KEYCODE_DIV = 3220 | 智能手表左按键<br/>**起始版本：** 22 |

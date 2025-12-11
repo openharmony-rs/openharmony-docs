@@ -60,6 +60,7 @@ A maximum of 512 child processes can be started through this module and [childPr
 | [Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_registernativechildprocessexitcallback) | - | Registers a callback to listen for child process exit. If the same callback function is registered repeatedly, only one of them is kept.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_unregisternativechildprocessexitcallback) | - | Unregisters the callback used to listen for child process exit.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool enableIsolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | Sets whether the child process uses an independent UID. This setting takes effect only when **NativeChildProcess_IsolationMode** is set to **NCP_ISOLATION_MODE_ISOLATED**.|
+| [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid))](#oh_ability_killchildprocess) | - | Terminates a child process created by the current process.|
 
 ## Enum Description
 
@@ -90,6 +91,7 @@ Defines an enum for the error codes used by the native child process module.
 | NCP_ERR_LIB_LOADING_FAILED = 16010007 | The child process fails to load the DLL because the file does not exist or the corresponding method is not implemented or exported.|
 | NCP_ERR_CONNECTION_FAILED = 16010008 | The child process fails to call the OnConnect method of the DLL. An invalid IPC object pointer may be returned.|
 | NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | The parent process calls the **OH_Ability_UnregisterNativeChildProcessExitCallback** function to unregister a callback function, but the callback function is not found.|
+| NCP_ERR_INVALID_PID = 16010010 | The specified PID does not exist, does not belong to a child process of the current process, or belongs to a child process started in SELF_FORK mode by calling [childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess).|
 
 ### NativeChildProcess_IsolationMode
 
@@ -489,3 +491,32 @@ The parameter must implement the entry function [OH_Ability_OnNativeChildProcess
 | Type| Description|
 | -- | -- |
 | [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br>**NCP_ERR_INVALID_PARAM**: An input parameter is invalid.<br>**NCP_ERR_INTERNAL**: An internal error occurs.<br>**NCP_ERR_CALLBACK_NOT_EXIST**: The callback function is not found.<br>For details, see **Ability_NativeChildProcess_ErrCode**.|
+
+### OH_Ability_KillChildProcess()
+
+```
+Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)
+```
+
+**Description**
+
+Terminates a child process created by the current process.
+
+> **NOTE**
+>
+> This function cannot be used to kill a child process started in SELF_FORK mode by calling [childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess).
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| int32_t pid | PID of the child process to terminate.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br> **NCP_ERR_SERVICE_ERROR**: Server error.<br>**NCP_ERR_INVALID_PID**: The input PID is invalid.<br>For details, see **Ability_NativeChildProcess_ErrCode**.|

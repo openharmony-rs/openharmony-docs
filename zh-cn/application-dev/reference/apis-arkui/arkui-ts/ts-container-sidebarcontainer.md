@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供侧边栏可以显示和隐藏的侧边栏容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区。
+提供侧边栏可以显示和隐藏的容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区。
 
 >  **说明：**
 >
@@ -48,11 +48,11 @@ SideBarContainer( type?: SideBarContainerType )
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| Embed | 侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于minContentWidth + minSideBarWidth，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。|
-| Overlay | 侧边栏浮在内容区上面，不会影响内容区的大小。 |
-| AUTO<sup>10+</sup> | 组件尺寸大于等于minSideBarWidth+minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth+minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。|
+| 名称 | 值 | 说明 |
+| -------- | -------- |-------- |
+| Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于minContentWidth + minSideBarWidth，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。|
+| Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。 |
+| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth+minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth+minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。|
 
 ## 属性
 
@@ -152,7 +152,7 @@ sideBarWidth(value: Length)
 
 minSideBarWidth(value: number)
 
-设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
+设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。
 
 minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时默认值优先级高于侧边栏子组件minWidth。
 
@@ -170,7 +170,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 minSideBarWidth(value: Length)
 
-设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。与[minSideBarWidth](#minsidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
+设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[minSideBarWidth](#minsidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
 
 minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时默认值优先级高于侧边栏子组件minWidth。
 
@@ -188,7 +188,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 maxSideBarWidth(value: number)
 
-设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
+设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。
 
 maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时默认值优先级高于侧边栏子组件maxWidth。
 
@@ -206,7 +206,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 
 maxSideBarWidth(value: Length)
 
-设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
+设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。
 
 maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时默认值优先级高于侧边栏子组件maxWidth。
 

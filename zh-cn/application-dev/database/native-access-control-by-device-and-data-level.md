@@ -68,7 +68,7 @@
 
 2. 导入头文件。
 
-    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     #include "database/rdb/relational_store.h"
@@ -78,7 +78,7 @@
 
 3. 调用OH_Rdb_SetSecurityLevel接口设置数据库的安全等级。
 
-    <!-- @[SetSecurityLevelForRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[SetSecurityLevelForRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();

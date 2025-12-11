@@ -1539,7 +1539,7 @@ entries.forEach((key, value) => {
 })
 ```
 
-## arkts-strict-typing(StrictModeError)
+## 严格模式检查(StrictModeError)
 
 ### strictPropertyInitialization
 

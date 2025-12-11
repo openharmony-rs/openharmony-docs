@@ -69,96 +69,109 @@ Unless otherwise specified, the sample code without "stage model" or "FA model" 
 
 If error 14800011 is thrown, you need to rebuild the database and restore data to ensure normal application development. For details, see [Rebuilding an RDB Store](data-backup-and-restore.md#rebuilding-an-rdb-store).
 
-1. Obtain an **RdbStore** instance, which includes operations of creating an RDB store and tables, and upgrading or downgrading the RDB store. <br>Example:
-
+1. Obtain an **RdbStore** instance, which includes operations of creating an RDB store and tables, and upgrading or downgrading the RDB store. You are advised to use transaction APIs to ensure the atomicity of the database upgrade process.
+   <br>Example:
    Stage model:
    
-   ```ts
+   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
    import { relationalStore} from '@kit.ArkData'; // Import the relationalStore module.
-   import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { window } from '@kit.ArkUI';
-
-   // In this example, Ability is used to obtain an RdbStore instance. You can use other implementations as required.
-   export default class EntryAbility extends UIAbility {
-     onWindowStageCreate(windowStage: window.WindowStage) {
-       // Before using a tokenizer, call isTokenizerSupported to check whether the tokenizer is supported by the current platform.
-       let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
-       let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
-       if (!tokenTypeSupported) {
-         console.error(`ICU_TOKENIZER is not supported on this platform.`);
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   const DOMAIN = 0x0000;
+   
+   let store: relationalStore.RdbStore | undefined = undefined;
+   let context = getContext();
+   let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
+   let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
+   if (!tokenTypeSupported) {
+     tokenType = relationalStore.Tokenizer.NONE_TOKENIZER;
+     hilog.error(DOMAIN, 'rdbDataPersistence', `ICU_TOKENIZER is not supported on this platform.`);
+   }
+   const STORE_CONFIG: relationalStore.StoreConfig = {
+     // Set the store name, which is the database file name.
+     name: 'RdbTest.db',
+     // Security level of the RDB store.
+     securityLevel: relationalStore.SecurityLevel.S3,
+     // (Optional) Whether to encrypt the database. By default, the database is not encrypted.
+     encrypt: false,
+     // (Optional) custom path of the database. The RdbStore instance is created in the sandbox directory of the application by default.
+     customDir: 'customDir/subCustomDir',
+     // (Optional) Specify whether the RDB store is opened in read-only mode. The default value is false, which means the RDB store is readable and writable. If this parameter is true, data can only be read from the RDB store. If write operation is performed, error code 801 is returned.
+     isReadOnly: false,
+     // (Optional) Type of the tokenizer used in full-text search (FTS) mode. Only English word segmentation is supported in FTS by default.
+     tokenizer: tokenType,
+   };
+   // ···
+     // Check the RDB store version. If the version is incorrect, upgrade or downgrade the RDB store.
+     // For example, the RDB store version is 3 and the table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY).
+     // Execute the SQL statement for table creation. IDENTITY is of the BIGINT type and is set to UNLIMITED INT.
+     const SQL_CREATE_TABLE =
+       'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, ADDRESS TEXT)';
+     if (store === undefined) {
+       try {
+         store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+       } catch (e) {
+         const err = e as BusinessError;
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+         return;
        }
-       const STORE_CONFIG: relationalStore.StoreConfig = {
-         // Set the store name, which is the database file name.
-         name: 'RdbTest.db',
-         // Security level of the RDB store.
-         securityLevel: relationalStore.SecurityLevel.S3,
-         // (Optional) Whether to encrypt the database. By default, the database is not encrypted.
-         encrypt: false,
-         // (Optional) custom path of the database. The RdbStore instance is created in the sandbox directory of the application by default.
-         customDir: 'customDir/subCustomDir',
-         // (Optional) Specify whether the RDB store is opened in read-only mode. The default value is false, which means the RDB store is readable and writable. If this parameter is true, data can only be read from the RDB store. If write operation is performed, error code 801 is returned.
-         isReadOnly: false,
-         // (Optional) Type of the tokenizer used in full-text search (FTS) mode. Only English word segmentation is supported in FTS by default.
-         tokenizer: tokenType
-       };
-
-       // Check the RDB store version. If the version is incorrect, upgrade or downgrade the RDB store.
-       // For example, the RDB store version is 3 and the table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY).
-       // Execute the SQL statement for table creation. IDENTITY is of the BIGINT type and is set to UNLIMITED INT.
-       const SQL_CREATE_TABLE =
-         'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, IDENTITY UNLIMITED INT)';
-
-       relationalStore.getRdbStore(this.context, STORE_CONFIG, async (err, store) => {
-         if (err) {
-           console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+     }
+     hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in getting RdbStore.');
+     if (store !== undefined) {
+       let transaction = await store.createTransaction({});
+       let storeVersion = await transaction.execute('PRAGMA user_version');
+       // When the RDB store is created, the default version is 0.
+       // The upgrade process of the sample application is short, so a single transaction is used. If there are many upgrade logics in the actual service, you are advised to split the upgrade logics into multiple independent transactions and execute them in serial mode.
+       if (storeVersion === 0) {
+         try {
+           await transaction.execute(SQL_CREATE_TABLE); // Create a data table so that the insert API can be invoked easily to insert data.
+           storeVersion = 1;
+           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 0 to 1 success.');
+           // Set the RDB store version, which must be an integer greater than 0.
+         } catch (e) {
+           const err = e as BusinessError;
+           await transaction.rollback();
+           hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
            return;
          }
-         console.info('Succeeded in getting RdbStore.');
-         let storeVersion = store.version;
-         // When the RDB store is created, the default version is 0.
-         if (storeVersion === 0) {
-           try {
-             await store.execute(SQL_CREATE_TABLE); // Create a table.
-             storeVersion = 3;
-             // Set the RDB store version, which must be an integer greater than 0.
-           } catch (e) {
-             const err = e as BusinessError;
-             console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
-           }
+       }
+       // If the RDB store version is not 0 and does not match the current version, upgrade or downgrade the RDB store.
+       // Upgrade the RDB store from version 1 to version 2.
+       if (storeVersion === 1) {
+         // version = 1: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS).
+         //=> version = 2: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY).
+         try {
+           await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY UNLIMITED INT');
+           storeVersion = 2;
+           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 1 to 2 success.');
+         } catch (e) {
+           const err = e as BusinessError;
+           await transaction.rollback();
+           hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+           return;
          }
-
-         // If the RDB store version is not 0 and does not match the current version, upgrade or downgrade the RDB store.
-         // Upgrade the RDB store from version 1 to version 2.
-         if (storeVersion === 1) {
-           // Change the table structure from EMPLOYEE (NAME, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS).
-           try {
-             await store.execute('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER');
-             console.info("Upgrade store version from 1 to 2 success.")
-             storeVersion = 2;
-           } catch (e) {
-             const err = e as BusinessError;
-             console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
-           }
+       }
+       // Upgrade the RDB store from version 2 to version 3.
+       if (storeVersion === 2) {
+         // version = 2: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY).
+         //=> version = 3: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY).
+         try {
+           await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
+           storeVersion = 3;
+           await transaction.execute('PRAGMA user_version = 3');
+           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 2 to 3 success.')
+         } catch (e) {
+           const err = e as BusinessError;
+           await transaction.rollback();
+           hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+           return;
          }
-
-         // Upgrade the RDB store from version 2 to version 3.
-         if (storeVersion === 2) {
-           // Change the table structure from EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES).
-           try {
-             await store.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
-             storeVersion = 3;
-             console.info("Upgrade store version from 2 to 3 success.")
-           } catch (e) {
-             const err = e as BusinessError;
-             console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
-           }
-         }
-         store.version = storeVersion;
-         // Before adding, deleting, modifying, and querying data in an RDB store, obtain an RdbStore instance and create a table.
-       });
+       }
+       await transaction.commit();
+       // Before adding, deleting, modifying, and querying data in an RDB store, obtain an RdbStore instance and create a table.
      }
-   }
    ```
 
    FA model:
@@ -240,8 +253,10 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    > - For details about the error codes, see [Universal Error Codes](../reference/errorcode-universal.md) and [RDB Store Error Codes](../reference/apis-arkdata/errorcode-data-rdb.md).
 
 2. Call **insert()** to insert data. <br>Example:
+   <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
-   ```ts
+   ``` TypeScript
+   // Insert data.
    let value1 = 'Lisa';
    let value2 = 18;
    let value3 = 100.5;
@@ -254,14 +269,13 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
      CODES: value4,
      IDENTITY: value5,
    };
-
    if (store !== undefined) {
      try {
        const rowId = await store.insert('EMPLOYEE', valueBucket);
-       console.info(`Succeeded in inserting data. rowId:${rowId}`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in inserting data. rowId:${rowId}`);
      } catch (error) {
        const err = error as BusinessError;
-       console.error(`Failed to insert data. Code:${err.code}, message:${err.message}`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to insert data. Code:${err.code}, message:${err.message}`);
      }
    }
    ```
@@ -273,8 +287,10 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 3. Modify or delete data based on the specified **Predicates** instance.
 
    Call **update()** to modify data and **delete()** to delete data. <br>Example:
-
-   ```ts
+   <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // Modify and delete data.
    let value6 = 'Rose';
    let value7 = 22;
    let value8 = 200.5;
@@ -287,30 +303,30 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
      CODES: value9,
      IDENTITY: value10,
    };
-
+   
    // Modify data.
    let predicates1 = new relationalStore.RdbPredicates('EMPLOYEE'); // Create predicates for the table named EMPLOYEE.
    predicates1.equalTo('NAME', 'Lisa'); // Modify the data of Lisa in the EMPLOYEE table to the specified data.
    if (store !== undefined) {
      (store as relationalStore.RdbStore).update(valueBucket2, predicates1, (err: BusinessError, rows: number) => {
        if (err) {
-         console.error(`Failed to update data. Code:${err.code}, message:${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in updating data. row count: ${rows}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to update data. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in updating data. row count: ${rows}`);
      })
    }
-
+   
    // Delete data.
    predicates1 = new relationalStore.RdbPredicates('EMPLOYEE');
    predicates1.equalTo('NAME', 'Lisa');
    if (store !== undefined) {
      (store as relationalStore.RdbStore).delete(predicates1, (err: BusinessError, rows: number) => {
        if (err) {
-         console.error(`Failed to delete data. Code:${err.code}, message:${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete data. Code:${err.code}, message:${err.message}`);
          return;
        }
-       console.info(`Delete rows: ${rows}`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Delete rows: ${rows}`);
      })
    }
    ```
@@ -318,17 +334,19 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 4. Query data based on the conditions specified by **Predicates**.
 
    Call **query()** to query data. The data obtained is returned in a **ResultSet** object. <br>Example:
-
-   ```ts
+   <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // Query data.
    let predicates2 = new relationalStore.RdbPredicates('EMPLOYEE');
    predicates2.equalTo('NAME', 'Rose');
    if (store !== undefined) {
-     (store as relationalStore.RdbStore).query(predicates2, ['ID', 'NAME', 'AGE', 'SALARY', 'IDENTITY'], (err: BusinessError, resultSet) => {
+     (store as relationalStore.RdbStore).query(predicates2, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES', 'IDENTITY'], (err: BusinessError, resultSet) => {
        if (err) {
-         console.error(`Failed to query data. Code:${err.code}, message:${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to query data. Code:${err.code}, message:${err.message}`);
          return;
        }
-       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
        // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
        while (resultSet.goToNextRow()) {
          const id = resultSet.getLong(resultSet.getColumnIndex('ID'));
@@ -336,7 +354,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
          const age = resultSet.getLong(resultSet.getColumnIndex('AGE'));
          const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
          const identity = resultSet.getValue(resultSet.getColumnIndex('IDENTITY'));
-         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}, identity=${identity}`);
+         hilog.info(DOMAIN, 'rdbDataPersistence', `id=${id}, name=${name}, age=${age}, salary=${salary}, identity=${identity}`);
        }
        // Release the data set memory.
        resultSet.close();
@@ -351,17 +369,19 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    The RDB store also supports full-text search (FTS) in Chinese or English. The ICU tokenizer is supported.
 
    The following example demonstrates how to perform FTS with Chinese keywords:
-
-   ```ts
-   if (store !== undefined) {
+   <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // Query data using Chinese keywords.
+   if (store !== undefined && tokenTypeSupported) {
      // Create an FTS table.
      const SQL_CREATE_TABLE = 'CREATE VIRTUAL TABLE IF NOT EXISTS example USING fts4(name, content, tokenize=icu zh_CN)';
      try {
        await store.execute(SQL_CREATE_TABLE);
-       console.info('Succeeded in creating fts table.');
+       hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in creating fts table.');
      } catch (error) {
        const err = error as BusinessError;
-       console.error(`Failed to creating fts table. code: ${err.code}, message: ${err.message}.`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to creating fts table. code: ${err.code}, message: ${err.message}.`);
      }
    }
    if (store !== undefined) {
@@ -369,12 +389,12 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
        const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['Test']);
        while (resultSet.goToNextRow()) {
          const name = resultSet.getValue(resultSet.getColumnIndex('name'));
-         console.info(`name=${name}`);
+         hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);
        }
        resultSet.close();
      } catch (error) {
        const err = error as BusinessError;
-       console.error(`Query failed. code: ${err.code}, message: ${err.message}.`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Query failed. code: ${err.code}, message: ${err.message}.`);
      }
    }
    ```
@@ -385,8 +405,10 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    The supported transaction types are **DEFERRED** (default), **IMMEDIATE**, and **EXCLUSIVE**.
 
    For details, see [Interface (RdbStore)](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14).
-
-   ```ts
+   <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // Use the transaction object to insert, delete, and update data.
    if (store !== undefined) {
      // Create a transaction object.
      try {
@@ -399,12 +421,13 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
              NAME: 'Lisa',
              AGE: 18,
              SALARY: 100.5,
-             CODES: new Uint8Array([1, 2, 3, 4, 5])
+             CODES: new Uint8Array([1, 2, 3, 4, 5]),
+             IDENTITY: BigInt('15822401018187971967763')
            },
            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
          );
-         console.info(`Insert is successful, rowId = ${rowId}`);
-
+         hilog.info(DOMAIN, 'rdbDataPersistence', `Insert is successful, rowId = ${rowId}`);
+   
          const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
          predicates.equalTo('NAME', 'Lisa');
          // Update data using the transaction object.
@@ -413,29 +436,30 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
              NAME: 'Rose',
              AGE: 22,
              SALARY: 200.5,
-             CODES: new Uint8Array([1, 2, 3, 4, 5])
+             CODES: new Uint8Array([1, 2, 3, 4, 5]),
+             IDENTITY: BigInt('15822401018187971967763')
            },
            predicates,
            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
          );
-         console.info(`Updated row count: ${rows}`);
-
+         hilog.info(DOMAIN, 'rdbDataPersistence', `Updated row count: ${rows}`);
+   
          // Delete data using the transaction object.
          await transaction.execute('DELETE FROM EMPLOYEE WHERE age = ? OR age = ?', [21, 20]);
-         console.info(`execute delete success`);
-
+         hilog.info(DOMAIN, 'rdbDataPersistence', `execute delete success`);
+   
          // Commit a transaction.
          await transaction.commit();
-         console.info('Transaction commit success.');
+         hilog.info(DOMAIN, 'rdbDataPersistence', 'Transaction commit success.');
        } catch (error) {
          const err = error as BusinessError;
          // Roll back the transaction if the execution fails.
          await transaction.rollback();
-         console.error(`Transaction execute failed, code is ${err.code}, message is ${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Transaction execute failed, code is ${err.code}, message is ${err.message}`);
        }
      } catch (error) {
        const err = error as BusinessError;
-       console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `createTransaction failed, code is ${err.code}, message is ${err.message}`);
      }
    }
    ```
@@ -443,16 +467,18 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 6. Back up the database in the same directory. <br>Two backup modes are available: manual backup and automatic backup (available only for system applications). For details, see [Backing Up an RDB Store](data-backup-and-restore.md#backing-up-an-rdb-store).
 
    Example: Perform manual backup of an RDB store.
-
-   ```ts
+   <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // Back up the database in the same path.
    if (store !== undefined) {
-     // Backup.db indicates the name of the database backup file. By default, it is in the same directory as the RdbStore file. You can also specify the directory, which is in the customDir + backup.db format.
-     (store as relationalStore.RdbStore).backup("Backup.db", (err: BusinessError) => {
+     // Backup.db indicates the name of the database backup file. By default, it is in the same directory as the RdbStore file. You can also specify the directory in the following format: customDir + 'Backup.db'.
+     (store as relationalStore.RdbStore).backup('Backup.db', (err: BusinessError) => {
        if (err) {
-         console.error(`Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
          return;
        }
-       console.info(`Succeeded in backing up RdbStore.`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in backing up RdbStore.`);
      })
    }
    ```
@@ -460,15 +486,17 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 7. Restore data from the database backup. <br>You can restore an RDB store from the manual backup data or automatic backup data (available only for system applications). For details, see [Restoring RDB Store Data](data-backup-and-restore.md#restoring-rdb-store-data).
 
    Example: Call [restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore) to restore an RDB store from the data that is manually backed up.
-
-   ```ts
+   <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // Restore data from the backup database.
    if (store !== undefined) {
-     (store as relationalStore.RdbStore).restore("Backup.db", (err: BusinessError) => {
+     (store as relationalStore.RdbStore).restore('Backup.db', (err: BusinessError) => {
        if (err) {
-         console.error(`Failed to restore RdbStore. Code:${err.code}, message:${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to restore RdbStore. Code:${err.code}, message:${err.message}`);
          return;
        }
-       console.info(`Succeeded in restoring RdbStore.`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in restoring RdbStore.`);
      })
    }
    ```
@@ -478,25 +506,15 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    Call **deleteRdbStore()** to delete the RDB store and related database files. <br>Example:
 
    Stage model:
-
-   ```ts
-   relationalStore.deleteRdbStore(this.context, 'RdbTest.db', (err: BusinessError) => {
-    if (err) {
-       console.error(`Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
-       return;
-     }
-     console.info('Succeeded in deleting RdbStore.');
-   });
-   ```
-
-   FA model:
-
-   ```ts
+   <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // Delete the database.
    relationalStore.deleteRdbStore(context, 'RdbTest.db', (err: BusinessError) => {
      if (err) {
-       console.error(`Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
        return;
      }
-     console.info('Succeeded in deleting RdbStore.');
+     hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in deleting RdbStore.');
    });
    ```

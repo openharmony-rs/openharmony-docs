@@ -615,7 +615,7 @@ export default class ColdStartAbility extends UIAbility {
         }
         ```
 
-    4. 在系统配置文件`route_map.json`中配置子页信息（参考[系统路由表](../ui/arkts-navigation-navigation.md#系统路由表)）。
+    4. 在系统配置文件`route_map.json`中配置子页信息（参考[系统路由表](../ui/arkts-navigation-cross-package.md#系统路由表)）。
 
         ```ts
         // route_map.json

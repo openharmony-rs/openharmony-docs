@@ -127,7 +127,7 @@
           const char *names[] = {EVENT_MAIN_THREAD_JANK};
           // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive回调。
+          // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive回调。
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcher);

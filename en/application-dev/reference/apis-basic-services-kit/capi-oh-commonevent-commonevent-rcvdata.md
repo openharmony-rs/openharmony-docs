@@ -7,6 +7,10 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct CommonEvent_RcvData CommonEvent_RcvData
+```
+
 ## Overview
 
 Defines a struct for the common event data.

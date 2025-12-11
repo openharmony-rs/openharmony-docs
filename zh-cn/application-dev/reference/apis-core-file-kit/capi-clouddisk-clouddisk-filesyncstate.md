@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
+```
+
 ## 概述
 
 文件的同步状态。

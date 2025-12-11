@@ -555,7 +555,7 @@ try {
 
 ## wifi.getDeviceConfigs<sup>7+</sup>
 
-getDeviceConfigs(): &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig)&gt;
+getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 Obtains network configuration.
 
@@ -949,7 +949,7 @@ try {
 
 ## wifi.getStations<sup>7+</sup>
 
-getStations(): &nbsp;Array&lt;[StationInfo](#stationinfo7)&gt;
+getStations(): &nbsp;Array&lt;StationInfo&gt;
 
 Obtains information about the connected stations.
 
@@ -1192,7 +1192,7 @@ Subscribes to the disconnection of a STA from a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-  | callback | Callback&lt;StationInf]&gt; | Yes| Callback invoked to return the WLAN state.|
+  | callback | Callback&lt;StationInf&gt; | Yes| Callback invoked to return the WLAN state.|
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
@@ -1211,7 +1211,7 @@ Unsubscribes from the disconnection of a STA from a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-  | callback | Callback&lt;StationInf]&gt; | No| Callback invoked to return the WLAN state.|
+  | callback | Callback&lt;StationInf&gt; | No| Callback invoked to return the WLAN state.|
 
   **Example**
 ```ts

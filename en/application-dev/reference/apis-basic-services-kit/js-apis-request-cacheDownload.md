@@ -247,6 +247,8 @@ Sets the upper limit of the file cache size for the **cacheDownload** component.
 
 - When this API is used to adjust the cache size, the LRU mode is used by default to clear redundant cached data in the file.
 
+- If **bytes** is set to **0**, all cached files will be deleted.
+
 - This API returns the result synchronously, without blocking the calling thread.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
@@ -389,3 +391,35 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.error(`Failed to get download info. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
+
+## cacheDownload.clearMemoryCache<sup>23+</sup>
+
+clearMemoryCache(): void
+
+Clears this memory cache.
+
+**System capability**: SystemCapability.Request.FileTransferAgent
+
+**Example**:
+
+```ts
+import { cacheDownload } from '@kit.BasicServicesKit';
+  
+cacheDownload.clearMemoryCache();
+```
+
+## cacheDownload.clearFileCache<sup>23+</sup>
+
+clearFileCache(): void
+
+Clears this file cache.
+
+**System capability**: SystemCapability.Request.FileTransferAgent
+
+**Example**:
+
+```ts
+import { cacheDownload } from '@kit.BasicServicesKit';
+  
+cacheDownload.clearFileCache();
+```

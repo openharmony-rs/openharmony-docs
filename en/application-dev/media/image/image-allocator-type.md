@@ -136,9 +136,9 @@ The calculation rule for PixelMap memory allocation is as follows:
 pixels_size (pixel memory size) = stride (image pixel storage width) * height (image pixel height)
 ```
 
-For images that support downsampling decoding, when **desiredSize** (expected output size) is set, the decoder calculates PixelMap pixel memory at the optimal downsampling rate with a base gradient of 1/8. This means that it selects the highest clarity sampling rate among 7/8, 6/8, ..., 1/8.
+For images with original pixel memory exceeding 2 GB and supporting downsampling, you are advised to use [createPixelMap](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7) or [createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15) and set **desiredSize** in [DecodingOptions](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7) for downsampling decoding.
 
-Starting from API version 21, for images with original pixel memory exceeding 2 GB and supporting downsampling, you are advised to use [createPixelMap](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7) or [createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15) and set **desiredSize** in [DecodingOptions](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7) for downsampling decoding.
+Starting from API version 21, for images that support downsampling decoding, when **desiredSize** (expected output size) is set, the decoder calculates PixelMap pixel memory at the optimal downsampling rate with a base gradient of 1/8. This means that it selects the highest clarity sampling rate among 7/8, 6/8, ..., 1/8.
 
 The table below lists the downsampling decoding support for different image formats in the image framework.
 | Support for Downsampling| Image Format                                                 |

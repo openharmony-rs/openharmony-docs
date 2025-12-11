@@ -289,7 +289,7 @@ maxLength(value: number)
 
 showCounter(value: boolean, options?: InputCounterOptions)
 
-设置当通过InputCounterOptions输入的字符数超过阈值时显示计数器。
+设置当通过InputCounterOptions输入的字符数超过阈值时显示计数器。未调用showCounter接口时，默认不显示计数器。
 
 参数value为true时，才能设置options，文本框开启计数器功能，需要配合maxLength（设置最大字符限制）一起使用。字符计数器显示的效果是当前输入字符数/最大可输入字符数。
 
@@ -305,7 +305,7 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 | 参数名                | 类型                                                         | 必填 | 说明             |
 | --------------------- | ------------------------------------------------------------ | ---- | ---------------- |
-| value                 | boolean                                                      | 是   | 是否显示计数器。<br/>true表示显示计时器，false表示不显示。 |
+| value                 | boolean                                                      | 是   | 是否显示计数器。<br/>true表示显示计数器，false表示不显示。 |
 | options<sup>11+</sup> | [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明) | 否   | 计数器的配置项。 |
 
 ### style<sup>10+</sup>
@@ -908,12 +908,12 @@ enableHapticFeedback(isEnabled: boolean)
 >  **说明：**
 >
 >  开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段以开启振动权限，配置如下：
-> ```json
-> "requestPermissions": [
->  {
->     "name": "ohos.permission.VIBRATE",
->  }
-> ]
+>  ```json
+>  "requestPermissions": [
+>   {
+>      "name": "ohos.permission.VIBRATE",
+>   }
+>  ]
 > ```
 
 ### autoCapitalizationMode<sup>20+</sup>
@@ -1093,6 +1093,55 @@ scrollBarColor(thumbColor: ColorMetrics | undefined)
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
 | thumbColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。<br />默认值：'#66182431'，显示为灰色。|
+
+### compressLeadingPunctuation<sup>23+</sup>
+
+compressLeadingPunctuation(enabled: Optional\<boolean>)
+
+设置是否启用行首标点符号压缩功能。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用。|
+
+### includeFontPadding<sup>23+</sup>
+
+includeFontPadding(include: Optional\<boolean>)
+
+设置是否在首行和尾行增加间距以避免文字截断。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| include | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。 |
+
+### fallbackLineSpacing<sup>23+</sup>
+
+fallbackLineSpacing(enabled: Optional\<boolean>)
+
+针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -2081,6 +2130,11 @@ struct TextAreaExample {
       id: TextMenuItemId.of('create2'),
       icon: $r('app.media.startIcon'),
     };
+    // 从API version 23开始支持TextMenuItemId.autoFill
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
+    }
     menuItems.push(item1);
     menuItems.unshift(item2);
     return menuItems;
@@ -2136,8 +2190,9 @@ struct TextAreaExample {
   }
 }
 ```
-
-![textAreaEditMenuOptions](figures/textAreaEditMenuOptions.gif)
+<!--RP4-->
+![textAreaEditMenuOptions](figures/textAreaEditMenuOptions.png)
+<!--RP4End-->
 
 ### 示例15（文本设置省略模式）
 
@@ -2747,3 +2802,98 @@ struct TextAreaExample {
   }
 }
 ```
+
+### 示例27（设置行首标点压缩）
+
+该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+从API version 23开始，支持compressLeadingPunctuation接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      TextArea({ text: "\u300C行首标点压缩打开" })
+        .compressLeadingPunctuation(true)
+        .margin(5)
+        .fontSize(30)
+        .width("90%")
+      TextArea({ text: "\u300C行首标点压缩关闭" })
+        .compressLeadingPunctuation(false)
+        .fontSize(30)
+        .width("90%")
+    }
+  }
+}
+```
+![textAreaCompressLeadingPunctuation](figures/textAreaCompressLeadingPunctuation.gif)
+
+### 示例28（设置自适应间距）
+
+该示例通过[includeFontPadding](#includefontpadding23)接口增加首行尾行间距和[fallbackLineSpacing](#fallbacklinespacing23)接口设置自适应行间距。
+
+从API version 23开始，新增[includeFontPadding](#includefontpadding23)和[fallbackLineSpacing](#fallbacklinespacing23)接口。
+
+```ts
+// xxx.ets
+
+const UYGHUR_TEXT: string = 'ياخشىمۇسەنياخشىمۇسەنياخشىمۇسەنياخشىمۇسەنياخشىمۇسەنياخشىمۇسەنياخشىمۇسەن';
+@Entry
+@Component
+struct Index {
+  @State include: boolean | null | undefined = false;
+  @State fallback: boolean | null | undefined = false;
+  @State displayText: string = UYGHUR_TEXT;
+
+  build() {
+    Column() {
+      TextArea({
+        text: this.displayText,
+        placeholder: '请输入内容...'
+      })
+        .includeFontPadding(this.include)
+        .fallbackLineSpacing(this.fallback)
+        .lineHeight(5)
+        .width('100%')
+        .height(100)
+        .backgroundColor('#eee')
+        .borderWidth(1)
+        .borderColor('#dddddd')
+
+      Scroll() {
+        Column() {
+          // --- IncludeFontPadding相关按钮 ---
+          Button('设置includePadding: ' + this.include)
+            .onClick(() => {
+              this.include = this.include === false ? true : false;
+            })
+            .margin({ bottom: 10 })
+
+          // --- FallbackLineSpacing相关按钮 ---
+          Button('设置fallbackLineSpacing: ' + this.fallback)
+            .onClick(() => {
+              this.fallback = this.fallback === false ? true : false;
+            })
+            .margin({ bottom: 10 })
+
+        }
+        .width('100%')
+        .padding(5)
+      }
+      .height(250)
+      .backgroundColor('transparent')
+      .scrollBarWidth(2)
+      .scrollBarColor('#888')
+
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![textAreaIncludeFontPadding](figures/TextArea_IncludeFontPadding.gif)

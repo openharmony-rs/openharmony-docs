@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 - [Form Kit简介](formkit-overview.md)
 - ArkTS卡片开发（推荐）<!--arkts-ui-->
   - [ArkTS卡片概述](arkts-form-overview.md)
@@ -38,7 +38,9 @@
       - [ArkTS卡片编辑概述](arkts-ui-widget-event-formeditextensionability-overview.md)
       - [卡片编辑开发指导](arkts-ui-widget-event-formeditextensionability.md)
     - 应用内请求卡片加桌<!--arkts-ui-widget-add-->
-      - [应用内拉起卡片管理加桌](arkts-ui-widget-open-formmanager.md)<!--RP1--><!--RP1End-->
+      - [应用内拉起卡片管理加桌](arkts-ui-widget-open-formmanager.md)
+    <!--RP1--><!--RP1End-->
+    <!--RP2--><!--RP2End-->
   <!--Del--> 
   - [ArkTS卡片使用方开发指导（仅对系统应用开放）](widget-host-development-guide-sys.md)
   <!--DelEnd-->

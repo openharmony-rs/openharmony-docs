@@ -273,46 +273,49 @@ Two backup modes are available: manual backup and automatic backup. Automatic ba
 
 Call the [backup](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup) API to manually back up an RDB store. <br>Example:
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
+```
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
 
-    const STORE_CONFIG: relationalStore.StoreConfig = {
-      name: 'RdbTest.db',
-      securityLevel: relationalStore.SecurityLevel.S3,
-      allowRebuild: true
-    };
-    try {
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
-      console.info('Succeeded in getting RdbStore.');
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code},message:${err.message}`);
-    }
 
-    if (!store) {
-      return;
-    }
+<!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
-    try {
-      /**
-       * Backup.db specifies the database backup file. By default, it is in the same directory as the RDB store.
-       * You can also specify an absolute path, for example, /data/storage/el2/database/Backup.db. The file path must exist and will not be automatically created.
-       */
-      await store.backup("Backup.db");
-      console.info(`Succeeded in backing up RdbStore.`);
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
-    }
-  }
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: 'RdbTest.db',
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+try {
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+  hilog.info(DOMAIN, 'BackupAndRestore', 'Succeeded in getting RdbStore.');
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code},message:${err.message}`);
+}
+
+if (!store) {
+  return;
+}
+
+try {
+  /**
+   * Backup.db specifies the database backup file. By default, it is in the same directory as the RDB store.
+   * You can also specify an absolute path, for example, /data/storage/el2/database/Backup.db. The file path must exist and will not be automatically created.
+   */
+  await store.backup('Backup.db');
+  hilog.info(DOMAIN, 'BackupAndRestore', `Succeeded in backing up RdbStore.`);
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
 }
 ```
 
@@ -363,31 +366,28 @@ If **allowRebuild** in **StoreConfig** is set to **true** before the database is
 
 If **allowRebuild** in **StoreConfig** is not set or is set to **false**, set **allowRebuild** to **true** and open the rebuilt RDB store. <br>Example:
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { relationalStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
-    try {
-      const STORE_CONFIG: relationalStore.StoreConfig = {
-        name: 'RdbTest.db',
-        securityLevel: relationalStore.SecurityLevel.S3,
-        allowRebuild: true
-      };
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
-      console.info('Succeeded in getting RdbStore.');
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-    }
-  }
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
+try {
+  const STORE_CONFIG: relationalStore.StoreConfig = {
+    name: 'RdbTest.db',
+    securityLevel: relationalStore.SecurityLevel.S3,
+    allowRebuild: true
+  };
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+  hilog.info(DOMAIN, 'BackupAndRestore', 'Succeeded in getting RdbStore.');
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
 }
 ```
+
+
+
 
 ## Restoring RDB Store Data
 
@@ -403,98 +403,100 @@ The following example contains only the code snippet for the restore process. Th
 
 1. An error code is thrown to indicate a database exception.
 
-   ```ts
-   let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-   if (store != undefined) {
-     (store as relationalStore.RdbStore).query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then((result: relationalStore.ResultSet) => {
-       let resultSet = result;
-       try {
-         /* ...
-            Logic for adding, deleting, and modifying data.
-            ...
-         */
-         // Throw an exception.
-         if (resultSet?.rowCount == -1) {
-           resultSet ?.isColumnNull(0);
-         }
-         // Call other APIs such as resultSet.goToFirstRow() and resultSet.count(), which also throw exceptions.
-         while (resultSet.goToNextRow()) {
-           console.info(JSON.stringify(resultSet.getRow()))
-         }
-         resultSet.close();
-       } catch (err) {
-           if (err.code === 14800011) {
+    <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+    if (store != undefined) {
+      (store as relationalStore.RdbStore).query(predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES'])
+        .then((result: relationalStore.ResultSet) => {
+          let resultSet = result;
+          try {
+            /* ...
+               Logic for adding, deleting, and modifying data.
+               ...
+            */
+            // Throw an exception.
+            if (resultSet?.rowCount == -1) {
+              resultSet?.isColumnNull(0);
+            }
+            // Calling other APIs such as resultSet.goToFirstRow() also throws exceptions.
+            while (resultSet.goToNextRow()) {
+              hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(resultSet.getRow()));
+            }
+            resultSet.close();
+          } catch (err) {
+            if (err.code === 14800011) {
               // Perform step 2 (close result sets and then restore data).
-           }
-           console.error(JSON.stringify(err));
-       }
-     })
-   }
-   ```
+            }
+            hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
+          }
+        })
+    }
+    ```
+
+
 
 2. Close all opened result sets.
 
-   ```ts
-   // Obtain all opened result sets.
-   let resultSets: Array<relationalStore.ResultSet> = [];
-   // Call resultSet.close() to close all opened result sets.
-   for (let resultSet of resultSets) {
-     try {
-       resultSet.close();
-     } catch (e) {
-         if (e.code !== 14800014) {
-           console.error(`Code:${e.code}, message:${e.message}`);
-         }
-     }
-   }
-   ```
+    <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let resultSets: relationalStore.ResultSet[] = []
+    // Call resultSet.close() to close all opened result sets.
+    for (let resultSet of resultSets) {
+      try {
+        resultSet.close();
+      } catch (e) {
+        if (e.code !== 14800014) {
+          hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+        }
+      }
+    }
+    ```
+
+
+
 
 3. Call **restore()** to restore data.
 
-   ```ts
-   import { UIAbility } from '@kit.AbilityKit';
-   import { relationalStore } from '@kit.ArkData';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo } from '@kit.CoreFileKit';
-
-   export default class EntryAbility extends UIAbility {
-     async onCreate(): Promise<void> {
-       let store: relationalStore.RdbStore | undefined = undefined;
-       let context = this.context;
-       let STORE_CONFIG: relationalStore.StoreConfig = {
-         name: "RdbTest.db",
-         securityLevel: relationalStore.SecurityLevel.S3,
-         allowRebuild: true
-       }
-       try {
-         /**
-          * Backup.db specifies the database backup file. By default, it is in the same directory as the current database.
-          * If an absolute path is specified for the database backup file, for example, /data/storage/el2/database/Backup.db, pass in the absolute path.
-          */
-         let backupFilePath = context.databaseDir + '/rdb/Backup.db';
-         const backupExist = await fileIo.access(backupFilePath);
-         if (!backupExist) {
-           console.info("Backup is not exist.");
-           // Open the rebuilt RDB store and create tables.
-           // Generate data.
-           return;
-         }
-       } catch (e) {
-         console.error(`Code:${e.code}, message:${e.message}`);
-       }
-
-       try {
-         store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-         // Call restore() to restore data.
-         await store.restore("Backup.db");
-         console.info("Restore from backup success.")
-       } catch (e) {
-         const err = e as BusinessError;
-         console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-       }
-     }
-   }
-   ```
+    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let context = getContext();
+    let STORE_CONFIG: relationalStore.StoreConfig = {
+      name: 'RdbTest.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      allowRebuild: true
+    }
+    try {
+      /**
+       * Backup.db specifies the database backup file. By default, it is in the same directory as the current database.
+       * If an absolute path is specified for the database backup file, for example, /data/storage/el2/database/Backup.db, pass in the absolute path.
+       */
+      let backupFilePath = context.databaseDir + '/rdb/Backup.db';
+      const backupExist: boolean = await fileIo.access(backupFilePath);
+      if (!backupExist) {
+        hilog.info(DOMAIN, 'BackupAndRestore', 'Backup is not exist.');
+        // Open the rebuilt RDB store and create tables.
+        // Generate data.
+        return;
+      }
+    } catch (e) {
+      hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+    }
+    
+    try {
+      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+      // Call restore() to restore data.
+      await store.restore('Backup.db');
+      hilog.info(DOMAIN, 'BackupAndRestore', 'Restore from backup success.');
+    } catch (e) {
+      const err = e as BusinessError;
+      hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+    }
+    ```
 
 <!--Del-->
 

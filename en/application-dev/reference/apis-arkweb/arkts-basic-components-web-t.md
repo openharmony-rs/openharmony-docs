@@ -52,6 +52,20 @@ Defines a callback invoked when an SSL error occurs during resource loading.
 | ------ | ------ | ---- | --------------------- |
 | sslErrorEvent | [SslErrorEvent](./arkts-basic-components-web-i.md#sslerrorevent12)  | Yes| Details about the callback invoked when an SSL error occurs during resource loading.|
 
+## OnVerifyPinCallback<sup>22+</sup>
+
+type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
+
+Callback triggered to notify the user of PIN authentication.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                 |
+| ------ | ------ | ---- | --------------------- |
+| verifyPinEvent | [VerifyPinEvent](./arkts-basic-components-web-i.md#verifypinevent22)  | Yes| Details of the callback triggered to notify the user of PIN authentication.|
+
 ## OnContextMenuHideCallback<sup>11+</sup>
 
 type OnContextMenuHideCallback = () => void
@@ -308,3 +322,49 @@ Defines a callback triggered when a blank screen is detected.
 **Example**
 
 For details about the sample code, see [onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22).
+
+## OnCameraCaptureStateChangeCallback<sup>23+</sup>
+
+type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
+
+Defines a callback triggered when the camera state of the page changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name              | Type                                       | Mandatory  | Description                        |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [CameraCaptureStateChangeInfo](./arkts-basic-components-web-i.md#cameracapturestatechangeinfo23) | Yes   | Original and new camera state.|
+
+## OnMicrophoneCaptureStateChangeCallback<sup>23+</sup>
+
+type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void;
+
+Defines a callback triggered when the microphone state of the page changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name              | Type                                       | Mandatory  | Description                        |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [MicrophoneCaptureStateChangeInfo](./arkts-basic-components-web-i.md#microphonecapturestatechangeinfo23) | Yes   | Original and new microphone state.|
+
+## TextSelectionChangeCallback<sup>23+</sup>
+
+type TextSelectionChangeCallback = (selectionText: string) => void
+
+Defines a callback triggered when the text selection changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name            | Type     | Mandatory  | Description                                      |
+| -------------- | ---- | ---- | ---------------------------------------- |
+| selectionText | string | Yes| Selected text.     |
+
+**Example**
+
+For details about the complete sample code, see [onTextSelectionChange](./arkts-basic-components-web-events.md#ontextselectionchange23).

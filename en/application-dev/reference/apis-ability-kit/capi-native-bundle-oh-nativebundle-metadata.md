@@ -6,6 +6,10 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} OH_NativeBundle_Metadata
+```
+
 ## Overview
 
 The struct describes the metadata information.

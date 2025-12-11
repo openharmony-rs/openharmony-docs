@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_ProgressObserver
+```
+
 ## Overview
 
 Defines a struct for the observer for the device-cloud sync progress.

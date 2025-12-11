@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSenseRequest
+```
+
 ## 概述
 
 SCSI命令（request sense）的请求结构体。

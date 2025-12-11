@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiCollie_DetectionParam {...} HiCollie_DetectionParam
+```
+
 ## Overview
 
 Defines the parameters of the jank event detection. Note that this struct is supported since API 12.

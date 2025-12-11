@@ -933,6 +933,81 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Internal error.                                              |
 
+**示例：** 
+ 
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private customDialogComponentId: number = 0;
+
+  @Builder
+  customDialogComponent() {
+    Column() {
+      Text('打开了一个弹窗').fontSize(20)
+      Row({ space: 10 }) {
+        Button('取消').onClick(() => {
+          try {
+            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
+          }
+        }).width(100).backgroundColor('#d5d5d5').fontColor('#707070')
+        Button('确定').onClick(() => {
+          try {
+            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
+          }
+        }).width(100)
+      }
+    }.height(150).padding(20).justifyContent(FlexAlign.SpaceBetween)
+  }
+
+  build() {
+    Row() {
+      Column({ space: 20 }) {
+        Button('Click Me')
+          .fontSize(30)
+          .onClick(() => {
+            this.getUIContext()
+              .getPromptAction()
+              .openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent()
+                },
+                onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                  console.info('reason' + JSON.stringify(dismissDialogAction.reason));
+                  console.info('dialog onWillDismiss');
+                  if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                    dismissDialogAction.dismiss();
+                  }
+                  if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                    dismissDialogAction.dismiss();
+                  }
+                }
+              })
+              .then((dialogId: number) => {
+                this.customDialogComponentId = dialogId;
+              })
+              .catch((error: BusinessError) => {
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`);
+              })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## presentCustomDialog<sup>18+</sup>
 
 presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: promptAction.DialogController, options?: promptAction.DialogOptions): Promise\<number>
@@ -1787,7 +1862,9 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.
 
 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。
 
-从API version11开始不再维护，建议使用[showActionMenu](#showactionmenu11)。
+> **说明：** 
+>
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[showActionMenu](#showactionmenu11)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full。
 

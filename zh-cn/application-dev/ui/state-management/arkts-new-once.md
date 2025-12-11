@@ -15,6 +15,8 @@
 > 从API version 12开始，在\@ComponentV2装饰的自定义组件中支持使用\@Once装饰器。
 >
 > 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
@@ -37,7 +39,7 @@
 
 ## 限制条件
 
-- \@Once仅在[\@ComponentV2](arkts-new-componentV2.md)装饰的自定义组件中与\@Param搭配使用。
+- \@Once仅在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中与\@Param搭配使用。
 
   <!-- @[once_param_componentV2_pair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) -->
   

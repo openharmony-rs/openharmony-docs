@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfRecord OH_UdmfRecord
+```
+
 ## Overview
 
 Defines a struct for a data record in a unified data object.

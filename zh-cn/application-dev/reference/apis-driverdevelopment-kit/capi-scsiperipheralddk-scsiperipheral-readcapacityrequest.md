@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_ReadCapacityRequest {...} ScsiPeripheral_ReadCapacityRequest
+```
+
 ## 概述
 
 SCSI命令（read capacity）的请求结构体。
