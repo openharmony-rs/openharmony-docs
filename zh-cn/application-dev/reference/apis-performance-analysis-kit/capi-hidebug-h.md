@@ -510,6 +510,6 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br> HIDEBUG_SUCCESSS：采样成功完成。<br>HIDEBUG_INVALID_ARGUMENT：无效参数。<br>         HIDEBUG_NOT_SUPPORTED：当前设备不支持Perf采样。<br>         HIDEBUG_UNDER_SAMPLING：已有采样任务正在执行中。<br>         HIDEBUG_RESOURCE_UNAVAILABLE：采样资源不足或已达调用上限。 |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br> HIDEBUG_SUCCESS：采样成功完成。<br>HIDEBUG_INVALID_ARGUMENT：无效参数。<br>         HIDEBUG_NOT_SUPPORTED：当前设备不支持Perf采样。<br>         HIDEBUG_UNDER_SAMPLING：已有采样任务正在执行中。<br>         HIDEBUG_RESOURCE_UNAVAILABLE：采样资源不足或已达调用上限。 |
 
 
