@@ -16,7 +16,7 @@ The [pasteboard](../../reference/apis-basic-services-kit/js-apis-pasteboard.md) 
 - To ensure the accuracy of the pasteboard data, only one copy can be performed at a time.
 - In API version 12 and later, [permission control](get-pastedata-permission-guidelines.md) is added to the pasteboard reading API to enhance user privacy protection.
 
-## Using a Basic Data Types
+## Using Basic Data Types for Copy and Paste
 
 Currently, the following basic data types are supported for copy and paste: text, HTML, URI, Want, and pixel map. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage.
 
@@ -78,7 +78,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 ```
 
 
-## Using a Unified Data Object
+## Using Unified Data Objects for Copy and Paste
 
 To facilitate data interactions between the pasteboard and other applications and reduce the workload of data type adaptation, the pasteboard supports a unified data object for copying and pasting. For details about the unified data object, see [Unified Data Channel](../../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md).
 
