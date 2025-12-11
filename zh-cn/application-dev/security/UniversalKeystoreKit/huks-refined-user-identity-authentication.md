@@ -22,7 +22,60 @@
 <!-- @[fingerprint_access_key_generation_and_encryption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
 
 ``` TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
+<!-- @[fingerprint_access_user_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
+
+``` TypeScript
+/* 步骤3：用户认证模块 */
+function performUserAuthentication(huksChallenge: Uint8Array): void {
+  /* 配置认证参数 */
+  const authTypeList: userAuth.UserAuthType[] = [AUTH_TYPE];
+  const authParam: userAuth.AuthParam = {
+    challenge: huksChallenge,
+    authType: authTypeList,
+    authTrustLevel: AUTH_TRUST_LEVEL
+  };
+
+  const widgetParam: userAuth.WidgetParam = {
+    title: 'PIN',
+  };
+
+  /* 获取认证实例 */
+  let auth: userAuth.UserAuthInstance;
+  try {
+    auth = userAuth.getUserAuthInstance(authParam, widgetParam);
+    console.info('认证实例获取成功');
+  } catch (error) {
+    console.error('认证实例获取失败: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+
+  /* 订阅认证结果 */
+  try {
+    auth.on('result', {
+      onResult(result) {
+        console.info('用户认证成功，获取到token: ' + JSON.stringify(result));
+        authToken = result.token;
+        step32CompleteDecryption();
+      }
+    });
+    console.info('认证结果订阅成功');
+  } catch (error) {
+    console.error('认证结果订阅失败: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+
+  try {
+    auth.start();
+    console.info('认证流程已启动，等待用户输入PIN码...');
+  } catch (error) {
+    console.error('认证启动失败: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+}
+```
 import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
