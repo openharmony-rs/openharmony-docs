@@ -2,9 +2,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块为系统接口。
+> - 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块为系统接口。
 
 包含基本业务路由信息。
 
@@ -14,13 +16,17 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                              | 类型                                                         | 只读 | 可选 | 说明                 |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ---- | -------------------- |
 | bundleName                        | string                                                       | 是   | 否   | 表示应用程序的bundleName。 |
 | moduleName                        | string                                                       | 是   | 否   | 表示应用程序的moduleName。 |
 | name                              | string                                                       | 是   | 否   | 业务路由ability名。 |
-| labelId                           | number                                                       | 是   | 否   | 模块标签的资源id。       |
-| descriptionId                     | number                                                       | 是   | 否   | 描述信息的资源id。       |
-| iconId                            | number                                                       | 是   | 否   | 描述ability信息的图标id。 |
+| labelId                           | ArkTS-Dyn: number<br/>ArkTS-Sta: int                   | 是   | 否   | 模块标签的资源id。 |
+| descriptionId                     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                   | 是   | 否   | 描述信息的资源id。 |
+| iconId                            | ArkTS-Dyn: number<br/>ArkTS-Sta: int                   | 是   | 否   | 描述ability信息的图标id。 |
 | businessType | [businessAbilityRouter.BusinessType](js-apis-businessAbilityRouter-sys.md#businesstype) | 是 | 否 | 标识枚举业务类型。 |
-| applicationInfo | Array\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | 是   | 否   | 应用程序的信息。  |
+| applicationInfo | Array\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | 是   | 否   | 应用程序的信息。 |
