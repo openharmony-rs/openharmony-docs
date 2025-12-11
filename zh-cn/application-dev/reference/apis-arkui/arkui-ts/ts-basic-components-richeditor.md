@@ -240,14 +240,14 @@ enablePreviewText(enable: boolean)
 >  **说明：**
 >
 > 该接口在CAPI场景使用时默认关闭。可以在工程的module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段控制是否启用预上屏，配置如下：
-> ```json
-> "metadata": [
->   {
->     "name": "can_preview_text",
->     "value": "true"
->   }
-> ]
-> ```
+```json
+"metadata": [
+  {
+    "name": "can_preview_text",
+    "value": "true"
+  }
+]
+```
 
 ### placeholder<sup>12+</sup>
 
