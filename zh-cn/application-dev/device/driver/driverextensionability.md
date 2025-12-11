@@ -33,7 +33,7 @@
 
 4. 在文件中导入相关Kit，并定义请求Code。
 
-   <!-- @[driver_service_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) -->
+   <!-- @[driver_service_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
 
 ``` TypeScript
 import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
