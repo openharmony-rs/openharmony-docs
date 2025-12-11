@@ -20,61 +20,7 @@
 <!-- @[user_authentication_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
 
 ``` TypeScript
-<!-- @[user_authentication_pin_verification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
-
-``` TypeScript
-/* 步骤3：用户认证模块 - 通过PIN码认证获取授权令牌 */
-/* 执行用户认证 */
-function performUserAuthentication(huksChallenge: Uint8Array): void {
-  const authTypeList: userAuth.UserAuthType[] = [AUTH_TYPE];
-  const authParam: userAuth.AuthParam = {
-    challenge: huksChallenge,
-    authType: authTypeList,
-    authTrustLevel: AUTH_TRUST_LEVEL
-  };
-
-  const widgetParam: userAuth.WidgetParam = {
-    title: 'PIN',
-  };
-
-  /* 获取认证实例 */
-  let auth: userAuth.UserAuthInstance;
-  try {
-    auth = userAuth.getUserAuthInstance(authParam, widgetParam);
-    console.info('认证实例创建成功');
-  } catch (error) {
-    console.error('认证实例创建失败: ' + JSON.stringify(error));
-    const err = error instanceof Error ? error : new Error(String(error));
-    throw err;
-  }
-
-  /* 订阅认证结果 */
-  try {
-    auth.on('result', {
-      onResult(result) {
-        console.info('用户认证成功，获取到令牌');
-        authToken = result.token;
-        step4EncryptWithToken();
-      }
-    });
-    console.info('认证结果订阅成功');
-  } catch (error) {
-    console.error('认证结果订阅失败: ' + JSON.stringify(error));
-    const err = error instanceof Error ? error : new Error(String(error));
-    throw err;
-  }
-
-  /* 开始认证 */
-  try {
-    auth.start();
-    console.info('等待用户输入PIN码');
-  } catch (error) {
-    console.error('认证启动失败: ' + JSON.stringify(error));
-    const err = error instanceof Error ? error : new Error(String(error));
-    throw err;
-  }
-}
-```
+import { huks } from '@kit.UniversalKeystoreKit';
 import { userAuth } from '@kit.UserAuthenticationKit';
 
 const KEY_ALIAS = 'test_sm4_key_alias';
@@ -264,6 +210,60 @@ async function step2InitSession(): Promise<void> {
 
 ### 通过PIN码认证获取授权令牌
 <!-- @[user_authentication_pin_verification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
+
+``` TypeScript
+/* 步骤3：用户认证模块 - 通过PIN码认证获取授权令牌 */
+/* 执行用户认证 */
+function performUserAuthentication(huksChallenge: Uint8Array): void {
+  const authTypeList: userAuth.UserAuthType[] = [AUTH_TYPE];
+  const authParam: userAuth.AuthParam = {
+    challenge: huksChallenge,
+    authType: authTypeList,
+    authTrustLevel: AUTH_TRUST_LEVEL
+  };
+
+  const widgetParam: userAuth.WidgetParam = {
+    title: 'PIN',
+  };
+
+  /* 获取认证实例 */
+  let auth: userAuth.UserAuthInstance;
+  try {
+    auth = userAuth.getUserAuthInstance(authParam, widgetParam);
+    console.info('认证实例创建成功');
+  } catch (error) {
+    console.error('认证实例创建失败: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+
+  /* 订阅认证结果 */
+  try {
+    auth.on('result', {
+      onResult(result) {
+        console.info('用户认证成功，获取到令牌');
+        authToken = result.token;
+        step4EncryptWithToken();
+      }
+    });
+    console.info('认证结果订阅成功');
+  } catch (error) {
+    console.error('认证结果订阅失败: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+
+  /* 开始认证 */
+  try {
+    auth.start();
+    console.info('等待用户输入PIN码');
+  } catch (error) {
+    console.error('认证启动失败: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+}
+```
 
 ### 使用认证令牌进行加密操作
 <!-- @[user_authentication_data_encryption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
