@@ -450,7 +450,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     - 调用[OH_VideoEncoder_QueryInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer)接口获取下一个可用的输入缓冲区（buffer）的索引（index）。
     - 根据获取的索引（index），调用[OH_VideoEncoder_GetInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputbuffer)接口获取对应的缓冲区（buffer）实例。
-    - 将需要编码的数据写入该缓冲区（buffer）后，调用[OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer)接口将其送入编码输入队列进行编码。当所有待处理数据全部传递给编码器后，需要将flag标识成AVCODEC_BUFFER_FLAGS_EOS，通知编码器输入结束。
+    - 将需要编码的数据写入该缓冲区（buffer）后，调用[OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer)接口将其送入编码输入队列进行编码。当最后一帧数据被送入编码输入队列时，需要将flag标识成[AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)，通知编码器输入结束。
 
 
     示例中的变量size、offset、pts、frameData、flags说明与Surface模式相同，此处不再赘述。
@@ -505,7 +505,10 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                 OH_AVCodecBufferAttr info;
                 info.size = frameSize;
                 info.offset = 0;
+                // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
                 info.pts = 0;
+                // 输入最后一帧数据时，设置AVCODEC_BUFFER_FLAGS_EOS标识。
+                // info.flags = AVCODEC_BUFFER_FLAGS_EOS;
                 OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &info);
                 if (setBufferRet != AV_ERR_OK) {
                     // 异常处理。
