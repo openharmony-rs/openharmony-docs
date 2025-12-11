@@ -764,9 +764,9 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 
 ### release<sup>13+</sup>
 
-release():  Promise\<void\>
+release(): Promise\<void\>
 
-释放输出资源。
+释放输出资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
