@@ -20,7 +20,6 @@
 import { ArcAlphabetIndexer, ArcAlphabetIndexerAttribute } from '@kit.ArkUI';
 ```
 
-
 ## 子组件
 
 无
