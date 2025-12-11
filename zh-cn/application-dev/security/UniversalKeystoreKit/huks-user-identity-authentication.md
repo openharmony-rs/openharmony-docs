@@ -267,3 +267,140 @@ async function step2InitSession(): Promise<void> {
 
 ### 使用认证令牌进行加密操作
 <!-- @[user_authentication_data_encryption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
+
+``` TypeScript
+/* 步骤4：加密操作模块 - 使用认证令牌进行加密操作 */
+/* 加密参数配置 */
+const ENCRYPT_PROPERTIES: huks.HuksParam[] = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_SM4,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CBC,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_IV,
+    value: stringToUint8Array(IV),
+  }
+];
+
+/* 更新会话 */
+function updateSession(handle: number, huksOptions: huks.HuksOptions, token: Uint8Array,
+  throwObject: ThrowObject): Promise<huks.HuksReturnResult> {
+  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
+    try {
+      huks.updateSession(handle, huksOptions, token, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
+}
+
+/* 完成会话 */
+function finishSession(handle: number, huksOptions: huks.HuksOptions, token: Uint8Array,
+  throwObject: ThrowObject): Promise<huks.HuksReturnResult> {
+  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
+    try {
+      huks.finishSession(handle, huksOptions, token, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
+}
+
+/* 使用认证令牌进行加密 */
+async function step4EncryptWithToken(): Promise<void> {
+  const encryptOptions: huks.HuksOptions = {
+    properties: ENCRYPT_PROPERTIES,
+    inData: stringToUint8Array(CIPHER_IN_DATA)
+  };
+
+  /* 更新会话，传入认证令牌 */
+  let throwObject: ThrowObject = { isThrow: true };
+  try {
+    await updateSession(sessionHandle, encryptOptions, authToken, throwObject)
+      .then((data) => {
+        console.info('会话更新成功');
+      })
+      .catch((error: Error) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error('会话更新失败: ' + JSON.stringify(error));
+        }
+      });
+  } catch (error) {
+    console.error('会话更新参数错误: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+
+  /* 完成会话，传入认证令牌 */
+  throwObject = { isThrow: false };
+  try {
+    await finishSession(sessionHandle, encryptOptions, authToken, throwObject)
+      .then((data) => {
+        encryptedData = data.outData as Uint8Array;
+        console.info('加密完成');
+
+        /* 验证加密结果 */
+        const originalData = stringToUint8Array(CIPHER_IN_DATA);
+        if (encryptedData.toString() === originalData.toString()) {
+          console.error('加密验证失败：加密数据与原始数据相同');
+        } else {
+          console.info('加密验证成功：数据已正确加密');
+        }
+      })
+      .catch((error: Error) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error('会话完成失败: ' + JSON.stringify(error));
+        }
+      });
+  } catch (error) {
+    console.error('会话完成参数错误: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+}
+
+/* 主流程入口 - 执行完整的密钥生成、认证和加密流程 */
+async function main(): Promise<void> {
+  await step1GenerateKey();
+  await step2InitSession();
+  performUserAuthentication(challenge);
+}
+```
