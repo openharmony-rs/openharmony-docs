@@ -4697,7 +4697,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 
@@ -4711,7 +4711,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 
