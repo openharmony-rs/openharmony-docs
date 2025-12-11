@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-```
+```c
 typedef struct {...} ArkWeb_WebMessageAPI
 ```
 
@@ -45,7 +45,7 @@ Post Message数据相关的Native API结构体。在调用接口前建议通过[
 
 ### createWebMessage()
 
-```
+```c
 ArkWeb_WebMessagePtr (*createWebMessage)()
 ```
 
@@ -61,7 +61,7 @@ ArkWeb_WebMessagePtr (*createWebMessage)()
 
 ### destroyWebMessage()
 
-```
+```c
 void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 ```
 
@@ -77,7 +77,7 @@ void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 
 ### setType()
 
-```
+```c
 void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 ```
 
@@ -94,7 +94,7 @@ void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 
 ### getType()
 
-```
+```c
 ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 ```
 
@@ -110,7 +110,7 @@ ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 
 ### setData()
 
-```
+```c
 void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
 ```
 
@@ -129,7 +129,7 @@ void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
 
 ### getData()
 
-```
+```c
 void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)
 ```
 

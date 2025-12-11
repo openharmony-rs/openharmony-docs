@@ -1,9 +1,15 @@
 # Using Smart Text Data Detector
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zourongchun-->
+<!--Designer: @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 Since API version 20, ArkWeb provides the text segmentation and recognition feature on HTML5 pages, enabling segmented-text highlighting, long-press preview, and text-selection menus extension. To use this feature, set [enableDataDetector](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enabledatadetector20) to **true**. The default value is **false**.
 
-This feature is mainly used to automatically identify entities such as phone numbers and URLs on HTML5 pages and provide convenient interaction operations. For example, a user can click a phone number to make a call or click a URL to view the address on the map, improving user experience.
+This feature is mainly used to automatically identify entities such as phone numbers and URLs on HTML5 pages and provide convenient interaction operations. For example, a user can click a phone number to make a call or click an URL to view the address on the map, improving user experience.
 
-The recognizable entity types include phone numbers, URLs, email addresses and time. For details, see [TextDataDetectorType](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectortype11).
+The recognizable entity types include phone numbers, URLs, email addresses, addresses, and time. For details, see [TextDataDetectorType](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectortype11).
 
 
 ## Segmented Text Highlighting
@@ -14,7 +20,7 @@ The filtering rules for highlighting special entities are as follows:
 - Text entities in the text box and editable area are not processed.
 - Text entities in the `<a></a>` tag are not processed.
 - Text entities in cross-domain iframes and nested iframes are not processed.
-- Text entities that cross nodes are not highlighted, for example, `<p>400-<span>123-4567</span></p>`.
+- Text entities that cross nodes are not highlighted, for example, `<p>Sa<span>turday</span></p>`.
 
 After being highlighted, text entities on the page are converted into hyperlinks. When they are touched or left-clicked, the operation menu is displayed based on the entity type.
 
@@ -63,11 +69,12 @@ HTML file to be loaded:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<p>Phone: 400-123-4567</p>
-<p>Email: test@example.com</p>
-<p>Website: https://www.example.com/</p>
-<p>Date: 2025.06.01</p>
-<p>Non-highlighted 400-<span>123-4567</span> and highlighted 400-123-4567</p>
+    <p>Telephone: 400-123-4567</p>
+    <p>Email address: test@example.com</p>
+    <p>URL: https://www.example.com/</p>
+    <p>Date: 2025.06.01</p>
+    <p>Address: Zhongguancun, Haidian District, Beijing</p>
+    <p>Sa<span>turday</span> will not be highlighted and Saturday will be highlighted</p>
 </body>
 </html>
 ```
@@ -111,7 +118,7 @@ The [custom menu](web_menu.md#custom-menu) bound by [bindSelectionMenu](../refer
 ## Text Selection Menu Extension
 Since API version 22, the [enableSelectedDataDetector](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enableselecteddatadetector22) can be used to configure whether to enable the AI option in the text selection menu.
 
-In the non-editing area, if the selected text meets the following conditions, the corresponding AI menu options are displayed in the text selection menu:
+In the non-editing area, if the selected text meets the following conditions, the corresponding AI option are displayed in the text selection menu:
 
 - The UTF-8-encoded selected text does not exceed 255 bytes.
 - The selected text contains only one entity word that matches the recognition type. (You can configure the recognition type supported by [dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20).)

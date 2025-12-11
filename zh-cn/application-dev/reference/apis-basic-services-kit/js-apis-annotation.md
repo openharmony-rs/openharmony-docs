@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```
-import { Available } from '@ohos.annotation';
+import { Available } from '@kit.BasicServicesKit';
 ```
 
 ## Available
@@ -39,7 +39,7 @@ import { Available } from '@ohos.annotation';
 **示例：**
 
   ```ts
-  import { Available } from '@ohos.annotation';
+  import { Available } from '@kit.BasicServicesKit';
 
   @Available({minApiVersion: 'OpenHarmony 22'})
   function myFunc() {}

@@ -501,7 +501,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onDeviceAdminDisabled(bundleName: string): void
 
-仅超级设备管理应用在普通设备管理应用被激活时会触发此回调。企业管理员或者员工解除激活普通设备管理应用，系统通知超级设备管理应用已解除激活admin权限。超级设备管理应用可在此回调函数中通知企业管理员设备已脱管。不需要注册，解除激活后默认触发该回调。
+仅超级设备管理应用在普通设备管理应用被解除激活时会触发此回调。企业管理员或者员工解除激活普通设备管理应用，系统通知超级设备管理应用已解除激活admin权限。超级设备管理应用可在此回调函数中通知企业管理员设备已脱管。不需要注册，解除激活后默认触发该回调。
 
 **系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This topic covers the common APIs of text components.
 
@@ -80,10 +80,10 @@ Describes the keyboard visual style configuration.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Mandatory| Description                                                   |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20) | No  | Keyboard gradient effect.<br>Default value: **KeyboardGradientMode.NONE**.|
-| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20) | No  | Keyboard fluid lighting effect.<br>Default value: **KeyboardFluidLightMode.NONE**.|
+| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
+| ------- | ----------------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
+| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20) | No  | Yes  | Keyboard gradient effect.<br>Default value: **KeyboardGradientMode.NONE**.|
+| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20) | No  | Yes  | Keyboard fluid lighting effect.<br>Default value: **KeyboardFluidLightMode.NONE**.|
 
 ## TextChangeReason<sup>20+</sup>
 

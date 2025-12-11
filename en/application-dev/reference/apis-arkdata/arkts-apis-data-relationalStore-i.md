@@ -133,11 +133,11 @@ Represents statistics about SQL statements executed by the database.
 
 | Name    | Type                                              | Read-Only| Optional |Description                                                        |
 | -------- | ------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| sql<sup>12+</sup>           | Array&lt;string&gt;            | No  |   No  | SQL statements executed. If the value of [batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert) is too large, multiple SQL statements may be executed.     |
-| totalTime<sup>12+</sup>      | number                        | No  |   No  | Total time used to execute the SQL statements, in μs.                                   |
-| waitTime<sup>12+</sup>       | number                        | No  |   No  | Time used to obtain the handle, in μs.                                        |
-| prepareTime<sup>12+</sup>    | number                        | No  |   No  | Time used to get the SQL statements ready and bind parameters, in μs.                                |
-| executeTime<sup>12+</sup>    | number                        | No  |   No  | Time used to execute the SQL statements, in μs.|
+| sql | Array&lt;string&gt; | No| No| SQL statements executed. If the value of [batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert) is too large, multiple SQL statements may be executed.|
+| totalTime   | number | No| No| Total time used to execute the SQL statements, in μs.|
+| waitTime    | number | No| No| Time used to obtain the handle, in μs.|
+| prepareTime | number | No| No| Time used to get the SQL statements ready and bind parameters, in μs.|
+| executeTime | number | No| No| Time used to execute the SQL statements, in μs.|
 
 ## SqlInfo<sup>20+</sup>
 
@@ -147,8 +147,8 @@ Represents details about the SQL statement executed by the database.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| sql<sup>20+</sup>  | string | No| No| SQL statements to be executed.|
-| args<sup>20+</sup> | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No| No| Parameters in the SQL statements to be executed.|
+| sql  | string | No| No| SQL statements to be executed.|
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No| No| Parameters in the SQL statements to be executed.|
 
 ## ExceptionMessage<sup>20+</sup>
 
@@ -158,9 +158,9 @@ Represents an exception message about the SQL statement executed by the database
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| code<sup>20+</sup> | number | No| No| Error code returned by the executed SQL statement. For details about the values and meanings, see [SQLite Error Codes](https://www.sqlite.org/rescode.html).|
-| message<sup>20+</sup> | string | No| No| Exception message returned by the executed SQL statement.|
-| sql<sup>20+</sup> | string | No| No| SQL statement that reports the error.|
+| code | number | No| No| Error code returned by the executed SQL statement. For details about the values and meanings, see [SQLite Error Codes](https://www.sqlite.org/rescode.html).|
+| message | string | No| No| Exception message returned by the executed SQL statement.|
+| sql | string | No| No| SQL statement that reports the error.|
 
 ## TransactionOptions<sup>14+</sup>
 

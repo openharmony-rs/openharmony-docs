@@ -707,10 +707,28 @@ Uid:0
 
 > **注意：**
 >
-> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在[系统路由表](../ui/arkts-navigation-navigation.md#系统路由表)中定义。
+> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在[系统路由表](../ui/arkts-navigation-cross-package.md#系统路由表)中定义。
 >
 > 当应用发生前后台切换时，对应的页面URL为空，但是会将enters foreground、leaves foreground作为特殊的页面名进行填充。
 >
 > enters foreground：应用进入前台运行。
 >
 > leaves foreground：应用在后台运行。
+
+## Cpp Crash常见问题
+
+### 故障日志中调用栈出现中断
+
+在OpenHarmony系统中，调用栈获取依赖回栈表（记录调用栈信息的表）和frame pointer（栈帧指针）两种机制，需要保证以下两个编译选项开启：
+
+- **-funwind-tables**
+
+  该选项指示编译器在二进制中生成回栈表，用于异常处理和调用栈回溯。
+
+- **-fno-omit-frame-pointer**
+
+  该选项指示编译器将栈帧指针存储在一个寄存器中，用于异常处理和调用栈回溯。
+
+**编译选项开启方法**
+
+以Cmake为例，在CMakeList.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。

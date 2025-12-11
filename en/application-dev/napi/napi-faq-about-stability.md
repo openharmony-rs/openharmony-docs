@@ -41,8 +41,11 @@ The following shows an example stack structure.
 ```
 - If the input parameter is incorrect, the .so file usually appears high on the crash stack (it will not be far away from the stack top, such as #10). However, you can also refer to the following troubleshooting methods. 
 - Troubleshooting methods: 
-a. Check whether the **napi_value** is not initialized (the value is not assigned successfully, but is passed to the API as an invalid input parameter). 
-b. Check whether the error-prone API can be found by referring to the following topic.  
+a. Check whether the **napi_value** is not initialized (the value is not assigned successfully, but is passed to the API as an invalid input parameter).
+b. Check whether the error-prone API can be found by referring to the following topic.
+
+  References: 
+   
 
 ## How to handle thread safety issues when the ArkTS method is concurrently called in the thread pool
 
@@ -64,9 +67,9 @@ In addition, you can enable the Ark multi-thread check during development to int
 
 - Answer: 
 1. Check whether **napi_value** is used out of the scope. 
-References:  
-  
-2. You are advised to use **napi_ref** instead of **napi_value**. 
+References: 
+ 
+2. You are advised to use **napi_ref** instead of **napi_value**.
 
 ## Is there a method to obtain the latest napi_env
 
@@ -93,9 +96,8 @@ To forcibly save the **env**, you can use the callback of **napi_add_env_cleanup
 To use similar logic, use **napi_ref** for storage can prolong the lifecycle. 
 
 - References: 
-[napi_create_reference, napi_delete_reference](use-napi-life-cycle.md)
-
-    
+  [napi_create_reference, napi_delete_reference](use-napi-life-cycle.md) 
+   
 
 ## What should I do if napi_add_env_cleanup_hook is called incorrectly
 

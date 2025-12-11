@@ -322,5 +322,4 @@ The following table lists the APIs related to user preference persistence. For m
      Logger.info('Succeeded in deleting preferences.');
    })
    ```
-
 <!--RP1--><!--RP1End-->

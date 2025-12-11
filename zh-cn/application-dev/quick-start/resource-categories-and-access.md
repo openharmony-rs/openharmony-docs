@@ -17,7 +17,7 @@
 
 应用开发中使用的各类资源文件，需要放入特定子目录中存储管理。目录结构如下所示，base目录、限定词目录、rawfile目录、resfile目录称为资源目录，element、media、profile称为资源组目录。
 
-```
+```text
 resources
 |---base  // 默认存在的目录
 |   |---element
@@ -249,7 +249,7 @@ plural.json文件的内容如下：
 
 ### 使用约束
 可翻译特性使能范围：base目录下string、strarray、plural类型资源。
-```
+```text
 resources
 |---base
 |   |---element

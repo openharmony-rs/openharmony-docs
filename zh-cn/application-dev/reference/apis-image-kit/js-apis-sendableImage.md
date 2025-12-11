@@ -37,7 +37,7 @@ createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promi
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| Promise\<[PixelMap](#pixelmap)> | 返回Pixelmap。<br>当创建的pixelmap大小超过原图大小时，返回原图pixelmap大小。|
+| Promise\<[PixelMap](#pixelmap)> | 返回PixelMap。<br>当创建的PixelMap大小超过原图大小时，返回原图PixelMap大小。|
 
 **示例：**
 
@@ -147,7 +147,7 @@ async function Demo() {
     let ret: MySequence = new MySequence(pixelMap);
     data.readParcelable(ret);
 
-    // 获取到pixelmap。
+    // 获取到Pixelmap。
     let unmarshPixelmap = ret.pixel_map;
   }
 }
@@ -956,7 +956,7 @@ createAlphaPixelmap(): Promise\<PixelMap>
 
 | 类型                             | 说明                        |
 | -------------------------------- | --------------------------- |
-| Promise\<[PixelMap](#pixelmap)> | Promise实例，返回pixelmap。 |
+| Promise\<[PixelMap](#pixelmap)> | Promise实例，返回PixelMap。 |
 
 **示例：**
 

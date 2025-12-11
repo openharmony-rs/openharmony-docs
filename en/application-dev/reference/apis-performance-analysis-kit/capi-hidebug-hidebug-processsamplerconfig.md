@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_ProcessSamplerConfig {...} HiDebug_ProcessSamplerConfig
+```
+
 ## Overview
 
 Defines a struct for sampling configuration.

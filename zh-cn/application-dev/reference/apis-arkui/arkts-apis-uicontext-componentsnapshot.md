@@ -90,6 +90,8 @@ struct SnapshotExample {
 }
 ```
 
+![Getscreent](figures/Getscreent.gif)
+
 ## get<sup>12+</sup>
 
 get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>

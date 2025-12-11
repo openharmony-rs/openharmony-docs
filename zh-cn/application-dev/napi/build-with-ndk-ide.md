@@ -1,4 +1,10 @@
 # 使用DevEco Studio模板构建NDK工程
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 
 NDK通过CMake和Ninja编译应用的C/C++代码，编译过程如下图所示。
@@ -12,7 +18,7 @@ NDK通过CMake和Ninja编译应用的C/C++代码，编译过程如下图所示�
 
 1. 根据CMake配置脚本以及build-profile.json5中配置的externalNativeOptions构建参数，与缓存中的配置比对后，生成CMake命令并执行CMake。
 
-2. 执行Ninja，按照makefile执行编译和链接，将生成的.so以及运行时依赖的.so同步到输出目录，完成构建过程。
+2. 执行Ninja，按照Makefile执行编译和链接，将生成的.so以及运行时依赖的.so同步到输出目录，完成构建过程。
 
 
 通过DevEco Studio提供的应用模板，可以快速生成CMake构建脚本模板，并在build-profile.json5中指定相关编译构建参数。

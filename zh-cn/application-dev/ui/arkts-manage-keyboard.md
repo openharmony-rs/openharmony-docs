@@ -173,7 +173,7 @@ struct Index {
 
 以下示例展示了页面切换过程中，软键盘收起的场景。
 
-页面跳转写法请参考[组件导航(Navigation) (推荐)](./arkts-navigation-navigation.md)。
+页面跳转写法请参考[Navigation页面路由](./arkts-navigation-jump.md)。
 
 跳转前的页面
 

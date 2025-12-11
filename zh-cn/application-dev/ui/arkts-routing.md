@@ -11,7 +11,7 @@
 
 >**说明：**
 >
->[组件导航 (Navigation)](./arkts-navigation-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异可参考[Router切换Navigation](./arkts-router-to-navigation.md)指导。
+>[组件导航 (Navigation)](./arkts-navigation-architecture.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异可参考[Router切换Navigation](./arkts-router-to-navigation.md)指导。
 
 ## 页面跳转
 
@@ -631,7 +631,7 @@ export struct MyComponent {
 >
 >```ts
 >"dependencies": {
->    "@ohos/library": "file:../library",
+>    "library": "file:../library",
 >    // ...
 > }
 >```
@@ -640,7 +640,7 @@ export struct MyComponent {
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import '@ohos/library/src/main/ets/pages/Index'; // 引入共享包中的命名路由页面
+import 'library/src/main/ets/pages/Index'; // 引入共享包中的命名路由页面
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0xF811;
 const TAG = '[Sample_ArkTSRouter]';
@@ -665,7 +665,7 @@ struct Index {
                   data3: [123, 456, 789]
                 }
               }
-            })
+            });
           } catch (err) {
             let message = (err as BusinessError).message;
             let code = (err as BusinessError).code;

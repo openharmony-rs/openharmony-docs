@@ -1,4 +1,10 @@
 # input
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @kangshihui-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -126,7 +132,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    
    ```js
    // xxx.js
-   import promptAction from '@ohos.promptAction'
+   import promptAction from '@ohos.promptAction';
    export default {
      change(e){
        promptAction.showToast({
@@ -192,7 +198,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 
    ```js
    // xxx.js
-   import promptAction from '@ohos.promptAction'
+   import promptAction from '@ohos.promptAction';
    export default {
      checkboxOnChange(e) {
        promptAction.showToast({
@@ -227,7 +233,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 
    ```js
    // xxx.js
-   import promptAction from '@ohos.promptAction'
+   import promptAction from '@ohos.promptAction';
    export default {
      onRadioChange(inputValue, e) {
        if (inputValue === e.value) {

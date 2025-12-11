@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 An application generally consists of more than one page. For example, a music application may come with a music list page and a playback page. You need to link these pages through the page router to implement redirection as required. For example, in a music application, a user taps a song on a music list page to jump to the playback page of the song.
 

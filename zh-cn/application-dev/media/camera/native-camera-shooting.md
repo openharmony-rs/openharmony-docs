@@ -78,237 +78,237 @@
    - 将处理完的buffer通过回调传给ArkTS侧，做图片显示或通过安全控件写文件保存图片。
    - 使用完后解注册单段式拍照回调函数。
 
-   ```c++
-   // 保存NAPI侧注册的buffer处理回调函数。
-   static void* bufferCb = nullptr;
-   Camera_ErrorCode RegisterBufferCb(void* cb) {
-       OH_LOG_INFO(LOG_APP, " RegisterBufferCb start");
-       if (cb == nullptr) {
-           OH_LOG_INFO(LOG_APP, " RegisterBufferCb invalid error");
-           return CAMERA_INVALID_ARGUMENT;
-       }
-       bufferCb = cb;
-       return CAMERA_OK;
-   }
+     ```c++
+     // 保存NAPI侧注册的buffer处理回调函数。
+     static void* bufferCb = nullptr;
+     Camera_ErrorCode RegisterBufferCb(void* cb) {
+         OH_LOG_INFO(LOG_APP, " RegisterBufferCb start");
+         if (cb == nullptr) {
+             OH_LOG_INFO(LOG_APP, " RegisterBufferCb invalid error");
+             return CAMERA_INVALID_ARGUMENT;
+         }
+         bufferCb = cb;
+         return CAMERA_OK;
+     }
 
-   // 单段式拍照回调函数。
-   void OnPhotoAvailable(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo) {
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
-       OH_ImageNative* imageNative;
-       Camera_ErrorCode errCode = OH_PhotoNative_GetMainImage(photo, &imageNative);
-       if (errCode != CAMERA_OK || imageNative == nullptr) {
-           OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_GetMainImage call failed, errorCode: %{public}d", errCode);
+     // 单段式拍照回调函数。
+     void OnPhotoAvailable(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo) {
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
+         OH_ImageNative* imageNative;
+         Camera_ErrorCode errCode = OH_PhotoNative_GetMainImage(photo, &imageNative);
+         if (errCode != CAMERA_OK || imageNative == nullptr) {
+             OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_GetMainImage call failed, errorCode: %{public}d", errCode);
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable errCode:%{public}d imageNative:%{public}p", errCode, imageNative);
+         // 读取OH_ImageNative的size属性。
+         Image_Size size;
+         Image_ErrorCode imageErr = OH_ImageNative_GetImageSize(imageNative, &size);
+         if (imageErr != IMAGE_SUCCESS) {
+              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetImageSize call failed, errorCode: %{public}d", imageErr);
+              OH_ImageNative_Release(imageNative);
+              return;
+          }
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d width:%{public}d height:%{public}d", imageErr,
+            size.width, size.height);
+         // 读取OH_ImageNative的组件列表的元素个数。
+         size_t componentTypeSize = 0;
+         imageErr = OH_ImageNative_GetComponentTypes(imageNative, nullptr, &componentTypeSize);
+         if (imageErr != IMAGE_SUCCESS || componentTypeSize == 0) {
+             OH_LOG_ERROR(LOG_APP, "cOH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
+             OH_ImageNative_Release(imageNative);
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d componentTypeSize:%{public}zu", imageErr,
+            componentTypeSize);
+         // 读取OH_ImageNative的组件列表。
+         uint32_t* components = new (std::nothrow) uint32_t[componentTypeSize];
+         if (!components) {
+             OH_LOG_ERROR(LOG_APP, "Failed to allocate memory");
+             OH_ImageNative_Release(imageNative);
+             return;
+         }
+         imageErr = OH_ImageNative_GetComponentTypes(imageNative, &components, &componentTypeSize);
+         if (imageErr != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
+             OH_ImageNative_Release(imageNative);
+             delete[] components;
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_ImageNative_GetComponentTypes imageErr:%{public}d", imageErr);
+         // 读取OH_ImageNative的第一个组件所对应的缓冲区对象。
+         OH_NativeBuffer* nativeBuffer = nullptr;
+         imageErr = OH_ImageNative_GetByteBuffer(imageNative, components[0], &nativeBuffer);
+         if (imageErr != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetByteBuffer call failed, errorCode: %{public}d", imageErr);
+             OH_ImageNative_Release(imageNative);
+             delete[] components;
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_ImageNative_GetByteBuffer imageErr:%{public}d", imageErr);
+         // 读取OH_ImageNative的第一个组件所对应的缓冲区大小。
+         size_t nativeBufferSize = 0;
+         imageErr = OH_ImageNative_GetBufferSize(imageNative, components[0], &nativeBufferSize);
+         if (imageErr != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetBufferSize call failed, errorCode: %{public}d", imageErr);
+             OH_ImageNative_Release(imageNative);
+             delete[] components;
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d nativeBufferSize:%{public}zu", imageErr,
+            nativeBufferSize);
+         // 读取OH_ImageNative的第一个组件所对应的像素行宽。
+         int32_t rowStride = 0;
+         imageErr = OH_ImageNative_GetRowStride(imageNative, components[0], &rowStride);
+         if (imageErr != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetRowStride call failed, errorCode: %{public}d", imageErr);
+             OH_ImageNative_Release(imageNative);
+             delete[] components;
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d rowStride:%{public}d", imageErr, rowStride);
+         // 读取OH_ImageNative的第一个组件所对应的像素大小。
+         int32_t pixelStride = 0;
+         imageErr = OH_ImageNative_GetPixelStride(imageNative, components[0], &pixelStride);
+         if (imageErr != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetPixelStride call failed, errorCode: %{public}d", imageErr);
+             OH_ImageNative_Release(imageNative);
+             delete[] components;
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d pixelStride:%{public}d", imageErr, pixelStride);
+         // 将ION内存映射到进程空间。
+         void* virAddr = nullptr; // 指向映射内存的虚拟地址，解除映射后这个指针将不再有效。
+         int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr); // 映射后通过第二个参数virAddr返回内存的首地址。
+         if (ret != 0) {
+             OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Map call failed, errorCode: %{public}d", ret);
+             OH_ImageNative_Release(imageNative);
+             delete[] components;
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_NativeBuffer_Map err:%{public}d", ret);
+         // 调用NAPI层buffer回调。
+         auto cb = (void (*)(void *, size_t))(bufferCb);
+         if (!virAddr || nativeBufferSize <= 0) {
+           OH_LOG_INFO(LOG_APP, "On buffer callback failed");
            return;
-       }
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable errCode:%{public}d imageNative:%{public}p", errCode, imageNative);
-       // 读取OH_ImageNative的 size 属性。
-       Image_Size size;
-       Image_ErrorCode imageErr = OH_ImageNative_GetImageSize(imageNative, &size);
-       if (imageErr != IMAGE_SUCCESS) {
-            OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetImageSize call failed, errorCode: %{public}d", imageErr);
-            OH_ImageNative_Release(imageNative);
-            return;
-        }
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d width:%{public}d height:%{public}d", imageErr,
-                    size.width, size.height);
-       // 读取OH_ImageNative的组件列表的元素个数。
-       size_t componentTypeSize = 0;
-       imageErr = OH_ImageNative_GetComponentTypes(imageNative, nullptr, &componentTypeSize);
-       if (imageErr != IMAGE_SUCCESS || componentTypeSize == 0) {
-           OH_LOG_ERROR(LOG_APP, "cOH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-           OH_ImageNative_Release(imageNative);
-           return;
-       }
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d componentTypeSize:%{public}zu", imageErr,
-                    componentTypeSize);
-       // 读取OH_ImageNative的组件列表。
-       uint32_t* components = new (std::nothrow) uint32_t[componentTypeSize];
-       if (!components) {
-           OH_LOG_ERROR(LOG_APP, "Failed to allocate memory");
-           OH_ImageNative_Release(imageNative);
-           return;
-       }
-       imageErr = OH_ImageNative_GetComponentTypes(imageNative, &components, &componentTypeSize);
-       if (imageErr != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-           OH_ImageNative_Release(imageNative);
-           delete[] components;
-           return;
-       }
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_ImageNative_GetComponentTypes imageErr:%{public}d", imageErr);
-       // 读取OH_ImageNative的第一个组件所对应的缓冲区对象。
-       OH_NativeBuffer* nativeBuffer = nullptr;
-       imageErr = OH_ImageNative_GetByteBuffer(imageNative, components[0], &nativeBuffer);
-       if (imageErr != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetByteBuffer call failed, errorCode: %{public}d", imageErr);
-           OH_ImageNative_Release(imageNative);
-           delete[] components;
-           return;
-       }
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_ImageNative_GetByteBuffer imageErr:%{public}d", imageErr);
-       // 读取OH_ImageNative的第一个组件所对应的缓冲区大小。
-       size_t nativeBufferSize = 0;
-       imageErr = OH_ImageNative_GetBufferSize(imageNative, components[0], &nativeBufferSize);
-       if (imageErr != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetBufferSize call failed, errorCode: %{public}d", imageErr);
-           OH_ImageNative_Release(imageNative);
-           delete[] components;
-           return;
-       }
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d nativeBufferSize:%{public}zu", imageErr,
-                    nativeBufferSize);
-       // 读取OH_ImageNative的第一个组件所对应的像素行宽。
-       int32_t rowStride = 0;
-       imageErr = OH_ImageNative_GetRowStride(imageNative, components[0], &rowStride);
-       if (imageErr != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetRowStride call failed, errorCode: %{public}d", imageErr);
-           OH_ImageNative_Release(imageNative);
-           delete[] components;
-           return;
-       }
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d rowStride:%{public}d", imageErr, rowStride);
-       // 读取OH_ImageNative的第一个组件所对应的像素大小。
-       int32_t pixelStride = 0;
-       imageErr = OH_ImageNative_GetPixelStride(imageNative, components[0], &pixelStride);
-       if (imageErr != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetPixelStride call failed, errorCode: %{public}d", imageErr);
-           OH_ImageNative_Release(imageNative);
-           delete[] components;
-           return;
-       }
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d pixelStride:%{public}d", imageErr, pixelStride);
-       // 将ION内存映射到进程空间。
-       void* virAddr = nullptr; // 指向映射内存的虚拟地址，解除映射后这个指针将不再有效。
-       int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr); // 映射后通过第二个参数virAddr返回内存的首地址。
-       if (ret != 0) {
-           OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Map call failed, errorCode: %{public}d", ret);
-           OH_ImageNative_Release(imageNative);
-           delete[] components;
-           return;
-       }
-       OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_NativeBuffer_Map err:%{public}d", ret);
-       // 调用NAPI层buffer回调。
-       auto cb = (void (*)(void *, size_t))(bufferCb);
-       if (!virAddr || nativeBufferSize <= 0) {
-         OH_LOG_INFO(LOG_APP, "On buffer callback failed");
-         return;
-       }
-       cb(virAddr, nativeBufferSize);
-       // 释放资源。
-       delete[] components;
-       ret = OH_ImageNative_Release(imageNative);
-       if (ret != 0) {
-           OH_LOG_ERROR(LOG_APP, "OH_ImageNative_Release call failed., errorCode: %{public}d", ret);
-       }
-       ret = OH_NativeBuffer_Unmap(nativeBuffer); // 在处理完之后，解除映射并释放缓冲区。
-       if (ret != 0) {
-           OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Unmap call failed, errorCode: %{public}d", ret);
-       }
-	   OH_LOG_INFO(LOG_APP, "OnPhotoAvailable end");
-   }
+         }
+         cb(virAddr, nativeBufferSize);
+         // 释放资源。
+         delete[] components;
+         ret = OH_ImageNative_Release(imageNative);
+         if (ret != 0) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_Release call failed., errorCode: %{public}d", ret);
+         }
+         ret = OH_NativeBuffer_Unmap(nativeBuffer); // 在处理完之后，解除映射并释放缓冲区。
+         if (ret != 0) {
+             OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Unmap call failed, errorCode: %{public}d", ret);
+         }
+	     OH_LOG_INFO(LOG_APP, "OnPhotoAvailable end");
+     }
 
-   // 注册单段式拍照回调。
-   Camera_ErrorCode PhotoOutputRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput) {
-       OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback start!");
-       Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback failed.");
-       }
-       OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!", ret);
-       return ret;
-   }
+     // 注册单段式拍照回调。
+     Camera_ErrorCode PhotoOutputRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput) {
+         OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback start!");
+         Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback failed.");
+         }
+         OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!", ret);
+         return ret;
+     }
 
-   // 解注册单段式拍照回调。
-   Camera_ErrorCode PhotoOutputUnRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput) {
-       OH_LOG_INFO(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback start!");
-       Camera_ErrorCode ret = OH_PhotoOutput_UnregisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback failed.");
-       }
-       OH_LOG_INFO(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback return with ret code: %{public}d!", ret);
-       return ret;
-   }
-   ```
+     // 解注册单段式拍照回调。
+     Camera_ErrorCode PhotoOutputUnRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput) {
+         OH_LOG_INFO(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback start!");
+         Camera_ErrorCode ret = OH_PhotoOutput_UnregisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback failed.");
+         }
+         OH_LOG_INFO(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback return with ret code: %{public}d!", ret);
+         return ret;
+     }
+     ```
 
-   NAPI层buffer回处理参考示例代码：
+     NAPI层buffer回处理参考示例代码：
 
-   ```c++
-   static napi_ref bufferCbRef_ = nullptr;
-   static napi_env env_;
-   size_t g_size = 0;
-   
-   // NAPI层buffer回调方法。
-   static void BufferCb(void* buffer, size_t size) {
-       OH_LOG_INFO(LOG_APP, "BufferCb size:%{public}zu", size);
-       g_size = size;
-       napi_value asyncResource = nullptr;
-       napi_value asyncResourceName = nullptr;
-       napi_async_work work;
+     ```c++
+     static napi_ref bufferCbRef_ = nullptr;
+     static napi_env env_;
+     size_t g_size = 0;
 
-       void* copyBuffer = malloc(size);
-       if (copyBuffer == nullptr) {
-           return;
-       }
-       OH_LOG_INFO(LOG_APP, "BufferCb copyBuffer:%{public}p", copyBuffer);
-       // 使用 std::memcpy 复制 buffer 的内容到 copyBuffer。
-       std::memcpy(copyBuffer, buffer, size);
-       napi_create_string_utf8(env_, "BufferCb", NAPI_AUTO_LENGTH, &asyncResourceName);
-       napi_status status = napi_create_async_work(
-           env_, asyncResource, asyncResourceName, [](napi_env env, void* copyBuffer) {},
-           [](napi_env env, napi_status status, void* copyBuffer) {
-               napi_value retVal;
-               napi_value callback = nullptr;
-               void* data = nullptr;
-               napi_value arrayBuffer = nullptr;
-               size_t bufferSize = g_size;
-               napi_create_arraybuffer(env, bufferSize, &data, &arrayBuffer);
-               std::memcpy(data, copyBuffer, bufferSize);
-               OH_LOG_INFO(LOG_APP, "BufferCb g_size: %{public}zu", g_size);
-               napi_get_reference_value(env, bufferCbRef_, &callback);
-               if (callback) {
-                   OH_LOG_INFO(LOG_APP, "BufferCb callback is full");
-               } else {
-                   OH_LOG_ERROR(LOG_APP, "BufferCb callback is null");
-               }
-               // 调用ArkTS的buffer处理回调函数，将图片arrayBuffer传给页面做显示或保存。
-               napi_call_function(env, nullptr, callback, 1, &arrayBuffer, &retVal);
-               // 清理内存。
-               free(data); // 释放在异步工作中分配的内存。
-               free(copyBuffer);
-           },
-           copyBuffer, &work);
+     // NAPI层buffer回调方法。
+     static void BufferCb(void* buffer, size_t size) {
+         OH_LOG_INFO(LOG_APP, "BufferCb size:%{public}zu", size);
+         g_size = size;
+         napi_value asyncResource = nullptr;
+         napi_value asyncResourceName = nullptr;
+         napi_async_work work;
 
-       // 错误检查：创建异步工作失败时释放内存。
-       if (status != napi_ok) {
-           OH_LOG_ERROR(LOG_APP, "Failed to create async work");
-           free(copyBuffer); // 释放分配的内存。
-           return;
-       }
-       napi_queue_async_work_with_qos(env_, work, napi_qos_user_initiated);
-   }
+         void* copyBuffer = malloc(size);
+         if (copyBuffer == nullptr) {
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "BufferCb copyBuffer:%{public}p", copyBuffer);
+         // 使用std::memcpy复制buffer的内容到copyBuffer。
+         std::memcpy(copyBuffer, buffer, size);
+         napi_create_string_utf8(env_, "BufferCb", NAPI_AUTO_LENGTH, &asyncResourceName);
+         napi_status status = napi_create_async_work(
+             env_, asyncResource, asyncResourceName, [](napi_env env, void* copyBuffer) {},
+             [](napi_env env, napi_status status, void* copyBuffer) {
+                 napi_value retVal;
+                 napi_value callback = nullptr;
+                 void* data = nullptr;
+                 napi_value arrayBuffer = nullptr;
+                 size_t bufferSize = g_size;
+                 napi_create_arraybuffer(env, bufferSize, &data, &arrayBuffer);
+                 std::memcpy(data, copyBuffer, bufferSize);
+                 OH_LOG_INFO(LOG_APP, "BufferCb g_size: %{public}zu", g_size);
+                 napi_get_reference_value(env, bufferCbRef_, &callback);
+                 if (callback) {
+                     OH_LOG_INFO(LOG_APP, "BufferCb callback is full");
+                 } else {
+                     OH_LOG_ERROR(LOG_APP, "BufferCb callback is null");
+                 }
+                 // 调用ArkTS的buffer处理回调函数，将图片arrayBuffer传给页面做显示或保存。
+                 napi_call_function(env, nullptr, callback, 1, &arrayBuffer, &retVal);
+                 // 清理内存。
+                 free(data); // 释放在异步工作中分配的内存。
+                 free(copyBuffer);
+             },
+             copyBuffer, &work);
 
-   // 保存ArkTS侧传入的buffer处理回调函数。
-   static napi_value SetBufferCb(napi_env env, napi_callback_info info) {
-       OH_LOG_INFO(LOG_APP, "SetBufferCb start");
-       napi_value result;
-       napi_get_undefined(env, &result);
+         // 错误检查：创建异步工作失败时释放内存。
+         if (status != napi_ok) {
+             OH_LOG_ERROR(LOG_APP, "Failed to create async work");
+             free(copyBuffer); // 释放分配的内存。
+             return;
+         }
+         napi_queue_async_work_with_qos(env_, work, napi_qos_user_initiated);
+     }
 
-       napi_value argValue[1] = {nullptr};
-       size_t argCount = 1;
-       napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr);
+     // 保存ArkTS侧传入的buffer处理回调函数。
+     static napi_value SetBufferCb(napi_env env, napi_callback_info info) {
+         OH_LOG_INFO(LOG_APP, "SetBufferCb start");
+         napi_value result;
+         napi_get_undefined(env, &result);
 
-       env_ = env;
-       napi_create_reference(env, argValue[0], 1, &bufferCbRef_);
-       if (bufferCbRef_) {
-           OH_LOG_INFO(LOG_APP, "SetBufferCb callbackRef is full");
-       } else {
-           OH_LOG_ERROR(LOG_APP, "SetBufferCb callbackRef is null");
-       }
-       // 注册ArkTS侧buffer回调到NAPI层。
-       RegisterBufferCb((void *)BufferCb);
-       return result;
-   }
-   ```
+         napi_value argValue[1] = {nullptr};
+         size_t argCount = 1;
+         napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr);
+
+         env_ = env;
+         napi_create_reference(env, argValue[0], 1, &bufferCbRef_);
+         if (bufferCbRef_) {
+             OH_LOG_INFO(LOG_APP, "SetBufferCb callbackRef is full");
+         } else {
+             OH_LOG_ERROR(LOG_APP, "SetBufferCb callbackRef is null");
+         }
+         // 注册ArkTS侧buffer回调到NAPI层。
+         RegisterBufferCb((void *)BufferCb);
+         return result;
+     }
+     ```
 
 6. 创建拍照类型会话，参考[会话管理(C/C++)](./native-camera-session-management.md)，开启会话，准备拍照。
 

@@ -29,29 +29,29 @@ JSVM，即标准JS引擎，是严格遵守ECMAScript规范的JavaScript代码执
 
 1. 在应用工程配置文件module.json中配置网络权限：
 
-```
-"requestPermissions": [{
-  "name": "ohos.permission.INTERNET",
-  "reason": "$string:app_name",
-  "usedScene": {
-    "abilities": [
-      "FromAbility"
-    ],
-    "when": "inuse"
-  }
-}]
-```
+   ```json
+   "requestPermissions": [{
+     "name": "ohos.permission.INTERNET",
+     "reason": "$string:app_name",
+     "usedScene": {
+       "abilities": [
+         "FromAbility"
+       ],
+       "when": "inuse"
+     }
+   }]
+   ```
 
 2. 为避免debugger过程中的暂停被误报为无响应异常，可以开启DevEco Studio的Debug模式，参考[debug启动调试](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5)（无需设置断点），或者可以在非主线程的其它线程中运行JSVM。
-```cpp
-// 在非主线程的其他线程中运行JSVM示例代码
-static napi_value RunTest(napi_env env, napi_callback_info info)
-{
-    std::thread testJSVMThread(TestJSVM);
-    testJSVMThread.detach();
-    return  nullptr;
-}
-```
+   ```cpp
+   // 在非主线程的其他线程中运行JSVM示例代码
+   static napi_value RunTest(napi_env env, napi_callback_info info)
+   {
+       std::thread testJSVMThread(TestJSVM);
+       testJSVMThread.detach();
+       return  nullptr;
+   }
+   ```
 3. 在执行JS代码之前，调用OH_JSVM_OpenInspector在指定的主机和端口上激活inspector，创建socket。例如OH_JSVM_OpenInspector(env, "localhost", 9225)，在端侧本机端口9225创建socket。
 4. 调用OH_JSVM_WaitForDebugger，等待建立socket连接。
 5. 检查端侧端口是否打开成功。hdc shell "netstat -anp | grep 9225"。结果为9225端口状态为“LISTEN"即可。
@@ -139,18 +139,18 @@ void TestJSVM() {
 
 1. 在应用工程配置文件module.json中配置网络权限：
 
-```
-"requestPermissions": [{
-  "name": "ohos.permission.INTERNET",
-  "reason": "$string:app_name",
-  "usedScene": {
-    "abilities": [
-      "FromAbility"
-    ],
-    "when": "inuse"
-  }
-}]
-```
+   ```json
+   "requestPermissions": [{
+     "name": "ohos.permission.INTERNET",
+     "reason": "$string:app_name",
+     "usedScene": {
+       "abilities": [
+         "FromAbility"
+       ],
+       "when": "inuse"
+     }
+   }]
+   ```
 
 2. 为避免debugger过程中的暂停被误报为无响应异常，可以[开启DevEco Studio的Debug模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5)（无需设置断点），或者可以在非主线程的其他线程中运行JSVM。
 3. 打开 inspector 端口，连接 devtools 用于调试，其流程如下:  在执行JS代码之前，调用OH_JSVM_OpenInspector在指定的主机和端口上激活inspector，创建socket。例如OH_JSVM_OpenInspectorWithName(env, 123, "test")，创建 tcp socket 及其对应的 unixdomain 端口。
@@ -179,12 +179,12 @@ static void EnableInspector(JSVM_Env env) {
 1. Chrome浏览器中打开 chrome://inspect/#devices，勾选以下内容：
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png"/></div>
 2. 执行端口转发命令：hdc fport [开发者个人计算机侧端口号] [端侧端口号]  
-例如：hdc fport tcp:9227 tcp:9226
-1. 点击Port forwarding按钮，左侧输入开发者个人计算机侧端口，右侧输入端侧端口号，点击done。如下图所示：
+   例如：hdc fport tcp:9227 tcp:9226
+3. 点击Port forwarding按钮，左侧输入开发者个人计算机侧端口，右侧输入端侧端口号，点击done。如下图所示：
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png"/></div>
-2. 点击Configure按钮，输入开发者个人计算机侧的端口号，如localhost:9227。如下图所示：
+4. 点击Configure按钮，输入开发者个人计算机侧的端口号，如localhost:9227。如下图所示：
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png"/></div>
-3. 稍等片刻，会在target下出现调试的内容，点击inspect即可调试。如下图所示：
+5. 稍等片刻，会在target下出现调试的内容，点击inspect即可调试。如下图所示：
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png"/></div>
 
 ### 使用 websocket 端口进行调试

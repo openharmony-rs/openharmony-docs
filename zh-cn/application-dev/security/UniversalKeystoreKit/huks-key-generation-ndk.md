@@ -27,6 +27,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 3. 调用[OH_Huks_GenerateKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem)，传入密钥别名和密钥属性集，生成密钥。
 
 > **说明：**
+>
 > 如果业务再次使用相同别名调用HUKS生成密钥，HUKS将生成新密钥并直接覆盖历史的密钥文件。
 
 ```c++

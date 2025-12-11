@@ -686,7 +686,9 @@ CMS封装数据的KeyAgree接收方信息。
 
 CMS封装数据的接收者信息。
 
-**说明**：至少需要设置一个接收者。
+> **说明：**
+>
+> 至少需要设置一个接收者。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -3897,7 +3899,7 @@ createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : voi
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3965,7 +3967,7 @@ createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11-1)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4171,7 +4173,7 @@ X509证书吊销列表对象。
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL](#x509crl11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL](#x509crl11)替代。
 
 ### isRevoked<sup>(deprecated)</sup>
 
@@ -4181,7 +4183,7 @@ isRevoked(cert : X509Cert) : boolean
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.isRevoked](#isrevoked11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.isRevoked](#isrevoked11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4282,7 +4284,7 @@ getType() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getType](#gettype11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getType](#gettype11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4340,7 +4342,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4415,7 +4417,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11-1)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4487,7 +4489,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.verify](#verify11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.verify](#verify11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4641,7 +4643,7 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.verify](#verify11-1)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.verify](#verify11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4795,7 +4797,7 @@ getVersion() : number
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getVersion](#getversion11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getVersion](#getversion11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4853,7 +4855,7 @@ getIssuerName() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getIssuerName](#getissuername11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getIssuerName](#getissuername11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4927,7 +4929,7 @@ getLastUpdate() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getLastUpdate](#getlastupdate11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getLastUpdate](#getlastupdate11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5001,7 +5003,7 @@ getNextUpdate() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getNextUpdate](#getnextupdate11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getNextUpdate](#getnextupdate11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5075,7 +5077,7 @@ getRevokedCert(serialNumber : number) : X509CrlEntry
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getRevokedCert](#getrevokedcert11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCert](#getrevokedcert11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5156,7 +5158,7 @@ getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5273,7 +5275,7 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5347,7 +5349,7 @@ getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11-1)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5418,7 +5420,7 @@ getTbsInfo() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getTBSInfo](#gettbsinfo11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getTBSInfo](#gettbsinfo11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5492,7 +5494,7 @@ getSignature() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getSignature](#getsignature11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignature](#getsignature11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5566,7 +5568,7 @@ getSignatureAlgName() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgName](#getsignaturealgname11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgName](#getsignaturealgname11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5640,7 +5642,7 @@ getSignatureAlgOid() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgOid](#getsignaturealgoid11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgOid](#getsignaturealgoid11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5714,7 +5716,7 @@ getSignatureAlgParams() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgParams](#getsignaturealgparams11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgParams](#getsignaturealgparams11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8321,7 +8323,7 @@ try {
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CrlEntry](#x509crlentry11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CrlEntry](#x509crlentry11)替代。
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -8331,7 +8333,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-2)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-2)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8414,7 +8416,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-3)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-3)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8495,7 +8497,7 @@ getSerialNumber() : number
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getSerialNumber](#getserialnumber11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getSerialNumber](#getserialnumber11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8561,7 +8563,7 @@ getCertIssuer() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getCertIssuer](#getcertissuer11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getCertIssuer](#getcertissuer11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8637,7 +8639,7 @@ getRevocationDate() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getRevocationDate](#getrevocationdate11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getRevocationDate](#getrevocationdate11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13521,7 +13523,6 @@ createCmsParser(): CmsParser
 **示例：**
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13681,7 +13682,6 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13822,7 +13822,6 @@ getContentType(): CmsContentType
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13975,7 +13974,6 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14116,7 +14114,6 @@ getContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14259,14 +14256,13 @@ getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | <br>1. The type of the cmsFormat is invalid or not supported. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The type of the cmsFormat is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +

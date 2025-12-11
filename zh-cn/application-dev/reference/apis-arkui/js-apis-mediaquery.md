@@ -103,7 +103,6 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 
   详见[off示例](#offchange)。
 
-
 ### off('change')
 
 off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
@@ -121,9 +120,9 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 | 参数名   | 类型                             | 必填 | 说明                                                       |
 | -------- | -------------------------------- | ---- | ---------------------------------------------------------- |
 | type     | string                           | 是   | 必须填写字符串'change'。                                   |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要去注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
 
-**示例：** 
+**示例：**
 
 <!--code_no_check-->
 <!--deprecated_code_no_check-->
@@ -139,7 +138,7 @@ function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   }
 }
 listener.on('change', onPortrait) // 注册回调
-listener.off('change', onPortrait) // 去取消注册回调
+listener.off('change', onPortrait) // 取消注册回调
   ```
 
 ## MediaQueryResult

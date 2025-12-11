@@ -12,7 +12,6 @@ The **NotificationSubscriberExtensionContext** module provides the context for t
 > 
 > - The initial APIs of this module are supported since API version 22.
 > - The APIs of this module can be used only in the stage model.
-> - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 

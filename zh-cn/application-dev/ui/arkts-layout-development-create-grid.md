@@ -49,7 +49,7 @@ Grid组件根据行列数量与占比属性的设置，可以分为三种布局�
 
 ### 设置行列数量与占比
 
-通过设置行列数量与尺寸占比可以确定网格布局的整体排列方式。Grid组件提供了rowsTemplate和columnsTemplate属性用于设置网格布局行列数量与尺寸占比。
+通过设置行列数量与尺寸占比可以确定网格布局的整体排列方式。Grid组件提供了[rowsTemplate](../reference/apis-arkui/arkui-ts/ts-container-grid.md#rowstemplate)和[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-grid.md#columnstemplate)属性用于设置网格布局行列数量与尺寸占比。
 
 rowsTemplate和columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字符串，fr的个数即网格布局的行或列数，fr前面的数值大小，用于计算该行或列在网格布局宽度上的占比，最终决定该行或列宽度。
 
@@ -119,7 +119,7 @@ Grid(undefined, this.layoutOptions) {
 
 ### 设置主轴方向
 
-使用Grid构建网格布局时，若没有设置行列数量与占比，可以通过layoutDirection设置网格布局的主轴方向，决定子组件的排列方式。此时可以结合minCount和maxCount属性来约束主轴方向上的网格数量。
+使用Grid构建网格布局时，若没有设置行列数量与占比，可以通过[layoutDirection](../reference/apis-arkui/arkui-ts/ts-container-grid.md#layoutdirection8)设置网格布局的主轴方向，决定子组件的排列方式。此时可以结合[minCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#mincount8)和[maxCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#maxcount8)属性来约束主轴方向上的网格数量。
 
   **图6** 主轴方向示意图  
 
@@ -240,7 +240,7 @@ export struct DataInGrid {
 
 ![zh-cn_image_0000001511580908](figures/zh-cn_image_0000001511580908.png)
 
-通过Grid的rowsGap和columnsGap可以设置网格布局的行列间距。在图5所示的计算器中，行间距为15vp，列间距为10vp。
+通过Grid的[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#columnsgap)可以设置网格布局的行列间距。在图5所示的计算器中，行间距为15vp，列间距为10vp。
 
 <!-- @[set_rows_and_columns_occupied](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridColumnsGap.ets) -->
 
@@ -395,7 +395,7 @@ private scroller: Scroller = new Scroller();
 
 关于按需加载优化的具体实现可参考[数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)章节中的示例。
 
-当使用懒加载方式渲染网格时，为了更好的滚动体验，减少滑动时出现白块，Grid组件中也可通过cachedCount属性设置GridItem的预加载数量，只在懒加载LazyForEach中生效。
+当使用懒加载方式渲染网格时，为了更好的滚动体验，减少滑动时出现白块，Grid组件中也可通过[cachedCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#cachedcount)属性设置GridItem的预加载数量，只在懒加载[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)中生效。
 
   设置预加载数量后，会在Grid显示区域前后各缓存cachedCount\*列数个GridItem，超出显示和缓存范围的GridItem会被释放。
 

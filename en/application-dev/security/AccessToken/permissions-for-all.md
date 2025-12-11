@@ -565,9 +565,11 @@ With this permission, the application can set the background color the shadow vi
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
+
+**Changelog**: This permission is available only on PCs/2-in-1 devices from API versions 20 to 22. Since API version 23, this permission is also available on tablet.
 
 ## ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN
 
@@ -622,6 +624,20 @@ With this permission, the application can lock the mouse cursor within the windo
 **Authorization mode**: system_grant
 
 **Supported devices**: general devices
+
+**Since**: 22
+
+## ohos.permission.CUSTOMIZE_MENU_ICON
+
+Allows an application to customize icons in the shortcut menu of Files.
+
+With this permission, the application can customize its icon in the shortcut menu of Files, helping users recognize and start it easily.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PC/2in1 | Tablet
 
 **Since**: 22
 

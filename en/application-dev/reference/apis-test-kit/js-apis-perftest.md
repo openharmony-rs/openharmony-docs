@@ -151,7 +151,7 @@ async function demo() {
     }
     finish(true); // Call the finish callback to notify that the code segment is executed successfully and as expected.
   }
-  let resetCode = async (finish: Callback<boolean>) => {  // Define the code segment for resetting the environment after the test ends.
+  let resetCode = async (finish: Callback<boolean>) => { // Define the code segment for resetting the environment after the test ends.
     num = 0;
     finish(true);
   }

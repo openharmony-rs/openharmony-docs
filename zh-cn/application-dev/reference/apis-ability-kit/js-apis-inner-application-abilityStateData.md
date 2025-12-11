@@ -34,6 +34,7 @@ import { appManager } from '@kit.AbilityKit';
 | abilityType | number | 否   | 否   | [Ability类型](#ability类型)：[UIAbility](js-apis-app-ability-uiAbility.md)或[ExtensionAbility](js-apis-app-ability-extensionAbility.md)等。 |
 | isAtomicService | boolean | 否 | 否 | 判断Ability所属应用是否为原子化服务。<br>true: 是原子化服务。<br>false: 不是原子化服务。 |
 | appCloneIndex          | number   | 否   | 是   | 应用包的[分身](../../quick-start/app-clone.md)索引标识。                  |
+| callerBundleName<sup>23+</sup> | string | 否 | 是 | Ability创建时的拉起方Bundle名称。 |
 
 ### UIAbility状态
 

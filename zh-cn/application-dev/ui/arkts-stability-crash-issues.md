@@ -98,6 +98,10 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 ![SynchedPropertyTwoWayPUCrashLog](figures/SynchedPropertyTwoWayPUCrashLog.png)
 
+从API version 23开始，添加对`@Link`数据源错误的校验，运行时错误变为编译期报错：
+
+![LinkSourceDataError](figures/LinkSourceDataError.png)
+
 **可能原因**
 
 报错发生在`@Link`初始化阶段，原因是`@Link`初始化时会注册到父组件并调用父组件的`addSubscriber`方法。如果此时数据源的类型与`@Link`不完全一致，或者使用常量初始化`@Link`，会导致该方法无法调用，从而引发“is not callable”错误。

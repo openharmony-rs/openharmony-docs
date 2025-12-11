@@ -103,7 +103,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 > **说明：**
 > 部分接口为API20以后才支持的，请开发者在进行开发时选择合适的API版本。
 
-<!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->  
+1. 创建GetJsResult函数处理napi返回值。
+
+   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->    
+
+2. 获取和操作stride值。
+
+   <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->   
 
 ## 解码单张图片的内存限制
 

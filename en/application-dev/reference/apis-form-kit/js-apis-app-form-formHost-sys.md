@@ -1,17 +1,17 @@
 # @ohos.app.form.formHost (formHost) (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
+
 The **formHost** module provides APIs related to the widget host, which is an application that displays the widget content and controls the position where the widget is displayed. You can use the APIs to delete, release, and update widgets installed by the same user, and obtain widget information and status.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are system APIs.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -63,7 +63,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log('formHost deleteForm success');
+      console.info('formHost deleteForm success');
     }
   });
 } catch (error) {
@@ -118,7 +118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.deleteForm(formId).then(() => {
-    console.log('formHost deleteForm success');
+    console.info('formHost deleteForm success');
   }).catch((error: BusinessError) => {
     console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
   });
@@ -275,7 +275,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.releaseForm(formId, true).then(() => {
-    console.log('formHost releaseForm success');
+    console.info('formHost releaseForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -380,7 +380,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.requestForm(formId).then(() => {
-    console.log('formHost requestForm success');
+    console.info('formHost requestForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -439,7 +439,7 @@ try {
     'ohos.extra.param.key.host_bg_inverse_color': '#ff000000' as Object
   };
   formHost.requestFormWithParams(formId, params).then(() => {
-    console.log('formHost requestFormWithParams success');
+    console.info('formHost requestFormWithParams success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -544,7 +544,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.castToNormalForm(formId).then(() => {
-    console.log('formHost castTempForm success');
+    console.info('formHost castTempForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -645,7 +645,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyVisibleForms(formId).then(() => {
-    console.log('formHost notifyVisibleForms success');
+    console.info('formHost notifyVisibleForms success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -746,7 +746,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyInvisibleForms(formId).then(() => {
-    console.log('formHost notifyInvisibleForms success');
+    console.info('formHost notifyInvisibleForms success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -849,7 +849,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.enableFormsUpdate(formId).then(() => {
-    console.log('formHost enableFormsUpdate success');
+    console.info('formHost enableFormsUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -954,7 +954,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.disableFormsUpdate(formId).then(() => {
-    console.log('formHost disableFormsUpdate success');
+    console.info('formHost disableFormsUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1033,7 +1033,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.isSystemReady().then(() => {
-    console.log('formHost isSystemReady success');
+    console.info('formHost isSystemReady success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1082,7 +1082,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1126,7 +1126,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
+    console.info(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1177,7 +1177,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1228,7 +1228,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1281,7 +1281,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1339,7 +1339,7 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -1390,7 +1390,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+      console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1442,7 +1442,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = new Array('12400633174999288', '12400633174999289');
   formHost.deleteInvalidForms(formIds).then((data: number) => {
-    console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+    console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1504,7 +1504,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
     }
   });
 } catch (error) {
@@ -1567,7 +1567,7 @@ let want: Want = {
 };
 try {
   formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-    console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+    console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1610,7 +1610,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formHost } from '@kit.FormKit';
 
 formHost.on('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1648,7 +1648,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formHost } from '@kit.FormKit';
 
 formHost.off('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1748,7 +1748,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsVisible(formIds, true).then(() => {
-    console.log('formHost notifyFormsVisible success');
+    console.info('formHost notifyFormsVisible success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1853,7 +1853,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
-    console.log('formHost notifyFormsEnableUpdate success');
+    console.info('formHost notifyFormsEnableUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1959,7 +1959,7 @@ let formId: string = '12400633174999288';
 let deviceId: string = 'EFC11C0C53628D8CC2F8CB5052477E130D075917034613B9884C55CD22B3DEF2';
 try {
   formHost.shareForm(formId, deviceId).then(() => {
-    console.log('formHost shareForm success');
+    console.info('formHost shareForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -2060,7 +2060,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsPrivacyProtected(formIds, true).then(() => {
-    console.log('formHost notifyFormsPrivacyProtected success');
+    console.info('formHost notifyFormsPrivacyProtected success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -2113,7 +2113,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -2167,7 +2167,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formHost.acquireFormData(formId).then((data) => {
-    console.log('formHost acquireFormData success' + data);
+    console.info('formHost acquireFormData success' + data);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -2247,7 +2247,7 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.log(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info : ${JSON.stringify(form)}`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
@@ -2261,7 +2261,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.log('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
           }
         })
     }
@@ -2275,7 +2275,7 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses a promise to return the result.
+Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses a promise to return the result. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2346,7 +2346,7 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.log(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info : ${JSON.stringify(form)}`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
@@ -2362,7 +2362,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.log('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
           }
         })
     }
@@ -2466,7 +2466,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.clearRouterProxy(formIds).then(() => {
-    console.log('formHost clear rourter proxy success');
+    console.info('formHost clear rourter proxy success');
   }).catch((err: BusinessError) => {
     console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2570,7 +2570,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.setFormsRecyclable(formIds).then(() => {
-    console.log('setFormsRecyclable success');
+    console.info('setFormsRecyclable success');
   }).catch((err: BusinessError) => {
     console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2837,7 +2837,7 @@ try {
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
-Notifies the update of the widget lock state.
+Notifies the update of the widget lock state. This API uses a promise to return the result.
 
 If an application is locked, its widget will also be locked and masked in a locked style. To use the widget, you need to enter the password set for the widget.
 
@@ -2885,7 +2885,7 @@ let isLocked: boolean = true;
 
 try {
   formHost.updateFormLockedState(this.formId, this.isLocked).then(() => {
-    console.log(`formHost updateFormLockedState success`);
+    console.info(`formHost updateFormLockedState success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2897,7 +2897,7 @@ try {
 
 on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-Subscribes to the interactive widget animation request event.
+Subscribes to the interactive widget animation request event. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -2907,7 +2907,7 @@ Subscribes to the interactive widget animation request event.
 
 | Name| Type      | Mandatory| Description|
 |----------|--------|---|---------------------------------------|
-| type     | string | Yes| Event type. Only **'formOverflow'** is supported, indicating the interactive widget animation request.|
+| type     | string | Yes| Event callback. The supported event is **'formOverflow'**, indicating the interactive widget animation request.|
 | callback | Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | Yes| Callback used by the widget host to process the animation request.|
 
 **Error codes**
@@ -2926,7 +2926,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.on('formOverflow', (request: formInfo.OverflowRequest) => {
-    console.log(`formHost on formOverflow, formId is ${request.formId}`);
+    console.info(`formHost on formOverflow, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2937,7 +2937,7 @@ try {
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-Unsubscribes from the interactive widget animation request event.
+Unsubscribes from the interactive widget animation request event. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -2947,7 +2947,7 @@ Unsubscribes from the interactive widget animation request event.
 
 | Name| Type   | Mandatory| Description                                    |
 | ------ | ------ |----|----------------------------------------|
-| type | string | Yes | Event type. Only **'formOverflow'** is supported, indicating the interactive widget animation request.|
+| type | string | Yes | Event callback. The supported event is **'formOverflow'**, indicating the interactive widget animation request.|
 | callback |Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | No | Callback function, which corresponds to the subscribed interactive widget animation request. By default, all registered interactive widget animation request events are deregistered.|
 
 **Error codes**
@@ -2966,7 +2966,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.off('formOverflow', (request: formInfo.OverflowRequest) => {
-    console.log(`formHost off formOverflow, formId is ${request.formId}`);
+    console.info(`formHost off formOverflow, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2977,7 +2977,7 @@ try {
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
-Subscribes to the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations.
+Subscribes to the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -3006,7 +3006,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.on('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
-    console.log(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
+    console.info(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -3017,7 +3017,7 @@ try {
 
 off(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.changeSceneAnimationState&gt;): void
 
-Unsubscribes from the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations.
+Unsubscribes from the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -3046,7 +3046,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.off('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
-    console.log(`formHost off changeSceneAnimationState, formId is ${request.formId}`);
+    console.info(`formHost off changeSceneAnimationState, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -3057,7 +3057,7 @@ try {
 
 on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 
-Subscribes to the event of requesting widget position and dimension.
+Subscribes to the event of requesting widget position and dimension. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -3068,7 +3068,7 @@ Subscribes to the event of requesting widget position and dimension.
 | Name| Type   | Mandatory| Description                                                  |
 | ------ | ------ | ---- |------------------------------------------------------|
 | type | string | Yes  | Event callback type. The supported event is **'getFormRect'**, indicating requesting widget position and dimension.|
-| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | Yes| Callback function used by the widget host to process the request and return the position and dimension of the widget relative to the upper left corner of the screen. The unit is vp.|
+| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | Yes| Callback function used by the widget host to process the request and return the position and dimension of the widget relative to the upper-left corner of the screen. The unit is vp.|
 
 **Error codes**
 
@@ -3088,7 +3088,7 @@ try {
   formHost.on('getFormRect', (formId: string): Promise<formInfo.Rect> => {
     // The widget host needs to process the request, and calculate and return the widget dimension and position information.
     return new Promise<formInfo.Rect>((resolve: Function) => {
-      console.log(`formHost on getFormRect, formId is ${formId}`);
+      console.info(`formHost on getFormRect, formId is ${formId}`);
       let formRect: formInfo.Rect = {left: 0, top: 0, width: 0, height: 0};
       resolve(formRect);
     })
@@ -3102,7 +3102,7 @@ try {
 
 off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 
-Unsubscribes from the event of requesting widget position and dimension.
+Unsubscribes from the event of requesting widget position and dimension. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 

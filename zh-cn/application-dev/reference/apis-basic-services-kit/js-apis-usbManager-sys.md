@@ -28,8 +28,8 @@ addRight(bundleName: string, deviceName: string): boolean
 
 usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；addRight不会触发弹框，而是直接添加软件包访问设备的权限。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [addDeviceAccessRight](#adddeviceaccessright12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -74,8 +74,8 @@ usbFunctionsFromString(funcs: string): number
 
 在设备模式下，将字符串形式的USB功能列表转化为数字掩码。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getFunctionsFromString](#getfunctionsfromstring12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -116,8 +116,8 @@ usbFunctionsToString(funcs: FunctionType): string
 
 在设备模式下，将数字掩码形式的USB功能列表转化为字符串。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getStringFromFunctions](#getstringfromfunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -158,8 +158,8 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 在设备模式下，设置当前的USB功能列表。使用Promise异步回调。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [setDeviceFunctions](#setdevicefunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -205,8 +205,8 @@ getCurrentFunctions(): FunctionType
 
 在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getDeviceFunctions](#getdevicefunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -240,8 +240,8 @@ getPorts(): Array\<USBPort\>
 
 获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getPortList](#getportlist12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -275,8 +275,8 @@ getSupportedModes(portId: number): PortModeType
 
 获取指定的端口支持的模式列表的组合掩码。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getPortSupportModes](#getportsupportmodes12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -316,8 +316,8 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [setPortRoleTypes](#setportroletypes12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -366,8 +366,8 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；addDeviceAccessRight不会触发弹框，而是直接添加软件包访问设备的权限。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -431,8 +431,8 @@ getFunctionsFromString(funcs: string): number
 
 在设备模式下，将字符串形式的USB功能列表转化为数字掩码。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -477,8 +477,8 @@ getStringFromFunctions(funcs: FunctionType): string
 
 在设备模式下，将数字掩码形式的USB功能列表转化为字符串。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -523,8 +523,8 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 在设备模式下，设置当前的USB功能列表。使用Promise异步回调。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -576,8 +576,8 @@ getDeviceFunctions(): FunctionType
 
 在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -615,8 +615,8 @@ getPortList(): Array\<USBPort\>
 
 获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -695,8 +695,8 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。

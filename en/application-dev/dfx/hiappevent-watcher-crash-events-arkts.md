@@ -262,5 +262,37 @@ HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_
 HiAppEvent eventInfo.params.log_over_limit=false
 HiAppEvent eventInfo.params.test_data=100
 ```
+
+## Migrating Crash Events from the FaultLogger API
+
+The[@ohos.faultLogger (FaultLogger)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md) API is deprecated and no longer maintained since API version 18. You are advised to use the [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md) API to subscribe to crash events. The following describes how to migrate the crash event subscription from the FaultLogger API to the HiAppEvent API.
+
+**CPP_CRASH** and **JS_CRASH** defined in the [FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) of FaultLogger are crash events.
+
+Through HiAppEvent, you can subscribe to crash events by setting the event name to **hiAppEvent.event.APP_CRASH** and event domain to **hiAppEvent.domain.OS** in the **hiAppEvent.addWatcher** API.
+
+You can identify the specific crash event by the **crash_type** field in [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params).
+
+The following table shows the mapping between the crash events.
+| Faultlogger.FaultType | hiAppEvent.AppEventInfo.params.crash_type |
+| --- | --- |
+| CPP_CRASH | NativeCrash |
+| JS_CRASH | JsError |
+
+The following table shows the mapping between [FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo) and [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params).
+| Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | Description|
+| --- | --- | --- |
+| pid | pid | None|
+| uid | uid | None|
+| type | crash_type | The event types are different. In FaultLogger, **type** is a fault type enumeration. In HiAppEvent, **crash_type** is a string.|
+| timestamp | time | None|
+| module | bundle_name | None|
+| fullLog | external_log | **fullLog** indicates the fault log content. **external_log** indicates the application sandbox path of the fault log file. You can access the file to obtain the fault log content.|
+| reason | **Reason** field in the **external_log** file| None|
+| summary | Part of the** external_log** file| The **summary** of **CPP_CRASH** corresponds to the **Fault thread info** field in the **external_log** file. The **summary** of **JS_CRASH** corresponds to the **Error name**, **Error message**, **Stacktrace**, and **HybridStack** fields in the **external_log** file.|
+
+Both [FaultLogger.query (using callback)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9) and [FaultLogger.query (using promise)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1) can use [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) to implement the same functionality.
+
+For details about how to use HiAppEvent to subscribe to crash events (ArkTS), see [How to Develop](#how-to-develop) and [Checking Whether a Watcher Subscribes to Crash Events](#checking-whether-a-watcher-subscribes-to-crash-events).
 <!--RP1-->
 <!--RP1End-->

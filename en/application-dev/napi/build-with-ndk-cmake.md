@@ -34,35 +34,35 @@ Skip this step if the NDK is downloaded from DevEco Studio.
 1. Add the CMake tool that comes with the NDK to the environment variables.
 + On Linux
 
-  ```
-  # Open the .bashrc file.
-  vim ~/.bashrc
-  # Append the custom CMake path to the file. Save the file and exit.
-  export PATH=${sdk_path}/native/build-tools/cmake/bin:$PATH
-  # Run the source ~/.bashrc command to make the environment variable take effect.
-  source ~/.bashrc
-  ```
+    ```
+    # Open the .bashrc file.
+    vim ~/.bashrc
+    # Append the custom CMake path to the file. Save the file and exit.
+    export PATH=${sdk_path}/native/build-tools/cmake/bin:$PATH
+    # Run the source ~/.bashrc command to make the environment variable take effect.
+    source ~/.bashrc
+    ```
 
 + On macOS
 
-  ```
-  #In the current user directory, open the .bash_profile file. If the file does not exist, create one.
-  vim ~/.bash_profile
-  #Append the custom CMake path to the file. Save the file and exit.
-  export PATH=${sdk_path}/native/build-tools/cmake/bin:$PATH
-  #Run the source ~/.bash_profile command to make the environment variable take effect.
-  source ~/.bash_profile
-  ```
+    ```
+    #In the current user directory, open the .bash_profile file. If the file does not exist, create one.
+    vim ~/.bash_profile
+    #Append the custom CMake path to the file. Save the file and exit.
+    export PATH=${sdk_path}/native/build-tools/cmake/bin:$PATH
+    #Run the source ~/.bash_profile command to make the environment variable take effect.
+    source ~/.bash_profile
+    ```
 
 + On Windows
 
-  Right-click **This PC** and choose **Properties** from the shortcut menu. In the displayed dialog box, click the **Advanced System Settings** tab and then click **Environment Variables**. Under **System Variables** dialog box, select the **Path** environment variable and click **Edit**. Add the paths, save the settings, and exit. (If the next step cannot be performed, restart the computer.)
-  
-  ![en-us_image_20-24-01-16-14-38](figures/en-us_image_20-24-01-16-14-38.png)
-  
-  Open the CLI and run the **{*cmake_installation_path*}\cmake.exe -version** command. If the CMake version number is displayed correctly, the environment variable configuration is complete.
+    Right-click **This PC** and choose **Properties** from the shortcut menu. In the displayed dialog box, click the **Advanced System Settings** tab and then click **Environment Variables**. Under **System Variables** dialog box, select the **Path** environment variable and click **Edit**. Add the paths, save the settings, and exit. (If the next step cannot be performed, restart the computer.)
 
-  ![en-us_image_20-24-01-16-14-41](figures/en-us_image_20-24-01-16-14-41.png)
+    ![en-us_image_20-25-11-18-11-56](figures/en-us_image_20-25-11-18-11-56.PNG)
+
+    Open the CLI and run the **{*cmake_installation_path*}\cmake.exe -version** command. If the CMake version number is displayed correctly, the environment variable configuration is complete.
+
+    ![en-us_image_20-25-11-18-11-59](figures/en-us_image_20-25-11-18-11-59.PNG)
 
 
 2. Check the default CMake path.

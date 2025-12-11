@@ -39,7 +39,7 @@
 
 ### OH_Http_CreateHeaders()
 
-```
+```c
 Http_Headers *OH_Http_CreateHeaders(void)
 ```
 
@@ -59,7 +59,7 @@ Http_Headers *OH_Http_CreateHeaders(void)
 
 ### OH_Http_DestroyHeaders()
 
-```
+```c
 void OH_Http_DestroyHeaders(Http_Headers **headers)
 ```
 
@@ -80,7 +80,7 @@ void OH_Http_DestroyHeaders(Http_Headers **headers)
 
 ### OH_Http_SetHeaderValue()
 
-```
+```c
 uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)
 ```
 
@@ -109,7 +109,7 @@ uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, 
 
 ### OH_Http_GetHeaderValue()
 
-```
+```c
 Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)
 ```
 
@@ -137,7 +137,7 @@ Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name
 
 ### OH_Http_GetHeaderEntries()
 
-```
+```c
 Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 ```
 
@@ -164,7 +164,7 @@ Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 
 ### OH_Http_DestroyHeaderEntries()
 
-```
+```c
 void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 ```
 
@@ -185,7 +185,7 @@ void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 
 ### OH_Http_CreateRequest()
 
-```
+```c
 Http_Request *OH_Http_CreateRequest(const char *url)
 ```
 
@@ -212,7 +212,7 @@ Http_Request *OH_Http_CreateRequest(const char *url)
 
 ### OH_Http_Request()
 
-```
+```c
 int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)
 ```
 
@@ -243,7 +243,7 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 
 ### OH_Http_Destroy()
 
-```
+```c
 void OH_Http_Destroy(struct Http_Request **request)
 ```
 

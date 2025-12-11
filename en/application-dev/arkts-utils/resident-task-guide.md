@@ -52,7 +52,8 @@ The development process and example are outlined as follows:
 
    ```ts
    // Worker.ets
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    let isRunning = false;
    workerPort.onmessage = (e: MessageEvents) => {
@@ -67,6 +68,7 @@ The development process and example are outlined as follows:
        isRunning = false;
      }
    }
+   
    // Simulate a resident task.
    function performTask() {
      if (isRunning) {

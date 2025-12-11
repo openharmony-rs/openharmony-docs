@@ -208,15 +208,15 @@ See 'hiperf help [command]' for more information on a specific command.
 > 
 > 以包名com.example.myapplication为例，可执行如下命令查询：
 > 
-> ```shell
-> hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
-> ```
+>```shell
+>hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
+>```
 > 
 > 如包名对应的应用是可调试应用，预期返回信息如下：
 > 
-> ```shell
-> "appProvisionType": "debug",
-> ```
+>```shell
+>"appProvisionType": "debug",
+>```
 > 
 > 构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
 
@@ -313,8 +313,8 @@ Supported events for hardware:
 | -a | 采集整机的性能数据。 | 
 | --exclude-hiperf | 不采集hiperf进程自身的性能数据，该可选参数必须和-a一起使用。 | 
 | --exclude-process | 不采集的进程名，该参数必须和-a一起使用。 |
-| --pipe_input | 该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，此参数无实际作用，开发者可以忽略。 |
-| --pipe_output | 该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，此参数无实际作用，开发者可以忽略。 |
+| --pipe_input | 在设备开发中,该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
+| --pipe_output | 在设备开发中,该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
 <!--RP1End-->
 
 **命令行示例**：

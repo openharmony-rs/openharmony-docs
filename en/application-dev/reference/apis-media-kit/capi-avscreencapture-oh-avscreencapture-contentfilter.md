@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVScreenCapture_ContentFilter OH_AVScreenCapture_ContentFilter
+```
+
 ## Overview
 
 The OH_AVScreenCapture_ContentFilter struct describes the filter used to filter audio and video content.

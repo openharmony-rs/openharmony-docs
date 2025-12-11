@@ -18,7 +18,7 @@ Declares the common sensor attributes.
 
 **Since**: 11
 
-**Related Module**: [Sensor](capi-sensor.md)
+**Related module**: [Sensor](capi-sensor.md)
 
 ## Summary
 
@@ -286,7 +286,7 @@ Obtains the sensor resolution.
 | Name| Description|
 | -- | -- |
 | [Sensor_Info](capi-sensor-sensor-info.md)* sensor | Pointer to the sensor information.|
-| float *resolution | Pointer to the sensor resolution.|
+| float *resolution | Pointer to the sensor resolution [Sensor_Accuracy](#sensor_accuracy).|
 
 **Returns**
 

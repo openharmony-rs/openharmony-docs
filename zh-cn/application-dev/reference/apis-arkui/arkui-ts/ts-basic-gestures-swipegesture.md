@@ -1,7 +1,7 @@
 # SwipeGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -29,7 +29,7 @@ SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: num
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; direction?: SwipeDirection; speed?: number } | 否 | 设置快滑事件参数。 <br> - fingers：触发快滑的最少手指数。<br/>默认值：1 <br/>取值范围：[1, 10]<br> - direction：触发快滑手势的滑动方向。<br/>默认值：SwipeDirection.All <br> - speed：识别快滑的最小速度。<br/>默认值：100VP/s <br/>**说明：** <br/>当滑动速度的值小于等于0时，会被转化为默认值。 |
+| value | { fingers?: number; direction?: SwipeDirection; speed?: number } | 否 | 设置快滑事件参数。 <br> - fingers：触发快滑的最少手指数。<br/>默认值：1 <br/>取值范围：[1, 10]<br> - direction：触发快滑手势的滑动方向。<br/>默认值：SwipeDirection.All <br> - speed：识别快滑的最小速度。<br/>默认值：100VP/s <br/>取值范围：(0, +∞) <br/>**说明：** <br/>当滑动速度的值小于等于0时，会被转化为默认值。 |
 
 ### SwipeGesture<sup>15+</sup>
 
@@ -48,6 +48,8 @@ SwipeGesture(options?: SwipeGestureHandlerOptions)
 | options | [SwipeGestureHandlerOptions](./ts-gesturehandler.md#swipegesturehandleroptions) | 否 | 快滑事件处理器配置参数。 |
 
 ## SwipeDirection枚举说明
+
+定义滑动手势的触发方向。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

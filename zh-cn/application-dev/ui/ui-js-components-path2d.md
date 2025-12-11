@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-路径对象，支持通过对象的接口进行路径的描述，并通过Canvas的stroke接口进行绘制。具体请参考[Path2D对象](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md)。
+路径对象，支持通过对象的接口进行路径的描述，并通过Canvas的[stroke](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroke-1)接口进行绘制。具体请参考[Path2D对象](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md)。
 
 
 ## 画线段

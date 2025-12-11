@@ -73,7 +73,7 @@
 ### OH_IPC_MemAllocator()
 
 ```C
-typedef void* (OH_IPC_MemAllocator)(int32_t len)
+typedef void* (*OH_IPC_MemAllocator)(int32_t len)
 ```
 
 **描述：**
@@ -138,7 +138,7 @@ void OH_IPCParcel_Destroy(OHIPCParcel *parcel)
 
 ### OH_IPCParcel_GetDataSize()
 
-``` C
+```C
 int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)
 ```
 

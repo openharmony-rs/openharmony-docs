@@ -31,6 +31,6 @@ Defines the RDB store configuration.
 | const char* storeName   | Name of the RDB store.                                                |
 | const char* bundleName  | Bundle name of the application.                                                  |
 | const char* moduleName  | Module name.                                                |
-| bool isEncrypt          | Whether to encrypt the RDB store.                                        |
+| bool isEncrypt          | Whether to encrypt the RDB store. The value **true** means to encrypt the RDB store; the value **false** means the opposite.            |
 | int securityLevel       | Database security level ([OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)).|
 | int area                | Database security area level ([Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea)).<br>**Since**: 11|

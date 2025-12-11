@@ -1,12 +1,18 @@
 # @ohos.application.formError (formError) (System API)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 The **formError** module provides error codes for widgets.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This module is deprecated since API version 9. You are advised to use [Form Error Codes](errorcode-form.md) instead.
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.application.formError (FormError)](js-apis-application-formError.md).
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This module is deprecated since API version 9. You are advised to use [Form Error Codes](errorcode-form.md) instead.
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.application.formError (FormError)](js-apis-application-formError.md).
 
 ## Modules to Import
 

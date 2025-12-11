@@ -420,7 +420,7 @@ The following value ranges are described based on the variable types after conve
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP, "3");
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
 
-   int ret == OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
+   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
    if (ret == HIAPPEVENT_SUCCESS) {{
        OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
    }
