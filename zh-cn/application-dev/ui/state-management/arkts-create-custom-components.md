@@ -134,6 +134,8 @@ struct ParentComponent {
 > \@ComponentV2装饰器从API version 12开始支持。
 >
 > 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 和[\@Component装饰器](#component)一样，\@ComponentV2装饰器用于装饰自定义组件：
 
