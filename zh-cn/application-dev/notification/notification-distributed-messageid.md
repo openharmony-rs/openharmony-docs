@@ -49,7 +49,7 @@
    // publish回调
    let publishCallback = (err: BusinessError): void => {
      if (err) {
-       console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+       console.error(`Failed to publish notification. code is ${err.code}, message is ${err.message}`);
      } else {
        console.info(`Succeeded in publishing notification.`);
      }
