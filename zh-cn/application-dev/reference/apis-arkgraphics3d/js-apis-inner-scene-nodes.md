@@ -459,8 +459,8 @@ function getNode(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| innerAngle<sup>22+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。以弧度制表示，默认值为0。设置的值必须大于等于0，小于等于outerAngle。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22 |
-| outerAngle<sup>22+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。以弧度制表示，默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 <br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22|
+| innerAngle<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。以弧度制表示，默认值为0。设置的值必须大于等于0，小于等于outerAngle。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| outerAngle<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。以弧度制表示，默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 <br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
 > **注意：** 
 > 
