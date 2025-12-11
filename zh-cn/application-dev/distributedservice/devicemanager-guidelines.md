@@ -125,28 +125,28 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口。
 
    <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
-
-``` TypeScript
-  async createDeviceManager(): Promise<void> {
-    if (typeof (this.deviceManager) != 'undefined') {
-      return;
-    }
-
-    logger.info('[DeviceManager.RemoteDeviceModel] deviceManager.createDeviceManager begin');
-    try {
-      let dmInstance = distributedDeviceManager.createDeviceManager('com.samples.devicemanager');
-      this.deviceManager = dmInstance
-	// ···
-      logger.info(`[DeviceManager.RemoteDeviceModel] createDeviceManager callback returned,
-      value= ${JSON.stringify(this.deviceManager)}`);
-    } catch (err) {
-      let error: BusinessError = err as BusinessError;
-      logger.error(`[DeviceManager.RemoteDeviceModel] createDeviceManager throw error,
-      error=${error} message=${error.message}`);
-    }
-    logger.info('[DeviceManager.RemoteDeviceModel] distributedDeviceManager.createDeviceManager end');
-  }
-```
+   
+   ``` TypeScript
+   async createDeviceManager(): Promise<void> {
+     if (typeof (this.deviceManager) != 'undefined') {
+       return;
+     }
+   
+     logger.info('[DeviceManager.RemoteDeviceModel] deviceManager.createDeviceManager begin');
+     try {
+       let dmInstance = distributedDeviceManager.createDeviceManager('com.samples.devicemanager');
+       this.deviceManager = dmInstance
+       // ...
+       logger.info(`[DeviceManager.RemoteDeviceModel] createDeviceManager callback returned,
+       value= ${JSON.stringify(this.deviceManager)}`);
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       logger.error(`[DeviceManager.RemoteDeviceModel] createDeviceManager throw error,
+       error=${error} message=${error.message}`);
+     }
+     logger.info('[DeviceManager.RemoteDeviceModel] distributedDeviceManager.createDeviceManager end');
+   }
+   ```
 
 5. 注册发现设备的回调，调用发现接口发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。
    
