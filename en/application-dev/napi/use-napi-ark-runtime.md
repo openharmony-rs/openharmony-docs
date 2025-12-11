@@ -28,7 +28,7 @@ A maximum of 64 runtime environments can be created for a process.
 
    **Configure compile settings.**
 
-   ```
+   ```txt
    // CMakeLists.txt
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.4.1)

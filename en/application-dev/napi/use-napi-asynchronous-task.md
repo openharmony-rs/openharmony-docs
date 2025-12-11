@@ -8,7 +8,7 @@
 
 ## When to Use
 
-For time-consuming operations, you can use [napi_create_async_work](../reference/native-lib/napi.md#napi_create_async_work) to create an asynchronous work object to prevent the ArkTS thread where env exists from being blocked while ensuring the performance and response of your application. You can use asynchronous work objects in the following scenarios:
+For time-consuming operations, you can use [napi_create_async_work](../reference/native-lib/napi.md#napi_create_async_work) to create an asynchronous work object to prevent the ArkTS thread where env exists from being blocked while ensuring the performance and response speed of your application. You can use asynchronous work objects in the following scenarios:
 
 - File operations: You can use asynchronous work objects in complex file operations or when a large file needs to be read to prevent the ArkTS thread where env exists from being blocked.
 
@@ -129,18 +129,18 @@ You can use a callback or a promise to implement asynchronous calls as required.
 
    Description of the interface in the .d.ts file.
 
-    ```ts
-   export const asyncWork: (data: number) => Promise<number>;
-    ```
-    Call APIs from ArkTS.
+     ``` ts
+     export const asyncWork: (data: number) => Promise<number>;
+     ```
+   Call APIs from ArkTS.
 
-    ```ts
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   import testNapi from 'libentry.so';
-   testNapi.asyncWork(1024).then((result) => {
-       hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
-   });
-   ```
+     ``` ts
+     import { hilog } from '@kit.PerformanceAnalysisKit';
+     import testNapi from 'libentry.so';
+     testNapi.asyncWork(1024).then((result) => {
+         hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
+     });
+     ```
    Result: **result is 1024**
 
 ## Example (Callback)
