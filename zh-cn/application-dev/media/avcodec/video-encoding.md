@@ -874,6 +874,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     OH_AVCodecBufferAttr info;
     info.size = frameSize;
     info.offset = 0;
+    // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
     info.pts = 0;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
     if (setBufferRet != AV_ERR_OK) {
@@ -979,12 +980,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 9. 通知编码器结束。
 
+    在编码过程中，当最后一帧数据被送入编码输入队列时，需要设置bufferInfo的flag标识为AVCODEC_BUFFER_FLAGS_EOS，通知编码器输入结束。
+
     以下示例中，bufferInfo的成员变量：
     - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
     - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针;
     - isValid：bufferInfo中存储的buffer实例是否有效。
-
-    与“步骤-8. 写入编码图像”一样，使用同一个接口OH_VideoEncoder_PushInputBuffer，通知编码器输入结束，需要将flag标识成AVCODEC_BUFFER_FLAGS_EOS。
 
     ```c++
     std::shared_ptr<CodecBufferInfo> bufferInfo = inQueue.Dequeue();
@@ -992,9 +993,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     if (bufferInfo == nullptr || !bufferInfo->isValid) {
         // 异常处理。
     }
+    // 写入最后一帧图像数据，参考"步骤-8. 写入编码图像"。
+    // 配置buffer info信息，设置AVCODEC_BUFFER_FLAGS_EOS标识。
     OH_AVCodecBufferAttr info;
-    info.size = 0;
+    info.size = frameSize;
     info.offset = 0;
+    // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
     info.pts = 0;
     info.flags = AVCODEC_BUFFER_FLAGS_EOS;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
