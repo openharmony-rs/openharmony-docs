@@ -35,7 +35,6 @@
     - [编辑图片EXIF信息](image-tool-c.md)
   - 图片接收<!--image-receiving-c-->
     - [使用Image_NativeModule完成图片接收](image-receiver-c.md)
-    - [使用Image_NativeModule处理图像信息](image-info-c.md)
 - Image Kit常见问题<!--image-faqs-->
   - [如何处理HEIF图片](image-faqs/heif-adapter-faq.md)
   - [如何获取图片的旋转角度信息](image-faqs/image-rotate-faq.md)

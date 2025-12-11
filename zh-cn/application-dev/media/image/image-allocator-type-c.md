@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-应用在进行图片解码操作时，需要申请对应内存。当前指导将介绍不同的内存类型，以及如何进行申请。
+应用在进行图片解码操作时，需要申请解码所需的内存。当前指导将介绍不同的内存类型，以及如何进行申请。
 
 应用侧通过解码API接口获取PixelMap，并将其传递给Image组件以进行显示。
 
-当PixelMap较大且使用共享内存时，RS主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA内存零拷贝功能，可在绘制图片时避免纹理上传时间消耗。
+当PixelMap较大且使用共享内存时，RS主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA内存零拷贝功能，可在绘制图片时避免这一消耗。
 
 ## 内存类型介绍
 
@@ -48,13 +48,13 @@
 
 ## 系统默认的内存分配方式
 
-在使用接口[OH_ImageSourceNative_CreatePixelmap](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)接口进行解码时，不同场景下会采取不同的内存分配类型。
+在使用接口[OH_ImageSourceNative_CreatePixelmap](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)进行解码时，不同场景下会采取不同的内存分配类型。
 
 以下场景将使用DMA_ALLOC。
 
 - 解码HDR图片。
 - 解码HEIF格式图片。
-- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，[pixelFormat](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)为[PIXEL_FORMAT_RGBA_8888](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)或[PIXEL_FORMAT_NV21](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)，同时硬件不繁忙（并发数为3）。
+- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，[pixelFormat](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)为[PIXEL_FORMAT_RGBA_8888](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)或[PIXEL_FORMAT_NV21](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)，同时系统并发任务数不超过3个。
 - 解码其他格式图片。要求[desiredSize](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
 
 除上述场景外，其余情况均使用SHARE_MEMORY。
@@ -75,7 +75,7 @@
 - 硬件解码仅支持DMA_ALLOC的内存模式。
 - SVG格式图片解码仅支持SHARE_MEMORY的内存模式。
 
-使用接口[OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)进行解码时，若设置的内存分配模式，与图片格式或解码方式不匹配，则会抛出内存分配失败的异常。
+使用接口[OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)进行解码时，若设置的内存分配模式与图片格式或解码方式不匹配，则会抛出内存分配失败的异常。
 
 如果用户选择的分配类型为AUTO，系统将根据解码和渲染的时间综合评估，以决定使用DMA_ALLOC还是SHARE_MEMORY分配机制。
 
@@ -100,114 +100,10 @@ C-API 获取和操作stride示例代码如下。在使用下面的示例代码�
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage_packer.so libpixelmap.so)
 ```
 
-```C++
-#include <cstring>
-#include <multimedia/image_framework/image/image_common.h>
-#include <multimedia/image_framework/image/pixelmap_native.h>
-#include <multimedia/image_framework/image/image_source_native.h>
+> **说明：**
+> 部分接口为API20以后才支持的，请开发者在进行开发时选择合适的API版本。
 
-struct PixelmapInfo {
-    uint32_t width = 0;
-    uint32_t height = 0;
-    uint32_t rowStride = 0;
-    int32_t pixelFormat = 0;
-    uint32_t byteCount = 0;
-    uint32_t allocationByteCount = 0;
-};
-
-static void GetPixelmapInfo(OH_PixelmapNative *pixelmap, PixelmapInfo *info) {
-    OH_Pixelmap_ImageInfo *srcInfo = nullptr;
-    OH_PixelmapImageInfo_Create(&srcInfo);
-    OH_PixelmapNative_GetImageInfo(pixelmap, srcInfo);
-    OH_PixelmapImageInfo_GetWidth(srcInfo, &info->width);
-    OH_PixelmapImageInfo_GetHeight(srcInfo, &info->height);
-    OH_PixelmapImageInfo_GetRowStride(srcInfo, &info->rowStride);
-    OH_PixelmapImageInfo_GetPixelFormat(srcInfo, &info->pixelFormat);
-    OH_PixelmapImageInfo_Release(srcInfo);
-    return;
-}
-
-static void GetPixelmapAddrInfo(OH_PixelmapNative *pixelmap, PixelmapInfo *info) {
-    OH_PixelmapNative_GetByteCount(pixelmap, &info->byteCount);
-    OH_PixelmapNative_GetAllocationByteCount(pixelmap, &info->allocationByteCount);
-    return;
-}
-
-int32_t GetPixelFormatBytes(int32_t pixelFormat) {
-    switch (pixelFormat) {
-        case 2: // PIXEL_FORMAT_RGB_565
-            return 2;
-        case 3: // PIXEL_FORMAT_RGBA_8888
-        case 4: // PIXEL_FORMAT_BGRA_8888
-            return 4;
-        case 5: // PIXEL_FORMAT_RGB_888
-            return 3;
-        case 6: // PIXEL_FORMAT_ALPHA_8
-            return 1;
-        case 7: // PIXEL_FORMAT_RGBA_F16
-            return 8; // 每通道16位浮点数，共4通道：4 * 2 bytes = 8 bytes
-        case 8: // PIXEL_FORMAT_NV21
-        case 9: // PIXEL_FORMAT_NV12'
-            // NV21 和 NV12 是 YUV 4:2:0 半平面格式：
-            // - Y 分量占用 width × height 字节（每像素1字节）
-            // - UV 分量以交错方式排列（UV 或 VU），占用 width × height / 2 字节
-            // - 总字节数 = width × height × 1.5
-            // 因为函数返回类型为 int32_t，无法返回小数，因此保守起见向上取整返回 2
-            // 虽然实际平均每像素占用 1.5 字节，但返回 2 可以保证内存分配安全，避免越界。代价是需要注意stride的处理。
-            return 2; // Semi-planar YUV, use 2 as approximate per-byte-per-pixel
-        case 10: // PIXEL_FORMAT_RGBA_1010102
-            return 4;
-        case 11: // PIXEL_FORMAT_YCBCR_P010
-        case 12: // PIXEL_FORMAT_YCRCB_P010
-            return 2; // 10-bit YUV 格式，通常对齐为 16 bit（2 字节）
-        default: // PIXEL_FORMAT_UNKNOWN or unsupported
-            return 0;
-    }
-}
-
-OH_PixelmapNative* TestStrideWithAllocatorType() {
-    char* filePath = const_cast<char *>("/data/storage/el2/base/haps/entry/files/test.jpg");
-    size_t filePathSize = 1024;
-    OH_ImageSourceNative* imageSource = nullptr;
-    Image_ErrorCode image_ErrorCode = OH_ImageSourceNative_CreateFromUri(filePath, filePathSize, &imageSource);
-    OH_DecodingOptions *options = nullptr;
-    OH_DecodingOptions_Create(&options);
-    IMAGE_ALLOCATOR_TYPE allocatorType = IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA;  // 使用DMA创建pixelMap。
-    OH_PixelmapNative *pixelmap = nullptr;
-    image_ErrorCode = OH_ImageSourceNative_CreatePixelmapUsingAllocator(imageSource, options, allocatorType, &pixelmap);
-    PixelmapInfo srcInfo;
-    GetPixelmapInfo(pixelmap, &srcInfo);
-    GetPixelmapAddrInfo(pixelmap, &srcInfo);
-
-    void *pixels = nullptr;
-    OH_PixelmapNative_AccessPixels(pixelmap, &pixels);
-    OH_PixelmapNative *newPixelmap = nullptr;
-    OH_ImageSourceNative_CreatePixelmap(imageSource, options, &newPixelmap);
-    uint32_t dstRowStride = srcInfo.width * GetPixelFormatBytes(srcInfo.pixelFormat);
-    void *newPixels = nullptr;
-    OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
-    uint8_t *src = reinterpret_cast<uint8_t *>(pixels);
-    uint8_t *dst = reinterpret_cast<uint8_t *>(newPixels);
-    uint32_t dstSize = srcInfo.byteCount;
-    uint32_t rowSize;
-    if (allocatorType == IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA) { 
-        rowSize = srcInfo.rowStride; 
-    } else {
-        rowSize = dstRowStride;
-    }
-    for (uint32_t i = 0; i < srcInfo.height; ++i) {
-        memcpy(dst, src, dstRowStride);
-        src += rowSize;
-        dst += dstRowStride;
-        dstSize -= dstRowStride;
-    }
-    OH_PixelmapNative_UnaccessPixels(newPixelmap);
-    OH_PixelmapNative_UnaccessPixels(pixelmap);
-    OH_DecodingOptions_Release(options);
-    OH_ImageSourceNative_Release(imageSource);
-    return newPixelmap;
-}
-```
+<!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->  
 
 ## 解码单张图片的内存限制
 
