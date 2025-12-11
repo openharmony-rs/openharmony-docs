@@ -1,4 +1,4 @@
-# @ohos.enterprise.adminManager（企业设备管理）(系统接口)
+# @ohos.enterprise.adminManager（admin权限管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供企业设备管理能力，使设备具备企业场景下所需的定制能力。
+本模块为企业MDM应用提供admin权限管理能力，包括激活/解除激活admin权限、事件订阅、委托授权等。
 
 > **说明：**
 >
