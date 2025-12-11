@@ -591,7 +591,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | -------- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| progress | number | 是   | 否   | 不使用系统提供的进度条时，系统上报拷贝粘贴任务进度百分比。 |
+| progress | int | 是   | 否   | 不使用系统提供的进度条时，系统上报拷贝粘贴任务进度百分比。 |
 
 ## ProgressListener<sup>15+</sup>
 
@@ -1369,7 +1369,7 @@ pasteData.setProperty(prop);
 
 ### getRecord<sup>9+</sup>
 
-getRecord(index: number): PasteDataRecord
+getRecord(index: int): PasteDataRecord
 
 获取剪贴板内容中指定下标的条目。
 
@@ -1385,7 +1385,7 @@ getRecord(index: number): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定条目的下标。 |
+| index | int | 是 | 指定条目的下标。 |
 
 **返回值：**
 
@@ -1411,7 +1411,7 @@ let record: pasteboard.PasteDataRecord = pasteData.getRecord(0);
 
 ### getRecordCount<sup>7+</sup>
 
-getRecordCount(): number
+getRecordCount(): int
 
 获取剪贴板内容中条目的个数。
 
@@ -1427,7 +1427,7 @@ getRecordCount(): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 条目的个数。 |
+| int | 条目的个数。 |
 
 **示例：**
 
@@ -1506,7 +1506,7 @@ let hasType: boolean = pasteData.hasType(pasteboard.MIMETYPE_TEXT_PLAIN);
 
 ### removeRecord<sup>9+</sup>
 
-removeRecord(index: number): void
+removeRecord(index: int): void
 
 移除剪贴板内容中指定下标的条目。
 
@@ -1522,7 +1522,7 @@ removeRecord(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定的下标。 |
+| index | int | 是 | 指定的下标。 |
 
 **错误码：**
 
@@ -1542,7 +1542,7 @@ pasteData.removeRecord(0);
 
 ### replaceRecord<sup>9+</sup>
 
-replaceRecord(index: number, record: PasteDataRecord): void
+replaceRecord(index: int, record: PasteDataRecord): void
 
 替换剪贴板内容中指定下标的条目。
 
@@ -1558,7 +1558,7 @@ replaceRecord(index: number, record: PasteDataRecord): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定的下标。 |
+| index | int | 是 | 指定的下标。 |
 | record | [PasteDataRecord](#pastedatarecord7) | 是 | 被替换后的条目数据内容。 |
 
 **错误码：**
@@ -1996,6 +1996,58 @@ let listener = () => {
     console.info('The system pasteboard has changed.');
 };
 systemPasteboard.off('update', listener);
+```
+
+### onUpdate<sup>22+</sup>
+
+onUpdate(callback: UpdateCallback): void
+
+订阅系统剪贴板内容变化事件，当系统剪贴板中内容变化时触发用户程序的回调。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | function | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
+
+**示例：**
+
+```ts
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The system pasteboard has changed.');
+};
+systemPasteboard.onUpdate(listener);
+```
+
+### offUpdate<sup>22+</sup>
+
+offUpdate(callback?: UpdateCallback): void
+
+取消订阅系统剪贴板内容变化事件。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- |-----|
+| callback | function | 否 | 剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有监听回调，否则表示清除指定监听回调。|
+
+**示例：**
+
+```ts
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The system pasteboard has changed.');
+};
+systemPasteboard.offUpdate(listener);
 ```
 
 ### clearData<sup>9+</sup>
@@ -3411,7 +3463,7 @@ struct PasteboardTest {
 
 ### getChangeCount<sup>18+</sup>
 
-getChangeCount(): number
+getChangeCount(): long
 
 获取剪贴板内容的变化次数。
 
@@ -3433,7 +3485,7 @@ getChangeCount(): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回读取到的剪贴板内容变化次数。 |
+| long | 返回读取到的剪贴板内容变化次数。 |
 
 **示例：**
 
