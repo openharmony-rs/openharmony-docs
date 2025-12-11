@@ -65,6 +65,8 @@ Monitor: MonitorDecorator
 
 @Monitor装饰器用于状态管理V2中对状态变量变化的监听。@Monitor相关内容的详细使用方式见[@Monitor装饰器：状态变量修改监听](../../../ui/state-management/arkts-new-monitor.md)。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -74,6 +76,8 @@ Monitor: MonitorDecorator
 type MonitorDecorator = (value: string, ...args: string[]) => MethodDecorator
 
 @Monitor装饰器的实际类型。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -137,6 +141,8 @@ struct Index {
 
 ### 属性
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -150,6 +156,8 @@ struct Index {
 value\<T\>(path?: string): IMonitorValue\<T\> | undefined
 
 获取指定path的变化信息。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -213,6 +221,8 @@ struct Index {
 @Monitor监听变量变化的具体信息，通过IMonitor的value接口获取。T为变量类型。
 
 ### 属性
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
