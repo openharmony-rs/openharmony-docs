@@ -1063,7 +1063,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void {
   try {
-    let isSupperted: boolean = DepthFusionQuery.isDepthFusionSupported();
+    let isSupported: boolean = DepthFusionQuery.isDepthFusionSupported();
     console.info('Indicate that isDepthFusionSupported method execution success.');
   } catch (error) {
     let err = error as BusinessError;
