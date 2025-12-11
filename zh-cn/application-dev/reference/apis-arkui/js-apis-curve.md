@@ -344,7 +344,11 @@ let value: number = curveValue.interpolate(0.5) // 计算得到时间到一半�
 init(curve?: Curve): string
 
 
-插值曲线的初始化函数，可以根据入参创建一个插值曲线对象，从API version 9开始废弃，推荐使用[Curves.initCurve](#curvesinitcurve9)。
+插值曲线的初始化函数，可以根据入参创建一个插值曲线对象。
+
+> **说明：**  
+>
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.initCurve](#curvesinitcurve9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -366,7 +370,11 @@ init(curve?: Curve): string
 steps(count: number, end: boolean): string
 
 
-构造阶梯曲线对象，从API version 9开始废弃，推荐使用[Curves. stepsCurve](#curvesstepscurve9)。
+构造阶梯曲线对象。
+
+> **说明：**  
+>
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves. stepsCurve](#curvesstepscurve9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -389,7 +397,11 @@ steps(count: number, end: boolean): string
 cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 
 
-构造三阶贝塞尔曲线对象，曲线的值必须处于0-1之间，API version 9开始废弃，推荐使用 [Curves.cubicBezierCurve](#curvescubicbeziercurve9)。
+构造三阶贝塞尔曲线对象，曲线的值必须处于0-1之间。
+
+> **说明：**  
+>
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.cubicBezierCurve](#curvescubicbeziercurve9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -412,8 +424,11 @@ cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 
 spring(velocity: number, mass: number, stiffness: number, damping: number): string
 
+构造弹簧曲线对象。
 
-构造弹簧曲线对象，从API version 9开始废弃，推荐使用[Curves.springCurve](#curvesspringcurve9)。
+> **说明：**  
+>
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.springCurve](#curvesspringcurve9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
