@@ -350,7 +350,7 @@ struct WebComponent {
 
 自API version 20起，支持绑定长按超链接菜单。可以为图片和链接绑定不同的自定义菜单。
 
-以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容，使用[Progress组件](../ui/arkts-common-components-progress-indicator.md)展示了加载进度，需要注意预览Web不会接收事件。
+以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容，使用[Progress组件](../ui/arkts-common-components-progress-indicator.md)展示了加载进度，需要注意PreviewBuilder中的Web组件不会接收事件。
 
 ```ts
 import { webview } from '@kit.ArkWeb';
