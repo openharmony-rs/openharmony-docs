@@ -1658,7 +1658,7 @@ ArkTS-Dyn: setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number
 
 ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, secondaryScreenMode: MultiScreenMode): Promise&lt;void&gt;
 
-设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。
+设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏显示。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1672,8 +1672,8 @@ ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, se
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是  | 主屏的id，该参数应为正整数。 |
-| secondaryScreenId | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是  | 扩展屏幕的id，该参数应为正整数。|
+| primaryScreenId   | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是  | 主屏的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| secondaryScreenId | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是  | 扩展屏幕的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
 **返回值：**
