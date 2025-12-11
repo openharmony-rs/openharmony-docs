@@ -45,42 +45,44 @@
 2. 使用`@Param value`与`@Event $value`语法实现自定义组件双向绑定。
 
     <!-- @[ArkUI_Star_binding4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->
-
-   ``` TypeScript
-   @Entry
-   @ComponentV2
-   struct Parent {
-     @Local value: number = 0;
-   
-     build() {
-       Column() {
-         Text(`${this.value}`)
-         // 点击Parent中的Button改变value值，父组件Parent和子组件Child中的Text将同步更新。
-         Button(`change value`).onClick(() => {
-           this.value++;
-         })
-         Child({ value: this.value, $value: (val: number) => { this.value = val; } }) // 使用@Param与@Event语法实现自定义组件双向绑定。
-       // ···
-       }
-     }
-   }
-   
-   @ComponentV2
-   struct Child {
-     @Param value: number = 0;
-     @Event $value: (val: number) => void = (val: number) => {};
-   
-     build() {
-       Column() {
-         Text(`${this.value}`)
-         // 点击子组件Child中的Button，调用`this.$value(10)`方法，父组件Parent和子组件Child中的Text将同步更新。
-         Button(`change value`).onClick(() => {
-           this.$value(10);
-         })
-       }
-     }
-   }
-   ```
+    
+    ``` TypeScript
+    @Entry
+    @ComponentV2
+    struct Parent {
+      @Local value: number = 0;
+    
+      build() {
+        Column() {
+          Text(`${this.value}`)
+          // 点击Index中的Button改变value值，父组件Parent和子组件Child中的Text将同步更新。
+          Button(`change value`).onClick(() => {
+            this.value++;
+          })
+          // 使用@Param与@Event语法实现自定义组件双向绑定。
+          Child({ value: this.value, $value: (val: number) => { this.value = val; } })
+          // ...
+        // ···
+        }
+      }
+    }
+    
+    @ComponentV2
+    struct Child {
+      @Param value: number = 0;
+      @Event $value: (val: number) => void = (val: number) => {};
+    
+      build() {
+        Column() {
+          Text(`${this.value}`)
+          // 点击子组件Child中的Button，调用`this.$value(10)`方法，父组件Parent和子组件Child中的Text将同步更新。
+          Button(`change value`).onClick(() => {
+            this.$value(10);
+          })
+        }
+      }
+    }
+    ```
 
 3. 使用!!语法糖实现自定义组件双向绑定。
 
