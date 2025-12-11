@@ -1914,8 +1914,7 @@ type ChainContinue = boolean
 
 | 类型   | 说明                                    |
 | ------ | -------------------------------------- |
-| true   | 表示继续处理拦截器链。                   |
-| false  | 表示终止并返回HTTP响应。                 |
+| boolean | true表示继续处理拦截器链，false表示终止并返回HTTP响应。                   |
 
 ## HttpInterceptor<sup>22+</sup>
 
