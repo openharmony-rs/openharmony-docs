@@ -691,7 +691,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerDialogSample.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":37,
 						"name":"certificate_management_dialog_box_development_guide",
 						"start_line":15
 					}
