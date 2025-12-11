@@ -52,12 +52,11 @@
 ``` TypeScript
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { UIContext } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 async function certificateManagerDialogSample() {
   /* context为应用的上下文信息，由调用方自行获取，此处仅为示例 */
-  let context: common.Context = new UIContext().getHostContext() as common.Context;
+  let context: common.Context = getContext();
   /* pageType为页面类型，此处赋值PAGE_MAIN，即拉起证书管理主界面 */
   let pageType: certificateManagerDialog.CertificateDialogPageType =
     certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
