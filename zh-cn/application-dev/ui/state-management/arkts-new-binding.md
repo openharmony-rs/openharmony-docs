@@ -37,10 +37,10 @@
    上述语法可以简化为!!双向绑定语法糖。
    
     <!-- @[ArkUI_Star_binding3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets) -->
-      
-   ``` TypeScript
-   Star({ value: this.value!! })
-   ```
+    
+    ``` TypeScript
+    Star({ value: this.value!! })
+    ```
 
 2. 使用`@Param value`与`@Event $value`语法实现自定义组件双向绑定。
 
