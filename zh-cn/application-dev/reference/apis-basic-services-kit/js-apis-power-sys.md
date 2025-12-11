@@ -488,7 +488,7 @@ unregisterShutdownCallback(callback?: Callback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | ---------------------------------------------- |
-| callback | Callback&lt;void&gt; | 否   | 可选参数，回调函数，无返回值。|
+| callback | Callback&lt;void&gt; | 否   | 回调函数，无返回值。|
 
 **错误码：**
 
