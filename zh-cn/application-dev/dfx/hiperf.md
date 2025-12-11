@@ -131,7 +131,7 @@ See 'hiperf help [command]' for more information on a specific command.
 1. 对进程ID为1745，1910的进程进行计数，计数时长为10s。
 
 
-    ```
+    ```shell
     $ hiperf stat -d 10 -p 1745,1910
     Profiling duration is 10.000 seconds.
     Start Profiling...
@@ -150,7 +150,7 @@ See 'hiperf help [command]' for more information on a specific command.
 2. 对进程ID为1745和1910的进程进行计数，计数时长为10秒，事件类型为hw-cpu-cycles、hw-instructions、sw-task-clock，指定打印信息的时间间隔为3000ms。
 
 
-    ```
+    ```shell
     $ hiperf stat -d 10 -p 1745,1910 -e hw-cpu-cycles,hw-instructions,sw-task-clock -i 3000
     Profiling duration is 10.000 seconds.
     Start Profiling...
@@ -176,7 +176,7 @@ See 'hiperf help [command]' for more information on a specific command.
 3. 对进程ID为1910的进程进行计数，计数时长为3s，事件类型为hw-cpu-cycles，hw-instructions，并打印详细的信息。
 
 
-    ```
+    ```shell
     $ hiperf stat -d 3 -p 1910 -e hw-cpu-cycles,hw-instructions --verbose
     Profiling duration is 3.000 seconds.
     Start Profiling...
@@ -214,14 +214,14 @@ See 'hiperf help [command]' for more information on a specific command.
 
 **命令行示例**：
 
-```
+```shell
 Usage: hiperf list [event type name]
 ```
 
 查询支持的硬件事件类型。
 
 
-```
+```shell
 $ hiperf list hw
 event not support hw-ref-cpu-cycles
 
@@ -299,13 +299,13 @@ Supported events for hardware:
 
 **命令行示例**：
 
-```
+```shell
 Usage: hiperf record [options] [command [command-args]]
 ```
 
 对指定的pid为267的进程采样10秒，并使用dwarf回栈。
 
-```
+```shell
 $ hiperf record -p 267 -d 10 -s dwarf
 ```
 
@@ -345,13 +345,13 @@ $ hiperf record -p 267 -d 10 -s dwarf
 
 **命令行示例**：
 
-```
+```shell
 hiperf stat [options] [command [command-args]]
 ```
 
 使用stat命令监听进程号为2349的进程在CPU 0上运行3秒的性能数据。
 
-```
+```shell
 $ hiperf stat -p 1745 -d 3 -c 0
 ```
 
@@ -377,13 +377,13 @@ $ hiperf stat -p 1745 -d 3 -c 0
 
 **命令行示例**：
 
-```
+```shell
 Usage: hiperf dump [option] \<filename\>
 ```
 
 使用dump命令将/data/local/tmp/perf.data文件读取出来，并输出到/data/local/tmp/perf.dump文件中。
 
-```
+```shell
 $ hiperf dump -i /data/local/tmp/perf.data -o /data/local/tmp/perf.dump
 ```
 
@@ -414,12 +414,12 @@ $ hiperf dump -i /data/local/tmp/perf.data -o /data/local/tmp/perf.dump
 
 **命令行示例**：
 
-```
+```shell
 Usage: hiperf report [option] \<filename\>
 ```
 
 从采样文件（perf.data）中提取对性能影响较大（占比≥1%）的关键数据，并以报告的形式进行展示。
-```
+```shell
 $ hiperf report -i /data/local/tmp/perf.data --limit-percent 1
 ```
 
@@ -457,4 +457,3 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 ```
 
 构建可调试应用需要使用debug证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
-
