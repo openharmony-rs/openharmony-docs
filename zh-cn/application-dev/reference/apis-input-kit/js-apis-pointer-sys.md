@@ -2435,7 +2435,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
-              console.info(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
+              console.info(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
