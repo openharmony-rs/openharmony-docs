@@ -315,3 +315,154 @@ async function step2EncryptData(): Promise<void> {
 
 ### 数据解密和验证
 <!-- @[fingerprint_access_decryption_and_verification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
+
+``` TypeScript
+/* 步骤4：解密模块 */
+const DECRYPTION_PROPERTIES: huks.HuksParam[] = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_SM4,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CBC,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_IV,
+    value: stringToUint8Array(IV),
+  }
+];
+
+function initDecryptSession(keyAlias: string, huksOptions: huks.HuksOptions,
+  throwObject: ThrowObject): Promise<huks.HuksSessionHandle> {
+  return new Promise<huks.HuksSessionHandle>((resolve, reject) => {
+    try {
+      huks.initSession(keyAlias, huksOptions, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
+}
+
+function finishDecryptSession(handle: number, huksOptions: huks.HuksOptions, token: Uint8Array,
+  throwObject: ThrowObject): Promise<huks.HuksReturnResult> {
+  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
+    try {
+      huks.finishSession(handle, huksOptions, token, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
+}
+
+/* 初始化解密会话并触发用户认证 */
+async function step31DecryptionAndAuth(): Promise<void> {
+
+  const decryptOptions: huks.HuksOptions = {
+    properties: DECRYPTION_PROPERTIES,
+    inData: new Uint8Array([])
+  };
+
+  /* 初始化解密会话，获取挑战值 */
+  let throwObject: ThrowObject = { isThrow: true };
+  try {
+    await initDecryptSession(KEY_ALIAS, decryptOptions, throwObject)
+      .then((data) => {
+        console.info(`解密会话初始化成功: ${JSON.stringify(data)}`);
+        sessionHandle = data.handle as number;
+        challenge = data.challenge as Uint8Array;
+        console.info('获取到挑战值: ' + challenge.toString());
+
+        /* 触发用户认证流程 */
+        performUserAuthentication(challenge);
+      })
+      .catch((error: Error) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error(`解密会话初始化失败: ${JSON.stringify(error)}`);
+        }
+      });
+  } catch (error) {
+    console.error(`解密会话初始化参数无效: ${JSON.stringify(error)}`);
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+}
+
+/* 完成解密操作 */
+async function step32CompleteDecryption(): Promise<void> {
+  const decryptOptions: huks.HuksOptions = {
+    properties: DECRYPTION_PROPERTIES,
+    inData: encryptedData // 使用之前加密的密文
+  };
+
+  let throwObject: ThrowObject = { isThrow: true };
+  try {
+    await finishDecryptSession(sessionHandle, decryptOptions, authToken, throwObject)
+      .then((data) => {
+        decryptedData = data.outData as Uint8Array;
+        console.info(`数据解密成功: ${JSON.stringify(data)}`);
+
+        /* 验证解密结果 */
+        const originalData = stringToUint8Array(CIPHER_IN_DATA);
+        if (decryptedData.toString() === originalData.toString()) {
+          console.info('解密验证成功！解密后的数据与原始明文一致');
+        } else {
+          console.error('解密验证失败！解密后的数据与原始明文不一致');
+        }
+      })
+      .catch((error: BusinessError) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error(`数据解密失败: ${JSON.stringify(error)}`);
+        }
+      });
+  } catch (error) {
+    console.error(`数据解密参数无效: ${JSON.stringify(error)}`);
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+}
+
+/* 主函数：执行完整的SM4加密解密流程 */
+async function main(): Promise<void> {
+    /* 步骤1：生成密钥 */
+    await step1GenerateKey();
+    /* 步骤2：加密数据 */
+    await step2EncryptData();
+    /* 步骤3：初始化解密并进行用户认证 */
+    await step31DecryptionAndAuth();
+}
+```
