@@ -714,7 +714,11 @@ ArkTS-Dyn: databaseAccess(databaseAccess: boolean)
 
 ArkTS-Sta: databaseAccess(databaseAccess: boolean | undefined): this
 
-设置是否开启数据库存储API权限。若未显式调用该属性或入参值为undefined时，设置为不开启数据库存储API权限。
+设置是否开启Web SQL数据库存储API权限。若未显式调用该属性或入参值为undefined时，设置为不开启数据库存储API权限。
+
+> **说明：**
+>
+> - 本接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的控制失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../web/web-component-overview.md#约束与限制)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -726,7 +730,7 @@ ArkTS-Sta: databaseAccess(databaseAccess: boolean | undefined): this
 
 | 参数名            | 类型    | 必填   | 说明              |
 | -------------- | ------- | ---- | ----------------- |
-| databaseAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启数据库存储API权限。<br>true表示设置开启数据库存储API权限，false表示设置不开启数据库存储API权限。|
+| databaseAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启Web SQL数据库存储API权限。<br>true表示设置开启数据库存储API权限，false表示设置不开启数据库存储API权限。|
 
 **示例：**
 
