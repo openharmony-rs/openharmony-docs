@@ -123,12 +123,24 @@
 
 3. 获取设备操作权限。
 
+   ArkTs-Dyn示例：
    ```ts
    let deviceName : string = deviceList[0].name;
    // 申请操作指定的device的操作权限。
    usbManager.requestRight(deviceName).then((hasRight : boolean) => {
      console.info("usb device request right result: " + hasRight);
    }).catch((error : BusinessError)=> {
+     console.error(`usb device request right failed : ${error}`);
+   });
+   ```
+
+   ArkTs-Sta示例：
+   ```ts
+   let deviceName : string = deviceList[0].name;
+   // 申请操作指定的device的操作权限。
+   usbManager.requestRight(deviceName).then((hasRight : boolean) => {
+     console.info("usb device request right result: " + hasRight);
+   }).catch((error)=> {
      console.error(`usb device request right failed : ${error}`);
    });
    ```
