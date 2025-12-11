@@ -7378,8 +7378,10 @@ struct WebComponent {
   }
 }
 ```
+
 加载的html文件。
- ```html
+
+```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -7409,7 +7411,7 @@ struct WebComponent {
     </script>
   </body>
 </html>
- ```
+```
 
 ## stopCamera<sup>12+</sup>
 
@@ -7608,7 +7610,7 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
    }
    ```
 
-JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
+   JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
 4. 编写业务用组件代码。
 
@@ -10586,21 +10588,21 @@ struct WebComponent {
     Column() {
       Button("resumeMicrophone").onClick(() => {
         try {
-          this.controller.startMicrophone();
+          this.controller.resumeMicrophone();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
       Button("pauseMicrophone").onClick(() => {
         try {
-          this.controller.stopMicrophone();
+          this.controller.pauseMicrophone();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
       Button("stopMicrophone").onClick(() => {
         try {
-          this.controller.closeMicrophone();
+          this.controller.stopMicrophone();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
@@ -10629,14 +10631,17 @@ struct WebComponent {
             })
           }
         })
-        .onMicrophoneCaptureStateChange((info:MicrophoneCaptureStateInfo)=>{
-          console.info("MicrophoneCapture from ", info.originalState, " to ", info.newState);
+        .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo) => {
+          console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
+        })
     }
   }
 }
 ```
+
 加载的html文件。
- ```html
+
+```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -10666,7 +10671,7 @@ struct WebComponent {
    </script>
  </body>
 </html>
- ```
+```
 
 ## pauseMicrophone<sup>23+</sup>
 
@@ -10707,4 +10712,3 @@ stopMicrophone(): void
 **示例：**
 
 完整示例代码参考[resumeMicrophone](#resumemicrophone23)。
-```
