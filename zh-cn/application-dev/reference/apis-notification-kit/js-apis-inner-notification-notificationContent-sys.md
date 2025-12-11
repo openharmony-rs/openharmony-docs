@@ -93,16 +93,14 @@
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：11
-
-**ArkTS-Sta起始版本**：22
-
 | 名称                         | 值 |   说明   |
 | ---------------------------- |----|----------|
-| LIVE_VIEW_CREATE             | 0  | 创建     |
-| LIVE_VIEW_INCREMENTAL_UPDATE | 1  | 增量更新 |
-| LIVE_VIEW_END                | 2  | 结束     |
-| LIVE_VIEW_FULL_UPDATE        | 3  | 全量更新 |
+| LIVE_VIEW_CREATE             | 0  | 创建<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| LIVE_VIEW_INCREMENTAL_UPDATE | 1  | 增量更新<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| LIVE_VIEW_END                | 2  | 结束<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| LIVE_VIEW_FULL_UPDATE        | 3  | 全量更新<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| LIVE_VIEW_PENDING_CREATE<sup>23+</sup>     | 4  | 条件触发创建<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| LIVE_VIEW_PENDING_END<sup>23+</sup>        | 6  | 条件触发结束<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## NotificationIconButton<sup>18+</sup>
 
