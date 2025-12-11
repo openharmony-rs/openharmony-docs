@@ -33,6 +33,8 @@
 | [OH_Drawing_FontArguments* OH_Drawing_FontArgumentsCreate(void)](#oh_drawing_fontargumentscreate) | 用于创建一个字型参数对象。字型参数用于创建带有自定义属性的字体对象。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontArgumentsAddVariation(OH_Drawing_FontArguments* fontArguments,const char* axis, float value)](#oh_drawing_fontargumentsaddvariation) | 给字型参数对象添加可变维度。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontArgumentsDestroy(OH_Drawing_FontArguments* fontArguments)](#oh_drawing_fontargumentsdestroy) | 用于销毁一个字型参数对象。 |
+| [OH_Drawing_ErrorCode OH_Drawing_TypefaceIsBold(const OH_Drawing_Typeface* typeface, bool* isBold)](#oh_drawing_typefaceisbold) | 检查字形是否为粗体。 |
+| [OH_Drawing_ErrorCode OH_Drawing_TypefaceIsItalic(const OH_Drawing_Typeface* typeface, bool* isItalic)](#oh_drawing_typefaceisitalic) | 检查字形是否为斜体。 |
 
 ## 函数说明
 
@@ -265,3 +267,52 @@ OH_Drawing_ErrorCode OH_Drawing_FontArgumentsDestroy(OH_Drawing_FontArguments* f
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br> 返回OH_DRAWING_SUCCESS，表示执行成功。<br> 返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontArguments为NULL。 |
 
 
+### OH_Drawing_TypefaceIsBold()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_TypefaceIsBold(const OH_Drawing_Typeface* typeface, bool* isBold)
+```
+
+**描述**
+
+检查字形是否为粗体。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md)* typeface | 指向字形对象[OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md)的指针。 |
+| bool* isBold | 表示字形是否为粗体。作为出参使用。true表示该字形是粗体，false表示该字形不是粗体。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>OH_DRAWING_SUCCESS，表示执行成功。<br>OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示typeface或isBold是空指针。 |
+
+### OH_Drawing_TypefaceIsItalic()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_TypefaceIsItalic(const OH_Drawing_Typeface* typeface, bool* isItalic)
+```
+
+**描述**
+
+检查字形是否为斜体。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md)* typeface | 指向字形对象[OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md)的指针。 |
+| bool* isItalic | 表示字形是否为斜体。作为出参使用。true表示该字形是斜体，false表示该字形不是斜体。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示typeface或isItalic是空指针。 |
