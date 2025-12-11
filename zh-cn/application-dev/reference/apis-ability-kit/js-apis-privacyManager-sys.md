@@ -213,7 +213,7 @@ getPermissionUsedRecord(request: PermissionUsedRequest, callback: AsyncCallback&
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
 | request | [PermissionUsedRequest](#permissionusedrequest) | 是 | 查询权限使用记录的请求。 |
-| callback | AsyncCallback<[PermissionUsedResponse](#permissionusedresponse)> | 是 | 回调函数。当查询记录成功，err为undefined，data为查询到的权限使用记录；否则为错误对象。 |
+| callback | AsyncCallback<[PermissionUsedResponse](#permissionusedresponse)> | 是 | 回调函数。当查询记录成功，err为undefined，data为查询到的权限使用记录；否则err为错误对象。 |
 
 **错误码：**
 
