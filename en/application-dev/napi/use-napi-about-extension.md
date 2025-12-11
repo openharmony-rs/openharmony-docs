@@ -25,7 +25,7 @@ The following modules are required for the ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import taskpool from '@kit.ArkTS';
+import { taskpool } from '@kit.ArkTS';
 ```
 
 ## Module Loading
@@ -668,7 +668,7 @@ test01();
 
 **NOTE**
 
-Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the **detach()** callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
+Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the <b class="+ topic/ph hi-d/b " id="b2766527164114">detach()</b> callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
 
 ![napi_coerce_to_native_binding_object](figures/napi_coerce_to_native_binding_object.png)
 
@@ -1493,3 +1493,19 @@ testNapi.testNapiWrapEnhance();
 **napi_create_strong_reference, napi_delete_strong_reference, napi_get_value_strong_reference**
 
 [Creating a Strong Reference to an ArkTS Object Using Node-API Extension APIs](use-napi-about-strong-reference.md)
+
+## Creating Sendable Strong References Using Node-API
+
+### Available APIs
+
+| API                                    | Description                                      |
+| ---------------------------------------- | ------------------------------------------ |
+| napi_create_strong_sendable_reference    | Creates a Sendable strong reference to a Sendable ArkTS object.|
+| napi_delete_strong_sendable_reference    | Deletes a Sendable strong reference.                       |
+| napi_get_strong_sendable_reference_value | Obtains the ArkTS object value associated with a Sendable strong reference.  |
+
+### Example
+
+**napi_create_strong_sendable_reference, napi_delete_strong_sendable_reference, napi_get_strong_sendable_reference_value**
+
+[Creating a Sendable Strong Reference to an ArkTS Object Using Node-API Extension APIs](use-napi-about-sendable-reference.md)

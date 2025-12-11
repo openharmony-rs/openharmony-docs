@@ -20,7 +20,7 @@ Currently, OpenHarmony does not provide APIs for obtaining CPU features. You can
 
 1. Introduce the open-source library to the OpenHarmony C++ project. Download the [cpu_features library](https://github.com/google/cpu_features), decompress it to the **cpp** directory of the project, and change the decompressed file name to **cpu_features**. The following shows a sample application of the DevEco Studio C++ template.
    - The directory structure after the decompression is as follows:
-      ```
+      ```txt
       MyApplication
         |-- entry
          |-- src

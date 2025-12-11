@@ -37,7 +37,7 @@ Use **napi_async_init** to create an async context, and use **napi_async_destroy
 
 ### napi_make_callback
 
-Use **napi_make_callback** to call and execute an ArkTS callback after an async operation is complete.
+To call and execute an ArkTS callback after an async operation is complete, use **napi_make_callback**.
 
 ### napi_open_callback_scope, napi_close_callback_scope
 
@@ -83,6 +83,7 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
     napi_callback_scope scope = nullptr;
     status = napi_open_callback_scope(env, resource, context, &scope);
     if (status != napi_ok) {
+        napi_async_destroy(env, context);
         napi_throw_error(env, nullptr, "napi_open_callback_scope fail");
         return nullptr;
     }
