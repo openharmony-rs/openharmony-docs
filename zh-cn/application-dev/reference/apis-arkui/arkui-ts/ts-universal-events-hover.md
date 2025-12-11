@@ -154,6 +154,6 @@ struct OnHoverMoveEventExample {
 
 示意图：
 
-手写悬浮在Button组件上时，UI不断刷新笔尖的位置信息：
+手写笔悬浮在Button组件上时，UI不断刷新笔尖的位置信息：
 
 ![onHoverMove](figures/onHoverMove.png)
