@@ -123,7 +123,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    > **注意：**
    >
-   > 请勿在回调中进行耗时操作。
+   > 请勿在回调中调用解码器的相关接口或进行耗时操作。
 
     ```cpp
     // OH_AVCodecOnError回调函数的实现。
@@ -429,7 +429,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    
 10. 调用OH_AudioCodec_FreeOutputBuffer()，释放解码后的数据。
 
-    在获取解码PCM码流后，就应及时调用OH_AudioCodec_FreeOutputBuffer()进行释放。
+    在获取解码PCM码流后，应及时调用OH_AudioCodec_FreeOutputBuffer()进行释放。
 
     ```c++
     uint32_t index = signal_->outQueue_.front();
@@ -482,7 +482,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 12. （可选）调用OH_AudioCodec_Reset()重置解码器。
 
-    调用OH_AudioCodec_Reset()后，解码器回到初始化状态，需要调用OH_AudioCodec_Configure()重新配置，然后调用OH_AudioCodec_Start()重新开始解码。
+    调用OH_AudioCodec_Reset()后，解码器回到初始化状态，重置前获取到的输入/输出buffer都无法继续使用，需先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始解码。启动后重新获取输入/输出buffer。
 
     ```c++
     // 重置解码器 audioDec_。
@@ -499,7 +499,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 13. 调用OH_AudioCodec_Stop()停止解码器。
 
-    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入输出buffer都无法继续使用，需要在启动后重新获取输入输出buffer。
+    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法继续使用，需要在启动后重新获取输入/输出buffer。
 
     ```c++
     // 终止解码器 audioDec_。
