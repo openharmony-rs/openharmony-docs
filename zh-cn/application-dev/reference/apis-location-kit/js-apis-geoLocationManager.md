@@ -2730,7 +2730,7 @@ isPoiServiceSupported(): boolean
 
 getPoiInfo(): Promise&lt;PoiInfo&gt;
 
-获取当前位置附近的POI信息。
+获取当前位置附近的POI信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3028,7 +3028,7 @@ isBeaconFenceSupported(): boolean;
 
 isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean): Promise&lt;boolean&gt;
 
-判断指定的BSSID是否存在于最新的WLAN扫描结果里。
+判断指定的BSSID是否存在于最新的WLAN扫描结果里。使用Promise异步回调。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
