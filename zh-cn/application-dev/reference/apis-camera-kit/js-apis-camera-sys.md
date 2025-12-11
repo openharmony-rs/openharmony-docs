@@ -764,13 +764,27 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 
 ### release<sup>13+</sup>
 
-release(): Promise<void>
+release():  Promise\<void\>
 
 释放输出资源。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **示例：**
 
@@ -1571,7 +1585,7 @@ function unregisterSketchStatusChanged(previewOutput: camera.PreviewOutput): voi
 
 getThumbnail(): Promise<image.PixelMap>
 
-通过缩略图代理类提供的方法，获取缩略图 PixelMap，使用Promise异步回调。
+通过缩略图代理类提供的方法，获取缩略图PixelMap。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -7983,8 +7997,8 @@ TryAE参数信息，TryAE是指延时摄影时硬件会根据环境光照变化�
 
 | 名称 | 类型    | 只读 | 可选 | 说明           |
 | ---- | ------- | ---- |--| -------------- |
-| isTryAEDone        | boolean  | 是   | 否 | TryAE是否完成，true为已完成，false为未完成。       |
-| isTryAEHintNeeded  | boolean  | 是   | 是 | 是否需要TryAE，true为需要，false为不需要。        |
+| isTryAEDone        | boolean  | 是   | 否 | 表示TryAE是否完成。true表示已完成，false表示未完成。       |
+| isTryAEHintNeeded  | boolean  | 是   | 是 | 表示是否需要TryAE。true表示需要，false表示不需要。        |
 | previewType        | [TimeLapsePreviewType](#timelapsepreviewtype12) | 是   | 是 | 预览类型。        |
 | captureInterval    | number   | 是   | 是 | 拍摄间隔，单位毫秒（ms）。        |
 
