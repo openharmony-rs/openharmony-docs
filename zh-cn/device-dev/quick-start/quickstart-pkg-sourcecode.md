@@ -54,7 +54,8 @@
 
 ## 获取方式
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+> **说明：**
+>
 > 发布分支代码相对比较稳定，开发者可基于发布分支代码进行商用功能开发。Master主干为开发分支，开发者可通过Master主干获取最新特性。
 
 - **OpenHarmony发布分支代码获取**
