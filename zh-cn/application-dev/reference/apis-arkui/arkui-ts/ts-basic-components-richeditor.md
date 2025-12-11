@@ -1319,7 +1319,7 @@ getCaretRect(): RectResult | undefined
 
 deleteBackward(): void
 
-提供删除字符能力。预览场景删除输入框尾部字符，编辑场景删除光标前字符，选中场景删除选中内容。
+提供删除字符能力，删除光标前字符。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
