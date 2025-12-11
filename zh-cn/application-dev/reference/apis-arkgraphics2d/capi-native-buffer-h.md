@@ -29,7 +29,7 @@
 | [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md) | OH_NativeBuffer_Plane | 单个图像平面格式信息。 |
 | [OH_NativeBuffer_Planes](capi-oh-nativebuffer-oh-nativebuffer-planes.md) | OH_NativeBuffer_Planes | OH_NativeBuffer的图像平面格式信息。 |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) | OH_NativeBuffer | 提供OH_NativeBuffer结构体声明。 |
-| [OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md) | OHIPCParcel | 提供OHIPCParcel结构体声明，用于进程间通信。 |
+| [OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md) | OHIPCParcel | 提供OHIPCParcel结构体声明，用于进程间通信。 |
 
 ### 枚举
 
@@ -532,7 +532,7 @@ int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parc
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)* buffer | 一个指向[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)实例的指针。 |
-| [OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md)* parcel | 一个指向[OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md)结构体实例的指针，作为出参使用。 |
+| [OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)* parcel | 一个指向[OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)结构体实例的指针，作为出参使用。 |
 
 **返回：**
 
@@ -562,7 +562,7 @@ int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** bu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md)* parcel | 一个指向[OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md)的结构体实例的指针。 |
+| [OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)* parcel | 一个指向[OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)的结构体实例的指针。 |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)** buffer | 一个指向[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)结构体实例的二级指针，作为出参使用。 |
 
 **返回：**
