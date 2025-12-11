@@ -1,12 +1,5 @@
 # Using App Linking for Application Redirection
 
-<!--Kit: Ability Kit-->
-<!--Subsystem: Ability-->
-<!--Owner: @hanchen45-->
-<!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
-
 ## Overview
 
 In App Linking, the system directs users to specific content in the target application based on the passed-in URI (HTTPS link). Unlike [Deep Linking](deep-linking-startup.md), users can directly access the content regardless of whether the target application is installed.
@@ -171,8 +164,8 @@ The **openLink** API provides two methods for starting the target application.
 This section describes method 1, in order to check whether the App Linking configuration is correct. The following is an example.
 
 ```ts
-import common from '@ohos.app.ability.common';
-import { BusinessError } from '@ohos.base';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -223,6 +216,6 @@ If the target application is started, the App Linking configuration of the targe
 5. If a domain name is associated with multiple applications, which application will be started by domain name?
 
    You can configure the **applinking.json** file to associate a domain name with multiple applications. If the **uris** field in the **module.json5** file of each application is set to the same value, the system displays a dialog box for users to select the application to start.
-   
+
    You can also use the **path** field to distinguish the applications to start. For example, use **https://www.example.com/path1** to start target application 1 and use **https://www.example.com/path2** to start target application 2.
   
