@@ -92,36 +92,34 @@ stride（步幅）描述了图片在内存中每一行像素数据的存储宽�
 stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1) 接口获取。
 
 1. 调用[getImageInfo()](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1)方法，获取ImageInfo对象。
+
 2. 从ImageInfo对象中访问stride值：info.stride。
 
-```ts
-import { image } from '@kit.ImageKit';
+   <!-- @[allocator_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/AllocateMemory.ets) -->   
+   
+   ``` TypeScript
+   // 导入相关模块包。
+   import { image } from '@kit.ImageKit';
+   import { common } from '@kit.AbilityKit';
+   ```
 
-async function CreatePixelMapUsingAllocator(context: Context) {
-  const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // 测试图片。
-  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
-  let options: image.DecodingOptions = {};
-  let pixelmap = await imageSource.createPixelMapUsingAllocator(options, image.AllocatorType.AUTO);
-  if (pixelmap != undefined) {
-    let info = await pixelmap.getImageInfo();
-    // 用DMA_ALLOC内存申请出的pixelmap的stride与SHARE_MEMORY内存申请出的pixelmap的stride不同。
-    console.info("stride = " + info.stride);
-    let region: image.Region = {
-      x: 0,
-      y: 0,
-      size: { height: 100, width: 35 }
-    }; // 在(0, 0)位置，裁剪100 * 35的pixelMap，用于DMA_ALLOC的stride和SHARE_MEMORY的stride对齐方式不同。
-    if (pixelmap != undefined) {
-      await pixelmap.crop(region);
-      let imageInfo = await pixelmap.getImageInfo();
-      if (imageInfo != undefined) {
-        console.info("stride =", imageInfo.stride);
-      }
-    }
-  }
-}
-```
+   <!-- @[allocator_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   
+   ``` TypeScript
+   async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap> {
+     const resourceMgr = context.resourceManager;
+     const rawFile = await resourceMgr.getRawFileContent('99_132.jpg'); // 测试图片为99*132的jpg图。
+     let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
+     let options: image.DecodingOptions = {};
+     let pixelmap = await imageSource.createPixelMapUsingAllocator(options, type);
+     if (pixelmap != undefined) {
+       let info = await pixelmap.getImageInfo();
+       // 用DMA_ALLOC内存申请出的pixelmap的stride与SHARE_MEMORY内存申请出的pixelmap的stride不同。
+       console.info('stride = ' + info.stride);
+     }
+     return pixelmap;
+   }
+   ```
 
 ## 解码单张图片的内存限制
 
@@ -132,7 +130,8 @@ async function CreatePixelMapUsingAllocator(context: Context) {
 应用可使用[onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)监听系统内存变化情况。
 
 PixelMap申请像素内存的计算规则如下所示。
-```
+
+``` TypeScript
 pixels_size(像素内存大小) = stride(图片像素存储宽度) * height(图片像素高度)
 ```
 
