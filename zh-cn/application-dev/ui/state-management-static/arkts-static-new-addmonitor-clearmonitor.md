@@ -321,6 +321,71 @@ struct Page {
 }
 ```
 
+* 通过向`addMonitor`传递[MonitorOptions.owner](../../reference/apis-arkui/js-apis-stateManagement-static.md#monitoroptions)参数，可为`addMonitor`启用组件冻结功能。启用组件冻结后，被监听的状态变量修改后回调函数的触发会被推迟，直到包含该状态变量的组件从`inactive`状态变为`active`时才会触发。`MonitorOptions.owner`参数仅支持为`@ObservedV2`类中属性的监听器添加组件冻结能力。如果监听的属性是组件里的状态变量，如`@Local`等状态变量装饰器修饰的属性，则该状态变量默认继承组件的冻结能力，调用`addMonitor`时无需传递`MonitorOptions.owner`参数。
+
+```typescript
+'use static'
+
+import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable, Param, LocalStorageLink, Require, ComponentV2, Entry, Column, Row, Button, Scroll, ForEach, Text, Divider, Set, DatePicker, TextAlign, FontWeight, Tabs, TabContent } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct TabContentTest {
+  @Local childMessage: Message = new Message();
+  @Local data: number[] = [0, 1, 2];
+
+  build() {
+    Row() {
+      Column() {
+        // 当被监听的状态变量修改时，active页面的回调函数会正常触发
+        // inactive页面的回调函数触发会推迟到页面变为active状态
+        Button('change message').onClick(() => {
+          this.childMessage.message++;
+        })
+        Tabs() {
+          ForEach(this.data, (item: number) => {
+            TabContent() {
+              FreezeChild({ index: item, childMsg: this.childMessage})
+            }.tabBar(`tab${item}`)
+          }, (item: number) => item.toString())
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@ObservedV2
+class Message {
+  @Trace message: number = 0;
+}
+
+@ComponentV2
+struct FreezeChild {
+  @Param childMsg: Message = new Message();
+  @Param index: number = 0;
+  messageMonitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear(): void {
+    // 监听属性是@ObservedV2内部属性时，设置owner能让监听继承当前组件的冻结能力。
+    this.messageMonitor = UIUtils.addMonitor(() => this.childMsg.message, this.messageChange, { path: ['message'] , owner: this });
+  }
+
+  messageChange(m: IMonitor) {
+    m.dirty.forEach((path: string) => {
+      console.log(`[addMonitorTest] ${path} changed from ${m.value<number>(path)?.before} to ${m.value<number>(path)?.now}, index: ${this.index}`);
+    });
+  }
+
+  build() {
+    Text(`设置owner ${this.childMsg.message}, index: ${this.index}`)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+```
+
 ## 限制条件
 
 * 对于可选参数`MonitorOptions.owner`，若其被@Component而非@ComponentV2装饰，则在运行时抛出130000错误。
