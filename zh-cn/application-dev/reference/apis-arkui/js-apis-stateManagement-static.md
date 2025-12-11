@@ -1324,6 +1324,137 @@ struct MyApp {
 }
 ```
 
+### addMonitor<sup>23+</sup>
+
+static addMonitor(valueCallback: MonitorValueCallback | MonitorValueCallback[], monitorCallback: MonitorCallback, options?: MonitorOptions): IMonitorDecoratedVariable
+
+动态地为状态变量注册监听。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| valueCallback | [MonitorValueCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorvaluecallback22) \| [MonitorValueCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorvaluecallback22)[] | 是 | 返回被监听状态变量的箭头函数或箭头函数数组。 |
+| monitorCallback | [MonitorCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorcallback22) | 是 | 触发监听时调用的回调函数。 |
+| options | [MonitorOptions](#monitoroptions23) | 否 | 设置函数的行为，默认行行为详见[MonitorOptions](#monitoroptions23)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [IMonitorDecoratedVariable](./arkui-ts/ts-state-management-monitor-static.md#imonitordecoratedvariable20) | 指代监听关系的句柄。|
+
+**示例：**
+
+```typescript
+'use static'
+
+import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: number = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+  // 注册监听关系
+    this.monitor = UIUtils.addMonitor(() => this.value, this.onChange);
+  }
+
+  onChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}.`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`Current value: ${this.value}`)
+
+      // 值修改时触发回调函数
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
+        })
+    }
+  }
+}
+```
+
+### clearMonitor<sup>23+</sup>
+
+static clearMonitor(monitor: IMonitorDecoratedVariable): void
+
+动态地为状态变量解绑监听。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| monitor | [IMonitorDecoratedVariable](./arkui-ts/ts-state-management-monitor-static.md#imonitordecoratedvariable20) | 是 | 指代监听关系的句柄。|
+
+**示例：**
+
+```typescript
+'use static'
+
+import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: number = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+    this.monitor = UIUtils.addMonitor(() => this.value, this.onChange);
+  }
+
+  onChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}.`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`Current value: ${this.value}`)
+
+      // 监听解绑之后不会再触发回调函数
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
+        })
+
+      // 解绑监听
+      Button('Clear Monitor')
+        .onClick(() => {
+          if (this.monitor) {
+            UIUtils.clearMonitor(this.monitor!);
+          }
+        })
+    }
+  }
+}
+```
+
+## MonitorOptions<sup>23+</sup>
+
+设置监听的行为。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| isSynchronous | boolean | 否 | 是 | 指定函数是否同步执行，`true`为同步，`false`为异步。默认为`false`。|
+| owner | [IVariableOwner](./arkui-ts/ts-state-management-monitor-static.md#ivariableowner) | 否 | 是 | 指定冻结的组件，仅能传入@ComponentV2装饰的自定义组件，默认值为`undefined`。|
+| path | string \| string[] | 否 | 是 | 显式指定监听状态变量的路径，默认为`addMonitor`自动生成的路径。|
+
 ## StorageDefaultCreator\<T\><sup>22+</sup>
 
 type StorageDefaultCreator\<T\> = () => T
