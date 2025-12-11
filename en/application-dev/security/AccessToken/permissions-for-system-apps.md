@@ -4655,7 +4655,7 @@ Allows an application to read the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -4669,7 +4669,7 @@ Allows an application to write the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
