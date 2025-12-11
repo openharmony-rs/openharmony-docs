@@ -224,7 +224,7 @@ export default {
   onInit(){
   },
   setfinish(e) {
-    this.loopval=  this.loopval + 1,
+    this.loopval =  this.loopval + 1,
     this.r = Math.floor(Math.random()*255),
     this.g = Math.floor(Math.random()*255),
     this.b = Math.floor(Math.random()*255),
