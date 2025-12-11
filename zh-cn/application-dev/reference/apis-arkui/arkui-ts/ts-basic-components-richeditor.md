@@ -1294,7 +1294,7 @@ RichEditor组件的控制器，继承自[RichEditorBaseController](#richeditorba
 
 ### 导入对象
 
-```
+```ts
 controller: RichEditorController = new RichEditorController();
 ```
 
@@ -1590,7 +1590,7 @@ toStyledString(value: RichEditorRange): StyledString
 
 ### 导入对象
 
-```
+```ts
 controller: RichEditorStyledStringController = new RichEditorStyledStringController();
 ```
 
