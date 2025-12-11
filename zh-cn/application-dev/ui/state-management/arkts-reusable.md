@@ -264,6 +264,210 @@
   }
   ```
 
+- 被@Reusable装饰的自定义组件在复用前后，应保持组件的结构不变。否则，会在复用过程中创建或销毁子组件，降低复用效率和性能，甚至造成应用行为异常。</br>
+  对于复用过程中创建的子组件，框架会在其创建后依次调用aboutToReuse方法和aboutToAppear方法。在调用aboutToReuse方法时，由于其aboutToAppear方法还未执行，且内部子组件还未创建，因此可能引起预期外的行为。在调用aboutToReuse方法后，框架会再调用aboutToAppear方法并初始化组件。</br>
+  针对组件结构存在差异的场景，开发者需要通过设定不同的reuseId来进行区分，具体方式请参考[多种条目类型使用场景](#多种条目类型使用场景)。
+
+  【反例】
+
+  组件结构存在差异，但未通过reuseId进行区分。</br>
+  以下示例中，先点击“show/hide branch A”按钮，组件被回收，再点击“show/hide branch B”按钮，组件被复用。子组件ReusableChildB在复用过程中被创建，aboutToReuse方法和aboutToAppear方法被同时依次调用。
+
+  <!-- @[reusable_for_incorrect_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForIncorrectReuseId.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_ReusableComponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'ReusableComponent_';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State showBranchA: boolean = true;
+    @State showBranchB: boolean = false;
+  
+    build() {
+      Column({ space: 5 }) {
+        Button('show/hide branch A')
+          .onClick(() => {
+            this.showBranchA = !this.showBranchA;
+          })
+        if (this.showBranchA) {
+          ReusableComponent({ flag: true })
+        }
+        Button('show/hide branch B')
+          .onClick(() => {
+            this.showBranchB = !this.showBranchB;
+          })
+        if (this.showBranchB) {
+          ReusableComponent({ flag: false })
+        }
+      }
+    }
+  }
+  
+  @Reusable
+  @Component
+  struct ReusableComponent {
+    @Require @Prop flag: boolean = true;
+  
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
+    }
+  
+    aboutToReuse(params: ESObject) {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+      this.flag = params.flag;
+    }
+  
+    build() {
+      Column({ space: 5 }) {
+        Text('ReusableComponent')
+        if (this.flag) {
+          ReusableChildA()
+        } else {
+          ReusableChildB()
+        }
+      }.border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildA {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildA')
+        .border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildB {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildB')
+        .border({ width: 1 })
+    }
+  }
+  ```
+
+
+  【正例】
+
+  组件结构存在差异，通过reuseId进行区分。
+
+  <!-- @[reusable_for_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForReuseId.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_ReusableComponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'ReusableComponent_';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State showBranchA: boolean = true;
+    @State showBranchB: boolean = false;
+  
+    build() {
+      Column({ space: 5 }) {
+        Button('show/hide branch A')
+          .onClick(() => {
+            this.showBranchA = !this.showBranchA;
+          })
+        if (this.showBranchA) {
+          ReusableComponent({ flag: true })
+            .reuseId('ReuseA') // 通过reuseId区分不同结构的复用组件
+        }
+        Button('show/hide branch B')
+          .onClick(() => {
+            this.showBranchB = !this.showBranchB;
+          })
+        if (this.showBranchB) {
+          ReusableComponent({ flag: false })
+            .reuseId('ReuseB') // 通过reuseId区分不同结构的复用组件
+        }
+      }
+    }
+  }
+  
+  @Reusable
+  @Component
+  struct ReusableComponent {
+    @Require @Prop flag: boolean = true;
+  
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
+    }
+  
+    aboutToReuse(params: ESObject) {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+      this.flag = params.flag;
+    }
+  
+    build() {
+      Column({ space: 5 }) {
+        Text('ReusableComponent')
+        if (this.flag) {
+          ReusableChildA()
+        } else {
+          ReusableChildB()
+        }
+      }.border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildA {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildA')
+        .border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildB {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildB')
+        .border({ width: 1 })
+    }
+  }
+  ```
+  
 
 - ComponentContent不支持传入\@Reusable装饰器装饰的自定义组件。
 
