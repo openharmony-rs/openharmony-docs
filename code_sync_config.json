@@ -4831,13 +4831,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets",
-				"functions":[
-					{
-						"end_line":95,
-						"name":"quick_start",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets",
@@ -4846,6 +4840,21 @@
 						"end_line":107,
 						"name":"huidiao_start",
 						"start_line":17
+					},
+					{
+						"end_line":108,
+						"name":"quick_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"quick_start",
+						"start_line":63
 					}
 				]
 			}
