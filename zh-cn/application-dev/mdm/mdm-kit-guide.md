@@ -103,6 +103,8 @@ import { Want } from '@kit.AbilityKit';
 hdc shell edm enable-admin -n 包名 -a 企业设备管理扩展能力类名
 # 激活为BYOD设备管理应用
 hdc shell edm enable-admin -n 包名 -a 企业设备管理扩展能力类名 -t byod
+# 激活为普通设备管理应用，该命令在PC/2in1设备可正常使用，在其他形态设备中使用会报错
+hdc shell edm enable-admin -n 包名 -a 企业设备管理扩展能力类名 -t da
 # 解除激活
 hdc shell edm disable-admin -n 包名
 ```
