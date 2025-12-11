@@ -2070,7 +2070,7 @@ async function Demo(context : Context) {
 | -------- | ------------------ | ---- | ---- | -------------------------------------------------- |
 | clipRect | [Region](#region) | 否   | 否   | 要裁剪的图像区域。                                 |
 | size     | [Size](#size)      | 是   | 否   | 图像大小。<br>如果Image对象所存储的是相机预览流数据（YUV图像数据），那么获取到的size中的宽和高分别对应YUV图像的宽和高。<br>如果Image对象所存储的是相机拍照流数据（JPEG图像数据），由于已是编码后的文件，size中的宽等于JPEG文件大小，高等于1。<br>Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的是previewOutput还是captureOutput。<br>相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../media/camera/camera-shooting-case.md)。|
-| format   | number             | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。 |
+| format   | number             | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_format)。 |
 | timestamp<sup>12+</sup> | number         | 是      | 否   | 图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)接口读取相关的EXIF信息。|
 
 ### getComponent
@@ -2214,7 +2214,8 @@ readLatestImage(): Promise\<Image>
 
 从ImageReceiver读取最新的图片。使用promise异步回调。
 
-**注意**：此接口需要在[on](#on)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](#image)对象使用完毕后需要调用[release](#release-2)方法释放，释放后才可以继续接收新的数据。
+> **注意**：
+>此接口需要在[on](#on)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](#image)对象使用完毕后需要调用[release](#release-2)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -2251,7 +2252,8 @@ readNextImage(): Promise\<Image>
 
 从ImageReceiver读取下一张图片。使用promise异步回调。
 
-**注意**：此接口需要在[on](#on)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](#image)对象使用完毕后需要调用[release](#release-2)方法释放，释放后才可以继续接收新的数据。
+> **注意**：
+>此接口需要在[on](#on)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](#image)对象使用完毕后需要调用[release](#release-2)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
