@@ -64,7 +64,7 @@ import { eSIM } from '@kit.TelephonyKit';
 eSIM.getEid(1).then((eid) => {
     console.info(`the EID is:` + eid);
 }).catch((err:BusinessError<void>) => {
-    console.error(`getEid, promise: err->${JSON.stringfy(err)}`)
+    console.error(`getEid, promise: err->${JSON.stringify(err)}`)
 });
 ```
 
