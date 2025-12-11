@@ -244,7 +244,7 @@ enablePreviewText(enable: boolean)
 > "metadata": [
 >   {
 >     "name": "can_preview_text",
->     "resource": "true"
+>     "value": "true"
 >   }
 > ]
 > ```
