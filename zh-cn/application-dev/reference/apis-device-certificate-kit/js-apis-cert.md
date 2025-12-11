@@ -330,10 +330,10 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称      | 类型                  | 只读 | 可选 | 说明                        |
 | --------- | --------------------- | ---- | ---- | --------------------------- |
-| CACert    | [X509Cert](#x509cert) | 否   | 是   | 信任的CA证书。              |
-| CAPubKey  | Uint8Array            | 否   | 是   | 信任的CA证书公钥，DER格式。 |
-| CASubject | Uint8Array            | 否   | 是   | 信任的CA证书主题，DER格式。 |
-| nameConstraints<sup>12+</sup> | Uint8Array      | 否   | 是   | 名称约束，DER格式。 |
+| CACert    | [X509Cert](#x509cert) | 否   | 是   | 信任的CA证书。如果配置了CACert，则校验证书链时只使用CACert，不再使用CAPubKey和CASubject。             |
+| CAPubKey  | Uint8Array            | 否   | 是   | 信任的CA证书公钥，DER格式。仅在未配置CACert时生效。 |
+| CASubject | Uint8Array            | 否   | 是   | 信任的CA证书主题，DER格式。仅在配置了CAPubKey时生效。校验对象根据CAPubKey类型（自签或上级）决定是校验根证书的主题还是颁发者。|
+| nameConstraints<sup>12+</sup> | Uint8Array      | 否   | 是   | 名称约束，DER格式。只校验当前证书链的叶子证书。 |
 
 ## RevocationCheckOptions<sup>12+</sup>
 
