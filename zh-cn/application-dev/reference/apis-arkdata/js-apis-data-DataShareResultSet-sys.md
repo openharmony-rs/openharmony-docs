@@ -39,20 +39,19 @@ export default class EntryAbility extends UIAbility {
         console.info("createDataShareHelper end, data : " + data);
         dataShareHelper = data;
       }
+      let columns = ["*"];
+      let da = new dataSharePredicates.DataSharePredicates();
+      let resultSet: DataShareResultSet | undefined = undefined;
+      da.equalTo("name0", "ZhangSan");
+      if (dataShareHelper != undefined) {
+        (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns).then((data: DataShareResultSet) => {
+          console.info("query end, data : " + data);
+          resultSet = data;
+        }).catch((err: BusinessError) => {
+          console.error("query fail, error message : " + err);
+        });
+      }
     });
-
-    let columns = ["*"];
-    let da = new dataSharePredicates.DataSharePredicates();
-    let resultSet: DataShareResultSet | undefined = undefined;
-    da.equalTo("name", "ZhangSan");
-    if (dataShareHelper != undefined) {
-      (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns).then((data: DataShareResultSet) => {
-        console.info("query end, data : " + data);
-        resultSet = data;
-      }).catch((err: BusinessError) => {
-        console.error("query fail, error message : " + err);
-      });
-    }
   };
 };
 ```
@@ -66,12 +65,12 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
 
-| 名称        | 类型      | 必填 | 说明                     |
-| ----------- | ------------- | ---- | ------------------------ |
-| columnNames | Array&lt;string&gt; | 是   | 结果集中所有列的名称。   |
-| columnCount | number        | 是   | 结果集中的列数。         |
-| rowCount    | number        | 是   | 结果集中的行数。         |
-| isClosed    | boolean       | 是   | 标识当前结果集是否关闭。如果结果集已关闭，则为true；否则为false。 |
+| 名称        | 类型      | 只读 | 可选 | 说明                     |
+| ----------- | ------------- | ---- | ---- | ------------------------ |
+| columnNames | Array&lt;string&gt; | 否 | 否   | 结果集中所有列的名称。   |
+| columnCount | number        | 否 | 否   | 结果集中的列数。         |
+| rowCount    | number        | 否 | 否   | 结果集中的行数。         |
+| isClosed    | boolean       | 否 | 否   | 标识当前结果集是否关闭。如果结果集已关闭，则为true；否则为false。 |
 
 ### goToFirstRow
 
@@ -254,8 +253,12 @@ getBlob(columnIndex: number): Uint8Array
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getBlob = (resultSet as DataShareResultSet).getBlob(columnIndex);
-  console.info('resultSet.getBlob: ' + getBlob);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getBlob = (resultSet as DataShareResultSet).getBlob(columnIndex);
+    console.info('resultSet.getBlob: ' + getBlob);
+  }
 }
 ```
 
