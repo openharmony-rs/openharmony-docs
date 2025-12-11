@@ -449,3 +449,20 @@ Web布局模式的配置。
 | ADD                           | 0 | 添加param元素。   |
 | UPDATE                        | 1 | 更改param元素属性。   |
 | DELETE                        | 2 | 删除param元素。 |
+
+## NavigationPolicy<sup>23+</sup>
+
+WebView中新窗口的打开方式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                           | 值 | 说明           |
+| ----------------------------- | -- | ------------ |
+| NEW_POPUP                     | 0 | 在新弹窗中打开。   |
+| NEW_WINDOW                    | 1 | 在新窗口中打开。   |
+| NEW_BACKGROUND_TAB            | 2 | 在新标签页中以后台方式打开。 |
+| NEW_FOREGROUND_TAB            | 3 | 在新标签页中以前台方式打开。 |
