@@ -27,7 +27,7 @@ animateTo(value: AnimateParam, event: () => void): void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 > **说明：**
-> - 从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)替代。
+> - 从API version 7开始支持，从API version 18开始废弃，建议使用[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)替代。
 > - 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)来明确UI的执行上下文。
 > - 不推荐在aboutToAppear、aboutToDisappear中调用动画。
 > - 如果在[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)中调用动画，自定义组件内的build还未执行，内部组件还未创建，动画时机过早，动画属性没有初值无法对组件产生动画。

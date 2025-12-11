@@ -353,7 +353,9 @@ type TransitionFinishCallback = (transitionIn: boolean) => void
 
 TransitionOptions通过指定结构体内的参数来指定转场效果。
 
-从API version 10开始不再维护，建议使用[TransitionEffect](#transitioneffect10对象说明)代替。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[TransitionEffect](#transitioneffect10对象说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
