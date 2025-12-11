@@ -1,4 +1,4 @@
-# BuilderNode并行化构建和更新节点树(ArkTS-Sta)
+# BuilderNode并行化构建和更新节点树（ArkTS-Sta）
 从API version 20开始，通过并行化能力，BuilderNode能够在子线程完成复杂UI的创建与更新，从而显著提升页面渲染性能与交互流畅度。适用场景如下所示：
 
 - 构建/更新节点数量较多的复杂UI。
