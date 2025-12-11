@@ -6,12 +6,18 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+Image类，用于获取图像内容。
+
+调用[readNextImage](arkts-apis-image-ImageReceiver.md#readnextimage9)和[readLatestImage](arkts-apis-image-ImageReceiver.md#readlatestimage9)接口时会返回Image实例。
+
+Image的属性仅支持在创建时初始化，后续无法再修改，且它的属性不对图像内容产生实际影响，请以图片生产者写入的属性为准，即以向[ImageReceiver](./arkts-apis-image-ImageReceiver.md)发送图片数据的发送方实际写入的内容为准。
+
+由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
-
-提供基本的图像操作，包括获取图像信息、读写图像数据。调用[readNextImage](arkts-apis-image-ImageReceiver.md#readnextimage9)和[readLatestImage](arkts-apis-image-ImageReceiver.md#readlatestimage9)接口时会返回image。
 
 ## 导入模块
 
@@ -26,7 +32,7 @@ import { image } from '@kit.ImageKit';
 | 名称     | 类型               | 只读 | 可选 | 说明                                               |
 | -------- | ------------------ | ---- | ---- | -------------------------------------------------- |
 | clipRect<sup>9+</sup> | [Region](arkts-apis-image-i.md#region8) | 否   | 否   | 要裁剪的图像区域。                                 |
-| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | 是   | 否   | 图像大小。如果image对象所存储的是相机预览流数据，即YUV图像数据，那么获取到的size中的宽高分别对应YUV图像的宽高； 如果image对象所存储的是相机拍照流数据，即JPEG图像，由于已经是编码后的文件，size中的宽等于JPEG文件大小，高等于1。image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的previewOutput还是captureOutput。相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实现方案(ArkTS)](../../media/camera/camera-shooting-case.md)。                                |
+| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | 是   | 否   | 图像大小。<br>如果Image对象所存储的是相机预览流数据（YUV图像数据），那么获取到的size中的宽和高分别对应YUV图像的宽和高。<br>如果Image对象所存储的是相机拍照流数据（JPEG图像数据），由于已是编码后的文件，size中的宽等于JPEG文件大小，高等于1。<br>Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的是previewOutput还是captureOutput。<br>相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../media/camera/camera-shooting-case.md)。|
 | format<sup>9+</sup>    | number             | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。 |
 | timestamp<sup>12+</sup> | number         | 是      | 否   | 图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)接口读取相关的EXIF信息。|
 
@@ -103,7 +109,9 @@ release(callback: AsyncCallback\<void>): void
 
 在接收另一个图像前必须先释放对应资源。
 
-ArkTS有内存回收机制，Image对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+由于图片占用内存较大，所以当Image实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -137,7 +145,9 @@ release(): Promise\<void>
 
 在接收另一个图像前必须先释放对应资源。
 
-ArkTS有内存回收机制，Image对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+由于图片占用内存较大，所以当Image实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
