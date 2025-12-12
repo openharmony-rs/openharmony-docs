@@ -29,32 +29,32 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
    ```
 
    <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) -->
-    ```ts
-    // Index.ets
-    import { write } from './write';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { taskpool } from '@kit.ArkTS';
-    import { common } from '@kit.AbilityKit';
-
-    @Concurrent
-    async function concurrentTest(context: common.UIAbilityContext): Promise<void> {
-      // 应用文件路径
-      let filePath1: string = context.filesDir + "/path1.txt";
-      let filePath2: string = context.filesDir + "/path2.txt";
-      // 循环写文件操作
-      let fileList: Array<string> = [];
-      fileList.push(filePath1);
-      fileList.push(filePath2);
-      for (let i: number = 0; i < fileList.length; i++) {
-        write('Hello World!', fileList[i]).then(() => {
-          console.info(`Succeeded in writing the file. FileList: ${fileList[i]}`);
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to write the file. Code is ${err.code}, message is ${err.message}`);
-        })
-      }
-      return;
-    }
-    ```
+   
+   ``` TypeScript
+   import { write } from './write'
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { taskpool } from '@kit.ArkTS';
+   import { common } from '@kit.AbilityKit';
+   
+   @Concurrent
+   async function concurrentTest(context: common.UIAbilityContext): Promise<boolean> {
+     let filePath1: string = context.filesDir + '/path1.txt'; // 应用文件路径
+     let filePath2: string = context.filesDir + '/path2.txt';
+     // 循环写文件操作
+     let fileList: string[] = [];
+     fileList.push(filePath1);
+     fileList.push(filePath2)
+     for (let i: number = 0; i < fileList.length; i++) {
+       write('Hello World!', fileList[i]).then(() => {
+         console.info(`Succeeded in writing the file. FileList: ${fileList[i]}`);
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to write the file. Code is ${err.code}, message is ${err.message}`)
+         return false;
+       })
+     }
+     return true;
+   }
+   ```
 
 2. 使用TaskPool执行包含密集I/O的并发函数，通过调用[execute()](../reference/apis-arkts/js-apis-taskpool.md#taskpoolexecute)方法执行任务，并在回调中处理调度结果。示例中获取filePath1和filePath2的方式请参见[获取应用文件路径](../application-models/application-context-stage.md#获取应用文件路径)。在TaskPool中使用context时，需先在并发函数外部准备好，并通过参数传递给并发函数。
 
