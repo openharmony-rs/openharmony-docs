@@ -345,6 +345,103 @@ struct GetFontDescriptorsFromPathTest {
 }
 ```
 
+## text.getFontUnicodeSet<sup>23+</sup>
+getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;number&gt;&gt;
+
+根据字体文件路径获取字体unicode数组。使用Promise异步回调。
+
+如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型               | 必填 | 说明                              |
+| -----  | ------------------ | ---- | --------------------------------- |
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
+|  index  | number | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数非法，将返回空数组。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回字体文件持有的unicode码。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontUnicodeSetTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("get fontUnicode")
+        .onClick(async () => {
+          let promise = text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0)
+          promise.then((unicodeSet) => {
+            for (let index = 0; index < unicodeSet.length; index++) {
+              console.info(unicodeSet[index].toString())
+            }
+          })
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+## text.getFontCount<sup>23+</sup>
+getFontCount(path: string | Resource): number
+
+根据字体文件路径获取包含的字体文件数。
+
+如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回0。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型               | 必填 | 说明                              |
+| -----  | ------------------ | ---- | --------------------------------- |
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| number | 包含字体数量。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontCountTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("get fontCount")
+        .onClick(() => {
+          let fontCount = text.getFontCount("file:///system/fonts/NotoSansCJK-Regular.ttc")
+          console.info("file count: " + fontCount)
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ## TextHighContrast<sup>20+</sup>
 
 文字渲染高对比度配置类型枚举。
@@ -737,20 +834,28 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | -  | - | - |
-| path | string | 否 | 是 | 字体绝对路径，可取遵循系统限制的任意字符串，默认为空字符串。 |
-| postScriptName | string | 否 | 是 | 字体唯一标识名称，可取任意字符串，默认为空字符串。 |
-| fullName | string | 否 | 是 | 字体名称，可取任意字符串，默认为空字符串。 |
-| fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。 |
-| fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。 |
-| weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。 |
-| width | number | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。 |
-| italic | number | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。 |
-| monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。 |
-| symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。 |
+| path | string | 否 | 是 | 字体绝对路径，可取遵循系统限制的任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| postScriptName | string | 否 | 是 | 字体唯一标识名称，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fullName | string | 否 | 是 | 字体名称，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| width | number | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| italic | number | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| localPostscriptName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体唯一标识，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| localFullName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体全名，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| localFamilyName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体家族名称，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| localSubFamilyName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取子字体家族名称，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| version<sup>23+</sup> | string | 否 | 是 | 字体版本，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| manufacture<sup>23+</sup> | string | 否 | 是 | 字体制造商信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| copyright<sup>23+</sup> | string | 否 | 是 | 字体版权信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| trademark<sup>23+</sup> | string | 否 | 是 | 字体商标信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| license<sup>23+</sup> | string | 否 | 是 | 字体许可证信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| index<sup>23+</sup> | number | 否 | 是 | 字体索引，字体文件为ttc类型时有效，ttf类型统一为0。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FontCollection
 
