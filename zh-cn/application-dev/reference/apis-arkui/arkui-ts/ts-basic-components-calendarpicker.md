@@ -253,7 +253,7 @@ struct CalendarPickerExample {
 
 该示例通过start和end设置日历选择器的开始日期和结束日期。
 
-从API version 18开始，新增[start](#calendaroptions对象说明)、[end](#calendaroptions对象说明)接口。
+从API version 18开始，新增[start](#calendaroptions对象说明)、[end](#calendaroptions对象说明)属性。
 
 ```ts
 // xxx.ets
