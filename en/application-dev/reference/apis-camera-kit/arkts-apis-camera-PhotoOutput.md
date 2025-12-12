@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 ## Modules to Import
 
@@ -366,7 +366,7 @@ Checks whether taking moving photos is supported.
 
 | Type           | Description                    |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of taking moving photos. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of taking moving photos. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -518,7 +518,7 @@ Checks whether mirror photography is supported.
 
 | Type           | Description                    |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of mirror photography. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of mirror photography. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -533,9 +533,9 @@ function isMirrorSupported(photoOutput: camera.PhotoOutput): boolean {
 
 enableMirror(enabled: boolean): void
 
-Enables dynamic photo capture.
+Enables mirroring photo capture.
 
-Before calling this API, check whether dynamic photo capture is supported by calling [isMovingPhotoSupported](#ismovingphotosupported12) and whether mirroring is supported by calling [isMirrorSupported](#ismirrorsupported).
+Before calling this API, check whether moving photo capture is supported by calling [isMovingPhotoSupported](#ismovingphotosupported12) and whether mirroring is supported by calling [isMirrorSupported](#ismirrorsupported).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -545,7 +545,7 @@ Before calling this API, check whether dynamic photo capture is supported by cal
 
 | Name     | Type                   | Mandatory| Description                       |
 |----------| ---------------------- | ---- |---------------------------|
-| enabled | boolean                | Yes  | Whether to enable or disable dynamic photo capture. **true** to enable, **false** otherwise.|
+| enabled | boolean                | Yes  | Whether to enable or disable mirroring photo capture. **true** to enable, **false** otherwise.|
 
 **Error codes**
 
@@ -588,7 +588,7 @@ Obtains the supported video codec types of moving photos.
 
 | Type           | Description               |
 | -------------- |-------------------|
-| Array\<[VideoCodecType](arkts-apis-camera-e.md#videocodectype13)\> | Array holding the supported video codec types.|
+| Array\<[VideoCodecType](arkts-apis-camera-e.md#videocodectype13)\> | Array holding the supported video codec types. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -1083,7 +1083,7 @@ Obtains the photo rotation degree.
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Photo rotation degree.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Photo rotation degree. If the API call fails, undefined is returned.|
 
 **Error codes**
 

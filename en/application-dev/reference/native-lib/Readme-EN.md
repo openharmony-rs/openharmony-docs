@@ -12,13 +12,16 @@
 - [Node-API](napi.md)
 - [libuv](libuv.md)
 - [OpenSL ES](opensles.md)
-- [OpenGL ES](opengl.md)
-- [OpenGL](opengles.md)
+- [OpenGL ES](opengles.md)
+- [OpenGL](opengl.md)
 - [EGL](egl.md)
 - [ICU4C](icu4c.md)
 - [Zlib](zlib.md)
 - Vulkan<!--vulkan-guide-->
-  - [Vulkan Development](vulkan-guidelines.md)
+  - Vulkan Development<!--vulkan-guides-->
+    - [Vulkan Development Overview](vulkan-overview.md)
+    - [Vulkan Surface Development](vulkan-guidelines.md)
+    - [Vulkan External Memory Development](vulkan-oh-external-memory-guidelines.md)
   - [Vulkan Capabilities](vulkan.md)
   - Vulkan Extensions<!--vulkan-extensions-->
     - [Vulkan Module](capi-vulkan.md)

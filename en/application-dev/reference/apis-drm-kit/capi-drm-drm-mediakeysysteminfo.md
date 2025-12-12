@@ -2,7 +2,7 @@
 
 ## Overview
 
-The struct describes the DRM information, which is used to encrypt content.
+The struct describes the DRM information for encrypted content.
 
 **Since**: 11
 
@@ -16,5 +16,5 @@ The struct describes the DRM information, which is used to encrypt content.
 
 | Name| Description|
 | -- | -- |
-| uint32_t psshCount | Number of pieces of Protection Scheme Specific Header (PSSH) data.|
-| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) psshInfo[MAX_PSSH_INFO_COUNT] | PSSH information.|
+| uint32_t psshCount | Number of Protection Scheme Specific Header (PSSH) data entries.|
+| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) psshInfo[MAX_PSSH_INFO_COUNT] | Array containing PSSH data entries.|

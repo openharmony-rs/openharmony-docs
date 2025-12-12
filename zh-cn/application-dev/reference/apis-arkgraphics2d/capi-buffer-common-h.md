@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供NativeBuffer模块的公共类型定义。<br>从API version 12开始，部分类型定义从native_buffer.h移动至此头文件统一呈现，对于此类类型，API version 12之前即支持使用，各版本均可正常使用。
+提供NativeBuffer模块的公共类型定义。
 
 **引用文件：** <native_buffer/buffer_common.h>
 
@@ -29,7 +29,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。由native_buffer.h移动至此头文件统一呈现。 |
+| [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。 |
 | [OH_NativeBuffer_MetadataType](#oh_nativebuffer_metadatatype) | OH_NativeBuffer_MetadataType | OH_NativeBuffer的图像标准。 |
 | [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的HDR元数据种类的键值。 |
 
@@ -43,7 +43,11 @@ enum OH_NativeBuffer_ColorSpace
 
 **描述**
 
-OH_NativeBuffer的颜色空间。由native_buffer.h移动至此头文件统一呈现。
+OH_NativeBuffer的颜色空间。
+
+从API version 12开始，此枚举由native_buffer.h移动至此头文件。
+
+API version 12之前，使用该枚举请引用native_buffer.h头文件；从API version 12开始，引用native_buffer.h或buffer_common.h均可正常使用该枚举。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 

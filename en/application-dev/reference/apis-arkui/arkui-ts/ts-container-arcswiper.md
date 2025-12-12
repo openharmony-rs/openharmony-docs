@@ -1,4 +1,10 @@
 # ArcSwiper
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ArcSwiper** component is designed for circular screens to display child components in a carousel-like manner.
 
@@ -24,7 +30,7 @@ This component can contain child components.
 
 >  **NOTE**
 >
->  - Allowed child component types: built-in and custom components, including rendering control types ([if/else](../../../ui/state-management/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/state-management/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md)).
+>  - Allowed child component types: built-in and custom components, including rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)).
 >- Do not add or delete child components during a page turning animation. Doing so may result in child components not yet animated entering the viewport in advance and causing display exceptions.
 
 ## APIs
@@ -350,7 +356,7 @@ Sets the mask gradient color of the arc navigation indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [Optional\<LinearGradient>](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Mask gradient color of the arc indicator.<br>Default start color: **'#00000000'**<br>Default end color: **'#FF000000'**|
+| color  | [Optional\<LinearGradient>](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Mask gradient color of the arc navigation indicator.<br>Default start color: **'#00000000'**<br>Default end color: **'#FF000000'**|
 
 **Return value**
 
@@ -572,13 +578,9 @@ Implements the proxy object returned during the execution of the custom page tra
 
 >**NOTE**
 >
->For example, when the currently selected child component's index is **0**, in the animation process of switching from page 0 to page 1, a callback will be triggered for all pages within the viewport on each frame.
->When there are two pages, page 0 and page 1, in the viewport, two callbacks will be triggered per frame. The first callback will have **selectedIndex** as **0**, **index** as **0**, **position** representing the movement ratio of page 0 relative to its position before the animation started at the current frame,
->and **mainAxisLength** representing the length of page 0 along the main axis. The second callback will still have **selectedIndex** as **0**, **index** as **1**, **position** representing the movement ratio of page 1 relative to page 0 before the animation started at the current frame,
->and **mainAxisLength** representing the length of page 1 along the main axis.
+> - For example, when the index of the currently selected child component is 0, during a transition animation from page 0 to page 1, the callback is triggered for all pages within the viewport on every frame. When pages 0 and 1 are both in the viewport, the callback is triggered twice per frame. In the first callback, selectedIndex is 0, index is 0, position is the moving ratio of page 0 in the current frame to page 0 before the animation starts, and mainAxisLength is the length of page 0 along the main axis. In the second callback, selectedIndex is still 0, index is 1, position is the moving ratio of page 1 in the current frame to page 0 before the animation starts, and mainAxisLength is the length of page 1 along the main axis.
 >
->If the animation curve is a spring interpolation curve, during the transition animation from page 0 to page 1, due to the position and velocity when the user lifts their finger off the screen, animation may overshoot and slide past to page 2, then bounce back to page 1. Throughout this process, a callback is triggered for pages 1 and 2 within the viewport on every frame.
-> 
+> - If the animation curve is a spring interpolation curve, during the transition animation from page 0 to page 1, due to the position and velocity when the user lifts their finger off the screen, animation may overshoot and slide past to page 2, then bounce back to page 1. Throughout this process, a callback is triggered for pages 1 and 2 within the viewport on every frame.
 
 
 ### finishTransition
@@ -600,7 +602,7 @@ This example demonstrates the basic functionality of the **ArcSwiper** component
 import {
   CircleShape,
   ArcSwiper,
-  ArcSwiperAttribute,
+  ArcSwiperAttribute, // Import the ArcSwiperAttribute object, which is required for the ArcSwiper attributes. You are advised not to delete the import of this object.
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController

@@ -1,5 +1,12 @@
 # switch
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
 开关选择器，通过开关，开启或关闭某个功能。
 
 > **说明：**
@@ -86,7 +93,7 @@ export default {
       title: 'on'
   },
   switchChange(e){
-      console.log(e.checked);
+      console.info(e.checked);
       if(e.checked){
           this.title="on"
       }else{

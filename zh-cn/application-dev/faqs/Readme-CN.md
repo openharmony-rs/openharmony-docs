@@ -9,7 +9,7 @@
 - [如何编译full-SDK](full-sdk-compile-guide.md)
 - [如何替换full-SDK](full-sdk-switch-guide.md)
 - [应用模型常见问题](faqs-ability.md)
-- ArkUI框架开发常见问题(ArkTS)
+- ArkUI框架开发常见问题(ArkTS)<!--arkui-faqs-arkts-->
   - [ArkTS语法使用常见问题](faqs-arkui-arkts.md)
   - [ArkUI组件开发常见问题(ArkTS)](faqs-arkui-component.md)
   - [ArkUI布局开发常见问题(ArkTS)](faqs-arkui-layout.md)

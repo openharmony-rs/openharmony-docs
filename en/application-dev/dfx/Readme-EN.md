@@ -21,7 +21,7 @@
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
-- Event Subscription<!--event-subscription-->
+- Event Subscription<!--hiappevent-->
   - [Introduction to HiAppEvent](hiappevent-intro.md)
   - Using HiAppEvent to Subscribe to Events<!--event-subscription-->
     - [Event Subscription Overview](event-subscription-overview.md)
@@ -60,6 +60,7 @@
   - [Event Reporting](hiappevent-event-reporting.md)
   <!--DelEnd-->
   - [HiAppEvent FAQs](hiappevent-faq.md)
+  - [Using FaultLogExtensionAbility to Subscribe to Events](fault-log-extension-app-events-arkts.md)
 - Performance Tracing<!--hitracemeter-->
   - [Introduction to HiTraceMeter](hitracemeter-intro.md)
   - [Using HiTraceMeter (ArkTS)](hitracemeter-guidelines-arkts.md)
@@ -91,5 +92,5 @@
   - [hiprofiler](hiprofiler.md)
   - [uinput](uinput.md)
   <!--Del-->
-  - [hisysevent](hisysevent.md)
+  - [hisysevent (for System Applications Only)](hisysevent-sys.md)
   <!--DelEnd-->

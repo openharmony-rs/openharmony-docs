@@ -1,10 +1,10 @@
 # 绑定手势方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 通过给各个组件绑定不同的手势事件，并设计事件的响应方式，当手势识别成功时，ArkUI框架将通过事件回调通知组件手势识别的结果。
@@ -22,7 +22,7 @@
 
 gesture为通用的一种手势绑定方法，可以将手势绑定到对应的组件上。
 
-例如，可以将点击手势TapGesture通过gesture手势将方法绑定到Text组件上。
+例如，可以将点击手势TapGesture通过gesture方法将手势绑定到Text组件上。
 
 
 ```ts

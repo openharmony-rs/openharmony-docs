@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **WebResourceRequest** object to obtain resource requests. For details about the sample code, see [onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive).
 

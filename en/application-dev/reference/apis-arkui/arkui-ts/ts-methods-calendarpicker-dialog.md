@@ -4,15 +4,17 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A calendar picker dialog box is a dialog box that allows users to select a date from a calendar picker.
 
 > **NOTE**
 >
-> This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is unclear](../../../ui/arkts-global-interface.md). For details, see [UIContext](../arkts-apis-uicontext-uicontext.md).
+> - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](../arkts-apis-uicontext-uicontext.md).
+>
+> - This module does not support dynamic updates for color mode (light or dark) changes. To apply a new color mode, close and reopen the dialog box.
 
 ## CalendarPickerDialog
 
@@ -20,7 +22,7 @@ A calendar picker dialog box is a dialog box that allows users to select a date 
 
 static show(options?: CalendarDialogOptions): void
 
-Shows a calendar picker dialog box.
+Defines a calendar picker dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -42,6 +44,8 @@ Inherits from [CalendarOptions](ts-basic-components-calendarpicker.md#calendarop
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name      | Type                                           | Read-Only| Optional| Description                                                       |
 | ---------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | onAccept   | [Callback](ts-types.md#callback12)\<Date> | No | Yes | Triggered when the OK button in the dialog box is clicked.<br>The callback parameter represents the selected date value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -53,14 +57,14 @@ Inherits from [CalendarOptions](ts-basic-components-calendarpicker.md#calendarop
 | backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No| Yes| Options for customizing the background effect.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | acceptButtonStyle<sup>12+</sup> | [PickerDialogButtonStyle](ts-picker-common.md#pickerdialogbuttonstyle12) | No| Yes| Style of the accept button.<br>**NOTE**<br>In the **acceptButtonStyle** and **cancelButtonStyle** configurations, only one **primary** field can be set to **true** at most. If both the **primary** fields are set to **true**, neither will take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | cancelButtonStyle<sup>12+</sup> | [PickerDialogButtonStyle](ts-picker-common.md#pickerdialogbuttonstyle12) | No| Yes| Style of the cancel button.<br>**NOTE**<br>In the **acceptButtonStyle** and **cancelButtonStyle** configurations, only one **primary** field can be set to **true** at most. If both the **primary** fields are set to **true**, neither will take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onDidAppear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | No| Yes| Event callback when the dialog box appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onAccept/onCancel/onChange) > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.<br>3. If the user dismisses the dialog box immediately after it appears, **onWillDisappear** is invoked before **onDidAppear**.<br>4. If the dialog box is dismissed before its entrance animation is finished, this callback is not invoked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onDidDisappear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | No| Yes| Event callback when the dialog box disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onAccept/onCancel/onChange) > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| onDidAppear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | No| Yes| Event callback after the dialog box appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onAccept/onCancel/onChange) > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.<br>3. If the user dismisses the dialog box immediately after it appears, **onWillDisappear** is invoked before **onDidAppear**.<br>4. If the dialog box is dismissed before its entrance animation is finished, this callback is not invoked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| onDidDisappear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | No| Yes| Event callback after the dialog box disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onAccept/onCancel/onChange) > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onWillAppear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | No| Yes| Event callback when the dialog box is about to appear.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onAccept/onCancel/onChange) > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onWillAppear**. The settings take effect next time the dialog box appears.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onWillDisappear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | No| Yes| Event callback when the dialog box is about to disappear.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onAccept/onCancel/onChange) > onWillDisappear > onDidDisappear.<br>2. If the user closes the dialog box immediately after it appears, **onWillDisappear** is invoked before **onDidAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| shadow<sup>12+</sup>              | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10) | No | Yes | Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enableHoverMode<sup>14+</sup>     | boolean | No | Yes | Whether to respond when the device is in semi-folded mode.<br>Default value: **false**. The value **true** means to respond when the device is in semi-folded mode, and **false** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-appendix-enums.md#hovermodeareatype14) | No | Yes | Display area of the dialog box when the device is in semi-folded mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| markToday<sup>19+</sup>       | boolean | No | Yes | Whether to highlight the current system date.<br>Default value: **false**. The value **true** means to highlight the current system date, and **false** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| shadow<sup>12+</sup>              | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)| No | Yes | Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| enableHoverMode<sup>14+</sup>     | boolean | No | Yes | Whether to respond when the device is in semi-folded mode.<br>- **true**: Respond when the device is in semi-folded mode.<br>- **false**: Do not respond when the device is in semi-folded mode.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No | Yes | Display area of the dialog box when the device is in semi-folded mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| markToday<sup>19+</sup>       | boolean | No | Yes | Whether to highlight the current system date.<br>- **true**: Highlight the current system date.<br>- **false**: Do not highlight the current system date.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 
 > **NOTE**
 >
@@ -123,7 +127,7 @@ struct CalendarPickerDialogExample {
 
 ### Example 2: Customizing the Button Style
 
-This example shows how to customize the calendar picker dialog box's buttons by configuring **acceptButtonStyle** and **cancelButtonStyle** in [CalendarDialogOptions](#calendardialogoptions).
+This example shows how to customize the calendar picker dialog box's buttons by configuring **acceptButtonStyle** and **cancelButtonStyle** in [CalendarDialogOptions](#calendardialogoptions). This functionality is supported since API version 12.
 
 ```ts
 // xxx.ets
@@ -179,7 +183,7 @@ struct CalendarPickerDialogExample {
 
 ### Example 3: Configuring a Dialog Box in the Hover State
 
-This example demonstrates how to set the layout area of a dialog box when the device is in semi-folded mode.
+This example demonstrates how to set the layout area of a dialog box when the device is in semi-folded mode. This functionality is supported since API version 14.
 
 ```ts
 @Entry
@@ -229,7 +233,7 @@ struct CalendarPickerDialogExample {
 
 ### Example 4: Setting the Background Style for the Selected Date
 
-This example demonstrates how to customize the background style of the selected date using **hintRadius** in [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions).
+This example demonstrates how to customize the background style of the selected date using **hintRadius** in [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions). This functionality is supported since API version 10.
 
 ```ts
 // xxx.ets
@@ -262,7 +266,7 @@ struct CalendarPickerDialogExample {
 
 ### Example 5: Setting Start and End Dates
 
-This example demonstrates how to set the start and end dates for the calendar picker dialog box using **start** and **end** in [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions).
+This example demonstrates how to set the start and end dates for the calendar picker dialog box using **start** and **end** in [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions). This functionality is supported since API version 18.
 
 ```ts
 // xxx.ets
@@ -293,9 +297,9 @@ struct CalendarPickerDialogExample {
 
 
 
-### Example 6: Highlighting the Current System Date and Disabling a Specific Date Range
+### Example 6: Highlighting the Current Date and Configuring Disabled Date Ranges
 
-This example shows how to highlight the current system date using **markToday** in [CalendarDialogOptions](#calendardialogoptions) and disable a specific date range using **disabledDateRange** in [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions).
+This example demonstrates how to keep the current system date highlighted in the calendar picker dialog box using the **markToday** property in [CalendarDialogOptions](#calendardialogoptions) and set disabled date ranges using the **disabledDateRange** property in [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions). This functionality is supported since API version 19.
 
 ```ts
 // xxx.ets

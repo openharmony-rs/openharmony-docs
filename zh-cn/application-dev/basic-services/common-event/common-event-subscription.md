@@ -20,6 +20,8 @@
 > 订阅者对象的生命周期需要接入方管理，不再使用时需主动销毁释放，避免内存泄漏。
 > 
 > 动态订阅的公共事件回调受应用状态影响。当应用处于后台时，无法接收到动态订阅公共事件。当应用从后台切换到前台时，最多可以回调切回前30s内监听的公共事件。
+>
+> 分身应用与主应用之间的公共事件相互隔离，相互无法接收到对方发送的公共事件。
 
 ## 接口说明
 
@@ -51,7 +53,7 @@
    let subscriber: commonEventManager.CommonEventSubscriber | null = null;
    // 订阅者信息，其中的event字段需要替换为实际的事件名称。
    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-       events: ['event'], // 订阅灭屏公共事件
+       events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // 订阅灭屏公共事件
    };
    ```
 

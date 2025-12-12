@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 When an application performs image decoding, it needs to allocate the corresponding memory. This guide describes different types of memory and how to allocate them.
 
@@ -122,3 +122,26 @@ async function CreatePixelMapUsingAllocator(context: Context) {
   }
 }
 ```
+
+## Memory Restrictions for Decoding a Single Image
+
+To prevent system crashes from memory overflow, the system enforces memory restrictions on processes. For details, see [Application-Killed Issues Detection](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-runtime-appkilled-detection).
+
+The image framework imposes a 2 GB memory limit for decoding a single image. Processes should actively manage their memory usage. To avoid process termination, you are advised to release [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) when it is no longer needed.
+
+Applications can use [onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) to listen for system memory changes.
+
+The calculation rule for PixelMap memory allocation is as follows:
+```
+pixels_size (pixel memory size) = stride (image pixel storage width) * height (image pixel height)
+```
+
+For images with original pixel memory exceeding 2 GB and supporting downsampling, you are advised to use [createPixelMap](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7) or [createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15) and set **desiredSize** in [DecodingOptions](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7) for downsampling decoding.
+
+Starting from API version 21, for images that support downsampling decoding, when **desiredSize** (expected output size) is set, the decoder calculates PixelMap pixel memory at the optimal downsampling rate with a base gradient of 1/8. This means that it selects the highest clarity sampling rate among 7/8, 6/8, ..., 1/8.
+
+The table below lists the downsampling decoding support for different image formats in the image framework.
+| Support for Downsampling| Image Format                                                 |
+| ------------ | --------------------------------------------------------- |
+| Supported         | .jpg, .png, .heic<sup>12+</sup> (Refer to the device specification document for specific support.)|
+| Not supported       | .gif, .bmp, .webp, .dng, [.svg<sup>10+</sup>](../../reference/apis-image-kit/arkts-apis-image-f.md#svg-tags), .ico<sup>11+</sup>|

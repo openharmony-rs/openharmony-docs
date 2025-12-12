@@ -25,9 +25,14 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 | warn(domain: number, tag: string, format: string, ...args: any[]) | Outputs WARN logs, which indicate issues that have little impact on the system.| 
 | error(domain: number, tag: string, format: string, ...args: any[]) | Outputs ERROR logs, which indicate program or functional errors.| 
 | fatal(domain: number, tag: string, format: string, ...args: any[]) | Outputs FATAL logs, which indicate program or functionality crashes that cannot be rectified.| 
-| setMinLogLevel(level: LogLevel) | Sets the minimum log level.<br>If the set log level is lower than the [global log level](hilog.md#displaying-and-setting-log-levels), the setting does not take effect.<br>Note: This API is supported since API version 15.| 
+| setMinLogLevel(level: LogLevel) | Sets the minimum log level.<br>Note: This API is supported since API version 15.| 
+| setLogLevel(level: LogLevel, prefer: PreferStrategy) | Sets the minimum log level of the current application process. You can configure different preference strategies.<br>Note: This API is supported since API version 21.| 
 
-
+> **NOTE**
+>
+> If the set log level is lower than the [global log level](hilog.md#displaying-and-setting-log-levels), the **setMinLogLevel()** setting does not take effect.
+>
+> In the debug applications, the **setMinLogLevel()** and **setLogLevel()** functions do not take effect.
 ### Parameters
 
 - **domain**: service domain of logs. The value range is 0x0000 to 0xFFFF. You can define the value as required.
@@ -35,6 +40,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 - **tag**: log identifier. It can be any string. You are advised to use this parameter to identify the class or service behavior of a method call. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.
 
 - **level**: log level. For details about the value, see [LogLevel](../reference/apis-performance-analysis-kit/js-apis-hilog.md#loglevel).
+
+- **prefer**: preference strategy. For details about the values, see [PreferStrategy](../reference/apis-performance-analysis-kit/js-apis-hilog.md#preferstrategy21).
 
 - **format**: format of the log to output. The value is a string in the "%{private flag}specifier" format.
 
@@ -51,6 +58,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
   | o/O | Prints logs of the **object**, **undefined**, and **null** types.<br>This flag is supported since API version 20.| { 'name': "Jack", 'age': 22 } | 
 
   You can set multiple parameters in the **format** string, for example, **%{public}s World**, where **%{public}s** indicates a variable of the string type and its value is defined by **args**. 
+
+  The debug application does not have a privacy control mechanism. Parameters can be displayed in plaintext when any of the preceding private flags is used to print logs.
 
 - **args**: parameters of the types specified by **specifier** in **format**. This parameter can be left blank. The number and type of parameters must match **specifier**.
 
@@ -127,6 +136,10 @@ Add a click event in a button, which prints a log when the button is clicked.
              hilog.setMinLogLevel(hilog.LogLevel.WARN);
              hilog.info(0x0000, 'testTag', 'this is an info level log');
              hilog.error(0x0000, 'testTag', 'this is an error level log');
+             // Set the minimum log level to the PREFER_OPEN_LOG strategy so that logs whose levels are not lower than INFO can be printed.
+             hilog.setLogLevel(hilog.LogLevel.INFO, hilog.PreferStrategy.PREFER_OPEN_LOG);
+             hilog.info(0x0000, 'testTag', 'this is an another info level log');
+             hilog.error(0x0000, 'testTag', 'this is an another error level log');
            })
          }
          .width('100%')
@@ -156,7 +169,7 @@ Add a click event in a button, which prints a log when the button is clicked.
 
 5. At the bottom of DevEco Studio, switch to the **Log** tab and set the filter criteria.
 
-   Specifically, select the current device and process, set the log level to **Verbose**, and enter **testTag** in the search box. Then, only the logs that meet the filter criteria are displayed.
+   Specifically, select the current device and process, set the log level to **Debug**, and enter **testTag** in the search box. Then, only the logs that meet the filter criteria are displayed.
 
 <!--RP3-->
    The log result is as follows:
@@ -165,6 +178,8 @@ Add a click event in a button, which prints a log when the button is clicked.
    01-02 08:18:24.947   30988-30988   A0ff00/testTag                  com.example.hilogDemo  I     hello World 3
    01-02 08:18:24.947   30988-30988   A0ff00/testTag                  com.example.hilogDemo  I     peter is {"name":"peter","age":15}
    01-02 08:18:24.947   30988-30988   A00000/testTag                  com.example.hilogDemo  E     this is an error level log
+   01-02 08:18:24.947   30988-30988   A00000/testTag                  com.example.hilogDemo  I     this is an another info level log
+   01-02 08:18:24.947   30988-30988   A00000/testTag                  com.example.hilogDemo  E     this is an another error level log
    ```
 <!--RP3End-->
 

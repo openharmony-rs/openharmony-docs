@@ -248,12 +248,6 @@ libnative_buffer.so
       OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, buffer, fenceFd, region);
       ```
 
-   4. 用完需要销毁NativeWindow。
-
-      ```c++
-      OH_NativeWindow_DestroyNativeWindow(nativeWindow);
-      ```
-
 6. **更新内容到OpenGL纹理**。
 
    ```c++

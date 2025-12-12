@@ -1,4 +1,10 @@
 # Blur Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Animation effects can add detail to your animations and create a sense of realism. For example, blur and shadow effects can lend a 3D look to objects and deliver a more engaging animation experience. ArkUI provides a diverse array of efficient APIs for you to develop exquisite and personalized effects. This topic covers the common blur, shadow, and color effects.
 
@@ -16,7 +22,7 @@ Blur effects add a sense of depth and allow for distinction of hierarchical rela
 
 >  **NOTE**
 >
->  The preceding APIs provide real-time blurring by rendering each frame, which can be performance-intensive. For static blur effects where content and radius remain unchanged, you are advised to use the static [blur](../reference/apis-arkgraphics2d/js-apis-effectKit.md#blur) API to reduce the load.
+>  The preceding APIs are real-time blurring APIs that perform rendering on a frame-by-frame basis, which incurs significant performance overhead. When both the blur content and blur radius remain unchanged, it is recommended that you use the static blur API [blur](../reference/apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see [Image Blurring Optimization – When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519).
 
 ## Applying Background Blur with backdropBlur
 
@@ -33,7 +39,8 @@ struct BlurEffectsExample {
         .fontSize(20)
         .fontColor(Color.White)
         .textAlign(TextAlign.Center)
-        .backdropBlur(10) // Apply background blur.
+        .backdropBlur(10)// Apply background blur.
+        // Replace $r('app.media.share') with the image resource file you use.
         .backgroundImage($r('app.media.share'))
         .backgroundImageSize({ width: 400, height: 300 })
     }
@@ -62,7 +69,7 @@ struct Index1 {
 
   aboutToAppear() {
     this.text = "Press a finger on the screen and slide up and down\n" + "Current finger position on the y-axis: " + this.y +
-    "\n" + "Blur radius:" + this.radius;
+      "\n" + "Blur radius:" + this.radius;
   }
 
   build() {
@@ -73,15 +80,16 @@ struct Index1 {
         .fontWeight(FontWeight.Bold)
         .fontFamily("cursive")
         .fontStyle(FontStyle.Italic)
+      // Replace $r("app.media.wall") with the image resource file you use.
       Image($r("app.media.wall"))
-        .blur(this.radius) // Apply foreground blur.
+        .blur(this.radius)// Apply foreground blur.
         .height('100%')
         .width("100%")
         .objectFit(ImageFit.Cover)
     }.height('100%')
     .width("100%")
     .onTouch((event?: TouchEvent) => {
-      if(event){
+      if (event) {
         if (event.type === TouchType.Move) {
           this.y = Number(event.touches[0].y.toString()).toString();
           this.radius = Number(this.y) / 10; // Modify the blur radius based on the sliding distance.
@@ -92,11 +100,12 @@ struct Index1 {
         }
       }
       this.text = "Press a finger on the screen and slide up and down\n" + "Current finger position on the y-axis: " + this.y +
-      "\n" + "Blur radius:" + this.radius;
+        "\n" + "Blur radius:" + this.radius;
     })
   }
 }
 ```
+
 
 
 
@@ -124,6 +133,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
 
           Text('Original')
@@ -149,6 +159,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           // BlurStyle.Thin: Thin blur is applied.
           // ThemeColorMode.LIGHT: The light color mode is used.
@@ -183,6 +194,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
@@ -213,6 +225,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
@@ -243,6 +256,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
@@ -273,6 +287,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
@@ -303,6 +318,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -333,6 +349,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -387,6 +404,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
 
           Text('Original')
@@ -412,6 +430,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           // BlurStyle.Thin: Thin blur is applied.
           // ThemeColorMode.LIGHT: The light color mode is used.
@@ -446,6 +465,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
@@ -476,6 +496,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
@@ -506,6 +527,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
@@ -536,6 +558,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
@@ -566,6 +589,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -596,6 +620,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // Replace $r('app.media.share') with the image resource file you use.
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -635,16 +660,17 @@ import { curves } from '@kit.ArkUI';
 @Entry
 @Component
 struct motionBlurTest {
-  @State widthSize: number = 400
-  @State heightSize: number = 320
-  @State flag: boolean = true
-  @State radius: number = 0
-  @State x: number = 0
-  @State y: number = 0
+  @State widthSize: number = 400;
+  @State heightSize: number = 320;
+  @State flag: boolean = true;
+  @State radius: number = 0;
+  @State x: number = 0;
+  @State y: number = 0;
 
   build() {
     Column() {
       Column() {
+        // Replace $r('app.media.testImg') with the image resource file you use.
         Image($r('app.media.testImg'))
           .width(this.widthSize)
           .height(this.heightSize)

@@ -51,7 +51,7 @@ This module supports only the WGS-84 coordinate system.
 
       ```ts
       import { geoLocationManager } from '@kit.LocationKit';
-      import { BusinessError } from '@kit.BasicServicesKit'
+      import { BusinessError } from '@kit.BasicServicesKit';
       try {
           let location = geoLocationManager.getLastLocation();
       } catch (err) {
@@ -72,7 +72,7 @@ This module supports only the WGS-84 coordinate system.
 
       ```ts
       import { geoLocationManager } from '@kit.LocationKit';
-      import { BusinessError } from '@kit.BasicServicesKit'
+      import { BusinessError } from '@kit.BasicServicesKit';
       let request: geoLocationManager.SingleLocationRequest = {
          'locatingPriority': geoLocationManager.LocatingPriority.PRIORITY_LOCATING_SPEED,
          'locatingTimeoutMs': 10000

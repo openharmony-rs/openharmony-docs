@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Defines the prefetch behavior of web pages, including whether to ignore **Cache-Control: no-store** in the response header and the minimum interval between two prefetches.
 

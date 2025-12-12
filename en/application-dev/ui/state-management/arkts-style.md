@@ -1,4 +1,4 @@
-# \@Styles Decorator: Definition of Reusable Styles
+# \@Styles Decorator: Defining Reusable Styles
 
 
 If the style of each component needs to be set separately, this will result in a large amount of repeated code during development. Though copying and pasting are available, writing code is still inefficient and error-prone. To maximize code efficiency and maintainability, the \@Styles decorator is introduced.

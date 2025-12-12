@@ -1,5 +1,10 @@
 # Creating an Arc Carousel Component (ArcSwiper) (Recommended for Circular Screens)
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **ArcSwiper** is an arc carousel component designed specifically for circular screens, allowing you to display content in an arc layout. For details, see [ArcSwiper](../reference/apis-arkui/arkui-ts/ts-container-arcswiper.md).
 
@@ -81,9 +86,7 @@ The **ArcSwiper** component supports four page switching modes: swiping with fin
     ArcButtonStyleMode,
     ArcButtonPosition,
     ArcSwiper,
-    ArcSwiperAttribute,
-    ArcDotIndicator,
-    ArcDirection,
+    ArcSwiperAttribute, // Required import. The ArcSwiper component's attributes rely on the ArcSwiperAttribute object. Do not remove this import.
     ArcSwiperController
   } from '@kit.ArkUI';
 
@@ -194,7 +197,7 @@ Use the [customContentTransition](../reference/apis-arkui/arkui-ts/ts-container-
 import { Decimal } from '@kit.ArkTS';
 import {
   ArcSwiper,
-  ArcSwiperAttribute,
+  ArcSwiperAttribute, // Required import. The ArcSwiper component's attributes rely on the ArcSwiperAttribute object. Do not remove this import.
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
@@ -258,7 +261,7 @@ The swipe gesture of the **ArcSwiper** component may conflict with the swipe-to-
 ```ts
 import {
   ArcSwiper,
-  ArcSwiperAttribute,
+  ArcSwiperAttribute, // Required import. The ArcSwiper component's attributes rely on the ArcSwiperAttribute object. Do not remove this import.
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController

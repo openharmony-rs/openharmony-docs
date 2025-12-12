@@ -4,14 +4,14 @@
 <!--Owner: @Zhang-Dong-Hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 数据量规图表组件，用于将数据展示为环形图表。
 
 
 >  **说明：**
 >
->  该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -20,9 +20,11 @@
 
 > **说明：**
 >
-> 建议使用文本组件构建当前数值文本和辅助文本。
+> - 支持的子组件类型：系统组件和自定义组件，支持条件渲染控制[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)，不支持循环渲染控制[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)。
 >
-> 若子组件宽高为百分比形式，则基准范围为以外圆环做为内切圆的矩形。
+> - 建议使用文本组件构建当前数值文本和辅助文本。
+>
+> - 若子组件宽高为百分比形式，则基准范围为以外圆环做为内切圆的矩形。
 
 
 ## 接口
@@ -216,6 +218,10 @@ indicator(value: GaugeIndicatorOptions)
 privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 设置隐私敏感。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 

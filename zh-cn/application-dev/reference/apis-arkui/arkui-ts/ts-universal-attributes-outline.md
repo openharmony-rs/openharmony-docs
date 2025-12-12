@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件外描边（outline）样式。外描边绘制在组件的外侧，不影响布局，不会占用组件本身大小。
 
@@ -274,7 +274,7 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 
 ### 示例1（使用外描边属性）
 
-该示例主要演示如何通过outline来实现组件外描边。
+该示例主要演示如何通过[outline](#outline)来实现组件外描边。
 
 ```ts
 // xxx.ets
@@ -321,7 +321,7 @@ struct OutlineExample {
 
 ### 示例2（使用LocalizedEdgeColors类型）
 
-该示例将outline属性中的color属性值设置为LocalizedEdgeColors类型。
+该示例将[outline](#outline)属性中的color属性值设置为[LocalizedEdgeColors](ts-types.md#localizededgecolors12)类型。
 
 ```ts
 // xxx.ets

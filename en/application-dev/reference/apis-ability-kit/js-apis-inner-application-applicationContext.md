@@ -34,7 +34,7 @@ Registers a listener for the lifecycle of a UIAbility within the application. Th
 
 | Name                  | Type    | Mandatory| Description                          |
 | ------------------------ | -------- | ---- | ------------------------------ |
-| type | 'abilityLifecycle' | Yes  | Event type. The value **'abilityLifecycle'** indicates the UIAbility lifecycle.|
+| type | string | Yes  | Lifecycle of the UIAbility within the application. The value is fixed at **'abilityLifecycle'**.|
 | callback | [AbilityLifecycleCallback](js-apis-app-ability-abilityLifecycleCallback.md) | Yes  | Callback triggered when the UIAbility lifecycle changes.|
 
 **Return value**
@@ -122,7 +122,7 @@ Unregisters a listener for the lifecycle of a UIAbility within the application. 
 
 | Name       | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| type | 'abilityLifecycle' | Yes  | Event type. The value **'abilityLifecycle'** indicates the UIAbility lifecycle.|
+| type | string | Yes  | Lifecycle of the UIAbility within the application. The value is fixed at **'abilityLifecycle'**.|
 | callbackId    | number   | Yes  | ID returned when the [ApplicationContext.on('abilityLifecycle')](#applicationcontextonabilitylifecycle) API is called to register a listener for the lifecycle of a UIAbility within the application.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the deregistration is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
@@ -175,7 +175,7 @@ Unregisters a listener for the lifecycle of a UIAbility within the application. 
 
 | Name       | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| type | 'abilityLifecycle' | Yes  | Event type. The value **'abilityLifecycle'** indicates the UIAbility lifecycle.|
+| type | string | Yes  | Lifecycle of the UIAbility within the application. The value is fixed at **'abilityLifecycle'**.|
 | callbackId    | number   | Yes  | ID returned when the [ApplicationContext.on('abilityLifecycle')](#applicationcontextonabilitylifecycle) API is called to register a listener for the lifecycle of a UIAbility within the application.|
 
 **Return value**
@@ -221,7 +221,8 @@ Registers a listener for system environment changes. This API uses an asynchrono
 
 > **NOTE**
 >
-> You can also use [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) to listen for system environment changes. Unlike [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) of **Ability**, this API offers greater flexibility. It can be used both within application components and pages. However, the environment variables that can be subscribed to are different from those of [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate). For example, this API cannot be used to subscribe to direction, screen density, and display ID changes. For details, see the description of each environment variable in [Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration).
+> - You can also use [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) to listen for system environment changes. Unlike [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) of **Ability**, this API offers greater flexibility. It can be used both within application components and pages. However, the environment variables that can be subscribed to are different from those of [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate). For example, this API cannot be used to subscribe to direction, screen density, and display ID changes. For details, see the description of each environment variable in [Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration).
+> - There are certain restrictions when this API is triggered. For example, if you set the application language by calling [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11), the system does not trigger the callback for the current API even if the system language changes. For details, see [When to Use](../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -231,7 +232,7 @@ Registers a listener for system environment changes. This API uses an asynchrono
 
 | Name                  | Type    | Mandatory| Description                          |
 | ------------------------ | -------- | ---- | ------------------------------ |
-| type | 'environment' | Yes  | Event type. The value **'environment'** indicates that the system environment changes, for example, the system dark/light color mode changes.|
+| type | string | Yes  | System environment change, for example, system dark/light color mode change. The value is fixed at **'environment'**.|
 | callback | [EnvironmentCallback](js-apis-app-ability-environmentCallback.md) | Yes  | Callback triggered when the system environment changes.|
 
 **Return value**
@@ -294,7 +295,7 @@ Unregisters the listener for system environment changes. This API uses an asynch
 
 | Name        | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| type | 'environment' | Yes  | Event type. The value **'environment'** indicates that the system environment changes, for example, the system dark/light color mode changes.|
+| type | string | Yes  | System environment change, for example, system dark/light color mode change. The value is fixed at **'environment'**.|
 | callbackId    | number   | Yes  | ID returned when the [ApplicationContext.on('environment')](#applicationcontextonenvironment) API is called to register a listener for system environment changes.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the deregistration is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
@@ -346,7 +347,7 @@ Unregisters the listener for system environment changes. This API uses a promise
 
 | Name        | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| type | 'environment' | Yes  | Event type. The value **'environment'** indicates that the system environment changes, for example, the system dark/light color mode changes.|
+| type | string | Yes  | System environment change, for example, system dark/light color mode change. The value is fixed at **'environment'**.|
 | callbackId    | number   | Yes  | ID returned when the [ApplicationContext.on('environment')](#applicationcontextonenvironment) API is called to register a listener for system environment changes.|
 
 **Return value**
@@ -397,7 +398,7 @@ Registers a listener for application process state changes. This API uses an asy
 
 | Name  | Type                                                        | Mandatory| Description            |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| type     | 'applicationStateChange'                                     | Yes  | Event type. The value **'applicationStateChange'** indicates the application process state change.|
+| type     | string                                   | Yes  | Application process state change. The value is fixed at **'applicationStateChange'**.|
 | callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | Yes  | Callback triggered when the application process state is changed.|
 
 **Error codes**
@@ -453,7 +454,7 @@ Unregisters the listener for application process state changes. This API uses an
 
 | Name| Type         | Mandatory| Description                |
 | ------ | ------------- | ---- | -------------------- |
-| type   | 'applicationStateChange' | Yes  | Event type. The value **'applicationStateChange'** indicates the application process state change.|
+| type   |  string                                   | Yes  | Application process state change. The value is fixed at **'applicationStateChange'**.|
 | callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | No  | Callback used to return the result. The value can be a callback defined by [ApplicationContext.on('applicationStateChange')](#applicationcontextonapplicationstatechange10) or empty.<br>- If a defined callback is passed in, the listener for that callback is unregistered.<br>- If no value is passed in, all the listeners for the corresponding event are unregistered. |
 
 **Error codes**
@@ -678,7 +679,7 @@ export default class MyAbility extends UIAbility {
 
 ## ApplicationContext.killAllProcesses
 
-killAllProcesses(callback: AsyncCallback\<void\>)
+killAllProcesses(callback: AsyncCallback\<void\>): void
 
 Kills all processes of this application. The application will not execute the normal lifecycle when exiting. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
@@ -826,9 +827,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(): Promise\<void\>
 
-Clears up the application data and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only by the main thread.
+
 
 > **NOTE**
+> 
+> For details about the application file path, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The figure shows only the application file paths in the EL1 and EL2 directories. For the application file paths in other directories, refer to EL1.
 >
 > This API stops the application process. After the application process is stopped, all subsequent callbacks will not be triggered.
 
@@ -866,9 +870,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(callback: AsyncCallback\<void\>): void
 
-Clears up the application data and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+
 
 > **NOTE**
+> 
+> For details about the application file path, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The figure shows only the application file paths in the EL1 and EL2 directories. For the application file paths in other directories, refer to EL1.
 >
 > This API stops the application process. After the application process is stopped, all subsequent callbacks will not be triggered.
 
@@ -915,6 +922,11 @@ Restarts the application and starts the specified UIAbility. This API can be cal
 > **NOTE**
 >
 > When this API is called to restart the application, the **onDestroy** lifecycle callback of the ability in the application is not triggered.
+>
+> If an atomic service calls this API or [restartSelfAtomicService()](js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+>
+> If an application calls this API within 3 seconds after a successful call to this API, the system returns error code 16000064.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -947,6 +959,7 @@ import { common, Want } from '@kit.AbilityKit';
 @Component
 struct Index {
   @State message: string = 'restartApp';
+  private context = this.getUIContext().getHostContext()?.getApplicationContext() as common.ApplicationContext;
 
   build() {
     RelativeContainer() {
@@ -963,10 +976,9 @@ struct Index {
             bundleName: 'com.example.myapplication',
             abilityName: 'EntryAbility'
           };
-          let appcontext: common.ApplicationContext = getContext().getApplicationContext() as common.ApplicationContext;
-          if (appcontext) {
+          if (this.context) {
             try {
-              appcontext.restartApp(want);
+              this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
             }
@@ -1002,7 +1014,7 @@ Obtains the index of the current application clone.
 | ID| Error Message|
 | ------- | -------- |
 | 16000011 | The context does not exist. |
-| 16000071 | App clone is not supported. |
+| 16000071 | The MultiAppMode is not App_CLONE. |
 
 For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
 
@@ -1126,7 +1138,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AbilityStage, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyAbilityStage extends AbilityStage {
+export default class MyAbilityStage extends AbilityStage {
   onCreate() {
     let applicationContext = this.context.getApplicationContext();
     try {
@@ -1208,7 +1220,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AbilityStage } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyAbilityStage extends AbilityStage {
+export default class MyAbilityStage extends AbilityStage {
   onCreate() {
     let applicationContext = this.context.getApplicationContext();
     let currentInstanceKey = '';
@@ -1254,7 +1266,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AbilityStage } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyAbilityStage extends AbilityStage {
+export default class MyAbilityStage extends AbilityStage {
   onCreate() {
     let applicationContext = this.context.getApplicationContext();
     try {
@@ -1267,5 +1279,3 @@ class MyAbilityStage extends AbilityStage {
   }
 }
 ```
-
-<!--no_check-->

@@ -538,7 +538,7 @@ Called when a UIAbility is to be migrated across devices. You can save service d
 
 > **NOTE**
 >
-> Starting from API version 12, **UIAbility.onContinue** supports the return value in the form of Promise\<[AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)\>.
+> For versions prior to API version 18, only synchronous calls are supported. Starting from API version 18, asynchronous calls are also supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -916,10 +916,11 @@ onCollaborate(wantParam: Record&lt;string, Object&gt;): AbilityConstant.Collabor
 
 Callback invoked to return the collaboration result in multi-device collaboration scenarios.
 
- **NOTE**
-- This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
-- When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
-- During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
+> **NOTE**
+>
+> - This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
+> - When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
+> - During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -1595,8 +1596,6 @@ Defines the callback that is invoked when the stub on the target UIAbility is di
 ### (msg: string)<sup>10+</sup>
 
 (msg: string): void
-
-Defines the callback that is invoked when the remote UIAbility state changes in the collaboration scenario.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 

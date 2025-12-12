@@ -90,7 +90,7 @@ If the default key generator is used, the framework automatically generates a ke
 
 **Reference**
 
-[ForEach: Rendering of Repeated Content](../ui/state-management/arkts-rendering-control-foreach.md)
+[ForEach: Rendering of Repeated Content](../ui/rendering-control/arkts-rendering-control-foreach.md)
 
 ## How do I decouple a dialog box from pages? What are the best practices? (API 10)
 

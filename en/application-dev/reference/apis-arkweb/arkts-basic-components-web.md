@@ -4,9 +4,11 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component can be used to display web pages. It can be used with the [@ohos.web.webview](arkts-apis-webview.md) module, which provides APIs for web control.
+
+<!--RP1--><!--RP1End-->
 
 > **NOTE**
 >
@@ -165,7 +167,7 @@ Example of loading local web pages using **$rawfile()**:
   }
   ```
 
-Example of loading a link with the hash (#) route through the resource protocol in WebView:
+Load the resource file through the resources protocol.
 
 When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead.
   ```ts
@@ -280,7 +282,7 @@ To load the local resource file in the sandbox path, you need to configure the [
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
        // Data synchronization between the UIAbility component and UI can be implemented by binding filesDir to the GlobalContext object.
        GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.log("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
+       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
      }
    }
    ```

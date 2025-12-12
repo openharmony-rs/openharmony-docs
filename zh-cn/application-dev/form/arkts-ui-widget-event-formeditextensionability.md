@@ -130,6 +130,7 @@
 4. 在应用的[module.json5](../quick-start/module-configuration-file.md)配置文件中添加卡片编辑配置信息。
     ```json
     "extensionAbilities": [
+      // ...
       {
         "name": "EntryFormEditAbility",
         "srcEntry": "./ets/entryformeditability/EntryFormEditAbility.ets",

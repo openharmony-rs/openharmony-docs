@@ -136,6 +136,7 @@ options = nullptr;
 #include <codecvt>
 #include <locale>
 #include <string>
+#include <thread>
 
 #include "hilog/log.h"
 #include "inputmethod/inputmethod_controller_capi.h"

@@ -1,4 +1,10 @@
 # @ohos.app.ability.FenceExtensionContext (FenceExtensionContext) (System API)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 The **FenceExtensionContext** class defines the context for **FenceExtensionAbility** objects. Inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), this class provides the configuration information of **FenceExtensionAbility** objects and the API for starting them.
 
@@ -55,20 +61,19 @@ Starts an ability. This API uses a promise to return the result. It can be calle
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202     | The application is not system-app, can not use system-api.      |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.      |
 | 16000001 | The specified ability does not exist.                        |
 | 16000002 | Incorrect ability type.                                      |
-| 16000004 | Can not start invisible component.                           |
+| 16000004 | Cannot start an invisible component.                         |
 | 16000005 | The specified process does not have the permission.          |
 | 16000006 | Cross-user operations are not allowed.                       |
 | 16000008 | The crowdtesting application expires.                        |
-| 16000009 | An ability cannot be started or stopped in Wukong mode.      |
 | 16000011 | The context does not exist.                                  |
+| 16000012 | The application is controlled.                               |
+| 16000013 | The application is controlled by EDM.                        |
+| 16000019 | No matching ability is found.                                |
 | 16000050 | Internal error.                                              |
-| 16000053 | The ability is not on the top of the UI.                     |
-| 16000055 | Installation-free timed out.                                 |
 | 16200001 | The caller has been released.                                |
-| 16300003 | The target application is not self application.              |
 
 For details about the error codes, see [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
@@ -95,14 +100,14 @@ export class MyFenceExtensionAbility extends FenceExtensionAbility {
         })
         .catch((error: BusinessError) => {
           // Process service logic errors.
-          console.info('startAbility failed, error.code: ' + JSON.stringify(error.code) +
+          console.error('startAbility failed, error.code: ' + JSON.stringify(error.code) +
             ' error.message: ' + JSON.stringify(error.message));
         });
     } catch (paramError) {
       // Process input parameter errors.
       let code = (paramError as BusinessError).code;
       let message = (paramError as BusinessError).message;
-      console.info('startAbility failed, error.code: ' + JSON.stringify(code) +
+      console.error('startAbility failed, error.code: ' + JSON.stringify(code) +
         ' error.message: ' + JSON.stringify(message));
     }
   }

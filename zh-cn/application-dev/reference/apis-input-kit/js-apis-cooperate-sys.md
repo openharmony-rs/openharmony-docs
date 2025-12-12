@@ -81,7 +81,7 @@ struct Index {
 
 enable(enable: boolean): Promise&lt;void&gt;
 
-开启、关闭键鼠穿越，使用Promise异步方式返回结果。
+开启、关闭键鼠穿越，使用Promise异步回调。
 
 **系统能力**： SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -95,7 +95,7 @@ enable(enable: boolean): Promise&lt;void&gt;
 
 | 类型                 | 说明                     |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt;      | 无返回结果的Promise对象。        |
+| Promise&lt;void&gt;      | Promise对象，无返回结果的Promise对象。        |
 
 **错误码**：
 
@@ -195,7 +195,7 @@ struct Index {
 
 start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 
-启动键鼠穿越，使用Promise异步方式返回结果。
+启动键鼠穿越，使用Promise异步回调。
 
 **系统能力**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -310,7 +310,7 @@ struct Index {
 
 stop(): Promise\<void>
 
-停止键鼠穿越，使用Promise异步方式返回结果。
+停止键鼠穿越，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -407,7 +407,7 @@ struct Index {
 
 getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
-获取键鼠穿越开关的状态，使用Promise异步方式返回结果。
+获取键鼠穿越开关的状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -421,7 +421,7 @@ getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 | 类型                        | 说明                     |
 | -------------------        | ------------------------------- |
-| Promise<{ state: boolean }>| Promise对象，异步返回键鼠穿越开关状态。ture 表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。       |
+| Promise<{ state: boolean }>| Promise对象，异步返回键鼠穿越开关状态。ture表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。       |
 
 **错误码**：
 

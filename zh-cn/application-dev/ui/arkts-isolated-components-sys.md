@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 IsolatedComponent组件是构建隔离组件的工具，能够帮助开发者创建独立且可重用的组件。这些组件可在不同应用程序中使用，不会与其他组件产生冲突。
 
@@ -233,14 +233,14 @@ struct Index {
 
 2. 将本应用构建生成的modules.abc文件通过DevEco Studio或hdc工具上传至应用沙箱路径/data/app/el2/100/base/com.example.isolateddemo/haps/entry/files下，其中，hdc工具参考命令如下：
 
-```bash
-hdc file send modules.abc /data/app/el2/100/base/com.example.isolateddemo/haps/entry/files/
-```
+   ```bash
+   hdc file send modules.abc /data/app/el2/100/base/com.example.isolateddemo/haps/entry/files/
+   ```
 
 3. 打开应用页面，点击"verifyAbc"按钮进行校验，输出"VerifyAbc successfully"日志；
 
-![zh-cn_image_0000001746521386](figures/zh-cn_image_0000001746521386.jpg)
+   ![zh-cn_image_0000001746521386](figures/zh-cn_image_0000001746521386.jpg)
 
-![zh-cn_image_0000001502381065](figures/zh-cn_image_0000001502381065.png)
+   ![zh-cn_image_0000001502381065](figures/zh-cn_image_0000001502381065.png)
 
 4. 点击"showIsolatedComponent"按钮，显示IsolatedComponent组件，内容为"Hello World"。

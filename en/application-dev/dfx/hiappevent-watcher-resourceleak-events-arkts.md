@@ -14,11 +14,18 @@ This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscri
 
 ### APIs for Setting Custom Parameters
 
-| API                                                      | Description                                                        |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| API| Description|
+| -------- | -------- |
 | setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: string): Promise&lt;void&gt; | Sets custom parameters of an event. In resource leak events, only parameters of the JS memory leak event can be set.<br>Note: This API is supported since API version 20.|
 
+### APIs for Setting Custom Configurations
+
+| API| Description|
+| -------- | -------- |
+| setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void> | Sets custom configurations of an event. For resource leak events, only the JS memory leak event can be configured.<br>Note: This API is supported since API version 20.|
+
 ### Subscription APIs
+
 | API| Description|
 | -------- | -------- |
 | addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to listen for application events.|
@@ -32,7 +39,8 @@ The following example describes how to subscribe to the memory leak event.
 1. Create a project in DevEco Studio and select **Empty Ability**. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, import the dependent modules.
 
    ```ts
-   import { hiAppEvent, hilog, hidebug } from '@kit.PerformanceAnalysisKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
@@ -48,6 +56,12 @@ The following example describes how to subscribe to the memory leak event.
    }).catch((err: BusinessError) => {
      hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
    });
+   // Assign a value to the custom key-value pair.
+   let configParams: Record<string, hiAppEvent.ParamType> = {
+     "js_heap_logtype": "event", // Obtain only events.
+   }
+   // Set custom configurations for the resource leak event.
+   hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
    hiAppEvent.addWatcher({
      // Set the watcher name. The system identifies different watchers based on their names.
      name: "watcher",
@@ -147,7 +161,15 @@ The following example describes how to subscribe to the memory leak event.
 
 ### Step 3: Subscribing to js_heap Snapshots in the nolog Version
 
-1. In the nolog version, VM heap snapshot subscription is enabled for OOM scenarios caused by JS heap leaks. The application needs to call **hidebug.setAppResourceLimit** and **hiAppEvent.addWatcher** in sequence, and configure the following environment variables in the **AppScope/app.json5** file:
+After receiving the subscribed event, the application should obtain the path of the heap snapshot file from the **external_log** field of the event, move or upload the file to the cloud as soon as possible, and then delete the original heap snapshot file. Otherwise, the next heap snapshot file may fail to be generated due to insufficient storage space (up to 2 GB) of the application sandbox path directory.
+
+Change the extension of the .log file generated after subscription to **.rawheap**, use [rawheap-translator](../tools/rawheap-translator.md) to convert the file to a .heapsnapshot file, and open the file using DevEco Studio or a browser. For details, see [Importing Heap Snapshots Offline](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388).
+
+Since API 14, you can change the log file name extension to **.rawheap** and import it to DevEco Studio for display. For details, see [Importing Memory Snapshots Offline](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388).
+
+You can select either of the following methods:
+
+   Method 1: Configure the following environment variables in the **AppScope/app.json5** file of your application:
 
    ```text
    "appEnvironments": [
@@ -170,10 +192,16 @@ The following example describes how to subscribe to the memory leak event.
 
    > **NOTE**
    >
-   > After receiving the subscribed event, the application should obtain the path of the heap snapshot file from the **external_log** field of the event, move or upload the file to the cloud as soon as possible, and then delete the original heap snapshot file. Otherwise, the next heap snapshot file may fail to be generated due to insufficient storage space (up to 2 GB) of the application sandbox path directory.
-   >
    > The value **field** in the JSON5 configuration file supports the key-value pair set **key1:value1;key2:value2;...**. Currently, the **oomdump** function can be enabled in the nolog version only for applications configured with the preceding key-value pairs.
-   >
-   > Change the extension of the .log file generated after subscription to **.rawheap**, use [rawheap-translator](../tools/rawheap-translator.md) to convert the file to a .heapsnapshot file, and open the file using DevEco Studio or a browser. For details, see [Importing Heap Snapshots Offline](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388).
-   >
-   > Since API 14, you can change the log file name extension to **.rawheap** and import it to DevEco Studio for display. For details, see [Importing Raw Heap Data Offline](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section1888195110017).
+
+   Method 2: Call **setEventConfig** and pass in the following parameters:
+
+   ```ts
+   let configParams: Record<string, hiAppEvent.ParamType> = {
+     "js_heap_logtype": "event_rawheap",
+   };
+
+   hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
+   ```
+
+   The number of heap snapshots generated by method 2 is not restricted by the VM heap snapshot generation specifications of the nolog version.

@@ -40,7 +40,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 
 isDefaultApplication(type: string): Promise\<boolean>
 
-根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用，使用Promise异步回调。
+根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -83,7 +83,7 @@ defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER
 
 isDefaultApplication(type: string, callback: AsyncCallback\<boolean>): void
 
-根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用。使用callback异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 

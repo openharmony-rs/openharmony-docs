@@ -12,6 +12,10 @@ Metadata is the description and context of image information returned by the cam
 
 Metadata uses a tag (key) to find the corresponding data during parameter transfers and configurations, reducing memory copy operations.
 
+## When to Use
+
+Detect faces in images and return high-precision face bounding box coordinates. Applications can integrate post-processing algorithms based on face detection results, making them suitable for a variety of scenarios.
+
 ## How to Develop
 
 Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.

@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebMessagePort** to send and receive [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) or [WebMessage](./arkts-apis-webview-t.md#webmessage) messages to the HTML5 side.
 
@@ -46,7 +46,7 @@ Sends a message of the [WebMessage](./arkts-apis-webview-t.md#webmessage) type t
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
@@ -100,7 +100,7 @@ Registers a callback on the application message port to receive messages of the 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                                       |
 | -------- | ----------------------------------------------- |
@@ -165,7 +165,7 @@ Sends a message of the [WebMessageType](./arkts-apis-webview-e.md#webmessagetype
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
@@ -188,7 +188,7 @@ Registers a callback on the application message port to receive messages of the 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                                       |
 | -------- | ----------------------------------------------- |
@@ -523,6 +523,7 @@ struct WebComponent {
           try {
             if (this.msgPort && this.msgPort.length == 2) {
               this.msgPort[1].close();
+              this.msgPort = [];
             } else {
               console.error("msgPort is null, Please initialize first");
             }

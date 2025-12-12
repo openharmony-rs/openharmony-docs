@@ -1,5 +1,12 @@
 # Managing the Notification Badge
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 The system provides APIs for setting the notification badge, which is displayed in the upper right corner of the application icon on the home screen to notify the user of the count of unread notifications.
 
 When a new notification arrives, the count on the badge is incremented by 1.
@@ -79,10 +86,14 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
     let badgeNumber: number = 10;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     badgeNumber = 11;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```
 
@@ -99,6 +110,10 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
       badgeNumber = 11;
       notificationManager.setBadgeNumber(badgeNumber).then(() => {
         hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+      }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
       });
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```

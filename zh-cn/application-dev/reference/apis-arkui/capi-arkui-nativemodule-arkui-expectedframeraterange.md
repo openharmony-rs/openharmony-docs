@@ -1,5 +1,13 @@
 # ArkUI_ExpectedFrameRateRange
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 设置动画的期望帧率。

@@ -1,5 +1,12 @@
 # SystemCapability
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @RayShih-->
+<!--Designer: @RayShih-->
+<!--Tester: @RayShih-->
+<!--Adviser: @RayShih-->
+
 ## Overview
 
 ### System Capabilities and APIs
@@ -108,20 +115,20 @@ You can use either the ArkTS or native API to determine whether an API is availa
 
     ```ts
     if (canIUse("SystemCapability.ArkUI.ArkUI.Full")) {
-	   console.log("This device supports SystemCapability.ArkUI.ArkUI.Full.");
+	   console.info("This device supports SystemCapability.ArkUI.ArkUI.Full.");
     } else {
-       console.log("This device does not support SystemCapability.ArkUI.ArkUI.Full.");
+       console.info("This device does not support SystemCapability.ArkUI.ArkUI.Full.");
     }
     ```
 
   - Method 2: Import a module using the **import** API. If the current device does not support the module, the import result is **undefined**. Before using an API, you must make sure the API is available.
 
 	```ts
-	import geolocationManager from '@ohos.geoLocationManager';
+	import { geolocationManager } from '@kit.LocationKit';
 
 	try {
 	geolocationManager.getCurrentLocation((location) => {
-		console.log('current location: ' + JSON.stringify(location));
+		console.info('current location: ' + JSON.stringify(location));
 	});
 	} catch(err) {
 	    console.error('This device does not support location information.' + err);
@@ -147,7 +154,9 @@ You can also find out the SysCap to which an API belongs by referring to the API
 
 ### Checking the Differences Between Devices with a Specific SysCap
 
-The performance of a SysCap may vary by device type. For example, a tablet is superior to a smart wearable device in terms of the camera capability.
+The performance of a SysCap may vary by device type. For example, a tablet is superior to a wearable device in terms of the camera capability.
+
+The following code snippet uses the facial recognition capability as an example:
 
 ```ts
 import userAuth from '@ohos.userIAM.userAuth';
@@ -160,10 +169,12 @@ const authParam : userAuth.AuthParam = {
 const widgetParam :userAuth.WidgetParam = {
   title: 'Enter password',
 };
+
+// Use try...catch to capture exceptions when using the API. If the SysCap of the API is not compatible with the current device, error code 801 is returned.
 try {
   let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   userAuthInstance.start();
-    console.log('Device authentication succeeded.');
+    console.info('Device authentication succeeded.');
 } catch (error) {
     console.error('auth catch error: ' + JSON.stringify(error));
 }

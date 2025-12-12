@@ -1,5 +1,12 @@
 # ArkUI_Node*
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 定义ArkUI native组件实例对象指针定义。

@@ -27,7 +27,7 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
 
 ## How to Develop
 
-1. Reference header files.
+1. Include header files.
 
    ```c++
    #include <cstdint>

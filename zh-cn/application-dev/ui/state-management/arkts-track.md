@@ -141,7 +141,7 @@ struct AddLog {
   @State logNotTrack: LogNotTrack = new LogNotTrack('你好');
 
   isRender(index: number) {
-    console.log(`Text ${index} is rendered`);
+    console.info(`Text ${index} is rendered`);
     return 50;
   }
 
@@ -237,7 +237,7 @@ struct AddLog {
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             // 没有被@Track装饰的属性可以在点击事件中使用。
-            console.log('owner: ' + this.log.owner +
+            console.info('owner: ' + this.log.owner +
               ' id: ' + this.log.id +
               ' time: ' + this.log.time +
               ' location: ' + this.log.location +

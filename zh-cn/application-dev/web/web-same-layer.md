@@ -18,7 +18,7 @@
 - 在应用侧，应用开发者可以使用ArkUI的NodeContainer等接口，构建H5同层标签对应的同层渲染组件。可支持同层渲染的ArkUI常用组件包括：[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md), [Web](../reference/apis-arkweb/arkts-basic-components-web.md)。具体规格可参见[同层渲染规格小节](#规格约束)。
 
 ### 三方UI框架
-Flutter提供了PlatformView与Texture抽象组件，这些组件可使用系统组件渲染，用来支持Flutter组件功能不足的部分。Weex2.0框架的Camera、Video和Canvas组件可以使用系统组件渲染，以增强功能和性能。
+Flutter提供了PlatformView与Texture抽象组件，这些组件可使用系统组件渲染，用于支持Flutter组件功能不足的部分。Weex2.0框架的Camera、Video和Canvas组件可以使用系统组件渲染，以增强功能和性能。
 
 - 在三方框架页面侧，由于Flutter、Weex等三方框架不在操作系统范围内，本文不列举可被同层渲染的三方框架UI组件的范围与使用方式。
 
@@ -353,7 +353,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                  // 创建节点控制器、设置参数并rebuild。
+                  // 创建节点控制器、设置参数。
                   let nodeController = new MyNodeController()
                   // embed.info.width和embed.info.height单位是px格式，需要转换成ets侧的默认单位vp。
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -667,7 +667,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                  const componentId = embed.info?.id?.toString() as string
                  if (embed.status == NativeEmbedStatus.CREATE) {
                    console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                   // 创建节点控制器、设置参数并rebuild。
+                   // 创建节点控制器、设置参数。
                    let nodeController = new MyNodeController()
                    // embed.info.width和embed.info.height单位是px格式，需要转换成ets侧的默认单位vp。
                    nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -912,7 +912,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info))
-                  // 创建节点控制器，设置参数并rebuild。
+                  // 创建节点控制器，设置参数。
                   let nodeController = new MyNodeController()
                   // 1. embed.info.width和embed.info.height单位是px格式，需要转换成ets侧的默认单位vp。
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string, type : embed.info?.type as string,
@@ -996,7 +996,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
   ```ts
   // HAP's src/main/ets/pages/PlayerDemo.ets
   import { media } from '@kit.MediaKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export class AVPlayerDemo {
     private count: number = 0;
@@ -1298,7 +1298,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                  // 创建节点控制器、设置参数并rebuild。
+                  // 创建节点控制器、设置参数。
                   let nodeController = new MyNodeController()
                   // embed.info.width和embed.info.height单位是px格式，需要转换成ets侧的默认单位vp。
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,

@@ -68,7 +68,7 @@ AtomicServiceNavigation({
 | sideBarOptions<sup>18+</sup> | [SideBarOptions](#sidebaroptions18) | 否 | @Prop | 侧边栏的功能选项。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | sideBarContent<sup>18+</sup> | Callback\<void\> | 否 | @BuilderParam | 侧边栏的内容。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | menus<sup>18+</sup> | [CustomBuilder](ts-types.md#custombuilder8) \| Array\<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)\> | 否 | @BuilderParam | 宽屏场景下用户自定义插入的布局样式。默认为空，不显示任何样式。屏幕宽度低于600vp为非宽屏场景，大于等于600vp为宽屏场景。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| stateChangeCallback | Callback\<boolean\> | 否 | - | 导航栏显示状态切换时触发该回调。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| stateChangeCallback | Callback\<boolean\> | 否 | - | 导航栏显示状态切换时触发该回调。true表示导航栏显示状态发生了切换。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | modeChangeCallback | Callback\<[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)\> | 否 | - | 当Navigation首次显示或者单双栏状态发生变化时触发该回调。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## TitleOptions
@@ -179,7 +179,7 @@ NavDestination组件内容。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------------- | ------ | ---- | -- | ---------- |
 | sideBarBackground | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置侧边栏的背景颜色。默认为$r('sys.color.ohos_id_color_sub_background')。 |
-| onChange | Callback\<boolean\> | 否 | 是 | 侧边栏显示隐藏回调。 |
+| onChange | Callback\<boolean\> | 否 | 是 | 侧边栏显示隐藏回调。true表示显示，false表示隐藏。 |
 | sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 侧边栏里的返回图标。默认值为$r('sys.symbol.open_sidebar')。 |
 
 ## 示例

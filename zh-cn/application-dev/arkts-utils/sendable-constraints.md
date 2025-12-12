@@ -199,6 +199,38 @@ class A {
 }
 ```
 
+### 不支持使用类型别名
+
+Sendable类的成员变量不能使用类型别名（即使用`type`关键字定义的别名）。
+
+**正例：**
+
+```ts
+@Sendable
+class B {
+  num1: number = 1;
+  num2: number = 2;
+  add(): number {
+    return this.num1 + this.num2;
+  }
+}
+```
+
+**反例：**
+
+```ts
+type A = number;
+
+@Sendable
+class B {
+  num1: A = 1; // 运行报错，不支持使用类型别名
+  num2: A = 2; // 运行报错，不支持使用类型别名
+  add(): number {
+    return this.num1 + this.num2;
+  }
+}
+```
+
 ## 泛型规则
 
 ### 泛型类中的Sendable类、SendableLruCache、collections.Array、collections.Map和collections.Set的模板类型必须是Sendable类型

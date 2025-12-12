@@ -1,4 +1,10 @@
 # @ohos.telephony.sim (SIM Management)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Fanyl8-->
+<!--Designer: @ghxbob-->
+<!--Tester: @weitiantian-->
+<!--Adviser: @zhang_yixin13-->
 
 The **sim** module provides basic SIM card management functions. With the APIs provided by this module, you can obtain the ISO country code, home PLMN ID, service provider name, SIM card status, type, installation status, and activation status of the SIM card in the specified slot.
 
@@ -35,7 +41,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.isSimActive(0, (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -67,7 +73,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.isSimActive(0).then((data: boolean) => {
-    console.log(`isSimActive success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isSimActive success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isSimActive failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -99,7 +105,7 @@ Checks whether the SIM card in the specified slot is activated.
 import { sim } from '@kit.TelephonyKit';
 
 let isSimActive: boolean = sim.isSimActiveSync(0);
-console.log(`the sim is active:` + isSimActive);
+console.info(`the sim is active:` + isSimActive);
 ```
 
 
@@ -124,7 +130,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -149,7 +155,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getDefaultVoiceSlotId().then((data: number) => {
-    console.log(`getDefaultVoiceSlotId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getDefaultVoiceSlotId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDefaultVoiceSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -189,7 +195,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.hasOperatorPrivileges(0, (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -232,7 +238,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.hasOperatorPrivileges(0).then((data: boolean) => {
-    console.log(`hasOperatorPrivileges success, promise: data->${JSON.stringify(data)}`);
+    console.info(`hasOperatorPrivileges success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`hasOperatorPrivileges failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -273,7 +279,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getISOCountryCodeForSim(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -318,7 +324,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getISOCountryCodeForSim(0).then((data: string) => {
-    console.log(`getISOCountryCodeForSim success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getISOCountryCodeForSim success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getISOCountryCodeForSim failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -351,7 +357,7 @@ Obtains the ISO country code of the SIM card in the specified slot.
 import { sim } from '@kit.TelephonyKit';
 
 let countryCode: string = sim.getISOCountryCodeForSimSync(0);
-console.log(`the country ISO is:` + countryCode);
+console.info(`the country ISO is:` + countryCode);
 ```
 
 
@@ -368,7 +374,7 @@ Obtains the home public land mobile network (PLMN) ID of the SIM card in the spe
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
 | slotId   | number                  | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| callback | AsyncCallback\<string\> | Yes  | Callback used to return the result, which is the home PLMN number of the SIM card in the specified slot.                         |
+| callback | AsyncCallback\<string\> | Yes  | Callback used to return the result, which is the home PLMN ID of the SIM card in the specified slot.                         |
 
 **Error codes**
 
@@ -390,7 +396,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimOperatorNumeric(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -435,7 +441,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimOperatorNumeric(0).then((data: string) => {
-    console.log(`getSimOperatorNumeric success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimOperatorNumeric success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimOperatorNumeric failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -459,7 +465,7 @@ Obtains the home PLMN ID of the SIM card in the specified slot. This API returns
 
 | Type             | Description                                            |
 | ----------------- | ------------------------------------------------ |
-| string | Home PLMN number of the SIM card in the specified slot.|
+| string | Home PLMN ID of the SIM card in the specified slot.|
 
 
 **Example**
@@ -468,7 +474,7 @@ Obtains the home PLMN ID of the SIM card in the specified slot. This API returns
 import { sim } from '@kit.TelephonyKit';
 
 let numeric: string = sim.getSimOperatorNumericSync(0);
-console.log(`the sim operator numeric is:` + numeric);
+console.info(`the sim operator numeric is:` + numeric);
 ```
 
 
@@ -507,7 +513,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimSpn(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -552,7 +558,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimSpn(0).then((data: string) => {
-    console.log(`getSimSpn success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimSpn success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimSpn failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -585,7 +591,7 @@ Obtains the SPN of the SIM card in the specified slot. This API returns the resu
 import { sim } from '@kit.TelephonyKit';
 
 let spn: string = sim.getSimSpnSync(0);
-console.log(`the sim card spn is:` + spn);
+console.info(`the sim card spn is:` + spn);
 ```
 
 
@@ -623,7 +629,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimState(0, (err: BusinessError, data: sim.SimState) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -667,7 +673,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimState(0).then((data: sim.SimState) => {
-    console.log(`getSimState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -700,7 +706,7 @@ Obtains the state of the SIM card in the specified slot.
 import { sim } from '@kit.TelephonyKit';
 
 let simState: sim.SimState = sim.getSimStateSync(0);
-console.log(`The sim state is:` + simState);
+console.info(`The sim state is:` + simState);
 ```
 
 ## sim.getCardType<sup>7+</sup>
@@ -738,7 +744,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getCardType(0, (err: BusinessError, data: sim.CardType) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -783,7 +789,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getCardType(0).then((data: sim.CardType) => {
-    console.log(`getCardType success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCardType success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCardType failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -816,7 +822,7 @@ Obtains the type of the SIM card in the specified slot.
 import { sim } from '@kit.TelephonyKit';
 
 let cardType: sim.CardType = sim.getCardTypeSync(0);
-console.log(`the card type is:` + cardType);
+console.info(`the card type is:` + cardType);
 ```
 
 
@@ -854,7 +860,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -898,7 +904,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.hasSimCard(0).then((data: boolean) => {
-    console.log(`hasSimCard success, promise: data->${JSON.stringify(data)}`);
+    console.info(`hasSimCard success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`hasSimCard failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -930,7 +936,7 @@ Checks whether the SIM card in the specified slot is installed.
 import { sim } from '@kit.TelephonyKit';
 
 let hasSimCard: boolean = sim.hasSimCardSync(0);
-console.log(`has sim card: ` + hasSimCard);
+console.info(`has sim card: ` + hasSimCard);
 ```
 
 ## sim.getSimAccountInfo<sup>10+</sup>
@@ -975,7 +981,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1027,7 +1033,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimAccountInfo(0).then((data: sim.IccAccountInfo) => {
-    console.log(`getSimAccountInfo success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimAccountInfo success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimAccountInfo failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1073,7 +1079,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getActiveSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountInfo>) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1096,7 +1102,7 @@ Obtains the number of card slots.
 ```ts
 import { sim } from '@kit.TelephonyKit';
 
-console.log("Result: "+ sim.getMaxSimCount());
+console.info("Result: "+ sim.getMaxSimCount());
 ```
 
 
@@ -1138,7 +1144,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getActiveSimAccountInfoList().then((data: Array<sim.IccAccountInfo>) => {
-    console.log(`getActiveSimAccountInfoList success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getActiveSimAccountInfoList success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getActiveSimAccountInfoList failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1184,7 +1190,7 @@ try {
     if (err) {
       console.error("getOpKey failed, err: " + JSON.stringify(err));
     } else {
-      console.log('getOpKey successfully, data: ' + JSON.stringify(data));
+      console.info('getOpKey successfully, data: ' + JSON.stringify(data));
     }
   });
 } catch (err) {
@@ -1233,7 +1239,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getOpKey(0).then((data: string) => {
-    console.log(`getOpKey success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getOpKey success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getOpKey failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1266,7 +1272,7 @@ Obtains the opkey of the SIM card in the specified slot.
 import { sim } from '@kit.TelephonyKit';
 
 let data: string = sim.getOpKeySync(0);
-console.log(`getOpKey success, promise: data->${JSON.stringify(data)}`);
+console.info(`getOpKey success, promise: data->${JSON.stringify(data)}`);
 ```
 
 ## sim.getOpName<sup>9+</sup>
@@ -1308,7 +1314,7 @@ try {
     if (err) {
       console.error("getOpName failed, err: " + JSON.stringify(err));
     } else {
-      console.log('getOpName successfully, data: ' + JSON.stringify(data));
+      console.info('getOpName successfully, data: ' + JSON.stringify(data));
     }
   });
 } catch (err) {
@@ -1357,7 +1363,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getOpName(0).then((data: string) => {
-    console.log(`getOpName success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getOpName success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getOpName failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1390,7 +1396,7 @@ Obtains the OpName of the SIM card in the specified slot.
 import { sim } from '@kit.TelephonyKit';
 
 let data: string = sim.getOpNameSync(0);
-console.log(`getOpName success, promise: data->${JSON.stringify(data)}`);
+console.info(`getOpName success, promise: data->${JSON.stringify(data)}`);
 ```
 
 ## sim.getDefaultVoiceSimId<sup>10+</sup>
@@ -1428,7 +1434,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getDefaultVoiceSimId((err: BusinessError, data: number) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1467,12 +1473,165 @@ import { sim } from '@kit.TelephonyKit';
 
 let promise = sim.getDefaultVoiceSimId();
 promise.then((data: number) => {
-    console.log(`getDefaultVoiceSimId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getDefaultVoiceSimId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDefaultVoiceSimId failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
+## sim.getSimLabel<sup>20+</sup>
+
+getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
+
+Obtains the SIM card label. Slot 1 corresponds to SIM card 1 or SIM card 2, and slot 2 corresponds to SIM card 2 or eSIM X.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                                    |
+| -------- | ------------------------ | ---- | ---------------------------------------- |
+| slotId | number                      | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| callback | AsyncCallback\<[SimLabel](#simlabel20)\> | Yes  | Callback used to return the result, which is the SIM card label.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 8300001 | Invalid parameter value.                 |
+| 8300002  | Operation failed. Cannot connect to service.                      |
+| 8300003 | System internal error.                               |
+| 8300999  |Unknown error code.|
+
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+async function exampleGetSimLabel(slotId) {
+    try {
+        const simLabel = await sim.getSimLabel(slotId);
+        console.info(`SIM card label: ${simLabel}`);
+    } catch (err) {
+        console.error(`Failed to obtain the SIM card label: ${err.code} - ${err.message}`);
+    }
+}
+```
+
+## sim.getSimLabel<sup>20+</sup>
+
+getSimLabel(slotId: number): Promise\<SimLabel\>
+
+Obtains the SIM card label. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**Parameters**
+
+
+| Name  | Type                    | Mandatory| Description                                    |
+| -------- | ------------------------ | ---- | ---------------------------------------- |
+| slotId | number                      | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+
+**Return value**
+
+| Type                 | Description                              |
+| --------------------- | ---------------------------------- |
+| Promise\<[SimLabel](#simlabel20) \>| Callback used to return the result, which is the SIM card label.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 8300001 | Invalid parameter value.                 |
+| 8300002  | Operation failed. Cannot connect to service.                      |
+| 8300003 | System internal error.                               |
+| 8300999  |Unknown error code.|
+
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+async getSimLabel(slotId: number): Promise<sim.SimLabel|null> {
+    try {
+      const simLabel: sim.SimLabel =
+        await sim.getSimLabel(slotId);
+      return simLabel;
+    } catch (err) {
+      this.handleError(this.getSimLabel.name, err);
+      return null;
+    }
+  }
+```
+
+## sim.getSimLabelSync<sup>20+</sup>
+
+getSimLabelSync(slotId: number): SimLabel
+
+Obtains the SIM card label based on the specified SIM card slot ID.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                                    |
+| -------- | ------------------------ | ---- | ---------------------------------------- |
+| slotId | number                      | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+
+**Return value**
+
+| Type                 | Description                              |
+| --------------------- | ---------------------------------- |
+| [SimLabel](#simlabel20) | SIM card label.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+function exampleGetSimLabelSync() {
+    try {
+        const slotId = 0; 
+        const simLabel = sim.getSimLabelSync(slotId);
+        console.info(`SIM card label: ${simLabel}`);
+    } catch (err) {
+        console.error (`Failed to obtain the SIM card label: ${err.message}`);
+    }
+}
+```
+
+## SimType<sup>20+</sup>
+
+Enumerates the SIM card types.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+| Name               | Value|  Description                                                      |
+| --------------------- | ----| ---------------------------------------------------------- |
+| PSIM     | 0   |Physical SIM card.                     |
+| ESIM | 1   |eSIM card.     |
+
+
+## SimLabel<sup>20+</sup>
+
+Defines the SIM card label.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+| Name        | Type| Read-Only| Optional | Description                                                      |
+| ---------------------|----|---- | ----| --------------------------------------------------- |
+|  simType   |  [SimType](#simtype20)  | No | No|SIM card type.                     |
+| index |  number   |  No |No| Unique index ID of the SIM card.     |
 
 ## SimState
 
@@ -1514,12 +1673,12 @@ Defines the ICC account information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name      | Type   | Mandatory| Description            |
-| ---------- | ------- | ---- | ---------------- |
-| simId      | number  |  Yes | SIM card ID.         |
-| slotIndex  | number  |  Yes | Card slot ID.          |
-| isEsim     | boolean |  Yes | Whether the SIM card is an eSim.<br>- **true**: The SIM card is an eSim.<br>- **false**: The SIM card is not an eSim.|
-| isActive   | boolean |  Yes | Whether the card is activated.<br>**true**: activated.<br>**false**: not activated. |
-| iccId      | string  |  Yes | ICCID number.       |
-| showName   | string  |  Yes | SIM card display name.   |
-| showNumber | string  |  Yes | SIM card display number.   |
+| Name      | Type   | Read-Only|Optional| Description            |
+| ---------- | ------- | ---- |--- |---------------- |
+| simId      | number  |  No|No| SIM card ID.         |
+| slotIndex  | number  |  No |No| Card slot ID.          |
+| isEsim     | boolean |  No| No| Whether the SIM card is an eSim.<br>- **true**: The SIM card is an eSim.<br>- **false**: The SIM card is not an eSim.|
+| isActive   | boolean |  No| No| Whether the card is activated.<br>**true**: activated.<br>**false**: not activated. |
+| iccId      | string  |  No| No| ICCID number.       |
+| showName   | string  |  No| No| SIM card display name.   |
+| showNumber | string  |  No| No| SIM card display number.   |

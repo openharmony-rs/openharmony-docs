@@ -26,10 +26,10 @@ Defines the version information required for data restore. You can determine the
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name| Type  | Mandatory| Description            |
-| ---- | ------ | ---- | ---------------- |
-| code | number | Yes  | Internal version number of the application.  |
-| name | string | Yes  | Version name of the application.|
+| Name| Type  | Read-Only| Optional| Description            |
+| ---- | ------ | ---- | --- | ---------------- |
+| code | number | No  | No | Internal version number of the application.  |
+| name | string | No  | No | Version name of the application.|
 
 ## BackupExtensionAbility
 
@@ -39,9 +39,9 @@ Implements backup and restore for application access data. You can use [onBackup
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name                 | Type                                                             | Mandatory| Description                                               |
-| --------------------- | ----------------------------------------------------------------- | ---- | --------------------------------------------------- |
-| context<sup>11+</sup> | [BackupExtensionContext](js-apis-file-backupextensioncontext.md) | Yes | Context of the BackupExtensionAbility. This context is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).|
+| Name                 | Type                                                             | Read-Only| Optional| Description                                               |
+| --------------------- | ----------------------------------------------------------------- | ---- | --- | --------------------------------------------------- |
+| context<sup>11+</sup> | [BackupExtensionContext](js-apis-file-backupextensioncontext.md) | No | No| Context of the BackupExtensionAbility. This context is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).|
 
 ### onBackup
 
@@ -56,7 +56,7 @@ Called when data is being backed up. You need to implement extended data backup 
   ```ts
   class BackupExt extends BackupExtensionAbility {
     async onBackup() {
-      console.log('onBackup');
+      console.info('onBackup');
     }
   }
   ```
@@ -104,7 +104,7 @@ class BackupExt extends BackupExtensionAbility {
         // When backupInfo is empty, you need to handle this based on the service logic of the application.
         console.info("backupInfo is empty");
       }
-      console.log(`onBackupEx ok`);
+      console.info(`onBackupEx ok`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -141,7 +141,7 @@ class BackupExt extends BackupExtensionAbility {
         // When backupInfo is empty, you need to handle this based on the service logic of the application.
         console.info("backupInfo is empty");
       }
-      console.log(`onBackupEx ok`);
+      console.info(`onBackupEx ok`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -177,7 +177,7 @@ Called when data is being restored. You need to implement the extended data rest
 
   class BackupExt extends BackupExtensionAbility {
     async onRestore(bundleVersion : BundleVersion) {
-      console.log(`onRestore ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestore ok ${JSON.stringify(bundleVersion)}`);
     }
   }
   ```
@@ -227,7 +227,7 @@ class BackupExt extends BackupExtensionAbility {
         // When restoreInfo is empty, you need to handle this based on the service logic of the application.
         console.info("restoreInfo is empty");
       }
-      console.log(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -264,7 +264,7 @@ class BackupExt extends BackupExtensionAbility {
         // When restoreInfo is empty, you need to handle this based on the service logic of the application.
         console.info("restoreInfo is empty");
       }
-      console.log(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -330,7 +330,7 @@ Called to return the progress information. This callback is executed synchronous
 
     // In the following code, the appJob method is the simulated service code, and args specifies the parameters of appJob(). This method is used to start a worker thread in the task pool.
     async onBackup() {
-      console.log(`onBackup begin`);
+      console.info(`onBackup begin`);
       let args = 100; // args is a parameter of appJob().
       let jobTask: taskpool.Task = new taskpool.LongTask(appJob, this.progressInfo, args);
       try {
@@ -339,11 +339,11 @@ Called to return the progress information. This callback is executed synchronous
         console.error("onBackup error." + error.message);
       }
       taskpool.terminateTask(jobTask); // Manually destroy the task.
-      console.log(`onBackup end`);
+      console.info(`onBackup end`);
     }
 
     async onRestore() {
-      console.log(`onRestore begin`);
+      console.info(`onRestore begin`);
       let args = 100; // args is a parameter of appJob().
       let jobTask: taskpool.Task = new taskpool.LongTask(appJob, this.progressInfo, args);
       try {
@@ -352,19 +352,19 @@ Called to return the progress information. This callback is executed synchronous
         console.error("onRestore error." + error.message);
       }
       taskpool.terminateTask(jobTask); // Manually destroy the task.
-      console.log(`onRestore end`);
+      console.info(`onRestore end`);
     }
  
 
     onProcess(): string {
-      console.log(`onProcess begin`);
+      console.info(`onProcess begin`);
       return this.progressInfo.getMigrateProgress();
     }
   }
 
   @Concurrent
   function appJob(progressInfo: MigrateProgressInfo, args: number) : string {
-    console.log(`appJob begin, args is: ` + args);
+    console.info(`appJob begin, args is: ` + args);
     // Update the processing progress during service execution.
     let currentProcessed: number = 0;
     // Simulate the actual service logic.

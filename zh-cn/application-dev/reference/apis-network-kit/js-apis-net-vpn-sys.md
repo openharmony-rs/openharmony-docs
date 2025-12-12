@@ -509,14 +509,14 @@ VPN 配置参数。
 
 | 名称                | 类型                                                           | 只读 |可选| 说明                                |
 | ------------------- | -------------------------------------------------------------- | ---- | ---|----------------------------------- |
-| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN 虚拟网卡的 IP 地址。            |
-| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | 否   |是 |VPN 虚拟网卡的路由信息。            |
-| dnsAddresses        | Array\<string\>                                                | 否   |是 |DNS 服务器地址信息。                |
-| searchDomains       | Array\<string\>                                                | 否   | 是|DNS 的搜索域列表。                  |
-| mtu                 | number                                                         | 否   |是 |最大传输单元 MTU 值(单位:字节)。     |
-| isIPv4Accepted      | boolean                                                        | 否   | 是| 是否支持 IPV4, 默认值为 true。      |
-| isIPv6Accepted      | boolean                                                        | 否   |是 |是否支持 IPV6, 默认值为 flase。     |
-| isLegacy            | boolean                                                        | 否   |是 |是否支持内置 VPN, 默认值为 flase。   |
-| isBlocking          | boolean                                                        | 否   |是 |是否阻塞模式, 默认值为 flase。       |
-| trustedApplications | Array\<string\>                                                | 否   |是 |白名单信息, string 类型表示的包名。  |
-| blockedApplications | Array\<string\>                                                | 否   |是 |黑名单信息, string 类型表示的包名。  |
+| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的 IP 地址。            |
+| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | 否   |是 | VPN虚拟网卡的路由信息。            |
+| dnsAddresses        | Array\<string\>                                                | 否   |是 | DNS服务器地址信息。                |
+| searchDomains       | Array\<string\>                                                | 否   | 是| DNS 的搜索域列表。                  |
+| mtu                 | number                                                         | 否   |是 |最大传输单元MTU值(单位:字节)。     |
+| isIPv4Accepted      | boolean                                                        | 否   | 是| 是否支持IPv4。true表示支持IPv4，false表示不支持IPv4。默认值为true。      |
+| isIPv6Accepted      | boolean                                                        | 否   |是 |是否支持IPv6。true表示支持IPv6，false表示不支持IPv6。默认值为false。     |
+| isLegacy            | boolean                                                        | 否   |是 |是否支持内置VPN。true表示支持内置VPN，false表示不支持内置VPN。默认值为false。   |
+| isBlocking          | boolean                                                        | 否   |是 |是否阻塞模式。true表示是阻塞模式，false表示不是阻塞模式。默认值为false。       |
+| trustedApplications | Array\<string\>                                                | 否   |是 | string类型表示的包名可以接入VPN网络。  |
+| blockedApplications | Array\<string\>                                                | 否   |是 | string类型表示的包名不能接入VPN网络。  |

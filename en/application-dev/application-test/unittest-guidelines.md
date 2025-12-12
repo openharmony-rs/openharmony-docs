@@ -252,7 +252,7 @@ Example 11: Execute test cases for a specified number of times.
     | OHOS_REPORT_STATUS: numtests | Total number of test cases in the current test package.|
     | OHOS_REPORT_STATUS: stream | Error information of the current test case.|
     | OHOS_REPORT_STATUS: test| Name of the current test case.|
-    | OHOS_REPORT_STATUS_CODE | Execution result of the current test case. **0**: pass.<br>**1**: error.<br>**2**: fail.|
+    | OHOS_REPORT_STATUS_CODE | Execution status of the current test case. **1**: The test case starts to be executed. **0**: The test case is successfully executed. **-1**: An error is reported during the test case execution. **-2**: The test case fails to be executed.|
     | OHOS_REPORT_STATUS: consuming | Time spent in executing the current test case, in milliseconds.|
 2. After the command execution is complete, the framework prints the following log information:
     ```
@@ -634,7 +634,7 @@ After the **when** function is executed, you need to use the following functions
 
 **ArgumentMatchers**
 
-**ArgumentMatchers** provides enums and functions for customizing function parameters. You can use it to set an expected return value based on a rule.
+**ArgumentMatchers** is used to customize function parameters, allowing you to set expected return values based on rules. It is provided as an enumeration value or a function.
 | Enum| Description                          |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | any | Returns the expected value if a parameter of any type (except **undefined** and **null**) is passed in. **ArgumentMatchers.any** must be used.                                                                          |
@@ -642,11 +642,11 @@ After the **when** function is executed, you need to use the following functions
 | anyBoolean | Returns the expected value if a Boolean value is passed in. This API must be called by **ArgumentMatchers.anyBoolean**.                                                                              |
 | anyFunction | Returns the expected value if a function is passed in. This API must be called by **ArgumentMatchers.anyFunction**.                                                                            |
 | anyNumber | Returns the expected value if a number is passed in. This API must be called by **ArgumentMatchers.anyNumber**.                                                                                    |
-| anyObj | Returns the expected value if an object is passed in. This API must be called by **ArgumentMatchers.anyObj**.
+| anyObj | Returns the expected value if an object is passed in. This API must be called by **ArgumentMatchers.anyObj**.|
 
 | API| Description   |
 | --- |--------------|                                           
-| matchRegexs | Returns the expected value if a parameter that matches the regular expression is passed in. This API must be called by **ArgumentMatchers.matchRegexs(Regex)**.
+| matchRegexs | Returns the expected value if a parameter that matches the regular expression is passed in. This API must be called by **ArgumentMatchers.matchRegexs(Regex)**.|
 
 
 > **NOTE**

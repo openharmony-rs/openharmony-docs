@@ -532,6 +532,7 @@ The development procedure is as follows:
             .mode(NavigationMode.Stack)
             .height('100%')
             .width('100%')
+            .margin({top:250})
           }
         }
         ```
@@ -566,6 +567,7 @@ The development procedure is as follows:
             })
             .height('100%')
             .width('100%')
+            .margin({top:250})
           }
         }
         ```

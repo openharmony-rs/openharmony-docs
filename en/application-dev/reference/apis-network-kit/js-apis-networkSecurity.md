@@ -61,17 +61,17 @@ Defines the certificate data.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name | Type                  | Mandatory     | Description          |
-| ----- | --------------------- | --------- | -------------- |
-| type  | CertType              | Yes     | Certificate type. |
-| data  | string \| ArrayBuffer | Yes      | Certificate data.     |
+| Name | Type                  | Read-Only     |Optional| Description          |
+| ----- | --------------------- | --------- | ----|---------- |
+| type  | CertType              | No   |No|Certificate type. |
+| data  | string \| ArrayBuffer | No   | No|Certificate data.     |
 
 
 ## networkSecurity.certVerification
 
 certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application.
+Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -153,7 +153,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application.
+Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Communication.NetStack
 

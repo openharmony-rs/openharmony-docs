@@ -1,5 +1,13 @@
 # ArkUI_TransitionEffect
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 定义transition属性配置转场参数对象。

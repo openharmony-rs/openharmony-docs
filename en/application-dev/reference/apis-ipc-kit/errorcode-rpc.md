@@ -2,8 +2,9 @@
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
-<!--SE: @zhaopeng_gitee-->
-<!--TSE: @maxiaorong2-->
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -215,7 +216,7 @@ Failed to allocate memory during serialization.
 
 **Possible Causes**
 
-The data to write is too large.
+The data to write is too large, which depends on the available contiguous memory on the current heap.
 
 **Solution**
 

@@ -1,5 +1,12 @@
 # @ohos.multimodalInput.mouseEvent (Mouse Event)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **mouseEvent** module provides mouse events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
 > **NOTE**
@@ -22,13 +29,13 @@ Enumerates mouse event types.
 | ----------- | -------- | -------------------- |
 | CANCEL      | 0   | Canceled.            |
 | MOVE        | 1   | Moving of the mouse pointer.            |
-| BUTTON_DOWN | 2   | Pressing of a mouse button.        |
-| BUTTON_UP   | 3   | Release of a mouse button.        |
+| BUTTON_DOWN | 2   | Mouse button press.        |
+| BUTTON_UP   | 3   | Mouse button release.        |
 | AXIS_BEGIN  | 4   | Beginning of the mouse axis event.|
 | AXIS_UPDATE | 5   | Updating of the mouse axis event.|
 | AXIS_END    | 6   | Mouse axis event ended.|
-| ACTION_DOWN<sup>11+</sup> | 7   | Finger pressing on the touchpad.|
-| ACTION_UP<sup>11+</sup> | 8   | Finger lift from the touchpad.|
+| ACTION_DOWN<sup>11+</sup> | 7   | Touchpad press.|
+| ACTION_UP<sup>11+</sup> | 8   | Touchpad release.|
 
 ## Button
 
@@ -55,9 +62,9 @@ Enumerates mouse axis types.
 
 | Name               | Value    | Description   |
 | ----------------- | ------- | ----- |
-| SCROLL_VERTICAL   | 0 | Vertical scroll axis.|
-| SCROLL_HORIZONTAL | 1 | Horizontal scroll axis.|
-| PINCH             | 2 | Pinch axis.  |
+| SCROLL_VERTICAL   | 0 | Vertical scroll axis of the mouse.|
+| SCROLL_HORIZONTAL | 1 | Horizontal scroll axis of the mouse.|
+| PINCH             | 2 | Pinch axis of the mouse.  |
 
 
 ## AxisValue
@@ -66,10 +73,10 @@ Defines the mouse axis type and axis value.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| Name   | Type  | Readable  | Writable  | Description  |
+| Name   | Type  | Read-Only  | Optional  | Description  |
 | ----- | ------ | ---- | ---- | ---- |
-| axis  | [Axis](#axis)   | Yes   | No   | Axis type. |
-| value | number | Yes   | No   | Axis value. |
+| axis  | [Axis](#axis)   | No   | No   | Enumerates mouse axis types. |
+| value | number | No   | No   | Mouse axis value. |
 
 ## ToolType<sup>11+</sup>
 
@@ -79,10 +86,10 @@ Enumerates tool types.
 
 | Name     | Value | Description   |
 | ------- | ------| ----- |
-| UNKNOWN<sup>11+</sup> | 0 | Unknown type. |
-| MOUSE<sup>11+</sup>  | 1 | Mouse.|
-| JOYSTICK<sup>11+</sup> | 2 | Joystick.|
-| TOUCHPAD<sup>11+</sup> | 3 | Touchpad.|
+| UNKNOWN | 0 | Unknown type. |
+| MOUSE  | 1 | Mouse.|
+| JOYSTICK | 2 | Joystick.|
+| TOUCHPAD | 3 | Touchpad.|
 
 ## MouseEvent
 
@@ -90,25 +97,27 @@ Defines the mouse event.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| Name            | Type       | Readable  | Writable  | Description                                      |
+| Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| action         | [Action](#action)      | Yes   | No   | Enumerates mouse event actions.                                  |
-| screenX        | number      | Yes   | No   | Horizontal coordinate of the mouse pointer on the screen.                            |
-| screenY        | number      | Yes   | No   | Vertical coordinate of the mouse pointer on the screen.                            |
-| windowX        | number      | Yes   | No   | Horizontal coordinate of the mouse pointer in the window.                              |
-| windowY        | number      | Yes   | No   | Vertical coordinate of the mouse pointer in the window.                              |
-| rawDeltaX      | number      | Yes   | No   | Horizontal coordinate offset relative to the previous reported mouse pointer position.|
-| rawDeltaY      | number      | Yes   | No   | Vertical coordinate offset relative to the previous reported mouse pointer position.                         |
-| button         | [Button](#button)      | Yes   | No   | Mouse button.                      |        
-| pressedButtons | [Button](#button)[]    | Yes   | No   | Button being pressed.                             |
-| axes           | [AxisValue](#axisvalue)[] | Yes   | No   | All axis data contained in the event.                              |
-| pressedKeys    | [KeyCode](js-apis-keycode.md#keycode)[]   | Yes   | No   | List of pressed keys.                           |
-| ctrlKey        | boolean     | Yes   | No   | Whether ctrlKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.   |
-| altKey         | boolean     | Yes   | No   | Whether altKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.                        |
-| shiftKey       | boolean     | Yes   | No   | Whether shiftKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.                      |
-| logoKey        | boolean     | Yes   | No   | Whether logoKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.                       |
-| fnKey          | boolean     | Yes   | No   | Whether fnKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.                         |
-| capsLock       | boolean     | Yes   | No   | Whether capsLock is active.<br>The value **true** indicates that capsLock is active, and the value **false** indicates the opposite. |
-| numLock        | boolean     | Yes   | No   | Whether numLock is active.<br>The value **true** indicates that numLock is active, and the value **false** indicates the opposite.                       |
-| scrollLock     | boolean     | Yes   | No   | Whether scrollLock is active.<br>The value **true** indicates that scrollLock is active, and the value **false** indicates the opposite.                    |
-| toolType<sup>11+</sup> | [ToolType](#tooltype11) | Yes   | No   | Tool type.                    |
+| action         | [Action](#action)      | No   | No   | Enumerates mouse event types.                        |
+| screenX        | number      | No   | No   | X coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be set to an integer.|
+| screenY        | number      | No   | No   | X coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be set to an integer.|
+| windowX        | number      | No   | No   | X coordinate in the relative coordinate system with the upper-left corner of the window where the mouse is located as the origin. The value can only be set to an integer. |
+| windowY        | number      | No   | No   | Y coordinate in the relative coordinate system with the upper-left corner of the window where the mouse is located as the origin. The value can only be set to an integer. |
+| rawDeltaX      | number      | No   | No   | X coordinate offset of the current mouse event relative to the last event. The value can only be set to an integer.|
+| rawDeltaY      | number      | No   | No   | Y coordinate offset of the current mouse event relative to the last event. The value can only be set to an integer.|
+| button         | [Button](#button)      | No   | No   | Enumerates mouse buttons.                      |        
+| pressedButtons | [Button](#button)[]    | No   | No   | Button being pressed.                             |
+| axes           | [AxisValue](#axisvalue)[] | No   | No   | Defines the mouse axis type and axis value.                              |
+| pressedKeys    | [KeyCode](js-apis-keycode.md#keycode)[]   | No   | No   | List of pressed keys.                           |
+| ctrlKey        | boolean     | No   | No   | Whether ctrlKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.   |
+| altKey         | boolean     | No   | No   | Whether altKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.                        |
+| shiftKey       | boolean     | No   | No   | Whether shiftKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.                      |
+| logoKey        | boolean     | No   | No   | Whether logoKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.                       |
+| fnKey          | boolean     | No   | No   | Whether fnKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.                         |
+| capsLock       | boolean     | No   | No   | Whether capsLock is enabled.<br>The value **true** indicates that capsLock is enabled, and the value **false** indicates the opposite. |
+| numLock        | boolean     | No   | No   | Whether numLock is enabled.<br>The value **true** indicates that numLock is enabled, and the value **false** indicates the opposite.                       |
+| scrollLock     | boolean     | No   | No   | Whether scrollLock is enabled.<br>The value **true** indicates that scrollLock is enabled, and the value **false** indicates the opposite.                    |
+| toolType<sup>11+</sup> | [ToolType](#tooltype11) | No   | No   | Tool type.                    |
+| globalX<sup>20+</sup> | number | No   | Yes   | X coordinate of the mouse event in the global coordinate system with the upper-left corner of the primary screen as the origin. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the X coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
+| globalY<sup>20+</sup> | number | No   | Yes   | Y coordinate of the mouse event in the global coordinate system with the upper-left corner of the primary screen as the origin. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the Y coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|

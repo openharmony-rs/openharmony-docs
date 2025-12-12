@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于设置下一帧渲染时需要执行的任务。
 
@@ -91,7 +91,7 @@ onIdle(timeLeftInNano: number): void
 **示例：**
 
 ```ts
-import { FrameCallback } from '@ohos.arkui.UIContext';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyIdleCallback extends FrameCallback {
   private tag: string;

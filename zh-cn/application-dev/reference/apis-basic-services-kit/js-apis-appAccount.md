@@ -3196,7 +3196,7 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback&lt;void&gt;)
 
 addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 
-根据账号名和额外信息添加应用账号。使用callback异步回调。使用Promise异步回调。
+根据账号名和额外信息添加应用账号。使用Promise异步回调。
 
 > **说明：**  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9-2)替代。

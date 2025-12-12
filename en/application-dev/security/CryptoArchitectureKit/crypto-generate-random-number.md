@@ -73,7 +73,7 @@ The random number generation algorithm uses the **RAND_priv_bytes** interface of
     let len = 24; // Generate a 24-byte random number.
     try {
       let randData = rand.generateRandomSync(len);
-      if (randData !== null) {
+      if (randData.data.length !== 0) {
         console.info("[Sync]: rand result: " + randData.data);
       } else {
         console.error("[Sync]: get rand result fail!");

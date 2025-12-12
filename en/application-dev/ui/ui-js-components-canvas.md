@@ -1,7 +1,13 @@
-# &lt;canvas&gt; Development
+# Canvas
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-The **&lt;canvas&gt;** component provides a canvas for drawing customized graphics. For details, see [canvas](../reference/apis-arkui/arkui-js/js-components-canvas-canvas.md).
+The **&lt;canvas&gt;** component provides a canvas for drawing customized graphics. For details, see [CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md).
 
 
 ## Creating a &lt;canvas&gt; Component
@@ -9,7 +15,7 @@ The **&lt;canvas&gt;** component provides a canvas for drawing customized graphi
 Create a **&lt;canvas&gt;** component in the .hml file under **pages/index**.
 
 
-```
+```html
 <!-- xxx.hml -->
 <div class="container">
   <canvas></canvas>

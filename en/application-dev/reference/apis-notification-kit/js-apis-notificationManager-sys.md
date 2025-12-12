@@ -4,7 +4,7 @@
 <!--Owner: @michael_woo888-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationManager** module provides notification management capabilities, covering notifications, notification slots, notification enabled status, and notification badge status.
 
@@ -762,9 +762,9 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 
 Sets whether to enable the notification badge for a specified application. This API uses an asynchronous callback to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -817,9 +817,9 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 Sets whether to enable the notification badge for a specified application. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -874,9 +874,9 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 
 Checks whether the notification badge is enabled for a specified application. This API uses an asynchronous callback to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -928,9 +928,9 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 Checks whether the notification badge is enabled for a specified application. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -983,11 +983,11 @@ notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
 
 setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
-Sets the notification slot for a specified application. This API uses a promise to return the result.
-
-This API is not supported on wearables.
+Sets the slot flags for a specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1047,9 +1047,9 @@ Sets the notification slot for a specified application. This API uses an asynchr
 
 Before setting a notification slot, create a slot through [addSlot](#notificationmanageraddslot).
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1107,9 +1107,9 @@ Sets the notification slot for a specified application. This API uses a promise 
 
 Before setting a notification slot, create a slot through [addSlot](#notificationmanageraddslot).
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1169,9 +1169,9 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 Obtains the notification slot flag of a specified application. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1225,9 +1225,9 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 Obtains the notification slots of a specified application. This API uses an asynchronous callback to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1279,9 +1279,9 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 Obtains the notification slots of a specified application. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1336,9 +1336,9 @@ getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): voi
 
 Obtains the number of notification slots of a specified application. This API uses an asynchronous callback to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1392,9 +1392,9 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 Obtains the number of notification slots of a specified application. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1764,9 +1764,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 
 Sets the DND time. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1822,9 +1822,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 Sets the DND time. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1882,9 +1882,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: AsyncCallb
 
 Sets the DND time for a specified user. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1945,9 +1945,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise\<void\>
 
 Sets the DND time for a specified user. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2010,9 +2010,9 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 
 Obtains the DND time. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2061,9 +2061,9 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 
 Obtains the DND time. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2108,9 +2108,9 @@ getDoNotDisturbDate(userId: number, callback: AsyncCallback\<DoNotDisturbDate\>)
 
 Obtains the DND time of a specified user. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2164,9 +2164,9 @@ getDoNotDisturbDate(userId: number): Promise\<DoNotDisturbDate\>
 
 Obtains the DND time of a specified user. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2222,9 +2222,9 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 
 Checks whether DND mode is supported. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2272,9 +2272,9 @@ isSupportDoNotDisturbMode(): Promise\<boolean\>
 
 Checks whether DND mode is supported. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2317,9 +2317,9 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 Sets whether to enable distributed notification on this device. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2369,9 +2369,9 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 Sets whether to enable distributed notification on this device. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2423,9 +2423,9 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 Sets whether to enable distributed notification for a specified application. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2482,9 +2482,9 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 Sets whether to enable distributed notification for a specified application. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2541,9 +2541,9 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 Checks whether distributed notification is enabled for a specified application. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2596,9 +2596,9 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 Checks whether distributed notification is enabled for a specified application. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2654,9 +2654,9 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 Obtains the notification reminder type. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2703,9 +2703,9 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 Obtains the notification reminder type. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3210,9 +3210,9 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 Sets the enabled status of a slot type for the specified application. This API uses an asynchronous callback to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3269,9 +3269,9 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 Sets the enabled status of a slot type for the specified application. This API uses an asynchronous callback to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3330,9 +3330,9 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 Sets the enabled status of a slot type for the specified application. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3389,11 +3389,11 @@ notificationManager.setNotificationEnableSlot(
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncCallback\<boolean\>): void
 
-Checks whether a specified notification slot type is enabled for a specified application. This API uses an asynchronous callback to return the result.
-
-This API is not supported on wearables.
+Checks whether a notification slot type is enabled for the specified application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -3446,11 +3446,11 @@ notificationManager.isNotificationSlotEnabled(
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolean\>  
 
-Checks whether a specified notification slot type is enabled for a specified application. This API uses a promise to return the result.
-
-This API is not supported on wearables.
+Checks whether a notification slot type is enabled for the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3505,9 +3505,9 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 Sets whether to enable the notification sync feature for devices where the application is not installed. This API uses an asynchronous callback to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3561,9 +3561,9 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 
 Sets whether to enable the notification sync feature for devices where the application is not installed. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3720,9 +3720,11 @@ notificationManager.getSyncNotificationEnabledWithoutApp(userId).then((data: boo
 
 on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => NotificationCheckResult): void
 
-Subscribes to notification events. The notification service sends the notification information in the callback to the verification program. The verification program returns the verification result to determine whether to publish the notification, for example, controlling the publish frequency of marketing notifications.
+Subscribes to notification events. The notification service sends the notification information in the callback to the verification program. The verification program returns the verification result to determine whether to publish the notification, for example, controlling the publication frequency of marketing notifications.
 
 Each [SlotType](./js-apis-notificationManager.md#slottype) in the system can have only one registrant.
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3773,9 +3775,11 @@ try{
 
 on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: (checkInfo: NotificationCheckInfo) => Promise\<NotificationCheckResult\>): void
 
-Subscribes to notification events. The notification service sends the notification information in the callback to the verification program. The verification program returns the verification result to determine whether to publish the notification, for example, controlling the publish frequency of marketing notifications. This API uses a promise to return the result.
+Subscribes to notification events. The notification service sends the notification information in the callback to the verification program. The verification program returns the verification result to determine whether to publish the notification, for example, controlling the publication frequency of marketing notifications. This API uses a promise to return the result.
 
 Each [SlotType](./js-apis-notificationManager.md#slottype) in the system can have only one registrant.
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3829,6 +3833,8 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 
 Unsubscribes from notification events.
 
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER, ohos.permission.NOTIFICATION_AGENT_CONTROLLER
@@ -3870,9 +3876,9 @@ triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOption
 
 Triggers a system live view notification. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3937,9 +3943,9 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
 Subscribes to the system live view notification. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -3991,11 +3997,11 @@ notificationManager.subscribeSystemLiveView(subscriber).then(() => {
 
 setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: boolean): Promise<void\>
 
-Sets whether a specified application supports cross-device collaboration. This API uses a promise to return the result.
-
-This API is not supported on TVs and wearables.
+Sets whether a specified application enables cross-device collaboration. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4007,7 +4013,7 @@ This API is not supported on TVs and wearables.
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes  | Bundle information of the application.                  |
 | deviceType | string | Yes  | Device type.|
-| enable   | boolean                  | Yes  | Whether to enable cross-device collaboration. The value **true** means to enable distributed notification, and **false** means the opposite.|
+| enable   | boolean                  | Yes  | Whether a specified application enables cross-device collaboration. The value **true** indicates that the cross-device collaboration is enabled, and the value **false** indicates the opposite.|
 
 **Return value**
 
@@ -4050,15 +4056,86 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 });
 ```
 
+## notificationManager.setDistributedEnableByBundles<sup>20+</sup>
+
+setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableInfo\>, deviceType: string): Promise\<void\>
+
+Sets whether applications enable cross-device collaboration. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                      |
+| -------- | ------------------------ | ---- | -------------------------- |
+| bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](#distributedbundleenableinfo20)\>             | Yes  | Applications to set.                  |
+| deviceType | string | Yes  | Device type.|
+
+
+**Return value**
+
+| Type| Description|
+| ---- | ----|
+| Promise\<void\> | Promise that returns no result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                          |
+| 1600002  | Marshalling or unmarshalling error.      |
+| 1600003  | Failed to connect to the service.               |
+| 1600010  | Distributed operation failed.            |
+| 1600012  | No memory space.                    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle1: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName1",
+    uid: 1,
+    enable: true
+};
+let bundle2: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName2",
+    uid: 2,
+    enable: true
+};
+let bunles: Array<notificationManager.DistributedBundleEnableInfo> = [
+    bundle1,bundle2
+]
+
+let deviceType: string = "liteWearable";
+notificationManager.setDistributedEnableByBundles(bunles, deviceType).then(() => {
+    console.info("setDistributedEnableByBundles success");
+}).catch((err: BusinessError) => {
+    console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.isDistributedEnabledByBundle<sup>12+</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean\>
 
-Obtains whether a specified application supports cross-device collaboration. This API uses a promise to return the result.
-
-This API is not supported on TVs and wearables.
+Obtains whether a specified application enables cross-device collaboration. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4075,7 +4152,7 @@ This API is not supported on TVs and wearables.
 
 | Type| Description|
 | ---- | ----|
-| Promise\<boolean\> | Promise used to return the result (true: enabled; false: disabled).|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device collaboration is enabled, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -4117,9 +4194,9 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 Sets a smart reminder for cross-device collaboration. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4175,9 +4252,9 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 Obtains a smart reminder for cross-device collaboration. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4231,9 +4308,9 @@ setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void
 
 Sets the badge count for other applications. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -4289,11 +4366,11 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 
 Obtains a notification slot of a specified application. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 Before obtaining the notification slot, create a slot through [addSlot](#notificationmanageraddslot).
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4352,9 +4429,9 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
 Adds the Do Not Disturb profile configuration information. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4423,9 +4500,9 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 
 Deletes the Do Not Disturb profile configuration. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4482,9 +4559,9 @@ setAdditionalConfig(key: string, value: string): Promise\<number\>
 
 Sets the additional system configuration information of the notification. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
@@ -4494,7 +4571,7 @@ This API is not supported on TVs and wearables.
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| key   | string | Yes | Additional configuration key. Currently, only **RING_TRUSTLIST_PKG** is supported, indicating that the application supports [customized ring tone](./js-apis-inner-notification-notificationRequest.md#notificationrequest-1).|
+| key   | string | Yes | Additional configuration key. Currently, only **RING_TRUSTLIST_PKG** is supported, indicating that the application supports [custom ringtone](./js-apis-inner-notification-notificationRequest.md#notificationrequest-1).|
 | value   | string | Yes | Additional configuration value. Example: [bundleName1,bundleName2].|
 
 **Return value**
@@ -4535,9 +4612,9 @@ getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
 
 Queries the configuration information about the Do Not Disturb profile. This API uses a promise to return the result.
 
-This API is not supported on TVs and wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4588,9 +4665,9 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 
 Disables the application from publishing notifications by adding the application bundle name to the permission control list. This function can be disabled as required.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.MANAGE_EDM_POLICY
 
@@ -4601,7 +4678,7 @@ This API is not supported on wearables.
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | disabled | boolean | Yes  | Whether to enable the permission control list for publishing notifications (**true**: enabled; **false**: disabled).|
-| bundleList | Array\<string\> | Yes  | Application list under the permission control list. The bundle name is used to represent the application.|
+| bundleList | Array\<string\> | Yes  | Application list under the permission control list. The bundle name is used to represent a specific application.|
 
 **Return value**
 
@@ -4618,6 +4695,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. |
 | 1600001      | Internal error.                     |
 | 1600002      | Marshalling or unmarshalling error. |
 
@@ -4646,9 +4724,9 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userI
 
 Disables the application from publishing notifications by adding the application bundle name to the permission control list. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.MANAGE_EDM_POLICY
 
@@ -4750,7 +4828,7 @@ notificationManager.setTargetDeviceStatus("current", 1).then(() => {
 
 setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean): Promise\<void\>
 
-Sets whether the notification of a specified slot can be sent to devices of a specified type through cross-device collaboration. This API uses a promise to return the result.
+Sets whether notifications of a specified slot can be sent to devices of a specified type through cross-device collaboration. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4963,7 +5041,7 @@ notificationManager.isSilentReminderEnabled(bundle).then((data: notificationMana
 
 isDistributedEnabled(deviceType: string): Promise\<boolean\>
 
-Checks whether the device supports cross-device notifications. This API uses a promise to return the result.
+Checks whether a device enables cross-device notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4981,7 +5059,7 @@ Checks whether the device supports cross-device notifications. This API uses a p
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** means that the cross-device notifications are supported, and **false** means the opposite. Promise|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.  |
 
 **Error codes**
 
@@ -5021,7 +5099,7 @@ export default class EntryAbility extends UIAbility {
 
 setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
 
-Sets whether the device of a specified type supports cross-device notifications. This API uses a promise to return the result.
+Sets whether the device of a specified type enables cross-device notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -5033,14 +5111,14 @@ Sets whether the device of a specified type supports cross-device notifications.
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| enable   | boolean | Yes  | Whether the device of a specified type supports cross-device notifications. The value **true** means cross-device notifications are supported, and **false** means the opposite.|
+| enable   | boolean | Yes  | Whether the device of a specified type enables cross-device notification. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.|
 | deviceType | string | Yes  | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearables<br>- **wearable**: wearables<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
 
 **Return value**
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no result.  |
 
 **Error codes**
 
@@ -5081,7 +5159,7 @@ export default class EntryAbility extends UIAbility {
 
 getDistributedDeviceList(): Promise\<Array\<string\>\>
 
-Obtains the device types that support cross-device notifications. This API uses a promise to return the result.
+Obtains the device types that enable cross-device notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -5093,7 +5171,7 @@ Obtains the device types that support cross-device notifications. This API uses 
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<Array\<string\>\> | Promise used to return the list of devices that support cross-device notifications.|
+| Promise\<Array\<string\>\> | Promise used to return the result.  |
 
 **Error codes**
 
@@ -5127,6 +5205,142 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+## notificationManager.setRingtoneInfoByBundle<sup>21+</sup>
+
+setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
+
+Sets the custom ringtone information for an application. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| ringtoneInfo | [RingtoneInfo](#ringtoneinfo21) | Yes  | Custom ringtone information.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+
+**Example**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
+      let ringtoneInfo: notificationManager.RingtoneInfo = {
+        ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
+        ringtoneTitle: "ringtoneName",
+        ringtoneFileName: "ringtonePath",
+        ringtoneUri: "ringtoneUri",
+      }
+      notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
+        console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON: ' ${JSON.stringify(ringtoneInfo)}`);
+      }).catch((err: BusinessError) => {
+         console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+## notificationManager.getRingtoneInfoByBundle<sup>21+</sup>
+
+getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
+
+Obtains the custom ringtone information of an application. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<[RingtoneInfo](#ringtoneinfo21)\> | Promise used to return the result.|
+
+**Error codes**
+
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+| 1600024  | The specified bundle has no custom ringtone information.  |
+
+**Example**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
+      notificationManager.getRingtoneInfoByBundle(bundle)
+        .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
+          console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
+        }).catch((err: BusinessError) => {
+        console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
 
 ## DoNotDisturbDate
 
@@ -5134,11 +5348,11 @@ export default class EntryAbility extends UIAbility {
 
 **System API**: This is a system API.
 
-| Name | Type                                 | Mandatory| Description                  |
-| ----- | ------------------------------------- | ---- | ---------------------- |
-| type  | [DoNotDisturbType](#donotdisturbtype) | Yes  | DND time type.|
-| begin | Date                                  | Yes  | DND start time.|
-| end   | Date                                  | Yes  | DND end time.|
+| Name | Type                                  | Read-Only| Optional| Description                 |
+| ----- | ------------------------------------- | ---- | ---- | -------------------- |
+| type  | [DoNotDisturbType](#donotdisturbtype) | No  |  No | DND time type.|
+| begin | Date                                  | No  |  No | DND start time.|
+| end   | Date                                  | No  |  No | DND end time.|
 
 ## DoNotDisturbType
 
@@ -5235,10 +5449,9 @@ Subscriber of the system live view notification.
 
 **System API**: This is a system API.
 
-
-| Name   | Type                                 | Mandatory| Description                  |
-| ------- | ------------------------------------ | ---- | ---------------------- |
-| onResponse    | (notificationId: number, buttonOptions: [ButtonOptions](#buttonoptions11)) => void                         | No  | Callback when the button is touched.|
+| Name        | Type                                                                              | Read-Only| Optional| Description                  |
+| ----------- | ---------------------------------------------------------------------------------- | ---- | ---- | --------------------- |
+| onResponse  | (notificationId: number, buttonOptions: [ButtonOptions](#buttonoptions11)) => void | No  |  Yes | Callback when the button is touched.       |
 
 
 ## SlotType
@@ -5272,11 +5485,11 @@ Each bit can control the notification mode. When the bitwise OR operation is per
 
 **System API**: This is a system API.
 
-| Name | Type                                 | Mandatory| Description                  |
-| ----- | ------------------------------------- | ---- | ---------------------- |
-| id | number | Yes| ID of the Do Not Disturb profile.|
-| name | string  | Yes| Name of the Do Not Disturb profile.|
-| trustlist | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | No| Trustlist in Do Not Disturb profile.|
+| Name     | Type   | Read-Only| Optional| Description          |
+| --------- | ------ | ---- | ---- | ------------- |
+| id        | number | No  |  No | ID of the Do Not Disturb profile.|
+| name      | string | No  |  No | Name of the Do Not Disturb profile.|
+| trustlist | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | No| Yes| Trustlist in Do Not Disturb profile.|
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
@@ -5306,3 +5519,47 @@ Describes the switch state of notifications.
 | USER_MODIFIED_ON    | 1   | Enabled state set by the user.                |
 | SYSTEM_DEFAULT_OFF  | 2   | Initial disabled state before user settings.           |
 | SYSTEM_DEFAULT_ON   | 3   | Initial enabled state before user settings.                |
+
+## DistributedBundleEnableInfo<sup>20+</sup>
+
+Describes the bundle information of an application that enables cross-device collaboration.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name         | Type                                                      | Read-Only| Optional| Description             |
+| --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
+| bundleName   | string | No| No| Bundle name.         |
+| uid          | number | No| No| UID of the application.         |
+| enable       | boolean| No| Yes| Whether the application enables cross-device collaboration. The value **true** indicates that the cross-device collaboration is enabled, and the value **false** indicates the opposite.     |
+
+## RingtoneType<sup>21+</sup>
+
+Enumerates the custom ringtone types.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name                | Value | Description                              |
+| --------------------| --- | --------------------------------- |
+| RINGTONE_TYPE_SYSTEM   | 0   | System ringtone.           |
+| RINGTONE_TYPE_LOCAL    | 1   | Local ringtone.                |
+| RINGTONE_TYPE_ONLINE  | 2   | Online ringtone.           |
+| RINGTONE_TYPE_NONE   | 3   | Non-custom ringtone.                |
+
+## RingtoneInfo<sup>21+</sup>
+
+Describes the custom ringtone information.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name   | Type    | Read-Only| Optional| Description                    |
+| ------- | ------- | ---- | ---- | ----------------------- |
+| ringtoneType | [RingtoneType](#ringtonetype21)  |  No | No  | Type of the ringtone.|
+| ringtoneTitle | string  |  No | Yes  | Title of the ringtone. |
+| ringtoneFileName | string  |  No | Yes  | File name of the ringtone. |
+| ringtoneUri | string  |  No | Yes  | URI of the ringtone. |

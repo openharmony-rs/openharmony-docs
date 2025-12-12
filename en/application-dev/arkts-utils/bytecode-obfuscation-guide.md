@@ -12,6 +12,10 @@
 
 ## Enabling Bytecode Obfuscation
 
+### Constraints
+
+Bytecode obfuscation and source code obfuscation cannot be enabled at the same time. After bytecode obfuscation is enabled, source code obfuscation is automatically disabled.
+
 ### How to Use
 
 Since API version 20, the bytecode obfuscation capability has been integrated into the system. You can enable it in DevEco Studio as follows:
@@ -37,7 +41,9 @@ Since API version 20, the bytecode obfuscation capability has been integrated in
     -enable-bytecode-obfuscation-debugging  # Controls debug output. If this option is enabled, obfuscation logs are generated. By default, this option is disabled.
     ```
 
-    > **NOTE**<br>Bytecode HAR files will not be re-obfuscated during integration.
+    > **NOTE**
+    >
+    > Bytecode HAR files will not be re-obfuscated during integration.
 
 * Configuring obfuscation rules
     Enabling the bytecode obfuscation switch activates the default settings, which include obfuscation of functions and classes that are not in the top-level scope. To enable additional obfuscation features, customize the **obfuscation-rules.txt** file specified in the **files** field. Note that the default values in this file may vary across different versions of DevEco Studio.

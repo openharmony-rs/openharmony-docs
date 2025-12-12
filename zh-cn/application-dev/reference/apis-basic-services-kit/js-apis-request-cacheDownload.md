@@ -65,7 +65,7 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | 名称         | 类型       | 只读 | 可选 | 说明                |
 |------------|----------|----|----|-------------------|
-| dnsServers | string[] | 是  | 否  | 下载资源时使用的DNS服务器列表。 |
+| dnsServers | string[] | 是  | 否  | 下载资源时使用的dns服务器列表。 |
 
 ## PerformanceInfo<sup>20+</sup>
 

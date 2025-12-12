@@ -1,4 +1,10 @@
 # Supporting Accessibility
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhanghangkai10241-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -18,6 +24,7 @@ Here is an example using the **Column** component to enable accessibility groupi
 
 ```ts
 Column() {
+  Text("HelloWorld").fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
 ```
@@ -38,6 +45,7 @@ Here is an example using the **Column** component to set its accessibility level
 
 ```ts
 Column() {
+  Text("HelloWorld").fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
 .accessibilityLevel("yes")
@@ -53,6 +61,7 @@ Here is an example using the **Column** component to set its accessibility text 
 
 ```ts
 Column() {
+  Text("HelloWorld").fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
 .accessibilityLevel("yes")
@@ -67,6 +76,7 @@ Here is an example using the **Column** component to set its accessibility descr
 
 ```ts
 Column() {
+  Text("HelloWorld")
 }
 .accessibilityGroup(true)
 .accessibilityLevel("yes")
@@ -119,6 +129,7 @@ Here is an example using the **Column** component to set it as checked when mult
 
 ```ts
 Column() {
+  Text("HelloWorld").fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
 .accessibilityLevel("yes")
@@ -141,6 +152,7 @@ Here is an example using the **Column** component to let the system determine it
 
 ```ts
 Column() {
+  Text("HelloWorld").fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
 .accessibilityLevel("yes")

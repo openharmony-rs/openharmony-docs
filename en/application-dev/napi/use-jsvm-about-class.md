@@ -1,4 +1,4 @@
-# Working with Class Using JSVM-API
+# Working with Classes Using JSVM-API
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou; @string_sz-->
@@ -23,7 +23,7 @@ To begin with, it is important to understand the following basic concepts:
 | ------------------- | ---------------------------------- |
 | OH_JSVM_NewInstance   | Creates an instance from the given constructor.|
 | OH_JSVM_GetNewTarget  | Obtains the meta property **new.target** of a function.|
-| OH_JSVM_DefineClass   | Defines a JS class and associated functions within a C/C++ addon. It provides the capabilities of creating class constructors, defining attributes and methods, and supporting data interaction between C and JavaScript.|
+| OH_JSVM_DefineClass   | Defines a JS class and associated functions within a C/C++ addon. It allows you to define a constructor, methods, and properties that can be accessed from JS.|
 | OH_JSVM_Wrap           | Wraps a native instance in a JS object. You can use **OH_JSVM_Unwrap()** to retrieve the native instance later.|
 | OH_JSVM_Unwrap         | Unwraps the native instance that is previously encapsulated in a JS object.|
 | OH_JSVM_RemoveWrap     | Removes the wrapping after the native instance is unwrapped from a JS object.|
@@ -87,7 +87,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```
 <!-- @[oh_jsvm_newinstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutClass/newinstance/src/main/cpp/hello.cpp) -->
 
-JS Example
+JS example:
 ```cpp
 const char *srcCallNative = R"JS( 
    function Fruit(name) {
@@ -108,7 +108,7 @@ Call **OH_JSVM_GetNewTarget** to obtain the **new.target** value in a function. 
 
 ### OH_JSVM_DefineClass
 
-Defines a JS class and associated functions within a C/C++ addon. It allows you to define a constructor, methods, and properties that can be accessed from JS.
+Call **OH_JSVM_DefineClass** to define a JS class and associated functions within a C/C++ addon. It allows you to define a constructor, methods, and properties that can be accessed from JS.
 
 CPP code:
 
@@ -188,7 +188,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```
 <!-- @[oh_jsvm_defineclass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutClass/defineclass/src/main/cpp/hello.cpp) -->
 
-JS Example
+JS example:
 ```cpp
 const char *srcCallNative = R"JS( 
     defineClass();
@@ -216,7 +216,7 @@ Call **OH_JSVM_Wrap** to wrap a native instance in a JS object. You can use **OH
 
 ### OH_JSVM_Unwrap
 
-Unpacks the previously encapsulated native instance in the JavaScript object.
+Call **OH_JSVM_Unwrap** to unwrap the native instance that is previously encapsulated in a JS object.
 
 ### OH_JSVM_RemoveWrap
 
@@ -301,7 +301,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```
 <!-- @[oh_jsvm_removewrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutClass/removewrap/src/main/cpp/hello.cpp) -->
 
-JS Example
+JS example:
 ```cpp
 const char *srcCallNative = R"JS( 
     class Obj {};
@@ -326,7 +326,9 @@ JSVM OH_JSVM_RemoveWrap success
 JSVM deref_item
 ```
 ### OH_JSVM_DefineClassWithOptions
-> **NOTE**<br>The parent class passed in must be created by using an **OH_JSVM_DefineClass** API. Otherwise, the **JSVM_INVALID_ARG** error will be returned.
+> **Note:**
+>
+> The parent class passed in must be created by using an **OH_JSVM_DefineClass** API. Otherwise, the **JSVM_INVALID_ARG** error will be returned.
 **DefineClassOptions** supports the following options:
 - **JSVM_DEFINE_CLASS_NORMAL**: defines a class in normal mode. The default status is **JSVM_DEFINE_CLASS_NORMAL**.
 - **JSVM_DEFINE_CLASS_WITH_COUNT**: reserves **internal-field** slot for the created class.
@@ -502,7 +504,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 ```
-JS Example
+JS example:
 ```cpp
 const char *srcCallNative = R"JS(testDefineClassWithOptions();)JS";
 ```

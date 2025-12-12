@@ -24,7 +24,7 @@ This module contains the following classes:
 
 - [AuxiliaryPicture](arkts-apis-image-AuxiliaryPicture.md): used to display special information alongside the main picture, enriching the overall content of the image. The supported types of auxiliary pictures can be found in [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13).
 
-- [Metadata](arkts-apis-image-Metadata.md): used to store image metadata. The supported metadata types can be found in [MetadataType](arkts-apis-image-e.md#metadatatype13). It includes EXIF metadata and watermark cropping metadata, both stored in Key-Value pairs. The keys for EXIF metadata can be found in [PropertyKey](arkts-apis-image-e.md#propertykey7), and the keys for watermark cropping metadata can be found in [FragmentPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13).
+- [Metadata](arkts-apis-image-Metadata.md): used to store image metadata. The supported metadata types can be found in [MetadataType](arkts-apis-image-e.md#metadatatype13). It includes Exif metadata and watermark cropping metadata, both stored in Key-Value pairs. The keys for Exif metadata can be found in [PropertyKey](arkts-apis-image-e.md#propertykey7), and the keys for watermark cropping metadata can be found in [FragmentPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13).
 
 - [ImageReceiver](arkts-apis-image-ImageReceiver.md): acts as a consumer of images, used for receiving and reading images from a surface.
 

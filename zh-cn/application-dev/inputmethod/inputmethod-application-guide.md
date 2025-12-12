@@ -29,16 +29,16 @@
 
 2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ts、InputMethodService.ts、Index.ets以及KeyboardKeyData.ts。目录如下：
 
-``` 
-/src/main/
-├── ets/InputMethodExtensionAbility
-│       └──model/KeyboardController.ts			# 显示键盘
-│       └──InputMethodService.ts				# 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
-│       └──pages
-│         └── Index.ets						# 绘制键盘，添加输入删除功能
-│         └── KeyboardKeyData.ts			    # 键盘属性定义
-├── resources/base/profile/main_pages.json  
-```
+   ``` 
+   /src/main/
+   ├── ets/InputMethodExtensionAbility
+   │       └──model/KeyboardController.ts			# 显示键盘
+   │       └──InputMethodService.ts				# 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
+   │       └──pages
+   │         └── Index.ets						# 绘制键盘，添加输入删除功能
+   │         └── KeyboardKeyData.ts			    # 键盘属性定义
+   ├── resources/base/profile/main_pages.json  
+   ```
 
 ## 文件介绍
 
@@ -64,7 +64,7 @@
    }
    ```
 
-<!--RP2-->
+
 2. KeyboardController.ts文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
 
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
@@ -138,7 +138,7 @@
            await this.panel.moveTo(0, nonBarPosition);
            await this.panel.setUiContent('InputMethodExtensionAbility/pages/Index');
            // 获取输入法键盘与系统面板偏移区域大小，实际开发中可以根据实际情况判断是否需要实现
-	       let defaultDisplay = display.getDefaultDisplaySync();
+           let defaultDisplay = display.getDefaultDisplaySync();
            if (defaultDisplay !== undefined) {
              this.panel.getSystemPanelCurrentInsets(defaultDisplay.id)
                .then((insets: inputMethodEngine.SystemPanelInsets) => {
@@ -183,7 +183,7 @@
    
    export default keyboardController;
    ```
-   <!--RP2End-->
+
 3. KeyboardKeyData.ts文件。
 
    定义软键盘的按键显示内容。
@@ -339,8 +339,19 @@
    }
    ```
 
-<!--Del-->
-5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
+
+5. main_pages.json文件。对应ets/InputMethodExtensionAbility/pages/路径下键盘的绘制页面。
+
+   ``` JSON
+   {
+     "src": [
+       "InputMethodExtensionAbility/pages/Index"
+     ]
+   }
+   ```
+
+
+6. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
 
    ```json
    {
@@ -359,12 +370,7 @@
      }
    }
    ```
-<!--DelEnd-->
 
-
-<!--RP3-->
-
-<!--RP3End-->
 
 ## 约束与限制
 

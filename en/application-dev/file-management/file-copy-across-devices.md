@@ -10,7 +10,7 @@ The distributed file system provides the cross-device file copy capability for a
 
 ## How to Develop
 
-1. Connect the devices to form a Super Device.<br>
+1. Connect the devices to form a Super Device.
    Log in to the same account on two devices and ensure that Bluetooth and Wi-Fi are enabled. Bluetooth does not need to be connected, and Wi-Fi does not need to be connected to the same LAN.
 
 2. Grant the distributed data synchronization permission.
@@ -88,7 +88,7 @@ The distributed file system provides the cross-device file copy capability for a
    import { fileUri } from '@kit.CoreFileKit';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
-   // The context is passed from EntryAbility. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
    let pathDir: string = context.filesDir;
    let distributedPathDir: string = context.distributedFilesDir;
@@ -118,7 +118,7 @@ The distributed file system provides the cross-device file copy capability for a
     // Define the callback for accessing the distributed file directory.
     let listeners : fs.DfsListeners = {
       onStatus: (networkId: string, status: number): void => {
-        console.error(`Failed to access public directory, ${status}`);
+        console.error(`Failed to access public directory，${status}`);
       }
     };
     // Start to copy files cross devices.

@@ -79,7 +79,6 @@ create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 class Params {
   text: string = '';
@@ -118,7 +117,7 @@ class TextNodeController extends NodeController {
 
   // 开发者可自定义该方法实现布局更新
   update(message: string) {
-    console.log(`update message: ${message}`);
+    console.info(`update message: ${message}`);
     if (this.textNode !== null) {
       this.textNode.update(new Params(message));
     }
@@ -211,7 +210,6 @@ create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;P
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { PiPWindow, typeNode, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component

@@ -1,5 +1,12 @@
 # RemoteWindow (系统接口)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Graphic-->
+<!--Owner: @xubo85-->
+<!--Designer: @comicchang; @chensiyi_CE-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
 远程控制窗口组件，可以通过此组件控制应用窗口，提供启动退出过程中控件动画和应用窗口联动动画的能力。
 
 >  **说明：**
@@ -18,6 +25,10 @@ RemoteWindow(target: WindowAnimationTarget)
 
 通过窗口动画对象创建组件。
 
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **参数:**
 
 | 参数名 | 参数类型 | 必填  | 参数描述 |
@@ -28,24 +39,32 @@ RemoteWindow(target: WindowAnimationTarget)
 
 目标窗口，用来远程控制实现动画。
 
-| 参数      | 类型     | 描述 |
-| ------- | ------ | ----------------------- |
-| bundleName  | string | 动画窗口所对应的进程。|
-| abilityName | string | 动画窗口所对应的Ability。|
-| windowBounds | [RRect](#rrect) | 动画窗口实际大小。|
-| missionId  | number | 任务ID。|
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读  | 可选 | 说明 |
+| ------- | ------ | ------ | ------ | ----------------------- |
+| bundleName   | string          | 是 | 否 | 动画窗口所对应的进程。|
+| abilityName  | string          | 是 | 否 | 动画窗口所对应的Ability。|
+| windowBounds | [RRect](#rrect) | 是 | 否 | 动画窗口实际大小。|
+| missionId    | number          | 是 | 否 | 任务ID。|
 
 ## RRect
 
 圆角矩形。
 
-| 参数      | 类型     | 描述 |
-| ------- | ------ | ----------------------- |
-| left  | number | 动画窗口左上角相对于屏幕横坐标。|
-| top | number | 动画窗口左上角相对于屏幕纵坐标。|
-| width | number | 动画窗口宽度大小。|
-| height | number | 动画窗口高度大小。|
-| radius | number | 动画窗口圆角大小。|
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读  | 可选 | 说明 |
+| ------- | ------ | ------ | ------ | ----------------------- |
+| left   | number | 否 | 否 | 动画窗口左上角相对于屏幕横坐标。|
+| top    | number | 否 | 否 | 动画窗口左上角相对于屏幕纵坐标。|
+| width  | number | 否 | 否 | 动画窗口宽度大小。|
+| height | number | 否 | 否 | 动画窗口高度大小。|
+| radius | number | 否 | 否 | 动画窗口圆角大小。|
 
 ## 属性
 
@@ -79,21 +98,21 @@ export default class WindowAnimationControllerImpl implements windowAnimationMan
   onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget,
                          finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void
   {
-    console.log(`remote window animation onStartAppFromLauncher`);
+    console.info(`remote window animation onStartAppFromLauncher`);
     this.NotifyTargetUpdate(startingWindowTarget);
     finishedCallback.onAnimationFinish();
   }
 
   onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget,
                        finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-    console.log(`remote window animation onStartAppFromRecent`);
+    console.info(`remote window animation onStartAppFromRecent`);
     this.NotifyTargetUpdate(startingWindowTarget);
     finishedCallback.onAnimationFinish();
   }
 
   onStartAppFromOther(startingWindowTarget: windowAnimationManager.WindowAnimationTarget,
                       finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-    console.log(`remote window animation onStartAppFromOther`);
+    console.info(`remote window animation onStartAppFromOther`);
     this.NotifyTargetUpdate(startingWindowTarget);
     finishedCallback.onAnimationFinish();
   }
@@ -101,34 +120,34 @@ export default class WindowAnimationControllerImpl implements windowAnimationMan
   onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget,
                   toWindowTarget: windowAnimationManager.WindowAnimationTarget,
                   finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void{
-    console.log(`remote window animation onAppTransition`);
+    console.info(`remote window animation onAppTransition`);
     this.NotifyTargetUpdate(fromWindowTarget);
     finishedCallback.onAnimationFinish();
   }
 
   onMinimizeWindow(minimizingWindowTarget: windowAnimationManager.WindowAnimationTarget,
                    finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-    console.log(`remote window animation onMinimizeWindow`);
+    console.info(`remote window animation onMinimizeWindow`);
     this.NotifyTargetUpdate(minimizingWindowTarget);
     finishedCallback.onAnimationFinish();
   }
 
   onCloseWindow(closingWindowTarget: windowAnimationManager.WindowAnimationTarget,
                 finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-    console.log(`remote window animation onCloseWindow`);
+    console.info(`remote window animation onCloseWindow`);
     this.NotifyTargetUpdate(closingWindowTarget);
     finishedCallback.onAnimationFinish();
   }
 
   onScreenUnlock(finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-    console.log(`remote window animation onScreenUnlock`);
+    console.info(`remote window animation onScreenUnlock`);
     finishedCallback.onAnimationFinish();
   }
 
   onWindowAnimationTargetsUpdate(fullScreenWindowTarget: windowAnimationManager.WindowAnimationTarget, 
                               floatingWindowTargets: Array<windowAnimationManager.WindowAnimationTarget>): void {
-    console.log('onWindowAnimationTargetsUpdate, the fullScreenWindowTarget is: ' + fullScreenWindowTarget);
-    console.log('onWindowAnimationTargetsUpdate, the floatingWindowTargets are: ' + floatingWindowTargets);
+    console.info('onWindowAnimationTargetsUpdate, the fullScreenWindowTarget is: ' + fullScreenWindowTarget);
+    console.info('onWindowAnimationTargetsUpdate, the floatingWindowTargets are: ' + floatingWindowTargets);
   }
 }
 ```

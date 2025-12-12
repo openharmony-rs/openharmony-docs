@@ -1,5 +1,12 @@
 # Subscribing to Task Execution Timeout Events (C/C++)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to task execution timeout events. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
@@ -17,7 +24,7 @@ This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscri
 
 The following describes how to subscribe to the freeze event triggered by a button click.
 
-1. Obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Using JsonCpp in your project** in [the third-party open-source library JsonCpp](https://github.com/open-source-parsers/jsoncpp).
+1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
 
 2. Create a native C++ project and import the preceding files to the project. The directory structure is as follows:
 
@@ -58,7 +65,6 @@ The following describes how to subscribe to the freeze event triggered by a butt
    #include "json/json.h"
    #include "hilog/log.h"
    #include "hiappevent/hiappevent.h"
-   #include <thread>
    #include <unistd.h>
    
    #undef LOG_TAG
@@ -312,7 +318,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
 
 ### Verifying the Subscription
 
-1. The application crashes. After restarting the application, you can view the following event information in the **Log** window.
+The application crashes. After restarting the application, you can view the following event information in the **Log** window.
 
    ```text
    HiAppEvent eventInfo.domain=OS
@@ -328,7 +334,6 @@ The following describes how to subscribe to the freeze event triggered by a butt
    HiAppEvent eventInfo.params.exception={"message":"","name":"APP_HICOLLIE"}
    HiAppEvent eventInfo.params.hilog.size=77
    HiAppEvent eventInfo.params.peer_binder.size=18
-   HiAppEvent eventInfo.params.threads.size=28
    HiAppEvent eventInfo.params.memory={"pss":0,"rss":124668,"sys_avail_mem":2220032,"sys_free_mem":526680,"sys_total_mem":11692576,"vss":4238700}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_HICOLLIE_1740993644458_26215.log"]
    HiAppEvent eventInfo.params.log_over_limit=0

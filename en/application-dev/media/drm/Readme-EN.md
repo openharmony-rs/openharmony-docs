@@ -6,5 +6,5 @@
 <!--Del-->
 - [DRM Solution Development](drm-solution-dev-guide.md)
 <!--DelEnd-->
-- [Using AVPlayer to Play DRM Content (ArkTS)](drm-avplayer-arkts-integration.md)
-- [Using AVCodec to Play DRM Content (C/C++)](drm-avcodec-integration.md)
+- [DRM Playback with AVPlayer (ArkTS)](drm-avplayer-arkts-integration.md)
+- [DRM Playback with AVCodec (C/C++)](drm-avcodec-integration.md)

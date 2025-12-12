@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 矩阵对象，可以对矩阵进行缩放、旋转和平移等变换。
 
@@ -63,7 +63,7 @@ constructor(unit: LengthMetricsUnit)
 
 >  **说明：**
 >  
->  可使用[px2vp](ts-pixel-units.md#像素单位转换)接口进行单位转换。
+>  可使用[px2vp](ts-pixel-units.md#px2vpdeprecated)接口进行单位转换。
 
 **示例：**
 

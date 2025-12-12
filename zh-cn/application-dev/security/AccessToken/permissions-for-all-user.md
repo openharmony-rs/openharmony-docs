@@ -90,8 +90,6 @@
 
 允许应用在后台运行时获取设备位置信息。
 
-由于安全隐私要求，应用不能通过弹窗的形式被授予后台位置权限，应用如果需要使用后台位置权限，需要引导用户到设置界面手动授予。
-
 **申请流程**：
 
 1. 在“module.json5”配置文件中[声明权限](declare-permissions.md)。
@@ -99,15 +97,11 @@
    由于在申请后台权限前，必须先申请前台位置权限，因此开发者在配置时，应同时配置后台位置权限ohos.permission.LOCATION_IN_BACKGROUND和前台位置权限。前台位置权限的申请有两种允许情况：
    - 申请前台模糊位置权限：[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)。
    - 申请前台精确位置权限：[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)和[ohos.permission.LOCATION](#ohospermissionlocation)。
-2. 应用需通过弹窗向用户申请对应的前台位置权限。
-3. 当用户点击弹窗授予前台位置权限后，应用应通过弹窗、提示窗等形式告知用户前往设置界面授予后台位置权限。
-4. 用户在设置界面中的选择“始终允许”应用访问位置信息权限，完成手动授予。
+2. 应用调用[requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)拉起弹窗向用户申请对应的前台位置权限。
+3. 当用户点击弹窗授予前台位置权限后，应用调用[requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)拉起权限设置弹窗，引导用户授权。
+4. 用户可在弹窗中点击授予用户后台位置权限。
 
-   设置路径：
-   <!--RP1-->
-   - 路径一：设置 > 隐私 > 权限管理 > 位置信息 > *具体应用*
-   - 路径二：设置 > 隐私 > 权限管理 > 应用 > *具体应用* > 位置信息
-   <!--RP1End-->
+当前系统提供了长时任务机制，对于需要在后台使用位置的应用，结合自身业务场景，可通过申请LOCATION类型的长时任务和前台位置权限的方式在后台获取位置，而不必申请后台位置权限。请参考：[长时任务指导](../../task-management/continuous-task.md)。
 
 **权限级别**：normal
 

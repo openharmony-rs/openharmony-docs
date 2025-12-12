@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 从API version 18开始支持弧形列表。弧形列表是一种专为圆形屏幕设备设计的特殊列表，它能够以结构化、可滚动的形式高效展示信息。具体用法可参考[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)。
 
@@ -171,7 +171,7 @@ class Contact {
 @Entry
 @Component
 struct SimpleContacts {
-  private contacts: Array<object> = [
+  @State private contacts: Array<object> = [
     new Contact('小红', $r("app.media.ic_contact")),
     new Contact('小兰', $r("app.media.ic_contact")),
     new Contact('小王', $r("app.media.ic_contact")),

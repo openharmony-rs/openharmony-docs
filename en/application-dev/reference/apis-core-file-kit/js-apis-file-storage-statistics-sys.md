@@ -16,7 +16,7 @@ The **storageStatistics** module provides APIs for obtaining storage space infor
 ## Modules to Import
 
 ```ts
-import storageStatistics from "@ohos.file.storageStatistics";
+import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
 ## storageStatistics.getTotalSizeOfVolume
@@ -59,9 +59,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  import { volumeManager } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+    if (volumes == null || volumes.length <= 0) {
+      console.error("volumes is null or length is invalid");
+      return;
+    }
     let uuid: string = volumes[0].uuid;
     storageStatistics.getTotalSizeOfVolume(uuid).then((number: number) => {
       console.info("getTotalSizeOfVolume successfully:" + number);
@@ -108,9 +113,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  import { volumeManager } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+    if (volumes == null || volumes.length <= 0) {
+      console.error("volumes is null or length is invalid");
+      return;
+    }
     let uuid: string = volumes[0].uuid;
     storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, number: number) => {
       if (error) {
@@ -165,9 +175,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  import { volumeManager } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+    if (volumes == null || volumes.length <= 0) {
+      console.error("volumes is null or length is invalid");
+      return;
+    }
     let uuid: string = volumes[0].uuid;
     storageStatistics.getFreeSizeOfVolume(uuid).then((number: number) => {
       console.info("getFreeSizeOfVolume successfully:" + number);
@@ -214,9 +229,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  import { volumeManager } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+    if (volumes == null || volumes.length <= 0) {
+      console.error("volumes is null or length is invalid");
+      return;
+    }
     let uuid: string = volumes[0].uuid;
     storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, number: number) => {
       if (error) {
@@ -272,9 +292,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-  import storageStatistics from "@ohos.file.storageStatistics";
-  import { BusinessError } from '@ohos.base';
+  import { bundleResourceManager } from '@kit.AbilityKit';
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let bundleName = "com.example.myapplication";
@@ -333,9 +353,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-  import storageStatistics from "@ohos.file.storageStatistics";
-  import { BusinessError } from '@ohos.base';
+  import { bundleResourceManager } from '@kit.AbilityKit';
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let bundleName = "com.example.myapplication";
@@ -393,7 +413,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getSystemSize().then((number: number) => {
     console.info("getSystemSize successfully:" + number);
   }).catch((err: BusinessError) => {
@@ -434,7 +454,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getSystemSize((error: BusinessError, number: number) => {
     if (error) {
       console.error("getSystemSize failed with error:" + JSON.stringify(error));
@@ -478,7 +498,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.StorageStats) => {
     console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
   }).catch((err: BusinessError) => {
@@ -519,7 +539,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
     if (error) {
       console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
@@ -570,7 +590,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
     console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
@@ -614,7 +634,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
     if (error) {

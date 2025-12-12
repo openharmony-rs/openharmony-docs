@@ -1,5 +1,12 @@
 # ArkUI_AlignmentRuleOption
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 指定设置在相对容器中子组件的对齐规则。

@@ -1,12 +1,12 @@
-# 不依赖UI组件的全局自定义弹出框 (openCustomDialog)（推荐）
+# 不依赖UI组件的全局自定义弹出框 (openCustomDialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-推荐使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口在相对应用复杂的场景来实现自定义弹出框，相较于[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)优势点在于页面解耦，支持[动态刷新](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)。
+在广告、中奖、警告、软件更新等与用户交互响应操作的场景下，可以使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口来实现自定义弹出框。相较于[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)优势点在于页面解耦，支持[动态刷新](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)。
 
 > **说明：**
 > 
@@ -26,8 +26,8 @@
 
 | 名称            |类型| 说明                       |
 | ----------------- | ------ | ---------------------------- |
-| onDidAppear    | () => void  | 弹出框弹出时的事件回调。    |
-| onDidDisappear |() => void  | 弹出框消失时的事件回调。    |
+| onDidAppear    | () => void  | 弹出框弹出后的事件回调。    |
+| onDidDisappear |() => void  | 弹出框消失后的事件回调。    |
 | onWillAppear    | () => void | 弹出框显示动效前的事件回调。 |
 | onWillDisappear | () => void | 弹出框退出动效前的事件回调。 |
 
@@ -121,7 +121,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  private customDialogComponentId: number = 0
+  private customDialogComponentId: number = 0;
+
   @Builder
   customDialogComponent() {
     Row({ space: 50 }) {
@@ -135,28 +136,36 @@ struct Index {
         Text('打开弹窗')
           .fontSize(30)
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              isModal:true,
-              showInSubWindow:false,
-              maskColor: Color.Pink,
-              maskRect:{ x: 20, y: 20, width: '90%', height: '90%' },
+            this.getUIContext()
+              .getPromptAction()
+              .openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent()
+                },
+                isModal: true,
+                showInSubWindow: false,
+                maskColor: Color.Pink,
+                maskRect: {
+                  x: 20,
+                  y: 20,
+                  width: '90%',
+                  height: '90%'
+                },
 
-              dialogTransition: // 设置弹窗内容显示的过渡效果
-              TransitionEffect.translate({ x: 0, y: 290, z: 0 })
-                .animation({ duration: 4000, curve: Curve.Smooth }),// 四秒钟的偏移渐变动画
+                dialogTransition: // 设置弹窗内容显示的过渡效果
+                TransitionEffect.translate({ x: 0, y: 290, z: 0 })
+                  .animation({ duration: 4000, curve: Curve.Smooth }), // 四秒钟的偏移渐变动画
 
-              maskTransition: // 设置蒙层显示的过渡效果
-              TransitionEffect.opacity(0)
-                .animation({ duration: 4000, curve: Curve.Smooth }) // 四秒钟的透明渐变动画
+                maskTransition: // 设置蒙层显示的过渡效果
+                TransitionEffect.opacity(0)
+                  .animation({ duration: 4000, curve: Curve.Smooth }) // 四秒钟的透明渐变动画
 
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
+              })
+              .then((dialogId: number) => {
+                this.customDialogComponentId = dialogId;
+              })
               .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`);
               })
           })
       }
@@ -202,7 +211,7 @@ struct Index {
               builder: () => {
                 this.customDialogComponent()
               },
-              alignment:DialogAlignment.Bottom,
+              alignment: DialogAlignment.Bottom,
               keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
               keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
             }).catch((error: BusinessError) => {

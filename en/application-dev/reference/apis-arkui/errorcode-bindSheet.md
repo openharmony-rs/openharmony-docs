@@ -1,4 +1,10 @@
 # Sheet Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -48,7 +54,7 @@ The bindSheetContent cannot be found.
 
 **Description**
 
-This error code is reported when an API is called to close or update the modal that is not currently open.
+This error code is reported when an API is called to close or update the modal that is not open.
 
 **Possible Causes**
 
@@ -89,7 +95,7 @@ This error code is reported when the node corresponding to the specified **targe
 
 **Possible Causes**
 
-The node corresponding to the specified **targetId** is not yet part of the component tree.
+The node with the specified **targetId** is not mounted in the component tree.
 
 **Solution**
 
@@ -107,7 +113,7 @@ This error code is reported when the node corresponding to the specified **targe
 
 **Possible Causes**
 
-The **targetId** does not correspond to a node that is a child of a page or **NavDestination** node.
+The **targetId** does not correspond to a node that is a child of a page or **NavDestination** node when the modal is in EMBEDDED mode.
 
 **Solution**
 

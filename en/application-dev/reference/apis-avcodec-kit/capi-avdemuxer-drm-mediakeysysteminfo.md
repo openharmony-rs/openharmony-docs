@@ -9,7 +9,7 @@
 
 ## Overview
 
-The struct describes a native object for the DRM_MediaKeySystemInf interface.
+The struct describes a native object for the DRM_MediaKeySystemInfo interface.
 
 **Since**: 11
 

@@ -1,5 +1,10 @@
 # Best Practices for State Management
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 This guide outlines best practices for state management in ArkUI applications. Read on to discover the common pitfalls in state management and how to avoid them, with carefully selected examples of recommended and not-recommended practices.
 
@@ -7,7 +12,7 @@ This guide outlines best practices for state management in ArkUI applications. R
 
 When you need to pass values between parent and child components, choosing the right decorator can significantly improve application performance. If the value of a state variable is not changed in the child component, using @Prop to decorate the state variable will mean more time required in component creation.
 
-[Incorrect Usage]
+**Incorrect Usage**
 
 ```ts
 @Observed
@@ -49,7 +54,7 @@ struct Parent {
 
 In the preceding example, the **PropChild** component does not change the value of **\@Prop testClass: MyClass**. In this case, \@ObjectLink is a better choice, because \@Prop makes a deep copy and increases performance overhead.
 
-[Correct Usage]
+**Correct Usage**
 
 ```ts
 @Observed
@@ -92,7 +97,7 @@ struct Parent {
 
 ## Avoiding Forcibly Updating Unassociated Components Through State Variables
 
-[Incorrect Usage]
+**Incorrect Usage**
 
 
 ```ts
@@ -114,7 +119,7 @@ struct MyComponent {
   build() {
     Column({ space: 20 }) {
       ForEach(this.updateUIArr(this.realStateArr),
-        (item: Array<number>) => {
+        (item: number) => {
           Text(`${item}`)
         })
       Text("add item")
@@ -147,7 +152,7 @@ The preceding example has the following pitfalls:
 
 - However, in this application, an attempt is made to update these two regular variables through **this.needsUpdate**. This approach is nonviable and may result in poor re-render performance.
 
-[Correct Usage]
+**Correct Usage**
 
 To address this issue, decorate the **realStateArr** and **realState** variables with \@State. Then, the variable **needsUpdate** is no longer required.
 
@@ -161,7 +166,7 @@ struct CompA {
   build() {
     Column({ space: 20 }) {
       ForEach(this.realStateArr,
-        (item: Array<number>) => {
+        (item: number) => {
           Text(`${item}`)
         })
       Text("add item")
@@ -184,7 +189,7 @@ struct CompA {
 
 It is recommended that the number of components associated with each state variable be less than 20. When components are associated with a state variable, they are re-rendered when the state value changes. The more components associated, the more components re-rendered, and the heavier the UI thread load, which causes a drop in application performance. Things can get worse when the associated components are complex. Therefore, it is critical to precisely control the number of associated components. For example, instead of associating a state variable with multiple components at the same level, associating it with these components' parent can greatly reduce the number of components to be re-rendered, thereby improving UI responsiveness.
 
-[Incorrect Usage]
+**Incorrect Usage**
 
 ```ts
 @Observed
@@ -215,6 +220,7 @@ struct Title {
 @Component
 struct Page {
   @State translateObj: Translate = new Translate();
+
   build() {
     Column() {
       Title({
@@ -233,7 +239,7 @@ struct Page {
           x:this.translateObj.translateX
         })
         .onClick(() => {
-          animateTo({
+          this.getUIContext().animateTo({
             duration: 50
           },()=>{
             this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
@@ -246,7 +252,7 @@ struct Page {
 
 In the preceding example, the state variable **this.translateObj.translateX** is used in multiple child components at the same level. When it changes, all these associated components are re-rendered. Since the changes of these components are the same, you can associate the state variable with their parent component to reduce the number of components re-rendered. Analysis reveals that all these child components are located in the **Column** component under struct **Page**. Therefore, you can associate the **translate** attribute to the **Column** component instead.
 
-[Correct Usage]
+**Correct Usage**
 
 ```ts
 @Observed
@@ -270,6 +276,7 @@ struct Title {
 @Component
 struct Page1 {
   @State translateObj: Translate = new Translate();
+
   build() {
     Column() {
       Title()
@@ -280,7 +287,7 @@ struct Page1 {
       .height(400)
       Button("move")
         .onClick(() => {
-          animateTo({
+          this.getUIContext().animateTo({
             duration: 50
           },()=>{
             this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
@@ -303,15 +310,14 @@ When a complex object is defined as a state variable, take care to control the n
 
 During application development, you can use HiDumper to view the number of components associated with a state variable for performance optimization.
 
-
 ## Avoid Frequent Reads of State Variables in a Loop
 
 Avoid frequent reads of state variables inside a loop, such as the **for** and **while** loop. A best practice is to read state variables outside a loop.
 
-[Incorrect Usage]
+**Incorrect Usage**
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -320,7 +326,7 @@ struct Index {
 
   build() {
     Column() {
-      Button ('Print Log')
+      Button('Print Log')
         .onClick(() => {
           for (let i = 0; i < 10; i++) {
             hilog.info(0x0000, 'TAG', '%{public}s', this.message);
@@ -342,10 +348,10 @@ struct Index {
 }
 ```
 
-[Correct Usage]
+**Correct Usage**
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -354,7 +360,7 @@ struct Index {
 
   build() {
     Column() {
-      Button ('Print Log')
+      Button('Print Log')
         .onClick(() => {
           let logMessage: string = this.message;
           for (let i = 0; i < 10; i++) {
@@ -383,7 +389,7 @@ During application development, you should reduce direct value changes to the st
 
 When a state variable changes, ArkUI queries the components that require the use of state variables and executes an update method to render the components. However, by computing the temporary variables instead of directly changing the state variables, ArkUI can query and render components only when the last state variable changes, reducing unnecessary behaviors and improving application performance. For details about the behavior of state variables, see [@State Decorator: State Owned by Component](arkts-state.md).
 
-[Incorrect Usage]
+**Incorrect Usage**
 
 ```ts
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
@@ -428,7 +434,7 @@ In this case, state variables are directly changed, triggering the computation f
 
 ![](figures/hp_arkui_use_state_var.png)
 
-[Correct Usage]
+**Correct Usage**
 
 ```ts
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';

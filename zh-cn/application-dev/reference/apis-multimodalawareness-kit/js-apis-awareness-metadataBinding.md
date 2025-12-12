@@ -45,7 +45,6 @@ submitMetadata(metadata: string): void
 
 ```ts
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let metadata: string = "";
 try {
@@ -84,7 +83,6 @@ on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;nu
 **示例：**  
 ```ts
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName: string = '';
 try {
@@ -129,7 +127,6 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 
 ```ts
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName: string = '';
 try {

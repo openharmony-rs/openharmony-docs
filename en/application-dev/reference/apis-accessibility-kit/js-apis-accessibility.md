@@ -963,7 +963,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
-// When one or more accessibility applications with touch guide mode (**touchGuide** is set in **Capability**) have been installed in the system:
+// When one or more accessibility applications with touch guide mode (touchGuide is set in Capability) have been installed in the system:
 // 1. After the first application is enabled, the callback returns true.
 // 2. If one or more applications have been enabled and the last enabled one is disabled, the callback returns false.
 accessibility.on('touchGuideStateChange', (data: boolean) => {

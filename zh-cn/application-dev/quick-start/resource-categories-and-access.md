@@ -17,7 +17,7 @@
 
 应用开发中使用的各类资源文件，需要放入特定子目录中存储管理。目录结构如下所示，base目录、限定词目录、rawfile目录、resfile目录称为资源目录，element、media、profile称为资源组目录。
 
-```
+```text
 resources
 |---base  // 默认存在的目录
 |   |---element
@@ -249,7 +249,7 @@ plural.json文件的内容如下：
 
 ### 使用约束
 可翻译特性使能范围：base目录下string、strarray、plural类型资源。
-```
+```text
 resources
 |---base
 |   |---element
@@ -496,14 +496,13 @@ Image($r('sys.media.ohos_app_icon'))
 在`Index.ets`中，分别获取三种语言的资源并显示在文本框中，运行设备当前系统语言为中文，`entry/src/main/ets/pages/Index.ets`的代码如下：
 
 ```ts
-import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
   @State englishString: string = "";
-  @State germanString: string = "";
+  @State japaneseString: string = "";
 
   getString(): string {
     let resMgr = this.getUIContext().getHostContext()?.resourceManager;
@@ -526,7 +525,7 @@ struct Index {
       //获取符合当前系统颜色模式、分辨率等配置的日文资源
       overrideConfig.locale = "ja_JP"; //指定资源的语言为日文，地区为日本
       overrideResMgr.updateOverrideConfiguration(overrideConfig); //等效于resMgr.updateOverrideConfiguration(overrideConfig)
-      this.germanString = overrideResMgr.getStringSync(resId);
+      this.japaneseString = overrideResMgr.getStringSync(resId);
     } catch (err) {
       const code = (err as BusinessError).code;
       const message = (err as BusinessError).message;
@@ -544,7 +543,7 @@ struct Index {
         Text(this.englishString)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Text(this.germanString)
+        Text(this.japaneseString)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
       }

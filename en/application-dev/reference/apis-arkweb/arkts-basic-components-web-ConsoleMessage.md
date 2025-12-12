@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **ConsoleMessage** object. For details about the sample code, see [onConsole](./arkts-basic-components-web-events.md#onconsole).
 

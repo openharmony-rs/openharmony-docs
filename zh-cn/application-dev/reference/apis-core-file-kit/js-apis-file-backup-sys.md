@@ -849,7 +849,7 @@ constructor(callbacks: GeneralCallbacks)
 
 | 参数名   | 类型                                  | 必填 | 说明                 |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| callback | [GeneralCallbacks](#generalcallbacks) | 是   | 备份流程所需的回调。 |
+| callbacks | [GeneralCallbacks](#generalcallbacks) | 是   | 备份流程所需的回调。 |
 
 **示例：**
 
@@ -1834,7 +1834,7 @@ constructor(callbacks: GeneralCallbacks)
 
 | 参数名   | 类型                                  | 必填 | 说明                 |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| callback | [GeneralCallbacks](#generalcallbacks) | 是   | 恢复流程所需的回调。 |
+| callbacks | [GeneralCallbacks](#generalcallbacks) | 是   | 恢复流程所需的回调。 |
 
 **示例：**
 
@@ -3146,7 +3146,7 @@ constructor(callbacks: GeneralCallbacks)
 
 | 参数名   | 类型                                  | 必填 | 说明                     |
 | -------- | ------------------------------------- | ---- | ------------------------ |
-| callback | [GeneralCallbacks](#generalcallbacks) | 是   | 增量备份流程所需的回调。 |
+| callbacks | [GeneralCallbacks](#generalcallbacks) | 是   | 增量备份流程所需的回调。 |
 
 **错误码：**
 

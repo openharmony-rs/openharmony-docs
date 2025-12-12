@@ -1,7 +1,13 @@
 # Binding Gesture Events
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-The ArkUI development framework provides tap, drag, swipe, long press, pinch, and rotation gestures through its NDK APIs. By binding different gestures to specified components and setting corresponding callbacks, you can achieve the desired gesture interaction capabilities.
+The ArkUI development framework provides tap, pan, swipe, long press, pinch, and rotation gestures through its NDK APIs. By binding different gestures to specified components and setting corresponding callbacks, you can achieve the desired gesture interaction capabilities.
 
 
 The following is a simple example to illustrate how to implement gesture binding.
@@ -56,43 +62,66 @@ The following introduces how to create different types of gestures:
   Triggers a callback when the component is tapped. You can specify the number of taps required and the number of fingers needed.
 
   ```
-  ArkUI_GestureRecognizer* (*createTapGesture)(int32_t countNum, int32_t fingersNum);
+   // Obtain the set of native gesture APIs.
+   auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+               OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+   // Create a tap gesture.
+   auto tapGesture = gestureApi->createTapGesture(1, 1);
   ```
 
 - Pan gesture
-  Triggers a callback when the user drags the component. You can specify the number of fingers, drag direction, and drag distance (in px).
+  Triggers a callback when the user performs a pan gesture on the component. You can specify the required number of fingers, pan direction, and pan distance (in px).
   ```
-  ArkUI_GestureRecognizer* (*createPanGesture)(
-  int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum);
+    // Obtain the set of native gesture APIs.
+    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    // Create a pan gesture.
+    auto panGesture = gestureApi->createPanGesture(1, GESTURE_DIRECTION_ALL, 1);
   ```
 
 - Long press gesture
   Triggers a callback when the user long presses the component. You can specify the number of fingers, hold-down time in milliseconds, and repeatability.
 
   ```
-  ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum);
+    // Obtain the set of native gesture APIs.
+    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    // Create a long press gesture.
+    auto longPressGesture = gestureApi->createLongPressGesture(1, true, 1000);
   ```
 
 - Pinch gesture
   Triggers a callback when the user pinches the component. You can specify the number of fingers (at least 2) and the pinch distance (in px).
 
   ```
-  ArkUI_GestureRecognizer* (*createPinchGesture)(int32_t fingersNum, double distanceNum);
+    // Obtain the set of native gesture APIs.
+    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    // Create a pinch gesture.
+    auto pinchGesture = gestureApi->createPinchGesture(1, 10);
   ```
 
 - Rotation gesture
   Triggers a callback when the user rotates the component. You can specify the number of fingers (at least 2) and angle.
 
   ```
-  ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double angleNum);
+    // Obtain the set of native gesture APIs.
+    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    // Create a rotation gesture.
+    auto rotationGesture = gestureApi->createRotationGesture(1, 10);
   ```
 
 - Swipe gesture
-  Triggers a callback when the user swipes the component. You can specify the number of fingers (at least 1), direction, and speed (in px/s).
+  Triggers a callback when a swipe gesture is detected on the component. You can specify the required number of fingers (at least 1), swipe direction, and minimum velocity (in px/s).
 
   ```
-  ArkUI_GestureRecognizer* (*createSwipeGesture)(
-  int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum);
+    // Obtain the set of native gesture APIs.
+    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    // Create a swipe gesture.
+    auto swipeGesture = gestureApi->createSwipeGesture(1, GESTURE_DIRECTION_ALL, 50);
+  
   ```
 
 
@@ -100,20 +129,28 @@ The following introduces how to create different types of gestures:
 
 You can combine multiple gestures of different types into a gesture group, which acts as an integrated recognizer to identify sequences of different user gestures.
 
-The recognition mode of the gesture group (that is, the relationship between gestures in the group) is specified by setting [ArkUI_GroupGestureMode](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_groupgesturemode), including sequential recognition (**SEQUENTIAL_GROUP**), parallel recognition (**PARALLEL_GROUP**), and exclusive recognition (**EXCLUSIVE_GROUP**).
+The recognition mode of the gesture group (that is, the relationship between gestures in the group) is specified by setting [ArkUI_GroupGestureMode](../reference/apis-arkui/capi-native-gesture-h.md#arkui_groupgesturemode), including sequential recognition (**SEQUENTIAL_GROUP**), parallel recognition (**PARALLEL_GROUP**), and exclusive recognition (**EXCLUSIVE_GROUP**).
 
 
 ### Sequential Recognition
 
-For combined gestures with sequential recognition, the value of **ArkUI_GroupGestureMode** is **SEQUENTIAL_GROUP**. In this gesture recognition mode, gestures are recognized in the order they were registered until they are all recognized successfully. If any of the registered gestures fails to be recognized, subsequent gestures will also fail. Only the last gesture in a sequential group can respond to the [GESTURE_EVENT_ACTION_END](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_gestureeventactiontype) event.
+For combined gestures with sequential recognition, the value of **ArkUI_GroupGestureMode** is **SEQUENTIAL_GROUP**. In this gesture recognition mode, gestures are recognized in the order they were registered until they are all recognized successfully. If any of the registered gestures fails to be recognized, subsequent gestures will also fail. Only the last gesture in a sequential group can respond to the [GESTURE_EVENT_ACTION_END](../reference/apis-arkui/capi-native-gesture-h.md#arkui_gestureeventactiontype) event.
 
 The following demonstrates how to create a combined gesture that recognizes a long press followed by a swipe in sequence:
 
 ```
+#include "napi/native_api.h"
+#include <arkui/native_animate.h>
+#include <arkui/native_gesture.h>
+#include <arkui/native_interface.h>
+#include <arkui/native_node_napi.h>
+#include <hilog/log.h>
+const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
+
 ArkUI_NodeHandle testGestureExample() {
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
 
-    // Create a gesture and set the callback.
+    // Create a node.
     ArkUI_NumberValue value[] = {{.u32 = 0xff112233}};
     ArkUI_AttributeItem item = {value, 1};
     nodeAPI->setAttribute(column, NODE_BACKGROUND_COLOR, &item);
@@ -124,15 +161,15 @@ ArkUI_NodeHandle testGestureExample() {
     ArkUI_AttributeItem height = {heightValue, 1};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &height);
 
-    // Check for the gesture API.
+    // Verify gesture API availability.
     auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
     if (gestureApi->createGroupGesture) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, createGroupGesture api exist");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, createGroupGesture api exist");
     } else {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, createGroupGesture api not exist");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, createGroupGesture api not exist");
     }
     auto groupGesture = gestureApi->createGroupGesture(ArkUI_GroupGestureMode::SEQUENTIAL_GROUP);
 
@@ -140,8 +177,8 @@ ArkUI_NodeHandle testGestureExample() {
     auto longPressGesture = gestureApi->createLongPressGesture(1, true, 500);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(longPressGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack longPressGesture,ArkUI_GestureRecognizerType%{public}d", type);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog longPressGesture,ArkUI_GestureRecognizerType%{public}d", type);
     }
     // Set a callback for the long press gesture.
     auto onActionCallBackPanLongPress = [](ArkUI_GestureEvent *event, void *extraParam) {
@@ -161,8 +198,8 @@ ArkUI_NodeHandle testGestureExample() {
         float repeat = OH_ArkUI_LongPress_GetRepeatCount(event);
 
         OH_LOG_Print(
-            LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-            "onPanActionCallBack,longPressGesturecallback actionType:%{public}d,velocity%{public}f,velocityX"
+            LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+            "GestureSampleLog,longPressGesturecallback actionType:%{public}d,velocity%{public}f,velocityX"
             "%{public}f;"
             "velocityY%{public}f,offsetX%{public}f,offsetY%{public}f,scale%{public}fcenterX"
             "%{public}fcenterY"
@@ -177,14 +214,14 @@ ArkUI_NodeHandle testGestureExample() {
     // Add the long press gesture to the gesture group.
     if (gestureApi->addChildGesture) {
         gestureApi->addChildGesture(groupGesture, longPressGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "onPanActionCallBack, addChildGesture longPressGesture");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "GestureSampleLog, addChildGesture longPressGesture");
     }
     // Create a swipe gesture.
     auto swipeGesture = gestureApi->createSwipeGesture(1, GESTURE_DIRECTION_ALL, 100);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(swipeGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, ArkUI_GestureRecognizerType %{public}d", type);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, ArkUI_GestureRecognizerType %{public}d", type);
     }
     // Set a callback for the swipe gesture.
     auto onActionCallBack = [](ArkUI_GestureEvent *event, void *extraParam) {
@@ -205,8 +242,8 @@ ArkUI_NodeHandle testGestureExample() {
 
 
         // Print logs.
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, swipeGesture callback actionType: %{public}d, velocity "
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, swipeGesture callback actionType: %{public}d, velocity "
                      "%{public}f,velocityX "
                      "%{public}f; "
                      "velocityY %{public}f, offsetX %{public}f, offsetY %{public}f, scale %{public}fcenterX "
@@ -225,11 +262,11 @@ ArkUI_NodeHandle testGestureExample() {
         swipeGesture, GESTURE_EVENT_ACTION_ACCEPT | GESTURE_EVENT_ACTION_UPDATE | GESTURE_EVENT_ACTION_END, column,
         onActionCallBack);
 
-    // Add the swipe press gesture to the gesture group.
+    // Add the swipe gesture to the gesture group.
     if (gestureApi->addChildGesture) {
         gestureApi->addChildGesture(groupGesture, swipeGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, addChildGesture swipeGesture");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, addChildGesture swipeGesture");
     }
     // Set the gesture group to the component.
     gestureApi->addGestureToNode(column, groupGesture, PRIORITY, NORMAL_GESTURE_MASK);
@@ -245,10 +282,18 @@ For combined gestures with parallel recognition, the value of **ArkUI_GroupGestu
 The following demonstrates how to create a combined gesture that recognizes long press and swipe gestures in parallel:
 
 ```
+#include "napi/native_api.h"
+#include <arkui/native_animate.h>
+#include <arkui/native_gesture.h>
+#include <arkui/native_interface.h>
+#include <arkui/native_node_napi.h>
+#include <hilog/log.h>
+const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
+
 ArkUI_NodeHandle testGestureExample() {
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
 
-    // Create a gesture and set the callback.
+    // Create a node.
     ArkUI_NumberValue value[] = {{.u32 = 0xff112233}};
     ArkUI_AttributeItem item = {value, 1};
     nodeAPI->setAttribute(column, NODE_BACKGROUND_COLOR, &item);
@@ -259,15 +304,15 @@ ArkUI_NodeHandle testGestureExample() {
     ArkUI_AttributeItem height = {heightValue, 1};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &height);
 
-    // Check for the gesture API.
+    // Verify gesture API availability.
     auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
     if (gestureApi->createGroupGesture) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, createGroupGesture api exist");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, createGroupGesture api exist");
     } else {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, createGroupGesture api not exist");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, createGroupGesture api not exist");
     }
 
     // Create a gesture group.
@@ -277,8 +322,8 @@ ArkUI_NodeHandle testGestureExample() {
     auto longPressGesture = gestureApi->createLongPressGesture(1, true, 500);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(longPressGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack,ArkUI_GestureRecognizerType%{public}d", type);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog,ArkUI_GestureRecognizerType%{public}d", type);
     }
     // Set a callback for the long press gesture.
     auto onActionCallBackPanLongPress = [](ArkUI_GestureEvent *event, void *extraParam) {
@@ -298,8 +343,8 @@ ArkUI_NodeHandle testGestureExample() {
         float repeat = OH_ArkUI_LongPress_GetRepeatCount(event);
 
         OH_LOG_Print(
-            LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-            "onPanActionCallBack,longPressGesturecallback actionType:%{public}d,velocity%{public}f,velocityX"
+            LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+            "GestureSampleLog,longPressGesturecallback actionType:%{public}d,velocity%{public}f,velocityX"
             "%{public}f;"
             "velocityY%{public}f,OffsetX%{public}f,OffsetY%{public}f,scale%{public}fCenterX"
             "%{public}fCenterY"
@@ -315,14 +360,14 @@ ArkUI_NodeHandle testGestureExample() {
     // Add the long press gesture to the gesture group.
     if (gestureApi->addChildGesture) {
         gestureApi->addChildGesture(groupGesture, longPressGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "onPanActionCallBack, addChildGesture longPressGesture");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "GestureSampleLog, addChildGesture longPressGesture");
     }
     // Create a swipe gesture.
     auto swipeGesture = gestureApi->createSwipeGesture(1, GESTURE_DIRECTION_ALL, 100);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(swipeGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, ArkUI_GestureRecognizerType %{public}d", type);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, ArkUI_GestureRecognizerType %{public}d", type);
     }
     // Set a callback for the swipe gesture.
     auto onActionCallBack = [](ArkUI_GestureEvent *event, void *extraParam) {
@@ -343,8 +388,8 @@ ArkUI_NodeHandle testGestureExample() {
 
 
         // Print logs.
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, swipeGesture callback actionType: %{public}d, velocity "
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, swipeGesture callback actionType: %{public}d, velocity "
                      "%{public}f,velocityX "
                      "%{public}f; "
                      "velocityY %{public}f, OffsetX %{public}f, OffsetY %{public}f, scale %{public}fCenterX "
@@ -363,11 +408,11 @@ ArkUI_NodeHandle testGestureExample() {
         swipeGesture, GESTURE_EVENT_ACTION_ACCEPT | GESTURE_EVENT_ACTION_UPDATE | GESTURE_EVENT_ACTION_END, column,
         onActionCallBack);
 
-    // Add the swipe press gesture to the gesture group.
+    // Add the swipe gesture to the gesture group.
     if (gestureApi->addChildGesture) {
         gestureApi->addChildGesture(groupGesture, swipeGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, addChildGesture swipeGesture");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, addChildGesture swipeGesture");
     }
     // Set the gesture group to the component.
     gestureApi->addGestureToNode(column, groupGesture, PRIORITY, NORMAL_GESTURE_MASK);
@@ -383,11 +428,23 @@ For combined gestures with exclusive recognition, the value of **ArkUI_GroupGest
 The following example illustrates the exclusive recognition of pan and pinch gestures:
 
 ```
-ArkUI_NodeHandle testGestureExample() {
-    auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    auto button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+#include "napi/native_api.h"
+#include <arkui/native_animate.h>
+#include <arkui/native_gesture.h>
+#include <arkui/native_interface.h>
+#include <arkui/native_node_napi.h>
+#include <hilog/log.h>
+const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
+static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
 
-    // Create a gesture and set the callback.
+ArkUI_NodeHandle testGestureExample() {
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+    if (nodeAPI == nullptr) {
+        return nullptr;
+    }
+    auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+
+    // Create a node.
     ArkUI_NumberValue value[] = {{.u32 = 0xff112233}};
     ArkUI_AttributeItem item = {value, 1};
     nodeAPI->setAttribute(column, NODE_BACKGROUND_COLOR, &item);
@@ -398,15 +455,15 @@ ArkUI_NodeHandle testGestureExample() {
     ArkUI_AttributeItem height = {heightValue, 1};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &height);
 
-    // Check for the gesture API.
+    // Verify gesture API availability.
     auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
     if (gestureApi->createGroupGesture) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, createGroupGesture api exist");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, createGroupGesture api exist");
     } else {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack, createGroupGesture api not exist");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog, createGroupGesture api not exist");
     }
     auto groupGesture = gestureApi->createGroupGesture(ArkUI_GroupGestureMode::EXCLUSIVE_GROUP);
 
@@ -414,10 +471,10 @@ ArkUI_NodeHandle testGestureExample() {
     auto panGesture = gestureApi->createPanGesture(1, GESTURE_DIRECTION_VERTICAL, 5);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(panGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack panGesture, ArkUI_GestureRecognizerType %{public}d", type);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog panGesture, ArkUI_GestureRecognizerType %{public}d", type);
     }
-    // Set a callback for the pan gesture.
+    // Set a callback for the swipe gesture.
     auto onActionCallBackPan = [](ArkUI_GestureEvent *event, void *extraParam) {
         ArkUI_GestureEventActionType actionType = OH_ArkUI_GestureEvent_GetActionType(event);
 
@@ -436,8 +493,8 @@ ArkUI_NodeHandle testGestureExample() {
 
         // Print logs.
         OH_LOG_Print(
-            LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-            "onPanActionCallBack, panGesture callback actionType: %{public}d, velocity %{public}f,velocityX "
+            LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+            "GestureSampleLog, panGesture callback actionType: %{public}d, velocity %{public}f,velocityX "
             "%{public}f; "
             "velocityY %{public}f, OffsetX %{public}f, OffsetY %{public}f, scale %{public}fCenterX "
             "%{public}f CenterY"
@@ -449,17 +506,17 @@ ArkUI_NodeHandle testGestureExample() {
                                       GESTURE_EVENT_ACTION_ACCEPT | GESTURE_EVENT_ACTION_UPDATE |
                                           GESTURE_EVENT_ACTION_END | GESTURE_EVENT_ACTION_CANCEL,
                                       column, onActionCallBackPan);
-    // Add the pan press gesture to the gesture group.
+    // Add the swipe press gesture to the gesture group.
     if (gestureApi->addChildGesture) {
         gestureApi->addChildGesture(groupGesture, panGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "onPanActionCallBack, addChildGesture panGesture");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "GestureSampleLog, addChildGesture panGesture");
     }
     // Create a pinch gesture.
     auto pinchGesture = gestureApi->createPinchGesture(0, 0);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(pinchGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-                     "onPanActionCallBack pinchGesture, ArkUI_GestureRecognizerType %{public}d", type);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+                     "GestureSampleLog pinchGesture, ArkUI_GestureRecognizerType %{public}d", type);
     }
     // Set a callback for the pinch gesture.
     auto onActionCallBack = [](ArkUI_GestureEvent *event, void *extraParam) {
@@ -480,8 +537,8 @@ ArkUI_NodeHandle testGestureExample() {
 
 
         OH_LOG_Print(
-            LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
-            "onPanActionCallBack, pinchGesture callback actionType: %{public}d, velocity %{public}f,velocityX "
+            LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+            "GestureSampleLog, pinchGesture callback actionType: %{public}d, velocity %{public}f,velocityX "
             "%{public}f; "
             "velocityY %{public}f, OffsetX %{public}f, OffsetY %{public}f, scale %{public}fCenterX "
             "%{public}f CenterY"
@@ -502,7 +559,7 @@ ArkUI_NodeHandle testGestureExample() {
     // Add the pinch press gesture to the gesture group.
     if (gestureApi->addChildGesture) {
         gestureApi->addChildGesture(groupGesture, pinchGesture);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "onPanActionCallBack, addChildGesture pinchGesture");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "GestureSampleLog, addChildGesture pinchGesture");
     }
     // Set the gesture group to the component.
     gestureApi->addGestureToNode(column, groupGesture, PRIORITY, NORMAL_GESTURE_MASK);
@@ -551,7 +608,7 @@ After the aforementioned modifications, the originally effective long press gest
 
 ## Obtaining Event Information
 
-After a gesture is bound to a component, you can use [OH_ArkUI_GestureEvent_GetRawInputEvent()](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_gestureevent_getrawinputevent) to obtain the basic event object from the gesture event when the gesture callback is executed. You can then call APIs such as [OH_ArkUI_PointerEvent_GetDisplayX()](../reference/apis-arkui/_ark_u_i___event_module.md#oh_arkui_pointerevent_getdisplayx), [OH_ArkUI_PointerEvent_GetDisplayXByIndex()](../reference/apis-arkui/_ark_u_i___event_module.md#oh_arkui_pointerevent_getdisplayxbyindex), [OH_ArkUI_UIInputEvent_GetAction()](../reference/apis-arkui/_ark_u_i___event_module.md#oh_arkui_uiinputevent_getaction), and [OH_ArkUI_UIInputEvent_GetEventTime()](../reference/apis-arkui/_ark_u_i___event_module.md#oh_arkui_uiinputevent_geteventtime) to obtain more information from the basic event. Applications can implement differentiated interaction logic during gesture event execution based on the obtained information.
+After binding gesture events to nodes as previously described, you can use [OH_ArkUI_GestureEvent_GetRawInputEvent()](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent) to obtain the basic event object from the gesture event when the gesture callback is executed. Then, you can call APIs such as [OH_ArkUI_PointerEvent_GetDisplayX()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayx), [OH_ArkUI_PointerEvent_GetDisplayXByIndex()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayxbyindex), [OH_ArkUI_UIInputEvent_GetAction()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_getaction), and [OH_ArkUI_UIInputEvent_GetEventTime()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_geteventtime) to obtain more information from the basic event. Applications can implement differentiated interaction logic during gesture event execution based on the obtained information.
 
    ```cpp
    // Set a callback to handle gesture events when they are triggered.

@@ -51,7 +51,7 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
    let subscriber: commonEventManager.CommonEventSubscriber | null = null;
    // Subscriber information. Replace the event field with the actual event name.
    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-       events: ['event'], // Subscribe to the common event screen-off.
+       events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // Subscribe to the screen-off event.
    };
    ```
 

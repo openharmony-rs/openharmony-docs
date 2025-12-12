@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 Before requesting permissions for your application, read and understand the [permission request paths](determine-application-mode.md) and this topic to determine the permissions required.
 
@@ -15,6 +16,18 @@ Before requesting permissions for your application, read and understand the [per
 > - Applications of a lower APL can request these permissions via [Access Control List (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
+
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+Allows an application to subscribe to the startup broadcast.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
 
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
@@ -291,6 +304,30 @@ Allows a system application to set themes, including wallpapers, icons, skins, A
 **Enable via ACL**: true
 
 **Valid since**: 11
+
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+Allows an application to read the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+Allows an application to set the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
 
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
@@ -1729,18 +1766,6 @@ Allows an application to run unsigned code.
 **Enable via ACL**: true
 
 **Valid since**: 10
-
-## ohos.permission.sec.ACCESS_UDID
-
-Allows an application to obtain the Unified Device ID (UDID).
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 7
 
 ## ohos.permission.securityguard.REQUEST_SECURITY_MODEL_RESULT
 
@@ -3836,18 +3861,6 @@ Allows a system ability to send the projection cable plug-in and plug-out events
 
 **Valid since**: 12
 
-## ohos.permission.GET_ETHERNET_LOCAL_MAC
-
-Allows an application to obtain the current MAC address of the Ethernet.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 13
-
 ## ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 Allows a modal UIExtension to unhide non-secure windows.
@@ -3859,6 +3872,18 @@ Allows a modal UIExtension to unhide non-secure windows.
 **Enable via ACL**: true
 
 **Valid since**: 12
+
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+Allows a UIExtensionAbility to be displayed on the locked screen.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 14
 
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
@@ -3882,7 +3907,7 @@ Allows a system application to obtain eSIM profile information and data written 
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3894,7 +3919,7 @@ Allows a system application to modify the eSIM profile and upgrade the eSIM.
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
@@ -4324,24 +4349,6 @@ Allows a system application to obtain the page information of a specified applic
 
 **Valid since**: 18
 
-## ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
-
-Allow a peripheral extension driver to access the SCSI DDK APIs.
-
-The APIs can be used to develop the following types of peripheral extension drivers:
-Peripherals connected to the host via a USB bus and:
-
-1. InterfaceClass of the peripheral is Mass Storage (0x08) and InterfaceSubClass is SCSI Transparent Command Set (0x06).
-2. The peripheral can simulate a SCSI device in a way that is transparent to the operating system.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 18
-
 ## ohos.permission.ACCESS_DDK_USB_SERIAL
 
 Allows a peripheral extension driver to access the USB Serial DDK APIs.
@@ -4544,20 +4551,6 @@ Allows an application to call the APIs for installing plugins.
 
 **Valid since**: 19
 
-## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
-
-Allows applications to call APIs for accessing DLP files in the enterprise space.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Valid since**: 20
-
 ## ohos.permission.UNINSTALL_PLUGIN_BUNDLE
 
 Allows an application to call the APIs for uninstalling plugins.
@@ -4680,7 +4673,7 @@ Allows an application to read the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -4694,7 +4687,7 @@ Allows an application to write the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -4826,7 +4819,7 @@ With this permission, the application can access kernel APIs across processes to
 
 ## ohos.permission.VIRUS_PROTECTION_SERVICE
 
-Allows an application to start virus scanning tasks.
+Allows an application to start virus protection tasks.
 
 **Permission level**: system_basic
 
@@ -4834,21 +4827,7 @@ Allows an application to start virus scanning tasks.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
-
-**Valid since**: 20
-
-## ohos.permission.ACCESS_DISTRIBUTED_KEY_STORE
-
-Allows an application to use the distributed keystore capabilities.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: Phone | Tablet | PC/2in1 | Wearable | TV
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -4890,7 +4869,7 @@ Allows an application to send notification to the virus protection page.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -4904,7 +4883,7 @@ Allows an application to access the virus protection page.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -5062,6 +5041,20 @@ Allows a system application to trigger local **WantAgent** instances.
 
 **Valid since**: 20
 
+## ohos.permission.ACCESS_DISTRIBUTED_KEY_STORE
+
+Allows an application to use the distributed keystore capabilities.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | tablets | PCs/2-in-1 devices | wearables | TVs
+
+**Valid since**: 20
+
 ## ohos.permission.SANDBOX_ACCESS_MANAGER_EXT
 
 Allows an application to access the sandbox directories of other extended applications.
@@ -5102,7 +5095,7 @@ Allows a system application to query the certificate information of independent 
 
 **Enable via ACL**: true
 
-**Supported devices**: PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -5116,7 +5109,7 @@ Allows a system application to set the certificate status of independent binary 
 
 **Enable via ACL**: true
 
-**Supported devices**: PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -5124,35 +5117,33 @@ Allows a system application to set the certificate status of independent binary 
 
 Allows an application to obtain the content on the screen.
 
-**Permission level**：system_core
+**Permission level**: system_core
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
-**Supported devices**：General
+**Supported devices**: general devices
 
-**Valid since**：20
+**Valid since**: 20
 
 ## ohos.permission.SIMULATE_USER_INPUT
 
 Allows an application to simulate user operations.
 
-**Permission level**：system_core
+**Permission level**: system_core
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
-**Supported devices**：General
+**Supported devices**: general devices
 
-**Valid since**：20
+**Valid since**: 20
 
-## ohos.permission.MANAGE_SELF_SKILLS
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
 
-Allows an application to manage its skills configuration.
-
-With this permission, the application can extend its implicit matching capabilities, such as opening specific file types.
+Allows a system application to set the launch reason when starting another application.
 
 **Permission level**: system_basic
 
@@ -5160,13 +5151,11 @@ With this permission, the application can extend its implicit matching capabilit
 
 **Enable via ACL**: true
 
-**Supported devices**: PC/2in1
+**Valid since**: 18
 
-**Valid since**: 22
+## ohos.permission.ACCESS_SUPER_HUB
 
-## ohos.permission.DATA_IDENTIFY_ANONYMIZE
-
-Allows the system app to invoke the data identification and anonymization capability.
+Allows an application to access Super Hub.
 
 **Permission level**: system_basic
 
@@ -5174,6 +5163,16 @@ Allows the system app to invoke the data identification and anonymization capabi
 
 **Enable via ACL**: true
 
-**Supported devices**: PC/2in1 | Phone | Tablet | TV | Car
+**Valid since**: 12
 
-**Valid since**：21
+## ohos.permission.USE_USER_ACCESS_MANAGER
+
+Allows an application to query and configure user identity authentication policies, and verify the authentication result.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18

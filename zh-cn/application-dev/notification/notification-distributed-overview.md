@@ -12,7 +12,6 @@
 <!--Del-->
   - [通知消息跨设备协同管理](./notification-distributed-notdistributed-sys.md)：系统应用可配置通知消息的跨设备协同功能，支持按需启用该功能（仅对系统应用开放）。
 <!--DelEnd-->
-  - [为跨设备协同通知添加快捷回复](./notification-quickreply.md)：应用为社交通信通知消息添加跨设备快捷回复功能，便于用户跨设备快速回复消息。
   - [清除跨设备场景下的重复通知](./notification-distributed-messageid.md)：清除跨设备协同消息和本地设备发布的重复消息，避免多源通知重复打扰用户。
 
 ## 约束条件

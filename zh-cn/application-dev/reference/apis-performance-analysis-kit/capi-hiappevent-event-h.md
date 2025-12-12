@@ -41,6 +41,7 @@
 | [EVENT_MAIN_THREAD_JANK](#event_main_thread_jank) "MAIN_THREAD_JANK"                                       | 主线程超时事件。<br>**起始版本：** 12    |
 | [EVENT_APP_HICOLLIE](#event_app_hicollie) "APP_HICOLLIE"                                                   | 任务执行超时事件。<br>**起始版本：** 18   |
 | [EVENT_APP_KILLED](#event_app_killed) "APP_KILLED"                                                         | 应用终止事件。<br>**起始版本：** 20      |
+| [EVENT_AUDIO_JANK_FRAME](#event_audio_jank_frame) "AUDIO_JANK_FRAME"                                       | 音频卡顿事件。<br>**起始版本：** 21      |
 | [DOMAIN_OS](#domain_os) "OS"                                                                               | OS作用域。<br>**起始版本：** 12        |
 
 ## 宏定义说明
@@ -212,6 +213,18 @@ CPU高负载事件。
 应用终止事件。
 
 **起始版本：** 20
+
+### EVENT_AUDIO_JANK_FRAME
+
+```
+#define EVENT_AUDIO_JANK_FRAME "AUDIO_JANK_FRAME"
+```
+
+**描述**
+
+音频卡顿事件。
+
+**起始版本：** 21
 
 ### DOMAIN_OS
 

@@ -291,7 +291,7 @@ OH_UdsHyperlink* OH_UdsHyperlink_Create()
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| OH_UdsHyperlink* | 执行则成功返回一个指向超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例对象的指针，否则返回nullptr。 |
+| OH_UdsHyperlink* | 执行成功则返回一个指向超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例对象的指针，否则返回nullptr。 |
 
 ### OH_UdsHyperlink_Destroy()
 
@@ -619,7 +619,7 @@ OH_UdsAppItem* OH_UdsAppItem_Create()
 
 | 类型                                    | 说明                                                         |
 | --------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* | 执行成功返则回一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例对象的指针，否则返回nullptr。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* | 执行成功则返回一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例对象的指针，否则返回nullptr。 |
 
 ### OH_UdsAppItem_Destroy()
 

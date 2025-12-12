@@ -1,5 +1,13 @@
 # ArkUI_NodeAdapterEvent
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 定义适配器事件对象。

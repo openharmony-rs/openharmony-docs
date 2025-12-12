@@ -22,7 +22,7 @@ import { ble } from '@kit.ConnectivityKit';
 ```
 
 
-## ProfileConnectionState<sup>10+</sup>
+## ProfileConnectionState
 
 type ProfileConnectionState = constant.ProfileConnectionState
 
@@ -158,8 +158,6 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 - 若指定本机设备同时作为client端和server端，则返回与本机设备连接的所有client端和server端设备地址集合。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
-
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -4108,7 +4106,7 @@ try {
 
 stopScan(): Promise&lt;void&gt;
 
-停止正在进行的BLE扫描。<br>
+停止正在进行的BLE扫描。使用Promise异步回调。<br>
 - 停止的扫描是由[startScan](#startscan15)触发的。<br>
 - 当应用不再需要扫描BLE设备时，需主动调用该方法停止扫描。
 
@@ -4723,8 +4721,6 @@ BLE扫描的配置参数。
 ## BleProfile<sup>21+</sup>
 
 枚举，指定当前设备的Profile协议类型。
-
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

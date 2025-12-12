@@ -310,7 +310,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    In the preceding example, **attr.flags** indicates the type of the buffer flag.
 
-   To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
+   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
    | Value| Description| 
    | -------- | -------- |

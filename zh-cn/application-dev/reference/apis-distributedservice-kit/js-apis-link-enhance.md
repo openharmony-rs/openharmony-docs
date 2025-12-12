@@ -55,10 +55,11 @@ createServer(name:&nbsp;string):&nbsp;Server
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
-  let name:string = "demo";
+  let name: string = "demo";
   hilog.info(0x0000, TAG, 'start sever name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
@@ -108,6 +109,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -151,6 +153,7 @@ start():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -187,6 +190,7 @@ stop():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -225,6 +229,7 @@ close():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -269,6 +274,7 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -279,7 +285,7 @@ try {
 
   // 订阅服务接收事件
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-      hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
+    hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
   });
   // 启动服务
   server.start();
@@ -320,6 +326,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -372,6 +379,7 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -424,6 +432,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -488,6 +497,7 @@ connect():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -531,6 +541,7 @@ disconnect():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -545,7 +556,7 @@ try {
   });
   connection.connect();
 } catch (err) {
-    hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -575,6 +586,7 @@ close():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -625,6 +637,7 @@ getPeerDeviceId():&nbsp;string
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -672,6 +685,7 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -727,6 +741,7 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -735,7 +750,7 @@ try {
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅连接结果
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
-      hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
+    hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
   });
 
   // 发起连接
@@ -778,6 +793,7 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -829,6 +845,7 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -836,8 +853,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅断连通知
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -877,18 +894,19 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
   // 取消订阅断连通知
-  connection.off('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.off('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -928,6 +946,7 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -935,8 +954,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.connect();
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -975,17 +994,18 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
-  connection.off('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.off('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +

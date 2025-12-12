@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本文主要介绍了多UI实例涉及的概念，以及使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)的方法替换全局接口的原因，并提供了相应的替换方案。
 
@@ -25,6 +25,8 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 
 为了保证全局接口的相关功能正常，开发者应当使用UIContext的接口替换全局接口。
 
+下图展示了Stage模型下ArkTS引擎和UI上下文的对应关系，一个ArkTS引擎中存在两个[Ability](../application-models/abilitykit-overview.md)，这些Ability对应了三个窗口，三个窗口各自对应一个ArkUI实例。
+
 **图1** 多实例关系图
 
 ![multi-instance](figures/multi-instance.png)
@@ -33,7 +35,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 
 部分多实例替代接口如下表所示，UIContext实例支持的全量接口以[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中描述为准。
 
-本文中所述的全局接口从API version 18开始废弃。示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API version 20开始生效，其余接口从API version 18开始生效。
+示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API version 20开始生效，其余接口从API version 18开始生效。
 
 |               全局接口                |               替代接口                |            说明            |
 | :-----------------------------------: | :-----------------------------------: | :------------------------: |
@@ -65,7 +67,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 
 ## 常见UIContext接口替换全局接口的场景
 
-以下UIContext接口替换全局接口示例以[像素单位转换](../reference/apis-arkui/arkui-ts/ts-pixel-units.md#像素单位转换)接口为例。
+以下UIContext接口替换全局接口示例以[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口为例。
 
 ### 通过自定义组件获取UIContext
 
@@ -80,6 +82,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 <!--deprecated_code_no_check-->
 
 ```ts
+// pages/NewGlobal.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -147,6 +150,7 @@ struct Index {
 <!--deprecated_code_no_check-->
 
 ```ts
+// entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -214,6 +218,12 @@ export default class EntryAbility extends UIAbility {
     // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
   }
 
+  onWindowStageDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    // 在窗口销毁时需要移除失效的UIContext
+    PixelUtils.removeUIContext();
+  }
+
   // ...
 }
 ```
@@ -231,6 +241,7 @@ export default class EntryAbility extends UIAbility {
 <!--deprecated_code_no_check-->
 
 ```ts
+// common/Utils.ets
 class PixelUtils {
   static vp2px(vpValue: number) : number {
     return vp2px(vpValue);
@@ -255,8 +266,12 @@ const DOMAIN = 0x0000;
 
 export class PixelUtils {
   static uiContext : UIContext | undefined;
-  static setUIContext(uiContext : UIContext) : void {
+  static setUIContext(uiContext : UIContext): void {
     PixelUtils.uiContext = uiContext;
+  }
+
+  static removeUIContext(): void {
+    PixelUtils.uiContext = undefined;
   }
 
   static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
@@ -289,7 +304,7 @@ export class PixelUtils {
 ```
 ```ts
 // entryability/EntryAbility.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { PixelUtils } from '../common/Utils';
@@ -317,6 +332,11 @@ export default class EntryAbility extends UIAbility {
     });
   }
 
+  onWindowStageDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    // 在窗口销毁时需要移除失效的UIContext。
+    PixelUtils.removeUIContext();
+  }
   // ...
 }
 ```
@@ -333,7 +353,7 @@ const DOMAIN = 0x0000;
 struct Index {
   build() {
     RelativeContainer() {
-      Text('Caculate 20vp to px')
+      Text('Calculate 20vp to px')
         .fontWeight(FontWeight.Bold)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },
@@ -561,7 +581,7 @@ struct CalendarPickerDialogPage {
 
 ### 像素单位转换接口替换为UIContext接口
 
-因为不同的UI实例可以有不同的转换系数，[像素单位转换](../reference/apis-arkui/arkui-ts/ts-pixel-units.md#像素单位转换)接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
+因为不同的UI实例可以有不同的转换系数，[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
 
 | 像素单位转换接口调用时机                                     | 接口行为                                                     | 可能与预期不一致的场景                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -577,6 +597,7 @@ struct CalendarPickerDialogPage {
 <!--deprecated_code_no_check-->
 
 ```ts
+// Common/UIContext.ets
 export class PixelUtils {
   static vp2px(vpValue: number) : number {
     return vp2px(vpValue);
@@ -603,6 +624,10 @@ export class PixelUtils {
   static uiContext : UIContext | undefined;
   static setUIContext(uiContext : UIContext) : void {
     PixelUtils.uiContext = uiContext;
+  }
+
+  static removeUIContext(): void {
+    PixelUtils.uiContext = undefined;
   }
 
  static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
@@ -655,6 +680,7 @@ export class PixelUtils {
 <!--deprecated_code_no_check-->
 
 ```ts
+// Common/ContextUtils.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -697,6 +723,10 @@ export class ContextUtils {
     ContextUtils.context = context;
   }
 
+  static removeContext(): void {
+    ContextUtils.context = undefined;
+  }
+
   static getContext(uiContext?: UIContext): Context | undefined {
     if (uiContext) {
       return uiContext.getHostContext();
@@ -721,6 +751,11 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
     ContextUtils.setContext(this.context);
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+    ContextUtils.removeContext();
   }
 
   // ...

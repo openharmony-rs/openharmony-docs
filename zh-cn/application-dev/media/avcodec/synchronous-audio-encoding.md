@@ -309,7 +309,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    在上方案例中，attr.flags表示缓冲区标记的类别。
 
-   如果是结束，需要将flags标识成AVCODEC_BUFFER_FLAGS_EOS。
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。
 
    | 枚举值 | 描述 | 
    | -------- | -------- |

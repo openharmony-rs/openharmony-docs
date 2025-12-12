@@ -1,4 +1,10 @@
 # Graphics
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Graphics** module provides APIs for defining attributes of a custom node.
 
@@ -20,10 +26,10 @@ Returns the width and height of the component. The default unit is vp, but APIs 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Readable| Writable| Description                  |
+| Name  | Type  | Read Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| width  | number | Yes  | Yes  | Width of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
-| height | number | Yes  | Yes  | Height of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
+| width  | number | No  | No  | Width of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
+| height | number | No  | No  | Height of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
 
 ## Position
 
@@ -63,10 +69,10 @@ Sets or returns the layout size and position of the component.
 
 | Name  | Type  | Read Only| Optional| Description                       |
 | ------ | ------ | ---- | ---- | --------------------------- |
-| x      | number | Yes  | Yes  | Horizontal position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
-| y      | number | Yes  | Yes  | Vertical position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
-| width  | number | Yes  | Yes  | Component width.<br>Unit: vp.<br>Value range: [0, +∞).  |
-| height | number | Yes  | Yes  | Component height.<br>Unit: vp.<br>Value range: [0, +∞).  |
+| x      | number | No  | No  | Horizontal position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
+| y      | number | No  | No  | Vertical position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
+| width  | number | No  | No  | Component width.<br>Unit: vp.<br>Value range: [0, +∞).  |
+| height | number | No  | No  | Component height.<br>Unit: vp.<br>Value range: [0, +∞).  |
 
 ## Pivot
 
@@ -122,7 +128,7 @@ Sets the rotation angle of the component.
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| [Vector3](#vector3) | Rotation angle along the x- and y-axis.<br>Unit: degree|
+| [Vector3](#vector3) | Rotation angle around the x-, y-, and z-axes.<br>Unit: degree|
 
 ## Offset
 
@@ -252,7 +258,7 @@ Obtains the canvas used for drawing.
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [drawing.Canvas](../apis-arkgraphics2d/js-apis-graphics-drawing.md#canvas) | Canvas for drawing.|
+| [drawing.Canvas](../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | Canvas for drawing.|
 
 **Example**
 
@@ -309,12 +315,12 @@ Describes the edges.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type| Readable| Writable| Description            |
+| Name  | Type| Read Only| Optional| Description            |
 | ------ | ---- | ---- | ---- | ---------------- |
-| left   | T    | Yes  | Yes  | Left edge.|
-| top    | T    | Yes  | Yes  | Top edge.|
-| right  | T    | Yes  | Yes  | Right edge.|
-| bottom | T    | Yes  | Yes  | Bottom edge.|
+| left   | T    | No  | No  | Left edge.|
+| top    | T    | No  | No  | Top edge.|
+| right  | T    | No  | No  | Right edge.|
+| bottom | T    | No  | No  | Bottom edge.|
 
 ## LengthUnit<sup>12+</sup>
 
@@ -340,10 +346,10 @@ Sets the width and height attributes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type| Readable| Writable| Description            |
+| Name  | Type| Read Only| Optional| Description            |
 | ------ | ---- | ---- | ---- | ---------------- |
-| width   | T    | Yes  | Yes  | Width.|
-| height    | T    | Yes  | Yes  | Height.|
+| width   | T    | No  | No  | Width.|
+| height    | T    | No  | No  | Height.|
 
 ## LengthMetricsUnit<sup>12+</sup>
 
@@ -368,10 +374,10 @@ Defines the length properties. When the length unit is PERCENT, the value **1** 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type| Readable| Writable| Description            |
+| Name  | Type| Read Only| Optional| Description            |
 | ------------ | ---------------------------------------- | ---- | ---- | ------ |
-| value       | number | Yes  | Yes  | Value of the length property.  |
-| unit | [LengthUnit](#lengthunit12)                                   | Yes  | Yes  | Unit of the length property. The default value is VP.|
+| value       | number | No  | No  | Value of the length property.  |
+| unit | [LengthUnit](#lengthunit12)                                   | No  | No  | Unit of the length property. The default value is VP.|
 
 ### constructor<sup>12+</sup>
 
@@ -387,7 +393,7 @@ A constructor used to create a **LengthMetrics** instance. If the **unit** param
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: [0, +∞).|
+| value   | number | Yes  | Value of the length property.<br>Value range: (-∞, +∞).|
 | unit   | [LengthUnit](#lengthunit12) | No  | Unit of the length property.|
 
 ### px<sup>12+</sup>
@@ -522,14 +528,52 @@ Represents the length of a resource of the Resource type.
 | ------------- | ---------------- |
 | [LengthMetrics](#lengthmetrics12) | Instance of the **LengthMetrics** class.|
 
-**Error codes**
+**Example**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [System Resource Error Codes](errorcode-system-resource.md).
+Use LengthMetrics to set the padding and margin attributes of Row.
+```ts
+import { LengthMetrics, LengthUnit } from '@kit.ArkUI';
 
-| ID| Error Message                                  |
-| -------- | ------------------------------------------ |
-| 180001   | System resources does not exist.           |
-| 180002   | The type of system resources is incorrect. |
+@Entry
+@Component
+struct SizeExample {
+  build() {
+    Column({ space: 10 }) {
+      Text('margin and padding:')
+        .fontSize(12)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+      Row() {
+        Row() {
+          Row()
+            .size({ width: '100%', height: '100%' })
+            .backgroundColor('#ffd5d5d5')
+        }
+        .width(80)
+        .height(80)
+        .padding({
+          top: new LengthMetrics(20, LengthUnit.VP),
+          bottom: LengthMetrics.px(15),
+          start: LengthMetrics.vp(10),
+          end: LengthMetrics.fp(20)
+        })
+        .margin({
+          top: LengthMetrics.percent(0.1),
+          bottom: LengthMetrics.lpx(20),
+          start: LengthMetrics.resource($r('app.float.row_margin_start')),
+          end: LengthMetrics.vp(10)
+        })
+        .backgroundColor(Color.White)
+      }
+      .backgroundColor("#ff2787d9")
+    }
+    .width('100%')
+    .margin({ top: 5 })
+  }
+}
+```
+![image](figures/lengthMetricsDemo.png)
+
 
 ## ColorMetrics<sup>12+</sup>
 
@@ -576,7 +620,7 @@ Instantiates the **ColorMetrics** class using colors in RGB or RGBA format.
 | red   | number | Yes  | Red component of the color. The value is an integer ranging from 0 to 255.|
 | green | number | Yes  | Green component of the color. The value is an integer ranging from 0 to 255.|
 | blue  | number | Yes  | Blue component of the color. The value is an integer ranging from 0 to 255.|
-| alpha | number | No  | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.0. The default value is **1.0** (fully opaque).|
+| alpha | number | No  | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.0. The default value is **1.0** (fully opaque).<br> Note: If alpha is less than 0, the color is fully transparent. If alpha is greater than 1, the color is opaque.|
 
 **Return value**
 
@@ -588,7 +632,7 @@ Instantiates the **ColorMetrics** class using colors in RGB or RGBA format.
 
 static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
-Creates a **ColorMetrics** instance using specified [ColorSpace](./arkui-ts/ts-appendix-enums.md) and RGBA values. Only certain attributes support color configuration in the display-p3 color space.
+Creates a **ColorMetrics** instance using specified [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) and RGBA values. Only certain attributes support color configuration in the display-p3 color space.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -598,7 +642,7 @@ Creates a **ColorMetrics** instance using specified [ColorSpace](./arkui-ts/ts-a
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md) | Yes  | Color space used to specify the color. To use **ColorSpace.DISPLAY_P3**, the corresponding window must be set to wide color gamut mode using [setWindowColorSpace](./js-apis-window.md#setwindowcolorspace9-1).|
+| colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | Yes  | Color space used to specify the color. If ColorSpace.DISPLAY_P3 is used, the [setWindowColorSpace](./arkts-apis-window-Window.md#setwindowcolorspace9-1) API must be called to set the current window to the wide color gamut mode.|
 | red   | number | Yes  | Red component of the color. The value is a floating point number ranging from 0 to 1.|
 | green | number | Yes  | Green component of the color. The value is a floating point number ranging from 0 to 1.|
 | blue  | number | Yes  | Blue component of the color. The value is a floating point number ranging from 0 to 1.|
@@ -645,7 +689,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 blendColor(overlayColor: ColorMetrics): ColorMetrics
 
-Blends colors.
+Blends a specified color (**overlayColor**) with the current color and returns the resulting color.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -655,13 +699,19 @@ Blends colors.
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| overlayColor | [ColorMetrics](#colormetrics12) | Yes| Instance of the **ColorMetrics** class for overlaying colors.|
+| overlayColor | [ColorMetrics](#colormetrics12) | Yes| Color to overlay. The alpha value determines the blending strength: **1.0** indicates complete opacity (fully covers the base color), and **0.0** indicates complete transparency (returns the original color).|
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | Instance of the **ColorMetrics** class after color blending.|
+| [ColorMetrics](#colormetrics12) |  New color object with red, green, blue, and alpha channels representing the blended result of the current color and overlay color.|
+
+**Blending formula**:
+
+The resulting alpha is fully opaque. The RGB values are calculated using the following formula:
+
+result_rgb = overlay_rgb*(overlay_alpha) + (1 - overlay_alpha) * base_rgb
 
 **Error codes**
 
@@ -762,7 +812,9 @@ function getBlendColor(baseColor: ResourceColor): ColorMetrics {
   try {
     // When resourceColor and blendColor of ColorMetrics are used, add exception handling.
     // Error codes 401 and 180003 of the ArkUI subsystem may be returned.
-    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#19000000"));
+    // 61 157 180
+    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#083d9db4"));
+    console.info('current color is '+sourceColor.color+ ' r:'+sourceColor.red +' g:'+sourceColor.green+' b:'+sourceColor.blue+ ' a :'+sourceColor.alpha );
   } catch (error) {
     console.error("getBlendColor failed, code = " + (error as BusinessError).code + ", message = " +
     (error as BusinessError).message);
@@ -776,17 +828,38 @@ function getBlendColor(baseColor: ResourceColor): ColorMetrics {
 struct ColorMetricsSample {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button("ColorMetrics")
+      Button("ColorMetrics blendColor")
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(getBlendColor(Color.Red).color)
+        .backgroundColor(getBlendColor("#ff3d9db4").color)
+        .margin(10)
+      Button("ColorMetrics numeric")
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.numeric(0xff707070).color)
+        .margin(10)
+      Button("ColorMetrics rgba")
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.rgba(0,74,175,255).color)
+        .margin(10)
+      Button("ColorMetrics colorWithSpace")
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB,  0.4392, 0.4392, 0.4392).color)
+        .margin(10)
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
+![image](figures/colorMetricsDemo.png)
+
 ## Corners\<T><sup>12+</sup>
 
 Describes the four corners.
@@ -795,18 +868,18 @@ Describes the four corners.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type| Readable| Writable| Description                  |
+| Name       | Type| Read Only| Optional| Description                  |
 | ----------- | ---- | ---- | ---- | ---------------------- |
-| topLeft     | T    | Yes  | Yes  | Radius of the upper left corner.  |
-| topRight    | T    | Yes  | Yes  | Radius of the upper right corner.|
-| bottomLeft  | T    | Yes  | Yes  | Radius of the lower left corner.  |
-| bottomRight | T    | Yes  | Yes  | Radius of the lower right corner.  |
+| topLeft     | T    | No  | No  | Radius of the upper left corner.  |
+| topRight    | T    | No  | No  | Radius of the upper right corner.|
+| bottomLeft  | T    | No  | No  | Radius of the lower left corner.  |
+| bottomRight | T    | No  | No  | Radius of the lower right corner.  |
 
 ## CornerRadius<sup>12+</sup>
 
 type CornerRadius = Corners\<Vector2>
 
-Sets the radius for the four corners.
+Sets the semi-axis lengths for the x-axis and y-axis of the rounded corners.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -814,13 +887,13 @@ Sets the radius for the four corners.
 
 | Type                                        | Description              |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)[\<Vector2>](#vector2) | Radius of the four corners.|
+| [Corners](#cornerst12)[\<Vector2>](#vector2) | Semi-axis lengths for the x-axis and y-axis of the rounded corners.|
 
 ## BorderRadiuses<sup>12+</sup>
 
 type BorderRadiuses = Corners\<number>
 
-Sets the radius for the four border corners.
+Sets the uniform radius of the four corners.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -828,7 +901,7 @@ Sets the radius for the four border corners.
 
 | Type                           | Description              |
 | ------------------------------- | ------------------ |
-| [Corners\<number>](#cornerst12) | Radius of the four border corners.|
+| [Corners\<number>](#cornerst12) | Uniform radius of the four corners.|
 
 ## Rect<sup>12+</sup>
 
@@ -852,10 +925,10 @@ Describes a rectangle with rounded corners.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                         | Readable| Writable| Description            |
+| Name   | Type                         | Read Only| Optional| Description            |
 | ------- | ----------------------------- | ---- | ---- | ---------------- |
-| rect    | [Rect](#rect12)                 | Yes  | Yes  | Attributes of the rectangle.|
-| corners | [CornerRadius](#cornerradius12) | Yes  | Yes  | Attributes of rounded corners.|
+| rect    | [Rect](#rect12)                 | No  | No  | Attributes of the rectangle.|
+| corners | [CornerRadius](#cornerradius12) | No  | No  | Attributes of rounded corners.|
 
 ## Circle<sup>12+</sup>
 
@@ -865,11 +938,11 @@ Describes a circle.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Readable| Writable| Description                     |
+| Name   | Type  | Read Only| Optional| Description                     |
 | ------- | ------ | ---- | ---- | ------------------------- |
-| centerX | number | Yes  | Yes  | X coordinate of the center of the circle, in px.|
-| centerY | number | Yes  | Yes  | Y coordinate of the center of the circle, in px.|
-| radius  | number | Yes  | Yes  | Radius of the circle, in px.<br> Value range: [0, +∞).  |
+| centerX | number | No  | No  | X-coordinate of the center of the circle, in px.|
+| centerY | number | No  | No  | Y-coordinate of the center of the circle, in px.|
+| radius  | number | No  | No  | Radius of the circle, in px.<br> Value range: [0, +∞).  |
 
 ## CommandPath<sup>12+</sup>
 
@@ -879,13 +952,25 @@ Describes the command for drawing a path.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                                                        | Type  | Readable| Writable| Description                                                        |
+| Name                                                        | Type  | Read Only| Optional| Description                                                        |
 | ------------------------------------------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | Yes  | Yes  | Commands for drawing a path. For details about how to convert the pixel unit, see [Pixel Unit Conversion](./arkui-ts/ts-pixel-units.md#pixel-unit-conversion).<br>Unit: px|
+| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | No  | No  | Commands for drawing a path. For details about how to convert pixel units, see [Pixel Units](./arkui-ts/ts-pixel-units.md).<br>Unit: px|
 
 ## ShapeMask<sup>12+</sup>
 
 Describes the shape mask.
+
+### Properties
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name           | Type   | Read Only| Optional| Description                                               |
+| --------------- | ------ | ---- | ---- | -------------------------------------------------- |
+| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode). |
+| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode).|
+| strokeWidth     | number | No  | No  | Sets the stroke width for the mask, in px. The default value is **0**.  |
 
 ### constructor<sup>12+</sup>
 
@@ -1197,167 +1282,6 @@ struct Index {
 }
 ```
 
-### fillColor<sup>12+</sup>
-
-fillColor: number
-
-Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-const mask = new ShapeMask();
-mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
-mask.fillColor = 0X55FF0000;
-
-const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeMask = mask;
-
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
-
-### strokeColor<sup>12+</sup>
-
-strokeColor: number
-
-Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-const mask = new ShapeMask();
-mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
-mask.strokeColor = 0XFFFF0000;
-mask.strokeWidth = 24;
-
-const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeMask = mask;
-
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
-
-### strokeWidth<sup>12+</sup>
-
-strokeWidth: number
-
-Sets the stroke width for the mask, in px. The default value is **0**.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-const mask = new ShapeMask();
-mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
-mask.strokeColor = 0XFFFF0000;
-mask.strokeWidth = 24;
-
-const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeMask = mask;
-
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
-
 ## ShapeClip<sup>12+</sup>
 
 Sets the clipping shape.
@@ -1376,7 +1300,7 @@ A constructor used to create a **ShapeClip** object.
 
 setRectShape(rect: Rect): void
 
-Sets a rectangle as the clipping shape.
+Sets a rectangle for shape clipping.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1450,7 +1374,7 @@ struct Index {
 
 setRoundRectShape(roundRect: RoundRect): void
 
-Sets a rectangle with rounded corners for shape clipping.
+Sets a rounded rectangle for shape clipping.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1519,7 +1443,6 @@ struct Index {
               bottomRight: { x: 32, y: 32 }
             }
           });
-          renderNode.shapeClip = renderNode.shapeClip;
         })
     }
   }
@@ -1530,7 +1453,7 @@ struct Index {
 
 setCircleShape(circle: Circle): void
 
-Sets a circle as the clipping shape.
+Sets a circle for shape clipping.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1587,7 +1510,6 @@ struct Index {
       Button("setCircleShape")
         .onClick(() => {
           renderNode.shapeClip.setCircleShape({ centerY: 75, centerX: 75, radius: 75 });
-          renderNode.shapeClip = renderNode.shapeClip;
 
         })
     }
@@ -1599,7 +1521,7 @@ struct Index {
 
 setOvalShape(oval: Rect): void
 
-Sets an oval shape as the clipping shape.
+Sets an oval shape for shape clipping.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1661,7 +1583,6 @@ struct Index {
             top: 0,
             bottom: this.getUIContext().vp2px(100)
           });
-          renderNode.shapeClip = renderNode.shapeClip;
         })
     }
   }
@@ -1724,7 +1645,6 @@ struct Index {
       Button("setCommandPath")
         .onClick(()=>{
           renderNode.shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
-          renderNode.shapeClip = renderNode.shapeClip;
         })
     }
   }
@@ -1859,7 +1779,7 @@ struct Index {
 
 borderStyles(all: BorderStyle): Edges\<BorderStyle>
 
-Generates a **borderStyles** object with the specified border style color for all borders.
+Generates a border style object with the specified border style color for all borders.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

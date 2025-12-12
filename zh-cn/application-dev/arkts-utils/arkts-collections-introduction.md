@@ -8,7 +8,7 @@
 
 ## ArkTS容器集
 
-ArkTS共享容器（[@arkts.collections (ArkTS容器集)](../reference/apis-arkts/arkts-apis-arkts-collections.md)）是一种在并发实例间共享传输的容器类，用于并发场景下的高性能数据传递。它的功能与Ecmascript 262规范定义的容器类似，但存在部分差异，具体可见[共享容器与原生API方法的行为差异对比](#共享容器与原生api方法的行为差异对比)。
+ArkTS共享容器（[@arkts.collections (ArkTS容器集)](../reference/apis-arkts/arkts-apis-arkts-collections.md)）是一种在并发实例间共享传输的容器类，用于并发场景下的高性能数据传递。它的功能与ECMAScript 262规范定义的容器类似，但存在部分差异，具体可见[共享容器与原生API方法的行为差异对比](#共享容器与原生api方法的行为差异对比)。
 
 ArkTS共享容器在多个并发实例间传递时，默认采用引用传递，允许多个并发实例操作同一容器实例。此外，还支持拷贝传递，即每个并发实例拥有独立的ArkTS容器实例。
 
@@ -72,7 +72,7 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 
 > **说明：**
 >
-> ArkTS共享容器的类型与Ecmascript 262规范定义的原生容器类型不同，因此使用原生容器Array的isArray()方法判断collections.Array实例对象会返回false。
+> ArkTS共享容器的类型与ECMAScript 262规范定义的原生容器类型不同，因此使用原生容器Array的isArray()方法判断collections.Array实例对象会返回false。
 >
 > ArkTS共享容器采用引用传递方式跨线程传递，与原生容器相比效率更高。如果需要跨线程传输大量数据，建议使用ArkTS共享容器。
 

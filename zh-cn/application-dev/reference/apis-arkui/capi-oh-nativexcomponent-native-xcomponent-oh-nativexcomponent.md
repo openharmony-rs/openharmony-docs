@@ -1,5 +1,13 @@
 # OH_NativeXComponent
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 提供封装的OH_NativeXComponent实例。

@@ -1,5 +1,12 @@
 # 列表场景性能提升实践
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 在应用的UI开发中，使用列表是一种常规场景，因此，对列表性能进行优化是非常重要的。本文将针对应用开发列表场景的性能提升实践方法展开介绍。
 
 ## 简介
@@ -219,7 +226,7 @@ struct ReusableKeyGeneratorUseStringify {
 
 ```ts
 // LazyForEach要遍历的数据源，为实现接口IDataSource的实例   
-private dataList = ...
+private dataList = new MyDataSource();
 build() {
   Column() {
     List() {

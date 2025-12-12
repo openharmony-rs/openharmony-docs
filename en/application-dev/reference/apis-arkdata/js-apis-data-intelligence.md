@@ -30,6 +30,8 @@ Obtains a text embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory| Description                              |
@@ -82,6 +84,8 @@ Obtains an image embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory| Description                              |
@@ -130,9 +134,11 @@ intelligence.getImageEmbeddingModel(imageConfig)
 
 splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
-Splits text.
+Splits text. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -235,9 +241,11 @@ Before calling any of the following APIs, you must obtain a **TextEmbedding** in
 
 loadModel(): Promise&lt;void&gt;
 
-Loads this embedding model. This API uses a promise to return the result.
+Loads this text embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -272,9 +280,11 @@ textEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-Releases this embedding model. This API uses a promise to return the result.
+Releases this text embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -309,11 +319,13 @@ textEmbedding.releaseModel()
 
 getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
-Obtains the embedding vector of the given text.
+Obtains the embedding vector of the given text. This API uses a promise to return the result.
 
 Before calling this API, ensure that an embedding model is successfully loaded by using [loadModel](#loadmodel).
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -358,11 +370,13 @@ textEmbedding.getEmbedding(text)
 
 getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
 
-Obtains the embedding vector of a given batch of texts.
+Obtains the embedding vector of a given batch of texts. This API uses a promise to return the result.
 
 Before calling this API, ensure that an embedding model is successfully loaded by using [loadModel](#loadmodel).
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -415,9 +429,11 @@ Before calling any of the following APIs, you must obtain a **ImageEmbedding** i
 
 loadModel(): Promise&lt;void&gt;
 
-Loads this embedding model. This API uses a promise to return the result.
+Loads this image embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -452,9 +468,11 @@ imageEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-Releases this embedding model. This API uses a promise to return the result.
+Releases this image embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -489,11 +507,13 @@ imageEmbedding.releaseModel()
 
 getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 
-Obtains the embedding vector of the given image.
+Obtains the embedding vector of the given image. This API uses a promise to return the result.
 
 Before calling this API, ensure that an embedding model is successfully loaded by using [loadModel](#loadmodel).
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成页面布局和渲染。
 
@@ -59,6 +59,10 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
 被拉起的EmbeddedUIExtensionAbility通过调用`terminateSelfWithResult`或者`terminateSelf`正常退出时，触发本回调函数。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -79,6 +83,10 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 onError(callback: ErrorCallback)
 
 被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -107,8 +115,6 @@ onError(callback: ErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### 属性
-
 | 名称 | 类型                      | 只读 | 可选 | 说明                                                 |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
 | code | number                                                     | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码，返回的结果码由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。 |
@@ -128,7 +134,7 @@ onError(callback: ErrorCallback)
   struct Index {
     @State message: string = 'Message: ';
     private want: Want = {
-      bundleName: "com.example.embeddeddemo",
+      bundleName: "com.example.embeddedComponent",
       abilityName: "ExampleEmbeddedAbility",
     };
 
@@ -200,13 +206,12 @@ onError(callback: ErrorCallback)
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-  let storage = new LocalStorage();
-
-  @Entry(storage)
+  @Entry
   @Component
   struct Extension {
     @State message: string = 'EmbeddedUIExtensionAbility Index';
-    private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+    private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
+    private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
 
     build() {
       Column() {
@@ -218,7 +223,7 @@ onError(callback: ErrorCallback)
           this.session?.terminateSelfWithResult({
             resultCode: 1,
             want: {
-              bundleName: "com.example.embeddeddemo",
+              bundleName: "com.example.embeddedComponent",
               abilityName: "ExampleEmbeddedAbility",
             }
           });
@@ -236,3 +241,24 @@ onError(callback: ErrorCallback)
     "type": "embeddedUI"
   }
   ```
+- 文件目录结构如下：
+
+  ```shell
+  .
+  └── main
+      ├── ets
+      │   ├── extensionAbility
+      │   │   └── ExampleEmbeddedAbility.ets
+      │   └── pages
+      |       ├── extension.ets
+      │       └── Index.ets  
+      ├── resources
+      |   └── base
+      |       └── profile
+      |           └── main_pages.json
+      └── module.json5
+  ```
+
+- 示例图如下：
+
+  ![EmbeddedComponent](figures/EmbeddedComponent.png)

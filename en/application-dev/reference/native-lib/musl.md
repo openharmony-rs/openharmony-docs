@@ -136,5 +136,5 @@ The following lists the character encoding formats and aliases supported by musl
 
 [NDK-Related musl libc Interface Usage Restrictions](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)
 
-[NDK musl-libc Supplementary APIs](https://gitee.com/openharmony/third_party_musl/tree/master/docs)
+[NDK musl-libc Supplementary APIs](https://gitcode.com/openharmony/third_party_musl/tree/master/docs)
 <!--no_check-->

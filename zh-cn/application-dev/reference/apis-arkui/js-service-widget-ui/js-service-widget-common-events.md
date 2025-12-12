@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 相对于私有事件，大部分组件都可以绑定如下事件。(如果需要响应键盘的回车和空格发生Key Up事件，需要在最外层的控件上添加click事件)

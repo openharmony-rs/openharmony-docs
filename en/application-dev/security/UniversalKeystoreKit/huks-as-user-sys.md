@@ -9,7 +9,7 @@
 
 To implement isolation and access control for key data, HUKS provides APIs with the user ID specified for concurrent key operations initiated by multiple users.
 
->**NOTE**<br>
+>**NOTE**
 > The mini-system devices do not support the operation described in this topic.
 
 ## Constraints
@@ -19,7 +19,7 @@ To implement isolation and access control for key data, HUKS provides APIs with 
 
 ## Available APIs
 
-APIs with the **userId** parameter are provided as enhancement to existing APIs.
+APIs with the `userId` parameter are provided as enhancement to existing APIs.
 
 When using these APIs, observe the following:
 
@@ -38,5 +38,5 @@ The algorithm specifications and the usage of the APIs are the same as those of 
 | [getKeyItemPropertiesAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksgetkeyitempropertiesasuser)    |  Obtains key properties.    |  [getKeyItemProperties](huks-obtain-key-properties-arkts.md)             |
 | [hasKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#hukshaskeyitemasuser)                        |  Checks whether a key exists.   |  [hasKeyItem](huks-check-key-arkts.md)               |
 | [initSessionAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksinitsessionasuser)                      |  Initializes a key session.      |  initSession in [encryption and decryption](huks-encryption-decryption-arkts.md), [signing and signature verification](huks-signing-signature-verification-arkts.md), [key agreement](huks-key-agreement-arkts.md), and [key derivation](huks-key-derivation-arkts.md)          |
-| [attestKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksattestkeyitemasuser)                  |  Performs non-anonymous key attestation.   |  [attestKeyItem](huks-key-attestation-arkts.md)                |
+| [attestKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksattestkeyitemasuser)                  |  Performs non-anonymous key attestation.   |  [attestKeyItem](huks-key-attestation-arkts-sys.md)                |
 | [anonAttestKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksanonattestkeyitemasuser)          | Performs anonymous key attestation.    |  [anonAttestKeyItem](huks-key-anon-attestation-arkts.md)                |

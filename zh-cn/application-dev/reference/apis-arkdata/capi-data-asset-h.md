@@ -10,7 +10,7 @@
 
 提供资产类型数据结构。<br>资产是指一种可以在数据管理中使用的数据结构，可以存储及查询一个文件的名称、绝对路径、相对路径、创建时间、修改时间、状态、占用空间等属性。
 
-**引用文件：** <database/rdb/data_asset.h>
+**引用文件：** <database/data/data_asset.h>
 
 **库：** libnative_rdb_ndk.z.so
 
@@ -52,9 +52,9 @@
 | [int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)](#oh_data_asset_getmodifytime) | 获取资产类型数据的最后修改的时间。 |
 | [int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)](#oh_data_asset_getsize) | 获取资产类型数据占用空间的大小。 |
 | [int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)](#oh_data_asset_getstatus) | 获取资产类型数据的状态码。 |
-| [Data_Asset *OH_Data_Asset_CreateOne(void)](#oh_data_asset_createone) | 创造一个[Data_Asset](capi-rdb-data-asset.md)类型实例。 |
+| [Data_Asset *OH_Data_Asset_CreateOne(void)](#oh_data_asset_createone) | 创建一个[Data_Asset](capi-rdb-data-asset.md)类型实例。 |
 | [int OH_Data_Asset_DestroyOne(Data_Asset *asset)](#oh_data_asset_destroyone) | 销毁[Data_Asset](capi-rdb-data-asset.md) 对象并回收该对象占用的内存。 |
-| [Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)](#oh_data_asset_createmultiple) | 创造指定数量的[Data_Asset](capi-rdb-data-asset.md)类型实例。 |
+| [Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)](#oh_data_asset_createmultiple) | 创建指定数量的[Data_Asset](capi-rdb-data-asset.md)类型实例。 |
 | [int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)](#oh_data_asset_destroymultiple) | 销毁多个[Data_Asset](capi-rdb-data-asset.md) 对象并回收该对象占用的内存。 |
 
 ## 枚举类型说明

@@ -10,7 +10,7 @@ You can use the AVRecorder to develop the audio and video recording service. The
 
 In this topic, you will learn how to use the AVRecorder to complete the process of starting, pausing, resuming, and stopping video recording.
 
-During application development, you can use the **state** property of the AVRecorder to obtain the AVRecorder state or call **OH_AVRecorder_SetStateCallback** to listen for state changes. Your code must meet the state machine requirements. For example, **OH_AVRecorder_Pause()** is called only when the AVRecorder is in the **started** state, and **OH_AVRecorder_Resume()** is called only when it is in the **paused** state.
+During application development, you can use the **state** property of the AVRecorder to obtain the AVRecorder state or call **OH_AVRecorder_SetStateCallback** to listen for state changes. Your code must meet the state machine requirements. For example, **pause()** is called only when the AVRecorder is in the **started** state, and **resume()** is called only when it is in the **paused** state.
 
 **Figure 1** Recording state transition
 

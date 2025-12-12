@@ -16,7 +16,7 @@ The Network Connection Management module provides basic network management capab
 
 ## Basic Concepts
 
-- Producer: a provider of data networks,  such as Wi-Fi, cellular, and Ethernet.
+- Producer: a provider of data networks, such as Wi-Fi, cellular, and Ethernet.
 - Consumer: a user of data networks, for example, an application or a system service.
 - Network probe: a mechanism used to detect the network availability to prevent the switch from an available network to an unavailable network. The probe type can be binding network detection, DNS detection, HTTP detection, or HTTPS detection.
 - Network selection: a mechanism used to select the optimal network when multiple networks coexist. It is triggered when the network status, network information, or network quality evaluation score changes.
@@ -64,17 +64,8 @@ This permission is of the **normal** level. Before applying for the permission, 
     // Create a NetConnection object.
     let conn = connection.createNetConnection(netSpecifier, timeout);
     ```
-
-4. Call [register()](../reference/apis-network-kit/js-apis-net-connection.md#register) to subscribe to network status changes of the specified network. When the network is available, the callback will be invoked to return the **netAvailable** event. When the network is unavailable, the callback will be invoked to return the **netUnavailable** event.
-
-    ```ts
-    // Register an observer for network status changes.
-    conn.register((err: BusinessError, data: void) => {
-      console.info(JSON.stringify(err));
-    });
-    ```
-
-5. Call [on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable) to subscribe to desired events. You must pass in **type** and **callback**.
+    
+4. Call the [on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable) API of the **NetConnection** object to enable listening for desired events. You must pass in **type** and **callback**.
 
     ```ts
     // Subscribe to network status change events. If the network is available, an on_netAvailable event is returned.
@@ -87,6 +78,16 @@ This permission is of the **normal** level. Before applying for the permission, 
       console.info("net is unavailable, data is " + JSON.stringify(data));
     }));
     ```
+    
+5. Call the [register()](../reference/apis-network-kit/js-apis-net-connection.md#register) API of the **NetConnection** object to subscribe to network status change events. This method must be called after the on method is called. When the network is available, the callback will be invoked to return the **netAvailable** event. When the network is unavailable, the callback will be invoked to return the **netUnavailable** event.
+
+    ```ts
+    // Register an observer for network status changes.
+    conn.register((err: BusinessError, data: void) => {
+      console.info(JSON.stringify(err));
+    });
+    ```
+    
 6. Call [unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister) to unsubscribe from the network status changes.
 
     ```ts
@@ -202,7 +203,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     /// Call getAllNets to obtain the list of all connected networks.
     connection.getAllNets().then((data: connection.NetHandle[]) => {
@@ -225,7 +225,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     
     function getDefaultNetsInfo() {
       let netHandleInfo:connection.NetHandle|null = null;
@@ -296,7 +295,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     function getAllNetsInfo() {
       // Call getAllNets to obtain the list of all connected networks specified by Array<NetHandle>.
@@ -336,7 +334,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     // Obtain the default active data network.
     let netHandle = connection.getDefaultNetSync();
@@ -375,10 +372,14 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     // Use the default network to resolve the host name to obtain the list of all IP addresses.
     connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));
     });
     ```
 
+## Samples
+
+The following samples are provided to help you better understand how to develop network connection features:
+
+- [NetConnection_Manage_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case)

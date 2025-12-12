@@ -23,7 +23,7 @@ The pasteboard allows you to copy and paste data of the plain text, hypertext, a
 - Currently, supported data types include **OH_UdsPlainText** (plain text), **OH_UdsHtml** (hypertext markup language), **OH_UdsFileUri** (file URI). **OH_UdsPixelMap** (pixel map), **OH_UdsHyperlink** (hyperlink), **OH_UdsAppItem** (application icon), and custom type. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage. For details, see [Using the Pasteboard to Copy and Paste](../pasteboard/use-pasteboard-to-copy-and-paste.md).
 - When you copy and paste data of a custom type, the specified type name cannot be the same as an existing one.
 - Since API version 12, [permission control](get-pastedata-permission-guidelines.md) is added to the pasteboard reading API to enhance user privacy protection.
-- The copy and paste APIs, [setUnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddata12) and [getUnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12), added in API version 12 are independent of the [OH_Pasteboard_SetData](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_setdata) and [OH_Pasteboard_GetData](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_getdata) APIs mentioned in this topic. Use the corresponding APIs when writing and reading data.
+- The [setUnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddata12) and [getUnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12) APIs added in API version 12 are independent of the [OH_Pasteboard_SetData](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_setdata) and [OH_Pasteboard_GetData](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_getdata) APIs mentioned in this topic. Use the corresponding APIs when writing and reading data.
 
 ## Available APIs
 
@@ -71,14 +71,14 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
 
    ```c
    // Define the callback for notifying data changes in the pasteboard.
-   static void Pasteboard_Notify_impl2(void* context, Pasteboard_NotifyType type)
+   static void PasteboardNotifyImpl2(void* context, Pasteboard_NotifyType type)
    {
-     printf("Pasteboard_NotifyType, type: %d", type);
+       OH_LOG_INFO(LOG_APP, "Pasteboard_NotifyType, type: %d", type);
    }
    // Define the callback for notifying when the pasteboard observer object is destroyed.
-   static void Pasteboard_Finalize_impl2(void* context)
+   static void PasteboardFinalizeImpl2(void* context)
    {
-     printf("callback: Pasteboard_Finalize");
+       OH_LOG_INFO(LOG_APP, "callback: Pasteboard_Finalize");
    }
    ```
 
@@ -90,7 +90,7 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
    // 2. Create a pasteboard observer instance.
    OH_PasteboardObserver* observer = OH_PasteboardObserver_Create();
    // 3. Set two callbacks to the pasteboard observer instance.
-   OH_PasteboardObserver_SetData(observer, (void* )pasteboard, Pasteboard_Notify_impl2, Pasteboard_Finalize_impl2);
+   OH_PasteboardObserver_SetData(observer, (void*)pasteboard, PasteboardNotifyImpl2, PasteboardFinalizeImpl2);
    // 4. Subscribe to local data changes on the pasteboard.
    OH_Pasteboard_Subscribe(pasteboard, NOTIFY_LOCAL_DATA_CHANGE, observer);
    ```
@@ -100,14 +100,17 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
    ```c
    // 1. Create a pasteboard instance.
    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   
+   if (pasteboard == nullptr) {
+       OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
+   };
    // 2. Create an OH_UdmfRecord object and add text data to it.
-   OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
-   OH_UdsPlainText_SetContent(plainText, "Hello world!");
+   OH_UdsPlainText* udsPlainText = OH_UdsPlainText_Create();
+   OH_UdsPlainText_SetContent(udsPlainText, text);
    OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
    OH_UdsHtml_SetContent(udsHtml, "hello world");
    OH_UdmfRecord* record = OH_UdmfRecord_Create();
-   OH_UdmfRecord_AddPlainText(record, plainText);
+   OH_UdmfRecord_AddPlainText(record, udsPlainText);
+   OH_UdmfRecord_AddHtml(record, udsHtml);
    
    // 3. Create an OH_UdmfData object and add OH_UdmfRecord to it.
    OH_UdmfData* data = OH_UdmfData_Create();
@@ -117,7 +120,8 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
    OH_Pasteboard_SetData(pasteboard, data);
    
    // 5. Destroy the pointer when the object is no longer required.
-   OH_UdsPlainText_Destroy(plainText);
+   OH_UdsPlainText_Destroy(udsPlainText);
+   OH_UdsHtml_Destroy(udsHtml);
    OH_UdmfRecord_Destroy(record);
    OH_UdmfData_Destroy(data);
    OH_Pasteboard_Destroy(pasteboard);
@@ -128,24 +132,41 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
    ```c
    // 1. Create a pasteboard instance.
    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+   if (pasteboard == nullptr) {
+       OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
+   };
    // 2. Check whether the pasteboard contains text data.
    bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, "text/plain");
    if (hasPlainTextData) {
-     // 3. Obtain the unified data OH_UdmfData from the pasteboard.
-     int ret = 0;
-     OH_UdmfData* udmfData = OH_Pasteboard_GetData(pasteboard, &ret);
-     // 4. Obtain the first data record from OH_UdmfData.
-     OH_UdmfRecord* record = OH_UdmfData_GetRecord(udmfData, 0);
-     // 5. Obtain the text data from the data record.
-     OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
-     OH_UdmfRecord_GetPlainText(record, plainText);
-     const char* content = OH_UdsPlainText_GetContent(plainText);
-     if (content != nullptr){
-      printf("Get plain text success.");
-     }
-     // 5. Destroy the pointer when the object is no longer required.
-     OH_UdsPlainText_Destroy(plainText);
-     OH_UdmfData_Destroy(udmfData);
+       // 3. Obtain the unified data OH_UdmfData from the pasteboard.
+       int ret = 0;
+       OH_UdmfData* udmfData = OH_Pasteboard_GetData(pasteboard, &ret);
+       if (udmfData == nullptr) {
+           OH_LOG_INFO(LOG_APP, "Failed to get data from pasteboard.");
+       };
+       // 4. Obtain the first data record from OH_UdmfData.
+       OH_UdmfRecord* record = OH_UdmfData_GetRecord(udmfData, 0);
+       if (record == nullptr) {
+           OH_LOG_INFO(LOG_APP, "Failed to get record from udmfData.");
+       };
+       // 5. Obtain the text data from the data record.
+       OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
+       if (plainText == nullptr) {
+           OH_LOG_INFO(LOG_APP, "Failed to create plain text object.");
+       };
+       OH_UdmfRecord_GetPlainText(record, plainText);
+       const char* content = OH_UdsPlainText_GetContent(plainText);
+       if (content == nullptr) {
+           OH_LOG_INFO(LOG_APP, "Failed to get content from plain text.");
+       }
+       napi_value result;
+       napi_create_string_utf8(env, content, strlen(content), &result);
+       // 6. Destroy the pointer when the object is no longer required.
+       OH_UdsPlainText_Destroy(plainText);
+       OH_UdmfRecord_Destroy(record);
+       return result;
+   } else {
+       OH_LOG_INFO(LOG_APP, "No plain text data in pasteboard.");
    }
    OH_Pasteboard_Destroy(pasteboard);
    ```

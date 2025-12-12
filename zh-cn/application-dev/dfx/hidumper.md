@@ -348,7 +348,7 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
 
 hidumper --mem-smaps [pid] [-v]命令调试的进程应为“使用调试证书签名的应用”，同[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)。
 
-要确认命令指定的应用是否为可调试应用，可以执行以下命令进行查询：hdc shell "bm dump -n [应用包名] | grep appProvisionType"查询，预期返回信息为"appProvisionType": "debug"。
+要确认命令指定的应用是否为可调试应用，可以执行以下命令进行查询：hdc shell "bm dump -n [应用包名] | grep appProvisionType"，预期返回信息为"appProvisionType": "debug"。
 
 以包名com.example.myapplication为例，可执行如下命令查询：
 
@@ -1328,7 +1328,7 @@ Navigation number: 4
 ## 常见问题
 
 
-### hidumper 查询到的内存使用情况与hidebug接口获取到的内存使用情况之间的关系
+### hidumper 查询到的内存使用情况与Hidebug接口获取到的内存使用情况之间的关系
 
 **现象描述**
 
@@ -1347,7 +1347,7 @@ hidumper --mem命令与HiDebug接口内存获取功能详细对比参考下表�
 | hidumper --mem-smaps [pid] | 命令行获取**单个进程**的详细内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 |
 | [hidebug.getAppNativeMemInfo](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebuggetappnativememinfo12) | 获取**应用自身**的内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 |
 
-若想通过hidebug获取图形内存，请参考[HiDebug能力概述](hidebug-guidelines.md)中的相关说明。
+若想通过Hidebug获取图形内存，请参考[HiDebug能力概述](hidebug-guidelines.md)中的相关说明。
 
 
 ### hidumper获取进程虚拟机内存和泄露对象信息为空

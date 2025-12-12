@@ -22,7 +22,7 @@ ForEach(this.nums,(item) => {
 
 **Reference**
 
-[Overview of Rendering Control](../ui/state-management/arkts-rendering-control-overview.md)
+[Overview of Rendering Control](../ui/rendering-control/arkts-rendering-control-overview.md)
 
 
 ## What is the difference between an @Builder decorated method and a regular method? (API version 9)

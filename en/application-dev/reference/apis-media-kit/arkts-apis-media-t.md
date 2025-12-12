@@ -250,7 +250,7 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
 let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLoadingRequest) => {
-  console.log(`Opening resource: ${request.url}`);
+  console.info(`Opening resource: ${request.url}`);
   // Open the resource and return a unique handle, ensuring the mapping between the UUID and request.
   uuid += 1;
   requests.set(uuid, request);
@@ -284,7 +284,7 @@ This callback function is implemented by applications to handle resource read re
 
 ```ts
 let sourceReadCallback: media.SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => {
-  console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+  console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
   // Check whether the UUID is valid and store the read request. Avoid blocking the request while pushing data and header information.
 };
 ```
@@ -317,7 +317,7 @@ import HashMap from '@ohos.util.HashMap';
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
 let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
-  console.log(`Closing resource with handle ${uuid}`);
+  console.info(`Closing resource with handle ${uuid}`);
   // Clear resources related to the current UUID.
   requests.remove(uuid);
 };
@@ -362,4 +362,4 @@ Describes the video playback state. You can obtain the state through the **state
 | 'playing'  | Video playback is in progress.|
 | 'paused'   | Video playback is paused.|
 | 'stopped'  | Video playback is stopped.|
-| 'error'    | Video playback is in the error state.    |
+| 'error'    | The AVRecorder enters this state    |

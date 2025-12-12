@@ -57,9 +57,10 @@ getResourceManager(callback: AsyncCallback&lt;ResourceManager&gt;): void
 
 **示例：**
 <!--code_no_check_fa-->
-  ```js
-import  resourceManager  from '@ohos.resourceManager';
+```js
+import resourceManager from '@ohos.resourceManager';
 //FA模型请使用上述方式导入模块
+
 export default {
     onCreate() {
         resourceManager.getResourceManager((error, mgr) => {
@@ -79,7 +80,7 @@ export default {
         });
     }
 };
-  ```
+```
 
 ## resourceManager.getResourceManager
 
@@ -100,12 +101,13 @@ getResourceManager(bundleName: string, callback: AsyncCallback&lt;ResourceManage
 
 **示例：**
 <!--code_no_check_fa-->
-  ```js
-import  resourceManager  from '@ohos.resourceManager';
+```js
+import resourceManager from '@ohos.resourceManager';
 //FA模型请使用上述方式导入模块
 
 // 'com.example.testapp'仅作示例，请替换为实际应用包名
 const BUNDLE_NAME = 'com.example.testapp';
+
 export default {
     onCreate() {
         resourceManager.getResourceManager(BUNDLE_NAME, (error, mgr) => {
@@ -124,7 +126,7 @@ export default {
         });
     }
 };
-  ```
+```
 
 ## resourceManager.getResourceManager
 
@@ -144,9 +146,10 @@ getResourceManager(): Promise&lt;ResourceManager&gt;
 
 **示例：**
 <!--code_no_check_fa-->
-  ```js
+```js
 import resourceManager from '@ohos.resourceManager';
 //FA模型请使用上述方式导入模块
+
 export default {
     onCreate() {
         resourceManager.getResourceManager().then(resMgr => {
@@ -162,7 +165,7 @@ export default {
         });
     }
 };
-  ```
+```
 
 ## resourceManager.getResourceManager
 
@@ -188,7 +191,7 @@ getResourceManager(bundleName: string): Promise&lt;ResourceManager&gt;
 
 **示例：**
 <!--code_no_check_fa-->
-  ```js
+```js
 import resourceManager from '@ohos.resourceManager';
 //FA模型请使用上述方式导入模块
 
@@ -210,7 +213,7 @@ export default {
         });
     }
 };
-  ```
+```
 
 ## resourceManager.getSysResourceManager<sup>20+</sup>
 
@@ -237,24 +240,24 @@ getSysResourceManager(): ResourceManager
 | 9001009  | Failed to access the system resource. which is not mapped to application sandbox, This error code will be thrown. |
 
 **示例：**
-  ```js
+```js
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let systemResourceManager = resourceManager.getSysResourceManager();
-    // 'sys.string.ohos_lab_vibrate'仅作示例，请替换为实际使用的资源
-    systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
-      let str = value;
-    }).catch((error: BusinessError) => {
-      console.error(`systemResourceManager getStringValue promise error: ${error}`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSysResourceManager failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  let systemResourceManager = resourceManager.getSysResourceManager();
+  // 'sys.string.ohos_lab_vibrate'仅作示例，请替换为实际使用的资源
+  systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
+    let str = value;
+  }).catch((error: BusinessError) => {
+    console.error(`systemResourceManager getStringValue promise error: ${error}`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getSysResourceManager failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ## Direction
 
@@ -424,18 +427,18 @@ getStringSync(resId: number): string
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -453,7 +456,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringSync<sup>10+</sup>
 
@@ -491,18 +494,18 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -520,7 +523,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringByNameSync<sup>9+</sup>
 
@@ -556,18 +559,18 @@ getStringByNameSync(resName: string): string
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -585,7 +588,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringByNameSync<sup>10+</sup>
 
@@ -623,18 +626,18 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 | 9001008  | Failed to format the resource obtained based on the resource Name. |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -652,7 +655,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringValue<sup>9+</sup>
 
@@ -683,18 +686,18 @@ getStringValue(resId: number, callback: _AsyncCallback&lt;string&gt;): void
 | 9001006  | The resource is referenced cyclically.         |
 
 **示例Stage：** 
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -711,7 +714,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringValue<sup>9+</sup>
 
@@ -747,18 +750,18 @@ getStringValue(resId: number): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -773,7 +776,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringByName<sup>9+</sup>
 
@@ -804,18 +807,18 @@ getStringByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -832,7 +835,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringByName<sup>9+</sup>
 
@@ -868,18 +871,18 @@ getStringByName(resName: string): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -894,7 +897,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringArrayValueSync<sup>10+</sup>
 
@@ -930,22 +933,22 @@ getStringArrayValueSync(resId: number): Array&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -963,7 +966,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringArrayByNameSync<sup>10+</sup>
 
@@ -999,22 +1002,22 @@ getStringArrayByNameSync(resName: string): Array&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1032,7 +1035,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringArrayValue<sup>9+</sup>
 
@@ -1063,22 +1066,22 @@ getStringArrayValue(resId: number, callback: _AsyncCallback&lt;Array&lt;string&g
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1096,7 +1099,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getStringArrayValue<sup>9+</sup>
 
@@ -1132,22 +1135,22 @@ getStringArrayValue(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1164,7 +1167,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getStringArrayByName<sup>9+</sup>
 
@@ -1195,22 +1198,22 @@ getStringArrayByName(resName: string, callback: _AsyncCallback&lt;Array&lt;strin
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1228,7 +1231,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringArrayByName<sup>9+</sup>
 
@@ -1264,22 +1267,22 @@ getStringArrayByName(resName: string): Promise&lt;Array&lt;string&gt;&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1296,7 +1299,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getIntPluralStringValueSync<sup>18+</sup>
 
@@ -1340,27 +1343,27 @@ getIntPluralStringValueSync(resId: number, num: number, ...args: Array<string | 
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1380,7 +1383,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getIntPluralStringByNameSync<sup>18+</sup>
 
@@ -1424,27 +1427,27 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 | 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1464,7 +1467,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDoublePluralStringValueSync<sup>18+</sup>
 
@@ -1508,27 +1511,27 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1548,7 +1551,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDoublePluralStringByNameSync<sup>18+</sup>
 
@@ -1592,27 +1595,27 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 | 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1632,7 +1635,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentSync<sup>10+</sup>
 
@@ -1668,7 +1671,7 @@ getMediaContentSync(resId: number, density?: number): Uint8Array
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1693,7 +1696,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByNameSync<sup>10+</sup>
 
@@ -1729,7 +1732,7 @@ getMediaByNameSync(resName: string, density?: number): Uint8Array
 | 9001004  | No matching resource is found based on the resource name.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1754,7 +1757,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContent<sup>9+</sup>
 
@@ -1784,7 +1787,7 @@ getMediaContent(resId: number, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1807,7 +1810,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContent<sup>10+</sup>
 
@@ -1838,7 +1841,7 @@ getMediaContent(resId: number, density: number, callback: _AsyncCallback&lt;Uint
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1860,7 +1863,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContent<sup>9+</sup>
 
@@ -1895,7 +1898,7 @@ getMediaContent(resId: number): Promise&lt;Uint8Array&gt;
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1915,7 +1918,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContent<sup>10+</sup>
 
@@ -1951,7 +1954,7 @@ getMediaContent(resId: number, density: number): Promise&lt;Uint8Array&gt;
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1971,7 +1974,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByName<sup>9+</sup>
 
@@ -2001,7 +2004,7 @@ getMediaByName(resName: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2023,7 +2026,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByName<sup>10+</sup>
 
@@ -2054,7 +2057,7 @@ getMediaByName(resName: string, density: number, callback: _AsyncCallback&lt;Uin
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2076,7 +2079,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByName<sup>9+</sup>
 
@@ -2111,7 +2114,7 @@ getMediaByName(resName: string): Promise&lt;Uint8Array&gt;
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2131,7 +2134,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByName<sup>10+</sup>
 
@@ -2167,7 +2170,7 @@ getMediaByName(resName: string, density: number): Promise&lt;Uint8Array&gt;
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2187,7 +2190,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64Sync<sup>10+</sup>
 
@@ -2223,7 +2226,7 @@ getMediaContentBase64Sync(resId: number, density?: number): string
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2248,7 +2251,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByNameSync<sup>10+</sup>
 
@@ -2284,7 +2287,7 @@ getMediaBase64ByNameSync(resName: string, density?: number): string
 | 9001004  | No matching resource is found based on the resource name.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2309,7 +2312,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64<sup>9+</sup>
 
@@ -2339,7 +2342,7 @@ getMediaContentBase64(resId: number, callback: _AsyncCallback&lt;string&gt;): vo
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2361,7 +2364,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64<sup>10+</sup>
 
@@ -2392,7 +2395,7 @@ getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback&l
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2414,7 +2417,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64<sup>9+</sup>
 
@@ -2449,7 +2452,7 @@ getMediaContentBase64(resId: number): Promise&lt;string&gt;
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2469,7 +2472,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64<sup>10+</sup>
 
@@ -2505,7 +2508,7 @@ getMediaContentBase64(resId: number, density: number): Promise&lt;string&gt;
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2525,7 +2528,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByName<sup>9+</sup>
 
@@ -2555,7 +2558,7 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback&lt;string&gt;): v
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2577,7 +2580,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByName<sup>10+</sup>
 
@@ -2612,7 +2615,7 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback&
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2634,7 +2637,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByName<sup>9+</sup>
 
@@ -2669,7 +2672,7 @@ getMediaBase64ByName(resName: string): Promise&lt;string&gt;
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2689,7 +2692,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByName<sup>10+</sup>
 
@@ -2725,7 +2728,7 @@ getMediaBase64ByName(resName: string, density: number): Promise&lt;string&gt;
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2745,7 +2748,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDrawableDescriptor<sup>10+</sup>
 
@@ -2782,7 +2785,7 @@ getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableD
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { DrawableDescriptor } from '@kit.ArkUI';
@@ -2815,7 +2818,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDrawableDescriptorByName<sup>10+</sup>
 
@@ -2852,7 +2855,7 @@ getDrawableDescriptorByName(resName: string, density?: number, type?: number): D
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { DrawableDescriptor } from '@kit.ArkUI';
@@ -2885,7 +2888,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getBoolean<sup>9+</sup>
 
@@ -2921,18 +2924,18 @@ getBoolean(resId: number): boolean
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/boolean.json
-  {
-    "boolean": [
-      {
-        "name": "boolean_test",
-        "value": true
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/boolean.json
+{
+  "boolean": [
+    {
+      "name": "boolean_test",
+      "value": true
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2950,7 +2953,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getBooleanByName<sup>9+</sup>
 
@@ -2986,18 +2989,18 @@ getBooleanByName(resName: string): boolean
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/boolean.json
-  {
-    "boolean": [
-      {
-        "name": "boolean_test",
-        "value": true
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/boolean.json
+{
+  "boolean": [
+    {
+      "name": "boolean_test",
+      "value": true
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3015,7 +3018,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getNumber<sup>9+</sup>
 
@@ -3051,33 +3054,34 @@ getNumber(resId: number): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/integer.json
-  {
-    "integer": [
-      {
-        "name": "integer_test",
-        "value": 100
-      }
-    ]
-  }
-  ```
+```json
+// 资源文件路径: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
 
-  ```json
-  // 资源文件路径: src/main/resources/base/element/float.json
-  {
-    "float": [
-      {
-        "name": "float_test",
-        "value": "30.6vp"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/float.json
+{
+  "float": [
+    {
+      "name": "float_test",
+      "value": "30.6vp"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3105,7 +3109,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 
 ### getNumberByName<sup>9+</sup>
@@ -3142,33 +3146,34 @@ getNumberByName(resName: string): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/integer.json
-  {
-    "integer": [
-      {
-        "name": "integer_test",
-        "value": 100
-      }
-    ]
-  }
-  ```
+```json
+// 资源文件路径: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
 
-  ```json
-  // 资源文件路径: src/main/resources/base/element/float.json
-  {
-    "float": [
-      {
-        "name": "float_test",
-        "value": "30.6vp"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/float.json
+{
+  "float": [
+    {
+      "name": "float_test",
+      "value": "30.6vp"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3196,7 +3201,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getColorSync<sup>10+</sup>
 
@@ -3232,20 +3237,21 @@ getColorSync(resId: number) : number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3260,7 +3266,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 
 ### getColorByNameSync<sup>10+</sup>
@@ -3297,20 +3303,21 @@ getColorByNameSync(resName: string) : number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3325,7 +3332,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getColor<sup>10+</sup>
 
@@ -3356,20 +3363,21 @@ getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
 | 9001006  | The resource is referenced cyclically.         |
 
 **示例Stage：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 'app.color.test'仅作示例，请替换为实际使用的资源
@@ -3383,7 +3391,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getColor<sup>10+</sup>
 
@@ -3419,20 +3427,21 @@ getColor(resId: number): Promise&lt;number&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 'app.color.test'仅作示例，请替换为实际使用的资源
@@ -3446,7 +3455,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 
 ### getColorByName<sup>10+</sup>
@@ -3478,20 +3487,21 @@ getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // "test"仅作示例，请替换为实际使用的资源
@@ -3505,7 +3515,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getColorByName<sup>10+</sup>
 
@@ -3541,20 +3551,21 @@ getColorByName(resName: string): Promise&lt;number&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // "test"仅作示例，请替换为实际使用的资源
@@ -3568,7 +3579,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getRawFileContentSync<sup>10+</sup>
 
@@ -3602,9 +3613,10 @@ getRawFileContentSync(path: string): Uint8Array
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3617,7 +3629,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFileContent<sup>9+</sup>
 
@@ -3646,9 +3658,10 @@ getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3667,7 +3680,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFileContent<sup>9+</sup>
 
@@ -3701,9 +3714,10 @@ getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3720,7 +3734,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFileListSync<sup>10+</sup>
 
@@ -3758,9 +3772,10 @@ getRawFileListSync(path: string): Array\<string>
 | 9001005  | Invalid relative path.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3776,7 +3791,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFileList<sup>10+</sup>
 
@@ -3809,9 +3824,10 @@ getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): v
 | 9001005  | Invalid relative path.       |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
@@ -3826,7 +3842,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getRawFileList<sup>10+</sup>
 
@@ -3864,9 +3880,10 @@ getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
@@ -3881,7 +3898,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getRawFdSync<sup>10+</sup>
 
@@ -3919,9 +3936,10 @@ getRawFdSync(path: string): RawFileDescriptor
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3934,7 +3952,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFd<sup>9+</sup>
 
@@ -3967,10 +3985,11 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3991,7 +4010,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFd<sup>9+</sup>
 
@@ -4029,10 +4048,11 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -4051,7 +4071,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### closeRawFdSync<sup>10+</sup>
 
@@ -4079,7 +4099,7 @@ closeRawFdSync(path: string): void
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4099,7 +4119,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
-  ```
+```
 
 ### closeRawFd<sup>9+</sup>
 
@@ -4128,9 +4148,10 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
@@ -4151,7 +4172,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
-  ```
+```
 
 ### closeRawFd<sup>9+</sup>
 
@@ -4185,9 +4206,10 @@ closeRawFd(path: string): Promise&lt;void&gt;
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
@@ -4203,7 +4225,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
-  ```
+```
 
 ### getConfigurationSync<sup>10+</sup>
 
@@ -4222,8 +4244,9 @@ getConfigurationSync(): Configuration
 | [Configuration](#configuration) | 设备的Configuration。 |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -4235,7 +4258,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getConfiguration
 
@@ -4254,7 +4277,7 @@ getConfiguration(callback: _AsyncCallback&lt;Configuration&gt;): void
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[Configuration](#configuration)&gt; | 是    | 回调函数，返回设备的Configuration。 |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4275,7 +4298,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getConfiguration
 
@@ -4294,7 +4317,7 @@ getConfiguration(): Promise&lt;Configuration&gt;
 | Promise&lt;[Configuration](#configuration)&gt; | Promise对象，返回设备的Configuration。 |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4313,7 +4336,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDeviceCapabilitySync<sup>10+</sup>
 
@@ -4332,7 +4355,7 @@ getDeviceCapabilitySync(): DeviceCapability
 | [DeviceCapability](#devicecapability) | 设备的DeviceCapability。 |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
@@ -4346,7 +4369,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDeviceCapability
 
@@ -4365,7 +4388,7 @@ getDeviceCapability(callback: _AsyncCallback&lt;DeviceCapability&gt;): void
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DeviceCapability](#devicecapability)&gt; | 是    | 回调函数，返回设备的DeviceCapability。 |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4386,7 +4409,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDeviceCapability
 
@@ -4405,7 +4428,7 @@ getDeviceCapability(): Promise&lt;DeviceCapability&gt;
 | Promise&lt;[DeviceCapability](#devicecapability)&gt; | Promise对象，返回设备的DeviceCapability。 |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4424,7 +4447,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### addResource<sup>10+</sup>
 
@@ -4456,7 +4479,7 @@ addResource(path: string): void
 | 9001010  | Invalid overlay path.            |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4473,7 +4496,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### removeResource<sup>10+</sup>
 
@@ -4505,7 +4528,7 @@ removeResource(path: string): void
 | 9001010  | Invalid overlay path.            |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4522,7 +4545,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getLocales<sup>11+</sup>
 
@@ -4555,7 +4578,7 @@ getLocales(includeSystem?: boolean): Array\<string>
 | 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4587,7 +4610,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getSymbol<sup>11+</sup>
 
@@ -4623,7 +4646,7 @@ getSymbol(resId: number): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4641,7 +4664,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 
 ### getSymbolByName<sup>11+</sup>
@@ -4678,7 +4701,7 @@ getSymbolByName(resName: string): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4696,7 +4719,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### isRawDir<sup>12+</sup>
 
@@ -4730,7 +4753,7 @@ isRawDir(path: string): boolean
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4755,7 +4778,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getOverrideResourceManager<sup>12+</sup>
 
@@ -4791,7 +4814,7 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 **示例：**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4810,7 +4833,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getOverrideConfiguration<sup>12+</sup>
 
@@ -4830,7 +4853,7 @@ getOverrideConfiguration(): Configuration
 
 **示例：**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4849,7 +4872,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### updateOverrideConfiguration<sup>12+</sup>
 
@@ -4877,7 +4900,7 @@ updateOverrideConfiguration(configuration: Configuration): void
 
 **示例：**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4896,7 +4919,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### release<sup>(deprecated)</sup>
 
@@ -4913,13 +4936,13 @@ release()
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **示例：**
-  ```ts
-  try {
-    this.context.resourceManager.release();
-  } catch (error) {
-    console.error("release error is " + error);
-  }
-  ```
+```ts
+try {
+  this.context.resourceManager.release();
+} catch (error) {
+  console.error("release error is " + error);
+}
+```
 
 ### getString<sup>(deprecated)</sup>
 
@@ -4941,17 +4964,17 @@ getString(resId: number, callback: AsyncCallback&lt;string&gt;): void
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;string&gt; | 是    | 回调函数，返回资源ID值对应的字符串。 |
 
 **示例：**
-  ```ts
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getString($r('app.string.test').id, (error: Error, value: string) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let str = value;
-          }
-      });
-  });
-  ```
+```ts
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getString($r('app.string.test').id, (error: Error, value: string) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let str = value;
+        }
+    });
+});
+```
 
 
 ### getString<sup>(deprecated)</sup>
@@ -4979,17 +5002,17 @@ getString(resId: number): Promise&lt;string&gt;
 | Promise&lt;string&gt; | Promise对象，返回资源ID值对应的字符串。 |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getString($r('app.string.test').id).then((value: string) => {
-          let str = value;
-      }).catch((error: BusinessError) => {
-          console.error("getstring promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getString($r('app.string.test').id).then((value: string) => {
+        let str = value;
+    }).catch((error: BusinessError) => {
+        console.error("getstring promise error is " + error);
+    });
+});
+```
 ### getStringSync<sup>(deprecated)</sup>
 
 getStringSync(resource: Resource): string
@@ -5030,36 +5053,36 @@ getStringSync(resource: Resource): string
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.string.test').id
-  };
-  try {
-    let testStr = this.context.resourceManager.getStringSync(resource);
-    console.info(`getStringSync, result: ${testStr}`);
-    // 打印输出结果: getStringSync, result: I'm a test string resource.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+try {
+  let testStr = this.context.resourceManager.getStringSync(resource);
+  console.info(`getStringSync, result: ${testStr}`);
+  // 打印输出结果: getStringSync, result: I'm a test string resource.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getStringSync<sup>(deprecated)</sup>
 
@@ -5103,36 +5126,36 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.string.test').id
-  };
-  try {
-    let testStr = this.context.resourceManager.getStringSync(resource, "format string", 10, 98.78);
-    console.info(`getStringSync, result: ${testStr}`);
-    // 打印输出结果: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+try {
+  let testStr = this.context.resourceManager.getStringSync(resource, "format string", 10, 98.78);
+  console.info(`getStringSync, result: ${testStr}`);
+  // 打印输出结果: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getStringValue<sup>(deprecated)</sup>
 
 getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
@@ -5168,35 +5191,35 @@ getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.string.test').id
-  };
-  this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
-    if (error != null) {
-      console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getStringValue, result: ${value}`);
-      // 打印输出结果: getStringValue, result: I'm a test string resource.
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
     }
-  });
-  ```
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
+  if (error != null) {
+    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringValue, result: ${value}`);
+    // 打印输出结果: getStringValue, result: I'm a test string resource.
+  }
+});
+```
 
 ### getStringValue<sup>(deprecated)</sup>
 
@@ -5238,24 +5261,24 @@ getStringValue(resource: Resource): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.string.test').id
-  };
-  this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
-    if (error != null) {
-      console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getStringValue, result: ${value}`);
-      // 打印输出结果: getStringValue, result: I'm a test string resource.
-    }
-  });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
+  if (error != null) {
+    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringValue, result: ${value}`);
+    // 打印输出结果: getStringValue, result: I'm a test string resource.
+  }
+});
+```
 
 ### getStringArray<sup>(deprecated)</sup>
 
@@ -5277,17 +5300,17 @@ getStringArray(resId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;Array&lt;string&gt;&gt; | 是    | 回调函数，返回资源ID值对应的字符串数组。 |
 
 **示例：**
-  ```ts
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getStringArray($r('app.strarray.test').id, (error: Error, value: Array<string>) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let strArray = value;
-          }
-      });
-  });
-  ```
+```ts
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getStringArray($r('app.strarray.test').id, (error: Error, value: Array<string>) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let strArray = value;
+        }
+    });
+});
+```
 
 
 ### getStringArray<sup>(deprecated)</sup>
@@ -5315,17 +5338,17 @@ getStringArray(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 | Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回资源ID值对应的字符串数组。 |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-       mgr.getStringArray($r('app.strarray.test').id).then((value: Array<string>) => {
-          let strArray = value;
-      }).catch((error: BusinessError) => {
-          console.error("getStringArray promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+      mgr.getStringArray($r('app.strarray.test').id).then((value: Array<string>) => {
+        let strArray = value;
+    }).catch((error: BusinessError) => {
+        console.error("getStringArray promise error is " + error);
+    });
+});
+```
 
 ### getStringArrayValueSync<sup>(deprecated)</sup>
 
@@ -5367,40 +5390,40 @@ getStringArrayValueSync(resource: Resource): Array&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.strarray.test').id
-  };
-  try {
-    let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync(resource);
-    console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
-    // 打印输出结果: getStringArrayValueSync, result: I'm one of the array's values.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.strarray.test').id
+};
+try {
+  let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync(resource);
+  console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
+  // 打印输出结果: getStringArrayValueSync, result: I'm one of the array's values.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getStringArrayValue<sup>(deprecated)</sup>
 
 getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -5436,39 +5459,39 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;str
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.strarray.test').id
-  };
-  this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError, value: Array<string>) => {
-    if (error != null) {
-      console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getStringArrayValue, result: ${value[0]}`);
-      // 打印输出结果: getStringArrayValue, result: I'm one of the array's values.
+```json
+// 资源文件路径: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
     }
-  });
-  ```
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.strarray.test').id
+};
+this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError, value: Array<string>) => {
+  if (error != null) {
+    console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringArrayValue, result: ${value[0]}`);
+    // 打印输出结果: getStringArrayValue, result: I'm one of the array's values.
+  }
+});
+```
 
 ### getStringArrayValue<sup>(deprecated)</sup>
 
@@ -5510,39 +5533,39 @@ getStringArrayValue(resource: Resource): Promise&lt;Array&lt;string&gt;&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.strarray.test').id
-  };
-  this.context.resourceManager.getStringArrayValue(resource)
-    .then((value: Array<string>) => {
-      console.info(`getStringArrayValue, result: ${value[0]}`);
-      // 打印输出结果: getStringArrayValue, result: I'm one of the array's values.
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.strarray.test').id
+};
+this.context.resourceManager.getStringArrayValue(resource)
+  .then((value: Array<string>) => {
+    console.info(`getStringArrayValue, result: ${value[0]}`);
+    // 打印输出结果: getStringArrayValue, result: I'm one of the array's values.
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 
 ### getMedia<sup>(deprecated)</sup>
 
@@ -5564,17 +5587,17 @@ getMedia(resId: number, callback: AsyncCallback&lt;Uint8Array&gt;): void
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;Uint8Array&gt; | 是    | 回调函数，返回资源ID值对应的媒体文件内容。 |
 
 **示例：**
-  ```ts
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getMedia($r('app.media.test').id, (error: Error, value: Uint8Array) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let media = value;
-          }
-      });
-  });
-  ```
+```ts
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMedia($r('app.media.test').id, (error: Error, value: Uint8Array) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let media = value;
+        }
+    });
+});
+```
 
 ### getMedia<sup>(deprecated)</sup>
 
@@ -5601,17 +5624,17 @@ getMedia(resId: number): Promise&lt;Uint8Array&gt;
 | Promise&lt;Uint8Array&gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getMedia($r('app.media.test').id).then((value: Uint8Array) => {
-          let media = value;
-      }).catch((error: BusinessError) => {
-          console.error("getMedia promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMedia($r('app.media.test').id).then((value: Uint8Array) => {
+        let media = value;
+    }).catch((error: BusinessError) => {
+        console.error("getMedia promise error is " + error);
+    });
+});
+```
 
 ### getMediaContentSync<sup>(deprecated)</sup>
 
@@ -5654,31 +5677,31 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentSync(resource); // 默认屏幕密度
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
-  }
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentSync(resource); // 默认屏幕密度
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
+}
 
-  try {
-    this.context.resourceManager.getMediaContentSync(resource, 120); // 指定屏幕密度
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  this.context.resourceManager.getMediaContentSync(resource, 120); // 指定屏幕密度
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContent<sup>(deprecated)</sup>
 
@@ -5714,29 +5737,29 @@ getMediaContent(resource: Resource, callback: _AsyncCallback&lt;Uint8Array&gt;):
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContent(resource, (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContent(resource, (error: BusinessError, value: Uint8Array) => {
+    if (error != null) {
+      console.error("error is " + error);
+    } else {
+      let media = value;
+    }
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContent<sup>(deprecated)</sup>
 
@@ -5773,29 +5796,29 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback&lt
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContent(resource, 120, (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error(`callback getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContent(resource, 120, (error: BusinessError, value: Uint8Array) => {
+    if (error != null) {
+      console.error(`callback getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+    } else {
+      let media = value;
+    }
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContent<sup>(deprecated)</sup>
 
@@ -5836,27 +5859,27 @@ getMediaContent(resource: Resource): Promise&lt;Uint8Array&gt;
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContent(resource).then((value: Uint8Array) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error("getMediaContent promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContent(resource).then((value: Uint8Array) => {
+    let media = value;
+  }).catch((error: BusinessError) => {
+    console.error("getMediaContent promise error is " + error);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContent<sup>(deprecated)</sup>
 
@@ -5898,27 +5921,27 @@ getMediaContent(resource: Resource, density: number): Promise&lt;Uint8Array&gt;
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContent(resource, 120).then((value: Uint8Array) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContent(resource, 120).then((value: Uint8Array) => {
+    let media = value;
+  }).catch((error: BusinessError) => {
+    console.error(`promise getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaBase64<sup>(deprecated)</sup>
 
@@ -5940,17 +5963,17 @@ getMediaBase64(resId: number, callback: AsyncCallback&lt;string&gt;): void
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;string&gt; | 是    | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **示例：**
-  ```ts
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getMediaBase64($r('app.media.test').id, ((error: Error, value: string) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let media = value;
-          }
-      });
-  });
-  ```
+```ts
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMediaBase64($r('app.media.test').id, ((error: Error, value: string) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let media = value;
+        }
+    });
+});
+```
 
 
 ### getMediaBase64<sup>(deprecated)</sup>
@@ -5978,17 +6001,17 @@ getMediaBase64(resId: number): Promise&lt;string&gt;
 | Promise&lt;string&gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getMediaBase64($r('app.media.test').id).then((value: string) => {
-          let media = value;
-      }).catch((error: BusinessError) => {
-          console.error("getMediaBase64 promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMediaBase64($r('app.media.test').id).then((value: string) => {
+        let media = value;
+    }).catch((error: BusinessError) => {
+        console.error("getMediaBase64 promise error is " + error);
+    });
+});
+```
 ### getMediaContentBase64Sync<sup>(deprecated)</sup>
 
 getMediaContentBase64Sync(resource: Resource, density?: number): string
@@ -6029,31 +6052,31 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64Sync(resource); // 默认屏幕密度
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
-  }
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64Sync(resource); // 默认屏幕密度
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
+}
 
-  try {
-    this.context.resourceManager.getMediaContentBase64Sync(resource, 120); // 指定屏幕密度
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  this.context.resourceManager.getMediaContentBase64Sync(resource, 120); // 指定屏幕密度
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getMediaContentBase64<sup>(deprecated)</sup>
 
 getMediaContentBase64(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
@@ -6088,29 +6111,29 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback&lt;string&gt;
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64(resource, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64(resource, (error: BusinessError, value: string) => {
+    if (error != null) {
+      console.error("error is " + error);
+    } else {
+      let media = value;
+    }
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContentBase64<sup>(deprecated)</sup>
 
@@ -6147,29 +6170,29 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64(resource, 120, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error(`callback getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64(resource, 120, (error: BusinessError, value: string) => {
+    if (error != null) {
+      console.error(`callback getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
+    } else {
+      let media = value;
+    }
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContentBase64<sup>(deprecated)</sup>
 
@@ -6210,27 +6233,27 @@ getMediaContentBase64(resource: Resource): Promise&lt;string&gt;
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64(resource).then((value: string) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error("getMediaContentBase64 promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64(resource).then((value: string) => {
+    let media = value;
+  }).catch((error: BusinessError) => {
+    console.error("getMediaContentBase64 promise error is " + error);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContentBase64<sup>(deprecated)</sup>
 
@@ -6272,27 +6295,27 @@ getMediaContentBase64(resource: Resource, density: number): Promise&lt;string&gt
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64(resource, 120).then((value: string) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64(resource, 120).then((value: string) => {
+    let media = value;
+  }).catch((error: BusinessError) => {
+    console.error(`promise getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getDrawableDescriptor<sup>(deprecated)</sup>
 
 getDrawableDescriptor(resource: Resource, density?: number, type?: number): DrawableDescriptor
@@ -6334,38 +6357,38 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { DrawableDescriptor } from '@kit.ArkUI';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { DrawableDescriptor } from '@kit.ArkUI';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.icon').id
-  };
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource, 120);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource, 0, 1);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.icon').id
+};
+try {
+  let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource);
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+}
+try {
+  let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource, 120);
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+}
+try {
+  let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource, 0, 1);
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getIntPluralStringValueSync<sup>(deprecated)</sup>
 
@@ -6411,48 +6434,48 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.format_test').id
-  };
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.format_test').id
+};
 
-  try {
-    // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-    // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-    let pluralStr = this.context.resourceManager.getIntPluralStringValueSync(resource, 1, 1, "basket", 0.3);
-    console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
-    // 打印输出结果: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getIntPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+  let pluralStr = this.context.resourceManager.getIntPluralStringValueSync(resource, 1, 1, "basket", 0.3);
+  console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
+  // 打印输出结果: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getIntPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getDoublePluralStringValueSync<sup>(deprecated)</sup>
 
@@ -6498,48 +6521,48 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.format_test').id
-  };
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.format_test').id
+};
 
-  try {
-    // 根据语言单复数规则，参数num取值为2.1，英文环境下对应单复数类别为other
-    // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为other的字符串
-    let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
-    console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
-    // 打印输出结果: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDoublePluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  // 根据语言单复数规则，参数num取值为2.1，英文环境下对应单复数类别为other
+  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为other的字符串
+  let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
+  console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
+  // 打印输出结果: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getDoublePluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getPluralStringValueSync<sup>(deprecated)</sup>
 
@@ -6582,41 +6605,41 @@ getPluralStringValueSync(resId: number, num: number): string
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-    // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-    let pluralValue = this.context.resourceManager.getPluralStringValueSync($r('app.plural.test').id, 1);
-    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
-    // 打印输出结果: getPluralStringValueSync, result: 1 apple
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+  let pluralValue = this.context.resourceManager.getPluralStringValueSync($r('app.plural.test').id, 1);
+  console.info(`getPluralStringValueSync, result: ${pluralValue}`);
+  // 打印输出结果: getPluralStringValueSync, result: 1 apple
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getPluralStringValueSync<sup>(deprecated)</sup>
 
@@ -6661,47 +6684,47 @@ getPluralStringValueSync(resource: Resource, num: number): string
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.test').id
-  };
-  try {
-    // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-    // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-    let pluralValue = this.context.resourceManager.getPluralStringValueSync(resource, 1);
-    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
-    // 打印输出结果: getPluralStringValueSync, result: 1 apple
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.test').id
+};
+try {
+  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+  let pluralValue = this.context.resourceManager.getPluralStringValueSync(resource, 1);
+  console.info(`getPluralStringValueSync, result: ${pluralValue}`);
+  // 打印输出结果: getPluralStringValueSync, result: 1 apple
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getPluralStringByNameSync<sup>(deprecated)</sup>
 
@@ -6744,41 +6767,41 @@ getPluralStringByNameSync(resName: string, num: number): string
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-    // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-    let pluralValue = this.context.resourceManager.getPluralStringByNameSync("test", 1);
-    console.info(`getPluralStringByNameSync, result: ${pluralValue}`);
-    // 打印输出结果: getPluralStringByNameSync, result: 1 apple
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getPluralStringByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+  let pluralValue = this.context.resourceManager.getPluralStringByNameSync("test", 1);
+  console.info(`getPluralStringByNameSync, result: ${pluralValue}`);
+  // 打印输出结果: getPluralStringByNameSync, result: 1 apple
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getPluralStringByNameSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getPluralStringValue<sup>(deprecated)</sup>
 
@@ -6816,41 +6839,41 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback&lt;str
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-  this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
-    (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        console.info(`getPluralStringValue, result: ${value}`);
-        // 打印输出结果: getPluralStringValue, result: 1 apple
-      }
-    });
-  ```
+// 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+// 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
+  (error: BusinessError, value: string) => {
+    if (error != null) {
+      console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+    } else {
+      console.info(`getPluralStringValue, result: ${value}`);
+      // 打印输出结果: getPluralStringValue, result: 1 apple
+    }
+  });
+```
 
 ### getPluralStringValue<sup>(deprecated)</sup>
 
@@ -6893,40 +6916,40 @@ getPluralStringValue(resId: number, num: number): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-  this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
-    .then((value: string) => {
-      console.info(`getPluralStringValue, result: ${value}`);
-      // 打印输出结果: getPluralStringValue, result: 1 apple
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+// 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+// 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
+  .then((value: string) => {
+    console.info(`getPluralStringValue, result: ${value}`);
+    // 打印输出结果: getPluralStringValue, result: 1 apple
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 
 ### getPluralStringValue<sup>(deprecated)</sup>
 
@@ -6966,47 +6989,47 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&l
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.test').id
-  };
-  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-  this.context.resourceManager.getPluralStringValue(resource, 1,
-    (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        console.info(`getPluralStringValue, result: ${value}`);
-        // 打印输出结果: getPluralStringValue, result: 1 apple
-      }
-    });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.test').id
+};
+// 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+// 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+this.context.resourceManager.getPluralStringValue(resource, 1,
+  (error: BusinessError, value: string) => {
+    if (error != null) {
+      console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+    } else {
+      console.info(`getPluralStringValue, result: ${value}`);
+      // 打印输出结果: getPluralStringValue, result: 1 apple
+    }
+  });
+```
 
 ### getPluralStringValue<sup>(deprecated)</sup>
 
@@ -7051,46 +7074,46 @@ getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.test').id
-  };
-  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-  this.context.resourceManager.getPluralStringValue(resource, 1)
-    .then((value: string) => {
-      console.info(`getPluralStringValue, result: ${value}`);
-      // 打印输出结果: getPluralStringValue, result: 1 apple
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.test').id
+};
+// 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+// 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+this.context.resourceManager.getPluralStringValue(resource, 1)
+  .then((value: string) => {
+    console.info(`getPluralStringValue, result: ${value}`);
+    // 打印输出结果: getPluralStringValue, result: 1 apple
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 
 ### getPluralStringByName<sup>(deprecated)</sup>
 
@@ -7128,40 +7151,40 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback&lt;
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-  this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessError, value: string) => {
-    if (error != null) {
-      console.error(`callback getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getPluralStringByName, result: ${value}`);
-      // 打印输出结果: getPluralStringByName, result: 1 apple
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
     }
-  });
-  ```
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+// 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessError, value: string) => {
+  if (error != null) {
+    console.error(`callback getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getPluralStringByName, result: ${value}`);
+    // 打印输出结果: getPluralStringByName, result: 1 apple
+  }
+});
+```
 
 ### getPluralStringByName<sup>(deprecated)</sup>
 
@@ -7204,40 +7227,40 @@ getPluralStringByName(resName: string, num: number): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
-  // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
-  this.context.resourceManager.getPluralStringByName("test", 1)
-    .then((value: string) => {
-      console.info(`getPluralStringByName, result: ${value}`);
-      // 打印输出结果: getPluralStringByName, result: 1 apple
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+// 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
+// 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
+this.context.resourceManager.getPluralStringByName("test", 1)
+  .then((value: string) => {
+    console.info(`getPluralStringByName, result: ${value}`);
+    // 打印输出结果: getPluralStringByName, result: 1 apple
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 
 ### getPluralString<sup>(deprecated)</sup>
 
@@ -7268,17 +7291,17 @@ getPluralString(resId: number, num: number): Promise&lt;string&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getPluralString($r("app.plural.test").id, 1).then((value: string) => {
-          let str = value;
-      }).catch((error: BusinessError) => {
-          console.error("getPluralString promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getPluralString($r("app.plural.test").id, 1).then((value: string) => {
+        let str = value;
+    }).catch((error: BusinessError) => {
+        console.error("getPluralString promise error is " + error);
+    });
+});
+```
 
 
 ### getPluralString<sup>(deprecated)</sup>
@@ -7305,19 +7328,19 @@ getPluralString(resId: number, num: number, callback: AsyncCallback&lt;string&gt
 
 **示例：**
 
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getPluralString($r("app.plural.test").id, 1, (error: Error, value: string) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let str = value;
-          }
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getPluralString($r("app.plural.test").id, 1, (error: Error, value: string) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let str = value;
+        }
+    });
+});
+```
 ### getBoolean<sup>(deprecated)</sup>
 
 getBoolean(resource: Resource): boolean
@@ -7358,36 +7381,36 @@ getBoolean(resource: Resource): boolean
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/boolean.json
-  {
-    "boolean": [
-      {
-        "name": "boolean_test",
-        "value": true
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/boolean.json
+{
+  "boolean": [
+    {
+      "name": "boolean_test",
+      "value": true
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.boolean.boolean_test').id
-  };
-  try {
-    let boolTest = this.context.resourceManager.getBoolean(resource);
-    console.info(`getBoolean, result: ${boolTest}`);
-    // 打印输出结果: getBoolean, result: true
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getBoolean failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.boolean.boolean_test').id
+};
+try {
+  let boolTest = this.context.resourceManager.getBoolean(resource);
+  console.info(`getBoolean, result: ${boolTest}`);
+  // 打印输出结果: getBoolean, result: true
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getBoolean failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getNumber<sup>(deprecated)</sup>
 
 getNumber(resource: Resource): number
@@ -7428,38 +7451,38 @@ getNumber(resource: Resource): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/integer.json
-  {
-    "integer": [
-      {
-        "name": "integer_test",
-        "value": 100
-      }
-    ]
-  }
-  ```
+```json
+// 资源文件路径: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
 
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.integer.integer_test').id
-  };
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.integer.integer_test').id
+};
 
-  try {
-    let intValue = this.context.resourceManager.getNumber(resource);
-    console.info(`getNumber, int value: ${intValue}`);
-    // 打印输出结果: getNumber, int value: 100
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  let intValue = this.context.resourceManager.getNumber(resource);
+  console.info(`getNumber, int value: ${intValue}`);
+  // 打印输出结果: getNumber, int value: 100
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getColorSync<sup>(deprecated)</sup>
 
 getColorSync(resource: Resource): number
@@ -7500,36 +7523,36 @@ getColorSync(resource: Resource): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.color.test').id
-  };
-  try {
-    let colorValue = this.context.resourceManager.getColorSync(resource);
-    console.info(`getColorSync, result: ${colorValue}`);
-    // 打印输出结果: getColorSync, result: 4294967295
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getColorSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.color.test').id
+};
+try {
+  let colorValue = this.context.resourceManager.getColorSync(resource);
+  console.info(`getColorSync, result: ${colorValue}`);
+  // 打印输出结果: getColorSync, result: 4294967295
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getColorSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getColor<sup>(deprecated)</sup>
 
 getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
@@ -7565,35 +7588,35 @@ getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.color.test').id
-  };
-  this.context.resourceManager.getColor(resource, (error: BusinessError, value: number) => {
-    if (error != null) {
-      console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getColor, result: ${value}`);
-      // 打印输出结果: getColor, result: 4294967295
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
     }
-  });
-  ```
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.color.test').id
+};
+this.context.resourceManager.getColor(resource, (error: BusinessError, value: number) => {
+  if (error != null) {
+    console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getColor, result: ${value}`);
+    // 打印输出结果: getColor, result: 4294967295
+  }
+});
+```
 
 ### getColor<sup>(deprecated)</sup>
 
@@ -7635,35 +7658,35 @@ getColor(resource: Resource): Promise&lt;number&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.color.test').id
-  };
-  this.context.resourceManager.getColor(resource)
-    .then((value: number) => {
-      console.info(`getColor, result: ${value}`);
-      // 打印输出结果: getColor, result: 4294967295
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getColor failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.color.test').id
+};
+this.context.resourceManager.getColor(resource)
+  .then((value: number) => {
+    console.info(`getColor, result: ${value}`);
+    // 打印输出结果: getColor, result: 4294967295
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getColor failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 ### getSymbol<sup>(deprecated)</sup>
 getSymbol(resource: Resource): number
 
@@ -7703,25 +7726,25 @@ getSymbol(resource: Resource): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('sys.symbol.message').id
-  };
-  try {
-    let symbolValue = this.context.resourceManager.getSymbol(resource);
-    console.info(`getSymbol, result: ${symbolValue}`);
-    // 打印输出结果: getSymbol, result: 983183
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('sys.symbol.message').id
+};
+try {
+  let symbolValue = this.context.resourceManager.getSymbol(resource);
+  console.info(`getSymbol, result: ${symbolValue}`);
+  // 打印输出结果: getSymbol, result: 983183
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getRawFile<sup>(deprecated)</sup>
 
@@ -7743,19 +7766,19 @@ getRawFile(path: string, callback: AsyncCallback&lt;Uint8Array&gt;): void
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;Uint8Array&gt; | 是    | 回调函数，返回rawfile文件内容。 |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getRawFile("test.txt", (error: Error, value: Uint8Array) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let rawFile = value;
-          }
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getRawFile("test.txt", (error: Error, value: Uint8Array) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let rawFile = value;
+        }
+    });
+});
+```
 
 
 ### getRawFile<sup>(deprecated)</sup>
@@ -7783,17 +7806,17 @@ getRawFile(path: string): Promise&lt;Uint8Array&gt;
 | Promise&lt;Uint8Array&gt; | Promise对象，返回rawfile文件内容。 |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getRawFile("test.txt").then((value: Uint8Array) => {
-          let rawFile = value;
-      }).catch((error: BusinessError) => {
-          console.error("getRawFile promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getRawFile("test.txt").then((value: Uint8Array) => {
+        let rawFile = value;
+    }).catch((error: BusinessError) => {
+        console.error("getRawFile promise error is " + error);
+    });
+});
+```
 
 
 ### getRawFileDescriptor<sup>(deprecated)</sup>
@@ -7816,21 +7839,21 @@ getRawFileDescriptor(path: string, callback: AsyncCallback&lt;RawFileDescriptor&
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;[RawFileDescriptor](#rawfiledescriptor9)&gt; | 是    | 回调函数，返回rawfile文件的文件描述符（fd）。 |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getRawFileDescriptor("test.txt", (error: Error, value: resourceManager.RawFileDescriptor) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let fd = value.fd;
-              let offset = value.offset;
-              let length = value.length;
-          }
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getRawFileDescriptor("test.txt", (error: Error, value: resourceManager.RawFileDescriptor) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let fd = value.fd;
+            let offset = value.offset;
+            let length = value.length;
+        }
+    });
+});
+```
 
 ### getRawFileDescriptor<sup>(deprecated)</sup>
 
@@ -7857,19 +7880,19 @@ getRawFileDescriptor(path: string): Promise&lt;RawFileDescriptor&gt;
 | Promise&lt;[RawFileDescriptor](#rawfiledescriptor9)&gt; | Promise对象，返回rawfile文件的文件描述符（fd）。 |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getRawFileDescriptor("test.txt").then((value: resourceManager.RawFileDescriptor) => {
-          let fd = value.fd;
-          let offset = value.offset;
-          let length = value.length;
-      }).catch((error: BusinessError) => {
-          console.error("getRawFileDescriptor promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getRawFileDescriptor("test.txt").then((value: resourceManager.RawFileDescriptor) => {
+        let fd = value.fd;
+        let offset = value.offset;
+        let length = value.length;
+    }).catch((error: BusinessError) => {
+        console.error("getRawFileDescriptor promise error is " + error);
+    });
+});
+```
 
 ### closeRawFileDescriptor<sup>(deprecated)</sup>
 
@@ -7885,25 +7908,23 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **参数：** 
 
-
-
 | 参数名      | 类型                        | 必填   | 说明          |
 | -------- | ------------------------- | ---- | ----------- |
 | path     | string                    | 是    | rawfile文件路径。 |
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;void&gt; | 是    | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。|
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.closeRawFileDescriptor("test.txt", (error: Error) => {
-          if (error != null) {
-              console.error("error is " + error);
-          }
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.closeRawFileDescriptor("test.txt", (error: Error) => {
+        if (error != null) {
+            console.error("error is " + error);
+        }
+    });
+});
+```
 
 ### closeRawFileDescriptor<sup>(deprecated)</sup>
 
@@ -7930,13 +7951,13 @@ closeRawFileDescriptor(path: string): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.closeRawFileDescriptor("test.txt");
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.closeRawFileDescriptor("test.txt");
+});
+```
 
 ## resourceManager.getSystemResourceManager<sup>(deprecated)</sup>
 
@@ -7970,23 +7991,23 @@ getSystemResourceManager(): ResourceManager
 | 9001009  | Failed to access the system resource. which is not mapped to application sandbox, This error code will be thrown. |
 
 **示例：**
-  ```js
+```js
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let systemResourceManager = resourceManager.getSystemResourceManager();
-    systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
-      let str = value;
-    }).catch((error: BusinessError) => {
-      console.error("systemResourceManager getStringValue promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSystemResourceManager failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  let systemResourceManager = resourceManager.getSystemResourceManager();
+  systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
+    let str = value;
+  }).catch((error: BusinessError) => {
+    console.error("systemResourceManager getStringValue promise error is " + error);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getSystemResourceManager failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ## AsyncCallback<sup>(deprecated)</sup>
 
@@ -8017,139 +8038,139 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 - 示例代码中用到的'app.string.test'文件内容如下：
 
-    ```json
-    // 资源文件路径: src/main/resources/base/element/string.json
-    {
-      "string": [
-        {
-          "name": "test",
-          "value": "I'm a test string resource."
-        }
-      ]
-    }
-    ```
+  ```json
+  // 资源文件路径: src/main/resources/base/element/string.json
+  {
+    "string": [
+      {
+        "name": "test",
+        "value": "I'm a test string resource."
+      }
+    ]
+  }
+  ```
 
-    ```json
-    // 资源文件路径: src/main/resources/base/element/string.json
-    {
-      "string": [
-        {
-          "name": "test",
-          "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-        }
-      ]
-    }
-    ```
+  ```json
+  // 资源文件路径: src/main/resources/base/element/string.json
+  {
+    "string": [
+      {
+        "name": "test",
+        "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+      }
+    ]
+  }
+  ```
 
 - 示例代码中用到的'app.strarray.test'文件内容如下：
 
-    ```json
-    // 资源文件路径: src/main/resources/base/element/strarray.json
-    {
-      "strarray": [
-        {
-          "name": "test",
-          "value": [
-            {
-              "value": "I'm one of the array's values."
-            }
-          ]
-        }
-      ]
-    }
-    ```
+  ```json
+  // 资源文件路径: src/main/resources/base/element/strarray.json
+  {
+    "strarray": [
+      {
+        "name": "test",
+        "value": [
+          {
+            "value": "I'm one of the array's values."
+          }
+        ]
+      }
+    ]
+  }
+  ```
 
 - 示例代码中用到的'app.plural.test'文件内容如下：
-    ```json
-    // 资源文件路径: src/main/resources/base/element/plural.json
-    {
-      "plural": [
-        {
-          "name": "test",
-          "value": [
-            {
-              "quantity": "one",
-              "value": "%d apple"
-            },
-            {
-              "quantity": "other",
-              "value": "%d apples"
-            }
-          ]
-        }
-      ]
-    }
-    ```
+  ```json
+  // 资源文件路径: src/main/resources/base/element/plural.json
+  {
+    "plural": [
+      {
+        "name": "test",
+        "value": [
+          {
+            "quantity": "one",
+            "value": "%d apple"
+          },
+          {
+            "quantity": "other",
+            "value": "%d apples"
+          }
+        ]
+      }
+    ]
+  }
+  ```
 
 - 示例代码中用到的'app.plural.format_test'文件内容如下：
 
-    ```json
-    // 资源文件路径: src/main/resources/base/element/plural.json
-    {
-      "plural": [
-        {
-          "name": "format_test",
-          "value": [
-            {
-              "quantity": "one",
-              "value": "There is %d apple in the %s, the total amount is %f kg."
-            },
-            {
-              "quantity": "other",
-              "value": "There are %d apples in the %s, the total amount is %f kg."
-            }
-          ]
-        }
-      ]
-    }
-    ```
+  ```json
+  // 资源文件路径: src/main/resources/base/element/plural.json
+  {
+    "plural": [
+      {
+        "name": "format_test",
+        "value": [
+          {
+            "quantity": "one",
+            "value": "There is %d apple in the %s, the total amount is %f kg."
+          },
+          {
+            "quantity": "other",
+            "value": "There are %d apples in the %s, the total amount is %f kg."
+          }
+        ]
+      }
+    ]
+  }
+  ```
 
 - 示例代码中用到的'app.boolean.boolean_test'文件内容如下：
-    ```json
-    // 资源文件路径: src/main/resources/base/element/boolean.json
-    {
-      "boolean": [
-        {
-          "name": "boolean_test",
-          "value": true
-        }
-      ]
-    }
-    ```
+  ```json
+  // 资源文件路径: src/main/resources/base/element/boolean.json
+  {
+    "boolean": [
+      {
+        "name": "boolean_test",
+        "value": true
+      }
+    ]
+  }
+  ```
 
 - 示例代码中用到的"integer_test"和"float_test"文件内容如下：
-    ```json
-    // 资源文件路径: src/main/resources/base/element/integer.json
-    {
-      "integer": [
-        {
-          "name": "integer_test",
-          "value": 100
-        }
-      ]
-    }
-    ```
+  ```json
+  // 资源文件路径: src/main/resources/base/element/integer.json
+  {
+    "integer": [
+      {
+        "name": "integer_test",
+        "value": 100
+      }
+    ]
+  }
+  ```
 
-    ```json
-    // 资源文件路径: src/main/resources/base/element/float.json
-    {
-      "float": [
-        {
-          "name": "float_test",
-          "value": "30.6vp"
-        }
-      ]
-    }
-    ```
+  ```json
+  // 资源文件路径: src/main/resources/base/element/float.json
+  {
+    "float": [
+      {
+        "name": "float_test",
+        "value": "30.6vp"
+      }
+    ]
+  }
+  ```
 - 示例代码中用到的'app.color.test'文件内容如下：
-    ```json
-    // 资源文件路径: src/main/resources/base/element/color.json
-    {
-      "color": [
-        {
-          "name": "test",
-          "value": "#FFFFFF"
-        }
-      ]
-    }
-    ```
+  ```json
+  // 资源文件路径: src/main/resources/base/element/color.json
+  {
+    "color": [
+      {
+        "name": "test",
+        "value": "#FFFFFF"
+      }
+    ]
+  }
+  ```

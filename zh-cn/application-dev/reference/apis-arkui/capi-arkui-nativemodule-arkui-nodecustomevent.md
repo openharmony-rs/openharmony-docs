@@ -1,5 +1,12 @@
 # ArkUI_NodeCustomEvent
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 定义自定义组件事件的通用结构类型。

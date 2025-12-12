@@ -197,6 +197,8 @@ Obtains a list of ability resource information that supports opening a specific 
 
 **Required permissions**: ohos.permission.GET_ABILITY_INFO
 
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 201 is returned.
+
 **Parameters**
 
 | Name| Description|

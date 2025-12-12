@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 The **PasteButton** component comes with the pasteboard (also called clipboard) read privilege, which allows an application to read data from the pasteboard without any prompt information.
 
@@ -53,7 +54,7 @@ The following procedure shows how to make entering a verification code easier: A
      build() {
        Row() {
          Column({ space: 10 }) {
-           TextInput({placeholder: 'Please enter the verification code.', text: this.message})
+           TextInput({ placeholder: 'Please enter the verification code.', text: this.message })
            PasteButton()
              .padding({top: 12, bottom: 12, left: 24, right: 24})
              .onClick((event: ClickEvent, result: PasteButtonOnClickResult) => {
