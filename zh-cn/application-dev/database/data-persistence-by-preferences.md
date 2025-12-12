@@ -214,7 +214,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    示例代码如下所示：
 
    <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    let val = dataPreferences.getSync('startup', 'default');
    Logger.info('The startup value is ' + val);
@@ -224,7 +225,6 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    val = textDecoder.decodeToString(uInt8Array2 as Uint8Array);
    Logger.info('The uInt8 value is ' + val);
    ```
-
 6. 删除数据。
 
    使用deleteSync()方法删除指定键值对，示例代码如下所示：
