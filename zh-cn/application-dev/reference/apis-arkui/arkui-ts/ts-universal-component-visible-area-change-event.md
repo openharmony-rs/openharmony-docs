@@ -199,7 +199,7 @@ struct ScrollExample {
             })
 
           Row() {
-            Text('Test Row Visible  Change')
+            Text('Test Row Visible Change')
               .fontSize(20)
               .margin({ bottom: 20 })
 
@@ -301,7 +301,7 @@ struct ScrollExample {
             })
 
           Row() {
-            Text('Test Row Visible  Change')
+            Text('Test Row Visible Change')
               .fontSize(20)
               .margin({ bottom: 20 })
 
