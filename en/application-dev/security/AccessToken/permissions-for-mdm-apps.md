@@ -690,3 +690,18 @@ With this permission, the super device administrator application can manage othe
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 23
+
+## ohos.permission.ENTERPRISE_START_ABILITIES
+
+Allows a device administrator application to start other components
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23
