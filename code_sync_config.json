@@ -21270,7 +21270,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneSimpleType.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":36,
 						"name":"state_scene_simple_type",
 						"start_line":16
 					}
@@ -21300,7 +21300,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeMap.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":71,
 						"name":"state_scene_type_map",
 						"start_line":16
 					}
@@ -21310,7 +21310,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":64,
 						"name":"state_scene_type_set",
 						"start_line":16
 					}
@@ -21320,7 +21320,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeDate.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":64,
 						"name":"state_scene_type_date",
 						"start_line":16
 					}
@@ -21330,7 +21330,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":46,
 						"name":"state_scene_joint_type_instance",
 						"start_line":16
 					}
@@ -24797,7 +24797,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseObject.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":66,
 						"name":"Local_Use_Case_Object",
 						"start_line":29
 					}
@@ -24807,7 +24807,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseArray.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":85,
 						"name":"Local_Use_Case_Array",
 						"start_line":29
 					}
@@ -24817,7 +24817,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseDate.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":78,
 						"name":"Local_Use_Case_Data",
 						"start_line":30
 					}
@@ -24827,7 +24827,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseMap.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":84,
 						"name":"Local_Use_Case_Map",
 						"start_line":29
 					}
@@ -24837,7 +24837,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseSet.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":77,
 						"name":"Local_Use_Case_Set",
 						"start_line":29
 					}
@@ -24847,7 +24847,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseJoin.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":60,
 						"name":"Local_Use_Case_Join",
 						"start_line":30
 					}
