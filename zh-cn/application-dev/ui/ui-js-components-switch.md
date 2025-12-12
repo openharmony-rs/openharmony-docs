@@ -111,7 +111,7 @@ export default {
   <div class="myAddress" style="display: {{addressDisplay}};">
     <text style="font-size: 30px;margin-bottom: 50px;">Choose an address:</text>
     <text class="addressText" style="background-color: {{item == address?'#0fabe7':''}};color: {{item == address?'white':'black'}};" 
-    for="item in addressList"@click="changeAddress({{$idx}})">{{item}}</text>
+    for="item in addressList"@click="changeAddress({{$idx}}})">{{item}}</text>
   </div>
 </div>
 ```

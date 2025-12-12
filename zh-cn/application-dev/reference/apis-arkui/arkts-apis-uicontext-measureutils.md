@@ -224,7 +224,7 @@ struct TextDemo {
       Text(this.fullText)
         .borderWidth(1)
 
-      Text('下面是设置了maxLines和textOverflow')
+      Text('下面是设置了maxLines和texOverflow')
       Text(this.fullText)
         .maxLines(this.maxLines)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
