@@ -227,7 +227,7 @@
 ## 运行完整示例
 
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo)，并将示例工程的以下资源复制到对应目录。
-    ```
+    ```text
     AVPlayerArkTSVideo
     entry/src/main/ets/
     └── pages
