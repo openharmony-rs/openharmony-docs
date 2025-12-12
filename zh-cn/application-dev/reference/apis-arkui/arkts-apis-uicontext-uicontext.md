@@ -1026,6 +1026,7 @@ struct DatePickerDialogExample {
   }
 }
 ```
+![showDatePickerDialog](figures/showDatePickerDialog.gif)
 
 ## showTimePickerDialog
 
@@ -1168,6 +1169,7 @@ struct TextPickerDialogExample {
   }
 }
 ```
+![showTextPickerDialog](figures/showTextPickerDialog.gif)
 
 ## showTextPickerDialog<sup>20+</sup>
 
