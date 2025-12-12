@@ -693,7 +693,7 @@ With this permission, the super device administrator application can manage othe
 
 ## ohos.permission.ENTERPRISE_START_ABILITIES
 
-Allows a device administrator application to start other components
+Allows a device administrator application to start other components.
 
 **Permission level**: system_basic
 
