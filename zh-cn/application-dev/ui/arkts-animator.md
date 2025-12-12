@@ -143,7 +143,7 @@ import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  @State animatorOptions: AnimatorResult | undefined = undefined;
+  @State animatorResult: AnimatorResult | undefined = undefined;
   @State animatorStatus: string = '创建';
   begin: number = 0;
   end: number = 300;
@@ -164,33 +164,33 @@ struct Index {
   @State translateY: number = 0;
 
   onPageShow(): void {
-    this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption)
-    this.animatorOptions.onFrame = (progress: number) => {
+    this.animatorResult = this.getUIContext().createAnimator(this.animatorOption)
+    this.animatorResult.onFrame = (progress: number) => {
       this.translateX = progress;
       if (progress > this.topWidth && this.translateY < this.bottomHeight) {
         this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
       }
     }
-    this.animatorOptions.onCancel = () => {
+    this.animatorResult.onCancel = () => {
       this.animatorStatus = '取消';
     }
-    this.animatorOptions.onFinish = () => {
+    this.animatorResult.onFinish = () => {
       this.animatorStatus = '完成';
     }
-    this.animatorOptions.onRepeat = () => {
+    this.animatorResult.onRepeat = () => {
       console.info("动画重复播放");
     }
   }
 
   onPageHide(): void {
-    this.animatorOptions = undefined;
+    this.animatorResult = undefined;
   }
 
   build() {
     Column() {
       Column({ space: 30 }) {
         Button('播放').onClick(() => {
-          this.animatorOptions?.play();
+          this.animatorResult?.play();
           this.animatorStatus = '播放中';
         }).width(80).height(35)
         Button("重置").onClick(() => {
@@ -198,7 +198,7 @@ struct Index {
           this.translateY = 0;
         }).width(80).height(35)
         Button("暂停").onClick(() => {
-          this.animatorOptions?.pause();
+          this.animatorResult?.pause();
           this.animatorStatus = '暂停';
         }).width(80).height(35)
       }.width("100%").height('25%')
