@@ -240,7 +240,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    应用存入数据到Preferences实例后，可以使用flush()方法实现数据持久化。示例代码如下所示：
 
    <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   
    ``` TypeScript
    dataPreferences.flush((err: BusinessError) => {
      if (err) {
