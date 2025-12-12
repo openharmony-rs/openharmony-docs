@@ -51,7 +51,7 @@
 
 ### ColorSpaceName
 
-```
+```c
 enum ColorSpaceName
 ```
 
@@ -100,7 +100,7 @@ enum ColorSpaceName
 
 ### OH_NativeColorSpaceManager_CreateFromName()
 
-```
+```c
 OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)
 ```
 
@@ -127,7 +127,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpace
 
 ### OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma()
 
-```
+```c
 OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)
 ```
 
@@ -155,7 +155,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 
 ### OH_NativeColorSpaceManager_Destroy()
 
-```
+```c
 void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
@@ -176,7 +176,7 @@ void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorS
 
 ### OH_NativeColorSpaceManager_GetColorSpaceName()
 
-```
+```c
 int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
@@ -203,7 +203,7 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 
-```
+```c
 WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
@@ -230,7 +230,7 @@ WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceMana
 
 ### OH_NativeColorSpaceManager_GetGamma()
 
-```
+```c
 float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
