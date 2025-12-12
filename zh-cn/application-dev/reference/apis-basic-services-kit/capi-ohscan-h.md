@@ -54,7 +54,7 @@
 
 ### Scan_ErrorCode
 
-```
+```c
 enum Scan_ErrorCode
 ```
 
@@ -87,7 +87,7 @@ enum Scan_ErrorCode
 
 ### Scan_ScannerDiscoveryCallback()
 
-```
+```c
 typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int32_t deviceCount)
 ```
 
@@ -106,7 +106,7 @@ typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int3
 
 ### OH_Scan_Init()
 
-```
+```c
 int32_t OH_Scan_Init()
 ```
 
@@ -128,7 +128,7 @@ int32_t OH_Scan_Init()
 
 ### OH_Scan_StartScannerDiscovery()
 
-```
+```c
 int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 ```
 
@@ -156,7 +156,7 @@ int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 
 ### OH_Scan_OpenScanner()
 
-```
+```c
 int32_t OH_Scan_OpenScanner(const char* scannerId)
 ```
 
@@ -184,7 +184,7 @@ int32_t OH_Scan_OpenScanner(const char* scannerId)
 
 ### OH_Scan_CloseScanner()
 
-```
+```c
 int32_t OH_Scan_CloseScanner(const char* scannerId)
 ```
 
@@ -212,7 +212,7 @@ int32_t OH_Scan_CloseScanner(const char* scannerId)
 
 ### OH_Scan_GetScannerParameter()
 
-```
+```c
 Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t* errorCode)
 ```
 
@@ -241,7 +241,7 @@ Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t*
 
 ### OH_Scan_SetScannerParameter()
 
-```
+```c
 int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option, const char* value)
 ```
 
@@ -271,7 +271,7 @@ int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option,
 
 ### OH_Scan_StartScan()
 
-```
+```c
 int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 ```
 
@@ -300,7 +300,7 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 
 ### OH_Scan_CancelScan()
 
-```
+```c
 int32_t OH_Scan_CancelScan(const char* scannerId)
 ```
 
@@ -328,7 +328,7 @@ int32_t OH_Scan_CancelScan(const char* scannerId)
 
 ### OH_Scan_GetPictureScanProgress()
 
-```
+```c
 int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanProgress* prog)
 ```
 
@@ -357,7 +357,7 @@ int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanPr
 
 ### OH_Scan_Exit()
 
-```
+```c
 int32_t OH_Scan_Exit()
 ```
 
