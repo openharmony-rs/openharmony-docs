@@ -282,7 +282,10 @@ struct MyComponent {
   private color: Color = Color.Blue;
 
   build() {
-    // ···
+    Column() {
+      Text(`${this.countDownFrom}`)
+        .backgroundColor(this.color)
+    }
   }
 }
 
