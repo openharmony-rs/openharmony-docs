@@ -11,7 +11,7 @@
 
 - 创建隐私模式的[Web组件](../reference/apis-arkweb/arkts-basic-components-web.md)。
  
-   ```ts
+  ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
