@@ -111,16 +111,13 @@ function layerMask(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| NODE | 1 | 结点是空结点。 |
-| GEOMETRY | 2 | 几何类型结点。 |
-| CAMERA | 3 | 相机类型结点。 |
-| LIGHT | 4 | 灯光类型结点。 |
+| NODE | 1 | 结点是空结点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| GEOMETRY | 2 | 几何类型结点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| CAMERA | 3 | 相机类型结点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| LIGHT | 4 | 灯光类型结点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 
 ## Container\<T>
 定义场景对象的容器。容器提供了一种将场景对象分组到层次结构中的方法。
