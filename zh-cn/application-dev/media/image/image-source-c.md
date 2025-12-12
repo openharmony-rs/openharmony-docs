@@ -58,6 +58,19 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 3. 定义ImageSourceNative类。
 
    <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->   
+   
+   ``` C
+   class ImageSourceNative {
+   public:
+       OH_ImageSource_Info *imageInfo;
+       OH_ImageSourceNative *source = nullptr;
+       OH_PixelmapNative *resPixMap = nullptr;
+       OH_Pixelmap_ImageInfo *pixelmapImageInfo = nullptr;
+       uint32_t frameCnt = 0;
+       ImageSourceNative() {}
+       ~ImageSourceNative() {}
+   };
+   ```
 
 4. 创建ImageSourceNative的一个实例。
 
