@@ -1178,6 +1178,8 @@ constructor(value?: ParagraphStyleInterface)
 
 ## StyledStringKey枚举说明
 
+范围属性字符串样式。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值 | 说明                           |
