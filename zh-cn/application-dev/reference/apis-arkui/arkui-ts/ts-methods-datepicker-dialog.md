@@ -115,10 +115,6 @@ static show(options?: DatePickerDialogOptions)
 
 该示例通过showTime、useMilitaryTime、dateTimeOptions设置显示时间。
 
-从API version 10开始，新增showTime、useMilitaryTime接口。
-
-从API version 12开始，新增useMilitaryTime接口。
-
 ```ts
 // xxx.ets
 @Entry
@@ -173,10 +169,6 @@ struct DatePickerDialogExample {
 ### 示例2（自定义样式）
 
 该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
-
-从API version 10开始，新增disappearTextStyle、textStyle、selectedTextStyle接口。
-
-从API version 12开始，新增acceptButtonStyle、cancelButtonStyle接口。
 
 ```ts
 // xxx.ets
@@ -319,8 +311,6 @@ struct DatePickerDialogExample {
 
 该示例通过alignment、offset设置弹窗的位置。
 
-从API version 10开始，新增alignment、offset接口。
-
 ```ts
 // xxx.ets
 @Entry
@@ -356,8 +346,6 @@ struct DatePickerDialogExample {
 ### 示例5（设置遮蔽区）
 
 该示例通过maskRect设置遮蔽区。
-
-从API version 10开始，新增maskRect接口。
 
 ```ts
 // xxx.ets
@@ -399,10 +387,6 @@ struct DatePickerDialogExample {
 
 该示例通过backgroundColor、backgroundBlurStyle、shadow设置弹窗背板。
 
-从API version 11开始，新增backgroundColor、backgroundBlurStyle接口。
-
-从API version 12开始，新增shadow接口。
-
 ```ts
 // xxx.ets
 @Entry
@@ -439,8 +423,6 @@ struct DatePickerDialogExample {
 ### 示例7（设置公历农历）
 
 该示例通过lunar、lunarSwitch设置弹窗显示公历或农历。
-
-从API version 10开始，新增lunarSwitch接口。
 
 ```ts
 // xxx.ets

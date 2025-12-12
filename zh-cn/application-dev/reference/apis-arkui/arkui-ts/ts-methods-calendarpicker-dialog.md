@@ -76,10 +76,6 @@ static show(options?: CalendarDialogOptions): void
 
 该示例通过[CalendarDialogOptions](#calendardialogoptions对象说明)的backgroundColor、backgroundBlurStyle、shadow设置日历选择器弹窗背板。
 
-从API version 11开始，新增backgroundColor、backgroundBlurStyle接口。
-
-从API version 12开始，新增shadow接口。
-
 ```ts
 // xxx.ets
 @Entry

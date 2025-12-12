@@ -20,16 +20,16 @@ SVG（Scalable Vector Graphics）是可缩放矢量图形，它是一种基于XM
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
 | \<rect\> | 矩形 | x：x轴方向偏移分量； <br>y：y轴方向偏移分量；<br>width：宽度； <br>height：高度；<br>rx：圆角x轴半径； <br>ry：圆角y轴半径。|
-| \<circle\> | 圆形 | cx：圆心x轴坐标；<br> cy：圆心y轴坐标；<br> r：圆形半径。 |  |
-| \<ellipse\> | 椭圆 | cx：x轴坐标；<br> cy：y轴坐标；<br> rx：x轴半径；<br> ry：y轴半径。 |  |
-| \<line\> | 线 | x1：起点x轴坐标；<br> y1：起点y轴坐标；<br> x2：终点x轴坐标；<br> y2：终点y轴坐标。 |  |
-| \<polyline\> | 折线 | points：顶点坐标。 |  |
-| \<polygon\> | 多边形 | points：顶点坐标。 |  |
-| \<path\> | 路径 | d：路径。 |  |
+| \<circle\> | 圆形 | cx：圆心x轴坐标；<br> cy：圆心y轴坐标；<br> r：圆形半径。 |
+| \<ellipse\> | 椭圆 | cx：x轴坐标；<br> cy：y轴坐标；<br> rx：x轴半径；<br> ry：y轴半径。 |
+| \<line\> | 线 | x1：起点x轴坐标；<br> y1：起点y轴坐标；<br> x2：终点x轴坐标；<br> y2：终点y轴坐标。 |
+| \<polyline\> | 折线 | points：顶点坐标。 |
+| \<polygon\> | 多边形 | points：顶点坐标。 |
+| \<path\> | 路径 | d：路径。 |
 
 SVG基础形状标签与支持的通用属性的示例如下。
 
-```ts
+```xml
 <!-- svg01.svg -->
 <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" style="background:#f0f0f0">
     <!-- 1. <rect> 矩形 -->
