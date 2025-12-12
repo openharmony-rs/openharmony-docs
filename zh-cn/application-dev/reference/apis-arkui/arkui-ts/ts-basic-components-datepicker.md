@@ -259,13 +259,13 @@ enableHapticFeedback(enable: Optional\<boolean>)
 >  **说明：**
 >
 >  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->     {
->        "name": "ohos.permission.VIBRATE",
->     }
->  ]
->  ```
+> ```json
+> "requestPermissions": [
+>    {
+>       "name": "ohos.permission.VIBRATE",
+>    }
+> ]
+> ```
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
@@ -448,6 +448,8 @@ struct DatePickerExample {
 ### 示例3（设置显示年、月和月、日列）
 
 该示例通过配置mode参数实现显示年、月和月、日列。
+
+从API version 18开始，新增mode接口。
 
 ```ts
 // xxx.ets
