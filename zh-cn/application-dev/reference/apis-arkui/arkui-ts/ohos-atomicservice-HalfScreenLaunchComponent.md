@@ -17,7 +17,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 ```
 
