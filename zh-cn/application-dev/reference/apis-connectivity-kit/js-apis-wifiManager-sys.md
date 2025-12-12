@@ -1713,10 +1713,10 @@ let recvDeviceConfigChangeFunc = (result:number) => {
 }
 
 // Register event
-wifi.on("deviceConfigChange", recvDeviceConfigChangeFunc);
+wifiManager.on("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 // Unregister event
-wifi.off("deviceConfigChange", recvDeviceConfigChangeFunc);
+wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 ```
 
