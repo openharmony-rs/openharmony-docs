@@ -2383,7 +2383,7 @@ setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息                                                                                                              |
 |---------|-------------------------------------------------------------------------------------------------------------------|
-| 401     | TParameter error. Possible cause: Invalid parameter value range.                                                  |
+| 401     | Parameter error. Possible cause: Invalid parameter value range.                                                   |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
