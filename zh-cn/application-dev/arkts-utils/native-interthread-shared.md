@@ -94,8 +94,8 @@ static void* CreateEnvAndSendSendable(void*)
 ArkTS文件定义。
 
 <!-- @[arkts_define_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/SendableObjTest.ets) -->
-```ts
-// SendableObjTest.ets
+
+``` TypeScript
 @Sendable
 export class SendableObjTest {
   static newSendable() {
