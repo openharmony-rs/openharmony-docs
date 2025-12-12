@@ -18,3 +18,59 @@
 ## 使用示例
 
 <!-- @[example_container_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ContainerObject.ets) -->
+
+``` TypeScript
+import { taskpool, TreeSet } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Sendable
+function sendableCompareFunc(firstValue: number, secondValue: number): boolean {
+    return firstValue > secondValue;
+}
+
+@Concurrent
+function treeSetTestFunc(treeSet: TreeSet<number>) {
+  for (let value of treeSet) {
+    console.info('value:', value);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          // 1. 创建Test实例objA
+          let treeSet : TreeSet<number> = new TreeSet<number>(sendableCompareFunc);
+
+          treeSet.add(1);
+          treeSet.add(5);
+          treeSet.add(3);
+          treeSet.add(2);
+          // 2. 创建任务task，将treeSet传递给该任务，通过序列化传递给子线程
+          let task = new taskpool.Task(treeSetTestFunc, treeSet);
+          // 3. 执行任务
+          taskpool.execute(task).then(() => {
+            console.info('taskpool: execute task success!');
+          }).catch((e:BusinessError) => {
+            console.error(`taskpool: execute task: Code: ${e.code}, message: ${e.message}`);
+          })
+          this.message = 'success';
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
