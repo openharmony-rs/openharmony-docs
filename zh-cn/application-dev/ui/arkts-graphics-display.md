@@ -401,7 +401,7 @@ Image加载的SVG图源路径设置方法如下所示：
   ```
 SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，本地位图路径设置为跟SVG图源同级的相对路径：
 
-```html
+```xml
 <svg width="200" height="200">
   <image width="200" height="200" xlink:href="sky.png"></image>
 </svg>
