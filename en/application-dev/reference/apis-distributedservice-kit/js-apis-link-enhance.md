@@ -55,10 +55,11 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
-  let name:string = "demo";
+  let name: string = "demo";
   hilog.info(0x0000, TAG, 'start sever name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
@@ -108,6 +109,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -151,6 +153,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -187,6 +190,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -225,6 +229,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -269,6 +274,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -279,7 +285,7 @@ try {
 
   // Subscribe to connectionAccepted events.
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-      hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
+    hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
   });
   // Start the server.
   server.start();
@@ -320,6 +326,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -372,6 +379,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -424,6 +432,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -488,6 +497,7 @@ After creating a **Connection** object, the application on the client device cal
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -531,6 +541,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -545,7 +556,7 @@ try {
   });
   connection.connect();
 } catch (err) {
-    hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -575,6 +586,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -625,6 +637,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -672,6 +685,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -727,6 +741,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -735,7 +750,7 @@ try {
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to connectResult events.
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
-      hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
+    hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
   });
 
   // Initiate a connection.
@@ -778,6 +793,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -829,6 +845,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -836,8 +853,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to disconnected events.
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -877,18 +894,19 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
   // Unsubscribe from disconnected events.
-  connection.off('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.off('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -928,6 +946,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -935,8 +954,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.connect();
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -975,17 +994,18 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
-  connection.off('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.off('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
