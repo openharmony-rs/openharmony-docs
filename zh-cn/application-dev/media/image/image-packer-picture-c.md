@@ -59,6 +59,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 3. 定义用于图像处理的常量。
 
    <!-- @[define_const](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
+   
+   ``` C++
+   #define AUTO 0
+   #define SDR 1
+   const int MAX_SIZE = 1024;
+   const int MAX_FORMAT_LENGTH = 20;
+   ```
 
 4. 定义ImagePictureNative类。
 
