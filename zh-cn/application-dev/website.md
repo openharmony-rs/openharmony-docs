@@ -912,6 +912,9 @@
             - [ArkTS卡片使用画布组件绘制自定义图形](form/arkts-ui-widget-page-custom-drawing.md)
             - [ArkTS卡片界面适配深浅色模式](form/arkts-ui-widget-dark-light-color-adapt.md)
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
+            <!--Del-->
+            - [ArkTS卡片模糊提亮和玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
+            <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
