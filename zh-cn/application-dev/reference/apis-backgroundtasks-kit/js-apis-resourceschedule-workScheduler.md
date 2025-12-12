@@ -367,7 +367,7 @@ stopAndClearWorks(): void
 
 isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[workScheduler.isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10)替代
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[workScheduler.isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10)替代。
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
