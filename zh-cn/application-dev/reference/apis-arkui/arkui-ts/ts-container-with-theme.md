@@ -22,6 +22,8 @@ WithTheme组件用于设置应用局部页面自定义主题风格，可设置�
 
 WithTheme(options: WithThemeOptions)
 
+设置应用局部页面自定义主题风格。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
