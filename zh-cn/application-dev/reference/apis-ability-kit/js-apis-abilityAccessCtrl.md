@@ -434,7 +434,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示全局开关状态为开启；返回false表示全局开关状态为关闭。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true，表示全局开关状态为开启。返回false，表示全局开关状态为关闭。 |
 
 **错误码：**
 
