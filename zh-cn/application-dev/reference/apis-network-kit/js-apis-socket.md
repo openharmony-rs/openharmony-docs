@@ -6908,7 +6908,7 @@ let socks5Server: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
