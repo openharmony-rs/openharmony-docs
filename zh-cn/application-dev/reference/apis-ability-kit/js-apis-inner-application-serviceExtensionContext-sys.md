@@ -2521,6 +2521,7 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 16000013 | The application is controlled by EDM.       |
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
 
 **示例：**
 

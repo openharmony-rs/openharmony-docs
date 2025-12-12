@@ -1319,6 +1319,25 @@ Window还未创建或已销毁的时候调用该接口。
 
 在windowStage创建前和销毁后不要调用该接口。
 
+## 16000136 不允许通过App Linking方式拉起应用自身UIAbility
+
+**错误信息**
+
+The UIAbility is prohibited from launching itself via App Linking.
+
+**错误描述**
+
+应用配置了不允许使用App Linking拉起当前UIAbility。
+
+**可能原因**
+
+在[module.json5配置文件](../../quick-start/module-configuration-file.md)的[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中，当前UIAbility的allowSelfRedirect字段取值为“false”。
+
+**处理步骤**
+
+- 如果允许使用App Linking拉起当前UIAbility，开发者需要在[module.json5配置文件](../../quick-start/module-configuration-file.md)将[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的allowSelfRedirect字段设置为true。
+- 如果不允许使用App Linking拉起当前UIAbility，开发者需要通过catch捕获该错误码并进行处理。
+
 ## 16000151 无效wantAgent对象
 
 **错误信息**
