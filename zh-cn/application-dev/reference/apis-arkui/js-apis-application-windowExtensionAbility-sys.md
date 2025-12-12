@@ -10,7 +10,7 @@ WindowExtensionAbility基于ExtensionAbility。WindowExtensionAbility中展示�
 
 > **说明：**
 >
-> - 从API version 21开始废弃，推荐使用[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+> - 从API version 21开始废弃，推荐使用[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)，针对设置一个嵌入式UIAbility的场景，请参见[UIExtensionAbility使用指南](../../application-models/uiextensionability-sys.md)。
 > 
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
