@@ -318,6 +318,10 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    context的定义如下：
    <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
+   const context = EntryAbility.getContext();
+   ```
 
    示例代码如下所示：
 
