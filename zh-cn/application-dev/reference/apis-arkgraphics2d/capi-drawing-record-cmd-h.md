@@ -34,7 +34,7 @@
 
 ### OH_Drawing_RecordCmdUtilsCreate()
 
-```
+```c
 OH_Drawing_RecordCmdUtils* OH_Drawing_RecordCmdUtilsCreate(void)
 ```
 
@@ -54,7 +54,7 @@ OH_Drawing_RecordCmdUtils* OH_Drawing_RecordCmdUtilsCreate(void)
 
 ### OH_Drawing_RecordCmdUtilsDestroy()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsDestroy(OH_Drawing_RecordCmdUtils* recordCmdUtils)
 ```
 
@@ -81,7 +81,7 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsDestroy(OH_Drawing_RecordCmdUtils*
 
 ### OH_Drawing_RecordCmdUtilsBeginRecording()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsBeginRecording(OH_Drawing_RecordCmdUtils* recordCmdUtils,int32_t width, int32_t height, OH_Drawing_Canvas** canvas)
 ```
 
@@ -111,7 +111,7 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsBeginRecording(OH_Drawing_RecordCm
 
 ### OH_Drawing_RecordCmdUtilsFinishRecording()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsFinishRecording(OH_Drawing_RecordCmdUtils* recordCmdUtils,OH_Drawing_RecordCmd** recordCmd)
 ```
 
@@ -139,7 +139,7 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsFinishRecording(OH_Drawing_RecordC
 
 ### OH_Drawing_RecordCmdDestroy()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RecordCmdDestroy(OH_Drawing_RecordCmd* recordCmd)
 ```
 

@@ -7,7 +7,7 @@
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_Drawing_FontFullDescriptor OH_Drawing_FontFullDescriptor
 ```
 

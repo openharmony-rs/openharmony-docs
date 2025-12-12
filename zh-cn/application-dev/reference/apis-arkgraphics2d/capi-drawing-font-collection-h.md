@@ -37,7 +37,7 @@
 
 ### OH_Drawing_CreateFontCollection()
 
-```
+```c
 OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 ```
 
@@ -57,7 +57,7 @@ OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 
 ### OH_Drawing_DestroyFontCollection()
 
-```
+```c
 void OH_Drawing_DestroyFontCollection(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -78,7 +78,7 @@ void OH_Drawing_DestroyFontCollection(OH_Drawing_FontCollection* fontCollection)
 
 ### OH_Drawing_DisableFontCollectionFallback()
 
-```
+```c
 void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -102,7 +102,7 @@ void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCol
 
 ### OH_Drawing_DisableFontCollectionSystemFont()
 
-```
+```c
 void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -123,7 +123,7 @@ void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection* fontC
 
 ### OH_Drawing_CreateSharedFontCollection()
 
-```
+```c
 OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)
 ```
 
@@ -143,7 +143,7 @@ OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)
 
 ### OH_Drawing_ClearFontCaches()
 
-```
+```c
 void OH_Drawing_ClearFontCaches(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -164,7 +164,7 @@ void OH_Drawing_ClearFontCaches(OH_Drawing_FontCollection* fontCollection)
 
 ### OH_Drawing_GetFontCollectionGlobalInstance()
 
-```
+```c
 OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)
 ```
 

@@ -50,7 +50,7 @@
 
 ### OH_Drawing_SystemFontType
 
-```
+```c
 enum OH_Drawing_SystemFontType
 ```
 
@@ -70,7 +70,7 @@ enum OH_Drawing_SystemFontType
 
 ### OH_Drawing_FontFullDescriptorAttributeId
 
-```
+```c
 enum OH_Drawing_FontFullDescriptorAttributeId
 ```
 
@@ -97,7 +97,7 @@ enum OH_Drawing_FontFullDescriptorAttributeId
 
 ### OH_Drawing_MatchFontDescriptors()
 
-```
+```c
 OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescriptor* desc, size_t* num)
 ```
 
@@ -125,7 +125,7 @@ OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescri
 
 ### OH_Drawing_DestroyFontDescriptors()
 
-```
+```c
 void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, size_t num)
 ```
 
@@ -147,7 +147,7 @@ void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, s
 
 ### OH_Drawing_GetFontDescriptorByFullName()
 
-```
+```c
 OH_Drawing_FontDescriptor* OH_Drawing_GetFontDescriptorByFullName(const OH_Drawing_String* fullName,OH_Drawing_SystemFontType fontType)
 ```
 
@@ -175,7 +175,7 @@ OH_Drawing_FontDescriptor* OH_Drawing_GetFontDescriptorByFullName(const OH_Drawi
 
 ### OH_Drawing_GetSystemFontFullNamesByType()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetSystemFontFullNamesByType(OH_Drawing_SystemFontType fontType)
 ```
 
@@ -202,7 +202,7 @@ OH_Drawing_Array* OH_Drawing_GetSystemFontFullNamesByType(OH_Drawing_SystemFontT
 
 ### OH_Drawing_GetSystemFontFullNameByIndex()
 
-```
+```c
 const OH_Drawing_String* OH_Drawing_GetSystemFontFullNameByIndex(OH_Drawing_Array* fullNameArray, size_t index)
 ```
 
@@ -230,7 +230,7 @@ const OH_Drawing_String* OH_Drawing_GetSystemFontFullNameByIndex(OH_Drawing_Arra
 
 ### OH_Drawing_DestroySystemFontFullNames()
 
-```
+```c
 void OH_Drawing_DestroySystemFontFullNames(OH_Drawing_Array* fullNameArray)
 ```
 
@@ -252,7 +252,7 @@ void OH_Drawing_DestroySystemFontFullNames(OH_Drawing_Array* fullNameArray)
 
 ### OH_Drawing_GetFontFullDescriptorsFromStream()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromStream(const void* data, size_t size)
 ```
 
@@ -279,7 +279,7 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromStream(const void* data, 
 
 ### OH_Drawing_GetFontFullDescriptorsFromPath()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)
 ```
 
@@ -305,7 +305,7 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)
 
 ### OH_Drawing_GetFontFullDescriptorByIndex()
 
-```
+```c
 const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_Drawing_Array* descriptorArray, size_t index)
 ```
 
@@ -332,7 +332,7 @@ const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_
 
 ### OH_Drawing_DestroyFontFullDescriptors()
 
-```
+```c
 void OH_Drawing_DestroyFontFullDescriptors(OH_Drawing_Array* descriptorArray)
 ```
 
@@ -352,7 +352,7 @@ void OH_Drawing_DestroyFontFullDescriptors(OH_Drawing_Array* descriptorArray)
 
 ### OH_Drawing_GetFontFullDescriptorAttributeInt()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, int* value)
 ```
 
@@ -380,7 +380,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawi
 
 ### OH_Drawing_GetFontFullDescriptorAttributeBool()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeBool(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, bool* value)
 ```
 
@@ -408,7 +408,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeBool(const OH_Draw
 
 ### OH_Drawing_GetFontFullDescriptorAttributeString()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeString(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, OH_Drawing_String* str)
 ```
 
