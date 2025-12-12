@@ -115,19 +115,10 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    <!--Del-->Stage模型示例：<!--DelEnd-->
    <!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
-   import { UIAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { window } from '@kit.ArkUI';
-
-   let dataPreferences: preferences.Preferences | null = null;
-
-   class EntryAbility extends UIAbility {
-     onWindowStageCreate(windowStage: window.WindowStage) {
-       let options: preferences.Options = { name: 'myStore' };
-       dataPreferences = preferences.getPreferencesSync(context, options);
-     }
-   }
+   let options: preferences.Options = { name: 'myStore' };
+   dataPreferences = preferences.getPreferencesSync(context, options);
    ```
 
    <!--Del-->FA模型示例：
@@ -149,19 +140,10 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    <!--Del-->Stage模型示例：<!--DelEnd-->
 
    <!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
-   import { UIAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { window } from '@kit.ArkUI';
-
-   let dataPreferences: preferences.Preferences | null = null;
-
-   class EntryAbility extends UIAbility {
-     onWindowStageCreate(windowStage: window.WindowStage) {
-       let options: preferences.Options = { name: 'myStore', storageType: preferences.StorageType.GSKV };
-       dataPreferences = preferences.getPreferencesSync(context, options);
-     }
-   }
+   let options: preferences.Options = { name: 'myStore', storageType: preferences.StorageType.GSKV };
+   dataPreferences = preferences.getPreferencesSync(context, options);
    ```
 
    <!--Del-->FA模型示例：
@@ -214,6 +196,16 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    示例代码如下所示：
 
    <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
+   let val = dataPreferences.getSync('startup', 'default');
+   Logger.info('The startup value is ' + val);
+   let uInt8Array2 : preferences.ValueType = dataPreferences.getSync('uInt8', new Uint8Array(0));
+   // 将获取到的Uint8Array转换为字符串
+   let textDecoder = util.TextDecoder.create('utf-8');
+   val = textDecoder.decodeToString(uInt8Array2 as Uint8Array);
+   Logger.info('The uInt8 value is ' + val);
+   ```
    <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
    
    ``` TypeScript
@@ -260,7 +252,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    示例代码如下所示：
 
    <!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   
    ``` TypeScript
    let observer = (key: string) => {
      Logger.info('The key ' + key + ' changed.');
@@ -273,7 +265,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
        return;
      }
      Logger.info('Succeeded in putting the value of startup.');
-     if (dataPreferences !== null) {
+     if (dataPreferences !== undefined) {
        dataPreferences.flush((err: BusinessError) => {
          if (err) {
            Logger.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
