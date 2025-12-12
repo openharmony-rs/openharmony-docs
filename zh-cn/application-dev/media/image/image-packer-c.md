@@ -77,6 +77,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 4. 创建ImageSourceNative的一个实例。
 
    <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
+   
+   ``` C++
+   static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
+   ```
 
 5. 定义一个全局变量用来记录编码所支持的格式。
 
