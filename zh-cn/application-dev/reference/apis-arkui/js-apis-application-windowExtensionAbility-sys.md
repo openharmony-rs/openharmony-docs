@@ -40,7 +40,8 @@ onConnect(want: Want): void
 
 > **说明：**
 >
->  - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionAbility.onCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate)。
+>  - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionAbility.onCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate)，
+针对设置一个嵌入式UIAbility的场景，请参见[UIExtensionAbility使用指南]。(../../application-models/uiextensionability-sys)
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
