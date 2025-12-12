@@ -52,7 +52,7 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 
 ### Print_ErrorCode
 
-```
+```c
 enum Print_ErrorCode
 ```
 
@@ -78,7 +78,7 @@ Enumerates the error codes.
 
 ### Print_JobDocAdapterState
 
-```
+```c
 enum Print_JobDocAdapterState
 ```
 
@@ -103,7 +103,7 @@ Enumerates the print job states.
 
 ### Print_WriteResultCallback()
 
-```
+```c
 typedef void(*Print_WriteResultCallback)(const char *jobId, uint32_t code)
 ```
 
@@ -122,7 +122,7 @@ Defines a callback used to return the file write-back result.
 
 ### Print_OnStartLayoutWrite()
 
-```
+```c
 typedef void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs, Print_WriteResultCallback writeCallback)
 ```
 
@@ -144,7 +144,7 @@ Defines a callback to be invoked when the file write-back starts.
 
 ### Print_OnJobStateChanged()
 
-```
+```c
 typedef void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state)
 ```
 
@@ -163,7 +163,7 @@ Defines a callback to be invoked when the print job state changes.
 
 ### OH_Print_StartPrintByNative()
 
-```
+```c
 Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_PrintDocCallback printDocCallback, void *context)
 ```
 
