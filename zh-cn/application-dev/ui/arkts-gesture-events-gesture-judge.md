@@ -90,7 +90,7 @@
 
 4. 代码完整示例。
 
-   <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->
+   <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->   
    
    ``` TypeScript
    import { PromptAction } from '@kit.ArkUI';

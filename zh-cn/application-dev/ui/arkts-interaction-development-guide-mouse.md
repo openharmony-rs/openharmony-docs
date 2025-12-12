@@ -213,7 +213,7 @@ struct OnHover {
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
 
-<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
 
 ``` TypeScript
 class ListDataSource implements IDataSource {
