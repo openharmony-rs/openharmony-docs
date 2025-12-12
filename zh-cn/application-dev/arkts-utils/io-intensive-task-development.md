@@ -59,32 +59,33 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
 2. 使用TaskPool执行包含密集I/O的并发函数，通过调用[execute()](../reference/apis-arkts/js-apis-taskpool.md#taskpoolexecute)方法执行任务，并在回调中处理调度结果。示例中获取filePath1和filePath2的方式请参见[获取应用文件路径](../application-models/application-context-stage.md#获取应用文件路径)。在TaskPool中使用context时，需先在并发函数外部准备好，并通过参数传递给并发函数。
 
    <!-- @[taskpool_execute_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) -->
-    ```ts
-    // Index.ets
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'Hello World';
-      build() {
-        Row() {
-          Column() {
-            Text(this.message)
-              .fontSize(50)
-              .fontWeight(FontWeight.Bold)
-              .onClick(() => {
-                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    
-                // 使用TaskPool执行包含密集I/O的并发函数
-                // 数组较大时，I/O密集型任务分发也会抢占UI主线程，需要使用多线程能力
-                taskpool.execute(concurrentTest, context).then(() => {
-                  // 调度结果处理
-                  console.info("taskpool: execute success");
-                })
-              })
-          }
-          .width('100%')
-        }
-        .height('100%')
-      }
-    }
-    ```
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(() => {
+               let context = getContext() as common.UIAbilityContext;
+               // 使用TaskPool执行包含密集I/O的并发函数
+               // 数组较大时，I/O密集型任务任务分发也会抢占UI主线程，需要使用多线程能力
+               taskpool.execute(concurrentTest, context).then(() => {
+                 // 调度结果处理
+                 console.info('taskpool: execute success')
+               })
+               this.message = 'success';
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
