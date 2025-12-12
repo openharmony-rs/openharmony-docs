@@ -1,68 +1,57 @@
 # 应用共享目录配置
 <!--Kit: Core File Kit-->
-<!--Subsystem: FileManagement-->
+<!--Subsystem: Security-->
 <!--Owner: @renzehua-->
 <!--Designer: @renzehua; @huangjieliang; @zhanganxiang-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-应用文件分享场景下，提供应用共享目录配置的能力，支持开发者按需配置共享目录范围或关闭共享，防止应用敏感数据泄露。
+从API version 23开始，系统新增支持共享目录配置功能。在[应用文件分享](share-app-file.md)场景中，开发者可配置共享目录范围，防止应用敏感数据泄露。
 
-## 开发说明
+## 开发步骤
 
-在模块级配置文件[src/main/module.json5](../quick-start/module-configuration-file.md)的配置文件标签"module"中添加"shareFiles"标签。
+1. 开发者可在应用模块级配置文件[src/main/module.json5](../quick-start/module-configuration-file.md)的module标签中添加shareFiles标签，以实现对沙箱共享目录权限的限制。若未配置共享目录，则默认允许应用共享其自身沙箱内的文件。
 
-``` JSON5
-{
-  "module": {
-    // ...
-    "shareFiles": "$profile:share_files", // 资源配置，指向profile下面定义的配置文件share_files.json
-    // ...
-  }
-}
-```
+   **shareFiles标签**
 
-在开发视图的resources/base/profile下面定义配置文件share_files.json，其中文件名"share_files"可自定义，需要和标签指定的信息对应。配置文件中包含了共享目录范围以及文件权限。
+   ``` JSON5
+   {
+     "module": {
+       // ...
+       "shareFiles": "$profile:share_files", // 资源配置，指向profile下面定义的配置文件share_files.json
+       // ...
+     }
+   }
+   ```
 
-**表1** shareFiles标签说明
+2. 在开发视图的resources/base/profile下面定义配置文件share_files.json，以标识当前模块所有共享路径的权限信息。
 
-| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
-| -------- | -------- | -------- | -------- |
-| share_files | 标识当前Module所有共享路径的权限信息。 | 对象 | 该标签不可缺省。 |
+   文件名share_files可修改为任意合法文件名，但需要和shareFiles标签配置的文件名一致。
 
+   **share_files标签说明**
 
-**表2** share_files标签说明
+   | 属性名称 | 含义 | 数据类型 | 必填 |
+   | -------- | -------- | -------- | -------- |
+   | scopes | 允许共享的范围，详见scopes标签说明。 | 对象数组 | 否 |
 
-| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
-| -------- | -------- | -------- | -------- |
-| scopes | 允许授权的范围。 | 对象数组 | 该标签可缺省。 |
-| path_to_system | 捐献给操作系统的路径，必须是scopes中配置的path值。 | 字符串 | 该标签可缺省。 |
-| subpath_to_system | path_to_system与subpath_to_system拼接后的路径作为捐献给操作系统的路径。字符长度不能超过32，可以为空值""，有字符则以/开头，不允许"."、".."、"/0"字符。 | 字符串 | path_to_system有值时该标签不可缺省。 |
-| permission_to_system | 捐献给操作系统的路径权限，值需为permission的子集。支持的取值如下：<br/>-&nbsp;r：只读。<br/>-&nbsp;r+w：读写。 | 字符串 | path_to_system有值时该标签不可缺省。 |
+   **scopes标签说明**
 
+   | 属性名称 | 含义 | 数据类型 | 必填 |
+   | -------- | -------- | -------- | -------- |
+   | path | 共享路径配置，默认为[el2目录](share-app-file.md#应用可分享目录)，scopes中的path不可重复。支持的取值如下：<br/>- `/base/files`<br/>- `/base/preferences`<br/>- `/base/haps` | string | scopes存在时必填 |
+   | permission | 共享路径权限。支持的取值如下：<br/>- `r`：只读。<br/>- `r+w`：读写。 | string | scopes存在时必填 |
 
-**表3** scopes标签说明
+   share_files.json示例：
 
-| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
-| -------- | -------- | -------- | -------- |
-| path | 路径配置，scopes中的path不可重复。支持的取值如下：<br/>-&nbsp;/base/temp。<br/>-&nbsp;/base/files。<br/>-&nbsp;/base/preferences。<br/>-&nbsp;/base/haps。 | 字符串 | 该标签不可缺省。 |
-| permission | 路径权限。支持的取值如下：<br/>-&nbsp;r：只读。<br/>-&nbsp;r+w：读写。 | 字符串 | 该标签不可缺省。 |
-
-
-share_files.json示例：
-
-``` json
-{
-  "share_files": {
-    "scopes": [
-      {
-        "path": "/base/files",
-        "permission": "r+w"
-      }
-    ],
-    "path_to_system": "/base/files",
-    "subpath_to_system": "/subdir",
-    "permission_to_system": "r"
-  }
-}
-```
+   ``` json
+   {
+     "share_files": {
+       "scopes": [
+         {
+           "path": "/base/files",
+           "permission": "r+w"
+         }
+       ]
+     }
+   }
+   ```
