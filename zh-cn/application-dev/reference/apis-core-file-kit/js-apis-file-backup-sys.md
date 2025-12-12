@@ -3815,7 +3815,6 @@ release(): Promise&lt;void&gt;
 | 13600001 | IPC error.                                                                                      |
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
-| 13900020 | Invalid argument.                                                                               |
 | 13900042 | Unknown error.                                                                                  |
 
 **示例：**
