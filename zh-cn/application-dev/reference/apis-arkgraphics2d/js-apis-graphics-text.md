@@ -361,7 +361,7 @@ getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;n
 | 参数名 | 类型               | 必填 | 说明                              |
 | -----  | ------------------ | ---- | --------------------------------- |
 |  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
-|  index  | number | 是 | 字体文件格式为ttc时，指定加载的字体索引。非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+|  index  | number | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数非法，将返回空数组。 |
 
 **返回值：**
 
@@ -432,8 +432,8 @@ struct GetFontCountTest {
     Column({ space: 10 }) {
       Button("get fontCount")
         .onClick(() => {
-          let fileCount = text.getFontCount("file:///system/fonts/NotoSansCJK-Regular.ttc")
-          console.info("file count: " + fileCount)
+          let fontCount = text.getFontCount("file:///system/fonts/NotoSansCJK-Regular.ttc")
+          console.info("file count: " + fontCount)
         })
     }.width("100%")
     .height("100%")
