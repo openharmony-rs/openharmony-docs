@@ -30883,5 +30883,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-export-key-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/KeyExport/entry/src/main/ets/pages/KeyExport.ets",
+				"functions":[
+					{
+						"end_line":103,
+						"name":"fetch_persistent_security_public_keys_ets",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-export-key-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/KeyExport/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":98,
+						"name":"get_persistent_storage_asymmetric_public_keys_cpp",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
