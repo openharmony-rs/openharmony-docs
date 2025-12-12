@@ -218,9 +218,41 @@ All the three types of AppFreeze events include the following information.
 | PACKAGE_NAME | Application process package name.|
 | PROCESS_NAME | Application process name.|
 | MSG | Time when the fault occurs and **EventHandler** information.|
+
+**EventHandler** information. The details are as follows:
+
+Structure of the dump information.
+
+| Field| Description|
+| -------- | -------- |
+| EventHandler dump begin curTime | Time when the dump information is obtained.|
+| Event runner | Thread name and thread ID corresponding to **EventHandler**.|
+| Current Running | Complete information about the task that is being executed.|
+| History event queue information | Information about historical tasks.|
+| VIP priority event queue information | VIP task queue information.|
+| Immediate priority event queue information | Information about the task queue that is executed immediately.|
+| High priority event queue information | Information about the high-priority task queue.|
+| Low priority event queue information | Information about the low-priority task queue.|
+| Idle priority event queue information | Information about the suspended task queue.|
+
+Task components.
+
+| Field| Description|
+| -------- | -------- |
+| send thread | Thread ID of the submitted task.|
+| send time | Time when a task is submitted.|
 | task name | Task name in the task queue.|
+| priority | Task priority.|
+| caller | Method of submitting a task.|
+| handle time | Expected execution time of a task. The value may be different from the actual task execution time (**trigger time**).|
 | trigger time | Task execution time.|
 | completeTime time | Time when the task is complete. (If no information is displayed, the task is not complete.)|
+
+> **NOTE**
+>
+> In the **EventHandler** information, you only need to pay attention to **EventHandler dump begin curTime**, **trigger time**, and **completeTime time**.
+>
+>  
 
 ### Stack Information
 
@@ -298,24 +330,24 @@ pid context     request started max ready   free_async_space
 
 The IPC information is described as follows.
 
-| | |
+| Field| Description|
 | -------- | -------- |
-| xxx:xxx to xxx:xxx | Client process ID, thread ID to server process ID, thread ID. **async** indicates asynchronous; no **async** indicates synchronous. |
-| code | Service code agreed by the client and server. |
-| wait | Communication waiting duration. |
-| frz_state | Process freeze status.<br>**-1**: Unknown.<br>**1**: Default.<br>**2**: The binder status information is being sent to the user mode.<br>**3**: The binder receiving thread is reached. |
-| ns | Client process ID, thread ID to server process ID, thread ID (-1 for non-DroiTong processes). |
-| debug | Supplementary information about the IPC parties. |
-| active_code | The asynchronous message code being processed. |
-| active_thread | Thread that processes the asynchronous message. |
-| pending_async_proc | Process blocked by the asynchronous message. |
-| pid | Process ID. |
-| context | Communication mode. |
-| request | Number of IPC threads requested. |
-| started | Number of started IPC threads. |
-| max | Maximum number of IPC threads that can be requested. |
-| ready | Free IPC thread. |
-| free_async_space | Free asynchronous space, which is used to observe asynchronous information blocking. |
+| xxx:xxx to xxx:xxx | Client process ID and thread ID to server process ID and thread ID. **async** indicates asynchronous; no **async** indicates synchronous.|
+| code | Service code agreed by the client and server.|
+| wait | Communication waiting duration.|
+| frz_state | Process freeze state.<br>**-1**: Unknown.<br>**1**: Default.<br>**2**: The binder status information is being sent to the user mode.<br>**3**: The binder receiving thread is reached.|
+| ns | Client process ID and thread ID to server process ID and thread ID (**-1** for non-DroiTong processes).|
+| debug | Supplementary information about the IPC parties.|
+| active_code | Code of the asynchronous message that is being processed.|
+| active_thread | Thread that processes the asynchronous message.|
+| pending_async_proc | Process blocked by the asynchronous message.|
+| pid | Process ID.|
+| context | Communication mode.|
+| request | Number of IPC threads requested.|
+| started | Number of started IPC threads.|
+| max | Maximum number of IPC threads that can be requested.|
+| ready | Idle IPC thread.|
+| free_async_space | Free asynchronous space, which is used to observe asynchronous information blocking.|
 
 (2) **PeerBinder Stacktrace**: Stack traces of unresponsive peer processes communicating with the faulty process.
 
@@ -356,15 +388,15 @@ Details of Processes:
     1685       0.53%           0.31%          0.22%          879838               59636            foundation
 ```
 
-| | |
+| Field| Description|
 | -------- | -------- |
-| PID | Process ID. |
-| Total Usage | CPU usage. **Total Usage** = **User Space** + **Kernel Space**. |
-| User Space | User space usage. |
-| Kernel Space | Kernel space usage. |
-| Page Fault Minor | Minor page fault. |
-| Page Fault Major | Major page fault. |
-| Name | Process name. |
+| PID | Process ID.|
+| Total Usage | CPU usage. **Total Usage** = **User Space** + **Kernel Space**.|
+| User Space | CPU usage in user mode.|
+| Kernel Space | CPU usage in kernel mode.|
+| Page Fault Minor | Minor page fault.|
+| Page Fault Major | Major page fault.|
+| Name | Name of the process.|
 
 ### Memory Information
 
@@ -381,7 +413,7 @@ The preceding shows the system memory information. **ReclaimAvailBuffer** indica
 
 ## Log Differences
 
-Lifecycle timeout event.
+**Lifecycle timeout event**
 
 ```
 DOMAIN:AAFWK
@@ -416,55 +448,74 @@ The following describes the MSG information with two complete lifecycle switchov
 
 (1) Events in the load phase (when the application process is not created)
 
-| | | |
+| server | client | Description|
 | -------- | -------- | -------- |
-| server | client | Description |
-| AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | Start. |
+| AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | The lifecycle starts.|
 | AppMgrServiceInner::LoadAbility | -| The process is yet to be created. |
-| AppMgrService::AttachApplication | -| The process is successfully created and attached. |
-| ServiceInner::AttachApplication | -| The process is attached. |
-| ServiceInner::LaunchApplication | -| The application is scheduled to execute the loading process. |
-| AppRunningRecord::LaunchApplication | -| The application is scheduled to execute the loading process. |
-| AppScheduler::ScheduleLaunchApplication | -| The application is scheduled to execute the loading process. |
-| -| ScheduleLaunchApplication | The application receives a loading scheduling request. |
-| -| HandleLaunchApplication begin | The application loading starts. |
-| -| HandleLaunchApplication end | The application loading ends. |
-| AppRunningRecord::LaunchPendingAbilities | -| The application is scheduled to start ability. |
-| -| MainThread::ScheduleLaunchAbility | The application receives a request to load ability. |
-| -| MainThread::HandleLaunchAbility | The main thread processes the request. |
-| -| JsAbilityStage::Create | An AbilityStage is loaded. |
-| -| JsAbilityStage::OnCreate begin | The **onCreate** lifecycle of AbilityStage starts. |
-| -| JsAbilityStage::OnCreate end | The **onCreate** lifecycle of **AbilityStage** ends. |
-| -| AbilityThread::Attach | The ability is attached to AMS, and the loading process ends. |
+| AppMgrService::AttachApplication | -| The process is created and attached.|
+| ServiceInner::AttachApplication | -| The process is attached.|
+| ServiceInner::LaunchApplication | -| The application is scheduled to execute the loading process.|
+| AppRunningRecord::LaunchApplication | -| The application is scheduled to execute the loading process.|
+| AppScheduler::ScheduleLaunchApplication | -| The application is scheduled to execute the loading process.|
+| -| ScheduleLaunchApplication | The application receives a loading scheduling request.|
+| -| HandleLaunchApplication begin | The application loading starts.|
+| -| HandleLaunchApplication end | The application loading ends.|
+| AppRunningRecord::LaunchPendingAbilities | -| The application is scheduled to start an ability.|
+| -| MainThread::ScheduleLaunchAbility | The application receives a request to load an ability.|
+| -| MainThread::HandleLaunchAbility | The main thread processes the request.|
+| -| JsAbilityStage::Create | The AbilityStage is loaded.|
+| -| JsAbilityStage::OnCreate begin | The **onCreate** lifecycle of the AbilityStage starts.|
+| -| JsAbilityStage::OnCreate end | The **onCreate** lifecycle of the AbilityStage ends.|
+| -| AbilityThread::Attach | The ability is attached to AMS, and the loading process ends.|
 
  (2) Foreground phase event – cold start
 
-| | | |
+| server | client | Description|
 | -------- | -------- | -------- |
-| server | client | Description |
-| AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. |  | Start. |
-| ServiceInner::UpdateAbilityState | -| The application frontend is scheduled first. |
-| AppRunningRecord::ScheduleForegroundRunning | -| The application foreground is scheduled. |
-| AppScheduler::ScheduleForegroundApplication | -| The application foreground is scheduled. |
-| -| ScheduleForegroundApplication | The application receives a scheduling request. |
-| -| HandleForegroundApplication | The main thread executes the scheduling request. |
-| AppMgrService::AppForegrounded | -| The application enters the foreground. |
-| ServiceInner::AppForegrounded | -| The application enters the foreground. |
-| -| AbilityThread::ScheduleAbilityTransaction | The application receives an ability foreground scheduling request. |
-| -| AbilityThread::HandleAbilityTransaction | The main thread executes the ability foreground scheduling. |
-| -| JsUIAbility::OnStart begin | The **onCreate** lifecycle starts. |
-| -| JsUIAbility::OnStart end | The **onCreate** lifecycle ends. |
-| -| JsUIAbility::OnSceneCreated begin | The window scene creation starts. |
-| -| JsUIAbility::OnSceneCreated end | The window scene creation ends. |
+| AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. |  | The lifecycle starts.|
+| ServiceInner::UpdateAbilityState | -| The application foregrounding scheduling is initiated first.|
+| AppRunningRecord::ScheduleForegroundRunning | -| The application foregrounding is scheduled.|
+| AppScheduler::ScheduleForegroundApplication | -| The application foregrounding is scheduled.|
+| -| ScheduleForegroundApplication | The application receives the scheduling.|
+| -| HandleForegroundApplication | The main thread executes scheduling.|
+| AppMgrService::AppForegrounded | -| The application foregrounding is complete.|
+| ServiceInner::AppForegrounded | -| The application foregrounding is complete.|
+| -| AbilityThread::ScheduleAbilityTransaction | The application receives the ability foregrounding scheduling.|
+| -| AbilityThread::HandleAbilityTransaction | The main thread executes ability foregrounding scheduling.|
+| -| JsUIAbility::OnStart begin | The **onCreate** lifecycle starts.|
+| -| JsUIAbility::OnStart end | The **onCreate** lifecycle ends.|
+| -| JsUIAbility::OnSceneCreated begin | The window scene creation starts.|
+| -| JsUIAbility::OnSceneCreated end | The window scene creation ends.|
 | -| JsUIAbility::OnWillForeground begin | -|
 | -| JsUIAbility::OnWillForeground end |- |
-| -| JsUIAbility::WindowScene::GoForeground begin | The window API is called to execute **goForeground**. |
-| -| UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | The callback after the window migration. |
-| -| JsUIAbility::OnForeground begin | The **onForeground** lifecycle starts. |
-| -| JsUIAbility::OnForeground end | The **onForeground** lifecycle ends. |
-| -| | The foreground lifecycle ends after both the window callback and **onForeground** are complete. |
+| -| JsUIAbility::WindowScene::GoForeground begin | The window API is called to execute **goForeground**.|
+| -| UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | Calledback after the window is in the foreground.|
+| -| JsUIAbility::OnForeground begin | The **onForeground** lifecycle starts.|
+| -| JsUIAbility::OnForeground end | The **onForeground** lifecycle ends.|
+| -|  | After the window callback and **onForeground** are complete, the foreground lifecycle ends.|
 
 You can analyze other log information by referring to [Log Specifications](#log-specifications). Note that the main thread is suspended during lifecycle switching in most cases. You can compare the stack and BinderCatcher information in the two event logs.
+
+**APP_INPUT_BLOCK** User Input Response Timeout
+
+```
+Generated by HiviewDFX@OpenHarmony
+================================================================
+...
+Reason:APP_INPUT_BLOCK
+appfreeze: com.samples.freezedebug APP_INPUT_BLOCK at 20251129123745
+Wait Event(430) to be marked exceed 8000ms, lastDispatchEvent(430), lastProcessEvent(429), lastMarkedEvent(428)
+DisplayPowerInfo:powerState:AWAKE
+...
+```
+
+Since API version 22, when an **APP_INPUT_BLOCK** fault occurs, the log will output a timeout event (**Wait Event**) for multi-mode input (including mouse, keyboard, touchpad, and touchscreen). The event information includes the event ID, event detection timeout threshold, and previous event ID.
+
+Event detection timeout threshold: 8000 ms for the log version and 5000 ms for the nolog version.
+
+Previous events: **lastDispatchEvent** indicates the event dispatched last time; **lastProcessEvent** indicates the event processed last time; **lastMarkedEvent** indicates the event marked last time.
+
+In the preceding example, the last dispatched event is **430**, the last processed event is **429**, and the last marked event is **428**, indicating that the event 430 has been dispatched and the processing times out for 8000 ms. This log can be used to determine the **APP_INPUT_BLOCK** event and help analyze the problem.
 
 ## Enhanced AppFreeze Logs
 
@@ -548,7 +599,7 @@ The following table lists the stack information fields in enhanced logs.
 
 ### Enhanced Log Specifications
 
-The following describes the common enhanced AppFreeze log specifications:
+The following describes the common enhanced AppFreeze log specifications: You can use the [clustering script](#clustering-script) to obtain key information of the main thread stack, improving the efficiency and accuracy of fault locating.
 
 ```text
 Generated by HiviewDFX @OpenHarmony
@@ -625,4 +676,333 @@ SnapshotTime: 2021-01-01-20-05-58.549685
 #04 pc 0000000000448dd4 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+372)
 #05 at anonymous (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 .......
+```
+
+**Native Stack Frame Content**
+
+For details, see the call stack frame description in [Log Specification of C++ Crash Common Faults](./cppcrash-guidelines.md#common-faults).
+
+**JS Hybrid Stack Frame Content**
+
+For details, see [JS Crash Exception Code Call Stack Formats](./jscrash-guidelines.md#exception-code-call-stack-formats).
+
+### Clustering Rules for Enhanced Logs
+
+**Clustering Rules**
+
+In a log file that contains multiple application main thread stacks (for example, 10 stacks), perform the following operations on each sampling stack:
+
+1. Filter out the system stack.
+
+   Filter out system stack frames (for example, **/system/lib/...** and **ld-musl**) as required. Example of the system stack frame format:
+   ```text
+   # 00 pc 000e8400 /system/lib/ld-musl-arm.so.1(raise+176)(a40044d0acb68107cfc4adb5049c0725)
+   ```
+2. Retain the service stack.
+
+   Retain service stack frames (starting with **at** or containing **/data/storage**). JS stack frames are considered as service stack frames (from application code) by default. Example of the service stack frame format:
+   ```text
+   at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
+   ```
+3. Standardize stack frames.
+
+   Define the content of the standard stack frame, remove variable information (such as the line number, byte offset, and build ID), and retain the key information for clustering as required.
+   Perform the following cleaning operations on each service stack frame:
+
+  (1) Native stack frame standardization
+
+   | Original Stack Frame Content| Standardized Stack Frame Content|
+   | ------------- | ---------------- |
+   | # 01 pc 00006e95 /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)(d6cead5be17c9bb7eee2a9b4df4b7626) | /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92) |
+
+   Steps:
+
+   a. Extract the function signature (including the class name, function name, and parameters in the brackets).
+
+   b. Ignore the PC offset and build ID.
+
+   c. Retain the complete function signature (including **const** and parameter types, if parsed in logs).
+
+  (2) JS stack frame standardization
+
+   | Original Stack Frame Content| Standardized Stack Frame Content|
+   | ------------- |---------------- |
+   | # 00 at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) | onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) |
+
+   Steps:
+
+   a. Remove the line number.
+
+   b. Retain the function name (for example, **onPageShow**).
+
+   c. Retain the file path (for example, **src/main/ets/pages/Index.ts**).
+
+   d. Generate a standardized service call stack sequence for subsequent cluster analysis.
+
+4. Generate cluster features.
+
+  |Original Sampling Stack|Final Cluster Features (Calling Sequence from Top to Bottom)|
+  | ----------- |-------------- |
+  | # 00 pc 000e8400 /system/lib/ld-musl-arm.so.1(raise+176)(a40044d0...)<br># 01 pc 00006e95 /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)(d6ce...)<br># 02 pc 00008909 /data/crasher_cpp(DfxCrasher::ParseAndDoCrash(char const*) const+612)(d6ce...)<br># 03 at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) | /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)<br>/data/crasher_cpp(DfxCrasher::ParseAndDoCrash(char const*) const+612)<br>at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) |
+
+   Cluster all sampling stacks based on cluster features.
+
+### Clustering Script
+
+This script is used only for [appfreeze enhanced logs](#enhanced-log-specifications). When the log content is too long and the main thread stack is repeated for multiple times, this script is used to extract service stack clustering information (service stack content, total number of occurrences, and typical complete stack) to quickly locate faults.
+
+1. Script functionalities
+
+   This script is used to process .zip log files in a specified folder in batches. Perform the following steps:
+
+   (1) Read the sampling stack files from all .zip files in the input folder.
+
+   (2) Automatically decompress, parse, and convert the files one by one.
+
+   (3) Output the processing result to the specified folder.
+
+2. Running method
+
+   ```
+   get_all_result(input_dir: str, output_dir: str)
+   ```
+   | Parameter| Mandatory| Type| Description|
+   |----|----|----|----|
+   | input_dir |Yes| String| Path of the input folder, which must contain several .zip log files.|
+   | output_dir |Yes| String| Path of the output folder. The script writes the processing result to this directory.|
+
+   Example:
+   ```
+   get_all_result(r"D:\log\input", r"D:\log\output")
+   ```
+
+3. Input requirements
+
+   The **input_dir** directory must contain several.zip files.
+
+   The file name is not limited. The file can be a nested structure (the script can support .zip files in .zip files).
+
+   The .zip file must contain sampling stack log files.
+
+4. Output description
+
+   The script generates the processing result in **output_dir**, for example:
+   ```
+   output_dir/
+   ├─stack_summary.txt
+   ├─ Service stack clustering .txt
+   └─ Service stack clustering .xlsx
+   ```
+   The output type depends on the script logic (for example, decompressed file, converted file, summary text, JSON, or CSV).
+
+5. Preparations before running
+
+   Ensure that the local host or deployment environment meets the following requirements:
+
+   (1) Python 3.x has been installed.
+
+   (2) Script dependencies (such as **os**, **zipfile**, and **pandas**) have been installed.
+
+   (3) If **output_dir** does not exist, the script will be automatically created. (If the script does not support automatic creation, create the directory in advance.)
+    
+   (4) This script cannot be executed in DevEco Studio. Run it in the Python environment.
+
+6. Clustering script source code
+
+<!-- @[sample_stack_cluster](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Tools/SampleStack/cluster_script.py) --> 
+
+``` Python
+import re
+from collections import Counter, defaultdict
+import os
+import pandas as pd
+import zipfile
+import glob
+from pathlib import Path
+
+# Log directory
+log_dir = r"D:\log\input"  # Change it to your log directory.
+# Output the result.
+output_file = r"D:\log\stack_summary.txt"
+# Match the stack line.
+stack_line_pattern = re.compile(r'^\s*(#\d+\s+pc\s+[0-9a-f]+.*|#?\d*\s*at .+)$')
+
+
+# Determine whether it is a service stack.
+def is_business_stack(line):
+    line = line.strip()
+    return re.match(r'^(#\d+\s+)?at .+\(.+\)$', line) is not None
+
+
+def process_log_file(path):
+    with open(path, "r", encoding="utf-8", errors='ignore') as f:
+        lines = f.readlines()
+
+    all_stacks = []
+    current_stack = []
+    for line in lines:
+        if line.startswith("SnapshotTime:"):
+            if current_stack:
+                all_stacks.append(current_stack)
+                current_stack = []
+        elif stack_line_pattern.match(line):
+            # Ignore irrelevant system lines.
+            if re.match(r'#\d+\s+pc\s+[0-9a-f]+$', line.strip()):
+                continue
+            current_stack.append(line.strip())
+    if current_stack:
+        all_stacks.append(current_stack)
+
+    # Count the stacks of the same log.
+    stack_counter = Counter()
+    for stack in all_stacks:
+        business_lines = [line for line in stack if is_business_stack(line)]
+        if business_lines:
+            key = "\n".join(business_lines[0:5])
+        else:
+            key = "\n".join(stack)
+        stack_counter[key] += 1
+
+    # Retain only those that occur more than five times.
+    result = {k: v for k, v in stack_counter.items() if v >= 1}
+    return result
+
+
+def remove_lineno(line):
+    return re.sub(r'^#\d+\s+', '', line.strip())
+
+
+def normalize_frame(line: str) -> str:
+    """
+    Remove irrelevant information and extract the key part of the service stack.
+    """
+    line = line.strip()
+    # Delete "#number pc address" or "#number at".
+    line = re.sub(r'^#\d+\s+(pc\s+[0-9a-f]+\s+)?', '', line)
+    # Delete the line number (:123:1).
+    line = re.sub(r':\d+(:\d+)?', '', line)
+    return line
+
+
+def is_business_frame(line: str) -> bool:
+    """
+    Determine whether it is a service stack.
+    """
+    return (
+            line.startswith("at ") or
+            "/data/storage/" in line
+    )
+
+
+def unzip_all(src_dir, dest_dir):
+    # Ensure that the target directory exists.
+    os.makedirs(dest_dir, exist_ok=True)
+
+    # Find all .zip files.
+    zip_files = glob.glob(os.path.join(src_dir, "*.zip"))
+
+    for zip_path in zip_files:
+        # Use the zip file name (without the extension) as the subdirectory.
+        base_name = os.path.splitext(os.path.basename(zip_path))[0]
+        extract_path = os.path.join(dest_dir, base_name)
+
+        os.makedirs(extract_path, exist_ok=True)
+
+        # Decompress the files.
+        with zipfile.ZipFile(zip_path, "r") as zip_ref:
+            zip_ref.extractall(extract_path)
+
+        print(f"✅ Decompression completed: {zip_path} → {extract_path}")
+
+    print(f"\nAll decompression completed. A total of {len(zip_files)} .zip files are decompressed.")
+
+
+def get_cluster(input_dir):
+    input_file = os.path.join(input_dir, 'stack_summary.txt')
+    # Count the number of occurrences and representative stacks.
+    cluster_count = defaultdict(int)
+    cluster_sample = {}  # Segment key -> representative complete stack.
+
+    current_stack = []
+    current_count = 0
+
+    with open(input_file, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.rstrip()
+            if line.startswith("Number of occurrences:"):
+                current_count = int(re.search(r'\d+', line).group())
+                current_stack = []
+            elif line.startswith("=" * 10) or line == "":
+                if current_stack:
+                    # Find the first service stack.
+                    business_frame = None
+                    for frame in current_stack:
+                        norm = normalize_frame(frame)
+                        if is_business_frame(norm):
+                            business_frame = norm
+                            break
+                    if business_frame:
+                        cluster_count[business_frame] += 1
+                        if business_frame not in cluster_sample:  # Save the representative stack.
+                            cluster_sample[business_frame] = "\n".join(current_stack)
+                current_stack = []
+            else:
+                current_stack.append(line)
+    output_file = os.path.join(input_dir, 'Service stack clustering .txt')
+    # Output to a .txt file.
+    with open(output_file, "w", encoding="utf-8") as f:
+        for top_line, total_count in sorted(cluster_count.items(), key=lambda x: x[1], reverse=True):
+            f.write(f"Service stack: {top_line}\n")
+            f.write(f"Total occurrences: {total_count}\n")
+            f.write("Representative complete stack:\n")
+            f.write(cluster_sample[top_line] + "\n")
+            f.write("-" * 80 + "\n")
+
+    print(f"Service stack clustering is complete. The result is exported to {output_file}.")
+
+    # Output to an Excel file.
+    rows = []
+    for key, count in sorted(cluster_count.items(), key=lambda x: x[1], reverse=True):
+        rows.append({
+            "Service stack fragment": key,
+            "Total occurrences": count,
+            "Representative complete stack": cluster_sample[key]
+        })
+    output_excel = os.path.join(input_dir, 'Service stack clustering .xlsx')
+    df = pd.DataFrame(rows)
+    df.to_excel(output_excel, index=False)
+    print(f"Service stack clustering has been exported to {output_excel}.")
+
+
+def get_stack_summary(log_dir, output_dir):
+    all_results = {}
+    for root, dirs, files in os.walk(log_dir):
+        for filename in files:
+            if "freeze-cpuinfo-ext" in filename:
+                path = os.path.join(root, filename)
+                result = process_log_file(path)
+                if result:
+                    all_results[path] = result
+    folder = Path(output_dir)  #Convert the directory to Path.
+    output_file = folder / 'stack_summary.txt'  #Automatically combine the path.
+    folder.mkdir(parents=True, exist_ok=True)
+    # Output the result.
+    with open(output_file, "w", encoding="utf-8") as f:
+        for log_file, stacks in all_results.items():
+            f.write(f"Log file: {log_file}\n")
+            for stack_text, count in stacks.items():
+                f.write(f"Number of occurrences: {count}\n")
+                f.write(stack_text + "\n")
+                f.write("=" * 80 + "\n")
+    print(f"Processing is complete. The result is exported to {output_file}.")
+
+
+def get_all_result(log_dir, output_dir):
+    unzip_all(log_dir, log_dir)
+    get_stack_summary(log_dir, output_dir)
+    get_cluster(output_dir)
+
+
+if __name__ == "__main__":
+    get_all_result(r"D:\log\input", r"D:\log\output")
 ```
