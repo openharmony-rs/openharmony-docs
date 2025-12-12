@@ -923,7 +923,7 @@ try {
 
 setBluetoothScanMode(mode: ScanMode, duration: number): void
 
-设置蓝牙扫描模式，决定本机设备是否可被连接，或者可被发现。
+设置蓝牙扫描模式，决定本机设备是否可被连接，或者可被发现。搭配[onScanModeChange](#connectiononscanmodechange23)接口使用，可实时监听蓝牙扫描模式变更事件。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -966,7 +966,7 @@ try {
 
 getBluetoothScanMode(): ScanMode
 
-获取蓝牙扫描模式。
+获取蓝牙扫描模式。搭配[onScanModeChange](#connectiononscanmodechange23)接口使用，可实时监听蓝牙扫描模式变更事件。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1662,6 +1662,86 @@ try {
     connection.off('discoveryResult', onReceiveEvent);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## connection.onScanModeChange<sup>23+</sup>
+
+onScanModeChange(callback: Callback&lt;ScanMode&gt;): void
+
+订阅蓝牙扫描模式变更事件。使用Callback异步回调。当调用[setBluetoothScanMode](#connectionsetbluetoothscanmode)更改当前蓝牙扫描模式后，如订阅此事件，则会收到携带最新扫描模式的回调函数。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                               |
+| -------- | ---------------------------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | 是    | 指定订阅的回调函数，会携带变更后最新的蓝牙扫描模式。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.              |
+
+**示例：**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.onScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## connection.offScanModeChange<sup>23+</sup>
+
+offScanModeChange(callback?: Callback&lt;ScanMode&gt;): void
+
+取消订阅蓝牙扫描模式变更事件。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.onScanModeChange](#connectiononscanmodechange23)中的回调函数一致；若无传参，则取消订阅所有蓝牙扫描模式变更的回调函数通知。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.offScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
