@@ -324,6 +324,20 @@ onBackupServiceDied: Callback&lt;undefined&gt;
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13600001 | IPC error.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900025 | No space left on device. |
+| 13900042 | Unknown error.           |
+
 **示例：**
 
   ```ts
@@ -369,6 +383,23 @@ onProcess (bundleName: string, process: string)
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13500006 | Tar error.               |
+| 13500008 | Untar error.               |
+| 13600001 | IPC error.               |
+| 13900001 | Operation not permitted.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900020 | Invalid argument.           |
+| 13900025 | No space left on device. |
 
 **返回值：**
 
