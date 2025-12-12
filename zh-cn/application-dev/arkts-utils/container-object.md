@@ -17,7 +17,9 @@
 
 ## 使用示例
 
-```ts
+<!-- @[example_container_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ContainerObject.ets) -->
+
+``` TypeScript
 import { taskpool, TreeSet } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -49,7 +51,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // 1. 创建TreeSet实例
+          // 1. 创建Test实例objA
           let treeSet : TreeSet<number> = new TreeSet<number>(sendableCompareFunc);
 
           treeSet.add(1);
@@ -72,5 +74,3 @@ struct Index {
   }
 }
 ```
-<!-- @[example_container_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/
-ContainerObject.ets) -->
