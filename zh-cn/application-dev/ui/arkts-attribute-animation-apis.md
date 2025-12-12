@@ -21,7 +21,7 @@
 ## 使用animateTo产生属性动画
 
 
-```
+```ts
 animateTo(value: AnimateParam, event: () => void): void
 ```
 
