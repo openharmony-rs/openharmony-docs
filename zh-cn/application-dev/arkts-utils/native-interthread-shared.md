@@ -225,8 +225,8 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```
 
 <!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```
-// Index.d.ts
+
+``` TypeScript
 export const testSendSendable: () => void;
 ```
 
