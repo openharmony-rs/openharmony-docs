@@ -30613,5 +30613,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-obtain-key-properties-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/GetKeyAttributes/entry/src/main/ets/pages/GetKeyAttributes.ets",
+				"functions":[
+					{
+						"end_line":103,
+						"name":"obtaining_key_attribute_ets",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-obtain-key-properties-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/GetKeyAttributes/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":106,
+						"name":"obtain_the_key_attributes_cpp",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
