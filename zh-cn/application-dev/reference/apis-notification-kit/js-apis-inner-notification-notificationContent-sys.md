@@ -53,6 +53,7 @@
 | ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
 | liveViewType | [LiveViewTypes](#liveviewtypes18)  | 否 | 是  | 实况窗类型。  |
 | cardButtons | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 实况窗按钮（最多支持3个）。      |
+| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：22   |
 
 ## NotificationCapsule<sup>11+</sup>
 
