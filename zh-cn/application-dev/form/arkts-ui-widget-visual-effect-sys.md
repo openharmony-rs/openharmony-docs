@@ -18,7 +18,7 @@
 2. 配置form_config.json
 
    - 在form_config.json文件中的`metadata`添加`visualEffectType`配置，`blurEffect`、`lightAnimationEffect`分别表示模糊提亮和玻璃材质。
-   - 为启用透明卡片，需在form_config.json文件中添加`"transparencyEnabled": true`配置。
+   - 为了达到最佳显示效果，建议开启透明卡片配置。需在form_config.json文件中添加`"transparencyEnabled": true`配置。
 
    ``` json
    {
