@@ -27,7 +27,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 **解码接口使用示例**
 
 > **说明：**
-> 部分接口为API20以后才支持的，请开发者在进行开发时选择合适的API版本。
+>
+> 部分接口为API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 导入相关头文件。
 

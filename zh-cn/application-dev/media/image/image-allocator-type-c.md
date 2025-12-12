@@ -54,7 +54,7 @@
 
 - 解码HDR图片。
 - 解码HEIF格式图片。
-- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，[pixelFormat](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)为[PIXEL_FORMAT_RGBA_8888](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)或[PIXEL_FORMAT_NV21](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)，同时系统并发任务数不超过3个。
+- 解码JPEG格式图片，原图的宽和高均在1024像素至8192像素之间，[PIXEL_FORMAT](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)为PIXEL_FORMAT_RGBA_8888或PIXEL_FORMAT_NV21，同时系统并发任务数不超过3个。
 - 解码其他格式图片。要求[desiredSize](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
 
 除上述场景外，其余情况均使用SHARE_MEMORY。
@@ -101,7 +101,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 ```
 
 > **说明：**
-> 部分接口为API20以后才支持的，请开发者在进行开发时选择合适的API版本。
+>
+> 部分接口为API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 创建GetJsResult函数处理napi返回值。
 
