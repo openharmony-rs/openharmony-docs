@@ -466,9 +466,8 @@ defaultTextStyle(style: TextPickerTextStyle)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style  | [TextPickerTextStyle](#textpickertextstyle15类型说明) | 是   | 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。<br/>默认值：与[Text](ts-basic-components-text.md)组件默认值相同。 |
 
-> **说明：**
->
-> 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
 ```json
 "requestPermissions": [
    {
@@ -493,9 +492,8 @@ enableHapticFeedback(enable: Optional\<boolean>)
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 |
 
-> **说明：**
->
-> 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
 ```json
 "requestPermissions": [
    {
