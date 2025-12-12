@@ -15,17 +15,17 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
 
 1. 定义并发函数，内部密集调用I/O能力。
    <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/write.ets) -->
-    ```ts
-    // write.ets
-    import { fileIo } from '@kit.CoreFileKit';
-
-    // 定义并发函数，内部频繁调用I/O能力
-    // 写入文件的实现
-    export async function write(data: string, filePath: string): Promise<void> {
-      let file: fileIo.File = await fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-      await fileIo.write(file.fd, data);
-      fileIo.close(file);
-    }
+   
+   ``` TypeScript
+   import { fileIo } from '@kit.CoreFileKit';
+   
+   // 定义并发函数，内部密集调用I/O能力
+   // 写入文件的实现
+   export async function write(data: string, filePath: string): Promise<void> {
+     let file: fileIo.File = await fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+     await fileIo.write(file.fd, data);
+     fileIo.close(file);
+   }
    ```
 
    <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) -->
