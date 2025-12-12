@@ -30583,5 +30583,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-check-key-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/CheckKeyExists/entry/src/main/ets/pages/CheckKeyExists.ets",
+				"functions":[
+					{
+						"end_line":109,
+						"name":"querying_the_existence_of_a_key_arkts",
+						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-check-key-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/CheckKeyExists/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":90,
+						"name":"query_whether_the_key_exists_cpp",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
