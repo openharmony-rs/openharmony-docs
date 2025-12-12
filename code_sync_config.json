@@ -31233,5 +31233,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-key-anon-attestation-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/AnonymousKeyProof/entry/src/main/ets/pages/AnonymousKeyProof.ets",
+				"functions":[
+					{
+						"end_line":187,
+						"name":"anonymous_key_proof",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-key-anon-attestation-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/AnonymousKeyProof/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":136,
+						"name":"anonymized_key_proof",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
