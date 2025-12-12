@@ -203,7 +203,7 @@ onBundleBegin: AsyncCallback&lt;string, void | string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ----------------------------------------------------- |
@@ -249,7 +249,7 @@ onBundleEnd: AsyncCallback&lt;string, void | string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -439,7 +439,7 @@ getBackupVersion(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -634,7 +634,7 @@ getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;Fi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -697,7 +697,7 @@ getBackupInfo(bundleToBackup: string): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -749,6 +749,8 @@ updateTimer(bundleName: string, timeout: number): boolean
 | boolean | 超时时间是否设置成功。true为设置成功；false为设置失败。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -805,6 +807,8 @@ updateSendRate(bundleName: string, sendRate: number): boolean
 | boolean | 发送速率是否设置成功。true为设置成功；false为设置失败。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -1585,7 +1589,7 @@ cancel(bundleName: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -2775,7 +2779,7 @@ release(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -2891,7 +2895,7 @@ cancel(bundleName: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3181,7 +3185,7 @@ constructor(callbacks: GeneralCallbacks)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3567,7 +3571,7 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3669,7 +3673,7 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3805,7 +3809,7 @@ release(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3894,7 +3898,7 @@ cancel(bundleName: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
