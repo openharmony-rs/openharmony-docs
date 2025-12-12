@@ -1,4 +1,11 @@
 # 移动全景声管理（仅对系统应用开放）
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
 移动全景声管理主要包含移动全景声相关状态和能力的查询、设置。
 
 移动全景声管理仅开放给系统级应用，主要包括移动全景声相关状态（移动全景声渲染的开启与关闭）的查询\设置，移动全景声能力的查询。
@@ -75,9 +82,9 @@
 
 ## 查询指定设备的移动全景声开关状态
 
-系统应用开发者可以通过[isCollaborativePlaybackEnabledForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#iscollaborativePlaybackEnabledfordevice20)接口查询指定设备的移动全景声开关状态。开发者需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。AudioDeviceDescriptor的具体信息可以参考[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
+系统应用开发者可以通过[isCollaborativePlaybackEnabledForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#iscollaborativeplaybackenabledfordevice20)接口查询指定设备的移动全景声开关状态。开发者需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。AudioDeviceDescriptor的具体信息可以参考[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
 
-该接口返回为true表示移动全景声开启，false表示移动全景声关闭。返回值为[setCollaborativePlaybackEnabledForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#setCollaborativePlaybackEnabledForDevice20)接口中成功设置的指定设备空间音频渲染开关状态，默认为关闭。该状态仅为开关状态，实际是否生效还需依赖系统和指定设备是否支持移动全景声能力。
+该接口返回为true表示移动全景声开启，false表示移动全景声关闭。返回值为[setCollaborativePlaybackEnabledForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#setcollaborativeplaybackenabledfordevice20)接口中成功设置的指定设备空间音频渲染开关状态，默认为关闭。该状态仅为开关状态，实际是否生效还需依赖系统和指定设备是否支持移动全景声能力。
 
   ```ts
   import { audio } from '@kit.AudioKit';
