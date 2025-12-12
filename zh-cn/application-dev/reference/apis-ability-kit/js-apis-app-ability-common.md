@@ -119,7 +119,7 @@ type ExtensionContext = _ExtensionContext.default
 
 type FormExtensionContext = _FormExtensionContext.default
 
-[FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)组件上下文，继承自ExtensionContext。
+[FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)组件上下文，继承自[ExtensionContext](./js-apis-inner-application-extensionContext.md)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -315,7 +315,7 @@ type AppServiceExtensionContext = _AppServiceExtensionContext.default
 
 type FormEditExtensionContext = _FormEditExtensionContext.default
 
-[FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)组件上下文，继承自UIExtensionContext。
+[FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)组件上下文，继承自[UIExtensionContext](./js-apis-inner-application-uiExtensionContext.md)。
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -331,7 +331,7 @@ type FormEditExtensionContext = _FormEditExtensionContext.default
 
 type LiveFormExtensionContext = _LiveFormExtensionContext.default
 
-[LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)组件上下文，继承自ExtensionContext。
+[LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)组件上下文，继承自[ExtensionContext](./js-apis-inner-application-extensionContext.md)。
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
