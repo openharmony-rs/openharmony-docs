@@ -107,13 +107,15 @@ export class SendableObjTest {
 在Native中实现两个线程的序列化和反序列化Sendable的逻辑。
 
 <!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
-// napi_init.cpp
-#include "napi/native_api.h"
+
+``` C++
 #include <thread>
 
-static void *serializationData = nullptr;
-static void *CreateEnvAndSendSendable(void *) {
+#include "napi/native_api.h"
+
+static void* g_serializationData = nullptr;
+static void* CreateEnvAndSendSendable(void*)
+{
     // 1. 创建基础运行环境
     napi_env env = nullptr;
     napi_status ret = napi_create_ark_runtime(&env);
@@ -122,8 +124,8 @@ static void *CreateEnvAndSendSendable(void *) {
     }
     // 2. 加载自定义模块，假定SendableObjTest中提供创建sendable对象的方法newSendable
     napi_value test = nullptr;
-    ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/SendableObjTest", "com.example.myapplication/entry",
-                                     &test);
+    ret = napi_load_module_with_info(
+        env, "entry/src/main/ets/pages/SendableObjTest", "com.example.myapplication/entry", &test);
     if (ret != napi_ok) {
         std::abort();
     }
@@ -147,14 +149,15 @@ static void *CreateEnvAndSendSendable(void *) {
     // 5. 序列化sendable对象
     napi_value undefined;
     napi_get_undefined(env, &undefined);
-    ret = napi_serialize(env, result, undefined, undefined, &serializationData);
+    ret = napi_serialize(env, result, undefined, undefined, &g_serializationData);
     if (ret != napi_ok) {
         std::abort();
     }
     return nullptr;
 }
 
-static void *CreateEnvAndReceiveSendable(void *) {
+static void* CreateEnvAndReceiveSendable(void*)
+{
     // 1. 创建基础运行环境
     napi_env env = nullptr;
     napi_status ret = napi_create_ark_runtime(&env);
@@ -163,12 +166,12 @@ static void *CreateEnvAndReceiveSendable(void *) {
     }
     // 2. 反序列化获取sendable共享对象，结果保存在result中，这个result就可以通过napi接口进行各种操作了
     napi_value result = nullptr;
-    ret = napi_deserialize(env, serializationData, &result);
+    ret = napi_deserialize(env, g_serializationData, &result);
     if (ret != napi_ok) {
         std::abort();
     }
     // 3. 删除序列化数据
-    ret = napi_delete_serialization_data(env, serializationData);
+    ret = napi_delete_serialization_data(env, g_serializationData);
     if (ret != napi_ok) {
         std::abort();
     }
@@ -179,13 +182,15 @@ static void *CreateEnvAndReceiveSendable(void *) {
     }
     int value0;
     napi_get_value_int32(env, result, &value0);
+    // 1024是判断ArkTS返回的结果是否正确
     if (value0 != 1024) {
         std::abort();
     }
     return nullptr;
 }
 
-static napi_value TestSendSendable([[maybe_unused]] napi_env env, [[maybe_unused]] napi_callback_info info) {
+static napi_value TestSendSendable([[maybe_unused]] napi_env env, [[maybe_unused]] napi_callback_info info)
+{
     std::thread t1(CreateEnvAndSendSendable, nullptr);
     t1.join();
     std::thread t2(CreateEnvAndReceiveSendable, nullptr);
@@ -194,9 +199,10 @@ static napi_value TestSendSendable([[maybe_unused]] napi_env env, [[maybe_unused
 }
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
-    napi_property_descriptor desc[] = {
-        {"testSendSendable", nullptr, TestSendSendable, nullptr, nullptr, nullptr, napi_default, nullptr}};
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = { { "testSendSendable", nullptr, TestSendSendable, nullptr, nullptr, nullptr,
+        napi_default, nullptr } };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
@@ -208,11 +214,12 @@ static napi_module demoModule = {
     .nm_filename = nullptr,
     .nm_register_func = Init,
     .nm_modname = "entry",
-    .nm_priv = ((void *)0),
-    .reserved = {0},
+    .nm_priv = ((void*)0),
+    .reserved = { 0 },
 };
 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) {
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+{
     napi_module_register(&demoModule);
 }
 ```
