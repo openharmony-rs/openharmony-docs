@@ -316,7 +316,7 @@ getPermissionUsedRecordToggleStatus(): Promise&lt;boolean&gt;
 
 | 类型          | 说明                                    |
 | ------------- | --------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前用户的开关状态值为开启；返回false表示当前用户的开关状态值为关闭。|
+| Promise&lt;boolean&gt; | Promise对象。返回true，表示当前用户的开关状态值为开启。返回false，表示当前用户的开关状态值为关闭。|
 
 **错误码：**
 
