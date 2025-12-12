@@ -158,7 +158,7 @@ struct attrAnimationDemo3 {
 
 ## 使用keyframeAnimateTo产生属性动画
 
-```
+```ts
 keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>): void
 ```
 
