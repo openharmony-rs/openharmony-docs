@@ -30,7 +30,7 @@ SVG（Scalable Vector Graphics）是可缩放矢量图形，它是一种基于XM
 
 SVG基础形状标签与支持的通用属性的示例如下。
 
-```ts
+```xml
 <!-- svg01.svg -->
 <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" style="background:#f0f0f0">
     <!-- 1. <rect> 矩形 -->
