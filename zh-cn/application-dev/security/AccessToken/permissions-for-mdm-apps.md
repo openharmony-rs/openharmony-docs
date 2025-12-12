@@ -667,7 +667,7 @@
 
 ## ohos.permission.ENTERPRISE_START_ABILITIES
 
-允许应用访问其他组件。
+允许设备管理应用访问其他组件。
 
 **权限级别**：system_basic
 
