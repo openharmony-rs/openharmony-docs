@@ -2813,6 +2813,11 @@
 						"end_line":235,
 						"name":"DeleteXMLPreferences",
 						"start_line":226
+					},
+					{
+						"end_line":25,
+						"name":"DefineContext",
+						"start_line":23
 					}
 				]
 			}
