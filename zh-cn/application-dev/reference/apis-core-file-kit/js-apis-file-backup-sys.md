@@ -324,20 +324,6 @@ onBackupServiceDied: Callback&lt;undefined&gt;
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**错误码：**
-
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息                |
-| -------- | ----------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-| 13600001 | IPC error.               |
-| 13900005 | I/O error.               |
-| 13900011 | Out of memory.           |
-| 13900025 | No space left on device. |
-| 13900042 | Unknown error.           |
-
 **示例：**
 
   ```ts
@@ -363,6 +349,20 @@ onResultReport (bundleName: string, result: string)
 | bundleName | string | 是   | 应用包名。                        |
 | result     | string | 是   | json格式返回的应用备份/恢复信息。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13600001 | IPC error.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900025 | No space left on device. |
+| 13900042 | Unknown error.           |
+
 **示例：**
 
   ```ts
@@ -384,6 +384,13 @@ onProcess (bundleName: string, process: string)
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+**返回值：**
+
+| 参数名     | 类型   | 必填 | 说明                            |
+| ---------- | ------ | ---- | ------------------------------- |
+| bundleName | string | 是   | 应用包名。                        |
+| process     | string | 是   | json格式返回应用备份/恢复的进度信息。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
@@ -400,13 +407,6 @@ onProcess (bundleName: string, process: string)
 | 13900011 | Out of memory.           |
 | 13900020 | Invalid argument.           |
 | 13900025 | No space left on device. |
-
-**返回值：**
-
-| 参数名     | 类型   | 必填 | 说明                            |
-| ---------- | ------ | ---- | ------------------------------- |
-| bundleName | string | 是   | 应用包名。                        |
-| process     | string | 是   | json格式返回应用备份/恢复的进度信息。 |
 
 **示例：**
 
