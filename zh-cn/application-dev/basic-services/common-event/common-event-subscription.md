@@ -38,7 +38,7 @@
 
 1. 导入模块。
    
-   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -50,20 +50,13 @@
 
 2. 创建订阅者信息，详细的订阅者信息数据类型及包含的参数请见[CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md)文档介绍。
    
-   <!-- @[CreateSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
-   
-   ``` TypeScript
-   // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-   let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-   // 订阅者信息，其中的event字段需要替换为实际的事件名称。
-   let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-     events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // 订阅灭屏公共事件
-   };
-   ```
+   <!-- @[CreateCustomSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+
+   <!-- @[CreateSystemSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
 
 3. 创建订阅者，保存返回的订阅者对象subscriber，用于执行后续的订阅、退订、接收事件回调等操作。
    
-   <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    // 创建订阅者回调
@@ -81,7 +74,7 @@
 
 4. 创建订阅回调函数，订阅回调函数会在接收到事件时触发。订阅回调函数返回的data内包含了公共事件的名称、发布者携带的数据等信息，公共事件数据的详细参数和数据类型请见[CommonEventData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventData.md)文档介绍。
    
-   <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    // 订阅公共事件回调
