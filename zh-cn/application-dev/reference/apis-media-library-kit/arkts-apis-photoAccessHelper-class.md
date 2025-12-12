@@ -22,7 +22,7 @@
 | recommendationType | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 是 | 如果需要根据枚举值推荐相应的图片，则配置此参数。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textContextInfo<sup>12+</sup> | [TextContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12)   | 否   | 是 | 如果需要根据文本信息推荐相应的图片，则配置此参数（如果同时配置了recommendationType，则仅textContextInfo生效）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
-## BaseSelectOptions<sup>10+</sup>
+## BaseSelectOptions
 
 图库选择选项基类。
 
@@ -49,7 +49,7 @@
 
 PhotoSelectOptions extends BaseSelectOptions
 
-图库选择选项子类，继承自[BaseSelectOptions](#baseselectoptions10)。
+图库选择选项子类，继承自[BaseSelectOptions](#baseselectoptions)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
