@@ -33,11 +33,14 @@ export class SendableObjTest {
 实现Native加载ArkTS模块的能力。
 
 <!-- @[native_load_arkts_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
-// napi_init.cpp
-#include "napi/native_api.h"
+
+``` C++
 #include <thread>
-static void *CreateArkRuntimeFunc(void *arg)
+
+#include "napi/native_api.h"
+
+static void* g_serializationData = nullptr;
+static void* CreateEnvAndSendSendable(void*)
 {
     // 1. 创建基础运行环境
     napi_env env = nullptr;
@@ -47,7 +50,8 @@ static void *CreateArkRuntimeFunc(void *arg)
     }
     // 2. 加载自定义模块，假定SendableObjTest中提供创建sendable对象的方法newSendable
     napi_value test = nullptr;
-    ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/SendableObjTest", "com.example.myapplication/entry", &test);
+    ret = napi_load_module_with_info(
+        env, "entry/src/main/ets/pages/SendableObjTest", "com.example.myapplication/entry", &test);
     if (ret != napi_ok) {
         std::abort();
     }
@@ -68,14 +72,13 @@ static void *CreateArkRuntimeFunc(void *arg)
     if (ret != napi_ok) {
         std::abort();
     }
-    // 5. 获取ArkTS返回的结果
-    int value0;
-    napi_get_value_int32(env, result, &value0);
-    if (value0 != 1024) {
+    // 5. 序列化sendable对象
+    napi_value undefined;
+    napi_get_undefined(env, &undefined);
+    ret = napi_serialize(env, result, undefined, undefined, &g_serializationData);
+    if (ret != napi_ok) {
         std::abort();
     }
-    // 6. 销毁ArkTS环境
-    ret = napi_destroy_ark_runtime(&env);
     return nullptr;
 }
 ```
