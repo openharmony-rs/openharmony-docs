@@ -258,8 +258,6 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
  
       const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
       options.needSendData = true;
-      options.needSendStream = true;
-      options.needReceiveStream = false;
       try {
         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
         AppStorage.setOrCreate('sessionId', sessionId);
@@ -276,7 +274,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 在应用创建会话成功并获得sessionId后，开发者可调用on()方法进行对应事件的监听，通过触发回调函数的方式通知监听者，以便执行对应业务。
 <!--RP1-->
-  ```ts
+```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
