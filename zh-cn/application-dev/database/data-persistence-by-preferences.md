@@ -193,9 +193,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    示例代码如下所示：
    
    <!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   
    ``` TypeScript
-   import { util } from '@kit.ArkTS';
    if (dataPreferences.hasSync('startup')) {
      Logger.info('The key startup is contained.');
    } else {
