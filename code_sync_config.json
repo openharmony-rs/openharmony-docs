@@ -30553,5 +30553,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-hmac-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/HMAC/entry/src/main/ets/pages/HMAC.ets",
+				"functions":[
+					{
+						"end_line":103,
+						"name":"hmac_to",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-hmac-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/HMAC/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":95,
+						"name":"hmac_cpp",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
