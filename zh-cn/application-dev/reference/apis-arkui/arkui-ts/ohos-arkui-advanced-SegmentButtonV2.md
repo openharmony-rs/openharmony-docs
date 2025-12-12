@@ -14,7 +14,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2, SegmentButtonV2Items } from '@kit.ArkUI';
 ```
 
