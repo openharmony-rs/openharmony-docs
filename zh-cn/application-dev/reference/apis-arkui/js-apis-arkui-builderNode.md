@@ -308,7 +308,7 @@ class TextNodeController extends NodeController {
   makeNode(context: UIContext): FrameNode | null {
     this.textNode = new BuilderNode(context);
     this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
-    // 返回当前BuiderNode包含的FrameNode
+    // 返回当前BuilderNode包含的FrameNode
     return this.textNode.getFrameNode();
   }
 }
@@ -452,7 +452,7 @@ class TextNodeController extends NodeController {
     const rootRenderNode = this.rootNode.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.appendChild(renderNode);
-    // 将BuiderNode的RenderNode挂至其他RenderNode
+    // 将BuilderNode的RenderNode挂至其他RenderNode
       renderNode.appendChild(textRenderNode);
     }
 
@@ -555,7 +555,7 @@ class TextNodeController extends NodeController {
     return this.textNode.getFrameNode();
   }
 
-  // 根据传入参数更新BuiderNode
+  // 根据传入参数更新BuilderNode
   update(message: string) {
     if (this.textNode !== null) {
       this.textNode.update(new Params(message));
@@ -688,7 +688,7 @@ class MyNodeController extends NodeController {
         event.changedTouches[i].y = uiContext.vp2px(offsetY + event.changedTouches[i].y);
       }
     }
-    // 将事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postTouchEvent(event);
     console.info("result " + result);
     return result;
@@ -1667,7 +1667,7 @@ class MyNodeController extends NodeController {
       mouseEvent.x = uiContext.vp2px(mouseEvent.x)
       mouseEvent.y = uiContext.vp2px(mouseEvent.y)
     }
-    // 将鼠标事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
@@ -1700,7 +1700,7 @@ class MyNodeController extends NodeController {
         touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
-    // 将触摸事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
@@ -1815,7 +1815,7 @@ class MyNodeController extends NodeController {
       }
     }
 
-    // 将触摸事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
@@ -1909,7 +1909,7 @@ class MyNodeController extends NodeController {
       axisEvent.x = uiContext.vp2px(axisEvent.x)
       axisEvent.y = uiContext.vp2px(axisEvent.y)
     }
-    // 将轴事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将轴事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
