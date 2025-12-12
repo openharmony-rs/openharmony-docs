@@ -1426,46 +1426,49 @@ struct DatePickerDialogExample {
   selectedDate: Date = new Date("2010-1-1");
 
   build() {
-    Column() {
-      Button("DatePickerDialog")
-        .margin(20)
-        .onClick(() => {
-          this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
-            selected: this.selectedDate,
-            showTime: true,
-            useMilitaryTime: false,
-            dateTimeOptions: { hour: "numeric", minute: "2-digit" },
-            onDateAccept: (value: Date) => {
-              // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
-              this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
-            },
-            onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
-            },
-            onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
-            },
-            onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
-            },
-            onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
-            },
-            onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
-            },
-            onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
-            }
+    Row(){
+      Column() {
+        Button("DatePickerDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showDatePickerDialog({
+              start: new Date("2000-1-1"),
+              end: new Date("2100-12-31"),
+              selected: this.selectedDate,
+              showTime: true,
+              useMilitaryTime: false,
+              dateTimeOptions: { hour: "numeric", minute: "2-digit" },
+              onDateAccept: (value: Date) => {
+                // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
+                this.selectedDate = value;
+                console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              },
+              onCancel: () => {
+                console.info("DatePickerDialog:onCancel()");
+              },
+              onDateChange: (value: Date) => {
+                console.info("DatePickerDialog:onDateChange()" + value.toString());
+              },
+              onDidAppear: () => {
+                console.info("DatePickerDialog:onDidAppear()");
+              },
+              onDidDisappear: () => {
+                console.info("DatePickerDialog:onDidDisappear()");
+              },
+              onWillAppear: () => {
+                console.info("DatePickerDialog:onWillAppear()");
+              },
+              onWillDisappear: () => {
+                console.info("DatePickerDialog:onWillDisappear()");
+              }
+            })
           })
-        })
-    }.width('100%')
+      }.width('100%')
+    }.height('100%')
   }
 }
 ```
+![showDatePickerDialog](figures/showDatePickerDialog.gif)
 
 ## showTimePickerDialog
 
@@ -1580,34 +1583,37 @@ struct TextPickerDialogExample {
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   private select: number  = 0;
   build() {
-    Column() {
-      Button('showTextPickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showTextPickerDialog({
-            range: this.fruits,
-            selected: this.select,
-            onAccept: (value: TextPickerResult) => {
-              // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-              let selectedVal = new SelectedValue();
-              let selectedArr = new SelectedArray();
-              if (value.index){
-                value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+    Row(){
+      Column() {
+        Button('showTextPickerDialog')
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              onAccept: (value: TextPickerResult) => {
+                // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
+                let selectedVal = new SelectedValue();
+                let selectedArr = new SelectedArray();
+                if (value.index){
+                  value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+                }
+                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+              },
+              onCancel: () => {
+                console.info("TextPickerDialog:onCancel()");
+              },
+              onChange: (value: TextPickerResult) => {
+                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
               }
-              console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
-            },
-            onCancel: () => {
-              console.info("TextPickerDialog:onCancel()");
-            },
-            onChange: (value: TextPickerResult) => {
-              console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
-            }
-          });
-        })
-    }.width('100%').margin({ top: 5 })
+            });
+          })
+      }.width('100%').margin({ top: 5 })
+    }.height('100%')
   }
 }
 ```
+![showTextPickerDialog](figures/showTextPickerDialog.gif)
 
 ## showTextPickerDialog<sup>20+</sup>
 
