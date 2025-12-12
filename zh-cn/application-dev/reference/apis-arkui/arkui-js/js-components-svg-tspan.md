@@ -61,7 +61,7 @@
       <tspan dx="-5" fill-opacity="0.2">first span.</tspan>
       <tspan dx="5" fill="red" font-size="25" fill-opacity="0.4">second span.</tspan>
       <tspan dy="-5" fill="#D2691E" font-size="35" rotate="-10" fill-opacity="0.6">third span.</tspan>
-      <tspan fill="#blue" font-size="40" rotate="10" fill-opacity="0.8" stroke="#00FF00" stroke-width="1px">forth span.</tspan>
+      <tspan fill="#blue" font-size="40" rotate="10" fill-opacity="0.8" stroke="#00FF00" stroke-width="1px">fourth span.</tspan>
     </text>
   </svg>
 </div>

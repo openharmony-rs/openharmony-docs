@@ -1,4 +1,4 @@
-# list开发指导
+# List开发指导
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
