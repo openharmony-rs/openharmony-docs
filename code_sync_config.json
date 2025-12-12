@@ -31103,5 +31103,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-key-derivation-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/HKDF.ets",
+				"functions":[
+					{
+						"end_line":120,
+						"name":"the_key_is_derived_from_hkdf_one",
+						"start_line":17
+					},
+					{
+						"end_line":330,
+						"name":"the_key_is_derived_from_hkdf_two",
+						"start_line":122
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/PBKDF2.ets",
+				"functions":[
+					{
+						"end_line":132,
+						"name":"the_key_is_derived_from_pbkdf2_one",
+						"start_line":15
+					},
+					{
+						"end_line":341,
+						"name":"the_key_is_derived_from_pbkdf2_two",
+						"start_line":134
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UniversalKeystoreKit/huks-key-derivation-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/cpp/types/projects/napi_hkdf256.cpp",
+				"functions":[
+					{
+						"end_line":134,
+						"name":"key_derivation_hkdf256_cpp",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/cpp/types/projects/napi_pbkdf2.cpp",
+				"functions":[
+					{
+						"end_line":142,
+						"name":"key_derivation_pbkdf2_cpp",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
