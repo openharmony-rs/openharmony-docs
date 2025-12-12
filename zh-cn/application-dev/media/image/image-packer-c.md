@@ -99,3 +99,161 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 7. 创建ImagePacker实例后，指定编码参数，将ImageSource或PixelMap编码至文件或者缓冲区。
 
    <!-- @[pack_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+   
+   ``` C++
+   Image_MimeType GetMimeTypeIfEncodable(const char *format)
+   {
+       auto it = g_encodeSupportedFormats.find(format);
+       if (it == g_encodeSupportedFormats.end()) {
+           return {const_cast<char *>(""), 0};
+       }
+       return {const_cast<char *>(format), strlen(format)};
+   }
+   
+   Image_ErrorCode packToFileFromImageSourceTest(int fd, OH_ImageSourceNative* imageSource)
+   {
+       //创建ImagePacker实例。
+       OH_ImagePackerNative *testPacker = nullptr;
+       Image_ErrorCode errCode = OH_ImagePackerNative_Create(&testPacker);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromImageSourceTest OH_ImagePackerNative_Create failed,"
+                                 "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+       
+       // 获取编码能力范围。
+       Image_MimeType* mimeType = nullptr;
+       size_t length = 0;
+       errCode = OH_ImagePackerNative_GetSupportedFormats(&mimeType, &length);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromImageSourceTest OH_ImagePackerNative_GetSupportedFormats failed,"
+                                 "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+       for (size_t count = 0; count < length; count++) {
+           OH_LOG_INFO(LOG_APP, "Encode supportedFormats:%{public}s", mimeType[count].data);
+           if (mimeType[count].data != nullptr) {
+               g_encodeSupportedFormats.insert(std::string(mimeType[count].data));
+           }
+       }
+       
+       // 指定编码参数，将ImageSource直接编码进文件。
+       OH_PackingOptions *option = nullptr;
+       OH_PackingOptions_Create(&option);
+       Image_MimeType image_MimeType = GetMimeTypeIfEncodable(MIME_TYPE_JPEG);
+       if (image_MimeType.data == nullptr || image_MimeType.size == 0) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromImageSourceTest GetMimeTypeIfEncodable failed,"
+                        "format can't support encode.");
+           return IMAGE_BAD_PARAMETER;
+       }
+       OH_PackingOptions_SetMimeType(option, &image_MimeType);
+       // 当设备支持HDR编码，资源本身为HDR图且图片资源的格式为jpeg时，编码产物才能为HDR内容。
+       OH_PackingOptions_SetDesiredDynamicRange(option, IMAGE_PACKER_DYNAMIC_RANGE_AUTO);
+   
+       // 释放ImagePacker实例。
+       errCode = OH_ImagePackerNative_Release(testPacker);
+       testPacker = nullptr;
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromImageSourceTest OH_ImagePackerNative_Release failed,"
+                        "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+       
+       // 释放PackingOptions实例。
+       errCode = OH_PackingOptions_Release(option);
+       option = nullptr;
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromImageSourceTest OH_PackingOptions_Release failed,"
+                        "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+       return IMAGE_SUCCESS;
+   }
+   
+   Image_ErrorCode packToFileFromPixelmapTest(int fd, OH_PixelmapNative *pixelmap)
+   {
+       // 创建ImagePacker实例。
+       OH_ImagePackerNative *testPacker = nullptr;
+       Image_ErrorCode errCode = OH_ImagePackerNative_Create(&testPacker);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromPixelmapTest CreatePacker OH_ImagePackerNative_Create failed,"
+                        "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+   
+       // 指定编码参数，将PixelMap直接编码进文件。
+       OH_PackingOptions *option = nullptr;
+       OH_PackingOptions_Create(&option);
+       char type[] = "image/jpeg";
+       Image_MimeType image_MimeType = {type, strlen(type)};
+       OH_PackingOptions_SetMimeType(option, &image_MimeType);
+       errCode = OH_ImagePackerNative_PackToFileFromPixelmap(testPacker, option, pixelmap, fd);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromPixelmapTest OH_ImagePackerNative_PackToFileFromPixelmap failed,"
+                                 "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+   
+       // 释放ImagePacker实例。
+       errCode = OH_ImagePackerNative_Release(testPacker);
+       testPacker = nullptr;
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromPixelmapTest ReleasePacker OH_ImagePackerNative_Release failed,"
+                                 "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+       
+       // 释放PackingOptions实例。
+       errCode = OH_PackingOptions_Release(option);
+       option = nullptr;
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromPixelmapTest OH_PackingOptions_Release failed,"
+                                 "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+       
+       return IMAGE_SUCCESS;
+   }
+   
+   napi_value PackToFileFromImageSourceTestJs(napi_env env, napi_callback_info info)
+   {
+       napi_value argv[1] = {0};
+       size_t argc = 1;
+       if (napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "PackToFileFromImageSourceTestJs napi_get_cb_info failed.");
+           return nullptr;
+       }
+       
+       int fd;
+       napi_get_value_int32(env, argv[0], &fd);
+       
+       Image_ErrorCode errCode = packToFileFromImageSourceTest(fd, g_thisImageSource->source);
+       if (errCode == IMAGE_SUCCESS) {
+           OH_LOG_INFO(LOG_APP, "ImagePackerNativeCTest PackToFileFromImageSourceTestJs successfully.");
+       }
+       return GetJsResult(env, errCode);
+   }
+   
+   napi_value PackToFileFromPixelmapTestJs(napi_env env, napi_callback_info info)
+   {
+       napi_value argv[1] = {0};
+       size_t argc = 1;
+       if (napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "PackToFileFromImageSourceTestJs napi_get_cb_info failed.");
+           return nullptr;
+       }
+       
+       int fd;
+       napi_get_value_int32(env, argv[0], &fd);
+       
+       Image_ErrorCode errCode = packToFileFromPixelmapTest(fd, g_thisImageSource->resPixMap);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromPixelmapTest failed,"
+                        "errCode: %{public}d.", errCode);
+           return GetJsResult(env, errCode);
+       } else {
+           OH_LOG_INFO(LOG_APP, "PackToFileFromPixelmapTestJs successfully.");
+       }
+       return GetJsResult(env, errCode);
+   }
+   ```
