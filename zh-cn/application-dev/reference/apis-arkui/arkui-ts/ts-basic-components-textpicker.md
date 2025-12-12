@@ -469,13 +469,13 @@ defaultTextStyle(style: TextPickerTextStyle)
 >  **说明：**
 >
 >  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->     {
->        "name": "ohos.permission.VIBRATE",
->     }
->  ]
->  ```
+> ```json
+> "requestPermissions": [
+>    {
+>       "name": "ohos.permission.VIBRATE",
+>    }
+> ]
+> ```
 
 ### enableHapticFeedback<sup>18+</sup>
 
@@ -496,13 +496,13 @@ enableHapticFeedback(enable: Optional\<boolean>)
 >  **说明：**
 >
 >  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->     {
->        "name": "ohos.permission.VIBRATE",
->     }
->  ]
->  ```
+> ```json
+> "requestPermissions": [
+>    {
+>       "name": "ohos.permission.VIBRATE",
+>    }
+> ]
+> ```
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
@@ -761,6 +761,8 @@ type TextPickerEnterSelectedAreaCallback = (value: string | string[], index: num
 ### 示例1（设置选择器列数）
 
 该示例通过配置range实现单列数据选择器和多列数据选择器，并使用columnWidths调整每一列的宽度。
+
+从API version 18开始，新增columnWidths接口。
 
 ```ts
 // xxx.ets

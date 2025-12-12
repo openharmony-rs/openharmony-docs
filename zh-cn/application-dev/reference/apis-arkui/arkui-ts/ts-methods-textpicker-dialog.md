@@ -546,6 +546,8 @@ struct TextPickerDialogExample {
 
 该示例通过selectedBackgroundStyle属性设置文本选择器选中项的背景样式。
 
+从API version 20开始，新增selectedBackgroundStyle接口。
+
 ```ts
 // xxx.ets
 @Entry
