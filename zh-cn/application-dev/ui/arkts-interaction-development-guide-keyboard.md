@@ -230,15 +230,16 @@ struct Index {
       Row() {
         Button('button1')
           .id('button1')
+          .margin({ left: 70, right: 30 })
           .onKeyEvent((event) => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'button1');
-            return true
+            return true;
           })
         Button('button2')
           .id('button2')
           .onKeyEvent((event) => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'button2');
-            return true
+            return true;
           })
       }
       .width('100%')
