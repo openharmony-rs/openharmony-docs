@@ -102,7 +102,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 > **说明：**
 >
-> 部分接口为API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
+> 部分接口在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 创建GetJsResult函数处理napi返回值。
 

@@ -34,7 +34,7 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
 
 > **说明：**
 >
-> 部分接口为API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
+> 部分接口在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 导入相关头文件。
 
@@ -60,6 +60,6 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
 
    >**说明：**
    >
-   >创建ImageSource对象可参考[图片解码](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/image-source-c)。
+   >创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
 
    <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   

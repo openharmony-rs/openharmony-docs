@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-图像接收类用于获取组件的surfaceId、接收最新的图片、读取下一张图片以及释放ImageReceiver实例。结合camera API实现的相机预览示例代码可参考[C/C++预览流二次处理示例](../camera/native-camera-preview-imageReceiver.md)。
+图像接收类，用于获取组件的surfaceId、接收最新的图片、读取下一张图片以及释放ImageReceiver实例。结合camera API实现的相机预览示例代码可参考[预览流二次处理(C/C++)](../camera/native-camera-preview-imageReceiver.md)。
 
 > **说明：**
 >
@@ -26,11 +26,11 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
 具体接口说明请参考[API文档](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
-下述代码主要演示了有关Receiver的初始化，相机预览流的创建，以及获取图像的信息和Receiver的释放等相关功能。
+下述代码主要演示了Receiver的初始化、相机预览流的创建以及获取图像的信息和Receiver的释放等相关功能。
 
 > **说明：**
 >
-> 部分接口为API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
+> 部分接口在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 <!-- @[receiver_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->   
 
