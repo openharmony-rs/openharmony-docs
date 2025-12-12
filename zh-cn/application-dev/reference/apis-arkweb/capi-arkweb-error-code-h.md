@@ -33,7 +33,7 @@
 
 ### ArkWeb_ErrorCode
 
-```
+```c
 enum ArkWeb_ErrorCode
 ```
 
@@ -60,7 +60,7 @@ enum ArkWeb_ErrorCode
 
 ### ArkWeb_BlanklessErrorCode
 
-```
+```c
 enum ArkWeb_BlanklessErrorCode
 ```
 

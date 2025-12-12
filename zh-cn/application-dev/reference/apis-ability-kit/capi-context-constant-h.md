@@ -36,7 +36,7 @@
 
 ### AbilityRuntime_AreaMode
 
-```
+```c
 enum AbilityRuntime_AreaMode
 ```
 
@@ -56,7 +56,7 @@ enum AbilityRuntime_AreaMode
 
 ### AbilityRuntime_StartVisibility
 
-```
+```c
 enum AbilityRuntime_StartVisibility
 ```
 
@@ -73,7 +73,7 @@ enum AbilityRuntime_StartVisibility
 
 ### AbilityRuntime_WindowMode
 
-```
+```c
 enum AbilityRuntime_WindowMode
 ```
 
@@ -90,7 +90,7 @@ enum AbilityRuntime_WindowMode
 
 ### AbilityRuntime_SupportedWindowMode
 
-```
+```c
 enum AbilityRuntime_SupportedWindowMode
 ```
 
