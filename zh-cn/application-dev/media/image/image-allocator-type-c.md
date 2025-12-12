@@ -107,6 +107,16 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 1. 创建GetJsResult函数处理napi返回值。
 
    <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   // 处理napi返回值。
+   napi_value GetJsResult(napi_env env, int result)
+   {
+       napi_value resultNapi = nullptr;
+       napi_create_int32(env, result, &resultNapi);
+       return resultNapi;
+   }
+   ```
 
 2. 获取和操作stride值。
 
