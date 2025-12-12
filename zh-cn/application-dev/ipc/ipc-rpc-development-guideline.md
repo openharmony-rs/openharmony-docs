@@ -144,7 +144,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
     try{
       dmInstance = distributedDeviceManager.createDeviceManager("ohos.rpc.test");
-    } catch(error) {
+    } catch (error) {
       let err: BusinessError = error as BusinessError;
       hilog.error(0x0000, 'testTag', 'createDeviceManager errCode:' + err.code + ', errMessage:' + err.message);
     }
@@ -173,7 +173,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
             }
           };
         }
-      }catch(error) {
+      } catch (error) {
         let err: BusinessError = error as BusinessError;
         hilog.error(0x0000, 'testTag', 'createDeviceManager err:' + err);
       }
@@ -199,7 +199,7 @@ Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../r
 ```ts
 let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
 // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
-let connectId = context.connectServiceExtensionAbility(want,connect);
+let connectId = context.connectServiceExtensionAbility(want, connect);
 ```
 
 ### 客户端发送信息给服务端
