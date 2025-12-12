@@ -74,6 +74,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 5. 创建ImagePictureNative的一个实例。
 
    <!-- @[create_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->   
+   
+   ``` C++
+   static ImagePictureNative *g_thisPicture = new ImagePictureNative();
+   ```
 
 6. 创建GetJsResult函数处理napi返回值。
 
