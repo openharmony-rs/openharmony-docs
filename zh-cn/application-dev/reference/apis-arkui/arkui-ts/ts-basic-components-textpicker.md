@@ -760,7 +760,7 @@ type TextPickerEnterSelectedAreaCallback = (value: string | string[], index: num
 
 该示例通过配置range实现单列数据选择器和多列数据选择器，并使用columnWidths调整每一列的宽度。
 
-从API version 18开始，新增了[TextPickerOptions](#textpickeroptions对象说明)的columnWidths接口。
+从API version 18开始，新增了[TextPickerOptions](#textpickeroptions对象说明)的columnWidths属性。
 
 ```ts
 // xxx.ets
