@@ -287,6 +287,8 @@ enum OH_Drawing_TextDirection
 
 文字方向。
 
+**起始版本：** 8
+
 | 枚举项 | 描述 |
 | -- | -- |
 | TEXT_DIRECTION_RTL | 方向：从右到左。 |
@@ -301,6 +303,8 @@ enum OH_Drawing_TextAlign
 **描述**
 
 文字对齐方式。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -320,6 +324,8 @@ enum OH_Drawing_FontWeight
 **描述**
 
 字重。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -343,6 +349,8 @@ enum OH_Drawing_TextBaseline
 
 基线位置。
 
+**起始版本：** 8
+
 | 枚举项 | 描述 |
 | -- | -- |
 | TEXT_BASELINE_ALPHABETIC | 用于表音文字，基线在中间偏下的位置。 |
@@ -357,6 +365,8 @@ enum OH_Drawing_TextDecoration
 **描述**
 
 文本装饰。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
