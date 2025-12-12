@@ -96,6 +96,16 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 6. 创建GetJsResult函数处理napi返回值。
 
    <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->   
+   
+   ``` C++
+   // 处理napi返回值。
+   napi_value GetJsResult(napi_env env, int result)
+   {
+       napi_value resultNapi = nullptr;
+       napi_create_int32(env, result, &resultNapi);
+       return resultNapi;
+   }
+   ```
 
 创建ImagePacker实例，指定编码参数后，将Picture多图对象编码至文件或缓冲区。
 
