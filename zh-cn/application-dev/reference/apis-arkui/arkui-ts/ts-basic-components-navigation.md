@@ -604,7 +604,9 @@ subTitle(value: string)
 
 设置页面副标题。
 
-从API version 9开始废弃，建议使用[title](#title)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[title](#title)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -620,7 +622,9 @@ toolBar(value: object | CustomBuilder)
 
 设置工具栏内容。不设置时不显示工具栏。items均分底部工具栏，在每个均分内容区布局文本和图标，文本超长时，逐级缩小，缩小之后换行，最后截断。
 
-从API version 10开始，该接口不再维护，推荐使用[toolbarConfiguration](#toolbarconfiguration10)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[toolbarConfiguration](#toolbarconfiguration10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
