@@ -30,7 +30,7 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,callback:As
 
 > **说明：**
 >
-> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11)替代。executeDrag需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，然后通过该对象进行调用。
 >
 > - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 
@@ -143,7 +143,7 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise\<
 
 > **说明：**
 >
-> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11-1)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11-1)替代。executeDrag需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，然后通过该对象进行调用。
 >
 > - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 
@@ -301,7 +301,7 @@ createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragIn
 
 > **说明：**
 >
-> - 从API version 11开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[createDragAction](arkts-apis-uicontext-dragcontroller.md#createdragaction11)。
+> - 从API version 11开始支持，从API version 18开始废弃，建议使用[createDragAction](arkts-apis-uicontext-dragcontroller.md#createdragaction11)替代。createDragAction需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，然后通过该对象进行调用。
 >
 > - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 >
@@ -918,7 +918,7 @@ getDragPreview(): DragPreview
 
 > **说明：**
 >
-> - 从API version 11开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[getDragPreview](arkts-apis-uicontext-dragcontroller.md#getdragpreview11)。
+> - 从API version 11开始支持，从API version 18开始废弃，建议使用[getDragPreview](arkts-apis-uicontext-dragcontroller.md#getdragpreview11)替代。getDragPreview需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，然后通过该对象进行调用。
 >
 > - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 
