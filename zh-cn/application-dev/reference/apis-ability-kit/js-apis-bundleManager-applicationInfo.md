@@ -23,7 +23,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                       | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| name                       | string                                                       | 是   | 否   | 应用程序的名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                 |
+| name                       | string                                                       | 是   | 否   | 应用包的bundle名称，对应[app.json5](../../quick-start/app-configuration-file.md)里面的bundleName。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                 |
 | description                | string                                                       | 是   | 否   | 标识应用的描述信息，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的description字段。关于description的详细信息详见本表中的descriptionResource字段说明。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | descriptionId              | number                                                       | 是   | 否   | 标识应用的描述信息的资源id，是编译构建时根据应用配置的description自动生成的资源id。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | enabled                    | boolean                                                      | 是   | 否   | 判断应用程序是否可以使用，取值为true表示可以使用，取值为false表示不可使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
