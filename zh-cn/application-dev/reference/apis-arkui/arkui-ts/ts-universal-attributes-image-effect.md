@@ -1307,9 +1307,7 @@ struct Index {
 }
 ```
 
-<br/>BlendMode.OVERLAY,BlendApplyType.OFFSCREEN<br/>
 ![zh-cn_image_effect_blendMode2](figures/zh-cn_image_effect_blendMode.png)
-<br/>不同的混合模式搭配是否需要离屏从而产生不同的效果。
 
 ### 示例5（前景智能取反色）
 
