@@ -16,7 +16,7 @@
 
 ## 导入模块
 
-```
+```js
 import geolocation from '@system.geolocation';
 ```
 
@@ -47,7 +47,7 @@ getLocation(options?: GetLocationOption): void
 
 **示例：**
 
-```
+```js
 export default {    
   getLocation() {        
     geolocation.getLocation({            
@@ -82,7 +82,7 @@ getLocationType(options?: GetLocationTypeOption): void
 
 **示例：**
 
-```
+```js
 export default {    
   getLocationType() {        
     geolocation.getLocationType({            
@@ -119,7 +119,7 @@ subscribe(options: SubscribeLocationOption): void
 
 **示例：**
 
-```
+```js
 export default {    
   subscribe() {        
     geolocation.subscribe({            
@@ -150,7 +150,7 @@ unsubscribe(): void
 
 **示例：**
 
-```
+```js
 export default {    
   unsubscribe() {        
     geolocation.unsubscribe();    
@@ -178,7 +178,7 @@ getSupportedCoordTypes(): Array&lt;string&gt;
 
 **示例：**
 
-```
+```js
 export default {    
   getSupportedCoordTypes() {       
     var types = geolocation.getSupportedCoordTypes();   
