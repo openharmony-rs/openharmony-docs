@@ -614,10 +614,10 @@ Swiper在主轴上的尺寸大小模式枚举。
 
 | 名称                               |  值 |说明                                                         |
 | ---------------------------------- | -- |------------------------------------------------------------ |
-| Stretch<sup>(deprecated)</sup>     | 0 |Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>从API version 10开始不再维护，建议使用STRETCH代替。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。 |
-| AutoLinear<sup>(deprecated)</sup>  | 1 |Swiper滑动一页的宽度为子组件宽度中的最大值。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br>从API version 10开始不再维护，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)代替。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。 |
+| Stretch<sup>(deprecated)</sup>     | 0 |Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>**说明**：从API version 7开始支持，从API version 10开始废弃，建议使用STRETCH替代。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。 |
+| AutoLinear<sup>(deprecated)</sup>  | 1 |Swiper滑动一页的宽度为子组件宽度中的最大值。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br>**说明**：从API version 7开始支持，从API version 10开始废弃，建议使用AUTO_LINEAR替代。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。 |
 | STRETCH<sup>10+</sup>              | 0 |Swiper滑动一页的宽度为Swiper组件自身的宽度。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_LINEAR<sup>(deprecated)</sup> | 1 |Swiper滑动一页的宽度为视窗内最左侧子组件的宽度。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br/>从API version 10开始支持，从API version 12开始不再维护，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)代替。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| AUTO_LINEAR<sup>(deprecated)</sup> | 1 |Swiper滑动一页的宽度为视窗内最左侧子组件的宽度。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br/>**说明**：从API version 10开始支持，从API version 12开始废弃，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)替代。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## SwiperNestedScrollMode<sup>11+</sup>枚举说明
 
@@ -1827,7 +1827,7 @@ indicatorStyle(value?: IndicatorStyle)
 
 >**说明：** 
 >
-> 从API version 8开始支持，从API version 10开始废弃，建议使用[indicator](#indicator10)替代。
+> 从API version 8开始支持，从API version 10开始废弃，无替代接口。可以使用[Indicator](#indicator10)、[DigitIndicator](#digitindicator10)和[DotIndicator](#dotindicator10)设置导航点样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
