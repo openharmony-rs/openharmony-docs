@@ -3077,3 +3077,50 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
     console.error("isWlanBssidMatched: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
+
+  ## geoLocationManager.getActiveFences<sup>23+</sup>
+
+getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
+
+查询当前有效的围栏信息。使用Promise异步回调。
+
+**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;Map&lt;int, [Geofence](#geofence)&gt;&gt; | Promise对象，返回有效的围栏信息。Map中的key值为fenceId，value值为对应围栏的具体信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveFences} due to limited device capabilities.          |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    geoLocationManager.getActiveFences().then((res) => {
+      if (res) {
+        console.info("fence num:" + res.size());
+        for (const item of res) {
+          console.info("data=" + JSON.stringify(item));
+        }
+      }
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, getActiveFences: error=' + JSON.stringify(error));
+      });
+  } catch (error) {
+    console.error("getActiveFences: errCode" + error.code + ", errMessage" + error.message);
+  }
+  ```
