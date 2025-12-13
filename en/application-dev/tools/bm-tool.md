@@ -547,9 +547,9 @@ The system account ID does not exist during bundle installation.
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```shell
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 304 The HAP File Is Not Installed for the Current System Account
 **Error Message**
@@ -800,9 +800,10 @@ When you start debugging or run an application, the error message "error: instal
         ![Example](figures/en-us_image_0000001585521364.png)
 
         c. Use the keytool (available in the **jbr/bin** folder of the DevEco Studio installation directory) to obtain the SHA-256 value of the certificate fingerprint from the .cer file:
-          ```
-          keytool -printcert -file xxx.cer
-          ```
+
+            ```shell
+            keytool -printcert -file xxx.cer
+            ```
         d. Remove the colon from the SHA-256 content in the certificate fingerprint. What you get is the signature fingerprint.
 
         The following figure shows an example.
@@ -814,25 +815,28 @@ When you start debugging or run an application, the error message "error: instal
     2. Obtain the **install_list_capability.json** file of the device.
 
         a. Connect to the device and enter the shell.
-        ```
-        hdc shell
-        ```
+
+            ```shell
+            hdc shell
+            ```
         b. Run the following command to view the **install_list_capability.json** file of the device:
-        ```
-        // Locate the file on the device.
-        find /system -name install_list_capability.json
-        ```
+
+            ```shell
+            // Locate the file on the device.
+            find /system -name install_list_capability.json
+            ```
         c. Run the following command to obtain the **install_list_capability.json** file:
-        ```
-        hdc target mount
-        hdc file recv /system/etc/app/install_list_capability.json
-        ```
+
+            ```shell
+            hdc target mount
+            hdc file recv /system/etc/app/install_list_capability.json
+            ```
 
     3. Add the signature fingerprint obtained to **app_signature** in the **install_list_capability.json** file. Note that the signature fingerprint must be configured under the corresponding bundle name.
     ![Example](figures/en-us_image_0000001635641893.png)
     4. Push the modified **install_list_capability.json** file to the device and restart the device.
 
-        ```
+        ```shell
         hdc target mount
         hdc file send install_list_capability.json /system/etc/app/install_list_capability.json
         hdc shell chmod 644 /system/etc/app/install_list_capability.json
@@ -895,7 +899,7 @@ Mandatory fields are missing in the **app.json5** and **module.json5** files.
 * 2. Determine the missing fields based on the HiLog.
 
     Run the following command to enable disk flushing:
-    ```
+    ```shell
     hilog -w start
     ```
 
@@ -1095,19 +1099,19 @@ When you start debugging or run an application, the error message "error: signat
 
     1. Obtain the UDID of the device.
 
-    ```
-      // Command for obtaining the UDID
-      hdc shell bm get -u
-    ```
+        ```shell
+          // Command for obtaining the UDID
+          hdc shell bm get -u
+        ```
 
     2. Go to the DevEco Studio installation path and open the **UnsgnedDebugProfileTemplate.json** configuration file in the SDK directory.
 
-    ```
-      DevEco Studio installation path\sdk\version number or default\openharmony\toolchains\lib\
+        ```shell
+          DevEco Studio installation path\sdk\version number or default\openharmony\toolchains\lib\
 
-      Example: xxxx\Huawei\DevEco Studio\sdk\HarmonyOS-NEXT-DB1\openharmony\toolchains\lib\
-      Example: xxxx\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\
-    ```
+          Example: xxxx\Huawei\DevEco Studio\sdk\HarmonyOS-NEXT-DB1\openharmony\toolchains\lib\
+          Example: xxxx\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\
+        ```
 
     3. Add the UDID of the device to the **device-ids** field in the **UnsgnedDebugProfileTemplate.json** file.
 
@@ -1201,9 +1205,9 @@ During bundle installation or update, the token update API of the ability is cal
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```shell
+    hdc file recv /data/log/hilog/
+    ```
 
 
 <!--Del-->
@@ -1263,7 +1267,7 @@ The SDK version used for build and packing does not match the device image versi
 **Solution**
 
 * Scenario 1: The device image version is earlier than the SDK version for build and packing. Update the device image version. Run the following command to query the device image version:
-  ```
+  ```bash
   hdc shell param get const.ohos.apiversion
   ```
   If the API version provided by the image is 10 and the SDK version used for bundle build is also 10, the possible cause is that the image version is too early to be compatible with the SDK verification rules of the new version. In this case, update the image version to the latest version.
@@ -1454,7 +1458,7 @@ The signature file is abnormal or the installation package is damaged.
 
 **Solution**
 
-Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V13/ide-signing-V13#section18815157237) or [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V13/ide-signing-V13#section297715173233) to re-sign the bundle for installation and debugging.
+Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) to re-sign the bundle for installation and debugging.
 
 ### 9568325 Signature Verification Failed Due to Oversized File
 **Error Message**
@@ -1527,9 +1531,9 @@ User 0 installs an application with the non-singleton permission.
 **Solution**
 
 1. If the bundle does not have the singleton permission, you can directly install the bundle without specifying a user.
-	```bash
-	hdc shell bm install -p /data/HAP name.hap
-	```
+    ```bash
+    hdc shell bm install -p /data/HAP name.hap
+    ```
 
 
 ### 9568263 Installation Version Cannot Be Downgraded
@@ -1676,7 +1680,7 @@ When the inter-bundle HSP is uninstalled, the specified bundle does not exist.
 **Solution**
 
 Check whether the inter-bundle HSP to be uninstalled exists.
-```
+```bash
 hdc shell bm dump-shared -n com.xxx.xxx.demo
 ```
 
@@ -1717,14 +1721,14 @@ The installation fails because **isolationMode** of the bundle is not supported 
 **Solution**
 
 1. Set the value of **isolationMode** in the HAP configuration file based on the isolation mode of the device.
-	```bash
-	# Query the value of persist.bms.supportIsolationMode. If errNum is:106 is returned, persist.bms.supportIsolationMode is not configured.
-	hdc shell
-	param get persist.bms.supportIsolationMode
-	# Set persist.bms.supportIsolationMode.
-	hdc shell
-	param set persist.bms.supportIsolationMode [true|false]
-	```
+    ```bash
+    # Query the value of persist.bms.supportIsolationMode. If errNum is:106 is returned, persist.bms.supportIsolationMode is not configured.
+    hdc shell
+    param get persist.bms.supportIsolationMode
+    # Set persist.bms.supportIsolationMode.
+    hdc shell
+    param set persist.bms.supportIsolationMode [true|false]
+    ```
 
 
 ### 9568310 The Compatibility Policies Are Different
@@ -1765,7 +1769,7 @@ An unknown system exception occurs.
 
 2. If the installation still fails after the preceding steps are performed for three to five times, check whether a crash file containing **foundation** exists in the **/data/log/faultlog/faultlogger/** directory of the device.
 
-    ```
+    ```bash
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1773,7 +1777,7 @@ An unknown system exception occurs.
 
 3. Export the crash file and log file and submit them to [online tickets](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-    ```
+    ```bash
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -1813,9 +1817,9 @@ The file copy operation fails during bundle installation.
 2. Failed to open the source file.
 3. Failed to obtain the source file status.
 4. The size of the source file is invalid.
-6. Failed to copy the source file.
-7. You do not have the permission to access the source file.
-8. Failed to change the file permission.
+5. Failed to copy the source file.
+6. You do not have the permission to access the source file.
+7. Failed to change the file permission.
 
 **Solution**
 
@@ -1823,9 +1827,9 @@ The file copy operation fails during bundle installation.
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568401 The Bundle to Debug Can Run Only on Devices in Developer Mode
 **Error Message**
@@ -1871,9 +1875,9 @@ The installation fails because an exception occurs when the code signature confi
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568405 Failed to Delete the Signature Configuration File
 
@@ -1897,9 +1901,9 @@ The bundle fails to be uninstalled because the signature configuration file fail
 
 2. If the uninstallation still fails after repeating the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568381 Failed to Delete the Application Process
 **Error Message**
@@ -1954,6 +1958,11 @@ The bm tool process is abnormal or the permission is lost. As a result, the bm t
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
+    ```bash
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
+
 ### 9568385 Service Uninstallation Exception
 **Error Message**
 
@@ -1973,7 +1982,7 @@ An unknown system exception occurs.
 
 2. If the installation still fails after the preceding steps are performed for three to five times, check whether a crash file containing **foundation** exists in the **/data/log/faultlog/faultlogger/** directory of the device.
 
-    ```
+    ```bash
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1981,7 +1990,7 @@ An unknown system exception occurs.
 
 3. Export the crash file and log file and submit them to [online tickets](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-    ```
+    ```bash
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -2038,6 +2047,11 @@ The installation fails due to an unknown system error.
 1. Restart the phone and try again.
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+
+    ```bash
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568284 Installation Version Not Compatible
 **Error Message**
@@ -2277,10 +2291,10 @@ The passed-in parameter is invalid or the passed-in directory is empty during th
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568351 Installation Failure Due to a File Directory Creation Exception
@@ -2302,10 +2316,10 @@ You do not have the write permission when creating a file directory.
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568354 Installation Failure Due to a File Directory Deletion Exception
@@ -2327,10 +2341,10 @@ The directory to be deleted does not exist, or you do not have the write permiss
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568355 Failed to Extract Files from the Installation Bundle
@@ -2352,10 +2366,10 @@ During the installation, the .so file fails to be extracted from the HAP file be
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568356 Failed to Rename a Directory During Installation
@@ -2377,10 +2391,10 @@ The directory name contains more than 260 characters, or you do not have the wri
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568357 Failed to Clear Files
 **Error Message**
@@ -2401,10 +2415,10 @@ You do not have the write permission on the files to be cleared.
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568359 The SELinux Fails to be Installed and Set
@@ -2773,7 +2787,7 @@ The values of **pluginDistributionIDs** of the bundle and plugin are different.
 **Solution**
 
 Reconfigure **pluginDistributionIDs** in the <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> of the application or plugin. The configuration format is as follows:
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -2968,7 +2982,7 @@ The Bundle Binary Interface (ABI) supported by the device does not match that co
 
 2. Run the [hdc command](#environment-requirements-hdc) to query ABIs supported on this device.
 
-    ```
+    ```bash
     hdc shell
     param get const.product.cpu.abilist
     ```
@@ -2976,7 +2990,7 @@ The Bundle Binary Interface (ABI) supported by the device does not match that co
 
     <!--Del-->
     * If the list includes only **default**, run the following command to check whether the **lib64** folder exists:
-      ```
+      ```bash
       cd /system/
       ls
       ```
@@ -3025,10 +3039,10 @@ The bundle manager or other services are abnormal.
 
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-```
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568434 Plugin Capability Unavailable on Device
 **Error Message**
@@ -3099,7 +3113,7 @@ The **pluginDistributionIDs** configuration in the plugin signature information 
 **Solution**
 
 Reconfigure the **app-services-capabilities** field in <!--RP5-->[the profile](../security/app-provision-structure.md)<!--RP5End--> by referring to the following format:
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
