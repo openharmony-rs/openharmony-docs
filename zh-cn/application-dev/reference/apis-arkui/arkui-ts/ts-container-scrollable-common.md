@@ -558,9 +558,9 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 滚动组件滑动时触发。
 
-从API version 11开始使用。
-
-从API version 12开始废弃不再使用，Scroll组件的onScroll事件在布局之前触发，建议使用[onWillScroll](#onwillscroll12)替代；List、Grid和WaterFlow组件的onScroll事件在布局之后触发，建议使用[onDidScroll](#ondidscroll12)替代。
+> **说明：**
+>
+> 从API version 11开始支持，从API version 12开始废弃，List、Grid和WaterFlow组件的onScroll事件在布局之后触发，建议使用[onDidScroll](#ondidscroll12)替代；Scroll组件的onScroll事件在布局之前触发，建议使用[onWillScroll](#onwillscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
