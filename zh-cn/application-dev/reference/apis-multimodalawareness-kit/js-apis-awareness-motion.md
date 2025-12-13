@@ -82,13 +82,14 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import motion from '@ohos.multimodalAwareness.motion';
 
-callback(data:motion.OperatingHandStatus) {
-    console.info('callback success' + data);
-};
+function callback(data: motion.OperatingHandStatus) {
+    console.info("callback success: " + JSON.stringify(data));
+}
 
 try {
-    motion.on('operatingHandChanged', this.callback);  
+    motion.onOperatingHandChanged(callback);
     console.info("on succeeded");
 } catch (err) {
     let error = err as BusinessError;
@@ -133,6 +134,7 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import motion from '@ohos.multimodalAwareness.motion';
 
 try {
     motion.offOperatingHandChanged();
@@ -320,6 +322,7 @@ onOperatingHandChanged(callback: Callback&lt;OperatingHandStatus&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import motion from '@ohos.multimodalAwareness.motion';
 
 callback(data:motion.OperatingHandStatus) {
     console.info('callback success' + data);
@@ -370,6 +373,7 @@ offOperatingHandChanged(callback?: Callback&lt;OperatingHandStatus&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import motion from '@ohos.multimodalAwareness.motion';
 
 try {
     motion.offOperatingHandChanged();
