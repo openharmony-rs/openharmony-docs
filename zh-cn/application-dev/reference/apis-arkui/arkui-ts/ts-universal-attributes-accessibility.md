@@ -622,6 +622,54 @@ accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel):T
 | -------- | -------- |
 | T | 返回当前对象。 |
 
+## accessibilityStateDescription<sup>23+</sup>
+
+accessibilityStateDescription(description: string | Resource | undefined): T
+
+设置组件的状态播报文本，用于屏幕朗读场景下清晰说明组件当前的实时状态。屏幕朗读时会优先播报该状态文本。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| description  | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>undefined：播报文本默认为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## accessibilityActionOptions<sup>23+</sup>
+
+accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
+
+设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明) \| undefined | 是   | 无障碍操作的参数，用于限制或者修改无障碍操作下的滑动行为。<br/>AccessibilityActionOptions中的scrollStep用于设置无障碍操作下的滑动步数。<br/>取值为undefined时按1处理。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
 ## 示例
 
 ### 示例1（设置无障碍文本和无障碍说明）
@@ -920,6 +968,63 @@ struct Index {
       .width('80%')
       .border({ color : Color.Black, width : 2 })
 
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例7（设置无障碍组件状态播报信息）
+
+该示例主要通过[accessibilityStateDescription](ts-universal-attributes-accessibility.md#accessibilitystatedescription23)接口修改组件的状态播报。在开启无障碍功能后，组件发生聚焦或者点击后，屏幕朗读进行组件的状态信息播报。
+
+从API version 23开始，新增accessibilityStateDescription接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isSelected: boolean = false;
+
+  build() {
+    Column({ space: 20 }) {
+      Button(this.isSelected ? '已点赞' : '未点赞')
+        .accessibilityLevel('yes')
+        .onClick(() => {
+          this.isSelected = !this.isSelected;
+        })
+        .accessibilityStateDescription(this.isSelected ? '已点赞' : '未点赞')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+### 示例8（设置无障碍操作选项修改组件滚动步长）
+
+本示例主要演示如何通过[accessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明)中的scrollStep参数，自定义组件的滚动步长。以下将以slider组件在屏幕朗读场景下滑动距离变化为例进行说明。
+
+从API version 23开始，新增AccessibilityActionOptions。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 20 }) {
+      Row() {
+        Slider({
+          min: 0,
+          max: 100,
+          style: SliderStyle.OutSet
+        })
+          // 调整屏幕朗读手势下slider滑动的步长
+          .accessibilityActionOptions({ scrollStep : 10 })
+      }
+      .width('80%')
     }
     .height('100%')
     .width('100%')

@@ -40,81 +40,81 @@
 
 2. 从@kit.NetworkKit中导入connection命名空间。
 
-<!-- @[NetConnection_manage_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
-
-``` TypeScript
-// 引入包名。
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[NetConnection_manage_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   
+   ``` TypeScript
+   // 引入包名。
+   import { connection } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 3. 调用[createNetConnection](../reference/apis-network-kit/js-apis-net-connection.md#connectioncreatenetconnection)方法，指定网络能力、网络类型和超时时间(可选，如不传入代表默认网络；创建不同于默认网络时可通过指定这些参数完成)，创建一个NetConnection对象。
 
-<!-- @[notification_network_create_NetConnection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
-
-``` TypeScript
-let netSpecifier: connection.NetSpecifier = {
-  netCapabilities: {
-    // 假设当前默认网络是蜂窝网络连接，需要创建WIFI网络连接，可指定网络类型为WIFI
-    bearerTypes: [connection.NetBearType.BEARER_WIFI],
-    // 指定网络能力为Internet
-    networkCap: [connection.NetCap.NET_CAPABILITY_INTERNET],
-  }
-};
-
-// 指定超时时间为10s(默认值为0)
-let TIMEOUT = 10 * NETWORK_CONNECTION_TIMEOUT;
-
-// 创建NetConnection对象
-let conn = connection.createNetConnection(netSpecifier, TIMEOUT);
-```
+   <!-- @[notification_network_create_NetConnection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   
+   ``` TypeScript
+   let netSpecifier: connection.NetSpecifier = {
+     netCapabilities: {
+       // 假设当前默认网络是蜂窝网络连接，需要创建WIFI网络连接，可指定网络类型为WIFI
+       bearerTypes: [connection.NetBearType.BEARER_WIFI],
+       // 指定网络能力为Internet
+       networkCap: [connection.NetCap.NET_CAPABILITY_INTERNET],
+     }
+   };
+   
+   // 指定超时时间为10s(默认值为0)
+   let TIMEOUT = 10 * NETWORK_CONNECTION_TIMEOUT;
+   
+   // 创建NetConnection对象
+   let conn = connection.createNetConnection(netSpecifier, TIMEOUT);
+   ```
 
 4. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback，订阅关心的事件。
 
-<!-- @[notification_network_netAvailable_netUnavailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
-
-``` TypeScript
-// 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户
-conn.on('netAvailable', (data: connection.NetHandle) => {
-  hilog.info(0x0000, 'testTag', 'Network available, NetId is ' + data.netId);
-// ···
-});
-
-// 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户
-conn.on('netUnavailable', (data: void) => {
-  hilog.info(0x0000, 'testTag', 'Network unavailable, data is ' + JSON.stringify(data));
-// ···
-});
-```
+   <!-- @[notification_network_netAvailable_netUnavailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   
+   ``` TypeScript
+   // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户
+   conn.on('netAvailable', (data: connection.NetHandle) => {
+     hilog.info(0x0000, 'testTag', 'Network available, NetId is ' + data.netId);
+     // ...
+   });
+   
+   // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户
+   conn.on('netUnavailable', (data: void) => {
+     hilog.info(0x0000, 'testTag', 'Network unavailable, data is ' + JSON.stringify(data));
+     // ...
+   });
+   ```
 
 5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
 
-<!-- @[notification_network_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
-
-``` TypeScript
-// 订阅连接状态变化
-conn.register((err: BusinessError, data: void) => {
-// ···
-    hilog.error(0x0000, 'testTag', 'Error occurred during connection:', JSON.stringify(err));
-    // ···
-});
-```
+   <!-- @[notification_network_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   
+   ``` TypeScript
+   // 订阅连接状态变化
+   conn.register((err: BusinessError, data: void) => {
+     // ...
+       hilog.error(0x0000, 'testTag', 'Error occurred during connection:', JSON.stringify(err));
+       // ...
+   });
+   ```
 
 6. 当不使用该网络时，可以调用该对象的[unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister)方法，取消订阅。
 
-<!-- @[notification_network_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
-
-``` TypeScript
-// 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
-conn.unregister((err: BusinessError, data: void) => {
-  if (err) {
-    hilog.error(0x0000, 'testTag', 'Error occurred during unsubscription:', JSON.stringify(err));
-  } else {
-    // ···
-    hilog.info(0x0000, 'testTag', 'Network connection disconnected.');
-  }
-});
-```
+   <!-- @[notification_network_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   
+   ``` TypeScript
+   // 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
+   conn.unregister((err: BusinessError, data: void) => {
+     if (err) {
+       hilog.error(0x0000, 'testTag', 'Error occurred during unsubscription:', JSON.stringify(err));
+     } else {
+       // ...
+       hilog.info(0x0000, 'testTag', 'Network connection disconnected.');
+     }
+   });
+   ```
 
 ## 监控默认网络变化并主动重建网络连接
 
@@ -235,23 +235,23 @@ function socketTest() {
 
 2. 示例代码
 
-<!-- @[get_all_registered_networks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/GetAllNets.ets) -->
-
-``` TypeScript
-// 从@kit.NetworkKit中导入connection命名空间。
-import { connection } from '@kit.NetworkKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-// ···
-    // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)
-    connection.getAllNets().then((data: connection.NetHandle[]) => {
-      hilog.info(0x0000, 'testTag', 'getAllNets get data: ' + JSON.stringify(data));
-      if (data) {
-        // ···
-        GlobalContext.getContext().netList = data;
-        // ···
-      }
-    });
-```
+   <!-- @[get_all_registered_networks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/GetAllNets.ets) -->
+   
+   ``` TypeScript
+   // 从@kit.NetworkKit中导入connection命名空间。
+   import { connection } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   // ...
+       // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)
+       connection.getAllNets().then((data: connection.NetHandle[]) => {
+         hilog.info(0x0000, 'testTag', 'getAllNets get data: ' + JSON.stringify(data));
+         if (data) {
+           // ...
+           GlobalContext.getContext().netList = data;
+           // ...
+         }
+       });
+   ```
 ## 查询默认网络或者指定网络的连接信息
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO。
@@ -335,36 +335,36 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
    
    通过调用[getAllNets](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetallnets)方法，获取所有处于连接状态的网络列表(Array\<NetHandle>)。然后遍历获取到的NetHandle数组，分别调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息，能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
 
- <!-- @[get_net_capabilities_and_get_connection_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/AllNetworksBtn.ets) -->
- 
- ``` TypeScript
- // 从@kit.NetworkKit中导入connection命名空间。
- import { connection } from '@kit.NetworkKit';
- import { hilog } from '@kit.PerformanceAnalysisKit';
- // ···
-   getAllNetworks() {
-     // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)。
-     connection.getAllNets().then((data: connection.NetHandle[]) => {
-       hilog.info(0x0000, 'testTag', 'getAllNets get data: ' + JSON.stringify(data));
-       if (data) {
-         // ···
-         let itemNumber: Set<connection.NetHandle> = new Set(data);
-         let dataNumber = Array.from(itemNumber.values());
-         for (let item of dataNumber) {
-           // 循环获取网络列表每个netHandle对应网络的能力信息
-           connection.getNetCapabilities(item).then((data: connection.NetCapabilities) => {
-             hilog.info(0x0000, 'testTag', 'getNetCapabilities get data: ' + JSON.stringify(data));
-           });
- 
-           // 循环获取网络列表每个netHandle对应的网络的连接信息
-           connection.getConnectionProperties(item).then((data: connection.ConnectionProperties) => {
-             hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-           });
-         }
-       }
-     });
-   }
- ```
+    <!-- @[get_net_capabilities_and_get_connection_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/AllNetworksBtn.ets) -->
+    
+    ``` TypeScript
+    // 从@kit.NetworkKit中导入connection命名空间。
+    import { connection } from '@kit.NetworkKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    // ...
+      getAllNetworks() {
+        // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)。
+        connection.getAllNets().then((data: connection.NetHandle[]) => {
+          hilog.info(0x0000, 'testTag', 'getAllNets get data: ' + JSON.stringify(data));
+          if (data) {
+            // ...
+            let itemNumber: Set<connection.NetHandle> = new Set(data);
+            let dataNumber = Array.from(itemNumber.values());
+            for (let item of dataNumber) {
+              // 循环获取网络列表每个netHandle对应网络的能力信息
+              connection.getNetCapabilities(item).then((data: connection.NetCapabilities) => {
+                hilog.info(0x0000, 'testTag', 'getNetCapabilities get data: ' + JSON.stringify(data));
+              });
+    
+              // 循环获取网络列表每个netHandle对应的网络的连接信息
+              connection.getConnectionProperties(item).then((data: connection.ConnectionProperties) => {
+                hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+              });
+            }
+          }
+        });
+      }
+    ```
 
 ## 判断默认网络是否可以访问互联网
 
@@ -378,41 +378,41 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
    调用[getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9)方法，获取当前默认网络的netHandle，netHandle有效的情况下，调用[getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10)方法，获取NetHandle对应网络的能力信息，根据获取到的能力信息，判断networkCap数组中的值判断网络是否可用。
    NET_CAPABILITY_CHECKING_CONNECTIVITY表示在进行连通性判断的过程中，当不处于连通性判断过程中，且networkCap数组中包含NET_CAPABILITY_VALIDATED表示网络连通性校验通过，可以访问互联网。
 
- <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
- 
- ``` TypeScript
- // 从@kit.NetworkKit中导入connection命名空间。
- import { connection } from '@kit.NetworkKit';
- import { hilog } from '@kit.PerformanceAnalysisKit';
- // ···
-     // 获取默认激活的数据网络。
-     let netHandle = connection.getDefaultNetSync();
-     if (!netHandle || netHandle.netId === 0) {
-       hilog.error(0x0000, 'testTag', 'getDefaultNetSync fail');
-     // ···
-     } else {
-       hilog.info(0x0000, 'testTag', 'default network: ' + JSON.stringify(netHandle));
-       // 获取netHandle对应网络的能力信息。
-       let netCapabilities = connection.getNetCapabilitiesSync(netHandle);
-       let cap = netCapabilities.networkCap;
-       hilog.info(0x0000, 'testTag', 'network capabilities: ' + JSON.stringify(netCapabilities));
-       // 判断网络是否可以访问互联网。
-       if (cap?.includes(connection.NetCap.NET_CAPABILITY_CHECKING_CONNECTIVITY)) {
-         // 正在验证网络连通性，请稍后重试。
-         hilog.info(0x0000, 'testTag', 'default network is checking, please try again later');
-       } else {
-         if (cap?.includes(connection.NetCap.NET_CAPABILITY_VALIDATED)) {
-           // 网络连通性验证成功，当前默认网络可以访问互联网。
-           hilog.info(0x0000, 'testTag', 'default network is validated');
-         // ···
-         } else {
-           // 网络连通性验证失败，当前默认网络不可以访问互联网。
-           hilog.info(0x0000, 'testTag', 'default network is not validated');
-         // ···
-         }
-       }
-     }
- ```
+    <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
+    
+    ``` TypeScript
+    // 从@kit.NetworkKit中导入connection命名空间。
+    import { connection } from '@kit.NetworkKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    // ...
+        // 获取默认激活的数据网络。
+        let netHandle = connection.getDefaultNetSync();
+        if (!netHandle || netHandle.netId === 0) {
+          hilog.error(0x0000, 'testTag', 'getDefaultNetSync fail');
+          // ...
+        } else {
+          hilog.info(0x0000, 'testTag', 'default network: ' + JSON.stringify(netHandle));
+          // 获取netHandle对应网络的能力信息。
+          let netCapabilities = connection.getNetCapabilitiesSync(netHandle);
+          let cap = netCapabilities.networkCap;
+          hilog.info(0x0000, 'testTag', 'network capabilities: ' + JSON.stringify(netCapabilities));
+          // 判断网络是否可以访问互联网。
+          if (cap?.includes(connection.NetCap.NET_CAPABILITY_CHECKING_CONNECTIVITY)) {
+            // 正在验证网络连通性，请稍后重试。
+            hilog.info(0x0000, 'testTag', 'default network is checking, please try again later');
+          } else {
+            if (cap?.includes(connection.NetCap.NET_CAPABILITY_VALIDATED)) {
+              // 网络连通性验证成功，当前默认网络可以访问互联网。
+              hilog.info(0x0000, 'testTag', 'default network is validated');
+              // ...
+            } else {
+              // 网络连通性验证失败，当前默认网络不可以访问互联网。
+              hilog.info(0x0000, 'testTag', 'default network is not validated');
+              // ...
+            }
+          }
+        }
+    ```
 
 ## 使用默认网络解析域名，获取所有IP
 
@@ -423,20 +423,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
    
    调用[getAddressesByName](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetaddressesbyname)方法，使用默认网络解析主机名以获取所有IP地址。
 
- <!-- @[resolve_the_domain_name_and_get_all_ips](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkIPBtn.ets) -->
- 
- ``` TypeScript
- // 从@kit.NetworkKit中导入connection命名空间。
- import { connection } from '@kit.NetworkKit';
- import { BusinessError } from '@kit.BasicServicesKit';
- import { hilog } from '@kit.PerformanceAnalysisKit';
- // ···
-       // 使用默认网络解析主机名以获取所有IP地址
-       connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
-         hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
-         // ···
-       })
- ```
+    <!-- @[resolve_the_domain_name_and_get_all_ips](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkIPBtn.ets) -->
+    
+    ``` TypeScript
+    // 从@kit.NetworkKit中导入connection命名空间。
+    import { connection } from '@kit.NetworkKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    // ...
+          // 使用默认网络解析主机名以获取所有IP地址
+          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+            hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
+            // ...
+          })
+    ```
      
 ## 相关实例
 

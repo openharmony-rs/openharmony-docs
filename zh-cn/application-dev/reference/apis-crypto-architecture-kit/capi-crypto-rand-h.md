@@ -43,7 +43,7 @@
 
 ### OH_CryptoRand_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)
 ```
 
@@ -67,7 +67,7 @@ OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)
 
 ### OH_CryptoRand_GenerateRandom()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Crypto_DataBlob *out)
 ```
 
@@ -93,7 +93,7 @@ OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Cryp
 
 ### OH_CryptoRand_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)
 ```
 
@@ -117,7 +117,7 @@ const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)
 
 ### OH_CryptoRand_SetSeed()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *seed)
 ```
 
@@ -142,7 +142,7 @@ OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *see
 
 ### OH_CryptoRand_EnableHardwareEntropy()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)
 ```
 
@@ -166,7 +166,7 @@ OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)
 
 ### OH_CryptoRand_Destroy()
 
-```
+```c
 void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)
 ```
 

@@ -29,29 +29,29 @@ JSVM，即标准JS引擎，是严格遵守ECMAScript规范的JavaScript代码执
 
 1. 在应用工程配置文件module.json中配置网络权限：
 
-```
-"requestPermissions": [{
-  "name": "ohos.permission.INTERNET",
-  "reason": "$string:app_name",
-  "usedScene": {
-    "abilities": [
-      "FromAbility"
-    ],
-    "when": "inuse"
-  }
-}]
-```
+   ```json
+   "requestPermissions": [{
+     "name": "ohos.permission.INTERNET",
+     "reason": "$string:app_name",
+     "usedScene": {
+       "abilities": [
+         "FromAbility"
+       ],
+       "when": "inuse"
+     }
+   }]
+   ```
 
 2. 为避免debugger过程中的暂停被误报为无响应异常，可以开启DevEco Studio的Debug模式，参考[debug启动调试](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5)（无需设置断点），或者可以在非主线程的其它线程中运行JSVM。
-```cpp
-// 在非主线程的其他线程中运行JSVM示例代码
-static napi_value RunTest(napi_env env, napi_callback_info info)
-{
-    std::thread testJSVMThread(TestJSVM);
-    testJSVMThread.detach();
-    return  nullptr;
-}
-```
+   ```cpp
+   // 在非主线程的其他线程中运行JSVM示例代码
+   static napi_value RunTest(napi_env env, napi_callback_info info)
+   {
+       std::thread testJSVMThread(TestJSVM);
+       testJSVMThread.detach();
+       return  nullptr;
+   }
+   ```
 3. 在执行JS代码之前，调用OH_JSVM_OpenInspector在指定的主机和端口上激活inspector，创建socket。例如OH_JSVM_OpenInspector(env, "localhost", 9225)，在端侧本机端口9225创建socket。
 4. 调用OH_JSVM_WaitForDebugger，等待建立socket连接。
 5. 检查端侧端口是否打开成功。hdc shell "netstat -anp | grep 9225"。结果为9225端口状态为“LISTEN"即可。
@@ -139,23 +139,23 @@ void TestJSVM() {
 
 1. 在应用工程配置文件module.json中配置网络权限：
 
-```
-"requestPermissions": [{
-  "name": "ohos.permission.INTERNET",
-  "reason": "$string:app_name",
-  "usedScene": {
-    "abilities": [
-      "FromAbility"
-    ],
-    "when": "inuse"
-  }
-}]
-```
+   ```json
+   "requestPermissions": [{
+     "name": "ohos.permission.INTERNET",
+     "reason": "$string:app_name",
+     "usedScene": {
+       "abilities": [
+         "FromAbility"
+       ],
+       "when": "inuse"
+     }
+   }]
+   ```
 
 2. 为避免debugger过程中的暂停被误报为无响应异常，可以[开启DevEco Studio的Debug模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5)（无需设置断点），或者可以在非主线程的其他线程中运行JSVM。
-3. 打开 inspector 端口，连接 devtools 用于调试，其流程如下:  在执行JS代码之前，调用OH_JSVM_OpenInspector在指定的主机和端口上激活inspector，创建socket。例如OH_JSVM_OpenInspectorWithName(env, 123, "test")，创建 tcp socket 及其对应的 unixdomain 端口。
+3. 打开 inspector 端口，连接 devtools 用于调试，其流程如下：在执行JS代码之前，调用OH_JSVM_OpenInspector在指定的主机和端口上激活inspector，创建socket。例如OH_JSVM_OpenInspectorWithName(env, 123, "test")，创建 tcp socket 及其对应的 unixdomain 端口。
 4. 调用OH_JSVM_WaitForDebugger，等待建立socket连接。
-5. 检查端侧端口是否打开成功。hdc shell "cat /proc/net/unix | grep jsvm"。结果出现可用的 unix 端口即可，如: jsvm_devtools_remote_9229_123，其中 9229 为 tcp 端口号，123 为对应的 pid。
+5. 检查端侧端口是否打开成功。hdc shell "cat /proc/net/unix | grep jsvm"。结果出现可用的 unix 端口即可，如：jsvm_devtools_remote_9229_123，其中 9229 为 tcp 端口号，123 为对应的 pid。
 6. 转发端口。hdc fport tcp:9229 tcp:9229。转发开发者个人计算机侧端口9229到端侧端口9229。结果为"Forwardport result:OK"即可。
 7. 在 chrome 浏览器地址栏输入 "localhost:9229/json"，回车。获取端口连接信息。打开Chrome开发者工具，拷贝"devtoolsFrontendUrl"字段url内容到地址栏，回车，进入DevTools源码页，将看到在应用中通过OH_JSVM_RunScript执行的JS源码，此时暂停在第一行JS源码处。(注："devtoolsFrontendUrl"字段url只支持使用Chrome、Edge浏览器打开，不支持使用Firefox、Safari等浏览器打开。)
 8. 用户可在源码页打断点，通过按钮发出各种调试命令控制JS代码执行，并查看变量。
@@ -179,12 +179,12 @@ static void EnableInspector(JSVM_Env env) {
 1. Chrome浏览器中打开 chrome://inspect/#devices，勾选以下内容：
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png"/></div>
 2. 执行端口转发命令：hdc fport [开发者个人计算机侧端口号] [端侧端口号]  
-例如：hdc fport tcp:9227 tcp:9226
-1. 点击Port forwarding按钮，左侧输入开发者个人计算机侧端口，右侧输入端侧端口号，点击done。如下图所示：
+   例如：hdc fport tcp:9227 tcp:9226
+3. 点击Port forwarding按钮，左侧输入开发者个人计算机侧端口，右侧输入端侧端口号，点击done。如下图所示：
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png"/></div>
-2. 点击Configure按钮，输入开发者个人计算机侧的端口号，如localhost:9227。如下图所示：
+4. 点击Configure按钮，输入开发者个人计算机侧的端口号，如localhost:9227。如下图所示：
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png"/></div>
-3. 稍等片刻，会在target下出现调试的内容，点击inspect即可调试。如下图所示：
+5. 稍等片刻，会在target下出现调试的内容，点击inspect即可调试。如下图所示：
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png"/></div>
 
 ### 使用 websocket 端口进行调试
@@ -322,7 +322,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *srcCallNative = R"JS(runScriptWithStatistics();)JS";
 ```
 预计的输出结果：
-```
+```ts
 在对应鸿蒙设备内生成两个文件用于后续调优：
 heap-snapshot-end.heapsnapshot,
 cpu-profile.cpuprofile

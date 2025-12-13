@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray
 ```
 

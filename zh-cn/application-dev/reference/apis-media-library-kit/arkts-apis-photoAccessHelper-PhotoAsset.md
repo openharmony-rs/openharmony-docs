@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+提供封装文件属性的方法。
+
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-提供封装文件属性的方法。
 
 ## 导入模块
 
@@ -640,13 +640,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
-以只读方式打开当前文件，使用callback方式返回异步结果。
+以只读方式打开当前文件。使用callback异步回调。
+
+使用完毕后调用close释放文件描述符。
 
 > **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。出于安全考量，不再提供获取正式媒体文件句柄的接口。
-
-**注意**：使用完毕后调用close释放文件描述符。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -703,13 +703,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFd(): Promise&lt;number&gt;
 
-以只读方式打开当前文件，使用promise方式返回异步结果。
+以只读方式打开当前文件。使用promise异步回调。
+
+返回的文件描述符在使用完毕后需要调用close进行释放。
 
 > **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。出于安全考量，不再提供获取正式媒体文件句柄的接口。
-
-**注意**：返回的文件描述符在使用完毕后需要调用close进行释放。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 

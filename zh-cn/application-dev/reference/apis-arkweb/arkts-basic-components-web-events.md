@@ -1693,7 +1693,7 @@ struct Index {
     ```
 
 2. 构造 `CertManagerService` 对象以对接证书管理。
-<!--code_no_check-->
+    <!--code_no_check-->
     ```ts
     // CertMgrService.ets
     import { bundleManager, common, Want } from "@kit.AbilityKit";
@@ -1751,7 +1751,7 @@ struct Index {
     }
     ```
 3. 实现双向认证功能。
-<!--code_no_check-->
+    <!--code_no_check-->
     ```ts
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
@@ -2606,6 +2606,113 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
   </script>
   </body>
   </html>
+  ```
+
+## onWindowNewExt<sup>23+</sup>
+
+onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
+
+在启用[multiWindowAccess](./arkts-basic-components-web-attributes.md#multiwindowaccess9)的情况下，通知用户新建窗口请求。
+
+> **说明：**
+>
+> - 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+>
+> - 若未创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口并设置成null，通知Web未创建新窗口。
+>
+> - 新窗口需避免直接覆盖在原Web组件上，且应与主页面以相同形式明确显示其URL（如地址栏）以防止用户混淆。若无法确保URL的显示和验证机制可靠，则需考虑禁止创建新窗口。
+>
+> - 新窗口请求来源无法可靠追溯，可能由第三方iframe发起，应用需默认采取沙箱隔离、限制权限等防御性措施以确保安全。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback       | Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\>           | 是 | 网页要求用户创建窗口时触发的回调。    |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+  @CustomDialog
+  struct NewWebViewComp {
+  controller?: CustomDialogController;
+  webviewController1: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: "www.example.com", controller: this.webviewController1 })
+        .javaScriptAccess(true)
+        .multiWindowAccess(false)
+        .onWindowExit(() => {
+          console.info("NewWebViewComp onWindowExit");
+          if (this.controller) {
+            this.controller.close();
+          }
+        })
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  dialogController: CustomDialogController | null = null;
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("window.html"), controller: this.controller })
+        .javaScriptAccess(true)
+        // 需要开启multiWindowAccess
+        .multiWindowAccess(true)
+        .allowWindowOpenMethod(true)
+        .onWindowNewExt((event) => {
+          //以event.navigationPolicy请求的方式打开新窗口
+          console.log("navigationAction: ", event.navigationPolicy)
+          //以event.windowFeatures中的大小及位置信息创建新窗口
+          console.log("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          if (this.dialogController) {
+            this.dialogController.close();
+          }
+          let popController: webview.WebviewController = new webview.WebviewController();
+          this.dialogController = new CustomDialogController({
+            builder: NewWebViewComp({ webviewController1: popController })
+          })
+          this.dialogController.open();
+          // 将新窗口对应WebviewController返回给Web内核。
+          // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+          // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
+          event.handler.setWebController(popController);
+        })
+      }
+    }
+  }
+  ```
+
+  ```html
+  <!-- window.html页面代码 -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <a href="#" onclick="openNewWindow('https://www.example.com')">打开新页面</a>
+    <script type="text/javascript">
+        function openNewWindow(url) {
+          window.open(url, 'example', 'left=60,top=80,width=800,height=600');
+          return false;
+        }
+    </script>
+    </body>
+    </html>
   ```
 
 ## onActivateContent<sup>20+</sup>
@@ -4650,30 +4757,30 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 **示例：**
 
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Web({ src: "www.error-test.com", controller: this.controller })
-       .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true);
-            if (!this.controller.getErrorPageEnabled()) {
-                this.controller.setErrorPageEnabled(true);
-            }
-        })
-        .onOverrideErrorPage(event => {
-              let htmlStr = "<html><h1>error occur : ";
-              htmlStr += event.error.getErrorCode();
-              htmlStr += "</h1></html>";
-              return htmlStr;
-        })
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    build() {
+      Column() {
+        Web({ src: "www.error-test.com", controller: this.controller })
+         .onControllerAttached(() => {
+              this.controller.setErrorPageEnabled(true);
+              if (!this.controller.getErrorPageEnabled()) {
+                  this.controller.setErrorPageEnabled(true);
+              }
+          })
+          .onOverrideErrorPage(event => {
+                let htmlStr = "<html><h1>error occur : ";
+                htmlStr += event.error.getErrorCode();
+                htmlStr += "</h1></html>";
+                return htmlStr;
+          })
+      }
     }
   }
-}
   ```
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
@@ -4894,7 +5001,7 @@ onRenderExited(callback: (event?: { detail: object }) => boolean)
 
 **参数：**
 
-| 参数名              | 类型                                     | 必填   | 说明             |
+| 参数名  | 类型  | 必填  | 说明 |
 | ---------------- | ---------------------------------------- | ---- | ---------------- |
 | callback |(event?: { detail: object }) => boolean | 是    | 渲染过程退出时触发。 |
 
@@ -4994,9 +5101,9 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
               })
             }
           })
-         .onCameraCaptureStateChange((event:CameraCaptureStateInfo)=>{
+         .onCameraCaptureStateChange((event: CameraCaptureStateChangeInfo) => {
             console.info("CameraCapture from ", event.originalState, " to ", event.newState);
-        })
+         })
       }
     }
   }
@@ -5138,7 +5245,7 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
               })
             }
           })
-          .onMicrophoneCaptureStateChange((event:MicrophoneCaptureStateInfo)=>{
+          .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo) => {
             console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
         })
       }
@@ -5234,4 +5341,50 @@ onTextSelectionChange(callback: TextSelectionChangeCallback)
       示例文本
   </body>
   </html>
+  ```
+
+## onFirstScreenPaint<sup>23+</sup>
+
+onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
+
+网页首屏渲染结束时触发此回调，使用callback异步回调。<br>
+
+> **说明：**
+>
+> - 首屏渲染（First Screen Paint，FSP），记录了视口内图片、文本或视频元素完成渲染所需的时间，是衡量页面首次加载到渲染完成的核心性能指标。当一定时间内视口内没有可见元素超出历史绘制区域时，将视口内元素绘制的历史最大的时刻视为首屏渲染完成时刻。
+>
+> - 接口在首屏绘制完成后，需要等待一定时间没有新的渲染信息需要处理后，才会上报回调。接口回调时刻和首屏渲染完成时刻不同。
+>
+> - 渲染未完成时，若用户输入或滚动页面，将会立即上报回调函数。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) | 是    | 回调函数，设置Web组件的检测到首屏渲染。 |
+
+**示例：**
+
+  ```ts
+  // onFirstScreenPaint.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFirstScreenPaint((event: FirstScreenPaint)=>{
+            console.info(`Found first screen paint on ${event.url}.`);
+            console.info(`The navigation start time is ${event.navigationStartTime}.`);
+            console.info(`The first screen paint time is ${event.firstScreenPaintTime}.`);
+          })
+      }
+    }
+  }
   ```

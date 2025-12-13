@@ -81,11 +81,66 @@ function destroy(): void {
 ## Shader
 着色器，继承自[SceneResource](#sceneresource-1)。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | 是 | 否 | 着色器输入。 |
+
+### setShaderInputs<sup>23+</sup>
+
+setShaderInputs(inputs: Record<string, number \| Vec2 \| Vec3 \| Vec4 \| Image>): void
+
+设置[Shader](#shader)的输入，该接口性能优于直接设置inputs属性。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | 是 | 一个字符串到值的映射，用于设置shader输入。 |
+
+**示例：**
+```ts
+import { Image, MaterialType, Scene, SceneResourceFactory, Shader, ShaderMaterial } from '@kit.ArkGraphics3D';
+
+function setinputs(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+  scene.then(async (result: Scene) => {
+    if (result) {
+      let rf : SceneResourceFactory | null = await result.getResourceFactory();
+      if (!rf) {
+        return;
+      }
+      // 创建材质和shader
+      let material: ShaderMaterial | null = await rf.createMaterial({name: "CustomMaterial"}, MaterialType.SHADER);
+      let shader : Shader | null = await rf.createShader(
+        {name: "CustomShader", uri: $rawfile("shaders/custom_shader/custom_material_sample.shader")});
+      if (!material || !shader) {
+        return;
+      }
+      // 加载纹理资源
+      let image : Image | null = await rf.createImage({name: "envImg", uri: $rawfile("custom_image.jpg")});
+      if (!image) {
+        return;
+      }
+      // 绑定shader到纹理上
+      material.colorShader = shader;
+      // 设置shader输入
+      material.colorShader.setShaderInputs({
+        "uTime": 1.0,
+        "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
+        "uTexture": image
+      })
+    }
+  });
+}
+```
 
 ## MaterialType
 场景中物体材质类型枚举，定义材质的渲染方式。
@@ -96,7 +151,7 @@ function destroy(): void {
 | ---- | ---- | ---- |
 | SHADER | 1 | 材质由着色器定义。 |
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | 采用基于物理渲染（PBR）的金属-粗糙度模型，通过金属度与粗糙度参数，模拟更真实的材质光照效果。 |
-| UNLIT<sup>22+</sup> | 3 | 不受光照影响的材质。|
+| UNLIT<sup>23+</sup> | 3 | 不受光照影响的材质。|
 
 ## CullMode<sup>20+</sup>
 用于设置基于物理渲染（PBR）材质的剔除模式枚举。通过控制剔除物体的正面或背面几何面片，提升渲染性能和视觉效果。
@@ -128,7 +183,7 @@ function destroy(): void {
 | renderSortLayer | number | 否 | 是 | 渲染图层id，数值越小，渲染顺序越靠前。取值范围[0, 63]，默认图层id为32。|
 | renderSortLayerOrder | number | 否 | 是 | 同一渲染图层内，不同物体的渲染顺序，数值越小，越先渲染。取值范围[0, 255]，默认值为0。|
 
-## PolygonMode<sup>22+</sup>
+## PolygonMode<sup>23+</sup>
 控制多边形绘制模式的枚举。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -152,7 +207,7 @@ function destroy(): void {
 | blend<sup>20+</sup> | [Blend](#blend20) | 否 | 是 | 材质是否透明，默认值为false。|
 | alphaCutoff<sup>20+</sup> | number | 否 | 是 | 透明通道阈值，如果像素的alpha值等于或高于此阈值，则渲染该像素；如果低于此阈值，则不会渲染该像素。设置值小于1时，则开启该模式，取值范围为[0, 1]，默认值为1。 |
 | renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | 否 | 是 | 渲染排序设置，用于控制材质在渲染管线中的渲染顺序，渲染图层id默认值为32，同一图层内的渲染顺序默认值为0。 |
-| polygonMode<sup>22+</sup> | [PolygonMode](#polygonmode22) | 否 | 是 | 模型的多边形绘制模式，默认值为FILL。|
+| polygonMode<sup>23+</sup> | [PolygonMode](#polygonmode23) | 否 | 是 | 模型的多边形绘制模式，默认值为FILL。|
 ## MaterialProperty<sup>20+</sup>
 材质属性接口，用于定义材质所使用的纹理、属性因子及纹理采样器信息。
 
@@ -191,7 +246,7 @@ function destroy(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | colorShader | [Shader](#shader) | 否 | 是 | 着色器，默认值为undefined。 |
 
-## UnlitMaterial<sup>22+</sup>
+## UnlitMaterial<sup>23+</sup>
 
 不受光照影响的材质，其着色值只与设置的基础颜色有关，与光照条件无关，继承自[Material](#material)。
 
@@ -525,7 +580,7 @@ function finish(): void {
 | environmentImage | [Image](#image) \| null | 否 | 是 | 环境图片，默认为undefined。 |
 | radianceImage | [Image](#image) \| null | 否 | 是 | 辐射图片，默认为undefined。 |
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | 否 | 是 | 辐射系数，默认为undefined。 |
-| environmentRotation<sup>22+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。|
+| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。|
 
 ## Image
 图片类型，继承自[SceneResource](#sceneresource-1)。

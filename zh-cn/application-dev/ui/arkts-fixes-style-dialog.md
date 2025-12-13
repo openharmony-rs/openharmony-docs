@@ -167,7 +167,7 @@ export struct ShowDialogExample {
 
 日历选择器弹窗提供日历视图，包含年、月和星期信息，通过[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)接口实现。开发者可调用show函数，定义并弹出日历选择器弹窗。
 
-日历选择器弹窗的弹出依赖UI的执行上下文，不可在[UI上下文不明确](./arkts-global-interface.md)的地方使用，具体约束参见[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)说明。
+日历选择器弹窗的弹出依赖UI的执行上下文，不可在[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的地方使用，具体约束参见[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)说明。
 
 通过配置 acceptButtonStyle、cancelButtonStyle可以实现自定义按钮样式。
 
@@ -204,7 +204,7 @@ export struct CalendarDialog {
                   backgroundColor: '#f7f7f7',
                   borderRadius: 10
                 },
-                onAccept: (date: Date)=>{
+                onAccept: (date: Date) => {
                   // 当弹出框再次弹出时显示选中的是上一次确定的日期
                   this.selectedDate = date;
                 }
@@ -233,7 +233,7 @@ export struct CalendarDialog {
 
 日期滑动选择器弹窗通过UIContext中的[showDatePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showdatepickerdialog)接口实现。
 
-弹窗中配置lunarSwitch、showTime为true时，会展示切换农历的开关和时间，当checkbox被选中时，会显示农历。当按下确定按钮时，弹窗会通过onDateAccept返回目前所选中的日期。如需弹窗再次弹出时显示选中的是上一次确定的日期，就要在回调中重新给selectTime进行赋值。
+弹窗中配置[DatePickerDialogOprions](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions对象说明)的lunarSwitch、showTime属性为true时，会展示切换农历的开关和时间，当checkbox被选中时，会显示农历。当按下确定按钮时，弹窗会通过onDateAccept返回目前所选中的日期。如需弹窗再次弹出时显示选中的是上一次确定的日期，就要在回调中重新给selectTime进行赋值。
 
 <!-- @[date_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets) -->
 
@@ -332,7 +332,7 @@ export struct DatePickerCustomDialogExample {
 
 时间滑动选择器弹窗通过UIContext中的[showTimePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtimepickerdialog)接口实现。
 
-该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
+该示例通过配置[disappearTextStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#disappeartextstyle10)、[textStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#textstyle10)、[selectedTextStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#selectedtextstyle10)、[acceptButtonStyle](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md#timepickerdialogoptions对象说明)、[cancelButtonStyle](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md#timepickerdialogoptions对象说明)实现了自定义文本以及按钮样式。
 
 <!-- @[time_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TimePickerDialog.ets) -->
 

@@ -195,6 +195,8 @@ requestFocus(value: string): boolean
 
 ## FocusBoxStyle<sup>12+</sup>对象说明
 
+设置当前组件系统焦点框样式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -209,7 +211,7 @@ requestFocus(value: string): boolean
 
 focusScopePriority(scopeId: string, priority?: FocusPriority): T
 
-设置当前组件在指定容器内获焦的优先级。需要配合focusScopeId一起使用。
+设置当前组件在指定容器内获焦的优先级。需要配合[focusScopeId](#focusscopeid12)一起使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -229,6 +231,8 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 | T | 返回当前组件。 |
 
 ### FocusPriority<sup>12+</sup>
+
+设置组件焦点的优先级。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -540,27 +544,27 @@ struct RequestFocusExample {
     Column({ space:20 }){
       Row({space: 5}) {
         Button("id: " + this.idList[0] + " focusable(false)")
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[0])
           .focusable(false)
         Button("id: " + this.idList[1])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[1])
       }
       Row({space: 5}) {
         Button("id: " + this.idList[2])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[2])
         Button("id: " + this.idList[3])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[3])
       }
       Row({space: 5}) {
         Button("id: " + this.idList[4])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[4])
         Button("id: " + this.idList[5])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[5])
       }
       Row({space: 5}) {
@@ -576,7 +580,7 @@ struct RequestFocusExample {
             this.selectId = this.idList[index]
           })
         Button("RequestFocus")
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .onClick(() => {
             // 建议使用this.getUIContext().getFocusController().requestFocus()
             let res = focusControl.requestFocus(this.selectId)      // 使选中的this.selectId的组件获焦
@@ -642,7 +646,7 @@ struct RequestFocusExample {
 
 ### 示例4（设置焦点组走焦）
 
-该示例通过配置[focusScopePriority](#focusscopeid12)，可以使绑定的组件在所属容器首次获焦时成为焦点，配置[focusScopeId](#focusscopeid12)，可以使绑定的容器组件成为焦点组。
+该示例通过配置[focusScopePriority](#focusscopepriority12)，可以使绑定的组件在所属容器首次获焦时成为焦点，配置[focusScopeId](#focusscopeid12)，可以使绑定的容器组件成为焦点组。
 
 ```ts
 // focusTest.ets

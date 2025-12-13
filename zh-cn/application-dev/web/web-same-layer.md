@@ -1404,7 +1404,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 ## 同层渲染纹理贴图对齐方式
 
-ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同层渲染后的&lt;embed&gt;和&lt;object&gt;标签中生效，该属性有`object-fit:stretch`（默认值，纹理按同层标签bounds尺寸拉伸对齐），`object-fit:none`(纹理不拉伸，左顶角对齐) 两种配置，用于控制单个同层标签的纹理对齐方式以实现灵活展示效果，适用于同层标签宽高动态变化的场景，可解决标签宽高改变时出现的短暂纹理拉伸问题。
+ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同层渲染后的&lt;embed&gt;和&lt;object&gt;标签中生效，从API version 23开始，增加属性`object-fit:stretch`（默认值，纹理按同层标签bounds尺寸拉伸对齐），`object-fit:none`（纹理不拉伸，左顶角对齐）两种配置，用于控制单个同层标签的纹理对齐方式以实现灵活展示效果，适用于同层标签宽高动态变化的场景，可解决标签宽高改变时出现的短暂纹理拉伸问题。
 
 属性取值说明如下：
 

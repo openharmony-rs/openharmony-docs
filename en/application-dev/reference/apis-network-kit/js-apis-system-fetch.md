@@ -1,4 +1,4 @@
-# @system.fetch (Data Request) (Deprecated)
+# @system.fetch (Data Request)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->

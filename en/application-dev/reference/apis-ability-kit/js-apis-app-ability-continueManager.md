@@ -48,7 +48,7 @@ For details about the error codes, see [Distributed Scheduler Error Codes](error
 
 **Example**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -81,7 +81,7 @@ export default class MigrationAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ## continueManager.off
 
@@ -113,7 +113,7 @@ For details about the error codes, see [Distributed Scheduler Error Codes](error
 
 **Example**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -146,7 +146,7 @@ export default class MigrationAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ## ContinueResultInfo
 

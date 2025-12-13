@@ -6,7 +6,7 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
-```
+```c
 typedef struct Pasteboard_ProgressInfo Pasteboard_ProgressInfo
 ```
 

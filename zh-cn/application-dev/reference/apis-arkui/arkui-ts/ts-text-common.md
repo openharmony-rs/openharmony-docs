@@ -679,7 +679,7 @@ getPreviewText?(): PreviewText
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [PreviewText](#previewtext12) | 预上屏信息。 |.
+| [PreviewText](#previewtext12) | 预上屏信息。 |
 
 ## StyledStringController<sup>12+</sup>
 

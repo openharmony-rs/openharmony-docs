@@ -136,7 +136,7 @@ Canvas(this.context)
 
 在Canvas组件生命周期接口onReady()调用之后，开发者可以直接使用canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义Path2d对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
 
-- 通过CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象直接调用相关API进行绘制。
+- 通过CanvasRenderingContext2D对象直接调用相关API进行绘制。
 
 
 <!-- @[contextCallApi_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
@@ -289,7 +289,7 @@ struct CanvasComponentTextBorder {
 
 - 使用自定义字体绘制文本。
 
-  从API version 20开始，可以通过[getGlobalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglobalinstance)获取应用全局字体管理器的实例，然后使用[loadfontsync](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口从设置的路径中加载自定义字体并通过[font](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#font)（设置文本绘制中的字体样式）接口设置文本绘制中的字体样式，接着通过[fillText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#filltext)（绘制填充类文本）、[strokeText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroketext)（绘制描边类文本）等接口进行文本绘制。
+  从API version 20开始，可以通过[getGlobalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglobalinstance)获取应用全局字体管理器的实例，然后使用[loadFontSync](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口从设置的路径中加载自定义字体并通过[font](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#font)（设置文本绘制中的字体样式）接口设置文本绘制中的字体样式，接着通过[fillText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#filltext)（绘制填充类文本）、[strokeText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroketext)（绘制描边类文本）等接口进行文本绘制。
 
 
 <!-- @[canvasComponentCustomFontsDrawText_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentCustomFontsDrawText.ets) -->
@@ -495,7 +495,7 @@ struct CanvasContentUpdate {
                 if (this.timerId == -2) {
                   this.timerId = setInterval(() => {
                     this.drawRandomCircle()
-                  }, 50)
+                  }, 500)
                 }
               }
             })
@@ -505,7 +505,7 @@ struct CanvasContentUpdate {
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }
@@ -561,7 +561,7 @@ struct CanvasContentUpdate {
                   if (this.timerId == -2) {
                     this.timerId = setInterval(() => {
                       this.drawRandomCircle()
-                    }, 50)
+                    }, 500)
                   }
                 }
               })
@@ -570,7 +570,7 @@ struct CanvasContentUpdate {
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }

@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_TranslationOptions
 ```
 
@@ -26,8 +26,8 @@ typedef struct {...} ArkUI_TranslationOptions
 
 | 名称 | 描述 |
 | -- | -- |
-| float x | 横向的平移距离。 |
-| float y | 纵向的平移距离。 |
-| float z | 竖向的平移距离。 |
+| float x | 横向的平移距离，单位为vp。 |
+| float y | 纵向的平移距离，单位为vp。 |
+| float z | 竖向的平移距离，单位为vp。 |
 
 

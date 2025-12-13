@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_TraceRouteOption {...} NetConn_TraceRouteOption
+```
+
 ## Overview
 
 Defines the network trace route options.

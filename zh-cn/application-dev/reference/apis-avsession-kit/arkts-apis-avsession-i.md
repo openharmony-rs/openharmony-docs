@@ -83,7 +83,7 @@
 | subtitle     | string                  | 否   | 是   | 播放列表媒体子标题。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | description  | string                  | 否   | 是   | 播放列表媒体描述的文本。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| string  | 否   | 是   | 播放列表媒体图片像素数据。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| extras       | {[key: string]: Object}    | 否   | 是   | 播放列表媒体额外字段。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| extras       |  Record\<string, Object>    | 否   | 是   | 播放列表媒体额外字段。<br>**说明：**<br>从API version 20开始参数类型变更为Record\<string, Object>，API version 19及之前的版本extras的参数类型为：{[key: string]: Object}，无需适配仍可使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | mediaUri     | string                  | 否   | 是   | 播放列表媒体URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaType     | string                  | 否   | 是   | 播放列表媒体类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaSize     | number                  | 否   | 是   | 播放列表媒体的大小。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -212,14 +212,13 @@
 
 会话接受的命令的对象描述。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称      | 类型                                              | 只读| 可选 | 说明           |
-| --------- | ------------------------------------------------- | ---- | ---- | -------------- |
-| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | 否 | 否   | 命令（不同命令对应不同参数）。     |
-| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number | 否 | 是   | 命令对应的参数。 |
+| 名称      | 类型                                                                       | 只读| 可选 | 说明         |
+| --------- |--------------------------------------------------------------------------| ---- | ---- |------------|
+| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10) | 否 | 否   | 命令（不同命令对应不同参数）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number    | 否 | 是   | 命令对应的参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
+| commandInfo<sup>22+</sup> | [CommandInfo](#commandinfo22)                                            | 否 | 是   | 命令信息。      |
 
 ## AVCastPickerOptions<sup>14+</sup>
 
@@ -244,3 +243,16 @@
 | 名称            | 类型                      | 只读 | 可选 | 说明               |
 | --------------- |-------------------------| ---- | ---- |---------------------------------------------------------------------|
 | streamInfos            | Array\<[audio.AudioStreamInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreaminfo8)>                  | 是    | 否    | 音频能力参数的列表。  |
+
+## CommandInfo<sup>22+</sup>
+
+定义要发送到会话的命令信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称               | 类型                                                   | 只读 | 可选 | 说明        |
+|------------------|------------------------------------------------------|----|----|-----------|
+| callerBundleName | string                                               | 否  | 是  | 调用方应用包名。  |
+| callerModuleName | string                                               | 否  | 是  | 调用方应用模块名。 |
+| callerDeviceId   | string                                               | 否  | 是  | 调用方设备ID。  |
+| callerType       | [CallerType](arkts-apis-avsession-e.md#callertype22) | 否  | 是  | 调用方来源。    |

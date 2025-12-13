@@ -7,6 +7,8 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+从API 22开始，huksExternalCrypto提供Provider注册和注销功能接口。
+
 ## 注册Provider
 
 ### 开发步骤

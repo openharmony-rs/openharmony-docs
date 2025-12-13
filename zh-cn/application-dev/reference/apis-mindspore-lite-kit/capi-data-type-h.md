@@ -33,7 +33,7 @@
 
 ### OH_AI_DataType
 
-```
+```c
 enum OH_AI_DataType
 ```
 

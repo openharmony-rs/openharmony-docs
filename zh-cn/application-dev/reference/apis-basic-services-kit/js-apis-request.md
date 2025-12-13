@@ -406,7 +406,7 @@ on(type: 'headerReceive', callback:  (header: object) =&gt; void): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 订阅的事件类型，支持的事件包括：`'complete'`\|`'fail'`。<br/>\- `'complete'`：表示上传任务完成，任务完成时触发该事件。 <br/>\- `'fail'`：表示上传任务失败，任务失败时触发该事件。 
+  | type | string | 是 | 订阅的事件类型，支持的事件包括：`'complete'`\|`'fail'`。<br/>\- `'complete'`：表示上传任务完成，任务完成时触发该事件。 <br/>\- `'fail'`：表示上传任务失败，任务失败时触发该事件。| 
   | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | 是 | 上传任务完成或失败的回调函数。返回上传任务的任务状态信息。 |
 
 
@@ -693,7 +693,7 @@ remove(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API Version 9开始不再维护，建议使用[delete](#delete9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9)替代。
 
 **返回值：**
 
@@ -732,7 +732,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API Version 9开始不再维护，建议使用[delete](#delete9-1)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9-1)替代。
 
 **参数：**
 
@@ -1979,7 +1979,7 @@ remove(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API Version 9开始不再维护，建议使用[delete](#delete9-2)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9-2)替代。
 
 **返回值：**
 
@@ -2018,7 +2018,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API Version 9开始不再维护，建议使用[delete](#delete9-3)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9-3)替代。
 
 **参数：**
 
@@ -2059,7 +2059,7 @@ query(): Promise&lt;DownloadInfo&gt;
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[getTaskInfo](#gettaskinfo9)替代。
+> 从API version 7开始支持，从API version 9开始废弃,建议使用[getTaskInfo](#gettaskinfo9)替代。
 
 **返回值：**
 
@@ -2098,7 +2098,7 @@ query(callback: AsyncCallback&lt;DownloadInfo&gt;): void
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[getTaskInfo](#gettaskinfo9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskInfo](#gettaskinfo9-1)替代。
 
 **参数：**
 
@@ -2139,7 +2139,7 @@ queryMimeType(): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[getTaskMimeType](#gettaskmimetype9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](#gettaskmimetype9)替代。
 
 **返回值：**
 
@@ -2178,7 +2178,7 @@ queryMimeType(callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[getTaskMimeType](#gettaskmimetype9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](#gettaskmimetype9-1)替代。
 
 **参数：**
 
@@ -2219,7 +2219,7 @@ pause(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[suspend](#suspend9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend](#suspend9)替代。
 
 **返回值：**
 
@@ -2299,7 +2299,7 @@ resume(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[restore](#restore9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](#restore9)替代。
 
 **返回值：**
 
@@ -2338,7 +2338,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[restore](#restore9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](#restore9-1)替代。
 
 **参数：**
 

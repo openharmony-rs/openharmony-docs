@@ -14,7 +14,7 @@ UIContext实例对象。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
-> - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext23)获取UIContext实例。本文中UIContext对象以uiContext表示。
+> - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext22)获取UIContext实例。本文中UIContext对象以uiContext表示。
 
 **示例：**
 
@@ -58,7 +58,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## constructor<sup>23+</sup>
+## constructor<sup>22+</sup>
 
 constructor()
 
@@ -68,7 +68,7 @@ constructor()
 >
 > 通过构造函数创建的UIContext对象指向不明确的UI上下文，即不指向任何UI实例。该UIContext对应实例的唯一标识ID为-1。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,7 +142,7 @@ struct Index {
 }
 ```
 
-## getCallingScopeUIContext<sup>23+</sup>
+## getCallingScopeUIContext<sup>22+</sup>
 
 static getCallingScopeUIContext(): UIContext | undefined
 
@@ -152,7 +152,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 >
 > 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](#isavailable20)接口判断其有效性。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -193,13 +193,13 @@ struct Index {
 }
 ```
 
-## getLastFocusedUIContext<sup>23+</sup>
+## getLastFocusedUIContext<sup>22+</sup>
 
 static getLastFocusedUIContext(): UIContext | undefined
 
 获取最近一次切换到获焦状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,13 +240,13 @@ struct Index {
 }
 ```
 
-## getLastForegroundUIContext<sup>23+</sup>
+## getLastForegroundUIContext<sup>22+</sup>
 
 static getLastForegroundUIContext(): UIContext | undefined
 
 获取最近一次切换到前台状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -287,13 +287,13 @@ struct Index {
 }
 ```
 
-## getAllUIContexts<sup>23+</sup>
+## getAllUIContexts<sup>22+</sup>
 
 static getAllUIContexts(): UIContext[]
 
 获取所有当前有效的UIContext实例。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -334,11 +334,11 @@ struct Index {
 }
 ```
 
-## resolveUIContext<sup>23+</sup>
+## resolveUIContext<sup>22+</sup>
 
 static resolveUIContext(): ResolvedUIContext
 
-使用优先级策略获取UIContext对象和UIContext的解析策略。
+使用优先级策略获取带有解析策略的UIContext实例对象。
 
 >**说明：**
 >
@@ -352,7 +352,7 @@ static resolveUIContext(): ResolvedUIContext
 > 5. 如果存在多个UI实例，则返回实例唯一标识的ID最大的UIContext。
 > 6. 如果以上条件均不满足，则返回一个无效的UIContext实例。
 
-**原子化服务API:：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -360,7 +360,7 @@ static resolveUIContext(): ResolvedUIContext
 
 |类型|说明|
 |----|----|
-| [ResolvedUIContext](./arkts-apis-uicontext-resolveduicontext.md) | 返回UIContext实例对象和UIContext的解析策略。 |
+| [ResolvedUIContext](./arkts-apis-uicontext-resolveduicontext.md) | 返回带有解析策略的UIContext实例对象。 |
 
 **示例：**
 

@@ -29,7 +29,7 @@
 | 接口名 | 描述 |
 | -------- | -------- |
 | addWatcher(watcher: Watcher): AppEventPackageHolder | 添加应用事件观察者以订阅应用事件。 |
-| removeWatcher(watcher: Watcher): void | 移除应用事件观察者，取消对应用事件的订阅。
+| removeWatcher(watcher: Watcher): void | 移除应用事件观察者，取消对应用事件的订阅。 |
 ## 开发步骤
 
 以订阅发生内存泄漏场景生成的资源泄漏事件为例，说明开发步骤。

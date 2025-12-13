@@ -244,10 +244,80 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
+const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"userid\":100, \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
     .then((data) => {
       console.info(`promise: getUkeyPinAuthState success, data: ${data}`);
     });
+```
+
+## huksExternalCrypto.getProperty
+
+getProperty(resourceId: string, propertyId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<Array\<HuksExternalCryptoParam>>
+
+调用此接口获取属性值并返回结果。使用Promise异步回调。propertyId表示查询属性的ID信息，当前仅支持GMT 0016-2023中定义的SKF接口名作为属性ID，支持的ID包括如下：
+
+- SKF_EnumDev
+- SKF_GetDevInfo
+- SKF_EnumApplication
+- SKF_EnumContainer
+- SKF_ExportPublicKey
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ------- | ---- | ----------|
+| resourceId | string | 是   | 资源ID，可通过[导出证书的接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，该接口的返回结果中附带resourceId。 |
+| propertyId | string | 是   | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，应用开发者需要针对接口名进行适配。 |
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 需要传递给Extension Ability的输入参数。 |
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------- | ------- |
+| Promise\<Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)>> | param数组，包含要查询的属性结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 12000006 | the Ukey driver operation failed. |
+| 12000011 | if not found the cached resource id. |
+| 12000014 | memory is insufficient. |
+| 12000018 | the input parameter is invalid. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+const testResourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  userid: 100,
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+
+let propertyId = "SKF_EnumDev";
+const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+
+console.info(`promise: await huksExternalCrypto getProperty`);
+try {
+  await huksExternalCrypto.getProperty(testResourceId, propertyId, extProperties)
+    .then((data) => {
+      console.info(`promise: getProperty success, data: ` + JSON.stringify(data));
+    });
+} catch (error) {
+  console.error(`promise: getProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
+}
 ```

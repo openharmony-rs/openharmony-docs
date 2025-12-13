@@ -27,7 +27,9 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 
 创建一个NetConnection对象，[netSpecifier](#netspecifier)指定关注的网络的各项特征；timeout是超时时间(单位是毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
 
-**注意：** createNetConnection注册回调函数的数量不能超过2000（个），否则无法继续注册网络监听。
+>**注意：**
+>
+>createNetConnection注册回调函数的数量不能超过2000（个），否则无法继续注册网络监听。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2091,6 +2093,8 @@ getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
 
 > **说明：**
 >
+> 该接口获取IP邻居表的缓存的数据，并非局域网内所有连接的数据。
+>
 > 当开发者需要排查网络异常、解析IP地址与MAC地址映射时，可使用此接口。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.GET_IP_MAC_INFO
@@ -2152,7 +2156,9 @@ register(callback: AsyncCallback\<void>): void
 
 订阅指定网络状态变化的通知。如需监听特定事件，确保调用on监听事件后再调用register进行注册。
 
-**注意：** 使用完register接口后需要及时调用unregister取消注册。
+>**注意：**
+>
+>使用完register接口后需要及时调用unregister取消注册。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -3038,7 +3044,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。       |
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。       |
 | hasGateway     | boolean                     | 否 | 否 | 是否有网关。true：有网关；false：无网关。     |
-| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。 |
+| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。IPv4默认路由：目的地址为0.0.0.0/0的路由；IPv6默认路由：目的地址为::/0的路由。 |
 | isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
 
 ## LinkAddress

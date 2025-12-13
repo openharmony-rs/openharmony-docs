@@ -42,23 +42,23 @@
 
 1. 权限申请和声明。
 
-    使用安装和删除接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
-    
-    使用获取列表和获取详情接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
-    
-    申请流程请参考：[申请应用权限](../AccessToken/determine-application-mode.md)
-    
-    声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
+   使用安装和删除接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
+
+   使用获取列表和获取详情接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
+
+   申请流程请参考：[申请应用权限](../AccessToken/determine-application-mode.md)
+
+   声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
 
 2. 导入相关模块。
 
-```ts
-import { certificateManager } from '@kit.DeviceCertificateKit';
-```
+   ```ts
+   import { certificateManager } from '@kit.DeviceCertificateKit';
+   ```
 
 3. 安装用户CA证书、获取用户CA证书列表、获取用户证书详情、删除用户CA证书。
 
-<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets) -->
+   <!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets) -->
 
 ``` TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -138,7 +138,7 @@ async function userCASample() {
 
 4. 获取系统CA证书路径、用户CA证书路径。应用可以直接通过该路径访问CA证书。
 
-<!-- @[certificate_management_get_ca_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerGetCAPathSample.ets) -->
+   <!-- @[certificate_management_get_ca_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerGetCAPathSample.ets) -->
 
 ``` TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

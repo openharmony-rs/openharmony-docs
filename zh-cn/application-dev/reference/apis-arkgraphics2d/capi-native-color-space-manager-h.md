@@ -73,8 +73,8 @@ enum ColorSpaceName
 | BT601_SMPTE_C = 8 | 表示基于ITU-R BT.601的色彩空间。 |
 | BT2020_HLG = 9 | 表示基于ITU-R BT.2020的色彩空间。 |
 | BT2020_PQ = 10 | 表示基于ITU-R BT.2020的色彩空间。 |
-| P3_HLG = 11 | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为FUll的色彩空间。 |
-| P3_PQ = 12 | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为FUll的色彩空间。 |
+| P3_HLG = 11 | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。 |
+| P3_PQ = 12 | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。 |
 | ADOBE_RGB_LIMIT = 13 | 表示色彩原色为ADOBE_RGB，传输特性为ADOBE_RGB，色彩范围为LIMIT的色彩空间。 |
 | DISPLAY_P3_LIMIT = 14 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为LIMIT的色彩空间。 |
 | SRGB_LIMIT = 15 | 表示色彩原色为SRGB，传输特性为SRGB，色彩范围为LIMIT的色彩空间。 |
@@ -89,10 +89,10 @@ enum ColorSpaceName
 | LINEAR_SRGB = 24 | 表示色彩原色为SRGB，传输特性为LINEAR的色彩空间。 |
 | LINEAR_BT709 = LINEAR_SRGB | 表示色彩原色为BT709，传输特性为LINEAR的色彩空间。 |
 | LINEAR_BT2020 = 25 | 表示色彩原色为BT2020，传输特性为LINEAR的色彩空间。 |
-| DISPLAY_SRGB = SRGB | 表示色彩原色为SRGB，传输特性为SRGB，色彩范围为FUll的色彩空间。 |
-| DISPLAY_P3_SRGB = DISPLAY_P3 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为FUll的色彩空间。 |
-| DISPLAY_P3_HLG = P3_HLG | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为FUll的色彩空间。 |
-| DISPLAY_P3_PQ = P3_PQ | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为FUll的色彩空间。 |
+| DISPLAY_SRGB = SRGB | 表示色彩原色为SRGB，传输特性为SRGB，色彩范围为Full的色彩空间。 |
+| DISPLAY_P3_SRGB = DISPLAY_P3 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为Full的色彩空间。 |
+| DISPLAY_P3_HLG = P3_HLG | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。 |
+| DISPLAY_P3_PQ = P3_PQ | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。 |
 | CUSTOM = 5 | 表示自定义色彩空间。 |
 
 

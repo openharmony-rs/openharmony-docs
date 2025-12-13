@@ -22,7 +22,7 @@ import { ble } from '@kit.ConnectivityKit';
 ```
 
 
-## ProfileConnectionState<sup>10+</sup>
+## ProfileConnectionState
 
 type ProfileConnectionState = constant.ProfileConnectionState
 
@@ -2478,7 +2478,7 @@ getConnectedState(deviceId: string): ProfileConnectionState
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| [ProfileConnectionState](#profileconnectionstate10) | 蓝牙设备的profile连接状态。 |
+| [ProfileConnectionState](#profileconnectionstate) | 蓝牙设备的profile连接状态。 |
 
 **错误码**：
 
@@ -4146,6 +4146,98 @@ try {
 }
 ```
 
+
+### on('serviceChange')<sup>22+</sup>
+
+on(type: 'serviceChange', callback: Callback&lt;void&gt;): void
+
+client端设备订阅server端设备服务变化的通知事件，使用Callback异步回调。<br>
+- 如client端已订阅该事件，当server端添加或删除服务时，client端均会收到服务变化通知。<br>
+- client端收到服务变化通知时，建议重新调用[getServices](#getservices)获取server端设备支持的最新服务能力。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| type     | string                                   | 是    | 事件回调类型，支持的事件为'serviceChange'，表示服务变化通知事件。<br>当server端添加或删除服务时，会触发该事件通知client端。 |
+| callback | Callback&lt;void&gt; | 是    | 通知client端设备，server端服务已发生变更。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+function ServiceChangedEvent() : void {
+    console.info("service has changed.");
+}
+
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+// 需预先调用connect接口先连上server端设备
+try {
+    gattClient.on('serviceChange', ServiceChangedEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+### off('serviceChange')<sup>22+</sup>
+
+off(type: 'serviceChange', callback?: Callback&lt;void&gt;): void
+
+client端设备取消订阅server端设备服务变化的通知事件。<br>
+- 取消订阅后，server端设备服务变化，client端将不再收到事件通知。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| type     | string                                   | 是    | 事件回调类型，支持的事件为'serviceChange'，表示服务变化通知事件。<br>当server端添加或删除服务时，会触发该事件通知client端。 |
+| callback | Callback&lt;void&gt; | 否    | 指定取消订阅服务变化的回调函数通知。若传参，则需与[on('serviceChange')](#onservicechange22)中传入的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+function ServiceChangedEvent() : void {
+    console.info("service has changed.");
+}
+
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+// 需预先调用connect接口先连上server端设备
+try {
+    gattClient.off('serviceChange', ServiceChangedEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
 ### getConnectedState<sup>22+</sup>
 
 getConnectedState(): ProfileConnectionState
@@ -4161,7 +4253,7 @@ getConnectedState(): ProfileConnectionState
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| [ProfileConnectionState](#profileconnectionstate10) | 蓝牙设备的profile连接状态。 |
+| [ProfileConnectionState](#profileconnectionstate) | 蓝牙设备的profile连接状态。 |
 
 **错误码**：
 
@@ -4655,17 +4747,21 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 
 扫描到符合过滤条件的广播报文后，上报的扫描数据。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 | 名称       | 类型        | 只读 | 可选   | 说明                                 |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | 否 | 否    | 扫描到的蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
-| rssi     | number      | 否 | 否    | 扫描到的设备信号强度，单位：dBm。                    |
-| data     | ArrayBuffer | 否 | 否    | 扫描到的设备发送的广播报文内容。                    |
-| deviceName | string | 否 | 否    | 扫描到的设备名称。                    |
-| connectable  | boolean | 否 | 否    | 扫描到的设备是否可连接。true表示可连接，false表示不可连接。                    |
+| deviceId | string      | 否 | 否    | 扫描到的蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
+| rssi     | number      | 否 | 否    | 扫描到的设备信号强度，单位：dBm。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| data     | ArrayBuffer | 否 | 否    | 扫描到的设备发送的原始未解析的广播报文内容。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| deviceName | string | 否 | 否    | 扫描到的设备名称，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0x09。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| connectable  | boolean | 否 | 否    | 扫描到的设备是否可连接。true表示可连接，false表示不可连接。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| advertiseFlags<sup>22+</sup>  | number | 否 | 是    | 扫描到的设备广播标记位，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0x01。若广播报文中携带标记位，则该字段有值，否则内容为undefined。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。  |
+| manufacturerDataMap<sup>22+</sup>  | Map\<number, Uint8Array> | 否 | 是    | 扫描到的设备制造商数据集合，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0xFF。若广播报文中携带设备制造商数据，则该字段有值，否则内容为undefined。<br>- Map的key表示制造商ID，value表示对应制造商数据的具体内容。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。  |
+| serviceDataMap<sup>22+</sup>  | Map\<string, Uint8Array> | 否 | 是    | 扫描到的设备服务数据集合，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0x16。若广播报文中携带设备服务数据，则该字段有值，否则内容为undefined。<br>- Map的key表示服务UUID，value表示对应UUID服务的具体内容。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。   |
+| serviceUuids<sup>22+</sup>  | string[] | 否 | 是    | 扫描到的设备服务UUID集合，从原始数据data字段中解析而来，在蓝牙协议中，16-bit UUID的广播数据类型为0x03，32-bit UUID类型为0x05，128-bit UUID类型为0x07。若广播报文中携带设备服务UUID，则该字段有值，否则内容为undefined。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。   |
+| txPowerLevel<sup>22+</sup>  | number | 否 | 是    | 扫描到的设备广播发送功率，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0x0A。若广播报文中携带设备广播发送功率，则该字段有值，否则内容为undefined。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。   |
+| advertisingDataMap<sup>22+</sup>  | Map\<number, Uint8Array> | 否 | 是    | 扫描到的设备广播数据集，从原始数据data字段中解析而来。<br>- Map的key表示广播数据类型，value表示对应数据类型的具体内容，如advertisingDataMap字段中key为0x0A的对应value含义为txPowerLevel值。<br>- 若广播报文中携带任意广播数据内容，则该字段有值，否则内容为undefined。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。    |
 
 
 ## AdvertiseSetting
