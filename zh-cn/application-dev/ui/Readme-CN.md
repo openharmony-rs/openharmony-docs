@@ -68,7 +68,8 @@
         - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
       - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
-        - [\@Monitor装饰器：状态变量修改监听](state-management/arkts-new-monitor.md)
+        - [\@Monitor装饰器：状态变量修改异步监听](state-management/arkts-new-monitor.md)
+         -[\@SyncMonitor装饰器：状态变量修改同步监听](state-management/arkts-new-syncmonitor.md)
         - [\@Computed装饰器：计算属性](state-management/arkts-new-computed.md)
         - [\@Type装饰器: 标记类属性的类型](state-management/arkts-new-type.md)
       - 管理应用拥有的状态<!--arkts-v2-manage-application-state-->
