@@ -106,12 +106,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let encodeImage: image.PixelMap | undefined = undefined;
 let captrueMetadata: string = "";
-metadataBinding.decodeImage(encodeImage).then((metadata: string) =>{
-	captrueMetadata = metadata;
-}).catch((error: Error) => {
-    const err = error as BusinessError;
-	console.error("decode image error" + error);
-}); 
+if (encodeImage) {
+	metadataBinding.decodeImage(encodeImage)
+		.then((metadata: string) => {
+			captrueMetadata = metadata;
+		})
+		.catch((error: Error) => {
+			const err = error as BusinessError;
+			console.error("decode image error " + err);
+		});
+} else {
+	console.warn("encodeImage is undefined, skip decodeImage");
+	captrueMetadata = "";
+}
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent<sup>18+</sup>
