@@ -864,9 +864,9 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 
 网格滑动时触发。
 
-从API version 10开始使用。
-
-从API version 12开始废弃不再使用，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
+> **说明：**
+>
+> 从API version 10开始支持，从API version 12开始废弃，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
