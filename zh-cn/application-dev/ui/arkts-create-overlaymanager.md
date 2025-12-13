@@ -47,13 +47,6 @@ function builderText(params: Params) {
   }.offset(params.offset)
 }
 
-function initOverlayNode(uiContext: UIContext): OverlayManager {
-  uiContext.setOverlayManagerOptions({
-    enableBackPressedEvent: true
-  });
-  return uiContext.getOverlayManager();
-}
-
 @Entry
 @Component
 struct OverlayExample {

@@ -73,7 +73,7 @@ struct Index {
               console.error('showActionMenu error: ' + err);
             })
         })
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    }.height('100%').width('100%')
   }
 }
 ```
@@ -129,7 +129,7 @@ struct Index {
             console.error(`showDialog args error code is ${code}, message is ${message}`);
           };
         })
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    }.height('100%').width('100%')
   }
 }
 ```
