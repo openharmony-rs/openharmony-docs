@@ -46,6 +46,35 @@
 | [int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)](#oh_preferences_registerdataobserver) | -                          | 对选取的Key注册数据变更订阅。订阅的Key的值发生变更后，在调用OH_Preferences_Close()后触发回调。 |
 | [int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)](#oh_preferences_unregisterdataobserver) | -                          | 取消注册选取Key的数据变更订阅。                              |
 | [int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *isSupported)](#oh_preferences_isstoragetypesupported) | -                          | 校验当前平台是否支持对应存储模式。                           |
+| [int OH_Preferences_SetValue(OH_Preferences *preference, const char *key, OH_PreferencesValue *value)](#oh_preferences_setvalue) | -                          | 根据Key设置Preferences实例对象中的值。                       |
+| [int OH_Preferences_GetValue(OH_Preferences *preference, const char *key, OH_PreferencesValue **value)](#oh_preferences_getvalue) | -                          | 获取Preferences实例对象中Key对应的值。                       |
+| [int OH_Preferences_GetAll(OH_Preferences *preference, OH_PreferencesPair **pairs, uint32_t *count)](#oh_preferences_getall) | -                          | 获取Preferences实例对象中所有的KV数据。                       |
+| [bool OH_Preferences_HasKey(OH_Preferences *preference, const char *key)](#oh_preferences_haskey) | -                          | 校验Preferences实例对象中是否存在指定的Key。                 |
+| [int OH_Preferences_Flush(OH_Preferences *preference)](#oh_preferences_flush) | -                          | 刷新Preferences实例对象中的数据到存储。                     |
+| [int OH_Preferences_ClearCache(OH_Preferences *preference)](#oh_preferences_clearcache) | -                          | 清除Preferences实例对象的缓存数据。                         |
+| [int OH_Preferences_RegisterMultiProcessDataObserver(OH_Preferences *preference, void *context, OH_PreferencesDataObserver observer)](#oh_preferences_registermultiprocessdataobserver) | -                          | 对选取的Key注册数据变更订阅。订阅的Key的值发生变更后，在调用OH_Preferences_Close()后触发回调。 |
+| [int OH_Preferences_UnregisterMultiProcessDataObserver(OH_Preferences *preference, void *context, OH_PreferencesDataObserver observer)](#oh_preferences_unregistermultiprocessdataobserver) | -                          | 取消注册选取Key的数据变更订阅。                              |
+| [OH_PreferencesValue * OH_PreferencesValue_Create(void)](#oh_preferencesvalue_create) | 创建一个PreferencesValue实例对象以及指向它的指针。 当不再需要使用指针时，请使用OH_PreferencesValue_Destroy销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_PreferencesValue_Destroy(OH_PreferencesValue *value)](#oh_preferencesvalue_destroy) | 销毁PreferencesValue实例对象。 |
+| [int OH_PreferencesValue_SetInt(OH_PreferencesValue *value, int intValue)](#oh_preferencesvalue_setint) | -                          | 设置PreferencesValue实例对象中的整型值。                     |
+| [int OH_PreferencesValue_SetBool(OH_PreferencesValue *value, bool boolValue)](#oh_preferencesvalue_setbool) | -                          | 设置PreferencesValue实例对象中的布尔值。                     |
+| [int OH_PreferencesValue_SetString(OH_PreferencesValue *value, const char *stringValue)](#oh_preferencesvalue_setstring) | -                          | 设置PreferencesValue实例对象中的字符串值。                   |
+| [int OH_PreferencesValue_SetInt64(OH_PreferencesValue *value, int64_t int64Value)](#oh_preferencesvalue_setint64) | -                          | 设置PreferencesValue实例对象中的64位整型值。                 |
+| [int OH_PreferencesValue_GetInt64(OH_PreferencesValue *value, int64_t *int64Value)](#oh_preferencesvalue_getint64) | -                          | 获取PreferencesValue实例对象中的64位整型值。                 |
+| [int OH_PreferencesValue_SetDouble(OH_PreferencesValue *value, double doubleValue)](#oh_preferencesvalue_setdouble) | -                          | 设置PreferencesValue实例对象中的双精度浮点值。               |
+| [int OH_PreferencesValue_GetDouble(OH_PreferencesValue *value, double *doubleValue)](#oh_preferencesvalue_getdouble) | -                          | 获取PreferencesValue实例对象中的双精度浮点值。               |
+| [int OH_PreferencesValue_SetIntArray(OH_PreferencesValue *value, const int *intArray, uint32_t count)](#oh_preferencesvalue_setintarray) | -                          | 设置PreferencesValue实例对象中的整型数组值。                 |
+| [int OH_PreferencesValue_GetIntArray(const OH_PreferencesValue *object, int **value, uint32_t *count)](#oh_preferencesvalue_getintarray) | -                          | 获取PreferencesValue实例对象中的整型数组值。                 |
+| [int OH_PreferencesValue_SetBoolArray(OH_PreferencesValue *value, const bool *boolArray, uint32_t count)](#oh_preferencesvalue_setboolarray) | -                          | 设置PreferencesValue实例对象中的布尔数组值。                 |
+| [int OH_PreferencesValue_GetBoolArray(const OH_PreferencesValue *object, bool **value, uint32_t *count)](#oh_preferencesvalue_getboolarray) | -                          | 获取PreferencesValue实例对象中的布尔数组值。                 |
+| [int OH_PreferencesValue_SetStringArray(OH_PreferencesValue *value, const char **stringArray, uint32_t count)](#oh_preferencesvalue_setstringarray) | -                          | 设置PreferencesValue实例对象中的字符串数组值。               |
+| [int OH_PreferencesValue_GetStringArray(const OH_PreferencesValue *object, const char ***value, uint32_t *count)](#oh_preferencesvalue_getstringarray) | -                          | 获取PreferencesValue实例对象中的字符串数组值。               |
+| [int OH_PreferencesValue_SetInt64Array(OH_PreferencesValue *value, const int64_t *int64Array, uint32_t count)](#oh_preferencesvalue_setint64array) | -                          | 设置PreferencesValue实例对象中的64位整型数组值。             |
+| [int OH_PreferencesValue_GetInt64Array(const OH_PreferencesValue *object, int64_t **value, uint32_t *count)](#oh_preferencesvalue_getint64array) | -                          | 获取PreferencesValue实例对象中的64位整型数组值。             |
+| [int OH_PreferencesValue_SetDoubleArray(OH_PreferencesValue *value, const double *doubleArray, uint32_t count)](#oh_preferencesvalue_setdoublearray) | -                          | 设置PreferencesValue实例对象中的双精度浮点数组值。           |
+| [int OH_PreferencesValue_GetDoubleArray(const OH_PreferencesValue *object, double **value, uint32_t *count)](#oh_preferencesvalue_getdoublearray) | -                          | 获取PreferencesValue实例对象中的双精度浮点数组值。           |
+| [int OH_PreferencesValue_SetBlob(OH_PreferencesValue *value, const uint8_t *blob, uint32_t count) ](#oh_preferencesvalue_setblob) | -                          | 设置PreferencesValue实例对象中的二进制数据值。               |
+| [int OH_PreferencesValue_GetBlob(const OH_PreferencesValue *object, uint8_t **blob, uint32_t *count)](#oh_preferencesvalue_getblob) | -                          | 获取PreferencesValue实例对象中的二进制数据值。               |
 
 ## 函数说明
 
@@ -418,3 +447,205 @@ int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *is
 | ---- | ------------------------------------------------------------ |
 | int  | 返回接口操作执行的状态码。<br>PREFERENCES_OK，表示操作成功。<br>PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
 
+### OH_Preferences_SetValue()
+
+```c
+int OH_Preferences_SetValue(OH_Preferences *preference, const char *key, OH_PreferencesValue *value)
+```
+
+**描述**
+
+设置Preferences实例对象中指定Key对应的值。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项                                                       | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| const char *key                                              | 要设置值的Key。                                              |
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *value | 要设置的值。                                                 |
+
+**返回：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+
+### OH_Preferences_GetValue()
+
+```c
+int OH_Preferences_GetValue(OH_Preferences *preference, const char *key, OH_PreferencesValue *value)
+```
+**描述**
+
+获取Preferences实例对象中指定Key对应的值。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项                                                       | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| const char *key                                              | 要获取值的Key。                                              |
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *value | 用于存储获取到的值的指针。                                   |
+
+**返回：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+
+### OH_Preferences_GetAll()
+
+```c
+int OH_Preferences_GetAll(OH_Preferences *preference, OH_PreferencesValue **values, uint32_t *count)
+```
+**描述**
+
+获取Preferences实例对象中所有的键值对。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项                                                       | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) **values | 用于存储获取到的所有键值对的指针数组。                       |
+| uint32_t *count                                              | 用于存储获取到的键值对数量的指针。                           |
+
+**返回：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+
+### OH_Preferences_HasKey()
+
+```c
+int OH_Preferences_HasKey(OH_Preferences *preference, const char *key)
+```
+**描述**
+
+检查Preferences实例对象中是否存在指定的Key。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项                                                       | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| const char *key                                              | 要检查是否存在的Key。                                       |
+
+**返回：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+
+### OH_Preferences_Flush()
+
+```c
+int OH_Preferences_Flush(OH_Preferences *preference)
+```
+**描述**
+
+将Preferences实例对象中的所有数据刷新到存储介质中。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项                                                       | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+
+### OH_Preferences_ClearCache()
+
+```c
+int OH_Preferences_ClearCache(OH_Preferences *preference)
+```
+**描述**
+
+清除Preferences实例对象的缓存数据。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项                                                       | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+
+### OH_Preferences_RegisterMultiProcessDataObserver()
+
+```c
+int OH_Preferences_RegisterMultiProcessDataObserver(OH_Preferences *preference, void *context, OH_PreferencesDataObserver observer)
+```
+**描述**
+
+注册Preferences实例对象的多进程数据观察者。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项                                                       | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| void *context                                                | 指向调用者上下文的指针，用于在回调函数中传递上下文信息。     |
+| [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdatacallback) observer | 指向数据观察者回调函数的指针。                               |
+
+**返回：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+
+### OH_Preferences_UnregisterMultiProcessDataObserver()
+
+```c
+int OH_Preferences_UnregisterMultiProcessDataObserver(OH_Preferences *preference, void *context, OH_PreferencesDataObserver observer)
+```
+**描述**
+取消注册Preferences实例对象的多进程数据观察者。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项                                                       | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| void *context                                                | 指向调用者上下文的指针，用于在回调函数中传递上下文信息。     |
+| [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdatacallback) observer | 指向数据观察者回调函数的指针。                               |
+
+**返回：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |

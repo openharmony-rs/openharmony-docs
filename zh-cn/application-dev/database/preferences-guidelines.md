@@ -46,6 +46,37 @@
 | int OH_PreferencesValue_GetInt (const OH_PreferencesValue \*object, int \*value) | 从PreferencesValue对象OH_PreferencesValue中获取一个整型值。 |
 | int OH_PreferencesValue_GetBool (const OH_PreferencesValue \*object, bool \*value) | 从PreferencesValue对象OH_PreferencesValue中获取一个布尔值。 |
 | int OH_PreferencesValue_GetString (const OH_PreferencesValue \*object, char \*\*value, uint32_t \*valueLen) | 从PreferencesValue对象OH_PreferencesValue中获取字符串。 |
+| int OH_Preferences_DeletePreferences(OH_PreferencesOption \*option) | 删除Preferences实例对象。 |
+| int OH_Preferences_SetValue(OH_Preferences \*preference, const char \*key, OH_PreferencesValue \*value) | 根据Key设置Preferences实例对象中的值。 |
+| int OH_Preferences_GetValue(OH_Preferences \*preference, const char \*key, OH_PreferencesValue \*\*value) | 根据Key获取Preferences实例对象中的值。 |
+| int OH_Preferences_GetAll(OH_Preferences \*preference, OH_PreferencesPair \*\*pairs, uint32_t \*count) | 获取Preferences实例对象中的所有KV数据。 |
+| bool OH_Preferences_HasKey(OH_Preferences \*preference, const char \*key) | 检查Preferences实例对象中是否包含指定的Key。 |
+| int OH_Preferences_Flush(OH_Preferences \*preference) | 刷新Preferences实例对象中的数据到磁盘。 |
+| int OH_Preferences_ClearCache(OH_Preferences \*preference) | 清除Preferences实例对象中的缓存数据。 |
+| int OH_Preferences_RegisterMultiProcessDataObserver(OH_Preferences \*preference, void \*context, OH_PreferencesDataObserver observer) | 对选取的Key注册数据变更订阅。订阅的Key的值发生变更后，在调用OH_Preferences_Close()后触发回调。 |
+| int OH_Preferences_UnregisterMultiProcessDataObserver(OH_Preferences \*preference, void \*context, OH_PreferencesDataObserver observer) | 取消注册选取Key的数据变更订阅。 |
+| void OH_PreferencesPair_Destroy(OH_PreferencesPair \*pairs) | 销毁PreferencesPair实例对象。 |
+| OH_PreferencesValue \* OH_PreferencesValue_Create(void) | 创建一个PreferencesValue实例对象以及指向它的指针。 当不再需要使用指针时，请使用OH_PreferencesValue_Destroy销毁实例对象，否则会导致内存泄漏。 |
+| void OH_PreferencesValue_Destroy(OH_PreferencesValue \*value) | 销毁PreferencesValue实例对象。 |
+| int OH_PreferencesValue_SetInt(OH_PreferencesValue \*value, int intValue) | 设置PreferencesValue实例对象中的整型值。 |
+| int OH_PreferencesValue_SetBool(OH_PreferencesValue \*value, bool boolValue) | 设置PreferencesValue实例对象中的布尔值。 |
+| int OH_PreferencesValue_SetString(OH_PreferencesValue \*value, const char \*stringValue) | 设置PreferencesValue实例对象中的字符串值。 |
+| int OH_PreferencesValue_SetInt64(OH_PreferencesValue \*value, int64_t int64Value) | 设置PreferencesValue实例对象中的64位整型值。 |
+| int OH_PreferencesValue_GetInt64(OH_PreferencesValue \*value, int64_t \*int64Value) | 获取PreferencesValue实例对象中的64位整型值。 |
+| int OH_PreferencesValue_SetDouble(OH_PreferencesValue \*value, double doubleValue) | 设置PreferencesValue实例对象中的双精度浮点值。 |
+| int OH_PreferencesValue_GetDouble(OH_PreferencesValue \*value, double \*doubleValue) | 获取PreferencesValue实例对象中的双精度浮点值。 |
+| int OH_PreferencesValue_SetIntArray(OH_PreferencesValue \*value, const int \*intArray, uint32_t count) | 设置PreferencesValue实例对象中的整型数组值。 |
+| int OH_PreferencesValue_GetIntArray(const OH_PreferencesValue \*object, int \*\*value, uint32_t \*count) | 获取PreferencesValue实例对象中的整型数组值。 |
+| int OH_PreferencesValue_SetBoolArray(OH_PreferencesValue \*value, const bool \*boolArray, uint32_t count) | 设置PreferencesValue实例对象中的布尔数组值。 |
+| int OH_PreferencesValue_GetBoolArray(const OH_PreferencesValue \*object, bool \*\*value, uint32_t \*count) | 获取PreferencesValue实例对象中的布尔数组值。 |
+| int OH_PreferencesValue_SetStringArray(OH_PreferencesValue \*value, const char \*\*stringArray, uint32_t count) | 设置PreferencesValue实例对象中的字符串数组值。 |
+| int OH_PreferencesValue_GetStringArray(const OH_PreferencesValue \*object, char \*\*\*value, uint32_t \*count) | 获取PreferencesValue实例对象中的字符串数组值。 |
+| int OH_PreferencesValue_SetInt64Array(OH_PreferencesValue \*value, const int64_t \*int64Array, uint32_t count) | 设置PreferencesValue实例对象中的64位整型数组值。 |
+| int OH_PreferencesValue_GetInt64Array(const OH_PreferencesValue \*object, int64_t \*\*value, uint32_t \*count) | 获取PreferencesValue实例对象中的64位整型数组值。 |
+| int OH_PreferencesValue_SetDoubleArray(OH_PreferencesValue \*value, const double \*doubleArray, uint32_t count) | 设置PreferencesValue实例对象中的双精度浮点数组值。 |
+| int OH_PreferencesValue_GetDoubleArray(const OH_PreferencesValue \*object, double \*\*value, uint32_t \*count) | 获取PreferencesValue实例对象中的双精度浮点数组值。 |
+| int OH_PreferencesValue_SetBlob(OH_PreferencesValue \*value, const uint8_t \*blob, uint32_t count) | 设置PreferencesValue实例对象中的二进制数据值。 |
+| int OH_PreferencesValue_GetBlob(const OH_PreferencesValue \*object, uint8_t \*\*blob, uint32_t *count) | 获取PreferencesValue实例对象中的二进制数据值。 |
 
 
 ## 添加动态链接库
@@ -70,7 +101,7 @@ libohpreferences.so
 下列实例展示如何通过Preferences实现对键值数据的修改与持久化。
 1. 创建Preferences配置选项（PreferencesOption）对象并设置配置选项成员（名称、应用组ID、包名、存储模式）。使用完毕后，调用OH_PreferencesOption_Destroy销毁配置选项实例。
 2. 调用OH_Preferences_Open打开一个Preferences实例，该实例使用完后需要调用OH_Preferences_Close关闭。
-<!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 ``` C++
 // 1. 创建Preferences配置选项。
 OH_PreferencesOption *option = OH_PreferencesOption_Create();
@@ -127,8 +158,8 @@ if (preference == nullptr || errCode != PREFERENCES_OK) {
     // 错误处理
 }
 ```
-3. 调用OH_Preferences_RegisterDataObserver注册3个Key的数据变更订阅，订阅回调函数为DataChangeObserverCallback。
-<!--@[DataChangeObserverCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+3. 订阅回调函数为DataChangeObserverCallback。
+   <!--@[DataChangeObserverCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 
 ``` C++
 // 数据变更回调函数
@@ -166,9 +197,10 @@ void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, 
     }
 }
 ```
+   调用OH_Preferences_RegisterDataObserver注册3个Key的数据变更订阅。
+   <!--@[RegisterDataObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 4. 设置Preferences实例中的键值数据。
-5. 获取Preferences实例中的键值数据。
-<!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 ``` C++
 // 3. 对key_int、key_bool和key_string注册数据变更订阅。
 const char *keys[] = {"key_int", "key_bool", "key_string"};
@@ -219,11 +251,16 @@ if (ret == PREFERENCES_OK) {
     stringValue = nullptr;
 }
 ```
+5. 获取Preferences实例中的键值数据。
+   <!--@[PreferencesCrudGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+
 6. 调用OH_Preferences_Close关闭Preferences实例，关闭后需要将实例指针置空。
-<!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 ``` C++
 // 6. 使用完Preferences实例后需要关闭实例，关闭后需要将指针置空。
 (void)OH_Preferences_Close(preference);
 preference = nullptr;
 
 ```
+7. 设置和获取OH_PreferencesValue。
+   <!--@[PreferencesValueSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
