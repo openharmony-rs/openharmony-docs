@@ -87,11 +87,11 @@ struct Index {
 
 ## 注册回调中更改状态变量未解注册导致内存泄漏
 
-开发者可以在aboutToAppear中注册箭头函数，以此改变组件中的状态变量。
+开发者可以在[aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中注册箭头函数，以此改变组件中的状态变量。
 
 >**注意：**
 >
->需要在aboutToDisappear中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
+>需要在[aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
 
 <!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->
 
