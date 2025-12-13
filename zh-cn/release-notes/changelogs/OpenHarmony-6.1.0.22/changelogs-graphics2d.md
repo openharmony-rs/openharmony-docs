@@ -1,6 +1,6 @@
 #  图形图像子系统ChangeLog
 
-## cl.graphics2d.1 ArkTS WordBreak.BREAK_HYPHEN NDK WORD_BREAK_TYPE_BREAK_HYPHEN 连字符“-”断词换行能力不再支持以下六种语言：捷克语、印度尼西亚语、拉脱维亚语、马其顿语、斯洛伐克语、塞尔维亚语
+## cl.graphics2d.1 ArkTS WordBreak.BREAK_HYPHEN NDK WORD_BREAK_TYPE_BREAK_HYPHEN 移除以下六种语言连字符“-”断词换行能力的支持：捷克语、印度尼西亚语、拉脱维亚语、马其顿语、斯洛伐克语、塞尔维亚语
 
 **访问级别**
 
@@ -8,7 +8,7 @@
 
 **变更原因**
 
-Hyphen库对部分语种不再支持使用连字符“-”进行断词换行。
+Hyphen库将移除部分不兼容语种，这些语种的连字符“-”进行断词换行能力将会失效。
 
 **变更影响**
 
