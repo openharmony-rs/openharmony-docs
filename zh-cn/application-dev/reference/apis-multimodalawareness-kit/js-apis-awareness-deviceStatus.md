@@ -59,13 +59,13 @@
 **示例**：
 
   ```ts
-  try {
-    deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
-      console.info('now status = ' + data);
+try {
+    deviceStatus.onSteadyStandingDetect((data:deviceStatus.SteadyStandingStatus) => {
+        console.info('now status = ' + data);
     });
-  } catch (err) {
+} catch (err) {
     console.info('on failed, err = ' + err);
-  }
+}
   ```
 
 ## deviceStatus.off('steadyStandingDetect')<sup>18+</sup>
@@ -103,7 +103,7 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 
   ```ts
   try {
-    deviceStatus.off('steadyStandingDetect');
+    deviceStatus.offSteadyStandingDetect();
   } catch (err) {
     console.info('off failed, err = ' + err);
   }
@@ -119,13 +119,13 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
   };
   // 以callback为回调函数，订阅设备静止姿态感知（支架态）事件
   try {
-    deviceStatus.on('steadyStandingDetect', callback);
+    deviceStatus.onSteadyStandingDetect(callback);
   } catch (err) {
     console.info('on failed, err = ' + err);
   }
   // 取消该客户端订阅设备静止姿态感知（支架态）事件的特定回调函数
   try {
-    deviceStatus.off('steadyStandingDetect', callback);
+    deviceStatus.offSteadyStandingDetect(callback);
   } catch (err) {
     console.info('off failed, err = ' + err);
   }
