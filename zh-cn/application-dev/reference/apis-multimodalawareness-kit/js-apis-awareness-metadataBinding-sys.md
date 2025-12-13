@@ -52,15 +52,17 @@ ArkTS-Sta：encodeImage(srcImage: image.PixelMap, metadata: string): Promise<ima
 
 ```ts
 import image from '@ohos.multimedia.image';
+import metadataBinding  from '@ohos.multimodalAwareness.metadataBinding';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let captureImage: image.PixelMap | undefined = undefined;
 let metadata: string = "";
-let srcImage: image.PixelMap | undefined = undefined;
+let srcImage: image.PixelMap;
 metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) =>{
 	captureImage = pixelMap;
-}).catch((error:BusinessError)=>{
+}).catch((error: Error) => {
+    const err = error as BusinessError;
 	console.error("encode image error" + error);
 });
 ```
@@ -106,7 +108,8 @@ let encodeImage: image.PixelMap | undefined = undefined;
 let captrueMetadata: string = "";
 metadataBinding.decodeImage(encodeImage).then((metadata: string) =>{
 	captrueMetadata = metadata;
-}).catch((error:BusinessError)=>{
+}).catch((error: Error) => {
+    const err = error as BusinessError;
 	console.error("decode image error" + error);
 }); 
 ```
@@ -145,7 +148,8 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let metadata:string = '';
-metadataBinding.notifyMetadataBindingEvent(metadata).catch((error: BusinessError)=>{
+metadataBinding.notifyMetadataBindingEvent(metadata).catch((error: Error) => {
+	const err = error as BusinessError;
   console.error("notify metadata error" + error);
 });
 ```
