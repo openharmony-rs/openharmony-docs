@@ -917,7 +917,7 @@ struct Index {
 ```
 **参考链接**
 
-[ParallelizeUI最佳实践](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/ParallelizeUI/README.md)
+[ParallelizeUI最佳实践](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS-Sta/ParallelizeUI/README.md)
 
 
 ## UI并行化创建组件树接口ParallelizeUI如何确保多线程读写安全？(API 20)
