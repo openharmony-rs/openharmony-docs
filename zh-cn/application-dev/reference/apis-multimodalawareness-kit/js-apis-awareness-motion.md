@@ -135,7 +135,7 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    motion.off('operatingHandChanged');
+    motion.offOperatingHandChanged();
     console.info("off succeeded");
 } catch (err) {
     let error = err as BusinessError;
@@ -277,7 +277,7 @@ off(type: 'holdingHandChanged', callback?: Callback&lt;HoldingHandStatus&gt;): v
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  motion.off('holdingHandChanged'); // 移除所有同类订阅
+  motion.offHoldingHandChanged(); // 移除所有同类订阅
   console.info('off succeeded');
 } catch (err) {
   let error = err as BusinessError;
