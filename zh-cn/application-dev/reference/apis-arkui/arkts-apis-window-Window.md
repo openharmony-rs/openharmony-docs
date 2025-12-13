@@ -7264,19 +7264,27 @@ export default class EntryAbility extends UIAbility {
 
 ## restoreMainWindow<sup>23+</sup>
 
-restoreMainWindow(): Promise&lt;void&gt;
+restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
 
-将当前窗口的主窗口恢复到前台显示。只有窗口类型为TYPE_FLOAT的窗口可以使用此接口，当点击TYPE_FLOAT类型的窗口后，主窗口会被恢复到前台。使用Promise异步回调。
+将当前窗口的主窗口恢复到前台显示，如果主窗口已处于前台，则会抬升主窗层级。此接口仅适用于类型为[TYPE_FLOAT](./arkts-apis-window-e.md#windowtype7)的窗口，并且需在窗口触发过[DOWN](./arkui-ts/ts-appendix-enums.md#touchtype)事件后才能调用。使用Promise异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备上可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------------------------- | -- | ------------------------ |
+| wantParameters | Record&lt;string, Object&gt; | 否 | 拉起窗口时会给主窗传递的自定义参数，主窗会在触发[onNewWant](../apis-ability-kit/js-apis-app-ability-abilityLifecycleCallback.md#onnewwant12)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -7284,31 +7292,115 @@ restoreMainWindow(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 1300002      | This window state is abnormal.                               |
-| 1300003      | This window manager service works abnormally.                |
-| 1300004      | Unauthorized operation.                                      |
-| 1300007      | Restore parent main window failed. |
+| 801          | Capability not supported. Failed to call the API due to limited device capabilities.            |
+| 1300002      | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.   |
+| 1300003      | This window manager service works abnormally.      |
+| 1300004      | Unauthorized operation. Possible cause: 1. The window is not float window. 2. The window is not at foreground or has never been clicked. 3. The window cannot find main window.   |
+| 1300007      | Restore parent main window failed. Possible cause: 1. The main window is at PAUSED lifecycle state. 2. The main window is in background during recent. |
 
-**示例**
+**示例：**
 
+<!--no-check-->
 ```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
+// Float.ets
+import { window } from '@kit.ArkUI'
 import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON } from '@kit.ArkTS';
 
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
+@Entry
+@Component
+struct Float {
+  build() {
+    Button('CreateFloatWindow').onClick(() => {
+      this.createFloatWindow();
+    })
+  }
+
+  private createFloatWindow() {
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: 'testFloatWindow',
+      title: 'floatWindow',
+      windowType: window.WindowType.TYPE_FLOAT,
+      ctx: this.getUIContext()?.getHostContext(),
+      decorEnabled: true,
+    };
     try {
-      let windowClass = windowStage.getMainWindowSync();
-      let promise = windowClass.restoreMainWindow();
-      promise.then(() => {
-        console.info('Succeeded in restoring the main window.');
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to restore the main window. Cause code: ${err.code}, message: ${err.message}`);
+      window.createWindow(config, (err: BusinessError, data) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        console.info(`succedded in creating the window. Data: ${JSON.stringify(data)}`);
+        windowClass.resize(500, 1600).then(() => {
+          console.info('Succeeded in changing the window size.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+        });
+        windowClass.setUIContent("pages/FloatWindowInfo").then(() => {
+          console.info('Succeeded in loading the content.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        });
+        windowClass.showWindow().then(() => {
+          console.info("showWindow success");
+        }).catch((err: BusinessError) => {
+          console.error(`showWindow err: ${JSON.stringify(err)}`);
+        });
+        windowClass.moveWindowToAsync(20, 200).then(() => {
+          console.info('Succeeded in moving the window.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       });
     } catch (exception) {
-      console.error(`Failed to restore the main window. Cause code: ${exception.code}, message: ${exception.message}`);
+      console.error(`failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
     }
+  }
+}
+```
+<!--no-check-->
+```ts
+// FloatWindowInfo.ets
+import { window } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct FloatWindowInfo {
+  @State subWindow: window.Window | undefined = undefined;
+  @State windowId: number = -1;
+  async aboutToAppear(): Promise<void> {
+    this.subWindow = window.findWindow('testFloatWindow');
+    this.windowId = this.subWindow?.getWindowProperties()?.id;
+  }
+
+  build() {
+    Column() {
+      Text('Hello')
+    }
+    .width('100%')
+    .height('100%')
+    .onTouch((event: TouchEvent) => {
+      // 保证有Down事件产生，实际调用时机可由开发者决定
+      if (event.type === TouchType.Down) {
+        let param: Record<string, Object> = {
+          "info": "helloworld",
+        };
+        try {
+          let promise = this.subWindow?.restoreMainWindow(param);
+          promise?.then(() => {
+            console.info('Succeeded in restoring the main window.');
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to restore the main window. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          console.error(`Failed to restore the main window. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+      }
+    })
   }
 }
 ```
