@@ -15,7 +15,7 @@
 - **Native侧**：.cpp文件，实现模块的注册。需要提供注册lib库的名称，并在注册回调方法中定义接口的映射关系，即Native方法及对应的JS/ArkTS接口名称等。
 
 
-此处以在ArkTS/JS侧实现add()接口、在Native侧实现Add()接口，从而实现跨语言交互为例，呈现使用Node-API进行跨语言交互的流程。
+此处以在ArkTS/JS侧调用callNative()接口、在Native侧实现加法操作的CallNative()接口，从而实现跨语言交互为例，呈现使用Node-API进行跨语言交互的流程。 
 
 
 ## 创建Native C++工程
@@ -33,7 +33,7 @@
 
   napi_module有两个关键属性：一个是.nm_register_func，定义模块初始化函数；另一个是.nm_modname，定义模块的名称，也就是ArkTS侧引入的so库的名称，模块系统会根据此名称来区分不同的so。
 
-  ```
+  ``` TypeScript
   // entry/src/main/cpp/napi_init.cpp
   
   // 准备模块加载相关信息，将上述Init函数与本模块名等信息记录下来。
@@ -58,7 +58,7 @@
 
   实现ArkTS接口与C++接口的绑定和映射。
 
-  ```
+  ``` C++
   // entry/src/main/cpp/napi_init.cpp
   EXTERN_C_START
   // 模块初始化
@@ -74,12 +74,12 @@
       return exports;
   }
   EXTERN_C_END
-  
+
   ```
 
 - 在index.d.ts文件中，提供JS侧的接口方法。
 
-  ```
+  ``` TypeScript
   // entry/src/main/cpp/types/libentry/index.d.ts
   export const callNative: (a: number, b: number) => number;
   export const nativeCallArkTS: (cb: (a: number) => number) => number;
@@ -87,7 +87,7 @@
 
 - 在oh-package.json5文件中将index.d.ts与cpp文件关联起来。
 
-  ```
+  ``` JSON5
   // entry/src/main/cpp/types/libentry/oh-package.json5
   {
     "name": "libentry.so",
@@ -99,7 +99,7 @@
 
 - 在CMakeLists.txt文件中配置CMake打包参数。
 
-  ```
+  ```txt
   # entry/src/main/cpp/CMakeLists.txt
   cmake_minimum_required(VERSION 3.4.1)
   project(MyApplication2)
@@ -117,7 +117,7 @@
 
 - 实现Native侧的CallNative以及NativeCallArkTS接口。具体代码如下：
 
-  ```
+  ``` C++
   // entry/src/main/cpp/napi_init.cpp
   static napi_value CallNative(napi_env env, napi_callback_info info)
   {
@@ -165,7 +165,7 @@
 
 ArkTS侧通过import引入Native侧包含处理逻辑的so来使用C/C++的方法。
 
-```
+``` TypeScript
 // entry/src/main/ets/pages/Index.ets
 // 通过import的方式，引入Native能力。
 import nativeModule from 'libentry.so'
@@ -178,7 +178,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        // 第一个按钮，调用add方法，对应到Native侧的CallNative方法，进行两数相加。
+        // 第一个按钮，调用callNative方法，对应到Native侧的CallNative方法，进行两数相加。
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)

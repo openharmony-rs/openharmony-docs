@@ -36,7 +36,7 @@ The file declares the context constants of the AbilityRuntime module.
 
 ### AbilityRuntime_AreaMode
 
-```
+```c
 enum AbilityRuntime_AreaMode
 ```
 
@@ -56,7 +56,7 @@ Enumerates the data encryption levels.
 
 ### AbilityRuntime_StartVisibility
 
-```
+```c
 enum AbilityRuntime_StartVisibility
 ```
 
@@ -73,7 +73,7 @@ Enumerates the visibility modes of the window and dock bar icons when the abilit
 
 ### AbilityRuntime_WindowMode
 
-```
+```c
 enum AbilityRuntime_WindowMode
 ```
 
@@ -90,7 +90,7 @@ Enumerates the window modes.
 
 ### AbilityRuntime_SupportedWindowMode
 
-```
+```c
 enum AbilityRuntime_SupportedWindowMode
 ```
 

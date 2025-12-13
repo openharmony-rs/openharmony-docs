@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} Rdb_DistributedConfig
+typedef struct Rdb_DistributedConfig {...} Rdb_DistributedConfig
 ```
 
 ## 概述

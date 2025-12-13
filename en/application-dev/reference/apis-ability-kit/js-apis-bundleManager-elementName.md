@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-A structured identifier for an application component, containing fields such as **bundleName**, **moduleName**, and **abilityName**. It is usually used in [AbilityRunningInfo.ability](../apis-ability-kit/js-apis-inner-application-abilityRunningInfo.md) for component launch information and in the [connectOptions.onConnect](../apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect) callback for component connection.
+A structured identifier for an application component, containing fields such as **bundleName**, **moduleName**, and **abilityName**. It is usually used in [AbilityRunningInfo.ability](../apis-ability-kit/js-apis-inner-application-abilityRunningInfo.md) for component launch information and in the[connectOptions.onConnect](../apis-ability-kit/js-apis-inner-ability-connectOptions.md#connectoptions-1) callback for component connection.
 
 > **NOTE**
 >

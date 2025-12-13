@@ -41,7 +41,7 @@
 
 ### OH_CryptoKeyAgreement_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKeyAgreement **ctx)
 ```
 
@@ -67,7 +67,7 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKe
 
 ### OH_CryptoKeyAgreement_GenerateSecret()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey,OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)
 ```
 
@@ -95,7 +95,7 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ct
 
 ### OH_CryptoKeyAgreement_Destroy()
 
-```
+```c
 void OH_CryptoKeyAgreement_Destroy(OH_CryptoKeyAgreement *ctx)
 ```
 

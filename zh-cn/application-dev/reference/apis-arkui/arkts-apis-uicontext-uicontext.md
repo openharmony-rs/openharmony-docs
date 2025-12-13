@@ -338,7 +338,7 @@ struct Index {
 
 static resolveUIContext(): ResolvedUIContext
 
-使用优先级策略获取UIContext对象和UIContext的解析策略。
+使用优先级策略获取带有解析策略的UIContext实例对象。
 
 >**说明：**
 >
@@ -360,7 +360,7 @@ static resolveUIContext(): ResolvedUIContext
 
 |类型|说明|
 |----|----|
-| [ResolvedUIContext](./arkts-apis-uicontext-resolveduicontext.md) | 返回UIContext实例对象和UIContext的解析策略。 |
+| [ResolvedUIContext](./arkts-apis-uicontext-resolveduicontext.md) | 返回带有解析策略的UIContext实例对象。 |
 
 **示例：**
 

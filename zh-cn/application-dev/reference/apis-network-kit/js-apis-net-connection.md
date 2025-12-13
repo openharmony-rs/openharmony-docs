@@ -2093,6 +2093,8 @@ getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
 
 > **说明：**
 >
+> 该接口获取IP邻居表的缓存的数据，并非局域网内所有连接的数据。
+>
 > 当开发者需要排查网络异常、解析IP地址与MAC地址映射时，可使用此接口。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.GET_IP_MAC_INFO
@@ -3042,7 +3044,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。       |
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。       |
 | hasGateway     | boolean                     | 否 | 否 | 是否有网关。true：有网关；false：无网关。     |
-| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。 |
+| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。IPv4默认路由：目的地址为0.0.0.0/0的路由；IPv6默认路由：目的地址为::/0的路由。 |
 | isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
 
 ## LinkAddress

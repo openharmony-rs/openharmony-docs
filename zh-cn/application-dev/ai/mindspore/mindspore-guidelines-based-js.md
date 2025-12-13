@@ -112,7 +112,7 @@
    }
    ```
 
-### 实现图形输入和预处理，并执行推理
+### 实现图像输入和预处理，并执行推理
 
 1. 此处以获取相册图片为例，调用[@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
 

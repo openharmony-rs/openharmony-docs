@@ -81,7 +81,7 @@ static show(options?: CalendarDialogOptions): void
 @Entry
 @Component
 struct CalendarPickerDialogExample {
-  private selectedDate: Date = new Date('2024-04-23');
+  private selectedDate: Date = new Date('2024-03-24');
 
   build() {
     Column() {
@@ -278,7 +278,7 @@ struct CalendarPickerDialogExample {
 struct CalendarPickerDialogExample {
   private selectedDate: Date = new Date('2025-01-01');
   private startDate: Date = new Date('2024-01-10');
-  private endDate: Date = new Date('2025-1-10');
+  private endDate: Date = new Date('2025-01-10');
 
   build() {
     Column() {
@@ -344,7 +344,8 @@ struct CalendarPickerDialogExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
-      Image($r('app.media.bg'))
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg')) 
       Column() {
         Button("Show CalendarPicker Dialog")
           .margin(20)
@@ -382,6 +383,7 @@ struct CalendarPickerDialogExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("Show CalendarPicker Dialog")

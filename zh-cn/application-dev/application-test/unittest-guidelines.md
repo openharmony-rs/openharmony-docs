@@ -286,13 +286,15 @@ export default function abilityTest() {
 |  it          | 定义一条测试用例。          |
 |  beforeAll         | 在测试套内定义一个预置条件，在所有测试用例开始前执行且仅执行一次。                        |
 |  beforeEach        | 在测试套内定义一个预置条件，在每条测试用例开始前执行，执行次数与it定义的测试用例数一致。          |
+| beforeEachIt | 在测试套内定义一个单元预置条件，在每条测试用例开始前执行。<br/>外层测试套定义的beforeEachIt会在内部测试套中的测试用例执行前执行。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
 |  afterEach         | 在测试套内定义一个单元清理条件，在每条测试用例结束后执行，执行次数与it定义的测试用例数一致。          |
+| afterEachIt | 在测试套内定义一个单元预置条件，在每条测试用例结束后执行。<br/>外层测试套定义的afterEachIt会在内部测试套中的测试用例执行结束后执行。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
 |  afterAll          | 在测试套内定义一个清理条件，在所有测试用例结束后执行且仅执行一次。                        |
 |  beforeItSpecified | 在测试套内定义一个单元预置条件，仅在指定测试用例开始前执行。<br>**说明**：从@ohos/hypium 1.0.15版本开始支持。 |
 |  afterItSpecified  | 在测试套内定义一个单元清理条件，仅在指定测试用例结束后执行。<br>**说明**：从@ohos/hypium 1.0.15版本开始支持。 |
 |  expect            | 支持bool类型判断等多种断言能力。                        |
 |  xdescribe    | 定义一个跳过的测试套，测试套中可以定义多个测试用例函数，但不支持异步函数。<br>**说明**：从@ohos/hypium 1.0.17版本开始支持。                             |
-|  xit                | 定义一条跳过的测试用例。    <br>**说明**：从@ohos/hypium 1.0.17版本开始支持。                     |
+|  xit                | 定义一条跳过的测试用例。 <br>**说明**：从@ohos/hypium 1.0.17版本开始支持。                    |
 
 **示例代码1**：beforeAll/beforeEach/afterEach/afterAll使用示例
 
@@ -609,14 +611,17 @@ interface PromiseInfo {
 
 **基础类**
 
-Mockit是Mock的基础类，用于指定需要Mock的实例和函数。
+MockKit是Mock的基础类，用于指定需要Mock的实例和函数。
+
 | 接口名 | 功能说明                 |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mock某个类实例中的函数，支持使用异步函数。                                                 |
+| mockPrivateFunc | Mock某个类的实例上的私有方法。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
+| mockProperty | Mock某个类的实例上的属性。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
 | verify | 验证函数在对应参数下的执行行为是否符合预期，返回一个VerificationMode类。 |
 | ignoreMock | 使用ignoreMock可以还原实例中被Mock后的函数，对被Mock后的函数有效。                                                                                                   |
 | clear | 用例执行完毕后，对被Mock对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
-| clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |  
+| clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |
 
 **VerificationMode**
 
@@ -1189,7 +1194,7 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
- 
+
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  

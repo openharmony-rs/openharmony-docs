@@ -406,7 +406,7 @@
             - [\@LocalBuilder装饰器：维持组件关系](ui/state-management/arkts-localBuilder.md)
             - [\@BuilderParam装饰器：引用\@Builder函数](ui/state-management/arkts-builderparam.md)
             - [wrapBuilder：封装全局@Builder](ui/state-management/arkts-wrapBuilder.md)
-            - [mutableBuilder: 动态全局@Builder封装](ui/state-management/arkts-mutableBuilder.md) 
+            - [mutableBuilder：实现全局@Builder动态更新](ui/state-management/arkts-mutableBuilder.md) 
             - [\@Styles装饰器：定义组件重用样式](ui/state-management/arkts-style.md)
             - [\@Extend装饰器：定义扩展组件样式](ui/state-management/arkts-extend.md)
             - [stateStyles：多态样式](ui/state-management/arkts-statestyles.md)
@@ -912,6 +912,9 @@
             - [ArkTS卡片使用画布组件绘制自定义图形](form/arkts-ui-widget-page-custom-drawing.md)
             - [ArkTS卡片界面适配深浅色模式](form/arkts-ui-widget-dark-light-color-adapt.md)
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
+            <!--Del-->
+            - [ArkTS卡片模糊提亮和玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
+            <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
@@ -2128,7 +2131,7 @@
       - 资源管理<!--resource-management-->
         - [Rawfile开发指导](napi/rawfile-guidelines.md)
       - 线程调度<!--thread-scheduling-->
-        - [QOS开发指导](napi/qos-guidelines.md)
+        - [QoS开发指导](napi/qos-guidelines.md)
         - [格物开发指导](napi/gewu-ndk-api-guidelines.md)
       - 内存管理<!--memory-management-->
         - [Purgeable memory开发指导](napi/purgeable-memory-guidelines.md)
@@ -4001,10 +4004,11 @@
           - [ipc_error_code.h](reference/apis-ipc-kit/capi-ipc-error-code-h.md)
           - [ipc_kit.h](reference/apis-ipc-kit/capi-ipc-kit-h.md)
         - 结构体<!--ipc-struct-->
-            - [OH_IPC_MessageOption](reference/apis-ipc-kit/capi-ohipcremoteobject-oh-ipc-messageoption.md)
-            - [OHIPCRemoteProxy](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md)
-            - [OHIPCRemoteStub](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)
-            - [OHIPCDeathRecipient](reference/apis-ipc-kit/capi-ohipcremoteobject-ohipcdeathrecipient.md)
+          - [OHIPCParcel](reference/apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)
+          - [OH_IPC_MessageOption](reference/apis-ipc-kit/capi-ohipcremoteobject-oh-ipc-messageoption.md)
+          - [OHIPCRemoteProxy](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md)
+          - [OHIPCRemoteStub](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)
+          - [OHIPCDeathRecipient](reference/apis-ipc-kit/capi-ohipcremoteobject-ohipcdeathrecipient.md)
       - 错误码<!--ipc-arkts-errcode-->
         - [RPC错误码](reference/apis-ipc-kit/errorcode-rpc.md)
     - Localization Kit（本地化开发服务）<!--localization-api-->
@@ -4025,12 +4029,15 @@
         - 模块<!--localization-module-->
           - [rawfile](reference/apis-localization-kit/capi-rawfile.md)
           - [resourcemanager](reference/apis-localization-kit/capi-resourcemanager.md)
+          - [i18n](reference/apis-localization-kit/capi-i18n.md)
         - 头文件<!--localization-headerfile-->
           - [ohresmgr.h](reference/apis-localization-kit/capi-ohresmgr-h.md)
           - [raw_dir.h](reference/apis-localization-kit/capi-raw-dir-h.md)
           - [raw_file.h](reference/apis-localization-kit/capi-raw-file-h.md)
           - [raw_file_manager.h](reference/apis-localization-kit/capi-raw-file-manager-h.md)
           - [resmgr_common.h](reference/apis-localization-kit/capi-resmgr-common-h.md)
+          - [errorcode.h](reference/apis-localization-kit/capi-errorcode-h.md)
+          - [timezone.h](reference/apis-localization-kit/capi-timezone-h.md)
         - 结构体<!--localization-struct-->
           - [RawDir](reference/apis-localization-kit/capi-rawfile-rawdir.md)
           - [RawFileDescriptor](reference/apis-localization-kit/capi-rawfile-rawfiledescriptor.md)
@@ -4039,6 +4046,12 @@
           - [RawFile64](reference/apis-localization-kit/capi-rawfile-rawfile64.md)
           - [NativeResourceManager](reference/apis-localization-kit/capi-rawfile-nativeresourcemanager.md)
           - [ResourceManager_Configuration](reference/apis-localization-kit/capi-resourcemanager-resourcemanager-configuration.md)
+          - [DateTimeRule](reference/apis-localization-kit/capi-i18n-datetimerule.md)
+          - [InitialTimeZoneRule](reference/apis-localization-kit/capi-i18n-initialtimezonerule.md)
+          - [TimeArrayTimeZoneRule](reference/apis-localization-kit/capi-i18n-timearraytimezonerule.md)
+          - [AnnualTimeZoneRule](reference/apis-localization-kit/capi-i18n-annualtimezonerule.md)
+          - [TimeZoneRules](reference/apis-localization-kit/capi-i18n-timezonerules.md)
+          - [TimeZoneRuleQuery](reference/apis-localization-kit/capi-i18n-timezonerulequery.md)
       - 错误码<!--localization-arkts-errcode-->
         - [I18n错误码](reference/apis-localization-kit/errorcode-i18n.md)
         - [资源管理错误码](reference/apis-localization-kit/errorcode-resource-manager.md)
@@ -4200,19 +4213,19 @@
     - 网络<!--system-network-api-->
       - Connectivity Kit（短距通信服务）<!--connectivity-api-->
         - ArkTS API<!--connectivity-arkts-->
-          - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md)
-          - [@ohos.bluetooth.access(蓝牙access模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-access.md)
-          - [@ohos.bluetooth.baseProfile(蓝牙baseProfile模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile.md)
-          - [@ohos.bluetooth.ble(蓝牙ble模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-ble.md)
-          - [@ohos.bluetooth.connection(蓝牙connection模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-connection.md)
-          - [@ohos.bluetooth.constant(蓝牙constant模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-constant.md)
-          - [@ohos.bluetooth.common(蓝牙common模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-common.md)
-          - [@ohos.bluetooth.hfp(蓝牙hfp模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-hfp.md)
-          - [@ohos.bluetooth.hid(蓝牙hid模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-hid.md)
-          - [@ohos.bluetooth.pan(蓝牙pan模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-pan.md)
-          - [@ohos.bluetooth.socket(蓝牙socket模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-socket.md)
-          - [@ohos.bluetooth.pbap(蓝牙pbap模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-pbap.md)
-          - [@ohos.bluetooth.map(蓝牙map模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-map.md)
+          - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)](reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md)
+          - [@ohos.bluetooth.access(蓝牙access模块)](reference/apis-connectivity-kit/js-apis-bluetooth-access.md)
+          - [@ohos.bluetooth.baseProfile(蓝牙baseProfile模块)](reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile.md)
+          - [@ohos.bluetooth.ble(蓝牙ble模块)](reference/apis-connectivity-kit/js-apis-bluetooth-ble.md)
+          - [@ohos.bluetooth.connection(蓝牙connection模块)](reference/apis-connectivity-kit/js-apis-bluetooth-connection.md)
+          - [@ohos.bluetooth.constant(蓝牙constant模块)](reference/apis-connectivity-kit/js-apis-bluetooth-constant.md)
+          - [@ohos.bluetooth.common(蓝牙common模块)](reference/apis-connectivity-kit/js-apis-bluetooth-common.md)
+          - [@ohos.bluetooth.hfp(蓝牙hfp模块)](reference/apis-connectivity-kit/js-apis-bluetooth-hfp.md)
+          - [@ohos.bluetooth.hid(蓝牙hid模块)](reference/apis-connectivity-kit/js-apis-bluetooth-hid.md)
+          - [@ohos.bluetooth.pan(蓝牙pan模块)](reference/apis-connectivity-kit/js-apis-bluetooth-pan.md)
+          - [@ohos.bluetooth.socket(蓝牙socket模块)](reference/apis-connectivity-kit/js-apis-bluetooth-socket.md)
+          - [@ohos.bluetooth.pbap(蓝牙pbap模块)](reference/apis-connectivity-kit/js-apis-bluetooth-pbap.md)
+          - [@ohos.bluetooth.map(蓝牙map模块)](reference/apis-connectivity-kit/js-apis-bluetooth-map.md)
           - [@ohos.connectedTag (有源标签)](reference/apis-connectivity-kit/js-apis-connectedTag.md)
           - [@ohos.nfc.cardEmulation (标准NFC-cardEmulation)](reference/apis-connectivity-kit/js-apis-cardEmulation.md)
           - [@ohos.nfc.controller (标准NFC)](reference/apis-connectivity-kit/js-apis-nfcController.md)
@@ -4221,19 +4234,19 @@
           - [@ohos.wifiManager (WLAN)(推荐)](reference/apis-connectivity-kit/js-apis-wifiManager.md)
           - [@ohos.wifiManagerExt (WLAN扩展接口)(推荐)](reference/apis-connectivity-kit/js-apis-wifiManagerExt.md)
           <!--Del-->
-          - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-a2dp-sys.md)
-          - [@ohos.bluetooth.access(蓝牙access模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-access-sys.md)
-          - [@ohos.bluetooth.baseProfile(蓝牙baseProfile模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile-sys.md)
-          - [@ohos.bluetooth.connection(蓝牙connection模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-connection-sys.md)
-          - [@ohos.bluetooth.constant(蓝牙constant模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-constant-sys.md)
-          - [@ohos.bluetooth.hfp(蓝牙hfp模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-hfp-sys.md)
-          - [@ohos.bluetooth.hid(蓝牙hid模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-hid-sys.md)
-          - [@ohos.bluetooth.opp(蓝牙opp模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-opp-sys.md)
-          - [@ohos.bluetooth.pan(蓝牙pan模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-pan-sys.md)
-          - [@ohos.bluetooth.pbap(蓝牙pbap模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-pbap-sys.md)
-          - [@ohos.bluetooth.map(蓝牙map模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-map-sys.md)
-          - [@ohos.bluetooth.wearDetection(蓝牙佩戴检测模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-wearDetection-sys.md)
-          - [@ohos.bluetoothManager (蓝牙)(待停用)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetoothManager-sys.md)
+          - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-a2dp-sys.md)
+          - [@ohos.bluetooth.access(蓝牙access模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-access-sys.md)
+          - [@ohos.bluetooth.baseProfile(蓝牙baseProfile模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile-sys.md)
+          - [@ohos.bluetooth.connection(蓝牙connection模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-connection-sys.md)
+          - [@ohos.bluetooth.constant(蓝牙constant模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-constant-sys.md)
+          - [@ohos.bluetooth.hfp(蓝牙hfp模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-hfp-sys.md)
+          - [@ohos.bluetooth.hid(蓝牙hid模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-hid-sys.md)
+          - [@ohos.bluetooth.opp(蓝牙opp模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-opp-sys.md)
+          - [@ohos.bluetooth.pan(蓝牙pan模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-pan-sys.md)
+          - [@ohos.bluetooth.pbap(蓝牙pbap模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-pbap-sys.md)
+          - [@ohos.bluetooth.map(蓝牙map模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-map-sys.md)
+          - [@ohos.bluetooth.wearDetection(蓝牙佩戴检测模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-wearDetection-sys.md)
+          - [@ohos.bluetoothManager (蓝牙)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetoothManager-sys.md)
           - [@ohos.nfc.cardEmulation (标准NFC-cardEmulation)(系统接口)](reference/apis-connectivity-kit/js-apis-cardEmulation-sys.md)
           - [@ohos.nfc.tag (标准NFC-Tag)(系统接口)](reference/apis-connectivity-kit/js-apis-nfcTag-sys.md)
           - [@ohos.wifiManager (WLAN)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-wifiManager-sys.md)
@@ -4254,13 +4267,13 @@
           - [NFC错误码](reference/apis-connectivity-kit/errorcode-nfc.md)
           - [SE(secureElement)错误码](reference/apis-connectivity-kit/errorcode-se.md)
         - 已停止维护的接口<!--connectivity-arkts-dep-->
-          - [@ohos.bluetooth (蓝牙)(待停用)](reference/apis-connectivity-kit/js-apis-bluetooth.md)
-          - [@ohos.bluetoothManager (蓝牙)(待停用)](reference/apis-connectivity-kit/js-apis-bluetoothManager.md)
+          - [@ohos.bluetooth (蓝牙)](reference/apis-connectivity-kit/js-apis-bluetooth.md)
+          - [@ohos.bluetoothManager (蓝牙)](reference/apis-connectivity-kit/js-apis-bluetoothManager.md)
           - [@ohos.wifi (WLAN)(待停用)](reference/apis-connectivity-kit/js-apis-wifi.md)
           - [@ohos.wifiext (WLAN扩展接口)(待停用)](reference/apis-connectivity-kit/js-apis-wifiext.md)
           - [@system.bluetooth (蓝牙)](reference/apis-connectivity-kit/js-apis-system-bluetooth.md)
           <!--Del-->
-          - [@ohos.bluetooth (蓝牙)(待停用)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-sys.md)
+          - [@ohos.bluetooth (蓝牙)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-sys.md)
           - [@ohos.wifi (WLAN)(待停用)(系统接口)](reference/apis-connectivity-kit/js-apis-wifi-sys.md)
           <!--DelEnd-->
       - Distributed Service Kit（分布式管理服务）<!--distributed-service-api-->
@@ -4818,8 +4831,8 @@
           <!--Del-->
           - [@ohos.sensor(传感器)(系统接口)](reference/apis-sensor-service-kit/js-apis-sensor-sys.md)
           <!--DelEnd-->
-          - [@ohos.sensor(传感器)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-sensor.md)
-          - [@ohos.vibrator(振动)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
+          - [@system.sensor (传感器)](reference/apis-sensor-service-kit/js-apis-system-sensor.md)
+          - [@system.vibrator (振动)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
         - C API<!--sensor-service-c-->
           - 模块<!--sensor-service-module-->
             - [Sensor](reference/apis-sensor-service-kit/capi-sensor.md)
@@ -5577,11 +5590,13 @@
           - [drawing_gpu_context.h](reference/apis-arkgraphics2d/capi-drawing-gpu-context-h.md)
           - [drawing_image.h](reference/apis-arkgraphics2d/capi-drawing-image-h.md)
           - [drawing_image_filter.h](reference/apis-arkgraphics2d/capi-drawing-image-filter-h.md)
+          - [drawing_lattice.h](reference/apis-arkgraphics2d/capi-drawing-lattice-h.md)
           - [drawing_mask_filter.h](reference/apis-arkgraphics2d/capi-drawing-mask-filter-h.md)
           - [drawing_matrix.h](reference/apis-arkgraphics2d/capi-drawing-matrix-h.md)
           - [drawing_memory_stream.h](reference/apis-arkgraphics2d/capi-drawing-memory-stream-h.md)
           - [drawing_path.h](reference/apis-arkgraphics2d/capi-drawing-path-h.md)
           - [drawing_path_effect.h](reference/apis-arkgraphics2d/capi-drawing-path-effect-h.md)
+          - [drawing_path_iterator.h](reference/apis-arkgraphics2d/capi-drawing-path-iterator-h.md)
           - [drawing_pen.h](reference/apis-arkgraphics2d/capi-drawing-pen-h.md)
           - [drawing_pixel_map.h](reference/apis-arkgraphics2d/capi-drawing-pixel-map-h.md)
           - [drawing_point.h](reference/apis-arkgraphics2d/capi-drawing-point-h.md)
@@ -5620,6 +5635,7 @@
           - [OH_NativeBuffer_Config](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer-config.md)
           - [OH_NativeBuffer_Plane](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer-plane.md)
           - [OH_NativeBuffer_Planes](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer-planes.md)
+          - [OH_NativeBuffer](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer.md)
           - [ColorSpacePrimaries](reference/apis-arkgraphics2d/capi-nativecolorspacemanager-colorspaceprimaries.md)
           - [WhitePointArray](reference/apis-arkgraphics2d/capi-nativecolorspacemanager-whitepointarray.md)
           - [DisplaySoloist_ExpectedRateRange](reference/apis-arkgraphics2d/capi-nativedisplaysoloist-displaysoloist-expectedraterange.md)
@@ -5652,7 +5668,6 @@
           - [Rect](reference/apis-arkgraphics2d/capi-nativewindow-rect.md)
           - [OHHDRMetaData](reference/apis-arkgraphics2d/capi-nativewindow-ohhdrmetadata.md)
           - [OHExtDataHandle](reference/apis-arkgraphics2d/capi-nativewindow-ohextdatahandle.md)
-          - [OH_NativeBuffer](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer.md)
           - [OH_NativeColorSpaceManager](reference/apis-arkgraphics2d/capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)
           - [OH_DisplaySoloist](reference/apis-arkgraphics2d/capi-nativedisplaysoloist-oh-displaysoloist.md)
           - [NativePixelMap_](reference/apis-arkgraphics2d/capi-drawing-nativepixelmap-.md)
@@ -5677,6 +5692,8 @@
           - [OH_Drawing_Region](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-region.md)
           - [OH_Drawing_Brush](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-brush.md)
           - [OH_Drawing_Path](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-path.md)
+          - [OH_Drawing_PathIterator](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pathiterator.md)
+          - [OH_Drawing_Lattice](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)
           - [OH_Drawing_Bitmap](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-bitmap.md)
           - [OH_Drawing_Point](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-point.md)
           - [OH_Drawing_PixelMap](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pixelmap.md)
@@ -5724,6 +5741,9 @@
           - [SceneNode](reference/apis-arkgraphics3d/js-apis-inner-scene-nodes.md)
           - [SceneType](reference/apis-arkgraphics3d/js-apis-inner-scene-types.md)
           - [SceneResources](reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md)
+          <!--Del-->
+          - [SceneResources (系统接口)](reference/apis-arkgraphics3d/js-apis-inner-scene-resources-sys.md)
+          <!--DelEnd-->
           - [ScenePostProcessSettings](reference/apis-arkgraphics3d/js-apis-inner-scene-post-process-settings.md)
   - 应用服务<!--application-service-reference-->
     <!--Del-->

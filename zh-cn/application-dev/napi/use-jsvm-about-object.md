@@ -498,7 +498,9 @@ JSVM CheckObjectTypeTag:1
 ### OH_JSVM_CreateExternal
 
 创建一个包装了外部指针的JavaScript对象。
-**注意**：JavaScript对象被垃圾回收时，包装的外部指针指向的内容不被GC直接管理，仅调用传入的第三个参数对应的函数（如果传入时不为nullptr）。
+> **注意：**
+>
+> JavaScript对象被垃圾回收时，包装的外部指针指向的内容不被GC直接管理，仅调用传入的第三个参数对应的函数（如果传入时不为nullptr）。
 
 cpp部分代码：
 

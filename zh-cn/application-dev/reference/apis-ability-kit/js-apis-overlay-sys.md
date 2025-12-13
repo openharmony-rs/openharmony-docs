@@ -67,6 +67,7 @@ setOverlayEnabledByBundleName(bundleName: string, moduleName: string, isEnabled:
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = "com.example.myapplication_xxxxx";
 let moduleName = "feature";
 let isEnabled = false;
@@ -128,6 +129,7 @@ setOverlayEnabledByBundleName(bundleName: string, moduleName: string, isEnabled:
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = "com.example.myapplication_xxxxx";
 let moduleName = "feature";
 let isEnabled = false;
@@ -135,7 +137,8 @@ let isEnabled = false;
 try {
   overlay.setOverlayEnabledByBundleName(bundleName, moduleName, isEnabled, (err, data) => {
     if (err) {
-      console.error('setOverlayEnabledByBundleName failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
+      console.error('setOverlayEnabledByBundleName failed due to err code: ' + err.code + ' ' + 'message:' +
+      err.message);
       return;
     }
     console.info('setOverlayEnabledByBundleName successfully');
@@ -193,14 +196,15 @@ getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: string): Promi
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = "com.example.myapplication_xxxxx";
 let moduleName = "feature";
 
-(async() => {
+(async () => {
   try {
     let overlayModuleInfos = await overlay.getOverlayModuleInfoByBundleName(bundleName, moduleName);
     console.info('overlayModuleInfos are ' + JSON.stringify(overlayModuleInfos));
-  } catch(err) {
+  } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
     console.error('getTargetOverlayModuleInfos failed due to err code : ' + code + ' ' + 'message :' + message);
@@ -249,13 +253,15 @@ getOverlayModuleInfoByBundleName(bundleName: string, moduleName: string, callbac
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = "com.example.myapplication_xxxxx";
 let moduleName = "feature";
 
 try {
   overlay.getOverlayModuleInfoByBundleName(bundleName, moduleName, (err, data) => {
     if (err) {
-      console.error('getOverlayModuleInfoByBundleName failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
+      console.error('getOverlayModuleInfoByBundleName failed due to err code : ' + err.code + ' ' + 'message :' +
+      err.message);
       return;
     }
     console.info('overlayModuleInfo is ' + JSON.stringify(data));
@@ -305,12 +311,14 @@ getOverlayModuleInfoByBundleName(bundleName: string, callback: AsyncCallback\<Ar
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = "com.example.myapplication_xxxxx";
 
 try {
   overlay.getOverlayModuleInfoByBundleName(bundleName, (err, data) => {
     if (err) {
-      console.error('getOverlayModuleInfoByBundleName failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
+      console.error('getOverlayModuleInfoByBundleName failed due to err code : ' + err.code + ' ' + 'message :' +
+      err.message);
       return;
     }
     console.info('overlayModuleInfo is ' + JSON.stringify(data));
@@ -368,17 +376,19 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: s
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetBundleName = "com.example.myapplication_xxxxx";
 let moduleName = "feature";
 
-(async() => {
+(async () => {
   try {
     let overlayModuleInfos = await overlay.getTargetOverlayModuleInfosByBundleName(targetBundleName, moduleName);
     console.info('overlayModuleInfos are ' + JSON.stringify(overlayModuleInfos));
-  } catch(err) {
+  } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
-    console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' + message);
+    console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' +
+      message);
   }
 })();
 ```
@@ -424,13 +434,15 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName: st
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetBundleName = "com.example.myapplication_xxxxx";
 let moduleName = "feature";
 
 try {
   overlay.getTargetOverlayModuleInfosByBundleName(targetBundleName, moduleName, (err, data) => {
     if (err) {
-      console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
+      console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + err.code + ' ' + 'message :' +
+      err.message);
       return;
     }
     console.info('overlayModuleInfo is ' + JSON.stringify(data));
@@ -438,7 +450,8 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' + message);
+  console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' +
+    message);
 }
 ```
 
@@ -480,12 +493,14 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, callback: Asyn
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetBundleName = "com.example.myapplication_xxxxx";
 
 try {
   overlay.getTargetOverlayModuleInfosByBundleName(targetBundleName, (err, data) => {
     if (err) {
-      console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
+      console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + err.code + ' ' + 'message :' +
+      err.message);
       return;
     }
     console.info('overlayModuleInfo is ' + JSON.stringify(data));
@@ -493,6 +508,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' + message);
+  console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' +
+    message);
 }
 ```

@@ -3555,7 +3555,7 @@ struct Index {
 }
 ```
 
-### setMissionWindowIcon<sup>22+<sup>
+### setMissionWindowIcon<sup>22+</sup>
 
 setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 
@@ -3586,7 +3586,7 @@ setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 801 | Capability not supported. |
-| 16000050 | Internal error. Internal error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
+| 16000050 | Internal error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
 | 16000135 | The main window of this ability not exist. |
 
 **示例：**

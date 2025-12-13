@@ -44,7 +44,7 @@ IPC/RPC的订阅机制适用于以下场景：</br>
 
 导入相关依赖，并定义所需的变量；
 
-<!-- @[front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -66,7 +66,7 @@ let deathRecipient = new MyDeathRecipient();
 
 连接服务，获取代理对象，然后注册死亡监听。在断开连接时，移除死亡监听。
 
-<!-- @[connect_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[connect_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 连接服务
@@ -122,7 +122,7 @@ function connectAbility(context:common.UIAbilityContext) {
 
 导入相关依赖，并定义所需的变量；
 
-<!-- @[rpc_front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[rpc_front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -149,7 +149,7 @@ let deathRecipient = new MyDeathRecipient();
 
 获取[允许多设备协同的权限](../security/AccessToken/permissions-for-all-user.md#ohospermissiondistributed_datasync)，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并注册死亡监听。当代理对象与服务端的通信结束后，在断开连接时，移除死亡监听。
 
-<!-- @[rpc_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[rpc_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 获取权限

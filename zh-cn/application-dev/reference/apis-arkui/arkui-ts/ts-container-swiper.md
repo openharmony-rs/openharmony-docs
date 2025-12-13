@@ -2762,3 +2762,71 @@ struct SwiperExample {
 }
 ```
 ![swiper](figures/indicator_space.gif)
+
+### 示例10（Swiper组件基于断点配置显示个数）
+
+该示例展示了Swiper组件基于断点配置显示个数的效果。
+
+从API version 22开始，新增[displaycount](#displaycount22)接口，用于设置Swiper视窗内元素显示个数。
+
+```ts
+class MyDataSource implements IDataSource {
+  private list: number[] = [];
+
+  constructor(list: number[]) {
+    this.list = list;
+  }
+
+  totalCount(): number {
+    return this.list.length;
+  }
+
+  getData(index: number): number {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener() {
+  }
+}
+
+@Entry
+@Component
+struct SwiperExample {
+  private data: MyDataSource = new MyDataSource([]);
+
+  aboutToAppear(): void {
+    let list: number[] = [];
+    for (let i = 1; i <= 10; i++) {
+      list.push(i);
+    }
+    this.data = new MyDataSource(list);
+  }
+
+  build() {
+    Column() {
+      Swiper() {
+        LazyForEach(this.data, (item: string) => {
+          Text(item.toString())
+            .height(160)
+            .backgroundColor(0xAFEEEE)
+            .textAlign(TextAlign.Center)
+            .fontSize(30)
+        }, (item: string) => item)
+      }
+      .width('100%')
+      .displayCount({fillType:PresetFillType.BREAKPOINT_SM1MD2LG3})
+    }
+  }
+}
+```
+
+Swiper宽度属于[sm](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)及更小的断点区间时显示1列。
+
+![swiper](figures/displaycount_1.jpg)
+
+Swiper宽度属于[md](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)断点区间时显示2列。
+
+![swiper](figures/displaycount_2.jpg)
