@@ -1,0 +1,803 @@
+# Class (LiteResultSet)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
+
+LiteResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
+
+下列API示例中，都需先使用[queryWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#queryWithoutRowCount)、[querySqlWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#querySqlWithoutRowCount)等query类方法中任一方法获取到LiteResultSet实例，再通过此实例调用对应方法。
+
+## 导入模块
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+```
+
+## getColumnIndex<sup>23+</sup>
+
+getColumnIndex(columnName: string): int
+
+根据指定的列名获取列索引。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | -------------------------- |
+| columnName | string | 是   | 表示结果集中指定列的名称。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| int | 返回指定列的索引。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+      const idIndex = resultSet.getColumnIndex("ID");
+      const nameIndex = resultSet.getColumnIndex("NAME");
+      const ageIndex = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+      const salaryIndex = resultSet.getColumnIndex("SALARY");
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getColumnName<sup>23+</sup>
+
+getColumnName(columnIndex: int): string
+
+根据指定的列索引获取列名。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                       |
+| ----------- | ------ | ---- | -------------------------- |
+| columnIndex | int | 是   | 表示结果集中指定列的索引。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| string | 返回指定列的名称。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+      const id = resultSet.getColumnName(0);
+      const name = resultSet.getColumnName(1);
+      const age = resultSet.getColumnName(2);
+      const salary = resultSet.getColumnName(3);
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getColumnType<sup>23+</sup>
+
+getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
+
+根据指定的列索引或列名称获取列数据类型，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                                         |
+| ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
+| columnIdentifier | int \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
+
+**返回值：**
+
+| 类型                                 | 说明                                |
+| ------------------------------------ | ----------------------------------- |
+| Promise<[ColumnType](arkts-apis-data-relationalStore-e.md#columntype18)> | Promise对象。返回指定列的数据类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+| ------------ | ------------------------------------------------------------ |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800011     | Failed to open the database because it is corrupted. |
+| 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
+| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
+| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800019     | The SQL must be a query statement.                           |
+| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
+| 14800026     | SQLite: The database is out of memory.                       |
+| 14800028     | SQLite: Some kind of disk I/O error occurred.                |
+| 14800030     | SQLite: Unable to open the database file.                    |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    // 方式一：通过列名获取列数据类型
+    let idType = await resultSet.getColumnType("ID");
+    let nameType = await resultSet.getColumnType("NAME");
+    let ageType = await resultSet.getColumnType("AGE");
+    let salaryType = await resultSet.getColumnType("SALARY");
+    let codesType = await resultSet.getColumnType("CODES");
+    // 方式二：通过列索引获取列数据类型
+    let identityType = await resultSet.getColumnType(5);
+    let assetDataType = await resultSet.getColumnType(6);
+    let assetsDataType = await resultSet.getColumnType(7);
+    let floatArrayType = await resultSet.getColumnType(8);
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getColumnTypeSync<sup>23+</sup>
+
+getColumnTypeSync(columnIdentifier: int | string): ColumnType
+
+根据指定的列索引或列名称获取列数据类型。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core 
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                                         |
+| ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
+| columnIdentifier | int \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
+
+**返回值：**
+
+| 类型                        | 说明                   |
+| --------------------------- | ---------------------- |
+| [ColumnType](arkts-apis-data-relationalStore-e.md#columntype18) | 返回指定列的数据类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+| ------------ | ------------------------------------------------------------ |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800011     | Failed to open the database because it is corrupted. |
+| 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
+| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
+| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800019     | The SQL must be a query statement.                           |
+| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
+| 14800026     | SQLite: The database is out of memory.                       |
+| 14800028     | SQLite: Some kind of disk I/O error occurred.                |
+| 14800030     | SQLite: Unable to open the database file.                    |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    // 方式一：通过列名获取列数据类型
+    let idType = resultSet.getColumnTypeSync("ID");
+    let nameType = resultSet.getColumnTypeSync("NAME");
+    let ageType = resultSet.getColumnTypeSync("AGE");
+    let salaryType = resultSet.getColumnTypeSync("SALARY");
+    let codesType = resultSet.getColumnTypeSync("CODES");
+    // 方式二：通过列索引获取列数据类型
+    let identityType = resultSet.getColumnTypeSync(5);
+    let assetDataType = resultSet.getColumnTypeSync(6);
+    let assetsDataType = resultSet.getColumnTypeSync(7);
+    let floatArrayType = resultSet.getColumnTypeSync(8);
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## goToNextRow<sup>23+</sup>
+
+goToNextRow(): boolean
+
+移动到结果集的下一行。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| ------- | --------------------------------------------- |
+| boolean | 如果成功移动结果集，则为true；否则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getValue<sup>23+</sup>
+
+getValue(columnIndex: int): ValueType
+
+获取当前行中指定列的值。如果值类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring)接口获取。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                    |
+| ----------- | ------ | ---- | ----------------------- |
+| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+
+**返回值：**
+
+| 类型       | 说明                             |
+| ---------- | -------------------------------- |
+| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 表示允许的数据字段类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**     |
+|-----------|---------|
+| 14800012  | ResultSet is empty or pointer index is out of bounds.       |
+| 14800013  | ResultSet is empty or column index is out of bounds.   |
+| 14800014  | The RdbStore or ResultSet is already closed.       |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const name = resultSet.getValue(resultSet.getColumnIndex("NAME"));
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getBlob<sup>23+</sup>
+
+getBlob(columnIndex: int): Uint8Array
+
+以字节数组的形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成字节数组类型返回指定值，如果该列内容为空时，会返回空字节数组。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                    |
+| ----------- | ------ | ---- | ----------------------- |
+| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+
+**返回值：**
+
+| 类型       | 说明                             |
+| ---------- | -------------------------------- |
+| Uint8Array | 以字节数组的形式返回指定列的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800041  | Type conversion failed. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const name = resultSet.getBlob(getColumnIndex("CODES"));
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getString<sup>23+</sup>
+
+getString(columnIndex: int): string
+
+以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble)接口获取。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                    |
+| ----------- | ------ | ---- | ----------------------- |
+| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+
+**返回值：**
+
+| 类型   | 说明                         |
+| ------ | ---------------------------- |
+| string | 以字符串形式返回指定列的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800041  | Type conversion failed. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getLong<sup>23+</sup>
+
+getLong(columnIndex: int): long
+
+以Long形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成Long类型返回指定值，如果该列内容为空时，会返回0。如果当前列的数据类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring)接口获取。如果当前列的数据类型为DOUBLE且不希望丢失精度，建议使用[getDouble](#getdouble)接口获取。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                    |
+| ----------- | ------ | ---- | ----------------------- |
+| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| long | 以Long形式返回指定列的值。<br>该接口支持的精度范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议对于DOUBLE类型的值使用[getDouble](#getdouble)，对于INTEGER类型的值使用[getString](#getstring)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800041  | Type conversion failed. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getDouble<sup>23+</sup>
+
+getDouble(columnIndex: int): double
+
+以double形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成double类型返回指定值，如果该列内容为空时，会返回0.0，其他类型则返回14800041。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                    |
+| ----------- | ------ | ---- | ----------------------- |
+| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+
+**返回值：**
+
+| 类型   | 说明                         |
+| ------ | ---------------------------- |
+| double | 以double形式返回指定列的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800041  | Type conversion failed. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getAsset<sup>23+</sup>
+
+getAsset(columnIndex: int): Asset
+
+以[Asset](arkts-apis-data-relationalStore-i.md#asset10)形式获取当前行中指定列的值，如果当前列的数据类型为Asset类型，会以Asset类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800041。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名         | 类型     | 必填  | 说明           |
+| ----------- | ------ | --- | ------------ |
+| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+
+**返回值：**
+
+| 类型              | 说明                         |
+| --------------- | -------------------------- |
+| [Asset](arkts-apis-data-relationalStore-i.md#asset10) | 以Asset形式返回指定列的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800041  | Type conversion failed. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const doc = resultSet.getAsset(getColumnIndex("DOC"));
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getAssets<sup>23+</sup>
+
+getAssets(columnIndex: int): Assets
+
+以[Assets](arkts-apis-data-relationalStore-t.md#assets10)形式获取当前行中指定列的值，如果当前列的数据类型为Assets类型，会以Assets类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800041。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名         | 类型     | 必填  | 说明           |
+| ----------- | ------ | --- | ------------ |
+| columnIndex | int    | 是   | 指定的列索引，从0开始。 |
+
+**返回值：**
+
+| 类型              | 说明                           |
+| ---------------- | ---------------------------- |
+| [Assets](arkts-apis-data-relationalStore-t.md#assets10)| 以Assets形式返回指定列的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800041  | Type conversion failed. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const name = resultSet.getAssets(resultSet.getColumnIndex("DOCS"));
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getRow<sup>23+</sup>
+
+getRow(): ValuesBucket
+
+获取当前行。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**返回值：**
+
+| 类型              | 说明                           |
+| ---------------- | ---------------------------- |
+| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 返回指定行的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const rowData = resultSet.getRow();
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## getRows<sup>23+</sup>
+
+getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
+
+从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型   | 必填 | 说明                    |
+| ----------- | ------ | ---- | ----------------------- |
+| maxCount    | int    | 是   | 正整数，指定要从结果集中获取数据的条数。|
+| position    | int    | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。|
+
+
+**返回值：**
+
+| 类型              | 说明                           |
+| ---------------- | ---------------------------- |
+| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
+
+**示例：**
+
+```ts
+// 以查到100条数据为例
+try {
+  // 示例1：仅指定maxCount
+  if (resultSet != undefined) {
+    let rows: Array<relationalStore.ValuesBucket>;
+    let maxCount: number = 50;
+    // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
+    // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
+    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount)).length != 0) {
+      console.info(JSON.stringify(rows[0]));
+    }
+  }
+
+  // 示例2：指定maxCount和起始的position
+  if (resultSet != undefined) {
+    let rows: Array<relationalStore.ValuesBucket>;
+    let maxCount: number = 50;
+    let position: number = 50;
+    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position)).length != 0) {
+      console.info(JSON.stringify(rows[0]));
+      position += rows.length;
+    }
+  }
+} catch (err) {
+console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## isColumnNull<sup>23+</sup>
+
+isColumnNull(columnIndex: int): boolean
+
+检查当前行中指定列的值是否为null。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名      | 类型   | 必填  | 说明                    |
+| ----------- | ------ | ---- | ----------------------- |
+| columnIndex | int    | 是   | 指定的列索引，从0开始。 |
+
+**返回值：**
+
+| 类型    | 说明                                                      |
+| ------- | --------------------------------------------------------- |
+| boolean | 如果当前行中指定列的值为null，则返回true，否则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------- |
+| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const name = resultSet.isColumnNull(resultSet.getColumnIndex("NAME"));
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## close
+
+close(): void
+
+关闭结果集，若不关闭可能会引起fd泄露和内存泄露。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**示例：**
+
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.close();
+  }
+} catch (err) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
