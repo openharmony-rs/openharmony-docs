@@ -2924,6 +2924,7 @@ struct Index {
         Text(this.textStr, { controller: this.controller })
           .fontSize(25)
           .borderWidth(1)
+          .copyOption(CopyOptions.LocalDevice)
         Button("setTextSelection")
           .onClick(() => {
             this.controller.setTextSelection(1, 6, { menuPolicy: MenuPolicy.HIDE })
