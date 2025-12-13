@@ -27,6 +27,7 @@
    });
  ```
  
+ ![openMenu](figures/openMenu.gif)
 
 ### 创建ComponentContent
    
@@ -122,7 +123,7 @@
 
 从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)中的showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
    
-   <!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+<!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
    
    ``` TypeScript
    this.getUIContext().getPromptAction()
@@ -137,12 +138,13 @@
      });
    ```
    
+   ![openMenu](figures/openMenu.gif)
 
 ## 关闭菜单
 
 从API version 18开始，通过调用[closeMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closemenu18)可以关闭菜单。
    
-   <!-- @[close_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+<!-- @[close_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) --> 
    
    ``` TypeScript
    this.getUIContext().getPromptAction()
@@ -155,6 +157,7 @@
      });
    ```
    
+![openMenu](figures/openMenu.gif)
 
 > **说明：**
 >
