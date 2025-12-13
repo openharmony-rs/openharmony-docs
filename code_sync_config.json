@@ -14067,11 +14067,6 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp12.ets",
 				"functions":[
 					{
-						"end_line":18,
-						"name":"page_router_hsp1",
-						"start_line":16
-					},
-					{
 						"end_line":38,
 						"name":"page_router_hsp2",
 						"start_line":20
