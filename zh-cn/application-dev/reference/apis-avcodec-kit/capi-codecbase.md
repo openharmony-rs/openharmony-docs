@@ -74,7 +74,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT     | 在视频编码中获取长期参考帧的最大个数的键，值类型为int32_t。 |
+| OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT     | 在视频编码中获取长期参考帧（LTR）的最大个数的键，值类型为int32_t。 |
 
 ### 音视频公共的键值对
 
@@ -86,6 +86,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_BITRATE                      | 比特率的键，值类型为int64_t。该键用于音视频编码场景。在视频编码场景下该键是可选的。 |
 | OH_MD_KEY_PROFILE                     | 编码档次，值类型为int32_t，请参见[OH_AVCProfile](capi-native-avcodec-base-h.md#oh_avcprofile)，[OH_HEVCProfile](capi-native-avcodec-base-h.md#oh_hevcprofile)，[OH_AACProfile](capi-native-avcodec-base-h.md#oh_aacprofile)。该键是可选的。 |
 | OH_MD_KEY_MAX_INPUT_SIZE        | 设置解码输入码流大小最大值的键，值类型为int32_t。该键是可选的。           |
+| OH_MD_KEY_ENABLE_SYNC_MODE   | 使能音视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示不使能。该键是可选的配置项，默认不配置则表示不使能同步模式，在Configure阶段使用。 |
 
 ### 视频专有的键值对
 
@@ -105,19 +106,18 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_VIDEO_SLICE_HEIGHT    | 描述视频帧高跨距的键，值类型为int32_t。该键是可选的。        |
 | OH_MD_KEY_VIDEO_PIC_WIDTH       | 描述视频帧真实宽度的键，值类型为int32_t。该键是可选的。        |
 | OH_MD_KEY_VIDEO_PIC_HEIGHT    | 描述视频帧真实高度的键，值类型为int32_t。该键是可选的。        |
-| OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY  | 使能低时延视频编解码的键，值类型为int32_t，1表示使能，0表示其它情况。该键是可选，在Configure阶段使用。 |
-| OH_MD_KEY_ENABLE_SYNC_MODE   | 使能视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示其它情况。该键是可选，在Configure阶段使用。 |
+| OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY  | 使能低时延视频编解码的键，值类型为int32_t，1表示使能，0表示不使能。该键是可选的配置项，默认不配置则表示不使能，在Configure阶段使用。 |
 | OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE | 视频编码码率模式，值类型为int32_t，请参见[OH_BitrateMode](capi-native-avcodec-base-h.md#oh_bitratemode)。该键是可选的。 |
 | OH_MD_KEY_QUALITY                      | 所需编码质量的键。值类型为int32_t，此键仅适用于配置在恒定质量模式下的编码器。该键是可选的。 |
 | OH_MD_KEY_REQUEST_I_FRAME      | 请求立即编码I帧的键。值类型为int32_t。该键是可选的。            |
 | OH_MD_KEY_I_FRAME_INTERVAL   | 关键帧间隔的键，值类型为int32_t，单位为毫秒。该键是可选的且只用于视频编码。 |
-| OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY         | 使能分层编码的键，值类型为int32_t，1表示使能，0表示其它情况。该键是可选的且只用于视频编码，在Configure阶段使用。 |
+| OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY         | 使能分层编码的键，值类型为int32_t，1表示使能，0表示不使能。该键是可选的且只用于视频编码，默认不配置则表示不使能，在Configure阶段使用。 |
 | OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_SIZE       | 描述图片组基本层图片的间隔大小的键，值类型为int32_t，只在使能分层编码时生效。该键是可选的且只用于视频编码，在Configure阶段使用。 |
 | OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_REFERENCE_MODE         | 描述图片组内参考模式的键，值类型为int32_t，请参见[OH_TemporalGopReferenceMode](capi-native-avcodec-base-h.md#oh_temporalgopreferencemode)，只在使能分层编码时生效。该键是可选的且只用于视频编码，在Configure阶段使用。 |
-| OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT        | 描述长期参考帧个数的键，值类型为int32_t，必须在支持的值范围内使用。该键是可选的且只用于视频编码。|
-| OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR  | 标记当前帧为长期参考帧的键，值类型为int32_t，1表示被标记，0表示其它情况。该键是可选的且只用于视频编码。 |
-| OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR    | 	描述当前帧参考的长期参考帧帧的POC号的键，值类型为int32_t。该键是可选的且只用于视频编码。 |
-| OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR      | 当前[OH_AVBuffer](capi-core-oh-avbuffer.md)中输出的码流对应的帧是否为长期参考帧的键，值类型为int32_t，1表示是LTR，0表示其它情况。该键是可选的且只用于视频编码。 |
+| OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT        | 描述长期参考帧（LTR）个数的键，值类型为int32_t，必须在支持的值范围内使用。该键是可选的且只用于视频编码。|
+| OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR  | 标记当前帧为长期参考帧（LTR）的键，值类型为int32_t，1表示被标记为长期参考帧（LTR），0表示未被标记为长期参考帧（LTR）。该键是可选的且只用于视频编码。 |
+| OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR    | 描述当前帧参考的长期参考帧（LTR）的POC号的键，值类型为int32_t。该键是可选的且只用于视频编码。 |
+| OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR      | 当前[OH_AVBuffer](capi-core-oh-avbuffer.md)中输出的码流对应的帧是否为长期参考帧（LTR）的键，值类型为int32_t，1表示是长期参考帧（LTR），0表示不是长期参考帧（LTR）。该键是可选的且只用于视频编码，默认值为0。 |
 | OH_MD_KEY_VIDEO_PER_FRAME_POC            | 描述帧的POC号的键，值类型为int32_t。该键是可选的且只用于视频编码。 |
 | OH_MD_KEY_VIDEO_ENCODER_QP_MAX       | 描述视频编码器允许的最大量化参数的键，值类型为int32_t。该键是可选的且只用于视频编码。 |
 | OH_MD_KEY_VIDEO_ENCODER_QP_MIN      | 描述视频编码器允许的最小量化参数的键，值类型为int32_t。该键是可选的且只用于视频编码。 |
@@ -136,7 +136,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_SQR_FACTOR     | 描述SQR码控模式的质量参数，取值范围为[0, 51]（同编码量化参数QP），值越小，编码输出码率越大，质量越好，值类型为int32_t。该键值是可选的且只用于视频编码。 |
 | OH_MD_KEY_MAX_BITRATE    | 描述SQR码控模式的最大码率，使用[OH_AVCapability_GetEncoderBitrateRange](capi-native-avcapability-h.md#oh_avcapability_getencoderbitraterange)方法获取取值范围（同OH_MD_KEY_BITRATE），单位bps，值类型为int64_t。该键值是可选的且只用于视频编码。 |
 | OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS    | 描述ROI编码参数，包括ROI区域和deltaQp，值类型为string。该键值是可选的且只用于视频编码。 |
-| OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL    | 使能基于显示时间戳(PTS)的码控模式的键，值类型为int32_t，1表示使能，0表示其它情况。该键值是可选的且只用于视频编码，默认值为0。如果使能，则必须在每个视频帧中携带PTS信息，并发送到编码器。在Configure阶段使用。 |
+| OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL    | 使能基于显示时间戳(PTS)的码控模式的键，值类型为int32_t，1表示使能，0表示不使能。该键值是可选的且只用于视频编码，默认值为0。如果使能，则必须在每个视频帧中携带PTS信息，并发送到编码器。在Configure阶段使用。 |
 
 ### 音频专有的键值对
 

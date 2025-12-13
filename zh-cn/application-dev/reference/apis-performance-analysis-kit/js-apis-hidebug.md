@@ -1395,5 +1395,5 @@ hidebug.setJsRawHeapTrimLevel(hidebug.JsRawHeapTrimLevel.TRIM_LEVEL_2);
 
 | 名称      | 类型     | 只读  | 可选 | 说明                                                                              |
 | --------- |--------| ---- |---- |---------------------------------------------------------------------------------|
-| gl  | number |  否  |   否  | gl显存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。 |
-| graph  | number |  否  |   否  | graph显存大小，RenderService渲染进程加载所需资源占用的内存，例如图片、纹理等，以KB为单位。                         |
+| gl  | number |  否  |   否  | gl显存大小，RenderService渲染进程加载所需资源占用的内存，例如图片、纹理等，以KB为单位。 |
+| graph  | number |  否  |   否  | graph显存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。|

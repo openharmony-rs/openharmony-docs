@@ -90,7 +90,7 @@ Publish unavailable.
 
 **Description**
 
-This error code is reported if the current service call fails because the previous publish service is still in progress.  
+This error code is reported if the current service call fails because the previous published service is still in progress.
 
 **Possible Causes**
 

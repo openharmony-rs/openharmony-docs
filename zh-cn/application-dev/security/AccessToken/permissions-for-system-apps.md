@@ -3942,6 +3942,18 @@
 
 **起始版本**：12
 
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+允许UIExtensionAbility显示在锁屏之上。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：14
+
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
 允许系统服务访问虚拟Modem。
@@ -3964,7 +3976,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3976,7 +3988,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
@@ -4730,7 +4742,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 
@@ -4744,7 +4756,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 

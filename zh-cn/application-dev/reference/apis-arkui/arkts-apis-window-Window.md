@@ -1028,9 +1028,9 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401     | Parameter error. Possible cause: Invalid parameter range.  |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal.  Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300010 | The operation in the current window status is invalid. |
 
@@ -1218,7 +1218,7 @@ getGlobalRect(): Rect
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Failed to convert result into JS value object. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -1333,9 +1333,7 @@ try {
 
 setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 
-创建悬浮窗、模态窗或WindowType窗口类型为系统窗口时，可以调用该接口使能窗口获取避让区[AvoidArea](arkts-apis-window-i.md#avoidarea7)。
-
-该接口一般适用于此场景：应用于创建上述类型窗口并希望获取避让区信息时，需要在创建窗口后调用该接口设置使能该窗口，再调用[getWindowAvoidArea()](#getwindowavoidarea9)或[on('avoidAreaChange')](#onavoidareachange9)获取或监听避让区。
+创建全局悬浮窗、模态窗或WindowType窗口类型为系统窗口时，调用该接口使能后才可以通过[getWindowAvoidArea()](#getwindowavoidarea9)获取窗口避让区信息或通过[on('avoidAreaChange')](#onavoidareachange9)监听窗口避让区变化。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9440,7 +9438,7 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
+try {
   let promise = windowClass.setWindowCornerRadius(1.0);
   promise.then(() => {
     console.info('Succeeded in setting window corner radius.');

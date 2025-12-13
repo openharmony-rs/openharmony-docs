@@ -55,13 +55,13 @@ try {
 ```
 ## DrawableDescriptor
 
-父类对象提供可重写的方法，包含：获取[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)能力，图片资源加载能力。
+父类对象提供可重写的方法，包含：获取[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)实例，图片资源加载能力。
 
 ### getPixelMap
 
 getPixelMap(): image.PixelMap
 
-获取pixelMap。
+获取PixelMap实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -167,7 +167,7 @@ drawable.load().then((result: DrawableDescriptorLoadedResult) => {
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
-支持通过传入pixelMap创建PixelMapDrawableDescriptor对象。继承自[DrawableDescriptor](#drawabledescriptor)。
+支持通过传入PixelMap创建PixelMapDrawableDescriptor对象。继承自[DrawableDescriptor](#drawabledescriptor)。
 
 ### constructor<sup>12+</sup>
 
@@ -669,7 +669,7 @@ AnimatedDrawableDescriptor的构造函数。
 
 | 参数名     | 类型              | 必填  | 说明                                       |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | ResourceStr \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 是   | 动图资源地址或者[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象构成的的数组。<br/> ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://\<bundleName>/\<sandboxPath>），BASE64字符串。 |
+| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 是   | 动图资源地址或者[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象构成的的数组。<br/> ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://\<bundleName>/\<sandboxPath>），BASE64字符串。 |
 | options   | [AnimationOptions](#animationoptions12) | 否   | 动画控制参数。 |
 
 **示例：**
@@ -804,7 +804,7 @@ struct Example {
 
 ## AnimationController<sup>21+</sup>
 
-动画控制器对象。包含控制动画播放、恢复、暂停、停止和状态查询等方法。
+动画控制器对象。包含控制动画播放、停止、恢复、暂停和状态查询等方法。
 
 ### start<sup>21+</sup>
 

@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} Image_PositionArea
+typedef struct Image_PositionArea {...} Image_PositionArea
 ```
 
 ## 概述

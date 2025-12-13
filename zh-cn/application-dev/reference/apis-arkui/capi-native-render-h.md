@@ -194,7 +194,7 @@
 
 ### OH_ArkUI_RenderNodeUtils_AddRenderNode()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)
 ```
 
@@ -221,7 +221,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 
 ### OH_ArkUI_RenderNodeUtils_RemoveRenderNode()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)
 ```
 
@@ -245,7 +245,7 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_R
 
 ### OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)
 ```
 
@@ -268,7 +268,7 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_RenderNodeUtils_Invalidate()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)
 ```
 
@@ -291,7 +291,7 @@ int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_RenderNodeUtils_CreateNode()
 
-```
+```c
 ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()
 ```
 
@@ -308,7 +308,7 @@ ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNode()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)
 ```
 
@@ -331,7 +331,7 @@ int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)
 
 ### OH_ArkUI_RenderNodeUtils_AddChild()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)
 ```
 
@@ -355,7 +355,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_Ren
 
 ### OH_ArkUI_RenderNodeUtils_InsertChildAfter()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)
 ```
 
@@ -380,7 +380,7 @@ int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, A
 
 ### OH_ArkUI_RenderNodeUtils_RemoveChild()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)
 ```
 
@@ -403,7 +403,7 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_
 
 ### OH_ArkUI_RenderNodeUtils_ClearChildren()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)
 ```
 
@@ -424,7 +424,7 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)
 
 ### OH_ArkUI_RenderNodeUtils_GetChild()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t index, ArkUI_RenderNodeHandle* child)
 ```
 
@@ -447,7 +447,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t i
 
 ### OH_ArkUI_RenderNodeUtils_GetFirstChild()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* child)
 ```
 
@@ -469,7 +469,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkU
 
 ### OH_ArkUI_RenderNodeUtils_GetNextSibling()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)
 ```
 
@@ -491,7 +491,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, Ark
 
 ### OH_ArkUI_RenderNodeUtils_GetPreviousSibling()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)
 ```
 
@@ -513,7 +513,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node,
 
 ### OH_ArkUI_RenderNodeUtils_GetChildren()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle** children, int32_t* count)
 ```
 
@@ -536,7 +536,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_
 
 ### OH_ArkUI_RenderNodeUtils_GetChildrenCount()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, int32_t* count)
 ```
 
@@ -558,7 +558,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, i
 
 ### OH_ArkUI_RenderNodeUtils_SetBackgroundColor()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t color)
 ```
 
@@ -580,7 +580,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node,
 
 ### OH_ArkUI_RenderNodeUtils_GetBackgroundColor()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t* color)
 ```
 
@@ -602,7 +602,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node,
 
 ### OH_ArkUI_RenderNodeUtils_SetClipToFrame()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int32_t clipToFrame)
 ```
 
@@ -624,7 +624,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int
 
 ### OH_ArkUI_RenderNodeUtils_GetClipToFrame()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int32_t* clipToFrame)
 ```
 
@@ -646,7 +646,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int
 
 ### OH_ArkUI_RenderNodeUtils_SetClipToBounds()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, int32_t clipToBounds)
 ```
 
@@ -668,7 +668,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, in
 
 ### OH_ArkUI_RenderNodeUtils_GetClipToBounds()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, int32_t* clipToBounds)
 ```
 
@@ -690,7 +690,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, in
 
 ### OH_ArkUI_RenderNodeUtils_SetOpacity()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float opacity)
 ```
 
@@ -712,7 +712,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float o
 
 ### OH_ArkUI_RenderNodeUtils_GetOpacity()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* opacity)
 ```
 
@@ -734,7 +734,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* 
 
 ### OH_ArkUI_RenderNodeUtils_SetSize()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t width, int32_t height)
 ```
 
@@ -757,7 +757,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t wi
 
 ### OH_ArkUI_RenderNodeUtils_GetSize()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* width, int32_t* height)
 ```
 
@@ -780,7 +780,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* w
 
 ### OH_ArkUI_RenderNodeUtils_SetPosition()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)
 ```
 
@@ -803,7 +803,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_
 
 ### OH_ArkUI_RenderNodeUtils_GetPosition()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)
 ```
 
@@ -826,7 +826,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_
 
 ### OH_ArkUI_RenderNodeUtils_SetPivot()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, float y)
 ```
 
@@ -849,7 +849,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, 
 
 ### OH_ArkUI_RenderNodeUtils_GetPivot()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x, float* y)
 ```
 
@@ -872,7 +872,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x,
 
 ### OH_ArkUI_RenderNodeUtils_SetScale()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, float y)
 ```
 
@@ -895,7 +895,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, 
 
 ### OH_ArkUI_RenderNodeUtils_GetScale()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x, float* y)
 ```
 
@@ -918,7 +918,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x,
 
 ### OH_ArkUI_RenderNodeUtils_SetTranslation()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, float x, float y)
 ```
 
@@ -941,7 +941,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, flo
 
 ### OH_ArkUI_RenderNodeUtils_GetTranslation()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, float* x, float* y)
 ```
 
@@ -964,7 +964,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, flo
 
 ### OH_ArkUI_RenderNodeUtils_SetRotation()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float x, float y, float z)
 ```
 
@@ -988,7 +988,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float 
 
 ### OH_ArkUI_RenderNodeUtils_GetRotation()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float* x, float* y, float* z)
 ```
 
@@ -1012,7 +1012,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float*
 
 ### OH_ArkUI_RenderNodeUtils_SetTransform()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float* matrix)
 ```
 
@@ -1064,7 +1064,7 @@ m30, m31, m32, m33]<br>
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowColor()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uint32_t color)
 ```
 
@@ -1086,7 +1086,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uin
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowColor()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uint32_t* color)
 ```
 
@@ -1108,7 +1108,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uin
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowOffset()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)
 ```
 
@@ -1131,7 +1131,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, in
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowOffset()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)
 ```
 
@@ -1154,7 +1154,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, in
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowAlpha()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, float alpha)
 ```
 
@@ -1176,7 +1176,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowAlpha()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, float* alpha)
 ```
 
@@ -1198,7 +1198,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowElevation()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node, float elevation)
 ```
 
@@ -1220,7 +1220,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node,
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowElevation()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node, float* elevation)
 ```
 
@@ -1242,7 +1242,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node,
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowRadius()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, float radius)
 ```
 
@@ -1264,7 +1264,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, fl
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowRadius()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, float* radius)
 ```
 
@@ -1286,7 +1286,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, fl
 
 ### OH_ArkUI_RenderNodeUtils_SetBorderStyle()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption* borderStyle)
 ```
 
@@ -1308,7 +1308,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 
 ### OH_ArkUI_RenderNodeUtils_GetBorderStyle()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption** borderStyle)
 ```
 
@@ -1330,7 +1330,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 
 ### OH_ArkUI_RenderNodeUtils_SetBorderWidth()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption* borderWidth)
 ```
 
@@ -1352,7 +1352,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 
 ### OH_ArkUI_RenderNodeUtils_GetBorderWidth()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption** borderWidth)
 ```
 
@@ -1374,7 +1374,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 
 ### OH_ArkUI_RenderNodeUtils_SetBorderColor()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption* borderColor)
 ```
 
@@ -1396,7 +1396,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, Ark
 
 ### OH_ArkUI_RenderNodeUtils_GetBorderColor()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption** borderColor)
 ```
 
@@ -1418,7 +1418,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, Ark
 
 ### OH_ArkUI_RenderNodeUtils_SetBorderRadius()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption* borderRadius)
 ```
 
@@ -1440,7 +1440,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 
 ### OH_ArkUI_RenderNodeUtils_GetBorderRadius()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption** borderRadius)
 ```
 
@@ -1462,7 +1462,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 
 ### OH_ArkUI_RenderNodeUtils_SetMask()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* mask)
 ```
 
@@ -1485,7 +1485,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_Rend
 
 ### OH_ArkUI_RenderNodeUtils_SetClip()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* clip)
 ```
 
@@ -1507,7 +1507,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_Rend
 
 ### OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, bool markNodeGroup)
 ```
 
@@ -1529,7 +1529,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, b
 
 ### OH_ArkUI_RenderNodeUtils_SetBounds()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t x, int32_t y, int32_t width, int32_t height)
 ```
 
@@ -1554,7 +1554,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t 
 
 ### OH_ArkUI_RenderNodeUtils_GetBounds()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y, int32_t* width, int32_t* height)
 ```
 
@@ -1579,7 +1579,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t*
 
 ### OH_ArkUI_RenderNodeUtils_SetDrawRegion()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, float x, float y, float w, float h)
 ```
 
@@ -1604,7 +1604,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, floa
 
 ### OH_ArkUI_RenderNodeUtils_AttachContentModifier()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle node, ArkUI_RenderContentModifierHandle modifier)
 ```
 
@@ -1626,7 +1626,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle no
 
 ### OH_ArkUI_RenderNodeUtils_CreateContentModifier()
 
-```
+```c
 ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier()
 ```
 
@@ -1642,7 +1642,7 @@ ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier
 
 ### OH_ArkUI_RenderNodeUtils_DisposeContentModifier()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeContentModifier(ArkUI_RenderContentModifierHandle modifier)
 ```
 
@@ -1658,7 +1658,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeContentModifier(ArkUI_RenderContentModifier
 
 ### OH_ArkUI_RenderNodeUtils_AttachFloatProperty()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatPropertyHandle property)
 ```
 
@@ -1680,7 +1680,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifier
 
 ### OH_ArkUI_RenderNodeUtils_AttachVector2Property()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2PropertyHandle property)
 ```
 
@@ -1702,7 +1702,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifi
 
 ### OH_ArkUI_RenderNodeUtils_AttachColorProperty()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorPropertyHandle property)
 ```
 
@@ -1724,7 +1724,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifier
 
 ### OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatAnimatablePropertyHandle property)
 ```
 
@@ -1746,7 +1746,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderConte
 
 ### OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2AnimatablePropertyHandle property)
 ```
 
@@ -1768,7 +1768,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderCon
 
 ### OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorAnimatablePropertyHandle property)
 ```
 
@@ -1790,7 +1790,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderConte
 
 ### OH_ArkUI_RenderNodeUtils_CreateFloatProperty()
 
-```
+```c
 ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float value)
 ```
 
@@ -1811,7 +1811,7 @@ ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float val
 
 ### OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float value)
 ```
 
@@ -1833,7 +1833,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle
 
 ### OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float* value)
 ```
 
@@ -1855,7 +1855,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle
 
 ### OH_ArkUI_RenderNodeUtils_DisposeFloatProperty()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeFloatProperty(ArkUI_FloatPropertyHandle property)
 ```
 
@@ -1871,7 +1871,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeFloatProperty(ArkUI_FloatPropertyHandle pro
 
 ### OH_ArkUI_RenderNodeUtils_CreateVector2Property()
 
-```
+```c
 ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float x, float y)
 ```
 
@@ -1893,7 +1893,7 @@ ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float
 
 ### OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float x, float y)
 ```
 
@@ -1916,7 +1916,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHa
 
 ### OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float* x, float* y)
 ```
 
@@ -1939,7 +1939,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHa
 
 ### OH_ArkUI_RenderNodeUtils_DisposeVector2Property()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeVector2Property(ArkUI_Vector2PropertyHandle property)
 ```
 
@@ -1955,7 +1955,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeVector2Property(ArkUI_Vector2PropertyHandle
 
 ### OH_ArkUI_RenderNodeUtils_CreateColorProperty()
 
-```
+```c
 ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t value)
 ```
 
@@ -1976,7 +1976,7 @@ ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t 
 
 ### OH_ArkUI_RenderNodeUtils_SetColorPropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t value)
 ```
 
@@ -1998,7 +1998,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle
 
 ### OH_ArkUI_RenderNodeUtils_GetColorPropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t* value)
 ```
 
@@ -2020,7 +2020,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle
 
 ### OH_ArkUI_RenderNodeUtils_DisposeColorProperty()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeColorProperty(ArkUI_ColorPropertyHandle property)
 ```
 
@@ -2036,7 +2036,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeColorProperty(ArkUI_ColorPropertyHandle pro
 
 ### OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty()
 
-```
+```c
 ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(float value)
 ```
 
@@ -2057,7 +2057,7 @@ ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatab
 
 ### OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float value)
 ```
 
@@ -2079,7 +2079,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 
 ### OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float* value)
 ```
 
@@ -2101,7 +2101,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 
 ### OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(ArkUI_FloatAnimatablePropertyHandle property)
 ```
 
@@ -2117,7 +2117,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(ArkUI_FloatAnimatab
 
 ### OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty()
 
-```
+```c
 ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty(float x, float y)
 ```
 
@@ -2139,7 +2139,7 @@ ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Anim
 
 ### OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float x, float y)
 ```
 
@@ -2162,7 +2162,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2
 
 ### OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float* x, float* y)
 ```
 
@@ -2185,7 +2185,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2
 
 ### OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(ArkUI_Vector2AnimatablePropertyHandle property)
 ```
 
@@ -2201,7 +2201,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(ArkUI_Vector2Anim
 
 ### OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty()
 
-```
+```c
 ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty(uint32_t value)
 ```
 
@@ -2222,7 +2222,7 @@ ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatab
 
 ### OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t value)
 ```
 
@@ -2244,7 +2244,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnim
 
 ### OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t* value)
 ```
 
@@ -2266,7 +2266,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnim
 
 ### OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatablePropertyHandle property)
 ```
 
@@ -2282,8 +2282,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatab
 
 ### OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw()
 
-```
-int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext* context, void* userData))
+```c
+int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext context, void* userData))
 ```
 
 **描述：**
@@ -2305,7 +2305,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 
 ### OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()
 
-```
+```c
 ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()
 ```
 
@@ -2321,7 +2321,7 @@ ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* option)
 ```
 
@@ -2337,7 +2337,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* opti
 
 ### OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)
 ```
 
@@ -2355,7 +2355,7 @@ void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption*
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()
 
-```
+```c
 ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()
 ```
 
@@ -2371,7 +2371,7 @@ ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOptio
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyleOption* option)
 ```
 
@@ -2387,7 +2387,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyle
 
 ### OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorderStyleOption* option, ArkUI_BorderStyle edgeStyle, ArkUI_EdgeDirection direction)
 ```
 
@@ -2405,7 +2405,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorder
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOption()
 
-```
+```c
 ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOption()
 ```
 
@@ -2421,7 +2421,7 @@ ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOptio
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidthOption* option)
 ```
 
@@ -2437,7 +2437,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidth
 
 ### OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorderWidthOption* option, float edgeWidth, ArkUI_EdgeDirection direction)
 ```
 
@@ -2455,7 +2455,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorder
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOption()
 
-```
+```c
 ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOption()
 ```
 
@@ -2471,7 +2471,7 @@ ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOptio
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColorOption* option)
 ```
 
@@ -2487,7 +2487,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColor
 
 ### OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorderColorOption* option, uint32_t edgeColor, ArkUI_EdgeDirection direction)
 ```
 
@@ -2505,7 +2505,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorder
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOption()
 
-```
+```c
 ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOption()
 ```
 
@@ -2521,7 +2521,7 @@ ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOpt
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadiusOption* option)
 ```
 
@@ -2537,7 +2537,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadi
 
 ### OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBorderRadiusOption* option, uint32_t cornerRadius, ArkUI_CornerDirection direction)
 ```
 
@@ -2555,7 +2555,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBo
 
 ### OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()
 
-```
+```c
 ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()
 ```
 
@@ -2571,7 +2571,7 @@ ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()
 
 ### OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* option)
 ```
 
@@ -2587,7 +2587,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* 
 
 ### OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOption* option, float centerX)
 ```
 
@@ -2604,7 +2604,7 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOptio
 
 ### OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOption* option, float centerY)
 ```
 
@@ -2621,7 +2621,7 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOptio
 
 ### OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption* option, float radius)
 ```
 
@@ -2638,7 +2638,7 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption
 
 ### OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()
 
-```
+```c
 ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()
 ```
 
@@ -2654,7 +2654,7 @@ ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption(
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOption* option)
 ```
 
@@ -2670,7 +2670,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOp
 
 ### OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)
 ```
 
@@ -2688,7 +2688,7 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectSh
 
 ### OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectShapeOption* option, float x, float y, ArkUI_CornerDirection direction)
 ```
 
@@ -2707,7 +2707,7 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectSha
 
 ### OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 
-```
+```c
 ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 ```
 
@@ -2723,7 +2723,7 @@ ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 
 ### OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* option)
 ```
 
@@ -2739,7 +2739,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* 
 
 ### OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOption* option, char* commands)
 ```
 
@@ -2756,7 +2756,7 @@ void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOpti
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape()
 
-```
+```c
 ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape(ArkUI_RectShapeOption* shape)
 ```
 
@@ -2777,7 +2777,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRoundRectShape()
 
-```
+```c
 ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)
 ```
 
@@ -2798,7 +2798,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCircleShape()
 
-```
+```c
 ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCircleShape(ArkUI_CircleShapeOption* shape)
 ```
 
@@ -2819,7 +2819,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromOvalShape()
 
-```
+```c
 ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromOvalShape(ArkUI_RectShapeOption* shape)
 ```
 
@@ -2840,7 +2840,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCommandPath()
 
-```
+```c
 ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCommandPath(ArkUI_CommandPathOption* path)
 ```
 
@@ -2861,7 +2861,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOption* option)
 ```
 
@@ -2877,7 +2877,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOp
 
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeMaskOption* mask, uint32_t fillColor)
 ```
 
@@ -2899,7 +2899,7 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeM
 
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNodeMaskOption* mask, uint32_t strokeColor)
 ```
 
@@ -2921,7 +2921,7 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNod
 
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNodeMaskOption* mask, float strokeWidth)
 ```
 
@@ -2943,7 +2943,7 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNod
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRectShape()
 
-```
+```c
 ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRectShape(ArkUI_RectShapeOption* shape)
 ```
 
@@ -2964,7 +2964,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRoundRectShape()
 
-```
+```c
 ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)
 ```
 
@@ -2985,7 +2985,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCircleShape()
 
-```
+```c
 ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCircleShape(ArkUI_CircleShapeOption* shape)
 ```
 
@@ -3006,7 +3006,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape()
 
-```
+```c
 ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape(ArkUI_RectShapeOption* shape)
 ```
 
@@ -3027,7 +3027,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath()
 
-```
+```c
 ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath(ArkUI_CommandPathOption* path)
 ```
 
@@ -3048,7 +3048,7 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption()
 
-```
+```c
 void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)
 ```
 
@@ -3064,7 +3064,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOp
 
 ### OH_ArkUI_RenderNodeUtils_GetRenderNode()
 
-```
+```c
 int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle* renderNode);
 ```
 

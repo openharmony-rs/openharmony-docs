@@ -3478,6 +3478,11 @@ If the target UIAbility is the current one, this action resets the window to its
 > **NOTE**
 >
 > When this API is called to restart the process, the **onDestroy** lifecycle callback of the UIAbility in the process is not triggered.
+>
+> If an atomic service calls this API, [restartSelfAtomicService()](js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20), or [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+>
+> If an application calls this API or [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

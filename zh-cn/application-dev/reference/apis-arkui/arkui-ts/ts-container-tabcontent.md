@@ -396,8 +396,8 @@ id(value: string): SubTabBarStyle
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | --------- | ----------------------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下划线的颜色和背板颜色。<br/>默认值：#FF007DFF |
-| height | [Length](ts-types.md#length) | 否 | 是 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：(0, +∞)。 |
-| width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：(0, +∞)。 <br/>**说明：** <br/>宽度设置为0时，按页签文本宽度显示。|
+| height | [Length](ts-types.md#length) | 否 | 是 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
+| width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 <br/>**说明：** <br/>宽度设置为0时，按页签文本宽度显示。|
 | borderRadius | [Length](ts-types.md#length) | 否 | 是 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
 | marginTop | [Length](ts-types.md#length) | 否 | 是 | 下划线与文字的间距（不支持百分比设置）。<br/>默认值：8.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
 
@@ -412,8 +412,8 @@ id(value: string): SubTabBarStyle
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | --------- | ----------------------- |
 | drawable | [DrawableDescriptor](#drawabledescriptor22) | 否 | 是 | 下划线的图源。<br />支持[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)、[PixelMapDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#pixelmapdrawabledescriptor12)、[LayeredDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#layereddrawabledescriptor)和[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型。当传入无效图源时将显示默认的实线型下划线。 |
-| height | [Length](ts-types.md#length) | 否 | 是 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：(0, +∞) |
-| width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：(0, +∞) <br />宽度设置为0时，按页签文本宽度显示。|
+| height | [Length](ts-types.md#length) | 否 | 是 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：[0, +∞) |
+| width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞) <br />宽度设置为0时，按页签文本宽度显示。|
 | borderRadius | [Length](ts-types.md#length) | 否 | 是 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞) |
 | marginTop | [Length](ts-types.md#length) | 否 | 是 | 下划线与文字的间距（不支持百分比设置）。<br/>默认值：8.0<br/>单位：vp<br/>取值范围：[0, +∞) |
 

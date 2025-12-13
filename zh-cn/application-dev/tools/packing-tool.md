@@ -52,14 +52,14 @@
 - [Stage模型](../../application-dev/application-models/application-models.md#应用模型概况)示例：
 
 
-    ```
+    ```bash
     java -jar app_packing_tool.jar --mode hap --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--hnp-path <path>]
     ```
 
 - [FA模型](../../application-dev/application-models/application-models.md#应用模型概况)示例：
 
 
-    ```
+    ```bash
     java -jar app_packing_tool.jar --mode hap --json-path <path> [--maple-so-path <path>] [--profile-path <path>] [--maple-so-dir <path>] [--dex-path <path>] [--lib-path <path>] [--resources-path <path>] [--index-path <path>] --out-path <path> [--force true] [--compress-level 5]
     ```
 
@@ -100,7 +100,7 @@ HSP包实现了多个HAP对文件的共享，开发者可以使用打包工具�
 - 出于运行时性能等考量，--lib-path指定目录外的文件不会进行压缩。
 
 示例：
-```
+```bash
 java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>]
 ```
 
@@ -155,7 +155,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 
 示例：
 
-```
+```bash
 java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>] --out-path <path> [--signature-path <path>] [--certificate-path <path>] --pack-info-path <path> [--pack-res-path <path>] [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>] [--replace-pack-info false]
 ```
 
@@ -205,7 +205,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 
 示例：
 
-```
+```bash
 java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <path>] [--app-list <path>] --out-path <option> [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>]
 ```
 
@@ -237,7 +237,7 @@ HQF包适用于[增量调试](https://developer.huawei.com/consumer/cn/doc/harmo
 
 示例:
 
-```
+```bash
 java -jar app_packing_tool.jar --mode hqf --json-path <path> [--lib-path <path>] [--ets-path <path>] [--resources-path <path>] --out-path <path> [--force true]
 ```
 
@@ -265,7 +265,7 @@ APPQF包由一个或多个HQF文件组成。这些HQF包在应用市场会从APP
 
 示例:
 
-```
+```bash
 java -jar app_packing_tool.jar --mode appqf --hqf-list <path> --out-path <path> [--force true]
 ```
 
@@ -283,7 +283,7 @@ java -jar app_packing_tool.jar --mode appqf --hqf-list <path> --out-path <path> 
 同一个App中，所有HAP、HSP包的versionName和versionCode需要保持一致。当只有一个HAP或HSP需要修改升级时，可以调用此命令，将多个HAP、HSP的版本统一。本命令会修改所传入的HAP、HSP的版本号和版本名称，并在指定目录生成修改后的同名HAP、HSP，以及一个version_record.json文件，用于记录所有HAP、HSP原有的版本号、版本名称。
 
 示例：
-```
+```bash
 java -jar app_packing_tool.jar --mode versionNormalize --input-list 1.hap,2.hsp --version-code 1000001 --version-name 1.0.1 --out-path out
 ```
 
@@ -302,7 +302,7 @@ java -jar app_packing_tool.jar --mode versionNormalize --input-list 1.hap,2.hsp 
 此命令可以修改传入的HSP的包名和版本号，并在指定目录生成修改后的同名HSP。
 
 示例：
-```
+```bash
 java -jar app_packing_tool.jar --mode packageNormalize --hsp-list 1.hsp,2.hsp --bundle-name com.example.myapplication --version-code 1000001 --out-path out
 ```
 
@@ -327,7 +327,7 @@ apiReleaseType/bundleTypes/installationFree/deliveryWithInstall参数，并在�
 
 示例：
 
-```
+```bash
 java -jar app_packing_tool.jar --mode generalNormalize --input-list 1.hsp,2.hsp --bundle-name com.example.myapplication --version-code 1000001 --version-name 1.0.1 --min-compatible-version-code 14 --min-api-version 14 --target-api-version 14 --api-release-type Release1 --bundle-type app --installation-free false --delivery-with-install true --device-types default,tablet --out-path out
 ```
 
@@ -356,7 +356,7 @@ java -jar app_packing_tool.jar --mode generalNormalize --input-list 1.hsp,2.hsp 
 
 示例：
 
-```
+```bash
 java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-path <path> --out-path <path> [--force true]
 ```
 
@@ -399,7 +399,7 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 
 示例：
 
-```
+```bash
 java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <path>] --out-path <path> [--signature-path <path>] [--certificate-path <path>] --pack-info-path <path> [--pack-res-path <path>] [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>]
 ```
 
@@ -427,7 +427,7 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 通过[app打包指令](#app打包指令)、[fastApp打包指令](#fastapp模式打包指令)或[多工程打包指令](#多工程打包指令)打包生成App包时，设置--stat-duplicate为true开启扫描重复so文件，系统将在打包成功后生成扫描报告。识别重复so后，开发者可根据实际需求减小包大小。扫描报告将存放在打包生成的App包所在目录下的`scan_report`目录中。扫描报告的内容结构如表16所示，重复so文件的特征信息结构如表17所示。扫描报告的示例如下：
 
 JSON统计结果：
-```
+```json
 [{
 	"result":[{
         "md5":"975c41f5727b416b1ffefa5bb0f073b2",
@@ -853,10 +853,10 @@ App fields is invalid.
 
 根据日志中“Error Message:”信息，确认错误信息及存在问题的HAP/HSP名。
 1. 确保参与打包的HAP的minCompatibleVersionCode属性值相同。
-2. 确保参与打包的HAP的targetApiVersion属性值相同。
-3. 确保参与打包的HAP的minApiVersion属性值相同。
+2. 确保参与打包的HAP的targetAPIVersion属性值相同。
+3. 确保参与打包的HAP的minAPIVersion属性值相同。
 4. 确保参与打包的HAP的debug属性值相同。
-5. 确保HAP的minCompatibleVersionCode/targetApiVersion/minApiVersion属性值大于等于所有HSP的对应属性值。
+5. 确保HAP的minCompatibleVersionCode/targetAPIVersion/minAPIVersion属性值大于等于所有HSP的对应属性值。
 6. 确保HAP的debug属性值为false时，所有HSP的debug属性值为false。
 
 ### 10016002 HAP/HSP属性不同
@@ -883,7 +883,7 @@ Some app variable is different.
 1. 确保当前参与打包的HAP/HSP的bundleName一致。
 2. 确保当前参与打包的HAP/HSP的bundleType一致。
 3. 确保当前参与打包的HAP/HSP的versionCode一致。
-4. 确保当前参与打包的HAP/HSP的releaseType一致。
+4. 确保当前参与打包的HAP/HSP的apiReleaseType一致。
 5. 确保当前参与打包的HAP/HSP的targetBundleName一致。
 6. 确保当前参与打包的HAP/HSP的targetPriority一致。
 7. 确保当前参与打包的HAP的multiAppMode一致。

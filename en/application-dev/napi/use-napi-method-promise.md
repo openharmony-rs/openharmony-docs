@@ -117,7 +117,7 @@ Convert the data type: In the callback, convert the JavaScript (JS) result to th
 
 - Configure the **CMakeLists.txt** file as follows:
 
-    ```
+    ```txt
     // CMakeLists.txt
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.4.1)

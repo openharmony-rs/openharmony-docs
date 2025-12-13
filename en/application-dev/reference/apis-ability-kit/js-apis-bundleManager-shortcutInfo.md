@@ -49,7 +49,7 @@ Describes the configuration information for a shortcut.
 | labelId             | number                                    | No | Yes | Resource ID of the shortcut label.|
 | wants               | Array\<[ShortcutWant](#shortcutwant)>     | No | Yes | A collection of target Wants information defined within the shortcut.|
 | appIndex            | number                                    | No | No | Index of the application clone to which the shortcut belongs.|
-| sourceType          | number                                    | No | No | Source type of the shortcut. The value **0** means a custom shortcut, and **1** means a static shortcut.|
+| sourceType          | number                                    | No | No | Source type of the shortcut. The value **0** means a custom shortcut, **1** means a static shortcut, and **2** means a dynamic shortcut. Dynamic shortcuts are supported since API version 23.|
 | visible             | boolean                                   | No | Yes | Whether the shortcut is visible. **true** if visible, **false** otherwise. The default value is **true**.|
 
 ## ParameterItem
