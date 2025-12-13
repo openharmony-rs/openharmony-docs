@@ -11,7 +11,7 @@
 文件中定义了与矩形相关的功能函数。
 
 <!--RP1-->
-**相关示例：** [NDKAPIDrawing (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKAPIDrawing)<!--RP1End-->
+**相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **引用文件：** <native_drawing/drawing_rect.h>
 
@@ -48,6 +48,12 @@
 | [OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)](#oh_drawing_rectdestroyarray) | 用于销毁矩形数组对象并回收该对象占有的内存。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other, bool* isContains)](#oh_drawing_rectcontains) | 用于判断一个矩形是否完全包含另外一个矩形。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectInset(OH_Drawing_Rect* rect, float left, float top, float right, float bottom)](#oh_drawing_rectinset) | 将指定的值添加到矩形边界。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectIsEmpty(const OH_Drawing_Rect* rect, bool* isEmpty)](#oh_drawing_rectisempty) | 判断矩形是否为空。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectOffset(OH_Drawing_Rect* rect, float dx, float dy)](#oh_drawing_rectoffset) | 将矩形分别沿x轴方向和y轴方向偏移一定距离。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectOffsetTo(OH_Drawing_Rect* rect, float newLeft, float newTop)](#oh_drawing_rectoffsetto) | 将矩形偏移到特定位置，并保持宽度和高度不变。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectSetEmpty(OH_Drawing_Rect* rect)](#oh_drawing_rectsetempty) | 将矩形置空（矩形左上角和右下角的x轴、y轴坐标都置为0）。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectSort(OH_Drawing_Rect* rect)](#oh_drawing_rectsort) | 将矩形坐标按照实际位置排序。<br>若左上角x轴坐标大于右下角x轴坐标，则交换两者；若左上角y轴坐标大于右下角y轴坐标，则交换两者。如果坐标已经有序，则不执行任何操作。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectUnion(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)](#oh_drawing_rectunion) | 将当前矩形设置为本矩形与另一个矩形的并集。 |
 
 ## 函数说明
 
@@ -599,3 +605,155 @@ OH_Drawing_ErrorCode OH_Drawing_RectInset(OH_Drawing_Rect* rect, float left, flo
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数rect为空。 |
+
+### OH_Drawing_RectIsEmpty()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_RectIsEmpty(const OH_Drawing_Rect* rect, bool* isEmpty)
+```
+
+**描述**
+
+判断矩形是否为空。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。 |
+| bool* isEmpty | 表示矩形是否为空。作为出参使用。true表示矩形为空，false表示矩形不为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示rect或isEmpty是空指针。 |
+
+### OH_Drawing_RectOffset()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_RectOffset(OH_Drawing_Rect* rect, float dx, float dy)
+```
+
+**描述**
+
+将矩形分别沿x轴方向和y轴方向偏移一定距离。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。 |
+| float dx | 表示在x轴上的偏移距离。正数表示沿x轴正方向偏移，负数表示沿x轴负方向偏移。 |
+| float dy | 表示在y轴上的偏移距离。正数表示沿y轴正方向偏移，负数表示沿y轴负方向偏移。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示rect是空指针。 |
+
+### OH_Drawing_RectOffsetTo()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_RectOffsetTo(OH_Drawing_Rect* rect, float newLeft, float newTop)
+```
+
+**描述**
+
+将矩形偏移到特定位置，并保持宽度和高度不变。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。 |
+| float newLeft | 表示偏移后矩形左上角的x轴坐标。 |
+| float newTop | 表示偏移后矩形左上角的y轴坐标。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示rect是空指针。 |
+
+### OH_Drawing_RectSetEmpty()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_RectSetEmpty(OH_Drawing_Rect* rect)
+```
+
+**描述**
+
+将矩形置空（矩形左上角和右下角的x轴、y轴坐标都置为0）。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示rect是空指针。 |
+
+### OH_Drawing_RectSort()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_RectSort(OH_Drawing_Rect* rect)
+```
+
+**描述**
+
+将矩形坐标按照实际位置排序。
+
+若左上角x轴坐标大于右下角x轴坐标，则交换两者；若左上角y轴坐标大于右下角y轴坐标，则交换两者。如果坐标已经有序，则不执行任何操作。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示rect是空指针。 |
+
+### OH_Drawing_RectUnion()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_RectUnion(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)
+```
+
+**描述**
+
+将当前矩形设置为本矩形与另一个矩形的并集。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向当前矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。 |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* other | 指向另一个矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示rect或other是空指针。 |

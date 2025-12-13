@@ -912,6 +912,9 @@
             - [ArkTS卡片使用画布组件绘制自定义图形](form/arkts-ui-widget-page-custom-drawing.md)
             - [ArkTS卡片界面适配深浅色模式](form/arkts-ui-widget-dark-light-color-adapt.md)
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
+            <!--Del-->
+            - [ArkTS卡片模糊提亮和玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
+            <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
@@ -2128,7 +2131,7 @@
       - 资源管理<!--resource-management-->
         - [Rawfile开发指导](napi/rawfile-guidelines.md)
       - 线程调度<!--thread-scheduling-->
-        - [QOS开发指导](napi/qos-guidelines.md)
+        - [QoS开发指导](napi/qos-guidelines.md)
         - [格物开发指导](napi/gewu-ndk-api-guidelines.md)
       - 内存管理<!--memory-management-->
         - [Purgeable memory开发指导](napi/purgeable-memory-guidelines.md)
@@ -4001,10 +4004,11 @@
           - [ipc_error_code.h](reference/apis-ipc-kit/capi-ipc-error-code-h.md)
           - [ipc_kit.h](reference/apis-ipc-kit/capi-ipc-kit-h.md)
         - 结构体<!--ipc-struct-->
-            - [OH_IPC_MessageOption](reference/apis-ipc-kit/capi-ohipcremoteobject-oh-ipc-messageoption.md)
-            - [OHIPCRemoteProxy](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md)
-            - [OHIPCRemoteStub](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)
-            - [OHIPCDeathRecipient](reference/apis-ipc-kit/capi-ohipcremoteobject-ohipcdeathrecipient.md)
+          - [OHIPCParcel](reference/apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)
+          - [OH_IPC_MessageOption](reference/apis-ipc-kit/capi-ohipcremoteobject-oh-ipc-messageoption.md)
+          - [OHIPCRemoteProxy](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md)
+          - [OHIPCRemoteStub](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)
+          - [OHIPCDeathRecipient](reference/apis-ipc-kit/capi-ohipcremoteobject-ohipcdeathrecipient.md)
       - 错误码<!--ipc-arkts-errcode-->
         - [RPC错误码](reference/apis-ipc-kit/errorcode-rpc.md)
     - Localization Kit（本地化开发服务）<!--localization-api-->
@@ -5586,11 +5590,13 @@
           - [drawing_gpu_context.h](reference/apis-arkgraphics2d/capi-drawing-gpu-context-h.md)
           - [drawing_image.h](reference/apis-arkgraphics2d/capi-drawing-image-h.md)
           - [drawing_image_filter.h](reference/apis-arkgraphics2d/capi-drawing-image-filter-h.md)
+          - [drawing_lattice.h](reference/apis-arkgraphics2d/capi-drawing-lattice-h.md)
           - [drawing_mask_filter.h](reference/apis-arkgraphics2d/capi-drawing-mask-filter-h.md)
           - [drawing_matrix.h](reference/apis-arkgraphics2d/capi-drawing-matrix-h.md)
           - [drawing_memory_stream.h](reference/apis-arkgraphics2d/capi-drawing-memory-stream-h.md)
           - [drawing_path.h](reference/apis-arkgraphics2d/capi-drawing-path-h.md)
           - [drawing_path_effect.h](reference/apis-arkgraphics2d/capi-drawing-path-effect-h.md)
+          - [drawing_path_iterator.h](reference/apis-arkgraphics2d/capi-drawing-path-iterator-h.md)
           - [drawing_pen.h](reference/apis-arkgraphics2d/capi-drawing-pen-h.md)
           - [drawing_pixel_map.h](reference/apis-arkgraphics2d/capi-drawing-pixel-map-h.md)
           - [drawing_point.h](reference/apis-arkgraphics2d/capi-drawing-point-h.md)
@@ -5630,7 +5636,6 @@
           - [OH_NativeBuffer_Plane](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer-plane.md)
           - [OH_NativeBuffer_Planes](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer-planes.md)
           - [OH_NativeBuffer](reference/apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer.md)
-          - [OHIPCParcel](reference/apis-arkgraphics2d/capi-oh-nativebuffer-ohipcparcel.md)
           - [ColorSpacePrimaries](reference/apis-arkgraphics2d/capi-nativecolorspacemanager-colorspaceprimaries.md)
           - [WhitePointArray](reference/apis-arkgraphics2d/capi-nativecolorspacemanager-whitepointarray.md)
           - [DisplaySoloist_ExpectedRateRange](reference/apis-arkgraphics2d/capi-nativedisplaysoloist-displaysoloist-expectedraterange.md)
@@ -5687,6 +5692,8 @@
           - [OH_Drawing_Region](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-region.md)
           - [OH_Drawing_Brush](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-brush.md)
           - [OH_Drawing_Path](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-path.md)
+          - [OH_Drawing_PathIterator](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pathiterator.md)
+          - [OH_Drawing_Lattice](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)
           - [OH_Drawing_Bitmap](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-bitmap.md)
           - [OH_Drawing_Point](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-point.md)
           - [OH_Drawing_PixelMap](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pixelmap.md)
@@ -5734,6 +5741,9 @@
           - [SceneNode](reference/apis-arkgraphics3d/js-apis-inner-scene-nodes.md)
           - [SceneType](reference/apis-arkgraphics3d/js-apis-inner-scene-types.md)
           - [SceneResources](reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md)
+          <!--Del-->
+          - [SceneResources (系统接口)](reference/apis-arkgraphics3d/js-apis-inner-scene-resources-sys.md)
+          <!--DelEnd-->
           - [ScenePostProcessSettings](reference/apis-arkgraphics3d/js-apis-inner-scene-post-process-settings.md)
   - 应用服务<!--application-service-reference-->
     <!--Del-->

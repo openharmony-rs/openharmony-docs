@@ -11,7 +11,7 @@
 
 ## 在CMake脚本中链接相关动态库
 ```txt
-target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
+target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
 ```
 
 ## 开发步骤
@@ -119,7 +119,7 @@ static const char *g_dataToSign = "Hks_RSA_Sign_Verify_Test_00000000000000000000
                                   "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
                                   "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
 static const char *keyAlias = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\","
-                              "\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
+                              "\"bundleName\":\"com.example.cryptoapplication\",\"userid\":100,\"index\":{\"key\":\"testKey\"}}";
 
 static napi_value SignVerifyKey(napi_env env, napi_callback_info info) 
 {

@@ -26,10 +26,10 @@ The specified bundle name does not exist.
 **Solution**<br>
 1. Check whether the spelling of the bundle name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check the command output. If the bundle is not installed, an error is reported.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700002 Module Name Does Not Exist
 
@@ -46,10 +46,10 @@ The specified module name does not exist.
 **Solution**<br>
 1. Check whether the spelling of the module name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether the module name exists in the list of the **hapModuleNames** field in the output. If not, the module is not installed.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700003 Ability Name Does Not Exist
 
@@ -68,10 +68,10 @@ The specified ability name does not exist.
 1. Check whether the spelling of the ability name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether **abilityInfos** under the **hapModuleInfos** field in the output contains an entry where the name equals this ability name. If no such entry is found, the ability name does not exist.
 3. Run the [dump command](../../tools/bm-tool.md#dump), and check the **hapModuleNames** field in the output. If the specified module name is not in the list, the application has not installed the module, and the ability under that module also does not exist.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700004 User ID Does Not Exist
 
@@ -235,10 +235,10 @@ The version number is earlier than the version in use.
 Ensure that the version of the bundle to install is not earlier than the version in use.
 
 1. To query the version of an existing application, run [the dump command](../../dfx/hdc.md#environment-setup). The output contains the version code of the installed application. If multiple version codes are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell "bm dump -n com.xxx.demo |grep versionCode"
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell "bm dump -n com.xxx.demo |grep versionCode"
+    ```
 
 2. To query the version of a newly installed application, use DevEco Studio to open the HAP or HSP file and check the value of **versionCode** in the **module.json** file.
 
@@ -287,7 +287,7 @@ The application corresponding to the UID does not exist.
 
 **Solution**<br>
 Check whether the UID exists in the system. Run the [dump command](../../tools/bm-tool.md#dump), and check the UID of the installed application. If multiple UIDs are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
-```
+```shell
 # Replace **com.xxx.demo** with the actual bundle name.
 hdc shell "bm dump -n com.xxx.demo |grep uid"
 ```
@@ -1206,7 +1206,7 @@ The **pluginDistributionIDs** in the signing certificate profile does not confor
 
 **Solution**<br>
 Reconfigure the **app-services-capabilities** field in the [profile](../../security/app-provision-structure.md) as follows:
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1228,7 +1228,7 @@ The **pluginDistributionIDs** between the plugin and the application do not shar
 
 **Solution**<br>
 Reconfigure the **pluginDistributionIDs** field in the [profile](../../security/app-provision-structure.md) as follows:
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1287,7 +1287,7 @@ The system throws an uncaught error code, such as IPC failure or file copy failu
 
 2. If the request still fails after the preceding steps are performed for three to five times, check whether a crash file containing **foundation** exists in the **/data/log/faultlog/faultlogger/** directory of the device.
 
-    ```
+    ```shell
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1295,7 +1295,7 @@ The system throws an uncaught error code, such as IPC failure or file copy failu
 
 3. Export the crash file and log file and submit them to [online tickets](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-    ```
+    ```shell
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -1436,4 +1436,41 @@ The file type array is invalid. For example:
 
 **Solution**<br>
 Verify the file type array configuration. Refer to the parameter specifications and check for the issues listed above.
+
+## 18100001 Inconsistent bundleName and appIndex Combinations in the shortcutInfo List
+**Error Message**<br>
+A combination of bundleName and appIndex in the shutcutInfo list is different from the others.
+
+**Description**<br>
+The **shortcutInfo** list contains a combination of **bundleName** and **appIndex** that is inconsistent with other entries.
+
+**Possible Causes**<br>
+The **shortcutInfo** list contains a combination of **bundleName** and **appIndex** that is inconsistent with other entries.
+For example, the following list is passed to [shortcutManager.addDynamicShortcutInfos](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanageradddynamicshortcutinfos23):
+```ts
+const bundleName = "com.example.dynamic";
+const bundleName1 = "com.example.dynamic1";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+    // Verification fails because the bundleName and appIndex combination is different from other shortcutInfo entries.
+  { id: "3", bundleName: bundleName1, moduleName: moduleName, appIndex: 0, sourceType: 2 }
+]
+```
+Or:
+```ts
+const bundleName = "com.example.dynamic";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  // Verification fails because the bundleName and appIndex combination is different from other shortcutInfo entries.
+  { id: "3", bundleName: bundleName, moduleName: moduleName, appIndex: 1, sourceType: 2 }
+]
+```
+
+**Solution**<br>
+Check the **shortcutInfo** list to ensure all **bundleName** and **appIndex** combinations are consistent.
+
 <!--DelEnd-->

@@ -631,7 +631,7 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-Stops a ServiceExtensionAbility in the same application. This API uses an asynchronous callback to return the result.
+Stops a ServiceExtensionAbility. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

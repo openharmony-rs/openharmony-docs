@@ -22,31 +22,37 @@
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit";
 
-// 1. 获取resourceId, 假设获取的resourceId如下，并已经打开该资源
-const testResourceId = JSON.stringify({
-  providerName: "testProviderName",
-  bundleName: "com.example.cryptoapplication",
-  abilityName: "CryptoExtension",
-  userId: 100,
-  index: {
-    key: "testKey"
-  } as ESObject
-});
+async function getProperty(): Promise<Array<huksExternalCrypto.HuksExternalCryptoParam>> {
+  // 1. 获取resourceId, 假设获取的resourceId如下，并已经打开该资源
+  const testResourceId = JSON.stringify({
+    providerName: "testProviderName",
+    bundleName: "com.example.cryptoapplication",
+    abilityName: "CryptoExtension",
+    userid: 100,
+    index: {
+      key: "testKey"
+    } as ESObject
+  });
 
-// 2. 构造输入参数propertyId和可选参数param
-let propertyId = "SKF_EnumDev";
-const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+  // 2. 构造输入参数propertyId和可选参数param
+  let propertyId = "SKF_EnumDev";
+  const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
-// 3. 调用getProperty获取属性信息
-console.info(`promise: await huksExternalCrypto getProperty`);
-try {
-  await huksExternalCrypto.getProperty(testResourceId, propertyId, extProperties)
-    .then((data) => {
-      console.info(`promise: getProperty success, data: ` + JSON.stringify(data));
-    });
-} catch (error) {
-  console.error(`promise: getProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
+  // 3. 调用getProperty获取属性信息
+  console.info(`promise: await huksExternalCrypto getProperty`);
+  try {
+    await huksExternalCrypto.getProperty(testResourceId, propertyId, extProperties)
+      .then((data) => {
+        console.info(`promise: getProperty success, data: ` + JSON.stringify(data));
+      }).catch((error: BusinessError) => {
+        console.error(`promise: getProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      })
+  } catch (error) {
+    console.error(`promise: getProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
+  }
+  return extProperties;
 }
 ```
 

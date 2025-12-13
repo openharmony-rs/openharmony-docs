@@ -207,7 +207,7 @@ function isCameraMuteSupported(cameraManager: camera.CameraManager): boolean {
 }
 ```
 
-### muteCamera
+### muteCamera<sup>(deprecated)</sup>
 
 muteCamera(mute: boolean): void
 
@@ -601,7 +601,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 | 名称                           | 类型                                                | 只读 | 可选 | 说明                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
-| depthProfiles                 | Array\<[DepthProfile](#depthprofile13)\>              |  是  | 否 | 支持的深度流配置信息集合。        |
+| depthProfiles<sup>13+</sup>       | Array\<[DepthProfile](#depthprofile13)\>              |  是  | 否 | 支持的深度流配置信息集合。        |
 
 ## CameraFormat
 
@@ -760,17 +760,31 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 | format | [CameraFormat](#cameraformat)   | 是 |  否  | 深度图的格式。 |
 | depthMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | 是 |  否  | 深度图。 |
 | qualityLevel | [DepthDataQualityLevel](#depthdataqualitylevel13)   | 是 |  否  | 深度图的质量。 |
-| accuracy | [DepthDataAccuracy](#depthdataaccuracy13) | 是 |  否  | 深度图的精度。 |
+| dataAccuracy | [DepthDataAccuracy](#depthdataaccuracy13) | 是 |  否  | 深度图的精度。 |
 
 ### release<sup>13+</sup>
 
-release(): void
+release(): Promise\<void\>
 
-释放输出资源。
+释放输出资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **示例：**
 
@@ -1063,7 +1077,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void {
   try {
-    let isSupperted: boolean = DepthFusionQuery.isDepthFusionSupported();
+    let isSupported: boolean = DepthFusionQuery.isDepthFusionSupported();
     console.info('Indicate that isDepthFusionSupported method execution success.');
   } catch (error) {
     let err = error as BusinessError;
@@ -1143,6 +1157,7 @@ isDepthFusionEnabled(): boolean
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function isDepthFusionEnabled(DepthFusion: camera.DepthFusion): boolean {
   let isEnable: boolean = false;
   try {
@@ -1570,7 +1585,7 @@ function unregisterSketchStatusChanged(previewOutput: camera.PreviewOutput): voi
 
 getThumbnail(): Promise<image.PixelMap>
 
-通过缩略图代理类提供的方法，获取缩略图 PixelMap。
+通过缩略图代理类提供的方法，获取缩略图PixelMap。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2686,8 +2701,6 @@ function setExposure(nightPhotoSession: camera.NightPhotoSession): void {
 
 枚举，场景特性枚举。
 
-**系统接口：** 此接口为系统接口。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                            | 值   | 说明                        |
@@ -2864,7 +2877,7 @@ getZoomPointInfos(): Array\<ZoomPointInfo\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                      |
-| 7400103                |  Session not config.                          |
+| 7400103                |  Session not config, only throw in session usage.      |
 
 **示例：**
 
@@ -3235,7 +3248,7 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
 }
 ```
 
-### setPortraitEffect<sup>10+</sup>
+### setPortraitEffect
 
 setPortraitEffect(effect: PortraitEffect): void
 
@@ -3559,12 +3572,11 @@ getSupportedBeautyTypes(): Array\<BeautyType>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 202             |  Not System Application.                      |
 
 **示例：**
 
@@ -3728,7 +3740,7 @@ function getBeauty(captureSession: camera.CaptureSession): number {
 
 ## PhotoSessionForSys<sup>11+</sup>
 
-PhotoSessionForSys extends PhotoSession, Beauty, ColorEffect, ColorManagement, SceneDetection
+PhotoSessionForSys extends PhotoSession, Beauty, ColorEffect, ColorManagement, Macro, SceneDetection, EffectSuggestion, DepthFusion
 
 提供给系统应用的PhotoSession，普通拍照模式会话类，继承自[Session](arkts-apis-camera-Session.md)，用于设置普通拍照模式的参数以及保存所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
@@ -7985,8 +7997,8 @@ TryAE参数信息，TryAE是指延时摄影时硬件会根据环境光照变化�
 
 | 名称 | 类型    | 只读 | 可选 | 说明           |
 | ---- | ------- | ---- |--| -------------- |
-| isTryAEDone        | boolean  | 是   | 否 | TryAE是否完成。        |
-| isTryAEHintNeeded  | boolean  | 是   | 是 | 是否需要TryAE。        |
+| isTryAEDone        | boolean  | 是   | 否 | 表示TryAE是否完成。true表示已完成，false表示未完成。       |
+| isTryAEHintNeeded  | boolean  | 是   | 是 | 表示是否需要TryAE。true表示需要，false表示不需要。        |
 | previewType        | [TimeLapsePreviewType](#timelapsepreviewtype12) | 是   | 是 | 预览类型。        |
 | captureInterval    | number   | 是   | 是 | 拍摄间隔，单位毫秒（ms）。        |
 

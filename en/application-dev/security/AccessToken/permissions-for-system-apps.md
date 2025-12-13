@@ -3937,7 +3937,7 @@ Allows a system application to obtain eSIM profile information and data written 
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3949,7 +3949,7 @@ Allows a system application to modify the eSIM profile and upgrade the eSIM.
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
@@ -4703,7 +4703,7 @@ Allows an application to read the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -4717,7 +4717,7 @@ Allows an application to write the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 

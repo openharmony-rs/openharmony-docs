@@ -22,7 +22,7 @@
 | recommendationType | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 是 | 如果需要根据枚举值推荐相应的图片，则配置此参数。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textContextInfo<sup>12+</sup> | [TextContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12)   | 否   | 是 | 如果需要根据文本信息推荐相应的图片，则配置此参数（如果同时配置了recommendationType，则仅textContextInfo生效）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
-## BaseSelectOptions<sup>10+</sup>
+## BaseSelectOptions
 
 图库选择选项基类。
 
@@ -49,7 +49,7 @@
 
 PhotoSelectOptions extends BaseSelectOptions
 
-图库选择选项子类，继承自[BaseSelectOptions](#baseselectoptions10)。
+图库选择选项子类，继承自[BaseSelectOptions](#baseselectoptions)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -163,5 +163,5 @@ PhotoPicker退出界面的上下文信息，可以用于下次使用PhotoPicker�
 | time    | number   | 否   | 否 | 用户上次选择图片的宫格界面，左上角首张图片的时间。<br/>- 按拍摄时间排序的相册，返回拍摄时间。<br/>- 按保存时间排序的相册返回保存时间。默认为0。 |
 | displayName    | string   | 否   | 否 | 用户上次选择图片的宫格界面，左上角首张图片的文件名。默认为空字符串。 |
 | recommendationType    | number   | 否   | 否 | 用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择时未设置推荐时，默认为0。|
-| selectRecommendationType    | number   | 否   | 否 | 用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择未选中推荐项，选中"全部"时，默认为0。|
+| selectedRecommendationType    | number   | 否   | 否 | 用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>当上次选择未选中推荐项，选中"全部"时，默认为0。|
 | version    | number   | 否   | 否 | 现场数据版本号，用于校验现场信息数据与现场恢复能力的匹配度。<br>版本号必须大于等于1.0。|

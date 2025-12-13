@@ -1914,8 +1914,7 @@ Whether to continue to process the interceptor chain.
 
 | Type  | Description                                   |
 | ------ | -------------------------------------- |
-| true   | Continues to process the interceptor chain.                  |
-| false  | Stops and returns an HTTP response.                |
+| boolean | true indicates to continue processing the interceptor chain，false indicates to stop and return an HTTP response. |
 
 ## HttpInterceptor<sup>22+</sup>
 

@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} Rdb_ChangeInfo
+typedef struct Rdb_ChangeInfo {...} Rdb_ChangeInfo
 ```
 
 ## 概述
