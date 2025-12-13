@@ -897,6 +897,8 @@
         - [设置分布式文件数据等级](file-management/set-security-label.md)
         - [跨设备文件访问](file-management/file-access-across-devices.md)
         - [跨设备文件拷贝](file-management/file-copy-across-devices.md)
+      - 端云文件协同<!--cloud-sync-file-->
+        - [端云文件协同概述](file-management/cloud-sync-file-overview.md)
     - Form Kit（卡片开发服务）<!--form-kit-->
       - [Form Kit简介](form/formkit-overview.md)
       - ArkTS卡片开发（推荐）<!--arkts-ui-->
