@@ -102,62 +102,66 @@ libohpreferences.so
 1. 创建Preferences配置选项（PreferencesOption）对象并设置配置选项成员（名称、应用组ID、包名、存储模式）。使用完毕后，调用OH_PreferencesOption_Destroy销毁配置选项实例。
 2. 调用OH_Preferences_Open打开一个Preferences实例，该实例使用完后需要调用OH_Preferences_Close关闭。
    <!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-``` C++
-// 1. 创建Preferences配置选项。
-OH_PreferencesOption *option = OH_PreferencesOption_Create();
-if (option == nullptr) {
-    // 错误处理
-}
-// 设置Preferences配置选项的文件名称。
-int ret = OH_PreferencesOption_SetFileName(option, "testdb");
-if (ret != PREFERENCES_OK) {
-    (void)OH_PreferencesOption_Destroy(option);
-    // 错误处理
-}
-// 设置Preferences配置选项的应用组ID。
-ret = OH_PreferencesOption_SetDataGroupId(option, "");
-if (ret != PREFERENCES_OK) {
-    (void)OH_PreferencesOption_Destroy(option);
-    // 错误处理
-}
-// 设置Preferences配置选项的包名称。
-ret = OH_PreferencesOption_SetBundleName(option, "com.example");
-if (ret != PREFERENCES_OK) {
-    (void)OH_PreferencesOption_Destroy(option);
-    // 错误处理
-}
-
-// 设置Preferences配置选项的存储模式，需要注意的是，设置之前需要调用OH_Preferences_IsStorageTypeSupported接口判断当前平台是否支持需要选择的模式。
-bool isGskvSupported = false;
-ret = OH_Preferences_IsStorageTypeSupported(Preferences_StorageType::PREFERENCES_STORAGE_GSKV, &isGskvSupported);
-if (ret != PREFERENCES_OK) {
-    (void)OH_PreferencesOption_Destroy(option);
-    // 错误处理
-}
-if (isGskvSupported) {
-    ret = OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_GSKV);
-    if (ret != PREFERENCES_OK) {
-        (void)OH_PreferencesOption_Destroy(option);
-        // 错误处理
-    }
-} else {
-    ret = OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_XML);
-    if (ret != PREFERENCES_OK) {
-        (void)OH_PreferencesOption_Destroy(option);
-        // 错误处理
-    }
-}
-
-// 2. 打开一个Preferences实例。
-int errCode = PREFERENCES_OK;
-OH_Preferences *preference = OH_Preferences_Open(option, &errCode);
-// option使用完毕后可直接释放，释放后需要将指针置空。
-(void)OH_PreferencesOption_Destroy(option);
-option = nullptr;
-if (preference == nullptr || errCode != PREFERENCES_OK) {
-    // 错误处理
-}
-```
+   
+   ``` C++
+   // 1. 创建Preferences配置选项。
+   OH_PreferencesOption *option = OH_PreferencesOption_Create();
+   if (option == nullptr) {
+       // 错误处理
+   }
+   // 设置Preferences配置选项的文件名称。
+   int ret = OH_PreferencesOption_SetFileName(option, "testdb");
+   if (ret != PREFERENCES_OK) {
+       (void)OH_PreferencesOption_Destroy(option);
+       // 错误处理
+   }
+   // 设置Preferences配置选项的应用组ID。
+   ret = OH_PreferencesOption_SetDataGroupId(option, "");
+   if (ret != PREFERENCES_OK) {
+       (void)OH_PreferencesOption_Destroy(option);
+       // 错误处理
+   }
+   // 设置Preferences配置选项的包名称。
+   ret = OH_PreferencesOption_SetBundleName(option, "com.example");
+   if (ret != PREFERENCES_OK) {
+       (void)OH_PreferencesOption_Destroy(option);
+       // 错误处理
+   }
+   // 设置Preferences配置选项的存储模式，需要注意的是，设置之前需要调用OH_Preferences_IsStorageTypeSupported接口判断当前平台是否支持需要选择的模式。
+   bool isGskvSupported = false;
+   ret = OH_Preferences_IsStorageTypeSupported(Preferences_StorageType::PREFERENCES_STORAGE_GSKV, &isGskvSupported);
+   if (ret != PREFERENCES_OK) {
+       (void)OH_PreferencesOption_Destroy(option);
+       // 错误处理
+   }
+   if (isGskvSupported) {
+       ret = OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_GSKV);
+       if (ret != PREFERENCES_OK) {
+           (void)OH_PreferencesOption_Destroy(option);
+           // 错误处理
+       }
+   } else {
+       ret = OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_XML);
+       if (ret != PREFERENCES_OK) {
+           (void)OH_PreferencesOption_Destroy(option);
+           // 错误处理
+       }
+   }
+   // 2. 打开一个Preferences实例。
+   int errCode = PREFERENCES_OK;
+   OH_Preferences *preference = OH_Preferences_Open(option, &errCode);
+   // option使用完毕后可直接释放，释放后需要将指针置空。
+   (void)OH_PreferencesOption_Destroy(option);
+   option = nullptr;
+   if (preference == nullptr || errCode != PREFERENCES_OK) {
+       // 错误处理
+   }
+   // option使用完毕后删除配置选项
+   errCode = OH_Preferences_DeletePreferences(option);
+   if (errCode != PREFERENCES_OK) {
+       // 错误处理
+   }
+   ```
 3. 订阅回调函数为DataChangeObserverCallback。
    <!--@[DataChangeObserverCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 
