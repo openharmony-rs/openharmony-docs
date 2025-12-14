@@ -47,7 +47,6 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 ![single_in_single_out](figures/audiosuite-eq-edit.png)
 
-示例代码如下：
 
 1. 创建引擎和管线。
    
@@ -382,7 +381,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 ### 混音与级联
 
-输入多路PCM音频数据，使用混音节点（mixNode）进行混音，输出混音后的PCM音频数据。
+输入多路PCM音频数据，使用混音节点进行混音，输出混音后的PCM音频数据。
 
 **图3**：级联编辑示意图
 
@@ -404,9 +403,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 2. 创建输入、输出、效果类节点并连接。
 
-   由于混音功能有多个输入节点，需单独设置回调函数`InputNodeWriteDataCallBack`中的`userData`参数。`InputNodeWriteDataCallBack`函数类型为[OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)。
-
-   在回调函数`InputNodeWriteDataCallBack`中，使用`userData`参数来区分多个输入节点，从而实现多个PCM音频数据的输入。
+   由于混音功能有多个输入节点，需单独设置回调函数`InputNodeWriteDataCallBack`中的`userData`参数来区分多个输入节点，从而实现多个PCM音频数据的输入。`InputNodeWriteDataCallBack`函数类型为[OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)。
 
    ```cpp
    struct AudioDataInfo {
