@@ -38,3 +38,17 @@ type PhotoAssetParams = Record\<string, MemberType\>[]
 | ---- | ---- |
 | Record\<string, [MemberType](#membertype)\>[] | 文件属性名称及其值的Record类型数组。 |
 
+## OperationValueType<sup>22+</sup>
+type ValueType = number | string | boolean  
+该类型用于表示不同谓词所需要匹配的值
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 类型                    | 说明                          |
+| ---------------------- | -------------------------------- |
+| number    | 表示字段类型为数字。 |
+| string    | 表示字段类型为字符串。 |
+| boolean   | 表示字段类型为布尔值。 |
+
