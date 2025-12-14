@@ -151,7 +151,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 2. 创建[OH_AudioRendererStruct](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorendererstruct.md)实例，并在其`AudioRendererOnWriteData()`回调函数中调用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)管线的[OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口来处理数据。
 
-   音频播放请参考：[使用OHAudio开发音频播放功能(C/C++)](./using-ohaudio-for-playback.md)。
+   请参考音频播放完成音频播放功能开发：[使用OHAudio开发音频播放功能(C/C++)](./using-ohaudio-for-playback.md)。
 
 
 3. 在播放器的回调函数中，将处理后的数据复制到OH_AudioRenderer实例的缓冲区中，实现音频播放过程中实时渲染。
@@ -206,7 +206,6 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
    OH_AudioSuiteEngine_StopPipeline(audioSuitePipeline);
    ```
 
-
 4. 资源销毁。
 
    ```cpp
@@ -227,9 +226,9 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 ## 注意事项
 
-音频实时渲染过程中，不支持重新创建新的效果节点，只支持修改效果节点的参数。
+- 音频实时渲染过程中，不支持重新创建新的效果节点，只支持修改效果节点的参数。
 
-音频编创错误码具体报错信息请参考：[OH_AudioSuite_Result](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_result)。
+- 音频编创错误码具体报错信息请参考：[OH_AudioSuite_Result](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_result)。
 
 
 <!--RP1-->
