@@ -2291,6 +2291,97 @@ let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
 console.info(`uid: ${uid}`);
 ```
 
+## connection.getDnsASCII<sup>23+</sup>
+
+getDnsASCII(host: string, conversionProcess?: ConversionProcess): string
+
+将Unicode编码形式的主机名转换为ASCII编码形式，并可通过可选的转换流程参数（conversionProcess）控制转换行为。
+
+> **说明：**
+>
+> conversionProcess设置为NO_CONFIGURATION时，只能转换已正式分配含义的Unicode字符所对应的域名。<br/>
+> conversionProcess设置为ALLOW_UNASSIGNED时，可以转换包含尚未分配含义的Unicode字符的域名。<br/>
+> conversionProcess设置为USE_STD3_ASCII_RULES时，会在转换过程中强制按照STD-3 ASCII规则（即RFC 1123标准）对生成的ASCII域名进行检查。<br/>
+> 传入参数中的数字和英文不做转码。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| host | string | 是 | 要转换的主机名（host）。每个标签（点分隔的部分）长度不超过63字节。 |
+| conversionProcess | [ConversionProcess](#conversionprocess23) | 否 | 转换流程参数，默认值为NO_CONFIGURATION。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| string | 返回转换结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 2100001 | Invalid parameter value. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let result = connection.getDnsASCII("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.xn--fsq092h.com
+let result = connection.getDnsASCII("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.example.com
+```
+
+## connection.getDnsUnicode<sup>23+</sup>
+
+getDnsUnicode(host: string, conversionProcess?: ConversionProcess): string
+
+使用Punycode编码方式，将ASCII编码形式的主机名转换为Unicode编码形式，并通过可选的conversionProcess参数控制转换行为。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| host | string | 是 | 要转换的主机名（host）。 |
+| conversionProcess | [ConversionProcess](#conversionprocess23) | 否 | 转换流程参数，默认值为NO_CONFIGURATION。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| string | 返回转换结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 2100001 | Invalid parameter value. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.示例.com
+let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.example.com
+```
+
 ## NetConnection
 
 网络连接的句柄。
@@ -3066,6 +3157,18 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | BEARER_ETHERNET | 3    | 以太网网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | BEARER_VPN<sup>12+</sup>| 4    | VPN网络。   |
+
+## ConversionProcess<sup>23+</sup>
+
+ASCII/Unicode转码转换流程参数的枚举。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称 | 值 | 说明 |
+| ---------------- | --------------- | --------------------------- |
+| NO_CONFIGURATION | 0 | 仅允许转换已分配的Unicode代码点的域名（Unicode为每个字符分配一个唯一的数字，这个数字就叫做代码点）。 |
+| ALLOW_UNASSIGNED | 1 | 允许转换包含未分配Unicode代码点的域名(在Unicode字符集中，并非所有代码点都已分配字符，即未分配Unicode代码点)。 |
+| USE_STD3_ASCII_RULES | 2 | 在转换过程中，强制使用STD-3 ASCII规则（即RFC 1123标准）检查生成的ASCII域名。 |
 
 ## HttpProxy<sup>10+</sup>
 
