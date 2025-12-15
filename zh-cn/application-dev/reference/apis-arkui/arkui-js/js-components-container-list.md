@@ -39,7 +39,7 @@
 | divider<sup>5+</sup>        | boolean                                  | false   | 否    | item是否自带分隔线。<br/>其样式参考样式列表的divider-color、divider-height、divider-length、divider-origin。<br/>-&nbsp;false：item不自带分隔线。<br/>-&nbsp;true：item自带分隔线。 |
 | shapemode                   | string                                   | default | 否    | 侧边滑动栏的形状类型。<br/>-&nbsp;default：不指定，跟随主题；<br/>-&nbsp;rect：矩形；<br/>-&nbsp;round：圆形。 |
 | updateeffect                | boolean                                  | false   | 否    | 用于设置当list内部的item发生删除或新增时是否支持动效。<br/>-&nbsp;false：新增删除item时无过渡动效。<br/>-&nbsp;true：新增删除item时播放过程动效。 |
-| chainanimation<sup>5+</sup> | boolean                                  | false   | 否    | 用于设置当前list是否启用链式联动动效，开启后列表滑动以及顶部和底部拖拽时会有链式联动的效果。链式联动效果：list内的list-item间隔一定距离，在基本的滑动交互行为下，主动对象驱动从动对象进行联动，驱动效果遵循弹簧物理动效。<br/>-&nbsp;false：不启用链式联动<br/>-&nbsp;true：启用链式联动<br/>不支持动态修改。<br/>同时配置了indexer，链式动效不生效。<br/>如配置了链式动效，list-item的sticky不生效。 |
+| chainanimation<sup>5+</sup> | boolean                                  | false   | 否    | 用于设置当前list是否启用链式联动动效，开启后列表滑动以及顶部和底部拖拽时会有链式联动的效果。链式联动效果：list内的list-item间隔一定距离，在基本的滑动交互行为下，主动对象驱动从动对象进行联动，驱动效果遵循弹簧物理动效。<br/>-&nbsp;false：不启用链式联动。<br/>-&nbsp;true：启用链式联动。<br/>不支持动态修改。<br/>同时配置了indexer，链式动效不生效。<br/>如配置了链式动效，list-item的sticky不生效。 |
 | initialindex                | number                                   | 0       | 否    | 用于设置当前List初次加载时视口起始位置显示的item，默认为0，即显示第一个item，如设置的序号超过了最后一个item的序号，则设置不生效，当同时设置了initialoffset属性时，当前属性不生效。当indexer为true或者scrollpage为true时，不生效。 |
 | initialoffset               | &lt;length&gt;                           | 0       | 否    | 用于设置当前List初次加载时视口的起始偏移量，偏移量无法超过当前List可滑动的范围，如果超过会被截断为可滑动范围的极限值。当indexer为true或者scrollpage为true时，不生效。 |
 | selected<sup>5+</sup>       | string                                   | -       | 否    | 指定当前列表中被选中激活的项，可选值为list-item的section属性值。 |
@@ -94,7 +94,7 @@
 | scrollArrow   | {&nbsp;reverse:&nbsp;boolean,&nbsp;smooth:&nbsp;boolean&nbsp;} | reverse缺省值为false，表示向底部方向滑动一段距离，无足够距离则滚动到底部。<br/>reverse为true，表示向顶部方向滑动一段距离，无足够距离则滚动到顶部。<br/>smooth缺省值为false，表示直接滚动。<br/>smooth为true，表示平滑滚动。 |
 | collapseGroup | {&nbsp;groupid:&nbsp;string&nbsp;}       | 收起指定的group。<br/>groupid：需要收拢的group的id。<br/>当未指定groupid时收起所有group。 |
 | expandGroup   | {&nbsp;groupid:&nbsp;string&nbsp;}       | 展开指定的group。<br/>groupid：需要展开的group的id。<br/>当groupid未指定时展开所有的group。 |
-| currentOffset | -                                        | 返回当前滑动的偏移量。返回值类型是Object，返回值说明请见表 currentOffset返回对象属性说明。 |
+| currentOffset | -                                        | 返回当前滑动的偏移量。返回值类型是Object，返回值说明请参见表1 currentOffset返回对象属性说明。 |
 
 **表1** currentOffset返回对象属性说明
 

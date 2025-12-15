@@ -16,7 +16,7 @@
 
 | 名称      | 类型     | 默认值  | 描述                                       |
 | ------- | ------ | ---- | ---------------------------------------- |
-| shareid | string | 无    | 进行共享元素转场时使用，若不配置，则转场样式不生效。共享元素转场当前支持的组件：list-item、image、text、button、label。 |
+| shareid | string | 无    | 进行共享元素转场时使用，若不配置，则转场样式不生效。共享元素转场当前支持的组件：[list-item](js-components-container-list-item.md)、[image](js-components-basic-image.md)、[text](js-components-basic-text.md)、[button](js-components-basic-button.md)、[label](js-components-basic-label.md)。 |
 
 
 ### 样式
@@ -229,8 +229,8 @@ export default {
 
 | 名称                         | 类型     | 默认值           | 描述                                       |
 | -------------------------- | ------ | ------------- | ---------------------------------------- |
-| transition-enter           | string | -             | 与@keyframes配套使用，支持transform和透明度动画，详见[动画样式 表 @keyframes属性说明](js-components-common-animation.md)。 |
-| transition-exit            | string | -             | 与\@keyframes配套使用，支持transform和透明度动画，详见[动画样式 表 @keyframes属性说明](js-components-common-animation.md)。 |
+| transition-enter           | string | -             | 与@keyframes配套使用，支持transform和透明度动画，详见[动画样式 表2 @keyframes属性说明](js-components-common-animation.md)。 |
+| transition-exit            | string | -             | 与\@keyframes配套使用，支持transform和透明度动画，详见[动画样式 表2 @keyframes属性说明](js-components-common-animation.md)。 |
 | transition-duration        | string | 跟随设备默认的页面转场时间 | 支持的单位为[s(秒)\|ms(毫秒)&nbsp;]，默认单位为ms，未配置时使用系统默认值。 |
 | transition-timing-function | string | friction      | 描述转场动画执行的速度曲线，用于使转场更为平滑。详细参数见[动画样式](js-components-common-animation.md)中“animation-timing-function”有效值说明。 |
 
