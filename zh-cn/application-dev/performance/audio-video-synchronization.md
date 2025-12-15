@@ -35,9 +35,9 @@
 
 | 时间差范围     | 主观体验                                                      |
 | ------------ | :-----------------------------------------------------------|
-| [-80ms,25ms] | 无法察觉                                               |
-| [-125ms,45ms] | 能够察觉
-| [-185ms,90ms] | 无法接受 
+| [-80ms,25ms] | 无法察觉。                                               |
+| [-125ms,45ms] | 能够察觉。 |
+| [-185ms,90ms] | 无法接受。 |
 
 >**说明：**
 >- 以上标准基于一倍速场景。  
@@ -97,15 +97,40 @@
     >- [OH_AudioRenderer_GetTimestamp()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口获取的是实际写到硬件的采样帧数，不受倍速影响。对AudioRender设置了倍速的场景下，播放进度计算需要特殊处理，系统保证应用设置完倍速接口后，新写入AudioRender的采样点才会做倍速处理。
 
 
-2. 音频启动前暂不做音画同步，视频帧直接送显。  
+2. 音频启动前根据时延预测送显。  
 
-   音频未启动前，timestamp和framePostion返回结果为0。为避免出现卡顿等问题，暂不同步，视频帧直接送显。
+   音频未启动前，timestamp和framePostion返回结果为0。
+   - API 23前：暂不同步，视频帧直接送显，避免出现卡顿等问题。
+   - API 23起：起播前可通过[OH_AudioRenderer_GetLatency()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getlatency)预估首帧时延，在拿到有效timestamp和framePostion前可按该时延节奏送显。
     ```c++
-    // 如果getTimeStamp方法报错, 则直接渲染音频
+    // API 23前：如果getTimeStamp方法报错或尚未返回有效值，直接按帧间隔送显
     if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {
         // 音频第一帧，可直接渲染
         videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, true);
-
+        // 此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显
+        std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(sampleInfo.frameInterval));
+        lastPushTime = std::chrono::system_clock::now();
+        continue;
+    }
+    ```
+    ```c++
+    // API 23起：在起播前查询时延，首帧按预测时延送显，后续按帧间隔送显
+    if (ret != AUDIOSTREAM_SUCCESS || timestamp == 0 || framePosition == 0) {
+        if (!firstFrameLatencyUsed) {
+            int32_t latencyMs = 0;
+            OH_AudioStream_Result latencyRet = OH_AudioRenderer_GetLatency(
+                audioRenderer, AUDIOSTREAM_LATENCY_TYPE_ALL, &latencyMs);
+            // 只尝试一次获取时延，失败则按帧间隔送显
+            firstFrameLatencyUsed = true;
+            if (latencyRet == AUDIOSTREAM_SUCCESS && latencyMs > 0) {
+                // 根据音频时延延缓首帧送显时间，此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显
+                std::this_thread::sleep_for(std::chrono::milliseconds(latencyMs));
+            }
+            lastPushTime = std::chrono::system_clock::now();
+        }
+        // 后续帧按帧间隔送显；若首帧已按时延sleep，这里不再sleep
+        videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, true);
+        // 此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显
         std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(sampleInfo.frameInterval));
         lastPushTime = std::chrono::system_clock::now();
         continue;
