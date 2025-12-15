@@ -52,7 +52,7 @@
 | [OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)](#oh_videodecoder_stop) | 停止解码器，释放输入输出buffer。停止后，可以通过调用OH_VideoDecoder_Start接口重新进入Running状态。<br> 需要注意的是，如果编解码器特定数据以前已输入到解码器，则需要再次输入。 |
 | [OH_AVErrCode OH_VideoDecoder_Flush(OH_AVCodec *codec)](#oh_videodecoder_flush) | 清除解码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。<br> 调用此接口后，以前通过异步回调上报的所有缓冲区index都将失效，请确保不要访问这些index对应的缓冲区。 |
 | [OH_AVErrCode OH_VideoDecoder_Reset(OH_AVCodec *codec)](#oh_videodecoder_reset) | 重置解码器，解码器回到初始化状态。如果要继续解码，需要再次调用OH_VideoDecoder_Configure接口配置解码器实例。 |
-| [OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)](#oh_videodecoder_getoutputdescription) | 获取解码器输出数据的OH_AVFormat信息，请参阅[OH_AVFormat](capi-core-oh-avformat)。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。 |
+| [OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)](#oh_videodecoder_getoutputdescription) | 获取解码器输出数据的OH_AVFormat信息，请参阅[OH_AVFormat](capi-core-oh-avformat.md)。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。 |
 | [OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videodecoder_setparameter) | 设置解码器的动态参数。<br> 注意，该接口只能在解码器启动后调用。同时，参数配置错误可能会导致解码失败。 |
 | [OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)](#oh_videodecoder_pushinputdata) | 将填充数据的输入缓冲区提交给视频解码器。<br> 输入回调将报告可用的输入缓冲区和相应的index值，请参阅{@OH_AVCodecOnNeedInputData}。一旦具有指定index的缓冲区提交到视频解码器，则无法再次访问缓冲区，直到再次收到输入回调，报告具有相同index的缓冲区可用。此外，对于某些解码器，需要在开始时向解码器输入编解码特定数据，以初始化解码器的解码过程，如H.264格式的PPS/SPS数据（从API version 11开始废弃）。 |
 | [OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_renderoutputdata) | 将处理后的输出buffer返回给解码器，并通知解码器完成在输出surface上渲染buffer中包含的解码数据。<br> 如果之前没有配置输出surface，则调用此接口仅将指定index对应的输出缓冲区返回给解码器（从API version 11开始废弃）。 |
@@ -413,7 +413,7 @@ OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)
 
 **描述**
 
-获取解码器输出数据的OH_AVFormat信息，请参阅[OH_AVFormat](capi-core-oh-avformat)。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
+获取解码器输出数据的OH_AVFormat信息，请参阅[OH_AVFormat](capi-core-oh-avformat.md)。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
