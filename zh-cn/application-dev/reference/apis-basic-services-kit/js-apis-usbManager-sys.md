@@ -363,7 +363,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -430,7 +430,7 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -457,7 +457,8 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. |
+
 **示例：**
 
 ```ts
@@ -477,7 +478,7 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -526,7 +527,7 @@ setDeviceFunctions(funcs: int): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -581,7 +582,7 @@ ArkTS-Sta: getDeviceFunctions(): int
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -622,7 +623,7 @@ getPortList(): Array\<USBPort\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -666,7 +667,7 @@ ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -714,7 +715,7 @@ ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: Dat
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -772,7 +773,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -823,7 +824,7 @@ USB设备端口。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -841,7 +842,7 @@ USB设备端口角色信息。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -860,7 +861,7 @@ USB设备侧功能。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -885,7 +886,7 @@ USB端口模式类型。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -905,7 +906,7 @@ USB端口模式类型。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -923,7 +924,7 @@ USB端口模式类型。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **系统能力：** SystemCapability.USB.USBManager
 
