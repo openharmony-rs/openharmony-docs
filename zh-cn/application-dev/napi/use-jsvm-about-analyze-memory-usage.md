@@ -1,4 +1,10 @@
 # 使用DevTools进行网页JavaScript内存分析
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanjiahao-->
+<!--Designer: @xiexuhui-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 ## 获取js堆内存快照
 ![堆快照获取流程](figures/js-memory-analysis-u-0.png)
 ![堆快照结果展示](figures/js-memory-analysis-u-1.png)
