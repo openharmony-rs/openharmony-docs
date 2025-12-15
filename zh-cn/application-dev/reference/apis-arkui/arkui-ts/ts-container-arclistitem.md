@@ -1,17 +1,39 @@
 # ArcListItem
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 用来展示列表具体子组件，必须配合[ArcList](ts-container-arclist.md)来使用。
 
 > **说明：**
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 该组件的父组件只能是[ArcList](ts-container-arclist.md)。
-> - 当ArcListItem配合[LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md)使用时，ArcListItem子组件在ArcListItem创建时创建。配合[if/else](../../../ui/state-management/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/state-management/arkts-rendering-control-foreach.md)使用时，或父组件为[ArcList](ts-container-arclist.md)时，ArcListItem子组件在ArcListItem布局时创建。
+> - 当ArcListItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，ArcListItem子组件在ArcListItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为[ArcList](ts-container-arclist.md)时，ArcListItem子组件在ArcListItem布局时创建。
 
 ## 导入模块
 
+> **说明：**
+>
+> - ArcListItemAttribute是用于配置ArcListItem组件属性的关键接口。API version 21及之前版本，导入ArcListItem组件后需要开发者手动导入ArcListItemAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入ArcListItem组件后，会自动导入ArcListItemAttribute，无需开发者手动导入ArcListItemAttribute。
+>
+> - 如果开发者手动导入ArcListItemAttribute，DevEco Studio会显示置灰，API version 21及之前版本删除会编译报错，从API version 22开始，删除对功能无影响。
+
+
+API version 21及之前版本：
+
 ```ts
 import { ArcListItem, ArcListItemAttribute } from '@kit.ArkUI';
+```
+
+API version 22及之后版本：
+
+```ts
+import { ArcListItem } from '@kit.ArkUI';
 ```
 
 ## 子组件
@@ -73,6 +95,7 @@ swipeAction(options: Optional\<SwipeActionOptions>)
 ```ts
 // xxx.ets
 import { LengthMetrics, CircleShape } from '@kit.ArkUI';
+// 从API version 22开始，无需手动导入ArcListAttribute和ArcListItemAttribute。具体请参考ArcList、ArcListItem的导入模块说明。
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@kit.ArkUI';
 
 @Entry

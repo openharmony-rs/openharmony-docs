@@ -1,4 +1,10 @@
 # Class (WebStorage)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yuzhouhang1-->
+<!--Designer: @handyohos-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebStorage** object to manage the Web SQL database and HTML5 Web Storage APIs. All **Web** components in an application share a **WebStorage** object.
 
@@ -11,6 +17,8 @@ Implements a **WebStorage** object to manage the Web SQL database and HTML5 Web 
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
 > - You must load the **Web** component before calling the APIs in **WebStorage**.
+>
+> - After the ArkWeb kernel is upgraded to M132, the Web SQL database management becomes invalid because the kernel discards Web SQL. For details about the ArkWeb kernel version, see [Constraints](../../web/web-component-overview.md#constraints).
 
 ## Modules to Import
 
@@ -34,7 +42,7 @@ Deletes all data in the specified origin.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -66,7 +74,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -82,31 +89,77 @@ HTML file to be loaded:
     <title>test</title>
     <script type="text/javascript">
 
-      var db = openDatabase('mydb','1.0','Test DB',2 * 1024 * 1024);
-      var msg;
+        // Open or create a database.
+        var request = indexedDB.open('myDatabase', 1);
 
-      db.transaction(function(tx){
-        tx.executeSql('INSERT INTO LOGS (id,log) VALUES(1,"test1")');
-        tx.executeSql('INSERT INTO LOGS (id,log) VALUES(2,"test2")');
-        msg = '<p>Data table created, with two data records inserted.</p>';
+        // Triggered when the database version changes or the database is created for the first time.
+        request.onupgradeneeded = function(event) {
+            var db = event.target.result;
 
-        document.querySelector('#status').innerHTML = msg;
-      });
+            // Create an object store (table) and set the primary key to id.
+            var objectStore = db.createObjectStore('customers', { keyPath: 'id' });
 
-      db.transaction(function(tx){
-        tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
-          var len = results.rows.length,i;
-          msg = "<p>Number of records: " + len + "</p>";
+            // Create an index for name.
+            objectStore.createIndex('name', 'name', { unique: false });
+        };
 
-          document.querySelector('#status').innerHTML += msg;
+        // Called when the database is successfully opened.
+        request.onsuccess = function(event) {
+            var db = event.target.result;
 
-              for(i = 0; i < len; i++){
-                msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
+            const customerData = [
+                {id: 1, name: 'John Doe', email: 'john@example.com'},
+                {id: 2, name: 'John Doe', email: 'john@example.com'},
+            ]
 
-          document.querySelector('#status').innerHTML += msg;
-          }
-        },null);
-      });
+            // Insert data.
+            var transaction = db.transaction('customers', 'readwrite');
+            var objectStore = transaction.objectStore('customers');
+
+            customerData.forEach((customer) => {
+                objectStore.add(customer);
+            });
+
+            transaction.oncomplete = function () {
+                console.info('Transaction completed: data added');
+            }
+            
+            transaction.onerror = function (event) {
+                console.error("Transaction failed", event);
+            }
+            
+            // Query data.
+            var queryTransaction = db.transaction(['customers']);
+            var queryObjectStore = queryTransaction.objectStore('customers');
+            var query = queryObjectStore.get(2);
+            
+            query.onsuccess = function (event) {
+                console.info('query succ');
+                console.info('Customer:', event.target.result);
+                console.info('Customer id:', event.target.result.id);
+                console.info('Customer name:', event.target.result.name);
+                console.info('Customer email:', event.target.result.email);
+            };
+            
+            queryObjectStore.openCursor().onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    var msg = "<p>Query record: " + cursor.key + "</p>";
+                    document.querySelector("#status").innerHTML += msg;
+                    var msg = "<p><b>" + cursor.value.name + "</b></p>";
+                    document.querySelector("#status").innerHTML += msg;
+                    console.info(`SSN ${cursor.key} corresponds to ${cursor.value.name}`);
+                    cursor.continue();
+                } else {
+                    console.info("No more records")
+                }
+            }
+        };
+
+        // Error handling.
+        request.onerror = function(event) {
+            console.error('Database error:', event.target.error);
+        };
 
       </script>
   </head>
@@ -120,7 +173,7 @@ HTML file to be loaded:
 
 static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
-Obtains information about all origins that are currently using the Web SQL Database. This API uses an asynchronous callback to return the result.
+Obtains information about origins that are currently using the Web SQL Database and HTML5-supported Web Storage APIs. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -132,7 +185,7 @@ Obtains information about all origins that are currently using the Web SQL Datab
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -162,9 +215,9 @@ struct WebComponent {
                 return;
               }
               for (let i = 0; i < origins.length; i++) {
-                console.log('origin: ' + origins[i].origin);
-                console.log('usage: ' + origins[i].usage);
-                console.log('quota: ' + origins[i].quota);
+                console.info('origin: ' + origins[i].origin);
+                console.info('usage: ' + origins[i].usage);
+                console.info('quota: ' + origins[i].quota);
               }
             })
           } catch (error) {
@@ -173,7 +226,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -185,7 +237,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
-Obtains information about all origins that are currently using the Web SQL Database. This API uses a promise to return the result.
+Obtains information about origins that are currently using the Web SQL Database and HTML5-supported Web Storage APIs. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -197,7 +249,7 @@ Obtains information about all origins that are currently using the Web SQL Datab
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -224,13 +276,13 @@ struct WebComponent {
             webview.WebStorage.getOrigins()
               .then(origins => {
                 for (let i = 0; i < origins.length; i++) {
-                  console.log('origin: ' + origins[i].origin);
-                  console.log('usage: ' + origins[i].usage);
-                  console.log('quota: ' + origins[i].quota);
+                  console.info('origin: ' + origins[i].origin);
+                  console.info('usage: ' + origins[i].usage);
+                  console.info('quota: ' + origins[i].quota);
                 }
               })
               .catch((e: BusinessError) => {
-                console.log('error: ' + JSON.stringify(e));
+                console.error('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -238,7 +290,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -250,7 +301,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
-Obtains the storage quota of an origin in the Web SQL Database, in bytes. This API uses an asynchronous callback to return the result.
+Obtains the storage quota of an origin in Web SQL Database and HTML5-supported Web Storage APIs, in bytes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -263,7 +314,7 @@ Obtains the storage quota of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -293,7 +344,7 @@ struct WebComponent {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('quota: ' + quota);
+              console.info('quota: ' + quota);
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -301,7 +352,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -313,7 +363,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOriginQuota(origin: string): Promise\<number>
 
-Obtains the storage quota of an origin in the Web SQL Database, in bytes. This API uses a promise to return the result.
+Obtains the storage quota of an origin in the Web SQL Database and HTML5-supported Web Storage APIs, in bytes. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -331,7 +381,7 @@ Obtains the storage quota of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -358,10 +408,10 @@ struct WebComponent {
           try {
             webview.WebStorage.getOriginQuota(this.origin)
               .then(quota => {
-                console.log('quota: ' + quota);
+                console.info('quota: ' + quota);
               })
               .catch((e: BusinessError) => {
-                console.log('error: ' + JSON.stringify(e));
+                console.error('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -369,7 +419,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -381,7 +430,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 
-Obtains the storage usage of an origin in the Web SQL Database, in bytes. This API uses an asynchronous callback to return the result.
+Obtains the storage usage of an origin in the Web SQL Database and HTML5-supported Web Storage APIs, in bytes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -394,7 +443,7 @@ Obtains the storage usage of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -424,7 +473,7 @@ struct WebComponent {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('usage: ' + usage);
+              console.info('usage: ' + usage);
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -432,7 +481,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -444,7 +492,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOriginUsage(origin: string): Promise\<number>
 
-Obtains the storage usage of an origin in the Web SQL Database, in bytes. This API uses a promise to return the result.
+Obtains the storage usage of an origin in the Web SQL Database and HTML5-supported Web Storage APIs, in bytes. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -462,7 +510,7 @@ Obtains the storage usage of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                             |
 | -------- | ----------------------------------------------------- |
@@ -489,7 +537,7 @@ struct WebComponent {
           try {
             webview.WebStorage.getOriginUsage(this.origin)
               .then(usage => {
-                console.log('usage: ' + usage);
+                console.info('usage: ' + usage);
               }).catch((e: BusinessError) => {
               console.error('error: ' + JSON.stringify(e));
             })
@@ -498,7 +546,6 @@ struct WebComponent {
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -510,7 +557,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static deleteAllData(incognito?: boolean): void
 
-Deletes all data in the Web SQL Database.
+Deletes all storage data used by JavaScript storage APIs, including the Web SQL Database and HTML5-supported Web storage APIs.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -518,7 +565,7 @@ Deletes all data in the Web SQL Database.
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| incognito<sup>11+</sup>    | boolean | No  | Whether to delete all data in the Web SQL Database in incognito mode. The value **true** means to delete all data in the Web SQL Database in incognito mode, and **false** means the opposite.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to delete all data in the Web SQL Database in incognito mode. The value **true** means to delete all data in the Web SQL Database in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If **undefined** or **null** is passed, the value is **false**.|
 
 **Example**
 
@@ -543,7 +590,6 @@ struct WebComponent {
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }

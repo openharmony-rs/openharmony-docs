@@ -1,4 +1,10 @@
 # picker-view
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<picker-view>** component provides the view that shows an embedded scrollable selector on the screen.
 
@@ -74,6 +80,11 @@ Time selector (**type** is **time**)
 | display | string | flex | No| How and whether to display the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | [left\|top] | &lt;length&gt; \| &lt;percentage&gt;<sup>6+</sup> | - | No| Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element. |
 
+## Methods
+
+| Name| Parameter| Description|
+| -------- | -------- | -------- |
+| rotation | {&nbsp;focus:&nbsp;boolean&nbsp;} | Specifies whether to request focus for crown rotation. **focus: true**: acquires focus, allowing users to scroll options by rotating the crown (only works for single-column pickers). **focus: false**: releases focus. Note: This method has effect only for single-column pickers. For multi-column pickers, users must click to acquire focus before rotating the crown.|
 
 ## Example
 

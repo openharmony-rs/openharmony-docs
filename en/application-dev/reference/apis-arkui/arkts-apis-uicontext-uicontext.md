@@ -1,4 +1,10 @@
 # Class (UIContext)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 Implements a **UIContext** instance.
 
@@ -54,7 +60,7 @@ export default class EntryAbility extends UIAbility {
 
 isAvailable(): boolean
 
-Checks whether the UI instance corresponding to this **UIContext** object is valid. Valid **UIContext** objects are created using **getUIContext**. A UI instance is considered valid when the backend UI instance exists. Invalid UI instances include the following: instances created using **new UIContext()**; old UI instances after multiple **loadContent()** calls; window UI instances after window closure.  
+Checks whether the UI instance corresponding to this **UIContext** object is valid. The **UIContext** object can be obtained using the [getUIContext](arkts-apis-window-Window.md#getuicontext10) API. A UI instance is considered valid when the backend UI instance exists. UIContext objects created using **new UIContext()** have no corresponding UI instance. After multiple [loadContent](arkts-apis-window-Window.md#loadcontent9) operations, old UI instances become invalid. In multi-window scenarios, when a window is closed, its UI instance becomes invalid. In summary, a UIContext object is invalid when it has no corresponding backend UI instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -98,7 +104,7 @@ struct UIContextCompare {
             const ctx: UIContext = this.getUIContext();
             const available: boolean = ctx.isAvailable();
             this.result1 = `Status: ${available} (Valid UI instance)`;
-            console.log("getUIContext test:", available);
+            console.info("getUIContext test:", available);
           } catch (e) {
             this.result1 = "Error: " + (e instanceof Error ? e.message : String(e));
           }
@@ -113,7 +119,7 @@ struct UIContextCompare {
             const ctx: UIContext = new UIContext();
             const available: boolean = ctx.isAvailable();
             this.result2 = `Status: ${available} (Invalid UI instance)`;
-            console.log("new UIContext test:", available);
+            console.info("new UIContext test:", available);
           } catch (e) {
             this.result2 = "Error: " + (e instanceof Error ? e.message : String(e));
           }
@@ -146,10 +152,6 @@ Obtains a **Font** object.
 
 See the example for [Font](arkts-apis-uicontext-font.md).
 
-<!--code_no_check-->
-```ts
-uiContext.getFont();
-```
 ## getComponentUtils
 
 getComponentUtils(): ComponentUtils
@@ -188,10 +190,6 @@ Obtains the **UIInspector** object.
 
 **Example**
 
-<!--code_no_check-->
-```ts
-uiContext.getUIInspector();
-```
 See the example for [UIInspector](./arkts-apis-uicontext-uiinspector.md).
 
 ## getUIObserver<sup>11+</sup>
@@ -212,9 +210,50 @@ Obtains the **UIObserver** object.
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.getUIObserver();
+@Component
+struct PageOne {
+  build() {
+    NavDestination() {
+      Text("pageOne")
+    }.title("pageOne")
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageBuilder(name: string) {
+    PageOne()
+  }
+
+  aboutToAppear() {
+    this.getUIContext().getUIObserver().on('navDestinationUpdate', (info) => {
+      console.info('NavDestination state update', JSON.stringify(info));
+    });
+  }
+
+  aboutToDisappear() {
+    this.getUIContext().getUIObserver().off('navDestinationUpdate');
+  }
+
+  build() {
+    Column() {
+      Navigation(this.stack) {
+        Button("push").onClick(() => {
+          this.stack.pushPath({ name: "pageOne" });
+        })
+      }
+      .title("Navigation")
+      .navDestination(this.PageBuilder)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## getMediaQuery
@@ -237,11 +276,6 @@ Obtains a **MediaQuery** object.
 
 See the [mediaquery Example](js-apis-mediaquery.md#example).
 
-<!--code_no_check-->
-```ts
-uiContext.getMediaQuery();
-```
-
 ## getRouter
 
 getRouter(): Router
@@ -260,10 +294,7 @@ Obtains a **Router** object.
 
 **Example**
 
-<!--code_no_check-->
-```ts
-uiContext.getRouter();
-```
+See the example for [pushUrl](arkts-apis-uicontext-router.md#pushurl).
 
 ## getPromptAction
 
@@ -284,11 +315,6 @@ Obtains a **PromptAction** object.
 **Example**
 
 See the example for [PromptAction](arkts-apis-uicontext-promptaction.md).
-
-<!--code_no_check-->
-```ts
-uiContext.getPromptAction();
-```
 
 ## getOverlayManager<sup>12+</sup>
 
@@ -340,7 +366,7 @@ See the example for [OverlayManager](arkts-apis-uicontext-overlaymanager.md).
 
 getOverlayManagerOptions(): OverlayManagerOptions
 
-Obtains the current parameters of [OverlayManager](arkts-apis-uicontext-overlaymanager.md).
+Obtains the current parameters of [OverlayManagerOptions](arkts-apis-uicontext-i.md#overlaymanageroptions15).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -365,6 +391,14 @@ Applies a transition animation for state changes.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+> **NOTE**
+> - Avoid using **animateTo** in **aboutToAppear** or **aboutToDisappear**.
+> - If the animation is called in [aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear), the build of the custom component has not been executed and the internal component has not been created. The animation timing is too early, and the animation attribute does not have an initial value. As a result, the animation cannot be performed on the component.
+> - When [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) is executed, the component is about to be destroyed. Therefore, animation cannot be performed in aboutToDisappear.
+> - When a component appears or disappears, you can add animation effects through [in-component transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md).
+> - If in-component transition does not support certain attributes, you can use animateTo to implement the effect of component disappearance after the animation is complete. For details, see [Example 2](./arkui-ts/ts-explicit-animation.md#example-2-enabling-a-component-to-disappear-after-the-animation) in [Explicit Animation](./arkui-ts/ts-explicit-animation.md).
+> - In certain scenarios, using animateTo with [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
 
 **Parameters**
 
@@ -469,7 +503,7 @@ Obtains the **LocalStorage** instance shared by this stage.
 
 | Type                            | Description               |
 | ------------------------------ | ----------------- |
-| [LocalStorage](arkui-ts/ts-state-management.md#localstorage9)&nbsp;\|&nbsp;undefined | **LocalStorage** instance if it exists; **undefined** if it does not exist.|
+| [LocalStorage](arkui-ts/ts-state-management.md#localstorage9) \| undefined | **LocalStorage** instance if it exists; **undefined** if it does not exist.|
 
 **Example**
 
@@ -530,7 +564,7 @@ Obtains the context of this ability.
 
 | Type| Description                            |
 | ------ | ------------------------------- |
-| [Context](arkts-apis-uicontext-t.md#context12)&nbsp;\|&nbsp;undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called on a page of the UIAbility, the return value type is UIAbilityContext; if this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext. If the ability context does not exist, **undefined** is returned.|
+| [Context](arkts-apis-uicontext-t.md#context12) \| undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned.|
 
 **Example**
 
@@ -543,8 +577,14 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("cacheDir='"+this.uiContext?.getHostContext()?.cacheDir+"'").fontSize(25)
-        Text("bundleCodeDir='"+this.uiContext?.getHostContext()?.bundleCodeDir+"'").fontSize(25)
+        Text("cacheDir='"+this.uiContext?.getHostContext()?.cacheDir+"'")
+          .fontSize(25)
+          .border({ color:Color.Red, width:2 })
+          .padding(50)
+        Text("bundleCodeDir='"+this.uiContext?.getHostContext()?.bundleCodeDir+"'")
+          .fontSize(25)
+          .border({ color:Color.Red, width:2 })
+          .padding(50)
       }
       .width('100%')
     }
@@ -581,10 +621,7 @@ Obtains a FrameNode on the component tree based on the component ID.
 
 **Example**
 
-<!--code_no_check-->
-```ts
-uiContext.getFrameNodeById("TestNode");
-```
+See [Example of Obtaining the Root Node](js-apis-arkui-frameNode.md#example-of-obtaining-the-root-node).
 
 ## getAttachedFrameNodeById<sup>12+</sup>
 
@@ -614,9 +651,31 @@ Obtains the FrameNode attached to the current window based on its component ID.
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.getAttachedFrameNodeById("TestNode");
+@Entry
+@Component
+struct MyComponent {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let node = this.getUIContext().getAttachedFrameNodeById("HelloWorld");
+          console.info(`Find HelloWorld Tag:${node!.getNodeType()} id:${node!.getUniqueId()}`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 
 ## getFrameNodeByUniqueId<sup>12+</sup>
@@ -773,6 +832,10 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 
 Shows an alert dialog box.
 
+>  **NOTE**
+>
+>  The showAlertDialog of the subwindow (showInSubwindow is set to true) cannot be used in the input method window. For details, see the [createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1) description of the input method framework.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -781,32 +844,44 @@ Shows an alert dialog box.
 
 | Name    | Type                                      | Mandatory  | Description                 |
 | ------- | ---------------------------------------- | ---- | ------------------- |
-| options | [AlertDialogParamWithConfirm](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm)&nbsp;\|&nbsp;[AlertDialogParamWithButtons](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons)&nbsp;\|&nbsp;[AlertDialogParamWithOptions](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10) | Yes   | Shows an **AlertDialog** component in the given settings.|
+| options | [AlertDialogParamWithConfirm](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm) \| [AlertDialogParamWithButtons](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons) \| [AlertDialogParamWithOptions](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10) | Yes   | Shows an **AlertDialog** component in the given settings.|
 
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.showAlertDialog(
-  {
-    title: 'title',
-    message: 'text',
-    autoCancel: true,
-    alignment: DialogAlignment.Bottom,
-    offset: { dx: 0, dy: -20 },
-    gridCount: 3,
-    confirm: {
-      value: 'button',
-      action: () => {
-        console.info('Button-clicking callback')
-      }
-    },
-    cancel: () => {
-      console.info('Closed callbacks')
-    }
+@Entry
+@Component
+struct Index {
+  uiContext: UIContext = this.getUIContext()
+
+  build() {
+    Column() {
+      Button('showAlertDialog')
+        .onClick(() => {
+          this.uiContext.showAlertDialog(
+            {
+              title: 'title',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 3,
+              confirm: {
+                value: 'button',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              }
+            }
+          );
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
   }
-);
+}
 ```
 
 ## showActionSheet
@@ -827,44 +902,56 @@ Shows an action sheet in the given settings.
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.showActionSheet({
-  title: 'ActionSheet title',
-  message: 'message',
-  autoCancel: true,
-  confirm: {
-    value: 'Confirm button',
-    action: () => {
-      console.info('Get Alert Dialog handled');
-    }
-  },
-  cancel: () => {
-    console.info('actionSheet canceled');
-  },
-  alignment: DialogAlignment.Bottom,
-  offset: { dx: 0, dy: -10 },
-  sheets: [
-    {
-      title: 'apples',
-      action: () => {
-        console.info('apples');
-      }
-    },
-    {
-      title: 'bananas',
-      action: () => {
-        console.info('bananas');
-      }
-    },
-    {
-      title: 'pears',
-      action: () => {
-        console.info('pears');
-      }
-    }
-  ]
-});
+@Entry
+@Component
+struct Index {
+  uiContext: UIContext = this.getUIContext()
+
+  build() {
+    Column() {
+      Button('showActionSheet')
+        .onClick(() => {
+          this.uiContext.showActionSheet({
+            title: 'ActionSheet title',
+            message: 'message',
+            autoCancel: true,
+            confirm: {
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          });
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
 ```
 
 ## showDatePickerDialog
@@ -873,9 +960,15 @@ showDatePickerDialog(options: DatePickerDialogOptions): void
 
 Shows a date picker dialog box in the given settings.
 
+>  **NOTE**
+>
+>  showDatePickerDialog does not support subwindows (showInSubwindow is set to true) in the input method type window. For details, see the restrictions of the input method framework [createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1).
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -885,25 +978,53 @@ Shows a date picker dialog box in the given settings.
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let selectedDate: Date = new Date("2010-1-1");
-uiContext.showDatePickerDialog({
-  start: new Date("2000-1-1"),
-  end: new Date("2100-12-31"),
-  selected: selectedDate,
-  onAccept: (value: DatePickerResult) => {
-    // Use the setFullYear method to set the date when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
-    selectedDate.setFullYear(Number(value.year), Number(value.month), Number(value.day));
-    console.info("DatePickerDialog:onAccept()" + JSON.stringify(value));
-  },
-  onCancel: () => {
-    console.info("DatePickerDialog:onCancel()");
-  },
-  onChange: (value: DatePickerResult) => {
-    console.info("DatePickerDialog:onChange()" + JSON.stringify(value));
+// xxx.ets
+@Entry
+@Component
+struct DatePickerDialogExample {
+  selectedDate: Date = new Date("2010-1-1");
+
+  build() {
+    Column() {
+      Button("DatePickerDialog")
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showDatePickerDialog({
+            start: new Date("2000-1-1"),
+            end: new Date("2100-12-31"),
+            selected: this.selectedDate,
+            showTime: true,
+            useMilitaryTime: false,
+            dateTimeOptions: { hour: "numeric", minute: "2-digit" },
+            onDateAccept: (value: Date) => {
+              // Use the setFullYear method to set the date when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
+              this.selectedDate = value;
+              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+            },
+            onCancel: () => {
+              console.info("DatePickerDialog:onCancel()");
+            },
+            onDateChange: (value: Date) => {
+              console.info("DatePickerDialog:onDateChange()" + value.toString());
+            },
+            onDidAppear: () => {
+              console.info("DatePickerDialog:onDidAppear()");
+            },
+            onDidDisappear: () => {
+              console.info("DatePickerDialog:onDidDisappear()");
+            },
+            onWillAppear: () => {
+              console.info("DatePickerDialog:onWillAppear()");
+            },
+            onWillDisappear: () => {
+              console.info("DatePickerDialog:onWillDisappear()");
+            }
+          })
+        })
+    }.width('100%')
   }
-});
+}
 ```
 
 ## showTimePickerDialog
@@ -912,9 +1033,15 @@ showTimePickerDialog(options: TimePickerDialogOptions): void
 
 Shows a time picker dialog box in the given settings.
 
+>  **NOTE**
+>
+>  showTimePickerDialog with showInSubwindow set to true cannot be used in the input method type window. For details, see the restrictions of the input method framework [createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1).
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -973,9 +1100,15 @@ showTextPickerDialog(options: TextPickerDialogOptions): void
 
 Shows a text picker dialog box in the given settings.
 
+>  **NOTE**
+>
+>  showTextPickerDialog with showInSubwindow set to true cannot be used in the input method type window. For details, see the restrictions of the input method framework [createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1).
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -1042,9 +1175,15 @@ showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt)
 
 Shows a text picker dialog box in the given settings. This API extends **showTextPickerDialog** by adding support for the **TextPickerDialogOptionsExt** parameter.
 
+>  **NOTE**
+>
+>  showTextPickerDialog with showInSubwindow set to true cannot be used in the input method type window. For details, see the restrictions of the input method framework [createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1).
+
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -1087,32 +1226,34 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { AnimatorOptions, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// used in UIAbility
-onWindowStageCreate(windowStage: window.WindowStage) {
-  // Main window is created, set main page for this ability
-  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-  windowStage.loadContent('pages/Index', (err, data) => {
-    if (err.code) {
-      hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-      return;
-    }
-    hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    let uiContext = windowStage.getMainWindowSync().getUIContext();
-    let options:AnimatorOptions = {
-      duration: 1500,
-      easing: "friction",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 3,
-      begin: 200.0,
-      end: 400.0
-    };
-    uiContext.createAnimator(options);
-  });
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Create the main window and set the home page for this ability.
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      let uiContext = windowStage.getMainWindowSync().getUIContext();
+      let options:AnimatorOptions = {
+        duration: 1500,
+        easing: "friction",
+        delay: 0,
+        fill: "forwards",
+        direction: "normal",
+        iterations: 3,
+        begin: 200.0,
+        end: 400.0
+      };
+      uiContext.createAnimator(options);
+    });
+  }
 }
 ```
 
@@ -1149,23 +1290,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { SimpleAnimatorOptions, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// used in UIAbility
-onWindowStageCreate(windowStage: window.WindowStage) {
-  // Main window is created, set main page for this ability
-  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-  windowStage.loadContent('pages/Index', (err, data) => {
-    if (err.code) {
-      hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-      return;
-    }
-    hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    let uiContext = windowStage.getMainWindowSync().getUIContext();
-    let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
-    uiContext.createAnimator(options);
-  });
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Create the main window and set the home page for this ability.
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      let uiContext = windowStage.getMainWindowSync().getUIContext();
+      let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
+      uiContext.createAnimator(options);
+    });
+  }
 }
 ```
 
@@ -1187,13 +1331,26 @@ Executes the specified callback in this UI context.
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.runScopedTask(
-  () => {
-    console.info('Succeeded in runScopedTask');
+@Entry
+@Component
+struct Index {
+  uiContext = this.getUIContext();
+
+  build() {
+    Row() {
+      Column() {
+        Button("run task").onClick(()=>{
+          this.uiContext.runScopedTask(()=>{
+            // do something
+          })
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
-);
+}
 ```
 
 ## setKeyboardAvoidMode<sup>11+</sup>
@@ -1210,7 +1367,7 @@ Sets the avoidance mode for the virtual keyboard.
 
 | Name     | Type        | Mandatory  | Description  |
 | -------- | ---------- | ---- | ---- |
-| value | [KeyboardAvoidMode](arkts-apis-uicontext-e.md#keyboardavoidmode11)| Yes   | Avoidance mode for the virtual keyboard.<br>Default value: **KeyboardAvoidMode.OFFSET**|
+| value | [KeyboardAvoidMode](arkts-apis-uicontext-e.md#keyboardavoidmode11)| Yes   | Keyboard avoidance mode.<br>Default value: KeyboardAvoidMode.OFFSET|
 
 >  **NOTE**
 >
@@ -1224,25 +1381,20 @@ Sets the avoidance mode for the virtual keyboard.
 
 See [Example 4: Setting the Keyboard Avoidance Mode to Resize](./arkui-ts/ts-universal-attributes-expand-safe-area.md#example-4-setting-the-keyboard-avoidance-mode-to-resize), [Example 5: Setting Keyboard Avoidance Mode to Offset](./arkui-ts/ts-universal-attributes-expand-safe-area.md#example-5-setting-keyboard-avoidance-mode-to-offset), and [Example 6: Switching Avoidance Modes](./arkui-ts/ts-universal-attributes-expand-safe-area.md#example-6-switching-avoidance-modes).
 
+<!--code_no_check-->
 ```ts
 // EntryAbility.ets
 import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
 
-    windowStage.loadContent('pages/Index', (err, data) => {
-      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-      uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      });
+    }
+}
 ```
 
 ## getKeyboardAvoidMode<sup>11+</sup>
@@ -1265,27 +1417,21 @@ Obtains the avoidance mode for the virtual keyboard.
 
 See [Example 4: Setting the Keyboard Avoidance Mode to Resize](./arkui-ts/ts-universal-attributes-expand-safe-area.md#example-4-setting-the-keyboard-avoidance-mode-to-resize), [Example 5: Setting Keyboard Avoidance Mode to Offset](./arkui-ts/ts-universal-attributes-expand-safe-area.md#example-5-setting-keyboard-avoidance-mode-to-offset), and [Example 6: Switching Avoidance Modes](./arkui-ts/ts-universal-attributes-expand-safe-area.md#example-6-switching-avoidance-modes).
 
+<!--code_no_check-->
 ```ts
 // EntryAbility.ets
 import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
 
-    windowStage.loadContent('pages/Index', (err, data) => {
-      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-      let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-      hilog.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
-
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
+        console.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+      });
+    }
+}
 ```
 
 ## getAtomicServiceBar<sup>11+</sup>
@@ -1308,20 +1454,23 @@ Obtains an **AtomicServiceBar** object, which can be used to set the properties 
 
 ```ts
 // EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-onWindowStageCreate(windowStage: window.WindowStage) {
-  // Main window is created, set main page for this ability
-  hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
-  windowStage.loadContent('pages/Index', (err, data) => {
-    let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-    let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
-    if (atomicServiceBar != undefined) {
-      hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
-    } else {
-      hilog.error(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
-    }
-  });
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+      if (atomicServiceBar != undefined) {
+        console.info('Get AtomServiceBar Successfully.');
+      } else {
+        console.error('Get AtomicServiceBar failed.');
+      }
+    });
+  }
 }
 ```
 ## getDragController<sup>11+</sup>
@@ -1359,7 +1508,67 @@ Generates a key frame animation. For details about how to use this API, see [key
 | Name| Type                                             | Mandatory| Description                     |
 | ------------ | ---------------------------------------------------- | ------- | ---------------------------- |
 | param        | [KeyframeAnimateParam](arkui-ts/ts-keyframeAnimateTo.md#keyframeanimateparam) | Yes     | Overall animation parameter of the keyframe animation.    |
-| keyframes    | Array&lt;[KeyframeState](arkui-ts/ts-keyframeAnimateTo.md#keyframestate)&gt;  | Yes     | States of all keyframes.           |
+| keyframes    | Array&lt;[KeyframeState](arkui-ts/ts-keyframeAnimateTo.md#keyframestate)&gt;  | Yes     | List of all keyframe states.           |
+
+**Example**
+
+```ts
+// xxx.ets
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct KeyframeDemo {
+  @State myScale: number = 1.0;
+  uiContext: UIContext | undefined = undefined;
+
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+  }
+
+  build() {
+    Column() {
+      Circle()
+        .width(100)
+        .height(100)
+        .fill("#46B1E3")
+        .margin(100)
+        .scale({ x: this.myScale, y: this.myScale })
+        .onClick(() => {
+          if (!this.uiContext) {
+            console.error("no uiContext, keyframe failed");
+            return;
+          }
+          this.myScale = 1;
+          // Configure the keyframe animation to play three times.
+          this.uiContext.keyframeAnimateTo({
+              iterations: 3,
+              expectedFrameRateRange: {
+                min: 10,
+                max: 120,
+                expected: 60,
+              }
+            }, [
+            {
+              // The first keyframe animation lasts for 800 ms, during which the scale attribute changes from 1 to 1.5.
+              duration: 800,
+              event: () => {
+                this.myScale = 1.5;
+              }
+            },
+            {
+              // The second keyframe animation lasts for 500 ms, during which the scale attribute changes from 1.5 to 1.
+              duration: 500,
+              event: () => {
+                this.myScale = 1;
+              }
+            }
+          ]);
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
 
 ## getFocusController<sup>12+</sup>
 
@@ -1407,11 +1616,9 @@ Obtains the component tree and component attributes. This API has a long process
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message| Description|
-| ------- | -------- | -------- |
-| 401      | invalid param count  | Incorrect number of parameters. Ensure that the correct number of parameters are passed.|
-| 401      | invalid param type  | Invalid parameter type. Ensure that the types of parameter passed are correct.|
-| 401      | get inspector failed  | Query result error. An internal system exception occurred. Contact Huawei engineers for assistance.|
+| ID| Error Message|
+| ------- | -------- |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1428,7 +1635,7 @@ import { UIContext } from '@kit.ArkUI';
 @Component
 struct ComponentPage {
   loopConsole(inspectorStr: string, i: string) {
-    console.log(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
+    console.info(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
     if (JSON.parse(inspectorStr).$children) {
       i += '-';
       for (let index = 0; index < JSON.parse(inspectorStr).$children.length; index++) {
@@ -1442,14 +1649,14 @@ struct ComponentPage {
       Button('content').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
-        console.log(`InsTree : ${inspectorStr}`);
+        console.info(`InsTree : ${inspectorStr}`);
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
         this.loopConsole(inspectorStr, '-');
       })
       Button('isLayoutInspector').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
-        console.log(`InsTree : ${inspectorStr}`);
+        console.info(`InsTree : ${inspectorStr}`);
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
         this.loopConsole(inspectorStr, '-');
       })
@@ -1512,12 +1719,9 @@ Obtains the attributes of the specified component and its child components. This
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message| Description|
-| ------- | -------- | -------- |
-| 401      | invalid param count  | Incorrect number of parameters. Ensure that the correct number of parameters are passed.|
-| 401      | invalid param type  | Invalid parameter type. Ensure that the types of parameter passed are correct.|
-| 401      | invalid filter depth  | Invalid filter depth. Ensure that the value of the **depth** parameter must be greater than or equal to 0.|
-| 401      | get inspector failed  | Query result error. This occurs when the specified component ID does not exist. Ensure that the provided component ID is correct.|
+| ID| Error Message|
+| ------- | -------- |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1548,7 +1752,7 @@ struct ComponentPage {
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
           console.info(`result3: ${inspectorStr}`);
         } catch(e) {
-          console.info(`getFilteredInspectorTreeById error: ${e}`);
+          console.error(`getFilteredInspectorTreeById error: ${e}`);
         }
       })
     }
@@ -1570,7 +1774,7 @@ To obtain the component specified by the **id** parameter in the **getFilteredIn
 
 getCursorController(): CursorController
 
-Obtains a [CursorController](js-apis-arkui-UIContext.md#cursorcontroller12) object, which can be used to control the cursor.
+Obtains a [CursorController](arkts-apis-uicontext-cursorcontroller.md) object, which can be used to control the cursor.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1602,13 +1806,6 @@ Obtains a [ContextMenuController](arkts-apis-uicontext-contextmenucontroller.md)
 |----|----|
 |[ContextMenuController](arkts-apis-uicontext-contextmenucontroller.md)| **ContextMenuController** object.|
 
-**Example**
-
-<!--code_no_check-->
-```ts
-uiContext.getContextMenuController();
-```
-
 ## getMeasureUtils<sup>12+</sup>
 
 getMeasureUtils(): MeasureUtils
@@ -1628,11 +1825,6 @@ Obtains a **MeasureUtils** object for text calculation.
 **Example**
 
 See the example for [MeasureUtils](arkts-apis-uicontext-measureutils.md).
-
-<!--code_no_check-->
-```ts
-uiContext.getMeasureUtils();
-```
 
 ## getComponentSnapshot<sup>12+</sup>
 
@@ -1688,9 +1880,28 @@ Pixel density: effective pixel density of the current window, which is the scree
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.vp2px(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().vp2px(50),
+          centerY: this.getUIContext().vp2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## px2vp<sup>12+</sup>
@@ -1725,9 +1936,28 @@ Pixel density: effective pixel density of the current window, which is the scree
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.px2vp(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2vp(50),
+          centerY: this.getUIContext().px2vp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## fp2px<sup>12+</sup>
@@ -1764,9 +1994,28 @@ Font scale factor: system font scaling coefficient ([Configuration.fontScale](ar
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.fp2px(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().fp2px(50),
+          centerY: this.getUIContext().fp2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## px2fp<sup>12+</sup>
@@ -1803,9 +2052,28 @@ Font scale factor: system font scaling coefficient ([Configuration.fontScale](ar
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.px2fp(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2fp(50),
+          centerY: this.getUIContext().px2fp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## lpx2px<sup>12+</sup>
@@ -1838,9 +2106,28 @@ Conversion formula: px value = lpx value × (actual screen width/logical width),
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.lpx2px(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().lpx2px(50),
+          centerY: this.getUIContext().lpx2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## px2lpx<sup>12+</sup>
@@ -1873,9 +2160,28 @@ Conversion formula: lpx value = px value/(actual screen width/logical width), wh
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.px2lpx(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2lpx(50),
+          centerY: this.getUIContext().px2lpx(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## getWindowName<sup>12+</sup>
@@ -2146,9 +2452,52 @@ Requests the dynamic sync scene of a component for customizing related frame rat
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-uiContext.DynamicSyncScene("dynamicSyncScene");
+import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Frame {
+  @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30};
+  private scenes: SwiperDynamicSyncScene[] = [];
+
+  build() {
+    Column() {
+      Text("Animation "+ JSON.stringify(this.ANIMATION))
+      Text("Gesture "+ JSON.stringify(this.GESTURE))
+      Row(){
+        Swiper() {
+          Text("one")
+          Text("two")
+          Text("three")
+        }
+        .width('100%')
+        .height('300vp')
+        .id("dynamicSwiper")
+        .backgroundColor(Color.Blue)
+        .autoPlay(true)
+        .onAppear(()=>{
+          this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
+        })
+      }
+
+      Button("set frame")
+        .onClick(() => {
+          this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
+
+            if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
+              scenes.setFrameRateRange(this.ANIMATION);
+            }
+
+            if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
+              scenes.setFrameRateRange(this.GESTURE);
+            }
+          });
+        })
+    }
+  }
+}
 ```
 
 ## openBindSheet<sup>12+</sup>
@@ -2176,13 +2525,13 @@ Creates a sheet whose content is as defined in **bindSheetContent** and displays
 | ------- | ---------------------------------------- | ---- | ------- |
 | bindSheetContent | [ComponentContent\<T>](js-apis-arkui-ComponentContent.md) | Yes| Content to display on the sheet.|
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | No   |   Style of the sheet.<br>**NOTE**<br>1. **SheetOptions.uiContext** cannot be set. Its value is fixed to the **UIContext** object of the current instance.<br>2. If **targetId** is not passed in, **SheetOptions.preferType** cannot be set to **POPUP**; if **POPUP** is set, it will be replaced with **CENTER**.<br>3. If **targetId** is not passed in, **SheetOptions.mode** cannot be set to **EMBEDDED**; the default mode is **OVERLAY**.<br>4. For the default values of other attributes, see [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions).|
-| targetId | number | No   |   ID of the component to be bound. If this parameter is not set, no component is bound.|
+| targetId | number | No   |   ID of the component to be bound. If this parameter is not set, no component is bound. If the ID does not exist, the error code 120004 is returned.|
 
 **Return value**
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    Promise used to return the result.|
+|   Promise&lt;void&gt;           |    Promise that returns no value.|
 
 **Error codes**
 
@@ -2228,7 +2577,7 @@ function buildText(params: Params) {
             console.info('updateBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('updateBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
 
@@ -2240,7 +2589,7 @@ function buildText(params: Params) {
             console.info('closeBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('closeBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
   }
@@ -2275,7 +2624,7 @@ struct UIContextBindSheet {
                 console.info('openBindSheet success');
               })
               .catch((err: BusinessError) => {
-                console.info('openBindSheet error: ' + err.code + ' ' + err.message);
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
               })
           })
       }
@@ -2313,7 +2662,7 @@ Updates the style of the sheet corresponding to the provided **bindSheetContent*
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    Promise used to return the result.|
+|   Promise&lt;void&gt;           |    Promise that returns no value.|
 
 **Error codes**
 
@@ -2356,7 +2705,7 @@ function buildText(params: Params) {
             console.info('updateBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('updateBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
 
@@ -2368,7 +2717,7 @@ function buildText(params: Params) {
             console.info('closeBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('closeBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
   }
@@ -2403,7 +2752,7 @@ struct UIContextBindSheet {
                 console.info('openBindSheet success');
               })
               .catch((err: BusinessError) => {
-                console.info('openBindSheet error: ' + err.code + ' ' + err.message);
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
               })
           })
       }
@@ -2439,7 +2788,7 @@ Closes the sheet corresponding to **bindSheetContent**. This API uses a promise 
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    Promise used to return the result.|
+|   Promise&lt;void&gt;           |    Promise that returns no value.|
 
 **Error codes**
 
@@ -2482,7 +2831,7 @@ function buildText(params: Params) {
             console.info('updateBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('updateBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
 
@@ -2494,7 +2843,7 @@ function buildText(params: Params) {
             console.info('closeBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('closeBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
   }
@@ -2529,7 +2878,7 @@ struct UIContextBindSheet {
                 console.info('openBindSheet success');
               })
               .catch((err: BusinessError) => {
-                console.info('openBindSheet error: ' + err.code + ' ' + err.message);
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
               })
           })
       }
@@ -2558,9 +2907,19 @@ Checks whether this UI context follows the system font scale settings.
 
 **Example**
 
-<!--code_no_check-->
+Refer to the [configuration tag](../../quick-start/app-configuration-file.md#configuration) and set the value of **fontSizeScale** to **"followSystem"**.
 ```ts
-uiContext.isFollowingSystemFontScale();
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('isFollowingSystemFontScale').onClick(() => {
+        console.info('isFollowingSystemFontScale', this.getUIContext().isFollowingSystemFontScale());
+      });
+    }
+  }
+}
 ```
 
 ## getMaxFontScale<sup>13+</sup>
@@ -2581,9 +2940,19 @@ Obtains the maximum font scale of this UI context.
 
 **Example**
 
-<!--code_no_check-->
+Refer to the [configuration tag](../../quick-start/app-configuration-file.md#configuration) and set the value of **fontSizeMaxScale** to **"1.75"**.
 ```ts
-uiContext.getMaxFontScale();
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('getMaxFontScale').onClick(() => {
+        console.info('getMaxFontScale', this.getUIContext().getMaxFontScale().toFixed(2));
+      });
+    }
+  }
+}
 ```
 
 ## bindTabsToScrollable<sup>13+</sup>
@@ -2865,7 +3234,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 
 **Example**
+
 ```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { UIContext } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
@@ -2889,8 +3262,22 @@ Destroys the UI instance created using [createUIContextWithoutWindow](#createuic
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
 ```ts
-UIContext.destroyUIContextWithoutWindow();
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    UIContext.destroyUIContextWithoutWindow();
+  }
+
+  // ......
+}
 ```
 
 ## dispatchKeyEvent<sup>15+</sup>
@@ -2902,6 +3289,8 @@ Dispatches a key event to the specified component. To ensure predictable behavio
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
 
 | Name| Type                         | Mandatory| Description              |
 | ------ | ----------------------------- | ---- | ------------------ |
@@ -2924,11 +3313,11 @@ struct Index {
     Row() {
       Row() {
         Button('Button1').id('Button1').onKeyEvent((event) => {
-          console.log("Button1");
+          console.info("Button1");
           return true;
         })
         Button('Button2').id('Button2').onKeyEvent((event) => {
-          console.log("Button2");
+          console.info("Button2");
           return true;
         })
       }
@@ -2973,25 +3362,20 @@ Sets the pixel rounding mode for this page.
 
 **Example**
 
+<!--code_no_check-->
 ```ts
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
 
-    windowStage.loadContent('pages/Index', (err, data) => {
-      let uiContext :UIContext = windowStage.getMainWindowSync().getUIContext();
-      uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext :UIContext = windowStage.getMainWindowSync().getUIContext();
+        uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
+      });
+    }
+}
 ```
 
 ## getPixelRoundMode<sup>18+</sup>
@@ -3012,24 +3396,18 @@ Obtains the pixel rounding mode for this page.
 
 **Example**
 
+<!--code_no_check-->
 ```ts
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
 
-    windowStage.loadContent('pages/Index', (err, data) => {
-      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-      console.info("pixelRoundMode : " + uiContext.getPixelRoundMode().valueOf());
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        console.info("pixelRoundMode : " + uiContext.getPixelRoundMode().valueOf());
+      });
+    }
+}
 ```
-<!--no_check-->

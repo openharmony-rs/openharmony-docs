@@ -1,4 +1,10 @@
 # 应用/组件级配置
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 在开发应用时，需要配置应用的一些标签，例如应用的包名、图标等标识特征的属性。本文描述了在开发应用需要配置的一些关键标签。
 
@@ -31,10 +37,10 @@ Module访问系统或其他应用受保护部分所需的权限信息需要在[m
 
 ```json
 {
-  ...
+  // ...
   "app": {
     "startMode": "mainTask"
-    ...
+    // ...
   }
 }
 ```

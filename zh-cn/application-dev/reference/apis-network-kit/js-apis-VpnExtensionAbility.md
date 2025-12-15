@@ -1,5 +1,12 @@
 # @ohos.app.ability.VpnExtensionAbility (三方VPN能力)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 VpnExtensionAbility模块提供三方VPN相关能力，提供三方VPN创建、销毁等生命周期回调。
 
 >  **说明：**
@@ -38,16 +45,16 @@ onCreate(want: Want): void
 
 **示例：** 
 
-  ```ts
+```ts
 import { VpnExtensionAbility } from '@kit.NetworkKit';
 import { Want } from '@kit.AbilityKit';
 
 class MyVpnExtAbility extends VpnExtensionAbility {
     onCreate(want: Want) {
-       console.log('MyVpnExtAbility onCreate');
+       console.info('MyVpnExtAbility onCreate');
     }
 }
-  ```
+```
 
 ## VpnExtensionAbility.onDestroy
 
@@ -59,13 +66,13 @@ VpnExtensionAbility生命周期回调，在销毁时回调，执行资源清理�
 
 **示例：** 
 
-  ```ts
+```ts
 import { VpnExtensionAbility } from '@kit.NetworkKit';
 
 class MyVpnExtAbility extends VpnExtensionAbility {
     onDestroy() {
-       console.log('MyVpnExtAbility onDestroy');
+       console.info('MyVpnExtAbility onDestroy');
     }
 }
-  ```
+```
 

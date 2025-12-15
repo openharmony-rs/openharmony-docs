@@ -1,5 +1,12 @@
 # 合理处理高负载组件的渲染
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 简介
 
 在应用开发中，有的页面需要在列表中加载大量的数据，就会导致组件数量较多或者嵌套层级较深，从而引起组件负载加重，绘制耗时增长。虽然可以通过组件复用避免组件重复创建，但是如果每个列表项中包含的组件较多，在转场或者列表滑动的时候列表项就会一次性加载大量的数据，可能引起卡顿掉帧等性能问题。
@@ -16,7 +23,7 @@
 
 ### 常规代码
 
-在自定义列表组件中一次性加载全部数据，可参考[组件堆叠场景](https://gitee.com/harmonyos-cases/cases/tree/master/CommonAppDevelopment/feature/componentstack)中的具体实现。
+在自定义列表组件中一次性加载全部数据，可参考[组件堆叠场景](https://gitcode.com/harmonyos-cases/cases/tree/master/CommonAppDevelopment/feature/componentstack)中的具体实现。
 
 ```
 // CommonAppDevelopment/feature/componentstack/src/main/ets/view/ProductList.ets
@@ -36,7 +43,6 @@ export struct ProductList {
         }
       }, (item: ProductDataModel) => item.id.toString())
     }
-    ...
   }
 }
 ```
@@ -131,7 +137,7 @@ export struct ProductList {
 
 ### 优化示例
 
-#### 常规代码
+**常规代码**
 
 通常情况下，会在aboutToReuse()中设置新的数据，并一次性绘制所有的组件。
 
@@ -139,20 +145,19 @@ export struct ProductList {
 @Entry
 @Component
 struct Direct {
-  ...
+ 
   // 初始化日历中一年的数据
   initCalenderData() {
-    ...
+    // ...
   }
 
   aboutToAppear() {
-	...
+	// ...
     this.initCalenderData();
   }
 
   build() {
     Column() {
-      ...
       List() {
         LazyForEach(this.contentData, (monthItem: Month) => {
           // 每个月的日期
@@ -167,14 +172,12 @@ struct Direct {
           }
         })
       }
-      ...
   }
 }
 @Reusable
 @Component
 struct ItemView {
   @State monthItem: Month = { month: '', num: 0, days: [], lunarDays: [] };
-  ...
 
   aboutToReuse(params: Record<string, Object>): void {
     hiTraceMeter.startTrace("reuse_" + (params.monthItem as Month).month, 1);
@@ -184,13 +187,11 @@ struct ItemView {
 
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
-      ...
       // 日期信息
       ForEach(this.monthItem.days, (day: number, index: number) => {
-        ...
+        // ...
       }, (index: number): string => index.toString())
     }
-    ...
   }
 }
 ```
@@ -213,7 +214,7 @@ struct ItemView {
 
 ![image-20240507184557969](figures/highly_loaded_component_render_3.png)
 
-#### 优化代码
+**优化代码**
 
 通过DisplaySync中的帧回调方法，将数据拆分到每一帧中进行加载和绘制。此处只需要修改自定义子组件ItemView中加载数据的方式，所以与常规代码中相同的部分进行了省略。
 
@@ -223,7 +224,6 @@ struct ItemView {
 @Reusable
 @Component
 struct ItemView {
-  ...
   aboutToAppear(): void {
     // 创建DisplaySync对象
     this.displaySync = displaySync.create();
@@ -237,22 +237,20 @@ struct ItemView {
     this.displaySync.setExpectedFrameRateRange(range);
     // 设置帧回调监听
     this.displaySync.on("frame", () => {
-      ...
+      // ...
     });
     // 开启监听帧回调
-    this.displaySync.start();
-    ...  
+    this.displaySync.start(); 
   }
-  ...
 }
 ```
 
 然后，在监听中添加更新数据的代码。这里将每个月的数据更新拆分开来，第一步用来更新月份数据和计算总的执行步骤，最后一步将计数数据初始化，其余需要执行步骤的多少根据每次加载数据量会有所改变。
 
 ```ts
-...
+
 private temp: Month[] = [];
-...
+
 this.displaySync.on("frame", () => {
   // 数组中有数据时才开始执行
   if (this.temp.length > 0) {
@@ -287,7 +285,7 @@ this.displaySync.on("frame", () => {
     }
   }
 });
-...
+
 ```
 
 最后，在aboutToReuse接口中将数据放入数组中，用于帧回调中开始执行数据更新。
@@ -324,7 +322,7 @@ aboutToReuse(params: Record<string, Object>): void {
 
 ![image-20240507200236522](figures/highly_loaded_component_render_7.png)
 
-#### 不建议锁定最高帧率运行
+**不建议锁定最高帧率运行**
 
 不建议将ExpectedFrameRateRange中的expected、min、max都设置为120，否则会干扰系统的可变帧率机制运行，产生不必要的负载，进而影响到整机的性能和功耗。
 
@@ -364,7 +362,7 @@ sync.setExpectedFrameRateRange({
 
 [DisplaySync 文档](../reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md)
 
-[示例代码](https://gitee.com/harmonyos-cases/cases/tree/master/CommonAppDevelopment/feature/perfermance/highlyloadedcomponentrender)
+[示例代码](https://gitcode.com/harmonyos-cases/cases/tree/master/CommonAppDevelopment/feature/perfermance/highlyloadedcomponentrender)
 
 ## FAQ
 

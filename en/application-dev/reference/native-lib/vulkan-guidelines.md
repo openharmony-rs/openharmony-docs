@@ -1,24 +1,33 @@
-# Vulkan Development
+# Vulkan Surface Development
+
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @andrew1993-->
+<!--Designer: @ext4FAT1-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## When to Use
 
-Vulkan is a set of graphics APIs for 2D and 3D rendering. To start with, you need to create a **VkSurfaceKHR** instance, which works with the **OHNativeWindow** module to implement buffer recycling.
+In OpenHarmony, the VK_OHOS_surface extension enables the creation of a VkSurfaceKHR, which connects to the OHNativeWindow module to implement the rotation of OHNativeBuffers for display purposes.
 
-A **VkSurfaceKHR** instance is obtained through an **OHNativeWindow**, which is obtained from the **XComponent**. Therefore, the **OHNativeWindow** module must be used together with the **XComponent** and **NativeWindow** modules.
+A VkSurfaceKHR instance is obtained through an OHNativeWindow, which is obtained from the **XComponent**. Therefore, the OHNativeWindow module must be used together with the **XComponent** and NativeWindow modules. For specific usage of the XComponent, see [Custom Rendering (XComponent)](../../ui/napi-xcomponent-guidelines.md).
 
 ## Available APIs
 
 | API                                                      | Description                  |
 | ------------------------------------------------------------ | ---------------------- |
-| vkCreateSurfaceOHOS (VkInstance instance, const VkSurfaceCreateInfoOHOS\* pCreateInfo, const VkAllocationCallbacks\* pAllocator, VkSurfaceKHR\* pSurface) | Creates a **VkSurfaceKHR** instance.|
+| vkCreateSurfaceOHOS (VkInstance instance, const VkSurfaceCreateInfoOHOS\* pCreateInfo, const VkAllocationCallbacks\* pAllocator, VkSurfaceKHR\* pSurface) | Creates a VkSurfaceKHR instance.|
 
 For details about the APIs, see [Vulkan](vulkan.md).
 
 ## How to Develop
 
-The following steps illustrate how to create a **VkSurfaceKHR** instance.
+The following steps illustrate how to create a VkSurfaceKHR instance.
 
-To use the extended APIs, define the macro **VK_USE_PLATFORM_OHOS** in the **CMakeLists.txt** file.
+**OpenHarmony Platform Macro**
+
+To use the extension, you must define the macro **VK_USE_PLATFORM_OHOS** in the **CMakeLists.txt** file.
 
 ```txt
 ADD_DEFINITIONS(-DVK_USE_PLATFORM_OHOS=1)
@@ -26,12 +35,14 @@ ADD_DEFINITIONS(-DVK_USE_PLATFORM_OHOS=1)
 
 **Adding Dynamic Link Libraries**
 
-Add the following libraries to **CMakeLists.txt**:
+Add the Vulkan library and associated module libraries in the **CMakeLists.txt** file.
 
 ```txt
+libvulkan.so
 libace_ndk.z.so
 libnative_window.so
-libvulkan.so
+libnative_image.so
+libnative_buffer.so
 ```
 
 > **NOTE**
@@ -45,6 +56,7 @@ libvulkan.so
 #include <native_window/external_window.h>
 #include <vulkan/vulkan.h>
 ```
+
 
 1. Create a Vulkan instance.
 
@@ -72,9 +84,9 @@ libvulkan.so
    vkCreateInstance(&instanceCreateInfo, nullptr, &instance);
    ```
 
-2. Obtain an **OHNativeWindow** instance.
+2. Obtain an OHNativeWindow instance.
 
-   The **OHNativeWindow** instance is obtained from the **XComponent**. For details about how to use the **XComponent**, see [Custom Rendering (XComponent)](../../ui/napi-xcomponent-guidelines.md).
+   The OHNativeWindow instance is obtained from the **XComponent**. For details about how to use the **XComponent**, see [Custom Rendering (XComponent)](../../ui/napi-xcomponent-guidelines.md).
 
    1. Add an **XComponent** to **ets/pages/Index.ets**.
 
@@ -89,7 +101,7 @@ libvulkan.so
       .height(360)
       ```
 
-   2. Obtain an **OHNativeWindow** instance from the **XComponent**.
+   2. Obtain an OHNativeWindow instance from the **XComponent**.
 
       ```c++
       // Callback function of the XComponent triggered when a surface is created.
@@ -123,7 +135,7 @@ libvulkan.so
       }
       ```
 
-3. Create a **VkSurfaceKHR** instance.
+3. Create a VkSurfaceKHR instance.
 
    ```c++
    VkSurfaceKHR surface = VK_NULL_HANDLE;
@@ -136,4 +148,3 @@ libvulkan.so
    }
    ```
 
-For details about how to use Vulkan, visit the [Vulkan official website](https://www.vulkan.org/).

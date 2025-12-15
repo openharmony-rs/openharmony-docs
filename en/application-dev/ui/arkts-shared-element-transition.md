@@ -1,4 +1,10 @@
 # Shared Element Transition
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @ge-yafang-->
 
 Shared element transition is a type of transition achieved by animating the size and position between styles of the same or similar elements during page switching.
 
@@ -31,6 +37,7 @@ Below is the complete sample code and effect.
 
 ```ts
 class PostData {
+  // Customize the image resource path as needed.
   avatar: Resource = $r('app.media.flower');
   name: string = '';
   message: string = '';
@@ -43,8 +50,9 @@ struct Index {
   @State isExpand: boolean = false;
   @State @Watch('onItemClicked') selectedIndex: number = -1;
 
+  // Customize the image resource paths in the array as needed.
   private allPostData: PostData[] = [
-    { avatar: $r('app.media.flower'), name: 'Alice', message: 'It's sunny.',
+    { avatar: $r('app.media.flower'), name: 'Alice', message: 'It is sunny.',
       images: [$r('app.media.spring'), $r('app.media.tree')] },
     { avatar: $r('app.media.sky'), name: 'Bob', message: 'Hello World',
       images: [$r('app.media.island')] },
@@ -69,7 +77,7 @@ struct Index {
         // When a post is clicked, other posts disappear from the tree.
         if (!this.isExpand || this.selectedIndex === index) {
           Column() {
-            Post({ data: postData, selecteIndex: this.selectedIndex, index: index })
+            Post({ data: postData, selectedIndex: this.selectedIndex, index: index })
           }
           .width('100%')
           // Apply opacity and translate transition effects to the disappearing posts.
@@ -86,7 +94,7 @@ struct Index {
 
 @Component
 export default struct  Post {
-  @Link selecteIndex: number;
+  @Link selectedIndex: number;
 
   @Prop data: PostData;
   @Prop index: number;
@@ -139,8 +147,8 @@ export default struct  Post {
     .alignItems(HorizontalAlign.Start)
     .padding({ left: 10, top: 10 })
     .onClick(() => {
-      this.selecteIndex = -1;
-      this.selecteIndex = this.index;
+      this.selectedIndex = -1;
+      this.selectedIndex = this.index;
       this.getUIContext()?.animateTo({
         duration: 350,
         curve: Curve.Friction
@@ -161,7 +169,7 @@ export default struct  Post {
 
 ## Creating a Container and Migrating Components Across Containers
 
-Use [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) and [custom placeholder nodes](arkts-user-defined-place-hoder.md) with [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md) for migrating components across different nodes. Then combine the migration with the property animations to achieve shared element transition. This method can be integrated with various transition styles, including navigation transitions ([Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)) and sheet transitions ([bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)).
+Use [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md), a [custom placeholder nodes](arkts-user-defined-place-holder.md), with [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md) for migrating components across different nodes. Then combine the migration with the property animations to achieve shared element transition. This method can be integrated with various transition styles, including navigation transitions ([Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)) and sheet transitions ([bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)).
 
 ### Using with Stack
 
@@ -177,43 +185,45 @@ With the **Stack** container, where later defined components appear on top, you 
 
 ```ts
 // Index.ets
-import { createPostNode, getPostNode, PostNode } from "../PostNode"
-import { componentUtils, curves } from '@kit.ArkUI';
+import { createPostNode, getPostNode, PostNode } from "./PostNode";
+import { componentUtils, curves, UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
   // Create an animation class.
-  @State AnimationProperties: AnimationProperties = new AnimationProperties();
-  private listArray: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8 ,9, 10];
+  private uiContext: UIContext = this.getUIContext();
+  @State animationProperties: AnimationProperties = new AnimationProperties(this.uiContext);
+  private listArray: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   build() {
     // Common parent component for widget collapsed and expanded states
     Stack() {
-      List({space: 20}) {
+      List({ space: 20 }) {
         ForEach(this.listArray, (item: number) => {
           ListItem() {
             // Widget collapsed state
-            PostItem({ index: item, AnimationProperties: this.AnimationProperties })
+            PostItem({ index: item, animationProperties: this.animationProperties })
           }
         })
       }
       .clip(false)
       .alignListItem(ListItemAlign.Center)
-      if (this.AnimationProperties.isExpandPageShow) {
+
+      if (this.animationProperties.isExpandPageShow) {
         // Widget expanded state
-        ExpandPage({ AnimationProperties: this.AnimationProperties })
+        ExpandPage({ animationProperties: this.animationProperties })
       }
     }
     .key('rootStack')
-    .enabled(this.AnimationProperties.isEnabled)
+    .enabled(this.animationProperties.isEnabled)
   }
 }
 
 @Component
 struct PostItem {
   @Prop index: number
-  @Link AnimationProperties: AnimationProperties;
+  @Link animationProperties: AnimationProperties;
   @State nodeController: PostNode | undefined = undefined;
   // Hide detailed content when the widget is collapsed.
   private showDetailContent: boolean = false;
@@ -225,40 +235,9 @@ struct PostItem {
       this.nodeController.setCallback(this.resetNode.bind(this));
     }
   }
+
   resetNode() {
     this.nodeController = getPostNode(this.index.toString());
-  }
-
-  build() {
-        Stack() {
-          NodeContainer(this.nodeController)
-        }
-        .width('100%')
-        .height(100)
-        .key(this.index.toString())
-        .onClick( ()=> {
-          if (this.nodeController != undefined) {
-            // The widget node is removed from the tree when collapsed.
-            this.nodeController.onRemove();
-          }
-          // Trigger the animation for changing from the folded state to the collapsed state.
-          this.AnimationProperties.expandAnimation(this.index);
-        })
-  }
-}
-
-@Component
-struct ExpandPage {
-  @Link AnimationProperties: AnimationProperties;
-  @State nodeController: PostNode | undefined = undefined;
-  // Show detailed content when the widget is expanded.
-  private showDetailContent: boolean = true;
-
-  aboutToAppear(): void {
-    // Obtain the corresponding widget component by index.
-    this.nodeController = getPostNode(this.AnimationProperties.curIndex.toString())
-    // Update to show detailed content.
-    this.nodeController?.update(this.AnimationProperties.curIndex.toString(), this.showDetailContent)
   }
 
   build() {
@@ -266,9 +245,41 @@ struct ExpandPage {
       NodeContainer(this.nodeController)
     }
     .width('100%')
-    .height(this.AnimationProperties.changedHeight ? '100%' : 100)
-    .translate({ x: this.AnimationProperties.translateX, y: this.AnimationProperties.translateY })
-    .position({ x: this.AnimationProperties.positionX, y: this.AnimationProperties.positionY })
+    .height(100)
+    .key(this.index.toString())
+    .onClick(() => {
+      if (this.nodeController != undefined) {
+        // The widget node is removed from the tree when collapsed.
+        this.nodeController.onRemove();
+      }
+      // Trigger the animation for changing from the folded state to the collapsed state.
+      this.animationProperties.expandAnimation(this.index);
+    })
+  }
+}
+
+@Component
+struct ExpandPage {
+  @Link animationProperties: AnimationProperties;
+  @State nodeController: PostNode | undefined = undefined;
+  // Show detailed content when the widget is expanded.
+  private showDetailContent: boolean = true;
+
+  aboutToAppear(): void {
+    // Obtain the corresponding widget component by index.
+    this.nodeController = getPostNode(this.animationProperties.curIndex.toString())
+    // Update to show detailed content.
+    this.nodeController?.update(this.animationProperties.curIndex.toString(), this.showDetailContent)
+  }
+
+  build() {
+    Stack() {
+      NodeContainer(this.nodeController)
+    }
+    .width('100%')
+    .height(this.animationProperties.changedHeight ? '100%' : 100)
+    .translate({ x: this.animationProperties.translateX, y: this.animationProperties.translateY })
+    .position({ x: this.animationProperties.positionX, y: this.animationProperties.positionY })
     .onClick(() => {
       this.getUIContext()?.animateTo({ curve: curves.springMotion(0.6, 0.9),
         onFinish: () => {
@@ -279,17 +290,17 @@ struct ExpandPage {
             this.nodeController.onRemove();
           }
           // The widget expands to the expanded state node and is removed from the tree.
-          this.AnimationProperties.isExpandPageShow = false;
-          this.AnimationProperties.isEnabled = true;
+          this.animationProperties.isExpandPageShow = false;
+          this.animationProperties.isEnabled = true;
         }
       }, () => {
         // The widget returns from the expanded state to the collapsed state.
-        this.AnimationProperties.isEnabled = false;
-        this.AnimationProperties.translateX = 0;
-        this.AnimationProperties.translateY = 0;
-        this.AnimationProperties.changedHeight = false;
+        this.animationProperties.isEnabled = false;
+        this.animationProperties.translateX = 0;
+        this.animationProperties.translateY = 0;
+        this.animationProperties.changedHeight = false;
         // Update to hide detailed content.
-        this.nodeController?.update(this.AnimationProperties.curIndex.toString(), false);
+        this.nodeController?.update(this.animationProperties.curIndex.toString(), false);
       })
     })
   }
@@ -322,6 +333,11 @@ class AnimationProperties {
   // Set the position of the widget relative to the parent component after it is expanded.
   private expandTranslateX: number = 0;
   private expandTranslateY: number = 0;
+  private uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    this.uiContext = uiContext
+  }
 
   public expandAnimation(index: number): void {
     // Record the index of the widget in the expanded state.
@@ -333,7 +349,7 @@ class AnimationProperties {
     // The widget in expanded state is added to the tree.
     this.isExpandPageShow = true;
     // Property animation for widget expansion.
-    animateTo({ curve: curves.springMotion(0.6, 0.9)
+    this.uiContext?.animateTo({ curve: curves.springMotion(0.6, 0.9)
     }, () => {
       this.translateX = this.calculatedTranslateX;
       this.translateY = this.calculatedTranslateY;
@@ -343,17 +359,17 @@ class AnimationProperties {
 
   // Obtain the position of the component that needs to be migrated across nodes, and the position of the common parent node before and after the migration, to calculate the animation parameters for the animating component.
   public calculateData(key: string): void {
-    let clickedImageInfo = this.getRectInfoById(key);
-    let rootStackInfo = this.getRectInfoById('rootStack');
-    this.positionX = px2vp(clickedImageInfo.left - rootStackInfo.left);
-    this.positionY = px2vp(clickedImageInfo.top - rootStackInfo.top);
-    this.calculatedTranslateX = px2vp(rootStackInfo.left - clickedImageInfo.left) + this.expandTranslateX;
-    this.calculatedTranslateY = px2vp(rootStackInfo.top - clickedImageInfo.top) + this.expandTranslateY;
+    let clickedImageInfo = this.getRectInfoById(this.uiContext, key);
+    let rootStackInfo = this.getRectInfoById(this.uiContext, 'rootStack');
+    this.positionX = this.uiContext.px2vp(clickedImageInfo.left - rootStackInfo.left);
+    this.positionY = this.uiContext.px2vp(clickedImageInfo.top - rootStackInfo.top);
+    this.calculatedTranslateX = this.uiContext.px2vp(rootStackInfo.left - clickedImageInfo.left) + this.expandTranslateX;
+    this.calculatedTranslateY = this.uiContext.px2vp(rootStackInfo.top - clickedImageInfo.top) + this.expandTranslateY;
   }
 
   // Obtain the position information of the component based on its ID.
-  private getRectInfoById(id: string): RectInfo {
-    let componentInfo: componentUtils.ComponentInfo = componentUtils.getRectangleById(id);
+  private getRectInfoById(context: UIContext, id: string): RectInfo {
+    let componentInfo: componentUtils.ComponentInfo = context.getComponentUtils().getRectangleById(id);
 
     if (!componentInfo) {
       throw Error('object is empty');
@@ -365,9 +381,9 @@ class AnimationProperties {
     rstRect.left = componentInfo.translate.x + componentInfo.windowOffset.x + widthScaleGap;
     rstRect.top = componentInfo.translate.y + componentInfo.windowOffset.y + heightScaleGap;
     rstRect.right =
-      componentInfo.translate.x + componentInfo.windowOffset.x + componentInfo.size.width - widthScaleGap;
+    componentInfo.translate.x + componentInfo.windowOffset.x + componentInfo.size.width - widthScaleGap;
     rstRect.bottom =
-      componentInfo.translate.y + componentInfo.windowOffset.y + componentInfo.size.height - heightScaleGap;
+    componentInfo.translate.y + componentInfo.windowOffset.y + componentInfo.size.height - heightScaleGap;
     rstRect.width = rstRect.right - rstRect.left;
     rstRect.height = rstRect.bottom - rstRect.top;
 
@@ -386,13 +402,11 @@ class AnimationProperties {
 ```ts
 // PostNode.ets
 // Cross-container migration
-import { UIContext } from '@ohos.arkui.UIContext';
-import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
-import { curves } from '@kit.ArkUI';
+import { UIContext, curves, NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
 
 class Data {
   item: string | null = null
-  isExpand: Boolean | false = false
+  isExpand: boolean = false
 }
 
 @Builder
@@ -445,10 +459,9 @@ function PostBuilder(data: Data) {
       offsetX: 20,
       offsetY: 10
     })
-
 }
 
-class __InternalValue__{
+class __InternalValue__ {
   flag:boolean =false;
 };
 
@@ -532,7 +545,7 @@ export const deleteNode = (id: string) => {
 
 ### Using with Navigation
 
-You can use the [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) (see [Example 3](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#example-3)) capability of [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) to implement shared element transition, during which, the component is migrated from the disappearing page to the appearing page.
+You can use the [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) (see [Example 3](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#example-3-setting-an-interactive-transition-animation)) capability of [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) to implement shared element transition, during which, the component is migrated from the disappearing page to the appearing page.
 
 The following is the procedure for implementing the expanding and collapsing of a thumbnail:
 
@@ -615,11 +628,11 @@ struct Index {
         // After all judgments are made, construct customAnimation for the system side to call and execute the custom transition animation.
         let customAnimation: NavigationAnimatedTransition = {
           onTransitionEnd: (isSuccess: boolean) => {
-            console.log(TAG, `current transition result is ${isSuccess}`);
+            console.info(TAG, `current transition result is ${isSuccess}`);
           },
           timeout: 2000,
           transition: (transitionProxy: NavigationTransitionProxy) => {
-            console.log(TAG, 'trigger transition callback');
+            console.info(TAG, 'trigger transition callback');
             if (fromParam.animation) {
               fromParam.animation(operation == NavigationOperation.PUSH, true, transitionProxy);
             }
@@ -692,6 +705,7 @@ export struct PageOne {
       Stack() {
         Column({ space: 20 }) {
           Row({ space: 10 }) {
+            // Customize the image resource path as needed.
             Image($r("app.media.avatar"))
               .size({ width: 50, height: 50 })
               .borderRadius(25)
@@ -744,7 +758,7 @@ export function PageTwoBuilder() {
 @Component
 export struct PageTwo {
   @State pageInfos: NavPathStack = new NavPathStack();
-  @State AnimationProperties: AnimationProperties = new AnimationProperties();
+  @State animationProperties: AnimationProperties = new AnimationProperties(this.getUIContext());
   @State myNodeController: MyNodeController | undefined = new MyNodeController(false);
 
   private pageId: number = -1;
@@ -784,7 +798,7 @@ export struct PageTwo {
         Stack({ alignContent: Alignment.TopStart }) {
           Column({space: 20}) {
             NodeContainer(this.myNodeController)
-            if (this.AnimationProperties.showDetailContent)
+            if (this.animationProperties.showDetailContent)
               Text('Expanded content')
                 .fontSize(20)
                 .transition(TransitionEffect.OPACITY)
@@ -792,19 +806,19 @@ export struct PageTwo {
           }
           .alignItems(HorizontalAlign.Start)
         }
-        .position({ y: this.AnimationProperties.positionValue })
+        .position({ y: this.animationProperties.positionValue })
       }
-      .scale({ x: this.AnimationProperties.scaleValue, y: this.AnimationProperties.scaleValue })
-      .translate({ x: this.AnimationProperties.translateX, y: this.AnimationProperties.translateY })
-      .width(this.AnimationProperties.clipWidth)
-      .height(this.AnimationProperties.clipHeight)
-      .borderRadius(this.AnimationProperties.radius)
+      .scale({ x: this.animationProperties.scaleValue, y: this.animationProperties.scaleValue })
+      .translate({ x: this.animationProperties.translateX, y: this.animationProperties.translateY })
+      .width(this.animationProperties.clipWidth)
+      .height(this.animationProperties.clipHeight)
+      .borderRadius(this.animationProperties.radius)
       // Use expandSafeArea to create an immersive effect for Stack, expanding it upwards to the status bar and downwards to the navigation bar.
       .expandSafeArea([SafeAreaType.SYSTEM])
       // Clip the height.
       .clip(true)
     }
-    .backgroundColor(this.AnimationProperties.navDestinationBgColor)
+    .backgroundColor(this.animationProperties.navDestinationBgColor)
     .hideTitleBar(true)
     .onReady((context: NavDestinationContext) => {
       this.pageInfos = context.pathStack;
@@ -814,7 +828,7 @@ export struct PageTwo {
       this.cardItemInfo = param['cardItemInfo'] as RectInfoInPx;
       CustomTransition.getInstance().registerNavParam(this.pageId,
         (isPush: boolean, isExit: boolean, transitionProxy: NavigationTransitionProxy) => {
-          this.AnimationProperties.doAnimation(
+          this.animationProperties.doAnimation(
             this.cardItemInfo, isPush, isExit, transitionProxy, 0,
             this.prePageDoFinishTransition, this.myNodeController);
         }, 500);
@@ -903,7 +917,7 @@ export class CustomTransition {
 ```ts
 // AnimationProperties.ets
 // Encapsulation of shared element transition animation
-import { curves } from '@kit.ArkUI';
+import { curves, UIContext } from '@kit.ArkUI';
 import { RectInfoInPx } from '../utils/ComponentAttrUtils';
 import { WindowUtils } from '../utils/WindowUtils';
 import { MyNodeController } from '../NodeContainer/CustomComponent';
@@ -924,9 +938,14 @@ export class AnimationProperties {
   public radius: number = 0;
   public positionValue: number = 0;
   public showDetailContent: boolean = false;
+  private uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    this.uiContext = uiContext
+  }
 
   public doAnimation(cardItemInfo_px: RectInfoInPx, isPush: boolean, isExit: boolean,
-    transitionProxy: NavigationTransitionProxy, extraTranslateValue: number, prePageOnFinish: (index: MyNodeController) => void, myNodeController: MyNodeController|undefined): void {
+                     transitionProxy: NavigationTransitionProxy, extraTranslateValue: number, prePageOnFinish: (index: MyNodeController) => void, myNodeController: MyNodeController | undefined): void {
     // Calculate the ratio of the widget's width and height to the window's width and height.
     let widthScaleRatio = cardItemInfo_px.width / WindowUtils.windowWidth_px;
     let heightScaleRatio = cardItemInfo_px.height / WindowUtils.windowHeight_px;
@@ -938,24 +957,24 @@ export class AnimationProperties {
     let initClipWidth: Dimension = 0;
     let initClipHeight: Dimension = 0;
     // Ensure that the widget on PageTwo expands to the status bar at the top.
-    let initPositionValue: number = -px2vp(WindowUtils.topAvoidAreaHeight_px + extraTranslateValue);;
+    let initPositionValue: number = -this.uiContext.px2vp(WindowUtils.topAvoidAreaHeight_px + extraTranslateValue);
 
     if (isUseWidthScale) {
-      initTranslateX = px2vp(cardItemInfo_px.left - (WindowUtils.windowWidth_px - cardItemInfo_px.width) / 2);
+      initTranslateX = this.uiContext.px2vp(cardItemInfo_px.left - (WindowUtils.windowWidth_px - cardItemInfo_px.width) / 2);
       initClipWidth = '100%';
-      initClipHeight = px2vp((cardItemInfo_px.height) / initScale);
-      initTranslateY = px2vp(cardItemInfo_px.top - ((vp2px(initClipHeight) - vp2px(initClipHeight) * initScale) / 2));
+      initClipHeight = this.uiContext.px2vp((cardItemInfo_px.height) / initScale);
+      initTranslateY = this.uiContext.px2vp(cardItemInfo_px.top - ((this.uiContext.vp2px(initClipHeight) - this.uiContext.vp2px(initClipHeight) * initScale) / 2));
     } else {
-      initTranslateY = px2vp(cardItemInfo_px.top - (WindowUtils.windowHeight_px - cardItemInfo_px.height) / 2);
+      initTranslateY = this.uiContext.px2vp(cardItemInfo_px.top - (WindowUtils.windowHeight_px - cardItemInfo_px.height) / 2);
       initClipHeight = '100%';
-      initClipWidth = px2vp((cardItemInfo_px.width) / initScale);
-      initTranslateX = px2vp(cardItemInfo_px.left - (WindowUtils.windowWidth_px / 2 - cardItemInfo_px.width / 2));
+      initClipWidth = this.uiContext.px2vp((cardItemInfo_px.width) / initScale);
+      initTranslateX = this.uiContext.px2vp(cardItemInfo_px.left - (WindowUtils.windowWidth_px / 2 - cardItemInfo_px.width / 2));
     }
 
     // Before the transition animation starts, calculate scale, translate, position, and clip height & width to ensure that the node's position is consistent before and after migration.
-    console.log(TAG, 'initScale: ' + initScale + ' initTranslateX ' + initTranslateX +
-      ' initTranslateY ' + initTranslateY + ' initClipWidth ' + initClipWidth +
-      ' initClipHeight ' + initClipHeight + ' initPositionValue ' + initPositionValue);
+    console.info(TAG, 'initScale: ' + initScale + ' initTranslateX ' + initTranslateX +
+    ' initTranslateY ' + initTranslateY + ' initClipWidth ' + initClipWidth +
+    ' initClipHeight ' + initClipHeight + ' initPositionValue ' + initPositionValue);
     // Transition to the new page
     if (isPush && !isExit) {
       this.scaleValue = initScale;
@@ -965,7 +984,7 @@ export class AnimationProperties {
       this.translateY = initTranslateY;
       this.positionValue = initPositionValue;
 
-      animateTo({
+      this.uiContext?.animateTo({
         curve: curves.interpolatingSpring(0, 1, 328, 36),
         onFinish: () => {
           if (transitionProxy) {
@@ -983,7 +1002,7 @@ export class AnimationProperties {
         this.showDetailContent = true;
       })
 
-      animateTo({
+      this.uiContext?.animateTo({
         duration: 100,
         curve: Curve.Sharp,
       }, () => {
@@ -994,7 +1013,7 @@ export class AnimationProperties {
       // Return to the previous page.
     } else if (!isPush && isExit) {
 
-      animateTo({
+      this.uiContext?.animateTo({
         duration: 350,
         curve: Curve.EaseInOut,
         onFinish: () => {
@@ -1017,7 +1036,7 @@ export class AnimationProperties {
         this.showDetailContent = false;
       })
 
-      animateTo({
+      this.uiContext?.animateTo({
         duration: 200,
         delay: 150,
         curve: Curve.Friction,
@@ -1138,13 +1157,13 @@ export default class EntryAbility extends UIAbility {
     let navigationArea = WindowUtils.window.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
     WindowUtils.navigationIndicatorHeight_px = navigationArea.bottomRect.height;
 
-    console.log(TAG, 'the width is ' + WindowUtils.windowWidth_px + '  ' + WindowUtils.windowHeight_px + '  ' +
+    hilog.info(0x0000, TAG, 'the width is ' + WindowUtils.windowWidth_px + '  ' + WindowUtils.windowHeight_px + '  ' +
     WindowUtils.topAvoidAreaHeight_px + '  ' + WindowUtils.navigationIndicatorHeight_px);
 
     // Listen for changes in the window size, status bar height, and navigation bar height, and update accordingly.
     try {
       WindowUtils.window.on('windowSizeChange', (data) => {
-        console.log(TAG, 'on windowSizeChange, the width is ' + data.width + ', the height is ' + data.height);
+        hilog.info(0x0000, TAG, 'on windowSizeChange, the width is ' + data.width + ', the height is ' + data.height);
         WindowUtils.windowWidth_px = data.width;
         WindowUtils.windowHeight_px = data.height;
         this.updateBreakpoint(data.width);
@@ -1154,16 +1173,16 @@ export default class EntryAbility extends UIAbility {
       WindowUtils.window.on('avoidAreaChange', (data) => {
         if (data.type == window.AvoidAreaType.TYPE_SYSTEM) {
           let topRectHeight = data.area.topRect.height;
-          console.log(TAG, 'on avoidAreaChange, the top avoid area height is ' + topRectHeight);
+          hilog.info(0x0000, TAG, 'on avoidAreaChange, the top avoid area height is ' + topRectHeight);
           WindowUtils.topAvoidAreaHeight_px = topRectHeight;
         } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
           let bottomRectHeight = data.area.bottomRect.height;
-          console.log(TAG, 'on avoidAreaChange, the navigation indicator height is ' + bottomRectHeight);
+          hilog.info(0x0000, TAG, 'on avoidAreaChange, the navigation indicator height is ' + bottomRectHeight);
           WindowUtils.navigationIndicatorHeight_px = bottomRectHeight;
         }
       })
     } catch (exception) {
-      console.log('register failed ' + JSON.stringify(exception));
+      hilog.error(0x0000, TAG, `register failed. code: ${exception.code}, message: ${exception.message}`);
     }
 
     windowStage.loadContent('pages/Index', (err) => {
@@ -1218,6 +1237,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
 function CardBuilder() {
+  // Customize the image resource path as needed.
   Image($r("app.media.card"))
     .width('100%')
     .id('card')
@@ -1444,6 +1464,7 @@ struct Index {
         .width('100%')
         .fontSize(30)
         .padding(20)
+      // Customize the image resource path as needed.
       Image($r("app.media.flower"))
         .opacity(this.opacityDegree)
         .width('90%')
@@ -1513,6 +1534,7 @@ struct Index {
           }
           else {
             // For capturing layout and placeholder use, not actually displayed.
+            // Customize the image resource path as needed.
             Image($r("app.media.flower"))
               .visibility(Visibility.Hidden)
           }
@@ -1579,6 +1601,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
 function CardBuilder() {
+  // Customize the image resource path as needed.
   Image($r("app.media.flower"))
     // Prevent flickering of the image during the first load.
     .syncLoad(true)
@@ -1752,13 +1775,13 @@ export default class EntryAbility extends UIAbility {
     let navigationArea = WindowUtils.window.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
     WindowUtils.navigationIndicatorHeight_px = navigationArea.bottomRect.height;
 
-    console.log(TAG, 'the width is ' + WindowUtils.windowWidth_px + '  ' + WindowUtils.windowHeight_px + '  ' +
+    hilog.info(0x0000, TAG, 'the width is ' + WindowUtils.windowWidth_px + '  ' + WindowUtils.windowHeight_px + '  ' +
     WindowUtils.topAvoidAreaHeight_px + '  ' + WindowUtils.navigationIndicatorHeight_px);
 
     // Listen for changes in the window size, status bar height, and navigation bar height, and update accordingly.
     try {
       WindowUtils.window.on('windowSizeChange', (data) => {
-        console.log(TAG, 'on windowSizeChange, the width is ' + data.width + ', the height is ' + data.height);
+        hilog.info(0x0000, TAG, 'on windowSizeChange, the width is ' + data.width + ', the height is ' + data.height);
         WindowUtils.windowWidth_px = data.width;
         WindowUtils.windowHeight_px = data.height;
         this.updateBreakpoint(data.width);
@@ -1768,16 +1791,16 @@ export default class EntryAbility extends UIAbility {
       WindowUtils.window.on('avoidAreaChange', (data) => {
         if (data.type == window.AvoidAreaType.TYPE_SYSTEM) {
           let topRectHeight = data.area.topRect.height;
-          console.log(TAG, 'on avoidAreaChange, the top avoid area height is ' + topRectHeight);
+          hilog.info(0x0000, TAG, 'on avoidAreaChange, the top avoid area height is ' + topRectHeight);
           WindowUtils.topAvoidAreaHeight_px = topRectHeight;
         } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
           let bottomRectHeight = data.area.bottomRect.height;
-          console.log(TAG, 'on avoidAreaChange, the navigation indicator height is ' + bottomRectHeight);
+          hilog.info(0x0000, TAG, 'on avoidAreaChange, the navigation indicator height is ' + bottomRectHeight);
           WindowUtils.navigationIndicatorHeight_px = bottomRectHeight;
         }
       })
     } catch (exception) {
-      console.log('register failed ' + JSON.stringify(exception));
+      hilog.error(0x0000, TAG, `register failed. code: ${exception.code}, message: ${exception.message}`);
     }
 
     windowStage.loadContent('pages/Index', (err) => {
@@ -1850,6 +1873,7 @@ struct IfElseGeometryTransition {
   build() {
     Stack({ alignContent: Alignment.Center }) {
       if (this.isShow) {
+        // Customize the image resource path as needed.
         Image($r('app.media.spring'))
           .autoResize(false)
           .clip(true)
@@ -1867,6 +1891,7 @@ struct IfElseGeometryTransition {
         // The multiple levels of containers here are used to demonstrate passing of relative layout constraints.
         Column() {
           Column() {
+            // Customize the image resource path as needed.
             Image($r('app.media.sky'))
               .size({ width: '100%', height: '100%' })
           }
@@ -1874,8 +1899,8 @@ struct IfElseGeometryTransition {
         }
         .width(100)
         .height(100)
-        // geometryTransition synchronizes rounded corner settings, but only for the bound component, which is the container in this example.
-        // In other words, rounded corner settings of the container are synchronized, and those of the child components are not.
+        // geometryTransition synchronizes corner radius settings, but only for the bound component, which is the container in this example.
+        // In other words, corner radius settings of the container are synchronized, and those of the child components are not.
         .borderRadius(50)
         .clip(true)
         .geometryTransition("picture")
@@ -1905,6 +1930,7 @@ By combining **geometryTransition** with a modal transition API, you can impleme
 
 ```ts
 class PostData {
+  // Customize the image resource path as needed.
   avatar: Resource = $r('app.media.flower');
   name: string = '';
   message: string = '';
@@ -1918,8 +1944,9 @@ struct Index {
   @State selectedIndex: number = 0;
   @State alphaValue: number = 1;
 
+  // Customize the image resource paths in the array as needed.
   private allPostData: PostData[] = [
-    { avatar: $r('app.media.flower'), name: 'Alice', message: 'It's sunny.',
+    { avatar: $r('app.media.flower'), name: 'Alice', message: 'It is sunny.',
       images: [$r('app.media.spring'), $r('app.media.tree')] },
     { avatar: $r('app.media.sky'), name: 'Bob', message: 'Hello World',
       images: [$r('app.media.island')] },
@@ -2051,6 +2078,6 @@ export default struct  Post {
 
 After a profile picture on the home page is clicked, the corresponding profile page is displayed in a modal, and there is a shared element transition between the profile pictures on the two pages.
 
-![en-us_image_0000001597320327](figures/en-us_image_0000001597320327.gif)
+
 
 <!--RP1--><!--RP1End-->

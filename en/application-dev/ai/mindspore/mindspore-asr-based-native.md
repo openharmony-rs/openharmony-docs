@@ -1,5 +1,12 @@
 # Using MindSpore Lite for Speech Recognition (C/C++)
 
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
+
 ## When to Use
 
 You can use [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to quickly deploy AI algorithms into your application to perform AI model inference for speech recognition.
@@ -15,10 +22,6 @@ Speech recognition can convert an audio file into text, which is widely used in 
 1. Select a speech recognition model.
 2. Use the MindSpore Lite inference model on the device to implement speech recognition.
 
-## Environment Setup
-
-Install DevEco Studio 5.0.2 or later, and update the SDK to API version 14 or later.
-
 ## Development Procedure
 
 This section uses the inference of a speech recognition model as an example to demonstrate how to implement a speech recognition application using MindSpore Lite.
@@ -27,113 +30,118 @@ This section uses the inference of a speech recognition model as an example to d
 
 The speech recognition model files **tiny-encoder.ms**, **tiny-decoder-main.ms**, and **tiny-decoder-loop.ms** used in this sample application are stored in the **entry/src/main/resources/rawfile** directory.
 
+### Writing the Code for Audio Playback
 
-### Writing Code
+Call [@ohos.multimedia.media](../../reference/apis-media-kit/arkts-apis-media.md) and [@ohos.multimedia.audio](../../reference/apis-audio-kit/arkts-apis-audio.md) to play audio.
 
-#### Playing Audio
+<!-- @[player_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/player.ets) -->
 
-1. Call **@ohos.multimedia.media** and [@ohos.multimedia.audio](../../reference/apis-audio-kit/arkts-apis-audio.md) to play audio.
+```typescript
+// player.ets
+import { media } from '@kit.MediaKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { audio } from '@kit.AudioKit';
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-   ```ts
-   // player.ets
-   import { media } from '@kit.MediaKit';
-   import { common } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { audio } from '@kit.AudioKit';
-   import { UIContext } from '@kit.ArkUI';
-   
-   export default class AVPlayerDemo {
-     private isSeek: boolean = false; // Disable the seek operation.
-     // Set the AVPlayer callback.
-     setAVPlayerCallback(avPlayer: media.AVPlayer) {
-       // Callback for the seek operation.
-       avPlayer.on('seekDone', (seekDoneTime: number) => {
-         console.info(`MS_LITE_LOG: AVPlayer seek succeeded, seek time is ${seekDoneTime}`);
-       });
-       // Callback invoked if an error occurs while the AVPlayer is playing audio. In such a case, reset() is called to reset the AVPlayer.
-       avPlayer.on('error', (err: BusinessError) => {
-         console.error(`MS_LITE_LOG: Invoke avPlayer failed, code is ${err.code}, message is ${err.message}`);
-         avPlayer.reset(); // Call reset() to reset the AVPlayer, which enters the idle state.
-       });
-       // Callback for state changes.
-       avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
-         switch (state) {
-           case 'idle': // This state is reported upon a successful callback of reset().
-             console.info('MS_LITE_LOG: AVPlayer state idle called.');
-             avPlayer.release(); // Call release() to release the instance.
-             break;
-           case 'initialized': // This state is reported when the AVPlayer sets the playback source.
-             console.info('MS_LITE_LOG: AVPlayer state initialized called.');
-             avPlayer.audioRendererInfo = {
-               usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
-               rendererFlags: 0 // Audio renderer flag.
-             };
-             avPlayer.prepare();
-             break;
-           case 'prepared': // This state is reported upon a successful callback of prepare().
-             console.info('MS_LITE_LOG: AVPlayer state prepared called.');
-             avPlayer.play(); // Call play() to start playback.
-             break;
-           case 'playing': // This state is reported upon a successful callback of play().
-             console.info('MS_LITE_LOG: AVPlayer state playing called.');
-             if (this.isSeek) {
-               console.info('MS_LITE_LOG: AVPlayer start to seek.');
-               avPlayer.seek(0); // Seek to the end of the audio.
-             } else {
-               // When the seek operation is not supported, the playback continues until it reaches the end.
-               console.info('MS_LITE_LOG: AVPlayer wait to play end.');
-             }
-             break;
-           case 'paused': // This state is reported upon a successful callback of pause().
-             console.info('MS_LITE_LOG: AVPlayer state paused called.');
-             setTimeout(() => {
-               console.info('MS_LITE_LOG: AVPlayer paused wait to play again');
-               avPlayer.play(); // After the playback is paused for 3 seconds, call the play API again to start playback.
-             }, 3000);
-             break;
-           case 'completed': // This state is reported upon the completion of the playback.
-             console.info('MS_LITE_LOG: AVPlayer state completed called.');
-             avPlayer.stop(); // Call stop() to stop the playback.
-             break;
-           case 'stopped': // This state is reported upon a successful callback of stop().
-             console.info('MS_LITE_LOG: AVPlayer state stopped called.');
-             avPlayer.reset(); // Call reset() to reset the AVPlayer.
-             break;
-           case 'released':
-             console.info('MS_LITE_LOG: AVPlayer state released called.');
-             break;
-           default:
-             console.info('MS_LITE_LOG: AVPlayer state unknown called.');
-             break;
-         }
-       });
-     }
-   
-     // Use the resource management API to obtain the audio file and play the audio file through the fdSrc attribute.
-     async avPlayerFdSrcDemo() {
-       // Create an AVPlayer instance.
-       let avPlayer: media.AVPlayer = await media.createAVPlayer();
-       // Create a callback for state changes.
-       this.setAVPlayerCallback(avPlayer);
-       // Call getRawFd of the resourceManager member of UIAbilityContext to obtain the media asset URL.
-       // The return type is {fd,offset,length}, where fd indicates the file descriptor address of the HAP file, offset indicates the media asset offset, and length indicates the duration of the media asset to play.
-       let context = new UIContext().getHostContext() as common.UIAbilityContext;
-       let fileDescriptor = await context.resourceManager.getRawFd('zh.wav');
-       let avFileDescriptor: media.AVFileDescriptor =
-         { fd: fileDescriptor.fd, offset: fileDescriptor.offset, length: fileDescriptor.length };
-       this.isSeek = true; // Enable the seek operation.
-       // Assign a value to fdSrc to trigger the reporting of the initialized state.
-       avPlayer.fdSrc = avFileDescriptor;
-     }
-   }
-   ```
+const TAG = 'MindSporeLite';
+
+export default class AVPlayerDemo {
+  private isSeek: boolean = false; // Disable the seek operation.
+  // Set the AVPlayer callback.
+  setAVPlayerCallback(avPlayer: media.AVPlayer) {
+    // Callback for the seek operation.
+    avPlayer.on('seekDone', (seekDoneTime: number) => {
+      hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: AVPlayer seek succeeded, seek time is ${seekDoneTime}`);
+    });
+    // Callback invoked if an error occurs while the AVPlayer is playing audio. In such a case, reset() is called to reset the AVPlayer.
+    avPlayer.on('error', (err: BusinessError) => {
+      hilog.error(0xFF00, TAG, '%{public}s',
+        `MS_LITE_ERR: Invoke avPlayer failed, code is ${err.code}, message is ${err.message}`);
+      avPlayer.reset(); // Call reset() to reset the AVPlayer, which enters the idle state.
+    });
+    // Callback for state changes.
+    avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
+      switch (state) {
+        case 'idle': // This state is reported upon a successful callback of reset().
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state idle called.');
+          avPlayer.release(); // Call release() to release the instance.
+          break;
+        case 'initialized': // This state is reported when the AVPlayer sets the playback source.
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state initialized called.');
+          avPlayer.audioRendererInfo = {
+            usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
+            rendererFlags: 0 // Audio renderer flag.
+          };
+          avPlayer.prepare();
+          break;
+        case 'prepared': // This state is reported upon a successful callback of prepare().
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state prepared called.');
+          avPlayer.play(); // Call play() to start playback.
+          break;
+        case 'playing': // This state is reported upon a successful callback of play().
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state playing called.');
+          if (this.isSeek) {
+            hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer start to seek.');
+            avPlayer.seek(0); // Move the playback position to the beginning of the audio.
+          } else {
+            // When the seek operation is not supported, the playback continues until it reaches the end.
+            hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer wait to play end.');
+          }
+          break;
+        case 'paused': // This state is reported upon a successful callback of pause().
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state paused called.');
+          setTimeout(() => {
+            hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer paused wait to play again');
+            avPlayer.play(); // After the playback is paused for 3 seconds, call the play API again to start playback.
+          }, 3000);
+          break;
+        case 'completed': // This state is reported upon the completion of the playback.
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state completed called.');
+          avPlayer.stop(); // Call stop() to stop the playback.
+          break;
+        case 'stopped': // This state is reported upon a successful callback of stop().
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state stopped called.');
+          avPlayer.reset(); // Call reset() to reset the AVPlayer.
+          break;
+        case 'released':
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state released called.');
+          break;
+        default:
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state unknown called.');
+          break;
+      }
+    });
+  }
+
+  // Use the resource management API to obtain the audio file and play the audio file through the fdSrc attribute.
+  async avPlayerFdSrcDemo() {
+    // Create an AVPlayer instance.
+    let avPlayer: media.AVPlayer = await media.createAVPlayer();
+    // Create a callback for state changes.
+    this.setAVPlayerCallback(avPlayer);
+    // Call getRawFd of the resourceManager member of UIAbilityContext to obtain the media asset URL.
+    // The return type is {fd,offset,length}, where fd indicates the file descriptor address of the HAP file, offset indicates the media asset offset, and length indicates the duration of the media asset to play.
+    let context = new UIContext().getHostContext() as common.UIAbilityContext;
+    let fileDescriptor = await context.resourceManager.getRawFd('zh.wav');
+    let avFileDescriptor: media.AVFileDescriptor =
+      { fd: fileDescriptor.fd, offset: fileDescriptor.offset, length: fileDescriptor.length };
+    this.isSeek = true; // Enable the seek operation.
+    // Assign a value to fdSrc to trigger the reporting of the initialized state.
+    avPlayer.fdSrc = avFileDescriptor;
+  }
+}
+```
 
 
-#### Recognizing Audio
+### Writing the Code for Speech Recognition
 
-Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to perform inference on the three models in sequence. The inference process is as follows:
+In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to perform inference on the three models in sequence. The inference process is as follows:
 
-1. Include the corresponding header files. The third-party libraries **librosa**, **libsamplerate**, and **base64.h** are from [LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp), [libsamplerate](https://github.com/libsndfile/libsamplerate), AudioFile.h, and [whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src), respectively.
+1. Include the corresponding header files. You need to download third-party libraries. Wherein, **librosa** is accessible in [LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp), and **libsamplerate** is accessible in [libsamplerate](https://github.com/libsndfile/libsamplerate). Download these libraries and save them to the **entry/src/main/cpp/third_party** directory. **AudioFile.h**, **base64.h**, and **base64.cc** are accessible in [whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src). Download these files and save them to the **entry/src/main/cpp/src** directory.
+
+   <!-- @[napi_asr_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    #include "AudioFile.h"
@@ -159,14 +167,24 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
 
 2. Read related files such as audio files and model files, and converts them to buffer data.
 
+   <!-- @[napi_asr_log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
    ```c++
    #define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    #define LOGD(...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    #define LOGW(...) ((void)OH_LOG_Print(LOG_APP, LOG_WARN, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    #define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
-   
+   ```
+
+   <!-- @[napi_asr_BinBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    using BinBuffer = std::pair<void *, size_t>;
-   
+   ```
+
+   <!-- @[napi_asr_read_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    BinBuffer ReadBinFile(NativeResourceManager *nativeResourceManager, const std::string &modelName)
    {
        auto rawFile = OH_ResourceManager_OpenRawFile(nativeResourceManager, modelName.c_str());
@@ -186,7 +204,7 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        }
        int ret = OH_ResourceManager_ReadRawFile(rawFile, buffer, fileSize);
        if (ret == 0) {
-           LOGE("MS_LITE_LOG: OH_ResourceManager_ReadRawFile failed");
+           LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
            OH_ResourceManager_CloseRawFile(rawFile);
            return BinBuffer(nullptr, 0);
        }
@@ -194,7 +212,8 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        return BinBuffer(buffer, fileSize);
    }
    
-   BinBuffer ReadTokens(NativeResourceManager *nativeResourceManager, const std::string &modelName) {
+   BinBuffer ReadTokens(NativeResourceManager *nativeResourceManager, const std::string &modelName)
+   {
        auto rawFile = OH_ResourceManager_OpenRawFile(nativeResourceManager, modelName.c_str());
        if (rawFile == nullptr) {
            LOGE("MS_LITE_ERR: Open model file failed");
@@ -212,7 +231,7 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        }
        int ret = OH_ResourceManager_ReadRawFile(rawFile, buffer, fileSize);
        if (ret == 0) {
-           LOGE("MS_LITE_LOG: OH_ResourceManager_ReadRawFile failed");
+           LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
            OH_ResourceManager_CloseRawFile(rawFile);
            return BinBuffer(nullptr, 0);
        }
@@ -223,6 +242,8 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
    ```
 
 3. Create a context, set the device type, and load the model.
+
+   <!-- @[napi_asr_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    void DestroyModelBuffer(void **buffer)
@@ -267,12 +288,18 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        return model;
    }
    ```
-   
+
 4. Set the model input data, and perform model inference.
+
+   <!-- @[napi_print_num](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    constexpr int K_NUM_PRINT_OF_OUT_DATA = 20;
-   
+   ```
+
+   <!-- @[napi_asr_FillInputTensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    int FillInputTensor(OH_AI_TensorHandle input, const BinBuffer &bin)
    {
        if (OH_AI_TensorGetDataSize(input) != bin.second) {
@@ -282,7 +309,11 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        memcpy(data, (const char *)bin.first, OH_AI_TensorGetDataSize(input));
        return OH_AI_STATUS_SUCCESS;
    }
-   
+   ```
+
+   <!-- @[napi_asr_RunMSLiteModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    // Perform model inference.
    int RunMSLiteModel(OH_AI_ModelHandle model, std::vector<BinBuffer> inputBins)
    {
@@ -328,8 +359,10 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        return OH_AI_STATUS_SUCCESS;
    }
    ```
-   
+
 5. Repeat the preceding procedure for the remaining models.
+
+   <!-- @[napi_asr_constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    const float NEG_INF = -std::numeric_limits<float>::infinity();
@@ -343,16 +376,26 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
    const int WHISPER_N_TEXT_CTX = 448;
    const int WHISPER_N_TEXT_STATE = 384;
    constexpr int WHISPER_SAMPLE_RATE = 16000;
-   
-   BinBuffer GetMSOutput(OH_AI_TensorHandle output) {
+   ```
+
+   <!-- @[napi_asr_GetMSOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```
+   BinBuffer GetMSOutput(OH_AI_TensorHandle output)
+   {
        float *outputData = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(output));
        size_t size = OH_AI_TensorGetDataSize(output);
        return {outputData, size};
    }
-   
-   void SupressTokens(BinBuffer &logits, bool is_initial) {
+   ```
+
+   <!-- @[napi_asr_SuppressTokens](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
+   void SuppressTokens(BinBuffer &logits, bool isInitial)
+   {
        auto logits_data = static_cast<float *>(logits.first);
-       if (is_initial) {
+       if (isInitial) {
            logits_data[WHISPER_EOT] = NEG_INF;
            logits_data[WHISPER_BLANK] = NEG_INF;
        }
@@ -363,19 +406,25 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        logits_data[WHISPER_NO_SPEECH] = NEG_INF;
        logits_data[WHISPER_TRANSLATE] = NEG_INF;
    }
-   
+   ```
+
+   <!-- @[napi_asr_predict](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    std::vector<int> LoopPredict(const OH_AI_ModelHandle model, const BinBuffer &n_layer_cross_k,
                                 const BinBuffer &n_layer_cross_v, const BinBuffer &logits_init,
                                 BinBuffer &out_n_layer_self_k_cache, BinBuffer &out_n_layer_self_v_cache,
-                                const BinBuffer &data_embedding, const int loop, const int offset_init) {
+                                const BinBuffer &data_embedding, const int loop, const int offset_init)
+   {
        BinBuffer logits{nullptr, 51865 * sizeof(float)};
        logits.first = malloc(logits.second);
        if (!logits.first) {
-           LOGE("MS_LITE_LOG: Fail to malloc!\n");
+           LOGE("MS_LITE_ERR: Fail to malloc!\n");
+           return {};
        }
        void *logits_init_src = static_cast<char *>(logits_init.first) + 51865 * 3 * sizeof(float);
        memcpy(logits.first, logits_init_src, logits.second);
-       SupressTokens(logits, true);
+       SuppressTokens(logits, true);
    
        std::vector<int> output_token;
        float *logits_data = static_cast<float *>(logits.first);
@@ -393,7 +442,8 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        slice.second = WHISPER_N_TEXT_STATE * sizeof(float);
        slice.first = malloc(slice.second);
        if (!slice.first) {
-           LOGE("MS_LITE_LOG: Fail to malloc!\n");
+           LOGE("MS_LITE_ERR: Fail to malloc!\n");
+           return {};
        }
    
        auto out_n_layer_self_k_cache_new = out_n_layer_self_k_cache;
@@ -422,7 +472,7 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
            out_n_layer_self_k_cache_new = GetMSOutput(outputs.handle_list[1]);
            out_n_layer_self_v_cache_new = GetMSOutput(outputs.handle_list[2]);
            offset++;
-           SupressTokens(logits, false);
+           SuppressTokens(logits, false);
            logits_data = static_cast<float *>(logits.first);
            max_token = logits_data[0];
    
@@ -437,7 +487,8 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        return output_token;
    }
    
-   std::vector<std::string> ProcessDataLines(const BinBuffer token_txt) {
+   std::vector<std::string> ProcessDataLines(const BinBuffer token_txt)
+   {
        void *data_ptr = token_txt.first;
        size_t data_size = token_txt.second;
        std::vector<std::string> tokens;
@@ -467,13 +518,15 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        std::string filePath = "zh.wav";
        auto audioBin = ReadBinFile(resourcesManager, filePath);
        if (audioBin.first == nullptr) {
-           LOGI("MS_LITE_LOG: Fail to read  %{public}s!", filePath.c_str());
+           LOGE("MS_LITE_ERR: Fail to read  %{public}s!", filePath.c_str());
+           return error_ret;
        }
        size_t dataSize = audioBin.second;
        uint8_t *dataBuffer = (uint8_t *)audioBin.first;
        bool ok = audioFile.loadFromMemory(std::vector<uint8_t>(dataBuffer, dataBuffer + dataSize));
        if (!ok) {
-           LOGI("MS_LITE_LOG: Fail to read  %{public}s!", filePath.c_str());
+           LOGE("MS_LITE_ERR: Fail to read  %{public}s!", filePath.c_str());
+           return error_ret;
        }
        std::vector<float> data(audioFile.samples[0]);
        ResampleAudio(data, audioFile.getSampleRate(), WHISPER_SAMPLE_RATE, 1, SRC_SINC_BEST_QUALITY);
@@ -506,6 +559,8 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        // Run inference on tiny-encoder.ms.
        auto encoderBin = ReadBinFile(resourcesManager, "tiny-encoder.ms");
        if (encoderBin.first == nullptr) {
+           free(dataBuffer);
+           dataBuffer = nullptr;
            return error_ret;
        }
    
@@ -516,7 +571,7 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
            OH_AI_ModelDestroy(&encoder);
            return error_ret;
        }
-       LOGI("run encoder ok!\n");
+       LOGI("MS_LITE_LOG: run encoder ok!\n");
    
        auto outputs = OH_AI_ModelGetOutputs(encoder);
        auto n_layer_cross_k = GetMSOutput(outputs.handle_list[0]);
@@ -531,6 +586,7 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        const std::string decoder_main_path = "tiny-decoder-main.ms";
        auto decoderMainBin = ReadBinFile(resourcesManager, decoder_main_path);
        if (decoderMainBin.first == nullptr) {
+           OH_AI_ModelDestroy(&encoder);
            return error_ret;
        }
        auto decoder_main = CreateMSLiteModel(decoderMainBin);
@@ -540,7 +596,7 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
            OH_AI_ModelDestroy(&decoder_main);
            return error_ret;
        }
-       LOGI("run decoder_main ok!\n");
+       LOGI("MS_LITE_LOG: run decoder_main ok!\n");
    
        auto decoderMainOut = OH_AI_ModelGetOutputs(decoder_main);
        auto logitsBin = GetMSOutput(decoderMainOut.handle_list[0]);
@@ -555,6 +611,9 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        const std::string dataName_embedding = "tiny-positional_embedding.bin"; // Obtain the input data.
        auto data_embedding = ReadBinFile(resourcesManager, dataName_embedding);
        if (data_embedding.first == nullptr) {
+           OH_AI_ModelDestroy(&encoder);
+           OH_AI_ModelDestroy(&decoder_main);
+           OH_AI_ModelDestroy(&decoder_loop);
            return error_ret;
        }
    
@@ -582,33 +641,34 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
        return out_data;
    }
    ```
-   
-7. Write the **CMake** script to link the MindSpore Lite dynamic library.
+
+6. Write the **CMake** script to link the MindSpore Lite dynamic library.
 
    ```c++
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
    project(test)
-   set(CMAKE_CXX_STANDARD 17) # AudioFile.h
+   # AudioFile.h
+   set(CMAKE_CXX_STANDARD 17)
    set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
-   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+   set(NATIVERENDER_PATH ${CMAKE_CURRENT_SOURCE_DIR})
    
    if(DEFINED PACKAGE_FIND_FILE)
        include(${PACKAGE_FIND_FILE})
    endif()
    
-   include_directories(${NATIVERENDER_ROOT_PATH}
-                       ${NATIVERENDER_ROOT_PATH}/include)
+   include_directories(${NATIVERENDER_PATH}
+                       ${NATIVERENDER_PATH}/include)
    
    # libsamplerate
-   set(LIBSAMPLERATE_DIR ${NATIVERENDER_ROOT_PATH}/third_party/libsamplerate)
+   set(LIBSAMPLERATE_DIR ${NATIVERENDER_PATH}/third_party/libsamplerate)
    include_directories(${LIBSAMPLERATE_DIR}/include)
    add_subdirectory(${LIBSAMPLERATE_DIR})
    
-   include_directories(${NATIVERENDER_ROOT_PATH}/third_party/opencc/include/opencc)
+   include_directories(${NATIVERENDER_PATH}/third_party/opencc/include/opencc)
    # src
    aux_source_directory(src SRC_DIR)
-   include_directories(${NATIVERENDER_ROOT_PATH}/src)
+   include_directories(${NATIVERENDER_PATH}/src)
    
    include_directories(${CMAKE_SOURCE_DIR}/third_party)
    
@@ -622,9 +682,11 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
    target_link_libraries(entry PUBLIC ace_napi.z)
    ```
 
-#### Use N-APIs to encapsulate the C++ dynamic library into an ArkTS module.
+### Use N-APIs to encapsulate the C++ dynamic library into an ArkTS module.
 
 1. In **entry/src/main/cpp/types/libentry/Index.d.ts**, define the ArkTS API `runDemo()` by adding the following content:
+
+   <!-- @[index_asr_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
    ```ts
    export const runDemo: (a: Object) => string;
@@ -634,28 +696,27 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to p
 
    ```json
    {
-     "name": "entry",
+     "name": "libentry.so",
+     "types": "./Index.d.ts",
      "version": "1.0.0",
-     "description": "MindSpore Lite inference module",
-     "main": "",
-     "author": "",
-     "license": "",
-     "dependencies": {
-       "libentry.so": "file:./src/main/cpp/types/libentry"
-     }
+     "description": "MindSpore Lite inference module."
    }
    ```
 
-#### Invoke the encapsulated ArkTS module to perform inference and output the result.
+### Invoke the encapsulated ArkTS module to perform inference and output the result.
 
 In **entry/src/main/ets/pages/Index.ets**, call the encapsulated ArkTS module to process the inference result.
 
+<!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) -->
+
 ```ts
 // Index.ets
-
 import msliteNapi from 'libentry.so'
 import AVPlayerDemo from './player';
 import { transverter, TransverterType, TransverterLanguage } from "@nutpi/chinese_transverter"
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = 'MindSporeLite';
 
 @Entry
 @Component
@@ -684,7 +745,7 @@ struct Index {
         .height('5%')
         .onClick(async () =>{
           // Invoke functions in the avPlayerFdSrcDemo class.
-          console.info('MS_LITE_LOG: begin to play wav.');
+          hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: begin to play wav.`);
           let myClass = new AVPlayerDemo();
           myClass.avPlayerFdSrcDemo();
         })
@@ -702,13 +763,21 @@ struct Index {
         .height('5%')
         .onClick(() => {
           let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
-
+          if (resMgr === undefined || resMgr === null) {
+            hilog.error(0xFF00, TAG, '%{public}s', `MS_LITE_ERR: get resourceManager failed.`);
+            return
+          }
           // Call the encapsulated runDemo function.
-          console.info('MS_LITE_LOG: *** Start MSLite Demo ***');
+          hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: *** Start MSLite Demo ***`);
           let output = msliteNapi.runDemo(resMgr);
-          console.info('MS_LITE_LOG: output length = ', output.length, ';value = ', output.slice(0, 20));
+          if (output === null || output.length === 0) {
+            hilog.error(0xFF00, TAG, '%{public}s', `MS_LITE_ERR: runDemo failed.`);
+            return
+          }
+          hilog.info(0xFF00, TAG, '%{public}s',
+            `MS_LITE_LOG: output length = ${output.length}; value = ${output.slice(0, 20)}`);
           this.content = output;
-          console.info('MS_LITE_LOG: *** Finished MSLite Demo ***');
+          hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: *** Finished MSLite Demo ***`);
         })
 
         // Display the recognized content.
@@ -771,8 +840,6 @@ struct Index {
    ......
    05-16 14:53:55.272   1679-1679     A00000/[MSLiteNapi]             com.sampl...cdemoasr  I     MS_LITE_LOG: run decoder loop 16 ok!
                                                                                                    token = 50257
-   05-16 14:53:55.307   1679-1679     A00000/[MSLiteNapi]             com.sampl...cdemoasr  I     MS_LITE_LOG: result is -> I think the most important thing about running is that it brings me physical health.
-   05-16 14:53:55.334   1679-1679     A03d00/JSAPP                    com.sampl...cdemoasr  I     MS_LITE_LOG: output length =  20 ;value =  I think the most important thing about running is that it brings me physical health.
    05-16 14:53:55.334   1679-1679     A03d00/JSAPP                    com.sampl...cdemoasr  I     MS_LITE_LOG: *** Finished MSLite Demo ***
    ```
 
@@ -785,3 +852,9 @@ After you tap the **Play Audio** button on the device screen, the sample audio f
 | :-----------------------: | :-----------------------: |
 | ![asr1](figures/asr1.png) | ![asr2](figures/asr2.png) |
 
+
+## Related Samples
+
+The following sample is provided to help you better understand how to develop speech recognition applications using MindSpore Lite:
+
+- [MindSpore Lite ASR Application Development Based on Native APIs (C/C++) (API 14)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)

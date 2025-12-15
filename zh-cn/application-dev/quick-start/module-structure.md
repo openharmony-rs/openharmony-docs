@@ -1,5 +1,10 @@
 # module对象内部结构
-
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 module对象包含HAP的配置信息。
 
@@ -97,7 +102,7 @@ module示例：
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| moduleName | 标识当前HAP的名称，最大长度为31个字节。 在应用升级时，该名称允许修改，但需要应用适配Module相关数据目录的迁移，可使用[文件操作接口](../reference/apis-core-file-kit/js-apis-file-fs.md#fscopydir10)。| 字符串 | 不可缺省。 |
+| moduleName | 标识当前HAP的名称，最大长度为31个字节。 在应用升级时，该名称允许修改，但需要应用适配Module相关数据目录的迁移，可使用[文件操作接口](../reference/apis-core-file-kit/js-apis-file-fs.md)。| 字符串 | 不可缺省。 |
 | moduleType | 标识当前HAP的类型，包括三种类型：entry、feature和har。 | 字符串 | 不可缺省。 |
 | installationFree | 标识当前HAP是否支持免安装特性。true：表示支持免安装特性，且符合免安装约束。false：表示不支持免安装特性。另外还需注意：当entry.hap该字段配置为true时，与该entry.hap相关的所有feature.hap该字段也需要配置为true。当entry.hap该字段配置为false时，与该entry.hap相关的各feature.hap该字段可按业务需求配置true或false。 | 布尔值 | 不可缺省。 |
 | deliveryWithInstall | 标识当前HAP是否在用户主动安装HAP所在应用的时候一起安装。true：&nbsp;安装应用时当前HAP随应用一起下载安装。false：安装应用时当前HAP并不下载安装，后续使用是按需下载。 | 布尔值 | 不可缺省。 |
@@ -190,7 +195,8 @@ metadata对象示例：
 | 智能手表 | wearable | 系统能力较丰富的手表，具备电话功能。 |
 | 运动表 | litewearable | - |
 | 车机 | car | - |
-| 默认设备 | default | 能够使用全部系统能力的设备。 |
+| 默认设备 | default | 默认设备类型，详情参考[标准系统开发板](../../device-dev/dev-board-on-the-master.md#标准系统开发板)。 |
+| 2in1 | 2in1 | 即PC设备，主要交互方式以多窗口、多任务及键盘鼠标操作为主，充分发挥设备的生产力属性。|
 <!--RP2End-->
 
 ## abilities对象的内部结构
@@ -235,7 +241,7 @@ metadata对象示例：
 系统对无图标应用实施严格管控，防止一些恶意应用故意配置无入口图标，导致用户找不到软件所在的位置，无法操作卸载应用，在一定程度上保证用户终端设备的安全。
 
 **入口图标的设置:** 需要在配置文件（config.json）中abilities配置下设置icon，label以及skills，而且skills的配置下必须同时包含“action.system.home” 和 “entity.system.home”。
-```
+```json
 {
   "module":{
 
@@ -559,7 +565,7 @@ forms示例：
 ```json
 "forms": [
   {
-    "name": "Form_Js",
+    "name": "Form_Js1",
     "description": "It's Js Form",
     "type": "JS",
     "jsComponentName": "card",
@@ -576,9 +582,9 @@ forms示例：
     ]
   },
   {
-    "name": "Form_Js",
+    "name": "Form_Js2",
     "description": "It's JS Form",
-    "type": "Js",
+    "type": "JS",
     "colorMode": "auto",
     "isDefault": false,
     "updateEnabled": true,

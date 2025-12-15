@@ -1,8 +1,18 @@
 # 获取密钥属性(ArkTS)
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
 HUKS提供了接口供业务获取指定密钥的相关属性。在获取指定密钥属性前，需要确保已在HUKS中生成或导入持久化存储的密钥。
 >**说明：**
-> 轻量级设备不支持获取密钥属性功能。
+>
+> <!--RP1-->轻量级设备<!--RP1End-->不支持获取密钥属性功能。
+
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
 
 ## 开发步骤
 
@@ -12,11 +22,14 @@ HUKS提供了接口供业务获取指定密钥的相关属性。在获取指定�
 
 3. 返回值为[HuksReturnResult](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksreturnresult9)类型对象，获取的属性集在properties字段中。
 
-```ts
+<!-- @[obtaining_key_attribute_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/GetKeyAttributes/entry/src/main/ets/pages/GetKeyAttributes.ets) -->
+
+``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* 1. 设置密钥别名 */
 let keyAlias = 'keyAlias';
-/* 2. 设置密钥属性 */
+/* option对象传空 */
 let emptyOptions: huks.HuksOptions = {
   properties: []
 };
@@ -34,10 +47,12 @@ let properties1: huks.HuksParam[] = [
     value: huks.HuksKeySize.HUKS_DH_KEY_SIZE_2048
   }
 ];
+
 let huksOptions: huks.HuksOptions = {
   properties: properties1,
   inData: new Uint8Array([])
 }
+
 /* 3.生成密钥 */
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
@@ -54,6 +69,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
     }
   });
 }
+
 async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions): Promise<string> {
   console.info(`enter promise generateKeyItem`);
   try {
@@ -70,38 +86,24 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
     return 'Failed';
   }
 }
+
 async function testGenKey(): Promise<string> {
   let ret = await publicGenKeyFunc(keyAlias, huksOptions);
   return ret;
 }
-/* 获取密钥属性 */
-function getKeyItemProperties(keyAlias: string, emptyOptions: huks.HuksOptions) {
-  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
-    try {
-      huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(data);
-        }
-      });
-    } catch (error) {
-      throw (error as Error);
-    }
-  });
-}
-async function check(): Promise<string> {
+
+function check(): string {
   try {
     /* 1. 生成密钥 */
-    let genResult = await testGenKey();
+    testGenKey();
     /* 2. 获取密钥属性 */
-    if (genResult === 'Success') {
-      let data = await getKeyItemProperties(keyAlias, emptyOptions);
-      console.info(`callback: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
-    } else {
-      console.error('Key generation failed, skipping get properties');
-      return 'Failed';
-    }
+    huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
+      if (error) {
+        console.error(`callback: getKeyItemProperties failed, ${JSON.stringify(error)}`);
+      } else {
+        console.info(`callback: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
+      }
+    });
     return 'Success';
   } catch (error) {
     console.error(`callback: getKeyItemProperties input arg invalid, ${JSON.stringify(error)}`);

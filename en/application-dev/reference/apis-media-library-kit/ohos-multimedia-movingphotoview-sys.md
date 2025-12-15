@@ -1,4 +1,10 @@
 # @ohos.multimedia.movingphotoview (MovingPhotoView) (System API)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @tangye123456-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @w_Machine_cc-->
 
 The **MovingPhotoView** component is used to play moving photos and control the playback status.
 
@@ -9,11 +15,15 @@ The **MovingPhotoView** component is used to play moving photos and control the 
 
 ## MovingPhotoViewOptions
 
+Describes the options of a moving photo view.
 
-| Name     | Type                                                                                        | Mandatory| Description                                                                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| movingPhotoFormat<sup>14+</sup>  | [PixelMapFormat](#pixelmapformat14)    | No  | Decoding format of the cover image of the **MovingPhotoView** component.                 |
-| dynamicRangeMode<sup>14+</sup>  | [DynamicRangeMode](#dynamicrangemode14) | No  | Range mode of the cover image of the **MovingPhotoView** component.|
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name                     | Type                    | Read-Only| Optional| Description                                                  |
+| ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
+| movingPhotoFormat<sup>14+</sup>               | [PixelMapFormat](#pixelmapformat14)                   | No  | Yes  | Decoding format of the cover image of the **MovingPhotoView** component.<br>**System API**: This is a system API.         |
+| dynamicRangeMode<sup>14+</sup>               | [DynamicRangeMode](#dynamicrangemode14)                   | No  | Yes  | Range mode of the cover image of the **MovingPhotoView** component.<br>**System API**: This is a system API.          |
+| playWithMask<sup>19+</sup>               | boolean                   | No  | Yes  | Whether the watermark is shown when a moving photo with a watermark is playing.<br>The default value is **false**.<br>**false**: The moving photo fills the component while keeping its aspect ratio; the watermark is hidden.<br>**true**: The watermark is shown.<br>**System API**: This is a system API.       |
 
 ## PixelMapFormat<sup>14+</sup>
 
@@ -46,11 +56,15 @@ Enumerates the extended range modes available for the cover image of the **Movin
 | CONSTRAINT         | 1      | Allows limited extended range for the image content.|
 | STANDARD            | 2      | Keeps the image content within the standard dynamic range for SDR effects. The recommended decoding formats are UNKNOWN and RGBA_8888.|
 
-## Example: Setting the Decoding Format and Range Mode for Moving Photos in a System Application
+**Example**
+
+Set the decoding format and HDR effect format for moving photos in a system application.
 
 ```ts
 // This example illustrates how to use the parameters. For detailed implementation, check the public API documentation for moving photos.
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 21 and earlier, use the following: import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 22 and later, use the following:
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 import { PixelMapFormat, DynamicRangeMode } from '@ohos.multimedia.movingphotoview';
 
 let data: photoAccessHelper.MovingPhoto
@@ -84,7 +98,8 @@ struct Index {
             movingPhoto: data,
             controller: this.controller,
             movingPhotoFormat: this.format,
-            dynamicRangeMode: this.mode
+            dynamicRangeMode: this.mode,
+            playWithMask: false
           })
         }
       }
@@ -92,3 +107,140 @@ struct Index {
   }
 }
 ```
+
+## MovingPhotoViewController<sup>12+</sup>
+
+A MovingPhotoViewController object can be used to control a **MovingPhotoView** component. For details, see [Media Module](../apis-media-kit/arkts-apis-media.md).
+
+### pausePlayback<sup>20+</sup>
+
+pausePlayback()
+
+Pauses playback and freezes on the current frame. Once resumed, playback continues right where it left off.
+
+**System API**: This is a system API.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |
+
+### reset<sup>20+</sup>
+
+reset()
+
+Returns to the cover frame and rewinds the video. The next play starts from the very beginning.
+
+**System API**: This is a system API.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |
+
+### restart<sup>20+</sup>
+
+restart()
+
+Restarts playback from the beginning while keeping the current playback range and mode.
+
+**System API**: This is a system API.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |
+
+### setPlaybackPeriod<sup>20+</sup>
+
+setPlaybackPeriod(startTime: number, endTime: number)
+
+Sets the playback range, which takes effect for the next playback.
+
+**System API**: This is a system API.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name | Type   | Mandatory| Description                        |
+| ------- | ------- | ---- | ---------------------------- |
+| startTime| number| Yes  | Start of the range, in ms. The value must be greater than or equal to 0.|
+| endTime| number| Yes  | End of the range, in ms. The value must be greater than **startTime**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |
+
+### enableTransition<sup>20+</sup>
+
+enableTransition(enabled: boolean)
+
+Enables or disables the zoom-in transition effect when the video starts to play. The setting takes effect for the next playback.
+
+**System API**: This is a system API.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name | Type   | Mandatory| Description                        |
+| ------- | ------- | ---- | ---------------------------- |
+| enabled| boolean| Yes  | Whether to enable the zoom-in transition effect. **true** to enable, **false** otherwise.<br></div>The default value is **true**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |
+
+### enableAutoPlay<sup>20+</sup>
+
+enableAutoPlay(enabled: boolean)
+
+Enables or disables the embedded video in a moving photo to play automatically, once.
+
+**System API**: This is a system API.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name | Type   | Mandatory| Description                        |
+| ------- | ------- | ---- | ---------------------------- |
+| enabled| boolean| Yes  | Whether to enable autoplay. **true** to enable, **false** otherwise.<br></div>The default value is **false**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |

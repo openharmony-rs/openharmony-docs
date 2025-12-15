@@ -1,4 +1,10 @@
 # native_audio_manager.h
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -20,23 +26,23 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) | OH_AudioManager | 声明音频管理器。用于管理音频管理相关功能。 |
+| [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) | OH_AudioManager | 声明音频管理器。用于音频管理相关功能。 |
 
 ### 函数
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData,OH_AudioScene scene)](#oh_audiomanager_onaudioscenechangecallback) | OH_AudioManager_OnAudioSceneChangeCallback | 音频场景变化回调函数的原型定义，用于传递给[OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback)。 |
+| [typedef void (\*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_AudioScene scene)](#oh_audiomanager_onaudioscenechangecallback) | OH_AudioManager_OnAudioSceneChangeCallback | 音频场景变化回调函数的原型定义，用于传递给[OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback)。 |
 | [OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)](#oh_getaudiomanager) | - | 获取音频管理器。<br> 使用音频管理器相关功能，首先需要获取音频管理器实例。 |
 | [OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *scene)](#oh_getaudioscene) | - | 获取音频场景模式。 |
-| [OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioManager *manager,OH_AudioManager_OnAudioSceneChangeCallback callback, void *userData)](#oh_audiomanager_registeraudioscenechangecallback) | - | 注册音频场景切换回调函数。 |
-| [OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_AudioManager *manager,OH_AudioManager_OnAudioSceneChangeCallback callback)](#oh_audiomanager_unregisteraudioscenechangecallback) | - | 取消注册音频场景切换回调函数。 |
+| [OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback, void *userData)](#oh_audiomanager_registeraudioscenechangecallback) | - | 注册音频场景切换回调函数。 |
+| [OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback)](#oh_audiomanager_unregisteraudioscenechangecallback) | - | 取消注册音频场景切换回调函数。 |
 
 ## 函数说明
 
 ### OH_AudioManager_OnAudioSceneChangeCallback()
 
-```
+```c
 typedef void (*OH_AudioManager_OnAudioSceneChangeCallback) (void *userData, OH_AudioScene scene)
 ```
 
@@ -56,7 +62,7 @@ typedef void (*OH_AudioManager_OnAudioSceneChangeCallback) (void *userData, OH_A
 
 ### OH_GetAudioManager()
 
-```
+```c
 OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)
 ```
 
@@ -81,7 +87,7 @@ OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)
 
 ### OH_GetAudioScene()
 
-```
+```c
 OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *scene)
 ```
 
@@ -107,7 +113,7 @@ OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *
 
 ### OH_AudioManager_RegisterAudioSceneChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioManager *manager,OH_AudioManager_OnAudioSceneChangeCallback callback, void *userData)
 ```
 
@@ -134,7 +140,7 @@ OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioM
 
 ### OH_AudioManager_UnregisterAudioSceneChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_AudioManager *manager,OH_AudioManager_OnAudioSceneChangeCallback callback)
 ```
 

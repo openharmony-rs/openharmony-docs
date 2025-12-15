@@ -1,4 +1,10 @@
 # lowpower_video_sink.h
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @Saber_e-->
+<!--Designer: @yangde_dy-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -26,19 +32,20 @@ The file declares the native APIs provided by the LowPowerVideoSink. You can use
 | [OH_AVErrCode OH_LowPowerVideoSink_GetParameter(OH_LowPowerVideoSink* sink, OH_AVFormat* format)](#oh_lowpowervideosink_getparameter) | Obtains the parameters of an OH_LowPowerVideoSink instance.|
 | [OH_AVErrCode OH_LowPowerVideoSink_SetVideoSurface(OH_LowPowerVideoSink* sink, const OHNativeWindow* surface)](#oh_lowpowervideosink_setvideosurface) | Sets the rendering window for an OH_LowPowerVideoSink instance. This function must be called before [OH_LowPowerVideoSink_Prepare](#oh_lowpowervideosink_prepare).|
 | [OH_AVErrCode OH_LowPowerVideoSink_Prepare(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_prepare) | Prepares an OH_LowPowerVideoSink instance for decoding and rendering. This function must be called after [OH_LowPowerVideoSink_SetSyncAudioSink](#oh_lowpowervideosink_setsyncaudiosink).|
-| [OH_AVErrCode OH_LowPowerVideoSink_StartDecoder(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_startdecoder) | Starts an OH_LowPowerVideoSink instance for decoding. This function must be called after [OH_LowPowerVideoSink_Prepare](#oh_lowpowervideosink_prepare) or if no video is playing, after [OH_LowPowerVideoSink_SetTargetStartFrame](#oh_lowpowervideosink_settargetstartframe).<br>After successful startup, the OH_LowPowerVideoSink instance starts reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.|
+| [OH_AVErrCode OH_LowPowerVideoSink_StartDecoder(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_startdecoder) | Starts an OH_LowPowerVideoSink instance for decoding. This function must be called after [OH_LowPowerVideoSink_Prepare](#oh_lowpowervideosink_prepare) or if no video is playing, after [OH_LowPowerVideoSink_SetTargetStartFrame](#oh_lowpowervideosink_settargetstartframe).<br> After successful startup, the OH_LowPowerVideoSink instance starts reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.|
 | [OH_AVErrCode OH_LowPowerVideoSink_RenderFirstFrame(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_renderfirstframe) | Renders the first frame decoded by an OH_LowPowerVideoSink instance. This function must be called after [OH_LowPowerVideoSink_StartDecoder](#oh_lowpowervideosink_startdecoder).|
 | [OH_AVErrCode OH_LowPowerVideoSink_StartRenderer(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_startrenderer) | Starts an OH_LowPowerVideoSink instance for rendering. This function must be called after [OH_LowPowerVideoSink_StartDecoder](#oh_lowpowervideosink_startdecoder).|
-| [OH_AVErrCode OH_LowPowerVideoSink_Pause(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_pause) | Pauses an OH_LowPowerVideoSink instance. This function must be called after [OH_LowPowerVideoSink_StartRenderer](#oh_lowpowervideosink_startrenderer) or [OH_LowPowerVideoSink_Resume](#oh_lowpowervideosink_resume).<br>After successful pause, the OH_LowPowerVideoSink instance stops reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.|
-| [OH_AVErrCode OH_LowPowerVideoSink_Resume(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_resume) | Resumes an OH_LowPowerVideoSink instance. This function must be called after[OH_LowPowerVideoSink_Pause](#oh_lowpowervideosink_pause).<br>After successful resumption, the OH_LowPowerVideoSink instance resumes reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.|
-| [OH_AVErrCode OH_LowPowerVideoSink_Flush(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_flush) | Clears all input and output data from the decoders and render buffers of an OH_LowPowerVideoSink instance.<br>You are not advised to call this function after [OH_LowPowerVideoSink_StartRenderer](#oh_lowpowervideosink_startrenderer) or [OH_LowPowerVideoSink_Resume](#oh_lowpowervideosink_resume).<br>Note that if the decoder has previously received data, you must input the codec data again.|
+| [OH_AVErrCode OH_LowPowerVideoSink_Pause(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_pause) | Pauses an OH_LowPowerVideoSink instance. This function must be called after [OH_LowPowerVideoSink_StartRenderer](#oh_lowpowervideosink_startrenderer) or [OH_LowPowerVideoSink_Resume](#oh_lowpowervideosink_resume).<br> After successful pause, the OH_LowPowerVideoSink instance stops reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.|
+| [OH_AVErrCode OH_LowPowerVideoSink_Resume(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_resume) | Resumes an OH_LowPowerVideoSink instance. This function must be called after[OH_LowPowerVideoSink_Pause](#oh_lowpowervideosink_pause).<br> After successful resumption, the OH_LowPowerVideoSink instance resumes reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.|
+| [OH_AVErrCode OH_LowPowerVideoSink_Flush(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_flush) | Clears all input and output data from the decoders and render buffers of an OH_LowPowerVideoSink instance.<br> You are not advised to call this function after [OH_LowPowerVideoSink_StartRenderer](#oh_lowpowervideosink_startrenderer) or [OH_LowPowerVideoSink_Resume](#oh_lowpowervideosink_resume).<br> Note that if the decoder has previously received data, you must input the codec data again.|
 | [OH_AVErrCode OH_LowPowerVideoSink_Stop(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_stop) | Stops an OH_LowPowerVideoSink instance.|
-| [OH_AVErrCode OH_LowPowerVideoSink_Reset(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_reset) | Resets an OH_LowPowerVideoSink instance.<br>To reuse the instance, you must call [OH_LowPowerVideoSink_Configure](#oh_lowpowervideosink_configure) to configure the instance again.|
+| [OH_AVErrCode OH_LowPowerVideoSink_Reset(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_reset) | Resets an OH_LowPowerVideoSink instance.<br> To reuse the instance, you must call [OH_LowPowerVideoSink_Configure](#oh_lowpowervideosink_configure) to configure the instance again.|
 | [OH_AVErrCode OH_LowPowerVideoSink_Destroy(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_destroy) | Clears internal resources of an OH_LowPowerVideoSink instance and destroys the instance. You only need to call the function once.|
 | [OH_AVErrCode OH_LowPowerVideoSink_SetSyncAudioSink(OH_LowPowerVideoSink* videoSink, OH_LowPowerAudioSink* audioSink)](#oh_lowpowervideosink_setsyncaudiosink) | Sets an OH_LowPowerAudioSink instance for audio-video synchronization in an OH_LowPowerVideoSink instance.|
-| [OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink,const int64_t framePts,OH_LowPowerVideoSink_OnTargetArrived onTargetArrived,const int64_t timeoutMs,void* userData)](#oh_lowpowervideosink_settargetstartframe) | Sets the target rendering frame for an OH_LowPowerVideoSink instance.|
+| [OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink, const int64_t framePts, OH_LowPowerVideoSink_OnTargetArrived onTargetArrived, const int64_t timeoutMs, void* userData)](#oh_lowpowervideosink_settargetstartframe) | Sets the target rendering frame for an OH_LowPowerVideoSink instance.|
 | [OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, const float speed)](#oh_lowpowervideosink_setplaybackspeed) | Sets the playback speed for an OH_LowPowerVideoSink instance.|
 | [OH_AVErrCode OH_LowPowerVideoSink_ReturnSamples(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* samples)](#oh_lowpowervideosink_returnsamples) | Provides a buffer to an OH_LowPowerVideoSink instance for procesing.|
+| [OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64_t *pts)](#oh_lowpowervideosink_getlatestpts) | Obtains the Presentation Timestamp (PTS) of the video that is playing.|
 | [OH_AVErrCode OH_LowPowerVideoSink_RegisterCallback(OH_LowPowerVideoSink* sink, OH_LowPowerVideoSinkCallback* callback)](#oh_lowpowervideosink_registercallback) | Registers a callback for an OH_LowPowerVideoSink instance.|
 | [OH_LowPowerVideoSinkCallback* OH_LowPowerVideoSinkCallback_Create(void)](#oh_lowpowervideosinkcallback_create) | Creates an OH_LowPowerVideoSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_Destroy(OH_LowPowerVideoSinkCallback* callback)](#oh_lowpowervideosinkcallback_destroy) | Destroys an OH_LowPowerVideoSinkCallback instance.|
@@ -46,8 +53,8 @@ The file declares the native APIs provided by the LowPowerVideoSink. You can use
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetErrorListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnError onError, void* userData)](#oh_lowpowervideosinkcallback_seterrorlistener) | Sets an error listener for an OH_LowPowerVideoSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnRenderStarted onRenderStarted, void* userData)](#oh_lowpowervideosinkcallback_setrenderstartlistener) | Sets a render start listener for an OH_LowPowerVideoSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetStreamChangedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnStreamChanged onStreamChanged, void* userData)](#oh_lowpowervideosinkcallback_setstreamchangedlistener) | Sets a stream change listener for an OH_LowPowerVideoSinkCallback instance.|
-| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback,OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded,void* userData)](#oh_lowpowervideosinkcallback_setfirstframedecodedlistener) | Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.|
-| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback,OH_LowPowerVideoSink_OnEos onEos, void* userData)](#oh_lowpowervideosinkcallback_seteoslistener) | Sets an end-of-stream listener for an OH_LowPowerVideoSinkCallback instance.|
+| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)](#oh_lowpowervideosinkcallback_setfirstframedecodedlistener) | Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.|
+| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnEos onEos, void* userData)](#oh_lowpowervideosinkcallback_seteoslistener) | Sets an end-of-stream listener for an OH_LowPowerVideoSinkCallback instance.|
 
 ## Function Description
 
@@ -63,12 +70,11 @@ Creates an OH_LowPowerVideoSink instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char* mime | Pointer to the MIME type of the video decoder. For details about the available options, see [AVCODEC_MIME_TYPE](../apis-avcodec-kit/_codec_base.md#variables).|
+| const char* mime | Pointer to the MIME type of the video decoder. For details about the available options, see [AVCODEC_MIME_TYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 
@@ -88,19 +94,18 @@ Configures an OH_LowPowerVideoSink instance. This function must be called before
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| const [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* format | Pointer to an OH_AVFormat instance, which describes the parameters to be configured for the OH_LowPowerVideoSink instance.|
+| const [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | Pointer to an OH_AVFormat instance, which describes the parameters to be configured for the OH_LowPowerVideoSink instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_UNSUPPORT**: The format is not supported.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_UNSUPPORT**: The format is not supported.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_SetParameter()
 
@@ -114,19 +119,18 @@ Sets parameters for an OH_LowPowerVideoSink instance. The parameters can be dyna
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| const [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* format | Pointer to an OH_AVFormat instance, which describes the parameters to be configured for the OH_LowPowerVideoSink instance.|
+| const [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | Pointer to an OH_AVFormat instance, which describes the parameters to be configured for the OH_LowPowerVideoSink instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_UNSUPPORT**: The format is not supported.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_UNSUPPORT**: The format is not supported.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_GetParameter()
 
@@ -140,19 +144,18 @@ Obtains the parameters of an OH_LowPowerVideoSink instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* format | Pointer to an OH_AVFormat instance, which describes the parameters configured for an OH_LowPowerVideoSink instance.|
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | Pointer to an OH_AVFormat instance, which describes the parameters configured for an OH_LowPowerVideoSink instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_SetVideoSurface()
 
@@ -166,19 +169,18 @@ Sets the rendering window for an OH_LowPowerVideoSink instance. This function mu
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| const [OHNativeWindow](../apis-avcodec-kit/_codec_base.md#ohnativewindow)* surface | Pointer to the OHNativeWindow instance.|
+| const [OHNativeWindow](../apis-avcodec-kit/capi-codecbase-nativewindow.md)* surface | Pointer to the OHNativeWindow instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_Prepare()
 
@@ -192,7 +194,6 @@ Prepares an OH_LowPowerVideoSink instance for decoding and rendering. This funct
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -203,7 +204,7 @@ Prepares an OH_LowPowerVideoSink instance for decoding and rendering. This funct
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_UNSUPPORT**: The format is not supported.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_UNSUPPORT**: The format is not supported.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_StartDecoder()
 
@@ -219,7 +220,6 @@ After successful startup, the OH_LowPowerVideoSink instance starts reporting the
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -230,7 +230,7 @@ After successful startup, the OH_LowPowerVideoSink instance starts reporting the
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_UNSUPPORT**: The format is not supported.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_UNSUPPORT**: The format is not supported.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_RenderFirstFrame()
 
@@ -244,7 +244,6 @@ Renders the first frame decoded by an OH_LowPowerVideoSink instance. This functi
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -255,7 +254,7 @@ Renders the first frame decoded by an OH_LowPowerVideoSink instance. This functi
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_StartRenderer()
 
@@ -269,7 +268,6 @@ Starts an OH_LowPowerVideoSink instance for rendering. This function must be cal
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -280,7 +278,7 @@ Starts an OH_LowPowerVideoSink instance for rendering. This function must be cal
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_UNSUPPORT**: The format is not supported.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_UNSUPPORT**: The format is not supported.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_Pause()
 
@@ -296,7 +294,6 @@ After successful pause, the OH_LowPowerVideoSink instance stops reporting the [O
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -307,7 +304,7 @@ After successful pause, the OH_LowPowerVideoSink instance stops reporting the [O
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_Resume()
 
@@ -323,7 +320,6 @@ After successful resumption, the OH_LowPowerVideoSink instance resumes reporting
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -334,7 +330,7 @@ After successful resumption, the OH_LowPowerVideoSink instance resumes reporting
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_Flush()
 
@@ -352,7 +348,6 @@ Note that if the decoder has previously received data, you must input the codec 
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -363,7 +358,7 @@ Note that if the decoder has previously received data, you must input the codec 
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_Stop()
 
@@ -377,7 +372,6 @@ Stops an OH_LowPowerVideoSink instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -388,7 +382,7 @@ Stops an OH_LowPowerVideoSink instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_Reset()
 
@@ -404,7 +398,6 @@ To reuse the instance, you must call [OH_LowPowerVideoSink_Configure](#oh_lowpow
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -415,7 +408,7 @@ To reuse the instance, you must call [OH_LowPowerVideoSink_Configure](#oh_lowpow
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_Destroy()
 
@@ -429,7 +422,6 @@ Clears internal resources of an OH_LowPowerVideoSink instance and destroys the i
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -440,7 +432,7 @@ Clears internal resources of an OH_LowPowerVideoSink instance and destroys the i
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_SetSyncAudioSink()
 
@@ -454,7 +446,6 @@ Sets an OH_LowPowerAudioSink instance for audio-video synchronization in an OH_L
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -466,12 +457,12 @@ Sets an OH_LowPowerAudioSink instance for audio-video synchronization in an OH_L
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_SetTargetStartFrame()
 
 ```
-OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink,const int64_t framePts,OH_LowPowerVideoSink_OnTargetArrived onTargetArrived,const int64_t timeoutMs,void* userData)
+OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink, const int64_t framePts, OH_LowPowerVideoSink_OnTargetArrived onTargetArrived, const int64_t timeoutMs, void* userData)
 ```
 
 **Description**
@@ -479,7 +470,6 @@ OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink
 Sets the target rendering frame for an OH_LowPowerVideoSink instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -495,7 +485,7 @@ Sets the target rendering frame for an OH_LowPowerVideoSink instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_SetPlaybackSpeed()
 
@@ -509,7 +499,6 @@ Sets the playback speed for an OH_LowPowerVideoSink instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -521,7 +510,7 @@ Sets the playback speed for an OH_LowPowerVideoSink instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_ReturnSamples()
 
@@ -535,7 +524,6 @@ Provides a buffer to an OH_LowPowerVideoSink instance for procesing.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -547,7 +535,32 @@ Provides a buffer to an OH_LowPowerVideoSink instance for procesing.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+
+### OH_LowPowerVideoSink_GetLatestPts()
+
+```
+OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64_t *pts)
+```
+
+**Description**
+
+Obtains the Presentation Timestamp (PTS) of the video that is playing.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) *sink | Pointer to an OH_LowPowerVideoSink instance.|
+| int64_t *pts | Pointer to the PTS of the video.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSink_RegisterCallback()
 
@@ -561,7 +574,6 @@ Registers a callback for an OH_LowPowerVideoSink instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -573,7 +585,7 @@ Registers a callback for an OH_LowPowerVideoSink instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_SERVICE_DIED**: The media server is destroyed.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSinkCallback_Create()
 
@@ -605,7 +617,6 @@ Destroys an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -616,7 +627,7 @@ Destroys an OH_LowPowerVideoSinkCallback instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.|
 
 ### OH_LowPowerVideoSinkCallback_SetDataNeededListener()
 
@@ -630,7 +641,6 @@ Sets a data needed listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -643,7 +653,7 @@ Sets a data needed listener for an OH_LowPowerVideoSinkCallback instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSinkCallback_SetErrorListener()
 
@@ -657,7 +667,6 @@ Sets an error listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -670,7 +679,7 @@ Sets an error listener for an OH_LowPowerVideoSinkCallback instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSinkCallback_SetRenderStartListener()
 
@@ -684,7 +693,6 @@ Sets a render start listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -697,7 +705,7 @@ Sets a render start listener for an OH_LowPowerVideoSinkCallback instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSinkCallback_SetStreamChangedListener()
 
@@ -711,7 +719,6 @@ Sets a stream change listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -724,12 +731,12 @@ Sets a stream change listener for an OH_LowPowerVideoSinkCallback instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener()
 
 ```
-OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback,OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded,void* userData)
+OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)
 ```
 
 **Description**
@@ -737,7 +744,6 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -751,12 +757,12 @@ Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
 
 ### OH_LowPowerVideoSinkCallback_SetEosListener()
 
 ```
-OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback,OH_LowPowerVideoSink_OnEos onEos, void* userData)
+OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnEos onEos, void* userData)
 ```
 
 **Description**
@@ -764,7 +770,6 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCal
 Sets an end-of-stream listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -778,4 +783,4 @@ Sets an end-of-stream listener for an OH_LowPowerVideoSinkCallback instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|

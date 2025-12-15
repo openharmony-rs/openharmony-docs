@@ -1,5 +1,10 @@
 # drawing_font_mgr.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 ## 概述
 
 文件中定义了与字体管理相关的功能函数，用于加载和匹配系统中可用的字体。
@@ -7,6 +12,8 @@
 **引用文件：** <native_drawing/drawing_font_mgr.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -29,8 +36,8 @@
 | [OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyle(OH_Drawing_FontMgr* drawingFontMgr,const char* familyName, OH_Drawing_FontStyleStruct fontStyle)](#oh_drawing_fontmgrmatchfamilystyle) | 根据指定的字体样式信息和字体家族名称，获取字型对象。 |
 | [OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyleCharacter(OH_Drawing_FontMgr* drawingFontMgr,const char* familyName, OH_Drawing_FontStyleStruct fontStyle,const char* bcp47[], int bcp47Count, int32_t character)](#oh_drawing_fontmgrmatchfamilystylecharacter) | 为指定字符获取字型对象，仅在传入字体管理对象中无法找到传入UTF8字符值对应的字型对象时返回空指针。 |
 | [OH_Drawing_Typeface* OH_Drawing_FontStyleSetCreateTypeface(OH_Drawing_FontStyleSet* fontStyleSet, int index)](#oh_drawing_fontstylesetcreatetypeface) | 为指定索引获取字型对象。 |
-| [OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleSet* fontStyleSet, int32_t index,char** styleName)](#oh_drawing_fontstylesetgetstyle) | 获取字体样式。 |
-| [void OH_Drawing_FontStyleSetFreeStyleName(char** styleName)](#oh_drawing_fontstylesetfreestylename) | 释放指定字体样式的内存。 |
+| [OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleSet* fontStyleSet, int32_t index,char** styleName)](#oh_drawing_fontstylesetgetstyle) | 获取字体样式，styleName会申请内存，不再需要styleName时，请使用[OH_Drawing_FontStyleSetFreeStyleName](#oh_drawing_fontstylesetfreestylename)释放该对象指针。 |
+| [void OH_Drawing_FontStyleSetFreeStyleName(char** styleName)](#oh_drawing_fontstylesetfreestylename) | 释放指定字体样式名称的内存。 |
 | [OH_Drawing_Typeface* OH_Drawing_FontStyleSetMatchStyle(OH_Drawing_FontStyleSet* fontStyleSet,OH_Drawing_FontStyleStruct fontStyleStruct)](#oh_drawing_fontstylesetmatchstyle) | 获取最接近字体样式的字型对象。 |
 | [int OH_Drawing_FontStyleSetCount(OH_Drawing_FontStyleSet* fontStyleSet)](#oh_drawing_fontstylesetcount) | 获取字体样式集中字体的个数。 |
 
@@ -38,7 +45,7 @@
 
 ### OH_Drawing_FontMgrCreate()
 
-```
+```c
 OH_Drawing_FontMgr* OH_Drawing_FontMgrCreate(void)
 ```
 
@@ -58,7 +65,7 @@ OH_Drawing_FontMgr* OH_Drawing_FontMgrCreate(void)
 
 ### OH_Drawing_FontMgrDestroy()
 
-```
+```c
 void OH_Drawing_FontMgrDestroy(OH_Drawing_FontMgr* drawingFontMgr)
 ```
 
@@ -79,7 +86,7 @@ void OH_Drawing_FontMgrDestroy(OH_Drawing_FontMgr* drawingFontMgr)
 
 ### OH_Drawing_FontMgrGetFamilyCount()
 
-```
+```c
 int OH_Drawing_FontMgrGetFamilyCount(OH_Drawing_FontMgr* drawingFontMgr)
 ```
 
@@ -106,7 +113,7 @@ int OH_Drawing_FontMgrGetFamilyCount(OH_Drawing_FontMgr* drawingFontMgr)
 
 ### OH_Drawing_FontMgrGetFamilyName()
 
-```
+```c
 char* OH_Drawing_FontMgrGetFamilyName(OH_Drawing_FontMgr* drawingFontMgr, int index)
 ```
 
@@ -134,7 +141,7 @@ char* OH_Drawing_FontMgrGetFamilyName(OH_Drawing_FontMgr* drawingFontMgr, int in
 
 ### OH_Drawing_FontMgrDestroyFamilyName()
 
-```
+```c
 void OH_Drawing_FontMgrDestroyFamilyName(char* familyName)
 ```
 
@@ -155,7 +162,7 @@ void OH_Drawing_FontMgrDestroyFamilyName(char* familyName)
 
 ### OH_Drawing_FontMgrCreateFontStyleSet()
 
-```
+```c
 OH_Drawing_FontStyleSet* OH_Drawing_FontMgrCreateFontStyleSet(OH_Drawing_FontMgr* drawingFontMgr, int index)
 ```
 
@@ -183,7 +190,7 @@ OH_Drawing_FontStyleSet* OH_Drawing_FontMgrCreateFontStyleSet(OH_Drawing_FontMgr
 
 ### OH_Drawing_FontMgrDestroyFontStyleSet()
 
-```
+```c
 void OH_Drawing_FontMgrDestroyFontStyleSet(OH_Drawing_FontStyleSet* drawingFontStyleSet)
 ```
 
@@ -204,7 +211,7 @@ void OH_Drawing_FontMgrDestroyFontStyleSet(OH_Drawing_FontStyleSet* drawingFontS
 
 ### OH_Drawing_FontMgrMatchFamily()
 
-```
+```c
 OH_Drawing_FontStyleSet* OH_Drawing_FontMgrMatchFamily(OH_Drawing_FontMgr* drawingFontMgr, const char* familyName)
 ```
 
@@ -232,7 +239,7 @@ OH_Drawing_FontStyleSet* OH_Drawing_FontMgrMatchFamily(OH_Drawing_FontMgr* drawi
 
 ### OH_Drawing_FontMgrMatchFamilyStyle()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyle(OH_Drawing_FontMgr* drawingFontMgr,const char* familyName, OH_Drawing_FontStyleStruct fontStyle)
 ```
 
@@ -261,7 +268,7 @@ OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyle(OH_Drawing_FontMgr* draw
 
 ### OH_Drawing_FontMgrMatchFamilyStyleCharacter()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyleCharacter(OH_Drawing_FontMgr* drawingFontMgr,const char* familyName, OH_Drawing_FontStyleStruct fontStyle,const char* bcp47[], int bcp47Count, int32_t character)
 ```
 
@@ -293,7 +300,7 @@ OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyleCharacter(OH_Drawing_Font
 
 ### OH_Drawing_FontStyleSetCreateTypeface()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontStyleSetCreateTypeface(OH_Drawing_FontStyleSet* fontStyleSet, int index)
 ```
 
@@ -321,13 +328,13 @@ OH_Drawing_Typeface* OH_Drawing_FontStyleSetCreateTypeface(OH_Drawing_FontStyleS
 
 ### OH_Drawing_FontStyleSetGetStyle()
 
-```
+```c
 OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleSet* fontStyleSet, int32_t index,char** styleName)
 ```
 
 **描述**
 
-获取字体样式。
+获取字体样式，styleName会申请内存，不再需要styleName时，请使用[OH_Drawing_FontStyleSetFreeStyleName](#oh_drawing_fontstylesetfreestylename)释放该对象指针。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -340,7 +347,7 @@ OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleS
 | -- | -- |
 | [OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md)* fontStyleSet | 指向字体样式集对象[OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md)的指针。 |
 | int32_t index | 指定的字体样式的索引。 |
-| char** styleName | 指定字体样式名称的字符串。 |
+| char** styleName | 指定字体样式名称的字符串，会申请内存，不再需要时，请使用[OH_Drawing_FontStyleSetFreeStyleName](#oh_drawing_fontstylesetfreestylename)释放该对象指针。 |
 
 **返回：**
 
@@ -350,13 +357,13 @@ OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleS
 
 ### OH_Drawing_FontStyleSetFreeStyleName()
 
-```
+```c
 void OH_Drawing_FontStyleSetFreeStyleName(char** styleName)
 ```
 
 **描述**
 
-释放指定字体样式的内存。
+释放指定字体样式名称的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -371,7 +378,7 @@ void OH_Drawing_FontStyleSetFreeStyleName(char** styleName)
 
 ### OH_Drawing_FontStyleSetMatchStyle()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontStyleSetMatchStyle(OH_Drawing_FontStyleSet* fontStyleSet,OH_Drawing_FontStyleStruct fontStyleStruct)
 ```
 
@@ -399,7 +406,7 @@ OH_Drawing_Typeface* OH_Drawing_FontStyleSetMatchStyle(OH_Drawing_FontStyleSet* 
 
 ### OH_Drawing_FontStyleSetCount()
 
-```
+```c
 int OH_Drawing_FontStyleSetCount(OH_Drawing_FontStyleSet* fontStyleSet)
 ```
 

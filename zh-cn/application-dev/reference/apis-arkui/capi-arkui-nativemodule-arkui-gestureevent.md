@@ -1,4 +1,14 @@
 # ArkUI_GestureEvent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_GestureEvent ArkUI_GestureEvent
+```
 
 ## 概述
 

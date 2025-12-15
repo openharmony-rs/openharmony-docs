@@ -1,5 +1,12 @@
 # @ohos.app.ability.quickFixManager (quickFixManager)(系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 quickFixManager模块提供快速修复的能力，快速修复是系统提供给开发者的一种技术手段，支持开发者以远快于（小时级、分钟级）应用升级的方式进行缺陷修复。
 
 > **说明：**
@@ -285,8 +292,8 @@ revokeQuickFix(bundleName: string, callback: AsyncCallback\<void>): void;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | The application does not have permission to call the interface. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 18500009 | The application has an ongoing quick fix task. |
@@ -337,8 +344,8 @@ revokeQuickFix(bundleName: string): Promise\<void>;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | The application does not have permission to call the interface. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 18500009 | The application has an ongoing quick fix task. |

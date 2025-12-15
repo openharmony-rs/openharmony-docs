@@ -1,7 +1,13 @@
 # PageAbility Switching
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The PageAbility component in the FA model corresponds to the UIAbility component in the stage model. To switch a PageAbility to a UIAbility, perform the following operations:
+The PageAbility component in the [FA model](ability-terminology.md#fa-model) corresponds to the UIAbility component in the [stage model](ability-terminology.md#stage-model). To switch a PageAbility to a UIAbility, perform the following operations:
 
 
 1. [Create a UIAbility](uiability-usage.md) in the stage model.

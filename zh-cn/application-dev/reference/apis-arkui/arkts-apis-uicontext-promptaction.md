@@ -1,10 +1,16 @@
 # Class (PromptAction)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-创建并显示文本提示框、对话框、操作菜单以及自定义弹窗。
+创建并显示即时反馈、对话框、操作菜单以及自定义弹窗。
 
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 10开始支持。
 >
@@ -14,7 +20,7 @@
 
 showToast(options: promptAction.ShowToastOptions): void
 
-创建并显示文本提示框。
+创建并显示即时反馈。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -24,11 +30,11 @@ showToast(options: promptAction.ShowToastOptions): void
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
-| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | 是    | 文本弹窗选项。 |
+| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | 是    | Toast选项。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -37,7 +43,7 @@ showToast(options: promptAction.ShowToastOptions): void
 
 **示例：**
 
-该示例通过调用showToast接口，显示文本提示框。
+该示例通过调用showToast接口，创建并显示即时反馈。
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
@@ -45,7 +51,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct toastExample {
+struct Index {
   promptAction: PromptAction = this.getUIContext().getPromptAction();
 
   build() {
@@ -72,7 +78,7 @@ struct toastExample {
 
 openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 
-显示文本提示框并通过Promise返回其id。
+显示即时反馈。使用Promise异步回调返回即时反馈的id，可供closeToast使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -82,17 +88,17 @@ openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 
 | 参数名  | 类型                                                         | 必填 | 说明           |
 | ------- | ------------------------------------------------------------ | ---- | -------------- |
-| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | 是   | 文本弹窗选项。 |
+| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | 是   | Toast选项。 |
 
 **返回值**
 
 | 类型             | 说明                                 |
 | ---------------- | ------------------------------------ |
-| Promise&lt;number&gt; | 返回供closeToast使用的文本提示框id。 |
+| Promise&lt;number&gt; | Promise对象。返回即时反馈的id，可供closeToast使用。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -101,7 +107,7 @@ openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 
 **示例：**
 
-该示例通过调用openToast和closeToast接口，展示了弹出以及关闭文本提示框的功能。
+该示例通过调用openToast和closeToast接口，展示了弹出以及关闭Toast的功能。
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
@@ -109,7 +115,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct toastExample {
+struct Index {
   @State toastId: number = 0;
   promptAction: PromptAction = this.getUIContext().getPromptAction();
 
@@ -119,7 +125,7 @@ struct toastExample {
         .height(100)
         .onClick(() => {
           this.promptAction.openToast({
-            message: 'Toast Massage',
+            message: 'Toast Message',
             duration: 10000,
           }).then((toastId: number) => {
             this.toastId = toastId;
@@ -149,7 +155,7 @@ struct toastExample {
 
 closeToast(toastId: number): void
 
-关闭文本提示框。
+关闭即时反馈。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -159,11 +165,11 @@ closeToast(toastId: number): void
 
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | ----------------------------- |
-| toastId | number | 是   | openToast返回的文本提示框id。 |
+| toastId | number | 是   | openToast返回的id。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[弹窗错误码](errorcode-promptAction.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -173,13 +179,13 @@ closeToast(toastId: number): void
 
 **示例：**
 
-请参考[openToaset18](#opentoast18)的示例。
+请参考[openToast18](#opentoast18)的示例。
 
 ## showDialog
 
 showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback&lt;promptAction.ShowDialogSuccessResponse&gt;): void
 
-创建并显示对话框，对话框响应结果异步返回。
+创建并显示对话框，对话框响应结果使用callback异步回调返回。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -190,11 +196,11 @@ showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback&lt;p
 | 参数名      | 类型                                       | 必填   | 说明           |
 | -------- | ---------------------------------------- | ---- | ------------ |
 | options  | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | 是    | 页面显示对话框信息描述。 |
-| callback | AsyncCallback&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | 是    | 对话框响应结果回调。   |
+| callback | AsyncCallback&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | 是    | 回调函数。弹出对话框成功，err为undefined，data为获取到的对话框响应结果，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -211,7 +217,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct toastExample {
+struct Index {
   promptAction: PromptAction = this.getUIContext().getPromptAction();
 
   build() {
@@ -254,7 +260,7 @@ struct toastExample {
 
 showDialog(options: promptAction.ShowDialogOptions): Promise&lt;promptAction.ShowDialogSuccessResponse&gt;
 
-创建并显示对话框，通过Promise获取对话框响应结果。
+创建并显示对话框，使用Promise异步回调获取对话框的响应结果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -270,11 +276,11 @@ showDialog(options: promptAction.ShowDialogOptions): Promise&lt;promptAction.Sho
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| Promise&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | 对话框响应结果。 |
+| Promise&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | Promise对象，返回对话框的响应结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ 通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[ 通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -290,7 +296,7 @@ import { PromptAction } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct toastExample {
+struct Index {
   promptAction: PromptAction = this.getUIContext().getPromptAction();
 
   build() {
@@ -327,7 +333,7 @@ struct toastExample {
 
 showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt;): void
 
-创建并显示操作菜单，菜单响应结果异步返回。
+创建并显示操作菜单，菜单响应结果使用callback异步回调返回。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -338,11 +344,11 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback&
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options  | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | 是   | 操作菜单选项。     |
-| callback | AsyncCallback&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | 是   | 菜单响应结果回调。 |
+| callback | AsyncCallback&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | 是   | 回调函数。弹出操作菜单成功，err为undefined，data为获取到的操作菜单响应结果，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
@@ -357,7 +363,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct toastExample {
+struct Index {
   promptAction: PromptAction = this.getUIContext().getPromptAction();
 
   build() {
@@ -379,10 +385,10 @@ struct toastExample {
               ]
             }, (err: BusinessError, data: promptAction.ActionMenuSuccessResponse) => {
               if (err) {
-                console.error('showDialog err: ' + err);
+                console.error('showActionMenu err: ' + err);
                 return;
               }
-              console.info('showDialog success callback, click button: ' + data.index);
+              console.info('showActionMenu success callback, click button: ' + data.index);
             });
           } catch (error) {
             let message = (error as BusinessError).message;
@@ -399,7 +405,7 @@ struct toastExample {
 
 showActionMenu(options: promptAction.ActionMenuOptions): Promise&lt;promptAction.ActionMenuSuccessResponse&gt;
 
-创建并显示操作菜单，通过Promise获取菜单响应结果。
+创建并显示操作菜单，通过Promise异步回调获取菜单的响应结果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -415,11 +421,11 @@ showActionMenu(options: promptAction.ActionMenuOptions): Promise&lt;promptAction
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | 菜单响应结果。 |
+| Promise&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | Promise对象，返回菜单的响应结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -428,13 +434,13 @@ showActionMenu(options: promptAction.ActionMenuOptions): Promise&lt;promptAction
 
 **示例：**
 
-该示例通过调用showActionMenu接口，展示了弹出对话框以及通过Promise获取对话框响应结果的功能。
+该示例通过调用showActionMenu接口，展示了弹出操作菜单以及通过Promise获取操作菜单响应结果的功能。
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
 @Entry
 @Component
-struct toastExample {
+struct Index {
   promptAction: PromptAction = this.getUIContext().getPromptAction();
 
   build() {
@@ -470,7 +476,7 @@ struct toastExample {
 
 openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options?: promptAction.BaseDialogOptions): Promise&lt;void&gt;
 
-创建并弹出dialogContent对应的自定义弹窗，使用Promise异步回调。通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customdialog设置customStyle为true时的显示效果。暂不支持[isModal](js-apis-promptAction.md#basedialogoptions11) = true与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11) = true同时使用。
+创建并弹出dialogContent对应的自定义弹窗，使用Promise异步回调。通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customDialog设置customStyle为true时的显示效果。暂不支持[isModal](js-apis-promptAction.md#basedialogoptions11) = true与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11) = true同时使用。如果同时设置为true时，则只生效showInSubWindow = true。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -487,7 +493,7 @@ openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -540,7 +546,7 @@ struct Index {
       onMemoryLevel: (level: AbilityConstant.MemoryLevel): void => {
       },
       onConfigurationUpdated: (config: Configuration): void => {
-        console.log("onConfigurationUpdated " + JSON.stringify(config));
+        console.info(`onConfigurationUpdated ${config}`);
         this.getUIContext().getHostContext()?.getApplicationContext().resourceManager.getConfiguration((err,
           config) => {
           // 调用ComponentContent的update更新colorMode信息
@@ -602,9 +608,9 @@ openCustomDialogWithController\<T extends Object>(dialogContent: ComponentConten
 
 创建并弹出dialogContent对应的自定义弹窗，使用Promise异步回调。支持传入弹窗控制器与自定义弹窗绑定，后续可以通过控制器控制自定义弹窗。
 
-通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customdialog设置customStyle为true时的显示效果。
+通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customDialog设置customStyle为true时的显示效果。
 
-暂不支持[isModal](js-apis-promptAction.md#basedialogoptions11) = true与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11) = true同时使用。
+暂不支持[isModal](js-apis-promptAction.md#basedialogoptions11) = true与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11) = true同时使用。如果同时设置为true时，则只生效showInSubWindow = true。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -622,7 +628,7 @@ openCustomDialogWithController\<T extends Object>(dialogContent: ComponentConten
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -720,7 +726,7 @@ closeCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>): Promi
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -818,7 +824,7 @@ updateCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, optio
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -900,7 +906,7 @@ struct Index {
 
 openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
-创建并弹出自定义弹窗。通过Promise异步回调返回供closeCustomDialog使用的对话框id。暂不支持isModal = true与showInSubWindow = true同时使用。
+创建并弹出自定义弹窗。使用Promise异步回调返回对话框的id，可供closeCustomDialog使用。暂不支持isModal = true与showInSubWindow = true同时使用。如果同时设置为true时，则只生效showInSubWindow = true。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -916,26 +922,101 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | 返回供closeCustomDialog使用的对话框id。 |
+| Promise&lt;number&gt; | Promise对象。返回对话框id，可供closeCustomDialog使用。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Internal error.                                              |
 
+**示例：** 
+ 
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private customDialogComponentId: number = 0;
+
+  @Builder
+  customDialogComponent() {
+    Column() {
+      Text('打开了一个弹窗').fontSize(20)
+      Row({ space: 10 }) {
+        Button('取消').onClick(() => {
+          try {
+            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
+          }
+        }).width(100).backgroundColor('#d5d5d5').fontColor('#707070')
+        Button('确定').onClick(() => {
+          try {
+            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
+          }
+        }).width(100)
+      }
+    }.height(150).padding(20).justifyContent(FlexAlign.SpaceBetween)
+  }
+
+  build() {
+    Row() {
+      Column({ space: 20 }) {
+        Button('Click Me')
+          .fontSize(30)
+          .onClick(() => {
+            this.getUIContext()
+              .getPromptAction()
+              .openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent()
+                },
+                onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                  console.info('reason' + JSON.stringify(dismissDialogAction.reason));
+                  console.info('dialog onWillDismiss');
+                  if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                    dismissDialogAction.dismiss();
+                  }
+                  if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                    dismissDialogAction.dismiss();
+                  }
+                }
+              })
+              .then((dialogId: number) => {
+                this.customDialogComponentId = dialogId;
+              })
+              .catch((error: BusinessError) => {
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`);
+              })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## presentCustomDialog<sup>18+</sup>
 
 presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: promptAction.DialogController, options?: promptAction.DialogOptions): Promise\<number>
 
-创建并弹出自定义弹窗。通过Promise异步回调返回供closeCustomDialog使用的对话框id。
+创建并弹出自定义弹窗。使用Promise异步回调返回对话框的id，可供closeCustomDialog使用。
 
 支持在自定义弹窗内容中持有弹窗ID进行对应操作。支持传入弹窗控制器与自定义弹窗绑定，后续可以通过控制器控制自定义弹窗。
 
-暂不支持isModal = true与showInSubWindow = true同时使用。
+暂不支持isModal = true与showInSubWindow = true同时使用。如果同时设置为true时，则只生效showInSubWindow = true。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -953,11 +1034,11 @@ presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: 
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | 返回自定义弹窗ID。 |
+| Promise&lt;number&gt; | Promise对象。返回自定义弹窗ID。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1060,7 +1141,7 @@ closeCustomDialog(dialogId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1103,8 +1184,8 @@ struct Index {
                 this.customDialogComponent()
               },
               onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info("reason" + JSON.stringify(dismissDialogAction.reason));
-                console.log("dialog onWillDismiss");
+                console.info(`reason ${dismissDialogAction.reason}`);
+                console.info('dialog onWillDismiss');
                 if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
                   dismissDialogAction.dismiss();
                 }
@@ -1209,8 +1290,6 @@ struct Index {
 
 getBottomOrder(): LevelOrder
 
-返回最底层显示的弹窗的顺序。
-
 获取最底层显示的弹窗的顺序，可以在下一个弹窗时指定期望的顺序。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -1293,11 +1372,11 @@ openPopup\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, 
 
 > **说明：**
 >
-> 1. 使用该接口时，若未传入有效的target，则无法弹出popup弹窗。
+> - 使用该接口时，若未传入有效的target，则无法弹出popup弹窗。
 >
-> 2. 由于[updatePopup](#updatepopup18)和[closePopup](#closepopup18)依赖content去更新或者关闭指定的popup弹窗，开发者需自行维护传入的content。
+> - 由于[updatePopup](#updatepopup18)和[closePopup](#closepopup18)依赖content去更新或者关闭指定的popup弹窗，开发者需自行维护传入的content。
 >
-> 3. 如果在wrapBuilder中包含其他组件（例如：[Popup](arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)组件），则[ComponentContent](./js-apis-arkui-ComponentContent.md#componentcontent-1)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
+> - 如果在wrapBuilder中包含其他组件（例如：[Popup](arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)组件），则[ComponentContent](./js-apis-arkui-ComponentContent.md#componentcontent-1)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1315,7 +1394,7 @@ openPopup\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, 
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1331,7 +1410,7 @@ openPopup\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, 
 
 **示例：**
 
-该示例通过调用openPopuo、updatePopup和closePopup接口，展示了弹出、更新以及关闭Popup的功能。
+该示例通过调用openPopup、updatePopup和closePopup接口，展示了弹出、更新以及关闭Popup的功能。
 
 ```ts
 import { ComponentContent, FrameNode } from '@kit.ArkUI';
@@ -1424,7 +1503,6 @@ updatePopup\<T extends Object>(content: ComponentContent\<T>, options: PopupComm
 > **说明：**
 >
 > 不支持更新showInSubWindow、focusable、onStateChange、onWillDismiss、transition。
->
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1442,7 +1520,7 @@ updatePopup\<T extends Object>(content: ComponentContent\<T>, options: PopupComm
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1478,7 +1556,7 @@ closePopup\<T extends Object>(content: ComponentContent\<T>): Promise&lt;void&gt
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1502,11 +1580,13 @@ openMenu\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, o
 
 > **说明：**
 >
-> 1. 使用该接口时，若未传入有效的target，则无法弹出menu弹窗。
+> - 使用该接口时，若未传入有效的target，则无法弹出menu弹窗。
 >
-> 2. 由于[updateMenu](#updatemenu18)和[closeMenu](#closemenu18)依赖content去更新或者关闭指定的menu弹窗，开发者需自行维护传入的content。
+> - 由于[updateMenu](#updatemenu18)和[closeMenu](#closemenu18)依赖content去更新或者关闭指定的menu弹窗，开发者需自行维护传入的content。
 >
-> 3. 如果在wrapBuilder中包含其他组件（例如：[Popup](arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)组件），则[ComponentContent](./js-apis-arkui-ComponentContent.md#componentcontent-1)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
+> - 如果在wrapBuilder中包含其他组件（例如：[Popup](arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)组件），则[ComponentContent](./js-apis-arkui-ComponentContent.md#componentcontent-1)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
+>
+> - 子窗弹窗里不能再弹出子窗弹窗，例如[openMenu](#openmenu18)设置了showInSubWindow为true时，则不能再弹出另一个设置了showInSubWindow为true的弹窗。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1524,7 +1604,7 @@ openMenu\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, o
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1599,10 +1679,9 @@ updateMenu\<T extends Object>(content: ComponentContent\<T>, options: MenuOption
 
 > **说明：**
 >
-> 不支持更新showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear。
+> - 不支持更新showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear。
 >
-> 支持mask通过设置[MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md#menumasktype20类型说明)实现更新蒙层样式，不支持mask通过设置boolean实现蒙层从无到有或者从有到无的更新。
->
+> - 支持mask通过设置[MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md#menumasktype20类型说明)实现更新蒙层样式，不支持mask通过设置boolean实现蒙层从无到有或者从有到无的更新。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1620,7 +1699,7 @@ updateMenu\<T extends Object>(content: ComponentContent\<T>, options: MenuOption
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1710,7 +1789,7 @@ closeMenu\<T extends Object>(content: ComponentContent\<T>): Promise&lt;void&gt;
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1781,9 +1860,11 @@ struct Index {
 
 showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)): void
 
-创建并显示操作菜单，菜单响应结果异步返回。
+创建并显示操作菜单，菜单响应结果使用callback异步回调返回。
 
-从API version11开始不再维护，建议使用[showActionMenu](#showactionmenu11)。
+> **说明：** 
+>
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[showActionMenu](#showactionmenu11)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full。
 
@@ -1792,11 +1873,11 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options  | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | 是   | 操作菜单选项。     |
-| callback | [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse) | 是   | 菜单响应结果回调。 |
+| callback | [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse) | 是   | 回调函数，返回菜单的响应结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -1805,31 +1886,43 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.
 
 **示例：**
 
-该示例通过调用showActionMenu接口，展示了弹出对话框以及返回对话框响应结果的功能。
+该示例通过调用showActionMenu接口，展示了弹出操作菜单以及返回菜单响应结果的功能。
 
-<!--code_no_check-->
 ```ts
-import { PromptAction,promptAction  } from '@kit.ArkUI';
+import { PromptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promptActionF: PromptAction = uiContext.getPromptAction();
-try {
-  promptActionF.showActionMenu({
-    title: 'Title Info',
-    buttons: [
-      {
-        text: 'item1',
-        color: '#666666'
-      },
-      {
-        text: 'item2',
-        color: '#000000'
-      }
-    ]
-  }, { index:0 });
-} catch (error) {
-  let message = (error as BusinessError).message;
-  let code = (error as BusinessError).code;
-  console.error(`showActionMenu args error code is ${code}, message is ${message}`);
-};
+@Entry
+@Component
+struct Index {
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+
+  build() {
+    Column() {
+      Button('showActionMenu')
+        .onClick(() => {
+          try {
+            this.promptAction.showActionMenu({
+              title: 'Title Info',
+              buttons: [
+                {
+                  text: 'item1',
+                  color: '#666666'
+                },
+                {
+                  text: 'item2',
+                  color: '#000000'
+                }
+              ]
+            }, { index: 0 });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`showActionMenu args error code is ${code}, message is ${message}`);
+          }
+          ;
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
 ```

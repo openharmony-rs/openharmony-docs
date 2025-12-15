@@ -1,10 +1,16 @@
 # oh_data_values.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
 提供与多条数据值相关的函数和枚举。
 
-**引用文件：** <database/rdb/oh_data_values.h>
+**引用文件：** <database/data/oh_data_values.h>
 
 **库：** libnative_rdb_ndk.z.so
 
@@ -58,7 +64,7 @@
 
 ### OH_Values_Create()
 
-```
+```c
 OH_Data_Values *OH_Values_Create(void)
 ```
 
@@ -76,7 +82,7 @@ OH_Data_Values *OH_Values_Create(void)
 
 ### OH_Values_Destroy()
 
-```
+```c
 int OH_Values_Destroy(OH_Data_Values *values)
 ```
 
@@ -101,7 +107,7 @@ int OH_Values_Destroy(OH_Data_Values *values)
 
 ### OH_Values_Put()
 
-```
+```c
 int OH_Values_Put(OH_Data_Values *values, const OH_Data_Value *val)
 ```
 
@@ -127,7 +133,7 @@ int OH_Values_Put(OH_Data_Values *values, const OH_Data_Value *val)
 
 ### OH_Values_PutNull()
 
-```
+```c
 int OH_Values_PutNull(OH_Data_Values *values)
 ```
 
@@ -152,7 +158,7 @@ int OH_Values_PutNull(OH_Data_Values *values)
 
 ### OH_Values_PutInt()
 
-```
+```c
 int OH_Values_PutInt(OH_Data_Values *values, int64_t val)
 ```
 
@@ -178,7 +184,7 @@ int OH_Values_PutInt(OH_Data_Values *values, int64_t val)
 
 ### OH_Values_PutReal()
 
-```
+```c
 int OH_Values_PutReal(OH_Data_Values *values, double val)
 ```
 
@@ -204,7 +210,7 @@ int OH_Values_PutReal(OH_Data_Values *values, double val)
 
 ### OH_Values_PutText()
 
-```
+```c
 int OH_Values_PutText(OH_Data_Values *values, const char *val)
 ```
 
@@ -230,7 +236,7 @@ int OH_Values_PutText(OH_Data_Values *values, const char *val)
 
 ### OH_Values_PutBlob()
 
-```
+```c
 int OH_Values_PutBlob(OH_Data_Values *values, const unsigned char *val, size_t length)
 ```
 
@@ -257,7 +263,7 @@ int OH_Values_PutBlob(OH_Data_Values *values, const unsigned char *val, size_t l
 
 ### OH_Values_PutAsset()
 
-```
+```c
 int OH_Values_PutAsset(OH_Data_Values *values, const Data_Asset *val)
 ```
 
@@ -283,7 +289,7 @@ int OH_Values_PutAsset(OH_Data_Values *values, const Data_Asset *val)
 
 ### OH_Values_PutAssets()
 
-```
+```c
 int OH_Values_PutAssets(OH_Data_Values *values, const Data_Asset * const * val, size_t length)
 ```
 
@@ -310,7 +316,7 @@ int OH_Values_PutAssets(OH_Data_Values *values, const Data_Asset * const * val, 
 
 ### OH_Values_PutFloatVector()
 
-```
+```c
 int OH_Values_PutFloatVector(OH_Data_Values *values, const float *val, size_t length)
 ```
 
@@ -337,7 +343,7 @@ int OH_Values_PutFloatVector(OH_Data_Values *values, const float *val, size_t le
 
 ### OH_Values_PutUnlimitedInt()
 
-```
+```c
 int OH_Values_PutUnlimitedInt(OH_Data_Values *values, int sign, const uint64_t *trueForm, size_t length)
 ```
 
@@ -365,7 +371,7 @@ int OH_Values_PutUnlimitedInt(OH_Data_Values *values, int sign, const uint64_t *
 
 ### OH_Values_Count()
 
-```
+```c
 int OH_Values_Count(OH_Data_Values *values, size_t *count)
 ```
 
@@ -391,7 +397,7 @@ int OH_Values_Count(OH_Data_Values *values, size_t *count)
 
 ### OH_Values_GetType()
 
-```
+```c
 int OH_Values_GetType(OH_Data_Values *values, int index, OH_ColumnType *type)
 ```
 
@@ -418,7 +424,7 @@ int OH_Values_GetType(OH_Data_Values *values, int index, OH_ColumnType *type)
 
 ### OH_Values_Get()
 
-```
+```c
 int OH_Values_Get(OH_Data_Values *values, int index, OH_Data_Value **val)
 ```
 
@@ -445,7 +451,7 @@ int OH_Values_Get(OH_Data_Values *values, int index, OH_Data_Value **val)
 
 ### OH_Values_IsNull()
 
-```
+```c
 int OH_Values_IsNull(OH_Data_Values *values, int index, bool *val)
 ```
 
@@ -462,7 +468,7 @@ int OH_Values_IsNull(OH_Data_Values *values, int index, bool *val)
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | 表示指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针。 |
 | int index                                        | 表示values中目标数据的从零开始的索引。                       |
-| bool *val                                        | 一个输出参数，ture表示空，false表示不为空。                  |
+| bool *val                                        | 一个输出参数，true表示空，false表示不为空。                  |
 
 **返回：**
 
@@ -472,7 +478,7 @@ int OH_Values_IsNull(OH_Data_Values *values, int index, bool *val)
 
 ### OH_Values_GetInt()
 
-```
+```c
 int OH_Values_GetInt(OH_Data_Values *values, int index, int64_t *val)
 ```
 
@@ -499,7 +505,7 @@ int OH_Values_GetInt(OH_Data_Values *values, int index, int64_t *val)
 
 ### OH_Values_GetReal()
 
-```
+```c
 int OH_Values_GetReal(OH_Data_Values *values, int index, double *val)
 ```
 
@@ -526,7 +532,7 @@ int OH_Values_GetReal(OH_Data_Values *values, int index, double *val)
 
 ### OH_Values_GetText()
 
-```
+```c
 int OH_Values_GetText(OH_Data_Values *values, int index, const char **val)
 ```
 
@@ -553,7 +559,7 @@ int OH_Values_GetText(OH_Data_Values *values, int index, const char **val)
 
 ### OH_Values_GetBlob()
 
-```
+```c
 int OH_Values_GetBlob(OH_Data_Values *values, int index, const uint8_t **val, size_t *length)
 ```
 
@@ -581,7 +587,7 @@ int OH_Values_GetBlob(OH_Data_Values *values, int index, const uint8_t **val, si
 
 ### OH_Values_GetAsset()
 
-```
+```c
 int OH_Values_GetAsset(OH_Data_Values *values, int index, Data_Asset *val)
 ```
 
@@ -608,7 +614,7 @@ int OH_Values_GetAsset(OH_Data_Values *values, int index, Data_Asset *val)
 
 ### OH_Values_GetAssetsCount()
 
-```
+```c
 int OH_Values_GetAssetsCount(OH_Data_Values *values, int index, size_t *length)
 ```
 
@@ -623,7 +629,7 @@ int OH_Values_GetAssetsCount(OH_Data_Values *values, int index, size_t *length)
 
 | 参数项                                           | 描述                                                         |
 | ------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Data_Values](capi-rdb-oh-data-values.md) *values | 表示指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针。表示指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针。 |
+| [OH_Data_Values](capi-rdb-oh-data-values.md) *values | 表示指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针。 |
 | int index                                        | 表示values中目标数据的从零开始的索引。                       |
 | size_t *length                                   | 该参数为输出参数，表示ASSETS类型数据的大小。                 |
 
@@ -635,7 +641,7 @@ int OH_Values_GetAssetsCount(OH_Data_Values *values, int index, size_t *length)
 
 ### OH_Values_GetAssets()
 
-```
+```c
 int OH_Values_GetAssets(OH_Data_Values *values, int index, Data_Asset **val, size_t inLen, size_t *outLen)
 ```
 
@@ -664,7 +670,7 @@ int OH_Values_GetAssets(OH_Data_Values *values, int index, Data_Asset **val, siz
 
 ### OH_Values_GetFloatVectorCount()
 
-```
+```c
 int OH_Values_GetFloatVectorCount(OH_Data_Values *values, int index, size_t *length)
 ```
 
@@ -691,7 +697,7 @@ int OH_Values_GetFloatVectorCount(OH_Data_Values *values, int index, size_t *len
 
 ### OH_Values_GetFloatVector()
 
-```
+```c
 int OH_Values_GetFloatVector(OH_Data_Values *values, int index, float *val, size_t inLen, size_t *outLen)
 ```
 
@@ -720,7 +726,7 @@ int OH_Values_GetFloatVector(OH_Data_Values *values, int index, float *val, size
 
 ### OH_Values_GetUnlimitedIntBand()
 
-```
+```c
 int OH_Values_GetUnlimitedIntBand(OH_Data_Values *values, int index, size_t *length)
 ```
 
@@ -747,8 +753,8 @@ int OH_Values_GetUnlimitedIntBand(OH_Data_Values *values, int index, size_t *len
 
 ### OH_Values_GetUnlimitedInt()
 
-```
-int OH_Values_GetUnlimitedInt(OH_Data_Values *values, int index, int *sign, uint64_t *trueForm, size_t inLen,size_t *outLen)
+```c
+int OH_Values_GetUnlimitedInt(OH_Data_Values *values, int index, int *sign, uint64_t *trueForm, size_t inLen, size_t *outLen)
 ```
 
 **描述**

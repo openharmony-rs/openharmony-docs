@@ -1,5 +1,11 @@
 # @ohos.wifi (WLAN)（系统接口）
 
+<!--Kit: Connectivity Kit-->	
+<!--Subsystem: Communication-->	
+<!--Owner: @qq_43802146-->	
+<!--Designer: @qq_43802146-->	
+<!--Tester: @furryfurry123-->	
+<!--Adviser: @zhang_yixin13-->	
 该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
 
 > **说明：**
@@ -81,7 +87,7 @@ try {
 
 addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加网络配置，使用Promise异步回调。
+添加网络配置。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -120,8 +126,8 @@ try {
 		randomMacAddr:  "****",
 		ipType: 0,
 		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
+			ipAddress: "",
+			gateway: "",
 			dnsServers: [],
 			domains: []
 		}
@@ -209,7 +215,7 @@ IPv6配置信息。
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
-添加网络配置，使用callback异步回调。
+添加网络配置。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -243,8 +249,8 @@ try {
 		randomMacAddr:  "****",
 		ipType: 0,
 		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
+			ipAddress: "",
+			gateway: "",
 			dnsServers: [],
 			domains: []
 		}
@@ -338,8 +344,8 @@ try {
 		randomMacAddr:  "****",
 		ipType: 0,
 		staticIp: {
-		ipAddress: 0,
-			gateway: 0,
+		    ipAddress: "",
+			gateway: "",
 			dnsServers: [],
 			domains: []
 		}
@@ -549,7 +555,7 @@ try {
 
 ## wifi.getDeviceConfigs<sup>7+</sup>
 
-getDeviceConfigs(): &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig)&gt;
+getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 获取网络配置。
 
@@ -619,8 +625,8 @@ try {
 		randomMacAddr:  "****",
 		ipType: 0,
 		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
+			ipAddress: "",
+			gateway: "",
 			dnsServers: [],
 			domains: []
 		}
@@ -943,7 +949,7 @@ try {
 
 ## wifi.getStations<sup>7+</sup>
 
-getStations(): &nbsp;Array&lt;[StationInfo](#stationinfo7)&gt;
+getStations(): &nbsp;Array&lt;StationInfo&gt;
 
 获取连接的设备。
 
@@ -1186,7 +1192,7 @@ on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf]&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
@@ -1205,7 +1211,7 @@ off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf]&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
 
   **示例：**
 ```ts

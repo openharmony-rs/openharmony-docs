@@ -1,6 +1,12 @@
 # @ohos.app.ability.contextConstant (Context-related Constants)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy; @yangxuguang-huawei; @Luobniz21-->
+<!--Designer: @ccllee1; @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The ContextConstant module defines context-related enums. Currently, it defines only the enum of encryption levels.
+The ContextConstant module defines context-related enums, including the file encryption partition level and process mode of the UIAbility after it is started.
 
 > **NOTE**
 > 
@@ -16,7 +22,7 @@ import { contextConstant } from '@kit.AbilityKit';
 
 ## AreaMode
 
-Enumerates the data encryption levels.
+Enumerates the file encryption levels, which are used to ensure data security for applications across different scenarios. You can select the appropriate encryption level based on the application requirements to protect user data.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -31,17 +37,19 @@ Enumerates the data encryption levels.
 
 ## ProcessMode<sup>12+</sup>
 
-Enumerates the process modes. It takes effect only on 2-in-1 devices and tablets.
+Enumerates the process modes of the UIAbility after it is started.
 
-As a property of [StartOptions](js-apis-app-ability-startOptions.md), **ProcessMode** takes effect only in [UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1) and is used to specify the process mode of the target ability.
+As a property of [StartOptions](js-apis-app-ability-startOptions.md), **ProcessMode** takes effect only in [UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1) and is used to specify the process mode of the target UIAbility.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
+
 | Name | Value| Description                                                                                                                  |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
-| NEW_PROCESS_ATTACH_TO_PARENT | 1 | A new process is created, the ability is started on the process, and the process exits along with the parent process.<br>**Constraints**:<br>In this mode, the target ability and caller must be in the same application.                    |
-| NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM | 2 | A new process is created, the ability is started on the process, and the process is bound to the status bar icon.<br>**Constraints**:<br>In this mode, the target ability and caller must be in the same application, and the application must have an icon in the status bar.                 |
-| ATTACH_TO_STATUS_BAR_ITEM | 3 | The ability is started, and the process of the ability is bound to the status bar icon.<br>**Constraints**:<br>In this mode, the target ability and caller must be in the same application, and the application must have an icon in the status bar.                 |
+| NEW_PROCESS_ATTACH_TO_PARENT | 1 | A new process is created, the UIAbility is started on the process, and the process exits along with the parent process.<br>**Constraints**:<br>In this mode, the target UIAbility and caller must be in the same application.                    |
+| NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM | 2 | A new process is created, the UIAbility is started on the process, and the process is bound to the status bar icon.<br>**Constraints**:<br>In this mode, the target UIAbility and caller must be in the same application, and the application must have an icon in the status bar.                 |
+| ATTACH_TO_STATUS_BAR_ITEM | 3 | The UIAbility is started, and the process of the UIAbility is bound to the status bar icon.<br>**Constraints**:<br>In this mode, the target UIAbility and caller must be in the same application, and the application must have an icon in the status bar.                 |
 
 **Example**
 
@@ -83,16 +91,20 @@ As a property of [StartOptions](js-apis-app-ability-startOptions.md), **ProcessM
 
 ## StartupVisibility<sup>12+</sup>
 
-Enumerates the visibility statuses of an ability after it is started. It takes effect only on 2-in-1 devices and tablets.
+Enumerates the visibility statuses of the UIAbility after it is started.
 
-As a property of [StartOptions](js-apis-app-ability-startOptions.md), **StartupVisibility** takes effect only in [UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1) and specifies the visibility of the target ability after it is started.
+If the target UIAbility is set to invisible, the window of the target UIAbility is not displayed in the foreground, there is no icon in the dock, and the **onForeground** lifecycle of the target UIAbility is not triggered.
+
+As a property of [StartOptions](js-apis-app-ability-startOptions.md), **StartupVisibility** takes effect only in [UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1) and specifies the visibility of the target UIAbility after it is started.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
+
 | Name | Value| Description                                                                                                                  |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
-| STARTUP_HIDE | 0 | The target ability is hidden after it is started in the new process. The **onForeground** lifecycle of the ability is not invoked.       |
-| STARTUP_SHOW | 1 | The target ability is displayed normally after it is started in the new process.    |
+| STARTUP_HIDE | 0 | The target UIAbility is hidden after it is started in the new process. The **onForeground** lifecycle of the UIAbility is not invoked.       |
+| STARTUP_SHOW | 1 | The target UIAbility is displayed normally after it is started in the new process.    |
 
 **Example**
 

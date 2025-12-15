@@ -1,5 +1,16 @@
 # OH_AVDemuxer
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVDemuxer OH_AVDemuxer
+```
+
 ## 概述
 
 为OH_AVDemuxer接口定义native层对象。

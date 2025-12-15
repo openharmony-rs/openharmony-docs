@@ -1,4 +1,12 @@
 # Low-Latency Audio Monitoring
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+Low-latency audio monitoring is supported since API version 20.
 
 AudioLoopback is an audio monitoring tool that delivers audio to headphones with reduced latency in real time, enabling users to hear their own voice or other relevant sounds immediately.
 
@@ -40,7 +48,7 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
     import { audio } from '@kit.AudioKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     
-    let mode: audio.AudioLoopbackMode.HARDWARE;
+    let mode: audio.AudioLoopbackMode = audio.AudioLoopbackMode.HARDWARE;
     let audioLoopback: audio.AudioLoopback;
     let isSupported = audio.getAudioManager().getStreamManager().isAudioLoopbackSupported(mode);
     if (isSupported) {
@@ -86,7 +94,67 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
     });
    ```
 
-4. Call [enable](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#enable20) to enable or disable audio loopback.
+4. Call [setReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setreverbpreset21) to set the reverb mode for audio loopback. This API is available from API version 21.
+
+    > **NOTE**
+    > - If you set the reverb mode before enabling loopback, the setting takes effect after audio loopback is successfully enabled.
+    > - If you set the reverb mode after enabling loopback, the setting takes effect immediately.
+    > - If you do not set the reverb mode before enabling loopback, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is used upon activation of audio loopback.
+
+   ```ts
+    import { BusinessError } from '@kit.BasicServicesKit';
+    try {
+      audioLoopback.setReverbPreset(audio.AudioLoopbackReverbPreset.THEATER);
+    } catch (err) {
+      console.error(`setReverbPreset :ERROR: ${err}`);
+    }
+   ```
+
+5. Call [getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21) to obtain the current reverb mode of audio loopback. This API is available from API version 21.
+
+    > **NOTE**
+    >
+    > If no reverb mode has been set, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is returned.
+   ```ts
+    import { BusinessError } from '@kit.BasicServicesKit';
+    try {
+      let reverbPreset = audioLoopback.getReverbPreset();
+    } catch (err) {
+      console.error(`getReverbPreset:ERROR: ${err}`);
+    }
+   ```
+
+6. Call [setEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setequalizerpreset21) to set the equalizer type for audio loopback. This API is available from API version 21.
+
+    > **NOTE**
+    > - If you set the equalizer type before enabling loopback, the setting takes effect after audio loopback is successfully enabled.
+    > - If you set the equalizer type after enabling loopback, the setting takes effect immediately.
+    > - If you do not set the equalizer type before enabling loopback, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is used upon activation of audio loopback.
+
+   ```ts
+    import { BusinessError } from '@kit.BasicServicesKit';
+    try {
+      audioLoopback.setEqualizerPreset(audio.AudioLoopbackEqualizerPreset.FULL);
+    } catch (err) {
+      console.error(`setEqualizerPreset :ERROR: ${err}`);
+    }
+   ```
+
+7. Call [getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21) to obtain the current equalizer type of audio loopback. This API is available from API version 21.
+
+    > **NOTE**
+    >
+    > If no equalizer type has been set, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is returned.
+   ```ts
+    import { BusinessError } from '@kit.BasicServicesKit';
+    try {
+      let reverbPreset = audioLoopback.getEqualizerPreset();
+    } catch (err) {
+      console.error(`getEqualizerPreset:ERROR: ${err}`);
+    }
+   ```
+
+8. Call [enable](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#enable20) to enable or disable audio loopback.
 
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -112,7 +180,7 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
     });
    ```
 
-### Sample Code
+### Complete Sample Code
 
 The following example demonstrates how to use AudioLoopback to enable low-latency audio monitoring:
 
@@ -123,8 +191,10 @@ import { common } from '@kit.AbilityKit';
 
 const TAG = 'AudioLoopbackDemo';
 
-let mode: audio.AudioLoopbackMode.HARDWARE;
+let mode: audio.AudioLoopbackMode = audio.AudioLoopbackMode.HARDWARE;
 let audioLoopback: audio.AudioLoopback | undefined = undefined;
+let currentReverbPreset: audio.AudioLoopbackReverbPreset = audio.AudioLoopbackReverbPreset.THEATER;
+let currentEqualizerPreset: audio.AudioLoopbackEqualizerPreset = audio.AudioLoopbackEqualizerPreset.FULL;
 
 let statusChangeCallback = (status: audio.AudioLoopbackStatus) => {
   if (status == audio.AudioLoopbackStatus.UNAVAILABLE_DEVICE) {
@@ -161,6 +231,36 @@ async function setVolume(volume: number) {
       console.info(`Invoke setVolume ${volume} succeeded.`);
     } catch (err) {
       console.error(`Invoke setVolume failed, code is ${err.code}, message is ${err.message}.`);
+    }
+  } else {
+    console.error('Audio loopback not created.');
+  }
+}
+
+// Set the reverb mode for audio loopback.
+async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset) {
+  if (audioLoopback !== undefined) {
+    try {
+      audioLoopback.setReverbPreset(preset);
+      console.info(`setReverbPreset( ${preset} succeeded.`);
+      currentReverbPreset = audioLoopback.getReverbPreset(); // Obtain the current reverb mode to prevent setting failures.
+    } catch (err) {
+      console.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
+    }
+  } else {
+    console.error('Audio loopback not created.');
+  }
+}
+
+// Set the equalizer type for audio loopback.
+async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset) {
+  if (audioLoopback !== undefined) {
+    try {
+      audioLoopback.setEqualizerPreset(preset);
+      console.info(`setEqualizerPreset ${preset} succeeded.`);
+      currentEqualizerPreset = audioLoopback.getEqualizerPreset(); // Obtain the current equalizer type to prevent setting failures.
+    } catch (err) {
+      console.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
     }
   } else {
     console.error('Audio loopback not created.');
@@ -221,3 +321,6 @@ async function disable() {
   }
 }
 ```
+
+### Sample of Low-Latency Audio Loopback
+For details, see [Enabling Low-Latency Audio Loopback Using AudioLoopback](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio).

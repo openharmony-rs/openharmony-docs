@@ -1,13 +1,20 @@
 # Interface (AudioVolumeGroupManager)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+This interface implements volume management for an audio group.
+
+Before calling any API in AudioVolumeGroupManager, you must use [getVolumeGroupManager](arkts-apis-audio-AudioVolumeManager.md#getvolumegroupmanager9) to obtain an AudioVolumeGroupManager instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 9.
 
-This interface implements volume management for an audio group.
-
-Before calling any API in AudioVolumeGroupManager, you must use [getVolumeGroupManager](arkts-apis-audio-AudioVolumeManager.md#getvolumegroupmanager9) to obtain an AudioVolumeGroupManager instance.
 
 ## Modules to Import
 
@@ -31,7 +38,7 @@ Obtains the volume of a stream. This API uses an asynchronous callback to return
 
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.      |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
 | callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Example**
@@ -64,7 +71,7 @@ Obtains the volume of a stream. This API uses a promise to return the result.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -96,7 +103,7 @@ Obtains the volume of a stream. This API returns the result synchronously.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -143,7 +150,7 @@ Obtains the minimum volume allowed for a stream. This API uses an asynchronous c
 
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.      |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
 | callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume obtained; otherwise, **err** is an error object.|
 
 **Example**
@@ -176,7 +183,7 @@ Obtains the minimum volume allowed for a stream. This API uses a promise to retu
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -208,7 +215,7 @@ Obtains the minimum volume allowed for a stream. This API returns the result syn
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -255,7 +262,7 @@ Obtains the maximum volume allowed for a stream. This API uses an asynchronous c
 
 | Name    | Type                               | Mandatory| Description                  |
 | ---------- | ----------------------------------- | ---- | ---------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.          |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.          |
 | callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume obtained; otherwise, **err** is an error object.|
 
 **Example**
@@ -288,7 +295,7 @@ Obtains the maximum volume allowed for a stream. This API uses a promise to retu
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -320,7 +327,7 @@ Obtains the maximum volume allowed for a stream. This API returns the result syn
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -367,7 +374,7 @@ Checks whether a stream is muted. This API uses an asynchronous callback to retu
 
 | Name    | Type                               | Mandatory| Description                                           |
 | ---------- | ----------------------------------- | ---- | ----------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                   |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                   |
 | callback   | AsyncCallback&lt;boolean&gt;        | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is muted or **false** if not muted; otherwise, **err** is an error object.|
 
 **Example**
@@ -400,13 +407,13 @@ Checks whether a stream is muted. This API uses a promise to return the result.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
 | Type                  | Description                                                  |
 | ---------------------- | ------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the stream is muted, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is muted. **true** if muted, **false** otherwise.|
 
 **Example**
 
@@ -432,13 +439,13 @@ Checks whether a stream is muted. This API returns the result synchronously.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
 | Type                  | Description                                                  |
 | ---------------------- | ------------------------------------------------------ |
-| boolean | Check result. The value **true** means that the stream is muted, and **false** means the opposite.|
+| boolean | Check result for whether the stream is muted. **true** if muted, **false** otherwise.|
 
 **Error codes**
 
@@ -508,8 +515,12 @@ Obtains the ringer mode. This API uses a promise to return the result.
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioVolumeGroupManager.getRingerMode().then((value: audio.AudioRingMode) => {
   console.info(`Promise returned to indicate that the ringer mode is obtained ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRingerMode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -652,13 +663,17 @@ Checks whether the microphone is muted. This API uses a promise to return the re
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the microphone is muted, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the microphone is muted. **true** if muted, **false** otherwise.|
 
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioVolumeGroupManager.isMicrophoneMute().then((value: boolean) => {
   console.info(`Promise returned to indicate that the mute status of the microphone is obtained ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to isMicrophoneMute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -674,7 +689,7 @@ Checks whether the microphone is muted. This API returns the result synchronousl
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| boolean | Check result. The value **true** means that the microphone is muted, and **false** means the opposite.|
+| boolean | Check result for whether the microphone is muted. **true** if muted, **false** otherwise.|
 
 **Example**
 
@@ -776,7 +791,7 @@ Checks whether the fixed volume mode is enabled. When the fixed volume mode is e
 
 | Type                  | Description                                                  |
 | ---------------------- | ------------------------------------------------------ |
-| boolean            | Check result. The value **true** means that the fixed volume mode is enabled, and **false** means the opposite.|
+| boolean            | Check result for whether the fixed volume mode is enabled. **true** if enabled, **false** otherwise.|
 
 **Example**
 
@@ -801,7 +816,7 @@ Obtains the volume gain. This API uses an asynchronous callback to return the re
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volumeLevel | number                         | Yes  | Volume level.                                              |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | Yes  | Device type.                                              |
 | callback   | AsyncCallback&lt;number&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the volume gain obtained; otherwise, **err** is an error object.|
@@ -846,7 +861,7 @@ Obtains the volume gain. This API uses a promise to return the result.
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volumeLevel | number                              | Yes  | Volume level.                                            |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | Yes  | Device type.                                              |
 
@@ -894,7 +909,7 @@ Obtains the volume gain. This API returns the result synchronously.
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volumeLevel | number                              | Yes  | Volume level.                                            |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | Yes  | Device type.                                              |
 
@@ -969,12 +984,12 @@ let capturerInfo: audio.AudioCapturerInfo = {
 
 audio.getAudioManager().getRoutingManager().getPreferredInputDeviceForCapturerInfo(capturerInfo).then((data) => {
   audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((value) => {
-    console.info(`mic volatileume amplitude is: ${value}`);
+    console.info(`max amplitude is: ${value}`);
   }).catch((err: BusinessError) => {
-    console.error("getMaxAmplitudeForInputDevice error" + JSON.stringify(err));
+    console.error(`getMaxAmplitudeForInputDevice error. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err: BusinessError) => {
-  console.error("get outputDeviceId error" + JSON.stringify(err));
+  console.error(`getPreferredInputDeviceForCapturerInfo error. Code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1020,12 +1035,12 @@ let rendererInfo: audio.AudioRendererInfo = {
 
 audio.getAudioManager().getRoutingManager().getPreferOutputDeviceForRendererInfo(rendererInfo).then((data) => {
   audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((value) => {
-    console.info(`mic volatileume amplitude is: ${value}`);
+    console.info(`max amplitude is: ${value}`);
   }).catch((err: BusinessError) => {
-    console.error("getMaxAmplitudeForOutputDevice error" + JSON.stringify(err));
+    console.error(`getMaxAmplitudeForOutputDevice error. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err: BusinessError) => {
-  console.error("getPreferOutputDeviceForRendererInfo error" + JSON.stringify(err));
+  console.error(`getPreferOutputDeviceForRendererInfo error. Code: ${err.code}, message: ${err.message}`);
 })
 ```
 ## setMicrophoneMute<sup>(deprecated)</sup>
@@ -1046,7 +1061,7 @@ Mutes or unmutes the microphone. This API uses an asynchronous callback to retur
 
 | Name  | Type                     | Mandatory| Description                                         |
 | -------- | ------------------------- | ---- | --------------------------------------------- |
-| mute     | boolean                   | Yes  | Mute status to set. The value **true** means to mute the microphone, and **false** means the opposite.|
+| mute     | boolean                   | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -1081,7 +1096,7 @@ Mutes or unmutes the microphone. This API uses a promise to return the result.
 
 | Name| Type   | Mandatory| Description                                         |
 | ------ | ------- | ---- | --------------------------------------------- |
-| mute   | boolean | Yes  | Mute status to set. The value **true** means to the microphone, and **false** means the opposite.|
+| mute   | boolean | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
 
 **Return value**
 

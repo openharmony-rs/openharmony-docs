@@ -1,6 +1,12 @@
-# \<picker> Development
+# picker Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **\<picker>** component supports common, date, time, data and time, and multi-column text selectors. For details, see [picker](../reference/apis-arkui/arkui-js/js-components-basic-picker.md).
+The **\<picker>** component supports common, date, time, date and time, and multi-column text selectors. For details, see [picker](../reference/apis-arkui/arkui-js/js-components-basic-picker.md).
 
 
 ## Creating a \<picker> Component
@@ -10,7 +16,7 @@ Create a **\<picker>** component in the .hml file under **pages/index**.
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <picker>    picker  </picker>
+  <picker>picker</picker>
 </div>
 ```
 

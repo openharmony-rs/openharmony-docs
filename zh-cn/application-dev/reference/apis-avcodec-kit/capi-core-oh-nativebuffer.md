@@ -1,5 +1,16 @@
 # OH_NativeBuffer
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_NativeBuffer OH_NativeBuffer
+```
+
 ## 概述
 
 为图形内存接口定义native层对象。

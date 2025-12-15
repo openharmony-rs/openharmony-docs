@@ -1,5 +1,12 @@
 # telephony_data.h
 
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @k_lee9575-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ## 概述
 
 为电话蜂窝数据定义C接口。
@@ -27,7 +34,7 @@
 
 ### OH_Telephony_GetDefaultCellularDataSlotId()
 
-```
+```c
 int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)
 ```
 

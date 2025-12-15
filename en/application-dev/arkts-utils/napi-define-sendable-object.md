@@ -1,4 +1,10 @@
 # Multithreaded Operations with Custom Native Sendable Objects
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @lijiamin2025-->
+<!--Designer: @weng-changcheng-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 ArkTS supports custom native Sendable objects, which provide efficient inter-thread communication through pass-by-reference. This is particularly valuable for scenarios requiring inter-thread communication of large custom objects, such as when a child thread retrieves database data and returns it to the host thread.
 
@@ -7,13 +13,13 @@ The following demonstrates how to implement shared data access across concurrent
 1. Customize a Sendable class in the interface declaration.
 
    ```ts
-   // Index.d.ts
+   // Index.d.ets
    @Sendable
    export class MyObject {
      constructor(arg: number);
      plusOne(): number;
    
-     public get value();
+     public get value(): number;
      public set value(newVal: number);
    }
    ```
@@ -34,6 +40,9 @@ The following demonstrates how to implement shared data access across concurrent
 
     include_directories(${NATIVERENDER_ROOT_PATH}
                         ${NATIVERENDER_ROOT_PATH}/include)
+
+    add_definitions("-DLOG_DOMAIN=0x0000")
+    add_definitions("-DLOG_TAG=\"testTag\"")
 
     add_library(entry SHARED napi_init.cpp)
     target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
@@ -260,3 +269,12 @@ The following demonstrates how to implement shared data access across concurrent
      }
    }
    ```
+5. Modify the **oh-package.json5** file in the same directory as the **Index.d.ets** file. The configuration is as follows:
+    ```ts
+    {
+        "name": "libentry.so",
+        "types": "./Index.d.ets",
+        "version": "1.0.0",
+        "description": "Please describe the basic information."
+    }
+    ```

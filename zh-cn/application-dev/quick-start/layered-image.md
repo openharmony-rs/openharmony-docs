@@ -1,4 +1,10 @@
 # 配置应用图标和名称
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本页面提供应用图标和名称的配置指导。应用图标分为单层图标和分层图标。单层图标包含一个图片，分层图标包含前景图和背景图。图标规范详见<!--RP1-->[图标交付](https://docs.openharmony.cn/pages/v5.0/zh-cn/design/ux-design/visual-app-icons.md#%E5%9B%BE%E6%A0%87%E4%BA%A4%E4%BB%98)<!--RP1End-->，图标和名称配置约束详见[图标和名称配置](../application-models/application-component-configuration-stage.md#应用图标和名称配置)。
 
@@ -27,7 +33,7 @@
 >
 > **说明：**
 > 
-> 在编译构建时，app.json5文件所在AppScope目录下的资源文件会合入到模块下面资源目录中，如果两个目录下存在重名文件，编译打包后只会保留AppScope目录下的资源文件。
+> 在编译构建时，AppScope目录下的资源文件会合入到模块下相同路径的资源目录中，如果两个目录下存在重名文件，编译打包后AppScope目录下的资源文件会覆盖模块下的资源。
 >
 > 例如，app.json5和module.json5中配置的分层图标的资源文件名称一致、图标不一致，AppScope目录下的资源文件会覆盖模块中的文件，最后的效果是app.json5中的配置图标生效。
 > 
@@ -43,12 +49,14 @@
 
   该配置仅当module.json5配置文件中无UIAbility、或者存在UIAbility但abilities标签中未设置icon和label（可手动删除icon和label配置）时生效。
 
-  ```json
+  <!-- @[layered_image_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/AppScope/app.json5) -->
+  
+  ``` JSON5
   {
     "app": {
+      // ...
       "icon": "$media:app_icon",
       "label": "$string:app_name" // 需要在AppScope/resources/base/element/string.json配置name为app_name的资源，已存在可以忽略
-      // ...
     }
   }
   ```
@@ -57,14 +65,18 @@
 
   除了需要配置icon与label字段，还需要在skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
 
-  ```json
+  <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
+  
+  ``` JSON5
   {
     "module": {
       // ...
       "abilities": [
         {
+          // ...
           "icon": "$media:icon",
-          "label": "$string:EntryAbility_label", // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
+          // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
+          "label": "$string:EntryAbility_label",
           "skills": [
             {
               "entities": [
@@ -74,9 +86,10 @@
                 "ohos.want.action.home"
               ]
             }
-          ],
+          ]
         }
-      ]
+      ],
+      // ...
     }
   }
   ```
@@ -87,7 +100,7 @@
 
   该配置仅当module.json5配置文件中无UIAbility、或者存在UIAbility但abilities标签中未设置icon和label（可手动删除icon和label配置）时生效。
 
-  1. 将前景资源和背景资源文件放在“AppScope\resources\base\media”文件下。
+  1. 将前景资源和背景资源文件放在“AppScope\resources\base\media”文件夹下。
 
       本例中，前景资源文件名为“foreground.png”，背景资源文件名为“background.png”。
 
@@ -103,19 +116,22 @@
       }
       ```
   3. 在[app.json5配置文件](app-configuration-file.md)中引用分层图标资源文件。示例如下：
-      ```json
-          {
-            "app": {
-              "icon": "$media:app_layered_image",
-              "label": "$string:app_name" // 需要在AppScope/resources/base/element/string.json配置name为app_name的资源，已存在可以忽略
-              // ...
-            }
-          }
+
+      <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5) -->
+      
+      ``` JSON5
+      {
+        "app": {
+          // ...
+          "icon": "$media:layered_image",
+          "label": "$string:app_name" // 需要在AppScope/resources/base/element/string.json配置name为app_name的资源，已存在可以忽略
+        }
+      }
       ```
 
 - **方式二：配置module.json5**
 
-  1. 将前景资源和背景资源文件放在“entry\src\main\resources\base\media”文件下。
+  1. 将前景资源和背景资源文件放在“entry\src\main\resources\base\media”文件夹下。
 
       本例中采用的前景资源和背景资源的文件名分别为“foreground.png”和“background.png”。
 
@@ -133,26 +149,31 @@
 
   3. 如果需要在桌面显示UIAbility图标，除了需要配置icon与label字段，还需要在skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
 
-      ```json
+      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5)  -->
+      
+      ``` JSON5
       {
         "module": {
+          // ...
           "abilities": [
-            "name": "EntryAbility",
-            // ...
-            "icon": "$media:layered_image", // icon配置为分层图标资源文件的索引
-            "label": "$string:EntryAbility_label", // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
-            "skills": [
-              {
-                "entities": [
-                  "entity.system.home"
-                ],
-                "actions": [
-                  "ohos.want.action.home"
-                ]
-              }
-            ],
-            // ...
-          ]
+            {
+              // ...
+              // icon配置为分层图标资源文件的索引
+              "icon": "$media:layered_image",
+              // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
+              "label": "$string:EntryAbility_label",
+              "skills": [
+                {
+                  "entities": [
+                    "entity.system.home"
+                  ],
+                  "actions": [
+                    "ohos.want.action.home"
+                  ]
+                }
+              ]
+            }
+          ],
           // ...
         }
       }

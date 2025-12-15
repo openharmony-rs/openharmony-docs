@@ -1,5 +1,12 @@
 # AtomicServiceTabs
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @qq_36417014-->
+<!--Designer: @zhangbeilei-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @zengyawen-->
+
 AtomicServiceTabs高级组件，对Tabs组件一些不需提供给用户自定义设计的属性进行简化，限制最多显示5个页签，固定页签样式，位置和大小。
 
 > **说明：**
@@ -23,7 +30,7 @@ import { AtomicServiceTabs, TabBarOptions, TabBarPosition, OnContentWillChangeCa
 ## AtomicServiceTabs
 
 ```
-AtomicServiceTabs ({
+AtomicServiceTabs({
    tabContents?: [ TabContentBuilder?,
                     TabContentBuilder?,
                   TabContentBuilder?,
@@ -63,7 +70,7 @@ AtomicServiceTabs ({
 | layoutMode<sup>18+</sup> | [LayoutMode](ts-container-tabcontent.md#layoutmode10) | 否   |@Prop | 设置底部页签的图片、文字排布的方式，默认值为LayoutMode.VERTICAL。|
 | barBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | @Prop | 设置TabBar的背景颜色，默认值为透明。|
 | index | number | 否 | @Prop | 设置当前显示页签的索引，索引值从0开始。|
-| barOverlap | boolean| 否 | @Prop | 设置TabBar是否背后变模糊并叠加在TabContent之上，默认值：true。|
+| barOverlap | boolean| 否 | @Prop | 设置TabBar是否背后变模糊并叠加在TabContent之上。true表示TabBar背后变模糊并叠加在TabContent之上。默认值：true。|
 | controller|[TabsController](ts-container-tabs.md#tabscontroller) | 否 | - |Tabs组件的控制器，用于控制Tabs组件进行页签切换。|
 | onChange | Callback\<number\> | 否 | - | Tabs页签切换后触发的事件。 |
 | onTabBarClick | Callback\<number\> | 否 | - |Tabs页签点击后触发的事件。|
@@ -73,13 +80,11 @@ AtomicServiceTabs ({
 
 type TabContentBuilder = () => void
 
+内容视图容器。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 类型 | 说明 |
-| ---- | ---------- |
-| () => void | 内容视图容器 |
 
 ## TabBarOptions
 
@@ -116,14 +121,24 @@ TabBarOptions的构造函数。
 
 type OnContentWillChangeCallback = (currentIndex: number, comingIndex: number) => boolean
 
+页面内容发生变化时触发的回调函数。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
 | --------------- | ------ |------ |------ |
 | currentIndex | number | 是 | 当前页签索引。 |
 | comingIndex | number | 是 | 即将切换的页签索引。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|--|--|
+| boolean | 回调函数正常执行则返回true，反之返回false。 |
 
 ## 示例
 
@@ -143,12 +158,12 @@ struct Index {
   onContentWillChangeCallBack:  OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
-    console.log('OnContentWillChangeCallback')
+    console.info('OnContentWillChangeCallback')
      return true;
   }
   onTabClick: Callback<number> = (index:number)=>{
     this.onClickNumber ++;
-    console.log('onTabClick');
+    console.info('onTabClick');
   }
   @Builder
   tabContent1() {
@@ -212,15 +227,15 @@ struct Index {
   @State onClickNumber: number = 0;
   @State currentIndex: number = 0;
   @State comingIndex: number = 0;
-  onContentWillChangeCallBack:  OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
+  onContentWillChangeCallBack: OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
-    console.log('OnContentWillChangeCallback')
-     return true;
+    console.info('OnContentWillChangeCallback');
+    return true;
   }
   onTabClick: Callback<number> = (index:number)=>{
     this.onClickNumber ++;
-    console.log('onTabClick');
+    console.info('onTabClick');
   }
   @Builder
   tabContent1() {
@@ -252,9 +267,9 @@ struct Index {
         }
       ],
       tabBarOptionsArray: [
-          new TabBarOptions($r('sys.media.ohos_ic_public_phone'), '', Color.Black, Color.Blue),
-          new TabBarOptions($r('sys.media.ohos_ic_public_location'), '', Color.Black, Color.Blue),
-          new TabBarOptions($r('sys.media.ohos_ic_public_more'), '', Color.Black, Color.Blue),
+        new TabBarOptions($r('sys.media.ohos_ic_public_phone'), '', Color.Black, Color.Blue),
+        new TabBarOptions($r('sys.media.ohos_ic_public_location'), '', Color.Black, Color.Blue),
+        new TabBarOptions($r('sys.media.ohos_ic_public_more'), '', Color.Black, Color.Blue),
       ],
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
@@ -290,16 +305,16 @@ struct AtomicserviceTabs  {
   onContentWillChangeCallBack: OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
-    console.log('OnContentWillChangeCallback')
+    console.info('OnContentWillChangeCallback');
     return true;
   }
   onTabClick: Callback<number> = (index: number) => {
     this.onClickNumber++;
-    console.log('onTabClick');
+    console.info('onTabClick');
   }
   onChange: Callback<number, void> = (Index: number) => {
-    console.log('onChange');
-    console.log('onChange2');
+    console.info('onChange');
+    console.info('onChange2');
   }
 
   @Builder

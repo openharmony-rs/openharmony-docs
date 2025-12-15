@@ -1,4 +1,10 @@
 # @ohos.inputMethodList (Input Method List)
+<!--Kit: IME Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @illybyy-->
+<!--Designer: @andeszhang-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @zhang_yixin13-->
 
 The **inputMethodList** module is oriented to system applications and input method applications. It provides APIs for implementing an input method list. This list displays the default input method subtypes and third-party input methods. Users can use this list to switch from the default input method to another input method.
 
@@ -34,7 +40,7 @@ Implements a dialog box showing the input method list.
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | controller | [CustomDialogController](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) | Yes| - | Controller for the dialog box showing the input method list.|
-| patternOptions | [PatternOptions](#patternoptions) | No| - | Input method pattern options (for the default input method only).|
+| patternOptions | [PatternOptions](#patternoptions) | No| - | Input method pattern options (for the system input method only).|
 
 ## PatternOptions
 
@@ -44,7 +50,7 @@ Implements a dialog box showing the input method list.
 | -------- | -------- | -------- | -------- | -------- |
 | defaultSelected | number | No| Yes| Optional. Default selected pattern.|
 | patterns   | Array<[Pattern](#pattern)> | No| No| Mandatory. Resource of the pattern option.|
-| action | function | No| No| Mandatory. Callback invoked when the pattern option changes.|
+| action | (index: number) => void | No| No| Mandatory. Callback invoked when the pattern option changes.|
 
 ## Pattern
 
@@ -67,7 +73,7 @@ import { Pattern, PatternOptions } from '@kit.IMEKit';
 @Entry
 // Configure the component.
 @Component
-struct settingsItem {
+struct SettingsItem {
   @State defaultPattern: number = 1;
   private oneHandAction: PatternOptions = {
     defaultSelected: this.defaultPattern,

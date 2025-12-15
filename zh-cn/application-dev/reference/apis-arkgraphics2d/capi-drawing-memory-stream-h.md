@@ -1,5 +1,12 @@
 # drawing_memory_stream.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 文件中定义了与内存流相关的功能函数。
@@ -25,7 +32,7 @@
 
 ### OH_Drawing_MemoryStreamCreate()
 
-```
+```c
 OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t length, bool copyData)
 ```
 
@@ -54,7 +61,7 @@ OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t 
 
 ### OH_Drawing_MemoryStreamDestroy()
 
-```
+```c
 void OH_Drawing_MemoryStreamDestroy(OH_Drawing_MemoryStream* memoryStream)
 ```
 

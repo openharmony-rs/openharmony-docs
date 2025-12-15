@@ -1,15 +1,21 @@
 # Node-API Development Process
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 
 To implement cross-language interaction using Node-API, you need to register and load modules based on the Node-API mechanism first.
 
 
-- ArkTS/JS: Import the .so library and call C++ APIs.  
+- ArkTS/JS: Call C++ methods by importing the required .so library.
 
 - Native: Implement module registration via a .cpp file. You need to declare the name of the library to register and define the mappings between the native and JS/ArkTS APIs in the callbacks registered.
 
 
-The following demonstrates how to implement cross-language interaction by implementing **add()** in ArkTS/JS code and **Add()** in native code.
+The following demonstrates how to implement cross-language interaction by implementing **callNative()** in ArkTS/JS code and **CallNative()** in native code.
 
 
 ## Creating a Native C++ Project
@@ -25,9 +31,9 @@ The following demonstrates how to implement cross-language interaction by implem
 
   When a native module is imported in ArkTS, the .so file will be loaded. During the loading process, the **napi_module_register** method is called to register the module with the system and call the module initialization function.
 
-  napi_module has two key properties: **.nm_register_func** and **.nm_modname**. The **.nm_register_func** property defines the module initialization function, and **.nm_modname** defines the module name, that is, the name of the .so file imported by ArkTS.
+  napi_module has two key properties: **.nm_register_func** and **.nm_modname**. **.nm_register_func** defines the module initialization function, and **.nm_modname** defines the module name, that is, the name of the .so file imported by ArkTS.
 
-  ```
+  ``` TypeScript
   // entry/src/main/cpp/napi_init.cpp
   
   // Information about the module. Record information such as the Init() function and module name.
@@ -37,14 +43,14 @@ The following demonstrates how to implement cross-language interaction by implem
       .nm_filename = nullptr,
       .nm_register_func = Init,
       .nm_modname = "entry",
-      .nm_priv = nullptr,
+      .nm_priv = ((void*)0),
       .reserved = {0},
   };
   
   // When the .so file is loaded, this function is automatically called to register the demoModule module with the system.
   extern "C" __attribute__((constructor)) void RegisterDemoModule() { 
       napi_module_register(&demoModule);
-   }
+  }
   ```
 > **NOTE**<br>You do not need to copy the above code as it is pre-configured in the **napi_init.cpp** file when the native C++ project is created.
 
@@ -52,7 +58,7 @@ The following demonstrates how to implement cross-language interaction by implem
 
   Implement the mappings between the ArkTS and C++ APIs.
 
-  ```
+  ``` C++
   // entry/src/main/cpp/napi_init.cpp
   EXTERN_C_START
   // Initialize the module.
@@ -68,12 +74,12 @@ The following demonstrates how to implement cross-language interaction by implem
       return exports;
   }
   EXTERN_C_END
-  
+
   ```
 
 - Add JS APIs in the index.d.ts file.
 
-  ```
+  ``` TypeScript
   // entry/src/main/cpp/types/libentry/index.d.ts
   export const callNative: (a: number, b: number) => number;
   export const nativeCallArkTS: (cb: (a: number) => number) => number;
@@ -81,7 +87,7 @@ The following demonstrates how to implement cross-language interaction by implem
 
 - Associate **index.d.ts** with **.cpp** in the **oh-package.json5** file.
 
-  ```
+  ``` JSON5
   // entry/src/main/cpp/types/libentry/oh-package.json5
   {
     "name": "libentry.so",
@@ -93,7 +99,7 @@ The following demonstrates how to implement cross-language interaction by implem
 
 - Set CMake packaging parameters in the **CMakeLists.txt** file.
 
-  ```
+  ```txt
   # entry/src/main/cpp/CMakeLists.txt
   cmake_minimum_required(VERSION 3.4.1)
   project(MyApplication2)
@@ -111,7 +117,7 @@ The following demonstrates how to implement cross-language interaction by implem
 
 - Implement **CallNative** and **NativeCallArkTS**. The code is as follows:
 
-  ```
+  ``` C++
   // entry/src/main/cpp/napi_init.cpp
   static napi_value CallNative(napi_env env, napi_callback_info info)
   {
@@ -159,7 +165,7 @@ The following demonstrates how to implement cross-language interaction by implem
 
 On ArkTS, import the .so file that contains the processing logic on the native side to use C/C++ APIs.
 
-```
+``` TypeScript
 // entry/src/main/ets/pages/Index.ets
 // Import the native APIs.
 import nativeModule from 'libentry.so'
@@ -172,7 +178,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        // Pressing the first button calls add(), which uses CallNative() in the native code to add the two numbers.
+        // Pressing the first button calls callNative(), which uses CallNative() in the native code to add the two numbers.
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
@@ -202,12 +208,12 @@ struct Index {
 
 ### Naming Rules of .so Files
 
-The case of the module name to import must be the same as that registered. For example, if the module name is **entry**, the .so file name must be **libentry.so**, and the **nm_modname** field in **napi_module** must be **entry**. When importing the module in ArkTS, use **import xxx from 'libentry.so'**.
+The case of the module name to import must be the same as that registered. For example, if the module name is **entry**, the **.so** file name must be **libentry.so**, and the **nm_modname** field in **napi_module** must be **entry**. When importing the module in ArkTS, use **import ***xxx* **from 'libentry.so'**.
 
 
 ### Registration
 
-- To prevent conflicts with symbols in the .so file, add **static** to the function corresponding to **nm_register_func**. For example, the **Init()** function in this document.
+- To prevent conflicts with symbols in other .so files, add **static** to the function (for example, the **Init** function) corresponding to **nm_register_func**.
 
 - The name of the module registration entry, that is, the function modified by **__attribute__((constructor))** must be unique. For example, the **RegisterDemoModule** function in this document.
 
@@ -220,4 +226,11 @@ Each engine instance corresponds to a JS thread. The objects of an instance cann
 - The input parameter **env** of a native API can be bound to a JS thread only when the thread is created.
 - Data created using Node-APIs must be released before **env** is completely destroyed. Otherwise, memory leaks may be caused. In addition, accessing or using the data after **napi_env** is destroyed may cause the process to crash.
 
-Maintenance and testing measures have been added to address common errors. For details, see [Analysis of Exception Logs and Crashes Generated by the Use of Node-API](use-napi-about-crash.md).
+
+### Debugging Device Selection
+
+You are advised to use a real device instead of the previewer for code debugging. The previewer is mainly used to debug UI components. If it is used for functionality debugging, the following error may occur:
+
+- TypeError: undefined is not callable
+
+Maintenance and testing measures have been added to address common errors. For details, see [Analyzing Exceptions and Crashes Using Node-API](use-napi-about-crash.md).

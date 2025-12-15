@@ -24,7 +24,7 @@
 | d.ts的标签 | 含义 | 文档字段 |
 | ---------- | ---- | ------- |
 | @since | 版本说明 | 1. 每个模块要有起始版本说明，使用引用语法“>”对接口的起始版本进行说明。接口没有标记的，默认与模块同一个起始版本。<br/>2. 已有模块新增接口使用\<sup>标签标记对应版本号。写法：`<sup>版本号+</sup>`<br/> 例如`<sup>7+</sup>`<br/> 示例：API 6已有的模块，在API 7新增了一个属性字段，则在属性后加标记，即newAttribute<sup>7+</sup>。<br/>如果新增了一个方法，则在方法标题后增加标记，即 sim.getSimIccId<sup>7+</sup>，interface、class、枚举等同理。<br/>**需要注意的特殊情况**：因匿名对象整改，导致部分接口出现外层元素版本号高于内层元素版本号情况。为避免开发者困惑，需要在此类“接口描述”处统一增加说明：为规范匿名对象的定义，API XX版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
-| @deprecated | 废弃说明 | 废弃内容不能直接删去，上标标注(deprecated)，起始版本和废弃版本均使用引用语法“>”说明。<br/>示例：abandonmentMethod<sup>(deprecated) </sup><br/>> 从API version 4 开始支持，从API version 7 开始废弃，建议使用[newMethod]\(#newmethod)替代。|
+| @deprecated | 废弃说明 | 废弃内容不能直接删去，上标标注(deprecated)，起始版本和废弃版本均使用引用语法“>”说明。<br/>示例：abandonmentMethod<sup>(deprecated) </sup><br/>> **说明：**<br/>> 从API version 4 开始支持，从API version 7 开始废弃，建议使用[newMethod]\(#newmethod)替代。<br/>如果是表格中的内容废弃，无需引用语法，直接使用正文说明。示例：<br/> **说明：** 从API version 4 开始支持，从API version 7 开始废弃，建议使用[newMethod]\(#newmethod)替代。|
 | @FAModelOnly / @StageModelOnly | 模型约束 | **模型约束**：此接口仅可在FA模型下使用。 <br/> **模型约束**：此接口仅可在Stage模型下使用。 |
 | @form | 卡片能力 | **卡片能力**：从API version x开始，该接口支持在ArkTS卡片中使用。 |
 | @atomicservice | 原子化服务是否可用 | **原子化服务API**：从API version x开始，该接口支持在原子化服务中使用。 |
@@ -32,6 +32,7 @@
 | @syscap | 系统能力 | **系统能力**：SystemCapability.xxx.xxx |  1. 如果仅涉及一个权限，格式：<br/>    **需要权限**：ohos.permission.xxxx   <br/>2. 如果该接口涉及多个权限，则采用“和、或”进行分割，格式：<br/>    **需要权限**：ohos.permission.A 和 ohos.permission.B<br/>    **需要权限：**：ohos.permission.A 或 ohos.permission.B |
 | @permission | 权限 |  1. 如果仅涉及一个权限，格式：<br/>    **需要权限**：ohos.permission.xxxx   <br/>2. 如果该接口涉及多个权限，则采用“和、或”进行分割，格式：<br/>    **需要权限**：ohos.permission.A 和 ohos.permission.B<br/>    **需要权限**：ohos.permission.A 或 ohos.permission.B <br/>3. 涉及版本变更时，“需要权限”后跟当前版本的权限要求，历史版本的权限要求换行按列表描述，样例：<br/>**需要权限**：ohos.permission.A <br/>- 在API x-(y-1)时，需要申请权限ohos.permission.A和B。<br/>- 从API y开始，仅需申请ohos.permission.A。<br/>4. 仅在某些固定场景下，需要申请权限。“需要权限”后跟d.ts的@permission保持一致，再补充情况说明，分为两类情况，当情况较为简单时，可采用括号补充描述；当情况较为复杂时，换行描述。<br/>样例1：<br/> **需要权限**：ohos.permission.A（仅当创建窗口类型为AA时需要申请）<br/>样例2：<br/> **需要权限**：ohos.permission.A<br/>- 当应用处于xx情况时，需要同步申请ohos.permission.B。<br/>- 当应用处于yy情况时，无需申请任何权限。|
 | @extends | 继承 |  带有该标签或实际存在extends关系但未带该标签时，在相关描述处应明确说明“xxx继承自xxx（提供链接）。” |
+| @装饰器名称 | 装饰器类型 | 若Class/Interface/属性被装饰器修饰，则需要在相关描述处明确说明“**装饰器类型**：@装饰器名称”，例如“**装饰器类型**：@Sendable”。|
 
 下面进入具体每个API的写作。
 
@@ -113,12 +114,14 @@ import { call } from '@kit.TelephonyKit';
 > 3. 对于只读属性：d.ts中标有`readonly`字样。如果取值为有特殊含义的有限值，需要在说明里枚举，或是通过类型链接到对应枚举类型。
 >
 > 4. 对于可选属性：如果仅支持固定字段，需要进行说明。如该属性定义时，带有?，即为可选。
+>
+> 5. 若属性被装饰器修饰，则需要在“说明”中明确具体的“装饰器类型”。
 
 **系统能力**：SystemCapability.xxx.xxx（必选）
 
 | 名称             | 类型                                      | 只读 | 可选 | 说明                                       |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| pluggedType      | [BatteryPluggedType](#batterypluggedtype) | 是   | 否   | 表示当前设备连接的充电器类型。             |
+| pluggedType      | [BatteryPluggedType](#batterypluggedtype) | 是   | 否   | 表示当前设备连接的充电器类型。 <br>**装饰器类型：** @Trance            |
 | isBatteryPresent | boolean                                   | 是   | 否   | 表示当前设备是否支持电池或者电池是否在位。 |
 
 ## 常量
@@ -283,8 +286,12 @@ import { call } from '@kit.TelephonyKit';
 >
 > 3. 如果该API中，既有属性，又有方法，需要先进行属性的写作，并使用“###”三级标题。
 >    如果该API中，只有属性，那么不需要新建三级标题，直接使用表格陈列属性。
+>
+> 4. 若Class/Interface被装饰器修饰，则需要说明“装饰器类型”。
 
 类描述/interface描述。如果有使用限制，需要在这个地方说明。比方说，是否有前提条件，是否需要通过什么方法先构造一个实例。
+
+**装饰器类型：** @Sendable
 
 ### 属性
 
@@ -418,7 +425,7 @@ Node将自定义节点的二级模块API组织在一起，方便开发者进行�
 
 ### 问题2：Class是继承的，只有一个导入模块，这种情况下的SysCap应该写在哪里
 >
-> 声明方式形如：[EmbeddableUIAbilityContext.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/application/EmbeddableUIAbilityContext.d.ts)，参考如下样例写作。<br/>
+> 声明方式形如：[EmbeddableUIAbilityContext.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/application/EmbeddableUIAbilityContext.d.ts)，参考如下样例写作。<br/>
 >
 
 #### EmbeddableUIAbilityContext
@@ -460,6 +467,8 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 
 | 变更说明                                                                 | 日期         |
 | ----------------------------------------------------------------------- | ------------ |
+| @deprecated标签说明细化，补充表格中的写法。 | 2025/12/03 |
+| 新增被装饰器修饰的Class/Interface/属性写法。 | 2025/09/19|
 | 新增“API参考写作FAQ”章节，提供特殊场景的API参考写法及常见问题说明。 | 2025/07/22|
 | 精简Promise\<void>固定句式。新写作内容使用新句式；存量内容无需主动整改，表意无问题。 | 2025/06/10 |
 | 补充“关于匿名对象整改@since版本号情况的说明”固定句式。 | 2025/06/03 |

@@ -1,4 +1,10 @@
 # 使用Web组件的智能分词能力
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zourongchun-->
+<!--Designer: @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 从API version 20开始，ArkWeb提供了H5页面内的文本分词识别功能，支持文本分词高亮、分词长按预览及文本选择菜单扩展等。这些功能需将[enableDataDetector](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enabledatadetector20)设置为true，默认为false。
 
 此功能主要用于单页H5页面内容的实体识别，能够自动识别页面中的电话号码、网址等信息，并提供便捷的交互操作。启用此功能后，用户可以直接在页面中与识别的实体交互，如点击电话号码进行呼叫，点击地址在地图中查看，从而提升用户体验。
@@ -18,8 +24,9 @@ Web组件内的H5页面加载完成后，自动识别并高亮标注页面内的
 
 页面中文本实体高亮后，将转变为超链接形式。触摸点击或鼠标左键点击实体，会根据实体类型弹出操作菜单。
 
-```ts
-// xxx.ets
+<!-- @[web_DataDetector_Hightlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -87,17 +94,20 @@ struct Index {
 使用分词长按预览功能时，需要额外配置[dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)：
 
 <!--code_no_check-->
-```ts
+<!-- @[web_DataDetector_LongPress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorLongPress.ets) -->
+
+``` TypeScript
 Web({
-  src: $rawfile('index.html'),
-  controller: this.webController
+src: $rawfile('index.html'),
+controller: this.webController
 })
-  .enableDataDetector(true)
-  .dataDetectorConfig({
-    enablePreviewMenu: true,  // 配置分词长按预览功能
-    types: []
-  })
+.enableDataDetector(true)
+.dataDetectorConfig({
+  enablePreviewMenu: true,  // 配置分词长按预览功能
+  types: []
+})
 ```
+
 在[copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)不为CopyOptions.None时，长按被高亮的实体文本，会弹出预览菜单，如下图。
 
 ![web-data-detector-preview-drag](figures/web-data-detector-preview-drag.gif)
@@ -106,6 +116,8 @@ Web({
 
 
 ## 文本选择菜单扩展
+从API version 22开始，支持通过[enableSelectedDataDetector](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enableselecteddatadetector22)单独配置文本选择AI菜单的启用情况。
+
 在非编辑区域中，选中的文本满足以下条件时，文本选择菜单将展示对应的AI菜单选项：
 
 - 选中文本经过UTF-8编码转换后，其字节长度不超过255字节。

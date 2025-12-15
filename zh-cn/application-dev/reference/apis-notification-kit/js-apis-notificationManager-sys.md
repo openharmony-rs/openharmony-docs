@@ -1,4 +1,10 @@
 # @ohos.notificationManager (NotificationManager模块)(系统接口)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 本模块提供通知管理的能力，包括发布、取消发布通知，创建、获取、移除通知渠道，获取通知的使能状态、角标使能状态，获取通知的相关信息等。
 
@@ -36,7 +42,7 @@ publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -115,7 +121,7 @@ publish(request: NotificationRequest, userId: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -409,7 +415,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -466,7 +472,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -539,6 +545,66 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 })
 ```
 
+## notificationManager.getAllNotificationEnabledBundles<sup>23+</sup>
+
+getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
+
+获取指定用户下允许通知的应用程序列表。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明           |
+| ------ | ---------------- | ---- | -------------- |
+| userId   | int | 是 | 要获取允许通知的应用程序列表的用户。 |
+
+**返回值：**
+
+| 类型      | 说明        | 
+|---------|-----------|
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用程序列表。 | 
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+getAllNotificationEnabledBundlesByUserId = (userId: number): void => {
+let funcName: string = 'getAllNotificationEnabledBundlesByUserId';
+
+try {
+  notificationManager.getAllNotificationEnabledBundles(userId)
+    .then((data: Array<notificationManager.BundleOption>) => {
+    hilog.info(DOMAIN, TAG, `${funcName} success. data: ${JSON.stringify(data)}`);
+  })
+  .catch((err: BusinessError) => {
+    hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
+  });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
+
 ## notificationManager.isNotificationEnabled
 
 isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
@@ -560,7 +626,7 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -618,7 +684,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -756,9 +822,9 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 
 设定指定应用的角标使能状态。使用callback异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -774,7 +840,7 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -811,9 +877,9 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 设定指定应用的角标使能状态。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -834,7 +900,7 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -868,9 +934,9 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 
 获取指定应用的角标使能状态。使用callback异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -885,7 +951,7 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -922,9 +988,9 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 获取指定应用的角标使能状态。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -944,7 +1010,7 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -977,11 +1043,11 @@ notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
 
 setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
-设定指定应用的通知渠道。使用Promise异步回调。
-
-该接口不支持wearable设备。
+设定指定应用的通知提醒方式开关。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -992,7 +1058,7 @@ setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
-| slotFlags   | number | 是   | 通知渠道标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
+| slotFlags   | number | 是   | 通知提醒方式开关标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
 
 **返回值：**
 
@@ -1002,7 +1068,7 @@ setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1041,9 +1107,9 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 
 设置前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1059,7 +1125,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1101,9 +1167,9 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 设置前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1124,7 +1190,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1163,9 +1229,9 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 获取指定应用的通知渠道标识位。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1185,7 +1251,7 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1219,9 +1285,9 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 获取指定应用的所有通知渠道。使用callback异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1236,7 +1302,7 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1273,9 +1339,9 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 获取指定应用的所有通知渠道。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1295,7 +1361,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1330,9 +1396,9 @@ getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): voi
 
 获取指定应用的通知渠道数量。使用callback异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1347,7 +1413,7 @@ getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1386,9 +1452,9 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 获取指定应用的通知渠道数量。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1408,7 +1474,7 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1549,7 +1615,7 @@ getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
@@ -1612,7 +1678,7 @@ getActiveNotificationByFilter(filter: NotificationFilter): Promise\<Notification
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
@@ -1667,7 +1733,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1725,7 +1791,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1758,9 +1824,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 
 设置免打扰时间。使用callback异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1816,9 +1882,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 设置免打扰时间。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1876,9 +1942,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: AsyncCallb
 
 指定用户设置免打扰时间。使用callback异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -1939,9 +2005,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise\<void\>
 
 指定用户设置免打扰时间。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2004,9 +2070,9 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 
 查询免打扰时间。使用callback异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2055,9 +2121,9 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 
 查询免打扰时间。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2102,9 +2168,9 @@ getDoNotDisturbDate(userId: number, callback: AsyncCallback\<DoNotDisturbDate\>)
 
 查询指定用户的免打扰时间。使用callback异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2158,9 +2224,9 @@ getDoNotDisturbDate(userId: number): Promise\<DoNotDisturbDate\>
 
 查询指定用户的免打扰时间。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2216,9 +2282,9 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 
 查询是否支持免打扰功能。使用callback异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2266,9 +2332,9 @@ isSupportDoNotDisturbMode(): Promise\<boolean\>
 
 查询是否支持免打扰功能。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2311,9 +2377,9 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 设置设备是否支持分布式通知。使用callback异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2363,9 +2429,9 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 设置设备是否支持分布式通知。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2417,9 +2483,9 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 设置指定应用是否支持分布式通知。使用callback异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2435,7 +2501,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2476,9 +2542,9 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 设置指定应用是否支持分布式通知。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2499,7 +2565,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2535,9 +2601,9 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 根据应用的包获取应用程序是否支持分布式通知。使用callback异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2552,7 +2618,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2590,9 +2656,9 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 查询指定应用是否支持分布式通知。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2612,7 +2678,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2648,9 +2714,9 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 获取通知的提醒方式。使用callback异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2697,9 +2763,9 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 获取通知的提醒方式。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2760,7 +2826,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2842,7 +2908,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2919,7 +2985,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2991,7 +3057,7 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number, callbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3053,7 +3119,7 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3112,7 +3178,7 @@ cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -3204,9 +3270,9 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 设置指定应用的指定渠道类型的使能状态。使用callback异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3223,7 +3289,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3263,9 +3329,9 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 设置指定应用的指定渠道类型的使能状态。使用callback异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3283,7 +3349,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3324,9 +3390,9 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 设置指定应用的指定渠道类型的使能状态。使用promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3349,7 +3415,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3385,9 +3451,9 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 
 获取指定应用的指定渠道类型的使能状态。使用callback异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -3403,7 +3469,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3442,9 +3508,9 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 
 获取指定应用的指定渠道类型的使能状态。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3465,7 +3531,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3499,9 +3565,9 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 设置是否将通知同步到未安装应用程序的设备(callback形式)。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3555,9 +3621,9 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 
 设置是否将通知同步到未安装应用程序的设备(Promise形式)。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3718,6 +3784,8 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 
 系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
 
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
@@ -3771,6 +3839,8 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 
 系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
 
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
@@ -3823,6 +3893,8 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 
 取消通知监听回调。
 
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
@@ -3864,9 +3936,9 @@ triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOption
 
 触发系统实况窗。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 
 
@@ -3888,7 +3960,7 @@ triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOption
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3931,9 +4003,9 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
 订阅系统实况窗。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -3987,9 +4059,9 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 
 设置指定应用是否支持跨设备协同。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4011,7 +4083,7 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4044,15 +4116,86 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 });
 ```
 
+## notificationManager.setDistributedEnableByBundles<sup>20+</sup>
+
+setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableInfo\>, deviceType: string): Promise\<void\>
+
+批量设置应用是否支持跨设备协同。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                       |
+| -------- | ------------------------ | ---- | -------------------------- |
+| bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](#distributedbundleenableinfo20)\>             | 是   | 需要设置的应用数组。                   |
+| deviceType | string | 是   | 设备类型。|
+
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ----|
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                          |
+| 1600002  | Marshalling or unmarshalling error.      |
+| 1600003  | Failed to connect to the service.               |
+| 1600010  | Distributed operation failed.            |
+| 1600012  | No memory space.                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle1: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName1",
+    uid: 1,
+    enable: true
+};
+let bundle2: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName2",
+    uid: 2,
+    enable: true
+};
+let bunles: Array<notificationManager.DistributedBundleEnableInfo> = [
+    bundle1,bundle2
+]
+
+let deviceType: string = "liteWearable";
+notificationManager.setDistributedEnableByBundles(bunles, deviceType).then(() => {
+    console.info("setDistributedEnableByBundles success");
+}).catch((err: BusinessError) => {
+    console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.isDistributedEnabledByBundle<sup>12+</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean\>
 
 获取指定应用是否支持跨设备协同。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4073,7 +4216,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4111,9 +4254,9 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 设置设备是否与其他设备协同智能提醒。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4134,7 +4277,7 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4169,9 +4312,9 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 获取设备是否与其他设备协同智能提醒。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4191,7 +4334,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4225,9 +4368,9 @@ setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void
 
 代理其他应用设定角标个数。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -4246,7 +4389,7 @@ setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
@@ -4283,11 +4426,11 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 
 获取指定应用指定类型的通知渠道。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 获取前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4308,7 +4451,7 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4346,9 +4489,9 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
 添加勿扰模式配置信息。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4411,15 +4554,119 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 });
 ```
 
+## notificationManager.addDoNotDisturbProfile<sup>23+</sup>
+
+addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
+
+向指定用户添加勿扰模式配置信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明           |
+| ------ | ---------------- | ---- | -------------- |
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | 是 | 勿扰模式的配置信息。 |
+| userId   | int | 是 | 添加勿扰模式配置信息的用户ID。 |
+
+**返回值：**
+
+| 类型      | 说明        |
+|---------|-----------|
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600012  | No memory space.                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+addDoNotDisturbProfileByUserId = (
+  userId: number, 
+  bundleList: string, 
+  uidList: string, 
+  id: number
+): void => {
+  let fName: string = 'addDoNotDisturbProfileByUserId';
+
+  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
+    hilog.info(DOMAIN, TAG, `${fName} 参数不正确. 请输入逗号分割的一一对应的bundleList和uidList`);
+    return;
+  }
+
+  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+  let arrUid: string[] = uidList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+
+  if (arrBundle.length === 0 || arrUid.length === 0) {
+    hilog.info(DOMAIN, TAG, `${fName} 没有指定应用.`);
+    return;
+  }
+
+  let cnt: number = Math.min(arrBundle.length, arrUid.length);
+  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
+  for (let i = 0; i < cnt; i++) {
+    trustList[i] = {
+      bundle: arrBundle[i].trim(),
+      uid: Number(arrUid[i].trim())
+    };
+  }
+
+  let templates: Array<notificationManager.DoNotDisturbProfile> = [
+    {
+      id: id,
+      name: '工作模式',
+      trustlist: trustList
+    }
+  ];
+
+  try {
+    notificationManager.addDoNotDisturbProfile(templates, userId)
+      .then(() => {
+        hilog.info(DOMAIN, TAG, `${fName} success. ${userId}, ${JSON.stringify(templates)}`);
+      })
+      .catch((err: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
+      });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
+
 ## notificationManager.removeDoNotDisturbProfile<sup>12+</sup>
 
 removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
 删除勿扰模式配置。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4469,6 +4716,108 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+## notificationManager.removeDoNotDisturbProfile<sup>23+</sup>
+
+removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
+
+删除指定用户的勿扰模式配置。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明           |
+| ------ | ---------------- | ---- | -------------- |
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | 是  | 勿扰模式的配置信息。 |
+| userId   | int | 是 | 删除勿扰模式配置的用户ID。 |
+
+**返回值：**
+
+| 类型      | 说明        |
+|---------|-----------|
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600012  | No memory space.                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+removeDoNotDisturbProfileByUserId = (
+  userId: number,
+  bundleList: string,
+  uidList: string,
+  id: number
+): void => {
+  let funcName: string = 'removeDoNotDisturbProfileByUserId';
+
+  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
+    hilog.info(DOMAIN, TAG, `${funcName} 参数不正确. 请输入逗号分割的一一对应的bundleList和uidList`);
+    return;
+  }
+
+  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+  let arrUid: string[] = uidList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+
+  if (arrBundle.length === 0 || arrUid.length === 0) {
+    hilog.info(DOMAIN, TAG, `${funcName} 没有指定应用.`);
+    return;
+  }
+
+  let cnt: number = Math.min(arrBundle.length, arrUid.length);
+  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
+  for (let i = 0; i < cnt; i++) {
+    trustList[i] = {
+      bundle: arrBundle[i].trim(),
+      uid: Number(arrUid[i].trim())
+    };
+  }
+
+  let templates: Array<notificationManager.DoNotDisturbProfile> = [
+    {
+      id: id,
+      name: '工作模式',
+      trustlist: trustList
+    }
+  ];
+
+  try {
+    notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
+      hilog.info(DOMAIN, TAG, `${funcName} success. userId: ${userId}, templates: ${JSON.stringify(templates)}`);
+    })
+      .catch((err: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
+      });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
 
 ## notificationManager.setAdditionalConfig<sup>12+</sup>
 
@@ -4476,9 +4825,9 @@ setAdditionalConfig(key: string, value: string): Promise\<number\>
 
 设置通知的系统附加配置信息。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
@@ -4529,9 +4878,9 @@ getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
 
 查询勿扰模式配置信息。使用Promise异步回调。
 
-该接口不支持tv和wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -4576,15 +4925,79 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 });
 ```
 
+## notificationManager.getDoNotDisturbProfile<sup>23+</sup>
+
+getDoNotDisturbProfile(id: long, userId: int): Promise\<DoNotDisturbProfile\>
+
+查询指定用户的勿扰模式配置信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明           |
+| ------ | ---------------- | ---- | -------------- |
+| id   | number | 是  | 勿扰模式编号。 |
+| userId   | int | 是  | 待查询勿扰模式配置信息的用户。 |
+
+
+**返回值：**
+
+| 类型      | 说明        |
+|---------|-----------|
+| Promise\<[DoNotDisturbProfile](#donotdisturbprofile12)\> | Promise对象，返回勿扰模式的配置信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600019  | The do-not-disturb profile does not exist.                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+getDoNotDisturbProfileByUserId = (id: number, userId: number): void => {
+  let fName: string = 'getDoNotDisturbProfileByUserId';
+  hilog.info(DOMAIN, TAG, `${fName} id: ${id}, userId: ${userId}`);
+  try {
+    notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationManager.DoNotDisturbProfile) => {
+      hilog.info(DOMAIN, TAG, `${fName} success. data: ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
+
 ## notificationManager.disableNotificationFeature<sup>18+</sup>
 
 disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Promise\<void\>
 
 将应用包名添加到通知发布权限管控名单，以阻止应用发布通知。支持启用或关闭该功能。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 或 ohos.permission.MANAGE_EDM_POLICY
 
@@ -4612,6 +5025,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. |
 | 1600001      | Internal error.                     |
 | 1600002      | Marshalling or unmarshalling error. |
 
@@ -4640,9 +5054,9 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userI
 
 将应用包名添加到通知发布权限管控名单，以阻止应用发布通知。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 或 ohos.permission.MANAGE_EDM_POLICY
 
@@ -4676,7 +5090,6 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userI
 **示例：**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4887,7 +5300,6 @@ setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\
 **示例：**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -4942,7 +5354,6 @@ isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 **示例：**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -5125,17 +5536,767 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## notificationManager.setRingtoneInfoByBundle<sup>21+</sup>
+
+setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
+
+设置应用自定义铃声信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数说明：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| ringtoneInfo | [RingtoneInfo](#ringtoneinfo21) | 是   | 自定义铃声信息。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
+      let ringtoneInfo: notificationManager.RingtoneInfo = {
+        ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
+        ringtoneTitle: "ringtoneName",
+        ringtoneFileName: "ringtonePath",
+        ringtoneUri: "ringtoneUri",
+      }
+      notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
+        console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
+      }).catch((err: BusinessError) => {
+         console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+## notificationManager.getRingtoneInfoByBundle<sup>21+</sup>
+
+getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
+
+获取应用自定义铃声信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数说明：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[RingtoneInfo](#ringtoneinfo21)\> | Promise对象，返回应用自定义铃声信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+| 1600024  | The specified bundle has no custom ringtone information.  |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
+      notificationManager.getRingtoneInfoByBundle(bundle)
+        .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
+          console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
+        }).catch((err: BusinessError) => {
+        console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+## notificationManager.setBadgeDisplayStatusByBundles<sup>21+</sup>
+
+setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<void\>
+
+批量设置指定应用是否显示角标。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| badges   | Map<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean> | 是   | 应用包名信息和角标显示状态的列表。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. | 
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let badges = new Map<notificationManager.BundleOption, boolean>();
+let bundle: notificationManager.BundleOption = {
+    bundle: 'bundleName',
+};
+badges.set(bundle, true);
+
+notificationManager.setBadgeDisplayStatusByBundles(badges).then(() => {
+    hilog.info(0x0000, 'testTag', 'setBadgeDisplayStatusByBundles success.');
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getBadgeDisplayStatusByBundles<sup>21+</sup>
+
+getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean>>
+
+批量获取应用角标显示状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 是   | 待获取应用角标显示状态的应用包信息数组。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>> | Promise对象，返回应用包信息和显示角标状态的键值对集合的Promise对象 。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
+    data.forEach((value, key) => {
+        hilog.info(0x0000, 'testTag', `Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
+    });
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `getBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setReminderInfoByBundles<sup>21+</sup>
+
+setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Promise\<void\>
+
+批量设置指定应用提醒信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| reminderInfos | Array<[NotificationReminderInfo](#notificationreminderinfo21)> | 是 | 设置应用通知提醒信息的列表。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
+    {
+        bundle: bundle,
+        reminderFlags: 59,
+        silentReminderEnabled: false
+    }
+];
+notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
+    hilog.info(0x0000, 'testTag', 'setReminderInfoByBundles success.');
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getReminderInfoByBundles<sup>21+</sup>
+
+getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<NotificationReminderInfo\>\>
+
+批量获取指定应用提醒信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 是  | 待获取应用提醒信息的应用包信息数组。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise<Array<[NotificationReminderInfo](#notificationreminderinfo21)>> | Promise对象，返回包含应用提醒信息的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
+    hilog.info(0x0000, 'testTag', `Reminder data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `getReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isPriorityEnabled<sup>23+</sup>
+
+isPriorityEnabled(): Promise\<boolean\>
+
+获取通知优先级总开关状态。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.isPriorityEnabled().then((result : boolean) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled result is ${result}`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityEnabled<sup>23+</sup>
+
+setPriorityEnabled(enable: boolean): Promise\<void\>
+
+设置通知优先级总开关。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.setPriorityEnabled(false).then(() => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled success`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isPriorityEnabledByBundle<sup>23+</sup>
+
+isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
+
+获取应用通知优先级开关状态。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[PriorityEnableStatus](#priorityenablestatus23)\> | Promise对象，返回包含应用通知优先级开关状态的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle result is ${result}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityEnabledByBundle<sup>23+</sup>
+
+setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableStatus): Promise\<void\>
+
+设置应用通知优先级开关。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getBundlePriorityConfig<sup>23+</sup>
+
+getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
+
+获取应用的优先功能配置。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<string\> | Promise对象，返回包含应用优先功能配置的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig value is ${value}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setBundlePriorityConfig<sup>23+</sup>
+
+setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
+
+设置应用的优先功能配置。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| value | string | 是 | 应用的优先功能配置。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.onBadgeNumberQuery<sup>22+</sup>
+
+onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
+
+注册应用角标数量查询回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<long\> | 是  | 应用角标数量查询函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try{
+    notificationManager.onBadgeNumberQuery(
+        async (bundleOption: notificationManager.BundleOption) => {
+            return 1;
+        }
+    );
+} catch(err) {
+    hilog.info(0x0000, 'testTag', `onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## notificationManager.offBadgeNumberQuery<sup>22+</sup>
+
+offBadgeNumberQuery(): void
+
+取消应用角标数量查询回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try{
+    notificationManager.offBadgeNumberQuery();
+} catch(err) {
+    hilog.info(0x0000, 'testTag', `offBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## DoNotDisturbDate
 
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
 
-| 名称  | 类型                                  | 必填 | 说明                   |
-| ----- | ------------------------------------- | ---- | ---------------------- |
-| type  | [DoNotDisturbType](#donotdisturbtype) | 是   | 免打扰设置的时间类型。 |
-| begin | Date                                  | 是   | 免打扰设置的起点时间。 |
-| end   | Date                                  | 是   | 免打扰设置的终点时间。 |
+| 名称  | 类型                                   | 只读 | 可选 | 说明                  |
+| ----- | ------------------------------------- | ---- | ---- | -------------------- |
+| type  | [DoNotDisturbType](#donotdisturbtype) | 否   |  否  | 免打扰设置的时间类型。 |
+| begin | Date                                  | 否   |  否  | 免打扰设置的起点时间。 |
+| end   | Date                                  | 否   |  否  | 免打扰设置的终点时间。 |
 
 ## DoNotDisturbType
 
@@ -5232,10 +6393,9 @@ export default class EntryAbility extends UIAbility {
 
 **系统接口**：此接口为系统接口。
 
-
-| 名称    | 类型                                  | 必填 | 说明                   |
-| ------- | ------------------------------------ | ---- | ---------------------- |
-| onResponse    | (notificationId: number, buttonOptions: [ButtonOptions](#buttonoptions11)) => void                         | 否   | 点击按钮的回调。 |
+| 名称         | 类型                                                                               | 只读 | 可选 | 说明                   |
+| ----------- | ---------------------------------------------------------------------------------- | ---- | ---- | --------------------- |
+| onResponse  | (notificationId: number, buttonOptions: [ButtonOptions](#buttonoptions11)) => void | 否   |  是  | 点击按钮的回调。        |
 
 
 ## SlotType
@@ -5269,11 +6429,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统接口**：此接口为系统接口。
 
-| 名称  | 类型                                  | 必填 | 说明                   |
-| ----- | ------------------------------------- | ---- | ---------------------- |
-| id | number | 是 | 勿扰模式编号。 |
-| name | string  | 是 | 勿扰模式名称。 |
-| trustlist | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 否 | 勿扰模式的信任列表。 |
+| 名称      | 类型    | 只读 | 可选 | 说明           |
+| --------- | ------ | ---- | ---- | ------------- |
+| id        | number | 否   |  否  | 勿扰模式编号。 |
+| name      | string | 否   |  否  | 勿扰模式名称。 |
+| trustlist | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 否 | 是 | 勿扰模式的信任列表。 |
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
@@ -5303,3 +6463,187 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | USER_MODIFIED_ON    | 1   | 表示用户设置的开启状态。                 |
 | SYSTEM_DEFAULT_OFF  | 2   | 表示在用户设置前的初始关闭状态。            |
 | SYSTEM_DEFAULT_ON   | 3   | 表示在用户设置前的初始开启状态。                 |
+
+## DistributedBundleEnableInfo<sup>20+</sup>
+
+描述多设备协同的包信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称          | 类型                                                       | 只读 | 可选 | 说明              |
+| --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
+| bundleName   | string | 否 | 否 | 包名。          |
+| uid          | number | 否 | 否 | 应用程序的UID。          |
+| enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
+
+## RingtoneType<sup>21+</sup>
+
+描述自定义铃声类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| RINGTONE_TYPE_SYSTEM   | 0   | 表示系统自定义铃声。            |
+| RINGTONE_TYPE_LOCAL    | 1   | 表示本地自定义铃声。                 |
+| RINGTONE_TYPE_ONLINE  | 2   | 表示在线自定义铃声。            |
+| RINGTONE_TYPE_NONE   | 3   | 表示非自定义铃声。                 |
+
+## RingtoneInfo<sup>21+</sup>
+
+描述自定义铃声信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称    | 类型     | 只读 | 可选 | 说明                     |
+| ------- | ------- | ---- | ---- | ----------------------- |
+| ringtoneType | [RingtoneType](#ringtonetype21)  |  否  | 否   | 铃声的类型。|
+| ringtoneTitle | string  |  否  | 是   | 铃声的标题。  |
+| ringtoneFileName | string  |  否  | 是   | 铃声的文件名称。  |
+| ringtoneUri | string  |  否  | 是   | 铃声的URI。  |
+
+## NotificationReminderInfo<sup>21+</sup>
+
+描述指定应用提醒方式信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称      | 类型    | 只读 | 可选 | 说明           |
+| --------- | ------ | ---- | ---- | ------------- |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
+| reminderFlags | long | 否 | 否 | 表示通知提醒方式的标志位。 |
+| silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
+
+## PriorityNotificationType<sup>23+</sup>
+
+描述通知的优先级类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| PAYMENT_DUE   | "PAYMENT_DUE"   | 表示通知优先级类型为缴费还款。                 |
+| TRANSACTION_ALERT   | "TRANSACTION_ALERT"   | 表示通知优先级类型为动账提醒。                 |
+| EXPRESS_PROGRESS   | "EXPRESS_PROGRESS"   | 表示通知优先级类型为物流进展。                 |
+| MISS_CALL   | "MISS_CALL"   | 表示通知优先级类型为未接来电。                 |
+| TRAVEL_ALERT   | "TRAVEL_ALERT"   | 表示通知优先级类型为出行异常。                 |
+| ACCOUNT_ALERT   | "ACCOUNT_ALERT"   | 表示通知优先级类型为账号安全。                 |
+| APPOINTMENT_REMINDER   | "APPOINTMENT_REMINDER"   | 表示通知优先级类型为预约提醒。                 |
+| TRAFFIC_NOTICE   | "TRAFFIC_NOTICE"   | 表示通知优先级类型为交通违规。                 |
+| KEY_PROGRESS   | "KEY_PROGRESS"   | 表示通知优先级类型为关键进展通知。                 |
+| PUBLIC_EVENT   | "PUBLIC_EVENT"   | 表示通知优先级类型为重要公共事件。                 |
+| IOT_WARNING   | "IOT_WARNING"   | 表示通知优先级类型为预警通知。                 |
+| CUSTOM_KEYWORD   | "CUSTOM_KEYWORD"   | 表示通知优先级类型为用户自定义关键词。                 |
+
+## PriorityEnableStatus<sup>23+</sup>
+
+描述应用通知的优先级开关状态。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。 |
+| ENABLE   | 2   | 应用通知的优先级开关为全部通知状态。 |
+
+### setGeofenceEnabled<sup>23+</sup>
+
+setGeofenceEnabled(enabled: boolean):  Promise\<void\>
+
+设置地理围栏的启用状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                         |
+| --------- | --------------------- | ---- | ---------------------------- |
+| enabled   | boolean | 是  | 设置地理围栏开关。true表示开启地理围栏，false表示关闭地理围栏。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.setGeofenceEnabled(true).then(() => {
+  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### isGeofenceEnabled<sup>23+</sup>
+
+isGeofenceEnabled(): Promise\<boolean\>
+
+检查地理围栏功能是否已启用。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**返回值：**
+
+| 类型               | 说明                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| Promise\<boolean\> | Promise对象，返回地理围栏开关状态的Promise对象。返回true表示地理围栏功能已启用，返回false表示地理围栏功能未启用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```

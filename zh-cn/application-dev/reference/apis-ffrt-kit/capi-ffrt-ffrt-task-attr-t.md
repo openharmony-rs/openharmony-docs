@@ -3,8 +3,13 @@
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
 <!--Owner: @chuchihtung; @yanleo-->
-<!--SE: @geoffrey_guo; @huangyouzhong-->
-<!--TSE: @lotsof; @sunxuhao-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
+
+```c
+typedef struct {...} ffrt_task_attr_t
+```
 
 ## 概述
 
@@ -18,12 +23,10 @@
 
 ## 汇总
 
-### 成员变量
+### 成员变量	
 
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t storage[(ffrt_task_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | 任务属性所占空间 |
-
-
 
 

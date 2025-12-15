@@ -1,10 +1,16 @@
 # oh_data_values_buckets.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
 Defines structs, APIs, and enums related to stored data values.
 
-**File to include**: <database/rdb/oh_data_values_buckets.h>
+**File to include**: <database/data/oh_data_values_buckets.h>
 
 **Library**: libnative_rdb_ndk.z.so
 

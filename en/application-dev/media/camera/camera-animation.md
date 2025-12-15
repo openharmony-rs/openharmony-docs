@@ -1,4 +1,10 @@
 # Basic Camera Animation (ArkTS)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 When using the camera, transitions such as changing camera modes or switching between front and rear cameras will always involve replacing the preview stream. To enhance user experience, smooth animations can be effectively incorporated. This topic describes how to use preview stream snapshots and ArkUI's [explicit animations](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md) to implement three key scene transitions:
 
@@ -109,7 +115,7 @@ The sample code in the following steps (except step 2) is the internal method or
 
 2. Obtain a preview stream snapshot.
 
-   Preview stream snapshots are obtained by calling [image.createPixelMapFromSurface](../../reference/apis-image-kit/js-apis-image.md#imagecreatepixelmapfromsurface11) provided by the image module. In this API, **surfaceId** is the surface ID of the current preview stream, and **size** is the width and height of the current preview stream profile. Create a snapshot utility class (TS file), import the dependency, and export the snapshot retrieval API for the page to use. The code snippet below shows the implementation of the snapshot utility class:
+   Preview stream snapshots are obtained by calling [image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11) provided by the image module. In this API, **surfaceId** is the surface ID of the current preview stream, and **size** is the width and height of the current preview stream profile. Create a snapshot utility class (TS file), import the dependency, and export the snapshot retrieval API for the page to use. The code snippet below shows the implementation of the snapshot utility class:
 
    ```ts
    export class BlurAnimateUtil {
@@ -146,9 +152,14 @@ The sample code in the following steps (except step 2) is the internal method or
       * Obtain the snapshot captured by calling doSurfaceShot.
       * @returns
       */
-     public static getSurfaceShot(): image.PixelMap {
-       return BlurAnimateUtil.surfaceShot;
+    public static getSurfaceShot(): image.PixelMap | undefined {
+       if (BlurAnimateUtil.surfaceShot === null || BlurAnimateUtil.surfaceShot === undefined) {
+          console.error("SurfaceShot is null!");
+          return undefined;
+        }
+        return BlurAnimateUtil.surfaceShot;
      }
+  
    }
    ```
 
@@ -160,6 +171,7 @@ The sample code in the following steps (except step 2) is the internal method or
 
    ```ts
    @State isShowBlur: boolean = false; // Whether to show the snapshot component.
+   @State isShowBlack: boolean = false; // Blackout component. You can delete it if it is not needed.
    @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0; // Entry for triggering the mode switching animation.
    @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0; // Entry for triggering the front/rear camera switching animation.
    @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0; // Entry for the fade-out animation.
@@ -207,6 +219,10 @@ The sample code in the following steps (except step 2) is the internal method or
      console.info('showBlurAnim E');
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // The rear camera is used.
      if (this.curPosition === 0) {
        console.info('showBlurAnim BACK');
@@ -243,7 +259,7 @@ The sample code in the following steps (except step 2) is the internal method or
 
 5. Implement the fade-out blur animation.
 
-   The fade-out blur animation is triggered by the event [on('frameStart')](../../reference/apis-camera-kit/js-apis-camera.md#onframestart) of the new preview stream. During this effect, the snapshot component gradually becomes clear, revealing the new preview stream.
+   The fade-out blur animation is triggered by the event [on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart) of the new preview stream. During this effect, the snapshot component gradually becomes clear, revealing the new preview stream.
 
    ```ts
    hideBlurAnim(): void {
@@ -281,6 +297,10 @@ The sample code in the following steps (except step 2) is the internal method or
      console.info('rotateFirstAnim E');
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // Switch from the rear camera to the front camera.
      if (this.curPosition === 1) {
        console.info('rotateFirstAnim BACK');
@@ -327,6 +347,10 @@ The sample code in the following steps (except step 2) is the internal method or
      console.info('rotateSecondAnim E');
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // The rear camera is used.
      if (this.curPosition === 1) {
        // For candy bar phones, a 90° rotation compensation is applied to the content for a snapshot taken with the rear camera.
@@ -428,7 +452,7 @@ The sample code in the following steps (except step 2) is the internal method or
    }
    ```
 
-   For the fade-out blur animation, you must listen for the event [on('frameStart')](../../reference/apis-camera-kit/js-apis-camera.md#onframestart) of the preview stream. Once the value of **frameStart** bound to the StorageLink is updated, and the **onFrameStart** callback is triggered, the animation starts.
+   For the fade-out blur animation, you must listen for the event [on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart) of the preview stream. Once the value of **frameStart** bound to the StorageLink is updated, and the **onFrameStart** callback is triggered, the animation starts.
 
    ```ts
    onFrameStart(): void {

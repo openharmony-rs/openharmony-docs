@@ -1,4 +1,10 @@
 # oh_rdb_transaction.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -53,7 +59,7 @@
 
 ### OH_RDB_TransType
 
-```
+```c
 enum OH_RDB_TransType
 ```
 
@@ -75,7 +81,7 @@ enum OH_RDB_TransType
 
 ### OH_RdbTrans_CreateOptions()
 
-```
+```c
 OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void)
 ```
 
@@ -93,7 +99,7 @@ OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void)
 
 ### OH_RdbTrans_DestroyOptions()
 
-```
+```c
 int OH_RdbTrans_DestroyOptions(OH_RDB_TransOptions *options)
 ```
 
@@ -118,7 +124,7 @@ int OH_RdbTrans_DestroyOptions(OH_RDB_TransOptions *options)
 
 ### OH_RdbTransOption_SetType()
 
-```
+```c
 int OH_RdbTransOption_SetType(OH_RDB_TransOptions *options, OH_RDB_TransType type)
 ```
 
@@ -144,7 +150,7 @@ int OH_RdbTransOption_SetType(OH_RDB_TransOptions *options, OH_RDB_TransType typ
 
 ### OH_RdbTrans_Commit()
 
-```
+```c
 int OH_RdbTrans_Commit(OH_Rdb_Transaction *trans)
 ```
 
@@ -169,7 +175,7 @@ int OH_RdbTrans_Commit(OH_Rdb_Transaction *trans)
 
 ### OH_RdbTrans_Rollback()
 
-```
+```c
 int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans)
 ```
 
@@ -194,7 +200,7 @@ int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans)
 
 ### OH_RdbTrans_Insert()
 
-```
+```c
 int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row, int64_t *rowId)
 ```
 
@@ -222,7 +228,7 @@ int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VB
 
 ### OH_RdbTrans_InsertWithConflictResolution()
 
-```
+```c
 int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row,Rdb_ConflictResolution resolution, int64_t *rowId)
 ```
 
@@ -251,13 +257,19 @@ int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const ch
 
 ### OH_RdbTrans_BatchInsert()
 
-```
-int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const OH_Data_VBuckets *rows,Rdb_ConflictResolution resolution, int64_t *changes)
+```c
+int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)
 ```
 
 **描述**
 
 将一组数据批量插入到目标表中。
+
+单次插入参数的最大数量限制为32766，超出上限会返回RDB_E_INVALID_ARGS错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **起始版本：** 18
 
@@ -280,8 +292,8 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 
 ### OH_RdbTrans_Update()
 
-```
-int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const OH_Predicates *predicates,int64_t *changes)
+```c
+int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const OH_Predicates *predicates, int64_t *changes)
 ```
 
 **描述**
@@ -308,7 +320,7 @@ int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const O
 
 ### OH_RdbTrans_UpdateWithConflictResolution()
 
-```
+```c
 int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH_VBucket *row,const OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes)
 ```
 
@@ -337,7 +349,7 @@ int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH
 
 ### OH_RdbTrans_Delete()
 
-```
+```c
 int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, int64_t *changes)
 ```
 
@@ -364,8 +376,8 @@ int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicate
 
 ### OH_RdbTrans_Query()
 
-```
-OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[],int len)
+```c
+OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[], int len)
 ```
 
 **描述**
@@ -381,7 +393,7 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans  | 表示指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的查询条件。   |
-| columns                                                  | 表示要查询的列，如果传入空值，则查询适用于所有列。           |
+| const char *columns[]                       | 表示要查询的列，如果传入空值，则查询适用于所有列。           |
 | int len                                                  | 表示列中元素的个数。                                         |
 
 **返回：**
@@ -392,7 +404,7 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 
 ### OH_RdbTrans_QuerySql()
 
-```
+```c
 OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args)
 ```
 
@@ -419,7 +431,7 @@ OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, cons
 
 ### OH_RdbTrans_Execute()
 
-```
+```c
 int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args, OH_Data_Value **result)
 ```
 
@@ -447,7 +459,7 @@ int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Dat
 
 ### OH_RdbTrans_Destroy()
 
-```
+```c
 int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans)
 ```
 

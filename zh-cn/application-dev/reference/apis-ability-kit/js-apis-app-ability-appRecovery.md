@@ -1,5 +1,12 @@
 # @ohos.app.ability.appRecovery (应用故障恢复)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 appRecovery模块提供了应用在故障状态下的恢复能力。
 
 > **说明：**
@@ -92,7 +99,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 restartApp(): void
 
-重启当前进程，并拉起应用启动时第一个Ability，如果该Ability存在已经保存的状态，这些状态数据会在Ability的OnCreate生命周期回调的want参数中作为wantParam属性传入。
+重启当前进程，并拉起应用启动时第一个Ability，如果该Ability存在已经保存的状态，这些状态数据会在Ability的onCreate生命周期回调的want参数中作为wantParam属性传入。
 
 API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Ability。如果没有指定则按以下规则启动：\
 如果当前应用前台的Ability支持恢复，则重新拉起该Ability。\
@@ -116,7 +123,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.restartApp();
   }
 };
@@ -154,7 +161,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState();
   }
 };
@@ -198,7 +205,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState(this.context);
   }
 };

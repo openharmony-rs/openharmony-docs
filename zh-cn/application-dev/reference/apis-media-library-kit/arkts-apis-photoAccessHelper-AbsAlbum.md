@@ -1,4 +1,10 @@
 # Interface (AbsAlbum)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -14,14 +20,15 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称           | 类型    | 可读   | 可写  | 说明   |
+| 名称           | 类型    | 只读   | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
 | albumType | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype) | 是    | 否    | 相册类型。    |
 | albumSubtype | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 是    | 否   | 相册子类型。    |
-| albumName | string | 是    | 预置相册不可写，用户相册可写   | 相册名称。    |
+| albumName | string | 否    | 否   | 相册名称。预置相册不可写，用户相册可写。    |
 | albumUri | string | 是    | 否    | 相册uri。   |
 | count | number | 是    | 否    |  相册中文件数量。 |
 | coverUri | string | 是    | 否    | 封面文件uri。 |
+| lpath<sup>22+</sup> | string | 是    | 是    | 相册虚拟路径。 |
 
 ## getAssets
 
@@ -44,7 +51,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-在API 13及之前的版本，无相关权限返回错误码13900012；从API 14开始，无相关权限返回错误码201。
+在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -89,6 +96,8 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 获取相册中的文件。该方法使用Promise来返回。
 
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -109,7 +118,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-在API 13及之前的版本，无相关权限返回错误码13900012；从API 14开始，无相关权限返回错误码201。
+在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

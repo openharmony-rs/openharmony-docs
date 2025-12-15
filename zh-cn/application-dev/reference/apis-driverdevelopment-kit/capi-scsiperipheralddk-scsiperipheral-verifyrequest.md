@@ -1,4 +1,14 @@
 # ScsiPeripheral_VerifyRequest
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ScsiPeripheral_VerifyRequest {...} ScsiPeripheral_VerifyRequest
+```
 
 ## 概述
 

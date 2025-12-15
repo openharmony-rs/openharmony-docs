@@ -1,8 +1,16 @@
 # arkweb_interface.h
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui; @zourongchun-->
+<!--Designer: @yaomingliu; @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 ## 概述
 
 提供ArkWeb在Native侧获取API的接口，及基础Native API类型。
+
+**引用文件：** <web/arkweb_interface.h>
 
 **库：** libohweb.so
 
@@ -37,7 +45,7 @@
 
 ### ArkWeb_NativeAPIVariantKind
 
-```
+```c
 enum ArkWeb_NativeAPIVariantKind
 ```
 
@@ -61,7 +69,7 @@ enum ArkWeb_NativeAPIVariantKind
 
 ### OH_ArkWeb_GetNativeAPI()
 
-```
+```c
 ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 ```
 
@@ -87,7 +95,7 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 ### OH_ArkWeb_RegisterScrollCallback()
 
-```
+```c
 bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallback callback, void* userData)
 ```
 

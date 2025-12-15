@@ -1,5 +1,12 @@
 # ICU4C
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 In today's software market, applications need to support multiple languages for efficient development and maintenance. The International Components for Unicode (ICU) library provides powerful and complete multilingual cultural information processing capability to address this demand.
 
 [ICU4C](https://unicode-org.github.io/icu/userguide/icu4c/) is the C language version of the ICU library. Some APIs have been opened and support the following capabilities:
@@ -16,8 +23,12 @@ In today's software market, applications need to support multiple languages for 
 - Code conversion (ucnv.h)
 - Bidirectional text processing (ubidi.h)
 - Domain name conversion (uidna.h)
-- Unicode string processing (ustring.h)
-- ICU text abstract representation (utext.h)
+- Unicode string processing (ustring.h), supported since API version 15
+- ICU text abstract representation (utext.h), supported since API version 15
+- ICU version configuration (uversion.h), supported since API version 22
+- Configuration of locale IDs and localized names of various parts of the locale (uldnames.h), supported since API version 22
+- Unicode code point processing (utf.h, utf8.h, and utf16.h), supported since API version 22
+- CLDR version configuration (ulocdata.h), supported since API version 22
 
 ## Introducing ICU4C Internationalization Capabilities
 

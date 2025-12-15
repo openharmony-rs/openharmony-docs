@@ -1,4 +1,10 @@
 # @ohos.data.cloudExtension (Device-Cloud Sharing Extension) (System API)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @ltttjs; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 The **cloudExtension** module provides APIs for third-party vendors to implement the device-cloud sharing service. You can use these APIs to share the device data to the server and implement device-cloud data sharing, including sharing and unsharing data, exiting a share, changing the privilege (operation permissions) on the shared data, querying participants by data identifier or invitation code, and confirming or changing a sharing invitation. Before you get started, it is helpful to understand the following concepts:
 
@@ -30,11 +36,11 @@ Represents the data sharing result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name         | Type                         | Mandatory | Description          |
-| ----------- | --------------------------- | --- | ------------ |
-| code        | number                      | Yes  | Error code.      |
-| description | string                      | No  | Detailed description of the error code. The default value is **undefined**.      |
-| value       | T                           | No  | Value returned. The specific type is specified by the **T** parameter. The default value is **undefined**.      |
+| Name         | Type                         | Read-Only| Optional| Description          |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| code        | number                      | No  | No  | Error code.      |
+| description | string                      | No  | Yes  | Detailed description of the error code. The default value is **undefined**.      |
+| value       | T                           | No  | Yes  | Value returned. The specific type is specified by the **T** parameter. The default value is **undefined**.      |
 
 ## CloudAsset
 
@@ -42,10 +48,10 @@ Represents the cloud asset information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name   | Type  | Mandatory| Description                                |
-| ------- | ------ | ---- | ------------------------------------ |
-| assetId | string | Yes  | Asset ID.                            |
-| hash    | string | Yes  | Hashed value of the asset modification time and size.|
+| Name   | Type  | Read-Only| Optional| Description                                |
+| ------- | ------ | ---- | ---- | ------------------------------------ |
+| assetId | string | No  | No  | Asset ID.                            |
+| hash    | string | No  | No  | Hashed value of the asset modification time and size.|
 
 ## CloudAssets
 
@@ -63,13 +69,13 @@ Represents the cloud service information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name          | Type   | Mandatory| Description                                                        |
-| -------------- | ------- | ---- | ------------------------------------------------------------ |
-| enableCloud    | boolean | Yes  | Whether the cloud service is enabled. The value **true** means that the cloud service is enabled, and the value **false** means the opposite.|
-| id             | string  | Yes  | Cloud account ID generated using SHA-256.                          |
-| totalSpace     | number  | Yes  | Total account space on the server, in KB.                                |
-| remainingSpace | number  | Yes  | Available account space on the server, in KB.                              |
-| user           | number  | Yes  | Current user ID of the device.                                          |
+| Name          | Type   | Read-Only| Optional| Description                                                        |
+| -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| enableCloud    | boolean | No  | No  | Whether the cloud service is enabled. The value **true** means that the cloud service is enabled, and the value **false** means the opposite.|
+| id             | string  | No  | No  | Cloud account ID generated using SHA-256.                          |
+| totalSpace     | number  | No  | No  | Total account space on the server, in KB.                                |
+| remainingSpace | number  | No  | No  | Available account space on the server, in KB.                              |
+| user           | number  | No  | No  | Current user ID of the device.                                          |
 
 ## Flag
 
@@ -118,10 +124,10 @@ Represents the cloud information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name     | Type                                               | Mandatory| Description          |
-| --------- | --------------------------------------------------- | ---- | -------------- |
-| cloudInfo | [ServiceInfo](#serviceinfo)                         | Yes  | Cloud service information.  |
-| apps      | Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt; | Yes  | Brief application information.|
+| Name     | Type                                               | Read-Only| Optional| Description          |
+| --------- | --------------------------------------------------- | ---- | ---- | -------------- |
+| cloudInfo | [ServiceInfo](#serviceinfo)                         | No  | No | Cloud service information.  |
+| apps      | Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt; | No  | No  | Brief application information.|
 
 ## CloudData
 
@@ -129,11 +135,11 @@ Represents the cloud data.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name      | Type                                                      | Mandatory| Description                                                        |
-| ---------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| nextCursor | string                                                     | Yes  | Cursor for data query.                                                  |
-| hasMore    | boolean                                                    | Yes  | Whether there is data to be queried on the on the server. The value **true** means there is data to be queried on the server; the value **false** means the opposite.|
-| values     | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | Yes  | Array of data to be queried, which consists of the data value and [ExtensionValue](#extensionvalue).|
+| Name      | Type                                                      | Read-Only| Optional| Description                                                        |
+| ---------- | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| nextCursor | string                                                     | No  | No  | Cursor for data query.                                                  |
+| hasMore    | boolean                                                    | No  | No  | Whether there is data to be queried on the server. The value **true** means there is data to be queried on the server; the value **false** means the opposite.|
+| values     | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | No  | No  | Array of data to be queried, which consists of the data value and [ExtensionValue](#extensionvalue).|
 
 ## AppBriefInfo
 
@@ -141,12 +147,12 @@ Represents the brief application information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name       | Type   | Mandatory| Description                              |
-| ----------- | ------- | ---- | ---------------------------------- |
-| appId       | string  | Yes  | Application ID.                     |
-| bundleName  | string  | Yes  | Bundle name of the application.                        |
-| cloudSwitch | boolean | Yes  | Whether the cloud service is enabled for the application. The value **true** means the cloud service is enabled; the value **false** means the opposite.|
-| instanceId  | number  | Yes  | Application twin ID. The value **0** indicates the application itself, and the twin ID increases in ascending order.|
+| Name       | Type   | Read-Only| Optional| Description                              |
+| ----------- | ------- | ---- | ---- | ---------------------------------- |
+| appId       | string  | No  | No  | Application ID.                     |
+| bundleName  | string  | No  | No  | Bundle name of the application.                        |
+| cloudSwitch | boolean | No  | No  | Whether the cloud service is enabled for the application. The value **true** means the cloud service is enabled; the value **false** means the opposite.|
+| instanceId  | number  | No  | No  | Application twin ID. The value **0** indicates the application itself, and the twin ID increases in ascending order.|
 
 ## FieldType
 
@@ -171,13 +177,13 @@ Represents a field in the database.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name    | Type                     | Mandatory| Description                  |
-| -------- | ------------------------- | ---- | ---------------------- |
-| alias    | string                    | Yes  | Alias of the field in the table.|
-| colName  | string                    | Yes  | Name of the column, in which the field is located.                |
-| type     | [FieldType](#fieldtype) | Yes  | Type of the field.            |
-| primary  | boolean                   | Yes  | Whether the current column is the primary key. The value **true** means the current column is the primary key; the value **false** means the opposite.|
-| nullable | boolean                   | Yes  | Whether the current column can be null. The value **true** means the current column can be null; the value **false** means the opposite.     |
+| Name    | Type                     | Read-Only| Optional | Description                  |
+| -------- | ------------------------- | ---- | ---- | ---------------------- |
+| alias    | string                    | No  | No  | Alias of the field in the table.|
+| colName  | string                    | No  | No  | Name of the column, in which the field is located.                |
+| type     | [FieldType](#fieldtype)   | No  | No  | Type of the field.            |
+| primary  | boolean                   | No  | No  | Whether the current column is the primary key. The value **true** means the current column is the primary key; the value **false** means the opposite.|
+| nullable | boolean                   | No  | No  | Whether the current column can be null. The value **true** means the current column can be null; the value **false** means the opposite.     |
 
 ## Table
 
@@ -185,11 +191,11 @@ Represents the table information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name  | Type                        | Mandatory| Description                        |
-| ------ | ---------------------------- | ---- | ---------------------------- |
-| alias  | string                       | Yes  | Alias of the table in the database.|
-| name   | string                       | Yes  | Table name.                      |
-| fields | Array&lt;[Field](#field)&gt; | Yes  | Field information in the table.  |
+| Name  | Type                        | Read-Only| Optional| Description                        |
+| ------ | ---------------------------- | ---- | ---- | ---------------------------- |
+| alias  | string                       | No  | No  | Alias of the table in the database.|
+| name   | string                       | No  | No  | Table name.                      |
+| fields | Array&lt;[Field](#field)&gt; | No  | No  | Field information in the table.  |
 
 ## Database
 
@@ -197,11 +203,11 @@ Represents the database information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name  | Type                        | Mandatory| Description                            |
-| ------ | ---------------------------- | ---- | -------------------------------- |
-| name   | string                       | Yes  | Name of the database.                    |
-| alias  | string                       | Yes  | Alias of the database on the server.      |
-| tables | Array&lt;[Table](#table)&gt; | Yes  | Table in the database, including the detailed data information.|
+| Name  | Type                        | Read-Only| Optional| Description                            |
+| ------ | ---------------------------- | ---- | ---- | -------------------------------- |
+| name   | string                       | No  | No  | Name of the database.                    |
+| alias  | string                       | No  | No  | Alias of the database on the server.      |
+| tables | Array&lt;[Table](#table)&gt; | No  | No  | Table in the database, including the detailed data information.|
 
 ## AppSchema
 
@@ -209,11 +215,11 @@ Represents the application database schema.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name      | Type                                | Mandatory| Description              |
-| ---------- | ------------------------------------ | ---- | ------------------ |
-| bundleName | string                               | Yes  | Bundle name of the application.        |
-| version    | number                               | Yes  | Version of the database schema.|
-| databases  | Array&lt;[Database](#database)&gt; | Yes  | Database information of the application.|
+| Name      | Type                                | Read-Only| Optional| Description              |
+| ---------- | ------------------------------------ | ---- | ---- | ------------------ |
+| bundleName | string                               | No  | No  | Bundle name of the application.        |
+| version    | number                               | No  | No  | Version of the database schema.|
+| databases  | Array&lt;[Database](#database)&gt;   | No  | No  | Database information of the application.|
 
 ## SubscribeId
 
@@ -221,10 +227,10 @@ Represents the subscription ID information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name         | Type  | Mandatory| Description                  |
-| ------------- | ------ | ---- | ---------------------- |
-| databaseAlias | string | Yes  | Name of the database on the server.|
-| id            | string | Yes  | Subscription ID.             |
+| Name         | Type  | Read-Only| Optional| Description                  |
+| ------------- | ------ | ---- | ---- | ---------------------- |
+| databaseAlias | string | No  | No  | Name of the database on the server.|
+| id            | string | No  | No  | Subscription ID.             |
 
 ## SubscribeInfo
 
@@ -232,10 +238,10 @@ Represents the subscription information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name          | Type                                                        | Mandatory| Description                |
-| -------------- | ------------------------------------------------------------ | ---- | -------------------- |
-| expirationTime | number                                                       | Yes  | Subscription expiration time, in ms.|
-| subscribe      | Record&lt;string, Array&lt;[SubscribeId](#subscribeid)&gt;&gt; | Yes  | Subscription information.          |
+| Name          | Type                                                        | Read-Only| Optional| Description                |
+| -------------- | ------------------------------------------------------------   | ---- | ---- | -------------------- |
+| expirationTime | number                                                         | No  | No  | Subscription expiration time, in ms.|
+| subscribe      | Record&lt;string, Array&lt;[SubscribeId](#subscribeid)&gt;&gt; | No  | No  | Subscription information.          |
 
 ## LockInfo
 
@@ -243,10 +249,10 @@ Represents the cloud database lock information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name    | Type  | Mandatory| Description                           |
-| -------- | ------ | ---- | ------------------------------- |
-| interval | number | Yes  | Lock period of the cloud database, in seconds.|
-| lockId   | number | Yes  | Lock ID.                         |
+| Name    | Type  | Read-Only| Optional| Description                           |
+| -------- | ------ | ---- | ---- | ------------------------------- |
+| interval | number | No  | No   | Lock period of the cloud database, in seconds.|
+| lockId   | number | No  | No   | Lock ID.                         |
 
 ## ErrorCode
 
@@ -290,7 +296,7 @@ Creates a [RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) instance b
 import { Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   async connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject> {
     // ...
@@ -342,12 +348,12 @@ Creates a [RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) instance b
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   async connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject> {
     console.info(`connect share center, bundle: ${bundleName}`);
@@ -379,11 +385,11 @@ Creates a [RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) instance b
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   // ...
   async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
@@ -418,11 +424,11 @@ Creates a [RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) instance b
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
+class MyAssetLoader implements cloudExtension.AssetLoader {
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   // ...   
   async connectAssetLoader(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
@@ -442,7 +448,7 @@ Provides APIs for performing cloud database operations.
 
 generateId(count: number): Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt;
 
-Generates IDs for the data records inserted to the cloud database. The IDs are unique.
+Generates IDs for the data records inserted to the cloud database. The IDs are unique. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -461,7 +467,7 @@ Generates IDs for the data records inserted to the cloud database. The IDs are u
 **Example**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   async generateId(count: number): Promise<cloudExtension.Result<Array<string>>> {
     console.info(`generate id, count: ${count}`);
     let result = new Array<string>();
@@ -480,7 +486,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 update(table: string, values: Array&lt;Record&lt;string, CloudType>>, extensions: Array&lt;Record&lt;string, CloudType>> ): Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType>>>>
 
-Updates data in the cloud.
+Updates data in the cloud. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -501,7 +507,7 @@ Updates data in the cloud.
 **Example**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extensions: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
     console.info(`update, table: ${table}`);
@@ -518,7 +524,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 insert(table: string, values: Array<Record<string, CloudType>>, extensions: Array<Record<string, CloudType>>): Promise<Array<Result<Record<string, CloudType&gt;&gt;&gt;&gt;
 
-Inserts data to a cloud database table.
+Inserts data to a cloud database table. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -526,7 +532,7 @@ Inserts data to a cloud database table.
 
 | Name    | Type                                                      | Mandatory| Description                    |
 | ---------- | ---------------------------------------------------------- | ---- | ------------------------ |
-| table      | string                                                     | Yes  | Name of the target table.                  |
+| table      | string                                                     | Yes  | Table name.                  |
 | values     | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | Yes  | Data to insert.      |
 | extensions | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | Yes  | Extended information about the current data.|
 
@@ -539,7 +545,7 @@ Inserts data to a cloud database table.
 **Example**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extensions: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
     console.info(`insert, table: ${table}`);
@@ -556,7 +562,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 delete(table: string, extensions: Array&lt;Record&lt;string, CloudType>> ): Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType&gt;&gt;&gt;&gt;
 
-Deletes data from a cloud database table.
+Deletes data from a cloud database table. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -564,7 +570,7 @@ Deletes data from a cloud database table.
 
 | Name    | Type                                                     | Mandatory| Description                    |
 | ---------- | --------------------------------------------------------- | ---- | ------------------------ |
-| table      | string                                                    | Yes  | Name of the target table.                  |
+| table      | string                                                    | Yes  | Table name.                  |
 | extensions | Array&lt;Record&lt;string,[CloudType](#cloudtype)&gt;&gt; | Yes  | Extended information about the current data.|
 
 **Return value**
@@ -576,13 +582,13 @@ Deletes data from a cloud database table.
 **Example**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async delete(table: string, extensions: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
     console.info(`delete, table: ${table}`);
     let deleteRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>> = [];
     // ...
-    // Return the operation result.
+    // Returns the result of deleting data.
     return deleteRes;
   }
   // ...
@@ -593,7 +599,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCursor: string): Promise&lt;Result&lt;CloudData&gt;&gt;
 
-Queries data in a cloud database table.
+Queries data in a cloud database table. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -615,12 +621,12 @@ Queries data in a cloud database table.
 **Example**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async query(table: string, fields: Array<string>, queryCount: number, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
     console.info(`query, table: ${table}`);
     // ...
-    // Return the operation result.
+    // Return the result of querying data.
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'query succeeded',
@@ -639,7 +645,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 lock(): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
-Locks this cloud database.
+Locks this cloud database. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -654,12 +660,12 @@ Locks this cloud database.
 ```ts
 let test_time: number = 10;
 let test_lockId: number = 1;
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
     console.info(`DB lock`);
     // ...
-    // Return the operation result.
+    // Returns the result of locking data.
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'lock succeeded',
@@ -677,7 +683,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 heartbeat(lockId: number): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
-Extends the lock period of the database.
+Extends the lock period of the database. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -698,12 +704,12 @@ Extends the lock period of the database.
 ```ts
 let test_lockId: number = 1;
 let test_time: number = 10;
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async heartbeat(lockId: number): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
     console.info(`heartbeat lock`);
     // ...
-    // Return the operation result.
+    // Return the heartbeat check result.
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'heartbeat succeeded',
@@ -721,7 +727,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 unlock(lockId: number): Promise&lt;Result&lt;boolean&gt;&gt;
 
-Unlocks a cloud database.
+Unlocks a cloud database. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -740,12 +746,12 @@ Unlocks a cloud database.
 **Example**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
     // ...
   async unlock(lockId: number): Promise<cloudExtension.Result<boolean>> {
     console.info(`unlock`);
     // ...
-    // Return the operation result.
+    // Returns the result of unlocking data.
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'unlock succeeded',
@@ -782,7 +788,7 @@ import { rpc } from '@kit.IPCKit';
 let test_space: number = 100;
 let test_userId: number = 1;
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   // ...
   async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
@@ -816,7 +822,7 @@ Obtains brief application information. This API uses a promise to return the res
 **Example**
 
 ```ts
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   // ...
   async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
@@ -858,7 +864,7 @@ Obtains the application database schema information. This API uses a promise to 
 **Example**
 
 ```ts
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {
   }
   // ...
@@ -903,7 +909,7 @@ Subscribes to data. This API uses a promise to return the result.
 
 ```ts
 let test_time: number = 10;
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {
   }
   // ...
@@ -946,7 +952,7 @@ Unsubscribes from data changes in the cloud. This API uses a promise to return t
 | Promise&lt;number&gt; | Promise used to return the result.|
 
 ```ts
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {
   }
   // ...
@@ -982,11 +988,11 @@ Connects to a cloud database by obtaining a [RemoteObject](../apis-ipc-kit/js-ap
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
     // ...
   async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
@@ -1022,11 +1028,11 @@ You can use this API to connect to the asset loader.
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
+class MyAssetLoader implements cloudExtension.AssetLoader {
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   async connectAssetLoader(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
       // ...
@@ -1062,12 +1068,12 @@ Connects to ShareCenter by obtaining a [RemoteObject](../apis-ipc-kit/js-apis-rp
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   async connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject> {
     console.info(`connect share center, bundle: ${bundleName}`);
@@ -1084,7 +1090,7 @@ Provides APIs for uploading and downloading assets.
 
 download(table: string, gid: string, prefix: string, assets: Array&lt;CloudAsset&gt;): Promise&lt;Array&lt;Result&lt;CloudAsset&gt;&gt;&gt;
 
-Downloads assets.
+Downloads assets. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -1106,7 +1112,7 @@ Downloads assets.
 **Example**
 
 ```ts
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
+class MyAssetLoader implements cloudExtension.AssetLoader {
   async download(table: string, gid: string, prefix: string, assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>> {
     console.info(`download asset loader, table: ${table}, gid: ${gid}, prefix: ${prefix}`);
     let downloadRes = Array<cloudExtension.Result<cloudExtension.CloudAsset>>();
@@ -1120,7 +1126,7 @@ export default class MyAssetLoader implements cloudExtension.AssetLoader {
 
 upload(table: string, gid: string, assets: Array&lt;CloudAsset&gt;): Promise&lt;Array&lt;Result&lt;CloudAsset&gt;&gt;&gt;
 
-Uploads assets.
+Uploads assets. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -1141,7 +1147,7 @@ Uploads assets.
 **Example**
 
 ```ts
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
+class MyAssetLoader implements cloudExtension.AssetLoader {
   async upload(table: string, gid: string, assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>> {
     console.info(`upload asset loader, table: ${table}, gid: ${gid}`);
     let uploadRes = Array<cloudExtension.Result<cloudExtension.CloudAsset>>();
@@ -1186,7 +1192,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async share(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
     Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>> {
@@ -1241,7 +1247,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async unshare(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
     Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>> {
@@ -1293,7 +1299,7 @@ Exits a device-cloud share. This API uses a promise to return the result. The ap
 ```ts
 import { cloudData } from '@kit.ArkData';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async exit(userId: number, bundleName: string, sharingResource: string):
     Promise<cloudExtension.Result<void>> {
@@ -1340,7 +1346,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async changePrivilege(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
     Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>> {
@@ -1394,7 +1400,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async queryParticipants(userId: number, bundleName: string, sharingResource: string):
     Promise<cloudExtension.Result<Array<Participant>>> {
@@ -1468,7 +1474,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async queryParticipantsByInvitation(userId: number, bundleName: string, invitationCode: string):
     Promise<cloudExtension.Result<Array<Participant>>> {
@@ -1541,7 +1547,7 @@ Confirms the invitation for a share. This API uses a promise to return the resul
 ```ts
 import { cloudData } from '@kit.ArkData';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async confirmInvitation(userId: number, bundleName: string, invitationCode: string, state: cloudData.sharing.State):
     Promise<cloudExtension.Result<string>> {
@@ -1587,7 +1593,7 @@ Changes the confirmation state of a share invitation. This API uses a promise to
 ```ts
 import { cloudData } from '@kit.ArkData';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async changeConfirmation(userId: number, bundleName: string, sharingResource: string, state: cloudData.sharing.State):
     Promise<cloudExtension.Result<void>> {
@@ -1651,14 +1657,14 @@ class MyCloudDB implements cloudExtension.CloudDB {
     console.info(`delete, table: ${table}`);
     let deleteRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>> = [];
     // ...
-    // Return the operation result.
+    // Returns the result of deleting data.
     return deleteRes;
   }
 
   async query(table: string, fields: Array<string>, queryCount: number, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
     console.info(`query, table: ${table}`);
     // ...
-    // Return the operation result.
+    // Return the result of querying data.
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'query succeeded',
@@ -1673,7 +1679,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
   async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
     console.info(`DB lock`);
     // ...
-    // Return the operation result.
+    // Returns the result of locking data.
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'lock succeeded',
@@ -1687,7 +1693,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
   async heartbeat(lockId: number): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
     console.info(`heartbeat lock`);
     // ...
-    // Return the operation result.
+    // Return the heartbeat check result.
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'heartbeat succeeded',
@@ -1701,7 +1707,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
   async unlock(lockId: number): Promise<cloudExtension.Result<boolean>> {
     console.info(`unlock`);
     // ...
-    // Return the operation result.
+    // Returns the result of unlocking data.
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'unlock succeeded',
@@ -1953,8 +1959,7 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 
   async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: number): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
-    console.info
-    (`subscribe expirationTime: ${expirationTime}`);
+    console.info(`subscribe expirationTime: ${expirationTime}`);
     // ...
     return {
       code: cloudExtension.ErrorCode.SUCCESS,

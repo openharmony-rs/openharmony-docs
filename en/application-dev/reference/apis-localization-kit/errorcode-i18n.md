@@ -1,5 +1,12 @@
 # I18N Error Codes
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -16,7 +23,7 @@ This error code is reported if an invalid parameter value is passed to the API.
 
 **Possible Causes**
 
-Parameter verification ha failed. The probable cause is that the value of an input parameter is invalid.
+Parameter verification has failed. The probable cause is that the value of an input parameter is invalid.
  
 **Solution**
 
@@ -35,7 +42,7 @@ This error code is reported if an invalid parameter value is passed to the API.
 
 **Possible Causes**
 
-Parameter verification ha failed. The probable cause is that the value of an input parameter is invalid.
+Parameter verification has failed. The probable cause is that the value of an input parameter is invalid.
  
 **Solution**
 

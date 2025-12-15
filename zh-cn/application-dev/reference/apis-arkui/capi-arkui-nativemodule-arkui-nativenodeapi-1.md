@@ -1,4 +1,14 @@
 # ArkUI_NativeNodeAPI_1
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_NativeNodeAPI_1
+```
 
 ## 概述
 
@@ -68,7 +78,7 @@ ArkUI提供的Native侧Node类型接口集合。Node模块相关接口需要在�
 
 ### createNode()
 
-```
+```c
 ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)
 ```
 
@@ -91,18 +101,23 @@ ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)
 
 ### disposeNode()
 
-```
+```c
 void (*disposeNode)(ArkUI_NodeHandle node)
 ```
 
 **描述：**
 
-
 销毁组件指针指向的组件对象。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 组件指针对象。 |
 
 ### addChild()
 
-```
+```c
 int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 ```
 
@@ -122,11 +137,11 @@ int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 
 | 类型 | 说明                                                                                                                                                                                                                                                                                                                                     |
 | -- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点，<br>             进行设置属性、重置属性、设置事件与新增或修改子节点操作。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点进行设置属性、重置属性、设置事件与新增或修改子节点操作。 <br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。|
 
 ### removeChild()
 
-```
+```c
 int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 ```
 
@@ -146,11 +161,11 @@ int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点，<br>             进行设置属性、重置属性、设置事件与新增或修改子节点操作。<br>             ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST NodeAdapter已经存在。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点进行设置属性、重置属性、设置事件与新增或修改子节点操作。<br>             ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST NodeAdapter已经存在。 |
 
 ### insertChildAfter()
 
-```
+```c
 int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)
 ```
 
@@ -171,11 +186,11 @@ int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点，<br>             进行设置属性、重置属性、设置事件与新增或修改子节点操作。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点进行设置属性、重置属性、设置事件与新增或修改子节点操作。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。|
 
 ### insertChildBefore()
 
-```
+```c
 int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)
 ```
 
@@ -196,11 +211,11 @@ int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ar
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点，<br>             进行设置属性、重置属性、设置事件与新增或修改子节点操作。<br>             ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST NodeAdapter已经存在。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点进行设置属性、重置属性、设置事件与新增或修改子节点操作。<br>             ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST NodeAdapter已经存在。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。 |
 
 ### insertChildAt()
 
-```
+```c
 int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position)
 ```
 
@@ -221,11 +236,11 @@ int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点，<br>             进行设置属性、重置属性、设置事件与新增或修改子节点操作。<br>             ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST NodeAdapter已经存在。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点进行设置属性、重置属性、设置事件与新增或修改子节点操作。<br>             ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST NodeAdapter已经存在。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。 |
 
 ### setAttribute()
 
-```
+```c
 int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)
 ```
 
@@ -246,11 +261,11 @@ int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 系统中未找到Native接口的动态实现库。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点，<br>             进行设置属性、重置属性、设置事件与新增或修改子节点操作。<br>             ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST NodeAdapter已经存在。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 系统中未找到Native接口的动态实现库。<br>             [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点进行设置属性、重置属性、设置事件与新增或修改子节点操作。<br>             ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST NodeAdapter已经存在。 |
 
 ### getAttribute()
 
-```
+```c
 const ArkUI_AttributeItem* (*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)
 ```
 
@@ -274,7 +289,7 @@ const ArkUI_AttributeItem* (*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttr
 
 ### resetAttribute()
 
-```
+```c
 int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)
 ```
 
@@ -294,11 +309,11 @@ int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 系统中未找到Native接口的动态实现库。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点，<br>             进行设置属性、重置属性、设置事件与新增或修改子节点操作。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 系统中未找到Native接口的动态实现库。<br>             [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点进行设置属性、重置属性、设置事件与新增或修改子节点操作。 |
 
 ### registerNodeEvent()
 
-```
+```c
 int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, int32_t targetId, void* userData)
 ```
 
@@ -320,11 +335,11 @@ int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventTyp
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 系统中未找到Native接口的动态实现库。<br>             [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点，<br>             进行设置属性、重置属性、设置事件与新增或修改子节点操作。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 系统中未找到Native接口的动态实现库。<br>             [ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) 禁止对BuilderNode生成的节点进行设置属性、重置属性、设置事件与新增或修改子节点操作。 |
 
 ### unregisterNodeEvent()
 
-```
+```c
 void (*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)
 ```
 
@@ -342,7 +357,7 @@ void (*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType
 
 ### registerNodeEventReceiver()
 
-```
+```c
 void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))
 ```
 
@@ -357,7 +372,7 @@ void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))
 
 ### unregisterNodeEventReceiver()
 
-```
+```c
 void (*unregisterNodeEventReceiver)()
 ```
 
@@ -368,7 +383,7 @@ void (*unregisterNodeEventReceiver)()
 
 ### markDirty()
 
-```
+```c
 void (*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)
 ```
 
@@ -386,7 +401,7 @@ void (*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)
 
 ### getTotalChildCount()
 
-```
+```c
 uint32_t (*getTotalChildCount)(ArkUI_NodeHandle node)
 ```
 
@@ -409,7 +424,7 @@ uint32_t (*getTotalChildCount)(ArkUI_NodeHandle node)
 
 ### getChildAt()
 
-```
+```c
 ArkUI_NodeHandle (*getChildAt)(ArkUI_NodeHandle node, int32_t position)
 ```
 
@@ -433,7 +448,7 @@ ArkUI_NodeHandle (*getChildAt)(ArkUI_NodeHandle node, int32_t position)
 
 ### getFirstChild()
 
-```
+```c
 ArkUI_NodeHandle (*getFirstChild)(ArkUI_NodeHandle node)
 ```
 
@@ -456,7 +471,7 @@ ArkUI_NodeHandle (*getFirstChild)(ArkUI_NodeHandle node)
 
 ### getLastChild()
 
-```
+```c
 ArkUI_NodeHandle (*getLastChild)(ArkUI_NodeHandle node)
 ```
 
@@ -479,7 +494,7 @@ ArkUI_NodeHandle (*getLastChild)(ArkUI_NodeHandle node)
 
 ### getPreviousSibling()
 
-```
+```c
 ArkUI_NodeHandle (*getPreviousSibling)(ArkUI_NodeHandle node)
 ```
 
@@ -502,7 +517,7 @@ ArkUI_NodeHandle (*getPreviousSibling)(ArkUI_NodeHandle node)
 
 ### getNextSibling()
 
-```
+```c
 ArkUI_NodeHandle (*getNextSibling)(ArkUI_NodeHandle node)
 ```
 
@@ -525,7 +540,7 @@ ArkUI_NodeHandle (*getNextSibling)(ArkUI_NodeHandle node)
 
 ### registerNodeCustomEvent()
 
-```
+```c
 int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void* userData)
 ```
 
@@ -551,7 +566,7 @@ int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventT
 
 ### unregisterNodeCustomEvent()
 
-```
+```c
 void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType)
 ```
 
@@ -569,7 +584,7 @@ void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventTy
 
 ### registerNodeCustomEventReceiver()
 
-```
+```c
 void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEvent* event))
 ```
 
@@ -584,7 +599,7 @@ void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEv
 
 ### unregisterNodeCustomEventReceiver()
 
-```
+```c
 void (*unregisterNodeCustomEventReceiver)()
 ```
 
@@ -595,7 +610,7 @@ void (*unregisterNodeCustomEventReceiver)()
 
 ### setMeasuredSize()
 
-```
+```c
 int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)
 ```
 
@@ -620,14 +635,14 @@ int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)
 
 ### setLayoutPosition()
 
-```
+```c
 int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)
 ```
 
 **描述：**
 
 
-在布局回调函数中设置组件的位置。
+在布局回调函数中设置组件的位置。该接口优先级低于NODE_POSITION。
 
 **参数：**
 
@@ -645,7 +660,7 @@ int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t p
 
 ### getMeasuredSize()
 
-```
+```c
 ArkUI_IntSize (*getMeasuredSize)(ArkUI_NodeHandle node)
 ```
 
@@ -668,7 +683,7 @@ ArkUI_IntSize (*getMeasuredSize)(ArkUI_NodeHandle node)
 
 ### getLayoutPosition()
 
-```
+```c
 ArkUI_IntOffset (*getLayoutPosition)(ArkUI_NodeHandle node)
 ```
 
@@ -691,7 +706,7 @@ ArkUI_IntOffset (*getLayoutPosition)(ArkUI_NodeHandle node)
 
 ### measureNode()
 
-```
+```c
 int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint)
 ```
 
@@ -715,7 +730,7 @@ int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint
 
 ### layoutNode()
 
-```
+```c
 int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)
 ```
 
@@ -740,7 +755,7 @@ int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t position
 
 ### addNodeEventReceiver()
 
-```
+```c
 int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))
 ```
 
@@ -764,7 +779,7 @@ int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(Ark
 
 ### removeNodeEventReceiver()
 
-```
+```c
 int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))
 ```
 
@@ -788,7 +803,7 @@ int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(
 
 ### addNodeCustomEventReceiver()
 
-```
+```c
 int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))
 ```
 
@@ -812,7 +827,7 @@ int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceive
 
 ### removeNodeCustomEventReceiver()
 
-```
+```c
 int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))
 ```
 
@@ -836,7 +851,7 @@ int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventRece
 
 ### setUserData()
 
-```
+```c
 int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)
 ```
 
@@ -860,7 +875,7 @@ int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)
 
 ### getUserData()
 
-```
+```c
 void* (*getUserData)(ArkUI_NodeHandle node)
 ```
 
@@ -883,7 +898,7 @@ void* (*getUserData)(ArkUI_NodeHandle node)
 
 ### setLengthMetricUnit()
 
-```
+```c
 int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -907,7 +922,7 @@ int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit uni
 
 ### getParent()
 
-```
+```c
 ArkUI_NodeHandle (*getParent)(ArkUI_NodeHandle node)
 ```
 
@@ -930,7 +945,7 @@ ArkUI_NodeHandle (*getParent)(ArkUI_NodeHandle node)
 
 ### removeAllChildren()
 
-```
+```c
 int32_t (*removeAllChildren)(ArkUI_NodeHandle parent)
 ```
 

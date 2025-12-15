@@ -1,4 +1,10 @@
 # scsi_peripheral_types.h
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -45,7 +51,7 @@
 
 ### ScsiPeripheral_DdkErrCode
 
-```
+```c
 enum ScsiPeripheral_DdkErrCode
 ```
 
@@ -70,7 +76,7 @@ SCSI Peripheral DDK错误码。
 
 ### ScsiPeripheral_Status
 
-```
+```c
 enum ScsiPeripheral_Status
 ```
 

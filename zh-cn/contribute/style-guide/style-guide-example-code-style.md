@@ -1,4 +1,12 @@
 # 示例代码风格
+
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @ge-yafang-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @ge-yafang-->
+
 本规范适用于文档中ArkTS、JavaScript和C/C++等编程语言的示例代码片段，旨在提高OpenHarmony文档示例代码的可读性、可维护性，以及风格一致性。
 
 ## 代码规范
@@ -7,7 +15,7 @@
 
 【描述】
 
-文档的示例代码需要遵循[OpenHarmony应用ArkTS编程规范](../../contribute/OpenHarmony-ArkTS-coding-style-guide.md)、[JavaScript语言编程规范](../OpenHarmony-JavaScript-coding-style-guide.md)、[C语言编程规范](../OpenHarmony-c-coding-style-guide.md)和[C++语言编程规范](../OpenHarmony-cpp-coding-style-guide.md)基本的编码规范，包括命名规范、代码格式和代码规范等。
+文档的示例代码需要遵循[OpenHarmony应用ArkTS编程规范](../../application-dev/quick-start/arkts-coding-style-guide.md)、[JavaScript语言编程规范](../OpenHarmony-JavaScript-coding-style-guide.md)、[C语言编程规范](../OpenHarmony-c-coding-style-guide.md)和[C++语言编程规范](../OpenHarmony-cpp-coding-style-guide.md)基本的编码规范，包括命名规范、代码格式和代码规范等。
 
 ### 【规则】每个接口提供示例代码
 
@@ -238,6 +246,28 @@ import { promptAction } from '@kit.ArkUI';
 import { promptAction as prompt } from '@kit.ArkUI';
 ```
 
+### 【规则】统一使用Kit化的导包风格
+
+【描述】
+
+针对相关开放能力，可直接导入接口模块来使用该模块内的能力，也可以通过导入Kit的方式使用其开放能力。
+
+对于同时支持这两种方式的模块，使用其相关能力时，推荐使用Kit化的导入方式。
+
+【正例】
+
+```ts
+// 导入Kit使用对应能力
+import { UIAbility } from '@kit.AbilityKit';
+```
+
+【反例】
+
+```ts
+// 直接导入接口模块使用对应能力
+import UIAbility from '@ohos.app.ability.UIAbility';
+```
+
 ### 【规则】UI组件宽高等属性不加单位
 
 【描述】
@@ -290,7 +320,7 @@ Text('Hello World')
 
 【描述】
 
-对代码示例、命令行使用代码样式。在Markdown中，使用```呈现代码样式，同时指定语言类型。
+对代码示例、命令行使用代码样式。在Markdown中，使用\`\`\`呈现代码样式，同时指定语言类型。
 
 代码染色是指在编辑器中对代码进行不同颜色的标记，以区分不同语法元素的功能。例如在编辑器中对不同的关键字、变量名、注释等使用不同的颜色进行标记，可以让代码更加易读易懂。
 

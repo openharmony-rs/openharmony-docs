@@ -1,11 +1,41 @@
 # 使用扩展的Node-API接口在当前线程中创建、切换和销毁上下文环境
-在应用被拉起时，应用的主线程即为一个ArkTS线程，该线程中存在一个由系统管理的上下文环境，当ArkTS需要和C/C++交互时，在C/C++侧，napi_env即代表该上下文环境，每个上下文环境中存在着独立的globalThis对象。开发者可以通过使用Node-API中的扩展接口napi_create_ark_context和napi_destroy_ark_context在当前线程中创建和销毁新的上下文环境，这些新创建的上下文环境和线程中原始的上下文环境共用一个运行时虚拟机。需要注意的是napi_create_ark_context接口仅仅是创建新的上下文环境，而不是创建一个新的运行时，同时通过该接口创建上下文环境，需要通过napi_destroy_ark_context接口销毁，否则会造成内存泄漏。当然ArkTS线程的原始上下文环境不能通过napi_destroy_ark_context接口销毁。当需要切换到指定的上下文环境时，可以调用Node-API中的扩展接口napi_switch_ark_context来切换到指定的上下文环境。开发者可以在一个新的上下文环境中访问globalThis上的某些属性方法，也可以在访问完之后，切回到原先的上下文环境保证上下文环境的隔离。
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
+在应用被拉起时，应用的主线程即为一个ArkTS线程，该线程中存在一个由系统管理的上下文环境，当ArkTS需要和C/C++交互时，在C/C++侧，napi_env即代表该上下文环境，每个上下文环境中存在着独立的globalThis对象。
+
+开发者可以通过使用Node-API中的扩展接口napi_create_ark_context和napi_destroy_ark_context在当前线程中创建和销毁新的上下文环境，这些新创建的上下文环境和线程中原始的上下文环境共用一个运行时虚拟机。
+
+需要注意的是napi_create_ark_context接口仅仅是创建新的上下文环境，而不是创建一个新的运行时，同时通过该接口创建上下文环境，需要通过napi_destroy_ark_context接口销毁，否则会造成内存泄漏。
+
+当然ArkTS线程的原始上下文环境不能通过napi_destroy_ark_context接口销毁。
+
+当需要切换到指定的上下文环境时，可以调用Node-API中的扩展接口napi_switch_ark_context来切换到指定的上下文环境。
+
+开发者可以在一个新的上下文环境中访问globalThis上的某些属性方法，也可以在访问完之后，切回到原先的上下文环境保证上下文环境的隔离。
 
 ## 场景介绍
-开发者可以通过napi_create_ark_context接口在当前的线程中创建新的上下文环境，该上下文环境拥有独立的globalThis对象。这意味着当前线程上原始的上下文环境和新创建的上下文环境是相互隔离的，即上下文环境中的globalThis对象不同。开发者可以通过新创建的上下文环境进行模块化加载，加载生成的模块化对象将挂载在当前上下文环境中的globalThis对象上，不同的模块加载在不同的上下文环境中，可以避免一个模块对globalThis对象的上属性的修改影响到另一个模块对globalThis对象上属性的访问。当然部分的Node-API标准接口和扩展接口也进行上下文的适配，这意味着调用这些Node-API的接口，上下文环境会根据接口入参的napi_env来主动进行上下文的切换动作，开发者不需要主动调用napi_switch_ark_context来进行上下文环境的切换，需要注意的是从C++/C侧回到ArkTS侧时，要主动调用napi_switch_ark_context接口将上下文环境切回到对应的上下文环境，否则会造成ArkTS侧的代码执行在另外一个上下文环境导致不可预知的稳定性问题。
+开发者可以通过napi_create_ark_context接口在当前的线程中创建新的上下文环境，该上下文环境拥有独立的globalThis对象。
+
+这意味着当前线程上原始的上下文环境和新创建的上下文环境是相互隔离的，即上下文环境中的globalThis对象不同。
+
+开发者可以通过新创建的上下文环境进行模块化加载，加载生成的模块化对象将挂载在当前上下文环境中的globalThis对象上，不同的模块加载在不同的上下文环境中，可以避免一个模块对globalThis对象上的属性的修改影响到另一个模块对globalThis对象上属性的访问。
+
+当然部分的Node-API标准接口和扩展接口也进行上下文的适配，这意味着调用这些Node-API的接口，上下文环境会根据接口入参的napi_env来主动进行上下文的切换动作，开发者不需要主动调用napi_switch_ark_context来进行上下文环境的切换。
+
+需要注意的是从C++/C侧回到ArkTS侧时，要主动调用napi_switch_ark_context接口将上下文环境切回到对应的上下文环境，否则会造成ArkTS侧的代码执行在另外一个上下文环境导致不可预知的稳定性问题。
 
 ## 支持多运行时上下文环境调用的NAPI接口
-下列表格中的NAPI接口都支持在多上下文的环境中执行，其中部分NAPI接口会主动进行上下文的切换，即使调用方没有主动调用napi_switch_ark_context来切换运行时上下文，这部分接口仍然可以通过比较当前运行的上下文环境和接口指定的运行时环境是否一致来决定是否切换上下文环境，如果上下文环境不一致，这些NAPI接口会将当前的运行时环境切换成接口参数指定的上下文环境。当然不涉及主动切换上下文环境的接口意味着这部分接口和运行时上下文无关，使用任意一个有效的上下文环境都行正常执行。
+下列表格中的NAPI接口都支持在多上下文的环境中执行，其中部分NAPI接口会主动进行上下文的切换。
+
+即使调用方没有主动调用napi_switch_ark_context来切换运行时上下文，这部分接口仍然可以通过比较当前运行的上下文环境和接口指定的运行时环境是否一致来决定是否切换上下文环境。
+
+如果上下文环境不一致，这些NAPI接口会将当前的运行时环境切换成接口参数指定的上下文环境。
+
+当然不涉及主动切换上下文环境的接口意味着这部分接口和运行时上下文无关，使用任意一个有效的上下文环境都行正常执行。
 
 | 接口 | 是否会主动进行上下文切换 |
 | -------- | -------- |
@@ -38,7 +68,7 @@
 |napi_ref_threadsafe_function | 否 |
 |napi_add_async_cleanup_hook | 否 |
 |napi_remove_async_cleanup_hook | 否 |
-node_api_get_module_file_name | 否 |
+|node_api_get_module_file_name | 否 |
 |napi_get_last_error_info | 否 |
 |napi_get_undefined | 否 |
 |napi_get_null | 否 |
@@ -54,6 +84,8 @@ node_api_get_module_file_name | 否 |
 |napi_create_string_latin1 | 否 |
 |napi_create_string_utf8 | 否 |
 |napi_create_string_utf16 | 否 |
+|napi_create_external_string_ascii | 否 |
+|napi_create_external_string_utf16 | 否 |
 |napi_create_symbol | 否 |
 |napi_create_function | 是 |
 |napi_create_error | 是 |
@@ -185,6 +217,9 @@ node_api_get_module_file_name | 否 |
 |napi_run_event_loop | napi_invalid_arg |
 |napi_stop_event_loop | napi_invalid_arg |
 |napi_get_uv_event_loop | napi_invalid_arg |
+|napi_create_strong_sendable_reference | napi_invalid_arg |
+|napi_delete_strong_sendable_reference | napi_invalid_arg |
+|napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
 ### 示例代码
 - 模块注册
@@ -244,11 +279,6 @@ node_api_get_module_file_name | 否 |
         args2[0] = getLocation2;
 
         status = napi_call_function(newEnv2, nullptr, args[0], 1, args2, &result);
-        if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "napi_get_global of env failed");
-            return nullptr;
-        }
-        status = napi_call_function(newEnv2, globalObj, args[0], 1, args2, &result);
         if (status != napi_ok) {
             OH_LOG_INFO(LOG_APP, "call function of env failed");
         }
@@ -322,7 +352,7 @@ node_api_get_module_file_name | 否 |
 
 - 编译配置
 1. CMakeLists.txt文件需要按照如下配置
-    ```
+    ```txt
     // CMakeLists.txt
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.5.0)

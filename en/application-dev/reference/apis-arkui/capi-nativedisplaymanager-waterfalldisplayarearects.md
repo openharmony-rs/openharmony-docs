@@ -1,8 +1,18 @@
 # NativeDisplayManager_WaterfallDisplayAreaRects
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} NativeDisplayManager_WaterfallDisplayAreaRects
+```
 
 ## Overview
 
-The NativeDisplayManager_WaterfallDisplayAreaRects struct describes the curved area on a waterfall display.
+The struct describes the curved area on a waterfall display.
 
 **Since**: 12
 

@@ -1,12 +1,18 @@
 # Interface (AudioManager)
-
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 This interface implements audio volume and device management.
 
 Before calling any API in AudioManager, you must use [getAudioManager](arkts-apis-audio-f.md#audiogetaudiomanager) to obtain an AudioManager instance.
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -425,7 +431,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume to set. The value range can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -465,7 +471,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume to set. The value range can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Return value**
@@ -498,7 +504,7 @@ Obtains the volume of a stream. This API uses an asynchronous callback to return
 
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.      |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
 | callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Example**
@@ -531,7 +537,7 @@ Obtains the volume of a stream. This API uses a promise to return the result.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -563,7 +569,7 @@ Obtains the minimum volume allowed for a stream. This API uses an asynchronous c
 
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.      |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
 | callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume obtained; otherwise, **err** is an error object.|
 
 **Example**
@@ -596,7 +602,7 @@ Obtains the minimum volume allowed for a stream. This API uses a promise to retu
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -628,7 +634,7 @@ Obtains the maximum volume allowed for a stream. This API uses an asynchronous c
 
 | Name    | Type                               | Mandatory| Description                  |
 | ---------- | ----------------------------------- | ---- | ---------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.          |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.          |
 | callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume obtained; otherwise, **err** is an error object.|
 
 **Example**
@@ -661,7 +667,7 @@ Obtains the maximum volume allowed for a stream. This API uses a promise to retu
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -695,8 +701,8 @@ When the minimum volume of a stream cannot be set to 0, muting the stream is not
 
 | Name    | Type                               | Mandatory| Description                                 |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                         |
-| mute       | boolean                             | Yes  | Whether to mute the stream. The value **true** means to mute the stream, and **false** means the opposite.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                         |
+| mute       | boolean                             | Yes  | Whether to mute the stream. **true** to mute, **false** otherwise.|
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -731,8 +737,8 @@ When the minimum volume of a stream cannot be set to 0, muting the stream is not
 
 | Name    | Type                               | Mandatory| Description                                 |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                         |
-| mute       | boolean                             | Yes  | Whether to mute the stream. The value **true** means to mute the stream, and **false** means the opposite.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                         |
+| mute       | boolean                             | Yes  | Whether to mute the stream. **true** to mute, **false** otherwise.|
 
 **Return value**
 
@@ -765,7 +771,7 @@ Checks whether a stream is muted. This API uses an asynchronous callback to retu
 
 | Name    | Type                               | Mandatory| Description                                           |
 | ---------- | ----------------------------------- | ---- | ----------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                   |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                   |
 | callback   | AsyncCallback&lt;boolean&gt;        | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is muted or **false** if not muted; otherwise, **err** is an error object.|
 
 **Example**
@@ -798,13 +804,13 @@ Checks whether a stream is muted. This API uses a promise to return the result.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
 | Type                  | Description                                                  |
 | ---------------------- | ------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the stream is muted, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is muted. **true** if muted, **false** otherwise.|
 
 **Example**
 
@@ -830,7 +836,7 @@ Checks whether a stream is active. This API uses an asynchronous callback to ret
 
 | Name    | Type                               | Mandatory| Description                                             |
 | ---------- | ----------------------------------- | ---- | ------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                     |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                     |
 | callback   | AsyncCallback&lt;boolean&gt;        | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is active or **false** if not active; otherwise, **err** is an error object.|
 
 **Example**
@@ -863,13 +869,13 @@ Checks whether a stream is active. This API uses a promise to return the result.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
 | Type                  | Description                                                    |
 | ---------------------- | -------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the stream is active, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is active. **true** if active, **false** otherwise.|
 
 **Example**
 
@@ -1092,7 +1098,7 @@ Sets a device to the active state. This API uses an asynchronous callback to ret
 | Name    | Type                                 | Mandatory| Description         |
 | ---------- | ------------------------------------- | ---- |-------------|
 | deviceType | [ActiveDeviceType](arkts-apis-audio-e.md#activedevicetypedeprecated) | Yes  | Active audio device type.  |
-| active     | boolean                               | Yes  | Active state to set. The value **true** means to set the device to the active state, and **false** means the opposite.|
+| active     | boolean                               | Yes  | Active state to set. **true** to set the device to the active state, **false** otherwise.|
 | callback   | AsyncCallback&lt;void&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -1126,7 +1132,7 @@ Sets a device to the active state. This API uses a promise to return the result.
 | Name    | Type                                 | Mandatory| Description              |
 | ---------- | ------------------------------------- | ---- | ------------------ |
 | deviceType | [ActiveDeviceType](arkts-apis-audio-e.md#activedevicetypedeprecated) | Yes  | Active audio device type.|
-| active     | boolean                               | Yes  | Active state to set. The value **true** means to set the device to the active state, and **false** means the opposite.|
+| active     | boolean                               | Yes  | Active state to set. **true** to set the device to the active state, **false** otherwise.|
 
 **Return value**
 
@@ -1198,7 +1204,7 @@ Checks whether a device is active. This API uses a promise to return the result.
 
 | Type                  | Description                                  |
 | ---------------------- |---------------------------------------|
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the device is active, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the device is active. **true** if active, **false** otherwise.|
 
 **Example**
 
@@ -1226,7 +1232,7 @@ Mutes or unmutes the microphone. This API uses an asynchronous callback to retur
 
 | Name  | Type                     | Mandatory| Description                                         |
 | -------- | ------------------------- | ---- | --------------------------------------------- |
-| mute     | boolean                   | Yes  | Mute status to set. The value **true** means to mute the microphone, and **false** means the opposite.|
+| mute     | boolean                   | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -1261,7 +1267,7 @@ Mutes or unmutes the microphone. This API uses a promise to return the result.
 
 | Name| Type   | Mandatory| Description                                         |
 | ------ | ------- | ---- | --------------------------------------------- |
-| mute   | boolean | Yes  | Mute status to set. The value **true** means to mute the microphone, and **false** means the opposite.|
+| mute   | boolean | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
 
 **Return value**
 
@@ -1329,7 +1335,7 @@ Checks whether the microphone is muted. This API uses a promise to return the re
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the microphone is muted, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the microphone is muted. **true** if muted, **false** otherwise.|
 
 **Example**
 
@@ -1435,19 +1441,19 @@ Same as [on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrup
 import { audio } from '@kit.AudioKit';
 
 let interAudioInterrupt: audio.AudioInterrupt = {
-  streamUsage:2,
-  contentType:0,
-  pauseWhenDucked:true
+  streamUsage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+  contentType: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+  pauseWhenDucked: true
 };
 
 audioManager.on('interrupt', interAudioInterrupt, (interruptAction: audio.InterruptAction) => {
   if (interruptAction.actionType === 0) {
     console.info('An event to gain the audio focus starts.');
-    console.info(`Focus gain event: ${interruptAction} `);
+    console.info(`Focus hint: ${interruptAction.hint} `);
   }
   if (interruptAction.actionType === 1) {
     console.info('An audio interruption event starts.');
-    console.info(`Audio interruption event: ${interruptAction} `);
+    console.info(`Audio interruption hint: ${interruptAction.hint} `);
   }
 });
 ```
@@ -1478,9 +1484,9 @@ Unsubscribes from the audio interruption event. This API uses an asynchronous ca
 import { audio } from '@kit.AudioKit';
 
 let interAudioInterrupt: audio.AudioInterrupt = {
-  streamUsage:2,
-  contentType:0,
-  pauseWhenDucked:true
+  streamUsage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+  contentType: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+  pauseWhenDucked: true
 };
 
 // Cancel all subscriptions to the event.
@@ -1490,11 +1496,11 @@ audioManager.off('interrupt', interAudioInterrupt);
 let interruptCallback = (interruptAction: audio.InterruptAction) => {
   if (interruptAction.actionType === 0) {
     console.info('An event to gain the audio focus starts.');
-    console.info(`Focus gain event: ${interruptAction} `);
+    console.info(`Focus hint: ${interruptAction.hint} `);
   }
   if (interruptAction.actionType === 1) {
     console.info('An audio interruption event starts.');
-    console.info(`Audio interruption event: ${interruptAction} `);
+    console.info(`Audio interruption hint: ${interruptAction.hint} `);
   }
 };
 

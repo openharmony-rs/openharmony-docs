@@ -1,4 +1,14 @@
 # ArkUI_NativeGestureAPI_2
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_NativeGestureAPI_2
+```
 
 ## 概述
 
@@ -29,7 +39,7 @@
 
 ### setGestureInterrupterToNode()
 
-```
+```c
 int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData,ArkUI_GestureInterruptResult (*interrupter)(ArkUI_GestureInterruptInfo* info))
 ```
 

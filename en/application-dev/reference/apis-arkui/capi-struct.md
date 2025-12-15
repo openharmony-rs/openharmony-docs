@@ -1,8 +1,18 @@
-# struct
+# OH_PixelmapNative
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
+
+```
+struct OH_PixelmapNative
+```
 
 ## Overview
 
-The struct describes the native pixel image information.
+The struct describes the pixel image information.
 
 **Since**: 15
 

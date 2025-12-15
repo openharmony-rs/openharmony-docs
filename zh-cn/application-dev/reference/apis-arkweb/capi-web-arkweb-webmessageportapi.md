@@ -1,8 +1,18 @@
 # ArkWeb_WebMessagePortAPI
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct {...} ArkWeb_WebMessagePortAPI
+```
 
 ## 概述
 
-Post Message相关的Native API结构体。在调用接口前建议通过ARKWEB_MEMBER_MISSING校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。
+Post Message相关的Native API结构体。在调用接口前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。WebMessagePort相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。
 
 **起始版本：** 12
 
@@ -31,7 +41,7 @@ Post Message相关的Native API结构体。在调用接口前建议通过ARKWEB_
 
 ### postMessage()
 
-```
+```c
 ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag, const ArkWeb_WebMessagePtr webMessage)
 ```
 
@@ -55,7 +65,7 @@ ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, c
 
 ### close()
 
-```
+```c
 void (*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)
 ```
 
@@ -68,17 +78,18 @@ void (*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)
 | 参数项 | 描述 |
 | -- | -- |
 | const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Post Message端口结构体指针。 |
+| const char* webTag                                                                   |  Web组件名称。              |
 
 ### setMessageEventHandler()
 
-```
+```c
 void (*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag,
         ArkWeb_OnMessageEventHandler messageEventHandler, void* userData)
 ```
 
 **描述：**
 
-关闭消息端口。
+设置接收HTML消息的回调。
 
 **参数：**
 

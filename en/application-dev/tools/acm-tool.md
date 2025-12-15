@@ -1,5 +1,11 @@
 # Account Manager
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
 
 Account Manager (acm) is a tool that provides basic capabilities of managing local accounts, such as creating, deleting, and querying accounts.
 
@@ -31,7 +37,7 @@ acm help
 
 **Return Result**
 
-Displays the acm help information.
+The acm help information.
 
 
 ## create
@@ -42,7 +48,7 @@ Displays the acm help information.
 # Display the help information.
 acm create -h
 # Create an account with a specified name and type.
-acm create -n <accountName> -t <accountType> [-s <shortName>] [-l <disallowed-install-hap-list>]
+acm create -n <accountName> -t <accountType> [-s <shortName>] [-d <disallowed-pre-install-hap-bundles>] [-p <allowed-pre-install-hap-bundles>]
 ```
 
 **Return Result**
@@ -53,11 +59,12 @@ If the account is created successfully, "create the local account successfully."
 
 | Parameter                               | Description                      |
 | ----------------------------------- | -------------------------- |
-| -h | This parameter is optional. It is used to display the parameters supported by the **create** command.|
-| -n | This parameter is mandatory. It specifies the name of a new account. |
-| -t | This parameter is mandatory. It specifies the type of a new account, which can be **admin**, **normal**, **guest**, or **private**.|
+| -h | This parameter is optional. It displays the parameters supported by the **create** command.|
+| -n | This parameter is mandatory. It specifies the name of a new account.|
+| -t | This parameter is mandatory It specifies the account type of a new account. Account types include **admin**, **normal**, **guest**, and **private**.|
 | -s | This parameter is optional. It specifies the short name of a new account.|
-| -l | This parameter is optional. It specifies the preset application blocklist of a new account.|
+| -d | This parameter is optional. It specifies the list of preset applications that are not allowed for a new account.|
+| -p | This parameter is optional. It specifies the list of preset applications that are allowed for a new account.|
 
 
 ## delete
@@ -79,7 +86,7 @@ If the account is deleted successfully, "delete the local account successfully."
 
 | Parameter                               | Description                      |
 | ----------------------------------- | -------------------------- |
-| -h | This parameter is optional. It is used to display the parameters supported by the **delete** command.|
+| -h | This parameter is optional. It displays the parameters supported by the **delete** command.|
 | -i | This parameter is mandatory. It specifies the ID of the account to be deleted.|
 
 
@@ -92,7 +99,7 @@ If the account is deleted successfully, "delete the local account successfully."
 acm dump -h
 # Dump the information about all accounts.
 acm dump -a
-# Dump the information about an account with a specified ID.
+# Dump the information about a specified account ID.
 acm dump -i <accountId>
 ```
 
@@ -104,9 +111,9 @@ If the query is successful, the corresponding account information is displayed. 
 
 | Parameter                               | Description                      |
 | ----------------------------------- | -------------------------- |
-| -h | This parameter is optional. It is used to display the parameters supported by the **dump** command.|
-| -a | This parameter is mandatory. It is used to dump the information about all accounts.|
-| -i | This parameter is mandatory. It is used to dump the information about an account with a specified ID.|
+| -h | This parameter is optional. It displays the parameters supported by the **dump** command.|
+| -a | This parameter is mandatory. It displays the information about all accounts.|
+| -i | This parameter is mandatory. It dumps the information about an account with a specified ID.|
 
 
 ## switch
@@ -117,7 +124,7 @@ If the query is successful, the corresponding account information is displayed. 
 # Display the help information.
 acm switch -h
 # Switch to an account with a specified ID.
-acm switch -i <accountId>
+acm switch -i <accountId> [-d <displayId>]
 ```
 
 **Return Result**
@@ -128,8 +135,9 @@ If the account is switched successfully, "switch the local account successfully.
 
 | Parameter                               | Description                      |
 | ----------------------------------- | -------------------------- |
-| -h | This parameter is optional. It is used to display the parameters supported by the **switch** command.|
-| -i | This parameter is mandatory. It specifies the ID of an account to be switched to.|
+| -h | This parameter is optional. It displays the parameters supported by the **switch** command.|
+| -i | This parameter is mandatory. It specifies the ID of the account to be switched to.|
+| -d | This parameter is optional. It specifies the target display ID (**displayId**) to be switched to.|
 
 
 ## deactivate
@@ -153,9 +161,9 @@ If the account is deactivated successfully, "deactivate the local account succes
 
 | Parameter                               | Description                      |
 | ----------------------------------- | -------------------------- |
-| -h | This parameter is optional. It is used to display the parameters supported by the **deactivate** command.|
-| -a | This parameter is mandatory. It is used to deactivate all accounts.|
-| -i | This parameter is mandatory. It is used to deactivate an account with a specified ID.|
+| -h | This parameter is optional. It displays the parameters supported by the **deactivate** command.|
+| -a | This parameter is mandatory. It deactivates all accounts.|
+| -i | This parameter is mandatory. It deactivates an account with a specified ID.|
 
 
 ## set
@@ -177,7 +185,7 @@ If the constraint is set successfully, "set constraints for the local account su
 
 | Parameter                               | Description                      |
 | ----------------------------------- | -------------------------- |
-| -h | This parameter is optional. It is used to display the parameters supported by the **set** command.|
-| -i | This parameter is mandatory. It specifies an account ID.|
+| -h | This parameter is optional. It displays the parameters supported by the **set** command.|
+| -i | This parameter is mandatory. It specifies the account ID.|
 | -c | This parameter is mandatory. It specifies the constraints to be set. Each constraint is separated by a comma (,). For details, see [Constraints](../reference/apis-basic-services-kit/js-apis-osAccount.md#constraints).|
 | -e | This parameter is optional. If this parameter is carried, the command is used to add a constraint; otherwise, the command is used to delete a constraint.|

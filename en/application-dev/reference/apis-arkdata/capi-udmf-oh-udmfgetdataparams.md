@@ -1,4 +1,14 @@
 # OH_UdmfGetDataParams
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_UdmfGetDataParams OH_UdmfGetDataParams
+```
 
 ## Overview
 

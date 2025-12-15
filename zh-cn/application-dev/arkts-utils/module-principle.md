@@ -1,4 +1,10 @@
 # 模块化运行简介
+<!--Kit: ArkTS-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @yao_dashuai-->
+<!--Designer: @yao_dashuai-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @foryourself-->
 
 为了解决大型或复杂应用开发过程中，部分代码编译时被多次拷贝导致包体积增大、文件依赖、代码与资源共享困难以及单例和全局变量污染等问题，ArkTS支持应用模块化编译、打包和运行，简化代码的编写与维护。
 
@@ -14,7 +20,7 @@ ArkTS模块化运行根据ECMAScript模块规范实现，以后序遍历的方�
 
 ![zh-cn_image_0000002043487154](figures/zh-cn_image_0000002043487154.png)
 
-A文件称为入口文件，即执行起点。一些内置的加载接口，如[windowStage.loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)和[路由跳转](../ui/arkts-navigation-navigation.md)等页面拉起接口（即不是通过import写法拉起的文件），入参文件都会作为入口文件执行。
+A文件称为入口文件，即执行起点。一些内置的加载接口，如[windowStage.loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)和[路由跳转](../ui/arkts-navigation-architecture.md)等页面拉起接口（即不是通过import写法拉起的文件），入参文件都会作为入口文件执行。
 
 以A文件为入口，会加载一整套文件，包括A文件及其依赖文件，以及这些文件后续依赖的文件，直到各分支的叶节点。
 
@@ -89,24 +95,3 @@ export const add: (a: number, b: number) => number;
 import { add } from 'libentry.so'
 add(2, 3)
 ```
-
-**ArkTS当前限制**：不支持native模块的导出和导入同时使用命名空间。
-
-反例：
-
-```
-// test1.ets
-export * from 'libentry.so'  // 使用命名空间导出
-```
-
-```
-// test2.ets
-import('./test1').then((ns:ESObject) => {
-  // 动态加载无法获取ns对象
-  // 如希望使用该方式加载Native模块，需将test1.ets中的导出变更为具名导出或默认导出
-})
-```
-
-> **说明：**
->
-> 不建议通过import \* as xxx from 'xxx'的方式进行导入。这种方式导入会产生运行时异常，建议使用默认导入。

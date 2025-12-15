@@ -1,10 +1,16 @@
 # oh_data_values.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
 Defines APIs and enums related to multiple data values.
 
-**File to include**: <database/rdb/oh_data_values.h>
+**File to include**: <database/data/oh_data_values.h>
 
 **Library**: libnative_rdb_ndk.z.so
 
@@ -462,7 +468,7 @@ Checks whether a value is null.
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
-| bool *val                                        | Pointer to the check result. The value **true** means the value is null, and the value **false** means the opposite.                 |
+| bool *val                                        | Pointer to the check result. The value **true** means the value is empty, and the value **false** means the opposite.                 |
 
 **Returns**
 
@@ -598,7 +604,7 @@ Obtains the asset from an **OH_Data_Values** instance.
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
-| [Data_Asset](capi-rdb-data-asset.md) *val            | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the execution fails.|
+| [Data_Asset](capi-rdb-data-asset.md) *val            | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
 
 **Returns**
 
@@ -623,7 +629,7 @@ Obtains the length of the asset in an **OH_Data_Values** instance.
 
 | Name                                          | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance. Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
+| [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
 | size_t *length                                   | Pointer to the length of the ASSETS data obtained.                |
 
@@ -652,7 +658,7 @@ Obtains the assets from an **OH_Data_Values** instance.
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
-| [Data_Asset](capi-rdb-data-asset.md) **val           | Double pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the execution fails.|
+| [Data_Asset](capi-rdb-data-asset.md) **val           | Double pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
 | size_t inLen                                     | Size of **val**, which can be obtained using [OH_Values_GetAssetsCount](capi-oh-data-values-h.md#oh_values_getassetscount).|
 | size_t *outLen                                   | Pointer to the actual length of the data obtained.                      |
 
@@ -708,7 +714,7 @@ Obtains the float array from an **OH_Data_Values** instance.
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
-| float *val                                       | Pointer to the float array obtained.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the execution fails.|
+| float *val                                       | Pointer to the float array obtained.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
 | size_t inLen                                     | Size of **val**, which can be obtained using [OH_Values_GetFloatVectorCount](capi-oh-data-values-h.md#oh_values_getfloatvectorcount).|
 | size_t *outLen                                   | Pointer to the actual length of the data obtained.                      |
 
@@ -748,7 +754,7 @@ Obtains the length of the unlimited integer from an **OH_Data_Values** instance.
 ### OH_Values_GetUnlimitedInt()
 
 ```
-int OH_Values_GetUnlimitedInt(OH_Data_Values *values, int index, int *sign, uint64_t *trueForm, size_t inLen,size_t *outLen)
+int OH_Values_GetUnlimitedInt(OH_Data_Values *values, int index, int *sign, uint64_t *trueForm, size_t inLen, size_t *outLen)
 ```
 
 **Description**
@@ -765,7 +771,7 @@ Obtains the unlimited integer from an **OH_Data_Values** instance.
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
 | int *sign                                        | Pointer to the sign notation of the integer obtained. The value **0** indicates a positive integer, and the value **1** indicates a negative integer.        |
-| uint64_t *trueForm                               | Pointer to the integer array obtained.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the execution fails.|
+| uint64_t *trueForm                               | Pointer to the integer array obtained.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
 | size_t inLen                                     | **trueForm** length, which can be obtained using [OH_Values_GetUnlimitedIntBand](capi-oh-data-values-h.md#oh_values_getunlimitedintband).|
 | size_t *outLen                                   | Pointer to the actual length of the data obtained.                      |
 

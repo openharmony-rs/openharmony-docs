@@ -1,5 +1,12 @@
 # @ohos.usbManager (USB管理)(系统接口)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: USB-->
+<!--Owner: @hwymlgitcode-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
+
 本模块主要提供管理USB设备的相关功能，包括主设备上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；从设备上端口管理、功能切换及查询等。
 
 > **说明：**
@@ -21,8 +28,8 @@ addRight(bundleName: string, deviceName: string): boolean
 
 usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；addRight不会触发弹框，而是直接添加软件包访问设备的权限。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [addDeviceAccessRight](#adddeviceaccessright12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -44,7 +51,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -57,7 +64,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 let devicesName: string = "1-1";
 let bundleName: string = "com.example.hello";
 if (usbManager.addRight(bundleName, devicesName)) {
-  console.log(`Succeed in adding right`);
+  console.info(`Succeed in adding right`);
 }
 ```
 
@@ -67,8 +74,8 @@ usbFunctionsFromString(funcs: string): number
 
 在设备模式下，将字符串形式的USB功能列表转化为数字掩码。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getFunctionsFromString](#getfunctionsfromstring12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -89,7 +96,7 @@ usbFunctionsFromString(funcs: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -109,8 +116,8 @@ usbFunctionsToString(funcs: FunctionType): string
 
 在设备模式下，将数字掩码形式的USB功能列表转化为字符串。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getStringFromFunctions](#getstringfromfunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -131,7 +138,7 @@ usbFunctionsToString(funcs: FunctionType): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -149,10 +156,10 @@ let ret: string = usbManager.usbFunctionsToString(funcs);
 
 setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
-在设备模式下，设置当前的USB功能列表。
+在设备模式下，设置当前的USB功能列表。使用Promise异步回调。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [setDeviceFunctions](#setdevicefunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -173,7 +180,7 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -198,8 +205,8 @@ getCurrentFunctions(): FunctionType
 
 在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getDeviceFunctions](#getdevicefunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -214,7 +221,7 @@ getCurrentFunctions(): FunctionType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
@@ -233,8 +240,8 @@ getPorts(): Array\<USBPort\>
 
 获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getPortList](#getportlist12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -249,7 +256,7 @@ getPorts(): Array\<USBPort\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
@@ -268,8 +275,8 @@ getSupportedModes(portId: number): PortModeType
 
 获取指定的端口支持的模式列表的组合掩码。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getPortSupportModes](#getportsupportmodes12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -290,7 +297,7 @@ getSupportedModes(portId: number): PortModeType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -307,10 +314,10 @@ let ret: number = usbManager.getSupportedModes(0);
 
 setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定的端口支持的角色模式，包含充电角色、数据传输角色。
+设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 9开始支持，从API version 12开始废弃。建议使用 [setPortRoleTypes](#setportroletypes12) 替代。
 
 **系统接口：** 此接口为系统接口。
@@ -333,7 +340,7 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -344,7 +351,7 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
 let portId: number = 1;
-usbManager.setPortRoles(portId, usbManager.PowerRoleType.SOURCE, ususbManagerb.DataRoleType.HOST).then(() => {
+usbManager.setPortRoles(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
     console.info('usb setPortRoles successfully.');
 }).catch((err: BusinessError) => {
     console.error('usb setPortRoles failed: ' + err.code + ' message: ' + err.message);
@@ -359,8 +366,8 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；addDeviceAccessRight不会触发弹框，而是直接添加软件包访问设备的权限。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -384,7 +391,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -408,7 +415,7 @@ let tokenId: string = "";
       let token = bundleInfo.appInfo.accessTokenId;
       tokenId = token.toString();
       if (usbManager.addDeviceAccessRight(tokenId, devicesName)) {
-        console.log(`Succeed in adding right`);
+        console.info(`Succeed in adding right`);
       }
     }).catch((err : BusinessError) => {
       console.error('testTag getBundleInfoForSelf failed' );
@@ -424,8 +431,8 @@ getFunctionsFromString(funcs: string): number
 
 在设备模式下，将字符串形式的USB功能列表转化为数字掩码。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -448,7 +455,7 @@ getFunctionsFromString(funcs: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
@@ -470,8 +477,8 @@ getStringFromFunctions(funcs: FunctionType): string
 
 在设备模式下，将数字掩码形式的USB功能列表转化为字符串。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -494,7 +501,7 @@ getStringFromFunctions(funcs: FunctionType): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -514,10 +521,10 @@ let ret: string = usbManager.getStringFromFunctions(funcs);
 
 setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
-在设备模式下，设置当前的USB功能列表。
+在设备模式下，设置当前的USB功能列表。使用Promise异步回调。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -540,7 +547,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -569,8 +576,8 @@ getDeviceFunctions(): FunctionType
 
 在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -587,7 +594,7 @@ getDeviceFunctions(): FunctionType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
@@ -608,8 +615,8 @@ getPortList(): Array\<USBPort\>
 
 获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -626,7 +633,7 @@ getPortList(): Array\<USBPort\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -667,7 +674,7 @@ getPortSupportModes(portId: number): PortModeType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -675,7 +682,6 @@ getPortSupportModes(portId: number): PortModeType
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
 | 801      | Capability not supported.                                    |
-| 14400003 | Unsupported operation. The current device does not support port role switching.                         |
 
 **示例：**
 
@@ -687,10 +693,10 @@ let ret: number = usbManager.getPortSupportModes(0);
 
 setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定的端口支持的角色模式，包含充电角色、数据传输角色。
+设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
 
-**说明：**
-
+> **说明：**
+>
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
@@ -715,7 +721,7 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -729,6 +735,7 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let portId: number = 1;
 usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
   console.info('usb setPortRoleTypes successfully.');
@@ -760,7 +767,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -776,9 +783,11 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { bundleManager } from '@kit.AbilityKit';
+
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+  let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
   let bundleInfo = await bundleManager.getBundleInfoForSelf(flags)
   let tokenId: number = bundleInfo.appInfo.accessTokenId
   usbManager.addAccessoryRight(tokenId, accList[0])
@@ -796,11 +805,11 @@ USB设备端口。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称           | 类型                            | 必填 | 说明                                |
-| -------------- | ------------------------------- | ---- | ----------------------------------- |
-| id             | number                          | 是   | USB端口唯一标识。                   |
-| supportedModes | [PortModeType](#portmodetype)   | 是   | USB端口所支持的模式的数字组合掩码。 |
-| status         | [USBPortStatus](#usbportstatus) | 是   | USB端口角色。                       |
+| 名称           | 类型                            | 只读 | 可选 | 说明                                |
+| -------------- | ------------------------------- | ---- | ---- | ----------------------------------- |
+| id             | number                          | 否   | 否   | USB端口唯一标识。                   |
+| supportedModes | [PortModeType](#portmodetype)   | 否   | 否   | USB端口所支持的模式的数字组合掩码。 |
+| status         | [USBPortStatus](#usbportstatus) | 否   | 否   | USB端口角色。                       |
 
 ## USBPortStatus
 
@@ -810,11 +819,11 @@ USB设备端口角色信息。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称             | 类型   | 必填 | 说明                   |
-| ---------------- | ------ | ---- | ---------------------- |
-| currentMode      | number | 是   | 当前的USB模式。        |
-| currentPowerRole | number | 是   | 当前设备充电模式。     |
-| currentDataRole  | number | 是   | 当前设备数据传输模式。 |
+| 名称             | 类型   |只读 | 可选 | 说明                   |
+| ---------------- | ------ | ---- | ---- | ---------------------- |
+| currentMode      | number | 否   | 否   | 当前的USB模式。        |
+| currentPowerRole | number | 否   | 否   | 当前设备充电模式。     |
+| currentDataRole  | number | 否   | 否   | 当前设备数据传输模式。 |
 
 ## FunctionType
 

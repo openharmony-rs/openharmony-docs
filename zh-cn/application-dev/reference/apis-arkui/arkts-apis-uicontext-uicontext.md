@@ -1,4 +1,10 @@
 # Class (UIContext)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 UIContext实例对象。
 
@@ -8,15 +14,15 @@ UIContext实例对象。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
-> - 以下API需先使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，再通过此实例调用对应方法。或者可以通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取。本文中UIContext对象以uiContext表示。
+> - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext22)获取UIContext实例。本文中UIContext对象以uiContext表示。
 
 **示例：**
 
-以下示例展示了两种获取UIContext实例的方法。
+以下示例展示了三种获取UIContext实例的方法。
 
 ```ts
-//两种方法获取到的UIContext没有差异
-//index.ets
+// 三种方法获取到的UIContext没有差异
+// index.ets
 import { UIContext } from '@kit.ArkUI';
 
 @Entry
@@ -26,15 +32,17 @@ struct Index {
     Column() {
       Button("Button")
           .onClick(()=>{
-            //通过自定义组件内置方法获取
+            // 通过自定义组件内置方法获取
             this.getUIContext()
-            //其他运行逻辑
+            // 通过UIContext类的静态方法获取
+            let uiContext = UIContext.getCallingScopeUIContext();
+            // 其他运行逻辑
           })
     }  
   }
 }
 
-//EntryAbility.ets
+// EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -43,9 +51,335 @@ const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    //通过ohos.window获取
+    // 通过ohos.window获取
     windowStage.getMainWindowSync().getUIContext()
-    //其他运行逻辑
+    // 其他运行逻辑
+  }
+}
+```
+
+## constructor<sup>22+</sup>
+
+constructor()
+
+构造UIContext对象。
+
+> **说明：**
+>
+> 通过构造函数创建的UIContext对象指向不明确的UI上下文，即不指向任何UI实例。该UIContext对应实例的唯一标识ID为-1。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function GetUIContextByAtomicInterface(): UIContext {
+  let callingScopeUIContext = UIContext.getCallingScopeUIContext();
+  if (callingScopeUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
+    return callingScopeUIContext;
+  }
+  let allContexts = UIContext.getAllUIContexts();
+  let length = allContexts.length;
+  if (length === 1) {
+    hilog.info(0x00, 'testTag', `Get UIContext of unique UI instance.`)
+    return allContexts[0];
+  }
+  let lastFocusedUIContext = UIContext.getLastFocusedUIContext();
+  if (lastFocusedUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last focused instance.`)
+    return lastFocusedUIContext;
+  }
+  let lastForegroundUIContext = UIContext.getLastForegroundUIContext();
+  if (lastForegroundUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last foregrounded instance.`)
+    return lastForegroundUIContext;
+  }
+  if (length !== 0) {
+    hilog.info(0x00, 'testTag', `Get UIContext with maximum instanceId.`)
+    return allContexts[length - 1];
+  }
+  hilog.info(0x00, 'testTag', `Get UIContext of undefined calling scope.`)
+  return new UIContext();
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    let uiContext = this.getUIContext();
+    hilog.info(0x00, 'testTag', `aboutToAppear UIContext: ${uiContext.getId()}`)
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let resolvedUIContext = UIContext.resolveUIContext();
+          let contextByAtomicInterface = GetUIContextByAtomicInterface();
+          hilog.info(0x00, 'testTag',
+            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
+          this.message = 'Welcome';
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getCallingScopeUIContext<sup>22+</sup>
+
+static getCallingScopeUIContext(): UIContext | undefined
+
+获取当前[调用作用域](../../ui/arkts-global-interface.md#基本概念)的UIContext，调用作用域不明确时返回undefined。
+
+> **说明：**
+>
+> 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](#isavailable20)接口判断其有效性。
+
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext \| undefined | 当前[调用作用域](../../ui/arkts-global-interface.md#基本概念)的UIContext，调用作用域不明确时返回undefined。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getCallingScopeUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getLastFocusedUIContext<sup>22+</sup>
+
+static getLastFocusedUIContext(): UIContext | undefined
+
+获取最近一次切换到获焦状态的UI实例的UIContext。
+
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext \| undefined | 返回最近一次切换到获焦状态的UI实例的UIContext。如果最近一次切换到获焦状态的实例已被销毁或无实例曾经处于获焦状态，返回undefined。|
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastFocusedUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getLastForegroundUIContext<sup>22+</sup>
+
+static getLastForegroundUIContext(): UIContext | undefined
+
+获取最近一次切换到前台状态的UI实例的UIContext。
+
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext \| undefined | 返回最近一次切换到前台状态的UI实例的UIContext。如果最近一次切换到前台状态的UI实例已被销毁或无UI实例曾经处于前台状态，则返回undefined。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastForegroundUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getAllUIContexts<sup>22+</sup>
+
+static getAllUIContexts(): UIContext[]
+
+获取所有当前有效的UIContext实例。
+
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext[] | 返回所有当前有效UIContext实例的数组。如果没有有效的UIContext实例，则返回空数组。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContexts = UIContext.getAllUIContexts();
+          hilog.info(0x00, 'testTag', `There are ${uiContexts.length} UIContext(s)`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## resolveUIContext<sup>22+</sup>
+
+static resolveUIContext(): ResolvedUIContext
+
+使用优先级策略获取带有解析策略的UIContext实例对象。
+
+>**说明：**
+>
+> 按照预定义的优先级顺序解析并返回UIContext实例和UIContext的解析策略。
+>
+> 解析规则按顺序如下：
+> 1. 当前调用作用域中的UIContext。
+> 2. 如果只存在一个UI实例，则返回其UIContext。
+> 3. 如果存在UI实例切换到获焦状态，且最近一次切换到获焦状态的UI实例未销毁，则返回最近一次获焦UI实例的UIContext。
+> 4. 如果存在UI实例切换到前台状态，且最近一次切换到前台状态的UI实例未销毁，则返回最近一次切换到前台状态的UI实例的UIContext。
+> 5. 如果存在多个UI实例，则返回实例唯一标识的ID最大的UIContext。
+> 6. 如果以上条件均不满足，则返回一个无效的UIContext实例。
+
+**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| [ResolvedUIContext](./arkts-apis-uicontext-resolveduicontext.md) | 返回带有解析策略的UIContext实例对象。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('click').onClick(() => {
+        let resolvedUIContext = UIContext.resolveUIContext();
+        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}`);
+      })
+    }
+    .width(UIContext.resolveUIContext().px2vp(100))
+    .height('100%')
   }
 }
 ```
@@ -54,7 +388,7 @@ export default class EntryAbility extends UIAbility {
 
 isAvailable(): boolean
 
-判断UIContext对象对应的UI实例是否有效。使用getUIContext方法创建UIContext对象。后端UI实例存在时，该UI实例有效。通过new UIContext()创建的UIContext对应的UI实例无效；多次loadContent后，旧的UI实例以及多窗口应用关闭对应窗口后，该窗口的UI实例无效。即后端UI实例不存在时，UI实例无效。
+判断UIContext对象对应的UI实例是否有效。使用[getUIContext](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext对象。后端UI实例存在时，该UI实例有效。通过new UIContext()创建的UIContext对象无对应的UI实例；多次[loadContent](arkts-apis-window-Window.md#loadcontent9)后，旧的UI实例会失效。多窗口应用场景，当窗口关闭后，该窗口的UI实例失效。总而言之，当UIContext对象没有对应的后端UI实例时，该对象是无效的。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -98,7 +432,7 @@ struct UIContextCompare {
             const ctx: UIContext = this.getUIContext();
             const available: boolean = ctx.isAvailable();
             this.result1 = `可用状态: ${available} UI实例有效 `;
-            console.log("getUIContext测试:", available);
+            console.info("getUIContext测试:", available);
           } catch (e) {
             this.result1 = "错误: " + (e instanceof Error ? e.message : String(e));
           }
@@ -113,7 +447,7 @@ struct UIContextCompare {
             const ctx: UIContext = new UIContext();
             const available: boolean = ctx.isAvailable();
             this.result2 = `可用状态: ${available} UI实例无效`;
-            console.log("new UIContext测试:", available);
+            console.info("new UIContext测试:", available);
           } catch (e) {
             this.result2 = "错误: " + (e instanceof Error ? e.message : String(e));
           }
@@ -146,10 +480,6 @@ getFont(): Font
 
 完整示例请参考[Font](arkts-apis-uicontext-font.md)中的示例。
 
-<!--code_no_check-->
-```ts
-uiContext.getFont();
-```
 ## getComponentUtils
 
 getComponentUtils(): ComponentUtils
@@ -188,10 +518,6 @@ getUIInspector(): UIInspector
 
 **示例：**
 
-<!--code_no_check-->
-```ts
-uiContext.getUIInspector();
-```
 完整示例请参考[UIInspector](./arkts-apis-uicontext-uiinspector.md)中的示例。
 
 ## getUIObserver<sup>11+</sup>
@@ -212,9 +538,83 @@ getUIObserver(): UIObserver
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.getUIObserver();
+@Component
+struct PageOne {
+  build() {
+    NavDestination() {
+      Text("pageOne")
+    }.title("pageOne")
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageBuilder(name: string) {
+    PageOne()
+  }
+
+  aboutToAppear() {
+    this.getUIContext().getUIObserver().on('navDestinationUpdate', (info) => {
+      console.info('NavDestination state update', JSON.stringify(info));
+    });
+  }
+
+  aboutToDisappear() {
+    this.getUIContext().getUIObserver().off('navDestinationUpdate');
+  }
+
+  build() {
+    Column() {
+      Navigation(this.stack) {
+        Button("push").onClick(() => {
+          this.stack.pushPath({ name: "pageOne" });
+        })
+      }
+      .title("Navigation")
+      .navDestination(this.PageBuilder)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## getId<sup>22+</sup>
+
+getId(): number
+
+获取后端实例唯一标识的ID。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| number | 返回后端实例唯一标识的ID，取值范围：(0, +∞) |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index{
+  build(){
+    Column()
+      .width("100%")
+      .height("100%")
+      .onClick(()=>{
+      console.log(`id:${this.getUIContext()?.getId()}`);
+    })
+  }
+}
 ```
 
 ## getMediaQuery
@@ -237,11 +637,6 @@ getMediaQuery(): MediaQuery
 
 完整示例请参考[mediaquery示例](js-apis-mediaquery.md#示例)。
 
-<!--code_no_check-->
-```ts
-uiContext.getMediaQuery();
-```
-
 ## getRouter
 
 getRouter(): Router
@@ -260,10 +655,7 @@ getRouter(): Router
 
 **示例：**
 
-<!--code_no_check-->
-```ts
-uiContext.getRouter();
-```
+完整示例请参考[pushUrl](arkts-apis-uicontext-router.md#pushurl)。
 
 ## getPromptAction
 
@@ -284,11 +676,6 @@ getPromptAction(): PromptAction
 **示例：**
 
 完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
-
-<!--code_no_check-->
-```ts
-uiContext.getPromptAction();
-```
 
 ## getOverlayManager<sup>12+</sup>
 
@@ -340,7 +727,7 @@ setOverlayManagerOptions(options: OverlayManagerOptions): boolean
 
 getOverlayManagerOptions(): OverlayManagerOptions
 
-用于获取当前[OverlayManager](arkts-apis-uicontext-overlaymanager.md)参数。
+用于获取当前[OverlayManagerOptions](arkts-apis-uicontext-i.md#overlaymanageroptions15)参数。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -356,6 +743,85 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
+## animateToImmediately<sup>22+</sup>
+
+animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
+
+通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填   | 说明                                    |
+| ----- | ---------------------------------------- | ---- | ------------------------------------- |
+| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
+| processor | Callback&lt;void&gt;                              | 是    | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+
+**示例：**
+
+该示例通过UIContext对象获取显式立即动画，并调用animateToImmediately接口实现参数定义的动画效果。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AnimateToImmediatelyExample {
+  @State widthSize: number = 250
+  @State heightSize: number = 100
+  @State opacitySize: number = 0
+  private flag: boolean = true
+  uiContext: UIContext | null | undefined = this.getUIContext();
+
+  build() {
+    Column() {
+      Column()
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(Color.Green)
+        .opacity(this.opacitySize)
+      Button('change size')
+        .margin(30)
+        .onClick(() => {
+          if (this.flag) {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 1
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.widthSize = 150
+              this.heightSize = 60
+            })
+          } else {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.widthSize = 250
+              this.heightSize = 100
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 0
+            })
+          }
+          this.flag = !this.flag
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+![animateToImmediately](figures/animateToImmediately.gif)
+
 ## animateTo
 
 animateTo(value: AnimateParam, event: () => void): void
@@ -365,6 +831,16 @@ animateTo(value: AnimateParam, event: () => void): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+> **说明：**
+> - 不推荐在aboutToAppear、aboutToDisappear中调用动画。
+> - 如果在[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中调用动画，自定义组件内的build还未执行，内部组件还未创建，动画时机过早，动画属性没有初值无法对组件产生动画。
+> - 执行[aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)时，组件即将销毁，不能在aboutToDisappear里面做动画。
+> - 在组件出现和消失时，可以通过[组件内转场](../apis-arkui/arkui-ts/ts-transition-animation-component.md)添加动画效果。
+> - 组件内转场不支持的属性，可以参考[显式动画](./arkui-ts/ts-explicit-animation.md)中的[示例2](./arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
+> - 某些场景下，在[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发[onFinish动画播放完成回调](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
+> - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
 **参数：**
 
@@ -467,7 +943,7 @@ getSharedLocalStorage(): LocalStorage | undefined
 
 **返回值：**
 
-| 类型                             | 描述                |
+| 类型                             | 说明                |
 | ------------------------------ | ----------------- |
 | [LocalStorage](arkui-ts/ts-state-management.md#localstorage9)&nbsp;\|&nbsp;undefined | 返回LocalStorage实例。共享的LocalStorage实例不存在时返回undefined。 |
 
@@ -530,7 +1006,7 @@ getHostContext(): Context | undefined
 
 | 类型 | 说明                             |
 | ------ | ------------------------------- |
-| [Context](arkts-apis-uicontext-t.md#context12)&nbsp;\|&nbsp;undefined | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。ability上下文不存在时返回undefined。 |
+| [Context](arkts-apis-uicontext-t.md#context12)&nbsp;\|&nbsp;undefined | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1)。在ExtensionAbility窗口中的页面调用该接口，返回类型为[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。ability上下文不存在时返回undefined。 |
 
 **示例：**
 
@@ -543,8 +1019,14 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("cacheDir='"+this.uiContext?.getHostContext()?.cacheDir+"'").fontSize(25)
-        Text("bundleCodeDir='"+this.uiContext?.getHostContext()?.bundleCodeDir+"'").fontSize(25)
+        Text("cacheDir='"+this.uiContext?.getHostContext()?.cacheDir+"'")
+          .fontSize(25)
+          .border({ color:Color.Red, width:2 })
+          .padding(50)
+        Text("bundleCodeDir='"+this.uiContext?.getHostContext()?.bundleCodeDir+"'")
+          .fontSize(25)
+          .border({ color:Color.Red, width:2 })
+          .padding(50)
       }
       .width('100%')
     }
@@ -581,10 +1063,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 **示例：**
 
-<!--code_no_check-->
-```ts
-uiContext.getFrameNodeById("TestNode");
-```
+完整示例请参考[获取根节点示例](js-apis-arkui-frameNode.md#获取根节点示例)。
 
 ## getAttachedFrameNodeById<sup>12+</sup>
 
@@ -614,9 +1093,31 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.getAttachedFrameNodeById("TestNode");
+@Entry
+@Component
+struct MyComponent {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let node = this.getUIContext().getAttachedFrameNodeById("HelloWorld");
+          console.info(`Find HelloWorld Tag:${node!.getNodeType()} id:${node!.getUniqueId()}`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 
 ## getFrameNodeByUniqueId<sup>12+</sup>
@@ -773,6 +1274,10 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 
 显示警告弹窗组件，可设置文本内容与响应回调。
 
+>  **说明：**
+>
+>  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showAlertDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -786,27 +1291,39 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.showAlertDialog(
-  {
-    title: 'title',
-    message: 'text',
-    autoCancel: true,
-    alignment: DialogAlignment.Bottom,
-    offset: { dx: 0, dy: -20 },
-    gridCount: 3,
-    confirm: {
-      value: 'button',
-      action: () => {
-        console.info('Button-clicking callback')
-      }
-    },
-    cancel: () => {
-      console.info('Closed callbacks')
-    }
+@Entry
+@Component
+struct Index {
+  uiContext: UIContext = this.getUIContext()
+
+  build() {
+    Column() {
+      Button('showAlertDialog')
+        .onClick(() => {
+          this.uiContext.showAlertDialog(
+            {
+              title: 'title',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 3,
+              confirm: {
+                value: 'button',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              }
+            }
+          );
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
   }
-);
+}
 ```
 
 ## showActionSheet
@@ -827,44 +1344,56 @@ showActionSheet(value: ActionSheetOptions): void
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.showActionSheet({
-  title: 'ActionSheet title',
-  message: 'message',
-  autoCancel: true,
-  confirm: {
-    value: 'Confirm button',
-    action: () => {
-      console.info('Get Alert Dialog handled');
-    }
-  },
-  cancel: () => {
-    console.info('actionSheet canceled');
-  },
-  alignment: DialogAlignment.Bottom,
-  offset: { dx: 0, dy: -10 },
-  sheets: [
-    {
-      title: 'apples',
-      action: () => {
-        console.info('apples');
-      }
-    },
-    {
-      title: 'bananas',
-      action: () => {
-        console.info('bananas');
-      }
-    },
-    {
-      title: 'pears',
-      action: () => {
-        console.info('pears');
-      }
-    }
-  ]
-});
+@Entry
+@Component
+struct Index {
+  uiContext: UIContext = this.getUIContext()
+
+  build() {
+    Column() {
+      Button('showActionSheet')
+        .onClick(() => {
+          this.uiContext.showActionSheet({
+            title: 'ActionSheet title',
+            message: 'message',
+            autoCancel: true,
+            confirm: {
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          });
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
 ```
 
 ## showDatePickerDialog
@@ -873,9 +1402,15 @@ showDatePickerDialog(options: DatePickerDialogOptions): void
 
 定义日期滑动选择器弹窗并弹出。
 
+>  **说明：**
+>
+>  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showDatePickerDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：** 
 
@@ -940,9 +1475,15 @@ showTimePickerDialog(options: TimePickerDialogOptions): void
 
 定义时间滑动选择器弹窗并弹出。
 
+>  **说明：**
+>
+>  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showTimePickerDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：** 
 
@@ -1001,9 +1542,15 @@ showTextPickerDialog(options: TextPickerDialogOptions): void
 
 定义文本滑动选择器弹窗并弹出。
 
+>  **说明：**
+>
+>  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showTextPickerDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：** 
 
@@ -1070,9 +1617,15 @@ showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt)
 
 定义文本滑动选择器弹窗并弹出，相比API version 11，新增了TextPickerDialogOptionsExt参数支持。
 
+>  **说明：**
+>
+>  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showTextPickerDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：** 
 
@@ -1115,32 +1668,34 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 ```ts
 // EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { AnimatorOptions, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// used in UIAbility
-onWindowStageCreate(windowStage: window.WindowStage) {
-  // Main window is created, set main page for this ability
-  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-  windowStage.loadContent('pages/Index', (err, data) => {
-    if (err.code) {
-      hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-      return;
-    }
-    hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    let uiContext = windowStage.getMainWindowSync().getUIContext();
-    let options:AnimatorOptions = {
-      duration: 1500,
-      easing: "friction",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 3,
-      begin: 200.0,
-      end: 400.0
-    };
-    uiContext.createAnimator(options);
-  });
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // 创建主窗口，设置此功能的主页
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      let uiContext = windowStage.getMainWindowSync().getUIContext();
+      let options:AnimatorOptions = {
+        duration: 1500,
+        easing: "friction",
+        delay: 0,
+        fill: "forwards",
+        direction: "normal",
+        iterations: 3,
+        begin: 200.0,
+        end: 400.0
+      };
+      uiContext.createAnimator(options);
+    });
+  }
 }
 ```
 
@@ -1177,23 +1732,26 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { SimpleAnimatorOptions, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// used in UIAbility
-onWindowStageCreate(windowStage: window.WindowStage) {
-  // Main window is created, set main page for this ability
-  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-  windowStage.loadContent('pages/Index', (err, data) => {
-    if (err.code) {
-      hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-      return;
-    }
-    hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    let uiContext = windowStage.getMainWindowSync().getUIContext();
-    let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
-    uiContext.createAnimator(options);
-  });
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // 创建主窗口，设置此功能的主页
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      let uiContext = windowStage.getMainWindowSync().getUIContext();
+      let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
+      uiContext.createAnimator(options);
+    });
+  }
 }
 ```
 
@@ -1215,13 +1773,26 @@ runScopedTask(callback: () => void): void
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.runScopedTask(
-  () => {
-    console.info('Succeeded in runScopedTask');
+@Entry
+@Component
+struct Index {
+  uiContext = this.getUIContext();
+
+  build() {
+    Row() {
+      Column() {
+        Button("run task").onClick(()=>{
+          this.uiContext.runScopedTask(()=>{
+            // do something
+          })
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
-);
+}
 ```
 
 ## setKeyboardAvoidMode<sup>11+</sup>
@@ -1238,7 +1809,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 | 参数名      | 类型         | 必填   | 说明   |
 | -------- | ---------- | ---- | ---- |
-| value | [KeyboardAvoidMode](arkts-apis-uicontext-e.md#keyboardavoidmode11)| 是    | 键盘避让时的页面避让模式。<br />默认值:KeyboardAvoidMode.OFFSET |
+| value | [KeyboardAvoidMode](arkts-apis-uicontext-e.md#keyboardavoidmode11)| 是    | 键盘弹出时的页面避让模式。<br />默认值：KeyboardAvoidMode.OFFSET |
 
 >  **说明：**
 >
@@ -1252,25 +1823,20 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 完整示例请参考[示例4（设置键盘避让模式为压缩）](./arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](./arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](./arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
 
+<!--code_no_check-->
 ```ts
 // EntryAbility.ets
 import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
 
-    windowStage.loadContent('pages/Index', (err, data) => {
-      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-      uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      });
+    }
+}
 ```
 
 ## getKeyboardAvoidMode<sup>11+</sup>
@@ -1293,27 +1859,21 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 完整示例请参考[示例4（设置键盘避让模式为压缩）](./arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](./arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](./arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
 
+<!--code_no_check-->
 ```ts
 // EntryAbility.ets
 import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
 
-    windowStage.loadContent('pages/Index', (err, data) => {
-      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-      let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-      hilog.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
-
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
+        console.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+      });
+    }
+}
 ```
 
 ## getAtomicServiceBar<sup>11+</sup>
@@ -1336,20 +1896,23 @@ getAtomicServiceBar(): Nullable\<AtomicServiceBar>
 
 ```ts
 // EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-onWindowStageCreate(windowStage: window.WindowStage) {
-  // Main window is created, set main page for this ability
-  hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
-  windowStage.loadContent('pages/Index', (err, data) => {
-    let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-    let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
-    if (atomicServiceBar != undefined) {
-      hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
-    } else {
-      hilog.error(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
-    }
-  });
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+      if (atomicServiceBar != undefined) {
+        console.info('Get AtomServiceBar Successfully.');
+      } else {
+        console.error('Get AtomicServiceBar failed.');
+      }
+    });
+  }
 }
 ```
 ## getDragController<sup>11+</sup>
@@ -1387,7 +1950,67 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState
 | 参数名 | 类型                                              | 必填 | 说明                      |
 | ------------ | ---------------------------------------------------- | ------- | ---------------------------- |
 | param        | [KeyframeAnimateParam](arkui-ts/ts-keyframeAnimateTo.md#keyframeanimateparam对象说明) | 是      | 关键帧动画的整体动画参数。     |
-| keyframes    | Array&lt;[KeyframeState](arkui-ts/ts-keyframeAnimateTo.md#keyframestate对象说明)&gt;  | 是      | 所有的关键帧状态。            |
+| keyframes    | Array&lt;[KeyframeState](arkui-ts/ts-keyframeAnimateTo.md#keyframestate对象说明)&gt;  | 是      | 所有的关键帧状态的列表。            |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct KeyframeDemo {
+  @State myScale: number = 1.0;
+  uiContext: UIContext | undefined = undefined;
+
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+  }
+
+  build() {
+    Column() {
+      Circle()
+        .width(100)
+        .height(100)
+        .fill("#46B1E3")
+        .margin(100)
+        .scale({ x: this.myScale, y: this.myScale })
+        .onClick(() => {
+          if (!this.uiContext) {
+            console.error("no uiContext, keyframe failed");
+            return;
+          }
+          this.myScale = 1;
+          // 设置关键帧动画整体播放3次
+          this.uiContext.keyframeAnimateTo({
+              iterations: 3,
+              expectedFrameRateRange: {
+                min: 10,
+                max: 120,
+                expected: 60,
+              }
+            }, [
+            {
+              // 第一段关键帧动画时长为800ms，scale属性做从1到1.5的动画
+              duration: 800,
+              event: () => {
+                this.myScale = 1.5;
+              }
+            },
+            {
+              // 第二段关键帧动画时长为500ms，scale属性做从1.5到1的动画
+              duration: 500,
+              event: () => {
+                this.myScale = 1;
+              }
+            }
+          ]);
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
 
 ## getFocusController<sup>12+</sup>
 
@@ -1454,7 +2077,7 @@ import { UIContext } from '@kit.ArkUI';
 @Component
 struct ComponentPage {
   loopConsole(inspectorStr: string, i: string) {
-    console.log(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
+    console.info(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
     if (JSON.parse(inspectorStr).$children) {
       i += '-';
       for (let index = 0; index < JSON.parse(inspectorStr).$children.length; index++) {
@@ -1468,14 +2091,14 @@ struct ComponentPage {
       Button('content').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
-        console.log(`InsTree : ${inspectorStr}`);
+        console.info(`InsTree : ${inspectorStr}`);
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
         this.loopConsole(inspectorStr, '-');
       })
       Button('isLayoutInspector').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
-        console.log(`InsTree : ${inspectorStr}`);
+        console.info(`InsTree : ${inspectorStr}`);
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
         this.loopConsole(inspectorStr, '-');
       })
@@ -1571,7 +2194,7 @@ struct ComponentPage {
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
           console.info(`result3: ${inspectorStr}`);
         } catch(e) {
-          console.info(`getFilteredInspectorTreeById error: ${e}`);
+          console.error(`getFilteredInspectorTreeById error: ${e}`);
         }
       })
     }
@@ -1625,13 +2248,6 @@ getContextMenuController(): ContextMenuController
 |----|----|
 |[ContextMenuController](arkts-apis-uicontext-contextmenucontroller.md)| 获取ContextMenuController对象。|
 
-**示例：**
-
-<!--code_no_check-->
-```ts
-uiContext.getContextMenuController();
-```
-
 ## getMeasureUtils<sup>12+</sup>
 
 getMeasureUtils(): MeasureUtils
@@ -1651,11 +2267,6 @@ getMeasureUtils(): MeasureUtils
 **示例：**
 
 完整示例请参考[MeasureUtils](arkts-apis-uicontext-measureutils.md)中的示例。
-
-<!--code_no_check-->
-```ts
-uiContext.getMeasureUtils();
-```
 
 ## getComponentSnapshot<sup>12+</sup>
 
@@ -1691,7 +2302,9 @@ vp2px(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+>
+> 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1711,9 +2324,28 @@ vp2px(value : number) : number
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.vp2px(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().vp2px(50),
+          centerY: this.getUIContext().vp2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## px2vp<sup>12+</sup>
@@ -1728,7 +2360,9 @@ px2vp(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+>
+> 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1748,9 +2382,28 @@ px2vp(value : number) : number
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.px2vp(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2vp(50),
+          centerY: this.getUIContext().px2vp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## fp2px<sup>12+</sup>
@@ -1787,9 +2440,28 @@ fp2px(value : number) : number
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.fp2px(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().fp2px(50),
+          centerY: this.getUIContext().fp2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## px2fp<sup>12+</sup>
@@ -1826,9 +2498,28 @@ px2fp(value : number) : number
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.px2fp(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2fp(50),
+          centerY: this.getUIContext().px2fp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## lpx2px<sup>12+</sup>
@@ -1861,9 +2552,28 @@ lpx2px(value : number) : number
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.lpx2px(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().lpx2px(50),
+          centerY: this.getUIContext().lpx2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## px2lpx<sup>12+</sup>
@@ -1896,9 +2606,28 @@ px2lpx(value : number) : number
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.px2lpx(200);
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2lpx(50),
+          centerY: this.getUIContext().px2lpx(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## getWindowName<sup>12+</sup>
@@ -1933,6 +2662,55 @@ struct Index {
     const currWindow = window.findWindow(windowName);
     const windowProperties = currWindow.getWindowProperties();
     console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+## getWindowId<sup>23+</sup>
+
+getWindowId(): number | undefiend
+
+获取当前应用实例所属的窗口ID。
+
+> **说明：**
+>
+>  若UIContext位于主应用程序进程中的[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)内，则返回主应用程序的顶层窗口ID。
+>
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型   | 说明                                         |
+| ------ | -------------------------------------------- |
+|  number \| undefined |  当前应用实例所属的窗口ID。若窗口不存在，则返回undefined。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    const windowId = this.getUIContext().getWindowId();
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
   }
 
   build() {
@@ -2169,9 +2947,52 @@ requireDynamicSyncScene(id: string): Array&lt;DynamicSyncScene&gt;
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-uiContext.DynamicSyncScene("dynamicSyncScene");
+import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Frame {
+  @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30};
+  private scenes: SwiperDynamicSyncScene[] = [];
+
+  build() {
+    Column() {
+      Text("动画"+ JSON.stringify(this.ANIMATION))
+      Text("跟手"+ JSON.stringify(this.GESTURE))
+      Row(){
+        Swiper() {
+          Text("one")
+          Text("two")
+          Text("three")
+        }
+        .width('100%')
+        .height('300vp')
+        .id("dynamicSwiper")
+        .backgroundColor(Color.Blue)
+        .autoPlay(true)
+        .onAppear(()=>{
+          this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
+        })
+      }
+
+      Button("set frame")
+        .onClick(() => {
+          this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
+
+            if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
+              scenes.setFrameRateRange(this.ANIMATION);
+            }
+
+            if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
+              scenes.setFrameRateRange(this.GESTURE);
+            }
+          });
+        })
+    }
+  }
+}
 ```
 
 ## openBindSheet<sup>12+</sup>
@@ -2199,13 +3020,13 @@ openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOp
 | ------- | ---------------------------------------- | ---- | ------- |
 | bindSheetContent | [ComponentContent\<T>](js-apis-arkui-ComponentContent.md) | 是 | 半模态页面中显示的组件内容。 |
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | 否    |   半模态页面样式。<br/>**说明：** <br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考[SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)文档。 |
-| targetId | number | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。 |
+| targetId | number | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。在传入undefined时返回错误码401。 |
 
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2251,7 +3072,7 @@ function buildText(params: Params) {
             console.info('updateBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('updateBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
 
@@ -2263,7 +3084,7 @@ function buildText(params: Params) {
             console.info('closeBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('closeBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
   }
@@ -2298,7 +3119,7 @@ struct UIContextBindSheet {
                 console.info('openBindSheet success');
               })
               .catch((err: BusinessError) => {
-                console.info('openBindSheet error: ' + err.code + ' ' + err.message);
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
               })
           })
       }
@@ -2336,7 +3157,7 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2379,7 +3200,7 @@ function buildText(params: Params) {
             console.info('updateBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('updateBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
 
@@ -2391,7 +3212,7 @@ function buildText(params: Params) {
             console.info('closeBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('closeBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
   }
@@ -2426,7 +3247,7 @@ struct UIContextBindSheet {
                 console.info('openBindSheet success');
               })
               .catch((err: BusinessError) => {
-                console.info('openBindSheet error: ' + err.code + ' ' + err.message);
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
               })
           })
       }
@@ -2462,7 +3283,7 @@ closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promi
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    返回Promise对象。 |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2505,7 +3326,7 @@ function buildText(params: Params) {
             console.info('updateBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('updateBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
 
@@ -2517,7 +3338,7 @@ function buildText(params: Params) {
             console.info('closeBindSheet success');
           })
           .catch((err: BusinessError) => {
-            console.info('closeBindSheet error: ' + err.code + ' ' + err.message);
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
           })
       })
   }
@@ -2552,7 +3373,7 @@ struct UIContextBindSheet {
                 console.info('openBindSheet success');
               })
               .catch((err: BusinessError) => {
-                console.info('openBindSheet error: ' + err.code + ' ' + err.message);
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
               })
           })
       }
@@ -2581,9 +3402,19 @@ isFollowingSystemFontScale(): boolean
 
 **示例：**
 
-<!--code_no_check-->
+参考[configuration标签](../../quick-start/app-configuration-file.md#configuration标签)，配置fontSizeScale的值为“followSystem”。
 ```ts
-uiContext.isFollowingSystemFontScale();
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('isFollowingSystemFontScale').onClick(() => {
+        console.info('isFollowingSystemFontScale', this.getUIContext().isFollowingSystemFontScale());
+      });
+    }
+  }
+}
 ```
 
 ## getMaxFontScale<sup>13+</sup>
@@ -2604,9 +3435,19 @@ getMaxFontScale(): number
 
 **示例：**
 
-<!--code_no_check-->
+参考[configuration标签](../../quick-start/app-configuration-file.md#configuration标签)，配置fontSizeMaxScale的值为“1.75”。
 ```ts
-uiContext.getMaxFontScale();
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('getMaxFontScale').onClick(() => {
+        console.info('getMaxFontScale', this.getUIContext().getMaxFontScale().toFixed(2));
+      });
+    }
+  }
+}
 ```
 
 ## bindTabsToScrollable<sup>13+</sup>
@@ -2800,7 +3641,7 @@ enableSwipeBack(enabled: Optional\<boolean\>): void
 
 设置是否支持应用内横向滑动返回上一级。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -2837,7 +3678,7 @@ getTextMenuController(): TextMenuController
 
 获取[TextMenuController](arkts-apis-uicontext-textmenucontroller.md)对象，可通过该对象控制文本选择菜单。
 
-**原子化服务API:** 从API version 16 开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 16 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2861,7 +3702,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 >
 > 返回的UI上下文只可用于创建[自定义节点](../../ui/arkts-user-defined-node.md)，不能执行其他UI操作。
 
-**原子化服务API:** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2879,7 +3720,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UI上下文](errorcode-uicontext.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                        |
 | ------ | ---------------------------------- |
@@ -2888,7 +3729,11 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 
 **示例：**
+
 ```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { UIContext } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
@@ -2907,13 +3752,27 @@ static destroyUIContextWithoutWindow(): void
 
 销毁[createUIContextWithoutWindow](#createuicontextwithoutwindow17)创建的UI实例。
 
-**原子化服务API:** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
+
 ```ts
-UIContext.destroyUIContextWithoutWindow();
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    UIContext.destroyUIContextWithoutWindow();
+  }
+
+  // ......
+}
 ```
 
 ## dispatchKeyEvent<sup>15+</sup>
@@ -2925,6 +3784,8 @@ dispatchKeyEvent(node: number | string, event: KeyEvent): boolean
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
@@ -2947,11 +3808,11 @@ struct Index {
     Row() {
       Row() {
         Button('Button1').id('Button1').onKeyEvent((event) => {
-          console.log("Button1");
+          console.info("Button1");
           return true;
         })
         Button('Button2').id('Button2').onKeyEvent((event) => {
-          console.log("Button2");
+          console.info("Button2");
           return true;
         })
       }
@@ -2996,25 +3857,20 @@ setPixelRoundMode(mode: PixelRoundMode): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
 
-    windowStage.loadContent('pages/Index', (err, data) => {
-      let uiContext :UIContext = windowStage.getMainWindowSync().getUIContext();
-      uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext :UIContext = windowStage.getMainWindowSync().getUIContext();
+        uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
+      });
+    }
+}
 ```
 
 ## getPixelRoundMode<sup>18+</sup>
@@ -3035,24 +3891,183 @@ getPixelRoundMode(): PixelRoundMode
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-onWindowStageCreate(windowStage: window.WindowStage) {
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        console.info("pixelRoundMode : " + uiContext.getPixelRoundMode().valueOf());
+      });
+    }
+}
+```
+
+## setResourceManagerCacheMaxCountForHSP<sup>21+</sup>
+
+static setResourceManagerCacheMaxCountForHSP(count: number): void
+
+设置HSP资源管理对象缓存个数上限。
+
+>  **说明：**
+>
+> 如果缓存上限设置的太大，有内存开销过大的风险，建议合理配置。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名      | 类型         | 必填   | 说明   |
+| -------- | ---------- | ---- | ---- |
+| count | number | 是    | 设置的资源缓存数量，取值范围为非负整数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[UI上下文错误码](errorcode-uicontext.md)。
+
+| 错误码ID  | 错误信息                               |
+| ------ | ---------------------------------- |
+| 100101 | The parameter value cannot be less than 0. |
+| 100102 | The parameter value cannot be a floating-point number. |
+| 100103 | The function cannot be called from a non-main thread. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-      console.info("pixelRoundMode : " + uiContext.getPixelRoundMode().valueOf());
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
         return;
       }
+      UIContext.setResourceManagerCacheMaxCountForHSP(5);
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
   }
+}
 ```
 
+## setImageCacheCount<sup>22+</sup>
+
+setImageCacheCount(value: number): void
+
+设置内存中缓存解码后图片的数量上限，以加快同源图片的再次加载速度。默认值为0，表示不缓存。缓存使用LRU策略，新图片加载超过上限时，会移除最久未使用的缓存。建议根据应用内存需求，合理设置缓存数量，避免内存使用过高。
+
+setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
+
+setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | number | 是 | 内存中解码后图片的缓存数量。<br>取值范围：[0, +∞) |
+
+**示例：**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码后图片内存缓存上限为100张
+    this.getUIContext().setImageCacheCount(100);
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+## setImageRawDataCacheSize<sup>22+</sup>
+
+setImageRawDataCacheSize(value: number): void
+
+设置内存中缓存解码前图片数据的大小上限，单位为字节，以加快再次加载同源图片的速度。默认值为0，表示不缓存。缓存使用LRU策略，新图片加载后，若解码前数据超过上限，会删除最久未使用的图片数据缓存。建议根据应用内存需求，设置合理的缓存上限，避免内存使用过高。
+
+setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | number | 是 | 内存中解码前图片数据的缓存大小，单位为字节。<br>取值范围：[0, +∞) |
+
+**示例：**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码前图片数据内存缓存上限为100MB (100MB=100*1024*1024B=104857600B)
+    this.getUIContext().setImageRawDataCacheSize(104857600); 
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+## getMagnifier<sup>22+</sup>
+
+getMagnifier(): Magnifier
+
+获取[Magnifier](arkts-apis-uicontext-magnifier.md)对象，可控制放大镜显示和隐藏。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+|[Magnifier](arkts-apis-uicontext-magnifier.md)| Magnifier对象，可用于控制放大镜的显示和隐藏。|
+
+**示例：**
+
+参考[Magnifier](arkts-apis-uicontext-magnifier.md)的[bind](arkts-apis-uicontext-magnifier.md#bind)接口示例。

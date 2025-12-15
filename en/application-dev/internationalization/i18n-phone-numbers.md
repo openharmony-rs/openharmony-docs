@@ -1,5 +1,12 @@
 # Phone Number Formatting
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Use Cases
 
 The number of digits, combination mode, and display mode of phone numbers vary according to countries and regions. Besides, the dialing mode and number format may also differ under different situations. For example, to make a cross-area call in Chinese mainland, you usually need to type **0** and then dial the area code plus an 8-digit phone number. To make a call in Hong Kong or Macao, you need to dial the number in a different way.
@@ -8,31 +15,7 @@ Through phone number formatting, your application will be able to present phone 
 
 ## How to Develop
 
-Phone number formatting is implemented through the [format](../reference/apis-localization-kit/js-apis-i18n.md#format8) API of the [PhoneNumberFormat](../reference/apis-localization-kit/js-apis-i18n.md#phonenumberformat8) class. The development procedure is as follows:
-
-1. Import the **i18n** module.
-   ```ts
-   import { i18n } from '@kit.LocalizationKit';
-   ```
-
-2. Create a **PhoneNumberFormat** object.
-
-   You can set different phone number formats through **PhoneNumberFormatOptions**. For details, see Table 1.
-
-   ```ts
-   let phoneNumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat(country: string, options?: PhoneNumberFormatOptions);
-   ```
-
-3. Format a phone number.
-   ```ts
-   let formattedPhoneNumber: string = phoneNumberFormat.format(phoneNumber: string);
-   ```
-
-4. Check whether the phone number is correct and obtain its home area.
-   ```ts
-   The let isValidNumber: boolean = phoneNumberFormat.isValidNumber(phoneNumber: string); // Check whether the phone number is correct.
-   let locationName: string = phoneNumberFormat.getLocationName(number: string, locale: string); // Obtain the home area of the phone number.
-   ```
+Phone number formatting is implemented through the [format](../reference/apis-localization-kit/js-apis-i18n.md#format8) API of the [PhoneNumberFormat](../reference/apis-localization-kit/js-apis-i18n.md#phonenumberformat8) class.
 
 **Phone Number Formatting Options**
 

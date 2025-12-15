@@ -1,4 +1,10 @@
 # 拖拽事件错误码
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -12,7 +18,7 @@ Data not found.
 
 **错误描述**
 
-当开发者调用DragEvent的GetData()接口时，若还未获取到数据，会抛出此错误码。
+当开发者调用DragEvent的[getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10)接口时，若还未获取到数据，会抛出此错误码。
 
 **可能原因**
 
@@ -30,7 +36,7 @@ Data error.
 
 **错误描述**
 
-当开发者调用DragEvent的GetData()接口时，若取得的数据有错误，会抛出此错误码。
+当开发者调用DragEvent的[getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10)接口时，若取得的数据有错误，会抛出此错误码。
 
 **可能原因**
 
@@ -44,11 +50,11 @@ NA
 
 **错误信息**
 
-Data error.
+Operation not allowed for current phase.
 
 **错误描述**
 
-当开发者在非onDrop阶段调用DragEvent的startDataLoading()接口时，系统会抛出此错误码。
+如果开发者在非[onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop)阶段调用仅支持该阶段调用的接口，会抛出此错误码。
 
 **可能原因**
 
@@ -56,22 +62,22 @@ Data error.
 
 **处理步骤**
 
-NA
+在[onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop)阶段调用相应接口。
 
 ## 190004 操作失败
 
 **错误信息**
 
-操作失败。
+Operation failed.
 
 **错误描述**
 
-当前阶段所进行的操作失败时，会抛出此错误码。
+如果开发者在数据未加载或加载完成后调用[cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15)接口，会抛出此错误码。
 
 **可能原因**
 
-参数错误。
+调用时机错误。
 
 **处理步骤**
 
-NA
+在数据加载过程中调用[cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15)接口。

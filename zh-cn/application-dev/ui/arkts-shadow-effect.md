@@ -1,11 +1,19 @@
 # 阴影
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-阴影接口[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)可以为当前组件添加阴影效果，该接口支持两种类型参数，开发者可配置[ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明)自定义阴影效果。ShadowOptions模式下，当radius = 0 或者 color 的透明度为0时，无阴影效果。
+阴影接口[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)可以为当前组件添加阴影效果，该接口支持两种类型参数，开发者可配置[ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明)自定义阴影效果。ShadowOptions模式下，当radius = 0或者color的透明度为0时，无阴影效果。
 
 
 
-```ts
+<!-- @[shadow_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Shadow/entry/src/main/ets/pages/Shadow.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct ShadowOptionDemo {

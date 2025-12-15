@@ -1,5 +1,16 @@
 # OH_CryptoPrivKeyEncodingParams
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoPrivKeyEncodingParams OH_CryptoPrivKeyEncodingParams
+```
+
 ## 概述
 
 定义私钥编码参数结构体。

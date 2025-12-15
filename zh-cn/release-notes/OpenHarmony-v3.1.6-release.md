@@ -26,9 +26,9 @@
 
 1. 注册码云gitee账号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
    
    ```
    git config --global user.name "yourname"
@@ -39,7 +39,7 @@
 4. 安装码云repo工具，可以执行如下命令。
    
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -48,11 +48,11 @@
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.6-Release --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.6-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -63,7 +63,7 @@ repo forall -c 'git lfs pull'
 
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.6-Release --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.6-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -104,7 +104,7 @@ repo forall -c 'git lfs pull'
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### 修复缺陷列表
@@ -113,11 +113,11 @@ repo forall -c 'git lfs pull'
 
 | 子系统             | 问题描述                                                     |
 | ------------------ | ------------------------------------------------------------ |
-| 应用子系统         | com.ohos.callui应用多次出现jscrash 栈名：updateCallTimeList([I5LWIW](https://gitee.com/openharmony/applications_call/issues/I5LWIW)) |
-| 全球化子系统       | 关键进程com.ohos.launcher下的com.ohos.launch线程多次出现libglobal_resmgr.z.so异常栈([I5LT0M](https://gitee.com/openharmony/global_resource_management/issues/I5LT0M))<br/>进程com.ohos.permissionmanager下的2.ui线程多次出现libglobal_resmgr.z.so异常栈([I68J7P](https://gitee.com/openharmony/global_resource_management/issues/I68J7P)) |
-| Misc软件服务子系统 | 进程com.example.kikakeyboard出现cppcrash, libinputmethod_client.z.so([I66W3B](https://gitee.com/openharmony/inputmethod_imf/issues/I66W3B))<br/>通过工具进行压测出现CPPCrash问题([I65K13](https://gitee.com/openharmony/inputmethod_imf/issues/I65K13)) |
-| 分布式硬件         | com.ohos.devicemanagerui多次出现jscrash([I69LD9](https://gitee.com/openharmony/distributedhardware_device_manager/issues/I69LD9)) |
-| 分布式软总线       | 分布式图库组网重启后对端设备媒体资源显示不出来([I674LD](https://gitee.com/openharmony/applications_photos/issues/I674LD)) |
+| 应用子系统         | com.ohos.callui应用多次出现jscrash 栈名：updateCallTimeList([I5LWIW](https://gitcode.com/openharmony/applications_call/issues/I5LWIW)) |
+| 全球化子系统       | 关键进程com.ohos.launcher下的com.ohos.launch线程多次出现libglobal_resmgr.z.so异常栈([I5LT0M](https://gitcode.com/openharmony/global_resource_management/issues/I5LT0M))<br/>进程com.ohos.permissionmanager下的2.ui线程多次出现libglobal_resmgr.z.so异常栈([I68J7P](https://gitcode.com/openharmony/global_resource_management/issues/I68J7P)) |
+| Misc软件服务子系统 | 进程com.example.kikakeyboard出现cppcrash, libinputmethod_client.z.so([I66W3B](https://gitcode.com/openharmony/inputmethod_imf/issues/I66W3B))<br/>通过工具进行压测出现CPPCrash问题([I65K13](https://gitcode.com/openharmony/inputmethod_imf/issues/I65K13)) |
+| 分布式硬件         | com.ohos.devicemanagerui多次出现jscrash([I69LD9](https://gitcode.com/openharmony/distributedhardware_device_manager/issues/I69LD9)) |
+| 分布式软总线       | 分布式图库组网重启后对端设备媒体资源显示不出来([I674LD](https://gitcode.com/openharmony/applications_photos/issues/I674LD)) |
 
 
 
@@ -128,12 +128,12 @@ repo forall -c 'git lfs pull'
 
 | ISSUE | 问题描述 | 修复链接 |
 | -------- | -------- | -------- |
-| I5UI5A | 修复组件kernel_linux_5.10上的CVE-2022-41218、CVE-2022-3424、CVE-2022-42328、CVE-2022-3643、CVE-2022-47946安全漏洞。 | [PR](https://gitee.com/openharmony/kernel_linux_5.10/pulls/646) |
-| I69WX6 | 修复组件ffmpeg上的CVE-2022-3341安全漏洞。                    | [PR](https://gitee.com/openharmony/third_party_ffmpeg/pulls/74) |
-| I68JS0 | 修复组件ffmpeg上的CVE-2022-3109安全漏洞。                    | [PR](https://gitee.com/openharmony/third_party_ffmpeg/pulls/71) |
-| I671DT | 修复组件curl上的CVE-2022-43551、CVE-2022-43552安全漏洞。     | [PR](https://gitee.com/openharmony/third_party_curl/pulls/99) |
-| I6A4YJ | 修复组件kernel_linux_5.10上的CVE-2022-20568安全漏洞。        | [PR](https://gitee.com/openharmony/kernel_linux_5.10/pulls/629) |
-| I6A55C | 修复组件kernel_linux_5.10上的CVE-2023-0047安全漏洞。         | [PR](https://gitee.com/openharmony/kernel_linux_5.10/pulls/631) |
+| I5UI5A | 修复组件kernel_linux_5.10上的CVE-2022-41218、CVE-2022-3424、CVE-2022-42328、CVE-2022-3643、CVE-2022-47946安全漏洞。 | [PR](https://gitcode.com/openharmony/kernel_linux_5.10/pulls/646) |
+| I69WX6 | 修复组件ffmpeg上的CVE-2022-3341安全漏洞。                    | [PR](https://gitcode.com/openharmony/third_party_ffmpeg/pulls/74) |
+| I68JS0 | 修复组件ffmpeg上的CVE-2022-3109安全漏洞。                    | [PR](https://gitcode.com/openharmony/third_party_ffmpeg/pulls/71) |
+| I671DT | 修复组件curl上的CVE-2022-43551、CVE-2022-43552安全漏洞。     | [PR](https://gitcode.com/openharmony/third_party_curl/pulls/99) |
+| I6A4YJ | 修复组件kernel_linux_5.10上的CVE-2022-20568安全漏洞。        | [PR](https://gitcode.com/openharmony/kernel_linux_5.10/pulls/629) |
+| I6A55C | 修复组件kernel_linux_5.10上的CVE-2023-0047安全漏洞。         | [PR](https://gitcode.com/openharmony/kernel_linux_5.10/pulls/631) |
 
 ##  遗留缺陷列表
 
@@ -141,5 +141,5 @@ repo forall -c 'git lfs pull'
 
 | issue                                                        | 问题描述                                                   | 影响             | 计划解决日期 |
 | ------------------------------------------------------------ | ---------------------------------------------------------- | ---------------- | ------------ |
-| [I6AF0Y](https://gitee.com/openharmony/ability_ability_runtime/issues/I6AF0Y) | 两个窗口分屏配对后，关闭其中一个窗口，另一个窗口也会关闭。 | 分屏功能退出失效 | 2/15         |
+| [I6AF0Y](https://gitcode.com/openharmony/ability_ability_runtime/issues/I6AF0Y) | 两个窗口分屏配对后，关闭其中一个窗口，另一个窗口也会关闭。 | 分屏功能退出失效 | 2/15         |
 

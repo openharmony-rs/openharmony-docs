@@ -1,4 +1,10 @@
 # 使用AVScreenCapture录屏写文件(C/C++)
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 
 屏幕录制主要为主屏幕录屏功能。
 
@@ -16,6 +22,9 @@
 
 如果配置了采集麦克风音频数据，需对应配置麦克风权限ohos.permission.MICROPHONE和申请长时任务，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
 
+从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，实现在屏幕熄灭但不锁屏的场景下，继续保持录制的效果，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
+
+从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.CUSTOM_SCREEN_RECORDING**，实现在录制屏幕时不再弹出隐私告警弹窗。配置方式请参见[受限开放权限](../../security/AccessToken/restricted-permissions.md)。
 ## 开发步骤及注意事项
 
 使用AVScreenCapture时要明确其状态的变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。
@@ -35,8 +44,8 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
     #include <multimedia/player_framework/native_avscreen_capture_base.h>
     #include <multimedia/player_framework/native_avscreen_capture_errors.h>
     #include <fcntl.h>
-    #include "string"
-    #include "unistd.h"
+    #include <string>
+    #include <unistd.h>
     ```
 
 2. 创建AVScreenCapture实例capture。
@@ -54,7 +63,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
     同时，录屏存文件需要设置状态回调，感知录制状态。
 
     ```c++
-    //录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
+    // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
     OH_AudioCaptureInfo micCapInfo = {
         .audioSampleRate = 48000,
         .audioChannels = 2,
@@ -132,8 +141,11 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
 #include <multimedia/player_framework/native_avscreen_capture_base.h>
 #include <multimedia/player_framework/native_avscreen_capture_errors.h>
 #include <fcntl.h>
-#include "string"
-#include "unistd.h"
+#include <string>
+#include <unistd.h>
+
+int32_t outputFd;
+struct OH_AVScreenCapture* capture;
 
 void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData) {
     (void)capture;
@@ -181,12 +193,15 @@ void OnUserSelected(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectio
     (void)userData;
     int* selectType = new int;
     uint64_t* displayId = new uint64_t;
+
     // 通过获取接口，拿到对应的选择类型和屏幕Id。OH_AVScreenCapture_UserSelectionInfo* selections仅在OnUserSelected回调中有效。
     OH_AVSCREEN_CAPTURE_ErrCode errorSelectType = OH_AVScreenCapture_GetCaptureTypeSelected(selections, selectType);
     OH_AVSCREEN_CAPTURE_ErrCode errorDisplayId = OH_AVScreenCapture_GetDisplayIdSelected(selections, displayId);
+
+    // 在使用完成后，对申请的内存进行释放
+    delete selectType, displayId;
 }
 
-struct OH_AVScreenCapture *capture;
 // 开始录屏时调用StartScreenCapture。
 static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     OH_AVScreenCaptureConfig config;
@@ -243,13 +258,21 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // 初始化录屏参数，传入配置信息OH_AVScreenRecorderConfig。
     OH_RecorderInfo recorderInfo;
     const std::string SCREEN_CAPTURE_ROOT = "/data/storage/el2/base/files/";
-    int32_t outputFd = open((SCREEN_CAPTURE_ROOT + "screen01.mp4").c_str(), O_RDWR | O_CREAT, 0777);
+    outputFd = open((SCREEN_CAPTURE_ROOT + "screen01.mp4").c_str(), O_RDWR | O_CREAT, 0777);
+
+    // 处理打开失败或创建失败的情况，返回报错结果。
+    if (outputFd == -1) {
+        napi_value errCode;
+        napi_create_double(env, AV_SCREEN_CAPTURE_ERR_IO, &errCode);
+        return errCode;
+    }
+
     std::string fileUrl = "fd://" + std::to_string(outputFd);
     recorderInfo.url = const_cast<char *>(fileUrl.c_str());
     recorderInfo.fileFormat = OH_ContainerFormatType::CFT_MPEG_4;
     config.recorderInfo = recorderInfo;
 
-    //设置状态回调。
+    // 设置状态回调。
     OH_AVScreenCapture_SetStateCallback(capture, OnStateChange, nullptr);
 
     // 可选，设置录屏内容变化回调。
@@ -274,7 +297,7 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // 进行初始化操作。
     int32_t retInit = OH_AVScreenCapture_Init(capture, config);
 
-    // 可选（API 20开始支持）：可以根据需要设置区域坐标和大小，设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100，宽100的矩形区域。此接口也可以在开始录屏以后设置。
+    // 可选（API version 20开始支持）：可以根据需要设置区域坐标和大小，设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100，宽100的矩形区域。此接口也可以在开始录屏以后设置。
     OH_Rect* region = new OH_Rect;
     region->x = 0;
     region->y = 0;
@@ -283,16 +306,26 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     uint64_t regionDisplayId = 0; // 传入矩形区域所在的屏幕Id。
     OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
     
+    // 对申请的内存进行释放。
+    delete region;
+
     // 开始录屏。
     int32_t retStart = OH_AVScreenCapture_StartScreenRecording(capture);
+
+    // 开始录屏失败的情况处理，返回报错结果。
+    if (retStart != AV_SCREEN_CAPTURE_ERR_OK) {
+        napi_value errCode;
+        napi_create_double(env, retStart, &errCode);
+        return errCode;
+    }
 
     // 结束录屏见StopScreenCapture。
     
     // 返回调用结果，示例仅返回随意值。
-    napi_value sum;
-    napi_create_double(env, 5, &sum);
+    napi_value code;
+    napi_create_double(env, AV_SCREEN_CAPTURE_ERR_OK, &code);
 
-    return sum;
+    return code;
 }
 
 // 结束录屏时调用StopScreenCapture。
@@ -301,15 +334,34 @@ static napi_value StopScreenCapture(napi_env env, napi_callback_info info) {
         // 结束录屏。
         int32_t retStop = OH_AVScreenCapture_StopScreenRecording(capture);
 
+        // 关闭文件访问
+        close(outputFd);
+
+        // 结束录屏失败的情况处理，返回报错结果。
+        if (retStop != AV_SCREEN_CAPTURE_ERR_OK) {
+            napi_value errCode;
+            napi_create_double(env, retStop, &errCode);
+            return errCode;
+        }
+
         // 释放ScreenCapture。
         int32_t retRelease = OH_AVScreenCapture_Release(capture);
+
+        // 释放ScreenCapture失败情况下处理，返回报错结果。
+        if (retRelease != AV_SCREEN_CAPTURE_ERR_OK) {
+            napi_value errCode;
+            napi_create_double(env, retRelease, &errCode);
+            return errCode;
+        }
+
         capture = nullptr;
     }
-    // 返回调用结果，示例仅返回随意值。
-    napi_value sum;
-    napi_create_double(env, 5, &sum);
 
-    return sum;
+    // 返回成功结果。
+    napi_value code;
+    napi_create_double(env, AV_SCREEN_CAPTURE_ERR_OK, &code);
+
+    return code;
 }
 
 EXTERN_C_START

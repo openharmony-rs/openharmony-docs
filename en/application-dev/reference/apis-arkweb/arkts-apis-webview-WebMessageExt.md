@@ -1,4 +1,10 @@
 # Class (WebMessageExt)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebMessageExt** object that received and sent by the [WebMessagePort](./arkts-apis-webview-WebMessagePort.md) API.
 
@@ -172,6 +178,8 @@ Sets the type for the data object. For details about the sample code, see [onMes
 
 **Error codes**
 
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                             |
 | -------- | ------------------------------------- |
 | 17100014 | The type and value of the message do not match. |
@@ -192,6 +200,8 @@ Sets the string-type data of the data object. For details about the sample code,
 | message  | string | Yes  | String type.|
 
 **Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                             |
 | -------- | ------------------------------------- |
@@ -214,6 +224,8 @@ Sets the number-type data of the data object. For details about the sample code,
 
 **Error codes**
 
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                             |
 | -------- | ------------------------------------- |
 | 17100014 | The type and value of the message do not match. |
@@ -234,6 +246,8 @@ Sets the Boolean-type data for the data object. For details about the sample cod
 | message  | boolean | Yes  | Data of the Boolean type.|
 
 **Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                             |
 | -------- | ------------------------------------- |
@@ -256,7 +270,7 @@ Sets the raw binary data for the data object. For details about the sample code,
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                             |
 | -------- | ------------------------------------- |
@@ -279,7 +293,7 @@ Sets the array-type data for the data object. For details about the sample code,
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                             |
 | -------- | ------------------------------------- |
@@ -302,7 +316,7 @@ Sets the error-object-type data for the data object. For details about the sampl
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                             |
 | -------- | ------------------------------------- |

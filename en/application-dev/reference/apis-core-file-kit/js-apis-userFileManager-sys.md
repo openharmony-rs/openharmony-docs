@@ -1,4 +1,10 @@
 # @ohos.filemanagement.userFileManager (User Data Management) (System API)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 The **userFileManager** module provides user data management capabilities, including accessing and modifying user media data.
 
@@ -133,7 +139,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Promise used to return the image and video assets obtained.|
+| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Promise that returns the image and video assets obtained.|
 
 **Error codes**
 
@@ -291,7 +297,7 @@ Creates an image or video asset with the specified file name and URI. This API u
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FileAsset](#fileasset)&gt; | Promise used to return the created image or video asset.|
+| Promise&lt;[FileAsset](#fileasset)&gt; | Promise that returns the created image or video asset.|
 
 **Error codes**
 
@@ -389,7 +395,7 @@ Creates an image or video asset with the specified file name and options. This A
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FileAsset](#fileasset)&gt; | Promise used to return the created image or video asset.|
+| Promise&lt;[FileAsset](#fileasset)&gt; | Promise that returns the created image or video asset.|
 
 **Error codes**
 
@@ -485,7 +491,7 @@ Creates an audio asset. This API uses a promise to return the result.
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FileAsset](#fileasset)&gt; | Promise used to return the created audio asset.|
+| Promise&lt;[FileAsset](#fileasset)&gt; | Promise that returns the created audio asset.|
 
 **Error codes**
 
@@ -580,7 +586,7 @@ The album name must meet the following requirements:
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[Album](#album)&gt; | Promise used to return the created album instance.|
+| Promise&lt;[Album](#album)&gt; | Promise that returns the created album instance.|
 
 **Example**
 
@@ -604,9 +610,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 deleteAlbums(albums: Array&lt;Album&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes albums. This API uses an asynchronous callback to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -652,9 +656,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
-Deletes albums. This API uses a promise to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -693,10 +695,11 @@ async function example(mgr: userFileManager.UserFileManager) {
   let album: userFileManager.Album = await fetchResult.getFirstObject();
   mgr.deleteAlbums([album]).then(() => {
     console.info('deletePhotoAlbumsPromise successfully');
+      fetchResult.close();
     }).catch((err: BusinessError) => {
       console.error('deletePhotoAlbumsPromise failed with err: ' + err);
+      fetchResult.close();
   });
-  fetchResult.close();
 }
 ```
 
@@ -720,7 +723,7 @@ Before the operation, ensure that the albums to obtain exist.
 | -------- | ------------------------ | ---- | ------------------------- |
 | type  | [AlbumType](#albumtype10)         | Yes  | Type of the album to obtain.             |
 | subType  | [AlbumSubType](#albumsubtype10)         | Yes  | Subtype of the album.             |
-| options  | [FetchOptions](#fetchoptions)         | Yes  |  Options for fetching the albums.             |
+| options  | [FetchOptions](#fetchoptions)         | Yes  |  Retrieval options.             |
 | callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -843,7 +846,7 @@ Before the operation, ensure that the albums to obtain exist.
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | Promise used to return the result.|
+| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | Promise that returns the albums.|
 
 **Error codes**
 
@@ -968,7 +971,7 @@ This API will be deprecated. Use [getAlbums<sup>10+</sup>](#getalbums10) instead
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | Promise used to return the albums obtained.|
+| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | Promise that returns the albums obtained.|
 
 **Error codes**
 
@@ -1069,7 +1072,7 @@ This API will be deprecated. Use [getAlbums<sup>10+</sup>](#getalbums10) instead
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[PrivateAlbum](#privatealbum)&gt;&gt; | Promise used to return the system album obtained.|
+| Promise&lt;[FetchResult](#fetchresult)&lt;[PrivateAlbum](#privatealbum)&gt;&gt; | Promise that returns the albums obtained.|
 
 **Error codes**
 
@@ -1110,7 +1113,7 @@ Obtains audio assets. This API uses an asynchronous callback to return the resul
 
 | Name  | Type                    | Mandatory| Description                     |
 | -------- | ------------------------ | ---- | ------------------------- |
-| options  | [FetchOptions](#fetchoptions)        | Yes  | Options for fetching the albums.             |
+| options  | [FetchOptions](#fetchoptions)        | Yes  | Retrieval options.             |
 | callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Yes  | Callback used to return the audio assets obtained.|
 
 **Error codes**
@@ -1165,13 +1168,13 @@ Obtains audio assets. This API uses a promise to return the result.
 
 | Name  | Type                    | Mandatory| Description                     |
 | -------- | ------------------------ | ---- | ------------------------- |
-| options  | [FetchOptions](#fetchoptions)        | Yes  | Options for fetching audio assets.             |
+| options  | [FetchOptions](#fetchoptions)        | Yes  | Retrieval options.             |
 
 **Return value**
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Promise used to return the audio assets obtained.|
+| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Promise that returns the audio assets obtained.|
 
 **Error codes**
 
@@ -1214,7 +1217,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes a media file. This API uses an asynchronous callback to return the result. The deleted file is moved to the recycle bin.
+Deletes a media file. This API uses an asynchronous callback to return the result. The deleted file is moved to the recycle bin. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO, ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.READ_AUDIO, and ohos.permission.WRITE_AUDIO
 
@@ -1353,7 +1356,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('getActivePeersDemo');
   mgr.getActivePeers((err, devicesInfo) => {
     if (devicesInfo != undefined) {
-      console.log('getActivePeers succeed.');
+      console.info('getActivePeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1376,7 +1379,7 @@ Obtains information about online peer devices. This API uses a promise to return
 
 | Type                       | Description                         |
 | --------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[PeerInfo](#peerinfo)&gt;&gt; | Promise used to return a list of online peer devices.|
+| Promise&lt;Array&lt;[PeerInfo](#peerinfo)&gt;&gt; | Promise that returns a list of online peer devices.|
 
 **Example**
 
@@ -1388,7 +1391,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   try {
     let devicesInfo: Array<userFileManager.PeerInfo> = await mgr.getActivePeers();
     if (devicesInfo != undefined) {
-      console.log('getActivePeers succeed.');
+      console.info('getActivePeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1424,7 +1427,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('getAllPeersDemo');
   mgr.getAllPeers((err, devicesInfo) => {
     if (devicesInfo != undefined) {
-      console.log('getAllPeers succeed.');
+      console.info('getAllPeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1447,7 +1450,7 @@ Obtains information about all peer devices. This API uses a promise to return th
 
 | Type                       | Description                         |
 | --------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[PeerInfo](#peerinfo)&gt;&gt; | Promise used to return the information obtained.|
+| Promise&lt;Array&lt;[PeerInfo](#peerinfo)&gt;&gt; | Promise that returns the information obtained.|
 
 **Example**
 
@@ -1460,7 +1463,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     let devicesInfo: Array<userFileManager.PeerInfo> = await mgr.getAllPeers();
 
     if (devicesInfo != undefined) {
-      console.log('getAllPeers succeed.');
+      console.info('getAllPeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1491,7 +1494,7 @@ Obtains the index of an image or video in an album. This API uses an asynchronou
 | -------- | ------------------------- | ---- | ---------- |
 | photoUri | string | Yes  | URI of the media asset whose index is to be obtained.|
 | albumUri | string | Yes  | Album URI, which can be an empty string. If it is an empty string, all the media assets in the Gallery are obtained by default.  |
-| options  | [FetchOptions](#fetchoptions)       | Yes  |  Fetch options. Only one search condition or sorting mode must be set in **predicates**. If no value is set or multiple search criteria or sorting modes are set, the API cannot be called successfully.     |
+| options  | [FetchOptions](#fetchoptions)       | Yes  |  Retrieval options. Only one search condition or sorting mode must be set in **predicates**. If no value is set or multiple search criteria or sorting modes are set, the API cannot be called successfully.     |
 | callback | AsyncCallback&lt;number&gt;| Yes  | Callback used to return the index obtained.|
 
 **Error codes**
@@ -1500,7 +1503,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 
 **Example**
 
@@ -1517,7 +1520,7 @@ async function example(mgr: userFileManager.UserFileManager) {
       fetchColumns: [],
       predicates: predicatesForGetAsset
     };
-    // Obtain the uri of the album
+    // Obtain the album URI.
     let albumFetchResult: userFileManager.FetchResult<userFileManager.Album> = await mgr.getAlbums(userFileManager.AlbumType.SYSTEM, userFileManager.AlbumSubType.FAVORITE, fetchOp);
     let album: userFileManager.Album = await albumFetchResult.getFirstObject();
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1528,7 +1531,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     };
     let photoFetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await album.getPhotoAssets(fetchOptions);
     let expectIndex = 1;
-    // Obtain the uri of the second file
+    // Obtain the URI of the second file.
     let photoAsset: userFileManager.FileAsset = await photoFetchResult.getPositionObject(expectIndex);
     mgr.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions, (err, index) => {
       if (err == undefined) {
@@ -1561,13 +1564,13 @@ Obtains the index of an image or video in an album. This API uses a promise to r
 | -------- | ------------------------- | ---- | ---------- |
 | photoUri | string | Yes  | URI of the media asset whose index is to be obtained.|
 | albumUri | string | Yes  | Album URI, which can be an empty string. If it is an empty string, all the media assets in the Gallery are obtained by default.  |
-| options  | [FetchOptions](#fetchoptions)       | Yes  |  Fetch options. Only one search condition or sorting mode must be set in **predicates**. If no value is set or multiple search criteria or sorting modes are set, the API cannot be called successfully.     |
+| options  | [FetchOptions](#fetchoptions)       | Yes  |  Retrieval options. Only one search condition or sorting mode must be set in **predicates**. If no value is set or multiple search criteria or sorting modes are set, the API cannot be called successfully.     |
 
 **Return value**
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt;| Promise used to return the index obtained.|
+| Promise&lt;number&gt;| Promise that returns the index obtained.|
 
 **Error codes**
 
@@ -1575,7 +1578,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 
 **Example**
 
@@ -1593,9 +1596,13 @@ async function example(mgr: userFileManager.UserFileManager) {
       fetchColumns: [],
       predicates: predicatesForGetAsset
     };
-    // Obtain the uri of the album
+    // Obtain the album URI.
     let albumFetchResult: userFileManager.FetchResult<userFileManager.Album> = await mgr.getAlbums(userFileManager.AlbumType.SYSTEM, userFileManager.AlbumSubType.FAVORITE, fetchOp);
     let album: userFileManager.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('getPhotoIndexPromise albums is undefined');
+      return;
+    }
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     predicates.orderByAsc(userFileManager.ImageVideoKey.DATE_MODIFIED.toString());
     let fetchOptions: userFileManager.FetchOptions = {
@@ -1604,7 +1611,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     };
     let photoFetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await album.getPhotoAssets(fetchOptions);
     let expectIndex = 1;
-    // Obtain the uri of the second file
+    // Obtain the URI of the second file.
     let photoAsset: userFileManager.FileAsset = await photoFetchResult.getPositionObject(expectIndex);
     mgr.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions).then((index) => {
       console.info(`getPhotoIndex successfully and index is : ${index}`);
@@ -1693,7 +1700,7 @@ Registers a listener for the specified URI. This API uses an asynchronous callba
 | Name   | Type                                       | Mandatory| Description                                                        |
 | --------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | uri       | string                                      | Yes  | URI of the file asset or album, or [DefaultChangeUri](#defaultchangeuri10).|
-| forSubUri | boolean                                     | Yes  | Whether to perform fuzzy listening.<br> If **uri** is the URI of the album, the value **true** means to listen for the file change in the album; the value **false** means to listen for the album change only.<br> If **uri** is the URI of the file asset, there is no difference whether **forSubUri** is **true** or **false**.<br> If **uri** is **DefaultChangeUri**, the value must be **true**, otherwise, the URI cannot be found and no message can be received.|
+| forSubUri | boolean                                     | Yes  | Whether to perform fuzzy listening. <br>If **uri** is the URI of the album, the value **true** means to listen for the file change in the album; the value **false** means to listen for the album change only. If **uri** is the URI of the file asset, there is no difference whether **forSubUri** is **true** or **false**. If **uri** is **DefaultChangeUri**, the value must be **true**, otherwise, the URI cannot be found and no message can be received.|
 | callback  | Callback&lt;[ChangeData](#changedata10)&gt; | Yes  | Callback used to return [ChangeData](#changedata10). <br>Note that different callbacks can be registered for a URI. You can use [off<sup>10+</sup>](#off10) to disable the specified callback or all callbacks for the URI.|
 
 **Error codes**
@@ -1725,11 +1732,11 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
   let onCallback1 = (changeData: userFileManager.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something
+    // The image file has been changed. Go to the next step.
   }
   let onCallback2 = (changeData: userFileManager.ChangeData) => {
       console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something
+    // The image file has been changed. Go to the next step.
   }
   // Register onCallback1.
   mgr.on(fileAsset.uri, false, onCallback1);
@@ -1794,12 +1801,14 @@ async function example(mgr: userFileManager.UserFileManager) {
   let onCallback2 = (changeData: userFileManager.ChangeData) => {
     console.info('onCallback2 on');
   }
-  // Register onCallback1.
-  mgr.on(fileAsset.uri, false, onCallback1);
-  // Register onCallback2.
-  mgr.on(fileAsset.uri, false, onCallback2);
-  // Disable the listening of onCallback1.
-  mgr.off(fileAsset.uri, onCallback1);
+  if (fileAsset.uri !== undefined) {
+    // Register onCallback1.
+    mgr.on(fileAsset.uri, false, onCallback1);
+    // Register onCallback2.
+    mgr.on(fileAsset.uri, false, onCallback2);
+    // Unregister the listening of onCallback1.
+    mgr.off(fileAsset.uri, onCallback1);  
+  }
   fileAsset.favorite(true, (err) => {
     if (err == undefined) {
       console.info('favorite successfully');
@@ -1837,7 +1846,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   let count = 0;
   mgr.on('imageChange', () => {
     count++;
-    // Image file changed. Do something.
+    // The image file has been changed. Go to the next step.
   });
   try {
     let testFileName: string = 'testFile' + Date.now() + '.jpg';
@@ -1847,14 +1856,14 @@ async function example(mgr: userFileManager.UserFileManager) {
   } catch (err) {
     console.error('createPhotoAsset failed, message = ' + err);
   }
-  // Sleep 1s.
+  // Sleep for 1s.
   if (count > 0) {
     console.info('onDemo success');
   } else {
     console.error('onDemo fail');
   }
   mgr.off('imageChange', () => {
-    // Unsubscription succeeds.
+    // The listening is stopped successfully.
   });
 }
 ```
@@ -1886,11 +1895,11 @@ async function example(mgr: userFileManager.UserFileManager) {
   let count = 0;
   mgr.on('imageChange', () => {
     count++;
-    // Image file changed. Do something.
+    // The image file has been changed. Go to the next step.
   });
 
   mgr.off('imageChange', () => {
-    // Unsubscription succeeds.
+    // The listening is stopped successfully.
   });
 
   try {
@@ -1901,7 +1910,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   } catch (err) {
     console.error('createPhotoAsset failed, message = ' + err);
   }
-  // Sleep 1s.
+  // Sleep for 1s.
   if (count == 0) {
     console.info('offDemo success');
   } else {
@@ -1918,11 +1927,11 @@ Provides APIs for encapsulating file asset attributes.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name                     | Type                    | Read-Only| Writable| Description                                                  |
+| Name                     | Type                    | Read-Only| Optional| Description                                                  |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | Yes  | No  | Media asset URI, for example, **file://media/Photo/1/IMG_datetime_0001/displayName.jpg**. For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri).        |
 | fileType   | [FileType](#filetype) | Yes  | No  | Type of the file.                                              |
-| displayName               | string                   | Yes  | Yes  | File name, including the file name extension, to display.                                |
+| displayName               | string                   | No  | No  | File name, including the file name extension, to display.                                |
 
 ### get
 
@@ -2168,7 +2177,7 @@ Opens a file. This API uses a promise to return the result.
 
 | Type                   | Description           |
 | --------------------- | ------------- |
-| Promise&lt;number&gt; | Promise used to return the file descriptor of the file opened.|
+| Promise&lt;number&gt; | Promise that returns the file descriptor of the file opened.|
 
 **Example**
 
@@ -2396,7 +2405,7 @@ Obtains the file thumbnail of the given size. This API uses a promise to return 
 
 | Type                           | Description                   |
 | ----------------------------- | --------------------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the PixelMap of the thumbnail.|
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise that returns the PixelMap of the thumbnail.|
 
 **Example**
 
@@ -2649,7 +2658,7 @@ Obtains a JSON string consisting of the EXIF tags of the JPG image. This API use
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise used to return the EXIF data, in JSON strings.|
+| Promise&lt;string&gt; | Promise that returns the EXIF data, in JSON strings.|
 
 **Supported EXIF tags**
 
@@ -2727,7 +2736,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getExif(callback: AsyncCallback&lt;string&gt;): void
 
-Obtains a JSON string consisting of the EXIF tags of the JPG image. This API uses a promise to return the result.
+Obtains a JSON string consisting of the EXIF tags of this JPG image. This API uses an asynchronous callback to return the result.
 
 **NOTE**<br>This API returns a JSON string consisting of EXIF tags. The complete EXIF information consists of **all_exif** and [ImageVideoKey.USER_COMMENT](#imagevideokey). These two fields must be passed in via **fetchColumns**.
 
@@ -2741,7 +2750,7 @@ Obtains a JSON string consisting of the EXIF tags of the JPG image. This API use
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the EXIF data, in JSON strings.|
+| callback | AsyncCallback&lt;string&gt; | Yes  | Callback that returns the EXIF data, in JSON strings.|
 
 **Supported EXIF tags**
 
@@ -2803,6 +2812,11 @@ async function example(mgr: userFileManager.UserFileManager) {
     };
     let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await mgr.getPhotoAssets(fetchOptions);
     let fileAsset: userFileManager.FileAsset = await fetchResult.getFirstObject();
+    if (fileAsset === undefined) {
+      console.error('getExif fileAsset is undefined');
+      fetchResult.close();
+      return;
+    }
     console.info('getExifDemo fileAsset displayName: ' + JSON.stringify(fileAsset.displayName));
     let userCommentKey: string = 'UserComment';
     fileAsset.getExif((err, exifMessage) => {
@@ -2853,7 +2867,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202   | Called by non-system application.                |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 
 **Example**
 
@@ -2908,7 +2922,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202   | Called by non-system application.                |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 
 **Example**
 
@@ -3101,7 +3115,7 @@ Obtains the first file asset in the result set. This API uses a promise to retur
 
 | Type                                   | Description                      |
 | --------------------------------------- | -------------------------- |
-| Promise&lt;T&gt; | Promise used to return the first object in the result set.|
+| Promise&lt;T&gt; | Promise that returns the first object in the result set.|
 
 **Example**
 
@@ -3179,7 +3193,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;T&gt; | Promise used to return the next object in the result set.|
+| Promise&lt;T&gt; | Promise that returns the next object in the result set.|
 
 **Example**
 
@@ -3255,7 +3269,7 @@ Obtains the last file asset in the result set. This API uses a promise to return
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;T&gt; | Promise used to return the last object in the result set.|
+| Promise&lt;T&gt; | Promise that returns the last object in the result set.|
 
 **Example**
 
@@ -3343,7 +3357,7 @@ Obtains a file asset with the specified index in the result set. This API uses a
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;T&gt; | Promise used to return the file asset obtained.|
+| Promise&lt;T&gt; | Promise that returns the file asset obtained.|
 
 **Error codes**
 
@@ -3368,8 +3382,12 @@ async function example(mgr: userFileManager.UserFileManager) {
     predicates: predicates
   };
   let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await mgr.getPhotoAssets(fetchOption);
-  let fileAsset: userFileManager.FileAsset = await fetchResult.getPositionObject(0);
-  console.info('fileAsset displayName: ', fileAsset.displayName);
+  if (fetchResult.getCount() > 0) {
+    let fileAsset: userFileManager.FileAsset = await fetchResult.getPositionObject(0);
+    console.info('fileAsset displayName: ', fileAsset.displayName);
+  } else {
+    console.info('No file assets found');
+  } 
 }
 ```
 
@@ -3424,7 +3442,7 @@ Obtains all the file assets in the result set. This API uses a promise to return
 
 | Type                                   | Description                      |
 | --------------------------------------- | -------------------------- |
-| Promise&lt;Array&lt;T&gt;&gt; | Promise used to return an array of all file assets in the result set.|
+| Promise&lt;Array&lt;T&gt;&gt; | Promise that returns an array of all file assets in the result set.|
 
 **Example**
 
@@ -3454,14 +3472,15 @@ Provides APIs to manage albums.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name          | Type   | Read-Only  | Writable | Description  |
+| Name          | Type   | Read-Only  | Optional | Description  |
 | ------------ | ------ | ---- | ---- | ------- |
 | albumType<sup>10+</sup> | [AlbumType]( #albumtype10) | Yes   | No   | Type of the album to obtain.   |
 | albumSubType<sup>10+</sup> | [AlbumSubType]( #albumsubtype10) | Yes   | No  | Subtype of the album.   |
-| albumName | string | Yes   | Yes for a user album; no for a system album.  | Name of the album.   |
+| albumName | string | No   | No  | Name of the album.<br>**NOTE**<br>It is writable for user albums but not for system albums.   |
 | albumUri | string | Yes   | No   | URI of the album.  |
+| dateModified  | number | Yes   | No   |  Time when the album was modified.|
 | count | number | Yes   | No   |  Number of files in the album.|
-| coverUri | string | Yes   | Yes for a user album; no for a system album.    | URI of the cover file of the album.|
+| coverUri | string | No   | No    | URI of the cover file of the album.<br>**NOTE**<br>It is writable for user albums but not for system albums.|
 
 ### getPhotoAssets
 
@@ -3477,7 +3496,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching the albums.|
+| options | [FetchOptions](#fetchoptions) | Yes  | Retrieval options.|
 | callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Yes  | Callback used to return the image and video assets obtained.|
 
 **Error codes**
@@ -3532,13 +3551,13 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching the image and video assets.|
+| options | [FetchOptions](#fetchoptions) | Yes  | Retrieval options.|
 
 **Return value**
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Promise used to return the image and video assets obtained.|
+| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Promise that returns the image and video assets obtained.|
 
 **Error codes**
 
@@ -4150,13 +4169,13 @@ This API will be deprecated. Use [Album](#album) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name          | Type   | Read-Only  | Writable  | Description     |
+| Name          | Type   | Read-Only  | Optional  | Description     |
 | ------------ | ------ | ---- | ---- | ------- |
-| albumName | string | Yes   | Yes   | Name of the album.   |
+| albumName | string | No   | No   | Name of the album.   |
 | albumUri | string | Yes   | No   | URI of the album.  |
 | dateModified | number | Yes   | No   | Date when the album was last modified.   |
 | count | number | Yes   | No   | Number of files in the album.|
-| coverUri | string | Yes   | No   | URI of the cover file of the album.|
+| coverUri | string | No   | No   | URI of the cover file of the album.|
 
 ### getPhotoAssets
 
@@ -4174,7 +4193,7 @@ This API will be deprecated. Use [Album.getPhotoAssets](#getphotoassets-2) inste
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching the image and video assets.|
+| options | [FetchOptions](#fetchoptions) | Yes  | Retrieval options.|
 | callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Yes  | Callback used to return the image and video assets obtained.|
 
 **Error codes**
@@ -4201,6 +4220,10 @@ async function example(mgr: userFileManager.UserFileManager) {
     predicates: predicates
   };
   const trashAlbum: userFileManager.PrivateAlbum = await albumList.getFirstObject();
+  if (trashAlbum === undefined) {
+    console.error('trashAlbum is undefined');
+    return;
+  }
   trashAlbum.getPhotoAssets(fetchOption, (err, fetchResult) => {
     if (fetchResult != undefined) {
       let count = fetchResult.getCount();
@@ -4229,13 +4252,13 @@ This API will be deprecated. Use [Album.getPhotoAssets](#getphotoassets-3) inste
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching the image and video assets.|
+| options | [FetchOptions](#fetchoptions) | Yes  | Retrieval options.|
 
 **Return value**
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise:[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;| Promise used to return the image and video assets obtained.|
+| Promise:[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;| Promise that returns the image and video assets obtained.|
 
 **Error codes**
 
@@ -4271,7 +4294,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes a file from the system album. Only the files in the trash can be deleted.
+Deletes a file from the system album. Only the files in the trash can be deleted. This API uses an asynchronous callback to return the result.
 
 This API will be deprecated. Use [Album.deletePhotoAssets](#deletephotoassets10) instead.
 
@@ -4283,7 +4306,7 @@ This API will be deprecated. Use [Album.deletePhotoAssets](#deletephotoassets10)
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| uri | string | Yes  | URI of the file to delete.|
+| uri | string | Yes  | File URI.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
 
 **Example**
@@ -4319,7 +4342,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string): Promise&lt;void&gt;
 
-Deletes a file from the system album. Only the files in the trash can be deleted.
+Deletes a file from the system album. Only the files in the trash can be deleted. This API uses a promise to return the result.
 
 This API will be deprecated. Use [Album.deletePhotoAssets](#deletephotoassets10) instead.
 
@@ -4331,7 +4354,7 @@ This API will be deprecated. Use [Album.deletePhotoAssets](#deletephotoassets10)
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| uri | string | Yes  | URI of the file to delete.|
+| uri | string | Yes  | File URI.|
 
 **Return value**
 
@@ -4371,7 +4394,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 recover(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Recovers a file in the system album. Only the files in the trash can be recovered.
+Recovers a file in the system album. Only the files in the trash can be recovered. This API uses an asynchronous callback to return the result.
 
 This API will be deprecated. Use [Album.recoverPhotoAssets](#recoverphotoassets10) instead.
 
@@ -4383,7 +4406,7 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](#recoverphotoassets1
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| uri | string | Yes  | URI of the file to recover.|
+| uri | string | Yes  | File URI.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
 
 **Example**
@@ -4402,8 +4425,16 @@ async function example(mgr: userFileManager.UserFileManager) {
     predicates: predicates
   };
   let trashAlbum: userFileManager.PrivateAlbum = await albumList.getFirstObject();
+  if (trashAlbum === undefined) {
+    console.error('privateAlbumRecoverDemoCallback trashAlbum is undefined');
+    return;
+  }
   let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await trashAlbum.getPhotoAssets(fetchOption);
   let fileAsset: userFileManager.FileAsset = await fetchResult.getFirstObject();
+  if (fileAsset === undefined) {
+    console.error('privateAlbumRecoverDemoCallback fileAsset is undefined');
+    return;
+  }
   let recoverFileUri: string = fileAsset.uri;
   trashAlbum.recover(recoverFileUri, (err) => {
     if (err != undefined) {
@@ -4419,7 +4450,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 recover(uri: string): Promise&lt;void&gt;
 
-Recovers a file in the system album. Only the files in the trash can be recovered.
+Recovers a file in the system album. Only the files in the trash can be recovered. This API uses a promise to return the result.
 
 This API will be deprecated. Use [Album.recoverPhotoAssets](#recoverphotoassets10) instead.
 
@@ -4431,7 +4462,7 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](#recoverphotoassets1
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| uri | string | Yes  | URI of the file to recover.|
+| uri | string | Yes  | File URI.|
 
 **Return value**
 
@@ -4469,30 +4500,38 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 ## MemberType
 
-Enumerates the member types.
+type MemberType = number | string | boolean
+
+Represents the type of a file asset member.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name |  Type|  Read-Only |  Writable |  Description |
-| ----- |  ---- |  ---- |  ---- |  ---- |
-| number |  number | Yes| Yes| The member is a number.|
-| string |  string | Yes| Yes| The member is a string.|
-| boolean |  boolean | Yes| Yes| The member is a Boolean value.|
+| Type | Description                     |
+| ----- |  ---- |
+| number | The member is a number.|
+| string | The member is a string.|
+| boolean | The member is a Boolean value.|
 
 ## ChangeEvent
 
+type ChangeEvent = 'deviceChange' | 'albumChange' | 'imageChange' | 'audioChange' | 'videoChange' | 'remoteFileChange'
+
 Enumerates the type of changes to observe.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name |  Type|  Read-Only |  Writable |  Description|
-| ----- |  ---- |  ---- |  ---- |  ---- |
-| deviceChange |  string | Yes| Yes|  Device change.|
-| albumChange |  string | Yes| Yes|  Album change.|
-| imageChange |  string | Yes| Yes|  Image change.|
-| audioChange |  string | Yes| Yes|  Audio change.|
-| videoChange |  string | Yes| Yes|  Video change.|
-| remoteFileChange |  string | Yes| Yes|  Remote file change.|
+| Type | Description                     |
+| ----- |  ---- |
+| 'deviceChange' | Device. The value is fixed at **'deviceChange'**.|
+| 'albumChange' | Album. The value is fixed at **'albumChange'**.|
+| 'imageChange' | Image. The value is fixed at **'imageChange'**.|
+| 'audioChange' | Audio. The value is fixed at **'audioChange'**.|
+| 'videoChange' | Video. The value is fixed at **'videoChange'**.|
+| 'remoteFileChange' | Remote file. The value is fixed at **'remoteFileChange'**.|
 
 ## PeerInfo
 
@@ -4500,7 +4539,7 @@ Defines information about a registered device.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.DistributedCore
 
-| Name      | Type                      | Read-Only| Writable| Description            |
+| Name      | Type                      | Read-Only| Optional| Description            |
 | ---------- | -------------------------- | ---- | ---- | ---------------- |
 | deviceName | string                     | Yes  | No  | Name of the registered device.  |
 | networkId  | string                     | Yes  | No  | Network ID of the registered device.|
@@ -4555,7 +4594,7 @@ Enumerates the album types.
 
 ## AlbumSubType<sup>10+</sup>
 
-Enumerate the album subtypes.
+Enumerates the album subtypes.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4643,14 +4682,16 @@ Defines the key album information.
 
 ## PhotoCreateOptions<sup>10+</sup>
 
-Options for creating an image or video asset.
+Defines the options for creating an image or video asset.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| subType           | [PhotoSubType](#photosubtype10) | No | Subtype of the image or video. |
-| cameraShotKey           | string | No | Key for the Ultra Snapshot feature.<br>This parameter is available only for the system camera, and the key value is defined by the system camera. |
+| Name                  | Type               | Read-Only| Optional| Description                                             |
+| ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
+| subType           | [PhotoSubType](#photosubtype10) | No  | Yes  | Subtype of the image or video.|
+| cameraShotKey           | string | No  | Yes  | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.)|
 
 ## FetchOptions
 
@@ -4658,10 +4699,10 @@ Defines the options for fetching file attributes.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name                  | Type               | Read-Only| Writable| Description                                             |
+| Name                  | Type               | Read-Only| Optional| Description                                             |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
-| fetchColumns           | Array&lt;string&gt; | Yes  | Yes  | Options for fetching files based on the attributes in columns. If this parameter is left empty, files are fetched by URI, name, and type (the specific field names vary with the file asset or album object) by default. In addition, an error will be reported if [get](#get) is called to obtain other attributes of this object. Example:<br>fetchColumns: ['uri', 'title']|
-| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates-sys.md) | Yes  | Yes  | Predicates that specify the fetch criteria.|
+| fetchColumns           | Array&lt;string&gt; | No  | No  | Options for fetching files based on the attributes in columns. If this parameter is left empty, files are fetched by URI, name, and type (the specific field names vary with the file asset or album object) by default. In addition, an error will be reported if [get](#get) is called to obtain other attributes of this object. Example:<br>fetchColumns: ['uri', 'title']|
+| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates-sys.md) | No  | No  | Predicates that specify the fetch criteria.|
 
 ## AlbumFetchOptions
 
@@ -4669,9 +4710,9 @@ Defines the options for fetching an album.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name                  | Type               | Read-Only| Writable| Description                                             |
+| Name                  | Type               | Read-Only| Optional| Description                                             |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
-| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates-sys.md) | Yes  | Yes  | Predicates that specify the fetch criteria.|
+| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates-sys.md) | No  | No  | Predicates that specify the fetch criteria.|
 
 ## ChangeData<sup>10+</sup>
 
@@ -4679,11 +4720,11 @@ Defines the return value of the listener callback.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name   | Type                       | Read-Only| Writable| Description                                                        |
+| Name   | Type                       | Read-Only| Optional| Description                                                        |
 | ------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type    | [NotifyType](#notifytype10) | Yes  | No  | Notification type.                                      |
-| uris    | Array&lt;string&gt;         | Yes  | No  | Array of all file asset or album URIs with the same [NotifyType](#notifytype10).|
-| subUris | Array&lt;string&gt;         | Yes  | No  | URIs of the changed files in the album. The value may be undefined. Check whether the value is undefined before using it.|
+| type    | [NotifyType](#notifytype10) | No  | No  | Notification type.                                      |
+| uris    | Array&lt;string&gt;         | No  | No  | Array of all file asset or album URIs with the same [NotifyType](#notifytype10).|
+| subUris | Array&lt;string&gt;         | No  | No  | URIs of the changed files in the album. The value may be undefined. Check whether the value is undefined before using it.|
 
 ## NotifyType<sup>10+</sup>
 
@@ -4710,5 +4751,3 @@ Enumerates the **DefaultChangeUri** subtypes.
 | DEFAULT_PHOTO_URI | file://media/Photo      | Default **PhotoAsset** URI. The **PhotoAsset** change notifications are received based on this parameter and **forSubUri{true}**.|
 | DEFAULT_ALBUM_URI | file://media/PhotoAlbum | Default album URI. Album change notifications are received based on this parameter and **forSubUri{true}**. |
 | DEFAULT_AUDIO_URI | file://media/Audio      | Default **AudioAsset** URI. The **AudioAsset** change notifications are received based on this parameter and **forSubUri{true}**.|
-
-<!--no_check-->

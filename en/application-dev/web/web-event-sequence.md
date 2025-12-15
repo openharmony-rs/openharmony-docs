@@ -1,4 +1,10 @@
 # Lifecycle of the Web Component
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @weixin_41848015-->
+<!--Designer: @libing23232323-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 ## Overview
 
@@ -10,7 +16,7 @@ The statuses of a **Web** component include binding a controller to it, the star
 
 For details about how to keep web pages alive, see [Using Offline Web Components](../web/web-offline-mode.md).
 
-If the [aboutToDisAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) function is executed when a custom component is destructed, the **Web** component is destroyed and unbound from the WebviewController, and the JS running environment is also destroyed.
+If the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) function is executed when a custom component is destructed, the **Web** component is destroyed and unbound from the WebviewController, and the JS running environment is also destroyed.
 
 **Figure 1** Callback events during the normal web page loading of the **Web** component
 
@@ -26,18 +32,18 @@ If the [aboutToDisAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-l
 
 - [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9): triggered before the **Web** component loads a URL, which is used to intercept the URL and return response data.
 
-- [onPageBegin](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagebegin): triggered when a web page starts loading and only in the main frame (an HTML element used to display the HTML page). This callback is not triggered when the content of an **iframe** or **frameset** (an HTML tag used to include frames) is loaded. Multiple-frame pages may be loaded at the same time. When the main frame is loaded, subframes may still be loaded. This callback will not be triggered for navigations to the same page or failed navigations.
+- [onPageBegin](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagebegin): triggered only in the main frame (an element used to display the HTML page) when a web page starts loading. This callback is not triggered when the content of an **iframe** or **frameset** (an HTML tag used to include frames) is loaded. Multiple-frame pages may be loaded at the same time. When the main frame is loaded, subframes may still be loaded. This callback will not be triggered for the navigation to the same page or the failed navigation.
 
 - [onProgressChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprogresschange): triggered to notify the page loading progress. The multi-frame page or subframes may continue to be loaded while the main frame has been loaded. Therefore, this event may be received after the [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend) event.
 
-- [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend): triggered only in the main frame when a web page is already loaded. Multi-frame pages may start to be loaded at the same time. Even if the main frame is already loaded, the sub-frames may start to be loaded or continue to be loaded. This callback will not be triggered for navigations to the same page or failed navigations. You are advised to execute the JavaScript script in this callback. Note that even if this callback function is received, the next frame may not reflect the DOM status.
+- [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend): triggered only in the main frame when a web page is already loaded. Multi-frame pages may start to be loaded at the same time. Even if the main frame is already loaded, the sub-frames may start to be loaded or continue to be loaded. This callback will not be triggered for the navigation to the same page or the failed navigation. You are advised to execute the JavaScript script in this callback. Note that even if this callback function is received, the next frame may not reflect the DOM status.
 
 ## Statuses of the Abnormal Web Page Loading
-- [onOverrideUrlLoading](../reference/apis-arkweb/arkts-basic-components-web-events.md#onoverrideurlloading12): triggered for the host application to obtain control when a URL is about to be loaded to the current web page. The value **true** means to stop loading the URL, and the value **false** means to continue loading the URL. The behavior of **onLoadIntercept()** is different from that of the **onOverrideUrlLoading()** and they are triggered in different timing. Therefore, the two APIs are used in different scenarios. The **onLoadIntercept** event is triggered when **loadUrl** and iframe are loaded, but the **onOverrideUrlLoading** event is not triggered when **loadUrl** and specific iframe are loaded. For details, see the document.
+- [onOverrideUrlLoading](../reference/apis-arkweb/arkts-basic-components-web-events.md#onoverrideurlloading12): triggered for the host application to obtain control when a URL is about to be loaded to the current web page. The value **true** means to stop loading the URL, and the value **false** means to continue loading the URL. The behavior of **onLoadIntercept()** is different from that of the **onOverrideUrlLoading()** and they are triggered in different timing. Therefore, the two APIs are used in different scenarios. The **onLoadIntercept** event is triggered when **loadUrl** and iframe are loaded, but the **onOverrideUrlLoading** event is not triggered when **loadUrl** and specific iframe are loaded.
 
 - [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9): web callback event, which is triggered when the body of an HTTP response starts to be loaded and a new page is about to be displayed in the rendering process. In this case, the document loading is still in the early stage, so the linked resources such as online CSS and images may not be available.
 
-- [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9): triggered when an application rendering process exits abnormally. You can release system resources and save data in this callback. If you want to recover the application, call the [loadUrl](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to reload the page. For details, see [How can I prevent page suspension when the Web component's rendering child process exits unexpectedly?](#how-can-I-prevent-page-suspension-when-the-web-components-rendering-child-process-exits-unexpectedly).
+- [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9): triggered when an application rendering process exits abnormally. You can release system resources and save data in this callback. If you want to recover the application, call the [loadUrl](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to reload the page. For details, see [How can I prevent page suspension when the Web component's rendering child process exits unexpectedly](#how-can-i-prevent-page-suspension-when-the-web-components-rendering-child-process-exits-unexpectedly).
 
 - [onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear): triggered when a component is uninstalled from the component tree, This event is triggered when a component is uninstalled.
 
@@ -74,18 +80,18 @@ Codes on the application side:
 
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: 'www.example.com', controller: this.controller })
           .onControllerAttached(() => {
             // You are advised to use **loadUrl**, set a custom user agent, and inject a JS object.
-            console.log('onControllerAttached execute')
+            console.info('onControllerAttached execute')
           })
           .onLoadIntercept((event) => {
             if (event) {
-              console.log('onLoadIntercept url:' + event.data.getRequestUrl())
-              console.log('url:' + event.data.getRequestUrl())
-              console.log('isMainFrame:' + event.data.isMainFrame())
-              console.log('isRedirect:' + event.data.isRedirect())
-              console.log('isRequestGesture:' + event.data.isRequestGesture())
+              console.info('onLoadIntercept url:' + event.data.getRequestUrl())
+              console.info('url:' + event.data.getRequestUrl())
+              console.info('isMainFrame:' + event.data.isMainFrame())
+              console.info('isRedirect:' + event.data.isRedirect())
+              console.info('isRequestGesture:' + event.data.isRequestGesture())
             }
             // If true is returned, the loading is blocked. Otherwise, the loading is allowed.
             return false;
@@ -98,7 +104,7 @@ Codes on the application side:
           })
           .onInterceptRequest((event) => {
             if (event) {
-              console.log('url:' + event.request.getRequestUrl());
+              console.info('url:' + event.request.getRequestUrl());
             }
             let head1: Header = {
               headerKey: "Connection",
@@ -111,7 +117,7 @@ Codes on the application side:
             // Add a new element to the end of the array and return the length of the new array.
             let length = this.heads.push(head1);
             length = this.heads.push(head2);
-            console.log('The response header result length is :' + length);
+            console.info('The response header result length is :' + length);
             this.responseWeb.setResponseHeader(this.heads);
             this.responseWeb.setResponseData(this.webData);
             this.responseWeb.setResponseEncoding('utf-8');
@@ -123,33 +129,33 @@ Codes on the application side:
           })
           .onPageBegin((event) => {
             if (event) {
-              console.log('onPageBegin url:' + event.url);
+              console.info('onPageBegin url:' + event.url);
             }
           })
           .onFirstContentfulPaint(event => {
             if (event) {
-              console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+              console.info("onFirstContentfulPaint:" + "[navigationStartTick]:" +
               event.navigationStartTick + ", [firstContentfulPaintMs]:" +
               event.firstContentfulPaintMs);
             }
           })
           .onProgressChange((event) => {
             if (event) {
-              console.log('newProgress:' + event.newProgress);
+              console.info('newProgress:' + event.newProgress);
             }
           })
           .onPageEnd((event) => {
             // You are advised to execute the JavaScript script in this event.
             if (event) {
-              console.log('onPageEnd url:' + event.url);
+              console.info('onPageEnd url:' + event.url);
             }
           })
           .onPageVisible((event) => {
-            console.log('onPageVisible url:' + event.url);
+            console.info('onPageVisible url:' + event.url);
           })
           .onRenderExited((event) => {
             if (event) {
-              console.log('onRenderExited reason:' + event.renderExitReason);
+              console.info('onRenderExited reason:' + event.renderExitReason);
             }
           })
           .onDisAppear(() => {
@@ -163,20 +169,6 @@ Codes on the application side:
   }
   ```
 
-Frontend index.html:
-
-  ```html
-  <!-- index.html -->
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset="UTF-8">
-  </head>
-  <body>
-  <h1>Hello, ArkWeb</h1>
-  </body>
-  </html>
-  ```
 
 ## Performance Indicators of Web Component Page Loading
 
@@ -188,7 +180,7 @@ Pay attention to some important performance indicators during web page loading. 
 
 - [onLargestContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onlargestcontentfulpaint12): triggered when the largest content, such as the image, text block, or video, is drawn in the visible area.
 
-## How can I prevent page suspension when the Web component's rendering child process exits unexpectedly?
+## How can I prevent page suspension when the Web component's rendering child process exits unexpectedly
 
 ArkWeb is a **Web** component platform designed to display web page content for applications and provide capabilities such as page loading, interaction, and debugging. When an ArkWeb application is used, the page may be suspended due to various reasons. For example, the ArkWeb child rendering process crashes due to front-end exceptions, or the background ArkWeb child rendering process is terminated due to insufficient system resources. In this case, you need to open the page again or restart the application.
 
@@ -235,14 +227,14 @@ struct WebComponent {
               // Set the maximum number of reload times to prevent the page from being cyclically loaded.
               return;
             }
-            console.log('renderReloadCountForCrashed: ' + this.renderReloadCountForCrashed);
+            console.info('renderReloadCountForCrashed: ' + this.renderReloadCountForCrashed);
             this.renderReloadCountForCrashed++;
           } else {
             if (this.renderReloadCountForOthers >= this.renderReloadMaxForOthers) {
               // Set the maximum number of reload times to prevent the page from being cyclically loaded.
               return;
             }
-            console.log('renderReloadCountForOthers: ' + this.renderReloadCountForOthers);
+            console.info('renderReloadCountForOthers: ' + this.renderReloadCountForOthers);
             this.renderReloadCountForOthers++;
           }
           if (this.webIsVisible) {

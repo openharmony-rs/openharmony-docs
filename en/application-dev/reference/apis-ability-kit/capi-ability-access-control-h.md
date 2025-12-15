@@ -1,5 +1,12 @@
 # ability_access_control.h
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @xia-bubai-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 ## Overview
 
 Declares the APIs for implementing application access control.

@@ -1,4 +1,14 @@
 # OH_AudioInfo
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioInfo {...} OH_AudioInfo
+```
 
 ## Overview
 

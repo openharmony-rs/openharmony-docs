@@ -1,4 +1,14 @@
 # ArkUI_CustomDialogOptions
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_CustomDialogOptions ArkUI_CustomDialogOptions
+```
 
 ## 概述
 

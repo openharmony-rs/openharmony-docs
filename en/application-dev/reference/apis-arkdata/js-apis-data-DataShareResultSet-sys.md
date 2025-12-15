@@ -1,4 +1,10 @@
 # @ohos.data.dataShareResultSet (DataShare Result Set) (System API)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @woodenarow-->
+<!--Designer: @woodenarow; @xuelei3-->
+<!--Tester: @chenwan188; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 The **DataShareResultSet** module provides APIs for accessing the result set obtained from the database. You can access the values in the specified rows or the value of the specified data type.
 
@@ -39,20 +45,19 @@ export default class EntryAbility extends UIAbility {
         console.info("createDataShareHelper end, data : " + data);
         dataShareHelper = data;
       }
+      let columns = ["*"];
+      let da = new dataSharePredicates.DataSharePredicates();
+      let resultSet: DataShareResultSet | undefined = undefined;
+      da.equalTo("name0", "ZhangSan");
+      if (dataShareHelper != undefined) {
+        (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns).then((data: DataShareResultSet) => {
+          console.info("query end, data : " + data);
+          resultSet = data;
+        }).catch((err: BusinessError) => {
+          console.error("query fail, error message : " + err);
+        });
+      }
     });
-
-    let columns = ["*"];
-    let da = new dataSharePredicates.DataSharePredicates();
-    let resultSet: DataShareResultSet | undefined = undefined;
-    da.equalTo("name", "ZhangSan");
-    if (dataShareHelper != undefined) {
-      (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns).then((data: DataShareResultSet) => {
-        console.info("query end, data : " + data);
-        resultSet = data;
-      }).catch((err: BusinessError) => {
-        console.error("query fail, error message : " + err);
-      });
-    }
   };
 };
 ```
@@ -66,12 +71,12 @@ The column or key names are returned as a string array, in which the strings are
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
-| Name       | Type     | Mandatory| Description                    |
-| ----------- | ------------- | ---- | ------------------------ |
-| columnNames | Array&lt;string&gt; | Yes  | Names of all columns in the result set.  |
-| columnCount | number        | Yes  | Number of columns in the result set.        |
-| rowCount    | number        | Yes  | Number of rows in the result set.        |
-| isClosed    | boolean       | Yes  | Whether the result set is closed. The value **true** means the result set is closed; the value **false** means the opposite.|
+| Name       | Type     | Read-Only| Optional| Description                    |
+| ----------- | ------------- | ---- | ---- | ------------------------ |
+| columnNames | Array&lt;string&gt; | No| No  | Names of all columns in the result set.  |
+| columnCount | number        | No| No  | Number of columns in the result set.        |
+| rowCount    | number        | No| No  | Number of rows in the result set.        |
+| isClosed    | boolean       | No| No  | Whether the result set is closed. The value **true** means the result set is closed; the value **false** means the opposite.|
 
 ### goToFirstRow
 
@@ -254,8 +259,12 @@ If the specified column or key is empty or the value is not of the Blob type, yo
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getBlob = (resultSet as DataShareResultSet).getBlob(columnIndex);
-  console.info('resultSet.getBlob: ' + getBlob);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getBlob = (resultSet as DataShareResultSet).getBlob(columnIndex);
+    console.info('resultSet.getBlob: ' + getBlob);
+  }
 }
 ```
 

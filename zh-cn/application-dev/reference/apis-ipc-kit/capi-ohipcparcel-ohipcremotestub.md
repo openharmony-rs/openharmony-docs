@@ -1,4 +1,14 @@
 # OHIPCRemoteStub
+<!--Kit: IPC Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @xdx19211@luodonghui0157-->
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+typedef struct OHIPCRemoteStub OHIPCRemoteStub
+```
 
 ## 概述
 

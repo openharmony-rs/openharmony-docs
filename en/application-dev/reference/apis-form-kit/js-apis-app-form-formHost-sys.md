@@ -1,11 +1,17 @@
 # @ohos.app.form.formHost (formHost) (System API)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @HelloShuo-->
 
 The **formHost** module provides APIs related to the widget host, which is an application that displays the widget content and controls the position where the widget is displayed. You can use the APIs to delete, release, and update widgets installed by the same user, and obtain widget information and status.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are system APIs.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -57,7 +63,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log('formHost deleteForm success');
+      console.info('formHost deleteForm success');
     }
   });
 } catch (error) {
@@ -112,7 +118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.deleteForm(formId).then(() => {
-    console.log('formHost deleteForm success');
+    console.info('formHost deleteForm success');
   }).catch((error: BusinessError) => {
     console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
   });
@@ -186,7 +192,7 @@ Releases a widget. After this API is called, the application can no longer use t
 | Name        | Type    | Mandatory| Description       |
 | -------------- | ------  | ---- | ----------- |
 | formId         | string  | Yes  | Widget ID.    |
-| isReleaseCache | boolean | Yes  | Whether to release the cache.|
+| isReleaseCache | boolean | Yes  | Whether to release the cache.<br>**true**: Release the cache.<br>**false**: Not release the cache.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the widget is released, **error** is undefined; otherwise, **error** is an error object.|
 
 **Error codes**
@@ -237,7 +243,7 @@ Releases a widget. After this API is called, the application can no longer use t
 | Name        | Type    | Mandatory| Description       |
 | -------------- | ------  | ---- | ----------- |
 | formId         | string  | Yes  | Widget ID.    |
-| isReleaseCache | boolean | No  | Whether to release the cache. The default value is **false**. |
+| isReleaseCache | boolean | No  | Whether to release the cache. The default value is **false**.<br>**true**: Release the cache.<br>**false**: Not release the cache. |
 
 **Return value**
 
@@ -269,7 +275,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.releaseForm(formId, true).then(() => {
-    console.log('formHost releaseForm success');
+    console.info('formHost releaseForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -374,7 +380,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.requestForm(formId).then(() => {
-    console.log('formHost requestForm success');
+    console.info('formHost requestForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -433,7 +439,7 @@ try {
     'ohos.extra.param.key.host_bg_inverse_color': '#ff000000' as Object
   };
   formHost.requestFormWithParams(formId, params).then(() => {
-    console.log('formHost requestFormWithParams success');
+    console.info('formHost requestFormWithParams success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -538,7 +544,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.castToNormalForm(formId).then(() => {
-    console.log('formHost castTempForm success');
+    console.info('formHost castTempForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -639,7 +645,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyVisibleForms(formId).then(() => {
-    console.log('formHost notifyVisibleForms success');
+    console.info('formHost notifyVisibleForms success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -740,7 +746,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyInvisibleForms(formId).then(() => {
-    console.log('formHost notifyInvisibleForms success');
+    console.info('formHost notifyInvisibleForms success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -843,7 +849,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.enableFormsUpdate(formId).then(() => {
-    console.log('formHost enableFormsUpdate success');
+    console.info('formHost enableFormsUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -948,7 +954,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.disableFormsUpdate(formId).then(() => {
-    console.log('formHost disableFormsUpdate success');
+    console.info('formHost disableFormsUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1027,7 +1033,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.isSystemReady().then(() => {
-    console.log('formHost isSystemReady success');
+    console.info('formHost isSystemReady success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1076,7 +1082,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1120,7 +1126,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
+    console.info(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1171,7 +1177,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1222,7 +1228,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1275,7 +1281,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1333,7 +1339,7 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -1384,7 +1390,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+      console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1436,7 +1442,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = new Array('12400633174999288', '12400633174999289');
   formHost.deleteInvalidForms(formIds).then((data: number) => {
-    console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+    console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1498,7 +1504,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
     }
   });
 } catch (error) {
@@ -1561,7 +1567,7 @@ let want: Want = {
 };
 try {
   formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-    console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+    console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1604,7 +1610,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formHost } from '@kit.FormKit';
 
 formHost.on('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1642,7 +1648,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formHost } from '@kit.FormKit';
 
 formHost.off('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1661,7 +1667,7 @@ Instructs the widgets to make themselves visible. This API uses an asynchronous 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isVisible | boolean | Yes  | Whether to make the widgets visible.|
+| isVisible | boolean | Yes  | Whether the widget is visible.<br>**true**: The widget is visible.<br>**false**: The widget is invisible.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the notification is sent, **error** is undefined; otherwise, **error** is an error object.|
 
 **Error codes**
@@ -1711,7 +1717,7 @@ Instructs the widgets to make themselves visible. This API uses a promise to ret
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isVisible | boolean | Yes  | Whether to make the widgets visible.|
+| isVisible | boolean | Yes  | Whether the widget is visible.<br>**true**: The widget is visible.<br>**false**: The widget is invisible.|
 
 **Return value**
 
@@ -1742,7 +1748,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsVisible(formIds, true).then(() => {
-    console.log('formHost notifyFormsVisible success');
+    console.info('formHost notifyFormsVisible success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1766,7 +1772,7 @@ Instructs the widgets to enable or disable updates. This API uses an asynchronou
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isEnableUpdate | boolean | Yes  | Whether to make the widgets updatable.|
+| isEnableUpdate | boolean | Yes  | Whether the widget can be updated.<br>**true**: The widget can be updated. **false**: The widget cannot be updated.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the notification is sent, **error** is undefined; otherwise, **error** is an error object.|
 
 **Error codes**
@@ -1816,7 +1822,7 @@ Instructs the widgets to enable or disable updates. This API uses a promise to r
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isEnableUpdate | boolean | Yes  | Whether to make the widgets updatable.|
+| isEnableUpdate | boolean | Yes  | Whether the widget can be updated.<br>**true**: The widget can be updated.<br>**false**: The widget cannot be updated.|
 
 **Return value**
 
@@ -1847,7 +1853,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
-    console.log('formHost notifyFormsEnableUpdate success');
+    console.info('formHost notifyFormsEnableUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1953,7 +1959,7 @@ let formId: string = '12400633174999288';
 let deviceId: string = 'EFC11C0C53628D8CC2F8CB5052477E130D075917034613B9884C55CD22B3DEF2';
 try {
   formHost.shareForm(formId, deviceId).then(() => {
-    console.log('formHost shareForm success');
+    console.info('formHost shareForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1977,7 +1983,7 @@ Notifies that the privacy protection status of the specified widgets changes. Th
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formIds | Array\<string\> | Yes  | ID of the widgets.|
-| isProtected | boolean | Yes  | Whether privacy protection is enabled.|
+| isProtected | boolean | Yes  | Whether a widget requires privacy protection.<br>**true**: The widget requires privacy protection.<br>**false**: The widget does not require privacy protection.|
 | callback | AsyncCallback\<void> | Yes| Callback used to return the result. If privacy protection is set successfully, **error** is undefined; otherwise, **error** is an error object.|
 
 **Error codes**
@@ -2026,7 +2032,7 @@ Notifies that the privacy protection status of the specified widgets changes. Th
 | Name     | Type           | Mandatory| Description                            |
 | ----------- | --------------- | ---- | -------------------------------- |
 | formIds     | Array\<string\> | Yes  | ID of the widgets.|
-| isProtected | boolean         | Yes  | Whether privacy protection is enabled.              |
+| isProtected | boolean         | Yes  | Whether a widget requires privacy protection.<br>**true**: The widget requires privacy protection.<br>**false**: The widget does not require privacy protection.|
 
 **Return value**
 
@@ -2054,7 +2060,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsPrivacyProtected(formIds, true).then(() => {
-    console.log('formHost notifyFormsPrivacyProtected success');
+    console.info('formHost notifyFormsPrivacyProtected success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -2107,7 +2113,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -2161,12 +2167,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formHost.acquireFormData(formId).then((data) => {
-    console.log('formHost acquireFormData success' + data);
+    console.info('formHost acquireFormData success' + data);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (e) {
+  console.error(`catch error, code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -2241,7 +2247,7 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.log(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info : ${JSON.stringify(form)}`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
@@ -2255,7 +2261,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.log('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
           }
         })
     }
@@ -2269,7 +2275,7 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses a promise to return the result.
+Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses a promise to return the result. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2340,7 +2346,7 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.log(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info : ${JSON.stringify(form)}`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
@@ -2356,7 +2362,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.log('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
           }
         })
     }
@@ -2460,7 +2466,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.clearRouterProxy(formIds).then(() => {
-    console.log('formHost clear rourter proxy success');
+    console.info('formHost clear rourter proxy success');
   }).catch((err: BusinessError) => {
     console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2564,7 +2570,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.setFormsRecyclable(formIds).then(() => {
-    console.log('setFormsRecyclable success');
+    console.info('setFormsRecyclable success');
   }).catch((err: BusinessError) => {
     console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2680,7 +2686,7 @@ try {
 
 recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Recycles widgets, that is, reclaims their memory. This API uses a promise to return the result.
+Recycles widgets, that is, reclaiming widget memory. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2831,7 +2837,7 @@ try {
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
-Notifies the update of the widget lock state.
+Notifies the update of the widget lock state. This API uses a promise to return the result.
 
 If an application is locked, its widget will also be locked and masked in a locked style. To use the widget, you need to enter the password set for the widget.
 
@@ -2879,7 +2885,7 @@ let isLocked: boolean = true;
 
 try {
   formHost.updateFormLockedState(this.formId, this.isLocked).then(() => {
-    console.log(`formHost updateFormLockedState success`);
+    console.info(`formHost updateFormLockedState success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2891,7 +2897,7 @@ try {
 
 on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-Subscribes to the interactive widget animation request event.
+Subscribes to the interactive widget animation request event. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -2901,7 +2907,7 @@ Subscribes to the interactive widget animation request event.
 
 | Name| Type      | Mandatory| Description|
 |----------|--------|---|---------------------------------------|
-| type     | string | Yes| Event type. Only **'formOverflow'** is supported, indicating the interactive widget animation request.|
+| type     | string | Yes| Event callback. The supported event is **'formOverflow'**, indicating the interactive widget animation request.|
 | callback | Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | Yes| Callback used by the widget host to process the animation request.|
 
 **Error codes**
@@ -2911,7 +2917,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message                                                                                                 |
 |-------|-----------------------------------------------------------------------------------------------------------|
 | 202   | The application is not a system application.                                                              |
-| 801   | Capability not supported.function formOverflow can not work correctly due to limited device capabilities. |
 
 **Example**
 
@@ -2921,7 +2926,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.on('formOverflow', (request: formInfo.OverflowRequest) => {
-    console.log(`formHost on formOverflow, formId is ${request.formId}`);
+    console.info(`formHost on formOverflow, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2932,7 +2937,7 @@ try {
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-Unsubscribes from the interactive widget animation request event.
+Unsubscribes from the interactive widget animation request event. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -2942,7 +2947,7 @@ Unsubscribes from the interactive widget animation request event.
 
 | Name| Type   | Mandatory| Description                                    |
 | ------ | ------ |----|----------------------------------------|
-| type | string | Yes | Event type. Only **'formOverflow'** is supported, indicating the interactive widget animation request.|
+| type | string | Yes | Event callback. The supported event is **'formOverflow'**, indicating the interactive widget animation request.|
 | callback |Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | No | Callback function, which corresponds to the subscribed interactive widget animation request. By default, all registered interactive widget animation request events are deregistered.|
 
 **Error codes**
@@ -2952,7 +2957,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message                                                                                               |
 | --- |-----------------------------------------------------------------------------------------------------------|
 | 202 | The application is not a system application.                                                              |
-| 801 | Capability not supported.function formOverflow can not work correctly due to limited device capabilities. |
 
 **Example**
 
@@ -2962,7 +2966,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.off('formOverflow', (request: formInfo.OverflowRequest) => {
-    console.log(`formHost off formOverflow, formId is ${request.formId}`);
+    console.info(`formHost off formOverflow, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2973,7 +2977,7 @@ try {
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
-Subscribes to the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations.
+Subscribes to the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -2993,7 +2997,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message                                                                                                 |
 |-------|-----------------------------------------------------------------------------------------------------------|
 | 202   | The application is not a system application.                                                              |
-| 801   | Capability not supported.function formOverflow can not work correctly due to limited device capabilities. |
 
 **Example**
 
@@ -3003,7 +3006,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.on('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
-    console.log(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
+    console.info(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -3014,7 +3017,7 @@ try {
 
 off(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.changeSceneAnimationState&gt;): void
 
-Unsubscribes from the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations.
+Unsubscribes from the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -3034,7 +3037,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 202 | The application is not a system application. |
-| 801 | Capability not supported.function formOverflow can not work correctly due to limited device capabilities. |
 
 **Example**
 
@@ -3044,8 +3046,139 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.off('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
-    console.log(`formHost off changeSceneAnimationState, formId is ${request.formId}`);
+    console.info(`formHost off changeSceneAnimationState, formId is ${request.formId}`);
   });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.on('getFormRect')<sup>20+</sup>
+
+on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
+
+Subscribes to the event of requesting widget position and dimension. This API uses an asynchronous callback to return the result.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                  |
+| ------ | ------ | ---- |------------------------------------------------------|
+| type | string | Yes  | Event callback type. The supported event is **'getFormRect'**, indicating requesting widget position and dimension.|
+| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | Yes| Callback function used by the widget host to process the request and return the position and dimension of the widget relative to the upper-left corner of the screen. The unit is vp.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code ID| Error Message                                                                                                 |
+|-------|-----------------------------------------------------------------------------------------------------------|
+| 202   | The application is not a system application.                                                              |
+
+**Example**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('getFormRect', (formId: string): Promise<formInfo.Rect> => {
+    // The widget host needs to process the request, and calculate and return the widget dimension and position information.
+    return new Promise<formInfo.Rect>((resolve: Function) => {
+      console.info(`formHost on getFormRect, formId is ${formId}`);
+      let formRect: formInfo.Rect = {left: 0, top: 0, width: 0, height: 0};
+      resolve(formRect);
+    })
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.off('getFormRect')<sup>20+</sup>
+
+off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
+
+Unsubscribes from the event of requesting widget position and dimension. This API uses an asynchronous callback to return the result.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description   |
+| ------ | ------ |----| ------- |
+| type | string | Yes | Event callback type. The supported event is **'getFormRect'**, indicating requesting widget position and dimension.|
+| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | No | Callback function, corresponding to the subscribed widget position and dimension request. By default, all registered widget position and dimension request event callbacks are deregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 202 | The application is not a system application. |
+
+**Example**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.off('getFormRect');
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.updateFormSize<sup>20+</sup>
+
+updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void
+
+Updates the size of the widget.
+
+**Required permissions**: ohos.permission.REQUIRE_FORM
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description   |
+| ------ | ------ | ---- | ------- |
+| formId | string | Yes  | Widget ID.|
+| newDimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | Yes| Widget dimension. For example, **Dimension_1_2** indicates a 1 x 2 widget.|
+| newRect | [formInfo.Rect](js-apis-app-form-formInfo.md#rect20) | Yes| Widget position information, including the X and Y coordinates of the widget's top-left corner, as well as its width and height.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | Permissions denied.Called by non-system application. |
+| 16501000 | An internal functional error occurred. |
+| 16501001 | The ID of the form to be operated does not exist. |
+| 16501012 | The dimension parameter is incorrect. |
+
+**Example**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  let newDimension = formInfo.FormDimension.Dimension_1_2;
+  let newRect: formInfo.Rect = {left: 1, top: 2, width: 100, height: 100};
+  formHost.updateFormSize(formId, newDimension, newRect);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }

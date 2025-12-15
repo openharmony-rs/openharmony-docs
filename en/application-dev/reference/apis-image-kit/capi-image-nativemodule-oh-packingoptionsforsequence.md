@@ -1,8 +1,18 @@
 # OH_PackingOptionsForSequence
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_PackingOptionsForSequence OH_PackingOptionsForSequence
+```
 
 ## Overview
 
-The OH_PackingOptionsForSequence struct describes the image sequence encoding parameters.
+The struct describes the image sequence encoding parameters.
 
 **Since**: 18
 

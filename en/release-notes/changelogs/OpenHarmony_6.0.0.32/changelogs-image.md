@@ -48,19 +48,23 @@ The return value of the **mimeType** parameter in the ImageInfo object is change
 
 The return value of the image information query interface has changed, but the calling method remains the same.
 ```js
-const context: Context = getContext(this);
-// 'test.dng' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
-const path: string = context.filesDir + "/test.dng";
-const imageSourceApi: image.ImageSource = image.createImageSource(path);
-if (imageSourceApi != undefined) {
-  imageSourceApi.getImageInfo().then((imageInfo: image.ImageInfo) => {
-    console.info("Succeeded in obtaining the image mimeType information.");
-    // No need to change the calling method. Update the condition here to match the new return value for actual raw formats.
-    if (imageInfo.mimeType == "image/x-adobe-dng") {
-      console.info("Image mimeType is image/x-adobe-dng.");
-    }
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to obtain the image information. code is ${error.code}, message is ${error.message}`);
-  })
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getImageMimeType(context: Context) {
+  // 'test.dng' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
+  const path: string = context.filesDir + "/test.dng";
+  const imageSourceApi: image.ImageSource = image.createImageSource(path);
+  if (imageSourceApi != undefined) {
+    imageSourceApi.getImageInfo().then((imageInfo: image.ImageInfo) => {
+      console.info("Succeeded in obtaining the image mimeType information.");
+      // No need to change the calling method. Update the condition here to match the new return value for actual raw formats.
+      if (imageInfo.mimeType == "image/x-adobe-dng") {
+        console.info("Image mimeType is image/x-adobe-dng.");
+      }
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to obtain the image information. code is ${error.code}, message is ${error.message}`);
+    })
+  }
 }
 ```

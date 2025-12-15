@@ -1,4 +1,10 @@
 # 使用Node-API接口进行object相关开发
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 简介
 
@@ -9,7 +15,7 @@ Node-API提供了相关接口对object进行基本操作，例如创建对象、
 在Node-API接口开发中，经常需要定义和操作对象。例如，创建一个API接口，该接口接受一个对象作为输入参数，对该对象执行某些操作，并返回一个结果对象。在这个过程中，需要确保接口的定义清晰、规范，并且与对象的属性和方法相兼容。
 
 - **接口（API）**：接口定义了组件之间的交互协议，包括输入参数、输出结果以及可能的错误处理。通过接口，组件可以相互调用和交换数据，而无需了解对方的内部实现细节。
-- **对象（Object）**：在ArkTS，对象是一种复合数据类型，允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
+- **对象（Object）**：在ArkTS中，对象是一种复合数据类型，允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
 
 ## 场景和功能介绍
 
@@ -55,7 +61,7 @@ static napi_value GetPrototype(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_prototype](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -63,13 +69,14 @@ static napi_value GetPrototype(napi_env env, napi_callback_info info)
 // index.d.ts
 export const getPrototype: (object: Object) => Object;
 ```
-<!-- @[napi_get_prototype_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_prototype_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // 定义一个类
 class Person {
   // 属性
@@ -86,14 +93,17 @@ const person = new Person('Alice', 30);
 // 传入实例对象，获取该对象的原型
 let applePrototype = testNapi.getPrototype(person);
 // 判断通过testNapi.getPrototype()函数获取到的原型是不是apple的原型
-// 在DevEco Studio 4.1及以后的版本中，由于ArkTS没有原型的概念，因此尝试进行原型赋值或相关操作时，将会触发错误提示'Prototype assignment is not supported (arkts-no-prototype-assignment)'，以下代码需在ts文件中执行
+// 在DevEco Studio 4.1及以后的版本中，由于ArkTS没有原型的概念，
+// 因此尝试进行原型赋值或相关操作时，
+// 将会触发错误提示'Prototype assignment is not supported (arkts-no-prototype-assignment)'，
+// 以下代码需在ts文件中执行
 if (applePrototype === Person.prototype) {
   hilog.info(0x0000, 'Node-API', 'get_prototype_success');
 } else {
   hilog.error(0x0000, 'Node-API', 'get_prototype_fail');
 }
 ```
-<!-- @[ark_napi_get_prototype](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/napiGetPrototype.ts) -->
+<!-- @[ark_napi_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/napiGetPrototype.ts) -->
 
 ### napi_create_object
 
@@ -121,7 +131,7 @@ napi_value NewObject(napi_env env, napi_callback_info info)
     return object;
 }
 ```
-<!-- @[napi_create_object](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -129,13 +139,14 @@ napi_value NewObject(napi_env env, napi_callback_info info)
 // index.d.ts
 export const createObject: () => { name: string };
 ```
-<!-- @[napi_create_object_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_create_object_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   const myObject = testNapi.createObject();
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_object: %{public}s', myObject.name);
@@ -143,7 +154,7 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_create_object errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
 }
 ```
-<!-- @[ark_napi_create_object](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_object_freeze
 
@@ -172,7 +183,7 @@ static napi_value ObjectFreeze(napi_env env, napi_callback_info info)
     return objFreeze;
 }
 ```
-<!-- @[napi_object_freeze](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_object_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -184,13 +195,14 @@ export interface Obj {
 }
 export const objectFreeze: (objFreeze: Object) => Obj;
 ```
-<!-- @[napi_object_freeze_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_object_freeze_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -203,7 +215,7 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_object_freeze error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_object_freeze](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_object_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_object_seal
 
@@ -234,7 +246,7 @@ static napi_value ObjectSeal(napi_env env, napi_callback_info info)
     return objSeal;
 }
 ```
-<!-- @[napi_object_seal](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_object_seal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -247,13 +259,14 @@ export interface Obj {
 }
 export const objectSeal : (objSeal: Object) => Obj;
 ```
-<!-- @[napi_object_seal_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_object_seal_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -271,21 +284,23 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_object_seal error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_object_seal](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_object_seal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_typeof
 
 这个接口用于获取给定ArkTS value的ArkTS Type。
 
 **注：**napi_typeof可以判断的类型包含：   
-undefined  
-null  
-boolean  
-number  
-string  
-object  
-function  
-bigint
+|类型 | 
+|-----|
+|undefined|
+|null|  
+|boolean|  
+|number|  
+|string|
+|object|  
+|function|  
+|bigint|
 
 cpp部分代码
 
@@ -340,21 +355,22 @@ static napi_value NapiTypeOf(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_typeof](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_typeof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const napiTypeOf : <T>(value: T) => string | void;
+export const napiTypeOf : <T>(value: T) => string | undefined;
 ```
-<!-- @[napi_typeof_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_typeof_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   let varUndefined: undefined;
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_typeof: %{public}s', testNapi.napiTypeOf(varUndefined));
@@ -380,7 +396,7 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_typeof error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_typeof](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_typeof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_instanceof
 
@@ -411,21 +427,22 @@ static napi_value NapiInstanceOf(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_instanceof](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const napiInstanceOf: (date: Object, construct: Object) => boolean | void;
+export const napiInstanceOf: (date: Object, construct: Object) => boolean | undefined;
 ```
-<!-- @[napi_instanceof_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_instanceof_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Person {
     name: string;
@@ -448,11 +465,13 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_instanceof error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_instanceof](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_type_tag_object
 
 使用类型标签type_tag来标记ArkTS对象，后续可以更精确地识别ArkTS对象。
+
+ArkTS版本中，napi_type_tag_object接口没有使用private symbol，导致type_tag有被改写的风险，开发者应避免在关键安全场景中使用该接口。
 
 ### napi_check_object_type_tag
 
@@ -515,22 +534,23 @@ static napi_value CheckObjectTypeTag(napi_env env, napi_callback_info info)
     return checked;
 }
 ```
-<!-- @[napi_type_tag_object](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_type_tag_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const setTypeTagToObject: (obj: Object, index: number) => boolean | void;
+export const setTypeTagToObject: (obj: Object, index: number) => boolean | undefined;
 export const checkObjectTypeTag: (obj: Object, index: number) => boolean;
 ```
-<!-- @[napi_type_tag_object_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_type_tag_object_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Obj {
   data: number = 0
   message: string = ""
@@ -542,7 +562,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_type_tag_object objB -> 0: %{p
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_check_object_type_tag objA -> 0: %{public}s', testNapi.checkObjectTypeTag(objA, 0));
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_check_object_type_tag objB -> 1: %{public}s', testNapi.checkObjectTypeTag(objB, 1));
 ```
-<!-- @[ark_napi_type_tag_object](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_type_tag_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_create_external
 
@@ -602,7 +622,7 @@ static napi_value CreateExternal(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_create_external](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_create_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -611,17 +631,18 @@ static napi_value CreateExternal(napi_env env, napi_callback_info info)
 export const createExternal: () => Object;
 export const getExternalType: (externalData: Object) => boolean;
 ```
-<!-- @[napi_create_external_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_create_external_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 const externalData = testNapi.createExternal();
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_external:%{public}s', testNapi.getExternalType(externalData));
 ```
-<!-- @[ark_napi_create_external](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_create_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_value_external
 
@@ -648,7 +669,7 @@ static napi_value GetValueExternal(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_value_external](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_value_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -656,16 +677,17 @@ static napi_value GetValueExternal(napi_env env, napi_callback_info info)
 // index.d.ts
 export const getValueExternal: () => number;
 ```
-<!-- @[napi_get_value_external_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_value_external_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 hilog.info(0x0000, 'Node-API', 'get_value_external:%{public}d', testNapi.getValueExternal());
 ```
-<!-- @[ark_napi_get_value_external](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_value_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_create_symbol
 
@@ -697,7 +719,7 @@ static napi_value CreateSymbol(napi_env env, napi_callback_info info)
     return returnSymbol;
 }
 ```
-<!-- @[napi_create_symbol](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_create_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -705,17 +727,18 @@ static napi_value CreateSymbol(napi_env env, napi_callback_info info)
 // index.d.ts
 export const createSymbol : () => symbol;
 ```
-<!-- @[napi_create_symbol_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_create_symbol_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 let varSymbol = testNapi.createSymbol();
 hilog.info(0x0000, 'Node-API', 'createSymbol:%{public}s', typeof varSymbol);
 ```
-<!-- @[ark_napi_create_symbol](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_create_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 

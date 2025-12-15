@@ -1,6 +1,12 @@
 # @ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object) (System API)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
-The sendablePhotoAccessHelper module provides APIs for album management, including creating an album and accessing and modifying media data in an album, based on a [Sendable](../../arkts-utils/arkts-sendable.md) object.
+The module provides APIs for album management, including creating an album and accessing and modifying media data in an album, based on a [Sendable](../../arkts-utils/arkts-sendable.md) object.
 
 > **NOTE**
 >
@@ -13,6 +19,62 @@ The sendablePhotoAccessHelper module provides APIs for album management, includi
 import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+## sendablePhotoAccessHelper.getPhotoAccessHelper<sup>19+</sup>
+
+getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
+
+Obtains a PhotoAccessHelper instance for the specified user, letting you access and modify media files in an album.
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context of the ability instance.|
+| userId | number | Yes  | ID of the user.|
+
+**Return value**
+
+| Type                           | Description   |
+| ----------------------------- | :---- |
+| [PhotoAccessHelper](#photoaccesshelper) | PhotoAccessHelper instance obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+
+**Example**
+
+```ts
+// The phAccessHelper instance obtained is a global object. It is used by default in subsequent operations. If the code snippet is not added, an error will be reported indicating that phAccessHelper is not defined.
+// Obtain the context from the component and ensure that the return value of this.getUiContext().getHostContext() is UIAbilityContext.
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button("example").onClick(async () => {
+        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        // 101 indicates the user ID of another user space.
+        let phAccessHelper = sendablePhotoAccessHelper.getPhotoAccessHelper(context, 101);
+      }).width('100%')
+    }
+    .height('90%')
+  }
+}
+```
+​
 ## PhotoAccessHelper
 
 ### createAsset
@@ -21,10 +83,10 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 
 Creates an asset with the specified file name. This API uses a promise to return the result.
 
-The file name must comply with the following specifications:
-- The file name consists of a valid file name and an image or video file name extension.
-- The file name cannot exceed 255 characters.
-- The file name cannot contain any of the following characters:<br> . .. \ / : * ? " ' ` < > | { } [ ]
+The file name must meet the following requirements:
+- A valid file name must include a base name and a supported image or video extension.
+- The total length of the file name must be between 1 and 255 characters.
+- The base name must not contain any invalid characters.<br>Starting from API version 18, the following characters are considered invalid: \ / : * ? " < > |<br>For API versions 10 to 17, the following characters are considered invalid: . .. \ / : * ? " ' ` < > | { } [ ]
 
 **System API**: This is a system API.
 
@@ -50,19 +112,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **Example**
 
-For details about how to create a **phAccessHelper** instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
+For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
 
 ```ts
-async function example() {
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   console.info('createAssetDemo');
   try {
     let testFileName: string = 'testFile' + Date.now() + '.jpg';
@@ -77,14 +137,14 @@ async function example() {
 
 ### createAsset
 
-createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoAsset&gt;
+createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions): Promise\<PhotoAsset\>
 
 Creates an asset with the specified file name and options. This API uses a promise to return the result.
 
-The file name must comply with the following specifications:
-- The file name consists of a valid file name and an image or video file name extension.
-- The file name cannot exceed 255 characters.
-- The file name cannot contain any of the following characters:<br> . .. \ / : * ? " ' ` < > | { } [ ]
+The file name must meet the following requirements:
+- A valid file name must include a base name and a supported image or video extension.
+- The total length of the file name must be between 1 and 255 characters.
+- The base name must not contain any invalid characters.<br>Starting from API version 18, the following characters are considered invalid: \ / : * ? " < > |<br>For API versions 10 to 17, the following characters are considered invalid: . .. \ / : * ? " ' ` < > | { } [ ]
 
 **System API**: This is a system API.
 
@@ -97,7 +157,7 @@ The file name must comply with the following specifications:
 | Name     | Type                                                        | Mandatory| Description                      |
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | displayName | string                                                       | Yes  | File name of the asset to create.|
-| options     | [PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | Yes  | Options for creating the asset.    |
+| options     | [photoAccessHelper.PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | Yes  | Options for creating the asset.    |
 
 **Return value**
 
@@ -111,19 +171,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **Example**
 
-For details about how to create a **phAccessHelper** instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
+For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
 
 ```ts
-async function example() {
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   console.info('createAssetDemo');
   try {
     let testFileName:string = 'testFile' + Date.now() + '.jpg';
@@ -156,13 +214,13 @@ Obtains hidden albums based on the specified display mode and retrieval options.
 | Name | Type                                                        | Mandatory| Description                                          |
 | ------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
 | mode    | [HiddenPhotosDisplayMode](js-apis-photoAccessHelper-sys.md#hiddenphotosdisplaymode11) | Yes  | Display mode of hidden albums.                              |
-| options | [FetchOptions](js-apis-photoAccessHelper.md#fetchoptions)    | No  | Options for retrieving the albums. If this parameter is not specified, the albums are retrieved based on the display mode.|
+| options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions)    | No  | Options for retrieving the albums. If this parameter is not specified, the albums are retrieved based on the display mode.|
 
 **Return value**
 
 | Type                                                        | Description                               |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise&lt;[FetchResult](js-apis-photoAccessHelper.md#fetchresult)&lt;[Album](#album)&gt;&gt; | Promise used to return the result.|
+| Promise&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -177,14 +235,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a **phAccessHelper** instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
+For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the preset hidden album.
-async function getSysHiddenAlbum() {
+async function getSysHiddenAlbum(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   console.info('getSysHiddenAlbumDemo');
   phAccessHelper.getHiddenAlbums(photoAccessHelper.HiddenPhotosDisplayMode.ASSETS_MODE)
     .then( async (fetchResult) => {
@@ -201,7 +259,7 @@ async function getSysHiddenAlbum() {
 }
 
 // Obtain the hidden albums displayed by album, that is, the albums with hidden files. Such albums do not include the preset hidden album and the albums in the trash.
-async function getHiddenAlbumsView() {
+async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   console.info('getHiddenAlbumsViewDemo');
   phAccessHelper.getHiddenAlbums(photoAccessHelper.HiddenPhotosDisplayMode.ALBUMS_MODE).then( async (fetchResult) => {
     if (fetchResult === undefined) {
@@ -239,7 +297,7 @@ Provides APIs for encapsulating file asset attributes.
 
 requestSource(): Promise&lt;number&gt;
 
-Opens the source file to obtain the file descriptor (FD). This API uses a promise to return the result.
+Opens the source file and returns the FD. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -261,30 +319,34 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000011 | Internal system error                                        |
 
 **Example**
 
-For details about how to create a **phAccessHelper** instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
+For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { common } from '@kit.AbilityKit';
 
-async function example() {
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   try {
-    console.info('requsetSourcePromiseDemo')
+    console.info('requestSourcePromiseDemo')
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     let fetchOptions: photoAccessHelper.FetchOptions = {
       fetchColumns: [],
       predicates: predicates
     };
     let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    if (fetchResult === undefined) {
+      console.error('requsetSourcePromise fetchResult is undefined');
+      return;
+    }
     let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     let fd = await photoAsset.requestSource();
     console.info('Source fd is ' + fd);
   } catch (err) {
-    console.error(`requsetSourcePromiseDemo failed with error: ${err.code}, ${err.message}`);
+    console.error(`requestSourcePromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -326,12 +388,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a **phAccessHelper** instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
+For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { common } from '@kit.AbilityKit';
 
-async function example() {
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   try {
     console.info('getAnalysisDataDemo')
     let fetchOptions: photoAccessHelper.FetchOptions = {
@@ -353,11 +416,15 @@ async function example() {
 }
 ```
 
+## Album
+
+Provides APIs to manage albums.
+
 ### getFaceId<sup>13+</sup>
 
 getFaceId(): Promise\<string>
 
-Obtains the face identifier on the cover of a portrait album or group photo album.
+Obtains the face identifier on the cover of a portrait album or group photo album. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -383,12 +450,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a **phAccessHelper** instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
+For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { common } from '@kit.AbilityKit';
 
-async function example() {
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   try {
     console.info('getFaceIdDemo');
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -411,10 +479,6 @@ async function example() {
 }
 ```
 
-## Album
-
-Provides APIs to manage albums.
-
 ## AlbumType
 
 Enumerates the album types.
@@ -433,16 +497,16 @@ Enumerate the album subtypes.
 
 | Name                 | Value  | Description                                                      |
 | --------------------- | ---- | ---------------------------------------------------------- |
-| HIDDEN                | 1027 | Hidden album. <br>**System API**: This is a system API.                |
-| TRASH                 | 1028 | Trash. <br>**System API**: This is a system API.                  |
-| SCREENSHOT            | 1029 | Album for screenshots and screen recording files. <br>**System API**: This is a system API.          |
-| CAMERA                | 1030 | Album for photos and videos taken by the camera. <br>**System API**: This is a system API.|
-| SOURCE\_GENERIC       | 2049 | Source album. <br>**System API**: This is a system API.                |
-| CLASSIFY              | 4097 | Classified album. <br>**System API**: This is a system API.                |
-| GEOGRAPHY\_LOCATION   | 4099 | Geographic location album. <br>**System API**: This is a system API.                |
-| GEOGRAPHY\_CITY       | 4100 | City album. <br>**System API**: This is a system API.                |
-| SHOOTING\_MODE        | 4101 | Shooting mode album. <br>**System API**: This is a system API.            |
-| PORTRAIT              | 4102 | Portrait album. <br>**System API**: This is a system API.                |
-| GROUP_PHOTO           | 4103 | Group photo album. <br>**System API**: This is a system API.                |
-| HIGHLIGHT             | 4104 | Highlights album. <br>**System API**: This is a system API.                |
-| HIGHLIGHT_SUGGESTIONS | 4105 | Highlights suggestion album. <br>**System API**: This is a system API.            |
+| HIDDEN                | 1027 | Hidden album. **System API**: This is a system API.                |
+| TRASH                 | 1028 | Trash. **System API**: This is a system API.                  |
+| SCREENSHOT            | 1029 | Album for screenshots and screen recording files. **System API**: This is a system API.          |
+| CAMERA                | 1030 | Album for photos and videos taken by the camera. **System API**: This is a system API.|
+| SOURCE\_GENERIC       | 2049 | Source album. **System API**: This is a system API.                |
+| CLASSIFY              | 4097 | Classified album. **System API**: This is a system API.                |
+| GEOGRAPHY\_LOCATION   | 4099 | Geographic location album. **System API**: This is a system API.                |
+| GEOGRAPHY\_CITY       | 4100 | City album. **System API**: This is a system API.                |
+| SHOOTING\_MODE        | 4101 | Shooting mode album. **System API**: This is a system API.            |
+| PORTRAIT              | 4102 | Portrait album. **System API**: This is a system API.                |
+| GROUP_PHOTO           | 4103 | Group photo album. **System API**: This is a system API.                |
+| HIGHLIGHT             | 4104 | Highlights album. **System API**: This is a system API.                |
+| HIGHLIGHT_SUGGESTIONS | 4105 | Highlights suggestion album. **System API**: This is a system API.            |

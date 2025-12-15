@@ -1,4 +1,14 @@
 # ArkUI_GestureRecognizer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_GestureRecognizer ArkUI_GestureRecognizer
+```
 
 ## 概述
 

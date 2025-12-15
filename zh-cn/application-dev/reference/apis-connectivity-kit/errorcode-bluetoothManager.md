@@ -1,5 +1,12 @@
 # 蓝牙服务子系统错误码
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -186,6 +193,42 @@ The operation is busy. The last operation is not complete.
 
 异步接口需等待callback或promise返回后再执行下一次操作。
 
+## 2900013
+
+**错误信息**
+
+The user does not respond.
+
+**错误描述**
+
+用户未回复前置操作。
+
+**可能原因**
+
+用户在一定时间内未执行规定操作，导致前置操作超时。
+
+**处理步骤**
+
+重新执行前置操作。
+
+## 2900014
+
+**错误信息**
+
+User refuse the action.
+
+**错误描述**
+
+用户执行拒绝操作。
+
+**可能原因**
+
+用户拒绝前置操作的请求。
+
+**处理步骤**
+
+重新执行前置操作。
+
 ## 2900099
 
 **错误信息**
@@ -347,6 +390,24 @@ GATT未授权。
 **处理步骤**
 
 检查GATT是否已授权。
+
+## 2901008
+
+**错误信息**
+
+GATT service is not found.
+
+**错误描述**
+
+GATT服务不存在。在获取指定的GATT服务之前，该服务应当已经被添加。
+
+**可能原因**
+
+GATT服务尚未被添加。
+
+**处理步骤**
+
+先调用[addService](js-apis-bluetooth-ble.md#addservice)添加该服务。
 
 ## 2901054
 

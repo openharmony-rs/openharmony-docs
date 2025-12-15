@@ -1,11 +1,17 @@
 # @ohos.file.cloudSyncManager (端云同步管理能力)(系统接口)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @zsyztt; @Hermits; @reminder2352-->
+<!--Designer: @yunlanying-->
+<!--Tester: @liuhonggang123-->
+<!--Adviser: @foryourself-->
 
 该模块向云空间应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件等。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块为系统接口。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.file.cloudSyncManager (端云同步管理能力)](js-apis-file-cloudsyncmanager.md)。
 
 ## 导入模块
 
@@ -17,7 +23,9 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise&lt;void&gt;
 
-异步方法修改应用的端云文件同步开关，以Promise形式返回结果。
+异步方法修改应用的端云文件同步开关。使用Promise异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -37,7 +45,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -47,22 +55,25 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
-    console.info("changeAppCloudSwitch successfully");
-  }).catch((err: BusinessError) => {
-    console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
+  console.info("changeAppCloudSwitch successfully");
+}).catch((err: BusinessError) => {
+  console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.changeAppCloudSwitch
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法修改应用的端云文件同步开关，以callback形式返回结果。
+异步方法修改应用的端云文件同步开关。使用callback异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -77,7 +88,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -87,24 +98,27 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
-    if (err) {
-      console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("changeAppCloudSwitch successfully");
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
+  if (err) {
+    console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("changeAppCloudSwitch successfully");
+  }
+});
+```
 
 ## cloudSyncManager.notifyDataChange
 
 notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
-异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
+通知端云服务指定账号下的特定应用云数据已发生变更。使用Promise异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -123,7 +137,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -133,22 +147,25 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
-    console.info("notifyDataChange successfully");
-  }).catch((err: BusinessError) => {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
+  console.info("notifyDataChange successfully");
+}).catch((err: BusinessError) => {
+  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.notifyDataChange
 
 notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
+通知端云服务指定账号下的特定应用云数据已发生变更。使用callback异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -162,7 +179,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -172,35 +189,40 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
-    if (err) {
-      console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("notifyDataChange successfully");
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
+  if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```
 
 ## ExtraData<sup>11+</sup>
 
 云端数据变更信息。
 
+**系统接口**：该接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-| 名称     | 类型   | 必填 | 说明 |
-| ---------- | ------ | ---- | ---- |
-| eventId | string | 是   | 变更事件id。|
-| extraData | ExtraData | 是   | 云端数据变更信息。|
+| 名称     | 类型   | 只读 | 可选 | 说明 |
+| ---------- | ------ | ---- | ---- | ---- |
+| eventId | string | 否   | 否   | 变更事件id。|
+| extraData | string | 否   | 否   | 云端数据变更信息。|
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
 notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
-异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
+通知端云服务应用指定用户的云数据变更信息。使用Promise异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -221,7 +243,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -232,22 +254,25 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let userId: number = 100;
-  let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
-  cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
-    console.info("notifyDataChange successfully");
-  }).catch((err: BusinessError) => {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: number = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
+  console.info("notifyDataChange successfully");
+}).catch((err: BusinessError) => {
+  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
 notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
+通知端云服务应用指定用户的云数据变更信息。使用callback异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -263,7 +288,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -274,24 +299,27 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let userId: number = 100;
-  let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
-  cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
-    if (err) {
-      console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("notifyDataChange successfully");
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: number = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
+  if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```
 
 ## cloudSyncManager.enableCloud
 
 enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;void&gt;
 
-异步方法使能端云协同能力，以Promise形式返回结果。
+异步方法使能端云协同能力。使用Promise异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -312,7 +340,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -322,25 +350,28 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-  let switches: Record<string, boolean> = {
-    'com.example.bundleName1': true,
-    'com.example.bundleName2': false
-  }
-  cloudSyncManager.enableCloud(accountId, switches).then(() => {
-    console.error("enableCloud successfully");
-  }).catch((err: BusinessError) => {
-    console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches).then(() => {
+  console.error("enableCloud successfully");
+}).catch((err: BusinessError) => {
+  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.enableCloud
 
 enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法使能端云协同能力，以callback形式返回结果。
+异步方法使能端云协同能力。使用callback异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -356,7 +387,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -366,27 +397,30 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-  let switches: Record<string, boolean> = {
-    'com.example.bundleName1': true,
-    'com.example.bundleName2': false
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
+  if (err) {
+    console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("enableCloud successfully");
   }
-  cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
-    if (err) {
-      console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("enableCloud successfully");
-    }
-  });
-  ```
+});
+```
 
 ## cloudSyncManager.disableCloud
 
 disableCloud(accountId: string): Promise&lt;void&gt;
 
-异步方法去使能端云协同能力，以Promise形式返回结果。
+异步方法去使能端云协同能力。使用Promise异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -406,7 +440,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -416,21 +450,24 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-  cloudSyncManager.disableCloud(accountId).then(() => {
-    console.info("disableCloud successfully");
-  }).catch((err: BusinessError) => {
-    console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+cloudSyncManager.disableCloud(accountId).then(() => {
+  console.info("disableCloud successfully");
+}).catch((err: BusinessError) => {
+  console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.disableCloud
 
 disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法去使能端云协同能力，以callback形式返回结果。
+异步方法去使能端云协同能力。使用callback异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -445,7 +482,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -455,17 +492,18 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-  cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
-    if (err) {
-      console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("disableCloud successfully");
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
+  if (err) {
+    console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("disableCloud successfully");
+  }
+});
+```
 
 ## Action
 
@@ -484,7 +522,9 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt;
 
-异步方法清理本地云相关数据，以Promise形式返回结果。
+异步方法清理本地云相关数据。使用Promise异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -505,7 +545,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -515,25 +555,28 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-  let appActions: Record<string, cloudSyncManager.Action> = {
-    'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
-    'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
-  };
-  cloudSyncManager.clean(accountId, appActions).then(() => {
-    console.info("clean successfully");
-  }).catch((err: BusinessError) => {
-    console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let appActions: Record<string, cloudSyncManager.Action> = {
+  'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
+  'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
+};
+cloudSyncManager.clean(accountId, appActions).then(() => {
+  console.info("clean successfully");
+}).catch((err: BusinessError) => {
+  console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.clean
 
 clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法清理本地云相关数据，以callback形式返回结果。
+异步方法清理本地云相关数据。使用callback异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -549,7 +592,7 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -559,27 +602,30 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let accountId: string = "testAccount";
-    let appActions: Record<string, cloudSyncManager.Action> = {
-    'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
-    'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
-  };
-  cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
-    if (err) {
-      console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("clean successfully");
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+  let appActions: Record<string, cloudSyncManager.Action> = {
+  'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
+  'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
+};
+cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
+  if (err) {
+    console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("clean successfully");
+  }
+});
+```
 
 ## DowngradeDownload<sup>20+</sup>
 
 降级下载：云空间会员服务到期，为避免用户云上数据丢失，提供的集中下载云端数据的能力。
 
 云盘降级下载对象，用于支撑云空间应用完成云盘文件的降级下载流程。
+
+**系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -588,6 +634,8 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 constructor(bundleName: string)
 
 降级下载对象的构造函数，用于获取指定包名的DowngradeDownload类的实例。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -612,21 +660,25 @@ constructor(bundleName: string)
 
 **示例：**
 
-  ```ts
-  let bundleName = 'com.demo.a';
-  try {
-    let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
-  }
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.demo.a';
+try {
+  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### getCloudFileInfo<sup>20+</sup>
 
 getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
 获取需要降级下载的应用仅位于本地、仅位于云端或者本地和云端均有的文件大小和个数信息。使用Promise异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -636,7 +688,7 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
   | 类型                              | 说明                     |
   | --------------------------------- | ------------------------ |
-  | Promise&lt;[CloudFileInfo](#cloudfileinfo20)&gt; | Promise对象，返回携带本地与云端文件信息的对象。 |
+  | Promise&lt;[CloudFileInfo](js-apis-file-cloudsyncmanager.md#cloudfileinfo20)&gt; | Promise对象，返回携带本地与云端文件信息的对象。 |
 
 **错误码：**
 
@@ -652,17 +704,17 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName: string = "com.demo.a";
-  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) => {
-    console.info("cloud file info: " + JSON.stringify(fileInfo));
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) => {
+  console.info("cloud file info: " + JSON.stringify(fileInfo));
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### startDownload<sup>20+</sup>
 
@@ -672,6 +724,8 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 同一应用存在正在执行的降级下载任务的情况下，重复触发会返回错误信息（22400006）。
 
+**系统接口**：该接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -680,7 +734,7 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                             | 必填 | 说明                                                                                |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
-| callback | Callback&lt;[DownloadProgress](#downloadprogress20)&gt; | 是   | 降级下载进度回调，回调参数为DownloadProgress，返回值为void。 |
+| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | 是   | 降级下载进度回调，回调参数为DownloadProgress，返回值为void。 |
 
 **返回值：**
 
@@ -704,31 +758,33 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName: string = "com.demo.a";
-  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  let callback = (data: cloudSyncManager.DownloadProgress) => {
-    console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-    if (data.state == cloudSyncManager.DownloadState.COMPLETED) {
-      console.info('Dwongrade finished.');
-    } else if (data.state == cloudSyncManager.DownloadState.STOPPED) {
-      console.info(`Dwongrade stopped, reason: ${data.stopReason}.`);
-    }
-  };
-  downgradeMgr.startDownload(callback).then(() => {
-    console.info("Downgrade started successfully.");
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+let callback = (data: cloudSyncManager.DownloadProgress) => {
+  console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSyncManager.DownloadState.COMPLETED) {
+    console.info('Downgrade finished.');
+  } else if (data.state == cloudSyncManager.DownloadState.STOPPED) {
+    console.info(`Downgrade stopped, reason: ${data.stopReason}.`);
+  }
+};
+downgradeMgr.startDownload(callback).then(() => {
+  console.info("Downgrade started successfully.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### stopDownload<sup>20+</sup>
 
 stopDownload(): Promise&lt;void&gt;
 
 停止由[startDownload](#startdownload20)触发的降级下载任务，使用Promise异步回调。
+
+**系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -753,87 +809,91 @@ stopDownload(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName: string = "com.demo.a";
-  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
-    console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-  }).then(() => {
-    console.info("Downgrade started successfully.");
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
+  console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+}).then(() => {
+  console.info("Downgrade started successfully.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+});
+
+let needStop = true;
+if (needStop) {
+  downgradeMgr.stopDownload().then(() => {
+    console.info("Downgrade stopped successfully.");
   }).catch((err: BusinessError) => {
-    console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+    console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
   });
+}
+```
 
-  let needStop = true;
-  if (needStop) {
-    downgradeMgr.stopDownload().then(() => {
-      console.info("Downgrade stopped successfully.");
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
-    });
-  }
-  ```
-## DownloadStopReason<sup>20+</sup>
+  ## LocalFilePresentStatus<sup>22+</sup>
 
-降级下载停止原因的枚举，默认值为NO_STOP。
+  检测结果对象，包含应用包名及其在云盘存储空间内是否存在未上云文件的状态信息。
 
-**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+  **系统接口**：该接口为系统接口。
 
-| 名称                | 值  | 说明                                                   |
-| ------------------- | --- | ------------------------------------------------------ |
-| NO_STOP             | 0   | 下载中未停止。                                         |
-| NETWORK_UNAVAILABLE | 1   | 下载过程中，移动数据网络和WIFI均不可用。               |
-| LOCAL_STORAGE_FULL  | 2   | 下载过程中，当前设备空间不足。                         |
-| TEMPERATURE_LIMIT   | 3   | 下载过程中，设备温度过高。                             |
-| USER_STOPPED        | 4   | 下载过程中，客户端主动停止下载。                       |
-| APP_UNLOAD          | 5   | 下载过程中，云文件所属应用被卸载。                     |
-| OTHER_REASON        | 6   | 下载过程中，因其他原因停止下载，如：云服务器未响应等。 |
+  **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-## DownloadState<sup>20+</sup>
 
-降级下载任务状态的枚举。
+  | 名称 | 类型 | 只读 | 可选 | 说明 |
+  | ---- | ---- | ---- | ---- | ---- |
+  | bundleName | string | 否 | 否 | 应用包名。 |
+  | isLocalFilePresent | boolean | 否 | 否 | 该应用在云盘存储空间内是否存在尚未同步至云端的本地文件。true 表示存在， false 表示不存在。 |
 
-**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>22+</sup>
 
-| 名称      | 值  | 说明       |
-| --------- | --- | ---------- |
-| RUNNING   | 0   | 下载中。   |
-| COMPLETED | 1   | 下载完成。 |
-| STOPPED   | 2   | 下载停止。 |
+  getBundlesLocalFilePresentStatus(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;LocalFilePresentStatus&gt;&gt;
 
-## DownloadProgress<sup>20+</sup>
+  对接入云盘的应用，检测其在云盘存储空间内是否存在未上云文件，支持同时查询多个应用。使用Promise异步回调。
 
-降级下载任务的进度信息。
+  **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
-**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+  **系统接口**：该接口为系统接口。
 
-### 属性
+  **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-| 名称            | 类型                                        | 只读 | 可选 | 说明                                                                          |
-| --------------- | ------------------------------------------- | ---- | ---- | ----------------------------------------------------------------------------- |
-| state           | [DownloadState](#downloadstate20)           | 否   | 否   | 下载任务的状态。                                                              |
-| successfulCount | number                                      | 否   | 否   | 已下载的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
-| failedCount     | number                                      | 否   | 否   | 下载失败的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。      |
-| totalCount      | number                                      | 否   | 否   | 待下载文件总个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
-| downloadedSize  | number                                      | 否   | 否   | 已下载数据大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
-| totalSize       | number                                      | 否   | 否   | 已下载数据大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
-| stopReason      | [DownloadStopReason](#downloadstopreason20) | 否   | 否   | 下载停止的原因。                                                              |
+  **参数：**
 
-## CloudFileInfo<sup>20+</sup>
+  | 参数名 | 类型 | 必填 | 说明 |
+  | ------ | ---- | ---- | ---- |
+  | bundleNames | Array&lt;string&gt; | 是 | 需要检测的应用包名数组。每个元素为应用的包名字符串。 |
 
-应用本地和云端文件个数以及大小信息。
+  **返回值：**
 
-**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+  | 类型 | 说明 |
+  | ---- | ---- |
+  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus22)&gt;&gt; | Promise 对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
 
-### 属性
+  **错误码：**
 
-| 名称               | 类型   | 只读 | 可选 | 说明                                                             |
-| ------------------ | ------ | ---- | ---- | ---------------------------------------------------------------- |
-| cloudFileCount     | number | 否   | 否   | 本地未下载的云端文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
-| cloudFileTotalSize | number | 否   | 否   | 本地未下载的云端文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
-| localFileCount     | number | 否   | 否   | 本地未上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
-| localFileTotalSize | number | 否   | 否   | 本地未上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
-| bothFileCount      | number | 否   | 否   | 本地已上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
-| bothlFileTotalSize | number | 否   | 否   | 本地已上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
+  以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | -------- | -------- |
+  | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
+  | 202 | Permission verification failed, application which is not a system application uses system API. |
+  | 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+  | 13900010 | Try again. Possible causes: 1. The operation timed out. 2. The operation needs to be retried. |
+  | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
+  | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
+
+  **示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
+cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then((results: Array<cloudSyncManager.LocalFilePresentStatus>) => {
+  results.forEach((item) => {
+    console.info(`bundle: ${item.bundleName}, hasLocalUncloudedFiles: ${item.isLocalFilePresent}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
+});
+```

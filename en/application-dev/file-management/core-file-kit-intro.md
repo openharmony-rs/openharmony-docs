@@ -1,8 +1,14 @@
 # Introduction to Core File Kit
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 Core File Kit provides capabilities for accessing and managing application files and user files. You can use the APIs provided by Core File Kit to manage, search for, and back up different types of files efficiently.
 
-## Core File Kit Overview
+## Overview
 
 In Core File Kit, the files are classified into the following types based on the file owner:
 
@@ -40,7 +46,7 @@ You can use Core File Kit in any of the following scenarios:
 - Accessing the data backup and restore framework to customize data backup and restore behaviors, such as whether to allow backup and restore and specifying the data to be backed up, by modifying the configuration file.<!--Del-->
 - Triggering data backup and restore (available only for system applications).
 <!--DelEnd-->
-- Accessing and managing user files with the [user file access framework](#user-file-access-framework). For example, selecting and saving user files<!--Del--> , and develop the user file manager (only for system applications)<!--DelEnd-->.
+- Accessing and managing user files with the [user file access framework](#user-file-access-framework). For example, selecting and saving user files<!--Del--> and developing a user file manager (available only for system applications)<!--DelEnd-->.
 - Accessing and copying files across devices.
 
 ## Features
@@ -74,7 +80,7 @@ You can use the user file access framework to access and manage user files. This
 
 - **FilePicker**: a system prebuilt application that allows a client to select and save user files without any permission. For details, see [Selecting User Files](select-user-file.md).
 
-- **FileManager**: You can also develop your own file picker or file manager application as required. <!--RP1-->File picker is a subset of file manager. For details about how to develop a file manager application, see [Developing a File Manager Application](dev-user-file-manager.md).<!--RP1End-->
+- **FileManager**: You can also develop your own file picker or file manager application as required. <!--RP1-->File picker is a subset of file manager. For details about how to develop a file manager application, see [Developing a File Manager Application (for System Applications Only)](dev-user-file-manager-sys.md).<!--RP1End-->
 
 - The user file access framework provides the following functional modules:
   - **File Access Helper**: provides APIs for the **FileManager** and **FilePicker** to access user files.

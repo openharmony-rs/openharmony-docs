@@ -1,5 +1,16 @@
 # ArkUI_WaterFlowSectionOption
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangyuhao-->
+<!--Designer: @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_WaterFlowSectionOption ArkUI_WaterFlowSectionOption
+```
+
 ## 概述
 
 定义FlowItem分组配置信息。

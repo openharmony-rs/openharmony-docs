@@ -2,8 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--SE: @liuzuming-->
-<!--TSE: @lpw_work-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供设备控制能力。
 
@@ -37,7 +38,7 @@ operateDevice(admin: Want, operate: string, addition?: string): void
 
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | operate  | string                                                  | 是   | 要执行的操作。<br/>- resetFactory：设备恢复出厂设置。<br/>- reboot：设备重启。<br/>- shutDown：设备关机。<br/>- lockScreen：设备屏幕锁定。 <!--RP1--><!--RP1End-->|
 | addition | string                                                  | 否   | <!--RP2-->执行时附加参数。目前无需传入。<!--RP2End-->       |
 
@@ -61,7 +62,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {

@@ -1,5 +1,12 @@
 # drawing_image_filter.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 声明与绘图模块中的图像滤波器对象相关的函数。
@@ -22,14 +29,14 @@
 | [OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, float sigmaY,OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* input, const OH_Drawing_Rect* rect)](#oh_drawing_imagefiltercreateblurwithcrop) | 创建具有模糊效果的图像滤波器。<br> 支持传入裁剪矩形，用于限制模糊效果仅在图像的指定矩形区域内生效。​ |
 | [OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_ColorFilter* colorFilter,OH_Drawing_ImageFilter* imageFilter)](#oh_drawing_imagefiltercreatefromcolorfilter) | 创建具有颜色变换效果的图像滤波器。本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。colorFilter为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_Drawing_ImageFilter* imageFilter)](#oh_drawing_imagefiltercreateoffset) | 创建一个偏移滤波器，将输入的滤波器按照指定向量进行平移。 |
-| [OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffct)](#oh_drawing_imagefiltercreatefromshadereffect) | 基于着色器创建一个图像滤波器。 |
+| [OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffect)](#oh_drawing_imagefiltercreatefromshadereffect) | 基于着色器创建一个图像滤波器。 |
 | [void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)](#oh_drawing_imagefilterdestroy) | 销毁图像滤波器对象并回收该对象占有内存。 |
 
 ## 函数说明
 
 ### OH_Drawing_ImageFilterCreateBlur()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode,OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -59,7 +66,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sig
 
 ### OH_Drawing_ImageFilterCreateBlurWithCrop()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* input, const OH_Drawing_Rect* rect)
 ```
 
@@ -91,7 +98,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, f
 
 ### OH_Drawing_ImageFilterCreateFromColorFilter()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_ColorFilter* colorFilter,OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -118,7 +125,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_C
 
 ### OH_Drawing_ImageFilterCreateOffset()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -147,8 +154,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_
 
 ### OH_Drawing_ImageFilterCreateFromShaderEffect()
 
-```
-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffct)
+```c
+OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffect)
 ```
 
 **描述**
@@ -164,7 +171,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* shaderEffct | 表示要应用于图像的着色器效果。 |
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* shaderEffect | 表示要应用于图像的着色器效果。 |
 
 **返回：**
 
@@ -174,7 +181,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_
 
 ### OH_Drawing_ImageFilterDestroy()
 
-```
+```c
 void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)
 ```
 

@@ -1,4 +1,10 @@
 # @ohos.app.form.formProvider (formProvider)(系统接口)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间、请求发布卡片等能力。
 
@@ -70,7 +76,7 @@ try {
       console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       return;
     }
-    console.log(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -127,7 +133,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -186,7 +192,7 @@ let want: Want = {
 };
 try {
   formProvider.requestPublishForm(want).then((data: string) => {
-    console.log(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -249,7 +255,7 @@ try {
               console.error(`callback error, code: ${error.code}, message: ${error.message})`);
               return;
             }
-            console.log(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+            console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
           });
         } catch (error) {
           console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -308,7 +314,7 @@ try {
       };
       try {
         formProvider.requestPublishForm(want).then((data: string) => {
-          console.log(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+          console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
         }).catch((error: BusinessError) => {
           console.error(`promise error, code: ${error.code}, message: ${error.message})`);
         });

@@ -1,5 +1,10 @@
 # 媒体开发常见问题
-
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 ## 使用XComponent组件显示相机的预览输出流时，如何获取相机的帧数据(API 9)
 
@@ -15,8 +20,8 @@
 
    ```
    // 获取PreviewOutput(预览输出类)实例
-   const surfaceId = globalThis.mxXComponentController.getXComponentSurfaceld();
-   this.mPreviewOutput = await Camera.createPreviewOutput(surfaceld) ;
+   const surfaceId = globalThis.mxXComponentController.getXComponentSurfaceId();
+   this.mPreviewOutput = await Camera.createPreviewOutput(surfaceId);
    ```
 
 2. 使用imageReceiver来监听图像信息。
@@ -25,10 +30,10 @@
    // 添加双路预览
    const fullWidth = this.mFullScreenSize.width;
    const fullHeight = this.mFullScreenSize.height;
-   const imageReceiver = await image.createImageReceiver(fullwidth, fullHeight, 
-     formatImage, capacityImage) ;
-   const photoSurfaceId = await imageReceiver.getReceivingSurfaceld();
-   this.mPreviewOutputDouble = await Camera.createPreviewOutput ( photoSurfaceld)
+   const imageReceiver = await image.createImageReceiver(fullWidth, fullHeight, 
+     formatImage, capacityImage);
+   const photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
+   this.mPreviewOutputDouble = await Camera.createPreviewOutput(photoSurfaceId);
    ```
 
 
@@ -41,7 +46,7 @@
    ```
    let cameraManager = await camera.getCameraManager(context);
    let camerasInfo = await cameraManager.getSupportedCameras();
-   let cameraDevice = this.camerasInfo[0];
+   let cameraDevice = camerasInfo[0];
    ```
 
 2. 创建并启动物理摄像头输入流通道。
@@ -55,7 +60,7 @@
 
    ```
    let outputCapability = await this.cameraManager.getSupportedOutputCapability(cameraDevice);
-   let previewProfile = this.outputCapability.previewProfiles[0];
+   let previewProfile = outputCapability.previewProfiles[0];
    let previewOutput = await cameraManager.createPreviewOutput(previewProfile, previewId);
    ```
 
@@ -249,7 +254,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-1. [长时任务](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ContinuousTask)
+1. [长时任务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ContinuousTask)
 2. [应用接入AVSession场景介绍](../media/avsession/avsession-access-scene.md)
 
 ## 三方应用为什么无法创建相册？(API 10)

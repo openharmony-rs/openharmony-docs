@@ -1,4 +1,14 @@
 # ScsiPeripheral_InquiryRequest
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ScsiPeripheral_InquiryRequest {...} ScsiPeripheral_InquiryRequest
+```
 
 ## 概述
 

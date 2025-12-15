@@ -2,8 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--SE: @liuzuming-->
-<!--TSE: @lpw_work-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供通话管理能力。
 
@@ -38,7 +39,7 @@ setSimDisabled(admin: Want, slotId: number): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | slotId | number                     | 是   | 卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。 |
 
 **错误码**：
@@ -48,7 +49,7 @@ setSimDisabled(admin: Want, slotId: number): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                      |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -60,7 +61,7 @@ import { telephonyManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let slotId: number = 0;
@@ -75,7 +76,7 @@ try {
 
 setSimEnabled(admin: Want, slotId: number): void
 
-解除指定卡槽的SIM卡禁用。
+解除指定卡槽的SIM卡禁用。使用setSimDisabled禁用SIM卡后，再用setSimEnabled启用SIM卡，需要到设置-移动网络-SIM卡管理界面手动打开SIM卡开关。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
@@ -87,7 +88,7 @@ setSimEnabled(admin: Want, slotId: number): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | slotId | number                     | 是   |卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。  |
 
 **错误码**：
@@ -109,7 +110,7 @@ import { telephonyManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let slotId: number = 0;
@@ -136,7 +137,7 @@ isSimDisabled(admin: Want, slotId: number): boolean
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | slotId | number                     | 是   |卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。  |
 
 **返回值：**
@@ -164,7 +165,7 @@ import { telephonyManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let slotId: number = 0;
@@ -179,7 +180,7 @@ try {
 
 addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array\<string>): void
 
-添加通话呼出的允许或禁用名单，如果不添加名单，任意号码都可以呼出，添加后只有名单内的号码允许或禁止呼出。当前仅支持手机和平板设备。
+添加通话呼出的允许或禁用名单，如果不添加名单，任意号码都可以呼出，添加后只有名单内的号码允许或禁止呼出。
 
 以下情况下，通过本接口添加通话呼出的允许或禁用名单，会报策略冲突：
 
@@ -192,6 +193,8 @@ addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 
@@ -199,7 +202,7 @@ addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 
 | 参数名    | 类型                                                    | 必填 | 说明                                   |
 | --------- | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 | numbers | Array\<string>    | 是   | 通话号码列表，当前仅支持全号码匹配。数组总长度不能超过1000。例如，若当前允许名单数组中已有100个号码，则最多支持通过该接口再添加900个。  |
 
@@ -215,6 +218,7 @@ addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 | 9200012  | Parameter verification failed.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 203      | This function is prohibited by enterprise management policies. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -226,7 +230,7 @@ import { adminManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
@@ -245,7 +249,7 @@ try {
 
 removeOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array\<string>): void
 
-移除通话呼出的允许或禁用名单，若在该名单尚未设置时进行移除，则会移除失败。当前仅支持手机和平板设备。
+移除通话呼出的允许或禁用名单，若在该名单尚未设置时进行移除，则会移除失败。
 
 以下情况下，通过本接口移除通话呼出的允许或禁用名单，会报策略冲突：
 
@@ -256,13 +260,15 @@ removeOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 | numbers | Array\<string>    | 是   | 待移除的通话号码数组。数组总长度不能超过1000。  |
 
@@ -278,6 +284,7 @@ removeOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 | 9200012  | Parameter verification failed.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 203      | This function is prohibited by enterprise management policies. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -289,7 +296,7 @@ import { adminManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
@@ -308,12 +315,14 @@ try {
 
 getOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<string>
 
-获取通话呼出的允许或禁用名单。当前仅支持手机和平板设备。
+获取通话呼出的允许或禁用名单。
 
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -321,7 +330,7 @@ getOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 
 | 参数名     | 类型                                                    | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。 BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。  |
 
 
@@ -338,8 +347,9 @@ getOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |             |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -351,7 +361,7 @@ import { adminManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
@@ -366,7 +376,7 @@ try {
 
 addIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array\<string>): void
 
-添加通话呼入的允许或禁用名单，如果不添加名单，则任意号码都可以呼入，添加后仅名单内的号码允许或禁止呼入。当前仅支持手机和平板设备。
+添加通话呼入的允许或禁用名单，如果不添加名单，则任意号码都可以呼入，添加后仅名单内的号码允许或禁止呼入。
 
 以下情况下，通过本接口添加通话呼入的允许或禁用名单，会报策略冲突：
 
@@ -378,13 +388,15 @@ addIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                   |
 | --------- | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 | numbers | Array\<string>    | 是   | 通话号码列表，当前仅支持全号码匹配。数组总长度不能超过1000。例如，若当前允许名单数组中已有100个号码，则最多支持通过该接口再添加900个。  |
 
@@ -400,6 +412,7 @@ addIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 | 9200012  | Parameter verification failed.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 203      | This function is prohibited by enterprise management policies. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -411,7 +424,7 @@ import { adminManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
@@ -430,7 +443,7 @@ try {
 
 removeIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array\<string>): void
 
-移除通话呼入的允许或禁用名单，若在该名单尚未设置时进行移除，则会移除失败。当前仅支持手机和平板设备。
+移除通话呼入的允许或禁用名单，若在该名单尚未设置时进行移除，则会移除失败。
 
 以下情况下，通过本接口移除通话呼入的允许或禁用名单，会报策略冲突：
 
@@ -441,13 +454,15 @@ removeIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 | numbers | Array\<string>    | 是   | 待移除的通话号码数组。数组总长度不能超过1000。   |
 
@@ -463,6 +478,7 @@ removeIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 | 9200012  | Parameter verification failed.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 203      | This function is prohibited by enterprise management policies. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -474,7 +490,7 @@ import { adminManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
@@ -493,12 +509,14 @@ try {
 
 getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<string>
 
-获取通话呼入的允许或禁用名单。当前仅支持手机和平板设备。
+获取通话呼入的允许或禁用名单。
 
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -506,7 +524,7 @@ getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 
 | 参数名     | 类型                                                    | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 
 
@@ -523,8 +541,9 @@ getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |             |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -536,7 +555,7 @@ import { adminManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
@@ -544,5 +563,53 @@ try {
   console.info(`Succeeded in getting incoming call policy. result: ${JSON.stringify(numbers)}`);
 } catch (err) {
   console.error(`Failed to get incoming call policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## telephonyManager.hangupCalling<sup>23+</sup>
+hangupCalling(admin: Want): void
+
+挂断当前通话。仅支持运营商通话，不包括畅联等。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+
+**错误码**：
+
+请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |                      |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { telephonyManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  //需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  telephonyManager.hangupCalling(wantTemp);
+} catch (err) {
+  console.error(`Failed to hang up calling. Code: ${err.code}, message: ${err.message}`);
 }
 ```

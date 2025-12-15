@@ -1,5 +1,16 @@
 # HiDebug_NativeStackFrame
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+```c
+typedef struct HiDebug_NativeStackFrame {...} HiDebug_NativeStackFrame
+```
+
 ## 概述
 
 native栈帧内容的定义。

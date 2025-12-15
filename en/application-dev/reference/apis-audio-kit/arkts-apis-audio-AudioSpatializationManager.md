@@ -1,13 +1,19 @@
 # Interface (AudioSpatializationManager)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+This interface implements spatial audio management.
+
+Before calling any API in AudioSpatializationManager, you must use [getSpatializationManager](arkts-apis-audio-AudioManager.md#getspatializationmanager18) to obtain an AudioSpatializationManager instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 18.
-
-This interface implements spatial audio management.
-
-Before calling any API in AudioSpatializationManager, you must use [getSpatializationManager](arkts-apis-audio-AudioManager.md#getspatializationmanager18) to obtain an AudioSpatializationManager instance.
 
 ## Modules to Import
 
@@ -27,7 +33,7 @@ Checks whether spatial audio rendering is enabled for the current device. This A
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| boolean | Check result. The value **true** means that spatial audio rendering is enabled, and **false** means the opposite.|
+| boolean | Check result for whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise.|
 
 **Example**
 
@@ -51,7 +57,7 @@ Subscribes to the spatial audio rendering status change event of the current dev
 | Name  | Type                                                | Mandatory| Description                                          |
 | :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
 | type     | string | Yes  | Event type. The event **'spatializationEnabledChangeForCurrentDevice'** is triggered when the spatial audio rendering status is changed.|
-| callback | Callback<boolean\> | Yes  | Callback used to return the result. The value **true** means that spatial audio rendering is enabled, and **false** means the opposite.  |
+| callback | Callback<boolean\> | Yes  | Callback used to return the result, indicating whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise.  |
 
 **Error codes**
 
@@ -84,7 +90,7 @@ Unsubscribes from the spatial audio rendering status change event of the current
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
 | type     | string | Yes  | Event type. The event **'spatializationEnabledChangeForCurrentDevice'** is triggered when the spatial audio rendering status is changed.|
-| callback | Callback<boolean\> | No  | Callback used to return the result. The value **true** means that spatial audio rendering is enabled, and **false** means the opposite.  |
+| callback | Callback<boolean\> | No  | Callback used to return the result, indicating whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise.  |
 
 **Error codes**
 

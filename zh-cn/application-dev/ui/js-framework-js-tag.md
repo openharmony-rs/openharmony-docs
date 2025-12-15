@@ -1,4 +1,10 @@
 # js标签配置
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 js标签用于配置实例名称、页面路由和窗口样式信息。
 
@@ -78,7 +84,7 @@ window用于定义与显示窗口相关的配置。屏幕适配问题可通过�
         "name": "1.0"
     },
     "vendor": "example"
-  }
+  },
   "module": {
       // ...
       "js": [

@@ -1,4 +1,10 @@
-# @ohos.file.fileExtensionInfo (User File Extension Information) (System API)
+# @ohos.file.fileExtensionInfo (User File Access and Management Attribute Information) (System API)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 The **fileExtensionInfo** module defines attributes in **RootInfo** and **FileInfo** of the user file access and management module.
 
@@ -10,7 +16,7 @@ The **fileExtensionInfo** module defines attributes in **RootInfo** and **FileIn
 ## Modules to Import
 
 ```ts
-import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
+import { fileExtensionInfo } from '@kit.CoreFileKit';
 ```
 
 ## fileExtensionInfo.DeviceType
@@ -18,6 +24,8 @@ import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
 Defines the values of **deviceType** used in **RootInfo**.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -37,14 +45,16 @@ Defines the values of **deviceFlags** used in **RootInfo**. **deviceFlags** is u
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
-### Properties
+### Constants
 
-  | Name| Type  | Read-Only| Optional| Description    |
-  | ------ | ------ | ---- | ---- | -------- |
-  | SUPPORTS_READ   | number | No  | No  | The device supports read.|
-  | SUPPORTS_WRITE   | number | No  | No  | The device supports write.|
+  | Name|   Type  | Value| Description    |
+  | ------ | ---- | ---- | -------- |
+  | SUPPORTS_READ   | number | 0b1   | The device supports read.|
+  | SUPPORTS_WRITE   | number | 0b10   |  The device supports write.|
 
 ## fileExtensionInfo.DocumentFlag
 
@@ -52,14 +62,16 @@ Defines the values of **mode** used in **FileInfo**.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
-### Properties
+### Constants
 
-  | Name| Type  | Read-Only| Optional| Description    |
-  | ------ | ------ | ---- | ---- | -------- |
-  | REPRESENTS_FILE   | number | No  | No  | File.|
-  | REPRESENTS_DIR   | number | No  | No  | Directory.|
-  | SUPPORTS_READ   | number | No  | No  | This file is readable.|
-  | SUPPORTS_WRITE   | number | No  | No  | This file is writable.|
+  | Name|   Type  | Value| Description    |
+  | ------ | ---- | ---- | -------- |
+  | REPRESENTS_FILE   | number | 0b1   | File.|
+  | REPRESENTS_DIR   | number | 0b10  | Directory.|
+  | SUPPORTS_READ   | number | 0b100   | This file is readable.|
+  | SUPPORTS_WRITE   | number | 0b1000  | This file is writable.|
   

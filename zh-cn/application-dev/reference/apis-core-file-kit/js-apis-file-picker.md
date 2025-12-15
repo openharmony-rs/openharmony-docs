@@ -1,4 +1,10 @@
 # @ohos.file.picker (选择器)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 > **说明：**
 >
@@ -135,8 +141,6 @@ select(option?: DocumentSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。接口采用Promise异步返回形式，传入可选参数DocumentSelectOptions对象，返回选择文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -151,7 +155,7 @@ select(option?: DocumentSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回documentPicker选择后的结果集。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回documentPicker选择后的结果集。<br> **注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。  |
 
 **示例：**
 
@@ -181,8 +185,6 @@ select(option: DocumentSelectOptions, callback: AsyncCallback&lt;Array&lt;string
 
 通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。接口采用callback异步返回形式，传入参数DocumentSelectOptions对象，返回选择文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -192,7 +194,7 @@ select(option: DocumentSelectOptions, callback: AsyncCallback&lt;Array&lt;string
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | option | [DocumentSelectOptions](#documentselectoptions) | 是   | documentPicker选择选项。 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回documentPicker选择后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回documentPicker选择后的结果集。<br>**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -224,8 +226,6 @@ select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。接口采用callback异步返回形式，返回选择文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -234,7 +234,7 @@ select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回documentPicker选择后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回documentPicker选择后的结果集。<br>**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -265,8 +265,6 @@ save(option?: DocumentSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。接口采用Promise异步返回形式，传入可选参数DocumentSaveOptions对象，返回保存文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -281,7 +279,7 @@ save(option?: DocumentSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回documentPicker保存后的结果集。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回documentPicker保存后的结果集。<br>**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -312,8 +310,6 @@ save(option: DocumentSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;
 
 通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。接口采用callback异步返回形式，传入参数DocumentSaveOptions对象，返回保存文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -323,7 +319,7 @@ save(option: DocumentSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | option | [DocumentSaveOptions](#documentsaveoptions) | 是   | documentPicker保存选项。 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回documentPicker保存后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回documentPicker保存后的结果集。<br>**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -356,8 +352,6 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。接口采用callback异步返回形式，返回保存文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -366,7 +360,7 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回documentPicker保存后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回documentPicker保存后的结果集。<br>**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -397,8 +391,6 @@ getSelectedIndex(): number
 
 获取保存成功后的文件后缀类型的下标。
 
-仅支持2in1设备。
-
 该方法只在调用 [save()](#save)时使用生效，其他场景下不适用。
 
 该方法需要配置参数[DocumentSaveOptions.fileSuffixChoices](#documentsaveoptions)。
@@ -408,6 +400,12 @@ getSelectedIndex(): number
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection
+
+**返回值：**
+
+| 类型                            | 说明    |
+| ----------------------------- | :---- |
+| number| 返回所选后缀类型在[DocumentSaveOptions.fileSuffixChoices](#documentsaveoptions)里的下标(number)。默认返回-1。 |
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -512,8 +510,6 @@ select(option?: AudioSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。接口采用Promise异步返回形式，传入可选参数AudioSelectOptions对象，返回选择音频文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体类uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。
-
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -522,13 +518,13 @@ select(option?: AudioSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| option | [AudioSelectOptions](#audioselectoptions) | 否   | audioPicker音频选择选项。若无此参数，则默认拉起audioPicker主界面。  |
+| option | [AudioSelectOptions](#audioselectoptions) | 否   | audioPicker音频选择选项。若无此参数，则默认拉起audioPicker主界面。 |
 
 **返回值：**
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回audioPicker选择音频后的结果集。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体类uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
 
 **示例：**
 
@@ -558,8 +554,6 @@ select(option: AudioSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt
 
 通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。接口采用callback异步返回形式，传入参数AudioSelectOptions对象，返回选择音频文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体类uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。
-
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **参数：**
@@ -567,7 +561,7 @@ select(option: AudioSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | option | [AudioSelectOptions](#audioselectoptions) | 是   | audioPicker音频选择选项。 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker选择音频后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体类uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
 
 **示例：**
 
@@ -598,16 +592,13 @@ async function example14(context: common.UIAbilityContext) { // 需确保 contex
 select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。接口采用callback异步返回形式，返回选择音频文件的URI数组。
-
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体类uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。
-
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker选择音频后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体类uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
 
 **示例：**
 
@@ -638,8 +629,6 @@ save(option?: AudioSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。接口采用Promise异步返回形式，传入可选参数AudioSaveOptions对象，返回保存音频文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -654,7 +643,7 @@ save(option?: AudioSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 | 类型                            | 说明    |
 | ----------------------------- | ---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回audioPicker保存音频文件后的结果集。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回audioPicker保存音频文件后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -685,8 +674,6 @@ save(option: AudioSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 
 通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。接口采用callback异步返回形式，传入参数AudioSaveOptions对象，返回保存音频文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **参数：**
@@ -694,7 +681,7 @@ save(option: AudioSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | option | [AudioSaveOptions](#audiosaveoptions) | 是   | audioPicker保存音频文件选项。 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker保存音频文件后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker保存音频文件后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -727,15 +714,13 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。接口采用callback异步返回形式，返回保存音频文件的URI数组。
 
-**注意**：此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker保存音频文件后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker保存音频文件后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -764,8 +749,6 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 枚举，picker选择的文档类型。
 
-仅支持2in1设备。
-
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection
@@ -786,14 +769,14 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| maxSelectNumber<sup>10+</sup>       | number                                      | 否   | 是 | 选择文件最大个数，上限为500个，有效值范围1-500（选择目录仅对具有该系统能力的设备开放。且目录选择的最大个数为1）。默认值是500。<br>**系统能力**：SystemCapability.FileManagement.UserFileService  |
+| maxSelectNumber<sup>10+</sup>       | number                                      | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次选择最大文件个数上限为500个，默认值是500。选择目录仅对具有该系统能力的设备开放，且目录选择的最大个数为1。<br>API version 21及之后的版本取消限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>**系统能力**：SystemCapability.FileManagement.UserFileService  |
 | defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定选择的文件或者目录的URI。默认为空（效果为拉起最近打开页）。           |
 | fileSuffixFilters<sup>10+</sup>     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。**系统能力**：SystemCapability.FileManagement.UserFileService   |
-| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | 仅支持2in1设备。默认值是FILE(文件类型)。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
-| authMode<sup>12+</sup>    | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。仅支持2in1设备。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
-|multiAuthMode<sup>15+</sup>  | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multAuthMode为true时为批量授权模式。当multAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。仅支持手机设备。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
-|multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multAuthMode使用。当multAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。仅支持手机设备。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
-|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |否    |  是 | 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。仅支持手机设备。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
+| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
+| authMode<sup>12+</sup>    | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
+|multiAuthMode<sup>15+</sup>  | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
+|multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
+|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |否    |  是 | 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。<br>API version 22及之后的版本当该参数置为非DEFAULT时，仅fileSuffixFilters参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
 |isEncryptionSupported<sup>19+</sup>    | boolean |否    |  是 | 是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。<br>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService |
 
 ## DocumentPickerMode<sup>12+</sup>
@@ -807,15 +790,17 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
 | DEFAULT  | 0  | 标准模式。 |
-| DOWNLOAD | 1  | 下载模式。 |
+| DOWNLOAD | 1  | 下载模式。 <br>**注意**： DOWNLOAD模式创建的目录仅用于保存文件，目录之间无访问隔离，不建议保存应用敏感数据。 |
 
 ## MergeTypeMode<sup>15+</sup>
 
-枚举，文件聚合类型。仅支持手机设备。
+枚举，文件聚合类型。
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**设备行为差异**：该接口在Phone设备中可正常调用，在其他设备中无效果。
 
 | 名称  |  值 |  说明 |
 | ----- | ---- | ---- |
@@ -833,12 +818,12 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
-| 名称                    | 类型                | 必填 |  说明                           |
-| ----------------------- | ------------------- | ---- | ---------------------------- |
-| newFileNames            | Array&lt;string&gt;    | 否   | 拉起documentPicker进行保存的文件名。若无此参数，则默认需要用户自行输入。  |
-| defaultFilePathUri<sup>10+</sup>    | string  | 否   | 指定保存的文件或者目录的URI。  |
-| fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | 否   | 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"\|\"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。 |
-| pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | 否   | 拉起picker的类型, 默认为DEFAULT。当pickerMode设置为DOWNLOAD时，用户配置的参数newFileNames、defaultFilePathUri和fileSuffixChoices将不会生效。 |
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| newFileNames            | Array&lt;string&gt;   | 否 | 是   | 拉起documentPicker进行保存的文件名。若无此参数，则默认需要用户自行输入。  |
+| defaultFilePathUri<sup>10+</sup>    | string  | 否| 是    | 指定保存的文件或者目录的URI。默认为空。  |
+| fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | 否| 是    | 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"\|\"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。 |
+| pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | 否| 是    | 拉起picker的类型, 默认为DEFAULT。当pickerMode设置为DOWNLOAD时，用户配置的参数newFileNames、defaultFilePathUri和fileSuffixChoices将不会生效。 |
 
 ## AudioSelectOptions
 
@@ -848,9 +833,9 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
-| 名称                    | 类型                                          | 必填 | 说明                                       |
-| :---------------------- |---------------------------------------------| ---- |------------------------------------------|
-| maxSelectNumber<sup>12+</sup>       | number                                      | 否   | 选择文件最大个数，默认值为1，上限为500个，有效值范围1-500。 |
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| maxSelectNumber<sup>12+</sup>       | number                                   | 否     | 是   | 选择文件最大个数，默认值为1，上限为500个，有效值范围1-500。 |
 
 ## AudioSaveOptions
 
@@ -860,9 +845,9 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
-| 名称                    | 类型                | 必填 |  说明                           |
-| ----------------------- | ------------------- | ---- | ---------------------------- |
-| newFileNames              | Array&lt;string&gt;    | 否  | 拉起audioPicker进行保存音频资源的文件名。若无此参数，则默认需要用户自行输入。 |
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| ---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| newFileNames              | Array&lt;string&gt;   | 否 | 是  | 拉起audioPicker进行保存音频资源的文件名。若无此参数，则默认需要用户自行输入。 |
 
 ## PhotoViewPicker<sup>(deprecated)</sup>
 
@@ -880,11 +865,17 @@ constructor(context: Context)
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                                                         |
+| ------- | ------- | ---- | ------------------------------------------------------------ |
+| context | Context| 是   | 应用上下文（仅支持UIAbilityContext）。Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
 创建PhotoViewPicker对象，推荐使用该构造函数，获取context参考[getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
 
 > **说明：**
 >
-> 从API version 12开始废弃。
+> 从API version 12开始支持，从API version 18开始废弃。
 
 **示例：**
 
@@ -926,7 +917,7 @@ constructor()
 
 > **说明：**
 >
-> 从API version 12开始废弃。
+> 从API version 12开始支持，从API version 18开始废弃。
 
 **示例：**
 
@@ -944,8 +935,6 @@ select(option?: PhotoSelectOptions): Promise&lt;PhotoSelectResult&gt;
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)替代。
 
-**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
-
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -960,7 +949,7 @@ select(option?: PhotoSelectOptions): Promise&lt;PhotoSelectResult&gt;
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| Promise&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt; | Promise对象。返回photoPicker选择后的结果集。 |
+| Promise&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt; | Promise对象。返回photoPicker选择后的结果集。 <br>**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
 
 **示例：**
 
@@ -996,8 +985,6 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select-1)替代。
 
-**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
-
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -1007,7 +994,7 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | option | [PhotoSelectOptions](#photoselectoptionsdeprecated) | 是   | photoPicker选择选项。 |
-| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | 是   | callback 返回photoPicker选择后的结果集。 |
+| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | 是   | callback 返回photoPicker选择后的结果集。<br>**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
 
 **示例：**
 
@@ -1045,8 +1032,6 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select-2)替代。
 
-**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
-
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
@@ -1055,7 +1040,7 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | 是   | callback 返回photoPicker选择后的结果集。 |
+| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | 是   | callback 返回photoPicker选择后的结果集。<br>**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
 
 **示例：**
 
@@ -1090,8 +1075,6 @@ save(option?: PhotoSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[SaveButton](../apis-arkui/arkui-ts/ts-security-components-savebutton.md)替代。
 
-**注意**：此接口会将文件保存在文件管理器，而不是图库。返回的uri数组的具体使用方式参见用户文件uri介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **参数：**
@@ -1104,7 +1087,7 @@ save(option?: PhotoSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回photoPicker保存图片或视频文件后的结果集。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回photoPicker保存图片或视频文件后的结果集。<br>**注意**：此接口会将文件保存在文件管理器，而不是图库。返回的uri数组的具体使用方式参见用户文件uri介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -1139,8 +1122,6 @@ save(option: PhotoSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[SaveButton](../apis-arkui/arkui-ts/ts-security-components-savebutton.md)替代。
 
-**注意**：此接口会将文件保存在文件管理器，而不是图库。返回的uri数组的具体使用方式参见用户文件uri介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **参数：**
@@ -1148,7 +1129,7 @@ save(option: PhotoSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | option | [PhotoSaveOptions](#photosaveoptionsdeprecated) | 是   | photoPicker保存图片或视频文件选项。 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回photoPicker保存图片或视频文件后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回photoPicker保存图片或视频文件后的结果集。<br>**注意**：此接口会将文件保存在文件管理器，而不是图库。返回的uri数组的具体使用方式参见用户文件uri介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -1185,15 +1166,13 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[SaveButton](../apis-arkui/arkui-ts/ts-security-components-savebutton.md)替代。
 
-**注意**：此接口会将文件保存在文件管理器，而不是图库。返回的uri数组的具体使用方式参见用户文件uri介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。
-
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回photoPicker保存图片或视频文件后的结果集。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回photoPicker保存图片或视频文件后的结果集。<br>**注意**：此接口会将文件保存在文件管理器，而不是图库。返回的uri数组的具体使用方式参见用户文件uri介绍中的[文档类uri的使用方式](../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
 **示例：**
 
@@ -1232,9 +1211,9 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| IMAGE_TYPE  |  'image/*' | 图片类型。  |
-| VIDEO_TYPE |  'video/*' | 视频类型。  |
-| IMAGE_VIDEO_TYPE |  '\*/*' | 图片和视频类型。  |
+| IMAGE_TYPE  |  'image/*' | 图片类型。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
+| VIDEO_TYPE |  'video/*' | 视频类型。 <br>**说明**：从API version 9开始支持，从API version 18开始废弃。 |
+| IMAGE_VIDEO_TYPE |  '\*/*' | 图片和视频类型。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
 
 ## PhotoSelectOptions<sup>(deprecated)</sup>
 
@@ -1248,10 +1227,10 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
-| 名称                    | 类型                | 必填 | 说明                          |
-| ----------------------- | ------------------- | ---- | -------------------------------- |
-| MIMEType              | [PhotoViewMIMETypes](#photoviewmimetypesdeprecated)   | 否   | 可选择的媒体文件类型。若无此参数，则默认为图片和视频类型。  |
-| maxSelectNumber       | number | 否   | 选择媒体文件数量的最大值(默认值为50，最大值为500)。      |
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| MIMEType              | [PhotoViewMIMETypes](#photoviewmimetypesdeprecated)  | 否  | 是   | 可选择的媒体文件类型。若无此参数，则默认为图片和视频类型。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
+| maxSelectNumber       | number  | 否 | 是   | 选择媒体文件数量的最大值，默认值为50，最大值为500。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。      |
 
 ## PhotoSelectResult<sup>(deprecated)</sup>
 
@@ -1265,10 +1244,10 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
-| 名称                    | 类型                | 必填 | 说明                           |
-| ----------------------- | ------------------- | ----| ------------------------------ |
-| photoUris        | Array&lt;string&gt;    | 是   | 返回图库选择后的媒体文件的uri数组。此uri数组只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。  |
-| isOriginalPhoto        | boolean    | 是   | 返回图库选择后的媒体文件是否为原图。true为原图；false不是原图。  |
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| photoUris        | Array&lt;string&gt;    | 否 | 否  | 返回图库选择后的媒体文件的uri数组。此uri数组只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
+| isOriginalPhoto        | boolean   | 否  | 否   | 返回图库选择后的媒体文件是否为原图。true为原图；false不是原图。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
 
 ## PhotoSaveOptions<sup>(deprecated)</sup>
 
@@ -1280,6 +1259,6 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
-| 名称                    | 类型                | 必填 |  说明                           |
-| ----------------------- | ------------------- | ---- | ---------------------------- |
-| newFileNames              | Array&lt;string&gt;    | 否  | 拉起photoPicker进行保存图片或视频资源的文件名。若无此参数，则默认需要用户自行输入。 |
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| newFileNames              | Array&lt;string&gt;    | 否 | 是  | 拉起photoPicker进行保存图片或视频资源的文件名。若无此参数，则默认需要用户自行输入。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。 |

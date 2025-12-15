@@ -1,9 +1,10 @@
 # @ohos.util.List (线性容器List)
 <!--Kit: ArkTS-->
-<!--Subsystem: commonlibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello; @yuanyao14; @lzj0614-->
-<!--SE: @yuanyao14-->
-<!--TSE: @kirl75; @zsw_zhushiwei-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 List底层通过单向链表实现，每个节点有一个指向后一个元素的引用。查询元素必须从头遍历，因此查询效率低，但插入和删除效率高。List允许元素为null。
 
@@ -21,6 +22,8 @@ List和[LinkedList](js-apis-linkedlist.md)相比，LinkedList是双向链表，�
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 
 ## 导入模块
@@ -287,7 +290,7 @@ console.info("result:", result); // result: 5
 
 getIndexOf(element: T): number
 
-查找指定元素第一次出现的下标值，查找失败返回-1。
+查找指定元素第一次出现的下标，查找失败返回-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -568,7 +571,7 @@ list.forEach((value: number, index: number) => {
 
 ### sort
 
-sort(comparator: (firstValue: T, secondValue: T) => number): void
+sort(comparator: ListComparatorFn\<T\>): void
 
 对List中的元素进行排序。
 
@@ -580,14 +583,7 @@ sort(comparator: (firstValue: T, secondValue: T) => number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | function | 是 | 回调函数。 |
-
-comparator的参数说明：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| firstValue | T | 是 | 前一项元素。 |
-| secondValue | T | 是 | 后一项元素。 |
+| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt22) | 是 | 回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **错误码：**
 
@@ -932,3 +928,26 @@ while(!temp.done) {
 // value: 5
 // value: 4
 ```
+
+### ListComparatorFn\<T\><sup>22+</sup>
+
+type ListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
+
+List中sort方法的回调函数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| firstValue | T | 是 | 需要排序的前一项元素。 |
+| secondValue | T | 是 | 需要排序的后一项元素。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| number | 通过回调函数返回的值，List能够根据自定义的比较规则维护元素的顺序。 |

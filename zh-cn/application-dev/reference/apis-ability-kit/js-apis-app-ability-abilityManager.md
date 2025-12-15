@@ -1,5 +1,12 @@
 # @ohos.app.ability.abilityManager (Ability信息管理)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025 -->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 AbilityManager模块提供获取Ability相关信息和运行状态信息的能力。
 
 > **说明：**
@@ -32,7 +39,11 @@ Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](js-apis-in
 
 getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
-获取UIAbility运行相关信息（Promise形式）。
+获取UIAbility运行时的相关信息。使用Promise异步回调。
+
+> **说明：**
+>
+> 如果应用申请了ohos.permission.GET_RUNNING_INFO权限，可以获取所有应用UIAbility的运行信息，否则只能获取当前应用UIAbility的运行信息。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -42,7 +53,7 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | 以Promise方式返回接口运行结果及运行中的ability信息，可进行错误处理或其他自定义处理。 |
+| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise对象，返回UIAbility运行时的相关信息。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -61,7 +72,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   abilityManager.getAbilityRunningInfos()
     .then((data: abilityManager.AbilityRunningInfo[]) => {
-      console.log(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
+      console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
     })
     .catch((error: BusinessError) => {
       console.error(`getAbilityRunningInfos fail, error code: ${JSON.stringify(error.code)}, error msg: ${JSON.stringify(error.message)}`);
@@ -83,7 +94,8 @@ restartSelfAtomicService(context: Context): void
 >
 > - 当前仅支持以独立窗口方式拉起原子化服务。
 >
-> - 该接口的两次调用时间间隔不能低于3秒。
+> - 在调用本接口成功后的3秒内，再次调用本接口、[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)或[UIAbilityContext.restartApp()](js-apis-inner-application-uiAbilityContext.md#restartapp22)接口中的任一接口，系统将返回错误码16000064。
+
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

@@ -2,8 +2,9 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--SE: @lucky-jinduo-->
-<!--TSE: @nacyli-->
+<!--Designer: @lucky-jinduo-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
 > **说明：**
 > 
@@ -290,6 +291,10 @@ The user does not have the permission.
 
 用户无权限。
 
+**可能原因**
+
+当前登录账号无此文件的权限。
+
 **处理步骤**
 
 请检查权限。
@@ -305,6 +310,10 @@ Account not logged in.
 **错误描述**
 
 账号未登录。
+
+**可能原因**
+
+对应类型账号未登录。
 
 **处理步骤**
 
@@ -322,6 +331,10 @@ The system needs to be upgraded.
 
 系统需要升级。
 
+**可能原因**
+
+当前系统版本版本需要升级。
+
 **处理步骤**
 
 请升级系统。
@@ -337,6 +350,10 @@ The uri field is missing in the want parameter.
 
 want参数中没有uri。
 
+**可能原因**
+
+want参数中没有uri。
+
 **处理步骤**
 
 请传入正确的参数。
@@ -348,6 +365,10 @@ want参数中没有uri。
 The displayName field is missing in the want parameter.
 
 **错误描述**
+
+want参数中parameters内没有displayName。
+
+**可能原因**
 
 want参数中parameters内没有displayName。
 
@@ -384,6 +405,10 @@ The DLP file has expired.
 
 DLP文件已过期。
 
+**可能原因**
+
+当前时间超出授权期限。
+
 **处理步骤**
 
 请联系文件拥有者重新授权。
@@ -400,7 +425,113 @@ No network connection.
 
 网络未连接。
 
+**可能原因**
+
+网络未连接或未认证。
+
 **处理步骤**
 
 请连接网络。
 <!--DelEnd-->
+
+## 19100021 设置企业应用策略失败
+
+**错误信息**
+
+Failed to set the enterprise policy.
+
+**错误描述**
+
+设置企业应用策略失败。
+
+**可能原因**
+
+输入策略格式异常。
+
+**处理步骤**
+
+请检查策略格式，并进行重试。
+
+## 19110001 参数错误
+
+**错误信息**
+
+Parameter error.
+
+**错误描述**
+
+参数错误。
+
+**可能原因**
+
+1. 策略格式错误。
+
+2. 参数范围错误。
+
+**处理步骤**
+
+请传入正确的参数。
+
+## 19110002 文件敏感信息识别超时
+
+**错误信息**
+
+Sensitive file content identification timed out.
+
+**错误描述**
+
+文件敏感信息识别超时。
+
+**可能原因**
+
+文件敏感信息识别超时。
+
+**处理步骤**
+
+请等待一段时间后重试。
+
+## 19110003 文件不支持
+
+**错误信息**
+
+The file is not supported.
+
+**错误描述**
+
+文件不支持。
+
+**可能原因**
+
+1. 文件路径不存在。
+
+2. 文件类型不支持。
+
+3. 文件权限不支持。
+
+**处理步骤**
+
+请确认传入的文件是否正确。
+
+## 19110004 系统功能运行异常
+
+**错误信息**
+
+A system error has occurred.
+
+**错误描述**
+
+系统功能运行异常。
+
+**可能原因**
+
+1. 服务无法正常启动。
+
+2. 服务依赖的服务无法正常启动。
+
+3. IPC数据读写识别。
+
+4. 服务未初始化。
+
+**处理步骤**
+
+系统服务内部工作异常，请稍后重试，或者重启设备尝试。

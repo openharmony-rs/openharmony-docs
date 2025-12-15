@@ -1,8 +1,18 @@
 # ImageReceiverNative_
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ImageReceiverNative_ ImageReceiverNative
+```
 
 ## Overview
 
-ImageReceiverNative_ defines the data type name of the image receiver at the native layer.
+The struct describes the data type name of the image receiver at the native layer.
 
 **Since**: 10
 

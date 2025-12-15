@@ -1,5 +1,12 @@
 # transient_task_api.h
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 提供短时任务申请、查询、取消功能。
@@ -29,7 +36,7 @@
 
 ### OH_BackgroundTaskManager_RequestSuspendDelay()
 
-```
+```c
 int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char* reason,TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info)
 ```
 
@@ -58,7 +65,7 @@ int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char* reason,Transien
 
 ### OH_BackgroundTaskManager_GetRemainingDelayTime()
 
-```
+```c
 int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime)
 ```
 
@@ -86,7 +93,7 @@ int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_
 
 ### OH_BackgroundTaskManager_CancelSuspendDelay()
 
-```
+```c
 int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId)
 ```
 
@@ -113,7 +120,7 @@ int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId)
 
 ### OH_BackgroundTaskManager_GetTransientTaskInfo()
 
-```
+```c
 int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo)
 ```
 

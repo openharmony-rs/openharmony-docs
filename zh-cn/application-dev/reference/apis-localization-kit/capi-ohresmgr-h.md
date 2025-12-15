@@ -1,8 +1,17 @@
 # ohresmgr.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 提供资源管理native侧获取资源的能力。
+
+**引用文件：** <resourcemanager/ohresmgr.h>
 
 **库：** libohresmgr.so
 
@@ -63,7 +72,7 @@
 
 ### OH_ResourceManager_GetMediaBase64()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId,char **resultValue, uint64_t *resultLen, uint32_t density = 0)
 ```
 
@@ -92,7 +101,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResource
 
 ### OH_ResourceManager_GetMediaBase64Data()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeResourceManager *mgr, uint32_t resId,char **resultValue, uint64_t *resultLen, uint32_t density)
 ```
 
@@ -121,7 +130,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 
 ### OH_ResourceManager_GetMediaBase64ByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr,const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)
 ```
 
@@ -150,7 +159,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeRe
 
 ### OH_ResourceManager_GetMediaBase64DataByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const NativeResourceManager *mgr,const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density)
 ```
 
@@ -179,7 +188,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 
 ### OH_ResourceManager_GetMedia()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId,uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
 ```
 
@@ -208,7 +217,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManage
 
 ### OH_ResourceManager_GetMediaData()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceManager *mgr, uint32_t resId,uint8_t **resultValue, uint64_t *resultLen, uint32_t density)
 ```
 
@@ -237,7 +246,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 
 ### OH_ResourceManager_GetMediaByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName,uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
 ```
 
@@ -266,7 +275,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResource
 
 ### OH_ResourceManager_GetMediaDataByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeResourceManager *mgr, const char *resName,uint8_t **resultValue, uint64_t *resultLen, uint32_t density)
 ```
 
@@ -295,7 +304,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 
 ### OH_ResourceManager_GetDrawableDescriptor()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr,uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
 ```
 
@@ -324,7 +333,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 
 ### OH_ResourceManager_GetDrawableDescriptorData()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const NativeResourceManager *mgr,uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)
 ```
 
@@ -353,7 +362,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 
 ### OH_ResourceManager_GetDrawableDescriptorByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr,const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
 ```
 
@@ -382,7 +391,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 
 ### OH_ResourceManager_GetDrawableDescriptorDataByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr,const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)
 ```
 
@@ -411,7 +420,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 
 ### OH_ResourceManager_GetSymbol()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId,uint32_t *resultValue)
 ```
 
@@ -438,7 +447,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManag
 
 ### OH_ResourceManager_GetSymbolByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName,uint32_t *resultValue)
 ```
 
@@ -465,7 +474,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 
 ### OH_ResourceManager_GetLocales()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue,uint32_t *resultLen, bool includeSystem = false)
 ```
 
@@ -493,7 +502,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceMana
 
 ### OH_ResourceManager_GetLocalesData()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue,uint32_t *resultLen, bool includeSystem)
 ```
 
@@ -521,7 +530,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 
 ### OH_ResourceManager_GetConfiguration()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr,ResourceManager_Configuration *configuration)
 ```
 
@@ -551,7 +560,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResour
 
 ### OH_ResourceManager_GetResourceConfiguration()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr,ResourceManager_Configuration *configuration)
 ```
 
@@ -577,7 +586,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const Nati
 
 ### OH_ResourceManager_ReleaseConfiguration()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManager_Configuration *configuration)
 ```
 
@@ -602,7 +611,7 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManage
 
 ### OH_ResourceManager_GetString()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManager *mgr, uint32_t resId,char **resultValue, ...)
 ```
 
@@ -630,7 +639,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManag
 
 ### OH_ResourceManager_GetStringByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourceManager *mgr, const char *resName,char **resultValue, ...)
 ```
 
@@ -658,7 +667,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourc
 
 ### OH_ResourceManager_GetStringArray()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId,char ***resultValue, uint32_t *resultLen)
 ```
 
@@ -686,7 +695,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResource
 
 ### OH_ResourceManager_GetStringArrayByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr,const char *resName, char ***resultValue, uint32_t *resultLen)
 ```
 
@@ -714,7 +723,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeRe
 
 ### OH_ResourceManager_ReleaseStringArray()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue, uint32_t len)
 ```
 
@@ -740,7 +749,7 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue
 
 ### OH_ResourceManager_GetPluralString()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId,uint32_t num, char **resultValue)
 ```
 
@@ -772,7 +781,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 
 ### OH_ResourceManager_GetPluralStringByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr,const char *resName, uint32_t num, char **resultValue)
 ```
 
@@ -804,7 +813,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 
 ### OH_ResourceManager_GetIntPluralString()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId,uint32_t num, char **resultValue, ...)
 ```
 
@@ -833,7 +842,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 
 ### OH_ResourceManager_GetDoublePluralString()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId,double num, char **resultValue, ...)
 ```
 
@@ -862,7 +871,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeR
 
 ### OH_ResourceManager_GetIntPluralStringByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr,const char *resName, uint32_t num, char **resultValue, ...)
 ```
 
@@ -891,7 +900,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 
 ### OH_ResourceManager_GetDoublePluralStringByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr,const char *resName, double num, char **resultValue, ...)
 ```
 
@@ -920,7 +929,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 
 ### OH_ResourceManager_GetColor()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId,uint32_t *resultValue)
 ```
 
@@ -947,7 +956,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManage
 
 ### OH_ResourceManager_GetColorByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName,uint32_t *resultValue)
 ```
 
@@ -974,7 +983,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResource
 
 ### OH_ResourceManager_GetInt()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId,int *resultValue)
 ```
 
@@ -1001,7 +1010,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager 
 
 ### OH_ResourceManager_GetIntByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceManager *mgr, const char *resName,int *resultValue)
 ```
 
@@ -1028,7 +1037,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceMa
 
 ### OH_ResourceManager_GetFloat()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManager *mgr, uint32_t resId,float *resultValue)
 ```
 
@@ -1055,7 +1064,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManage
 
 ### OH_ResourceManager_GetFloatByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResourceManager *mgr, const char *resName,float *resultValue)
 ```
 
@@ -1082,7 +1091,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResource
 
 ### OH_ResourceManager_GetBool()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager *mgr, uint32_t resId,bool *resultValue)
 ```
 
@@ -1109,7 +1118,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager
 
 ### OH_ResourceManager_GetBoolByName()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceManager *mgr, const char *resName,bool *resultValue)
 ```
 
@@ -1136,7 +1145,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceM
 
 ### OH_ResourceManager_AddResource()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceManager *mgr, const char *path)
 ```
 
@@ -1162,7 +1171,7 @@ ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceMan
 
 ### OH_ResourceManager_RemoveResource()
 
-```
+```c
 ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResourceManager *mgr, const char *path)
 ```
 

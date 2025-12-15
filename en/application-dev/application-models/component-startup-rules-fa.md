@@ -1,5 +1,12 @@
 # Component Startup Rules (FA Model)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 
 Component startup refers to the behavior of starting or connecting to an application component.
 
@@ -24,7 +31,7 @@ In view of this, the system formulates a set of component startup rules, as foll
 
 - **Before starting a component of another application, verify the visible field of the target component.**
   - This rule applies only to cross-application scenarios.
-  - If the **visible** field of the target component is **false**, verify the **ohos.permission.START_INVISIBLE_ABILITY** permission, which is available only for system applications.
+  - If the **visible** field of the target component is **false**, verify the ohos.permission.START_INVISIBLE_ABILITY permission, which is available only for system applications.
   - For details about the **visible** field, see [Internal Structure of the abilities Attribute](../quick-start/module-structure.md#internal-structure-of-the-abilities-attribute).
 
 - **Before starting a component of a background application, verify the BACKGROUND permission.**
@@ -33,9 +40,9 @@ In view of this, the system formulates a set of component startup rules, as foll
   > Applications developed using the SDK of API version 8 or earlier are not restricted by this restriction when starting the ServiceAbility or DataAbility.
 
   - An application is considered as a foreground application only when the application process gains focus or its UIAbility component is running in the foreground.
-  - Verify the **ohos.permission.START_ABILITIES_FROM_BACKGROUND** permission, which is available only for system applications.
+  - Verify the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission, which is available only for system applications.
 
-- **Before starting the ServiceAbility or DataAbility component of an application, verify the AssociateWakeUp field of the target application.**
+- **Before starting the ServiceAbility or DataAbility component of an application in the [FA model](ability-terminology.md#fa-model), verify the AssociateWakeUp field of the target application.**
   - This rule applies only to cross-application scenarios.
   - This rule is valid only when the target component is ServiceAbility or DataAbility.
   - The ServiceAbility and DataAbility of an application can be accessed by other applications only when **AssociateWakeUp** of the target application is set to **true**.

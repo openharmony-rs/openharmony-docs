@@ -1,5 +1,10 @@
 # @ohos.distributedsched.linkEnhance (Enhanced Connection)
-
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @wangJE-->
+<!--Designer: @lee_jet520-->
+<!--Tester: @Ytt-test-->
+<!--Adviser: @w_Machine_cc-->
 The **linkEnhance** module delivers highly efficient Bluetooth connectivity and data transmission capabilities, significantly enhancing the cross-device connection stability. By employing a multi-channel merging algorithm, it not only increases the number of available cross-device connections but also strengthens cross-device data transmission capabilities, thereby improving the overall user experience.
 
 > **NOTE**
@@ -36,7 +41,7 @@ Creates a **Server** object. After **start()** is called, the device can be conn
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -50,10 +55,11 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
-  let name:string = "demo";
+  let name: string = "demo";
   hilog.info(0x0000, TAG, 'start sever name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
@@ -88,7 +94,7 @@ Creates a **Connection** object on the device that functions as the client. The 
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -103,6 +109,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -132,7 +139,7 @@ Starts a server so that it can be connected by the client. A maximum of 10 serve
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -146,6 +153,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -170,7 +178,7 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -182,6 +190,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -208,7 +217,7 @@ Destroys the **Server** object to release related resources. To interact with th
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -220,6 +229,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -243,6 +253,7 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Parameters**
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **connectionAccepted**. This event is triggered when a connection from the peer end is received.  |
@@ -250,7 +261,7 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -263,6 +274,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -273,7 +285,7 @@ try {
 
   // Subscribe to connectionAccepted events.
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-      hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
+    hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
   });
   // Start the server.
   server.start();
@@ -292,6 +304,8 @@ Unregisters the callback listener for **connectionAccepted** events. This API us
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Parameters**
+
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **connectionAccepted**. This event is triggered when a connection from the peer end is received.  |
@@ -299,7 +313,7 @@ Unregisters the callback listener for **connectionAccepted** events. This API us
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -312,6 +326,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -342,6 +357,8 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Parameters**
+
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **serverStopped**. This event is triggered when the server is stopped abnormally.  |
@@ -349,7 +366,7 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -362,6 +379,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -392,6 +410,8 @@ Unregisters the callback listener for **serverStopped** events. This API uses an
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Parameters**
+
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **serverStopped**. This event is triggered when the server is stopped abnormally.  |
@@ -399,7 +419,7 @@ Unregisters the callback listener for **serverStopped** events. This API uses an
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -412,6 +432,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -441,7 +462,7 @@ Represents the connection result, which is returned after the client calls **con
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | deviceId          | string | No   |No   | ID of the peer device. If the connection is successful, the device ID of the peer device is returned. If the connection fails, an empty string is returned.    |
 | success           | boolean | No   |No  | Connection result. The value **true** indicates that the connection is successful, and the value **false** indicates the opposite.|
-| reason            | number | No   |No   | Number indicating the result code. If the connection is successful, **0** is returned. If the connection fails, an error code is returned:<br>- 32390200: The client connection times out.<br>- 32390201: The server service is not started.<br>- 32390300: Internal error.<br>For details about the error codes, see [Link Enhancement Error Codes](errorcode_linkEnhance.md).|
+| reason            | number | No   |No   | Number indicating the result code. If the connection is successful, **0** is returned. If the connection fails, an error code is returned:<br>- 32390200: The client connection times out.<br>- 32390201: The server service is not started.<br>- 32390300: Internal error.<br>For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).|
 
 ## Connection
 
@@ -460,7 +481,7 @@ Connects to the server on the client. A maximum number of 10 connections are sup
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -476,6 +497,7 @@ After creating a **Connection** object, the application on the client device cal
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -507,7 +529,7 @@ Disconnects from the peer device. The created **Connection** object remains vali
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -519,22 +541,22 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.connect();
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       connection.disconnect();
     }
   });
-  connection.disconnect();
+  connection.connect();
 } catch (err) {
-    hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -551,7 +573,7 @@ Destroys the **Connection** object to release resources. If the device needs to 
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -564,19 +586,20 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.connect();
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       connection.close();
     }
   });
+  connection.connect();
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
@@ -602,7 +625,7 @@ Obtains the device ID of the peer device. This API is called when the connection
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -614,6 +637,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -646,7 +670,7 @@ Sends data to the server after a connection is established successfully. When th
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -661,13 +685,13 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.connect();
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
@@ -675,8 +699,10 @@ try {
       let arraybuffer = new ArrayBuffer(len); // Create the data to send.
       connection.sendData(arraybuffer);
       hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+      connection.disconnect();
     }
   });
+  connection.connect();
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
@@ -702,7 +728,7 @@ Registers a listener for **connectResult** events. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -715,6 +741,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -723,7 +750,7 @@ try {
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to connectResult events.
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
-      hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
+    hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
   });
 
   // Initiate a connection.
@@ -753,7 +780,7 @@ Unregisters the listener for **connectResult** events.
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -766,6 +793,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -804,7 +832,7 @@ Registers a listener for **disconnected** events. This API uses an asynchronous 
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -817,6 +845,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -824,8 +853,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to disconnected events.
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -852,7 +881,7 @@ Unregisters the listener for **disconnected** events. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -865,18 +894,19 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
   // Unsubscribe from disconnected events.
-  connection.off('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.off('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -903,7 +933,7 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -916,6 +946,7 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -923,8 +954,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.connect();
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -950,7 +981,7 @@ Unregisters the listener for **dataReceived** events.
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -963,17 +994,19 @@ For details about the error codes, see [Enhanced Connection Error Codes](errorco
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.connect();
-  connection.off('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
-  connection.disconnect();
+  connection.off('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);

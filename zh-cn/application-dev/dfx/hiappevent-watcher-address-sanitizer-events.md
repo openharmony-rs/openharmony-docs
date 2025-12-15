@@ -1,4 +1,10 @@
 # 地址越界事件介绍
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @mlkgeek-->
+<!--Designer: @StevenLai1994-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## 概述
 
@@ -9,6 +15,10 @@
 - [订阅踩内存事件（ArkTS）](hiappevent-watcher-address-sanitizer-events-arkts.md)
 
 - [订阅踩内存事件（C/C++）](hiappevent-watcher-address-sanitizer-events-ndk.md)
+
+> **说明：**
+>
+> 地址越界事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。不支持在原子化服务场景下使用 HiAppEvent 进行订阅。
 
 ## 检测原理
 
@@ -37,10 +47,11 @@
 
 | 取值 | 说明 |
 | -------- | -------- |
-| GWP-ASAN | 由[GWP-Asan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection)触发的错误的错误类型。 |
-| UBSAN | 由[UBSan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ubsan-detection)触发的错误的错误类型。 |
-| TSAN | 由[Tsan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-tsan-detection)触发的错误的错误类型。 |
-| stack tag-mismatch | [HWAsan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-hwasan-detection)检测堆栈标记不匹配，可能是因为堆栈返回后使用、堆栈范围外使用或出界。 |
+| GWP-ASAN | 由[GWP-ASan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection)触发的错误类型。 |
+| UBSAN | 由[UBSan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ubsan-detection)触发的错误类型。 |
+| TSAN | 由[TSan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-tsan-detection)触发的错误类型。 |
+| FDSAN | 从API version 20开始，可以支持订阅由[fdsan](../napi/fdsan.md)触发的错误类型。 |
+| stack tag-mismatch | [HWASan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-hwasan-detection)检测堆栈标记不匹配，可能是因为堆栈返回后使用、堆栈范围外使用或出界。 |
 | alloc-dealloc-mismatch | 内存分配和释放方式不匹配。 |
 | allocation-size-too-big | 分配过大的堆内存。 |
 | calloc-overflow | calloc分配内存错误。 |

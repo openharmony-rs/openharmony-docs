@@ -1,13 +1,19 @@
 # Interface (AudioRenderer)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+提供音频渲染的相关接口。
+
+在使用AudioRenderer的接口之前，需先通过[createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8)获取AudioRenderer实例。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 8开始支持。
-
-提供音频渲染的相关接口。
-
-在使用AudioRenderer的接口之前，需先通过[createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8)获取AudioRenderer实例。
 
 ## 导入模块
 
@@ -50,11 +56,12 @@ getRendererInfo(callback: AsyncCallback<AudioRendererInfo\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioRenderer.getRendererInfo((err: BusinessError, rendererInfo: audio.AudioRendererInfo) => {
-  console.info('Renderer GetRendererInfo:');
-  console.info(`Renderer content: ${rendererInfo.content}`);
-  console.info(`Renderer usage: ${rendererInfo.usage}`);
-  console.info(`Renderer flags: ${rendererInfo.rendererFlags}`);
+audioRenderer.getRendererInfo((err: BusinessError, audioRendererInfo: audio.AudioRendererInfo) => {
+  if (err) {
+    console.error(`Failed to get renderer info. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting renderer info, AudioRendererInfo: ${JSON.stringify(audioRendererInfo)}.`);
+  }
 });
 ```
 
@@ -77,13 +84,10 @@ getRendererInfo(): Promise<AudioRendererInfo\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioRenderer.getRendererInfo().then((rendererInfo: audio.AudioRendererInfo) => {
-  console.info('Renderer GetRendererInfo:');
-  console.info(`Renderer content: ${rendererInfo.content}`);
-  console.info(`Renderer usage: ${rendererInfo.usage}`);
-  console.info(`Renderer flags: ${rendererInfo.rendererFlags}`)
+audioRenderer.getRendererInfo().then((audioRendererInfo: audio.AudioRendererInfo) => {
+  console.info(`Succeeded in getting renderer info, AudioRendererInfo: ${JSON.stringify(audioRendererInfo)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRenderLog: RendererInfo :ERROR: ${err}`);
+  console.error(`Failed to get renderer info. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -107,13 +111,11 @@ getRendererInfoSync(): AudioRendererInfo
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let rendererInfo: audio.AudioRendererInfo = audioRenderer.getRendererInfoSync();
-  console.info(`Renderer content: ${rendererInfo.content}`);
-  console.info(`Renderer usage: ${rendererInfo.usage}`);
-  console.info(`Renderer flags: ${rendererInfo.rendererFlags}`)
+  let audioRendererInfo = audioRenderer.getRendererInfoSync();
+  console.info(`Succeeded in getting renderer info, AudioRendererInfo: ${JSON.stringify(audioRendererInfo)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`AudioFrameworkRenderLog: RendererInfo :ERROR: ${error}`);
+  console.error(`Failed to get renderer info. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -755,7 +757,7 @@ getAudioTime(): Promise\<number>
 
 **返回值：**
 
-| 类型             | 描述                    |
+| 类型             | 说明                    |
 | ---------------- | ----------------------- |
 | Promise\<number> | Promise对象，返回时间戳。 |
 
@@ -781,7 +783,7 @@ getAudioTimeSync(): number
 
 **返回值：**
 
-| 类型             | 描述                    |
+| 类型             | 说明                    |
 | ---------------- | ----------------------- |
 | number | 返回时间戳。 |
 
@@ -815,7 +817,7 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 
 **返回值：**
 
-| 类型                                                    | 描述                    |
+| 类型                                                    | 说明                    |
 |-------------------------------------------------------| ----------------------- |
 | Promise\<[AudioTimestampInfo](arkts-apis-audio-i.md#audiotimestampinfo19)> | Promise对象，返回音频流时间戳和当前数据帧位置信息。 |
 
@@ -849,7 +851,7 @@ getAudioTimestampInfoSync(): AudioTimestampInfo
 
 **返回值：**
 
-| 类型             | 描述                    |
+| 类型             | 说明                    |
 | ---------------- | ----------------------- |
 | [AudioTimestampInfo](arkts-apis-audio-i.md#audiotimestampinfo19) | 返回音频流时间戳和当前数据帧位置信息。 |
 
@@ -1668,10 +1670,7 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 > **说明：**
 >
 > - 本接口仅适用于[StreamUsage](arkts-apis-audio-e.md#streamusage)为语音消息、VoIP语音通话或者VoIP视频通话的场景，支持听筒、扬声器和系统默认设备。
->
-> - 本接口允许在AudioRenderer创建后随时调用，系统记录应用设置的默认本机内置发声设备。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。
->
-> - 本接口优先级低于[AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)。如果使用AVCastPicker切换过发声设备，再次调用本接口切换设备将不生效。
+> - 本接口允许在AudioRenderer创建后随时调用，系统会记录应用设置的默认本机内置发声设备。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -1745,59 +1744,56 @@ AudioRenderer对象在start事件时获取焦点，在pause、stop等事件时�
 ```ts
 import { audio } from '@kit.AudioKit';
 
-let isPlaying: boolean; // 标识符，表示是否正在渲染。
-let isDucked: boolean; // 标识符，表示是否被降低音量。
-onAudioInterrupt();
+let isPlaying: boolean = false; // 标识符，表示是否正在渲染。
+let isDucked: boolean = false; // 标识符，表示是否被降低音量。
 
-async function onAudioInterrupt(){
-  audioRenderer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
-    // 在发生音频打断事件时，audioRenderer收到interruptEvent回调，此处根据其内容做相应处理。
-    // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
-    // 注：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
-    // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
-    if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
-      // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
-      switch (interruptEvent.hintType) {
-        case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
-          // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
-          console.info('Force paused. Update playing status and stop writing');
-          isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
-          break;
-        case audio.InterruptHint.INTERRUPT_HINT_STOP:
-          // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
-          console.info('Force stopped. Update playing status and stop writing');
-          isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
-          break;
-        case audio.InterruptHint.INTERRUPT_HINT_DUCK:
-          // 音频流已被降低音量渲染。
-          console.info('Force ducked. Update volume status');
-          isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
-          break;
-        case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
-          // 音频流已被恢复正常音量渲染。
-          console.info('Force ducked. Update volume status');
-          isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
-          break;
-        default:
-          console.info('Invalid interruptEvent');
-          break;
-      }
-    } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
-      // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
-      switch (interruptEvent.hintType) {
-        case audio.InterruptHint.INTERRUPT_HINT_RESUME:
-          // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
-          // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-          console.info('Resume force paused renderer or ignore');
-          // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
-          break;
-        default:
-          console.info('Invalid interruptEvent');
-          break;
-      }
+audioRenderer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
+  // 在发生音频打断事件时，audioRenderer收到interruptEvent回调，此处根据其内容做相应处理。
+  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
+  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
+  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
+    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
+        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
+        console.info('Force paused. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_STOP:
+        // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
+        console.info('Force stopped. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_DUCK:
+        // 音频流已被降低音量渲染。
+        console.info('Force ducked. Update volume status');
+        isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
+        // 音频流已被恢复正常音量渲染。
+        console.info('Force unducked. Update volume status');
+        isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
     }
-  });
-}
+  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
+    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
+        // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
+        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
+        console.info('Resume force paused renderer or ignore');
+        // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }
+  }
+});
 ```
 
 ## off('audioInterrupt')<sup>18+</sup>
@@ -1836,7 +1832,7 @@ let isDucked: boolean; // 标识符，表示是否被降低音量。
 let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
   // 在发生音频打断事件时，audioRenderer收到interruptEvent回调，此处根据其内容做相应处理。
   // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
-  // 注：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
+  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
   // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
   if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
     // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
@@ -1858,7 +1854,7 @@ let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
         break;
       case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
         // 音频流已被恢复正常音量渲染。
-        console.info('Force ducked. Update volume status');
+        console.info('Force unducked. Update volume status');
         isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
         break;
       default:
@@ -2277,7 +2273,7 @@ let bufferSize: number = 0;
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let path = context.cacheDir;
-// 确保该沙箱路径下存在该资源。
+// 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
 let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
 let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 let writeDataCallback = (buffer: ArrayBuffer) => {
@@ -2382,6 +2378,7 @@ audioRenderer.getBufferSize().then((data: number)=> {
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.cacheDir;
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   fs.stat(filePath).then(async (stat: fs.Stat) => {
@@ -2392,8 +2389,8 @@ audioRenderer.getBufferSize().then((data: number)=> {
         offset: i * bufferSize,
         length: bufferSize
       };
-      let readSize: number = await fs.read(file.fd, buf, options);
-      let writeSize: number = await new Promise((resolve,reject)=>{
+      await fs.read(file.fd, buf, options);
+      await new Promise((resolve,reject)=>{
         audioRenderer.write(buf,(err: BusinessError, writeSize: number)=>{
           if(err){
             reject(err)
@@ -2451,6 +2448,7 @@ audioRenderer.getBufferSize().then((data: number) => {
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.cacheDir;
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   fs.stat(filePath).then(async (stat: fs.Stat) => {
@@ -2461,9 +2459,9 @@ audioRenderer.getBufferSize().then((data: number) => {
         offset: i * bufferSize,
         length: bufferSize
       };
-      let readSize: number = await fs.read(file.fd, buf, options);
+      await fs.read(file.fd, buf, options);
       try{
-        let writeSize: number = await audioRenderer.write(buf);
+        await audioRenderer.write(buf);
       } catch(err) {
         let error = err as BusinessError;
         console.error(`audioRenderer.write err: ${error}`);

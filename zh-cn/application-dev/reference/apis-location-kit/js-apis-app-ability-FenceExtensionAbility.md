@@ -1,4 +1,10 @@
 # @ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 FenceExtensionAbility为开发者提供的地理围栏相关的能力，继承自ExtensionAbility。
 
@@ -23,7 +29,7 @@ import { FenceExtensionAbility } from '@kit.LocationKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [FenceExtensionContext](js-apis-app-ability-FenceExtensionContext.md) | 是 | 否 | 围栏服务上下文。 |
+| context | [FenceExtensionContext](js-apis-app-ability-FenceExtensionContext.md) | 否 | 否 | 围栏服务上下文。 |
 
 ### onFenceStatusChange
 

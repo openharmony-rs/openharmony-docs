@@ -1,5 +1,12 @@
 # Using startAbilityByType to Start an Email Application
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: AGC-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @lusq-->
+<!--Adviser: @huipeizi-->
+
 This topic describes how to open the vertical domain panel of email applications.
 > **NOTE**
 > 
@@ -59,10 +66,10 @@ If the **type** field in **startAbilityByType** is set to **mail**, **wantParam*
                             };
                             let abilityStartCallback: common.AbilityStartCallback = {
                                 onError: (code: number, name: string, message: string) => {
-                                    console.log(`onError code ${code} name: ${name} message: ${message}`);
+                                    console.error(`onError code ${code} name: ${name} message: ${message}`);
                                 },
                                 onResult: (result) => {
-                                    console.log(`onResult result: ${JSON.stringify(result)}`);
+                                    console.info(`onResult result: ${JSON.stringify(result)}`);
                                 }
                             }
 
@@ -71,7 +78,7 @@ If the **type** field in **startAbilityByType** is set to **mail**, **wantParam*
                                     if (err) {
                                         console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
                                     } else {
-                                        console.log(`success`);
+                                        console.info(`success`);
                                     }
                                 });
                         });
@@ -90,9 +97,9 @@ If the **type** field in **startAbilityByType** is set to **mail**, **wantParam*
 
 1. Add the [linkFeature](../quick-start/module-configuration-file.md#skills) attribute to **module.json5** and declare the features supported. In this way, the system can find the applications that support a specific feature from all the applications installed on the device.
 
-    | Value          | Description                     |
+    | Value          | Description                       |
     | --------------| ------------------------- |
-    | ComposeMail   | The application supports email writing.	|
+    | ComposeMail   | The application supports email writing.    |
 
     ```json
     {

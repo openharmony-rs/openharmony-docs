@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 ## 概述
 
@@ -32,7 +33,7 @@
 
 ### OH_AT_CheckSelfPermission()
 
-```
+```c
 bool OH_AT_CheckSelfPermission(const char *permission)
 ```
 

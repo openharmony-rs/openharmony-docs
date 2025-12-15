@@ -1,4 +1,14 @@
 # ArkUI_AnimatorOnFrameEvent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_AnimatorOnFrameEvent ArkUI_AnimatorOnFrameEvent
+```
 
 ## 概述
 

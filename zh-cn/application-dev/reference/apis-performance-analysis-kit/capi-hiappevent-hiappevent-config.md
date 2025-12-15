@@ -1,5 +1,16 @@
 # HiAppEvent_Config
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liujiaxing2024-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+```c
+typedef struct HiAppEvent_Config HiAppEvent_Config
+```
+
 ## 概述
 
 用于设置系统事件触发条件的配置对象。

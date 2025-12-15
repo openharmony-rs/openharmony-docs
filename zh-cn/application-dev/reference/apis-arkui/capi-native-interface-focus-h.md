@@ -1,4 +1,10 @@
 # native_interface_focus.h
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -13,6 +19,8 @@
 **起始版本：** 15
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[NdkFocus](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkFocus)<!--RP1End-->
 
 ## 汇总
 
@@ -36,7 +44,7 @@
 
 ### ArkUI_KeyProcessingMode
 
-```
+```c
 enum ArkUI_KeyProcessingMode
 ```
 
@@ -50,14 +58,14 @@ enum ArkUI_KeyProcessingMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0 | 按键事件用于移动焦点。 |
-| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT | 按键事件向上传递给祖先组件。 |
+| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT = 1 | 按键事件向上传递给祖先组件。 |
 
 
 ## 函数说明
 
 ### OH_ArkUI_FocusRequest()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 ```
 
@@ -83,7 +91,7 @@ ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_FocusClear()
 
-```
+```c
 void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 ```
 
@@ -103,7 +111,7 @@ void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 
 ### OH_ArkUI_FocusActivate()
 
-```
+```c
 void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool isAutoInactive)
 ```
 
@@ -125,7 +133,7 @@ void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool i
 
 ### OH_ArkUI_FocusSetAutoTransfer()
 
-```
+```c
 void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTransfer)
 ```
 
@@ -146,7 +154,7 @@ void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTrans
 
 ### OH_ArkUI_FocusSetKeyProcessingMode()
 
-```
+```c
 void OH_ArkUI_FocusSetKeyProcessingMode(ArkUI_ContextHandle uiContext, ArkUI_KeyProcessingMode mode)
 ```
 

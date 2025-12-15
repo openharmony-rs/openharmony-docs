@@ -1,5 +1,12 @@
 # Event Reporting
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liujiaxing2024-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 HiAppEvent provides APIs for reporting events.
 
 ## Available APIs
@@ -10,68 +17,73 @@ For details about how to use the APIs, see [Application Event Logging](../refere
 
 | API                                   | Description                                            |
 | ----------------------------------------- | ------------------------------------------------ |
-| addProcessor(processor: Processor): number | Adds a data processor for reporting events. |
+| addProcessor(processor: Processor): number | Adds a data processor for reporting events.|
 | removeProcessor(id: number): void          | Removes a data processor.            |
 
 **User ID APIs**
 
 | API                                    | Description                                        |
 | ------------------------------------------ | -------------------------------------------- |
-| setUserId(name: string, value: string): void | Sets a user ID. The data processor can carry the user ID when reporting an event. |
+| setUserId(name: string, value: string): void | Sets a user ID. The data processor can carry the user ID when reporting an event.|
 | getUserId(name: string): string               | Obtains a user ID that has been set.                          |
 
 **User Property APIs**
 
 | API                                          | Description                                            |
 | ------------------------------------------------ | ------------------------------------------------ |
-| setUserProperty(name: string, value: string): void | Sets a user property. The data processor can carry user properties when reporting events. |
+| setUserProperty(name: string, value: string): void | Sets a user property. The data processor can carry user properties when reporting events.|
 | getUserProperty(name: string): string               | Obtains a user property.                           |
 
 ## How to Develop
 
-The following describes how to log a button onclick event and enable the data processor to report the event.
+The following describes how to develop event logging and reporting for the button click behavior.
 
 1. In the **entry/src/main/ets/ pages/Index.ets** file, add the **addprocessorTest** button with **Onclick()** to add the data processor. **analytics_demo** is the data processor library preset in the device.<!--Del--> For details, see [HiAppEvent Data Processor Library](../../device-dev/subsystems/subsys-dfx-hiappevent-extend-so.md).<!--DelEnd--> The sample code is as follows:
 
-   ```ts
+   <!-- @[EventEsc_Header_And_Add_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    
    @Entry
    @Component
    struct Index {
-     @State message: string = 'Hello World'
-
-     processorId: number = -1
+     processorId: number = -1; // Initialize processorId to -1.
    
      build() {
        Row() {
          Column() {
-           Text(this.message)
-             .fontSize(50)
-             .fontWeight(FontWeight.Bold)
-   
-           Button("addProcessorTest").onClick(()=>{
-             // In Onclick(), add a data processor.
-             let eventConfig: hiAppEvent.AppEventReportConfig = {
-               domain: 'button',
-               name: 'click',
-               isRealTime: true
-             };
-             let processor: hiAppEvent.Processor = {
-               name: 'analytics_demo',
-               debugMode: true,
-               routeInfo: 'CN',
-               onStartReport: true,
-               onBackgroundReport: true,
-               periodReport: 10,
-               batchReport: 5,
-               userIds: ['testUserIdName'],
-               userProperties: ['testUserPropertyName'],
-               eventConfigs: [eventConfig]
-             };
-             this.processorId = hiAppEvent.addProcessor(processor);
-           })
+           Button('addProcessorTest')
+             .type(ButtonType.Capsule)
+             .margin({
+               top: 20
+             })
+             .backgroundColor('#0D9FFB')
+             .width('50%')
+             .height('5%')
+             .onClick(() => {
+               // In Onclick(), add a data processor.
+               let eventConfig: hiAppEvent.AppEventReportConfig = {
+                 domain: 'button',
+                 name: 'click',
+                 isRealTime: true
+               };
+               let processor: hiAppEvent.Processor = {
+                 name: 'analytics_demo',
+                 debugMode: true,
+                 routeInfo: 'CN',
+                 onStartReport: true,
+                 onBackgroundReport: true,
+                 periodReport: 10,
+                 batchReport: 5,
+                 userIds: ['testUserIdName'],
+                 userProperties: ['testUserPropertyName'],
+                 eventConfigs: [eventConfig]
+               };
+               this.processorId = hiAppEvent.addProcessor(processor);
+             })
+           // ...
          }
          .width('100%')
        }
@@ -80,36 +92,66 @@ The following describes how to log a button onclick event and enable the data pr
    }
    ```
 
-2. In the **entry/src/main/ets/ pages/Index.ets** file, add the **userIdTest** button with **onClick()** to obtain the user ID. The sample code is as follows:
+2. In the **entry/src/main/ets/pages/index.ets** file, add a button with **onClick()** to add and view the user ID. The sample code is as follows:
 
-   ```ts
-     Button("userIdTest").onClick(()=>{
+   <!-- @[Button_Add_ID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   Button('userIdTest')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('40%')
+     .height('5%')
+     .onClick(() => {
        // Set the user ID in onClick().
        hiAppEvent.setUserId('testUserIdName', '123456');
-
+   
        // Obtain the user ID set in onClick().
        let userId = hiAppEvent.getUserId('testUserIdName');
        hilog.info(0x0000, 'testTag', `userId: ${userId}`)
      })
    ```
 
-3. In the **entry/src/main/ets/pages/Index.ets** file, add the **userPropertyTest** button with **onClick()** to obtain the user property. The sample code is as follows:
+3. In the **entry/src/main/ets/pages/index.ets** file, add a button with **onClick()** to add and view the user property. The sample code is as follows:
 
-   ```ts
-     Button("userPropertyTest").onClick(()=>{
+   <!-- @[Button_Add_Property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   Button('userPropertyTest')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('50%')
+     .height('5%')
+     .onClick(() => {
        // Set the user property in onClick().
        hiAppEvent.setUserProperty('testUserPropertyName', '123456');
-
+   
        // Obtain the user property in onClick().
        let userProperty = hiAppEvent.getUserProperty('testUserPropertyName');
        hilog.info(0x0000, 'testTag', `userProperty: ${userProperty}`)
      })
    ```
 
-4. In the **entry/src/main/ets/pages/index.ets** file, add the **writeTest** button with **onClick()** to enable an event to be logged when the button is clicked. The sample code is as follows:
+4. In the **entry/src/main/ets/pages/index.ets** file, add a button with **onClick()** to log the button click event. The sample code is as follows:
 
-   ```ts
-     Button("writeTest").onClick(()=>{
+   <!-- @[Button_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   Button('writeTest')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('40%')
+     .height('5%')
+     .onClick(() => {
        // In onClick(), use hiAppEvent.write() to log an event when the button is clicked.
        let eventParams: Record<string, number> = { 'click_time': 100 };
        let eventInfo: hiAppEvent.AppEventInfo = {
@@ -130,11 +172,21 @@ The following describes how to log a button onclick event and enable the data pr
      })
    ```
 
-5. In the **entry/src/main/ets/pages/index.ets** file, add the **removeProcessorTest** button with **onClick()** to remove the data processor (the one added in step 2). The sample code is as follows:
+5. In the **entry/src/main/ets/pages/index.ets** file, add a button with **onClick()** to remove the data processor. The sample code is as follows:
 
-   ```ts
-     Button("removeProcessorTest").onClick(()=>{
-       // In Onclick(), add removeProcessor().
+   <!-- @[Button_Remove_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   Button('removeProcessorTest')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('60%')
+     .height('5%')
+     .onClick(() => {
+       // Remove the data processor in onClick().
        hiAppEvent.removeProcessor(this.processorId);
      })
    ```

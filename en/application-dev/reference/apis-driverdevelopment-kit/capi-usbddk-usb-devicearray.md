@@ -1,10 +1,16 @@
 # Usb_DeviceArray
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
 Defines the device ID list, which is used to store the device IDs and device quantity obtained using **OH_Usb_GetDevices**.
 
-**Since**: 16
+**Since**: 18
 
 **Related module**: [UsbDDK](capi-usbddk.md)
 

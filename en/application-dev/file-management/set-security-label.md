@@ -1,4 +1,10 @@
 # Setting the Security Level of a Distributed File
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 The security capabilities vary with devices. For example, small embedded devices provide fewer security capabilities than tablets. The security requirements also vary with data. For example, personal health information and bank card information are not expected to be accessed by devices of lower security levels. OpenHarmony provides a complete set of data and device classification standards and supports customization of data transfer policies for different devices. For details, see [Access Control by Device and Data Level](../database/access-control-by-device-and-data-level.md).
 
@@ -30,18 +36,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 
-// Obtain the sandbox path of the file where the device data level is to be obtained. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let pathDir = context.filesDir;
-let filePath = pathDir + '/test.txt';
+```
+<!--@[set_security_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
-// Open a file.
-let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-// Set the data level of the file to S0.
-securityLabel.setSecurityLabel(filePath, 's0').then(() => {
-  console.info('Succeeded in setSecurityLabeling.');
-  fs.closeSync(file);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to setSecurityLabel. Code: ${err.code}, message: ${err.message}`);
-});
+``` TypeScript
+            // Obtain the sandbox path of the file where the device data level is to be obtained. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let pathDir = context.filesDir;
+            let filePath = pathDir + '/test.txt';
+
+            // Open a file.
+            let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+            // Set the data level of the file to S0.
+            securityLabel.setSecurityLabel(filePath, 's0').then(() => {
+              console.info('Succeeded in setSecurityLabeling.');
+              fs.closeSync(file);
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to setSecurityLabel. Code: ${err.code}, message: ${err.message}`);
+            });
 ```

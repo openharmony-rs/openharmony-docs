@@ -1,5 +1,16 @@
 # OH_Huks_KeyAliasSet
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
+```c
+struct OH_Huks_KeyAliasSet {...}
+```
+
 ## 概述
 
 定义密钥别名集的结构体类型。

@@ -1,4 +1,10 @@
 # @ohos.application.BackupExtensionAbility (备份恢复扩展能力)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @lvzhenjie-->
+<!--Designer: @wang_zhangjun; @chenxi0605-->
+<!--Tester: @liuhonggang123-->
+<!--Adviser: @foryourself-->
 
 BackupExtensionAbility模块提供备份恢复服务相关扩展能力，为应用提供扩展的备份恢复能力。
 
@@ -20,10 +26,10 @@ import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-| 名称 | 类型   | 必填 | 说明             |
-| ---- | ------ | ---- | ---------------- |
-| code | number | 是   | 应用的版本号。   |
-| name | string | 是   | 应用的版本名称。 |
+| 名称 | 类型   | 只读 | 可选 | 说明             |
+| ---- | ------ | ---- | --- | ---------------- |
+| code | number | 否   | 否  | 应用的版本号。   |
+| name | string | 否   | 否  | 应用的版本名称。 |
 
 ## BackupExtensionAbility
 
@@ -33,9 +39,9 @@ import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-| 名称                  | 类型                                                              | 必填 | 说明                                                |
-| --------------------- | ----------------------------------------------------------------- | ---- | --------------------------------------------------- |
-| context<sup>11+</sup> | [BackupExtensionContext](js-apis-file-backupextensioncontext.md) | 是  | BackupExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。 |
+| 名称                  | 类型                                                              | 只读 | 可选 | 说明                                                |
+| --------------------- | ----------------------------------------------------------------- | ---- | --- | --------------------------------------------------- |
+| context<sup>11+</sup> | [BackupExtensionContext](js-apis-file-backupextensioncontext.md) | 否  | 否 | BackupExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。 |
 
 ### onBackup
 
@@ -50,7 +56,7 @@ Extension生命周期回调，在执行备份数据时回调，由开发者提�
   ```ts
   class BackupExt extends BackupExtensionAbility {
     async onBackup() {
-      console.log('onBackup');
+      console.info('onBackup');
     }
   }
   ```
@@ -98,7 +104,7 @@ class BackupExt extends BackupExtensionAbility {
         //当backupInfo为空时，应用根据业务自行做处理。
         console.info("backupInfo is empty");
       }
-      console.log(`onBackupEx ok`);
+      console.info(`onBackupEx ok`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -135,7 +141,7 @@ class BackupExt extends BackupExtensionAbility {
         //当backupInfo为空时，应用根据业务自行做处理。
         console.info("backupInfo is empty");
       }
-      console.log(`onBackupEx ok`);
+      console.info(`onBackupEx ok`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -171,7 +177,7 @@ Extension生命周期回调，在执行恢复数据时回调，由开发者提�
 
   class BackupExt extends BackupExtensionAbility {
     async onRestore(bundleVersion : BundleVersion) {
-      console.log(`onRestore ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestore ok ${JSON.stringify(bundleVersion)}`);
     }
   }
   ```
@@ -221,7 +227,7 @@ class BackupExt extends BackupExtensionAbility {
         //当restoreInfo为空时，应用根据业务自行做处理。
         console.info("restoreInfo is empty");
       }
-      console.log(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -258,7 +264,7 @@ class BackupExt extends BackupExtensionAbility {
         //当restoreInfo为空时，应用根据业务自行做处理。
         console.info("restoreInfo is empty");
       }
-      console.log(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -297,66 +303,75 @@ onProcess(): string
 **示例：**
 
   ```ts
-  import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+  import { BackupExtensionAbility } from '@kit.CoreFileKit';
   import { taskpool } from '@kit.ArkTS';
 
-  interface ProgressInfo {
-    name: string, // appName
-    processed: number, // 已处理的数据 
-    total: number, // 总数
-    isPercentage: boolean // 可选字段，true表示需要按百分比的格式化展示进度，false或者不实现该字段表示按具体项数展示进度
+  @Sendable
+  class MigrateProgressInfo {
+    private migrateProgress: string = '';
+    private name: string = "test"; // appName
+    private processed: number = 0; // 已处理的数据
+    private total: number = 100; // 总数
+    private isPercentage: boolean = true // 可选字段，true表示需要按百分比的格式化展示进度，false或者不实现该字段表示按具体项数展示进度
+
+    getMigrateProgress(): string {
+      this.migrateProgress = `{"progressInfo": [{"name": ${this.name}, "processed": ${this.processed}, "total": ${
+        this.total}, "isPercentage": ${this.isPercentage}}]}`;
+      return this.migrateProgress;
+    }
+
+    updateProcessed(processed: number) {
+      this.processed = processed;
+    }
   }
 
   class BackupExt extends BackupExtensionAbility {
+    private progressInfo: MigrateProgressInfo = new MigrateProgressInfo();
+
     // 如下代码中，appJob方法为模拟的实际业务代码，args为appJob方法的参数，用于提交到taskpool中，开启子线程进行工作
     async onBackup() {
-      console.log(`onBackup begin`);
+      console.info(`onBackup begin`);
       let args = 100; // args为appJob方法的参数
-      let jobTask: taskpool.Task = new taskpool.LongTask(appJob, args);
+      let jobTask: taskpool.Task = new taskpool.LongTask(appJob, this.progressInfo, args);
       try {
         await taskpool.execute(jobTask, taskpool.Priority.LOW);
       } catch (error) {
         console.error("onBackup error." + error.message);
       }
       taskpool.terminateTask(jobTask); // 需要手动销毁
-      console.log(`onBackup end`);
+      console.info(`onBackup end`);
     }
 
     async onRestore() {
-      console.log(`onRestore begin`);
+      console.info(`onRestore begin`);
       let args = 100; // args为appJob方法的参数
-      let jobTask: taskpool.Task = new taskpool.LongTask(appJob, args);
+      let jobTask: taskpool.Task = new taskpool.LongTask(appJob, this.progressInfo, args);
       try {
         await taskpool.execute(jobTask, taskpool.Priority.LOW);
       } catch (error) {
         console.error("onRestore error." + error.message);
       }
       taskpool.terminateTask(jobTask); // 需要手动销毁
-      console.log(`onRestore end`);
+      console.info(`onRestore end`);
     }
  
 
     onProcess(): string {
-      console.log(`onProcess begin`);
-      let process: string = `{
-       "progressInfo":[
-         {
-          "name": "callact", // appName
-          "processed": 100, // 已处理的数据 
-          "total": 1000, //总数
-          "isPercentage", true // 可选字段，true表示需要按百分比的格式化展示进度，false或者不实现该字段表示按具体项数展示进度
-         }
-       ]
-      }`;
-      console.log(`onProcess end`);
-      return JSON.stringify(process);
+      console.info(`onProcess begin`);
+      return this.progressInfo.getMigrateProgress();
     }
   }
 
   @Concurrent
-  function appJob(args: number) : string {
-    // 业务实际逻辑
-    console.log(`appJob begin, args is: ` + args);
+  function appJob(progressInfo: MigrateProgressInfo, args: number) : string {
+    console.info(`appJob begin, args is: ` + args);
+    // 在业务执行时刷新已处理进度
+    let currentProcessed: number = 0;
+    // 模拟业务实际逻辑
+    for (let i = 0; i < args; i++) {
+      currentProcessed = i;
+      progressInfo.updateProcessed(currentProcessed);
+    }
     return "ok";
   }
   ```

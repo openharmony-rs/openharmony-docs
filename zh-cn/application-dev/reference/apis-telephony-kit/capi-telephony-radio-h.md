@@ -1,4 +1,10 @@
 # telephony_radio.h
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -25,7 +31,7 @@
 
 ### OH_Telephony_GetNetworkState()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state)
 ```
 
@@ -54,7 +60,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 
 ### OH_Telephony_GetNetworkStateForSlot()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Telephony_NetworkState *state)
 ```
 

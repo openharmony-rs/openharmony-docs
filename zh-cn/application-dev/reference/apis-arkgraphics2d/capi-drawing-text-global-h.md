@@ -1,5 +1,10 @@
 # drawing_text_global.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 ## 概述
 
 提供文本全局信息的相关接口，比如设置文本渲染高对比度模式等。
@@ -34,7 +39,7 @@
 
 ### OH_Drawing_TextHighContrast
 
-```
+```c
 enum OH_Drawing_TextHighContrast
 ```
 
@@ -52,7 +57,7 @@ enum OH_Drawing_TextHighContrast
 
 ### OH_Drawing_TextUndefinedGlyphDisplay
 
-```
+```c
 enum OH_Drawing_TextUndefinedGlyphDisplay
 ```
 
@@ -73,7 +78,7 @@ enum OH_Drawing_TextUndefinedGlyphDisplay
 
 ### OH_Drawing_SetTextHighContrast()
 
-```
+```c
 void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)
 ```
 
@@ -100,7 +105,7 @@ void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)
 
 ### OH_Drawing_SetTextUndefinedGlyphDisplay()
 
-```
+```c
 void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)
 ```
 

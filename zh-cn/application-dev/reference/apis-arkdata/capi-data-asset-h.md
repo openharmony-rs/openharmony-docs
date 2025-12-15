@@ -1,10 +1,16 @@
 # data_asset.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
-提供资产类型数据结构。<br>资产是指可以一种可以在数据管理中使用的数据结构，可以存储及查询一个文件的名称、绝对路径、相对路径、创建时间、修改时间、状态、占用空间等属性。
+提供资产类型数据结构。<br>资产是指一种可以在数据管理中使用的数据结构，可以存储及查询一个文件的名称、绝对路径、相对路径、创建时间、修改时间、状态、占用空间等属性。
 
-**引用文件：** <database/rdb/data_asset.h>
+**引用文件：** <database/data/data_asset.h>
 
 **库：** libnative_rdb_ndk.z.so
 
@@ -46,16 +52,16 @@
 | [int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)](#oh_data_asset_getmodifytime) | 获取资产类型数据的最后修改的时间。 |
 | [int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)](#oh_data_asset_getsize) | 获取资产类型数据占用空间的大小。 |
 | [int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)](#oh_data_asset_getstatus) | 获取资产类型数据的状态码。 |
-| [Data_Asset *OH_Data_Asset_CreateOne(void)](#oh_data_asset_createone) | 创造一个[Data_Asset](capi-rdb-data-asset.md)类型实例。 |
+| [Data_Asset *OH_Data_Asset_CreateOne(void)](#oh_data_asset_createone) | 创建一个[Data_Asset](capi-rdb-data-asset.md)类型实例。 |
 | [int OH_Data_Asset_DestroyOne(Data_Asset *asset)](#oh_data_asset_destroyone) | 销毁[Data_Asset](capi-rdb-data-asset.md) 对象并回收该对象占用的内存。 |
-| [Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)](#oh_data_asset_createmultiple) | 创造指定数量的[Data_Asset](capi-rdb-data-asset.md)类型实例。 |
+| [Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)](#oh_data_asset_createmultiple) | 创建指定数量的[Data_Asset](capi-rdb-data-asset.md)类型实例。 |
 | [int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)](#oh_data_asset_destroymultiple) | 销毁多个[Data_Asset](capi-rdb-data-asset.md) 对象并回收该对象占用的内存。 |
 
 ## 枚举类型说明
 
 ### Data_AssetStatus
 
-```
+```c
 enum Data_AssetStatus
 ```
 
@@ -80,7 +86,7 @@ enum Data_AssetStatus
 
 ### OH_Data_Asset_SetName()
 
-```
+```c
 int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 ```
 
@@ -106,7 +112,7 @@ int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 
 ### OH_Data_Asset_SetUri()
 
-```
+```c
 int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 ```
 
@@ -122,7 +128,7 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md)实例的指针。 |
-| uri |  表示要设置的URI。 |
+| const char *uri |  表示要设置的URI。 |
 
 **返回：**
 
@@ -132,7 +138,7 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 
 ### OH_Data_Asset_SetPath()
 
-```
+```c
 int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 ```
 
@@ -158,7 +164,7 @@ int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 
 ### OH_Data_Asset_SetCreateTime()
 
-```
+```c
 int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 ```
 
@@ -184,7 +190,7 @@ int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 
 ### OH_Data_Asset_SetModifyTime()
 
-```
+```c
 int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 ```
 
@@ -210,7 +216,7 @@ int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 
 ### OH_Data_Asset_SetSize()
 
-```
+```c
 int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 ```
 
@@ -236,7 +242,7 @@ int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 
 ### OH_Data_Asset_SetStatus()
 
-```
+```c
 int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 ```
 
@@ -262,7 +268,7 @@ int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 
 ### OH_Data_Asset_GetName()
 
-```
+```c
 int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 ```
 
@@ -289,7 +295,7 @@ int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 
 ### OH_Data_Asset_GetUri()
 
-```
+```c
 int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 ```
 
@@ -316,7 +322,7 @@ int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 
 ### OH_Data_Asset_GetPath()
 
-```
+```c
 int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 ```
 
@@ -343,7 +349,7 @@ int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 
 ### OH_Data_Asset_GetCreateTime()
 
-```
+```c
 int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)
 ```
 
@@ -373,7 +379,7 @@ Data_Asset
 
 ### OH_Data_Asset_GetModifyTime()
 
-```
+```c
 int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 ```
 
@@ -399,7 +405,7 @@ int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 
 ### OH_Data_Asset_GetSize()
 
-```
+```c
 int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 ```
 
@@ -425,7 +431,7 @@ int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 
 ### OH_Data_Asset_GetStatus()
 
-```
+```c
 int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 ```
 
@@ -451,13 +457,13 @@ int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 
 ### OH_Data_Asset_CreateOne()
 
-```
+```c
 Data_Asset *OH_Data_Asset_CreateOne(void)
 ```
 
 **描述**
 
-创造一个[Data_Asset](capi-rdb-data-asset.md)类型实例。
+创建一个[Data_Asset](capi-rdb-data-asset.md)类型实例。
 
 **起始版本：** 11
 
@@ -469,7 +475,7 @@ Data_Asset *OH_Data_Asset_CreateOne(void)
 
 ### OH_Data_Asset_DestroyOne()
 
-```
+```c
 int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 ```
 
@@ -478,7 +484,6 @@ int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 销毁[Data_Asset](capi-rdb-data-asset.md) 对象并回收该对象占用的内存。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -494,13 +499,13 @@ int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 
 ### OH_Data_Asset_CreateMultiple()
 
-```
+```c
 Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 ```
 
 **描述**
 
-创造指定数量的[Data_Asset](capi-rdb-data-asset.md)类型实例。
+创建指定数量的[Data_Asset](capi-rdb-data-asset.md)类型实例。
 
 **起始版本：** 11
 
@@ -519,7 +524,7 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 ### OH_Data_Asset_DestroyMultiple()
 
-```
+```c
 int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 ```
 

@@ -1,4 +1,14 @@
 # ArkUI_NativeDialogAPI_2
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_NativeDialogAPI_2
+```
 
 ## 概述
 
@@ -32,14 +42,17 @@ ArkUI提供的Native侧自定义弹窗接口集合。
 
 ### setKeyboardAvoidDistance()
 
-```
+```c
 int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)
 ```
 
 **描述：**
 
-
 弹窗避让键盘后，和键盘之间距离。
+
+> **说明：** 
+>
+> setKeyboardAvoidDistance方法需要在调用[show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show)方法之前调用。
 
 **起始版本：** 15
 
@@ -48,7 +61,7 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 | 参数项                                                                                | 描述 |
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-| float distance                                                                     | 避让键盘的距离，默认为vp。 |
+| float distance                                                                     | 避让键盘的距离，单位为vp。 |
 | [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit        | 避让距离的单位，参数类型[ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit)。 |
 
 **返回：**
@@ -59,7 +72,7 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 
 ### setLevelMode()
 
-```
+```c
 int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)
 ```
 
@@ -67,6 +80,10 @@ int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMo
 
 
 设置弹窗的显示层级。
+
+> **说明：** 
+>
+> setLevelMode方法需要在调用[show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show)方法之前调用。
 
 **起始版本：** 15
 
@@ -85,7 +102,7 @@ int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMo
 
 ### setLevelUniqueId()
 
-```
+```c
 int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 ```
 
@@ -93,6 +110,10 @@ int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 
 
 设置弹窗显示层级页面下的节点id。
+
+> **说明：** 
+>
+> setLevelUniqueId方法需要在调用[setLevelMode](#setlevelmode)方法之前调用。
 
 **起始版本：** 15
 
@@ -111,7 +132,7 @@ int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 
 ### setImmersiveMode()
 
-```
+```c
 int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)
 ```
 
@@ -119,6 +140,10 @@ int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode
 
 
 设置嵌入式弹窗蒙层的显示区域。
+
+> **说明：** 
+>
+> setImmersiveMode方法需要在调用[show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show)方法之前调用。
 
 **起始版本：** 15
 

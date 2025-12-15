@@ -1,4 +1,10 @@
 # 优化跳转至新Web组件过程中的页面闪烁现象
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @wangxinbao01-->
+<!--Designer: @defeng20201-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 应用使用Navigation等路由策略导航至Web组件页面时，在网页加载过程中，页面底部可能出现闪烁现象，这会影响用户体验。
 
 ## 闪烁原因
@@ -24,7 +30,10 @@
 在类似情况下，如果Web组件的默认背景色为白色，而网页背景色为灰色，导航到新的Web页面时可能会出现白色闪烁。同理，将Web组件的背景色设置为灰色可以解决此问题。
 
 以下为设置Web组件背景色的接口示例（示例中将Web组件背景色设置为灰色，若不设置，Web组件背景色默认为白色）：
-  ```ts
+
+  <!-- @[FixingPageFlickeringButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/FixingPageFlickering.ets) -->
+
+  ``` TypeScript
   Web({ src: $rawfile('xxx.html'),  controller: this.webController})
     .backgroundColor(Color.Gray)
   ```

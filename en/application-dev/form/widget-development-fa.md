@@ -1,4 +1,10 @@
 # Developing a JS Widget (FA Model)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @HelloShuo-->
 The FA model is supported since API version 7, and no longer recommended. Application components are specified by exporting anonymous objects and fixed entry files. You cannot perform derivation for capability expansion. Now, the stage model is recommended for application development.
 
 ## Available APIs
@@ -24,7 +30,7 @@ The **FormProvider** class has the following APIs. For details, see [FormProvide
 | -------- | -------- |
 | setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void;| Sets the next refresh time for a widget. This API uses an asynchronous callback to return the result.|
 | setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;;| Sets the next refresh time for a widget. This API uses a promise to return the result.|
-| updateForm(formId: string, formBindingData: FormBindingData, callback: AsyncCallback&lt;void&gt;): void; | Updates a widget. This API uses an asynchronous callback to return the result.|
+| updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void; | Updates a widget. This API uses an asynchronous callback to return the result.|
 | updateForm(formId: string, formBindingData: FormBindingData): Promise&lt;void&gt;; | Updates a widget. This API uses a promise to return the result.|
 
 
@@ -153,7 +159,7 @@ To create a widget in the FA model, implement the widget lifecycle callbacks. Fo
         return formData;
       },
       onCastToNormal(formId: string) {
-        // Called when the widget host converts the temporary widget into a normal one. The widget provider should do something to respond to the conversion.
+        // Called when the widget host converts a temporary widget into a normal one. The widget provider should respond to the conversion. (Currently, there is no temporary widget scenario.)
         hilog.info(domain, TAG, 'FormAbility onCastToNormal');
       },
       onUpdate(formId: string) {
@@ -202,15 +208,14 @@ To create a widget in the FA model, implement the widget lifecycle callbacks. Fo
     export default obj;
     ```
 
-> **NOTE**
->
+> **NOTE**<br>
 > FormAbility cannot reside in the background. Therefore, continuous tasks cannot be processed in the widget lifecycle callbacks.
 
 ### Configuring the Widget Configuration File
 
 The widget configuration file is named **config.json**. Find the **config.json** file for the widget and edit the file depending on your need.
 
-- The **js** module in the **config.json** file provides JavaScript resources of the widget. The internal structure is described as follows: 
+- The **JS** module in the **config.json** file provides JavaScript resources of the widget. The internal structure is described as follows.
     | Name| Description| Data Type| Initial Value Allowed|
   | -------- | -------- | -------- | -------- |
   | name | Name of a JavaScript component. The default value is **default**.| String| No|
@@ -239,7 +244,7 @@ The widget configuration file is named **config.json**. Find the **config.json**
     ]
   ```
   
-- The **abilities** module in the **config.json** file corresponds to **FormAbility** of the widget. The internal structure is described as follows:
+- The **abilities** module in the **config.json** file corresponds to **FormAbility** of the widget. The internal structure is described as follows.
     | Name| Description| Data Type| Initial Value Allowed|
   | -------- | -------- | -------- | -------- |
   | name | Class name of a widget. The value is a string with a maximum of 127 bytes.| String| No|
@@ -389,7 +394,7 @@ The **Want** object passed in by the widget host to the widget provider contains
 
 - Normal widget: a widget persistently used by the widget host, for example, a widget added to the home screen.
 
-- Temporary widget: a widget temporarily used by the widget host, for example, the widget displayed when you swipe up on a widget application.
+- Temporary widget: a widget temporarily used by the widget host. Currently, there is no temporary widget used by the widget host.
 
 Converting a temporary widget to a normal one: After you swipe up on a widget application, a temporary widget is displayed. If you touch the pin button on the widget, it is displayed as a normal widget on the home screen.
 
@@ -427,8 +432,7 @@ You can use the web-like paradigm (HML+CSS+JSON) to develop JS widget pages. Thi
 
 ![widget-development-fa](figures/widget-development-fa.png)
 
-> **NOTE**
->
+> **NOTE**<br>
 > In the FA model, only the JavaScript-based web-like development paradigm is supported when developing the widget UI.
 
 - HML: uses web-like paradigm components to describe the widget page information.

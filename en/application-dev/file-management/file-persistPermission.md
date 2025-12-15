@@ -1,4 +1,10 @@
 # Persisting Temporary Permissions (ArkTS)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @lvzhenjie; @hongjin-li_admin-->
+<!--Designer: @chenxi0605; @JerryH1011-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @foryourself-->
 
 ## When to Use
 
@@ -26,44 +32,51 @@ ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permis
 
 **Example**
 
-```ts
+<!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
+
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
 
-async function persistPermissionExample() {
-    try {
-        let DocumentSelectOptions = new picker.DocumentSelectOptions();
-        let documentPicker = new picker.DocumentViewPicker();
-        let uris = await documentPicker.select(DocumentSelectOptions);
-        let policyInfo: fileShare.PolicyInfo = {
-            uri: uris[0],
-            operationMode: fileShare.OperationMode.READ_MODE,
-        };
-        let policies: Array<fileShare.PolicyInfo> = [policyInfo];
-        fileShare.persistPermission(policies).then(() => {
-            console.info("persistPermission successfully");
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-            console.error("persistPermission failed with error message: " + err.message + ", error code: " + err.code);
-            if (err.code == 13900001 && err.data) {
-                for (let i = 0; i < err.data.length; i++) {
-                    console.error("error code : " + JSON.stringify(err.data[i].code));
-                    console.error("error uri : " + JSON.stringify(err.data[i].uri));
-                    console.error("error reason : " + JSON.stringify(err.data[i].message));
-                }
-            }
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`persistPermission failed with err, Error code: ${err.code}, message: ${err.message}`);
-    }
+// [StartExclude activate_permission_example]
+// [StartExclude revoke_permission_example]
+export async function persistPermissionExample() {
+  try {
+	// ···
+    let documentSelectOptions = new picker.DocumentSelectOptions();
+    let documentPicker = new picker.DocumentViewPicker();
+    let uris = await documentPicker.select(documentSelectOptions);
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: uris[0],
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: fileShare.PolicyInfo[] = [policyInfo];
+    fileShare.persistPermission(policies).then(() => {
+      console.info('persistPermission successfully');
+    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+      console.error('persistPermission failed with error message: ' + err.message + ', error code: ' + err.code);
+      if (err.code == 13900001 && err.data) {
+        for (let i = 0; i < err.data.length; i++) {
+          console.error('error code : ' + JSON.stringify(err.data[i].code));
+          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+          console.error('error reason : ' + JSON.stringify(err.data[i].message));
+        }
+      }
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`persistPermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
 
-**NOTE**
+
+> **NOTE**
+>
 > - You are advised to save the URI of the file with persistent permission for the related application locally to facilitate the subsequent activation.
 > - The permission persistence data is also stored in the system database. After the application or device is restarted, the persistent permission can be used only after being activated. For details, see [Activating a Persistent Permission](#activating-a-persistent-permission-for-accessing-a-file-or-folder).
-> - The APIs used for persisting permissions are available only for 2-in-1 devices. You can use **canIUse()** to check whether the device has the required system capability. The caller must also have the required permissions.
+> - Before persisting permissions, use **canIUse()** to check whether the device has the required system capability and permission.
 > - When an application is uninstalled, all the permission authorization data will be deleted. After the application is reinstalled, re-authorization is required.
 
 For details about how to persist a temporary permission using C/C++ APIs, see [OH_FileShare_PersistPermission](native-fileshare-guidelines.md).
@@ -75,42 +88,49 @@ ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permis
 
 **Example**
 
-```ts
+<!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
+
+``` TypeScript
+// [Start persist_permission_example]
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
 
-async function revokePermissionExample() {
-    try {
-        let uri = "file://docs/storage/Users/username/tmp.txt";
-        let policyInfo: fileShare.PolicyInfo = {
-            uri: uri,
-            operationMode: fileShare.OperationMode.READ_MODE,
-        };
-        let policies: Array<fileShare.PolicyInfo> = [policyInfo];
-        fileShare.revokePermission(policies).then(() => {
-            console.info("revokePermission successfully");
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-            console.error("revokePermission failed with error message: " + err.message + ", error code: " + err.code);
-            if (err.code == 13900001 && err.data) {
-                for (let i = 0; i < err.data.length; i++) {
-                    console.error("error code : " + JSON.stringify(err.data[i].code));
-                    console.error("error uri : " + JSON.stringify(err.data[i].uri));
-                    console.error("error reason : " + JSON.stringify(err.data[i].message));
-                }
-            }
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`revokePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
-    }
+// [StartExclude activate_permission_example]
+// ···
+export async function revokePermissionExample() {
+  try {
+    let uri = 'file://docs/storage/Users/username/tmp.txt';
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: uri,
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: fileShare.PolicyInfo[] = [policyInfo];
+    fileShare.revokePermission(policies).then(() => {
+      console.info('revokePermission successfully');
+    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+      console.error('revokePermission failed with error message: ' + err.message + ', error code: ' + err.code);
+      if (err.code == 13900001 && err.data) {
+        for (let i = 0; i < err.data.length; i++) {
+          console.error('error code : ' + JSON.stringify(err.data[i].code));
+          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+          console.error('error reason : ' + JSON.stringify(err.data[i].message));
+        }
+      }
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`revokePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
 
-**NOTE**
+
+> **NOTE**
+>
 > - The URI in the example comes from the permission persistence data stored for the application.
 > - You are advised to activate the persistent permissions based on service requirements. Do not activate all persistent permissions.
-> - The APIs used for persisting permissions are available only for 2-in-1 devices. You can use **canIUse()** to check whether the device has the required system capability. The caller must also have the required permissions.
+> - Before persisting permissions, use **canIUse()** to check whether the device has the required system capability and permission.
 
 For details about how to revoke a persistent permission using C/C++ APIs, see [OH_FileShare_RevokePermission](native-fileshare-guidelines.md).
 
@@ -123,45 +143,52 @@ ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permis
 
 **Example**
 
-```ts
+<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
+
+``` TypeScript
+// [Start revoke_permission_example]
+// [Start persist_permission_example]
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
 
-async function activatePermissionExample() {
-    try {
-        let uri = "file://docs/storage/Users/username/tmp.txt";
-        let policyInfo: fileShare.PolicyInfo = {
-            uri: uri,
-            operationMode: fileShare.OperationMode.READ_MODE,
-        };
-        let policies: Array<fileShare.PolicyInfo> = [policyInfo];
-        fileShare.activatePermission(policies).then(() => {
-            console.info("activatePermission successfully");
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-            console.error("activatePermission failed with error message: " + err.message + ", error code: " + err.code);
-            if (err.code == 13900001 && err.data) {
-                for (let i = 0; i < err.data.length; i++) {
-                    console.error("error code : " + JSON.stringify(err.data[i].code));
-                    console.error("error uri : " + JSON.stringify(err.data[i].uri));
-                    console.error("error reason : " + JSON.stringify(err.data[i].message));
-                    if (err.data[i].code == fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED) {
-                        // Persist the permission for a file or folder and then activate it.
-                    }
-                }
-            }
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`activatePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
-    }
+// ···
+export async function activatePermissionExample() {
+  try {
+    let uri = 'file://docs/storage/Users/username/tmp.txt';
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: uri,
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: fileShare.PolicyInfo[] = [policyInfo];
+    fileShare.activatePermission(policies).then(() => {
+      console.info('activatePermission successfully');
+    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+      console.error('activatePermission failed with error message: ' + err.message + ', error code: ' + err.code);
+      if (err.code == 13900001 && err.data) {
+        for (let i = 0; i < err.data.length; i++) {
+          console.error('error code : ' + JSON.stringify(err.data[i].code));
+          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+          console.error('error reason : ' + JSON.stringify(err.data[i].message));
+          if (err.data[i].code == fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED) {
+            // Persist the permission for a file or folder and then activate it.
+          }
+        }
+      }
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`activatePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
 
-**NOTE**
+
+> **NOTE**
+>
 > - The URI in the example comes from the permission persistence data stored for the application.
 > - You are advised to activate the persistent permissions based on service requirements. Do not activate all persistent permissions.
 > - If the activation fails because the permission has not been persisted, persist the permission first.
-> - The APIs used for persisting permissions are available only for 2-in-1 devices. You can use **canIUse()** to check whether the device has the required system capability. The caller must also have the required permissions.
+> - Before persisting permissions, use **canIUse()** to check whether the device has the required system capability and permission.
 
 For details about how to activate a persistent permission using C/C++ APIs, see [OH_FileShare_ActivatePermission](native-fileshare-guidelines.md).

@@ -1,5 +1,12 @@
 # crypto_asym_key.h
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 ## 概述
 
 声明非对称密钥接口。
@@ -44,29 +51,29 @@
 | -- | -- |
 | [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_CryptoAsymKeyGenerator **ctx)](#oh_cryptoasymkeygenerator_create) | 通过指定算法名称的字符串，获取相应的非对称密钥生成器实例。 |
 | [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_generate) | 随机生成非对称密钥（密钥对）。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type,Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_convert) | 将非对称密钥数据转换为密钥对。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type, Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_convert) | 将非对称密钥数据转换为密钥对。 |
 | [const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx)](#oh_cryptoasymkeygenerator_getalgoname) | 获取非对称密钥算法名称。 |
 | [void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)](#oh_cryptoasymkeygenerator_destroy) | 销毁非对称密钥生成器实例。 |
 | [void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)](#oh_cryptokeypair_destroy) | 销毁非对称密钥对实例。 |
 | [OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)](#oh_cryptokeypair_getpubkey) | 从密钥对中获取公钥实例。 |
 | [OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)](#oh_cryptokeypair_getprivkey) | 获取密钥对的私钥。 |
-| [OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type,const char *encodingStandard, Crypto_DataBlob *out)](#oh_cryptopubkey_encode) | 根据指定的编码格式输出公钥数据。 |
+| [OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type, const char *encodingStandard, Crypto_DataBlob *out)](#oh_cryptopubkey_encode) | 根据指定的编码格式输出公钥数据。 |
 | [OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptopubkey_getparam) | 从公钥实例获取指定参数。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password,uint32_t passwordLen)](#oh_cryptoasymkeygenerator_setpassword) | 设置非对称密钥生成器上下文的密码。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password, uint32_t passwordLen)](#oh_cryptoasymkeygenerator_setpassword) | 设置非对称密钥生成器上下文的密码。 |
 | [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)](#oh_cryptoprivkeyencodingparams_create) | 创建私钥编码参数。 |
-| [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx,CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)](#oh_cryptoprivkeyencodingparams_setparam) | 设置私钥编码参数。 |
+| [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx, CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)](#oh_cryptoprivkeyencodingparams_setparam) | 设置私钥编码参数。 |
 | [void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)](#oh_cryptoprivkeyencodingparams_destroy) | 销毁私钥编码参数。 |
-| [OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type,const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)](#oh_cryptoprivkey_encode) | 从私钥实例获取指定参数。 |
-| [OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item,Crypto_DataBlob *value)](#oh_cryptoprivkey_getparam) | 获取私钥的指定参数。 |
+| [OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type, const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)](#oh_cryptoprivkey_encode) | 从私钥实例获取指定参数。 |
+| [OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptoprivkey_getparam) | 获取私钥的指定参数。 |
 | [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_geneccommonparamsspec) | 生成EC通用参数规格。 |
 | [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_gendhcommonparamsspec) | 生成DH通用参数规格。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type,OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_create) | 根据给定的算法名称和规格类型创建非对称密钥规格。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type,Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_setparam) | 设置非对称密钥规格的指定参数。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec,OH_CryptoAsymKeySpec *commonParamsSpec)](#oh_cryptoasymkeyspec_setcommonparamsspec) | 设置非对称密钥规格的通用参数规格。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type,Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_getparam) | 获取非对称密钥规格的指定参数。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_create) | 根据给定的算法名称和规格类型创建非对称密钥规格。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_setparam) | 设置非对称密钥规格的指定参数。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec, OH_CryptoAsymKeySpec *commonParamsSpec)](#oh_cryptoasymkeyspec_setcommonparamsspec) | 设置非对称密钥规格的通用参数规格。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_getparam) | 获取非对称密钥规格的指定参数。 |
 | [void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)](#oh_cryptoasymkeyspec_destroy) | 销毁非对称密钥规格。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec,OH_CryptoAsymKeyGeneratorWithSpec **generator)](#oh_cryptoasymkeygeneratorwithspec_create) | 创建带规格的非对称密钥生成器。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator,OH_CryptoKeyPair **keyPair)](#oh_cryptoasymkeygeneratorwithspec_genkeypair) | 根据非对称密钥规格生成密钥对。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec, OH_CryptoAsymKeyGeneratorWithSpec **generator)](#oh_cryptoasymkeygeneratorwithspec_create) | 创建带规格的非对称密钥生成器。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator, OH_CryptoKeyPair **keyPair)](#oh_cryptoasymkeygeneratorwithspec_genkeypair) | 根据非对称密钥规格生成密钥对。 |
 | [void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec *generator)](#oh_cryptoasymkeygeneratorwithspec_destroy) | 销毁带规格的非对称密钥生成器。 |
 | [OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)](#oh_cryptoecpoint_create) | 创建EC点。 |
 | [OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)](#oh_cryptoecpoint_getcoordinate) | 获取EC点的x和y坐标。 |
@@ -78,7 +85,7 @@
 
 ### CryptoAsymKey_ParamType
 
-```
+```c
 enum CryptoAsymKey_ParamType
 ```
 
@@ -116,14 +123,14 @@ enum CryptoAsymKey_ParamType
 | CRYPTO_DH_L_INT = 403 | DH算法中私钥长度，单位为bit。 |
 | CRYPTO_DH_SK_DATABLOB = 404 | DH算法中的私钥sk。 |
 | CRYPTO_DH_PK_DATABLOB = 405 | DH算法中的公钥pk。 |
-| CRYPTO_ED25519_SK_DATABLOB = 501 | ED25519算法中的私钥sk。 |
-| CRYPTO_ED25519_PK_DATABLOB = 502 | ED25519算法中的公钥pk。 |
+| CRYPTO_ED25519_SK_DATABLOB = 501 | Ed25519算法中的私钥sk。 |
+| CRYPTO_ED25519_PK_DATABLOB = 502 | Ed25519算法中的公钥pk。 |
 | CRYPTO_X25519_SK_DATABLOB = 601 | X25519算法中的私钥sk。 |
 | CRYPTO_X25519_PK_DATABLOB = 602 | X25519算法中的公钥pk。 |
 
 ### Crypto_EncodingType
 
-```
+```c
 enum Crypto_EncodingType
 ```
 
@@ -140,7 +147,7 @@ enum Crypto_EncodingType
 
 ### CryptoPrivKeyEncoding_ParamType
 
-```
+```c
 enum CryptoPrivKeyEncoding_ParamType
 ```
 
@@ -157,7 +164,7 @@ enum CryptoPrivKeyEncoding_ParamType
 
 ### CryptoAsymKeySpec_Type
 
-```
+```c
 enum CryptoAsymKeySpec_Type
 ```
 
@@ -179,7 +186,7 @@ enum CryptoAsymKeySpec_Type
 
 ### OH_CryptoAsymKeyGenerator_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_CryptoAsymKeyGenerator **ctx)
 ```
 
@@ -205,7 +212,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 ### OH_CryptoAsymKeyGenerator_Generate()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyCtx)
 ```
 
@@ -231,7 +238,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *
 
 ### OH_CryptoAsymKeyGenerator_Convert()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type,Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)
 ```
 
@@ -260,7 +267,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *c
 
 ### OH_CryptoAsymKeyGenerator_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx)
 ```
 
@@ -285,7 +292,7 @@ const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx
 
 ### OH_CryptoAsymKeyGenerator_Destroy()
 
-```
+```c
 void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)
 ```
 
@@ -304,7 +311,7 @@ void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)
 
 ### OH_CryptoKeyPair_Destroy()
 
-```
+```c
 void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)
 ```
 
@@ -323,7 +330,7 @@ void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)
 
 ### OH_CryptoKeyPair_GetPubKey()
 
-```
+```c
 OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)
 ```
 
@@ -348,7 +355,7 @@ OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)
 
 ### OH_CryptoKeyPair_GetPrivKey()
 
-```
+```c
 OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)
 ```
 
@@ -373,7 +380,7 @@ OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)
 
 ### OH_CryptoPubKey_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type,const char *encodingStandard, Crypto_DataBlob *out)
 ```
 
@@ -401,7 +408,7 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 
 ### OH_CryptoPubKey_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)
 ```
 
@@ -428,7 +435,7 @@ OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_P
 
 ### OH_CryptoAsymKeyGenerator_SetPassword()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password,uint32_t passwordLen)
 ```
 
@@ -455,7 +462,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerato
 
 ### OH_CryptoPrivKeyEncodingParams_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)
 ```
 
@@ -480,7 +487,7 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncoding
 
 ### OH_CryptoPrivKeyEncodingParams_SetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx,CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)
 ```
 
@@ -507,7 +514,7 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodi
 
 ### OH_CryptoPrivKeyEncodingParams_Destroy()
 
-```
+```c
 void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)
 ```
 
@@ -526,7 +533,7 @@ void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)
 
 ### OH_CryptoPrivKey_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type,const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)
 ```
 
@@ -555,7 +562,7 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_Encoding
 
 ### OH_CryptoPrivKey_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item,Crypto_DataBlob *value)
 ```
 
@@ -582,7 +589,7 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey
 
 ### OH_CryptoAsymKeySpec_GenEcCommonParamsSpec()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)
 ```
 
@@ -608,7 +615,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveNa
 
 ### OH_CryptoAsymKeySpec_GenDhCommonParamsSpec()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)
 ```
 
@@ -635,7 +642,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen
 
 ### OH_CryptoAsymKeySpec_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type,OH_CryptoAsymKeySpec **spec)
 ```
 
@@ -662,7 +669,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKe
 
 ### OH_CryptoAsymKeySpec_SetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type,Crypto_DataBlob *value)
 ```
 
@@ -689,7 +696,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, Cryp
 
 ### OH_CryptoAsymKeySpec_SetCommonParamsSpec()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec,OH_CryptoAsymKeySpec *commonParamsSpec)
 ```
 
@@ -715,7 +722,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec 
 
 ### OH_CryptoAsymKeySpec_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type,Crypto_DataBlob *value)
 ```
 
@@ -742,7 +749,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, Cryp
 
 ### OH_CryptoAsymKeySpec_Destroy()
 
-```
+```c
 void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)
 ```
 
@@ -761,7 +768,7 @@ void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)
 
 ### OH_CryptoAsymKeyGeneratorWithSpec_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec,OH_CryptoAsymKeyGeneratorWithSpec **generator)
 ```
 
@@ -787,7 +794,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec 
 
 ### OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator,OH_CryptoKeyPair **keyPair)
 ```
 
@@ -813,7 +820,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyG
 
 ### OH_CryptoAsymKeyGeneratorWithSpec_Destroy()
 
-```
+```c
 void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec *generator)
 ```
 
@@ -832,7 +839,7 @@ void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec
 
 ### OH_CryptoEcPoint_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)
 ```
 
@@ -859,7 +866,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob
 
 ### OH_CryptoEcPoint_GetCoordinate()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)
 ```
 
@@ -886,7 +893,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 ### OH_CryptoEcPoint_SetCoordinate()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)
 ```
 
@@ -913,7 +920,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 ### OH_CryptoEcPoint_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *format, Crypto_DataBlob *out)
 ```
 
@@ -940,7 +947,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *f
 
 ### OH_CryptoEcPoint_Destroy()
 
-```
+```c
 void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)
 ```
 

@@ -1,5 +1,14 @@
 # 音频编码同步模式
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
+从API version 20开始，支持音频编码同步模式。
+
 开发者可以调用本模块的Native API接口，完成音频编码，即将音频PCM编码压缩成不同的格式。
 
 接口不限制PCM数据的来源。开发者可以调用麦克风录制获取，也可以导入编辑后的PCM数据。通过音频编码，输出对应格式的码流，最后封装为目标格式文件。
@@ -16,11 +25,12 @@
 
   编辑PCM后导出音频文件的场景，需要编码成对应音频格式，最后封装成所需格式的文件。具体封装方法请参考[媒体数据封装](audio-video-muxer.md)。
 > **说明：**
-> AAC编码器默认采用的VBR可变码率模式，这可能导致与预期码率有偏差。
+> - AAC编码器默认采用的VBR可变码率模式，这可能导致与预期码率有偏差。
+> - AAC编码器默认输出携带ADTS头部，帧数据的前7字节为ADTS头部。
 
 ## 开发指导
 
-详细的API说明请参考[AudioCodec](../../reference/apis-avcodec-kit/_audio_codec.md)。
+详细的API说明请参考[AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md)。
 
 参考以下示例代码，完成音频编码的全流程，包括：创建编码器、设置编码参数（采样率/码率/声道数等）、开始/刷新/重置/销毁资源。
 
@@ -80,21 +90,20 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 3. 调用OH_AudioCodec_Configure配置编码器。
 
-   设置必选项：采样率、位深、声道数、码率、声道布局和同步模式配置。
+   配置选项key值说明：
 
-   flac编码：需要标识兼容性级别（Compliance Level）。
-   
+   <!--RP1-->
+   ![Audio encoder key configuration](figures/encoder_key.png)
+   <!--RP1End-->
+
    各音频编码类型参数范围说明：
-   | 音频编码类型 | 采样率(Hz)                                                                       |       声道数       |
-   | ----------- | ------------------------------------------------------------------------------- | :----------------: |
-   | <!--DelRow-->AAC         | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000 | 1、2、3、4、5、6、8 |
-   | Flac        | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000 |        1~8         |
-   | MP3         | 8000、11025、12000、16000、22050、24000、32000、44100、48000                     |        1~2         |
-   | G711mu      | 8000                                                                            |         1          |
-   <!--RP1--><!--RP1End-->
+
+   <!--RP2-->
+   ![Audio encoder format range description](figures/encoder_format.png)
+   <!--RP2End-->
 
    例如，对44100Hz采样率、2声道立体声、SAMPLE_S16LE采样格式的PCM音频，以32000bps的码率进行AAC编码的调用流程如下：
-    <!--RP2-->
+    <!--RP3-->
     ```cpp
     OH_AVErrCode ret;
     // 配置音频采样率（必须）。
@@ -122,7 +131,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
         // 异常处理。
     }
     ```
-    <!--RP2End-->
+    <!--RP3End-->
     FLAC编码调用示例：
 
     ```cpp
@@ -156,8 +165,6 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
         // 异常处理。
     }
     ```
-
-    <!--RP2--><!--RP2End-->
 
 4. 调用OH_AudioCodec_Prepare()，编码器就绪。
 
@@ -200,7 +207,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    AAC LC编码每帧包含1024个PCM样点，建议单次输入1024个样点的数据量。
 
-   <!--RP3--><!--RP3End-->
+   <!--RP4--><!--RP4End-->
 
    FLAC需要根据如下表格进行设置。
 
@@ -291,7 +298,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    在上方案例中，attr.flags表示缓冲区标记的类别。
 
-   如果是结束，需要将flags标识成AVCODEC_BUFFER_FLAGS_EOS。
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。
 
    | 枚举值 | 描述 | 
    | -------- | -------- |
@@ -301,7 +308,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 7. （可选）调用OH_AudioCodec_Reset()重置编码器。
 
-    调用OH_AudioCodec_Reset()后，编码器回到初始化状态。需要调用OH_AudioCodec_Configure()重新配置，然后调用OH_AudioCodec_Start()重新开始编码。
+   调用OH_AudioCodec_Reset()后，编码器回到初始化状态，重置前获取到的输入/输出buffer都无法继续使用，需先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始编码。启动后重新获取输入/输出buffer。
 
     ```c++
     // 重置编码器。
@@ -318,7 +325,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 8. （可选）调用OH_AudioCodec_Stop()停止编码器。
 
-    停止后，可以通过Start重新进入已启动状态（started），但若编码器之前已输入数据，则需要重新输入编码器数据。
+   停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法继续使用，需要在启动后重新获取输入/输出buffer。
 
     ```c++
     // 停止编码器。
@@ -330,12 +337,12 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 9. 调用OH_AudioCodec_Destroy()销毁编码器实例，释放资源。
 
-    > **说明：**
-    >
-    > 禁止重复销毁编码器。
+   > **说明：**
+   >
+   > 禁止重复销毁编码器。
 
     ```c++
-    // 调用OH_AudioCodec_Destroy销毁编码器。
+    // 调用OH_AudioCodec_Destroy，销毁编码器。
     OH_AVErrCode ret = OH_AudioCodec_Destroy(audioEnc_);
     if (ret != AV_ERR_OK) {
         // 异常处理。

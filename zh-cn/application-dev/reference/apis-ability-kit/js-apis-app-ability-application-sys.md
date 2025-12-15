@@ -1,4 +1,12 @@
 #  @ohos.app.ability.application (Application)(系统接口)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 开发者可以通过该模块创建[Context](../../application-models/application-context-stage.md)。
 
 > **说明：**
@@ -15,15 +23,13 @@ import { application } from '@kit.AbilityKit';
 
 createModuleContext(context: Context, bundleName: string, moduleName: string): Promise\<Context>
 
-根据入参Context创建相应模块的Context。
+根据入参Context创建相应模块的Context。使用Promise异步回调。
 
 > **说明：**
 >
 > - 从API version 18开始，Context支持获取当前应用的进程名[processName](js-apis-inner-application-context.md#context)。createModuleContext创建的Context中的processName属性与入参Context中的processName属性一致，其他属性根据入参Context、bundleName和moduleName获得相应的属性值。
 >
-> - 该接口需要多次查询包信息、加载指定Module的全部资源，耗时较长。建议首次使用该接口时缓存创建的Context，以避免重复调用该接口创建Context。
-
-**元服务API：** 从API version 12开始，该接口支持在元服务中使用。
+> - 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -80,13 +86,11 @@ export default class EntryAbility extends UIAbility {
 
 createBundleContext(context: Context, bundleName: string): Promise\<Context>
 
-根据入参Context创建相应应用的Context。
+根据入参Context创建相应应用的Context。使用Promise异步回调。
 
 > **说明：**
 >
 > 从API version 18开始，Context支持获取当前应用的进程名[processName](js-apis-inner-application-context.md#context)。createBundleContext创建的Context中的processName属性与入参Context中的processName属性一致，其他属性根据入参Context、bundleName和moduleName获得相应的属性值。
-
-**元服务API：** 从API version 12开始，该接口支持在元服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

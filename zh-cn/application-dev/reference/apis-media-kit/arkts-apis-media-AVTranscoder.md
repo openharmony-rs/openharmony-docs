@@ -1,4 +1,10 @@
 # Interface (AVTranscoder)
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -21,14 +27,16 @@ import { media } from '@kit.MediaKit';
 
 | 名称    | 类型                                 | 只读 | 可选 | 说明               |
 | ------- | ------------------------------------ | ---- | ---- | ------------------ |
-| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  否  | 否   | 源媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移:0，字节长度:100。其文件描述为 AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> - 将资源句柄（fd）传递给 AVTranscoder 实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个 AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。 |
-| fdDst<sup>12+</sup>                               | number                 |  否  | 否   | 目标媒体文件描述，通过该属性设置数据输出。在创建AVTranscoder实例后，必须设置fdSrc和fdDst属性。<br>**说明：** <br> - 将资源句柄（fd）传递给 AVTranscoder 实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个 AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。 |
+| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  否  | 否   | 源媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移：0，字节长度：100。其文件描述为AVFileDescriptor{ fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| fdDst<sup>12+</sup>                               | number                 |  否  | 否   | 目标媒体文件描述，通过该属性设置数据输出。在创建AVTranscoder实例后，必须设置fdSrc和fdDst属性。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ## prepare<sup>12+</sup>
 
 prepare(config: AVTranscoderConfig): Promise\<void>
 
 异步方式进行视频转码的参数设置。通过Promise获取返回值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -46,7 +54,7 @@ prepare(config: AVTranscoderConfig): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -60,21 +68,26 @@ prepare(config: AVTranscoderConfig): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-// 配置参数以实际硬件设备支持的范围为准。
-let avTranscoderConfig: media.AVTranscoderConfig = {
-  audioBitrate : 200000,
-  audioCodec : media.CodecMimeType.AUDIO_AAC,
-  fileFormat : media.ContainerFormatType.CFT_MPEG_4,
-  videoBitrate : 3000000,
-  videoCodec : media.CodecMimeType.VIDEO_AVC,
-};
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  // 配置参数以实际硬件设备支持的范围为准。
+  let avTranscoderConfig: media.AVTranscoderConfig = {
+    audioBitrate : 200000,
+    audioCodec : media.CodecMimeType.AUDIO_AAC,
+    fileFormat : media.ContainerFormatType.CFT_MPEG_4,
+    videoBitrate : 3000000,
+    videoCodec : media.CodecMimeType.VIDEO_AVC,
+  };
 
-avTranscoder.prepare(avTranscoderConfig).then(() => {
-  console.info('prepare success');
-}).catch((err: BusinessError) => {
-  console.error('prepare failed and catch error is ' + err.message);
-});
+  avTranscoder.prepare(avTranscoderConfig).then(() => {
+    console.info('prepare success');
+  }).catch((err: BusinessError) => {
+    console.error('prepare failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## start<sup>12+</sup>
@@ -84,6 +97,8 @@ start(): Promise\<void>
 异步方式开始视频转码。通过Promise获取返回值。
 
 需要[prepare()](#prepare12)事件成功触发后，才能调用start方法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -107,12 +122,17 @@ start(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.start().then(() => {
-  console.info('start AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('start AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.start().then(() => {
+    console.info('start AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('start AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## pause<sup>12+</sup>
@@ -122,6 +142,8 @@ pause(): Promise\<void>
 异步方式暂停视频转码。通过Promise获取返回值。
 
 需要[start()](#start12)事件成功触发后，才能调用pause方法，可以通过调用[resume()](#resume12)接口来恢复转码。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -145,12 +167,17 @@ pause(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.pause().then(() => {
-  console.info('pause AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('pause AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.pause().then(() => {
+    console.info('pause AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('pause AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## resume<sup>12+</sup>
@@ -160,6 +187,8 @@ resume(): Promise\<void>
 异步方式恢复视频转码。通过Promise获取返回值。
 
 需要在[pause()](#pause12)事件成功触发后，才能调用resume方法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -183,12 +212,17 @@ resume(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.resume().then(() => {
-  console.info('resume AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('resume AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.resume().then(() => {
+    console.info('resume AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('resume AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## cancel<sup>12+</sup>
@@ -198,6 +232,8 @@ cancel(): Promise\<void>
 异步方式取消视频转码。通过Promise获取返回值。
 
 需要在[prepare()](#prepare12)、[start()](#start12)、[pause()](#pause12)或[resume()](#resume12)事件成功触发后，才能调用cancel方法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -221,12 +257,17 @@ cancel(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.cancel().then(() => {
-  console.info('cancel AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('cancel AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.cancel().then(() => {
+    console.info('cancel AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('cancel AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## release<sup>12+</sup>
@@ -236,6 +277,8 @@ release(): Promise\<void>
 异步方式释放视频转码资源。通过Promise获取返回值。
 
 释放视频转码资源之后，该AVTranscoder实例不能再进行任何操作。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -258,19 +301,26 @@ release(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.release().then(() => {
-  console.info('release AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('release AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.release().then(() => {
+    console.info('release AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('release AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## on('progressUpdate')<sup>12+</sup>
 
-on(type: 'progressUpdate', callback: Callback\<number>): void
+on(type:'progressUpdate', callback: Callback\<number\>):void
 
 注册转码进度更新事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -284,9 +334,15 @@ on(type: 'progressUpdate', callback: Callback\<number>): void
 **示例：**
 
 ```ts
-avTranscoder.on('progressUpdate', (progress: number) => {
-  console.info('avTranscoder progressUpdate = ' + progress);
-});
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.on('progressUpdate', (progress: number) => {
+    console.info('avTranscoder progressUpdate = ' + progress);
+  });
+}
 ```
 
 ## off('progressUpdate')<sup>12+</sup>
@@ -294,6 +350,8 @@ avTranscoder.on('progressUpdate', (progress: number) => {
 off(type:'progressUpdate', callback?: Callback\<number>): void
 
 取消注册转码进度更新事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -307,7 +365,13 @@ off(type:'progressUpdate', callback?: Callback\<number>): void
 **示例：**
 
 ```ts
-avTranscoder.off('progressUpdate');
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('progressUpdate');
+}
 ```
 
 ## on('error')<sup>12+</sup>
@@ -317,6 +381,8 @@ on(type: 'error', callback: ErrorCallback): void
 注册AVtranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](#release12)退出转码操作。
 
 开发者只能订阅一个错误事件的回调方法，当开发者重复订阅时，以最后一次订阅的回调接口为准。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -329,7 +395,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -346,10 +412,15 @@ on(type: 'error', callback: ErrorCallback): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.on('error', (err: BusinessError) => {
-  console.info('case avTranscoder.on(error) called, errMessage is ' + err.message);
-});
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.on('error', (err: BusinessError) => {
+    console.info('case avTranscoder.on(error) called, errMessage is ' + err.message);
+  });
+}
 ```
 
 ## off('error')<sup>12+</sup>
@@ -357,6 +428,8 @@ avTranscoder.on('error', (err: BusinessError) => {
 off(type:'error', callback?: ErrorCallback): void
 
 取消注册转码错误事件，取消后不再接收到AVTranscoder的错误事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -370,7 +443,13 @@ off(type:'error', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-avTranscoder.off('error');
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('error');
+}
 ```
 
 ## on('complete')<sup>12+</sup>
@@ -380,6 +459,8 @@ on(type: 'complete', callback: Callback\<void>): void
 注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
 
 当AVTranscoder上报complete事件时，当前转码操作已完成，开发者需要通过[release()](#release12)退出转码操作。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -393,13 +474,22 @@ on(type: 'complete', callback: Callback\<void>): void
 **示例：**
 
 ```ts
-avTranscoder.on('complete', async () => {
-  console.info('avTranscoder complete');
-  // 开发者须在此监听转码完成事件
-  // 须等待avTranscoder.release()之后，再对转码后的文件进行转发、上传、转存等处理
-  await avTranscoder.release();
-  avTranscoder = undefined;
-});
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  let avTranscoder: media.AVTranscoder | undefined = undefined;
+  // 创建转码实例。
+  avTranscoder = await media.createAVTranscoder();
+  avTranscoder.on('complete', async () => {
+    console.info('avTranscoder complete');
+    if (avTranscoder != undefined) {
+      // 开发者须在此监听转码完成事件。
+      // 须等待avTranscoder.release()释放转码实例之后，再对转码后的文件进行转发、上传、转存等处理。
+      await avTranscoder.release();
+      avTranscoder = undefined;
+    }
+  });
+}
 ```
 
 ## off('complete')<sup>12+</sup>
@@ -407,6 +497,8 @@ avTranscoder.on('complete', async () => {
 off(type:'complete', callback?: Callback\<void>): void
 
 取消注册转码完成事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -420,5 +512,11 @@ off(type:'complete', callback?: Callback\<void>): void
 **示例：**
 
 ```ts
-avTranscoder.off('complete');
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('complete');
+}
 ```

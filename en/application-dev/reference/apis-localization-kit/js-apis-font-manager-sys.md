@@ -1,5 +1,12 @@
 # @ohos.fontManager (Font Management)
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **fontManager** module provides APIs for system applications to install and uninstall third-party fonts.
 
 >  **NOTE**

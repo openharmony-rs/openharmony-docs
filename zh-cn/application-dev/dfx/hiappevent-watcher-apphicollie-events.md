@@ -1,5 +1,12 @@
 # 任务执行超时事件介绍
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## 简介
 
 任务执行超时指要监控的业务代码逻辑执行时长超过业务逻辑预期时间。为了更好地定位和分析问题，开发者可以利用[任务执行超时检测](apptask-timeout-guidelines.md#任务执行超时检测)机制，根据生成的[日志规格](apptask-timeout-guidelines.md#日志规格)，主动分析任务执行超时的执行情况。
@@ -12,7 +19,12 @@
 
 开发者可以通过HiAppEvent提供接口订阅任务执行超时事件“EVENT_APP_HICOLLIE”，系统检测到任务执行超时后，会抓取维测信息通过HiAppEvent将任务执行超时回调给应用进程。
 
+- [订阅任务执行超时事件（ArkTS）](hiappevent-watcher-apphicollie-events-arkts.md)
 - [订阅任务执行超时事件（C/C++）](hiappevent-watcher-apphicollie-events-ndk.md)
+
+> **说明：**
+>
+> 任务执行超时事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
 
 ## 事件字段说明
 
@@ -42,8 +54,8 @@ exception属性的详细描述如下：
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| name | string | 异常类型。 |
-| message | string | 异常原因。 |
+| name | string | 异常类型 |
+| message | string | 异常原因 |
 
 ### memory字段说明
 

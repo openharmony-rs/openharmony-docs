@@ -1,5 +1,10 @@
 # drawing_text_declaration.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 ## 概述
 
 提供2d 绘制文本相关的数据结构声明
@@ -7,6 +12,8 @@
 **引用文件：** <native_drawing/drawing_text_declaration.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -32,4 +39,4 @@
 | [OH_Drawing_TextTab](capi-drawing-oh-drawing-texttab.md) | OH_Drawing_TextTab | 用于管理文本制表符。 |
 | [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) | OH_Drawing_TextLine | 用于管理文本行。 |
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) | OH_Drawing_Run | 用于管理文本渲染单元。 |
-
+| [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md) | OH_Drawing_FontFullDescriptor | 用于描述字体的详细信息，即字体描述符。 |

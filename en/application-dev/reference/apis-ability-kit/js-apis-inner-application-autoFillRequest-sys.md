@@ -1,5 +1,12 @@
 # AutoFillRequest (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module provides page data and callbacks when a callback is triggered for the AutoFillExtensionAbility.
 
 > **NOTE**
@@ -20,12 +27,13 @@ Defines the information about an auto-fill request.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-| Name       | Type                | Mandatory| Description                                                        |
-| ----------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type        | [AutoFillType](js-apis-inner-application-autoFillType-sys.md)       | Yes  | Type of the element to be automatically filled in.         |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | Yes  | Page data.             |
-| customData<sup>13+</sup>    | [CustomData](js-apis-inner-application-customData-sys.md)               | Yes  | Custom data.            |
-| isPopup<sup>12+</sup>    | boolean               | Yes  | Whether a dialog box is displayed for the auto-fill request.<br>**true**: A dialog box is displayed<br>**false**: A modal window is displayed             |
+| Name       | Type                | Read-Only| Optional| Description                                                        |
+| ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
+| type        | [AutoFillType](js-apis-inner-application-autoFillType-sys.md)       | No  | No  | Type of the element to be automatically filled in.         |
+| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No  | No  | Page data.             |
+| customData<sup>13+</sup>    | [CustomData](js-apis-inner-application-customData-sys.md)               | No  | No  | Custom data.            |
+| isPopup<sup>12+</sup>    | boolean               | No  | No  | Whether a dialog box is displayed for the auto-fill request.<br>**true**: A dialog box is displayed<br>**false**: A modal window is displayed             |
+| triggerType<sup>23+</sup> | [AutoFillTriggerType](js-apis-inner-application-autoFillTriggerType-sys.md) | No| Yes| Trigger type for the autofill service.|
 
 ## SaveRequest
 
@@ -33,9 +41,9 @@ Defines the information about an auto-saving request.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-| Name       | Type                | Mandatory| Description                                                        |
-| ----------- | -------------------- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | Yes  | Page data.             |
+| Name       | Type                | Read-Only| Optional| Description                                                        |
+| ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
+| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No  | No  | Page data.             |
 
 ## UpdateRequest<sup>12+</sup>
 
@@ -43,9 +51,9 @@ Defines the information about an auto-update request.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-| Name       | Type                | Mandatory| Description                                                        |
-| ----------- | -------------------- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | Yes  | Page data.             |
+| Name       | Type                | Read-Only| Optional| Description                                                        |
+| ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
+| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No  | No  | Page data.             |
 
 ## FillResponse
 
@@ -53,15 +61,15 @@ Defines the information about the response to an auto-fill request.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-| Name       | Type                | Mandatory| Description                                                        |
-| ----------- | -------------------- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | Yes  | Page data.             |
+| Name       | Type                | Read-Only| Optional| Description                                                        |
+| ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
+| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No  | No  | Page data.             |
 
 ## FillRequestCallback
 
 Implements callbacks for an auto-fill request, which is used to automatically fill in or generate a password. The callbacks can be used to notify the client of the success or failure of the request.
 
-### FillRequestCallback.onSuccess
+### onSuccess
 
 onSuccess(response: FillResponse): void
 
@@ -94,8 +102,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   onFillRequest(session: UIExtensionContentSession,
-                request: autoFillManager.FillRequest,
-                callback: autoFillManager.FillRequestCallback) {
+    request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     try {
       let storageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData> = {
@@ -160,7 +168,7 @@ struct AutoFillPage {
 }
 ```
 
-### FillRequestCallback.onFailure
+### onFailure
 
 onFailure(): void
 
@@ -186,8 +194,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   onFillRequest(session: UIExtensionContentSession,
-                request: autoFillManager.FillRequest,
-                callback: autoFillManager.FillRequestCallback) {
+    request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     try {
       let storageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData> = {
@@ -246,7 +254,7 @@ struct AutoFillPage {
 }
 ```
 
-### FillRequestCallback.onCancel<sup>11+</sup>
+### onCancel<sup>11+</sup>
 
 onCancel(fillContent?: string): void
 
@@ -279,8 +287,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   onFillRequest(session: UIExtensionContentSession,
-                request: autoFillManager.FillRequest,
-                callback: autoFillManager.FillRequestCallback) {
+    request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     try {
       let storageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData> = {
@@ -313,7 +321,7 @@ struct AutoFillPage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
   fillCallback: autoFillManager.FillRequestCallback | undefined =
     this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
-  
+
   build() {
     Row() {
       Column() {
@@ -339,7 +347,7 @@ struct AutoFillPage {
 }
 ```
 
-### FillRequestCallback.setAutoFillPopupConfig<sup>12+</sup>
+### setAutoFillPopupConfig<sup>12+</sup>
 
 setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig ): void
 
@@ -367,9 +375,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // MyAutoFillExtensionAbility.ts
-// MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class AutoFillAbility extends AutoFillExtensionAbility {
   storage: LocalStorage = new LocalStorage();
@@ -384,7 +392,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
 
   onSessionDestroy(session: UIExtensionContentSession) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onSessionDestroy');
-    hilog.info(0x0000, 'testTag', 'session content: %{public}s', JSON.stringify(session));
+    hilog.info(0x0000, 'testTag', 'session content: %{public}s', `session: ${JSON.stringify(session)}.`);
   }
 
   onForeground(): void {
@@ -402,7 +410,8 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
 
     if (fillCallback) {
       try {
-        hilog.info(0x0000, 'testTag', 'pageNodeInfos.value: ' + JSON.stringify(request.viewData.pageNodeInfos[0].value));
+        hilog.info(0x0000, 'testTag',
+          `pageNodeInfos.value: ${JSON.stringify(request.viewData.pageNodeInfos[0].value)}.`);
         fillCallback.setAutoFillPopupConfig({
           popupSize: {
             width: 400 + request.viewData.pageNodeInfos[0].value.length * 10,
@@ -411,24 +420,28 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
           placement: autoFillManager.PopupPlacement.TOP
         });
       } catch (err) {
-        hilog.info(0x0000, 'testTag', 'autoFillPopupConfig err: ' + err.code);
+        let code = (err as BusinessError).code;
+        let msg = (err as BusinessError).message;
+        hilog.info(0x0000, 'testTag', `autoFillPopupConfig failed, error code: ${code}, error msg: ${msg}.`);
       }
     }
   }
 
-  onFillRequest(session: UIExtensionContentSession, request: autoFillManager.FillRequest, callback: autoFillManager.FillRequestCallback) {
+  onFillRequest(session: UIExtensionContentSession, request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     hilog.info(0x0000, 'testTag', 'Fill RequestCallback: %{public}s ', JSON.stringify(callback));
     console.info(`testTag. Get fill request viewData: ${JSON.stringify(request.viewData)}.`);
     console.info(`testTag. Get fill request type: ${JSON.stringify(request.type)}.`);
 
     try {
-      let localStorageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData | autoFillManager.AutoFillType> = {
-        'message': 'AutoFill Page',
-        'fillCallback': callback,
-        'viewData': request.viewData,
-        'autoFillType': request.type
-      }
+      let localStorageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData | autoFillManager.AutoFillType> =
+        {
+          'message': 'AutoFill Page',
+          'fillCallback': callback,
+          'viewData': request.viewData,
+          'autoFillType': request.type
+        }
       let storage_fill = new LocalStorage(localStorageData);
       console.info(`testTag. Session: ${JSON.stringify(session)}.`);
       let size: autoFillManager.PopupSize = {
@@ -440,11 +453,15 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
       });
       session.loadContent('pages/SelectorList', storage_fill);
     } catch (err) {
-      hilog.error(0x0000, 'testTag', '%{public}s', 'autofill failed to load content: ' + JSON.stringify(err));
+      let code = (err as BusinessError).code;
+      let msg = (err as BusinessError).message;
+      hilog.error(0x0000, 'testTag', '%{public}s',
+        `autofill failed to load content, error code: ${code}, error msg: ${msg}.`);
     }
   }
 
-  onSaveRequest(session: UIExtensionContentSession, request: autoFillManager.SaveRequest, callback: autoFillManager.SaveRequestCallback) {
+  onSaveRequest(session: UIExtensionContentSession, request: autoFillManager.SaveRequest,
+    callback: autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onSaveRequest');
     try {
       let localStorageData: Record<string, string | autoFillManager.SaveRequestCallback> = {
@@ -491,10 +508,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   onSaveRequest(session: UIExtensionContentSession,
-                request: autoFillManager.SaveRequest,
-                callback: autoFillManager.SaveRequestCallback) {
+    request: autoFillManager.SaveRequest,
+    callback: autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
     try {
       let storageData: Record<string, string | autoFillManager.SaveRequestCallback | autoFillManager.ViewData> = {
@@ -579,8 +597,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   onSaveRequest(session: UIExtensionContentSession,
-                request: autoFillManager.SaveRequest,
-                callback: autoFillManager.SaveRequestCallback) {
+    request: autoFillManager.SaveRequest,
+    callback: autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
     try {
       let storageData: Record<string, string | autoFillManager.SaveRequestCallback | autoFillManager.ViewData> = {
@@ -613,7 +631,7 @@ struct SavePage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
   saveCallback: autoFillManager.SaveRequestCallback | undefined =
     this.storage?.get<autoFillManager.SaveRequestCallback>('saveCallback');
-  
+
   build() {
     Row() {
       Column() {

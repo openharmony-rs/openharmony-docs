@@ -1,5 +1,12 @@
 # UiTest Error Codes
 
+<!--Kit: Test Kit-->
+<!--Subsystem: Test-->
+<!--Owner: @inter515-->
+<!--Designer: @inter515-->
+<!--Tester: @laonie666-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -84,8 +91,25 @@ This error code is reported when the performed operation is not supported by the
 
 **Possible Causes**
 
-The component or window attribute does not support the performed operation.
+The component, window attribute, or device does not support the performed operation.
 
 **Solution**
 
-Make sure the operation to perform is supported by the component or window attribute.
+Check whether the UI component, window attribute, or device supports the performed operation.
+
+## 17000007 Parameters Are Invalid
+**Error Message**
+
+Parameter verification failed.
+
+**Description**
+
+Parameter verification failed.
+
+**Possible Causes**
+
+The parameter type is incorrect or the parameter value is out of the specified range.
+
+**Solution**
+
+Check whether the input parameters of the API meet the requirements.

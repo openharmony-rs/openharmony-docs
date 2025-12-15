@@ -1,4 +1,10 @@
 # Calculating and Adjusting Safe Area Insets
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @KeeGitee-->
+<!--Designer: @LongLie-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 In earlier versions, the screen of most devices is rectangular, and the application UI can be completely displayed. With the popularization of irregular screens such as bezel-less screen and notch screens, rounded corners, cameras, or system navigation bars may appear on the edge of the screen. As a result, some parts of the screen are obscured.
 
@@ -10,7 +16,7 @@ The **Web** component provides the W3C CSS capability for calculating and adjust
 
 ## Enabling the Immersive Mode for the Web Component
 
-**Web** components are displayed in the safe area by default. After the immersive mode is enabled, the web page is extended to the status bar and navigation bar to maximize the visible area of the screen, enhance visual continuity, and improve user experience. You can enable the immersive mode of **Web** components in the following ways:
+**Web** components are displayed in the safe area by default. After <!--RP1-->the immersive mode<!--RP1End--> is enabled, the web page is extended to the status bar and navigation bar to maximize the visible area of the screen, enhance visual continuity, and improve user experience. You can enable the immersive mode of **Web** components in the following ways:
 
 - Use [setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9) to set the application window to full screen. When the window is displayed in full screen, the **Web** component can be displayed in non-safe areas.
 
@@ -50,29 +56,30 @@ The **Web** component provides the W3C CSS capability for calculating and adjust
 
 - Use [expandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md) to expand the safe area for **Web** components. You can customize the expansion type and direction. In the following example, the **Web** component can be expanded to the status bar and navigation bar to achieve an immersive effect.
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+<!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
 
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .width('100%').height('100%')
-          // Expand the component to the default non-safe areas (status bar and navigation bar) and set that only the upper and lower areas are expanded.
-          .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%').height('100%')
+        // Expand the component to the default non-safe areas (status bar and navigation bar) and set that only the upper and lower areas are expanded.
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
     }
   }
-  ```
+}
+```
 
-## Setting the Web Page Layout in a Viewport
+## Setting the Web Page Layout in the Viewport
 
-Use **viewport-fit**, which is an attribute of the **\<meta name="viewport">** tag, to set the layout of a web page in a viewport as follows:
+Use **viewport-fit**, which is an attribute of the **\<meta name="viewport">** tag, to set the layout of a web page in the viewport. The setting method is as follows:
 
 ```html
 <meta name='viewport' content='viewport-fit=cover'>
@@ -90,7 +97,7 @@ As shown in Table 1, the default value of **viewport-fit** is **auto**, which ha
 
 > **NOTE**
 > 
-> Currently, the **Web** component does not support the feature of restricting the web page content to the safe area when the immersive mode is enabled. Therefore, the value **contain** of **viewport-fit** has the same effect as **cover**, that is, the web page content completely fills the **Web** component area.
+> Currently, the **Web** component does not support the feature of restricting the web page content to the safe area when the immersive mode is enabled. Therefore, the value **contain** of **viewport-fit** has the same effect as **cover**, that is, the web page content fills the **Web** component area.
 
 ## Avoidance Adaptation of Web Page Elements
 
@@ -104,7 +111,7 @@ When **viewport-fit=cover** is set, the ArkWeb kernel continuously monitors the 
 
 The avoidance adaptation of web page elements depends on the CSS function **env()**, which is used to obtain the environment variables provided by the browser or system. You can use the **env()** function to obtain the value of **safe-area-inset-***. Through CSS **env(safe-area-inset-*)**, you can define the distance to be avoided on a web page to implement cross-device avoidance, without the need to pay attention to the location and size of the non-safe areas. The syntax is as follows:
 
-```
+```css
 /* Avoidance values in the top, right, bottom, and left directions. */
 env(safe-area-inset-top);
 env(safe-area-inset-right);
@@ -195,7 +202,7 @@ When the immersive mode is enabled for the **Web** component, the rendered conte
 
 You can use **env(safe-area-inset-*)** to define the CSS style, ensuring that texts, images, and interaction components avoid non-safe areas. In the following example, **env(safe-area-inset-*)** is used to update the CSS style of **index.html** so that the main content of the web page avoids the non-safe area, as shown in Figure 3.
 
-```
+```css
 .title-bar {
     align-items: center;
     justify-content: center;

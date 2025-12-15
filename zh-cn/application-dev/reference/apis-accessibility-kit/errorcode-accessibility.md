@@ -1,5 +1,12 @@
 # 无障碍子系统错误码
 
+<!--Kit: Accessibility Kit-->
+<!--Subsystem: BarrierFree-->
+<!--Owner: @qiiiiiiian-->
+<!--Designer: @z7o-->
+<!--Tester: @A_qqq-->
+<!--Adviser: @w_Machine_cc-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -37,7 +44,7 @@ Target ability already enabled.
 
 **可能原因**
 
-该错误码表示目标Ability已启用，可能原因是目标Ability已经启用，无法再次启用。
+该错误码表示目标Ability已启用，无法被再次启用。
 
 **处理步骤**
 
@@ -75,7 +82,7 @@ This property does not exist.
 
 **可能原因**
 
-该错误码表示输入了无效的无障碍节点元素的属性，可能原因是无障碍节点元素中不存在该属性。
+该错误码表示输入了无效的无障碍节点元素的属性，即无障碍节点元素中不存在该属性。
 
 **处理步骤**
 
@@ -93,7 +100,7 @@ This action is not supported.
 
 **可能原因**
 
-该错误码表示执行了无障碍节点元素不支持的操作，可能原因是无障碍节点元素不支持执行该操作。
+该错误码表示执行了无障碍节点元素不支持的操作。
 
 **处理步骤**
 

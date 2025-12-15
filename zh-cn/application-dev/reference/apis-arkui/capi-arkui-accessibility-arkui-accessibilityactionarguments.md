@@ -1,8 +1,18 @@
 # ArkUI_AccessibilityActionArguments
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhanghangkai10241-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_AccessibilityActionArguments ArkUI_AccessibilityActionArguments
+```
 
 ## 概述
 
-Action附加字段，对需要执行的Action进行处理的进一步说明。
+用于设置无障碍操作的具体参数。
 
 **起始版本：** 13
 

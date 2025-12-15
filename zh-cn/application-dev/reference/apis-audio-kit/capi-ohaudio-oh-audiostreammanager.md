@@ -1,4 +1,14 @@
 # OH_AudioStreamManager
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioStreamManager OH_AudioStreamManager
+```
 
 ## 概述
 

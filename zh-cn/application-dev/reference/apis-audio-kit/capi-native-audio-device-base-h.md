@@ -1,4 +1,10 @@
 # native_audio_device_base.h
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -38,21 +44,21 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescriptor *audioDeviceDescriptor,OH_AudioDevice_Role *deviceRole)](#oh_audiodevicedescriptor_getdevicerole) | 查询目标音频设备描述符的设备角色。 |
-| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescriptor *audioDeviceDescriptor,OH_AudioDevice_Type *deviceType)](#oh_audiodevicedescriptor_getdevicetype) | 查询目标音频设备描述符的设备类型。 |
-| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescriptor *audioDeviceDescriptor,uint32_t *id)](#oh_audiodevicedescriptor_getdeviceid) | 查询目标音频设备描述符的设备id。 |
-| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescriptor *audioDeviceDescriptor,char **name)](#oh_audiodevicedescriptor_getdevicename) | 查询目标音频设备描述符的设备名称。 |
-| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDescriptor *audioDeviceDescriptor,char **address)](#oh_audiodevicedescriptor_getdeviceaddress) | 查询目标音频设备描述符的设备地址。 |
-| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDeviceDescriptor *audioDeviceDescriptor,uint32_t **sampleRates, uint32_t *size)](#oh_audiodevicedescriptor_getdevicesamplerates) | 查询目标音频设备描述符的采样率数组。 |
-| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDeviceDescriptor *audioDeviceDescriptor,uint32_t **channelCounts, uint32_t *size)](#oh_audiodevicedescriptor_getdevicechannelcounts) | 查询目标音频设备描述符的设备通道计数数组。 |
-| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDeviceDescriptor *audioDeviceDescriptor,char **displayName)](#oh_audiodevicedescriptor_getdevicedisplayname) | 查询目标音频设备描述符的显示名称。 |
-| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDeviceDescriptor *audioDeviceDescriptor,OH_AudioStream_EncodingType **encodingTypes, uint32_t *size)](#oh_audiodevicedescriptor_getdeviceencodingtypes) | 查询目标音频设备描述符的编码类型数组。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_Role *deviceRole)](#oh_audiodevicedescriptor_getdevicerole) | 查询目标音频设备描述符的设备角色。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_Type *deviceType)](#oh_audiodevicedescriptor_getdevicetype) | 查询目标音频设备描述符的设备类型。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t *id)](#oh_audiodevicedescriptor_getdeviceid) | 查询目标音频设备描述符的设备id。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **name)](#oh_audiodevicedescriptor_getdevicename) | 查询目标音频设备描述符的设备名称。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **address)](#oh_audiodevicedescriptor_getdeviceaddress) | 查询目标音频设备描述符的设备地址。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t **sampleRates, uint32_t *size)](#oh_audiodevicedescriptor_getdevicesamplerates) | 查询目标音频设备描述符的采样率数组。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t **channelCounts, uint32_t *size)](#oh_audiodevicedescriptor_getdevicechannelcounts) | 查询目标音频设备描述符的设备通道计数数组。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **displayName)](#oh_audiodevicedescriptor_getdevicedisplayname) | 查询目标音频设备描述符的显示名称。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioStream_EncodingType **encodingTypes, uint32_t *size)](#oh_audiodevicedescriptor_getdeviceencodingtypes) | 查询目标音频设备描述符的编码类型数组。 |
 
 ## 枚举类型说明
 
 ### OH_AudioDevice_ChangeType
 
-```
+```c
 enum OH_AudioDevice_ChangeType
 ```
 
@@ -69,7 +75,7 @@ enum OH_AudioDevice_ChangeType
 
 ### OH_AudioDevice_Role
 
-```
+```c
 enum OH_AudioDevice_Role
 ```
 
@@ -86,7 +92,7 @@ enum OH_AudioDevice_Role
 
 ### OH_AudioDevice_Type
 
-```
+```c
 enum OH_AudioDevice_Type
 ```
 
@@ -110,15 +116,16 @@ enum OH_AudioDevice_Type
 | AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23 | 显示端口（DisplayPort）设备。 |
 | AUDIO_DEVICE_TYPE_REMOTE_CAST = 24 | 音频被系统应用投送到其他远程的设备。 |
 | AUDIO_DEVICE_TYPE_USB_DEVICE = 25 | USB设备（不包含USB耳机）。<br>**起始版本：** 18 |
-| AUDIO_DEVICE_TYPE_ACCESSORY = 26 | 附件设备，如遥控器上的麦克风。<br>**起始版本：** 18 |
+| AUDIO_DEVICE_TYPE_ACCESSORY = 26 | 附件设备，如遥控器上的麦克风。<br>**起始版本：** 19 |
 | AUDIO_DEVICE_TYPE_HDMI = 27 | HDMI设备（例如HDMI、ARC、eARC等）。<br>**起始版本：** 19 |
 | AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28 | 有线数字设备（例如S/PDIF等）。<br>**起始版本：** 19 |
+| AUDIO_DEVICE_TYPE_HEARING_AID = 30 |  助听器设备。<br>**起始版本：** 20 |
 | AUDIO_DEVICE_TYPE_NEARLINK = 31 | 星闪设备。<br>**起始版本：** 20 |
 | AUDIO_DEVICE_TYPE_DEFAULT = 1000 | 默认设备类型。 |
 
 ### OH_AudioDevice_Flag
 
-```
+```c
 enum OH_AudioDevice_Flag
 ```
 
@@ -137,7 +144,7 @@ enum OH_AudioDevice_Flag
 
 ### OH_AudioDevice_Usage
 
-```
+```c
 enum OH_AudioDevice_Usage
 ```
 
@@ -158,7 +165,7 @@ enum OH_AudioDevice_Usage
 
 ### OH_AudioDevice_BlockStatus
 
-```
+```c
 enum OH_AudioDevice_BlockStatus
 ```
 
@@ -178,7 +185,7 @@ enum OH_AudioDevice_BlockStatus
 
 ### OH_AudioDeviceDescriptor_GetDeviceRole()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescriptor *audioDeviceDescriptor,OH_AudioDevice_Role *deviceRole)
 ```
 
@@ -204,7 +211,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescr
 
 ### OH_AudioDeviceDescriptor_GetDeviceType()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescriptor *audioDeviceDescriptor,OH_AudioDevice_Type *deviceType)
 ```
 
@@ -230,7 +237,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescr
 
 ### OH_AudioDeviceDescriptor_GetDeviceId()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescriptor *audioDeviceDescriptor,uint32_t *id)
 ```
 
@@ -252,11 +259,11 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescrip
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIODEVICE_SUCCESS 或 AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS 或 AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 ### OH_AudioDeviceDescriptor_GetDeviceName()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescriptor *audioDeviceDescriptor,char **name)
 ```
 
@@ -282,7 +289,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescr
 
 ### OH_AudioDeviceDescriptor_GetDeviceAddress()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDescriptor *audioDeviceDescriptor,char **address)
 ```
 
@@ -308,7 +315,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDe
 
 ### OH_AudioDeviceDescriptor_GetDeviceSampleRates()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDeviceDescriptor *audioDeviceDescriptor,uint32_t **sampleRates, uint32_t *size)
 ```
 
@@ -335,7 +342,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDevi
 
 ### OH_AudioDeviceDescriptor_GetDeviceChannelCounts()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDeviceDescriptor *audioDeviceDescriptor,uint32_t **channelCounts, uint32_t *size)
 ```
 
@@ -362,7 +369,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDe
 
 ### OH_AudioDeviceDescriptor_GetDeviceDisplayName()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDeviceDescriptor *audioDeviceDescriptor,char **displayName)
 ```
 
@@ -388,7 +395,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDevi
 
 ### OH_AudioDeviceDescriptor_GetDeviceEncodingTypes()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDeviceDescriptor *audioDeviceDescriptor,OH_AudioStream_EncodingType **encodingTypes, uint32_t *size)
 ```
 

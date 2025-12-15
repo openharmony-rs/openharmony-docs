@@ -1,4 +1,10 @@
 # @ohos.app.ability.continueManager (Cross-Device Migration)
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedAbilityManager-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @huipeizi-->
 
 The continueManager module provides capabilities for managing cross-device application migration. For example, it allows you to obtain the result of quickly launching the target application during the cross-device migration process.
 
@@ -42,7 +48,7 @@ For details about the error codes, see [Distributed Scheduler Error Codes](error
 
 **Example**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -75,7 +81,7 @@ export default class MigrationAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ## continueManager.off
 
@@ -107,7 +113,7 @@ For details about the error codes, see [Distributed Scheduler Error Codes](error
 
 **Example**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -140,7 +146,7 @@ export default class MigrationAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ## ContinueResultInfo
 
@@ -150,7 +156,7 @@ Describes the quick start result returned by the callback.
 
 | Name| Type                                                                           | Read-Only| Optional| Description      |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
-| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | Yes | No | Status code of the operation result.|
+| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | No | No | Status code of the operation result.|
 | resultInfo | string                                                                        | No | Yes | Description of the operation result.|
 
 ## ContinueStateCode

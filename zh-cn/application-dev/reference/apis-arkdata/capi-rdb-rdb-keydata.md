@@ -1,4 +1,14 @@
 # Rdb_KeyData
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```c
+union Rdb_KeyData { ... }
+```
 
 ## 概述
 

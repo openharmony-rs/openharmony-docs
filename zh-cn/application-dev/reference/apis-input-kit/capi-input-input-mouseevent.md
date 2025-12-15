@@ -1,8 +1,19 @@
 # Input_MouseEvent
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct Input_MouseEvent Input_MouseEvent
+```
+
 ## 概述
 
-要注入的鼠标事件。
+鼠标事件对象。
 
 **起始版本：** 12
 
@@ -10,3 +21,9 @@
 
 **所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
 
+**相关接口：**
+
+| 名称 | 描述 |
+| -- | -- |
+| [OH_Input_CreateMouseEvent](capi-oh-input-manager-h.md#oh_input_createmouseevent) | 创建鼠标事件对象。 |
+| [OH_Input_DestroyMouseEvent](capi-oh-input-manager-h.md#oh_input_destroymouseevent) | 销毁鼠标事件对象。 |

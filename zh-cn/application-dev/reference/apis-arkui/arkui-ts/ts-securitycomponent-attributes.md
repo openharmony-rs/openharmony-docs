@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 安全控件的基础属性，用于设置安全控件通用的属性。
 
@@ -302,7 +303,7 @@ borderStyle(value: BorderStyle): T
 
 borderWidth(value: Dimension): T
 
-设置安全控件的边框的宽度。
+设置安全控件的边框宽度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -312,7 +313,7 @@ borderWidth(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) |是 |安全控件的边框的宽度。<br/>默认不设置边框宽度。|
+| value | [Dimension](ts-types.md#dimension10) |是 |安全控件的边框宽度。<br/>默认不设置边框宽度。|
 
 **返回值：**
 
@@ -324,7 +325,7 @@ borderWidth(value: Dimension): T
 
 borderColor(value: ResourceColor): T
 
-设置安全控件的边框的颜色。
+设置安全控件的边框颜色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -334,7 +335,7 @@ borderColor(value: ResourceColor): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [ResourceColor](ts-types.md#resourcecolor) |是 |安全控件的边框的颜色。<br/>默认不设置边框颜色。|
+| value | [ResourceColor](ts-types.md#resourcecolor) |是 |安全控件的边框颜色。<br/>默认不设置边框颜色。|
 
 **返回值：**
 
@@ -368,7 +369,7 @@ borderRadius(value: Dimension): T
 
 borderRadius(radius: Dimension | BorderRadiuses): T
 
-设置安全控件的边框圆角半径，支持分别设置四个圆角。
+设置安全控件的边框圆角半径，支持分别设置四个圆角的半径。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -400,7 +401,7 @@ padding(value: Padding | Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) |是 |安全控件的内边距。<br/>默认值：上下8vp，左右16vp。|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) |是 |安全控件的内边距。<br/>默认值：上下8vp，左右16vp。<br/>**说明**：本参数不支持设置百分比字符串数据类型。若设置百分比字符串，则对应内边距显示为0。|
 
 **返回值：**
 
@@ -444,7 +445,7 @@ textIconSpace(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) |是 |安全控件中图标和文字的间距。不支持设置百分比字符串。从API 14开始，若设置值为负值，则使用默认值。<br/>默认值：4vp。|
+| value | [Dimension](ts-types.md#dimension10) |是 |安全控件中图标和文字的间距。<br/>默认值：4vp。<br/>**说明**：本参数不支持设置百分比字符串数据类型，若设置百分比字符串，则图标和文字的间距显示为0；从API 14开始，若设置值为负值，则使用默认值。|
 
 **返回值：**
 
@@ -522,7 +523,7 @@ size(value: SizeOptions): T
 
 constraintSize(value: ConstraintSizeOptions): T
 
-设置约束尺寸，组件布局时，进行尺寸范围限制。
+设置约束尺寸，组件布局时限制尺寸范围。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -704,7 +705,7 @@ maxFontSize(maxSize: number | string | Resource): T
 
 设置文本最大显示字号。
 - 配合[minFontSize](#minfontsize18)以及[maxLines](#maxlines18)或布局大小限制使用，可实现自适应字号，单独设置不生效。
-- 自适应字号生效时，fontSize设置不生效。
+- 当自适应字号生效时，设置的fontSize将不生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -726,7 +727,7 @@ maxFontSize(maxSize: number | string | Resource): T
 
 maxLines(line: number | Resource): T
 
-设置文本的最大行数。默认情况下，文本自动换行，指定此属性后，文本行数最大不会超过指定值。
+设置文本的最大行数。默认情况下，文本自动换行，指定此属性后，文本的最大显示行数不会超过指定值。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -750,7 +751,7 @@ heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 
 设置文本自适应高度的方式。
 
-通过文本自适应高度的方式，实现文本大小自适应。
+通过文本自适应高度实现文本大小自适应。
 
 安全控件文本以[maxFontSize](#maxfontsize18)的值进行布局，如果可以完整显示文本，则无需进行自适应调节，该接口设置不生效，否则按指定文本自适应高度的方式进行调节，具体自适应调节规格如下：
 
@@ -760,7 +761,7 @@ heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 
 当设置为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST时，优先使用布局约束来调整文本高度。如果布局大小超过布局约束，则尝试在[minFontSize](#minfontsize18)和[maxFontSize](#maxfontsize18)的范围内缩小字体以满足布局约束。如果将字体大小缩小到minFontSize后，布局大小仍然超过布局约束，则删除超过布局约束的行；如果设置了[maxLines](#maxlines18)属性，布局后行数不超过maxlines值（可能存在横向截断）；如果未设置maxlines属性值，布局后的行数不限制。
 
-安全控件文字未完全显示时，点击不授权。
+安全控件文本未完全显示时，点击不授权。
 
 具体效果请见[示例](#示例3)。
 
@@ -802,6 +803,28 @@ enabled(respond: boolean): T
 | -------- | -------- |
 | T | 返回安全控件的属性。 |
 
+## focusBox<sup>22+</sup>
+
+focusBox(style: FocusBoxStyle): T
+
+设置安全控件系统焦点框样式。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| style  | [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12对象说明) | 是   | 设置安全控件系统焦点框样式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回安全控件的属性。 |
+
 
 
 ## SecurityComponentLayoutDirection枚举说明
@@ -827,7 +850,7 @@ enabled(respond: boolean): T
 - 当按钮类型为Circle时，borderRadius设置不生效：
   - 若同时设置了宽和高，按钮圆角半径为宽高中较小值的一半；
   - 若只设置宽、高中的一个，按钮圆角半径为所设宽或所设高值的一半；
-  - 若不设置宽高或者borderRadius的值为负，按钮圆角半径根据具体布局确定。
+  - 若未设置宽高或borderRadius的值为负数，按钮圆角半径将根据具体布局确定。
 - 当按钮类型为Normal时，按钮圆角半径可通过borderRadius设置，圆角大小受组件尺寸限制，最小值为0，最大值为组件宽高中较小值的一半。
 - 当按钮类型为ROUNDED_RECTANGLE时，若不设置borderRadius，圆角矩形按钮的圆角半径大小保持默认值20vp不变，不随按钮高度变化而变化。
 
@@ -838,7 +861,7 @@ enabled(respond: boolean): T
 | 名称      | 值 | 说明               |
 | ------- | -------- | ------------------ |
 | Normal  | 0 | 普通按钮（默认不带圆角）。      |
-| Capsule | 1 | 胶囊型按钮（圆角默认为高度的一半）。 |
+| Capsule | 1 | 胶囊型按钮（圆角半径默认为高度的一半）。 |
 | Circle  | 2 | 圆形按钮。              |
 | ROUNDED_RECTANGLE<sup>16+</sup> | 8 | 圆角矩形按钮（默认值：圆角半径大小20vp）。 |
 
@@ -849,7 +872,7 @@ enabled(respond: boolean): T
 
 ### 示例1
 
-设置SecurityComponent基础属性，生成一个保存控件。
+设置SecurityComponent的基础属性，生成一个保存控件。
 
 ```ts
 @Entry
@@ -972,6 +995,8 @@ struct Index {
 ![SaveBotton_alignRules_1.png](figures/SaveBotton_alignRules_1.png)
 
 ### 示例3
+
+安全控件文本高度自适应。
 
 ```ts
 @Entry
@@ -1309,3 +1334,69 @@ struct Index {
 ```
 
 ![security_component_demo_shot.jpg](figures/security_component_demo_shot.jpg)
+
+### 示例4
+
+设置安全控件系统焦点框样式。
+
+```ts
+import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column({ space: 30 }) {
+        Column({ space: 15 }) {
+          Text('不设置focusBox属性的默认安全控件')
+          SaveButton()
+        }
+
+        Column({ space: 15 }) {
+          Text('紧贴安全控件的黑色焦点框')
+          SaveButton()
+            .focusBox({
+              margin: new LengthMetrics(0),
+              strokeColor: ColorMetrics.rgba(0, 0, 0),
+            })
+        }
+
+        Column({ space: 15 }) {
+          Text('较大的红色焦点框')
+          SaveButton()
+            .focusBox({
+              margin: new LengthMetrics(10),
+              strokeColor: ColorMetrics.rgba(255, 0, 0),
+              strokeWidth: LengthMetrics.px(10)
+            })
+        }
+
+        Column({ space: 15 }) {
+          Text('矩形安全控件')
+          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
+            .focusBox({
+              margin: new LengthMetrics(10),
+              strokeColor: ColorMetrics.rgba(255, 0, 0),
+              strokeWidth: LengthMetrics.px(10)
+            })
+        }
+
+        Column({ space: 15 }) {
+          Text('圆形安全控件')
+          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Circle })
+            .focusBox({
+              margin: new LengthMetrics(10),
+              strokeColor: ColorMetrics.rgba(255, 0, 0),
+              strokeWidth: LengthMetrics.px(10)
+            })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![security_component_focus_box.gif](figures/security_component_focus_box.gif)

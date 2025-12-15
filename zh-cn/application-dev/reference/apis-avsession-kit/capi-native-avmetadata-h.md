@@ -1,4 +1,10 @@
 # native_avmetadata.h
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -49,16 +55,16 @@
 | [AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder, const char* subtitle)](#oh_avmetadatabuilder_setsubtitle) | 设置副标题。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* builder, const char* description)](#oh_avmetadatabuilder_setdescription) | 设置媒体描述信息。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, const char* lyric)](#oh_avmetadatabuilder_setlyric) | 设置歌词。 |
-| [AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder,AVMetadata_SkipIntervals intervals)](#oh_avmetadatabuilder_setskipintervals) | 设置资源的跳转的间隔时间。 |
+| [AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder, AVMetadata_SkipIntervals intervals)](#oh_avmetadatabuilder_setskipintervals) | 设置资源的跳转间隔时间。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* builder, int32_t tags)](#oh_avmetadatabuilder_setdisplaytags) | 设置媒体资源的金标类型。 |
-| [AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* builder,OH_AVMetadata** avMetadata)](#oh_avmetadatabuilder_generateavmetadata) | 生成媒体元数据对象。 |
+| [AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* builder, OH_AVMetadata** avMetadata)](#oh_avmetadatabuilder_generateavmetadata) | 生成媒体元数据对象。 |
 | [AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)](#oh_avmetadata_destroy) | 释放媒体元数据对象。 |
 
 ## 枚举类型说明
 
 ### AVMetadata_Result
 
-```
+```c
 enum AVMetadata_Result
 ```
 
@@ -76,7 +82,7 @@ enum AVMetadata_Result
 
 ### AVMetadata_SkipIntervals
 
-```
+```c
 enum AVMetadata_SkipIntervals
 ```
 
@@ -94,7 +100,7 @@ enum AVMetadata_SkipIntervals
 
 ### AVMetadata_DisplayTag
 
-```
+```c
 enum AVMetadata_DisplayTag
 ```
 
@@ -113,7 +119,7 @@ enum AVMetadata_DisplayTag
 
 ### OH_AVMetadataBuilder_Create()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 ```
 
@@ -128,7 +134,7 @@ AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)** builder |  该引用指向创建的构造器的结果。 |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)** builder |  该引用指向创建的构造器实例。 |
 
 **返回：**
 
@@ -138,7 +144,7 @@ AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 
 ### OH_AVMetadataBuilder_Destroy()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 ```
 
@@ -163,7 +169,7 @@ AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 
 ### OH_AVMetadataBuilder_SetAssetId()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder, const char* assetId)
 ```
 
@@ -189,7 +195,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder,
 
 ### OH_AVMetadataBuilder_SetTitle()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, const char* title)
 ```
 
@@ -215,7 +221,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, c
 
 ### OH_AVMetadataBuilder_SetArtist()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, const char* artist)
 ```
 
@@ -241,7 +247,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, 
 
 ### OH_AVMetadataBuilder_SetAuthor()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, const char* author)
 ```
 
@@ -267,7 +273,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, 
 
 ### OH_AVMetadataBuilder_SetAlbum()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, const char* album)
 ```
 
@@ -293,7 +299,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, c
 
 ### OH_AVMetadataBuilder_SetWriter()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, const char* writer)
 ```
 
@@ -319,7 +325,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, 
 
 ### OH_AVMetadataBuilder_SetComposer()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder, const char* composer)
 ```
 
@@ -345,7 +351,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder
 
 ### OH_AVMetadataBuilder_SetDuration()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder, int64_t duration)
 ```
 
@@ -371,7 +377,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder
 
 ### OH_AVMetadataBuilder_SetMediaImageUri()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* builder, const char* mediaImageUri)
 ```
 
@@ -397,7 +403,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 
 ### OH_AVMetadataBuilder_SetSubtitle()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder, const char* subtitle)
 ```
 
@@ -423,7 +429,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder
 
 ### OH_AVMetadataBuilder_SetDescription()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* builder, const char* description)
 ```
 
@@ -449,7 +455,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* buil
 
 ### OH_AVMetadataBuilder_SetLyric()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, const char* lyric)
 ```
 
@@ -465,7 +471,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, c
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
-| const char* lyric | lrc格式的歌词内容。 |
+| const char* lyric | LRC格式的歌词内容。 |
 
 **返回：**
 
@@ -475,13 +481,13 @@ AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, c
 
 ### OH_AVMetadataBuilder_SetSkipIntervals()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder,AVMetadata_SkipIntervals intervals)
 ```
 
 **描述**
 
-设置资源的跳转的间隔时间。
+设置资源的跳转间隔时间。
 
 **起始版本：** 13
 
@@ -501,7 +507,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* bu
 
 ### OH_AVMetadataBuilder_SetDisplayTags()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* builder, int32_t tags)
 ```
 
@@ -527,7 +533,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* buil
 
 ### OH_AVMetadataBuilder_GenerateAVMetadata()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* builder,OH_AVMetadata** avMetadata)
 ```
 
@@ -553,7 +559,7 @@ AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* 
 
 ### OH_AVMetadata_Destroy()
 
-```
+```c
 AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 ```
 

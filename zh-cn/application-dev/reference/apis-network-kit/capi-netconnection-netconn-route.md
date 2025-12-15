@@ -1,5 +1,16 @@
 # NetConn_Route
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+typedef struct NetConn_Route {...} NetConn_Route
+```
+
 ## 概述
 
 路由配置信息。
@@ -16,7 +27,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| char iface[NETCONN_MAX_STR_LEN] | 网络接口 |
+| char iface[[NETCONN_MAX_STR_LEN]](capi-net-connection-type-h.md#宏定义) | 网络接口 |
 | [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) destination | 目标地址 |
 | [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) gateway | 网关地址 |
 | int32_t hasGateway | 是否存在网关 |

@@ -1,5 +1,12 @@
 # UIServiceExtensionConnectCallback
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @xhz-sz-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 UIServiceExtensionConnectCallback provides callbacks for the connection to a UIServiceExtensionAbility.
 
 
@@ -95,7 +102,7 @@ struct UIServiceExtensionAbility {
       // Connect to the UIServiceExtensionAbility.
       context.connectUIServiceExtensionAbility(startWant, this.dataCallBack)
         .then((proxy: common.UIServiceProxy) => {
-          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}`);
           this.comProxy = proxy;
           let formData: Record<string, string> = {
             'PATH': '/tmp/aaa.jpg'

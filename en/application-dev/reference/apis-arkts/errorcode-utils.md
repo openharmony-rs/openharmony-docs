@@ -1,4 +1,10 @@
 # Utils Error Codes
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 > **NOTE**
 >
@@ -57,7 +63,7 @@ The **Worker** instance fails to be initialized when the API is called.
 
 **Solution**
 
-1. Check whether the number of **Worker** instances exceeds 8. If yes, destroy idle **Worker** instances.
+1. Check whether the number of workers exceeds 64. If yes, destroy idle workers in a timely manner.
 2. If **WorkerOptions** is set, check the parameter type and validity.
 
 ## 10200004 Worker Instance Is Not Running
@@ -112,7 +118,7 @@ The type of data to transfer does not support serialization or is imported exter
 
 **Solution**
 
-Ensure that the data to transfer is a valid serialized object supported by Worker. For details, see [ArkTS Inter-Thread Communication Overview](../../arkts-utils/interthread-communication-overview.md).
+Ensure that the data to transfer is a valid serialized object supported by Worker. For details, see [Overview of ArkTS Inter-Thread Communication](../../arkts-utils/interthread-communication-overview.md).
 
 ## 10200007 Abnormal Worker File Path
 
@@ -126,7 +132,7 @@ The file path is invalid, and the **Worker** instance cannot be loaded.
 
 **Possible Causes**
 
-The worker file path is invalid. As a result, a valid **worker.abc** file cannot be generated during the build.
+The worker file path is invalid.
 
 **Solution**
 
@@ -155,7 +161,7 @@ Use a buffer the size of which meets the requirements.
 
 **Error Message**
 
-The container is empty.
+Container is empty.
 
 **Description**
 
@@ -538,7 +544,7 @@ Timeout exceeded.
 
 **Description**
 
-The [lockAsync](js-apis-arkts-utils.md#lockasync) API fails to acquire a lock within the specified period.
+The [lockAsync](arkts-apis-arkts-utils-locks.md#lockasync) API fails to acquire a lock within the specified period.
 
 **Possible Causes**
 
@@ -546,7 +552,7 @@ A deadlock occurs somewhere.
 
 **Solution**
 
-Check whether a circular dependency exists between locks. Add the **catch** statement to the [lockAsync](js-apis-arkts-utils.md#lockasync) call to catch error information, which contains information about existing asynchronous lock instances and possible deadlock warnings.
+Check whether a circular dependency exists between locks. Add the **catch** statement to the [lockAsync](arkts-apis-arkts-utils-locks.md#lockasync) call to catch error information, which contains information about existing asynchronous lock instances and possible deadlock warnings.
 
 ## 10200201 Concurrent Modification Error
 
@@ -950,3 +956,22 @@ The ArrayBuffer has been detached, or the ArrayBuffer is null.
 **Solution**
 
 Ensure that the ArrayBuffer being used is available. If you are not sure, capture exceptions.
+
+## 10200301 Failed to Load the Native Module
+
+**Error Message**
+
+Loading native module failed.
+
+**Description**
+
+This error code is returned when the native module fails to be loaded.
+
+**Possible Causes**
+
+1. The native module does not exist in the corresponding path.
+2. The module content is incorrect and cannot be loaded correctly.
+
+**Solution**
+
+Check whether the native module to be loaded is in the current package.

@@ -1,5 +1,11 @@
 # 动态订阅公共事件
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
@@ -14,66 +20,79 @@
 > 订阅者对象的生命周期需要接入方管理，不再使用时需主动销毁释放，避免内存泄漏。
 > 
 > 动态订阅的公共事件回调受应用状态影响。当应用处于后台时，无法接收到动态订阅公共事件。当应用从后台切换到前台时，最多可以回调切回前30s内监听的公共事件。
+>
+> 分身应用与主应用之间的公共事件相互隔离，相互无法接收到对方发送的公共事件。
 
 ## 接口说明
 
-详细接口见[接口文档](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagersubscribe)。
+详细接口见[接口文档](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md)。
 
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| createSubscriber(subscribeInfo:&nbsp;[CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md),&nbsp;callback:&nbsp;AsyncCallback&lt;[CommonEventSubscriber](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscriber.md)&gt;):&nbsp;void | 创建订阅者对象（callback）。 |
-| createSubscriber(subscribeInfo:&nbsp;CommonEventSubscribeInfo):&nbsp;Promise&lt;CommonEventSubscriber&gt; | 创建订阅者对象（promise）。 |
-| subscribe(subscriber:&nbsp;CommonEventSubscriber,&nbsp;callback:&nbsp;AsyncCallback<CommonEventData\>):&nbsp;void | 订阅公共事件。 |
+| [createSubscriber](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagercreatesubscriber)(subscribeInfo:&nbsp;CommonEventSubscribeInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventSubscriber&gt;):&nbsp;void | 创建订阅者对象（callback）。 |
+| [createSubscriber](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1)(subscribeInfo:&nbsp;CommonEventSubscribeInfo):&nbsp;Promise&lt;CommonEventSubscriber&gt; | 创建订阅者对象（promise）。 |
+| [subscribe](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagersubscribe)(subscriber:&nbsp;CommonEventSubscriber,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventData&gt;):&nbsp;void | 订阅公共事件。 |
 
 
 ## 开发步骤
 
 1. 导入模块。
    
-   ```ts
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
 2. 创建订阅者信息，详细的订阅者信息数据类型及包含的参数请见[CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md)文档介绍。
    
-   ```ts
+   <!-- @[CreateSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
    let subscriber: commonEventManager.CommonEventSubscriber | null = null;
    // 订阅者信息，其中的event字段需要替换为实际的事件名称。
    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-       events: ['event'], // 订阅灭屏公共事件
+     events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // 订阅灭屏公共事件
    };
    ```
 
 3. 创建订阅者，保存返回的订阅者对象subscriber，用于执行后续的订阅、退订、接收事件回调等操作。
    
-   ```ts
+   <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // 创建订阅者回调
-   commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-     if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-       return;
-     }
-     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
-     subscriber = data;
-   })
+   commonEventManager.createSubscriber(subscribeInfo,
+     (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+       if (err) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
+       subscriber = data;
+     })
    ```
 
 4. 创建订阅回调函数，订阅回调函数会在接收到事件时触发。订阅回调函数返回的data内包含了公共事件的名称、发布者携带的数据等信息，公共事件数据的详细参数和数据类型请见[CommonEventData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventData.md)文档介绍。
    
-   ```ts
+   <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // 订阅公共事件回调
    if (subscriber !== null) {
      commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
        if (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
          return;
        }
-       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
      })
    } else {
      hilog.error(DOMAIN_NUMBER, TAG, `Need create subscriber`);

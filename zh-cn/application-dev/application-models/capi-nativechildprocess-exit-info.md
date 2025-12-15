@@ -1,15 +1,21 @@
 # 获取Native子进程退出信息
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 ## 场景介绍
 
-从API version 20开始，支持父进程通过注册回调函数监听子进程，获取子进程异常退出信息，以便父进程做后续优化处理。这里支持监听的子进程必须为[OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/c-apis-ability-childprocess.md#oh_ability_startnativechildprocess)或[startNativeChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)接口创建的子进程。
+从API version 20开始，支持父进程通过注册回调函数监听子进程，获取子进程异常退出信息，以便父进程做后续优化处理。这里支持监听的子进程必须为[OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)或[startNativeChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)接口创建的子进程。
 
 ## 接口说明
 
 | 名称                                                                                                                                                                                                                                                                                                                                | 描述                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| [Ability_NativeChildProcess_ErrCode](../reference/apis-ability-kit/c-apis-ability-childprocess.md#ability_nativechildprocess_errcode) [OH_Ability_RegisterNativeChildProcessExitCallback](../reference/apis-ability-kit/c-apis-ability-childprocess.md#oh_ability_registernativechildprocessexitcallback) ([OH_Ability_OnNativeChildProcessExit](../reference/apis-ability-kit/c-apis-ability-childprocess.md#oh_ability_onnativechildprocessexit) onProcessExit) | 注册子进程退出回调函数。 |
-| [Ability_NativeChildProcess_ErrCode](../reference/apis-ability-kit/c-apis-ability-childprocess.md#ability_nativechildprocess_errcode) [OH_Ability_UnregisterNativeChildProcessExitCallback](../reference/apis-ability-kit/c-apis-ability-childprocess.md#oh_ability_unregisternativechildprocessexitcallback) ([OH_Ability_OnNativeChildProcessExit](../reference/apis-ability-kit/c-apis-ability-childprocess.md#oh_ability_onnativechildprocessexit) onProcessExit) | 解注册子进程退出回调函数。 |
+| [Ability_NativeChildProcess_ErrCode](../reference/apis-ability-kit/capi-native-child-process-h.md#ability_nativechildprocess_errcode) [OH_Ability_RegisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_registernativechildprocessexitcallback) ([OH_Ability_OnNativeChildProcessExit](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_onnativechildprocessexit) onProcessExit) | 注册子进程退出回调函数。 |
+| [Ability_NativeChildProcess_ErrCode](../reference/apis-ability-kit/capi-native-child-process-h.md#ability_nativechildprocess_errcode) [OH_Ability_UnregisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_unregisternativechildprocessexitcallback) ([OH_Ability_OnNativeChildProcessExit](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_onnativechildprocessexit) onProcessExit) | 解注册子进程退出回调函数。 |
 
 ## 开发步骤
 
@@ -22,37 +28,51 @@ libchild_process.so
 
 **头文件**
 
-```c++
+<!-- @[native_child_process_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp) -->
+
+``` C++
 #include <AbilityKit/native_child_process.h>
 ```
 
 1. 主进程-注册和解注册Native子进程异常退出回调。
 
-    调用[OH_Ability_RegisterNativeChildProcessExitCallback](../reference/apis-ability-kit/c-apis-ability-childprocess.md#oh_ability_registernativechildprocessexitcallback)注册Native子进程，如果返回值为NCP_NO_ERROR表示注册成功。
-    调用[OH_Ability_UnregisterNativeChildProcessExitCallback](../reference/apis-ability-kit/c-apis-ability-childprocess.md#oh_ability_unregisternativechildprocessexitcallback)解注册Native子进程，如果返回值为NCP_NO_ERROR表示解注册成功。
+    调用[OH_Ability_RegisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_registernativechildprocessexitcallback)注册Native子进程，如果返回值为NCP_NO_ERROR表示注册成功。
+    调用[OH_Ability_UnregisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_unregisternativechildprocessexitcallback)解注册Native子进程，如果返回值为NCP_NO_ERROR表示解注册成功。
 
-    ```c++
+    <!-- @[register_native_child_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp) -->
+    
+    ``` C++
     #include <AbilityKit/native_child_process.h>
-    void OnNativeChildProcessExit(int32_t pid, int32_t signal) {
-        OH_LOG_INFO("pid: %{public}d, signal: %{public}d", pid, signal);
+    #include <hilog/log.h>
+    
+    // ···
+    
+    void OnNativeChildProcessExit(int32_t pid, int32_t signal)
+    {
+        OH_LOG_INFO(LOG_APP, "pid: %{public}d, signal: %{public}d", pid, signal);
     }
-
+    
     void RegisterNativeChildProcessExitCallback()
     {
-        Ability_NativeChildProcess_ErrCode ret = OH_Ability_RegisterNativeChildProcessExitCallback(OnNativeChildProcessExit);
+        Ability_NativeChildProcess_ErrCode ret =
+            OH_Ability_RegisterNativeChildProcessExitCallback(OnNativeChildProcessExit);
         if (ret != NCP_NO_ERROR) {
-            OH_LOG_ERROR("register failed.");
+            OH_LOG_ERROR(LOG_APP, "register failed.");
         }
+        // ···
     }
-
+    
     void UnregisterNativeChildProcessExitCallback()
     {
-        Ability_NativeChildProcess_ErrCode ret = OH_Ability_UnregisterNativeChildProcessExitCallback(OnNativeChildProcessExit);
+        Ability_NativeChildProcess_ErrCode ret =
+            OH_Ability_UnregisterNativeChildProcessExitCallback(OnNativeChildProcessExit);
         if (ret != NCP_NO_ERROR) {
-            OH_LOG_ERROR("unregister failed.");
+            OH_LOG_ERROR(LOG_APP, "unregister failed.");
         }
+        // ···
     }
     ```
+
 
 2. 主进程-添加编译依赖项。
 

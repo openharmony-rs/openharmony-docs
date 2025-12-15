@@ -1,6 +1,12 @@
 # AbilityFirstFrameStateData (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-**AbilityFirstFrameStateData** defines the data reported by the callback when the first frame of an ability is rendered. Specifically, the data is returned in the **onAbilityFirstFrameDrawn** callback of [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) after the first frame rendering completion event is listened for by calling [on](js-apis-app-ability-appManager-sys.md#appmanageronabilityfirstframestate12).
+The module defines the struct reported by the callback when the first frame of an ability is rendered. After registering the first frame rendering completion event of an ability by using [on](js-apis-app-ability-appManager-sys.md#appmanageronabilityfirstframestate12), you can obtain the reported struct through the [onAbilityFirstFrameDrawn](./js-apis-inner-application-abilityFirstFrameStateObserver-sys.md#onabilityfirstframedrawn) callback of [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md).
 
 > **NOTE**
 >
@@ -19,10 +25,10 @@ import { appManager } from '@kit.AbilityKit';
 
 **System API**: This is a system API.
 
-| Name       | Type   | Read Only| Mandatory| Description            |
+| Name       | Type   | Read Only| Optional| Description            |
 | ----------- | ------- | ---- | ---- | ---------------- |
-| bundleName  | string  | Yes  | No  | Bundle name.|
-| moduleName  | string  | Yes  | No  | Module name.|
-| abilityName | string  | Yes  | No  | Ability name.   |
-| appIndex    | number  | Yes  | No  | Index of the DLP sandbox. |
-| isColdStart | boolean | Yes  | No  | Enabled status of cold start. The value **true** means that cold start is enabled, and **false** means the opposite.    |
+| bundleName  | string  | No  | No  | Bundle name.|
+| moduleName  | string  | No  | No  | Module name.|
+| abilityName | string  | No  | No  | Ability name.   |
+| appIndex    | number  | No  | No  | Index of the DLP sandbox. |
+| isColdStart | boolean | No  | No  | Enabled status of cold start. **true** if enabled, **false** otherwise.    |

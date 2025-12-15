@@ -1,5 +1,12 @@
 # AbilityStageContext
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The AbilityStageContext module implements the context of an ability stage. It inherits from [Context](js-apis-inner-application-context.md).
 
 This module provides APIs for accessing a specific ability stage. You can use the APIs to obtain the ModuleInfo object and environment configuration of an ability stage.
@@ -24,7 +31,7 @@ import { common } from '@kit.AbilityKit';
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | No| No| ModuleInfo object corresponding to the ability stage.|
-| config | [Configuration](js-apis-app-ability-configuration.md) | No| No| Configuration for the environment where the application is running.|
+| config | [Configuration](js-apis-app-ability-configuration.md) | No| No| Environment variables.|
 
 **Example**
 

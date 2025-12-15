@@ -1,6 +1,14 @@
 # 使用Image_NativeModule完成图片解码
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 创建ImageSource，获取位图的宽、高信息，以及释放ImageSource实例。
+
+从API version 22开始支持对部分专业相机格式图片的预览图解码，具体格式包括：CR2、CR3、ARW、NEF、RAF、NRW、ORF、RW2、PEF、SRW。
 
 ## 开发步骤
 
@@ -23,7 +31,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 在创建ImageSource实例后，进行指定属性值的获取和修改、通过解码参数创建PixelMap对象、获取图像帧数等操作。
 
 ```c++
-#include <linux/kd.h>
 #include <string>
 #include <hilog/log.h>
 #include <multimedia/image_framework/image/image_common.h>
@@ -51,7 +58,7 @@ static napi_value sourceTest(napi_env env, napi_callback_info info)
     size_t argCount = NUM_1;
     if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1 ||
         argValue[NUM_0] == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest napi_get_cb_info failed, argCount: %{public}d.", argCount);
+        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest napi_get_cb_info failed, argCount: %{public}lu.", static_cast<int>(argCount));
         return getJsResult(env, IMAGE_BAD_PARAMETER);
     }
     char name[1024];

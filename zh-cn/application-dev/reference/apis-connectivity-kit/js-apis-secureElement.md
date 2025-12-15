@@ -1,12 +1,19 @@
 # @ohos.secureElement (安全单元的通道管理)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 本模块主要用于操作及管理安全单元（SecureElement，简称SE），电子设备上可能存在的安全单元有eSE（Embedded SE）和SIM卡。文档中出现的SE服务为SEService实例，参见[createService](#omapicreateservice12)。
 
 对于文档中出现以下类型说明：
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
-| Reader  | 此类的实例表示该设备支持的SE，如果支持eSE和SIM，则返回两个实例。 |
+| Reader  | 此类的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例。 |
 | Session | 此类的实例表示在某个SE Reader实例上创建连接会话。 |
 | Channel | 此类的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。   |
 
@@ -198,11 +205,12 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let seService: omapi.SEService;
 function seStateOnCb(data: omapi.ServiceState) {
-    console.log("omapi.on ServiceState: ", data);
+    hilog.info(0x0000, 'testTag', 'omapi.on ServiceState: %{public}s', JSON.stringify(data));
 }
 
 function seStateOffCb(data: omapi.ServiceState) {
-    console.log("omapi.off ServiceState: ", data);
+    hilog.info(0x0000, 'testTag', 'omapi.off ServiceState: %{public}s', JSON.stringify(data));
+
 }
 
 function secureElementDemo() {
@@ -220,14 +228,14 @@ function secureElementDemo() {
         omapi.on('stateChanged', seStateOnCb);
     } catch (error) {
         if (error as BusinessError) {
-            console.error(`omapi on error catch Code: ${(error as BusinessError).code}, ` + `message: ${(error as BusinessError).message}`);
+            hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         }
     }
     try{
         omapi.off('stateChanged', seStateOffCb);
     } catch (error) {
         if (error as BusinessError) {
-            console.error(`omapi off error catch Code: ${(error as BusinessError).code}, ` + `message: ${(error as BusinessError).message}`);
+            hilog.error(0x0000, 'testTag', 'omapi off error %{public}s', JSON.stringify(error));
         }
     }
 }
@@ -279,6 +287,8 @@ function secureElementDemo() {
     }
     if (seReaders == undefined || seReaders.length == 0) {
         hilog.error(0x0000, 'testTag', 'no valid reader found.');
+        // 释放SeService资源
+        seService.shutdown();
         return;
     }
 }
@@ -408,13 +418,13 @@ try {
 ```
 ## Reader
 
-Reader的实例表示该设备支持的SE，如果支持eSE和SIM，则返回两个实例。通过[SEService.getReaders](#seservicegetreaders)获取Reader实例。
+Reader的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例。通过[SEService.getReaders](#seservicegetreaders)获取Reader实例。
 
 ### Reader.getName
 
 getName(): string
 
-返回此Reader的名称。如果此读卡器是SIM Reader，则其名称必须为“SIM”。如果读卡器是eSE，则其名称须为“eSE”。
+返回此Reader的名称。如果此读卡器是SIM Reader，则其名称必须为“SIM”。如果此读卡器是SIM2 Reader，则其名称必须为“SIM2”。如果读卡器是eSE，则其名称须为“eSE”。
 
 **系统能力：**  SystemCapability.Communication.SecureElement
 
@@ -444,7 +454,7 @@ let seReaders : omapi.Reader[];
 // 在使用seReaders之前，需要对seReaders进行初始化
 
 try {
-    let reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+    let reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
     let name = reader.getName();
     hilog.info(0x0000, 'testTag', 'name %{public}s', JSON.stringify(name));
 } catch (error) {
@@ -487,7 +497,7 @@ let seReaders : omapi.Reader[];
 // 在使用seReaders之前，需要对seReaders进行初始化
 
 try {
-    let reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+    let reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
     let isPresent = reader.isSecureElementPresent();
     hilog.info(0x0000, 'testTag', 'isPresent %{public}s', JSON.stringify(isPresent));
 } catch (error) {
@@ -532,7 +542,7 @@ let seSession : omapi.Session;
 // 在使用seReaders之前，需要对seReaders进行初始化
 function secureElementDemo() {
     try {
-        let reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+        let reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));
@@ -575,13 +585,15 @@ let reader : omapi.Reader;
 // 在使用seReaders之前，需要对seReaders进行初始化
 function secureElementDemo() {
     try {
-        reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+        reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));
     }
     if (seSession == undefined) {
         hilog.error(0x0000, 'testTag', 'seSession invalid.');
+        // 释放SeService资源
+        seService.shutdown();
         return;
     }
     try {
@@ -632,7 +644,7 @@ let reader : omapi.Reader;
 // 在使用seReaders之前，需要对seReaders进行初始化
 function secureElementDemo() {
     try {
-        reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+        reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));

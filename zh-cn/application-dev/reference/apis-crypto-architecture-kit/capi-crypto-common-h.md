@@ -1,5 +1,12 @@
 # crypto_common.h
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 ## 概述
 
 定义通用API接口。
@@ -39,7 +46,7 @@
 
 ### OH_Crypto_ErrCode
 
-```
+```c
 enum OH_Crypto_ErrCode
 ```
 
@@ -60,7 +67,7 @@ enum OH_Crypto_ErrCode
 
 ### Crypto_CipherMode
 
-```
+```c
 enum Crypto_CipherMode
 ```
 
@@ -80,7 +87,7 @@ enum Crypto_CipherMode
 
 ### OH_Crypto_FreeDataBlob()
 
-```
+```c
 void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 ```
 

@@ -1,5 +1,12 @@
 # Overview of Application Redirection
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 Application redirection enables users to jump from one application to another to transfer data or perform a specific action. It improves the convenience and smoothness of user interactions.
 
 ## Use Cases
@@ -16,7 +23,7 @@ Application redirection is widely used in social media sharing and marketing pro
 
     > **NOTE**
     >
-    > Since API version 12, it is not recommended that third-party applications start other applications by specifying an ability (implicit Want mode). For details about how to switch from the implicit Want mode to the [linking mode](app-startup-overview.md#application-links), see [Switching from Explicit Want Redirection to Linking Redirection](uiability-startup-adjust.md).
+    > Starting from API version 12, it is not recommended that third-party applications start other applications by specifying an ability (implicit Want mode). For details about how to switch from the implicit Want mode to the [linking mode](app-startup-overview.md#application-links), see [Switching from Explicit Want Redirection to Linking Redirection](uiability-startup-adjust.md).
 
     - Specifying an application link (recommended): Use [openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12) or [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) to specify an [application link](app-startup-overview.md#application-links) and start the target application page.
 

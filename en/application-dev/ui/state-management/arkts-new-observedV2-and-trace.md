@@ -1,25 +1,35 @@
 # \@ObservedV2 and \@Trace Decorators: Observing Class Property Changes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-To allow the state management framework to observe properties in class objects, you can use the \@ObservedV2 decorator and \@Trace decorator to decorate classes and properties in classes.
+To enable the state management framework to observe properties in class objects, you can use the \@ObservedV2 and \@Trace decorators to decorate classes and properties in classes.
 
 
 \@ObservedV2 and \@Trace provide the capability of directly observing the property changes of nested objects. They are one of the core capabilities of state management V2. Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the overall capability architecture of state management V2.
 
 >**NOTE**
 >
->The \@ObservedV2 and \@Trace decorators are supported since API version 12.
+> The \@ObservedV2 and \@Trace decorators are supported since API version 12.
 >
+> The \@ObservedV2 and \@Trace decorators can be used in ArkTS widgets since API version 12.
+>
+> The \@ObservedV2 and \@Trace decorators can be used in atomic services since API version 12.
 
 ## Overview
 
 The \@ObservedV2 and \@Trace decorators are used to decorate classes and properties in classes so that changes to the classes and properties can be observed.
 
 - \@ObservedV2 and \@Trace must come in pairs. Using either of them alone does not work.
-- If a property decorated by \@Trace changes, only the component bound to the property is instructed to re-render.
-- In a nested class, changes to its property trigger UI re-render only when the property is decorated by \@Trace and the class is decorated by \@ObservedV2.
-- In an inherited class, changes to a property of the parent or child class trigger UI re-renders only when the property is decorated by \@Trace and the owning class is decorated by \@ObservedV2.
+- When a property decorated with \@Trace changes, only the component bound to that property will re-render.
+- In a nested class, changes to a property trigger UI re-rendering only when the property is decorated with \@Trace and the class is decorated with \@ObservedV2.
+- In an inherited class, changes to a property of the parent or child class trigger UI re-rendering only when the property is decorated with \@Trace and the owning class is decorated with \@ObservedV2.
 - Attributes that are not decorated by \@Trace cannot detect changes nor trigger UI re-renders.
 - Instances of \@ObservedV2 decorated classes cannot be serialized using **JSON.stringify**.
+- Classes decorated with @ObservedV2 and @Trace must be instantiated using the **new** operator to have change observation capabilities.
 
 ## Limitations of State Management V1 on Observability of Properties in Nested Class Objects
 
@@ -47,7 +57,7 @@ class Son {
 @Entry
 @Component
 struct Index {
-  @State father: Father = new Father("John", 8);
+  @State father: Father = new Father('John', 8);
 
   build() {
     Row() {
@@ -66,7 +76,7 @@ struct Index {
 }
 ```
 
-In the preceding example, clicking the **Text** component increases the value of **age**, but does not trigger UI re-renders. The reason is that, the **age** property is in a nested class and not observable to the current state management framework. To resolve this issue, state management V1 uses [\@ObjectLink](arkts-observed-and-objectlink.md) with custom components.
+In the preceding example, clicking the **Text** component increases the value of **age**, but does not trigger UI re-rendering. The reason is that, the **age** property is in a nested class and not observable to the current state management framework. To resolve this issue, state management V1 uses [\@ObjectLink](arkts-observed-and-objectlink.md) with custom components.
 
 ```ts
 @Observed
@@ -109,7 +119,7 @@ struct Child {
 @Entry
 @Component
 struct Index {
-  @State father: Father = new Father("John", 8);
+  @State father: Father = new Father('John', 8);
 
   build() {
     Column() {
@@ -170,7 +180,7 @@ struct Index {
 ```ts
 @ObservedV2
 class Father {
-  @Trace name: string = "Tom";
+  @Trace name: string = 'Tom';
 }
 class Son extends Father {
 }
@@ -184,7 +194,7 @@ struct Index {
       // If name is changed, the Text component is re-rendered.
       Text(`${this.son.name}`)
         .onClick(() => {
-          this.son.name = "Jack";
+          this.son.name = 'Jack';
         })
     }
   }
@@ -271,7 +281,7 @@ struct Index {
 ```ts
 class User {
   id: number = 0;
-  @Trace name: string = "Tom"; // Incorrect usage. An error is reported at compile time.
+  @Trace name: string = 'Tom'; // Incorrect usage. An error is reported at compile time.
 }
 ```
 
@@ -280,7 +290,7 @@ class User {
 ```ts
 @ComponentV2
 struct Comp {
-  @Trace message: string = "Hello World"; // Incorrect usage. An error is reported at compile time.
+  @Trace message: string = 'Hello World'; // Incorrect usage. An error is reported at compile time.
 
   build() {
   }
@@ -292,12 +302,12 @@ struct Comp {
 ```ts
 @Observed
 class User {
-  @Trace name: string = "Tom"; // Incorrect usage. An error is reported at compile time.
+  @Trace name: string = 'Tom'; // Incorrect usage. An error is reported at compile time.
 }
 
 @ObservedV2
 class Person {
-  @Track name: string = "Jack"; // Incorrect usage. An error is reported at compile time.
+  @Track name: string = 'Jack'; // Incorrect usage. An error is reported at compile time.
 }
 ```
 
@@ -307,11 +317,11 @@ class Person {
 // @State is used as an example.
 @ObservedV2
 class Job {
-  @Trace jobName: string = "Teacher";
+  @Trace jobName: string = 'Teacher';
 }
 @ObservedV2
 class Info {
-  @Trace name: string = "Tom";
+  @Trace name: string = 'Tom';
   @Trace age: number = 25;
   job: Job = new Job();
 }
@@ -325,13 +335,13 @@ struct Index {
       Text(`name: ${this.info.name}`)
       Text(`age: ${this.info.age}`)
       Text(`jobName: ${this.info.job.jobName}`)
-      Button("change age")
+      Button('change age')
         .onClick(() => {
           this.info.age++;
         })
-      Button("Change job")
+      Button('Change job')
         .onClick(() => {
-          this.info.job.jobName = "Doctor";
+          this.info.job.jobName = 'Doctor';
         })
     }
   }
@@ -344,11 +354,11 @@ struct Index {
 // @State is used as an example.
 @ObservedV2
 class Job {
-  @Trace jobName: string = "Teacher";
+  @Trace jobName: string = 'Teacher';
 }
 @ObservedV2
 class Info {
-  @Trace name: string = "Tom";
+  @Trace name: string = 'Tom';
   @Trace age: number = 25;
   job: Job = new Job();
 }
@@ -367,13 +377,13 @@ struct Index {
       Text(`name: ${this.message.name}`)
       Text(`age: ${this.message.age}`)
       Text(`jobName: ${this.message.job.jobName}`)
-      Button("change age")
+      Button('change age')
         .onClick(() => {
           this.message.age++;
         })
-      Button("Change job")
+      Button('Change job')
         .onClick(() => {
-          this.message.job.jobName = "Doctor";
+          this.message.job.jobName = 'Doctor';
         })
     }
   }
@@ -381,6 +391,7 @@ struct Index {
 ```
 
 - Instances of \@ObservedV2 decorated classes cannot be serialized using **JSON.stringify**.
+- Classes decorated with @ObservedV2 and @Trace must be instantiated using the **new** operator to have change observation capabilities.
 
 ## Use Scenarios
 
@@ -390,9 +401,9 @@ In the following example, **Pencil** is the innermost class in the **Son** class
 
 The example demonstrates how \@Trace is stacked up against [\@Track](arkts-track.md) and [\@State](arkts-state.md) under the existing state management framework: The @Track decorator offers property-level update capability for classes, but not deep observability; \@State can only observe the changes of the object itself and changes at the first layer; in multi-layer nesting scenarios, you must encapsulate custom components and use [\@Observed](arkts-observed-and-objectlink.md) and [\@ObjectLink](arkts-observed-and-objectlink.md) to observe the changes.
 
-* Click **Button("change length")**, in which **length** is a property decorated by \@Trace. The change of **length** can trigger the re-render of the associated UI component, that is, **UINode (1)**, and output the log "id: 1 renderTimes: x" whose **x** increases according to the number of clicks.
-* Because **son** on the custom component **page** is a regular variable, no change is observed for clicks on **Button("assign Son")**.
-* Clicks on **Button("assign Son")** and **Button("change length")** do not trigger UI re-renders. The reason is that, the change to **son** is not updated to the bound component.
+* Click **Button('change length')**, in which **length** is a property decorated by \@Trace. The change of **length** can trigger the re-render of the associated UI component, that is, **UINode (1)**, and output the log "id: 1 renderTimes: x" whose **x** increases according to the number of clicks.
+* Because **son** on the custom component **page** is a regular variable, no change is observed for clicks on **Button('assign Son')**.
+* Clicks on **Button('assign Son')** and **Button('change length')** do not trigger UI re-renders. The reason is that, the change to **son** is not updated to the bound component.
 
 ```ts
 @ObservedV2
@@ -406,7 +417,7 @@ class Bag {
 }
 class Son {
   age: number = 5;
-  school: string = "some";
+  school: string = 'some';
   bag: Bag = new Bag();
 }
 
@@ -425,12 +436,12 @@ struct Page {
     Column() {
       Text('pencil length'+ this.son.bag.pencil.length)
         .fontSize(this.isRender(1))   // UINode (1)
-      Button("change length")
+      Button('change length')
         .onClick(() => {
           // The value of length is changed upon a click, which triggers a re-render of UINode (1).
           this.son.bag.pencil.length += 100;
         })
-      Button("assign Son")
+      Button('assign Son')
         .onClick(() => {
           // Changes to the regular variable son do not trigger UI re-renders of UINode (1).
           this.son = new Son();
@@ -700,7 +711,7 @@ struct Index {
 ```ts
 @ObservedV2
 class Info {
-  @Trace memberMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]);
+  @Trace memberMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
 }
 
 @Entry
@@ -720,11 +731,11 @@ struct MapSample {
         })
         Button('init map')
           .onClick(() => {
-            this.info.memberMap = new Map([[0, "a"], [1, "b"], [3, "c"]]);
+            this.info.memberMap = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
           })
         Button('set new one')
           .onClick(() => {
-            this.info.memberMap.set(4, "d");
+            this.info.memberMap.set(4, 'd');
           })
         Button('clear')
           .onClick(() => {
@@ -732,7 +743,7 @@ struct MapSample {
           })
         Button('set the key: 0')
           .onClick(() => {
-            this.info.memberMap.set(0, "aa");
+            this.info.memberMap.set(0, 'aa');
           })
         Button('delete the first one')
           .onClick(() => {
@@ -765,7 +776,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.info.memberSet.entries()), (item: [number, string]) => {
+        ForEach(Array.from(this.info.memberSet.entries()), (item: [number, number]) => {
           Text(`${item[0]}`)
             .fontSize(30)
           Divider()
@@ -803,13 +814,13 @@ struct SetSample {
 ```ts
 @ObservedV2
 class Info {
-  @Trace selectedDate: Date = new Date('2021-08-08')
+  @Trace selectedDate: Date = new Date('2021-08-08');
 }
 
 @Entry
 @ComponentV2
 struct DateSample {
-  info: Info = new Info()
+  info: Info = new Info();
 
   build() {
     Column() {

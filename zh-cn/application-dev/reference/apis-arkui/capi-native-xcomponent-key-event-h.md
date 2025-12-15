@@ -1,4 +1,10 @@
 # native_xcomponent_key_event.h
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @dutie123-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -14,6 +20,8 @@
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
 
+**相关示例：** <!--RP1-->[NativeXComponentSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP1End-->
+
 ## 汇总
 
 ### 枚举
@@ -27,7 +35,7 @@
 
 ### OH_NativeXComponent_KeyCode
 
-```
+```c
 enum OH_NativeXComponent_KeyCode
 ```
 
@@ -373,7 +381,7 @@ enum OH_NativeXComponent_KeyCode
 
 ### OH_NativeXComponent_KeyAction
 
-```
+```c
 enum OH_NativeXComponent_KeyAction
 ```
 
@@ -388,6 +396,6 @@ enum OH_NativeXComponent_KeyAction
 | -- | -- |
 | OH_NATIVEXCOMPONENT_KEY_ACTION_UNKNOWN = -1 | 未知的按键动作。 |
 | OH_NATIVEXCOMPONENT_KEY_ACTION_DOWN = 0 | 按键按下动作。 |
-| OH_NATIVEXCOMPONENT_KEY_ACTION_UP | 按键抬起动作。 |
+| OH_NATIVEXCOMPONENT_KEY_ACTION_UP = 1 | 按键抬起动作。 |
 
 

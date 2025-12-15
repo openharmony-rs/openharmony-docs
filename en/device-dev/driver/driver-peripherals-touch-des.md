@@ -102,7 +102,7 @@ The HDI driver APIs provided for the input service can be classified into the in
   | int32_t (*RunCapacitanceTest)(uint32_t devIndex, uint32_t testType, char *result, uint32_t length); | Performs a capacitance test.|
   | int32_t (*RunExtraCommand)(uint32_t devIndex, InputExtraCmd *cmd);                                  | Executes the specified command.    |
 
-For more information, see [input](https://gitee.com/openharmony/drivers_peripheral/tree/master/input).
+For more information, see [input](https://gitcode.com/openharmony/drivers_peripheral/tree/master/input).
 
 ### Development Procedure
 

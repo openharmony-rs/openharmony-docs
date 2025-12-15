@@ -1,5 +1,16 @@
 # Asset_Attr
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct {...} Asset_Attr
+```
+
 ## 概述
 
 关键资产属性。

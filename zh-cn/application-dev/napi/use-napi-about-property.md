@@ -1,4 +1,10 @@
 # 使用Node-API接口设置ArkTS对象的属性
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 简介
 
@@ -10,8 +16,8 @@
 
 - **对象（Object）**：在ArkTS中，对象是一种复合数据类型，它允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
 - **属性（Property）**：在ArkTS中，属性是对象特征的键值对。每个属性都有一个名字（也称为键或标识符）和一个值。属性的值可以是任意数据类型，包括基本类型、对象和函数。
-- **可枚举属性（EnumerableProperty）**：在ArkTS中，对象的属性分为可枚举和不可枚举之分，它们是由属性的enumerable值决定的，即内部 “可枚举” 标志设置为true或false。可枚举性决定了这个属性能否被 `for...in` 查找遍历到。
-- **自有属性（OwnProperty）**：自有属性直接定义在对象上的属性，而不是从原型链上继承来的属性。
+- **可枚举属性（EnumerableProperty）**：在ArkTS中，对象的属性分为可枚举和不可枚举，它们是由属性的enumerable值决定的，即内部 “可枚举” 标志设置为true或false。可枚举性决定了这个属性能否被 `for...in` 查找遍历到。
+- **自有属性（OwnProperty）**：自有属性是直接定义在对象上的属性，而不是从原型链上继承来的属性。
 
 ## 场景和功能介绍
 
@@ -47,7 +53,7 @@ static napi_value GetPropertyNames(napi_env env, napi_callback_info info)
 {
     // 解析ArkTS的传参
     size_t argc = 1;
-    napi_value args[1] = {nullptr};
+    napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 以字符串数组的形式获取对象的可枚举属性的名称，以result传出
     napi_value result;
@@ -59,27 +65,28 @@ static napi_value GetPropertyNames(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_property_names](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const getPropertyNames: (obj: Object) => Array<string> | void;
+export const getPropertyNames: (obj: Object) => Array<string> | undefined;
 ```
-<!-- @[napi_get_property_names_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_property_names_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let propertyNames = testNapi.getPropertyNames(obj);
   if (Array.isArray(propertyNames) && propertyNames.length > 0) {
     hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property_names: %{public}s', propertyNames[0]);
@@ -89,7 +96,7 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_property_names error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_get_property_names](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_set_property
 
@@ -106,7 +113,7 @@ static napi_value SetProperty(napi_env env, napi_callback_info info)
 {
     // 接收ArkTS侧传入的三个参数：第一个参数为想要设置的object，第二个参数为属性，第三个参数为属性对应的值
     size_t argc = 3;
-    napi_value args[3] = {nullptr};
+    napi_value args[3] = { nullptr };
     napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_get_cb_info fail");
@@ -122,34 +129,35 @@ static napi_value SetProperty(napi_env env, napi_callback_info info)
     return args[0];
 }
 ```
-<!-- @[napi_set_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const setProperty: (obj: Object, key: string, value: string) => Object | void;
+export const setProperty: (obj: Object, key: String, value: string) => Object | undefined;
 ```
-<!-- @[napi_set_property_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_set_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let result = testNapi.setProperty(obj, "code", "hi");
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_property: %{public}s', JSON.stringify(result));
 } catch (error) {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_property error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_set_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_property
 
@@ -164,7 +172,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 传入的第一个参数为要检测的object，第二个对象为要检测的属性，通过调用napi_get_property接口获取对应的值
     napi_value result;
@@ -176,33 +184,34 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const getProperty: (obj: Object, key: string) => string | void;
+export const getProperty: (obj: Object, key: string) => string | undefined;
 ```
-<!-- @[napi_get_property_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property: %{public}s', testNapi.getProperty(obj, "message"));
 } catch (error) {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_get_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_has_property
 
@@ -217,7 +226,7 @@ static napi_value HasProperty(napi_env env, napi_callback_info info)
 {
     // 从ArkTS侧传入两个参数：第一个参数为要检验的对象，第二个参数为要检测是否存在对象的属性
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // 将参数传入napi_has_property方法中，若接口调用成功则将结果转化为napi_value类型抛出，否则抛出错误
@@ -234,27 +243,28 @@ static napi_value HasProperty(napi_env env, napi_callback_info info)
     return returnResult;
 }
 ```
-<!-- @[napi_has_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const hasProperty: (obj: Object, key: number | string) => boolean | void;
+export const hasProperty: (obj: Object, key: number | string) => boolean | undefined;
 ```
-<!-- @[napi_has_property_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_has_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let resultFalse = testNapi.hasProperty(obj, 0);
   let resultTrue = testNapi.hasProperty(obj, "data");
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_property: %{public}s', JSON.stringify(resultFalse));
@@ -263,7 +273,7 @@ try {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_property error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_has_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_delete_property
 
@@ -280,7 +290,7 @@ static napi_value DeleteProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_valuetype valueType;
@@ -302,7 +312,7 @@ static napi_value DeleteProperty(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-<!-- @[napi_delete_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -310,17 +320,18 @@ static napi_value DeleteProperty(napi_env env, napi_callback_info info)
 // index.d.ts
 export const deleteProperty: (obj: Object, key:string) => boolean;
 ```
-<!-- @[napi_delete_property_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_delete_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Obj {
   first: number = 0;
 }
-let obj: Obj = { first: 1};
+let obj: Obj = { first: 1 };
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_property first: %{public}s', testNapi.deleteProperty(obj, 'first'));
 // 设置新的属性为不可配置
 // 这里的Object.defineProperty方法在DevEco Studio 4.1.0.400及其以上版本不支持，需在ts使用
@@ -330,7 +341,7 @@ Object.defineProperty(obj, 'config', {
 })
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_property config: %{public}s', testNapi.deleteProperty(obj, 'config'));
 ```
-<!-- @[ark_napi_delete_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/napiDeleteProperty.ts) -->
+<!-- @[ark_napi_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/napiDeleteProperty.ts) -->
 
 ### napi_has_own_property
 
@@ -345,7 +356,7 @@ static napi_value NapiHasOwnProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 检查第一个参数是否为对象
     napi_valuetype valueTypeObj;
@@ -374,20 +385,20 @@ static napi_value NapiHasOwnProperty(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_has_own_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const napiHasOwnProperty: (obj: Object, key:string) => boolean | void;
+export const napiHasOwnProperty: (obj: Object, key:string) => boolean | undefined;
 ```
-<!-- @[napi_has_own_property_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_has_own_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let myObj = { 'myProperty': 1 };
@@ -397,7 +408,7 @@ Object.setPrototypeOf(myObj, inheritedObj);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_own_property my: %{public}s', testNapi.napiHasOwnProperty(myObj, 'myProperty'));
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_own_property inherited: %{public}s', testNapi.napiHasOwnProperty(myObj, 'inheritedProperty'));
 ```
-<!-- @[ark_napi_has_own_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/napiHasOwnProperty.ts) -->
+<!-- @[ark_napi_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/napiHasOwnProperty.ts) -->
 
 ### napi_set_named_property
 
@@ -441,27 +452,27 @@ static napi_value NapiSetNamedProperty(napi_env env, napi_callback_info info)
     return newObj;
 }
 ```
-<!-- @[napi_set_named_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const napiSetNamedProperty: (key: string) => Object | void;
+export const napiSetNamedProperty: (key: string) => Object | undefined;
 ```
-<!-- @[napi_set_named_property_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_set_named_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let obj = testNapi.napiSetNamedProperty('myProperty');
 let objAsString = JSON.stringify(obj);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_named_property: %{public}s', objAsString);
 ```
-<!-- @[ark_napi_set_named_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_named_property
 
@@ -476,7 +487,7 @@ static napi_value NapiGetNamedProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     const int32_t strLength = 32;
     char strKey[strLength] = "";
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -494,20 +505,20 @@ static napi_value NapiGetNamedProperty(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_named_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const napiGetNamedProperty: (obj: Object, key:string) => boolean | number | string | Object | void;
+export const napiGetNamedProperty: (obj: Object, key: string) => boolean | number | string | Object | undefined;
 ```
-<!-- @[napi_get_named_property_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_named_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 interface NestedObj {
@@ -530,7 +541,7 @@ let objAsString = JSON.stringify(nestedObj);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_named_property : %{public}s', objAsString);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_named_property : %{public}s', testNapi.napiGetNamedProperty(obj, 'null'));
 ```
-<!-- @[ark_napi_get_named_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_has_named_property
 
@@ -545,7 +556,7 @@ static napi_value NapiHasNamedProperty(napi_env env, napi_callback_info info)
 {
     // 接收两个ArkTS传来的参数
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     const int32_t strLength = 32;
     char strKey[strLength] = "";
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -565,21 +576,22 @@ static napi_value NapiHasNamedProperty(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_has_named_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const napiHasNamedProperty: (obj: Object, key:string) => boolean | void;
+export const napiHasNamedProperty: (obj: Object, key:string) => boolean | undefined;
 ```
-<!-- @[napi_has_named_property_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_has_named_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 interface NestedObj {
   nestedStr: string;
   nestedNum: number;
@@ -596,7 +608,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_named_property : %{public}
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_named_property : %{public}s', testNapi.napiHasNamedProperty(obj, 'nestedStr'));
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_named_property : %{public}s', testNapi.napiHasNamedProperty(obj, 'bol'));
 ```
-<!-- @[ark_napi_has_named_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_define_properties
 
@@ -632,7 +644,7 @@ static napi_value SetterCallback(napi_env env, napi_callback_info info)
 {
     // 获取传递给setter的参数
     size_t argc = 1;
-    napi_value argv[1] = {nullptr};
+    napi_value argv[1] = { nullptr };
     napi_value result;
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     size_t length = 0;
@@ -685,7 +697,7 @@ static napi_value CreateStringWithGetterSetter(napi_env env, napi_callback_info 
     return obj;
 }
 ```
-<!-- @[napi_define_properties](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -705,13 +717,14 @@ export const defineMethodProperties: () => DefineMethodObj;
 export const defineStringProperties: () => DefineStringObj;
 export const createStringWithGetterSetter: () => DefineGetterSetterObj;
 ```
-<!-- @[napi_define_properties_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_define_properties_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // 定义method类型的属性
 hilog.info(0x0000, 'testTag', 'Test Node-API define_method_properties:%{public}d', testNapi.defineMethodProperties()
   .defineMethodPropertiesExample());
@@ -724,7 +737,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API get::%{public}s ', testNapi.createS
 hilog.info(0x0000, 'testTag', 'Test Node-API setter::%{public}s ', testNapi.createStringWithGetterSetter()
   .setterCallback('set data'));
 ```
-<!-- @[ark_napi_define_properties](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_all_property_names
 
@@ -739,7 +752,7 @@ static napi_value GetAllPropertyNames(napi_env env, napi_callback_info info)
 {
     // 传入一个参数
     size_t argc = 1;
-    napi_value args[1] = {nullptr};
+    napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // 获取给定对象的所有属性名称
@@ -755,34 +768,35 @@ static napi_value GetAllPropertyNames(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_all_property_names](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const getAllPropertyNames : (obj: Object) => Array<string> | void;
+export const getAllPropertyNames : (obj: Object) => Array<string> | undefined;
 ```
-<!-- @[napi_get_all_property_names_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_all_property_names_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let propertyNames = testNapi.getAllPropertyNames(obj);
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names: %{public}s', JSON.stringify(propertyNames));
 } catch (error) {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_get_all_property_names](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 

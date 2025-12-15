@@ -1,8 +1,14 @@
 # oh_display_manager.h
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
-The **oh_display_manager.h** file declares the functions for basic display management. You can call the functions to obtain various information about the default display and listen for display status changes, such as rotation, folding, and unfolding.
+The file declares the functions for basic display management. You can call the functions to obtain various information about the default display and listen for display status changes, such as rotation, folding, and unfolding.
 
 **File to include**: <window_manager/oh_display_manager.h>
 
@@ -57,7 +63,7 @@ The **oh_display_manager.h** file declares the functions for basic display manag
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayAddListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisterdisplayaddlistener) | - | Unregisters a listener for display addition events.|
 | [typedef void (\*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId)](#oh_nativedisplaymanager_displayremovecallback) | OH_NativeDisplayManager_DisplayRemoveCallback | Defines a callback function to listen for display removal events.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayRemoveListener(OH_NativeDisplayManager_DisplayRemoveCallback displayRemoveCallback, uint32_t *listenerIndex)](#oh_nativedisplaymanager_registerdisplayremovelistener) | - | Registers a listener for display removal events (for example, monitor removed).|
-| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayRemoveListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisterdisplayremovelistener) | - | Unregisters a listener for display removal events.|
+| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayRemoveListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisterdisplayremovelistener) | - | Unregisters the listener for display removal events.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint64_t displayId, NativeDisplayManager_SourceMode *sourceMode)](#oh_nativedisplaymanager_getdisplaysourcemode) | - | Obtains the source mode of a display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64_t displayId, int32_t *x, int32_t *y)](#oh_nativedisplaymanager_getdisplayposition) | - | Obtains the position of a display.|
 
@@ -72,8 +78,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayId(uint6
 **Description**
 
 Obtains the ID of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -100,8 +104,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayWidth(in
 
 Obtains the width of the default display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 
@@ -126,8 +128,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayHeight(i
 **Description**
 
 Obtains the height of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -154,8 +154,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRotation
 
 Obtains the clockwise rotation angle of the default display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 
@@ -180,8 +178,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayOrientat
 **Description**
 
 Obtains the orientation of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -208,8 +204,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayVirtualP
 
 Obtains the virtual pixel ratio of the default display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 
@@ -234,8 +228,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRefreshR
 **Description**
 
 Obtains the refresh rate of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -262,8 +254,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityD
 
 Obtains the physical pixel density of the default display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 
@@ -289,8 +279,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityP
 
 Obtains the logical pixel density of the default display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 
@@ -298,7 +286,7 @@ Obtains the logical pixel density of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| float *densityPixels | Pointer to the logical pixel density, which indicates the scaling coefficient of the physical pixels and logical pixels. The value is a floating point number in the range [0.5, 4.0]. Generally, the value is **1.0** or **3.0**. The actual value depends on the density DPI provided by the device in use.  |
+| float *densityPixels | Pointer to the logical pixel density, which indicates the scaling coefficient of the physical pixels and logical pixels. The value is a floating-point number in the range [0.5, 4.0]. Generally, the value is **1.0** or **3.0**. The actual value depends on the density DPI provided by the device in use.  |
 
 **Return value**
 
@@ -315,8 +303,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayScaledDe
 **Description**
 
 Obtains the scale factor of fonts displayed on the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -343,8 +329,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityX
 
 Obtains the number of physical pixels per inch on the default display in the X dimension.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 
@@ -352,7 +336,7 @@ Obtains the number of physical pixels per inch on the default display in the X d
 
 | Parameter| Description|
 | -- | -- |
-| float *xDpi | Pointer to the number of physical pixels per inch in the X dimension. The value is a floating point number.|
+| float *xDpi | Pointer to the number of physical pixels per inch in the X dimension. The value is a floating-point number.|
 
 **Return value**
 
@@ -370,8 +354,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityY
 
 Obtains the number of physical pixels per inch on the default display in the Y dimension.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 
@@ -379,7 +361,7 @@ Obtains the number of physical pixels per inch on the default display in the Y d
 
 | Parameter| Description|
 | -- | -- |
-| float *yDpi | Pointer to the number of physical pixels per inch in the Y dimension. The value is a floating point number.|
+| float *yDpi | Pointer to the number of physical pixels per inch in the Y dimension. The value is a floating-point number.|
 
 **Return value**
 
@@ -396,8 +378,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDefaultDisplayCutou
 **Description**
 
 Obtains the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -424,8 +404,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyDefaultDisplayCuto
 
 Destroys the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 
@@ -451,15 +429,13 @@ bool OH_NativeDisplayManager_IsFoldable()
 
 Checks whether the current device is foldable.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| bool | Check result. The value **true** means that the device is foldable, and **false** means the opposite.|
+| bool | Check result for whether the device is foldable. **true** if foldable, **false** otherwise.|
 
 ### OH_NativeDisplayManager_GetFoldDisplayMode()
 
@@ -471,9 +447,9 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetFoldDisplayMode(Native
 
 Obtains the display mode of the foldable device.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 12
+
+**Device behavior differences**: This API returns **0** for 2-in-1 devices and non-foldable devices. For other devices, this API can be called properly.
 
 
 **Parameters**
@@ -498,8 +474,6 @@ typedef void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId
 
 Defines a callback function to listen for display status changes.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 12
 
 
@@ -518,8 +492,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayChangeList
 **Description**
 
 Registers a listener for display status changes (such as rotation, refresh rate, DPI, and resolution changes).
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -547,8 +519,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayChangeLi
 
 Unregisters a listener for display status changes.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 
@@ -574,8 +544,6 @@ typedef void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)(NativeDisp
 
 Defines a callback function to listen for folded/unfolded state changes of the display.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 12
 
 
@@ -594,8 +562,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterFoldDisplayModeCh
 **Description**
 
 Registers a listener for folded/unfolded state changes of the display.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 12
 
@@ -623,8 +589,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterFoldDisplayMode
 
 Unregisters a listener for folded/unfolded state changes of the display.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 12
 
 
@@ -649,8 +613,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAllDisplays(NativeD
 **Description**
 
 Obtains the object that contains the information about all displays.
-
-**System capability**: SystemCapability.Window.SessionManager.Core
 
 **Since**: 14
 
@@ -677,8 +639,6 @@ void OH_NativeDisplayManager_DestroyAllDisplays(NativeDisplayManager_DisplaysInf
 
 Destroys the object that contains the information about all displays.
 
-**System capability**: SystemCapability.Window.SessionManager.Core
-
 **Since**: 14
 
 
@@ -697,8 +657,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_
 **Description**
 
 Obtains the object that contains the information about a display.
-
-**System capability**: SystemCapability.Window.SessionManager.Core
 
 **Since**: 14
 
@@ -726,8 +684,6 @@ void OH_NativeDisplayManager_DestroyDisplay(NativeDisplayManager_DisplayInfo *di
 
 Destroys the object that contains the information about a display.
 
-**System capability**: SystemCapability.Window.SessionManager.Core
-
 **Since**: 14
 
 
@@ -745,9 +701,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(Nati
 
 **Description**
 
-Obtains the object that contains the information about the primary display. For devices other than 2-in-1 devices, the **displayInfo** object obtained contains information about the built-in screen. For 2-in-1 devices with an external screen, the displayInfo object obtained contains information about the current primary screen. For 2-in-1 devices without an external screen, the displayInfo object obtained contains information about the built-in screen.
-
-**System capability**: SystemCapability.Window.SessionManager.Core
+Obtains the object that contains the information about the primary display. For devices other than 2-in-1 devices, the displayInfo object obtained contains information about the built-in screen. For 2-in-1 devices with an external screen, the displayInfo object obtained contains information about the current primary screen. For 2-in-1 devices without an external screen, the displayInfo object obtained contains information about the built-in screen.
 
 **Since**: 14
 
@@ -842,9 +796,11 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint6
 
 **Description**
 
-Obtains the available area of a display. This function can be used only on 2-in-1 devices.
+Obtains the available area of a display.
 
 **Since**: 20
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. It does not work for other device types. To obtain the available screen area on the current device, call [OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth) and [OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight).
 
 
 **Parameters**
@@ -868,7 +824,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyAvailableArea(Nati
 
 **Description**
 
-Destroys the available area of a display. This function can be used only on 2-in-1 devices.
+Destroys the available area of a display.
 
 **Since**: 20
 
@@ -1069,8 +1025,8 @@ Obtains the position of a display.
 | Parameter| Description|
 | -- | -- |
 | uint64_t displayId | Display ID, which is a non-negative integer.|
-| int32_t *x | Pointer to the X coordinate of the upper left corner of the primary screen.|
-| int32_t *y | Pointer to the Y coordinate of the upper left corner of the primary screen.|
+| int32_t *x | Pointer to the X coordinate of the top-left corner of the primary screen.|
+| int32_t *y | Pointer to the Y coordinate of the top-left corner of the primary screen.|
 
 **Return value**
 

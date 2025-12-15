@@ -1,4 +1,14 @@
 # ArkWeb_ResourceRequest_
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```
+typedef struct ArkWeb_ResourceRequest_ ArkWeb_ResourceRequest
+```
 
 ## Overview
 

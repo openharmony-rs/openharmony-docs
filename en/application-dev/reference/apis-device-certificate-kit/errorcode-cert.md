@@ -1,5 +1,12 @@
 # Certificate Error Codes
 
+<!--Kit: Device Certificate Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -9,6 +16,10 @@
 **Error Message**
 
 Memory error.
+
+**Description**
+
+A memory error occurs.
 
 **Possible Causes**
 
@@ -25,6 +36,10 @@ The memory allocation failed.
 
 Runtime error.
 
+**Description**
+
+An external error occurs during running.
+
 **Possible Causes**
 
 An unexpected error occurs.
@@ -33,11 +48,33 @@ An unexpected error occurs.
 
 Check whether the system is running properly.
 
+## 19020003 Parameter Check Failure
+
+**Error Message**
+
+Indicates that parameter check failed.
+
+**Description**
+
+An error occurs during parameter verification.
+
+**Possible Causes**
+
+The input value is out of range.
+
+**Solution**
+
+Check whether the input parameters are correct.
+
 ## 19030001 Crypto Operation Error
 
 **Error Message**
 
 Crypto operation error.
+
+**Description**
+
+Failed to invoke the third-party cryptographic API.
 
 **Possible Causes**
 
@@ -54,6 +91,10 @@ An error occurs when the cryptography framework interacts with a third-party alg
 
 The certificate signature verification failed.
 
+**Description**
+
+The certificate signature verification failed.
+
 **Possible Causes**
 
 Incorrect certificate signature information is found during the signature verification.
@@ -65,6 +106,10 @@ Check whether the certificate is correct.
 ## 19030003 Certificate Has Not Taken Effect
 
 **Error Message**
+
+The certificate has not taken effect.
+
+**Description**
 
 The certificate has not taken effect.
 
@@ -84,6 +129,10 @@ The certificate has not taken effect. The effective time of the certificate is l
 
 The certificate has expired.
 
+**Description**
+
+The certificate has expired.
+
 **Possible Causes**
 
 The certificate has expired. The certificate expiration time is earlier than the current system time or the time specified by the service.
@@ -97,6 +146,10 @@ The certificate has expired. The certificate expiration time is earlier than the
 ## 19030005 Failed to Obtain the Certificate Issuer
 
 **Error Message**
+
+Failed to obtain the certificate issuer.
+
+**Description**
 
 Failed to obtain the certificate issuer.
 
@@ -114,6 +167,10 @@ Check whether the certificate is correct.
 
 The key cannot be used for signing a certificate.
 
+**Description**
+
+The key cannot be used for signing a certificate.
+
 **Possible Causes**
 
 The key cannot be used to sign certificates.
@@ -125,6 +182,10 @@ Check whether the certificate is correct.
 ## 19030007 Key Cannot be Used for Digital Signature
 
 **Error Message**
+
+The key cannot be used for digital signature.
+
+**Description**
 
 The key cannot be used for digital signature.
 
@@ -141,6 +202,10 @@ Check whether the certificate is correct.
 **Error Message**
 
 The password may be wrong.
+
+**Description**
+
+The password for the private key is incorrect.
 
 **Possible Causes**
 

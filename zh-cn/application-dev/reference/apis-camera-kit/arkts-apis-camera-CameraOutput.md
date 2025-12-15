@@ -1,10 +1,16 @@
 # Interface (CameraOutput)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+会话中[Session](arkts-apis-camera-Session.md)使用的输出信息，output的基类。
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-会话中[Session](arkts-apis-camera-Session.md)使用的输出信息，output的基类。
 
 ## 导入模块
 
@@ -26,7 +32,7 @@ release(callback: AsyncCallback\<void\>): void
 
 | 参数名      | 类型                  | 必填 | 说明                 |
 | -------- | -------------------- | ---- | ------------------- |
-| callback | AsyncCallback\<void\> | 是   | 回调函数，用于获取结果。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| callback | AsyncCallback\<void\> | 是   | 回调函数。当释放输出资源成功，err为undefined，否则为错误对象。错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -66,7 +72,7 @@ function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
 
 release(): Promise\<void\>
 
-释放输出资源，通过Promise获取结果。
+释放输出资源。使用Promise异步回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -76,7 +82,7 @@ release(): Promise\<void\>
 
 | 类型            | 说明                     |
 | -------------- | ----------------------- |
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 

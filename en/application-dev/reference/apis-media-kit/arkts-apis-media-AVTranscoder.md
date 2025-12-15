@@ -1,4 +1,10 @@
 # Interface (AVTranscoder)
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -21,14 +27,16 @@ import { media } from '@kit.MediaKit';
 
 | Name   | Type                                | Read-Only| Optional| Description              |
 | ------- | ------------------------------------ | ---- | ---- | ------------------ |
-| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  No | No  | Source media file descriptor, which specifies the data source.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
-| fdDst<sup>12+</sup>                               | number                 |  No | No  | Destination media file descriptor, which specifies the data source. After creating an AVTranscoder instance, you must set both **fdSrc** and **fdDst**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
+| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  No | No  | Source media file descriptor, which specifies the data source.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| fdDst<sup>12+</sup>                               | number                 |  No | No  | Destination media file descriptor, which specifies the data source. After creating an AVTranscoder instance, you must set both **fdSrc** and **fdDst**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## prepare<sup>12+</sup>
 
 prepare(config: AVTranscoderConfig): Promise\<void>
 
 Sets video transcoding parameters. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -46,7 +54,7 @@ Sets video transcoding parameters. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                              |
 | -------- | -------------------------------------- |
@@ -60,21 +68,26 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-// Configure the parameters based on those supported by the hardware device.
-let avTranscoderConfig: media.AVTranscoderConfig = {
-  audioBitrate : 200000,
-  audioCodec : media.CodecMimeType.AUDIO_AAC,
-  fileFormat : media.ContainerFormatType.CFT_MPEG_4,
-  videoBitrate : 3000000,
-  videoCodec : media.CodecMimeType.VIDEO_AVC,
-};
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  // Configure the parameters based on those supported by the hardware device.
+  let avTranscoderConfig: media.AVTranscoderConfig = {
+    audioBitrate : 200000,
+    audioCodec : media.CodecMimeType.AUDIO_AAC,
+    fileFormat : media.ContainerFormatType.CFT_MPEG_4,
+    videoBitrate : 3000000,
+    videoCodec : media.CodecMimeType.VIDEO_AVC,
+  };
 
-avTranscoder.prepare(avTranscoderConfig).then(() => {
-  console.info('prepare success');
-}).catch((err: BusinessError) => {
-  console.error('prepare failed and catch error is ' + err.message);
-});
+  avTranscoder.prepare(avTranscoderConfig).then(() => {
+    console.info('prepare success');
+  }).catch((err: BusinessError) => {
+    console.error('prepare failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## start<sup>12+</sup>
@@ -85,6 +98,8 @@ Starts transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [prepare()](#prepare12) API is called.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Return value**
@@ -107,12 +122,17 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.start().then(() => {
-  console.info('start AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('start AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.start().then(() => {
+    console.info('start AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('start AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## pause<sup>12+</sup>
@@ -123,6 +143,8 @@ Pauses transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [start()](#start12) API is called. You can call [resume()](#resume12) to resume transcoding.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Return value**
@@ -145,12 +167,17 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.pause().then(() => {
-  console.info('pause AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('pause AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.pause().then(() => {
+    console.info('pause AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('pause AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## resume<sup>12+</sup>
@@ -161,6 +188,8 @@ Resumes transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [pause()](#pause12) API is called.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Return value**
@@ -183,12 +212,17 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.resume().then(() => {
-  console.info('resume AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('resume AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.resume().then(() => {
+    console.info('resume AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('resume AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## cancel<sup>12+</sup>
@@ -199,6 +233,8 @@ Cancels transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [prepare()](#prepare12), [start()](#start12), [pause()](#pause12), or [resume()](#resume12) API is called.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Return value**
@@ -221,12 +257,17 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.cancel().then(() => {
-  console.info('cancel AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('cancel AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.cancel().then(() => {
+    console.info('cancel AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('cancel AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## release<sup>12+</sup>
@@ -236,6 +277,8 @@ release(): Promise\<void>
 Releases the video transcoding resources. This API uses a promise to return the result.
 
 After the resources are released, you can no longer perform any operation on the AVTranscoder instance.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -258,19 +301,26 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.release().then(() => {
-  console.info('release AVTranscoder success');
-}).catch((err: BusinessError) => {
-  console.error('release AVTranscoder failed and catch error is ' + err.message);
-});
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.release().then(() => {
+    console.info('release AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('release AVTranscoder failed and catch error is ' + err.message);
+  });
+}
 ```
 
 ## on('progressUpdate')<sup>12+</sup>
 
-on(type: 'progressUpdate', callback: Callback\<number>): void
+on(type:'progressUpdate', callback: Callback\<number\>):void
 
 Subscribes to transcoding progress updates. An application can subscribe to only one transcoding progress update event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -284,9 +334,15 @@ Subscribes to transcoding progress updates. An application can subscribe to only
 **Example**
 
 ```ts
-avTranscoder.on('progressUpdate', (progress: number) => {
-  console.info('avTranscoder progressUpdate = ' + progress);
-});
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.on('progressUpdate', (progress: number) => {
+    console.info('avTranscoder progressUpdate = ' + progress);
+  });
+}
 ```
 
 ## off('progressUpdate')<sup>12+</sup>
@@ -294,6 +350,8 @@ avTranscoder.on('progressUpdate', (progress: number) => {
 off(type:'progressUpdate', callback?: Callback\<number>): void
 
 Unsubscribes from transcoding progress updates.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -307,7 +365,13 @@ Unsubscribes from transcoding progress updates.
 **Example**
 
 ```ts
-avTranscoder.off('progressUpdate');
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('progressUpdate');
+}
 ```
 
 ## on('error')<sup>12+</sup>
@@ -317,6 +381,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to AVTranscoder errors. If this event is reported, call [release()](#release12) to exit the transcoding.
 
 An application can subscribe to only one AVTranscoder error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -329,7 +395,7 @@ An application can subscribe to only one AVTranscoder error event. When the appl
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -346,10 +412,15 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
-avTranscoder.on('error', (err: BusinessError) => {
-  console.info('case avTranscoder.on(error) called, errMessage is ' + err.message);
-});
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.on('error', (err: BusinessError) => {
+    console.info('case avTranscoder.on(error) called, errMessage is ' + err.message);
+  });
+}
 ```
 
 ## off('error')<sup>12+</sup>
@@ -357,6 +428,8 @@ avTranscoder.on('error', (err: BusinessError) => {
 off(type:'error', callback?: ErrorCallback): void
 
 Unsubscribes from AVTranscoder errors. After the unsubscription, your application can no longer receive AVTranscoder errors.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -370,7 +443,13 @@ Unsubscribes from AVTranscoder errors. After the unsubscription, your applicatio
 **Example**
 
 ```ts
-avTranscoder.off('error');
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('error');
+}
 ```
 
 ## on('complete')<sup>12+</sup>
@@ -380,6 +459,8 @@ on(type: 'complete', callback: Callback\<void>): void
 Subscribes to the event indicating that transcoding is complete. An application can subscribe to only one transcoding completion event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
 When this event is reported, the current transcoding operation is complete. You need to call [release()](#release12) to exit the transcoding.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -393,13 +474,22 @@ When this event is reported, the current transcoding operation is complete. You 
 **Example**
 
 ```ts
-avTranscoder.on('complete', async () => {
-  console.info('avTranscoder complete');
-  // Listen for transcoding completion events.
-  // Wait until avTranscoder.release() is complete and then forward, upload, or save the transcoded file.
-  await avTranscoder.release();
-  avTranscoder = undefined;
-});
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  let avTranscoder: media.AVTranscoder | undefined = undefined;
+  // Create an AVTranscoder instance.
+  avTranscoder = await media.createAVTranscoder();
+  avTranscoder.on('complete', async () => {
+    console.info('avTranscoder complete');
+    if (avTranscoder != undefined) {
+      // Listen for transcoding completion events.
+      // Ensure that avTranscoder.release() has released the AVTranscoder instance before you proceed with forwarding, uploading, or storing the transcoded file.
+      await avTranscoder.release();
+      avTranscoder = undefined;
+    }
+  });
+}
 ```
 
 ## off('complete')<sup>12+</sup>
@@ -407,6 +497,8 @@ avTranscoder.on('complete', async () => {
 off(type:'complete', callback?: Callback\<void>): void
 
 Unsubscribes from the event indicating that transcoding is complete.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -420,5 +512,11 @@ Unsubscribes from the event indicating that transcoding is complete.
 **Example**
 
 ```ts
-avTranscoder.off('complete');
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('complete');
+}
 ```

@@ -2,8 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--SE: @liuzuming-->
-<!--TSE: @lpw_work-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供浏览器管理能力，包括设置/取消浏览器策略、获取浏览器策略等。
 
@@ -39,7 +40,7 @@ setPolicySync(admin: Want, appId: string, policyName: string, policyValue: strin
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appId       | string                                                  | 是   | 应用ID，用于指定浏览器。                                     |
 | policyName  | string                                                  | 是   | 浏览器子策略名。当此值为空字符串时，表示设置应用ID对应的浏览器策略。 |
 | policyValue | string                                                  | 是   | 浏览器子策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
@@ -64,7 +65,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
@@ -94,7 +95,7 @@ getPoliciesSync(admin: Want, appId: string): string
 
 | 参数名 | 类型                                                    | 必填 | 说明                     |
 | ------ | ------------------------------------------------------- | ---- | ------------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。           |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。           |
 | appId  | string                                                  | 是   | 应用ID，用于指定浏览器。 |
 
 **返回值：**
@@ -121,7 +122,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
@@ -139,7 +140,7 @@ try {
 
 setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, policyValue: string): void
 
-为指定的浏览器设置浏览器策略，成功后会发布系统公共事件[BROWSER_POLICY_CHANGED_EVENT](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed)。
+为指定的浏览器设置浏览器策略，成功后会发布系统公共事件[COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed)。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -151,7 +152,7 @@ setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, pol
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | bundleName  | string                                                  | 是   | 应用包名，用于指定浏览器。                                     |
 | policyName  | string                                                  | 是   | 浏览器策略名。 |
 | policyValue | string                                                  | 是   | 浏览器策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
@@ -176,7 +177,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleName: string = 'com.example.testbrowser';
@@ -205,7 +206,7 @@ getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer
 
 | 参数名      | 类型                                                    | 必填 | 说明                     |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------ |
-| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。           |
+| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。           |
 | bundleName  | string                                                  | 是   | 应用包名，用于指定浏览器。 |
 
 **返回值：**
@@ -233,7 +234,7 @@ import { util } from '@kit.ArkTS';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleName: string = 'com.example.testbrowser';

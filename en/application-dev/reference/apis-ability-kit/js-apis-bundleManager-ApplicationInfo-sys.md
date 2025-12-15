@@ -1,4 +1,10 @@
 # ApplicationInfo (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The module defines the application information. An application can obtain its own application information through [bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself), with **GET_BUNDLE_INFO_WITH_APPLICATION** passed in to [bundleFlags](js-apis-bundleManager.md#bundleflag).
 
@@ -25,7 +31,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | flags<sup>12+</sup>    | number    | Yes  | Yes  | Status set between the current application and the current user. Each bit indicates a specific Boolean status. For details about the values, see [ApplicationInfoFlag](js-apis-bundleManager-sys.md#applicationinfoflag12).<br>**System API**: This property can be used in system APIs since API version 12.|
 
 
-## PreinstalledApplicationInfo<sup>12+<sup>
+## PreinstalledApplicationInfo<sup>12+</sup>
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 

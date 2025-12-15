@@ -1,4 +1,10 @@
 # Media错误码
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -23,7 +29,7 @@ No memory.
 
 销毁当前实例，并重新创建，如果重新创建失败，则停止相关操作。
 
-## 5400102 当前状态机不支持此操作
+## 5400102 当前状态不支持此操作
 
 **错误信息**
 
@@ -35,7 +41,7 @@ Operation not allowed.
 
 **可能原因**
 
-当前状态机不支持此操作。
+当前状态不支持此操作。
 
 **处理步骤**
 
@@ -196,7 +202,7 @@ Can not find host.
 
 **错误信息**
 
-Connection time out.
+Connection timeout.
 
 **错误描述**
 
@@ -215,7 +221,7 @@ Connection time out.
 
 **错误信息**
 
-NetWork abnormal.
+Network abnormal.
 
 **错误描述**
 
@@ -233,7 +239,7 @@ NetWork abnormal.
 
 **错误信息**
 
-NetWork unavailable.
+Network unavailable.
 
 **错误描述**
 
@@ -366,7 +372,7 @@ SSL服务端不可信，客户端校验服务端证书失败。
 
 **错误信息**
 
-Unsupportted request.
+Unsupported request.
 
 **错误描述**
 
@@ -385,7 +391,7 @@ Unsupportted request.
 
 **错误信息**
 
-seek continuous is unsupported.
+Seek continuous is unsupported.
 
 **错误描述**
 
@@ -403,7 +409,7 @@ seek continuous is unsupported.
 
 **错误信息**
 
-super resolution not supported.
+Super resolution not supported.
 
 **错误描述**
 
@@ -421,7 +427,7 @@ super resolution not supported.
 
 **错误信息**
 
-super resolution not enabled.
+Super resolution not enabled.
 
 **错误描述**
 

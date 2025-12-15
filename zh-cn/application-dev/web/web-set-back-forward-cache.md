@@ -1,4 +1,10 @@
 # 设置Web组件前进后退缓存
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Web组件为开发者提供了启用和配置前进后退缓存（以下简称BFCache）的功能。启用此功能后，能够显著提升用户返回至先前浏览网页的速度，尤其对于网络条件不佳的用户，可提供更为流畅的浏览体验。
 
@@ -35,6 +41,10 @@ export default class EntryAbility extends UIAbility {
   
 ```ts
 // Index.ets
+```
+<!-- @[web_module_page_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -45,20 +55,20 @@ struct Index {
   build() {
     Column() {
       Row() {
-        Button("Add options").onClick((event: ClickEvent) => {
+        Button('Add options').onClick((event: ClickEvent) => {
           let options = new webview.BackForwardCacheOptions();
           options.size = 10;
           options.timeToLive = 300;
           this.controller.setBackForwardCacheOptions(options);
         })
-        Button("Backward").onClick((event: ClickEvent) => {
+        Button('Backward').onClick((event: ClickEvent) => {
           this.controller.backward();
         })
-        Button("Forward").onClick((event: ClickEvent) => {
+        Button('Forward').onClick((event: ClickEvent) => {
           this.controller.forward();
         })
       }
-      Web({ src: "https://www.example.com", controller: this.controller })
+      Web({ src: 'https://www.example.com', controller: this.controller })
     }
     .height('100%')
     .width('100%')

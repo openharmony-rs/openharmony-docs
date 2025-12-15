@@ -1,4 +1,10 @@
 # 应用文件分享
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @chenxi0605-->
+<!--Tester: @liuhonggang123-->
+<!--Adviser: @foryourself-->
 
 应用文件分享是应用之间通过分享URI（Uniform Resource Identifier）进行文件共享的过程。
 
@@ -35,4 +41,4 @@
 
 针对应用文件分享，有以下相关实例可供参考：
 
-- [文件分享与访问（ArkTS）（API9）](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/FileShare/SandboxShare)
+- [文件分享与访问（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/FileShare/SandboxShare)

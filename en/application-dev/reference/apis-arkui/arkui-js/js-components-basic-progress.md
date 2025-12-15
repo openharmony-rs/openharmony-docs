@@ -1,4 +1,10 @@
 # progress
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -62,7 +68,7 @@ Circular progress bar, of which **type** is **circular**
 | ----- | ------------- | ---- | ---- | ----------------- |
 | color | &lt;color&gt; | -    | No   | Color of the dot on the loading progress bar.|
 
-Ring or scale-ring progress bar, of which **ring** is **scale-ring**
+Ring or scale-ring progress bar, of which **type** is **scale-ring**
 
 | Name              | Type                                      | Default Value | Mandatory  | Description                                      |
 | ---------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |

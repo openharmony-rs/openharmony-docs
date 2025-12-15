@@ -1,4 +1,10 @@
 # @ohos.file.volumeManager (Volume Management) (System API)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 The **volumeManager** module provides APIs for querying and managing volumes and disks, including querying volume information, mounting or unmounting a volume, partitioning a disk, and formatting a volume.
 
@@ -10,7 +16,7 @@ The **volumeManager** module provides APIs for querying and managing volumes and
 ## Modules to Import
 
 ```ts
-import volumemanager from "@ohos.file.volumeManager";
+import { volumeManager } from '@kit.CoreFileKit';
 ```
 
 ## volumemanager.getAllVolumes
@@ -18,6 +24,8 @@ import volumemanager from "@ohos.file.volumeManager";
 getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 
 Obtains information about all volumes of this external storage device. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -44,8 +52,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  import { BusinessError } from '@kit.BasicServicesKit';
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
     // do something with volumes, which is an array
   }).catch((error: BusinessError) => {
     console.error("getAllVolumes failed");
@@ -57,6 +65,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 
 Obtains information about all volumes of this external storage device. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -83,8 +93,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes((error: BusinessError, volumes: Array<volumemanager.Volume>) => {
+  import { BusinessError } from '@kit.BasicServicesKit';
+  volumeManager.getAllVolumes((error: BusinessError, volumes: Array<volumeManager.Volume>) => {
     // Do something.
   });
   ```
@@ -94,6 +104,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 mount(volumeId: string): Promise&lt;void&gt;
 
 Mounts a volume. This API uses a promise to return the result. Currently, only the FAT, exFAT, and NTFS file systems are supported.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_UNMOUNT_MANAGER
 
@@ -130,9 +142,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  volumemanager.mount(volumeId).then(() => {
+  volumeManager.mount(volumeId).then(() => {
     // Do something.
   }).catch((error: BusinessError) => {
     console.error("mount failed");
@@ -144,6 +156,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 Mounts a volume. This API uses an asynchronous callback to return the result. Currently, only the FAT, exFAT, and NTFS file systems are supported.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_UNMOUNT_MANAGER
 
@@ -175,9 +189,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  volumemanager.mount(volumeId, (error: BusinessError) => {
+  volumeManager.mount(volumeId, (error: BusinessError) => {
     // Do something.
   });
   ```
@@ -187,6 +201,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 unmount(volumeId: string): Promise&lt;void&gt;
 
 Unmounts a volume. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_UNMOUNT_MANAGER
 
@@ -223,9 +239,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  volumemanager.unmount(volumeId).then(() => {
+  volumeManager.unmount(volumeId).then(() => {
     // Do something.
   }).catch((error: BusinessError) => {
     console.error("mount failed");
@@ -237,6 +253,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 
 Unmounts a volume. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_UNMOUNT_MANAGER
 
@@ -268,9 +286,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  volumemanager.unmount(volumeId, (error: BusinessError) => {
+  volumeManager.unmount(volumeId, (error: BusinessError) => {
     // Do something.
   });
   ```
@@ -280,6 +298,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
 Obtains information about a volume based on the universally unique identifier (UUID). This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -295,7 +315,7 @@ Obtains information about a volume based on the universally unique identifier (U
 
   | Type                              | Description                      |
   | ---------------------------------- | -------------------------- |
-  | Promise&lt;[Volume](#volume)&gt; | Promise used to return the information about all available volume devices.|
+  | Promise&lt;[Volume](#volume)&gt; | Promise used to return the volume information of the current UUID.|
 
 **Error codes**
 
@@ -313,9 +333,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
-  volumemanager.getVolumeByUuid(uuid).then((volume: volumemanager.Volume) => {
+  volumeManager.getVolumeByUuid(uuid).then((volume: volumeManager.Volume) => {
     console.info("getVolumeByUuid successfully:" + JSON.stringify(volume));
   }).catch((error: BusinessError) => {
     console.error("getVolumeByUuid failed with error:" + JSON.stringify(error));
@@ -327,6 +347,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 Obtains information about a volume based on the UUID. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -355,9 +377,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
-  volumemanager.getVolumeByUuid(uuid, (error: BusinessError, volume: volumemanager.Volume) => {
+  volumeManager.getVolumeByUuid(uuid, (error: BusinessError, volume: volumeManager.Volume) => {
     // Do something.   
   });
   ```
@@ -367,6 +389,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
 Obtains information about a volume based on the volume ID. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -382,7 +406,7 @@ Obtains information about a volume based on the volume ID. This API uses a promi
 
   | Type                              | Description                      |
   | ---------------------------------- | -------------------------- |
-  | Promise&lt;[Volume](#volume)&gt; | Promise used to return the information about all available volume devices.|
+  | Promise&lt;[Volume](#volume)&gt; | Promise used to return the volume information of the current ID.|
 
 **Error codes**
 
@@ -400,9 +424,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  volumemanager.getVolumeById(volumeId).then((volume: volumemanager.Volume) => {
+  volumeManager.getVolumeById(volumeId).then((volume: volumeManager.Volume) => {
     console.info("getVolumeById successfully:" + JSON.stringify(volume));
   }).catch((error: BusinessError) => {
     console.error("getVolumeById failed with error:" + JSON.stringify(error));
@@ -414,6 +438,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 Obtains information about a volume based on the volume ID. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -442,9 +468,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  volumemanager.getVolumeById(volumeId, (error: BusinessError, volume: volumemanager.Volume) => {
+  volumeManager.getVolumeById(volumeId, (error: BusinessError, volume: volumeManager.Volume) => {
     // Do something.   
   });
   ```
@@ -454,6 +480,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
 Sets volume description. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_UNMOUNT_MANAGER
 
@@ -490,10 +518,10 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   let description: string = "";
-  volumemanager.setVolumeDescription(uuid, description).then(() => {
+  volumeManager.setVolumeDescription(uuid, description).then(() => {
     console.info("setVolumeDescription successfully");
   }).catch((error: BusinessError) => {
     console.error("setVolumeDescription failed with error:" + JSON.stringify(error));
@@ -505,6 +533,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&lt;void&gt;): void
 
 Sets volume description. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_UNMOUNT_MANAGER
 
@@ -536,10 +566,10 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   let description: string = "";
-  volumemanager.setVolumeDescription(uuid, description, (error: BusinessError) => {
+  volumeManager.setVolumeDescription(uuid, description, (error: BusinessError) => {
     // Do something.   
   });
   ```
@@ -548,7 +578,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
-Formats a volume. This API uses a promise to return the result. Currently, only the virtual file allocation table (VFAT) and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume change.
+Formats a volume. This API uses a promise to return the result. Currently, only the virtual file allocation table (VFAT) and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume will change.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_FORMAT_MANAGER
 
@@ -585,10 +617,10 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   let fsType: string = "";
-  volumemanager.format(volumeId, fsType).then(() => {
+  volumeManager.format(volumeId, fsType).then(() => {
     console.info("format successfully");
   }).catch((error: BusinessError) => {
     console.error("format failed with error:" + JSON.stringify(error));
@@ -599,7 +631,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): void
 
-Formats a volume. This API uses an asynchronous callback to return the result. Currently, only the VFAT and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume change.
+Formats a volume. This API uses an asynchronous callback to return the result. Currently, only the VFAT and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume will change.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_FORMAT_MANAGER
 
@@ -631,10 +665,10 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   let fsType: string = "";
-  volumemanager.format(volumeId, fsType, (error: BusinessError) => {
+  volumeManager.format(volumeId, fsType, (error: BusinessError) => {
     // Do something.   
   });
   ```
@@ -644,6 +678,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 partition(diskId: string, type: number): Promise&lt;void&gt;
 
 Partitions a disk. This API uses a promise to return the result. The system supports access to multi-partition disks. Currently, this API can partition a disk into only one partition.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_FORMAT_MANAGER
 
@@ -678,10 +714,10 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let diskId: string = "";
   let type: number = 0;
-  volumemanager.partition(diskId, type).then(() => {
+  volumeManager.partition(diskId, type).then(() => {
     console.info("partition successfully");
   }).catch((error: BusinessError) => {
     console.error("partition failed with error:" + JSON.stringify(error));
@@ -693,6 +729,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): void
 
 Partitions a disk. This API uses a callback to return the result. The system supports access to multi-partition disks. Currently, this API can partition a disk into only one partition.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MOUNT_FORMAT_MANAGER
 
@@ -722,15 +760,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let diskId: string = "";
   let type: number = 0;
-  volumemanager.partition(diskId, type, (error: BusinessError) => {
+  volumeManager.partition(diskId, type, (error: BusinessError) => {
     // Do something.   
   });
   ```
 
 ## Volume
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Volume
 

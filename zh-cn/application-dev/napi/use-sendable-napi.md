@@ -1,8 +1,14 @@
 # Native与Sendable ArkTS对象绑定
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
-通过`napi_wrap_sendable`将Sendable ArkTS对象与Native的C++对象绑定，后续操作时再通过`napi_unwrap_sendable`将ArkTS对象绑定的C++对象取出，并对其进行操作。
+通过`napi_wrap_sendable`将[Sendable](../arkts-utils/arkts-sendable.md) ArkTS对象与Native的C++对象绑定，后续操作时再通过`napi_unwrap_sendable`将ArkTS对象绑定的C++对象取出，并对其进行操作。
 
 ## 使用示例
 

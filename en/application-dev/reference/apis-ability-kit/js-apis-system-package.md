@@ -1,4 +1,10 @@
 # @system.package (Bundle Management)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 > **NOTE**
@@ -12,7 +18,7 @@
 
 
 ```
-import package from '@system.package';
+import Package from '@system.package';
 ```
 
 
@@ -34,18 +40,24 @@ Checks whether an application exists, or whether a native application has been i
 **Example**
 
 ``` ts
-export default {
+import Package from '@system.package';
+
+@Entry
+@Component
+struct MainPage {
   hasInstalled() {
-    package.hasInstalled({
+    Package.hasInstalled({
       bundleName: 'com.example.bundlename',
-      success: function(data) {
+      success: (data) => {
         console.log('package has installed: ' + data);
       },
-      fail: function(data, code) {
-        console.log('query package fail, code: ' + code + ', data: ' + data);
+      fail: (msg:string, code) => {
+        console.log('query package fail, code: ' + code + ', data: ' + msg);
       },
     });
-  },
+  }
+  build() {
+  }
 }
 ```
 
@@ -59,7 +71,7 @@ Checks whether a bundle has been installed.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-|result | boolean | Yes| The value **true** means that the bundle has been installed, and **false** means the opposite.|
+|result | boolean | Yes| Check result for whether the bundle has been installed. **true** if installed, **false** otherwise.|
 
 ## CheckPackageHasInstalledOptions
 

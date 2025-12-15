@@ -1,4 +1,10 @@
 # Developing a Fun-based Widget
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 Currently, fun-based widgets support mini-games developed with quick games. This kind of widget is in the inactive state by default. When a user taps the widget, it switches to the active state and the game begins. During the game, users can tap the pause icon to pause the game. In the paused state, users can resume the game by tapping the resume icon or end the game by tapping the stop icon.
 ## Basic Concepts
@@ -34,10 +40,10 @@ In this state, the widget behaves like a common widget, complying with the exist
 1. When a user interacts with a widget, for example, by tapping, long-pressing, or dragging, the interactive target area is always the same size as the widget rendering area. Even if the animation rendering area extends beyond the widget rendering area, the excess part is only used for UI display and does not respond to interactive events.
 2. In the active state, interactive events within the widget's rendering area are responded to by the mini-game page developed by the widget provider. In other states, interactive events are responded to by the common widget developed by the widget provider.
 3. At a time, only one widget can be in the active or paused state for fun-based interactions. When a user taps a widget to activate it, all other fun-based widgets are automatically switched to the inactive state.
-4. For details about other design specifications and restrictions, see "Developing a Creative Widget".
+4. For details about other design specifications and restrictions, refer to how to develop a creative widget.
 
 ## How to Develop
 
-For details about how to develop game content, see "Developing a Game Widget".
+For details about how to develop game content, refer to how to develop a game widget.
 
 For details about on-device widget configuration and development, see [the configuration of fun-based widgets](arkts-ui-widget-configuration.md#funinteractionparams-field).

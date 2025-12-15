@@ -1,4 +1,10 @@
 # ExtensionAbility Component
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @yewei0794-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 
 [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) components are application components for specific scenarios. Each ExtensionAbility component corresponds to a specific real-world scenario. For example, [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) is used for widget scenarios, [InputMethodExtensionAbility](../reference/apis-ime-kit/js-apis-inputmethod-extension-ability.md) is used for input method scenarios, and [WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md) is used for deferred task scenarios. You can use ExtensionAbility components of different types in your application to add new capabilities and interact more deeply with the system or other applications.
@@ -37,6 +43,9 @@ The table below lists the ExtensionAbility types defined in the system.
 | [DistributedExtensionAbility](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)|Provides extended capabilities and lifecycle callbacks for distributed ability creation, destruction, and connection.|Yes| No|
 | [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) | Provides extended capabilities for the application background service, which provides lifecycle callbacks for creating, destroying, connecting to, and disconnecting from the application background service.| Yes| No|
 |<!--DelRow-->[SelectionExtensionAbility](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md) | Provides extended capabilities for the word selection service, which provides lifecycle callbacks for connecting to and disconnecting from the system application background service. Third-party application cannot access this ExtensionAbility.| No| No|
+| [FaultLogExtensionAbility](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md) | Provides extended capabilities for delayed fault notification.| Yes| No|
+| [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) | Provides extended capabilities for web plugins to interface with native applications.| Yes| No|
+| [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) | Provides extended capabilities for sending notifications to third-party wearable devices.| Yes| No|
 <!--RP2--><!--RP2End-->
 
 > **NOTE**

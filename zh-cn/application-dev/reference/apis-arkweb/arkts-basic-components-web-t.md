@@ -1,4 +1,10 @@
 # Types
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yp99ustc; @aohui; @zourongchun-->
+<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 > **说明：**
 >
@@ -45,6 +51,20 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
 | sslErrorEvent | [SslErrorEvent](./arkts-basic-components-web-i.md#sslerrorevent12)  | 是 | 用户加载资源时发生SSL错误时触发的回调详情。 |
+
+## OnVerifyPinCallback<sup>22+</sup>
+
+type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
+
+需要用户进行PIN码认证时触发的回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| verifyPinEvent | [VerifyPinEvent](./arkts-basic-components-web-i.md#verifypinevent22)  | 是 | 需要用户进行PIN码认证时触发的回调详情。 |
 
 ## OnContextMenuHideCallback<sup>11+</sup>
 
@@ -239,7 +259,7 @@ onOverrideErrorPage的回调函数，网页加载失败时触发。
 
 **参数：**
 
-| 名称             | 类型      | 必填   | 说明                                       |
+| 参数名             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
 | errorPageEvent | [OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12) | 是 | 网页加载遇到错误时返回的相关信息。      |
 
@@ -266,3 +286,103 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 **示例：**
 
 完整示例代码参考[onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20)。
+
+## OnNativeEmbedObjectParamChangeCallback<sup>21+<sup>
+
+type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) => void
+
+增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| event | [NativeEmbedParamDataInfo](./arkts-basic-components-web-i.md#nativeembedparamdatainfo21) | 是 | object标签内嵌param元素的详细变化信息。 |
+
+**示例：**
+
+完整示例代码参考[onNativeEmbedObjectParamChange](./arkts-basic-components-web-events.md#onnativeembedobjectparamchange21)。
+
+## OnDetectBlankScreenCallback<sup>22+<sup>
+
+type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void
+
+检测到白屏时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| event | [BlankScreenDetectionEventInfo](./arkts-basic-components-web-i.md#blankscreendetectioneventinfo22) | 是 | 检测到白屏时的详细信息。 |
+
+**示例：**
+
+完整示例代码参考[onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22)。
+
+## OnCameraCaptureStateChangeCallback<sup>23+</sup>
+
+type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
+
+当页面摄像头状态发生改变时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名               | 类型                                        | 必填   | 说明                         |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [CameraCaptureStateChangeInfo](./arkts-basic-components-web-i.md#cameracapturestatechangeinfo23) | 是    | 网页摄像头状态发生改变时，返回原来的状态和改变后的状态。 |
+
+## OnMicrophoneCaptureStateChangeCallback<sup>23+</sup>
+
+type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void;
+
+当页面麦克风状态发生改变时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名               | 类型                                        | 必填   | 说明                         |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [MicrophoneCaptureStateChangeInfo](./arkts-basic-components-web-i.md#microphonecapturestatechangeinfo23) | 是    | 网页麦克风状态发生改变时，返回原来的状态和改变后的状态。 |
+
+## TextSelectionChangeCallback<sup>23+</sup>
+
+type TextSelectionChangeCallback = (selectionText: string) => void
+
+onTextSelectionChange的回调函数，选区内容改变时触发。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名             | 类型      | 必填   | 说明                                       |
+| -------------- | ---- | ---- | ---------------------------------------- |
+| selectionText | string | 是 | 返回所选文本的内容。      |
+
+**示例：**
+
+完整示例代码参考[onTextSelectionChange](./arkts-basic-components-web-events.md#ontextselectionchange23)。
+
+## OnFirstScreenPaintCallback<sup>23+<sup>
+
+type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
+
+检测到首屏渲染结束时会触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| event | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | 是 | 检测到首屏渲染时的详细信息。 |
+
+**示例：**
+
+完整示例代码参考[onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint23)。

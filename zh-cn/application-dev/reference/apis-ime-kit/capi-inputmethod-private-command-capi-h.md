@@ -1,4 +1,10 @@
 # inputmethod_private_command_capi.h
+<!--Kit: IME Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @illybyy-->
+<!--Designer: @andeszhang-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -42,7 +48,7 @@
 
 ### OH_PrivateCommand_Create()
 
-```
+```c
 InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLength)
 ```
 
@@ -68,7 +74,7 @@ InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLengt
 
 ### OH_PrivateCommand_Destroy()
 
-```
+```c
 void OH_PrivateCommand_Destroy(InputMethod_PrivateCommand *command)
 ```
 
@@ -87,7 +93,7 @@ void OH_PrivateCommand_Destroy(InputMethod_PrivateCommand *command)
 
 ### OH_PrivateCommand_SetKey()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_SetKey(InputMethod_PrivateCommand *command, char key[], size_t keyLength)
 ```
 
@@ -114,7 +120,7 @@ InputMethod_ErrorCode OH_PrivateCommand_SetKey(InputMethod_PrivateCommand *comma
 
 ### OH_PrivateCommand_SetBoolValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_SetBoolValue(InputMethod_PrivateCommand *command, bool value)
 ```
 
@@ -140,7 +146,7 @@ InputMethod_ErrorCode OH_PrivateCommand_SetBoolValue(InputMethod_PrivateCommand 
 
 ### OH_PrivateCommand_SetIntValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_SetIntValue(InputMethod_PrivateCommand *command, int32_t value)
 ```
 
@@ -166,7 +172,7 @@ InputMethod_ErrorCode OH_PrivateCommand_SetIntValue(InputMethod_PrivateCommand *
 
 ### OH_PrivateCommand_SetStrValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_SetStrValue(InputMethod_PrivateCommand *command, char value[], size_t valueLength)
 ```
 
@@ -193,7 +199,7 @@ InputMethod_ErrorCode OH_PrivateCommand_SetStrValue(InputMethod_PrivateCommand *
 
 ### OH_PrivateCommand_GetKey()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetKey(InputMethod_PrivateCommand *command, const char **key, size_t *keyLength)
 ```
 
@@ -220,7 +226,7 @@ InputMethod_ErrorCode OH_PrivateCommand_GetKey(InputMethod_PrivateCommand *comma
 
 ### OH_PrivateCommand_GetValueType()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetValueType(InputMethod_PrivateCommand *command, InputMethod_CommandValueType *type)
 ```
 
@@ -246,7 +252,7 @@ InputMethod_ErrorCode OH_PrivateCommand_GetValueType(InputMethod_PrivateCommand 
 
 ### OH_PrivateCommand_GetBoolValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetBoolValue(InputMethod_PrivateCommand *command, bool *value)
 ```
 
@@ -272,7 +278,7 @@ InputMethod_ErrorCode OH_PrivateCommand_GetBoolValue(InputMethod_PrivateCommand 
 
 ### OH_PrivateCommand_GetIntValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetIntValue(InputMethod_PrivateCommand *command, int32_t *value)
 ```
 
@@ -298,7 +304,7 @@ InputMethod_ErrorCode OH_PrivateCommand_GetIntValue(InputMethod_PrivateCommand *
 
 ### OH_PrivateCommand_GetStrValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetStrValue(InputMethod_PrivateCommand *command, const char **value, size_t *valueLength)
 ```
 

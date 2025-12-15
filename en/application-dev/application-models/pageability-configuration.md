@@ -1,5 +1,11 @@
 # PageAbility Configuration
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @lidongrui-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The PageAbility is configured in **abilities** under **module** in the **config.json** file. The **icon** field indicates the index of the ability icon resource file, and the **label** field indicates the ability name presented to users, and the **skills** field indicates the type of Want that is acceptable to the ability.
 

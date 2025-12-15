@@ -1,4 +1,14 @@
 # ArkUI_AnimateOption
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_AnimateOption ArkUI_AnimateOption
+```
 
 ## 概述
 

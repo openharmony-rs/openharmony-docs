@@ -1,13 +1,19 @@
 # module的切换
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-从FA模型切换到Stage模型时，开发者需要将config.json文件module标签下的配置迁移到module.json5配置文件module标签下，具体差异见下列表格。
+从[FA模型](ability-terminology.md#fa模型)切换到[Stage模型](ability-terminology.md#stage模型)时，开发者需要将config.json文件module标签下的配置迁移到module.json5配置文件module标签下，具体差异见下列表格。
 
 **表1** FA模型module标签与Stage模型module标签差异对比
 
 | FA标签 | 标签说明 | 对应的Stage标签 | 差异说明 |
 | -------- | -------- | -------- | -------- |
-| mainAbility | 服务中心图标露出的ability，常驻进程拉起时会启动mainAbility。 | mainElement | 标签名称变更，Stage模型不在使用“.”符号。 |
+| mainAbility | 服务中心图标露出的ability，常驻进程拉起时会启动mainAbility。 | mainElement | 标签名称变更，Stage模型不再使用“.”符号。 |
 | package | 标识HAP的包结构名称，在应用内保证唯一性。 | / | Stage模型使用name来保证应用唯一性。**FA模型升级到Stage模型时，Stage模型的name需要和FA模型的package保持一致，否则会导致升级失败。** |
 | name | 标识HAP的类名。 | / | FA模型中实际未使能，Stage模型没有与之对应的标签。 |
 | supportedModes | 标识应用支持的运行模式，当前只定义了驾驶模式（drive）。 | / | Stage模型已废弃。 |
@@ -48,7 +54,7 @@
 
 | FA模型示例 | Stage模型示例 |
 | -------- | -------- |
-| “meteData”: {<br/>    "customizeDate": [{<br/>        "name": "label",<br/>        "value": "string",<br/>        "extra": "$string:label",<br/>    }]<br/>} | “meteData”: [{<br/>    "name": "label",<br/>    "value": "string",<br/>    "resource": "$string:label",<br/>}] |
+| “metaData”: {<br/>    "customizeDate": [{<br/>        "name": "label",<br/>        "value": "string",<br/>        "extra": "$string:label",<br/>    }]<br/>} | “metaData”: [{<br/>    "name": "label",<br/>    "value": "string",<br/>    "resource": "$string:label",<br/>}] |
 
 
 **表5** FA模型和Stage中abilities差异对比

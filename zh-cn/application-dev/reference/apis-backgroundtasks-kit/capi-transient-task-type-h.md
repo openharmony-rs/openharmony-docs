@@ -1,5 +1,12 @@
 # transient_task_type.h
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 定义短时任务的错误码和结构体。
@@ -39,7 +46,7 @@
 
 ### TransientTask_ErrorCode
 
-```
+```c
 enum TransientTask_ErrorCode
 ```
 
@@ -66,7 +73,7 @@ enum TransientTask_ErrorCode
 
 ### TransientTask_Callback()
 
-```
+```c
 typedef void (*TransientTask_Callback)(void)
 ```
 

@@ -1,4 +1,10 @@
 # inputmethod_text_config_capi.h
+<!--Kit: IME Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @illybyy-->
+<!--Designer: @andeszhang-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -20,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | 输入框配置。输入框的配置信息。 |
+| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | 输入框的配置信息。 |
 
 ### 函数
 
@@ -35,7 +41,7 @@
 | [InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, int32_t windowId)](#oh_textconfig_setwindowid) | 设置文本配置信息中所属窗口的窗口id。 |
 | [InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *config, const char16_t *placeholder,size_t length)](#oh_textconfig_setplaceholder) | 设置文本配置信息中的占位符文本信息。 |
 | [InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *config, const char16_t *abilityName,size_t length)](#oh_textconfig_setabilityname) | 设置文本配置信息中的abilityName信息。 |
-| [InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType *inputType)](#oh_textconfig_getinputtype) | 获文本配置信息中的输入框类型。 |
+| [InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType *inputType)](#oh_textconfig_getinputtype) | 获取文本配置信息中的输入框类型。 |
 | [InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType *enterKeyType)](#oh_textconfig_getenterkeytype) | 获取文本配置信息中的回车键功能类型。 |
 | [InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfig *config, bool *supported)](#oh_textconfig_ispreviewtextsupported) | 获取文本配置中是否支持预上屏。 |
 | [InputMethod_ErrorCode OH_TextConfig_GetCursorInfo(InputMethod_TextConfig *config, InputMethod_CursorInfo **cursorInfo)](#oh_textconfig_getcursorinfo) | 获取文本配置信息中的光标信息。 |
@@ -49,7 +55,7 @@
 
 ### OH_TextConfig_Create()
 
-```
+```c
 InputMethod_TextConfig *OH_TextConfig_Create(void)
 ```
 
@@ -67,7 +73,7 @@ InputMethod_TextConfig *OH_TextConfig_Create(void)
 
 ### OH_TextConfig_Destroy()
 
-```
+```c
 void OH_TextConfig_Destroy(InputMethod_TextConfig *config)
 ```
 
@@ -86,7 +92,7 @@ void OH_TextConfig_Destroy(InputMethod_TextConfig *config)
 
 ### OH_TextConfig_SetInputType()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType inputType)
 ```
 
@@ -112,7 +118,7 @@ InputMethod_ErrorCode OH_TextConfig_SetInputType(InputMethod_TextConfig *config,
 
 ### OH_TextConfig_SetEnterKeyType()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType enterKeyType)
 ```
 
@@ -138,7 +144,7 @@ InputMethod_ErrorCode OH_TextConfig_SetEnterKeyType(InputMethod_TextConfig *conf
 
 ### OH_TextConfig_SetPreviewTextSupport()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig *config, bool supported)
 ```
 
@@ -154,7 +160,7 @@ InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | 指向即将被设置值的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例的指针。 |
-| bool supported | 表示输入框是否支持预上屏。 |
+| bool supported | 表示输入框是否支持预上屏。true - 表示支持预上屏。false - 表示不支持预上屏。 |
 
 **返回：**
 
@@ -164,7 +170,7 @@ InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig
 
 ### OH_TextConfig_SetSelection()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetSelection(InputMethod_TextConfig *config, int32_t start, int32_t end)
 ```
 
@@ -191,7 +197,7 @@ InputMethod_ErrorCode OH_TextConfig_SetSelection(InputMethod_TextConfig *config,
 
 ### OH_TextConfig_SetWindowId()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, int32_t windowId)
 ```
 
@@ -217,7 +223,7 @@ InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, 
 
 ### OH_TextConfig_SetPlaceholder()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *config, const char16_t *placeholder,size_t length)
 ```
 
@@ -244,7 +250,7 @@ InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *confi
 
 ### OH_TextConfig_SetAbilityName()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *config, const char16_t *abilityName,size_t length)
 ```
 
@@ -271,13 +277,13 @@ InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *confi
 
 ### OH_TextConfig_GetInputType()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType *inputType)
 ```
 
 **描述**
 
-获文本配置信息中的输入框类型。
+获取文本配置信息中的输入框类型。
 
 **起始版本：** 12
 
@@ -297,7 +303,7 @@ InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config,
 
 ### OH_TextConfig_GetEnterKeyType()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType *enterKeyType)
 ```
 
@@ -323,7 +329,7 @@ InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *conf
 
 ### OH_TextConfig_IsPreviewTextSupported()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfig *config, bool *supported)
 ```
 
@@ -339,7 +345,7 @@ InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfi
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | 指向即将被获取值的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例的指针。 |
-| bool *supported | 表示输入框是否支持预上屏。 |
+| bool *supported | 表示输入框是否支持预上屏。true - 表示支持预上屏。false - 表示不支持预上屏。 |
 
 **返回：**
 
@@ -349,7 +355,7 @@ InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfi
 
 ### OH_TextConfig_GetCursorInfo()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetCursorInfo(InputMethod_TextConfig *config, InputMethod_CursorInfo **cursorInfo)
 ```
 
@@ -375,7 +381,7 @@ InputMethod_ErrorCode OH_TextConfig_GetCursorInfo(InputMethod_TextConfig *config
 
 ### OH_TextConfig_GetTextAvoidInfo()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetTextAvoidInfo(InputMethod_TextConfig *config, InputMethod_TextAvoidInfo **avoidInfo)
 ```
 
@@ -401,7 +407,7 @@ InputMethod_ErrorCode OH_TextConfig_GetTextAvoidInfo(InputMethod_TextConfig *con
 
 ### OH_TextConfig_GetSelection()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetSelection(InputMethod_TextConfig *config, int32_t *start, int32_t *end)
 ```
 
@@ -428,7 +434,7 @@ InputMethod_ErrorCode OH_TextConfig_GetSelection(InputMethod_TextConfig *config,
 
 ### OH_TextConfig_GetWindowId()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig *config, int32_t *windowId)
 ```
 
@@ -454,7 +460,7 @@ InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig *config, 
 
 ### OH_TextConfig_GetPlaceholder()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetPlaceholder(InputMethod_TextConfig *config, char16_t *placeholder,size_t *length)
 ```
 
@@ -481,7 +487,7 @@ InputMethod_ErrorCode OH_TextConfig_GetPlaceholder(InputMethod_TextConfig *confi
 
 ### OH_TextConfig_GetAbilityName()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *config, char16_t *abilityName,size_t *length)
 ```
 

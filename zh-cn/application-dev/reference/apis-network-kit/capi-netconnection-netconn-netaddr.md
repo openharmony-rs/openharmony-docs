@@ -1,5 +1,16 @@
 # NetConn_NetAddr
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+typedef struct NetConn_NetAddr {...} NetConn_NetAddr
+```
+
 ## 概述
 
 网络地址。
@@ -19,6 +30,6 @@
 | uint8_t family | 网络地址族。 |
 | uint8_t prefixlen | 前缀长度。 |
 | uint8_t port | 端口号。 |
-| char address[NETCONN_MAX_STR_LEN] | 地址。 |
+| char address[[NETCONN_MAX_STR_LEN]](capi-net-connection-type-h.md#宏定义) | 地址。 |
 
 

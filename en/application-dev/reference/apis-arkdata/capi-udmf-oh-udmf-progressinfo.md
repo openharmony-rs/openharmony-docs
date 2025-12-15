@@ -1,4 +1,14 @@
 # OH_Udmf_ProgressInfo
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_Udmf_ProgressInfo OH_Udmf_ProgressInfo
+```
 
 ## Overview
 

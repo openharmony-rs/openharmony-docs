@@ -1,10 +1,16 @@
 # @ohos.sensor (Sensor)
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **Sensor** module provides APIs for obtaining the sensor list and subscribing to sensor data. It also provides some common sensor algorithms.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. Before subscribing to sensor data, call [getSingleSensor](#sensorgetsinglesensor9) to obtain the target sensor. For details about how to use the API, see [Sensor Development](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/sensor-guidelines#how-to-develop). If any error occurs, see the error code description of the API. When you subscribe to the sensor data, ensure that the **on** and **off** APIs are used in pairs.
 
 
 ## Modules to Import
@@ -36,7 +42,7 @@ Subscribes to data of the acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -50,6 +56,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
     console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
@@ -85,7 +92,7 @@ Subscribes to data of the uncalibrated acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -99,6 +106,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, (data: sensor.AccelerometerUncalibratedResponse) => {
     console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
@@ -135,7 +143,7 @@ Subscribes to data of the ambient light sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -148,6 +156,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.AMBIENT_LIGHT, (data: sensor.LightResponse) => {
     console.info('Succeeded in getting the ambient light intensity: ' + data.intensity);
@@ -179,7 +188,7 @@ Subscribes to data of the ambient temperature sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -192,6 +201,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.AMBIENT_TEMPERATURE, (data: sensor.AmbientTemperatureResponse) => {
     console.info('Succeeded in invoking on. Temperature: ' + data.temperature);
@@ -223,7 +233,7 @@ Subscribes to data of the barometer sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -236,6 +246,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.BAROMETER, (data: sensor.BarometerResponse) => {
     console.info('Succeeded in invoking on. Atmospheric pressure: ' + data.pressure);
@@ -267,7 +278,7 @@ Subscribes to data of the gravity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -280,6 +291,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.GRAVITY, (data: sensor.GravityResponse) => {
     console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
@@ -317,7 +329,7 @@ Subscribes to data of the gyroscope sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -331,6 +343,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.GYROSCOPE, (data: sensor.GyroscopeResponse) => {
     console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
@@ -367,7 +380,7 @@ Subscribes to data of the uncalibrated gyroscope sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -381,6 +394,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.GYROSCOPE_UNCALIBRATED, (data: sensor.GyroscopeUncalibratedResponse) => {
     console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
@@ -418,7 +432,7 @@ Subscribes to data of the Hall effect sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -431,6 +445,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.HALL, (data: sensor.HallResponse) => {
     console.info('Succeeded in invoking on. Hall status: ' + data.status);
@@ -465,7 +480,7 @@ Subscribes to data of the heart rate sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -479,6 +494,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.HEART_RATE, (data: sensor.HeartRateResponse) => {
     console.info('Succeeded in invoking on. Heart rate: ' + data.heartRate);
@@ -510,7 +526,7 @@ Subscribes to data of the humidity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -523,6 +539,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.HUMIDITY, (data: sensor.HumidityResponse) => {
     console.info('Succeeded in invoking on. Humidity: ' + data.humidity);
@@ -557,7 +574,7 @@ Subscribes to data of the linear acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -571,6 +588,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.LINEAR_ACCELEROMETER, (data: sensor.LinearAccelerometerResponse) => {
     console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
@@ -604,7 +622,7 @@ Subscribes to data of the magnetic field sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -617,6 +635,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.MAGNETIC_FIELD, (data: sensor.MagneticFieldResponse) => {
     console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
@@ -650,7 +669,7 @@ Subscribes to data of the uncalibrated magnetic field sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -663,6 +682,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED, (data: sensor.MagneticFieldUncalibratedResponse) => {
     console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
@@ -695,15 +715,6 @@ Subscribes to data of the orientation sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
-**Error codes**
-
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-
 **Parameters**
 
 | Name  | Type                                                       | Mandatory| Description                                                       |
@@ -712,12 +723,22 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 | callback | Callback&lt;[OrientationResponse](#orientationresponse)&gt; | Yes  | Callback used to report the sensor data, which is a **OrientationResponse** object.  |
 | options  | [Options](#options)                                         | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns.|
 
+**Error codes**
+
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
 **Example**
 
 ```ts
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.ORIENTATION, (data: sensor.OrientationResponse) => {
     console.info('Succeeded in the device rotating at an angle around the Z axis: ' + data.alpha);
@@ -737,21 +758,11 @@ try {
 
 on(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options): void
 
-Subscribes to data of the pedometer sensor.
+Subscribes to data of the pedometer sensor. The step counter sensor's data reporting is subject to some delay, and the delay is determined by specific product implementations.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
 **System capability**: SystemCapability.Sensors.Sensor
-
-**Error codes**
-
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Parameters**
 
@@ -761,12 +772,23 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 | callback | Callback&lt;[PedometerResponse](#pedometerresponse)&gt; | Yes  | Callback used to report the sensor data, which is a **PedometerResponse** object.    |
 | options  | [Options](#options)                                     | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns.|
 
+**Error codes**
+
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
 **Example**
 
 ```ts
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.PEDOMETER, (data: sensor.PedometerResponse) => {
     console.info('Succeeded in invoking on. Step count: ' + data.steps);
@@ -801,7 +823,7 @@ Subscribes to data of the pedometer detection sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -815,6 +837,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.PEDOMETER_DETECTION, (data: sensor.PedometerDetectionResponse) => {
     console.info('Succeeded in invoking on. Pedometer scalar: ' + data.scalar);
@@ -846,7 +869,7 @@ Subscribes to data of the proximity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -859,6 +882,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.PROXIMITY, (data: sensor.ProximityResponse) => {
     console.info('Succeeded in invoking on. Distance: ' + data.distance);
@@ -891,7 +915,7 @@ Subscribes to data of the rotation vector sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -904,6 +928,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.ROTATION_VECTOR, (data: sensor.RotationVectorResponse) => {
     console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
@@ -939,7 +964,7 @@ Subscribes to the significant motion sensor data.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -952,6 +977,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, (data: sensor.SignificantMotionResponse) => {
     console.info('Succeeded in invoking on. Scalar data: ' + data.scalar);
@@ -984,7 +1010,7 @@ Subscribes to data of the wear detection sensor.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -997,6 +1023,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.WEAR_DETECTION, (data: sensor.WearDetectionResponse) => {
     console.info('Succeeded in invoking on. Wear status: ' + data.value);
@@ -1022,12 +1049,12 @@ Enables listening for sensor status changes. This API asynchronously returns the
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| sensorStatusChange     |  sensorStatusChange        | Yes  | Event type. The value **sensorStatusChange** indicates a sensor status change event.            |
+| type     |  'sensorStatusChange'         | Yes  | Event type. The value **sensorStatusChange** indicates the sensor status change event.            |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | Yes  | Callback used to return the sensor status change event.|
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1039,6 +1066,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on('sensorStatusChange', (data: sensor.SensorStatusEvent) => {
     console.info('sensorStatusChange : ' + JSON.stringify(data));
@@ -1074,7 +1102,7 @@ Obtains data of the acceleration sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1088,6 +1116,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
     console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
@@ -1119,7 +1148,7 @@ Obtains data of the uncalibrated acceleration sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1133,6 +1162,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, (data: sensor.AccelerometerUncalibratedResponse) => {
     console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
@@ -1165,7 +1195,7 @@ Obtains data of the ambient light sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1178,6 +1208,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.AMBIENT_LIGHT, (data: sensor.LightResponse) => {
     console.info('Succeeded in invoking once. the ambient light intensity: ' + data.intensity);
@@ -1205,7 +1236,7 @@ Obtains data of the temperature sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1218,6 +1249,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.AMBIENT_TEMPERATURE, (data: sensor.AmbientTemperatureResponse) => {
     console.info('Succeeded in invoking once. Temperature: ' + data.temperature);
@@ -1245,7 +1277,7 @@ Obtains data of the barometer sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1258,6 +1290,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.BAROMETER, (data: sensor.BarometerResponse) => {
     console.info('Succeeded in invoking once. Atmospheric pressure: ' + data.pressure);
@@ -1285,7 +1318,7 @@ Obtains data of the gravity sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1298,6 +1331,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.GRAVITY, (data: sensor.GravityResponse) => {
     console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
@@ -1329,7 +1363,7 @@ Obtains to data of the gyroscope sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1343,6 +1377,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.GYROSCOPE, (data: sensor.GyroscopeResponse) => {
     console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
@@ -1374,7 +1409,7 @@ Obtains data of the uncalibrated gyroscope sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1388,6 +1423,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.GYROSCOPE_UNCALIBRATED, (data: sensor.GyroscopeUncalibratedResponse) => {
     console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
@@ -1420,7 +1456,7 @@ Obtains data of the Hall effect sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1433,6 +1469,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.HALL, (data: sensor.HallResponse) => {
     console.info('Succeeded in invoking once. Status: ' + data.status);
@@ -1462,7 +1499,7 @@ Obtains data of the heart rate sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1476,6 +1513,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.HEART_RATE, (data: sensor.HeartRateResponse) => {
     console.info('Succeeded in invoking once. Heart rate: ' + data.heartRate);
@@ -1503,7 +1541,7 @@ Obtains data of the humidity sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1516,6 +1554,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.HUMIDITY, (data: sensor.HumidityResponse) => {
     console.info('Succeeded in invoking once. Humidity: ' + data.humidity);
@@ -1545,7 +1584,7 @@ Obtains data of the linear acceleration sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1559,6 +1598,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.LINEAR_ACCELEROMETER, (data: sensor.LinearAccelerometerResponse) => {
     console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
@@ -1588,7 +1628,7 @@ Obtains data of the magnetic field sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1601,6 +1641,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.MAGNETIC_FIELD, (data: sensor.MagneticFieldResponse) => {
     console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
@@ -1630,7 +1671,7 @@ Obtains data of the uncalibrated magnetic field sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1643,6 +1684,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED, (data: sensor.MagneticFieldUncalibratedResponse) => {
     console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
@@ -1675,7 +1717,7 @@ Obtains data of the orientation sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1688,6 +1730,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.ORIENTATION, (data: sensor.OrientationResponse) => {
     console.info('Succeeded in the device rotating at an angle around the X axis: ' + data.beta);
@@ -1704,7 +1747,7 @@ try {
 
 once(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;): void
 
-Obtains data of the pedometer sensor once.
+Obtains data of the pedometer sensor once. The step counter sensor's data reporting is subject to some delay, and the delay is determined by specific product implementations.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -1719,7 +1762,7 @@ Obtains data of the pedometer sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1733,6 +1776,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.PEDOMETER, (data: sensor.PedometerResponse) => {
     console.info('Succeeded in invoking once. Step count: ' + data.steps);
@@ -1762,7 +1806,7 @@ Obtains data of the pedometer sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1776,6 +1820,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.PEDOMETER_DETECTION, (data: sensor.PedometerDetectionResponse) => {
     console.info('Succeeded in invoking once. Scalar data: ' + data.scalar);
@@ -1803,7 +1848,7 @@ Obtains data of the proximity sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1816,6 +1861,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.PROXIMITY, (data: sensor.ProximityResponse) => {
     console.info('Succeeded in invoking once. Distance: ' + data.distance);
@@ -1843,7 +1889,7 @@ Obtains data of the rotation vector sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1856,6 +1902,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.ROTATION_VECTOR, (data: sensor.RotationVectorResponse) => {
     console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
@@ -1886,7 +1933,7 @@ Obtains the significant motion sensor data once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1899,6 +1946,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.SIGNIFICANT_MOTION, (data: sensor.SignificantMotionResponse) => {
     console.info('Succeeded in invoking once. Scalar data: ' + data.scalar);
@@ -1926,7 +1974,7 @@ Obtains data of the wear detection sensor once.
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1939,6 +1987,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.once(sensor.SensorId.WEAR_DETECTION, (data: sensor.WearDetectionResponse) => {
     console.info('Succeeded in invoking once. Wear status: ' + data.value);
@@ -1965,14 +2014,14 @@ Unsubscribes from data of the acceleration sensor.
 
 **Parameters**
 
-| Name                          | Type                                                        | Mandatory| Description                                                        |
-|-------------------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type                          | [SensorId](#sensorid9).ACCELEROMETER                         | Yes  | Sensor type. The value is fixed at **SensorId.ACCELEROMETER**.              |
-| callback                      | Callback&lt;[AccelerometerResponse](#accelerometerresponse)&gt; | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | [SensorId](#sensorid9).ACCELEROMETER                         | Yes  | Sensor type. The value is fixed at **SensorId.ACCELEROMETER**.              |
+| callback | Callback&lt;[AccelerometerResponse](#accelerometerresponse)&gt; | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1993,6 +2042,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.ACCELEROMETER, callback1);
   sensor.on(sensor.SensorId.ACCELEROMETER, callback2);
@@ -2028,7 +2078,7 @@ Unsubscribes from data of the acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2045,14 +2095,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.AccelerometerResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.ACCELEROMETER;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -2060,9 +2111,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -2075,6 +2133,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -2105,7 +2164,7 @@ Unsubscribes from data of the uncalibrated acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2126,6 +2185,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, callback1);
   sensor.on(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, callback2);
@@ -2159,7 +2219,7 @@ Unsubscribes from data of the uncalibrated acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2176,14 +2236,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.AccelerometerUncalibratedResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.ACCELEROMETER_UNCALIBRATED;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -2191,9 +2252,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -2206,6 +2274,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -2234,7 +2303,7 @@ Unsubscribes from data of the ambient light sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2254,6 +2323,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback1);
   sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback2);
@@ -2285,7 +2355,7 @@ Unsubscribes from data of the ambient light sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2301,14 +2371,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.LightResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.AMBIENT_LIGHT;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -2316,9 +2387,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -2331,6 +2409,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -2359,7 +2438,7 @@ Unsubscribes from data of the ambient temperature sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2379,6 +2458,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.AMBIENT_TEMPERATURE, callback1);
   sensor.on(sensor.SensorId.AMBIENT_TEMPERATURE, callback2);
@@ -2410,11 +2490,11 @@ Unsubscribes from data of the ambient temperature sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -2426,14 +2506,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.AmbientTemperatureResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.AMBIENT_TEMPERATURE;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -2441,9 +2522,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -2456,6 +2544,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -2485,7 +2574,7 @@ Unsubscribes from data of the barometer sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2505,6 +2594,7 @@ function callback2(data: object) {
     console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
     sensor.on(sensor.SensorId.BAROMETER, callback1);
     sensor.on(sensor.SensorId.BAROMETER, callback2);
@@ -2536,11 +2626,11 @@ Unsubscribes from data of the barometer sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -2552,14 +2642,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.BarometerResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.BAROMETER;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -2567,9 +2658,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -2582,6 +2680,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -2610,7 +2709,7 @@ Unsubscribes from data of the gravity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2630,6 +2729,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.GRAVITY, callback1);
   sensor.on(sensor.SensorId.GRAVITY, callback2);
@@ -2662,11 +2762,11 @@ Unsubscribes from data of the gravity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -2678,14 +2778,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.GravityResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.GRAVITY;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -2693,9 +2794,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -2708,6 +2816,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -2740,7 +2849,7 @@ Unsubscribes from data of the gyroscope sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2761,6 +2870,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.GYROSCOPE, callback1);
   sensor.on(sensor.SensorId.GYROSCOPE, callback2);
@@ -2796,12 +2906,12 @@ Unsubscribes from data of the gyroscope sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -2813,14 +2923,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.GyroscopeResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.GYROSCOPE;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -2828,9 +2939,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -2843,6 +2961,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -2873,7 +2992,7 @@ off(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncal
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2894,6 +3013,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.GYROSCOPE_UNCALIBRATED, callback1);
   sensor.on(sensor.SensorId.GYROSCOPE_UNCALIBRATED, callback2);
@@ -2927,12 +3047,12 @@ Unsubscribes from data of the uncalibrated gyroscope sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -2944,14 +3064,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.GyroscopeUncalibratedResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.GYROSCOPE_UNCALIBRATED;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -2959,9 +3080,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -2974,6 +3102,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -3002,7 +3131,7 @@ Unsubscribes from data of the Hall effect sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3022,6 +3151,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.HALL, callback1);
   sensor.on(sensor.SensorId.HALL, callback2);
@@ -3053,11 +3183,11 @@ Unsubscribes from data of the Hall effect sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -3069,14 +3199,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.HallResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.HALL;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -3084,9 +3215,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -3099,6 +3237,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -3129,7 +3268,7 @@ Unsubscribes from data of the heart rate sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3150,6 +3289,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.HEART_RATE, callback1);
   sensor.on(sensor.SensorId.HEART_RATE, callback2);
@@ -3183,12 +3323,12 @@ Unsubscribes from data of the heart rate sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -3200,14 +3340,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.HeartRateResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.HEART_RATE;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -3215,9 +3356,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -3230,6 +3378,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -3258,7 +3407,7 @@ Unsubscribes from data of the humidity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3278,6 +3427,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.HUMIDITY, callback1);
   sensor.on(sensor.SensorId.HUMIDITY, callback2);
@@ -3309,11 +3459,11 @@ Unsubscribes from data of the humidity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -3325,14 +3475,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.HumidityResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.HUMIDITY;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -3340,9 +3491,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -3355,6 +3513,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -3385,7 +3544,7 @@ Unsubscribes from data of the linear acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3406,6 +3565,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.LINEAR_ACCELEROMETER, callback1);
   sensor.on(sensor.SensorId.LINEAR_ACCELEROMETER, callback2);
@@ -3439,12 +3599,12 @@ Unsubscribes from data of the linear acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -3456,14 +3616,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.LinearAccelerometerResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.LINEAR_ACCELEROMETER;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -3471,9 +3632,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -3486,6 +3654,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -3514,7 +3683,7 @@ Unsubscribes from data of the magnetic field sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3534,6 +3703,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.MAGNETIC_FIELD, callback1);
   sensor.on(sensor.SensorId.MAGNETIC_FIELD, callback2);
@@ -3565,11 +3735,11 @@ Unsubscribes from data of the magnetic field sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -3581,14 +3751,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.MagneticFieldResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.MAGNETIC_FIELD;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -3596,9 +3767,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -3611,6 +3789,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -3639,7 +3818,7 @@ Unsubscribes from data of the uncalibrated magnetic field sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3659,6 +3838,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback1);
   sensor.on(sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback2);
@@ -3694,7 +3874,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -3706,14 +3886,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.MagneticFieldUncalibratedResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -3721,9 +3902,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -3736,6 +3924,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -3766,7 +3955,7 @@ Unsubscribes from data of the orientation sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3786,6 +3975,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.ORIENTATION, callback1);
   sensor.on(sensor.SensorId.ORIENTATION, callback2);
@@ -3819,11 +4009,11 @@ Unsubscribes from data of the orientation sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -3835,14 +4025,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.OrientationResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.ORIENTATION;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -3850,9 +4041,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -3865,6 +4063,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -3895,7 +4094,7 @@ Unsubscribes from data of the pedometer sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3916,12 +4115,13 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.PEDOMETER, callback1);
   sensor.on(sensor.SensorId.PEDOMETER, callback2);
   // Unsubscribe from callback1.
   sensor.off(sensor.SensorId.PEDOMETER, callback1);
-  // Unsubscribe from all callbacks of the SensorId.ORIENTATION type.
+  // Unsubscribe from all callbacks of the SensorId.PEDOMETER type.
   sensor.off(sensor.SensorId.PEDOMETER);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -3949,12 +4149,12 @@ Unsubscribes from data of the pedometer sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -3966,14 +4166,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.PedometerResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.PEDOMETER;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -3981,9 +4182,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -3996,6 +4204,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -4026,7 +4235,7 @@ Unsubscribes from data of the pedometer detection sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4047,6 +4256,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback1);
   sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback2);
@@ -4080,12 +4290,12 @@ Unsubscribes from data of the pedometer detection sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -4097,14 +4307,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.PedometerDetectionResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.PEDOMETER_DETECTION;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -4112,9 +4323,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -4127,6 +4345,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -4155,7 +4374,7 @@ Unsubscribes from data of the proximity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4175,6 +4394,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.PROXIMITY, callback1);
   sensor.on(sensor.SensorId.PROXIMITY, callback2);
@@ -4206,11 +4426,11 @@ Unsubscribes from data of the proximity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -4222,14 +4442,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.ProximityResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.PROXIMITY;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -4237,9 +4458,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -4252,6 +4480,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -4280,7 +4509,7 @@ Unsubscribes from data of the rotation vector sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4300,6 +4529,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.ROTATION_VECTOR, callback1);
   sensor.on(sensor.SensorId.ROTATION_VECTOR, callback2);
@@ -4331,11 +4561,11 @@ Unsubscribes from data of the rotation vector sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -4347,14 +4577,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.RotationVectorResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.ROTATION_VECTOR;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -4362,9 +4593,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -4377,6 +4615,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -4405,7 +4644,7 @@ Unsubscribes from valid motion sensor data.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4425,6 +4664,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, callback1);
   sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, callback2);
@@ -4456,11 +4696,11 @@ Unsubscribes from valid motion sensor data.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -4472,14 +4712,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.SignificantMotionResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.SIGNIFICANT_MOTION;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -4487,9 +4728,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -4502,6 +4750,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -4530,7 +4779,7 @@ Unsubscribes from data of the wear detection sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4550,6 +4799,7 @@ function callback2(data: object) {
   console.info('Succeeded in getting callback2 data: ' + JSON.stringify(data));
 }
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.on(sensor.SensorId.WEAR_DETECTION, callback1);
   sensor.on(sensor.SensorId.WEAR_DETECTION, callback2);
@@ -4581,11 +4831,11 @@ Unsubscribes from data of the wear detection sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. | 
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **Example**
 
@@ -4597,14 +4847,15 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.WearDetectionResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.WEAR_DETECTION;
-const sensorInfoParam: sensor.SensorInfoParam = {};
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     // Query all sensors.
     const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
@@ -4612,9 +4863,16 @@ function sensorSubscribe(): Ret {
       return Ret.Failed;
     }
     // Obtain the target sensor based on the actual service logic.
-    const targetSensor: sensor.Sensor = sensorList[0];
-    sensorInfoParam.deviceId = targetSensor.deviceId ?? -1;
-    sensorInfoParam.sensorIndex = targetSensor.sensorIndex ?? -1;
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
     // Subscribe to sensor events.
     sensor.on(sensorType, sensorCallback, { sensorInfoParam });
   } catch (error) {
@@ -4627,6 +4885,7 @@ function sensorSubscribe(): Ret {
 
 function sensorUnsubscribe(): Ret {
   let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
   try {
     sensor.off(sensorType, sensorInfoParam, sensorCallback);
   } catch (error) {
@@ -4650,12 +4909,12 @@ Disables listening for sensor status changes.
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| sensorStatusChange     |  sensorStatusChange        | Yes  | Event type. The value **sensorStatusChange** indicates a sensor status change event.            |
+| type     |  'sensorStatusChange'         | Yes  | Event type. The value **sensorStatusChange** indicates the sensor status change event.            |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | No  | Callback passed to **sensor.on**. If this parameter is left unspecified, listening will be disabled for all callbacks.|
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4667,6 +4926,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   const statusChangeCallback = (data: sensor.SensorStatusEvent) => {
     console.info('sensorStatusChange : ' + JSON.stringify(data));
@@ -4705,7 +4965,7 @@ Obtains the information about all sensors on the device.
 
 | Name         | Type                                                        | Mandatory| Description    |
 | --------------- | ------------------------------------------------------------ | ---- |--------|
-| deviceId | number                 | No  | Device ID. The default value is the ID of the local device.|
+| deviceId | number                 | No  | Device ID. The default value is -1, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [on](#sensorstatuschange19) to obtain the device ID.|
 
 
 **Return value**
@@ -4725,8 +4985,8 @@ try {
   const deviceId = 1;
   // The first deviceId is optional. By default, it is set to the ID of the local device.
   const sensorList: sensor.Sensor[] = sensor.getSensorListByDeviceSync(deviceId);
-  console.log(`sensorList length: ${sensorList.length}`);
-  console.log(`sensorList: ${JSON.stringify(sensorList)}`);
+  console.info(`sensorList length: ${sensorList.length}`);
+  console.info(`sensorList: ${JSON.stringify(sensorList)}`);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
@@ -4747,7 +5007,7 @@ Obtains information about the sensor of a specific type.
 | Name         | Type                                                        | Mandatory| Description      |
 | --------------- | ------------------------------------------------------------ | ---- |----------|
 | type     | [SensorId](#sensorid9) | Yes  | Sensor type.|
-| deviceId | number                 | No  | Device ID. The default value is the ID of the local device.  |
+| deviceId | number                 | No  | Device ID. The default value is -1, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [on](#sensorstatuschange19) to obtain the device ID.|
 
 
 **Return value**
@@ -4755,7 +5015,6 @@ Obtains information about the sensor of a specific type.
 | Type                                                      | Description          |
 | ---------------------------------------------------------- | -------------- |
 | Array&lt;[Sensor](#sensor9)&gt;           | Sensor attribute list.                 |
-
 
 **Example**
 
@@ -4767,8 +5026,8 @@ try {
   const deviceId = 1;
   // The second deviceId is optional.
   const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELEROMETER, deviceId);
-  console.log(`sensorList length: ${sensorList.length}`);
-  console.log(`sensorList Json: ${JSON.stringify(sensorList)}`);
+  console.info(`sensorList length: ${sensorList.length}`);
+  console.info(`sensorList Json: ${JSON.stringify(sensorList)}`);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
@@ -4794,7 +5053,7 @@ Obtains the geomagnetic field of a geographic location at a certain time. This A
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4807,6 +5066,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000,
       (err: BusinessError, data: sensor.GeomagneticResponse) => {
@@ -4851,7 +5111,7 @@ Obtains the geomagnetic field of a geographic location at a certain time. This A
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4864,6 +5124,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   const promise = sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000);
   promise.then((data: sensor.GeomagneticResponse) => {
@@ -4901,7 +5162,7 @@ Obtains the altitude based on the atmospheric pressure. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4914,6 +5175,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let seaPressure = 1013.2;
   let currentPressure = 1500.0;
@@ -4953,7 +5215,7 @@ Obtains the altitude based on the atmospheric pressure. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4966,6 +5228,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let seaPressure = 1013.2;
   let currentPressure = 1500.0;
@@ -4998,7 +5261,7 @@ Obtains the magnetic dip based on the inclination matrix. This API uses an async
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5011,6 +5274,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   // inclinationMatrix can be 3*3 or 4*4.
   let inclinationMatrix = [
@@ -5053,7 +5317,7 @@ Obtains the magnetic dip based on the inclination matrix. This API uses a promis
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5066,6 +5330,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   // inclinationMatrix can be 3*3 or 4*4.
   let inclinationMatrix = [
@@ -5104,7 +5369,7 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5117,6 +5382,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   // The rotation matrix can be 3*3 or 4*4.
   let currentRotationMatrix = [
@@ -5136,10 +5402,11 @@ try {
     }
     if (data.length < 3) {
       console.error("Failed to get angle variation, length" + data.length);
+      return;
     }
     console.info("Z: " + data[0]);
     console.info("X: " + data[1]);
-    console.info("Y  : " + data[2]);
+    console.info("Y: " + data[2]);
   })
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -5170,7 +5437,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5183,6 +5450,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   // The rotation matrix can be 3*3 or 4*4.
   let currentRotationMatrix = [
@@ -5199,10 +5467,11 @@ try {
   promise.then((data: Array<number>) => {
     if (data.length < 3) {
       console.error("Failed to get angle variation, length" + data.length);
+      return;
     }
     console.info("Z: " + data[0]);
     console.info("X: " + data[1]);
-    console.info("Y  : " + data[2]);
+    console.info("Y: " + data[2]);
   }, (err: BusinessError) => {
     console.error(`Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
   });
@@ -5229,7 +5498,7 @@ Obtains the rotation matrix from a rotation vector. This API uses an asynchronou
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5242,6 +5511,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
   sensor.getRotationMatrix(rotationVector, (err: BusinessError, data: Array<number>) => {
@@ -5281,7 +5551,7 @@ Obtains the rotation matrix from a rotation vector. This API uses a promise to r
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5294,6 +5564,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
   const promise = sensor.getRotationMatrix(rotationVector);
@@ -5329,7 +5600,7 @@ Transforms a rotation vector based on the coordinate system. This API uses an as
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5342,6 +5613,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let rotationMatrix = [
     1, 0, 0,
@@ -5386,7 +5658,7 @@ Transforms a rotation vector based on the coordinate system. This API uses a pro
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5399,6 +5671,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let rotationMatrix = [
     1, 0, 0,
@@ -5436,7 +5709,7 @@ Obtains the quaternion from a rotation vector. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5449,6 +5722,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
   sensor.getQuaternion(rotationVector, (err: BusinessError, data: Array<number>) => {
@@ -5488,7 +5762,7 @@ Obtains the quaternion from a rotation vector. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5501,6 +5775,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
     let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
     const promise = sensor.getQuaternion(rotationVector);
@@ -5534,7 +5809,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5547,6 +5822,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let preRotationMatrix = [
     1, 0, 0,
@@ -5583,7 +5859,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name        | Type               | Mandatory| Description          |
 | -------------- | ------------------- | ---- | -------------- |
-| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation vector.|
+| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation matrix.|
 
 **Return value**
 
@@ -5593,7 +5869,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5606,6 +5882,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let preRotationMatrix = [
     1, 0, 0,
@@ -5618,11 +5895,11 @@ try {
       console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
     }
   }, (err: BusinessError) => {
-    console.error(`Failed to getOrientatin. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to getOrientation. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`Failed to getOrientatin Code: ${e.code}, message: ${e.message}`);
+  console.error(`Failed to getOrientation Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -5644,7 +5921,7 @@ Obtains the rotation matrix based on a gravity vector and geomagnetic vector. Th
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5657,6 +5934,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let gravity = [-0.27775216, 0.5351276, 9.788099];
   let geomagnetic = [210.87253, -78.6096, -111.44444];
@@ -5696,7 +5974,7 @@ Obtains the rotation matrix based on a gravity vector and geomagnetic vector. Th
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5709,6 +5987,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let gravity = [-0.27775216, 0.5351276, 9.788099];
   let geomagnetic = [210.87253, -78.6096, -111.44444];
@@ -5740,7 +6019,7 @@ Obtains information about all sensors on the device. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5753,6 +6032,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.getSensorList((err: BusinessError, data: Array<sensor.Sensor>) => {
     if (err) {
@@ -5779,13 +6059,13 @@ Obtains information about all sensors on the device. This API uses a promise to 
 
 **Return value**
 
-| Name | Type                                    | Mandatory| Description            |
-| ------- | ---------------------------------------- | ---- | ---------------- |
-| promise | Promise&lt;Array&lt;[Sensor](#sensor9)&gt;&gt; | Yes  | Promise used to return the sensor list.|
+| Type                                    | Description            |
+| ---------------------------------------- | ---------------- |
+| Promise&lt;Array&lt;[Sensor](#sensor9)&gt;&gt; | Promise used to return the sensor list.|
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5798,6 +6078,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.getSensorList().then((data: Array<sensor.Sensor>) => {
     for (let i = 0; i < data.length; i++) {
@@ -5822,13 +6103,13 @@ Obtains information about all sensors on the device. This API returns the result
 
 **Return value**
 
-| Type                                   | Mandatory| Description                            |
-| --------------------------------------- | ---- | -------------------------------- |
-| &lt;Array&lt;[Sensor](#sensor9)&gt;&gt; | Yes  | List of sensor attributes.|
+| Type                                   | Description                            |
+| --------------------------------------- | -------------------------------- |
+| Array&lt;[Sensor](#sensor9)&gt; | List of sensor attributes.|
 
 **Error codes**
 
-For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message          |
 | -------- | ------------------ |
@@ -5840,6 +6121,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let ret = sensor.getSensorListSync()
   for (let i = 0; i < ret.length; i++) {
@@ -5868,7 +6150,7 @@ Obtains information about the sensor of a specific type. This API uses an asynch
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5882,6 +6164,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER, (err: BusinessError, data: sensor.Sensor) => {
     if (err) {
@@ -5889,6 +6172,14 @@ try {
       return;
     }
     console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
+    sensor.on(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
+      console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+      console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+      console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+    }, { interval: 100000000 });
+    setTimeout(() => {
+      sensor.off(sensor.SensorId.ACCELEROMETER);
+    }, 500);
   });
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -5912,13 +6203,13 @@ Obtains information about the sensor of a specific type. This API uses a promise
 
 **Return value**
 
-| Name | Type                             | Mandatory| Description                        |
-| ------- | --------------------------------- | ---- | ---------------------------- |
-| promise | Promise&lt;[Sensor](#sensor9)&gt; | Yes  | Promise used to return the sensor information.|
+| Type                             | Description                        |
+| --------------------------------- | ---------------------------- |
+| Promise&lt;[Sensor](#sensor9)&gt; | Promise used to return the sensor information.|
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5932,6 +6223,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data: sensor.Sensor) => {
     console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
@@ -5960,13 +6252,13 @@ Obtains information about the sensor of a specific type. This API returns the re
 
 **Return value**
 
-| Type  | Mandatory| Description                        |
-| ------ | ---- | ---------------------------- |
-| Sensor | Yes  | Sensor information.|
+| Type  | Description                        |
+| ------ | ---------------------------- |
+| Sensor | Sensor information.|
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5980,6 +6272,7 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Use try catch to capture possible exceptions.
 try {
   let ret = sensor.getSingleSensorSync(sensor.SensorId.ACCELEROMETER);
   console.info('Succeeded in getting sensor: ' + JSON.stringify(ret));
@@ -6026,11 +6319,13 @@ Defines sensor parameters, including **deviceId** and **sensorIndex**.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
+**Atomic service API**: This API can be used in atomic services since API version 19.
 
-| Name| Type                  | Mandatory| Description                     |
-| ------ | ---------------------- | ---- |-------------------------|
-| deviceId   | number | No  | Device ID. The default value is **-1**, which indicates the local device. You can use [getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19) to query other device IDs.    |
-| sensorIndex   | number | No  | Sensor index. The default value is **0**, which indicates the default sensor on the device. You can use [getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19) to query other sensor IDs.|
+
+| Name         | Type    | Read-Only | Optional | Description            |
+|--------------|----------|-------|------|----------------- |
+| deviceId    | number    | No   | Yes   | Device ID. The default value is -1, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [on](#sensorstatuschange19) to obtain the device ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.     |
+| sensorIndex | number    | No   | Yes   | Sensor index. The default value is **0**, indicating the default sensor on the device. You can use [getSensorList](#sensorgetsensorlist9) or [on](#sensorstatuschange19) to obtain the sensor index.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 
 
 ## SensorStatusEvent<sup>19+</sup>
@@ -6039,46 +6334,14 @@ Defines a device status change event.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
-
-| Name| Type                   | Description        |
-| ------ | ---------------------- | ------------ |
-| timestamp   | number  | Timestamp when an event occurs.|
-| sensorId   | number   | Sensor ID.|
-| sensorIndex   | number   | Sensor index.|
-| isSensorOnline   | boolean   | Sensor status. The value **true** indicates that the sensor is online, and the value **false** indicates the opposite.|
-| deviceId   | number   | Device ID.|
-| deviceName   | string   | Device name.|
-
-## SensorType<sup>(deprecated)</sup>
-
-Enumerates the sensor types.
-
-**System capability**: SystemCapability.Sensors.Sensor
-
-
-| Name                                      | Value  | Description                  |
-| ------------------------------------------ | ---- | ---------------------- |
-| SENSOR_TYPE_ID_ACCELEROMETER               | 1    | Acceleration sensor.        |
-| SENSOR_TYPE_ID_GYROSCOPE                   | 2    | Gyroscope sensor.        |
-| SENSOR_TYPE_ID_AMBIENT_LIGHT               | 5    | Ambient light sensor.        |
-| SENSOR_TYPE_ID_MAGNETIC_FIELD              | 6    | Magnetic field sensor.          |
-| SENSOR_TYPE_ID_BAROMETER                   | 8    | Barometer sensor.        |
-| SENSOR_TYPE_ID_HALL                        | 10   | Hall effect sensor.          |
-| SENSOR_TYPE_ID_PROXIMITY                   | 12   | Proximity sensor.        |
-| SENSOR_TYPE_ID_HUMIDITY                    | 13   | Humidity sensor.          |
-| SENSOR_TYPE_ID_ORIENTATION                 | 256  | Orientation sensor.          |
-| SENSOR_TYPE_ID_GRAVITY                     | 257  | Gravity sensor.          |
-| SENSOR_TYPE_ID_LINEAR_ACCELERATION         | 258  | Linear acceleration sensor.    |
-| SENSOR_TYPE_ID_ROTATION_VECTOR             | 259  | Rotation vector sensor.      |
-| SENSOR_TYPE_ID_AMBIENT_TEMPERATURE         | 260  | Ambient temperature sensor.      |
-| SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED | 261  | Uncalibrated magnetic field sensor.    |
-| SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED      | 263  | Uncalibrated gyroscope sensor.  |
-| SENSOR_TYPE_ID_SIGNIFICANT_MOTION          | 264  | Significant motion sensor.      |
-| SENSOR_TYPE_ID_PEDOMETER_DETECTION         | 265  | Pedometer detection sensor.      |
-| SENSOR_TYPE_ID_PEDOMETER                   | 266  | Pedometer sensor.          |
-| SENSOR_TYPE_ID_HEART_RATE                  | 278  | Heart rate sensor.          |
-| SENSOR_TYPE_ID_WEAR_DETECTION              | 280  | Wear detection sensor.      |
-| SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED  | 281  | Uncalibrated acceleration sensor.|
+| Name          | Type    | Read-Only| Optional| Description                         |
+|----------------|---------|-----|-----|-----------------------------|
+| timestamp      | number  | No | No | Timestamp when an event occurs.                  |
+| sensorId       | number  | No | No | Sensor ID.                     |
+| sensorIndex    | number  | No | No | Sensor index.                     |
+| isSensorOnline | boolean | No | No | Sensor status. The value **true** indicates that the sensor is online, and the value **false** indicates the opposite.|
+| deviceId       | number  | No | No | Device ID.                      |
+| deviceName     | string  | No | No | Device name.                      |
 
 ## SensorAccuracy<sup>11+</sup>
 
@@ -6105,8 +6368,8 @@ Describes the timestamp of the sensor data.
 
 | Name     | Type  | Read-Only| Optional| Description                    |
 | --------- | ------ | ---- | ---- | ------------------------ |
-| timestamp | number | Yes  | Yes  | Timestamp when the sensor reports data.|
-| accuracy<sup>11+</sup> | [SensorAccuracy](#sensoraccuracy11)<sup>11+</sup> | Yes  | No  | Accuracy of the sensor data.|
+| timestamp | number | No  | No  | Timestamp when the sensor reports data. Time from device startup to data reporting, in nanoseconds.|
+| accuracy<sup>11+</sup> | [SensorAccuracy](#sensoraccuracy11)<sup>11+</sup> | No  | No  | Accuracy of the sensor data.|
 
 ## Sensor<sup>9+</sup>
 
@@ -6116,20 +6379,20 @@ Describes the sensor information.
 
 | Name                         | Type     | Read-Only| Optional| Description              |
 |-----------------------------|---------|----|----|------------------|
-| sensorName                  | string  | Yes | No | Sensor name.          |
-| vendorName                  | string  | Yes | No | Vendor of the sensor.         |
-| firmwareVersion             | string  | Yes | No | Firmware version of the sensor.        |
-| hardwareVersion             | string  | Yes | No | Hardware version of the sensor.        |
-| sensorId                    | number  | Yes | No | Sensor type ID.        |
-| maxRange                    | number  | Yes | No | Maximum measurement range of the sensor.    |
-| minSamplePeriod             | number  | Yes | No | Minimum sampling period.      |
-| maxSamplePeriod             | number  | Yes | No | Maximum sampling period.      |
-| precision                   | number  | Yes | No | Precision of the sensor.          |
-| power                       | number  | Yes | No | Estimated sensor power, in mA.|
-| sensorIndex<sup>19+</sup>   | number  | Yes | Yes | Sensor index.          |
-| deviceId<sup>19+</sup>      | number  | Yes | Yes | Device ID.           |
-| deviceName<sup>19+</sup>    | string  | Yes | Yes | Device name.           |
-| isLocalSensor<sup>19+</sup> | boolean | Yes | Yes | Whether the sensor is a local sensor.        |
+| sensorName                  | string  | No | No | Sensor name.          |
+| vendorName                  | string  | No | No | Vendor of the sensor.         |
+| firmwareVersion             | string  | No | No | Firmware version of the sensor.        |
+| hardwareVersion             | string  | No | No | Hardware version of the sensor.        |
+| sensorId                    | number  | No | No | Sensor type ID.        |
+| maxRange                    | number  | No | No | Maximum measurement range of the sensor.    |
+| minSamplePeriod             | number  | No | No | Minimum sampling period.      |
+| maxSamplePeriod             | number  | No | No | Maximum sampling period.      |
+| precision                   | number  | No | No | Precision of the sensor.          |
+| power                       | number  | No | No | Estimated sensor power, in mA.|
+| sensorIndex<sup>19+</sup>   | number  | No | Yes | Sensor index.          |
+| deviceId<sup>19+</sup>      | number  | No | Yes | Device ID.           |
+| deviceName<sup>19+</sup>    | string  | No | Yes | Device name.           |
+| isLocalSensor<sup>19+</sup> | boolean | No | Yes | Whether the sensor is a local sensor.        |
 
 ## AccelerometerResponse
 
@@ -6142,9 +6405,9 @@ Describes the acceleration sensor data. It extends from [Response](#response).
 
 | Name| Type  | Read-Only| Optional| Description                                                      |
 | ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| x    | number | Yes  | Yes  | Acceleration along the x-axis of the device, in m/s². The value is equal to the reported physical quantity.|
-| y    | number | Yes  | Yes  | Acceleration along the y-axis of the device, in m/s². The value is equal to the reported physical quantity.|
-| z    | number | Yes  | Yes  | Acceleration along the z-axis of the device, in m/s². The value is equal to the reported physical quantity.|
+| x    | number | No  | No  | Acceleration along the x-axis of the device, in m/s². The value is equal to the reported physical quantity.|
+| y    | number | No  | No  | Acceleration along the y-axis of the device, in m/s². The value is equal to the reported physical quantity.|
+| z    | number | No  | No  | Acceleration along the z-axis of the device, in m/s². The value is equal to the reported physical quantity.|
 
 
 ## LinearAccelerometerResponse
@@ -6156,9 +6419,9 @@ Describes the linear acceleration sensor data. It extends from [Response](#respo
 
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| x    | number | Yes  | Yes  | Linear acceleration along the x-axis of the device, in m/s².|
-| y    | number | Yes  | Yes  | Linear acceleration along the y-axis of the device, in m/s².|
-| z    | number | Yes  | Yes  | Linear acceleration along the z-axis of the device, in m/s².|
+| x    | number | No  | No  | Linear acceleration along the x-axis of the device, in m/s².|
+| y    | number | No  | No  | Linear acceleration along the y-axis of the device, in m/s².|
+| z    | number | No  | No  | Linear acceleration along the z-axis of the device, in m/s².|
 
 
 ## AccelerometerUncalibratedResponse
@@ -6170,12 +6433,12 @@ Describes the uncalibrated acceleration sensor data. It extends from [Response](
 
 | Name | Type  | Read-Only| Optional| Description                                          |
 | ----- | ------ | ---- | ---- | ---------------------------------------------- |
-| x     | number | Yes  | Yes  | Uncalibrated acceleration along the x-axis of the device, in m/s².    |
-| y     | number | Yes  | Yes  | Uncalibrated acceleration along the y-axis of the device, in m/s².    |
-| z     | number | Yes  | Yes  | Uncalibrated acceleration along the z-axis of the device, in m/s².    |
-| biasX | number | Yes  | Yes  | Uncalibrated acceleration bias along the x-axis of the device, in m/s².|
-| biasY | number | Yes  | Yes  | Uncalibrated acceleration bias along the y-axis of the device, in m/s².|
-| biasZ | number | Yes  | Yes  | Uncalibrated acceleration bias along the z-axis of the device, in m/s².|
+| x     | number | No  | No  | Uncalibrated acceleration along the x-axis of the device, in m/s².    |
+| y     | number | No  | No  | Uncalibrated acceleration along the y-axis of the device, in m/s².    |
+| z     | number | No  | No  | Uncalibrated acceleration along the z-axis of the device, in m/s².    |
+| biasX | number | No  | No  | Uncalibrated acceleration bias along the x-axis of the device, in m/s².|
+| biasY | number | No  | No  | Uncalibrated acceleration bias along the y-axis of the device, in m/s².|
+| biasZ | number | No  | No  | Uncalibrated acceleration bias along the z-axis of the device, in m/s².|
 
 
 ## GravityResponse
@@ -6187,9 +6450,9 @@ Describes the gravity sensor data. It extends from [Response](#response).
 
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| x    | number | Yes  | Yes  | Gravitational acceleration along the x-axis of the device, in m/s².|
-| y    | number | Yes  | Yes  | Gravitational acceleration along the y-axis of the device, in m/s².|
-| z    | number | Yes  | Yes  | Gravitational acceleration along the z-axis of the device, in m/s².|
+| x    | number | No  | No  | Gravitational acceleration along the x-axis of the device, in m/s².|
+| y    | number | No  | No  | Gravitational acceleration along the y-axis of the device, in m/s².|
+| z    | number | No  | No  | Gravitational acceleration along the z-axis of the device, in m/s².|
 
 
 ## OrientationResponse
@@ -6203,9 +6466,9 @@ Describes the orientation sensor data. It extends from [Response](#response).
 
 | Name | Type  | Read-Only| Optional| Description                                                 |
 | ----- | ------ | ---- | ---- | ----------------------------------------------------- |
-| alpha | number | Yes  | Yes  | Rotation angle of the device around the z-axis, in degrees. The value ranges from 0 to 360. |
-| beta  | number | Yes  | Yes  | Rotation angle of the device around the x-axis, in degrees. The value ranges from 0 to ±180.|
-| gamma | number | Yes  | Yes  | Rotation angle of the device around the y-axis, in degrees. The value ranges from 0 to ±90. |
+| alpha | number | No  | No  | Rotation angle of the device around the z-axis, in degrees. The value ranges from 0 to 360. |
+| beta  | number | No  | No  | Rotation angle of the device around the x-axis, in degrees. The value ranges from 0 to ±180.|
+| gamma | number | No  | No  | Rotation angle of the device around the y-axis, in degrees. The value ranges from 0 to ±90. |
 
 
 ## RotationVectorResponse
@@ -6217,10 +6480,10 @@ Describes the rotation vector sensor data. It extends from [Response](#response)
 
 | Name| Type  | Read-Only| Optional| Description             |
 | ---- | ------ | ---- | ---- | ----------------- |
-| x    | number | Yes  | Yes  | X-component of the rotation vector.|
-| y    | number | Yes  | Yes  | Y-component of the rotation vector.|
-| z    | number | Yes  | Yes  | Z-component of the rotation vector.|
-| w    | number | Yes  | Yes  | Scalar, which describes the rotation status of the device relative to a reference direction, in radians           |
+| x    | number | No  | No  | X-component of the rotation vector.|
+| y    | number | No  | No  | Y-component of the rotation vector.|
+| z    | number | No  | No  | Z-component of the rotation vector.|
+| w    | number | No  | No  | Scalar, which describes the rotation status of the device relative to a reference direction, in radians           |
 
 
 ## GyroscopeResponse
@@ -6234,9 +6497,9 @@ Describes the gyroscope sensor data. It extends from [Response](#response).
 
 | Name| Type  | Read-Only| Optional| Description                                                  |
 | ---- | ------ | ---- | ---- | ------------------------------------------------------ |
-| x    | number | Yes  | Yes  | Angular velocity of rotation around the x-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
-| y    | number | Yes  | Yes  | Angular velocity of rotation around the y-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
-| z    | number | Yes  | Yes  | Angular velocity of rotation around the z-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
+| x    | number | No  | No  | Angular velocity of rotation around the x-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
+| y    | number | No  | No  | Angular velocity of rotation around the y-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
+| z    | number | No  | No  | Angular velocity of rotation around the z-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
 
 
 ## GyroscopeUncalibratedResponse
@@ -6248,12 +6511,12 @@ Describes the uncalibrated gyroscope sensor data. It extends from [Response](#re
 
 | Name | Type  | Read-Only| Optional| Description                                      |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
-| x     | number | Yes  | Yes  | Uncalibrated angular velocity of rotation around the x-axis of the device, in rad/s.    |
-| y     | number | Yes  | Yes  | Uncalibrated angular velocity of rotation around the y-axis of the device, in rad/s.    |
-| z     | number | Yes  | Yes  | Uncalibrated angular velocity of rotation around the z-axis of the device, in rad/s.    |
-| biasX | number | Yes  | Yes  | Uncalibrated angular velocity bias of rotation around the x-axis of the device, in rad/s.|
-| biasY | number | Yes  | Yes  | Uncalibrated angular velocity bias of rotation around the y-axis of the device, in rad/s.|
-| biasZ | number | Yes  | Yes  | Uncalibrated angular velocity bias of rotation around the z-axis of the device, in rad/s.|
+| x     | number | No  | No  | Uncalibrated angular velocity of rotation around the x-axis of the device, in rad/s.    |
+| y     | number | No  | No  | Uncalibrated angular velocity of rotation around the y-axis of the device, in rad/s.    |
+| z     | number | No  | No  | Uncalibrated angular velocity of rotation around the z-axis of the device, in rad/s.    |
+| biasX | number | No  | No  | Uncalibrated angular velocity bias of rotation around the x-axis of the device, in rad/s.|
+| biasY | number | No  | No  | Uncalibrated angular velocity bias of rotation around the y-axis of the device, in rad/s.|
+| biasZ | number | No  | No  | Uncalibrated angular velocity bias of rotation around the z-axis of the device, in rad/s.|
 
 
 ## SignificantMotionResponse
@@ -6265,7 +6528,7 @@ Describes the significant motion sensor data. It extends from [Response](#respon
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| scalar | number | Yes  | Yes  | Intensity of a motion. This parameter specifies whether a device has a significant motion on three physical axes (X, Y, and Z). The value **1** is reported when the device has a significant motion.|
+| scalar | number | No  | No  | Intensity of a motion. This parameter specifies whether a device has a significant motion on three physical axes (X, Y, and Z). The value **1** is reported when the device has a significant motion.|
 
 
 ## ProximityResponse
@@ -6277,7 +6540,7 @@ Describes the proximity sensor data. It extends from [Response](#response).
 
 | Name    | Type  | Read-Only| Optional| Description                                                      |
 | -------- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| distance | number | Yes  | Yes  | Proximity between the visible object and the device monitor. The value **0** means the two are close to each other, and a value greater than 0 means that they are far away from each other.|
+| distance | number | No  | No  | Proximity between the visible object and the device monitor. The value **0** means the two are close to each other, and a value greater than 0 means that they are far away from each other.|
 
 
 ## LightResponse
@@ -6289,9 +6552,9 @@ Describes the ambient light sensor data. It extends from [Response](#response).
 
 | Name                           | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| intensity                       | number | Yes  | Yes  | Illumination, in lux.                                      |
-| colorTemperature<sup>12+</sup>  | number | Yes  | Yes  | Color temperature, in Kelvin. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
-| infraredLuminance<sup>12+</sup> | number | Yes  | Yes  | IR luminance, in cd/m2. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
+| intensity                       | number | No  | No  | Illumination, in lux.                                      |
+| colorTemperature<sup>12+</sup>  | number | No  | Yes  | Color temperature, in Kelvin. This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.|
+| infraredLuminance<sup>12+</sup> | number | No  | Yes  | Infrared luminance, in cd/m². This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.|
 
 
 ## HallResponse
@@ -6303,7 +6566,7 @@ Describes the Hall effect sensor data. It extends from [Response](#response).
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| status | number | Yes  | Yes  | Hall effect sensor status. This parameter specifies whether a magnetic field exists around a device. The value **0** means that a magnetic field does not exist, and a value greater than **0** means the opposite.|
+| status | number | No  | No  | Hall effect sensor status. This parameter specifies whether a magnetic field exists around a device. The value **0** means that a magnetic field does not exist, and a value greater than **0** means the opposite.|
 
 
 ## MagneticFieldResponse
@@ -6315,9 +6578,9 @@ Describes the magnetic field sensor data. It extends from [Response](#response).
 
 | Name| Type  | Read-Only| Optional| Description                        |
 | ---- | ------ | ---- | ---- | ---------------------------- |
-| x    | number | Yes  | Yes  | Magnetic field strength on the x-axis, in μT.|
-| y    | number | Yes  | Yes  | Magnetic field strength on the y-axis, in μT.|
-| z    | number | Yes  | Yes  | Magnetic field strength on the z-axis, in μT.|
+| x    | number | No  | No  | Magnetic field strength on the x-axis, in μT.|
+| y    | number | No  | No  | Magnetic field strength on the y-axis, in μT.|
+| z    | number | No  | No  | Magnetic field strength on the z-axis, in μT.|
 
 
 ## MagneticFieldUncalibratedResponse
@@ -6329,12 +6592,12 @@ Describes the uncalibrated magnetic field sensor data. It extends from [Response
 
 | Name | Type  | Read-Only| Optional| Description                                  |
 | ----- | ------ | ---- | ---- | -------------------------------------- |
-| x     | number | Yes  | Yes  | Uncalibrated magnetic field strength on the x-axis, in μT.    |
-| y     | number | Yes  | Yes  | Uncalibrated magnetic field strength on the y-axis, in μT.    |
-| z     | number | Yes  | Yes  | Uncalibrated magnetic field strength on the z-axis, in μT.    |
-| biasX | number | Yes  | Yes  | Bias of the uncalibrated magnetic field strength on the x-axis, in μT.|
-| biasY | number | Yes  | Yes  | Bias of the uncalibrated magnetic field strength on the y-axis, in μT.|
-| biasZ | number | Yes  | Yes  | Bias of the uncalibrated magnetic field strength on the z-axis, in μT.|
+| x     | number | No  | No  | Uncalibrated magnetic field strength on the x-axis, in μT.    |
+| y     | number | No  | No  | Uncalibrated magnetic field strength on the y-axis, in μT.    |
+| z     | number | No  | No  | Uncalibrated magnetic field strength on the z-axis, in μT.    |
+| biasX | number | No  | No  | Bias of the uncalibrated magnetic field strength on the x-axis, in μT.|
+| biasY | number | No  | No  | Bias of the uncalibrated magnetic field strength on the y-axis, in μT.|
+| biasZ | number | No  | No  | Bias of the uncalibrated magnetic field strength on the z-axis, in μT.|
 
 
 ## PedometerResponse
@@ -6346,7 +6609,7 @@ Describes the pedometer sensor data. It extends from [Response](#response).
 
 | Name | Type  | Read-Only| Optional| Description            |
 | ----- | ------ | ---- | ---- | ---------------- |
-| steps | number | Yes  | Yes  | Number of steps a user has walked.|
+| steps | number | No  | No  | Number of steps a user has walked.|
 
 
 ## HumidityResponse
@@ -6358,7 +6621,7 @@ Describes the humidity sensor data. It extends from [Response](#response).
 
 | Name    | Type  | Read-Only| Optional| Description                                                     |
 | -------- | ------ | ---- | ---- | --------------------------------------------------------- |
-| humidity | number | Yes  | Yes  | Ambient relative humidity, in a percentage (%).|
+| humidity | number | No  | No  | Ambient relative humidity, in a percentage (%).|
 
 
 ## PedometerDetectionResponse
@@ -6370,7 +6633,7 @@ Describes the pedometer detection sensor data. It extends from [Response](#respo
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| scalar | number | Yes  | Yes  | Pedometer detection. This parameter specifies whether a user takes a step. The value **0** means that the user does not take a step, and **1** means that the user takes a step.|
+| scalar | number | No  | No  | Pedometer detection. This parameter specifies whether a user takes a step. The value **0** means that the user does not take a step, and **1** means that the user takes a step.|
 
 
 ## AmbientTemperatureResponse
@@ -6382,7 +6645,7 @@ Describes the ambient temperature sensor data. It extends from [Response](#respo
 
 | Name       | Type  | Read-Only| Optional| Description                      |
 | ----------- | ------ | ---- | ---- | -------------------------- |
-| temperature | number | Yes  | Yes  | Ambient temperature, in degree Celsius.|
+| temperature | number | No  | No  | Ambient temperature, in degree Celsius.|
 
 
 ## BarometerResponse
@@ -6394,7 +6657,7 @@ Describes the barometer sensor data. It extends from [Response](#response).
 
 | Name    | Type  | Read-Only| Optional| Description                  |
 | -------- | ------ | ---- | ---- | ---------------------- |
-| pressure | number | Yes  | Yes  | Atmospheric pressure, in units of hPa.|
+| pressure | number | No  | No  | Atmospheric pressure, in units of hPa.|
 
 
 ## HeartRateResponse
@@ -6406,7 +6669,7 @@ Describes the heart rate sensor data. It extends from [Response](#response).
 
 | Name     | Type  | Read-Only| Optional| Description                                   |
 | --------- | ------ | ---- | ---- | --------------------------------------- |
-| heartRate | number | Yes  | Yes  | Heart rate, in beats per minute (bpm).|
+| heartRate | number | No  | No  | Heart rate, in beats per minute (bpm).|
 
 
 ## WearDetectionResponse
@@ -6418,7 +6681,7 @@ Describes the wear detection sensor data. It extends from [Response](#response).
 
 | Name | Type  | Read-Only| Optional| Description                                            |
 | ----- | ------ | ---- | ---- | ------------------------------------------------ |
-| value | number | Yes  | Yes  | Whether the device is being worn. The value **1** means that the device is being worn, and **0** means the opposite.|
+| value | number | No  | No  | Whether the device is being worn. The value **1** means that the device is being worn, and **0** means the opposite.|
 
 
 ## Options
@@ -6429,10 +6692,10 @@ Describes the sensor data reporting frequency.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
-| Name    | Type                                                       | Read-Only| Optional| Description                                                        |
-| -------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| interval | number\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> | Yes  | Yes  | Frequency at which a sensor reports data. The default value is 200,000,000 ns. The maximum and minimum values of this parameter are determined by the reporting frequency supported by the hardware. If the configured frequency is greater than the maximum value, the maximum value is used for data reporting. If the configured frequency is less than the minimum value, the minimum value is used for data reporting.|
-| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | Yes| Yes| Sensor parameters, including **deviceId** and **sensorIndex**.|
+| Name    | Type                                                       | Read-Only| Optional| Description                                                                                        |
+| -------- | ----------------------------------------------------------- | ---- | ---- |--------------------------------------------------------------------------------------------|
+| interval | number\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> | No  | Yes  | Frequency at which a sensor reports data. The default value is 200,000,000 ns. The maximum and minimum values of this parameter are determined by the reporting frequency supported by the hardware. If the configured frequency is greater than the maximum value, the maximum value is used for data reporting. If the configured frequency is less than the minimum value, the minimum value is used for data reporting.|
+| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | No| Yes| Sensor parameters, including **deviceId** and **sensorIndex**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                        |
 
 ## SensorFrequency<sup>11+</sup>
 
@@ -6458,8 +6721,8 @@ Describes the response for setting the rotation matrix.
 
 | Name       | Type               | Read-Only| Optional| Description      |
 | ----------- | ------------------- | ---- | ---- | ---------- |
-| rotation    | Array&lt;number&gt; | Yes  | Yes  | Rotation matrix.|
-| inclination | Array&lt;number&gt; | Yes  | Yes  | Inclination matrix.|
+| rotation    | Array&lt;number&gt; | No  | No  | Rotation matrix.|
+| inclination | Array&lt;number&gt; | No  | No  | Inclination matrix.|
 
 
 ## CoordinatesOptions
@@ -6470,8 +6733,8 @@ Describes the coordinate options.
 
 | Name| Type  | Read-Only| Optional| Description       |
 | ---- | ------ | ---- | ---- | ----------- |
-| x    | number | Yes  | Yes  | X coordinate direction.|
-| y    | number | Yes  | Yes  | Y coordinate direction.|
+| x    | number | No  | No  | X coordinate direction.|
+| y    | number | No  | No  | Y coordinate direction.|
 
 
 ## GeomagneticResponse
@@ -6482,13 +6745,13 @@ Describes a geomagnetic response object.
 
 | Name           | Type  | Read-Only| Optional| Description                                              |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| x               | number | Yes  | Yes  | North component of the geomagnetic field.                                  |
-| y               | number | Yes  | Yes  | East component of the geomagnetic field.                                  |
-| z               | number | Yes  | Yes  | Vertical component of the geomagnetic field.                                |
-| geomagneticDip  | number | Yes  | Yes  | Magnetic dip, also called magnetic inclination, which is the angle measured from the horizontal plane to the magnetic field vector.            |
-| deflectionAngle | number | Yes  | Yes  | Magnetic declination, which is the angle between true north (geographic north) and the magnetic north (the horizontal component of the field).|
-| levelIntensity  | number | Yes  | Yes  | Horizontal intensity of the magnetic field vector field.                                |
-| totalIntensity  | number | Yes  | Yes  | Total intensity of the magnetic field vector.                                  |
+| x               | number | No  | No  | North component of the geomagnetic field.                                  |
+| y               | number | No  | No  | East component of the geomagnetic field.                                  |
+| z               | number | No  | No  | Vertical component of the geomagnetic field.                                |
+| geomagneticDip  | number | No  | No  | Magnetic dip, also called magnetic inclination, which is the angle measured from the horizontal plane to the magnetic field vector.            |
+| deflectionAngle | number | No  | No  | Magnetic declination, which is the angle between true north (geographic north) and the magnetic north (the horizontal component of the field).|
+| levelIntensity  | number | No  | No  | Horizontal intensity of the magnetic field vector field.                                |
+| totalIntensity  | number | No  | No  | Total intensity of the magnetic field vector.                                  |
 
 ## LocationOptions
 
@@ -6498,9 +6761,9 @@ Describes the geographical location.
 
 | Name     | Type  | Read-Only| Optional| Description      |
 | --------- | ------ | ---- | ---- | ---------- |
-| latitude  | number | Yes  | Yes  | Latitude.    |
-| longitude | number | Yes  | Yes  | Longitude.    |
-| altitude  | number | Yes  | Yes  | Altitude.|
+| latitude  | number | No  | No  | Latitude.    |
+| longitude | number | No  | No  | Longitude.    |
+| altitude  | number | No  | No  | Altitude.|
 
 ## sensor.on<sup>(deprecated)</sup>
 
@@ -7746,9 +8009,9 @@ Subscribes to only one data change of the orientation sensor.
 import { sensor } from '@kit.SensorServiceKit';
 
 sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.OrientationResponse) => {
-  console.info('Succeeded in invoking the device rotateing at an angle around the X axis: ' + data.beta);
-  console.info('Succeeded in invoking the device rotateing at an angle around the Y axis: ' + data.gamma);
-  console.info('Succeeded in invoking the device rotateing at an angle around the Z axis: ' + data.alpha);
+  console.info('Succeeded in invoking the device rotating at an angle around the X axis: ' + data.beta);
+  console.info('Succeeded in invoking the device rotating at an angle around the Y axis: ' + data.gamma);
+  console.info('Succeeded in invoking the device rotating at an angle around the Z axis: ' + data.alpha);
 });
 ```
 
@@ -8175,7 +8438,7 @@ Unsubscribes from sensor data changes.
 import { sensor } from '@kit.SensorServiceKit';
 
 function callback(data: sensor.HeartRateResponse) {
-  console.info('Succeeded in invoking off. Humidity: ' + data.heartRate);
+  console.info('Succeeded in invoking off. Heart rate: ' + data.heartRate);
 }
 
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, callback);
@@ -8558,7 +8821,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 | Name          | Type                                     | Mandatory| Description                      |
 | ---------------- | ----------------------------------------- | ---- | -------------------------- |
-| inRotationVector | Array&lt;number&gt;                       | Yes  | Rotation vector to rotate.            |
+| inRotationVector | Array&lt;number&gt;                       | Yes  | Rotation vector.            |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | Yes  | Direction of the coordinate system.          |
 | callback         | AsyncCallback&lt;Array&lt;number&gt;&gt;  | Yes  | Callback used to return the rotation vector after being rotated.|
 
@@ -8596,7 +8859,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 | Name             | Type                                      | Mandatory  | Description      |
 | ---------------- | ---------------------------------------- | ---- | -------- |
-| inRotationVector | Array&lt;number&gt;                      | Yes   | Rotation vector to rotate. |
+| inRotationVector | Array&lt;number&gt;                      | Yes   | Rotation vector. |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | Yes   | Direction of the coordinate system.|
 
 **Return value**
@@ -8902,7 +9165,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 | Name                  | Type                 | Mandatory  | Description       |
 | --------------------- | ------------------- | ---- | --------- |
 | currentRotationMatrix | Array&lt;number&gt; | Yes   | Current rotation matrix.|
-| preRotationMatrix     | Array&lt;number&gt; | Yes   | Rotation vector to rotate.  |
+| preRotationMatrix     | Array&lt;number&gt; | Yes   | Peer rotation matrix.  |
 
 **Return value**
 
@@ -9080,7 +9343,7 @@ promise.then((data: Array<number>) => {
     console.info("data[" + i + "]: " + data[i]);
   }
 }).catch((err: BusinessError) => {
-  console.info(`Failed to get promise.`);
+  console.error(`Failed to get promise.`);
 })
 ```
 
@@ -9100,7 +9363,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 
 | Name        | Type                                    | Mandatory| Description                                 |
 | -------------- | ---------------------------------------- | ---- | ------------------------------------- |
-| rotationMatrix | Array&lt;number&gt;                      | Yes  | Peer rotation matrix.                       |
+| rotationMatrix | Array&lt;number&gt;                      | Yes  | Rotation matrix.                       |
 | callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the rotation angle around the z, x, and y axes.|
 
 **Example**
@@ -9137,7 +9400,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name           | Type                 | Mandatory  | Description     |
 | -------------- | ------------------- | ---- | ------- |
-| rotationMatrix | Array&lt;number&gt; | Yes   | Rotation vector to rotate.|
+| rotationMatrix | Array&lt;number&gt; | Yes   | Rotation matrix.|
 
 **Return value**
 
@@ -9158,7 +9421,7 @@ promise.then((data: Array<number>) => {
     console.info("Succeeded in getting sensor_getDirection_promise" + data[i]);
   }
 }).catch((err: BusinessError) => {
-  console.info(`Failed to get promise.`);
+  console.error(`Failed to get promise.`);
 })
 ```
 
@@ -9233,6 +9496,40 @@ const promise = sensor.createRotationMatrix([-0.27775216, 0.5351276, 9.788099], 
 promise.then((data: sensor.RotationMatrixResponse) => {
   console.info(JSON.stringify(data));
 }).catch((err: BusinessError) => {
-  console.info(`Failed to get promise.`);
+  console.error(`Failed to get promise.`);
 })
 ```
+
+## SensorType<sup>(deprecated)</sup>
+
+Enumerates the sensor types.
+
+> **NOTE**
+>
+> This API is deprecated since API version 9. You are advised to use [SensorId](#sensorid9) instead.
+
+**System capability**: SystemCapability.Sensors.Sensor
+
+| Name                                      | Value  | Description                  |
+| ------------------------------------------ | ---- | ---------------------- |
+| SENSOR_TYPE_ID_ACCELEROMETER               | 1    | Acceleration sensor.        |
+| SENSOR_TYPE_ID_GYROSCOPE                   | 2    | Gyroscope sensor.        |
+| SENSOR_TYPE_ID_AMBIENT_LIGHT               | 5    | Ambient light sensor.        |
+| SENSOR_TYPE_ID_MAGNETIC_FIELD              | 6    | Magnetic field sensor.          |
+| SENSOR_TYPE_ID_BAROMETER                   | 8    | Barometer sensor.        |
+| SENSOR_TYPE_ID_HALL                        | 10   | Hall effect sensor.          |
+| SENSOR_TYPE_ID_PROXIMITY                   | 12   | Proximity sensor.        |
+| SENSOR_TYPE_ID_HUMIDITY                    | 13   | Humidity sensor.          |
+| SENSOR_TYPE_ID_ORIENTATION                 | 256  | Orientation sensor.          |
+| SENSOR_TYPE_ID_GRAVITY                     | 257  | Gravity sensor.          |
+| SENSOR_TYPE_ID_LINEAR_ACCELERATION         | 258  | Linear acceleration sensor.    |
+| SENSOR_TYPE_ID_ROTATION_VECTOR             | 259  | Rotation vector sensor.      |
+| SENSOR_TYPE_ID_AMBIENT_TEMPERATURE         | 260  | Ambient temperature sensor.      |
+| SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED | 261  | Uncalibrated magnetic field sensor.    |
+| SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED      | 263  | Uncalibrated gyroscope sensor.  |
+| SENSOR_TYPE_ID_SIGNIFICANT_MOTION          | 264  | Significant motion sensor.      |
+| SENSOR_TYPE_ID_PEDOMETER_DETECTION         | 265  | Pedometer detection sensor.      |
+| SENSOR_TYPE_ID_PEDOMETER                   | 266  | Pedometer sensor.          |
+| SENSOR_TYPE_ID_HEART_RATE                  | 278  | Heart rate sensor.          |
+| SENSOR_TYPE_ID_WEAR_DETECTION              | 280  | Wear detection sensor.      |
+| SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED  | 281  | Uncalibrated acceleration sensor.|

@@ -1,4 +1,10 @@
 # 应用数据备份恢复概述
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @lvzhenjie-->
+<!--Designer: @wang_zhangjun; @chenxi0605-->
+<!--Tester: @liuhonggang123-->
+<!--Adviser: @foryourself-->
 
 用户在使用应用的过程中，会产生对应的应用数据，如配置信息、业务数据等。为了保证用户数据不会因为应用升级、迁移等操作而丢失，应用需要接入数据备份恢复。
 
@@ -12,4 +18,4 @@ BackupExtensionAbility是Stage模型中扩展组件ExtensionAbility的派生类�
 
   应用本身无法触发数据的备份和恢复，仅能进行备份恢复的配置。
 <!--RP1-->
-- [应用触发数据备份恢复（仅对系统应用开放）](app-file-backup.md)：仅系统应用可以触发数据备份恢复，触发后备份恢复框架会确认各个应用是否接入了数据备份恢复。如果应用已接入，备份恢复框架将会根据应用的配置文件备份、恢复数据。<!--RP1End-->
+- [应用触发数据备份恢复（仅对系统应用开放）](app-file-backup-sys.md)：仅系统应用可以触发数据备份恢复，触发后备份恢复框架会确认各个应用是否接入了数据备份恢复。如果应用已接入，备份恢复框架将会根据应用的配置文件备份、恢复数据。<!--RP1End-->

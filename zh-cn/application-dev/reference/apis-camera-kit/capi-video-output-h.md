@@ -1,4 +1,10 @@
 # video_output.h
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -39,17 +45,17 @@
 | [Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)](#oh_videooutput_deleteprofile) | - | 删除视频配置文件实例。 |
 | [ Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutput, bool* isSupported)](#oh_videooutput_ismirrorsupported) | - | 判断当前视频输出是否支持镜像。 |
 | [ Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bool mirrorMode)](#oh_videooutput_enablemirror) | - | 打开/关闭当前视频输出镜像功能。 |
-| [ Camera_ErrorCode  OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree,Camera_ImageRotation* imageRotation)](#oh_videooutput_getvideorotation) | - | 获取当前视频输出应当设置的旋转角度。 |
-| [Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* videoOutput,Camera_FrameRateRange** frameRateRange, uint32_t* size)](#oh_videooutput_getsupportedframerates) | - | 获取支持的视频输出帧率列表。 |
-| [Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput,Camera_FrameRateRange* frameRateRange)](#oh_videooutput_deleteframerates) | - | 删除帧率列表。 |
+| [ Camera_ErrorCode  OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)](#oh_videooutput_getvideorotation) | - | 获取当前视频输出应当设置的旋转角度。 |
+| [Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange** frameRateRange, uint32_t* size)](#oh_videooutput_getsupportedframerates) | - | 获取支持的视频输出帧率列表。 |
+| [Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)](#oh_videooutput_deleteframerates) | - | 删除帧率列表。 |
 | [Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput,int32_t minFps, int32_t maxFps)](#oh_videooutput_setframerate) | - | 设置视频输出帧率。 |
-| [Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput,Camera_FrameRateRange* frameRateRange)](#oh_videooutput_getactiveframerate) | - | 获取当前视频输出帧率。 |
+| [Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)](#oh_videooutput_getactiveframerate) | - | 获取当前视频输出帧率。 |
 
 ## 函数说明
 
 ### OH_VideoOutput_OnFrameStart()
 
-```
+```c
 typedef void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput)
 ```
 
@@ -68,7 +74,7 @@ typedef void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput)
 
 ### OH_VideoOutput_OnFrameEnd()
 
-```
+```c
 typedef void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount)
 ```
 
@@ -88,7 +94,7 @@ typedef void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32
 
 ### OH_VideoOutput_OnError()
 
-```
+```c
 typedef void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode)
 ```
 
@@ -112,7 +118,7 @@ typedef void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_E
 
 ### OH_VideoOutput_RegisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput, VideoOutput_Callbacks* callback)
 ```
 
@@ -138,7 +144,7 @@ Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput
 
 ### OH_VideoOutput_UnregisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_UnregisterCallback(Camera_VideoOutput* videoOutput, VideoOutput_Callbacks* callback)
 ```
 
@@ -164,7 +170,7 @@ Camera_ErrorCode OH_VideoOutput_UnregisterCallback(Camera_VideoOutput* videoOutp
 
 ### OH_VideoOutput_Start()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_Start(Camera_VideoOutput* videoOutput)
 ```
 
@@ -185,11 +191,11 @@ Camera_ErrorCode OH_VideoOutput_Start(Camera_VideoOutput* videoOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_Stop()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)
 ```
 
@@ -210,11 +216,11 @@ Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_Release()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_Release(Camera_VideoOutput* videoOutput)
 ```
 
@@ -235,11 +241,11 @@ Camera_ErrorCode OH_VideoOutput_Release(Camera_VideoOutput* videoOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_GetActiveProfile()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput, Camera_VideoProfile** profile)
 ```
 
@@ -261,11 +267,11 @@ Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_DeleteProfile()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)
 ```
 
@@ -290,7 +296,7 @@ Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)
 
 ### OH_VideoOutput_IsMirrorSupported()
 
-```
+```c
  Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutput, bool* isSupported)
 ```
 
@@ -306,17 +312,17 @@ Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递当前视频输出的录像输出实例。 |
-| bool* isSupported | 当前视频输出是否支持镜像。 |
+| bool* isSupported | 当前视频输出是否支持镜像。true表示当前视频输出支持镜像，false表示不支持。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_EnableMirror()
 
-```
+```c
  Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bool mirrorMode)
 ```
 
@@ -332,17 +338,17 @@ Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递当前视频输出的录像输出实例。 |
-| bool mirrorMode | TRUE表示打开镜像功能，FALSE表示关闭镜像功能。 |
+| bool mirrorMode | 设备是否开启镜像功能。true表示打开镜像功能，false表示关闭镜像功能。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>          CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>          CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>          CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>          CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_GetVideoRotation()
 
-```
+```c
  Camera_ErrorCode  OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree,Camera_ImageRotation* imageRotation)
 ```
 
@@ -365,11 +371,11 @@ Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>          CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>          CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>          CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>          CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_GetSupportedFrameRates()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* videoOutput,Camera_FrameRateRange** frameRateRange, uint32_t* size)
 ```
 
@@ -392,11 +398,11 @@ Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* video
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_DeleteFrameRates()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput,Camera_FrameRateRange* frameRateRange)
 ```
 
@@ -422,7 +428,7 @@ Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput
 
 ### OH_VideoOutput_SetFrameRate()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput,int32_t minFps, int32_t maxFps)
 ```
 
@@ -449,7 +455,7 @@ Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput,int
 
 ### OH_VideoOutput_GetActiveFrameRate()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput,Camera_FrameRateRange* frameRateRange)
 ```
 
@@ -471,6 +477,6 @@ Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutp
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 

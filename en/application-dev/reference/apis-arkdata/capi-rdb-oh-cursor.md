@@ -1,4 +1,14 @@
 # OH_Cursor
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} OH_Cursor
+```
 
 ## Overview
 
@@ -35,7 +45,7 @@ Defines a struct for a result set. Provides APIs to access the result set obtain
 | [int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)](#isnull) | Pointer to the function used to check whether the value in the specified column is null.                |
 | [int (*destroy)(OH_Cursor *cursor)](#destroy)                | Pointer to the function used to destroy a result set.                                      |
 | [int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)](#getasset) | Pointer to the function used to obtain the value of the asset type based on the specified column and the current row.              |
-| [int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t length)](#getassets) | Pointer to the function used to obtain the values in the form of an asset array based on the specified column and the current row.          |
+| [int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)](#getassets) | Pointer to the function used to obtain the values in the form of an asset array based on the specified column and the current row.          |
 
 
 ## Member Function Description
@@ -218,7 +228,7 @@ Pointer to the function used to obtain information about the memory required whe
 | ------------------- | ------------------------------------------------------------ |
 | OH_Cursor *cursor   | Pointer to the **OH_Cursor** instance.                               |
 | int32_t columnIndex | Index of the column, which starts from **0**.                   |
-| int32_t columnIndex | Pointer to the memory size obtained.|
+| size_t *size        | Pointer to the memory size obtained.|
 
 **Returns**
 
@@ -398,7 +408,7 @@ int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 
 Pointer to the function used to obtain the value of the asset type based on the specified column and the current row.
 
-**Since**: 10
+**Since**: 11
 
 
 **Parameters**
@@ -418,14 +428,14 @@ Pointer to the function used to obtain the value of the asset type based on the 
 ### getAssets()
 
 ```
-int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t length)
+int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)
 ```
 
 **Description**
 
 Pointer to the function used to obtain the values in the form of an asset array based on the specified column and the current row.
 
-**Since**: 10
+**Since**: 11
 
 
 **Parameters**
@@ -435,7 +445,7 @@ Pointer to the function used to obtain the values in the form of an asset array 
 | OH_Cursor *cursor   | Pointer to the **OH_Cursor** instance.                                 |
 | int32_t columnIndex | Index of the column, which starts from **0**.                   |
 | Data_Asset **value  | Double pointer to the value obtained.|
-| uint32_t length     | Length of the buffer, which is a variable of the uint32_t type passed in. After the API is executed, the variable is updated to the length of the returned asset array.|
+| uint32_t *length    | Pointer to the length of the buffer, which is a variable of the uint32_t type passed in. After the API is executed, the variable is updated to the length of the returned asset array.|
 
 
 **Returns**

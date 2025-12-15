@@ -1,4 +1,10 @@
 # Implementing the Drag Functionality
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zourongchun-->
+<!--Designer: @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 ArkWeb provides the functionality of dragging elements on web pages. Users can place an element by holding down the element and dragging it to another element. This functionality meets the HTML5 standard.
 
@@ -19,7 +25,7 @@ The drag functionality of ArkWeb is different from that of ArkUI. ArkWeb is main
 
 | Method   | Description                                                 |
 | ----------- | ----------------------------------------------------- |
-| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)  | This method is not supported and should not be implemented. Otherwise, the drag behavior of the **Web** component will be affected.|
+| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)  | This method is not recommended. Calling it will affect the dragging behavior of **Web** components, resulting in unexpected dragging logic. For example, HTML dragging event listening cannot be triggered, preview images cannot be created, preview images are incorrect, or dragging data cannot be preset.|
 |  [onDragEnter](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter) | Called when an element is dragged to the web area.|
 | [onDragMove](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove)  | Called when an element is moved in the web area. |
 | [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | Called when the dragged element leaves the web area.         |
@@ -34,7 +40,9 @@ In most cases, the drag functionality implemented in HTML5 can meet the requirem
 
 The **onDrop** method on ArkTS is executed earlier than the event processing method ( **droppable.addEventListener('drop')** in the HTML example) in HTML. If page redirection is performed in the **onDrop** method, the **drop** method in HTML5 cannot be executed correctly, and the unexpected result is generated. Therefore, a bidirectional communication mechanism must be established to notify ArkTS to execute the corresponding service logic after the **drop** method in HTML5 is executed.
 
-```ts
+<!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb'
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
@@ -48,24 +56,27 @@ struct DragDrop {
   build() {
     Column() {
       Web({
-        src: $rawfile("drag.html"),
+        src: $rawfile('drag.html'),
         controller: this.controller,
       }).onPageEnd((event) => {
         //Register the message port.
         this.ports = this.controller.createWebMessagePorts();
         this.ports[1].onMessageEvent((result: webview.WebMessage) => {
           //Process the data received from HTML. You can record logs to confirm the message. The message format can be customized as long as it can be uniquely identified.
-          console.log("ETS receive Message: typeof (result) = " + typeof (result) + ";" + result);
+          console.info('ETS receive Message: typeof (result) = ' + typeof (result) + ';' + result);
           // Process the message after the message is received in result. You can perform time-consuming tasks.
         });
-        console.log("ETS postMessage set h5port ");
+        console.info('ETS postMessage set h5port ');
         //After the message port is registered, the front end sends a registration completion message to complete bidirectional port binding.
         this.controller.postMessage('__init_port__', [this.ports[0]], '*');
       })// Implement simple logic in onDrop, for example, temporarily storing some key data.
-        .onDrop((event) => {
-          console.log("ETS onDrop!")
-          let data: UnifiedData = (event as DragEvent).getData() as UnifiedData;
-          let uriArr: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
+        .onDrop((dragEvent: DragEvent) => {
+          console.info('ETS onDrop!')
+          let data: UnifiedData = dragEvent.getData();
+          if(!data) {
+            return false;
+          }
+          let uriArr: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
           if (!uriArr || uriArr.length <= 0) {
             return false;
           }
@@ -74,7 +85,7 @@ struct DragDrop {
             if (uriArr[i].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
               let plainText = uriArr[i] as unifiedDataChannel.PlainText;
               if (plainText.textContent) {
-                console.info("plainText.textContent: ", plainText.textContent);
+                console.info('plainText.textContent: ', plainText.textContent);
               }
             }
           }
@@ -93,8 +104,8 @@ HTML example:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>HTML5 Dragging Demo</title>
 </head>
-<title>HTML5 Dragging Demo</title>
 <style>
     body {
       font-family: Arial, sans-serif;
@@ -127,7 +138,6 @@ HTML example:
       color: white;
     }
 </style>
-</head>
 <body>
 
 <h2>HTML5 Dragging Demo</h2>
@@ -171,10 +181,10 @@ HTML example:
     // Set the scriptproxy port on JavaScript.
     var h5Port;
     window.addEventListener('message', function (event) {
-    console.log("H5 receive settingPort message");
+    console.info("H5 receive settingPort message");
         if (event.data == '__init_port__') {
             if (event.ports[0] != null) {
-                console.log("H5 set h5Port " + event.ports[0]);
+                console.info("H5 set h5Port " + event.ports[0]);
                 h5Port = event.ports[0];
             }
         }
@@ -182,7 +192,7 @@ HTML example:
 
     // Send data to ArkTS using scriptproxy.
     function PostMsgToArkTS(data) {
-        console.log("H5 PostMsgToArkTS, h5Port " + h5Port);
+        console.info("H5 PostMsgToArkTS, h5Port " + h5Port);
         if (h5Port) {
           h5Port.postMessage(data);
         } else {
@@ -195,6 +205,7 @@ HTML example:
 </html>
 ```
 ![web-drag-drop](figures/web-dragdrop.gif)
+
 Log output:
 ![web-drag-log](figures/web-drag-log.png)
 
@@ -203,24 +214,26 @@ Log output:
 ### Why is the drag event set in HTML5 not triggered?
 Check whether the CSS resources are properly set. Some web pages set the CSS style only for devices with specific UAs. You can set a custom UA in the **Web** component to solve this problem. For example:
 
-```ts
+<!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb'
 
 @Entry
 @Component
 struct Index {
-    private webController: webview.WebviewController = new webview.WebviewController()
-    build(){
-      Column() {
-        Web({
-          src: "example.com",
-          controller: this.webController,
-        }).onControllerAttached(() => {
-          // Set a custom UA.
-          let customUA = 'android'
-          this.webController.setCustomUserAgent(this.webController.getUserAgent() + customUA)
-        })
-      }
+  private webController: webview.WebviewController = new webview.WebviewController()
+  build(){
+    Column() {
+      Web({
+        src: 'example.com',
+        controller: this.webController,
+      }).onControllerAttached(() => {
+        // Set a custom UA.
+        let customUA = 'android'
+        this.webController.setCustomUserAgent(this.webController.getUserAgent() + customUA)
+      })
     }
+  }
 }
 ```

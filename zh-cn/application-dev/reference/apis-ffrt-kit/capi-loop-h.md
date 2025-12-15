@@ -3,8 +3,9 @@
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
 <!--Owner: @chuchihtung; @yanleo-->
-<!--SE: @geoffrey_guo; @huangyouzhong-->
-<!--TSE: @lotsof; @sunxuhao-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
 
 ## 概述
 
@@ -39,12 +40,13 @@
 | [FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)](#ffrt_loop_stop) | 停止loop循环。 |
 | [FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void *data, ffrt_poller_cb cb)](#ffrt_loop_epoll_ctl) | 管理loop上的监听事件。 |
 | [FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)](#ffrt_loop_timer_start) | 在ffrt loop上启动定时器。 |
+| [FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)](#ffrt_loop_timer_stop) | 停止ffrt loop定时器。 |
 
 ## 函数说明
 
 ### ffrt_loop_create()
 
-```
+```c
 FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 ```
 
@@ -69,7 +71,7 @@ FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 
 ### ffrt_loop_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)
 ```
 
@@ -94,7 +96,7 @@ FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)
 
 ### ffrt_loop_run()
 
-```
+```c
 FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)
 ```
 
@@ -119,7 +121,7 @@ FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)
 
 ### ffrt_loop_stop()
 
-```
+```c
 FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)
 ```
 
@@ -138,13 +140,14 @@ FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)
 
 ### ffrt_loop_epoll_ctl()
 
-```
+```c
 FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void *data, ffrt_poller_cb cb)
 ```
 
 **描述**
 
 管理loop上的监听事件。
+不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **起始版本：** 12
 
@@ -168,13 +171,14 @@ FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t ev
 
 ### ffrt_loop_timer_start()
 
-```
+```c
 FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)
 ```
 
 **描述**
 
 在ffrt loop上启动定时器。
+不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **起始版本：** 12
 
@@ -194,5 +198,31 @@ FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout
 | 类型                                               | 说明 |
 |--------------------------------------------------| -- |
 | FFRT_C_API [ffrt_timer_t](capi-type-def-h.md#变量) | 返回定时器句柄。 |
+
+### ffrt_loop_timer_stop()
+
+```c
+FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)
+```
+
+**描述**
+
+停止ffrt loop定时器。
+
+**起始版本：** 12
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| ffrt_loop_t loop | loop对象。 |
+| ffrt_timer_t handle | timer对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| FFRT_C_API int | 成功返回0，<br>失败返回-1。 |
 
 

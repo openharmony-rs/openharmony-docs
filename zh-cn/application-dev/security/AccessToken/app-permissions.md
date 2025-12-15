@@ -1,10 +1,11 @@
 # 应用权限列表
 
 <!--Kit: Ability Kit-->
-<!--Subsystem: Security->
+<!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 根据权限的开放范围和授权方式不同，申请对应权限的方式也不同。
 
@@ -31,7 +32,7 @@
   仅[MDM](../../mdm/mdm-kit-intro.md)应用可申请。应用在申请时，需确认其授权方式，按照合适的方式申请。
 
 <!--Del-->
-- [系统应用可用权限](permissions-for-system-apps.md)
+- 系统应用可用权限
 
    此列表中的权限仅面向系统应用开放，分为三类：
 

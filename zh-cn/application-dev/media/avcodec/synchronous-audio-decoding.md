@@ -1,5 +1,14 @@
 # 音频解码同步模式
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
+从API version 20开始，支持音频解码同步模式。
+
 开发者可以调用本模块的Native API接口，完成同步模式的音频解码，即将媒体数据解码为PCM码流。
 
 支持的解码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#音频解码)。
@@ -12,7 +21,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[AudioCodec](../../reference/apis-avcodec-kit/_audio_codec.md)。
+详细的API说明请参考[AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md)。
 
 参考以下示例代码，完成音频解码的全流程，包括：创建解码器、设置解码参数（采样率/码率/声道数等）、开始/刷新/重置/销毁资源。
 
@@ -125,34 +134,23 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    配置选项key值说明：
 
-   |             key              |       描述       |                AAC                 | Flac |               Vorbis               | MPEG |       G711mu        |          AMR(amrnb、amrwb)         | APE |          G711a          |
-   | ---------------------------- | :--------------: | :--------------------------------: | :--: | :--------------------------------: | :--: | :-----------------: | :-------------------------------: | :--: | :----------------------: |
-   | OH_MD_KEY_ENABLE_SYNC_MODE   |   同步模式配置,打开同步模式时，必须配置为1   | 同步模式必须 | 同步模式必须 | 同步模式必须 | 同步模式必须 | 同步模式必须 | 同步模式必须 | 同步模式必须 | 同步模式必须 |
-   | OH_MD_KEY_AUD_SAMPLE_RATE    |      采样率      |                必须                | 必须 |                必须                 | 必须 |        必须          |                必须                | 必须 |           必须           |
-   | OH_MD_KEY_AUD_CHANNEL_COUNT  |      声道数      |                必须                | 必须 |                必须                 | 必须 |        必须          |                必须                | 必须 |           必须           |
-   | OH_MD_KEY_MAX_INPUT_SIZE     |    最大输入长度   |                可选                | 可选 |                可选                 | 可选 |        可选           |               可选                | 可选 |          可选            |
-   | OH_MD_KEY_AAC_IS_ADTS        |     是否adts     |             可选，默认1             |  -   |                 -                  |  -   |         -             |               -                  |  -  |         -                |
-   | OH_MD_KEY_AUDIO_SAMPLE_FORMAT   |  输出音频流格式  | 可选（SAMPLE_S16LE，SAMPLE_F32LE） | 可选 | 可选（SAMPLE_S16LE，SAMPLE_F32LE） |  可选 | 可选（默认SAMPLE_S16LE）| 可选（SAMPLE_S16LE，SAMPLE_F32LE）| 可选 | 可选（默认SAMPLE_S16LE）|
-   | OH_MD_KEY_BITRATE               |       码率      |                可选                | 可选 |                可选                | 可选 |         可选           |              可选                 | 可选 |         可选           |
-   | OH_MD_KEY_IDENTIFICATION_HEADER |    ID Header    |                 -                  |  -   |    必须（和Codec_Config二选一）    |  -   |          -            |                -                  |  -  |           -            |
-   | OH_MD_KEY_SETUP_HEADER          |   Setup Header  |                 -                  |  -   |    必须（和Codec_Config二选一）    |  -   |          -            |                -                 |  -  |            -            |
-   | OH_MD_KEY_CODEC_CONFIG          | 编解码器特定数据 |                可选                 |  -   |   必须（和上述ID和Setup二选一）    |  -   |           -            |                -                 | 可选 |           -            |
-   
-   以下各音频解码类型参数范围说明：
+   <!--RP1-->
+   ![Audio decoder key configuration](figures/decoder_key.png)
+   <!--RP1End-->
 
-   | 音频解码类型 |                                          采样率(Hz)                                              | 声道数 |
-   | ----------- | ----------------------------------------------------------------------------------------------  | :----: |
-   | AAC         | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000                 |  1~8   |
-   | Flac        | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000、192000         |  1~8   |
-   | Vorbis      | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000、176400、192000 |  1~8   |
-   | MPEG(MP3)   | 8000、11025、12000、16000、22050、24000、32000、44100、48000                                     |  1~2   |
-   | G711mu      | 8000                                                                                            |   1    |
-   | AMR(amrnb)  | 8000                                                                                            |   1    |
-   | AMR(amrwb)  | 16000                                                                                           |   1    |
-   | APE         | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000、176400、192000 |  1~2   |
-   | G711a       | 8000、11025、12000、16000、22050、24000、32000、44100、48000                                     |  1~6   |
-   <!--RP4-->
-   <!--RP4End-->
+   各音频解码类型参数范围说明：
+
+   <!--RP2-->
+   ![Audio decoder format range description](figures/decoder_format.png)
+   <!--RP2End-->
+
+   从API version 20开始，支持[采样率范围](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
+
+   | 音频解码类型 |    采样率(Hz)   |
+   | ----------- | --------------- |
+   | Flac        | 8000 ~ 384000   |
+   | Vorbis      | 8000 ~ 192000   |
+   | APE         | 1 ~ 2147483647  |
 
    ```c++
    // 配置音频采样率（必须）。
@@ -341,7 +339,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    需开发者填充完整的输入数据后调用。
 
-   结束时需要对flags标识成AVCODEC_BUFFER_FLAGS_EOS。
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。
 
     ```c++
     bool inputFinished = false;
@@ -397,14 +395,14 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 9. （可选）调用OH_AudioCodec_Flush()刷新解码器。
 
-    调用OH_AudioCodec_Flush()后，解码器仍处于运行态，但会清空当前队列，释放已解码的数据。刷新前获取到的输入输出buffer都无法接续使用。
+   调用OH_AudioCodec_Flush()后，解码器仍处于运行态，但会清空当前队列，释放已解码的数据。刷新前获取到的输入/输出buffer都无法继续使用。
 
-    此时需要调用OH_AudioCodec_Start()重新开始解码。
+   此时需要调用OH_AudioCodec_Start()重新开始解码。
 
-    使用情况：
-    * 之前输入的数据不再使用的场景，例如在解封装seek之后，调用刷新。
-    * 在文件EOS之后，需要调用刷新。
-    * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid 为true）调用。
+   使用情况：
+   * 之前输入的数据不再使用的场景，例如在解封装seek之后，调用刷新。
+   * 在解码输出buffer属性为AVCODEC_BUFFER_FLAGS_EOS后，若想重新使用相同配置进行解码时，需要调用刷新。
+   * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid()为true）可以调用刷新，然后调用OH_AudioCodec_Start()重新开始解码。
 
     ```c++
     // 刷新解码器audioDec_。
@@ -421,7 +419,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 10. （可选）调用OH_AudioCodec_Reset()重置解码器。
 
-    调用OH_AudioCodec_Reset()后，解码器回到初始化的状态，需要先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始解码。
+    调用OH_AudioCodec_Reset()后，解码器回到初始化状态，重置前获取到的输入/输出buffer都无法继续使用，需先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始解码。启动后重新获取输入/输出buffer。
 
     ```c++
     // 重置解码器audioDec_。
@@ -438,7 +436,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 11. 调用OH_AudioCodec_Stop()停止解码器。
 
-    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入输出buffer都无法接续使用，需要在启动后重新获取输入输出buffer。
+    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法接续使用，需要在启动后重新获取输入/输出buffer。
 
     ```c++
     // 终止解码器audioDec_。

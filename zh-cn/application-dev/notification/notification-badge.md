@@ -1,5 +1,12 @@
 # 管理通知角标
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 针对未读的通知，系统提供了角标设置接口，将未读通知个数显示在桌面图标的右上角角标上。
 
 通知增加时，角标上显示的未读通知个数需要增加。
@@ -28,7 +35,9 @@
 
 1. 导入NotificationManager模块。
 
-   ```ts
+   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->    
+   
+   ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -36,34 +45,40 @@
    const TAG: string = '[PublishOperation]';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
-
+   
 2. 增加角标个数。
 
    发布通知在[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的badgeNumber字段里携带，可参考[通知发布](text-notification.md)章节。
    
    示例为调用setBadgeNumber接口增加角标，在发布完新的通知后，调用该接口。
+
+   <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
    
-    ```ts
-    let badgeNumber: number = 9;
-    notificationManager.setBadgeNumber(badgeNumber).then(() => {
-      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
-    });
-    ```
+   ``` TypeScript
+   let badgeNumber: number = 9;
+   notificationManager.setBadgeNumber(badgeNumber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 3. 减少角标个数。
 
    一条通知被查看后，应用需要调用接口设置剩下未读通知个数，桌面刷新角标。
 
-    ```ts
-    let badgeNumber: number = 8;
-    notificationManager.setBadgeNumber(badgeNumber).then(() => {
-      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
-    });
-    ```
+   <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+   
+   ``` TypeScript
+   let badgeNumber: number = 8;
+   notificationManager.setBadgeNumber(badgeNumber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 ## 常见问题
 
@@ -75,14 +90,22 @@
 
     示例如下：
 
-    ```ts
+    <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+    
+    ``` TypeScript
     let badgeNumber: number = 10;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     badgeNumber = 11;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```
 
@@ -92,13 +115,21 @@
 
     示例如下：
 
-    ```ts
+    <!-- @[update_badge_count_idempotent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+    
+    ``` TypeScript
     let badgeNumber: number = 10;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
       badgeNumber = 11;
       notificationManager.setBadgeNumber(badgeNumber).then(() => {
         hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(DOMAIN_NUMBER, TAG,
+          `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
       });
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```

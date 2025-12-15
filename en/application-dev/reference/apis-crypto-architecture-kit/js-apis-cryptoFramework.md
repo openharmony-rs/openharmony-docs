@@ -1,10 +1,17 @@
 # @ohos.security.cryptoFramework (Crypto Framework)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 The **cryptoFramework** module provides APIs for cryptographic operations, shielding the underlying hardware and algorithm library.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -24,6 +31,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | NOT_SUPPORT                           | 801      | Unsupported operation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
 | ERR_OUT_OF_MEMORY                     | 17620001 | Memory error.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                  |
 | ERR_RUNTIME_ERROR                     | 17620002 | Runtime error.<br>**Atomic service API**: This API can be used in atomic services since API version 12.          |
+| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | Parameter check fails.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 | ERR_CRYPTO_OPERATION                  | 17630001 | Cryptographic operation error.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
 
 ## DataBlob
@@ -34,9 +42,9 @@ Represents data of the Binary Large Object (BLOB) type.
 
  **System capability**: SystemCapability.Security.CryptoFramework
 
-| Name| Type      | Readable| Writable| Description  |
+| Name| Type      | Read-Only| Optional| Description  |
 | ---- | ---------- | ---- | ---- | ------ |
-| data | Uint8Array | Yes  | Yes  | Binary data array.|
+| data | Uint8Array | No  | No  | Binary data array.|
 
 > **NOTE**
 >
@@ -44,7 +52,7 @@ Represents data of the Binary Large Object (BLOB) type.
 
 ## ParamsSpec
 
-Encapsulates the parameters used for encryption or decryption. You need to construct its child class object and pass it to [init()](#init-1) for symmetric encryption or decryption. 
+Encapsulates the parameters used for encryption or decryption. You need to construct its child class object and pass it to [init()](#init-1) for symmetric encryption or decryption.
 
 It applies to the symmetric block cipher modes that require parameters such as the initialization vector (IV). If the IV is not required (for example, the ECB mode), pass in **null** to [init()](#init-1).
 
@@ -54,9 +62,9 @@ It applies to the symmetric block cipher modes that require parameters such as t
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Cipher** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Yes  | Algorithm for symmetric encryption or decryption. The value can be:<br>- **IvParamsSpec**: applicable to CBC, CTR, OFB, and CFB modes.<br>- **GcmParamsSpec**: applicable to GCM mode.<br>- **CcmParamsSpec**: applicable to CCM mode. |
+| algName | string | No  | No  | Algorithm for symmetric encryption or decryption. The value can be:<br> - **IvParamsSpec**: applicable to CBC,|CTR,|OFB,|and CFB modes.<br> - **GcmParamsSpec**: applicable to GCM mode.<br> - **CcmParamsSpec**: applicable to CCM mode.|
 
 > **NOTE**
 >
@@ -66,7 +74,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
-This class is applicable to block cipher modes that require an IV, such as CBC, CTR, OFB, and CFB.
+This class is applicable to block cipher modes that require an IV, such as CBC, CTR, OFB, CFB, and Poly1305.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -74,17 +82,17 @@ This class is applicable to block cipher modes that require an IV, such as CBC, 
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Cipher** since API version 12.
 
-| Name| Type                 | Readable| Writable| Description                                                        |
+| Name| Type                 | Read-Only| Optional| Description                                                        |
 | ---- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv   | [DataBlob](#datablob) | Yes  | Yes  | IV for encryption or decryption. Options:<br>- AES CBC, CTR, OFB, or CFB mode: 16-byte IV<br>- 3DES CBC, OFB, or CFB mode: 8-byte IV<br>- SM4<sup>10+</sup> CBC, CTR, OFB, or CFB mode: 16-byte IV|
+| iv   | [DataBlob](#datablob) | No  | No | IV for encryption or decryption. Options:<br>- AES CBC,|CTR,|OFB,|or CFB mode: The IV length is 16 bytes.<br>- 3DES CBC,|OFB,|or CFB mode: The IV length is 8 bytes.<br>- SM4<sup>10+</sup> CBC,|CTR,|OFB,|or CFB mode: The IV length is 16 bytes.|
 
 > **NOTE**
 >
-> Before passing **IvParamsSpec** to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+> Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
 
 ## GcmParamsSpec
 
-Encapsulates the parameters for GCM encryption or decryption. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
 **GcmParamsSpec** applies to GCM mode.
 
@@ -94,21 +102,21 @@ Encapsulates the parameters for GCM encryption or decryption. It is a child clas
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Cipher** since API version 12.
 
-| Name   | Type                 | Readable| Writable| Description                                                        |
+| Name   | Type                 | Read-Only| Optional| Description                                                        |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | Yes  | Yes  | IV, which is of 1 to 16 bytes. A 12-byte IV is commonly used.                            |
-| aad     | [DataBlob](#datablob) | Yes  | Yes  | Additional authentication data (AAD), which is of 0 to INT_MAX bytes. A 16-byte AAD is commonly used.                            |
-| authTag | [DataBlob](#datablob) | Yes  | Yes  | Authentication tag, which is of 16 bytes.<br>When GCM mode is used for encryption, you need to extract the last 16 bytes from the [DataBlob](#datablob) returned by [doFinal()](#dofinal-1) or [doFinalSync()](#dofinalsync12) and use them as **authTag** in **GcmParamsSpec** for [init()](#init-1) or [initSync()](#initsync12). |
+| iv      | [DataBlob](#datablob) | No  | No  | IV, which is of 1 to 16 bytes. A 12-byte IV is commonly used.                            |
+| aad     | [DataBlob](#datablob) | No  | No  | Additional authentication data (AAD), which is of 0 to INT_MAX bytes. A 16-byte AAD is commonly used.                            |
+| authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 16 bytes.<br>When GCM mode is used for encryption, you need to extract the last 16 bytes from the [DataBlob](#datablob) returned by [doFinal()](#dofinal) or [doFinalSync()](#dofinalsync12) and use them as **authTag** in **GcmParamsSpec** for [init()](#init-1) or [initSync()](#initsync12).|
 
 > **NOTE**
 >
-> 1. Before passing **GcmParamsSpec** to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+> 1. Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
 > 2. The Crypto framework imposes no additional restrictions on the IV of 1 to 16 bytes. However, the operation result depends on the underlying OpenSSL support.
 > 3. If **aad** is not required or the **aad** length is 0, you can set its **data** attribute to an empty Uint8Array in the **aad: { data: new Uint8Array() }** format when constructing **GcmParamsSpec**.
 
 ## CcmParamsSpec
 
-Encapsulates the parameters for CCM encryption or decryption. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
 **CcmParamsSpec** applies to CCM mode.
 
@@ -118,15 +126,37 @@ Encapsulates the parameters for CCM encryption or decryption. It is a child clas
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Cipher** since API version 12.
 
-| Name   | Type                 | Readable| Writable| Description                                                        |
+| Name   | Type                 | Read-Only| Optional| Description                                                        |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | Yes  | Yes  | IV, which is of 7 bytes.                             |
-| aad     | [DataBlob](#datablob) | Yes  | Yes  | AAD, which is of 8 bytes.                            |
-| authTag | [DataBlob](#datablob) | Yes  | Yes  | Authentication tag, which is of 12 bytes.<br>When CCM mode is used for encryption, you need to extract the last 12 bytes from the [DataBlob](#datablob) returned by [doFinal()](#dofinal-2) or [doFinalSync()](#dofinalsync12) and use them as **authTag** in [CcmParamsSpec](#ccmparamsspec) for [init()](#init-1) or [initSync()](#initsync12).|
+| iv      | [DataBlob](#datablob) | No  | No  | IV, which is of 7 bytes.                             |
+| aad     | [DataBlob](#datablob) | No  | No  | AAD, which is of 8 bytes.                            |
+| authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 12 bytes.<br>When CCM mode is used for encryption, you need to extract the last 12 bytes from the [DataBlob](#datablob) returned by [doFinal()](#dofinal) or [doFinalSync()](#dofinalsync12) and use them as **authTag** in [CcmParamsSpec](#ccmparamsspec) for [init()](#init-1) or [initSync()](#initsync12).|
 
 > **NOTE**
 >
-> Before passing **CcmParamsSpec** to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+> Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+
+## Poly1305ParamsSpec<sup>22+</sup>
+
+Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+
+Applicable to the Poly1305 mode of [ChaCha20](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20).
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.CryptoFramework.Cipher
+
+| Name   | Type                 | Read-Only| Optional| Description                                                        |
+| ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
+| iv      | [DataBlob](#datablob) | No  | No  | IV, which is of 12 bytes.                             |
+| aad     | [DataBlob](#datablob) | No  | No  | AAD, which is of any bytes.                            |
+| authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 16 bytes.|
+
+> **NOTE**
+>
+> Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+>
+> When the Poly1305 mode is used for encryption, you need to extract the last 16 bytes from the [DataBlob](#datablob) returned by [doFinal()](#dofinal) or [doFinalSync()](#dofinalsync12) and use them as **authTag** in [Poly1305ParamsSpec](#poly1305paramsspec22) for [init()](#init-1) or [initSync()](#initsync12) during decryption.
 
 ## CryptoMode
 
@@ -198,10 +228,10 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name        | Value  | Description            |
 | ------------ | ---- | ---------------- |
-| COMMON_PARAMS_SPEC | 0 | Common parameter of the public and private keys. You can use [generateKeyPair()](#generatekeypair-2) to randomly generate a key pair based on the parameters of this type.|
-| PRIVATE_KEY_SPEC | 1 | Parameter of the private key. You can use [generatePriKey()](#generateprikey) to generate a private key based on the parameters of this type.|
-| PUBLIC_KEY_SPEC | 2 | Parameter of the public key. You can use [generatePubKey()](#generatepubkey) to generate a public key based on the parameters of this type.|
-| KEY_PAIR_SPEC | 3 | Full set of parameters of the public and private keys. You can use [generateKeyPair](#generatekeypair-2) to generate a key pair based on the parameters of this type. |
+| COMMON_PARAMS_SPEC | 0 | Common parameter of the public and private keys. You can use [generateKeyPair](#generatekeypair10) to randomly generate a key pair based on the parameters of this type.|
+| PRIVATE_KEY_SPEC | 1 | Parameter of the private key. You can use [generatePriKey](#generateprikey10) to generate a private key based on the parameters of this type.|
+| PUBLIC_KEY_SPEC | 2 | Parameter of the public key. You can use [generatePubKey](#generatepubkey10) to generate a public key based on the parameters of this type.|
+| KEY_PAIR_SPEC | 3 | Full parameters of the public and private keys. You can use [generateKeyPair](#generatekeypair10) to generate a key pair based on the parameters of this type.|
 
 ## CipherSpecItem<sup>10+</sup>
 
@@ -254,10 +284,10 @@ Defines the asymmetric key parameters for creating a key generator. You need to 
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Yes  | Asymmetric key algorithm, for example, **RSA**, **DSA**, **ECC**, **SM2**, **Ed25519**, **X25519**, or **DH**.|
-| specType | [AsyKeySpecType](#asykeyspectype10) | Yes  | Yes| Key parameter type, which is used to distinguish public and private key parameters.|
+| algName | string | No  | No  | Asymmetric key algorithm, for example, **RSA**, **DSA**, **ECC**, **SM2**, **Ed25519**, **X25519**, or **DH**.|
+| specType | [AsyKeySpecType](#asykeyspectype10) | No  | No| Key parameter type, which is used to distinguish public and private key parameters.|
 
 ## DSACommonParamsSpec<sup>10+</sup>
 
@@ -271,11 +301,11 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| p | bigint | Yes  | Yes  | Prime modulus **p** in the DSA algorithm.|
-| q | bigint | Yes  | Yes  | Parameter **q**, prime factor of (**p** – 1) in the DSA algorithm.|
-| g | bigint | Yes  | Yes  | Parameter **g** in the DSA algorithm.|
+| p | bigint | No  | No  | Prime modulus **p** in the DSA algorithm.|
+| q | bigint | No  | No  | Parameter **q**, prime factor of (**p** – 1) in the DSA algorithm.|
+| g | bigint | No  | No  | Parameter **g** in the DSA algorithm.|
 
 ## DSAPubKeySpec<sup>10+</sup>
 
@@ -289,10 +319,10 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| params | [DSACommonParamsSpec](#dsacommonparamsspec10) | Yes  | Yes  | Common parameters of the public and private keys in the DSA algorithm.|
-| pk | bigint | Yes  | Yes  | Public key in the DSA algorithm.|
+| params | [DSACommonParamsSpec](#dsacommonparamsspec10) | No  | No  | Common parameters of the public and private keys in the DSA algorithm.|
+| pk | bigint | No  | No  | Public key in the DSA algorithm.|
 
 ## DSAKeyPairSpec<sup>10+</sup>
 
@@ -306,11 +336,11 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| params | [DSACommonParamsSpec](#dsacommonparamsspec10) | Yes  | Yes  | Common parameters of the public and private keys in the DSA algorithm.|
-| sk | bigint | Yes  | Yes  | Private key **sk** in the DSA algorithm.|
-| pk | bigint | Yes  | Yes  | Public key in the DSA algorithm.|
+| params | [DSACommonParamsSpec](#dsacommonparamsspec10) | No  | No  | Common parameters of the public and private keys in the DSA algorithm.|
+| sk | bigint | No  | No  | Private key **sk** in the DSA algorithm.|
+| pk | bigint | No  | No  | Public key in the DSA algorithm.|
 
 ## ECField<sup>10+</sup>
 
@@ -322,9 +352,9 @@ Defines the field type of an elliptic curve. Currently, only the **Fp** field is
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| fieldType | string | Yes  | Yes  | Type of the elliptic curve field. Currently, only **Fp** is supported.|
+| fieldType | string | No  | No  | Type of the elliptic curve field. Currently, only **Fp** is supported.|
 
 ## ECFieldFp<sup>10+</sup>
 
@@ -336,9 +366,9 @@ Defines the prime field of the elliptic curve. It is a child class of [ECField](
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| p | bigint | Yes  | Yes  | Value of the prime number **p**.|
+| p | bigint | No  | No  | Value of the prime number **p**.|
 
 ## Point<sup>10+</sup>
 
@@ -350,10 +380,10 @@ Defines a point on the elliptic curve.
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| x | bigint | Yes  | Yes  | X coordinate of the point on an elliptic curve.|
-| y | bigint | Yes  | Yes  | Y coordinate of the point on an elliptic curve.|
+| x | bigint | No  | No  | X coordinate of the point on an elliptic curve.|
+| y | bigint | No  | No  | Y coordinate of the point on an elliptic curve.|
 
 ## ECCCommonParamsSpec<sup>10+</sup>
 
@@ -367,14 +397,14 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| field | [ECField](#ecfield10) | Yes  | Yes  | Field of the elliptic curve. Currently, only **Fp** is supported.|
-| a | bigint | Yes  | Yes  | First coefficient **a** of the elliptic curve.|
-| b | bigint | Yes  | Yes  | Second coefficient **b** of the elliptic curve.|
-| g | [Point](#point10) | Yes  | Yes  | Base point g.|
-| n | bigint | Yes  | Yes  | Order **n** of the base point **g**.|
-| h | number | Yes  | Yes  | Cofactor **h**.|
+| field | [ECField](#ecfield10) | No  | No  | Field of the elliptic curve. Currently, only **Fp** is supported.|
+| a | bigint | No  | No  | First coefficient **a** of the elliptic curve.|
+| b | bigint | No  | No  | Second coefficient **b** of the elliptic curve.|
+| g | [Point](#point10) | No  | No  | Base point g.|
+| n | bigint | No  | No  | Order **n** of the base point **g**.|
+| h | number | No  | No  | Cofactor **h**.|
 
 ## ECCPriKeySpec<sup>10+</sup>
 
@@ -388,10 +418,10 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| params | [ECCCommonParamsSpec](#ecccommonparamsspec10) | Yes  | Yes  | Common parameters of the public and private keys in the ECC algorithm.|
-| sk | bigint | Yes  | Yes  | Private key **sk** in the ECC algorithm.|
+| params | [ECCCommonParamsSpec](#ecccommonparamsspec10) | No  | No  | Common parameters of the public and private keys in the ECC algorithm.|
+| sk | bigint | No  | No  | Private key **sk** in the ECC algorithm.|
 
 ## ECCPubKeySpec<sup>10+</sup>
 
@@ -405,10 +435,10 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| params | [ECCCommonParamsSpec](#ecccommonparamsspec10) | Yes  | Yes  | Common parameters of the public and private keys in the ECC algorithm.|
-| pk | [Point](#point10) | Yes  | Yes  | Public key **pk** in the ECC algorithm.|
+| params | [ECCCommonParamsSpec](#ecccommonparamsspec10) | No  | No  | Common parameters of the public and private keys in the ECC algorithm.|
+| pk | [Point](#point10) | No  | No  | Public key **pk** in the ECC algorithm.|
 
 ## ECCKeyPairSpec<sup>10+</sup>
 
@@ -422,11 +452,11 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| params | [ECCCommonParamsSpec](#ecccommonparamsspec10) | Yes  | Yes  | Common parameters of the public and private keys in the ECC algorithm.|
-| sk | bigint | Yes  | Yes  | Private key **sk** in the ECC algorithm.|
-| pk | [Point](#point10) | Yes  | Yes  | Public key **pk** in the ECC algorithm.|
+| params | [ECCCommonParamsSpec](#ecccommonparamsspec10) | No  | No  | Common parameters of the public and private keys in the ECC algorithm.|
+| sk | bigint | No  | No  | Private key **sk** in the ECC algorithm.|
+| pk | [Point](#point10) | No  | No  | Public key **pk** in the ECC algorithm.|
 
 ## RSACommonParamsSpec<sup>10+</sup>
 
@@ -440,9 +470,9 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| n | bigint | Yes  | Yes  | Modulus **n**.|
+| n | bigint | No  | No  | Modulus **n**.|
 
 ## RSAPubKeySpec<sup>10+</sup>
 
@@ -456,10 +486,10 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| params | [RSACommonParamsSpec](#rsacommonparamsspec10) | Yes  | Yes  | Common parameters of the public and private keys in the RSA algorithm.|
-| pk | bigint | Yes  | Yes  | Public key **pk** in the RSA algorithm.|
+| params | [RSACommonParamsSpec](#rsacommonparamsspec10) | No  | No  | Common parameters of the public and private keys in the RSA algorithm.|
+| pk | bigint | No  | No  | Public key **pk** in the RSA algorithm.|
 
 ## RSAKeyPairSpec<sup>10+</sup>
 
@@ -473,11 +503,11 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| params | [RSACommonParamsSpec](#rsacommonparamsspec10) | Yes  | Yes  | Common parameters of the public and private keys in the RSA algorithm.|
-| sk | bigint | Yes  | Yes  | Private key **sk** in the RSA algorithm.|
-| pk | bigint | Yes  | Yes  | Public key **pk** in the RSA algorithm.|
+| params | [RSACommonParamsSpec](#rsacommonparamsspec10) | No  | No  | Common parameters of the public and private keys in the RSA algorithm.|
+| sk | bigint | No  | No  | Private key **sk** in the RSA algorithm.|
+| pk | bigint | No  | No  | Public key **pk** in the RSA algorithm.|
 
 ## ED25519PriKeySpec<sup>11+</sup>
 
@@ -491,9 +521,9 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name| Type  | Readable| Writable| Description                     |
+| Name| Type  | Read-Only| Optional| Description                     |
 | ---- | ------ | ---- | ---- | ------------------------- |
-| sk   | bigint | Yes  | Yes  | Private key **sk** in the Ed25519 algorithm.|
+| sk   | bigint | No  | No  | Private key **sk** in the Ed25519 algorithm.|
 
 ## ED25519PubKeySpec<sup>11+</sup>
 
@@ -507,9 +537,9 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name| Type  | Readable| Writable| Description                     |
+| Name| Type  | Read-Only| Optional| Description                     |
 | ---- | ------ | ---- | ---- | ------------------------- |
-| pk   | bigint | Yes  | Yes  | Public key **pk** in the Ed25519 algorithm.|
+| pk   | bigint | No  | No  | Public key **pk** in the Ed25519 algorithm.|
 
 ## ED25519KeyPairSpec<sup>11+</sup>
 
@@ -523,10 +553,10 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name| Type  | Readable| Writable| Description                     |
+| Name| Type  | Read-Only| Optional| Description                     |
 | ---- | ------ | ---- | ---- | ------------------------- |
-| sk   | bigint | Yes  | Yes  | Private key **sk** in the Ed25519 algorithm.|
-| pk   | bigint | Yes  | Yes  | Public key **pk** in the Ed25519 algorithm.|
+| sk   | bigint | No  | No  | Private key **sk** in the Ed25519 algorithm.|
+| pk   | bigint | No  | No  | Public key **pk** in the Ed25519 algorithm.|
 
 ## X25519PriKeySpec<sup>11+</sup>
 
@@ -540,9 +570,9 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name| Type  | Readable| Writable| Description                    |
+| Name| Type  | Read-Only| Optional| Description                    |
 | ---- | ------ | ---- | ---- | ------------------------ |
-| sk   | bigint | Yes  | Yes  | Private key **sk** in the X25519 algorithm.|
+| sk   | bigint | No  | No  | Private key **sk** in the X25519 algorithm.|
 
 ## X25519PubKeySpec<sup>11+</sup>
 
@@ -556,9 +586,9 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name| Type  | Readable| Writable| Description                    |
+| Name| Type  | Read-Only| Optional| Description                    |
 | ---- | ------ | ---- | ---- | ------------------------ |
-| pk   | bigint | Yes  | Yes  | Public key **pk** in the X25519 algorithm.|
+| pk   | bigint | No  | No  | Public key **pk** in the X25519 algorithm.|
 
 ## X25519KeyPairSpec<sup>11+</sup>
 
@@ -572,10 +602,10 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name| Type  | Readable| Writable| Description                    |
+| Name| Type  | Read-Only| Optional| Description                    |
 | ---- | ------ | ---- | ---- | ------------------------ |
-| sk   | bigint | Yes  | Yes  | Private key **sk** in the X25519 algorithm.|
-| pk   | bigint | Yes  | Yes  | Public key **pk** in the X25519 algorithm.|
+| sk   | bigint | No  | No  | Private key **sk** in the X25519 algorithm.|
+| pk   | bigint | No  | No  | Public key **pk** in the X25519 algorithm.|
 
 ## DHCommonParamsSpec<sup>11+</sup>
 
@@ -589,11 +619,11 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name| Type  | Readable| Writable| Description                               |
+| Name| Type  | Read-Only| Optional| Description                               |
 | ---- | ------ | ---- | ---- | ----------------------------------- |
-| p    | bigint | Yes  | Yes  | Large prime **p** in the DH algorithm.              |
-| g    | bigint | Yes  | Yes  | Parameter **g** in the DH algorithm.                |
-| l    | number | Yes  | Yes  | Length of the private key in the DH algorithm, in bits.|
+| p    | bigint | No  | No  | Large prime **p** in the DH algorithm.              |
+| g    | bigint | No  | No  | Parameter **g** in the DH algorithm.                |
+| l    | number | No  | No  | Length of the private key in the DH algorithm, in bits.|
 
 ## DHPriKeySpec<sup>11+</sup>
 
@@ -607,10 +637,10 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name  | Type              | Readable| Writable| Description                                |
+| Name  | Type              | Read-Only| Optional| Description                                |
 | ------ | ------------------ | ---- | ---- | ------------------------------------ |
-| params | [DHCommonParamsSpec](#dhcommonparamsspec11) | Yes  | Yes  | Common parameters of the public and private keys in the DH algorithm.|
-| sk     | bigint             | Yes  | Yes  | Private key **sk** in the DH algorithm.                |
+| params | [DHCommonParamsSpec](#dhcommonparamsspec11) | No  | No  | Common parameters of the public and private keys in the DH algorithm.|
+| sk     | bigint             | No  | No  | Private key **sk** in the DH algorithm.                |
 
 ## DHPubKeySpec<sup>11+</sup>
 
@@ -624,10 +654,10 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name  | Type              | Readable| Writable| Description                                |
+| Name  | Type              | Read-Only| Optional| Description                                |
 | ------ | ------------------ | ---- | ---- | ------------------------------------ |
-| params | [DHCommonParamsSpec](#dhcommonparamsspec11) | Yes  | Yes  | Common parameters of the public and private keys in the DH algorithm.|
-| pk     | bigint             | Yes  | Yes  | Public key **pk** in the DH algorithm.                |
+| params | [DHCommonParamsSpec](#dhcommonparamsspec11) | No  | No  | Common parameters of the public and private keys in the DH algorithm.|
+| pk     | bigint             | No  | No  | Public key **pk** in the DH algorithm.                |
 
 ## DHKeyPairSpec<sup>11+</sup>
 
@@ -641,11 +671,11 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name  | Type              | Readable| Writable| Description                                |
+| Name  | Type              | Read-Only| Optional| Description                                |
 | ------ | ------------------ | ---- | ---- | ------------------------------------ |
-| params | [DHCommonParamsSpec](#dhcommonparamsspec11) | Yes  | Yes  | Common parameters of the public and private keys in the DH algorithm.|
-| sk     | bigint             | Yes  | Yes  | Private key **sk** in the DH algorithm.                |
-| pk     | bigint             | Yes  | Yes  | Public key **pk** in the DH algorithm.                |
+| params | [DHCommonParamsSpec](#dhcommonparamsspec11) | No  | No  | Common parameters of the public and private keys in the DH algorithm.|
+| sk     | bigint             | No  | No  | Private key **sk** in the DH algorithm.                |
+| pk     | bigint             | No  | No  | Public key **pk** in the DH algorithm.                |
 
 ## KdfSpec<sup>11+</sup>
 
@@ -657,9 +687,9 @@ Defines the parameters of the key derivation function. When the key derivation f
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Kdf** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Yes  | Algorithm of the key derivation function, for example, **PBKDF2**.|
+| algName | string | No  | No  | Algorithm of the key derivation function, for example, **PBKDF2**.|
 
 ## PBKDF2Spec<sup>11+</sup>
 
@@ -671,12 +701,12 @@ Defines the child class of [KdfSpec](#kdfspec11). It is used as a parameter for 
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Kdf** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| password | string \| Uint8Array | Yes  | Yes  | Original password entered by the user.|
-| salt | Uint8Array | Yes  | Yes  | Salt value.|
-| iterations | number | Yes  | Yes  | Number of iterations. The value must be a positive integer.|
-| keySize | number | Yes  | Yes  | Length of the derived key, in bytes.|
+| password | string \| Uint8Array | No  | No  | Original password entered by the user.|
+| salt | Uint8Array | No  | No  | Salt value.|
+| iterations | number | No  | No  | Number of iterations. The value must be a positive integer.|
+| keySize | number | No  | No  | Length of the derived key, in bytes.|
 
 > **NOTE**
 >
@@ -690,12 +720,12 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for HKDF key
 
 **System capability**: SystemCapability.Security.CryptoFramework.Kdf
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| key | string \| Uint8Array | Yes  | Yes  | Key material.|
-| salt | Uint8Array | Yes  | Yes  | Salt value.|
-| info | Uint8Array | Yes  | Yes  | Information used to expand the key.|
-| keySize | number | Yes  | Yes  | Length of the derived key, in bytes.|
+| key | string \| Uint8Array | No  | No  | Key material.|
+| salt | Uint8Array | No  | No  | Salt value.|
+| info | Uint8Array | No  | No  | Information used to expand the key.|
+| keySize | number | No  | No  | Length of the derived key, in bytes.|
 
 > **NOTE**
 >
@@ -715,17 +745,35 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for scrypt k
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| passphrase | string \| Uint8Array | Yes  | No  | Original password entered by the user.|
-| salt | Uint8Array | Yes  | No  | Salt value.|
-| n | number | Yes  | No  | Number of iterations. The value must be a positive integer.|
-| p | number | Yes  | No  | Parallelization parameter. The value must be a positive integer.|
-| r | number | Yes  | No  | Block size. The value must be a positive integer.|
-| maxMemory | number | Yes  | No  | Maximum memory size. The value must be a positive integer.|
-| keySize | number | Yes  | No  | Length of the derived key, in bytes. The value must be a positive integer.|
+| passphrase | string \| Uint8Array | No  | No  | Original password entered by the user.|
+| salt | Uint8Array | No  | No  | Salt value.|
+| n | number | No  | No  | Number of iterations. The value must be a positive integer.|
+| p | number | No  | No  | Parallelization parameter. The value must be a positive integer.|
+| r | number | No  | No  | Block size. The value must be a positive integer.|
+| maxMemory | number | No  | No  | Maximum memory size. The value must be a positive integer.|
+| keySize | number | No  | No  | Length of the derived key, in bytes. The value must be a positive integer.|
 
 > **NOTE**
 >
 > **passphrase** specifies the original password. If **password** is of the string type, pass in the data used for key derivation rather than a string of the HexString or Base64 type. In addition, the string must be in utf-8 format. Otherwise, the key derived may be different from the one expected.
+
+## X963KdfSpec<sup>22+</sup>
+
+Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for X963KDF key derivation function (KDF).
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.CryptoFramework.Kdf
+
+| Name   | Type  | Read-Only| Optional| Description                                                        |
+| ------- | ------ | ---- | ---- | ------------ |
+| key | string \| Uint8Array | No  | No  | Key material.|
+| info | Uint8Array | No  | No  | Additional description.|
+| keySize | int | No  | No  | Length of the derived key, in bytes. The value must be a positive integer.|
+
+> **NOTE**
+>
+> **key** is the original key material entered by the user.
 
 ## SM2CipherTextSpec<sup>12+</sup>
 
@@ -735,12 +783,12 @@ Represents the SM2 ciphertext parameters. You can use this object to generate SM
 
 **System capability**: SystemCapability.Security.CryptoFramework.Cipher
 
-| Name   | Type  | Readable| Writable| Description                                                        |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| xCoordinate | bigint | Yes  | Yes  | Coordinate X.|
-| yCoordinate | bigint | Yes  | Yes  | Coordinate Y.|
-| cipherTextData | Uint8Array | Yes  | Yes  | Ciphertext.|
-| hashData | Uint8Array | Yes  | Yes  | Hash value.|
+| xCoordinate | bigint | No  | No  | Coordinate X.|
+| yCoordinate | bigint | No  | No  | Coordinate Y.|
+| cipherTextData | Uint8Array | No  | No  | Ciphertext.|
+| hashData | Uint8Array | No  | No  | Hash value.|
 
 > **NOTE**
 >
@@ -759,8 +807,8 @@ Represents the RSA private key encoding parameters. You can use it to generate a
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| password | string | Yes  | No  | Password used for encoding the private key.|
-| cipherName | string | Yes  | No  | Algorithm to use.|
+| password | string | No  | No  | Password used for encoding the private key.|
+| cipherName | string | No  | No  | Algorithm to use.|
 
 > **NOTE**
 >
@@ -777,11 +825,11 @@ Represents the message authentication code (MAC) parameters. You need to constru
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | No  | Algorithm to use.|
+| algName | string | No  | No  | Algorithm to use.|
 
 > **NOTE**
 >
-> **algName** specifies the algorithm used for generating a MAC. It is mandatory.
+> **algName** specifies the MAC algorithm to use. It is mandatory.
 
 ## HmacSpec<sup>18+</sup>
 Represents the child class of [MacSpec](#macspec18). It is used as an input parameter for HMAC generation.
@@ -792,11 +840,11 @@ Represents the child class of [MacSpec](#macspec18). It is used as an input para
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| mdName | string | Yes  | No  | MD algorithm to use.|
+| mdName | string | No  | No  | MD algorithm to use.|
 
 > **NOTE**
 >
-> **mdName** specifies the MD algorithm used by the HMAC. It is mandatory.
+> **mdName** specifies the HMAC digest algorithm. It is mandatory.
 
 ## CmacSpec<sup>18+</sup>
 Represents the child class of [MacSpec](#macspec18). It is used as an input parameter for CMAC generation.
@@ -807,11 +855,11 @@ Represents the child class of [MacSpec](#macspec18). It is used as an input para
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| cipherName | string | Yes  | No  | Symmetric encryption algorithm to use.|
+| cipherName | string | No  | No  | Symmetric encryption algorithm to use.|
 
 > **NOTE**
 >
-> **cipherName** specifies the symmetric encryption algorithm used by the CMAC. It is mandatory.
+> **cipherName** specifies the CMAC symmetric encryption algorithm. It is mandatory.
 
 ## EccSignatureSpec<sup>20+</sup>
 
@@ -827,8 +875,8 @@ Represents the SM2 signature data that contains (r, s).
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| r | bigint | Yes  | Yes  | Randomized value derived from the elliptic curve calculation using the ephemeral private key during signature generation.|
-| s | bigint | Yes  | Yes  | Signature component, computed using the signer's private key, **r**, and the hashed message.|
+| r | bigint | No  | No  | Randomized value derived from the elliptic curve calculation using the ephemeral private key during signature generation.|
+| s | bigint | No  | No  | Signature component, computed using the signer's private key, r, and the hashed message.|
 
 ## Key
 
@@ -844,7 +892,7 @@ Keys can be generated by a key generator.
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                        |
+| Name   | Type  | Read-Only| Optional| Description                        |
 | ------- | ------ | ---- | ---- | ---------------------------- |
 | format  | string | Yes  | No  | Format of the key.                |
 | algName | string | Yes  | No  | Algorithm to use. This parameter contains the key length if the key is a symmetric key.|
@@ -857,7 +905,7 @@ Obtains the byte stream of the key data. This API returns the result synchronous
 
 > **NOTE**
 >
-> When a key parameter is used to generate an RSA private key, the private key object does not support **getEncoded()**.
+> When the RSA algorithm generates a private key using key parameters, **getEncoded** is available for the private key object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -872,6 +920,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [DataBlob](#datablob) | Key obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -913,14 +962,18 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let key: cryptoFramework.SymKey;    // The key is generated by a symKeyGenerator. The generation process is omitted here.
-let encodedKey = key.getEncoded();
-console.info('key blob: '+ encodedKey.data);    // Display key content.
-key.clearMem();
-encodedKey = key.getEncoded();
-console.info('key blob: ' + encodedKey.data);  // Display all 0s.
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function testGenerateAesKeyFun() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+  let key = await symKeyGenerator.generateSymKey();
+  let encodedKey = key.getEncoded();
+  console.info('key blob: '+ encodedKey.data);
+  key.clearMem();
+  encodedKey = key.getEncoded();
+  console.info('key blob: ' + encodedKey.data);
+}
 ```
 
 ## PubKey
@@ -965,25 +1018,54 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let key: cryptoFramework.PubKey; // key is a public key object. The generation process is omitted here.
-let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-console.info('ecc item --- p: ' + p.toString(16));
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// Construct the EccCommonSpec struct, which defines the common parameters of the ECC public and private keys.
+function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
+  let fieldFp: cryptoFramework.ECFieldFp = {
+    fieldType: 'Fp',
+    p: BigInt('0xffffffffffffffffffffffffffffffff000000000000000000000001')
+  }
+  let G: cryptoFramework.Point = {
+    x: BigInt('0xb70e0cbd6bb4bf7f321390b94a03c1d356c21122343280d6115c1d21'),
+    y: BigInt('0xbd376388b5f723fb4c22dfe6cd4375a05a07476444d5819985007e34')
+  }
+  let eccCommonSpec: cryptoFramework.ECCCommonParamsSpec = {
+    algName: 'ECC',
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    field: fieldFp,
+    a: BigInt('0xfffffffffffffffffffffffffffffffefffffffffffffffffffffffe'),
+    b: BigInt('0xb4050a850c04b3abf54132565044b0b7d7bfd8ba270b39432355ffb4'),
+    g: G,
+    n: BigInt('0xffffffffffffffffffffffffffff16a2e0b8f03e13dd29455c5c2a3d'),
+    h: 1
+  }
+  return eccCommonSpec;
+}
+
+async function testgetAsyKeySpec() {
+  let commKeySpec = genEccCommonSpec(); // Construct the EccCommonSpec object.
+  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an AsyKeyGenerator instance based on the EccCommonSpec object.
+  let keyPair = await generatorBySpec.generateKeyPair();
+  let key = keyPair.pubKey;
+  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+  console.info('ecc item --- p: ' + p.toString(16));
+}
 ```
 
 ### getEncodedDer<sup>12+</sup>
 
 getEncodedDer(format: string): DataBlob
 
-Obtains the public key data that complies with the ASN.1 syntax and DER encoding based on the specified format (such as the specification to use and whether to compress the key). Currently, only the ECC compressed and uncompressed public key data is supported.
+Obtains the public key data that complies with the ASN.1 syntax and DER encoding format based on the specified key format (such as the specifications and compression status). Currently, only the ECC compressed and uncompressed public key data is supported.
 
 > **NOTE**
 >
 > The difference between [Key.getEncoded()](#getencoded) and this API is as follows:
 >
 > 1. You can specify the format of the data to be obtained in this API.
-> 2. The format of the key to be obtained cannot be specified in [Key.getEncoded()](#getencoded). It must match that of the original data, which is the format of the key object generated by [convertKey](#convertkey-3).
+> 2. The format of the key to be obtained cannot be specified in [Key.getEncoded()](#getencoded). It must match that of the original data, which is the format of the key object generated by [convertKey](#convertkey-3).  
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1012,11 +1094,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let key: cryptoFramework.PubKey; // Key is a public key object. The generation process is omitted here.
-let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
-console.info('returnBlob data: ' + returnBlob.data);
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function testGetEncodedDer() {
+  let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+  let keyPair = await generator.convertKey(pubKeyBlob, null);
+  let key = keyPair.pubKey;
+  let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
+  console.info('returnBlob data: ' + returnBlob.data);
+}
 ```
 
 ### getEncodedPem<sup>12+</sup>
@@ -1091,10 +1180,20 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let key: cryptoFramework.PriKey; // The key is a private key generated by the asymmetric key generator. The generation process is omitted here.
-key.clearMem(); // For the asymmetric private key, clearMem() releases the internal key struct. After clearMem is executed, getEncoded() is not supported.
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function testClearMem() {
+  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    // Use AsyKeyGenerator to randomly generate an asymmetric key pair.
+    let keyGenPromise = eccGenerator.generateKeyPair();
+    keyGenPromise.then(keyPair => {
+      let priKey = keyPair.priKey;
+      let returnBlob = priKey.getEncodedDer('PKCS8');
+      console.info('returnBlob data: ' + returnBlob.data);
+      priKey.clearMem(); // For an asymmetric private key, clearMem() releases the internal key structure. After clearMem is executed, getEncoded() is not supported.
+    });
+}
 ```
 
 ### getAsyKeySpec<sup>10+</sup>
@@ -1133,11 +1232,39 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let key: cryptoFramework.PriKey; // key is a private key object. The generation process is omitted here.
-let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-console.info('ecc item --- p: ' + p.toString(16));
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+// Construct the EccCommonSpec struct, which defines the common parameters of the ECC public and private keys.
+function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
+  let fieldFp: cryptoFramework.ECFieldFp = {
+    fieldType: 'Fp',
+    p: BigInt('0xffffffffffffffffffffffffffffffff000000000000000000000001')
+  }
+  let G: cryptoFramework.Point = {
+    x: BigInt('0xb70e0cbd6bb4bf7f321390b94a03c1d356c21122343280d6115c1d21'),
+    y: BigInt('0xbd376388b5f723fb4c22dfe6cd4375a05a07476444d5819985007e34')
+  }
+  let eccCommonSpec: cryptoFramework.ECCCommonParamsSpec = {
+    algName: 'ECC',
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    field: fieldFp,
+    a: BigInt('0xfffffffffffffffffffffffffffffffefffffffffffffffffffffffe'),
+    b: BigInt('0xb4050a850c04b3abf54132565044b0b7d7bfd8ba270b39432355ffb4'),
+    g: G,
+    n: BigInt('0xffffffffffffffffffffffffffff16a2e0b8f03e13dd29455c5c2a3d'),
+    h: 1
+  }
+  return eccCommonSpec;
+}
+
+async function testgetAsyKeySpec() {
+  let commKeySpec = genEccCommonSpec(); // Construct the EccCommonSpec object.
+  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an AsyKeyGenerator instance based on the EccCommonSpec object.
+  let keyPair = await generatorBySpec.generateKeyPair();
+  let key = keyPair.priKey;
+  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+  console.info('ecc item --- p: ' + p.toString(16));
+}
 ```
 ### getEncodedDer<sup>12+</sup>
 
@@ -1165,7 +1292,7 @@ Obtains the private key data that complies with the ASN.1 syntax and DER encodin
 
 | Type                       | Description                             |
 | --------------------------- | --------------------------------- |
-| [DataBlob](#datablob) | Private key data of the specified format obtained.|
+| [DataBlob](#datablob) | ECC private key data obtained.|
 
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
@@ -1178,11 +1305,19 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let key: cryptoFramework.PriKey; // key is a private key object. The generation process is omitted here.
-let returnBlob = key.getEncodedDer('PKCS8');
-console.info('returnBlob data: ' + returnBlob.data);
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function testGetEncodedDer() {
+  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    // Use AsyKeyGenerator to randomly generate an asymmetric key pair.
+    let keyGenPromise = eccGenerator.generateKeyPair();
+    keyGenPromise.then(keyPair => {
+      let priKey = keyPair.priKey;
+      let returnBlob = priKey.getEncodedDer('PKCS8');
+      console.info('returnBlob data: ' + returnBlob.data);
+    });
+}
 ```
 
 ### getEncodedPem<sup>12+</sup>
@@ -1199,7 +1334,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Encoding format of the key data to obtain. The format of a private key can be **'PKCS1'** or **'PKCS8'**. |
+| format  | string | Yes  | Encoding format of the key data to obtain. The format of a private key can be **'PKCS1'** or **'PKCS8'**.|
 
 **Return value**
 
@@ -1208,6 +1343,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 | string | Key data obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1261,7 +1397,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Encoding format of the key data to obtain. The format of a private key can be **'PKCS1'** or **'PKCS8'**. |
+| format  | string | Yes  | Encoding format of the key data to obtain. The format of a private key can be **'PKCS1'** or **'PKCS8'**.|
 | config | [KeyEncodingConfig](#keyencodingconfig18) | Yes| Options (including the password and algorithm) for encoding the private key.|
 
 **Return value**
@@ -1271,6 +1407,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 | string | Key data obtained. If **config** is specified, the key obtained is encoded.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1335,7 +1472,7 @@ The asymmetric key pair can be generated by using the asymmetric key generator [
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description          |
+| Name   | Type  | Read-Only| Optional| Description          |
 | ------- | ------ | ---- | ---- | ------------ |
 | priKey  | [PriKey](#prikey) | Yes  | No  | Private key.     |
 | pubKey | [PubKey](#pubkey) | Yes  | No  | Public key.      |
@@ -1367,6 +1504,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [SymKeyGenerator](#symkeygenerator) | **symKeyGenerator** instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1396,7 +1534,7 @@ Before using the APIs of this class, use [createSymKeyGenerator](#cryptoframewor
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key.SymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                          |
+| Name   | Type  | Read-Only| Optional| Description                          |
 | ------- | ------ | ---- | ---- | ------------------------------ |
 | algName | string | Yes  | No  | Algorithm used by the **symKeyGenerator**.|
 
@@ -1427,6 +1565,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[SymKey](#symkey)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the symmetric key generated. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message     |
@@ -1467,6 +1606,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[SymKey](#symkey)> | Promise used to return the symmetric key generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message     |
@@ -1506,7 +1646,14 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 
 **System capability**: SystemCapability.Security.CryptoFramework.Key.SymKey
 
+**Return value**
+
+| Type                       | Description                             |
+| --------------------------- | --------------------------------- |
+| [SymKey](#symkey) | Symmetric key generated.|
+
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message     |
@@ -1611,6 +1758,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[SymKey](#symkey)> | Promise used to return the symmetric key generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                         |
@@ -1674,6 +1822,7 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 | [SymKey](#symkey) | Symmetric key obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                              |
@@ -1718,7 +1867,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                            |
 | ------- | ------ | ---- | -------------------------------- |
-| algName | string | Yes  | [Algorithm used to generate an asymmetric key pair](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md).|
+| algName | string | Yes  | Algorithm used by the asymmetric keys. For details, see the string parameters in [Asymmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md).|
 
 **Return value**
 
@@ -1727,6 +1876,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [AsyKeyGenerator](#asykeygenerator) | **AsyKeyGenerator** instance created. |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1755,7 +1905,7 @@ Provides APIs for using the **AsKeyGenerator**. Before using any API of the **As
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                            |
+| Name   | Type  | Read-Only| Optional| Description                            |
 | ------- | ------ | ---- | ---- | -------------------------------- |
 | algName | string | Yes  | No  | Algorithm used by the **AsKeyGenerator**.|
 
@@ -1778,6 +1928,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1820,6 +1971,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1860,6 +2012,7 @@ Generates an asymmetric key pair randomly. This API returns the result synchrono
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1907,6 +2060,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1960,6 +2114,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2011,6 +2166,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2055,7 +2211,6 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 Converts data into an asymmetric key. This API uses a promise to return the result.
 
 > **NOTE**
->
 > 1. When **convertPemKey()** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the public key must comply with the ASN.1 syntax, X.509 specifications, and PEM encoding format, and the private key must comply with the ASN.1 syntax, PKCS #8 specifications, and PEM encoding format.
 > 2. In **convertPemKey()**, you can pass in either **pubKey** or **priKey**, or both of them. If one of them is passed in, the returned **KeyPair** instance contains only the key converted from the data you passed in.
 > 3. When **convertPemKey** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the system does not verify whether the specifications of the generated key object are the same as the key specifications specified for the asymmetric key generator.
@@ -2078,6 +2233,7 @@ Converts data into an asymmetric key. This API uses a promise to return the resu
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2129,10 +2285,9 @@ async function TestConvertPemKeyByPromise() {
 
 convertPemKey(pubKey: string | null, priKey: string | null, password: string): Promise\<KeyPair>
 
-Converts data into an asymmetric key. This API uses a promise to return the result.
+Converts data into an asymmetric key pair. Encrypted private keys are supported. The private key password is synchronously passed to decrypt the private key. This API uses a promise to return the result.
 
 > **NOTE**
-> 
 > 1. When **convertPemKey()** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the public key must comply with the ASN.1 syntax, X.509 specifications, and PEM encoding format, and the private key must comply with the ASN.1 syntax, PKCS #8 specifications, and PEM encoding format.
 > 2. In **convertPemKey()**, you can pass in either **pubKey** or **priKey**, or both of them. If one of them is passed in, the returned **KeyPair** instance contains only the key converted from the data you passed in.
 > 3. When **convertPemKey** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the system does not verify whether the specifications of the generated key object are the same as the key specifications specified for the asymmetric key generator.
@@ -2157,6 +2312,7 @@ Converts data into an asymmetric key. This API uses a promise to return the resu
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2201,82 +2357,6 @@ async function TestConvertPemKeyByPromise() {
 }
 ```
 
-### convertPemKey<sup>18+</sup>
-
-convertPemKey(pubKey: string | null, priKey: string | null, password: string): Promise\<KeyPair>
-
-Converts data into an asymmetric key. This API uses a promise to return the result.
-
-> **NOTE**
-> 
-> 1. When **convertPemKey()** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the public key must comply with the ASN.1 syntax, X.509 specifications, and PEM encoding format, and the private key must comply with the ASN.1 syntax, PKCS #8 specifications, and PEM encoding format.
-> 2. In **convertPemKey()**, you can pass in either **pubKey** or **priKey**, or both of them. If one of them is passed in, the returned **KeyPair** instance contains only the key converted from the data you passed in.
-> 3. When **convertPemKey** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the system does not verify whether the specifications of the generated key object are the same as the key specifications specified for the asymmetric key generator.
-> 4. If **password** is passed in, it can be used to decrypt the encrypted private key.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
-**System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-**Parameters**
-
-| Name  | Type   | Mandatory| Description            |
-| ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null | Yes | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
-| password | string | Yes| Password used to decrypt the private key.|
-
-**Return value**
-
-| Type             | Description                             |
-| ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
-
-**Error codes**
-For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
-
-| ID| Error Message              |
-| -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
-
-**Example**
-
-```ts
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let priKeyPkcs1EncodingStr : string =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-    +"Proc-Type: 4,ENCRYPTED\n"
-    +"DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n"
-    +"7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n"
-    +"t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n"
-    +"vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n"
-    +"/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n"
-    +"W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n"
-    +"mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n"
-    +"T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n"
-    +"LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n"
-    +"Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n"
-    +"BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n"
-    +"k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n"
-    +"iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n"
-    +"OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n"
-    +"-----END RSA PRIVATE KEY-----\n"
-
-async function TestConvertPemKeyByPromise() {
-  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyGenPromise = asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, "123456");
-  keyGenPromise.then(keyPair => {
-    console.info('convertPemKey success.');
-  }).catch((error: BusinessError) => {
-    console.error("convertPemKey error.");
-  });
-}
-```
-
 ### convertPemKeySync<sup>12+</sup>
 
 convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
@@ -2284,7 +2364,6 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 Converts data into an asymmetric key pair. This API returns the result synchronously.
 
 > **NOTE**
-> 
 > The precautions for using **convertPemKeySync** are the same as those for **convertPemKey**. For details, see the description of [convertPemKey](#convertpemkey12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -2296,7 +2375,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null| Yes  | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null| Yes  | Private key material to convert. If no private key is required, set this parameter to **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
+| priKey | string \| null| Yes  | Private key material. If the private key does not need to be converted, you can pass in **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
 
 **Return value**
 
@@ -2305,6 +2384,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2317,7 +2397,6 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string  =
   "-----BEGIN RSA PRIVATE KEY-----\n"
@@ -2360,10 +2439,9 @@ function TestConvertPemKeyBySync() {
 
 convertPemKeySync(pubKey: string | null, priKey: string | null, password: string): KeyPair
 
-Converts data into an asymmetric key pair. This API returns the result synchronously.
+Converts data into an asymmetric key pair. Encrypted private keys are supported. The private key password is synchronously passed to decrypt the private key. This API is synchronous.
 
 > **NOTE**
-> 
 > The precautions for using **convertPemKeySync** are the same as those for [convertPemKey](#convertpemkey18).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -2385,6 +2463,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2397,7 +2476,6 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1EncodingStr : string =
   "-----BEGIN RSA PRIVATE KEY-----\n"
@@ -2459,6 +2537,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10) | Returns the **AsyKeyGenerator** instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2497,7 +2576,7 @@ function genDsa1024KeyPairSpecBigE() {
   return dsaKeyPairSpec;
 }
 
-let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
 let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
 ```
 
@@ -2513,11 +2592,11 @@ Provides APIs for using the **AsKeyGenerator**. Before using the APIs of this cl
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                      |
+| Name   | Type  | Read-Only| Optional| Description                      |
 | ------- | ------ | ---- | ---- | -------------------------- |
 | algName | string | Yes  | No  | Algorithm used by the asymmetric key generator.|
 
-### generateKeyPair
+### generateKeyPair<sup>10+</sup>
 
 generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
@@ -2529,7 +2608,7 @@ If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used t
 
 **System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
 
-The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
+The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
 **Parameters**
 
@@ -2538,6 +2617,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message               |
@@ -2548,20 +2628,49 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let asyKeyPairSpec: cryptoFramework.DSAKeyPairSpec; // Use DSA as an example. asyKeyPairSpec specifies full parameters of the private and public keys. The generation process is omitted here.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
-  if (err) {
-    console.error("generateKeyPair: error.");
-    return;
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// Set the common parameters of the DSA1024 public and private keys.
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
+    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
+    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
   }
-  console.info('generateKeyPair: success.');
-})
+  return dsaCommonSpec;
+}
+
+// Set full parameters of the DSA1024 key pair.
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
+    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGenerateKeyPair()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
+    if (err) {
+      console.error("generateKeyPair: error.");
+      return;
+    }
+    console.info('generateKeyPair: success.');
+  })
+}
 ```
 
-### generateKeyPair
+### generateKeyPair<sup>10+</sup>
 
 generateKeyPair(): Promise\<KeyPair>
 
@@ -2573,7 +2682,7 @@ If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used t
 
 **System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
 
-The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
+The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
 **Return value**
 
@@ -2582,6 +2691,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2592,25 +2702,52 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+// Set the common parameters of the DSA1024 public and private keys.
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
+    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
+    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+  }
+  return dsaCommonSpec;
+}
 
-let asyKeyPairSpec: cryptoFramework.DSAKeyPairSpec; // Use DSA as an example. asyKeyPairSpec specifies full parameters of the private and public keys. The generation process is omitted here.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-let keyGenPromise = asyKeyGeneratorBySpec.generateKeyPair();
-keyGenPromise.then(keyPair => {
-  console.info('generateKeyPair success.');
-}).catch((error: BusinessError) => {
-  console.error("generateKeyPair error.");
-});
+// Set full parameters of the DSA1024 key pair.
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
+    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGenerateKeyPair()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  let keyGenPromise = asyKeyGeneratorBySpec.generateKeyPair();
+  keyGenPromise.then(keyPair => {
+    console.info('generateKeyPair success.');
+  }).catch((error: BusinessError) => {
+    console.error("generateKeyPair error.");
+  });
+}
 ```
 
 ### generateKeyPairSync<sup>12+</sup>
 
 generateKeyPairSync(): KeyPair
 
-Generates an asymmetric key pair using this asymmetric key generator. This API returns the result synchronously.
+Generates a public key using this asymmetric key generator. This API returns the result synchronously.
 
 If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used to create the key generator, a key pair will be randomly generated. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain a key pair that is consistent with the specified key parameters.
 
@@ -2625,6 +2762,7 @@ If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used t
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2635,26 +2773,54 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let asyKeyPairSpec: cryptoFramework.DSAKeyPairSpec; // Use DSA as an example. asyKeyPairSpec specifies full parameters of the private and public keys. The generation process is omitted here.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-try {
-  let keyPairData = asyKeyGeneratorBySpec.generateKeyPairSync();
-  if (keyPairData != null) {
-    console.info('[Sync]: key pair success');
-  } else {
-    console.error("[Sync]: get key pair result fail!");
+// Set the common parameters of the DSA1024 public and private keys.
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
+    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
+    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
   }
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  return dsaCommonSpec;
+}
+
+// Set full parameters of the DSA1024 key pair.
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
+    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGenerateKeyPairSync()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  try {
+    let keyPairData = asyKeyGeneratorBySpec.generateKeyPairSync();
+    if (keyPairData != null) {
+      console.info('[Sync]: key pair success');
+    } else {
+      console.error("[Sync]: get key pair result fail!");
+    }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
-### generatePriKey
+### generatePriKey<sup>10+</sup>
 
 generatePriKey(callback: AsyncCallback\<PriKey>): void
 
@@ -2666,7 +2832,7 @@ If [PRIVATE_KEY_SPEC](#asykeyspectype10) is used to create a key generator, the 
 
 **System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
 
-The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
+The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
 **Parameters**
 
@@ -2675,6 +2841,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2685,20 +2852,49 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let asyKeyPairSpec: cryptoFramework.DSAKeyPairSpec; // Use DSA as an example. asyKeyPairSpec specifies full parameters of the private and public keys. The generation process is omitted here.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
-  if (err) {
-    console.error("generatePriKey: error.");
-    return;
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// Set the common parameters of the DSA1024 public and private keys.
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
+    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
+    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
   }
-  console.info('generatePriKey: success.');
-})
+  return dsaCommonSpec;
+}
+
+// Set full parameters of the DSA1024 key pair.
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
+    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePriKey()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
+    if (err) {
+      console.error("generatePriKey: error.");
+      return;
+    }
+    console.info('generatePriKey: success.');
+  })
+}
 ```
 
-### generatePriKey
+### generatePriKey<sup>10+</sup>
 
 generatePriKey(): Promise\<PriKey>
 
@@ -2710,7 +2906,7 @@ If a key parameter of the [PRIVATE_KEY_SPEC](#asykeyspectype10) type is used to 
 
 **System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
 
-The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
+The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
 **Return value**
 
@@ -2719,6 +2915,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[PriKey](#prikey)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2729,25 +2926,53 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let asyKeyPairSpec: cryptoFramework.DSAKeyPairSpec; // Use DSA as an example. asyKeyPairSpec specifies full parameters of the private and public keys. The generation process is omitted here.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-let keyGenPromise = asyKeyGeneratorBySpec.generatePriKey();
-keyGenPromise.then(priKey => {
-  console.info('generatePriKey success.');
-}).catch((error: BusinessError) => {
-  console.error("generatePriKey error.");
-});
+// Set the common parameters of the DSA1024 public and private keys.
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
+    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
+    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+  }
+  return dsaCommonSpec;
+}
+
+// Set full parameters of the DSA1024 key pair.
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
+    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePriKey()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  let keyGenPromise = asyKeyGeneratorBySpec.generatePriKey();
+  keyGenPromise.then(priKey => {
+    console.info('generatePriKey success.');
+  }).catch((error: BusinessError) => {
+    console.error("generatePriKey error.");
+  });
+}
 ```
 
 ### generatePriKeySync<sup>12+</sup>
 
 generatePriKeySync(): PriKey
 
-Generates a private key using this asymmetric key generator. This API returns the result synchronously.
+Generates a public key using this asymmetric key generator. This API returns the result synchronously.
 
 If a key parameter of the [PRIVATE_KEY_SPEC](#asykeyspectype10) type is used to create the key generator, a private key can be obtained. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain the private key from the key pair generated.
 
@@ -2759,9 +2984,10 @@ If a key parameter of the [PRIVATE_KEY_SPEC](#asykeyspectype10) type is used to 
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| [PriKey](#prikey) | Private key generated.|
+| [PriKey](#prikey) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2772,23 +2998,52 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let asyKeyPairSpec: cryptoFramework.DSAKeyPairSpec; // Use DSA as an example. asyKeyPairSpec specifies full parameters of the private and public keys. The generation process is omitted here.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-try {
-  let priKeyData = asyKeyGeneratorBySpec.generatePriKeySync();
-  if (priKeyData != null) {
-    console.info('[Sync]: pri key success');
-  } else {
-    console.error("[Sync]: get pri key result fail!");
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// Set the common parameters of the DSA1024 public and private keys.
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
+    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
+    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
   }
-} catch (e) {
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  return dsaCommonSpec;
+}
+
+// Set full parameters of the DSA1024 key pair.
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
+    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePriKeySync()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  try {
+    let priKeyData = asyKeyGeneratorBySpec.generatePriKeySync();
+    if (priKeyData != null) {
+      console.info('[Sync]: pri key success');
+    } else {
+      console.error("[Sync]: get pri key result fail!");
+    }
+  } catch (e) {
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
-### generatePubKey
+### generatePubKey<sup>10+</sup>
 
 generatePubKey(callback: AsyncCallback\<PubKey>): void
 
@@ -2800,7 +3055,7 @@ If a key parameter of the [PUBLIC_KEY_SPEC](#asykeyspectype10) type is used to c
 
 **System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
 
-The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
+The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
 **Parameters**
 
@@ -2809,30 +3064,60 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[PubKey](#pubkey)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes:<br>Incorrect parameter types;        |
+| 401 | invalid parameters. Possible causes:<br> Incorrect parameter types;        |
 | 17620001 | memory operation failed.          |
 | 17630001 | crypto operation error. |
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let asyKeyPairSpec: cryptoFramework.DSAKeyPairSpec; // Use DSA as an example. asyKeyPairSpec specifies full parameters of the private and public keys. The generation process is omitted here.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
-  if (err) {
-    console.error("generatePubKey: error.");
-    return;
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// Set the common parameters of the DSA1024 public and private keys.
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
+    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
+    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
   }
-  console.info('generatePubKey: success.');
-})
+  return dsaCommonSpec;
+}
+
+// Set full parameters of the DSA1024 key pair.
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
+    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePubKey()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
+    if (err) {
+      console.error("generatePubKey: error.");
+      return;
+    }
+    console.info('generatePubKey: success.');
+  })
+}
 ```
 
-### generatePubKey
+### generatePubKey<sup>10+</sup>
 
 generatePubKey(): Promise\<PubKey>
 
@@ -2844,7 +3129,7 @@ If a key parameter of the [PUBLIC_KEY_SPEC](#asykeyspectype10) type is used to c
 
 **System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
 
-The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
+The system capability is **SystemCapability.Security.CryptoFramework** in API versions 10 to 11, and **SystemCapability.Security.CryptoFramework.Key.AsymKey** since API version 12.
 
 **Return value**
 
@@ -2853,6 +3138,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[PubKey](#pubkey)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2863,18 +3149,46 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let asyKeyPairSpec: cryptoFramework.DSAKeyPairSpec; // Use DSA as an example. asyKeyPairSpec specifies full parameters of the private and public keys. The generation process is omitted here.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-let keyGenPromise = asyKeyGeneratorBySpec.generatePubKey();
-keyGenPromise.then(pubKey => {
-  console.info('generatePubKey success.');
-}).catch((error: BusinessError) => {
-  console.error("generatePubKey error.");
-});
+// Set the common parameters of the DSA1024 public and private keys.
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
+    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
+    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+  }
+  return dsaCommonSpec;
+}
+
+// Set full parameters of the DSA1024 key pair.
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
+    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePubKey()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  let keyGenPromise = asyKeyGeneratorBySpec.generatePubKey();
+  keyGenPromise.then(pubKey => {
+    console.info('generatePubKey success.');
+  }).catch((error: BusinessError) => {
+    console.error("generatePubKey error.");
+  });
+}
 ```
 
 ### generatePubKeySync<sup>12+</sup>
@@ -2893,9 +3207,10 @@ If [PUBLIC_KEY_SPEC](#asykeyspectype10) is used to create a key generator, the k
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| [PubKey](#pubkey) | Public key generated.|
+| [PubKey](#pubkey) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2906,19 +3221,48 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let asyKeyPairSpec: cryptoFramework.DSAKeyPairSpec; // Use DSA as an example. asyKeyPairSpec specifies full parameters of the private and public keys. The generation process is omitted here.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-try {
-  let pubKeyData = asyKeyGeneratorBySpec.generatePubKeySync();
-  if (pubKeyData != null) {
-    console.info('[Sync]: pub key success');
-  } else {
-    console.error("[Sync]: get pub key result fail!");
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// Set the common parameters of the DSA1024 public and private keys.
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
+    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
+    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
   }
-} catch (e) {
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  return dsaCommonSpec;
+}
+
+// Set full parameters of the DSA1024 key pair.
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
+    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePubKeySync()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  try {
+    let pubKeyData = asyKeyGeneratorBySpec.generatePubKeySync();
+    if (pubKeyData != null) {
+      console.info('[Sync]: pub key success');
+    } else {
+      console.error("[Sync]: get pub key result fail!");
+    }
+  } catch (e) {
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -2951,6 +3295,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [ECCCommonParamsSpec](#ecccommonparamsspec10) | ECC common parameters generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                        |
@@ -3003,6 +3348,7 @@ Converts the specified point data into a **Point** object based on the curve nam
 | [Point](#point10) | **Point** object obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3047,6 +3393,7 @@ Obtains the point data in the specified format from a **Point** object. Currentl
 | Uint8Array | Point data in the specified format.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3079,7 +3426,7 @@ async function doTest() {
 
 ## DHKeyUtil<sup>11+</sup>
 
-Provides APIs for generating common parameters for a DH key based on the prime **p** length and the private key length.
+Generates common parameters for a DH key based on the prime **p** length and the private key length.
 
 ### genDHCommonParamsSpec<sup>11+</sup>
 
@@ -3107,6 +3454,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [DHCommonParamsSpec](#dhcommonparamsspec11) | DH common parameters generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                        |
@@ -3158,6 +3506,7 @@ Generates SM2 ciphertext in ASN.1 format.
 | [DataBlob](#datablob) | SM2 ciphertext in ASN.1 format.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                        |
@@ -3210,6 +3559,7 @@ Obtains SM2 ciphertext parameters from the SM2 ciphertext in ASN.1 format.
 | [SM2CipherTextSpec](#sm2ciphertextspec12) | SM2 ciphertext parameters obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                        |
@@ -3265,6 +3615,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [Cipher](#cipher) | [Cipher](#cipher) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3293,7 +3644,7 @@ try {
 
 Provides APIs for cipher operations. The [init()](#init-1), [update()](#update), and [doFinal()](#dofinal) APIs in this class are called in sequence to implement symmetric encryption or decryption and asymmetric encryption or decryption.
 
-For details about the encryption and decryption process, see [Encryption and Decryption Overview](../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md).
+For details about the complete encryption and decryption process, see [Encryption and Decryption Overview](../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md).
 
 A complete symmetric encryption/decryption process is slightly different from the asymmetric encryption/decryption process.
 
@@ -3308,7 +3659,7 @@ A complete symmetric encryption/decryption process is slightly different from th
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Cipher** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                        |
+| Name   | Type  | Read-Only| Optional| Description                        |
 | ------- | ------ | ---- | ---- | ---------------------------- |
 | algName | string | Yes  | No  | Algorithm.|
 
@@ -3316,7 +3667,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback\<void>): void
 
-Initializes a [cipher](#cipher) instance. This API uses an asynchronous callback to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
+Initializes a [cipher](#cipher) instance. This API returns the result synchronously. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
 This API can be used only after a [Cipher](#cipher) instance is created by using [createCipher](#cryptoframeworkcreatecipher).
 
@@ -3336,6 +3687,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>      | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                                |
@@ -3374,6 +3726,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                         |
@@ -3401,9 +3754,10 @@ This API can be used only after a [Cipher](#cipher) instance is created by using
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | opMode | [CryptoMode](#cryptomode)                       | Yes  | Operation (encryption or decryption) to perform.                                          |
 | key    | [Key](#key)                                     | Yes  | Key for encryption or decryption.                                      |
-| params | [ParamsSpec](#paramsspec)  | Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), **null** can be passed in.|
+| params | [ParamsSpec](#paramsspec)  \| null| Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), **null** can be passed in.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message               |
@@ -3455,6 +3809,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the result. If the data is updated successfully, **err** is **undefined** and **data** is **DataBlob**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                   |
@@ -3501,6 +3856,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the **DataBlob** (containing the encrypted or decrypted data).|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                    |
@@ -3514,7 +3870,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 updateSync(data: DataBlob): DataBlob
 
-Updates the data to encrypt or decrypt by segment. This API returns the encrypted or decrypted data synchronously.
+Updates the data to encrypt or decrypt by segment. This API uses an asynchronous callback to return the encrypted or decrypted data.
 
 This API can be called only after the [Cipher](#cipher) instance is initialized by using [initSync()](#initsync12).
 
@@ -3537,6 +3893,7 @@ See **NOTE** in **update()** for other precautions.
 | [DataBlob](#datablob) | Encryption/decryption result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message               |
@@ -3550,7 +3907,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
-(1) Processes the remaining data and the data passed in this time, and completes the encryption or decryption operation for symmetric encryption and decryption. This API uses an asynchronous callback to return the encrypted or decrypted data. If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in all the data without using **update()**. If all the data has been passed in by [update()](#update-4), you can pass in **null** in **data** of **doFinal()**. The output of **doFinal()** varies with the symmetric block cipher mode in use.
+(1) Processes the remaining data and the data passed in this time, and completes the encryption or decryption operation for symmetric encryption and decryption. This API uses an asynchronous callback to return the encrypted or decrypted data. If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in all the data without using **update()**. If all the data has been passed in by [update()](#update), you can pass in **null** in **data** of **doFinal()**. The output of **doFinal()** varies with the symmetric block cipher mode in use.
 
 - In a single encryption process with GCM or CCM mode, concatenating the results of each **update()** and **doFinal()** procedures the ciphertext and **authTag**. In GCM mode, **authTag** is the last 16 bytes. In CCM mode, **authTag** is the last 12 bytes. The rest part is the ciphertext. If **data** passed to **doFinal()** is **null**, the **doFinal()** result is only the **authTag**. During decryption, **authTag** must be set in [GcmParamsSpec](#gcmparamsspec) or [CcmParamsSpec](#ccmparamsspec), and the ciphertext must be set in **data**.
 - For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **update()** and **doFinal()** throughout the process will yield the complete plaintext or ciphertext.
@@ -3628,7 +3985,7 @@ function cipherByCallback() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   symKeyGenerator.generateSymKey((err, symKey) => {
-    cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err,) => {
+    cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err) => {
       let message = "This is a test";
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       cipher.update(plainText, (err, encryptUpdate) => {
@@ -3646,9 +4003,9 @@ function cipherByCallback() {
 
 doFinal(data: DataBlob | null): Promise\<DataBlob>
 
- (1) Encrypts or decrypts the remaining data (generated by the block cipher mode) and the data passed in by **doFinal()** to finalize the symmetric encryption or decryption. This API uses a promise to return the encrypted or decrypted data.<br>If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in data without using **update()**. If all the data has been passed in by **update()**, you can pass in **null** in **data** of **doFinal()**.<br>The output of **doFinal()** varies with the symmetric encryption/decryption mode in use.
+(1) Encrypts or decrypts the remaining data (generated by the block cipher mode) and the data passed in by **doFinal()** to finalize the symmetric encryption or decryption. This API uses a promise to return the encrypted or decrypted data.<br>If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in data without using **update()**. If all the data has been passed in by **update()**, you can pass in **null** in **data** of **doFinal()**.<br>The output of **doFinal()** varies with the symmetric encryption/decryption mode in use.
 
-- Symmetric encryption in GCM and CCM mode: The result consists of the ciphertext and **authTag** (the last 16 bytes for GCM and the last 12 bytes for CCM). If **data** in **doFinal** is null, the result of **doFinal** is **authTag**.<br>Set **authTag** to [GcmParamsSpec](#gcmparamsspec) or [CcmParamsSpec](#ccmparamsspec) for decryption. The ciphertext is used as the input parameter **data** for decryption.
+- Symmetric encryption in GCM and CCM mode: The result consists of the ciphertext and **authTag** (the last 16 bytes for GCM and the last 12 bytes for CCM). If **data** in **doFinal** is null, the result of **doFinal** is **authTag**.<br>During decryption, **authTag** must be set in [GcmParamsSpec](#gcmparamsspec) or [CcmParamsSpec](#ccmparamsspec), and the ciphertext must be set in **data**.
 - For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **update()** and **doFinal()** throughout the process will yield the complete plaintext or ciphertext.
 
 (2) Encrypts or decrypts the input data for RSA or SM2 asymmetric encryption/decryption. This API uses a promise to return the result. If a large amount of data is to be processed, call **doFinal()** multiple times and concatenate the results to obtain the complete plaintext or ciphertext.
@@ -3657,14 +4014,13 @@ doFinal(data: DataBlob | null): Promise\<DataBlob>
 >
 >  1. In symmetric encryption and decryption, calling **doFinal()** indicates the completion of an encryption and decryption process, meaning the [Cipher](#cipher) instance status is cleared. When a new encryption or decryption process is started, **init()** must be called again with a full set of parameters.
 >
->  Even if the same **Cipher** instance and symmetric key are used for encryption and decryption, the **params** parameter must be set in **init()** instead of being **null**.
+>     Even if the same **Cipher** instance and symmetric key are used for encryption and decryption, the **params** parameter must be set in **init()** instead of being **null**.
 >  2. If decryption fails, check whether the data matches the parameters in **ini()**, for example, check whether **authTag** obtained during encryption in GCM mode is filled in **GcmParamsSpec** during decryption.
 >  3. The result of **doFinal()** may be **null**. To avoid exceptions, determine whether the result is **null** before using the **.data** field to access the **doFinal()** result.
 >
->  For encryption in CFB, OFB, or CTR mode, if **doFinal()** passes in **null**, the returned result is **null**.
+>     For encryption in CFB, OFB, or CTR mode, if **doFinal()** passes in **null**, the returned result is **null**.
 >
->  For decryption in GCM, CCM, CFB, OFB, or CTR mode, if **doFinal()** passes in **null**, the returned result is **null**. For decryption in other modes, if **update** is called to pass in all the plaintext, which is an integer multiple of the encryption block size, and **doFinal()** is called to pass in **null**, the returned result is **null**.
->
+>     For decryption in GCM, CCM, CFB, OFB, or CTR mode, if **doFinal()** passes in **null**, the returned result is **null**. For decryption in other modes, if **update** is called to pass in all the plaintext, which is an integer multiple of the encryption block size, and **doFinal()** is called to pass in **null**, the returned result is **null**.
 >  4. For details about the sample code for calling **doFinal** multiple times in asymmetric encryption and decryption, see [Encryption and Decryption by Segment with an RSA Asymmetric Key Pair](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md). The operations are similar for SM2 and RSA.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -3755,7 +4111,7 @@ The output of **doFinalSync()** varies with the symmetric block cipher mode in u
 - In a single encryption process with GCM or CCM mode, concatenating the results of each **updateSync()** and **doFinalSync()** procedures the ciphertext and **authTag**. In GCM mode, **authTag** is the last 16 bytes. In CCM mode, **authTag** is the last 12 bytes. The rest part is the ciphertext. If **data** in **doFinalSync()** is **null**, the result of **doFinalSync()** is **authTag**. 
 
   During decryption, **authTag** must be set in [GcmParamsSpec](#gcmparamsspec) or [CcmParamsSpec](#ccmparamsspec), and the ciphertext must be set in **data**.
--  For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **updateSync()** and **doFinalSync()** throughout the process will yield the complete plaintext or ciphertext.
+- For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **updateSync()** and **doFinalSync()** throughout the process will yield the complete plaintext or ciphertext.
 
 (2) Encrypts or decrypts the input data for RSA or SM2 asymmetric encryption/decryption. This API returns the encrypted or decrypted data synchronously. If a large amount of data is to be processed, call **doFinalSync()** multiple times and concatenate the results to obtain the complete plaintext or ciphertext.
 
@@ -3769,7 +4125,7 @@ See **NOTE** in [doFinal()](#dofinal) for other precautions.
 
 | Name| Type                                       | Mandatory| Description                                                        |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| data   | [DataBlob](#datablob)  | Yes  | Data to encrypt or decrypt. It can be **null** in symmetric encryption or decryption, but cannot be {data:Uint8Array(empty)}.|
+| data   | [DataBlob](#datablob)  \| null| Yes  | Data to encrypt or decrypt. It can be **null** in symmetric encryption or decryption, but cannot be {data:Uint8Array(empty)}.|
 
 **Return value**
 
@@ -3855,6 +4211,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | itemValue | Uint8Array | Yes  | Value of the parameter to set.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3866,11 +4223,13 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let cipher: cryptoFramework.Cipher; // The process of generating the Cipher instance is omitted here.
-let pSource = new Uint8Array([1,2,3,4]);
-cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+function testsetCipherSpec() {
+  let cipher = cryptoFramework.createCipher("RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1");
+  let pSource = new Uint8Array([1,2,3,4]);
+  cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+}
 ```
 
 ### getCipherSpec<sup>10+</sup>
@@ -3898,6 +4257,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | string \| Uint8Array | Returns the value of the cipher parameter obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3909,10 +4269,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let cipher: cryptoFramework.Cipher; // The process of generating the Cipher instance is omitted here.
-let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testGetCipherSpec() {
+  let cipher = cryptoFramework.createCipher("RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1");
+  let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+  console.info('getCipherSpec: mdName =' + mdName);
+}
 ```
 
 ## cryptoFramework.createSign
@@ -3939,7 +4303,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type| Description                              |
 | ---- | ---------------------------------- |
-| Sign | Returns the **Sign** instance created.|
+| [Sign](#sign) | Returns the **Sign** instance created.|
 
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
@@ -3990,7 +4354,7 @@ If the DSA algorithm is used for signing and the digest algorithm is **NoHash**,
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Signature** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                        |
+| Name   | Type  | Read-Only| Optional| Description                        |
 | ------- | ------ | ---- | ---- | ---------------------------- |
 | algName | string | Yes  | No  | Algorithm to use.|
 
@@ -4016,6 +4380,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4052,6 +4417,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4080,6 +4446,7 @@ The **Sign** class does not support repeated use of **initSync**.
 | priKey | [PriKey](#prikey)  | Yes  | Private key used for the initialization.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4119,6 +4486,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4163,6 +4531,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4205,6 +4574,7 @@ This API can be called only after the [Sign](#sign) instance is initialized by u
 | void | No value is returned.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4234,6 +4604,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return a **DataBlob** object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4265,9 +4636,10 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type          | Description         |
 | -------------- | ------------- |
-| Promise\<[DataBlob](#datablob)> | Promise used to return the signature.|
+| Promise\<[DataBlob](#datablob)> | Signature.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4300,6 +4672,7 @@ Signs the data. This API returns the result synchronously.
 | [DataBlob](#datablob) | Signature.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4425,6 +4798,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | itemValue | number \| Uint8Array<sup>11+</sup> | Yes  | Value of the signing parameter to set.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4436,11 +4810,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let signer: cryptoFramework.Sign; // The process of generating the Sign instance is omitted here.
-let setN = 20;
-signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testSetSignSpec() {
+  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
+  let setN = 20;
+  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+}
 ```
 
 ### getSignSpec<sup>10+</sup>
@@ -4468,6 +4845,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | string \| number | Returns the value of the signing parameter obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4479,10 +4857,15 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let signer: cryptoFramework.Sign; // The process of generating the Sign instance is omitted here.
-let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testGetSignSpec() {
+  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
+  let setN = 32;
+  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+}
 ```
 
 ## cryptoFramework.createVerify
@@ -4512,6 +4895,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Verify | Returns the **Verify** instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4525,11 +4909,11 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let verifyer1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
+let verifier1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
 
-let verifyer2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
+let verifier2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
 
-let verifyer3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
 ```
 
 ## Verify
@@ -4554,7 +4938,7 @@ If the DSA algorithm is used for signature verification and the digest algorithm
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Signature** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                        |
+| Name   | Type  | Read-Only| Optional| Description                        |
 | ------- | ------ | ---- | ---- | ---------------------------- |
 | algName | string | Yes  | No  | Algorithm to be used for signature verification.|
 
@@ -4578,6 +4962,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4612,6 +4997,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4644,6 +5030,7 @@ Initializes the **Verify** instance with a public key. This API returns the resu
 | void | No value is returned.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4682,6 +5069,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4725,6 +5113,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4766,6 +5155,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 | void | No value is returned.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4796,6 +5186,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback      | AsyncCallback\<boolean> | Yes  | Callback used to return the signature verification result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4828,9 +5219,10 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type             | Description                          |
 | ----------------- | ------------------------------ |
-| Promise\<boolean> | Promise used to return the result.|
+| Promise\<boolean> | Promise used to return the result. **true**: passed; **false**: failed.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4861,9 +5253,10 @@ Verifies the signature. This API returns the verification result synchronously.
 
 | Type             | Description                          |
 | ----------------- | ------------------------------ |
-| boolean | A boolean value indicating whether the signature verification is successful.|
+| boolean | Signature verification result. **true**: passed; **false**: failed.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4892,11 +5285,11 @@ function verifyByCallback() {
   // The data is signData.data in Sign().
   let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) }
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let verifyer = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
+  let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
-    verifyer.init(keyPair.pubKey, err => {
-      verifyer.update(inputUpdate, err => {
-        verifyer.verify(inputVerify, signMessageBlob, (err, res) => {
+    verifier.init(keyPair.pubKey, err => {
+      verifier.update(inputUpdate, err => {
+        verifier.verify(inputVerify, signMessageBlob, (err, res) => {
           console.info('verify result is ' + res);
         });
       });
@@ -4997,9 +5390,10 @@ Recovers the original data from a signature. This API uses a promise to return t
 
 | Type             | Description                          |
 | ----------------- | ------------------------------ |
-| Promise\<[DataBlob](#datablob)  \| null> | Promise used to return the data restored.|
+| Promise\<[DataBlob](#datablob)  \| null> | Data restored.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5013,7 +5407,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -5055,7 +5449,7 @@ Recovers the original data from a signature. This API returns the result synchro
 
 > **NOTE**
 >
-> Currently, only RSA is supported.
+> - Currently, only RSA is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5074,6 +5468,7 @@ Recovers the original data from a signature. This API returns the result synchro
 | [DataBlob](#datablob)  \| null | Data restored.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5109,6 +5504,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | itemValue | number \| Uint8Array<sup>11+</sup> | Yes  | Value of the signature verification parameter to set.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5120,11 +5516,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let verifyer: cryptoFramework.Verify; // The process of generating the Verify instance is omitted here.
-let setN = 20;
-verifyer.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testSetVerifySpec() {
+  let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+  let setN = 20;
+  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+}
 ```
 
 ### getVerifySpec<sup>10+</sup>
@@ -5165,10 +5564,15 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
-let verifyer: cryptoFramework.Verify; // The process of generating the Verify instance is omitted here.
-let saltLen = verifyer.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testGetVerifySpec() {
+  let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+  let setN = 20;
+  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  let saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+}
 ```
 
 ## cryptoFramework.createKeyAgreement
@@ -5198,6 +5602,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | KeyAgreement | Returns the **KeyAgreement** instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5226,7 +5631,7 @@ Provides APIs for key agreement operations. Before using any API of the **KeyAgr
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.KeyAgreement** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                        |
+| Name   | Type  | Read-Only| Optional| Description                        |
 | ------- | ------ | ---- | ---- | ---------------------------- |
 | algName | string | Yes  | No  | Algorithm used for key agreement.|
 
@@ -5251,6 +5656,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the shared key.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5286,13 +5692,14 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the shared secret generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameter between arkts and c.          |
+| 17620002 | failed to convert parameters between arkts and c.          |
 | 17630001 | crypto operation error. |
 
 ### generateSecretSync<sup>12+</sup>
@@ -5316,7 +5723,7 @@ Generates a shared secret based on the given private key and public key. This AP
 
 | Type              | Description    |
 | ------------------ | -------- |
-|[DataBlob](#datablob) | Shared secret generated.|
+|[DataBlob](#datablob) | Promise used to return the shared secret generated.|
 
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
@@ -5330,46 +5737,54 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example (using the callback-based API)**
 
-<!--code_no_check-->
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let globalKeyPair: cryptoFramework.KeyPair; // globalKeyPair is an asymmetric key object generated by the asymmetric key generator. The generation process is omitted here.
-let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
-  if (err) {
-    console.error("keyAgreement error.");
-    return;
-  }
-  console.info('keyAgreement output is ' + secret.data);
-});
+async function testGenerateSecret() {
+  let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+  let globalKeyPair = await eccGen.generateKeyPair();
+  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+  keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
+    if (err) {
+      console.error("keyAgreement error.");
+      return;
+    }
+    console.info('keyAgreement output is ' + secret.data);
+  });
+}
 ```
 
 **Example (using the promise-based API)**
 
-<!--code_no_check-->
 ```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let globalKeyPair: cryptoFramework.KeyPair; // globalKeyPair is an asymmetric key object generated by the asymmetric key generator. The generation process is omitted here.
-let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
-keyAgreementPromise.then(secret => {
-  console.info('keyAgreement output is ' + secret.data);
-}).catch((error: BusinessError) => {
-  console.error("keyAgreement error.");
-});
+async function testGenerateSecret() {
+  let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+  let globalKeyPair = await eccGen.generateKeyPair();
+  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+  let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
+  keyAgreementPromise.then(secret => {
+    console.info('keyAgreement output is ' + secret.data);
+  }).catch((error: BusinessError) => {
+    console.error("keyAgreement error.");
+  });
+}
 ```
 
 **Example (using the sync API)**
 
-<!--code_no_check-->
 ```ts
-let asyGenerator = cryptoFramework.CreateAsyKeyGenerator("ECC256");
-let globalKeyPair = asyGenerator.generateKeyPairSync();
-let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
-console.info("[Sync]keyAgreement output is " + secret.data);
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function testGenerateSecretSync() {
+  let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+  let globalKeyPair = await eccGen.generateKeyPair();
+  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+  let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
+  console.info("[Sync]keyAgreement output is " + secret.data);
+}
 ```
 
 ## cryptoFramework.createMd
@@ -5399,6 +5814,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Md   | Returns the [Md](#md) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message          |
@@ -5433,7 +5849,7 @@ Provides APIs for MD operations. Before using any API of the **Md** class, you m
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.MessageDigest** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                  |
+| Name   | Type  | Read-Only| Optional| Description                  |
 | ------- | ------ | ---- | ---- | ---------------------- |
 | algName | string | Yes  | No  | Digest algorithm.|
 
@@ -5441,19 +5857,19 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 update(input: DataBlob, callback: AsyncCallback\<void>): void
 
-Updates the message for MD operations. This API uses an asynchronous callback to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
+Updates the digest status for MD operations. This API uses an asynchronous callback to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
 
 > **NOTE**
 >
-> - For details about the code for calling **update** multiple times in an MD operation, see [Generating an MD by Passing In Data by Segment](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#generating-an-md-by-passing-in-data-by-segment).
-> 
-> - This API does not support wearables.
+> For details about the code for calling **update** multiple times in an MD operation, see [MD (Passing In Data by Segment)](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#generating-an-md-by-passing-in-data-by-segment).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.MessageDigest
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.MessageDigest** since API version 12.
+
+**Differentiated device support**: This API runs properly on phones, PCs/2-in-1 devices, tablets, TVs, and wearables. However, if it is called on a lite wearable, **undefined** is returned.
 
 **Parameters**
 
@@ -5463,6 +5879,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5475,19 +5892,21 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 update(input: DataBlob): Promise\<void>
 
-Updates the message for MD operations. This API uses a promise to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
+Updates the MD digest status. This API uses a promise to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
 
 > **NOTE**
 >
-> - For details about the code for calling **update** multiple times in an MD operation, see [Generating an MD by Passing In Data by Segment](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#generating-an-md-by-passing-in-data-by-segment).
-> 
-> - This API does not support wearables.
+> For details about the code for calling **update** multiple times in an MD operation, see [MD (Passing In Data by Segment)](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#generating-an-md-by-passing-in-data-by-segment).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.MessageDigest
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.MessageDigest** since API version 12.
+
+**Differentiated device support**: This API runs properly on phones, PCs/2-in-1 devices, tablets, TVs, and wearables. However, if it is called on a lite wearable, **undefined** is returned.
+
+**Parameters**
 
 | Name| Type    | Mandatory| Description        |
 | ------ | -------- | ---- | ------------ |
@@ -5500,6 +5919,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5512,27 +5932,24 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 updateSync(input: DataBlob): void
 
-Updates the message for MD operations. This API returns the result synchronously. **updateSync** must be used with **digestSync** together. **digestSync** is mandatory, and **updateSync** is optional.
+Updates the MD digest status. This API returns the result synchronously. **updateSync** must be used with **digestSync** together. **digestSync** is mandatory, and **updateSync** is optional.
 
 > **NOTE**
 >
-> For details about the code for calling **updateSync** multiple times in an MD operation, see [Generating an MD by Passing In Data by Segment](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#generating-an-md-by-passing-in-data-by-segment).
+> For details about the code for calling **updateSync** multiple times in an MD operation, see [MD (Passing In Data by Segment)](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#generating-an-md-by-passing-in-data-by-segment).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.MessageDigest
 
+**Parameters**
+
 | Name| Type    | Mandatory| Description        |
 | ------ | -------- | ---- | ------------ |
 | input  | [DataBlob](#datablob) | Yes  | Data to pass in.|
 
-**Return value**
-
-| Type          | Description         |
-| -------------- | ------------- |
-| void | No value is returned.|
-
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5547,21 +5964,22 @@ digest(callback: AsyncCallback\<DataBlob>): void
 
 Generates an MD. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
-> 
-> This API does not support wearables.
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.MessageDigest
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.MessageDigest** since API version 12.
 
+**Differentiated device support**: This API runs properly on phones, PCs/2-in-1 devices, tablets, TVs, and wearables. However, if it is called on a lite wearable, **undefined** is returned.
+
+**Parameters**
+
 | Name  | Type                    | Mandatory| Description      |
 | -------- | ------------------------ | ---- | ---------- |
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return a **DataBlob** object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 
@@ -5578,7 +5996,7 @@ import { buffer } from '@kit.ArkTS';
 
 function mdByCallback() {
   let md = cryptoFramework.createMd('SHA256');
-  md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) }, (err,) => {
+  md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) }, (err) => {
     md.digest((err, digestOutput) => {
       console.info('[Callback]: MD result: ' + digestOutput.data);
       console.info('[Callback]: MD len: ' + md.getMdLength());
@@ -5593,15 +6011,13 @@ digest(): Promise\<DataBlob>
 
 Generates an MD. This API uses a promise to return the result.
 
-> **NOTE**
-> 
-> This API does not support wearables.
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.MessageDigest
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.MessageDigest** since API version 12.
+
+**Differentiated device support**: This API runs properly on phones, PCs/2-in-1 devices, tablets, TVs, and wearables. However, if it is called on a lite wearable, **undefined** is returned.
 
 **Return value**
 
@@ -5610,6 +6026,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5649,6 +6066,7 @@ Generates an MD. This API returns the result synchronously.
 | [DataBlob](#datablob) | MD generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5692,6 +6110,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | number | MD length obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5715,7 +6134,7 @@ createMac(algName: string): Mac
 
 Creates a **Mac** instance for MAC operations.
 
-For details about the supported specifications, see [HMAC](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md#hmac).
+For details about the supported specifications, see [MAC Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5727,7 +6146,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | MD algorithm to use. For details about the supported algorithms, see [HMAC](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md#hmac).|
+| algName | string | Yes  | Specifies the digest algorithm. For details about the supported algorithms, see [MAC Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).|
 
 **Return value**
 
@@ -5736,6 +6155,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Mac  | Returns the [Mac](#mac) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message          |
@@ -5764,7 +6184,7 @@ createMac(macSpec: MacSpec): Mac
 
 Creates a **Mac** instance for message authentication code (MAC) operations.
 
-For details about the supported specifications, see [MAC Overview and Algorithm Specifications](./../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).
+For details about the supported specifications, see [MAC Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -5774,7 +6194,7 @@ For details about the supported specifications, see [MAC Overview and Algorithm 
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| macSpec | [MacSpec](#macspec18) | Yes  | MAC specifications, which vary depending on the MAC to generate. For details about the supported algorithms, see [MAC Overview and Algorithm Specifications](./../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).|
+| macSpec | [MacSpec](#macspec18) | Yes  | Specifies the input parameter struct based on the MAC algorithm. For details about the supported algorithms, see [MAC Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).|
 
 **Return value**
 
@@ -5783,6 +6203,7 @@ For details about the supported specifications, see [MAC Overview and Algorithm 
 | Mac  | [Mac](#mac) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message          |
@@ -5823,7 +6244,7 @@ Provides APIs for MAC operations. Before using any API of the **Mac** class, you
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Mac** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                  |
+| Name   | Type  | Read-Only| Optional| Description                  |
 | ------- | ------ | ---- | ---- | ---------------------- |
 | algName | string | Yes  | No  | Digest algorithm.|
 
@@ -5847,10 +6268,11 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name  | Type                | Mandatory| Description          |
 | -------- | -------------------- | ---- | -------------- |
-| key      | [SymKey](#symkey)    | Yes  | Shared symmetric key.|
+| key      | [SymKey](#symkey)    | Yes  | Symmetric key obtained.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5875,7 +6297,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
-| key    | [SymKey](#symkey) | Yes  | Shared symmetric key.|
+| key    | [SymKey](#symkey) | Yes  | Symmetric key obtained.|
 
 **Return value**
 
@@ -5884,6 +6306,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5906,15 +6329,10 @@ Initializes the MAC computation with a symmetric key. This API returns the resul
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
-| key    | [SymKey](#symkey) | Yes  | Shared symmetric key.|
-
-**Return value**
-
-| Type          | Description         |
-| -------------- | ------------- |
-| void | No value is returned.|
+| key    | [SymKey](#symkey) | Yes  | Symmetric key obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5927,7 +6345,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 update(input: DataBlob, callback: AsyncCallback\<void>): void
 
-Updates the message for MAC computation. This API uses an asynchronous callback to return the result.
+Updates the MAC status. This API uses a callback to return the result.
 
 > **NOTE**
 >
@@ -5947,6 +6365,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5959,7 +6378,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 update(input: DataBlob): Promise\<void>
 
-Updates the message for MAC computation. This API uses a promise to return the result.
+Updates the MAC status. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -5984,6 +6403,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5996,7 +6416,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 updateSync(input: DataBlob): void
 
-Updates the message for MAC computation. This API returns the result synchronously.
+Updates the MAC status. This API returns the result synchronously.
 
 > **NOTE**
 >
@@ -6014,6 +6434,7 @@ Updates the message for MAC computation. This API returns the result synchronous
 
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6041,6 +6462,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return a **DataBlob** object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6061,8 +6483,8 @@ function hmacByCallback() {
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   symKeyGenerator.convertKey(keyBlob, (err, symKey) => {
-    mac.init(symKey, (err,) => {
-      mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) }, (err,) => {
+    mac.init(symKey, (err) => {
+      mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) }, (err) => {
         mac.doFinal((err, output) => {
           console.info('[Callback]: HMAC result: ' + output.data);
           console.info('[Callback]: MAC len: ' + mac.getMacLength());
@@ -6092,6 +6514,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6137,6 +6560,7 @@ Finishes the MAC computation. This API returns the result synchronously.
 | [DataBlob](#datablob) | MAC computation result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6186,6 +6610,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | number | MAC length obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6194,34 +6619,35 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-<!--code_no_check-->
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let mac = cryptoFramework.createMac('SHA256');
-console.info('Mac algName is: ' + mac.algName);
-let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
-let keyBlob: cryptoFramework.DataBlob = { data: keyData };
-let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-let promiseConvertKey = symKeyGenerator.convertKey(keyBlob);
-promiseConvertKey.then(symKey => {
-  let promiseMacInit = mac.init(symKey);
-  return promiseMacInit;
-}).then(() => {
-  let blob: cryptoFramework.DataBlob = { data : new Uint8Array([83])};
-  let promiseMacUpdate = mac.update(blob);
-  return promiseMacUpdate;
-}).then(() => {
-  let promiseMacDoFinal = mac.doFinal();
-  return promiseMacDoFinal;
-}).then(macOutput => {
-  console.info('[Promise]: HMAC result: ' + macOutput.data);
-  let macLen = mac.getMacLength();
-  console.info('MAC len: ' + macLen);
-}).catch((error: BusinessError) => {
-  console.error("[Promise]: error: " + error.message);
-});
+function testGetMacLength() {
+  let mac = cryptoFramework.createMac('SHA256');
+  console.info('Mac algName is: ' + mac.algName);
+  let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+  let keyBlob: cryptoFramework.DataBlob = { data: keyData };
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  let promiseConvertKey = symKeyGenerator.convertKey(keyBlob);
+  promiseConvertKey.then(symKey => {
+    let promiseMacInit = mac.init(symKey);
+    return promiseMacInit;
+  }).then(() => {
+    let blob: cryptoFramework.DataBlob = { data : new Uint8Array([83])};
+    let promiseMacUpdate = mac.update(blob);
+    return promiseMacUpdate;
+  }).then(() => {
+    let promiseMacDoFinal = mac.doFinal();
+    return promiseMacDoFinal;
+  }).then(macOutput => {
+    console.info('[Promise]: HMAC result: ' + macOutput.data);
+    let macLen = mac.getMacLength();
+    console.info('MAC len: ' + macLen);
+  }).catch((error: BusinessError) => {
+    console.error("[Promise]: error: " + error.message);
+  });
+}
 ```
 
 ## cryptoFramework.createRandom
@@ -6242,9 +6668,10 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type  | Description                                           |
 | ------ | ----------------------------------------------- |
-| Random | Returns the [Random](#random) instance created.|
+| [Random](#random) | Returns the [Random](#random) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message    |
@@ -6277,7 +6704,7 @@ Provides APIs for computing random numbers and setting seeds. Before using any A
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Rand** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                |
+| Name   | Type  | Read-Only| Optional| Description                |
 | ------- | ------ | ---- | ---- | -------------------- |
 | algName<sup>10+</sup> | string | Yes  | No  | Algorithm used to generate the random number. Currently, only **CTR_DRBG** is supported.|
 
@@ -6287,15 +6714,13 @@ generateRandom(len: number, callback: AsyncCallback\<DataBlob>): void
 
 Generates a random number of the specified length. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
-> 
-> This API does not support wearables.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Security.CryptoFramework.Rand
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Rand** since API version 12.
+
+**Differentiated device support**: This API runs properly on phones, PCs/2-in-1 devices, tablets, TVs, and wearables. However, if it is called on a lite wearable, **undefined** is returned.
 
 **Parameters**
 
@@ -6305,6 +6730,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return a **DataBlob** object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6334,15 +6760,13 @@ generateRandom(len: number): Promise\<DataBlob>
 
 Generates a random number of the specified length. This API uses a promise to return the result.
 
-> **NOTE**
-> 
-> This API does not support wearables.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Security.CryptoFramework.Rand
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Rand** since API version 12.
+
+**Differentiated device support**: This API runs properly on phones, PCs/2-in-1 devices, tablets, TVs, and wearables. However, if it is called on a lite wearable, **undefined** is returned.
 
 **Parameters**
 
@@ -6357,6 +6781,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6405,6 +6830,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 |[DataBlob](#datablob) | Returns the generated random number.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6433,6 +6859,50 @@ try {
 }
 ```
 
+### enableHardwareEntropy<sup>21+</sup>
+
+enableHardwareEntropy(): void
+
+Enables the hardware entropy source.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Security.CryptoFramework.Rand
+
+**Error codes**
+
+For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
+
+| ID| Error Message          |
+| -------- | ----------------- |
+| 801 | this operation is not supported.          |
+| 17620001 | memory operation failed.      |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17630001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rand = cryptoFramework.createRandom();
+rand.enableHardwareEntropy();
+rand.generateRandom(12, (err, randData) => {
+  if (err) {
+    console.error("[Callback] err: " + err.code);
+  } else {
+    console.info('[Callback]: generate random result: ' + randData.data);
+    try {
+      rand.setSeed(randData);
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`sync error, ${e.code}, ${e.message}`);
+    }
+  }
+});
+```
+
 ### setSeed
 
 setSeed(seed: DataBlob): void
@@ -6445,11 +6915,14 @@ Sets a seed.
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Rand** since API version 12.
 
+**Parameters**
+
 | Name| Type    | Mandatory| Description        |
 | ------ | -------- | ---- | ------------ |
 | seed   | [DataBlob](#datablob) | Yes  | Seed to set.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message          |
@@ -6503,6 +6976,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [Kdf](#kdf11) | Key derivation function instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6531,11 +7005,11 @@ Defines the key derivation function class. Before using APIs of this class, you 
 
 The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Kdf** since API version 12.
 
-| Name   | Type  | Readable| Writable| Description                        |
+| Name   | Type  | Read-Only| Optional| Description                        |
 | ------- | ------ | ---- | ---- | ---------------------------- |
 | algName | string | Yes  | No  | Algorithm of the key derivation function.|
 
-### generateSecret
+### generateSecret<sup>11+</sup>
 
 generateSecret(params: KdfSpec, callback: AsyncCallback\<DataBlob>): void
 
@@ -6545,7 +7019,7 @@ Generates a key based on the specified key derivation parameters. This API uses 
 
 **System capability**: SystemCapability.Security.CryptoFramework.Kdf
 
-The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Kdf** since API version 12.
+The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Kdf** since API version 12.
 
 **Parameters**
 
@@ -6555,6 +7029,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the derived key generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6607,7 +7082,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   });
   ```
 
-### generateSecret
+### generateSecret<sup>11+</sup>
 
 generateSecret(params: KdfSpec): Promise\<DataBlob>
 
@@ -6617,7 +7092,7 @@ Generates a key based on the specified key derivation parameters. This API uses 
 
 **System capability**: SystemCapability.Security.CryptoFramework.Kdf
 
-The system capability is **SystemCapability.Security.CryptoFramework** in API versions 9 to 11, and **SystemCapability.Security.CryptoFramework.Kdf** since API version 12.
+The system capability is **SystemCapability.Security.CryptoFramework** in API version 11, and **SystemCapability.Security.CryptoFramework.Kdf** since API version 12.
 
 **Parameters**
 
@@ -6632,6 +7107,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the derived key generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6707,13 +7183,14 @@ Generates a key based on the specified key derivation parameters. This API retur
 | [DataBlob](#datablob) | Key derived.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
 | 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between ArkTS and C. |
+| 17620002 | failed to convert parameters between arkts and c. |
 | 17630001 | crypto operation error. |
 
 **Example**
@@ -6777,13 +7254,14 @@ Generates r and s from the SM2 signature data in ASN1 DER format.
 | [EccSignatureSpec](#eccsignaturespec20) | struct that contains r and s.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
 | -------- | ---------------------- |
-| 401 | Parameter error.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
-| 17620001 | memory error.          |
-| 17620002 | runtime error. |
+| 17620001 | memory operation failed.          |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. Possible causes: <br>1. The length of the data parameter is 0 or too large. |
 | 17630001 | crypto operation error. |
 
 **Example**
@@ -6831,13 +7309,14 @@ Converts an SM2 signature (r, s) to the ASN1 DER format.
 | Uint8Array | Signature data in ASN1 DER format.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
 | -------- | ---------------------- |
-| 401 | Parameter error.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
-| 17620001 | memory error.          |
-| 17620002 | runtime error. |
+| 17620001 | memory operation failed.          |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. Possible causes: <br>1. The r or s value of the spec parameter is 0 or too large. |
 | 17630001 | crypto operation error. |
 
 **Example**

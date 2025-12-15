@@ -1,5 +1,10 @@
 # 使用主题字体（ArkTS）
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 ## 场景介绍
 
 主题字体，特指系统**主题应用**中能使用的字体，属于一种特殊的自定义字体，可以通过相关接口调用使能主题应用中的主题字体。
@@ -130,7 +135,7 @@
 8. 在EntryAbility.ets中接收主题字变更事件，并调用渲染节点更新函数。
 
    ```ts
-   // entryability/EntryAbility.ets
+   // entry/src/main/ets/entryability/EntryAbility.ets
    export default class EntryAbility extends UIAbility {
        // ...  
        preFontId ="";
@@ -150,7 +155,9 @@
 
 这里以使用主题字体绘制"Hello World. \nThis is the theme font."文本为例，提供完整的示例和效果示意图。
 
-```ts
+<!-- @[arkts_theme_font_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // /pages/Index.ets
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
 import { UIContext } from '@kit.ArkUI';
@@ -260,7 +267,7 @@ struct RenderTest {
       .height('90%')
       .backgroundColor(Color.White)
       Row(){
-        Button("Draw Text")
+        Button($r("app.string.Button_label"))
           .fontSize('16fp')
           .fontWeight(500)
           .margin({ bottom: 24, right: 12 })
@@ -280,27 +287,30 @@ struct RenderTest {
     }
   }
 }
-
-
 ```
 
-```ts
-// entryability/EntryAbility.ets
+<!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { updateRenderNodeData } from '../pages/Index';
+
+// ···
+
 export default class EntryAbility extends UIAbility {
-    // ...  
-    preFontId ="";
-    onConfigurationUpdate(newConfig: Configuration):void{
-        let fontId = newConfig.fontId;
-        if(fontId && fontId !=this.preFontId){
-            this.preFontId = fontId;
-            updateRenderNodeData();
-        }
+  preFontId = "";
+// ···
+
+  onConfigurationUpdate(newConfig: Configuration): void {
+    let fontId = newConfig.fontId;
+    if (fontId && fontId !== this.preFontId) {
+      this.preFontId = fontId;
+      updateRenderNodeData();
+    // ···
     }
-    // ...
+  }
 }
 ```
 

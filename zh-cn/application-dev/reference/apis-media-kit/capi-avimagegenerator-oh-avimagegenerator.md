@@ -1,4 +1,14 @@
 # OH_AVImageGenerator
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVImageGenerator OH_AVImageGenerator
+```
 
 ## 概述
 

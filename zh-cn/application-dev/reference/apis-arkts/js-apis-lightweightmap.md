@@ -1,9 +1,10 @@
 # @ohos.util.LightWeightMap (非线性容器LightWeightMap)  
 <!--Kit: ArkTS-->
-<!--Subsystem: commonlibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello; @yuanyao14; @lzj0614-->
-<!--SE: @yuanyao14-->
-<!--TSE: @kirl75; @zsw_zhushiwei-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 LightWeightMap可用于存储具有关联关系的key-value键值对集合，存储元素中key值唯一，每个key对应一个value。
 
@@ -22,7 +23,24 @@ LightWeightMap和[HashMap](js-apis-hashmap.md)都是用来存储键值对的集�
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
+## 规格限制
+
+当LightWeightMap存入的key为number类型且值大于INT32_MAX或小于INT32_MIN时，针对LightWeightMap的操作，其结果可能与预期不一致。
+
+这是因为，当key为number类型且值大于INT32_MAX或小于INT32_MIN时，存储结构会发生改变。
+
+例如在以下示例针对key的计算中，1758783600000大于INT32_MAX，此时会通过TaggedDouble存储；1758783600小于INT32_MIN，此时会通过TaggedInt存储。由于以上存储方式的差异，当对其进行hash算法即会计算出不同的hash值，从而导致映射结果不同，产生与预期不一致的现象。
+
+```ts
+let mp = new LightWeightMap<number, number>();
+let key = 1758783600000 / 1000;  // 1758783600000 > INT32_MAX
+mp.set(key, 1001);
+console.info("result:", mp.hasKey(1758783600));  // result: false 
+console.info("result:", mp.hasKey(key));  // result: true
+```
 
 ## 导入模块
 

@@ -1,5 +1,11 @@
 # 图形开发术语
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
+<!--Designer: @liumingxiang; @wangyanglan-->
+<!--Tester: @yhl0101; @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## BlendMode
 
@@ -28,7 +34,7 @@ BlendMode，混合模式，定义当前内容和已有内容如何相互作用�
 
 ## 着色器
 
-着色器，Shader，是一种运行程序，主要用于显示图像渲染和处理。其能够控制或像素的处理方式，包括颜色计算、阴影效果等一系列视觉效果。可以针对绘制内容添加不同的着色器效果，从而实现丰富不同的视觉效果。
+着色器，Shader，是一种运行程序，主要用于显示图像渲染和处理。其能够控制顶点或像素的处理方式，包括颜色计算、阴影效果等一系列视觉效果。可以针对绘制内容添加不同的着色器效果，从而实现丰富不同的视觉效果。
 
 
 ## 图像滤波

@@ -1,5 +1,12 @@
 # drawing_image.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 文件中定义了与图片相关的功能函数。
@@ -29,7 +36,7 @@
 
 ### OH_Drawing_ImageCreate()
 
-```
+```c
 OH_Drawing_Image* OH_Drawing_ImageCreate(void)
 ```
 
@@ -49,7 +56,7 @@ OH_Drawing_Image* OH_Drawing_ImageCreate(void)
 
 ### OH_Drawing_ImageDestroy()
 
-```
+```c
 void OH_Drawing_ImageDestroy(OH_Drawing_Image* image)
 ```
 
@@ -70,7 +77,7 @@ void OH_Drawing_ImageDestroy(OH_Drawing_Image* image)
 
 ### OH_Drawing_ImageBuildFromBitmap()
 
-```
+```c
 bool OH_Drawing_ImageBuildFromBitmap(OH_Drawing_Image* image, OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -98,7 +105,7 @@ bool OH_Drawing_ImageBuildFromBitmap(OH_Drawing_Image* image, OH_Drawing_Bitmap*
 
 ### OH_Drawing_ImageGetWidth()
 
-```
+```c
 int32_t OH_Drawing_ImageGetWidth(OH_Drawing_Image* image)
 ```
 
@@ -125,7 +132,7 @@ int32_t OH_Drawing_ImageGetWidth(OH_Drawing_Image* image)
 
 ### OH_Drawing_ImageGetHeight()
 
-```
+```c
 int32_t OH_Drawing_ImageGetHeight(OH_Drawing_Image* image)
 ```
 
@@ -152,7 +159,7 @@ int32_t OH_Drawing_ImageGetHeight(OH_Drawing_Image* image)
 
 ### OH_Drawing_ImageGetImageInfo()
 
-```
+```c
 void OH_Drawing_ImageGetImageInfo(OH_Drawing_Image* image, OH_Drawing_Image_Info* imageInfo)
 ```
 

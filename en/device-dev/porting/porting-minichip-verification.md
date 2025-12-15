@@ -6,7 +6,7 @@ After the OpenHarmony chip is ported, conduct the OpenHarmony compatibility test
 
 ## Conducting the OpenHarmony Compatibility Test
 
-The OpenHarmony compatibility test is included in the X Test Suite (XTS), a set of OpenHarmony certification test suites. For details, see [DFX](https://gitee.com/openharmony/docs/blob/master/en/readme/dfx.md).
+The OpenHarmony compatibility test is included in the X Test Suite (XTS), a set of OpenHarmony certification test suites. For details, see [DFX](https://gitcode.com/openharmony/docs/blob/master/en/readme/dfx.md).
 
 1. Add the test subsystem and the xts_acts component.
    Add the following code to the **vendor/xxx/xxx/config.json** file:

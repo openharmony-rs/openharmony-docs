@@ -1,22 +1,27 @@
 # Class (ComponentSnapshot)
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 提供获取组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。
 
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
 >
 > - 以下API需先使用UIContext中的[getComponentSnapshot()](./arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
 >
-> - 缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的是还是图形变换前的效果。
+> - 缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的还是图形变换前的效果。
 
 ## get<sup>12+</sup>
 
 get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnapshot.SnapshotOptions): void
 
-获取已加载的组件的截图，传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图。通过回调返回结果。
+获取已加载的组件的截图，传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图。使用callback异步回调。
 
 > **说明：** 
 >
@@ -31,12 +36,12 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | id       | string                                                       | 是   | 目标组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)。<br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是   | 截图返回结果的回调。                                         |
+| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是   | 回调函数。当截图返回结果成功，err为undefined，data为获取到的image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)；否则为错误对象。                                         |
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | 否    | 截图相关的自定义参数。 |
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -54,17 +59,25 @@ import { UIContext } from '@kit.ArkUI';
 struct SnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined;
   uiContext: UIContext = this.getUIContext();
+
   build() {
     Column() {
       Row() {
         Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(150).height(150).margin(5).id("root")
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(150)
+          .height(150)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           this.uiContext.getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error));
+              console.error('error: ${JSON.stringify(error)}');
               return;
             }
             this.pixmap = pixmap;
@@ -78,11 +91,13 @@ struct SnapshotExample {
 }
 ```
 
+![Getscreent](figures/Getscreent.gif)
+
 ## get<sup>12+</sup>
 
 get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-获取已加载的组件的截图，传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图。通过Promise返回结果。
+获取已加载的组件的截图，传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图。使用Promise异步回调。
 
 > **说明：**
 >
@@ -103,11 +118,11 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 
 | 类型                                                         | 说明             |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 截图返回的结果。 |
+| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回组件截图对象。 |
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -130,8 +145,15 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.icon')).autoResize(true).width(150).height(150).margin(5).id("root")
+        // $r('app.media.icon')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.icon'))
+          .autoResize(true)
+          .width(150)
+          .height(150)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           this.uiContext.getComponentSnapshot()
@@ -155,12 +177,13 @@ struct SnapshotExample {
 
 createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void
 
-传入[CustomBuilder](arkui-ts/ts-types.md#custombuilder8)自定义组件，系统对其进行离屏构建后进行截图，并通过回调返回结果。
+传入[CustomBuilder](arkui-ts/ts-types.md#custombuilder8)自定义组件，系统对其进行离屏构建后进行截图。使用callback异步回调。
+
 > **说明：** 
 >
-> 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟，不适宜使用在对性能敏感的场景。
+> - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟，不适宜使用在对性能敏感的场景。
 >
-> 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
+> - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -171,14 +194,14 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8)         | 是   | 自定义组件构建函数。<br/>**说明：** 不支持全局builder。<br/>builder的根组件宽高为0时，截图操作会失败并抛出100001错误码。      |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是   | 截图返回结果的回调。支持在回调中获取离屏组件绘制区域坐标和大小。 |
+| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是   | 回调函数。当截图返回结果成功，err为undefined，data为获取到的image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)；否则为错误对象。支持在回调中获取离屏组件绘制区域坐标和大小。 |
 | delay   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置syncload为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒 <br/> 取值范围：[0, +∞)，小于0时按默认值处理。 |
 | checkImageStatus  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成，如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12) | 否    | 截图相关的自定义参数。 |
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -197,6 +220,7 @@ import { UIContext } from '@kit.ArkUI';
 struct ComponentSnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined;
   uiContext: UIContext = this.getUIContext();
+
   @Builder
   RandomBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -225,7 +249,7 @@ struct ComponentSnapshotExample {
           },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
-                console.error("error: " + JSON.stringify(error));
+                console.error('error: ${JSON.stringify(error)}');
                 return;
               }
               this.pixmap = pixmap;
@@ -245,13 +269,13 @@ struct ComponentSnapshotExample {
 
 createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-传入[CustomBuilder](arkui-ts/ts-types.md#custombuilder8)自定义组件，系统对其进行离屏构建后进行截图，并通过回调返回结果。
+传入[CustomBuilder](arkui-ts/ts-types.md#custombuilder8)自定义组件，系统对其进行离屏构建后进行截图。使用Promise异步回调。
 
 > **说明：** 
 >
-> 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟，不适宜使用在对性能敏感的场景。
+> - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟，不适宜使用在对性能敏感的场景。
 >
-> 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
+> - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -262,7 +286,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 | 参数名  | 类型                                                 | 必填 | 说明                                                    |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | 是   | 自定义组件构建函数。<br/>**说明：** 不支持全局builder。<br/>builder的根组件宽高为0时，截图操作会失败并抛出100001错误码。 |
-| delay   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置syncload为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒<br/> 取值范围：[0, +∞)，小于0时按默认值处理。|
+| delay   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置[syncload](arkui-ts/ts-basic-components-image.md#syncload8)为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒<br/> 取值范围：[0, +∞)，小于0时按默认值处理。|
 | checkImageStatus  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成，如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)           | 否    | 截图相关的自定义参数。 |
 
@@ -270,11 +294,11 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 
 | 类型                                                         | 说明             |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 截图返回的结果。 |
+| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回组件截图对象。 |
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -293,6 +317,7 @@ import { UIContext } from '@kit.ArkUI';
 struct ComponentSnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined;
   uiContext: UIContext = this.getUIContext();
+
   @Builder
   RandomBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -311,6 +336,7 @@ struct ComponentSnapshotExample {
     .width(100)
     .id("builder")
   }
+
   build() {
     Column() {
       Button("click to generate UI snapshot")
@@ -340,7 +366,7 @@ struct ComponentSnapshotExample {
 
 getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
-获取已加载的组件的截图，传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。
+获取已加载的组件的截图。传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图，同步等待截图完成返回[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。本方法会阻塞主线程，请谨慎使用。接口的最大等待时间为3s，如果3s后未返回将会抛出异常。
 
 > **说明：**
 >
@@ -365,7 +391,7 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
@@ -377,7 +403,6 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 ```ts
 import { image } from '@kit.ImageKit';
-import { UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -387,13 +412,21 @@ struct SnapshotExample {
   build() {
     Column() {
       Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(150)
+          .height(150)
+          .margin(5)
+          .id("root")
       }
-      Button("click to generate UI snapshot")
+
+      Button("click to generate UI snapshot")   
         .onClick(() => {
           try {
-            let pixelmap = this.getUIContext().getComponentSnapshot().getSync("root", { scale: 2, waitUntilRenderFinished: true });
+            let pixelmap =
+              this.getUIContext().getComponentSnapshot().getSync("root", { scale: 2, waitUntilRenderFinished: true });
             this.pixmap = pixelmap;
           } catch (error) {
             console.error("getSync errorCode: " + error.code + " message: " + error.message);
@@ -411,7 +444,7 @@ struct SnapshotExample {
 
 getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-获取已加载的组件的截图，传入组件的[uniqueId](js-apis-arkui-frameNode.md#getuniqueid12)，找到对应组件进行截图。通过Promise返回结果。
+获取已加载的组件的截图，传入组件的[uniqueId](js-apis-arkui-frameNode.md#getuniqueid12)，找到对应组件进行截图。使用Promise异步回调。
 
 > **说明：**
 >
@@ -432,11 +465,11 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 
 | 类型                                                         | 说明             |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 截图返回的结果。 |
+| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回组件截图对象。 |
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -452,7 +485,6 @@ import { UIContext } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
-
   public imageNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -460,6 +492,7 @@ class MyNodeController extends NodeController {
     this.node.commonAttribute.width('100%').height('100%');
 
     let image = typeNode.createNode(uiContext, 'Image');
+    // $r('app.media.img')需要替换为开发者所需的图像资源文件
     image.initialize($r('app.media.img')).width('100%').height('100%').autoResize(true);
     this.imageNode = image;
 
@@ -472,7 +505,6 @@ class MyNodeController extends NodeController {
 @Component
 struct SnapshotExample {
   private myNodeController: MyNodeController = new MyNodeController();
-
   @State pixmap: image.PixelMap | undefined = undefined;
 
   build() {
@@ -481,20 +513,22 @@ struct SnapshotExample {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
         NodeContainer(this.myNodeController).width(200).height(200).margin(5)
       }
+
       Button("UniqueId get snapshot")
         .onClick(() => {
           try {
             this.getUIContext()
               .getComponentSnapshot()
-              .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(), { scale: 2, waitUntilRenderFinished: true })
+              .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
+                { scale: 2, waitUntilRenderFinished: true })
               .then((pixmap: image.PixelMap) => {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.log("error: " + err);
+                console.error("error: " + err);
               })
           } catch (error) {
-            console.error("UniqueId get snapshot Error: " + JSON.stringify(error));
+            console.error('UniqueId get snapshot Error: ${JSON.stringify(error)}');
           }
         }).margin(10)
     }
@@ -534,7 +568,7 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
@@ -551,7 +585,6 @@ import { UIContext } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
-
   public imageNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -559,6 +592,7 @@ class MyNodeController extends NodeController {
     this.node.commonAttribute.width('100%').height('100%');
 
     let image = typeNode.createNode(uiContext, 'Image');
+    // $r('app.media.img')需要替换为开发者所需的图像资源文件
     image.initialize($r('app.media.img')).width('100%').height('100%').autoResize(true);
     this.imageNode = image;
 
@@ -571,7 +605,6 @@ class MyNodeController extends NodeController {
 @Component
 struct SnapshotExample {
   private myNodeController: MyNodeController = new MyNodeController();
-
   @State pixmap: image.PixelMap | undefined = undefined;
 
   build() {
@@ -580,14 +613,16 @@ struct SnapshotExample {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
         NodeContainer(this.myNodeController).width(200).height(200).margin(5)
       }
+
       Button("UniqueId getSync snapshot")
         .onClick(() => {
           try {
             this.pixmap = this.getUIContext()
               .getComponentSnapshot()
-              .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(), { scale: 2, waitUntilRenderFinished: true });
+              .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
+                { scale: 2, waitUntilRenderFinished: true });
           } catch (error) {
-            console.error("UniqueId getSync snapshot Error: " + JSON.stringify(error));
+            console.error('UniqueId getSync snapshot Error: ${JSON.stringify(error)}');
           }
         }).margin(10)
     }
@@ -602,7 +637,7 @@ struct SnapshotExample {
 
 createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-将传入的content对象进行截图，并通过Promise返回结果。
+将传入的content对象进行截图。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -617,9 +652,15 @@ createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: nu
 | checkImageStatus  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成，如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12) | 否    | 截图相关的自定义参数。可以指定截图时图形侧绘制pixelmap的缩放比例与是否强制等待系统执行截图指令前所有绘制指令都执行完成之后再截图。 |
 
+**返回值：**
+
+| 类型                            | 说明       |
+| ----------------------------- | -------- |
+| Promise<image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象，返回组件截图对象。 |
+
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -634,9 +675,9 @@ import { image } from '@kit.ImageKit';
 import { ComponentContent } from '@kit.ArkUI';
 
 class Params {
-  text: string | undefined | null  = "";
+  text: string | undefined | null = "";
 
-  constructor(text: string | undefined | null ) {
+  constructor(text: string | undefined | null) {
     this.text = text;
   }
 }
@@ -648,14 +689,14 @@ function buildText(params: Params) {
 
 @Component
 struct ReusableChildComponent {
-  @Prop text: string | undefined | null  = "";
+  @Prop text: string | undefined | null = "";
 
   aboutToReuse(params: Record<string, object>) {
-    console.log("ReusableChildComponent Reusable " + JSON.stringify(params));
+    console.info(`ReusableChildComponent Reusable ${JSON.stringify(params)}`);
   }
 
   aboutToRecycle(): void {
-    console.log("ReusableChildComponent aboutToRecycle " + this.text);
+    console.info("ReusableChildComponent aboutToRecycle " + this.text);
   }
 
   build() {

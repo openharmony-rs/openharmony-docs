@@ -1,5 +1,12 @@
 # asset_type.h
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## 概述
 
 定义关键资产存储服务中通用的枚举值、数据结构和错误码。
@@ -52,7 +59,7 @@
 
 ### Asset_TagType
 
-```
+```c
 enum Asset_TagType
 ```
 
@@ -70,7 +77,7 @@ enum Asset_TagType
 
 ### Asset_Tag
 
-```
+```c
 enum Asset_Tag
 ```
 
@@ -117,7 +124,7 @@ enum Asset_Tag
 
 ### Asset_ResultCode
 
-```
+```c
 enum Asset_ResultCode
 ```
 
@@ -153,7 +160,7 @@ enum Asset_ResultCode
 
 ### Asset_Accessibility
 
-```
+```c
 enum Asset_Accessibility
 ```
 
@@ -171,7 +178,7 @@ enum Asset_Accessibility
 
 ### Asset_AuthType
 
-```
+```c
 enum Asset_AuthType
 ```
 
@@ -188,7 +195,7 @@ enum Asset_AuthType
 
 ### Asset_SyncType
 
-```
+```c
 enum Asset_SyncType
 ```
 
@@ -207,7 +214,7 @@ enum Asset_SyncType
 
 ### Asset_WrapType
 
-```
+```c
 enum Asset_WrapType
 ```
 
@@ -224,7 +231,7 @@ enum Asset_WrapType
 
 ### Asset_ConflictResolution
 
-```
+```c
 enum Asset_ConflictResolution
 ```
 
@@ -241,7 +248,7 @@ enum Asset_ConflictResolution
 
 ### Asset_ReturnType
 
-```
+```c
 enum Asset_ReturnType
 ```
 
@@ -258,7 +265,7 @@ enum Asset_ReturnType
 
 ### Asset_OperationType
 
-```
+```c
 enum Asset_OperationType
 ```
 

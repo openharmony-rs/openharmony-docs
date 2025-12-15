@@ -1,5 +1,12 @@
 # @ohos.sendableResourceManager (资源管理)
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 资源管理导入sendableResourceManager模块，通过调用[resourceToSendableResource](#sendableresourcemanagerresourcetosendableresource)和[sendableResourceToResource](#sendableresourcemanagersendableresourcetoresource)方法可以将[Resource](#resource)对象和[SendableResource](#sendableresource)对象进行互转。
 
 Resource对象通过转换为SendableResource对象后，可以被[Sendable类](../../arkts-utils/arkts-sendable.md)持有。Sendable类在跨线程传输后，取出持有的SendableResource对象转为Resource对象，作为参数获取资源。
@@ -11,7 +18,7 @@ Resource对象通过转换为SendableResource对象后，可以被[Sendable类](
 ## 导入模块
 
 ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
+import { sendableResourceManager } from '@kit.LocalizationKit';
 ```
 
 ## sendableResourceManager.resourceToSendableResource
@@ -19,6 +26,8 @@ import sendableResourceManager from '@ohos.sendableResourceManager';
 resourceToSendableResource(resource: Resource): SendableResource
 
 将Resource对象转换为SendableResource对象。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.ResourceManager
 
@@ -43,20 +52,20 @@ resourceToSendableResource(resource: Resource): SendableResource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
-import { BusinessError } from '@ohos.base';
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```js
+import { sendableResourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let sendableResource: sendableResourceManager.SendableResource = sendableResourceManager.resourceToSendableResource($r('app.string.test'));
@@ -65,13 +74,15 @@ try {
     let message = (error as BusinessError).message;
     console.error(`resourceToSendableResource failed, error code: ${code}, message: ${message}.`);
 }
-  ```
+```
 
 ## sendableResourceManager.sendableResourceToResource
 
 sendableResourceToResource(resource: SendableResource): Resource
 
 将SendableResource对象转换为Resource对象。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.ResourceManager
 
@@ -96,53 +107,50 @@ sendableResourceToResource(resource: SendableResource): Resource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
-import { BusinessError } from '@ohos.base';
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```js
+import { sendableResourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let resource: sendableResourceManager.Resource = sendableResourceManager.sendableResourceToResource(sendableResourceManager.resourceToSendableResource($r('app.string.test')));
 } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
-    console.error(`resourceToSendableResource failed, error code: ${code}, message: ${message}.`);
+    console.error(`sendableResourceToResource failed, error code: ${code}, message: ${message}.`);
 }
-  ```
+```
 
 ## Resource
 
-表示Resource资源信息。
+type Resource = _Resource
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**参数：**
-
-| 名称         | 类型     | 只读   | 可选  |说明          |
-| ---------- | ------ | ----- | ----  | ---------------|
-| bundleName | string | 否    | 否 | 应用的bundle名称。 |
-| moduleName | string | 否    | 否 | 应用的module名称。 |
-| id         | number | 否    | 否 | 资源的id值。      |
-| params     | any[] | 否    | 是 | 其他资源参数，包括资源名、格式化接口的替换值、复数接口的量词。      |
-| type       | number | 否    | 是 | 资源的类型。      |
+| 类型    | 说明   |
+| ------  | ---- | 
+|[_Resource](js-apis-resource.md#resource-1)| 表示Resource资源信息。|
 
 ## SendableResource
 
 type SendableResource = _SendableResource
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
 | 类型         | 说明     |
 | ---------- | ------ | 
 | [_SendableResource](js-apis-sendableResource.md#sendableresource-1)|表示SendableResource资源信息。|
-

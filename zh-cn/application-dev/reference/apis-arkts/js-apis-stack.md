@@ -1,9 +1,10 @@
 # @ohos.util.Stack (线性容器Stack)
 <!--Kit: ArkTS-->
-<!--Subsystem: commonlibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello; @yuanyao14; @lzj0614-->
-<!--SE: @yuanyao14-->
-<!--TSE: @kirl75; @zsw_zhushiwei-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 Stack基于数组的数据结构实现，特点是先进后出，只能在一端进行数据的插入和删除。
 
@@ -17,6 +18,8 @@ Stack和[Queue](js-apis-queue.md)相比，Queue基于循环队列实现，只能
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 
 ## 导入模块
@@ -149,7 +152,7 @@ console.info("result = " + result); // result = 4
 
 peek(): T
 
-返回栈顶元素。
+返回栈顶元素，栈为空时返回undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -159,7 +162,7 @@ peek(): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回栈顶元素。 |
+| T | 返回栈顶元素，栈为空时返回undefined。 |
 
 **错误码：**
 

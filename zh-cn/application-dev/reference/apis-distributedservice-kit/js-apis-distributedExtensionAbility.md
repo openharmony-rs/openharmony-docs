@@ -1,4 +1,10 @@
 # @ohos.application.DistributedExtensionAbility (协同Extension)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 DistributedExtensionAbility模块提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。
 
@@ -20,9 +26,9 @@ import { DistributedExtensionAbility} from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-| 名称    | 类型                          | 可读 | 可写 | 说明                                                       |
+| 名称    | 类型                          | 只读 | 可选 | 说明                                                       |
 | ------- | ----------------------------- | ---- | ---- | ---------------------------------------------------------- |
-| context | DistributedExtensionContext | 是   | 否   | DistributedExtension的上下文环境，继承自ExtensionContext。 |
+| context | DistributedExtensionContext | 否   | 否   | DistributedExtension的上下文环境，继承自ExtensionContext。 |
 
 ### onCreate
 
@@ -65,7 +71,7 @@ onCollaborate(wantParam: Record <string, Object>) : AbilityConstant.CollaborateR
 
 | 参数名    | 类型   | 必填 | 说明                                                                                                                                   |
 | --------- | ------ | ---- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| wantParam | Record <string, Object> | 是   | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该key值可以可以获取到调用方传输的数据并进行相应的处理。 |
+| wantParam | Record <string, Object> | 是   | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该key值可以获取到调用方传输的数据并进行相应的处理。 |
 
 **返回值：**
 

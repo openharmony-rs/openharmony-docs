@@ -1,4 +1,10 @@
 # drag_and_drop.h
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -13,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->
 
 ## 汇总
 
@@ -98,13 +106,13 @@
 | [int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction, void* userData,void(\*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData))](#oh_arkui_dragaction_registerstatuslistener) | 注册拖拽状态监听回调，该回调可感知到拖拽已经发起或用户松手结束的状态，可通过该监听获取到落入方对数据的接收处理是否成功。 |
 | [ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent event, int32_t* displayId)](#oh_arkui_dragevent_getdisplayid) | 获取当前拖拽事件发生时所在的屏幕ID，不支持当eventType为NODE_ON_DRAG_END时获取。 |
 | [void OH_ArkUI_DragAction_UnregisterStatusListener(ArkUI_DragAction* dragAction)](#oh_arkui_dragaction_unregisterstatuslistener) | 解注册拖拽状态监听回调。 |
-| [ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragstatus) | 获取dragaction发起拖拽的状态，获取异常时返回 ArkUI_DRAG_STATUS_UNKNOWN。 |
+| [ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragstatus) | 获取dragAction发起拖拽的状态，获取异常时返回 ArkUI_DRAG_STATUS_UNKNOWN。 |
 | [ArkUI_DragEvent* OH_ArkUI_DragAndDropInfo_GetDragEvent(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragevent) | 通过dragAndDropInfo获取到DragEvent，可通过DragEvent获取释放结果等。 |
 | [int32_t OH_ArkUI_StartDrag(ArkUI_DragAction* dragAction)](#oh_arkui_startdrag) | 通过构造的DragAction对象发起拖拽。 |
 | [int32_t OH_ArkUI_DragEvent_RequestDragEndPending(ArkUI_DragEvent* event, int32_t* requestIdentify)](#oh_arkui_dragevent_requestdragendpending) | 请求延迟处理拖拽结束事件，等待应用程序确认操作结果。应用程序需通过 [OH_ArkUI_NotifyDragResult](capi-drag-and-drop-h.md#oh_arkui_notifydragresult)接口将最终结果回传至系统，并在所有处理完成后调用 [OH_ArkUI_NotifyDragEndPendingDone](capi-drag-and-drop-h.md#oh_arkui_notifydragendpendingdone)。最大等待时间为2秒。 |
 | [int32_t OH_ArkUI_NotifyDragResult(int32_t requestIdentify, ArkUI_DragResult result)](#oh_arkui_notifydragresult) | 通知系统最终拖拽结果。系统会校验请求标识符是否与[OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending)返回的一致，不一致则忽略本次调用。 |
 | [int32_t OH_ArkUI_NotifyDragEndPendingDone(int32_t requestIdentify)](#oh_arkui_notifydragendpendingdone) | 通知系统所有异步处理已完成，可结束拖拽结束挂起状态。 |
-| [int32_t OH_ArkUI_EnableDropDisallowedBadge(ArkUI_ContextHandle uiContext, bool enabled)](#oh_arkui_enabledropdisallowedbadge) | 设置是否可以显示禁用角标。 |
+| [ArkUI_ErrorCode OH_ArkUI_EnableDropDisallowedBadge(ArkUI_ContextHandle uiContext, bool enabled)](#oh_arkui_enabledropdisallowedbadge) | 设置是否可以显示禁用角标。 |
 | [float OH_ArkUI_DragEvent_GetTouchPointXToGlobalDisplay(ArkUI_DragEvent* event)](#oh_arkui_dragevent_gettouchpointxtoglobaldisplay) | 从ArkUI_DragEvent中获取跟手点相对于全局屏幕的x轴坐标。 |
 | [float OH_ArkUI_DragEvent_GetTouchPointYToGlobalDisplay(ArkUI_DragEvent* event)](#oh_arkui_dragevent_gettouchpointytoglobaldisplay) | 从ArkUI_DragEvent中获取跟手点相对于全局屏幕的y轴坐标。 |
 | [ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDragSource(ArkUI_DragEvent* event, char *bundleName, int32_t length)](#oh_arkui_dragevent_getdragsource) | 获取拖拽发起方的应用包名信息，需要传递一个字符数组来接收包名字符串，并显式指明数组长度，该数组长度不小于128个字符。 |
@@ -114,7 +122,7 @@
 
 ### ArkUI_DragResult
 
-```
+```c
 enum ArkUI_DragResult
 ```
 
@@ -128,12 +136,12 @@ enum ArkUI_DragResult
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_DRAG_RESULT_SUCCESSFUL = 0 | 拖拽处理成功。 |
-| ARKUI_DRAG_RESULT_FAILED | 拖拽处理失败。 |
-| ARKUI_DRAG_RESULT_CANCELED | 拖拽处理取消。 |
+| ARKUI_DRAG_RESULT_FAILED = 1 | 拖拽处理失败。 |
+| ARKUI_DRAG_RESULT_CANCELED = 2 | 拖拽处理取消。 |
 
 ### ArkUI_DropOperation
 
-```
+```c
 enum ArkUI_DropOperation
 ```
 
@@ -147,11 +155,11 @@ enum ArkUI_DropOperation
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_DROP_OPERATION_COPY = 0 | 复制行为。 |
-| ARKUI_DROP_OPERATION_MOVE | 剪切行为。 |
+| ARKUI_DROP_OPERATION_MOVE = 1 | 剪切行为。 |
 
 ### ArkUI_PreDragStatus
 
-```
+```c
 enum ArkUI_PreDragStatus
 ```
 
@@ -165,17 +173,17 @@ enum ArkUI_PreDragStatus
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1 | Unknown。 |
-| ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING | 拖拽手势启动阶段。 |
-| ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG | 拖拽准备完成，可发起拖拽阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED | 拖拽浮起动效发起阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED | 拖拽浮起动效结束阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED | 拖拽落回动效发起阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED | 拖拽落回动效结束阶段。 |
-| ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG | 拖拽浮起落位动效中断。 |
+| ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING = 0 | 拖拽手势启动阶段。 |
+| ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG = 1 | 拖拽准备完成，可发起拖拽阶段。 |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED = 2 | 拖拽浮起动效发起阶段。 |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED = 3 | 拖拽浮起动效结束阶段。 |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED = 4 | 拖拽落回动效发起阶段。 |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED = 5 | 拖拽落回动效结束阶段。 |
+| ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG = 6 | 拖拽浮起落位动效中断。 |
 
 ### ArkUI_DragPreviewScaleMode
 
-```
+```c
 enum ArkUI_DragPreviewScaleMode
 ```
 
@@ -189,11 +197,11 @@ enum ArkUI_DragPreviewScaleMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0 | 系统根据拖拽场景自动改变跟手点位置，根据规则自动对拖拽背板图进行缩放变换等。 |
-| ARKUI_DRAG_PREVIEW_SCALE_DISABLED | 禁用系统对拖拽背板图的缩放行为。 |
+| ARKUI_DRAG_PREVIEW_SCALE_DISABLED = 1 | 禁用系统对拖拽背板图的缩放行为。 |
 
 ### ArkUI_DragStatus
 
-```
+```c
 enum ArkUI_DragStatus
 ```
 
@@ -206,16 +214,16 @@ enum ArkUI_DragStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DRAG_STATUS_UNKNOWN = -1 | Unknown。 |
-| ARKUI_DRAG_STATUS_STARTED | Started。 |
-| ARKUI_DRAG_STATUS_ENDED | Ended。 |
+| ARKUI_DRAG_STATUS_UNKNOWN = -1 | 未知的拖拽状态。 |
+| ARKUI_DRAG_STATUS_STARTED = 0 | 拖拽开始。 |
+| ARKUI_DRAG_STATUS_ENDED = 1 | 拖拽结束。 |
 
 
 ## 函数说明
 
 ### OH_ArkUI_NodeEvent_GetDragEvent()
 
-```
+```c
 ArkUI_DragEvent* OH_ArkUI_NodeEvent_GetDragEvent(ArkUI_NodeEvent* nodeEvent)
 ```
 
@@ -237,11 +245,11 @@ ArkUI_DragEvent* OH_ArkUI_NodeEvent_GetDragEvent(ArkUI_NodeEvent* nodeEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* | ArkUI_DragEvent 事件指针，当传入的 NodeEvent 无效或不是拖拽相关的事件时，则返回空。 |
+| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* | ArkUI_DragEvent 事件指针，当传入的 NodeEvent 无效或不是拖拽相关的事件时，则返回空。 |
 
 ### OH_ArkUI_NodeEvent_GetPreDragStatus()
 
-```
+```c
 ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEvent)
 ```
 
@@ -267,7 +275,7 @@ ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEve
 
 ### OH_ArkUI_DragEvent_DisableDefaultDropAnimation()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_DisableDefaultDropAnimation(ArkUI_DragEvent* event, bool disable)
 ```
 
@@ -294,7 +302,7 @@ int32_t OH_ArkUI_DragEvent_DisableDefaultDropAnimation(ArkUI_DragEvent* event, b
 
 ### OH_ArkUI_DragEvent_SetSuggestedDropOperation()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_SetSuggestedDropOperation(ArkUI_DragEvent* event, ArkUI_DropOperation dropOperation)
 ```
 
@@ -321,7 +329,7 @@ int32_t OH_ArkUI_DragEvent_SetSuggestedDropOperation(ArkUI_DragEvent* event, Ark
 
 ### OH_ArkUI_DragEvent_SetDragResult()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_SetDragResult(ArkUI_DragEvent* event, ArkUI_DragResult result)
 ```
 
@@ -348,7 +356,7 @@ int32_t OH_ArkUI_DragEvent_SetDragResult(ArkUI_DragEvent* event, ArkUI_DragResul
 
 ### OH_ArkUI_DragEvent_SetData()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_SetData(ArkUI_DragEvent* event, OH_UdmfData* data)
 ```
 
@@ -375,7 +383,7 @@ int32_t OH_ArkUI_DragEvent_SetData(ArkUI_DragEvent* event, OH_UdmfData* data)
 
 ### OH_ArkUI_DragEvent_SetDataLoadParams()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_DragEvent_SetDataLoadParams(ArkUI_DragEvent* event, OH_UdmfDataLoadParams* dataLoadParams)
 ```
 
@@ -402,7 +410,7 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_SetDataLoadParams(ArkUI_DragEvent* event, OH_
 
 ### OH_ArkUI_DragEvent_GetUdmfData()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_GetUdmfData(ArkUI_DragEvent* event, OH_UdmfData *data)
 ```
 
@@ -429,7 +437,7 @@ int32_t OH_ArkUI_DragEvent_GetUdmfData(ArkUI_DragEvent* event, OH_UdmfData *data
 
 ### OH_ArkUI_DragEvent_GetDataTypeCount()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_GetDataTypeCount(ArkUI_DragEvent* event, int32_t* count)
 ```
 
@@ -456,7 +464,7 @@ int32_t OH_ArkUI_DragEvent_GetDataTypeCount(ArkUI_DragEvent* event, int32_t* cou
 
 ### OH_ArkUI_DragEvent_GetDataTypes()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_GetDataTypes(ArkUI_DragEvent *event, char *eventTypeArray[], int32_t length, int32_t maxStrLen)
 ```
 
@@ -485,7 +493,7 @@ int32_t OH_ArkUI_DragEvent_GetDataTypes(ArkUI_DragEvent *event, char *eventTypeA
 
 ### OH_ArkUI_DragEvent_GetDragResult()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_GetDragResult(ArkUI_DragEvent* event, ArkUI_DragResult* result)
 ```
 
@@ -512,7 +520,7 @@ int32_t OH_ArkUI_DragEvent_GetDragResult(ArkUI_DragEvent* event, ArkUI_DragResul
 
 ### OH_ArkUI_DragEvent_GetDropOperation()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_GetDropOperation(ArkUI_DragEvent* event, ArkUI_DropOperation* operation)
 ```
 
@@ -539,7 +547,7 @@ int32_t OH_ArkUI_DragEvent_GetDropOperation(ArkUI_DragEvent* event, ArkUI_DropOp
 
 ### OH_ArkUI_DragEvent_GetPreviewTouchPointX()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetPreviewTouchPointX(ArkUI_DragEvent* event)
 ```
 
@@ -565,7 +573,7 @@ float OH_ArkUI_DragEvent_GetPreviewTouchPointX(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetPreviewTouchPointY()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetPreviewTouchPointY(ArkUI_DragEvent* event)
 ```
 
@@ -591,7 +599,7 @@ float OH_ArkUI_DragEvent_GetPreviewTouchPointY(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetPreviewRectWidth()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetPreviewRectWidth(ArkUI_DragEvent* event)
 ```
 
@@ -617,7 +625,7 @@ float OH_ArkUI_DragEvent_GetPreviewRectWidth(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetPreviewRectHeight()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetPreviewRectHeight(ArkUI_DragEvent* event)
 ```
 
@@ -643,7 +651,7 @@ float OH_ArkUI_DragEvent_GetPreviewRectHeight(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetTouchPointXToWindow()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetTouchPointXToWindow(ArkUI_DragEvent* event)
 ```
 
@@ -669,7 +677,7 @@ float OH_ArkUI_DragEvent_GetTouchPointXToWindow(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetTouchPointYToWindow()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetTouchPointYToWindow(ArkUI_DragEvent* event)
 ```
 
@@ -695,7 +703,7 @@ float OH_ArkUI_DragEvent_GetTouchPointYToWindow(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetTouchPointXToDisplay()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetTouchPointXToDisplay(ArkUI_DragEvent* event)
 ```
 
@@ -721,7 +729,7 @@ float OH_ArkUI_DragEvent_GetTouchPointXToDisplay(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetTouchPointYToDisplay()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetTouchPointYToDisplay(ArkUI_DragEvent* event)
 ```
 
@@ -747,7 +755,7 @@ float OH_ArkUI_DragEvent_GetTouchPointYToDisplay(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetVelocityX()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetVelocityX(ArkUI_DragEvent* event)
 ```
 
@@ -773,7 +781,7 @@ float OH_ArkUI_DragEvent_GetVelocityX(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetVelocityY()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetVelocityY(ArkUI_DragEvent* event)
 ```
 
@@ -799,7 +807,7 @@ float OH_ArkUI_DragEvent_GetVelocityY(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetVelocity()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetVelocity(ArkUI_DragEvent* event)
 ```
 
@@ -825,7 +833,7 @@ float OH_ArkUI_DragEvent_GetVelocity(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetModifierKeyStates()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_GetModifierKeyStates(ArkUI_DragEvent* event, uint64_t* keys)
 ```
 
@@ -852,7 +860,7 @@ int32_t OH_ArkUI_DragEvent_GetModifierKeyStates(ArkUI_DragEvent* event, uint64_t
 
 ### OH_ArkUI_DragEvent_StartDataLoading()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDataParams* options, char* key, unsigned int keyLen)
 ```
 
@@ -877,11 +885,11 @@ int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDa
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         {@link ARKUI_ERROR_CODE_DRAG_DATA_SYNC_FAILED} 数据同步失败。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_CancelDataLoading()
 
-```
+```c
 int32_t OH_ArkUI_CancelDataLoading(ArkUI_ContextHandle uiContext, const char* key)
 ```
 
@@ -904,11 +912,11 @@ int32_t OH_ArkUI_CancelDataLoading(ArkUI_ContextHandle uiContext, const char* ke
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         ARKUI_ERROR_CODE_OPERATION_FAILED 当前没有进行中的数据同步任务。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_DisableDropDataPrefetchOnNode()
 
-```
+```c
 int32_t OH_ArkUI_DisableDropDataPrefetchOnNode(ArkUI_NodeHandle node, bool disabled)
 ```
 
@@ -935,7 +943,7 @@ int32_t OH_ArkUI_DisableDropDataPrefetchOnNode(ArkUI_NodeHandle node, bool disab
 
 ### OH_ArkUI_SetDragEventStrictReportWithNode()
 
-```
+```c
 int32_t OH_ArkUI_SetDragEventStrictReportWithNode(ArkUI_NodeHandle node, bool enabled)
 ```
 
@@ -962,7 +970,7 @@ int32_t OH_ArkUI_SetDragEventStrictReportWithNode(ArkUI_NodeHandle node, bool en
 
 ### OH_ArkUI_SetDragEventStrictReportWithContext()
 
-```
+```c
 int32_t OH_ArkUI_SetDragEventStrictReportWithContext(ArkUI_ContextHandle uiContext, bool enabled)
 ```
 
@@ -989,7 +997,7 @@ int32_t OH_ArkUI_SetDragEventStrictReportWithContext(ArkUI_ContextHandle uiConte
 
 ### OH_ArkUI_SetNodeAllowedDropDataTypes()
 
-```
+```c
 int32_t OH_ArkUI_SetNodeAllowedDropDataTypes(ArkUI_NodeHandle node, const char* typesArray[], int32_t count)
 ```
 
@@ -1017,7 +1025,7 @@ int32_t OH_ArkUI_SetNodeAllowedDropDataTypes(ArkUI_NodeHandle node, const char* 
 
 ### OH_ArkUI_DisallowNodeAnyDropDataTypes()
 
-```
+```c
 int32_t OH_ArkUI_DisallowNodeAnyDropDataTypes(ArkUI_NodeHandle node)
 ```
 
@@ -1043,7 +1051,7 @@ int32_t OH_ArkUI_DisallowNodeAnyDropDataTypes(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_AllowNodeAllDropDataTypes()
 
-```
+```c
 int32_t OH_ArkUI_AllowNodeAllDropDataTypes(ArkUI_NodeHandle node)
 ```
 
@@ -1069,7 +1077,7 @@ int32_t OH_ArkUI_AllowNodeAllDropDataTypes(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_SetNodeDraggable()
 
-```
+```c
 int32_t OH_ArkUI_SetNodeDraggable(ArkUI_NodeHandle node, bool enabled)
 ```
 
@@ -1096,7 +1104,7 @@ int32_t OH_ArkUI_SetNodeDraggable(ArkUI_NodeHandle node, bool enabled)
 
 ### OH_ArkUI_SetNodeDragPreview()
 
-```
+```c
 int32_t OH_ArkUI_SetNodeDragPreview(ArkUI_NodeHandle node, OH_PixelmapNative* preview)
 ```
 
@@ -1123,7 +1131,7 @@ int32_t OH_ArkUI_SetNodeDragPreview(ArkUI_NodeHandle node, OH_PixelmapNative* pr
 
 ### OH_ArkUI_CreateDragPreviewOption()
 
-```
+```c
 ArkUI_DragPreviewOption* OH_ArkUI_CreateDragPreviewOption(void)
 ```
 
@@ -1142,7 +1150,7 @@ ArkUI_DragPreviewOption* OH_ArkUI_CreateDragPreviewOption(void)
 
 ### OH_ArkUI_DragPreviewOption_Dispose()
 
-```
+```c
 void OH_ArkUI_DragPreviewOption_Dispose(ArkUI_DragPreviewOption* option)
 ```
 
@@ -1162,7 +1170,7 @@ void OH_ArkUI_DragPreviewOption_Dispose(ArkUI_DragPreviewOption* option)
 
 ### OH_ArkUI_DragPreviewOption_SetScaleMode()
 
-```
+```c
 int32_t OH_ArkUI_DragPreviewOption_SetScaleMode(ArkUI_DragPreviewOption* option, ArkUI_DragPreviewScaleMode scaleMode)
 ```
 
@@ -1189,7 +1197,7 @@ int32_t OH_ArkUI_DragPreviewOption_SetScaleMode(ArkUI_DragPreviewOption* option,
 
 ### OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled()
 
-```
+```c
 int32_t OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled(ArkUI_DragPreviewOption* option, bool enabled)
 ```
 
@@ -1216,7 +1224,7 @@ int32_t OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled(ArkUI_DragPreviewOpti
 
 ### OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled()
 
-```
+```c
 int32_t OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled(ArkUI_DragPreviewOption* option, bool enabled)
 ```
 
@@ -1243,7 +1251,7 @@ int32_t OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled(ArkUI_DragPreviewOpti
 
 ### OH_ArkUI_DragPreviewOption_SetNumberBadgeEnabled()
 
-```
+```c
 int32_t OH_ArkUI_DragPreviewOption_SetNumberBadgeEnabled(ArkUI_DragPreviewOption* option, bool enabled)
 ```
 
@@ -1270,7 +1278,7 @@ int32_t OH_ArkUI_DragPreviewOption_SetNumberBadgeEnabled(ArkUI_DragPreviewOption
 
 ### OH_ArkUI_DragPreviewOption_SetBadgeNumber()
 
-```
+```c
 int32_t OH_ArkUI_DragPreviewOption_SetBadgeNumber(ArkUI_DragPreviewOption* option, uint32_t forcedNumber)
 ```
 
@@ -1297,7 +1305,7 @@ int32_t OH_ArkUI_DragPreviewOption_SetBadgeNumber(ArkUI_DragPreviewOption* optio
 
 ### OH_ArkUI_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled()
 
-```
+```c
 int32_t OH_ArkUI_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled(ArkUI_DragPreviewOption* option, bool enabled)
 ```
 
@@ -1324,7 +1332,7 @@ int32_t OH_ArkUI_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled(ArkUI
 
 ### OH_ArkUI_SetNodeDragPreviewOption()
 
-```
+```c
 int32_t OH_ArkUI_SetNodeDragPreviewOption(ArkUI_NodeHandle node, ArkUI_DragPreviewOption* option)
 ```
 
@@ -1351,7 +1359,7 @@ int32_t OH_ArkUI_SetNodeDragPreviewOption(ArkUI_NodeHandle node, ArkUI_DragPrevi
 
 ### OH_ArkUI_CreateDragActionWithNode()
 
-```
+```c
 ArkUI_DragAction* OH_ArkUI_CreateDragActionWithNode(ArkUI_NodeHandle node)
 ```
 
@@ -1377,7 +1385,7 @@ ArkUI_DragAction* OH_ArkUI_CreateDragActionWithNode(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_CreateDragActionWithContext()
 
-```
+```c
 ArkUI_DragAction* OH_ArkUI_CreateDragActionWithContext(ArkUI_ContextHandle uiContext)
 ```
 
@@ -1403,7 +1411,7 @@ ArkUI_DragAction* OH_ArkUI_CreateDragActionWithContext(ArkUI_ContextHandle uiCon
 
 ### OH_ArkUI_DragAction_Dispose()
 
-```
+```c
 void OH_ArkUI_DragAction_Dispose(ArkUI_DragAction* dragAction)
 ```
 
@@ -1423,7 +1431,7 @@ void OH_ArkUI_DragAction_Dispose(ArkUI_DragAction* dragAction)
 
 ### OH_ArkUI_DragAction_SetPointerId()
 
-```
+```c
 int32_t OH_ArkUI_DragAction_SetPointerId(ArkUI_DragAction* dragAction, int32_t pointer)
 ```
 
@@ -1450,7 +1458,7 @@ int32_t OH_ArkUI_DragAction_SetPointerId(ArkUI_DragAction* dragAction, int32_t p
 
 ### OH_ArkUI_DragAction_SetPixelMaps()
 
-```
+```c
 int32_t OH_ArkUI_DragAction_SetPixelMaps(ArkUI_DragAction* dragAction, OH_PixelmapNative* pixelmapArray[], int32_t size)
 ```
 
@@ -1478,7 +1486,7 @@ int32_t OH_ArkUI_DragAction_SetPixelMaps(ArkUI_DragAction* dragAction, OH_Pixelm
 
 ### OH_ArkUI_DragAction_SetTouchPointX()
 
-```
+```c
 int32_t OH_ArkUI_DragAction_SetTouchPointX(ArkUI_DragAction* dragAction, float x)
 ```
 
@@ -1505,7 +1513,7 @@ int32_t OH_ArkUI_DragAction_SetTouchPointX(ArkUI_DragAction* dragAction, float x
 
 ### OH_ArkUI_DragAction_SetTouchPointY()
 
-```
+```c
 int32_t OH_ArkUI_DragAction_SetTouchPointY(ArkUI_DragAction* dragAction, float y)
 ```
 
@@ -1532,7 +1540,7 @@ int32_t OH_ArkUI_DragAction_SetTouchPointY(ArkUI_DragAction* dragAction, float y
 
 ### OH_ArkUI_DragAction_SetData()
 
-```
+```c
 int32_t OH_ArkUI_DragAction_SetData(ArkUI_DragAction* dragAction, OH_UdmfData* data)
 ```
 
@@ -1559,7 +1567,7 @@ int32_t OH_ArkUI_DragAction_SetData(ArkUI_DragAction* dragAction, OH_UdmfData* d
 
 ### OH_ArkUI_DragAction_SetDataLoadParams()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_DragAction_SetDataLoadParams(ArkUI_DragAction* dragAction,OH_UdmfDataLoadParams* dataLoadParams)
 ```
 
@@ -1586,7 +1594,7 @@ ArkUI_ErrorCode OH_ArkUI_DragAction_SetDataLoadParams(ArkUI_DragAction* dragActi
 
 ### OH_ArkUI_DragAction_SetDragPreviewOption()
 
-```
+```c
 int32_t OH_ArkUI_DragAction_SetDragPreviewOption(ArkUI_DragAction* dragAction, ArkUI_DragPreviewOption* option)
 ```
 
@@ -1613,7 +1621,7 @@ int32_t OH_ArkUI_DragAction_SetDragPreviewOption(ArkUI_DragAction* dragAction, A
 
 ### OH_ArkUI_DragAction_RegisterStatusListener()
 
-```
+```c
 int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction, void* userData,void(*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData))
 ```
 
@@ -1641,7 +1649,7 @@ int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction,
 
 ### OH_ArkUI_DragEvent_GetDisplayId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent event, int32_t* displayId)
 ```
 
@@ -1668,7 +1676,7 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent event, int32_t* 
 
 ### OH_ArkUI_DragAction_UnregisterStatusListener()
 
-```
+```c
 void OH_ArkUI_DragAction_UnregisterStatusListener(ArkUI_DragAction* dragAction)
 ```
 
@@ -1688,7 +1696,7 @@ void OH_ArkUI_DragAction_UnregisterStatusListener(ArkUI_DragAction* dragAction)
 
 ### OH_ArkUI_DragAndDropInfo_GetDragStatus()
 
-```
+```c
 ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* dragAndDropInfo)
 ```
 
@@ -1714,7 +1722,7 @@ ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* d
 
 ### OH_ArkUI_DragAndDropInfo_GetDragEvent()
 
-```
+```c
 ArkUI_DragEvent* OH_ArkUI_DragAndDropInfo_GetDragEvent(ArkUI_DragAndDropInfo* dragAndDropInfo)
 ```
 
@@ -1740,7 +1748,7 @@ ArkUI_DragEvent* OH_ArkUI_DragAndDropInfo_GetDragEvent(ArkUI_DragAndDropInfo* dr
 
 ### OH_ArkUI_StartDrag()
 
-```
+```c
 int32_t OH_ArkUI_StartDrag(ArkUI_DragAction* dragAction)
 ```
 
@@ -1766,7 +1774,7 @@ int32_t OH_ArkUI_StartDrag(ArkUI_DragAction* dragAction)
 
 ### OH_ArkUI_DragEvent_RequestDragEndPending()
 
-```
+```c
 int32_t OH_ArkUI_DragEvent_RequestDragEndPending(ArkUI_DragEvent* event, int32_t* requestIdentify)
 ```
 
@@ -1793,7 +1801,7 @@ int32_t OH_ArkUI_DragEvent_RequestDragEndPending(ArkUI_DragEvent* event, int32_t
 
 ### OH_ArkUI_NotifyDragResult()
 
-```
+```c
 int32_t OH_ArkUI_NotifyDragResult(int32_t requestIdentify, ArkUI_DragResult result)
 ```
 
@@ -1820,7 +1828,7 @@ int32_t OH_ArkUI_NotifyDragResult(int32_t requestIdentify, ArkUI_DragResult resu
 
 ### OH_ArkUI_NotifyDragEndPendingDone()
 
-```
+```c
 int32_t OH_ArkUI_NotifyDragEndPendingDone(int32_t requestIdentify)
 ```
 
@@ -1846,8 +1854,8 @@ int32_t OH_ArkUI_NotifyDragEndPendingDone(int32_t requestIdentify)
 
 ### OH_ArkUI_EnableDropDisallowedBadge()
 
-```
-int32_t OH_ArkUI_EnableDropDisallowedBadge(ArkUI_ContextHandle uiContext, bool enabled)
+```c
+ArkUI_ErrorCode OH_ArkUI_EnableDropDisallowedBadge(ArkUI_ContextHandle uiContext, bool enabled)
 ```
 
 **描述：**
@@ -1869,11 +1877,11 @@ int32_t OH_ArkUI_EnableDropDisallowedBadge(ArkUI_ContextHandle uiContext, bool e
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_DragEvent_GetTouchPointXToGlobalDisplay()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetTouchPointXToGlobalDisplay(ArkUI_DragEvent* event)
 ```
 
@@ -1899,7 +1907,7 @@ float OH_ArkUI_DragEvent_GetTouchPointXToGlobalDisplay(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetTouchPointYToGlobalDisplay()
 
-```
+```c
 float OH_ArkUI_DragEvent_GetTouchPointYToGlobalDisplay(ArkUI_DragEvent* event)
 ```
 
@@ -1925,7 +1933,7 @@ float OH_ArkUI_DragEvent_GetTouchPointYToGlobalDisplay(ArkUI_DragEvent* event)
 
 ### OH_ArkUI_DragEvent_GetDragSource()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDragSource(ArkUI_DragEvent* event, char *bundleName, int32_t length)
 ```
 
@@ -1953,7 +1961,7 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDragSource(ArkUI_DragEvent* event, char *b
 
 ### OH_ArkUI_DragEvent_IsRemote()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_DragEvent_IsRemote(ArkUI_DragEvent* event, bool* isRemote)
 ```
 

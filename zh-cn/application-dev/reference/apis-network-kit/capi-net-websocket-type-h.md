@@ -1,5 +1,12 @@
 # net_websocket_type.h
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ## 概述
 
 定义websocket客户端模块的C接口需要的数据结构。
@@ -42,7 +49,7 @@
 
 ### WebSocket_OnOpenCallback()
 
-```
+```c
 typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)
 ```
 
@@ -62,7 +69,7 @@ websocket客户端接收open消息的回调函数定义。
 
 ### WebSocket_OnMessageCallback()
 
-```
+```c
 typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)
 ```
 
@@ -83,7 +90,7 @@ websocket客户端接收数据的回调函数定义。
 
 ### WebSocket_OnErrorCallback()
 
-```
+```c
 typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)
 ```
 
@@ -103,7 +110,7 @@ websocket客户端接收error错误消息的回调函数定义。
 
 ### WebSocket_OnCloseCallback()
 
-```
+```c
 typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)
 ```
 

@@ -1,4 +1,10 @@
 # @ohos.util (util)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 The util module provides common utility functions, such as [TextEncoder](#textencoder) and [TextDecoder](#textdecoder) for string encoding and decoding, [RationalNumber<sup>8+</sup>](#rationalnumber8) for rational number operations, [LRUCache<sup>9+</sup>](#lrucache9) for cache management, [ScopeHelper<sup>9+</sup>](#scopehelper9) for range determination, [Base64Helper<sup>9+</sup>](#base64helper9) for Base64 encoding and decoding, [types<sup>8+</sup>](#types8) for built-in object type check, and [Aspect<sup>11+</sup>](#aspect11) for instrumentation and replacement on methods.
 
@@ -62,14 +68,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { util } from '@kit.ArkTS';
 
-interface utilAddresstype {
+interface utilAddressType {
   city: string;
   country: string;
 }
-interface utilPersontype {
+interface utilPersonType {
   name: string;
   age: number;
-  address: utilAddresstype;
+  address: utilAddressType;
 }
 
 let name = 'John';
@@ -93,7 +99,7 @@ const obj: Record<string,number | string> = { "name": 'John', "age": 20 };
 formattedString = util.format('The object is %j', obj);
 console.info(formattedString);
 // Output: The object is {"name":"John","age":20}.
-const person: utilPersontype = {
+const person: utilPersonType = {
   name: 'John',
   age: 20,
   address: {
@@ -178,13 +184,15 @@ console.info("result = " + result);
 
 ## util.callbackWrapper
 
-callbackWrapper(original: Function): (err: Object, value: Object )=&gt;void
+callbackWrapper(original: Function): (err: Object, value: Object)=&gt;void
 
 Calls back an asynchronous function. In the callback, the first parameter indicates the cause of the rejection (the value is **null** if the promise has been resolved), and the second parameter indicates the resolved value.
 
 > **NOTE**
 >
-> **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+> - **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+>
+> - This API converts an async function that returns a promise into an error-first callback function. The function returned by this API accepts a callback as its second input parameter. When this method is called, the original function is executed first. When the promise of **original** returns **resolve**, the first parameter of the callback function is **null**, and the second parameter is the value of **resolve**. When the promise of **original** returns **reject**, the first parameter of the callback function is an error object, and the second parameter is **null**. When **original** is a function without input parameters, the first input parameter of the function returned by this API must be an invalid placeholder parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -200,7 +208,7 @@ Calls back an asynchronous function. In the callback, the first parameter indica
 
 | Type| Description|
 | -------- | -------- |
-| Function | Callback function, in which the first parameter **err** indicates the cause of the rejection (the value is **null** if the promise has been resolved) and the second parameter **value** indicates the resolved value.|
+| (err: Object, value: Object)=&gt;void | Callback function, in which the first parameter **err** indicates the cause of the rejection (the value is **null** if the promise has been resolved) and the second parameter **value** indicates the resolved value.|
 
 **Error codes**
 
@@ -213,11 +221,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-async function fn() {
-  return 'hello world';
+async function fn(input: string) {
+  return input;
 }
 let cb = util.callbackWrapper(fn);
-cb(1, (err : Object, ret : string) => {
+cb('hello world', (err : Object, ret : string) => {
   if (err) throw new Error;
   console.info(ret);
 });
@@ -228,7 +236,7 @@ cb(1, (err : Object, ret : string) => {
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-Processes an asynchronous function and returns a promise.
+Receives a function that uses the error-first callback mode, that is, uses `(err, value) => callback` as the last parameter, and uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -238,7 +246,7 @@ Processes an asynchronous function and returns a promise.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| original | Function | Yes| Function, in which the first parameter **err** indicates the cause of the rejection (the value is **null** if the promise has been resolved) and the second parameter **value** indicates the resolved value. |
+| original | (err: Object, value: Object) =&gt; void | Yes| Function, in which the first parameter **err** indicates the cause of the rejection (the value is **null** if the promise has been resolved) and the second parameter **value** indicates the resolved value. |
 
 **Return value**
 
@@ -314,7 +322,7 @@ console.info("RFC 4122 Version 4 UUID:" + uuid);
 
 generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array
 
-Uses a secure random number generator to generate a random UUID of the Uint8Array type in RFC 4122 version 4.
+Uses a secure random number generator to generate a random universally unique identifier (UUID) of RFC 4122 version 4.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -352,7 +360,7 @@ console.info(JSON.stringify(uuid));
 
 parseUUID(uuid: string): Uint8Array
 
-Converts a UUID of the string type generated by **generateRandomUUID** to a UUID of the Uint8Array type generated by **generateRandomBinaryUUID**, as described in RFC 4122.
+Converts a UUID of the string type generated by **generateRandomUUID** to a UUID generated by **generateRandomBinaryUUID**, as described in RFC 4122.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -458,11 +466,11 @@ console.info("result = " + result);
 
 promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
-Processes an asynchronous function and returns a promise.
+Receives a function that uses the error-first callback mode, that is, uses `(err, value) => callback` as the last parameter, and uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is unavailable. You are advised to use [util.promisify<sup>9+</sup>](#utilpromisify9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [util.promisify<sup>9+</sup>](#utilpromisify9) instead.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -470,20 +478,22 @@ Processes an asynchronous function and returns a promise.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| original | Function | Yes| Asynchronous function.|
+| original | (err: Object, value: Object) =&gt; void | Yes| Asynchronous function.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Function | Function in the error-first style (that is, **(err, value) =>...** is called as the last parameter) and the promise.|
+| Object | Promise in the error-first style (that is, (err, value) => ... is called as the last parameter).|
 
 
 ## util.getHash<sup>12+</sup>
 
 getHash(object: object): number
 
-Obtains the hash value of an object. If no hash value has been obtained, a random hash value is generated, saved to the **hash** field of the object, and returned. If a hash value has been obtained, the hash value saved in the **hash** field is returned (the same value is returned for the same object).
+Obtains the hash value of an object.
+
+If no hash value has been obtained, a random hash value is generated, saved to the **hash** field of the object, and returned. If a hash value has been obtained, the hash value saved in the **hash** field is returned (the same value is returned for the same object).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -528,7 +538,9 @@ console.info('result2 is ' + result2);
 
 getMainThreadStackTrace(): string
 
-Obtains the stack trace information of the main thread. A maximum of 64 call frames can be returned. This API may affect the performance of the main thread. Exercise caution when using this API.
+Obtains the stack trace information of the main thread. A maximum of 64 call frames can be returned.
+
+This API may affect the performance of the main thread. You are advised to use this API only when necessary, such as in log recording, error analysis, or debugging scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -556,22 +568,22 @@ Describes decoding-related options, which include **fatal** and **ignoreBOM**.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name     | Type| Mandatory| Description              |
-| --------- | -------- | ---- | ------------------ |
-| fatal     | boolean  | No  | Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite. The default value is **false**.|
-| ignoreBOM | boolean  | No  | Whether to ignore the BOM. The value **true** means to ignore the BOM, and **false** means the opposite. The default value is **false**. |
+| Name     | Type| Read-Only| Optional| Description              |
+| --------- | -------- | ---- | ---- | ------------------ |
+| fatal     | boolean  | No  | Yes| Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite. The default value is **false**.|
+| ignoreBOM | boolean  | No  | Yes| Whether to ignore the BOM. The value **true** means to ignore the BOM, and **false** means the opposite. The default value is **false**. |
 
 ## DecodeToStringOptions<sup>12+</sup>
 
-Describes the options used during the decoding to a string.
+Describes the behavioral parameters for the **decodeToString** method when decoding byte streams.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| stream | boolean | No| Whether the incomplete byte sequence at the end of the input needs to be appended to the parameter for the next call of **decodeToString**. The value **true** means that the incomplete byte sequence is stored in the internal buffer until the function is called next time. If the value is false, the byte sequence is directly decoded when the function is called currently. The default value is **false**.|
+| Name| Type| Read-Only| Optional| Description|
+| --------- | -------- | ---- | ---- | ------------------ |
+| stream | boolean | No| Yes| Whether the incomplete byte sequence at the end of the input needs to be appended to the parameter for the next call of **decodeToString**. The value **true** means that the incomplete byte sequence is stored in the internal buffer until the function is called next time. If the value is false, the byte sequence is directly decoded when the function is called currently. The default value is **false**.|
 
 ## DecodeWithStreamOptions<sup>11+</sup>
 
@@ -581,9 +593,9 @@ Defines whether decoding follows data blocks.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| stream | boolean | No| Whether to allow data blocks in subsequent **decodeWithStream()**. If data is processed in blocks, set this parameter to **true**. If this is the last data block to process or data is not divided into blocks, set this parameter to **false**. The default value is **false**.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | ---- | ---- | -------- |
+| stream | boolean | No| Yes| Whether to allow data blocks in subsequent **decodeWithStream()**. If data is processed in blocks, set this parameter to **true**. If this is the last data block to process or data is not divided into blocks, set this parameter to **false**. The default value is **false**.|
 
 ## Aspect<sup>11+</sup>
 
@@ -820,12 +832,12 @@ util.Aspect.replace(MyClass, 'foo', false, (instance: MyClass, arg: string): str
 
 result = asp.foo('123');
 // Output: execute instead
-// Output: foo arg is 123
+// Output: arg is 123
 // Output: msg is changed to msg111
 console.info('result is ' + result);
 // Output: result is msg222
 console.info('asp.msg is ' + asp.msg);
-//Output: asp.msg is msg111
+// Output: asp.msg is msg111
 ```
 
 ## TextDecoder
@@ -838,7 +850,7 @@ Provides APIs to decode byte arrays into strings. It supports multiple formats, 
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | encoding | string | Yes| No| Encoding format.<br>The following formats are supported: utf-8, ibm866, iso-8859-2, iso-8859-3, iso-8859-4, iso-8859-5, iso-8859-6, iso-8859-7, iso-8859-8, iso-8859-8-i, iso-8859-10, iso-8859-13, iso-8859-14, iso-8859-15, koi8-r, koi8-u, macintosh, windows-874, windows-1250, windows-1251, windows-1252, windows-1253, windows-1254, windows-1255, windows-1256, windows-1257, windows-1258, x-mac-cyrillic, gbk, gb18030, big5, euc-jp, iso-2022-jp, shift_jis, euc-kr, utf-16be, utf-16le, gb2312, and iso-8859-1.|
 | fatal | boolean | Yes| No| Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite.|
@@ -1030,7 +1042,7 @@ A constructor used to create a **TextDecoder** object.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | encoding | string | No| Encoding format. The default format is **'utf-8'**.|
-| options | object | No| Decoding-related options, which include **fatal** and **ignoreBOM**.|
+| options | { fatal?: boolean; ignoreBOM?: boolean } | No| Decoding-related options, which include **fatal** and **ignoreBOM**.|
 
   **Table 1** options
 
@@ -1062,7 +1074,7 @@ Decodes the input content into a string.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | input | Uint8Array | Yes| Uint8Array object to decode.|
-| options | object | No| Decoding-related options.|
+| options | { stream?: false } | No| Decoding-related options.|
 
 **Table 2** options
 
@@ -1095,13 +1107,15 @@ console.info("retStr = " + retStr);
 
 ## EncodeIntoUint8ArrayInfo<sup>11+</sup>
 
-**System capability**: SystemCapability.Utils.Lang
+Encrypted information, including the number of read characters and the number of written bytes.
 
-Describes the encoded data.
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-| Name     | Type| Readable |Writable | Description              |
+**System capability**: SystemCapability.Utils.Lang
+
+| Name     | Type| Read-Only |Optional | Description              |
 | --------- | -------- | -------- |-------- |------------------ |
 | read     | number  | Yes| No|Number of characters that have been read.|
 | written | number   | Yes|No|Number of bytes that have been written. |
@@ -1118,7 +1132,7 @@ When **TextEncoder** is used for encoding, the number of bytes occupied by a cha
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | encoding | string | Yes| No|  Encoding format.<br>The following formats are supported: utf-8, gb2312, gb18030, ibm866, iso-8859-1, iso-8859-2, iso-8859-3, iso-8859-4, iso-8859-5, iso-8859-6, iso-8859-7, iso-8859-8, iso-8859-8-i, iso-8859-10, iso-8859-13, iso-8859-14, iso-8859-15, koi8-r, koi8-u, macintosh, windows-874, windows-1250, windows-1251, windows-1252, windows-1253, windows-1254, windows-1255, windows-1256, windows-1257, windows-1258, gbk, big5, euc-jp, iso-2022-jp, shift_jis, euc-kr, x-mac-cyrillic, utf-16be, and utf-16le.<br>The default value is **'utf-8'**.|
 
@@ -1265,7 +1279,7 @@ Encodes the input content and stores the result into a Uint8Array object.
 
 | Type      | Description              |
 | ---------- | ------------------ |
-| [EncodeIntoUint8ArrayInfo](#encodeintouint8arrayinfo11) | Object obtained. **read** indicates the number of encoded characters, and **write** indicates the number of bytes in the encoded characters.|
+| [EncodeIntoUint8ArrayInfo](#encodeintouint8arrayinfo11) | Object obtained. **read** indicates the number of encoded characters, and **written** indicates the number of bytes in the encoded characters.|
 
 **Error codes**
 
@@ -1313,7 +1327,7 @@ Writes the generated UTF-8 encoded text to an array.
 
 | Type| Description|
 | -------- | -------- |
-| Uint8Array | Uint8Array object obtained.|
+| { read: number; written: number } | Object obtained. **read** indicates the number of encoded characters, and **written** indicates the number of bytes in the encoded characters.|
 
 **Example**
 
@@ -1383,7 +1397,7 @@ let rationalNumber = new util.RationalNumber();
 
 static parseRationalNumber(numerator: number,denominator: number): RationalNumber
 
-Create a **RationalNumber** instance with a given numerator and denominator.
+Creates a **RationalNumber** instance with a given numerator and denominator.
 
 > **NOTE**
 >
@@ -1422,7 +1436,7 @@ let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 
 ### createRationalFromString<sup>8+</sup>
 
-static createRationalFromString(rationalString: string): RationalNumber​
+static createRationalFromString(rationalString: string): RationalNumber
 
 Creates a **RationalNumber** object based on the given string.
 
@@ -1903,7 +1917,7 @@ Provides APIs to discard the least recently used data to make rooms for new elem
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name  | Type  | Readable| Writable| Description                  |
+| Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | length | number | Yes  | No  | Total number of values in this cache.|
 
@@ -2313,7 +2327,7 @@ console.info('result = ' + result);
 
 values(): V[]
 
-Obtains all values in this cache, listed from the most to the least recently accessed.
+Obtains all values in this cache, listed from the least to the most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2323,25 +2337,33 @@ Obtains all values in this cache, listed from the most to the least recently acc
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| V[] | All values in the cache, listed from the most to the least recently accessed.|
+| V[] | The list of all values in this cache, listed from the least to the most recently accessed.|
 
 **Example**
 
 ```ts
-let pro = new util.LRUCache<number|string,number|string>();
-pro.put(2, 10);
-pro.put(2, "anhu");
-pro.put("afaf", "grfb");
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.values();
 console.info('result = ' + result);
-// Output: result = anhu,grfb
+// Output: result = A,B,C,D,E,F
+pro.get(1);
+pro.get(2);
+result = pro.values();
+console.info('result = ' + result);
+// Output: result = C,D,E,F,A,B
 ```
 
 ### keys<sup>9+</sup>
 
 keys(): K[]
 
-Obtains all keys in this cache, listed from the most to the least recently accessed.
+Obtains all keys in this cache, listed from the least to the most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2351,17 +2373,26 @@ Obtains all keys in this cache, listed from the most to the least recently acces
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| K&nbsp;[] | All keys in the cache, listed from the most to the least recently accessed.|
+| K[] | The list of all keys in this cache, listed from the least to the most recently accessed.|
 
 **Example**
 
 ```ts
-let pro = new util.LRUCache<number, number>();
-pro.put(2, 10);
-pro.put(3, 1);
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.keys();
 console.info('result = ' + result);
-// Output: result = 2,3
+// Output: result = 1,2,3,4,5,6
+pro.get(5);
+pro.get(3);
+result = pro.keys();
+console.info('result = ' + result);
+// Output: result = 1,2,4,6,5,3
 ```
 
 ### remove<sup>9+</sup>
@@ -2539,7 +2570,7 @@ console.info('result = ' + result);
 
 entries(): IterableIterator&lt;[K, V]&gt;
 
-Obtains all key-value pairs in this object.
+Returns an iterator object that traverses all key-value pairs ([key, value]) in this object in the insertion order.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2557,14 +2588,13 @@ Obtains all key-value pairs in this object.
 let pro = new util.LRUCache<number, number>();
 pro.put(2, 10);
 pro.put(3, 15);
-let pair:Iterable<Object[]> = pro.entries();
-let arrayValue = Array.from(pair);
-for (let value of arrayValue) {
+let pair = pro.entries();
+for (let value of pair) {
   console.info(value[0]+ ', '+ value[1]);
-  // Output:
-  // 2, 10
-  // 3, 15
 }
+// Output:
+// 2, 10
+// 3, 15
 ```
 
 ### [Symbol.iterator]<sup>9+</sup>
@@ -2589,14 +2619,13 @@ Obtains a two-dimensional array in key-value pairs.
 let pro = new util.LRUCache<number, number>();
 pro.put(2, 10);
 pro.put(3, 15);
-let pair:Iterable<Object[]> = pro[Symbol.iterator]();
-let arrayValue = Array.from(pair);
-for (let value of arrayValue) {
+
+for (let value of pro) {
   console.info(value[0]+ ', '+ value[1]);
-  // Output:
-  // 2, 10
-  // 3, 15
 }
+// Output:
+// 2, 10
+// 3, 15
 ```
 
 ## ScopeComparable<sup>8+</sup>
@@ -2832,7 +2861,9 @@ let range = new util.ScopeHelper(tempLower, tempUpper);
 let tempMiDF = new Temperature(35);
 let tempMidS = new Temperature(39);
 let rangeFir = new util.ScopeHelper(tempMiDF, tempMidS);
-range.intersect(rangeFir);
+let result = range.intersect(rangeFir);
+console.info("result = " + result);
+// Output: result = [35, 39]
 ```
 
 ### intersect<sup>9+</sup>
@@ -3437,7 +3468,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 encodeToStringSync(src: Uint8Array, options?: Type): string
 
-Encodes the input content into a string. This API returns the result synchronously.
+Performs Base64 encoding on the input Uint8Array byte array and returns a string. This method supports multiple encoding formats, including standard Base64 encoding, MIME-compliant Base64 encoding (with line breaks), and URL-safe Base64 encoding.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3467,8 +3498,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
+  // MIME encoding
   let base64Helper = new util.Base64Helper();
-  let array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
+  let array =
+    new Uint8Array([77, 97, 110, 105, 115, 100, 105, 115, 116, 105, 110, 103, 117, 105, 115, 104, 101, 100, 110, 111, 116,
+      111, 110, 108, 121, 98, 121, 104, 105, 115, 114, 101, 97, 115, 111, 110, 98, 117, 116, 98, 121, 116, 104, 105, 115,
+      115, 105, 110, 103, 117, 108, 97, 114, 112, 97, 115, 115, 105, 111, 110, 102, 114, 111, 109, 111, 116, 104, 101,
+      114, 97, 110, 105, 109, 97, 108, 115, 119, 104, 105, 99, 104, 105, 115, 97, 108, 117, 115, 116, 111, 102, 116, 104,
+      101, 109, 105, 110, 100, 101, 120, 99, 101, 101, 100, 115, 116, 104, 101, 115, 104, 111, 114, 116, 118, 101, 104,
+      101, 109, 101, 110, 99, 101, 111, 102, 97, 110, 121, 99, 97, 114, 110, 97, 108, 112, 108, 101, 97, 115, 117, 114,
+      101]);
   let result = base64Helper.encodeToStringSync(array, util.Type.MIME);
   console.info("result = " + result);
   /*
@@ -3476,8 +3515,56 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
   */
-  ```
 
+  // BASIC encoding
+  let base64Helper = new util.Base64Helper();
+  let array =
+    new Uint8Array([77, 97, 110, 105, 115, 100, 105, 115, 116, 105, 110, 103, 117, 105, 115, 104, 101, 100, 110, 111, 116,
+      111, 110, 108, 121, 98, 121, 104, 105, 115, 114, 101, 97, 115, 111, 110, 98, 117, 116, 98, 121, 116, 104, 105, 115,
+      115, 105, 110, 103, 117, 108, 97, 114, 112, 97, 115, 115, 105, 111, 110, 102, 114, 111, 109, 111, 116, 104, 101,
+      114, 97, 110, 105, 109, 97, 108, 115, 119, 104, 105, 99, 104, 105, 115, 97, 108, 117, 115, 116, 111, 102, 116, 104,
+      101, 109, 105, 110, 100, 101, 120, 99, 101, 101, 100, 115, 116, 104, 101, 115, 104, 111, 114, 116, 118, 101, 104,
+      101, 109, 101, 110, 99, 101, 111, 102, 97, 110, 121, 99, 97, 114, 110, 97, 108, 112, 108, 101, 97, 115, 117, 114,
+      101]);
+  let result = base64Helper.encodeToStringSync(array, util.Type.BASIC);
+  console.info("result = " + result);
+  /*
+  Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
+  */
+  
+  // MIME_URL_SAFE encoding
+  let base64Helper = new util.Base64Helper();
+  let array =
+    new Uint8Array([77, 97, 110, 105, 115, 100, 105, 115, 116, 105, 110, 103, 117, 105, 115, 104, 101, 100, 110, 111, 116,
+      111, 110, 108, 121, 98, 121, 104, 105, 115, 114, 101, 97, 115, 111, 110, 98, 117, 116, 98, 121, 116, 104, 105, 115,
+      115, 105, 110, 103, 117, 108, 97, 114, 112, 97, 115, 115, 105, 111, 110, 102, 114, 111, 109, 111, 116, 104, 101,
+      114, 97, 110, 105, 109, 97, 108, 115, 119, 104, 105, 99, 104, 105, 115, 97, 108, 117, 115, 116, 111, 102, 116, 104,
+      101, 109, 105, 110, 100, 101, 120, 99, 101, 101, 100, 115, 116, 104, 101, 115, 104, 111, 114, 116, 118, 101, 104,
+      101, 109, 101, 110, 99, 101, 111, 102, 97, 110, 121, 99, 97, 114, 110, 97, 108, 112, 108, 101, 97, 115, 117, 114,
+      101]);
+  let result = base64Helper.encodeToStringSync(array, util.Type.BASIC_URL_SAFE);
+  console.info("result = " + result);
+  /*
+  Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
+  */
+  // MIME_URL_SAFE encoding
+  let base64Helper = new util.Base64Helper();
+  let array =
+    new Uint8Array([77, 97, 110, 105, 115, 100, 105, 115, 116, 105, 110, 103, 117, 105, 115, 104, 101, 100, 110, 111, 116,
+      111, 110, 108, 121, 98, 121, 104, 105, 115, 114, 101, 97, 115, 111, 110, 98, 117, 116, 98, 121, 116, 104, 105, 115,
+      115, 105, 110, 103, 117, 108, 97, 114, 112, 97, 115, 115, 105, 111, 110, 102, 114, 111, 109, 111, 116, 104, 101,
+      114, 97, 110, 105, 109, 97, 108, 115, 119, 104, 105, 99, 104, 105, 115, 97, 108, 117, 115, 116, 111, 102, 116, 104,
+      101, 109, 105, 110, 100, 101, 120, 99, 101, 101, 100, 115, 116, 104, 101, 115, 104, 111, 114, 116, 118, 101, 104,
+      101, 109, 101, 110, 99, 101, 111, 102, 97, 110, 121, 99, 97, 114, 110, 97, 108, 112, 108, 101, 97, 115, 117, 114,
+      101]);
+  let result = base64Helper.encodeToStringSync(array, util.Type.MIME_URL_SAFE);
+  console.info("result = " + result);
+  /*
+  // Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
+  aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
+  aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
+  */
+  ```
 
 ### decodeSync<sup>9+</sup>
 
@@ -3605,7 +3692,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   base64Helper.encodeToString(array, util.Type.MIME).then((val) => {
     console.info(val);
     /*
-    // Output: TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
+    Output: TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
     aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
     aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
     */
@@ -5170,6 +5257,68 @@ Checks whether the value is of the SharedArrayBuffer type.
   // Output: result = true
   ```
 
+## AutoFinalizer&lt;T&gt;<sup>22+</sup>
+
+AutoFinalizer is a class that provides callback APIs when an ArkTS object is released. By implementing it, you can customize the resource cleanup logic that triggers automatically when an object is reclaimed.
+
+> **NOTE**
+>
+> AutoFinalizer&lt;T&gt; must be used together with AutoFinalizerCleaner&lt;T&gt;. Implementing AutoFinalizer&lt;T&gt; alone will yield no functionality.
+
+### onFinalization<sup>22+</sup>
+
+onFinalization(heldValue: T): void
+
+Defines the resource cleanup callback that triggers automatically when an object is reclaimed.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| heldValue | T | Yes| When the listened object is reclaimed, this value is passed to the `onFinalization` callback method.|
+
+## AutoFinalizerCleaner&lt;T&gt;<sup>22+</sup>
+
+AutoFinalizerCleaner is a utility class that associates an object's lifecycle with resource cleanup logic. Its primary role is to bind an object implementing AutoFinalizer&lt;T&gt; to a specific value, and automatically trigger the resource cleanup callback when the object is reclaimed.
+
+### register&lt;T&gt;<sup>22+</sup>
+
+static register&lt;T&gt;(obj: AutoFinalizer&lt;T&gt;, heldValue: T): void
+
+Associates an object implementing `AutoFinalizer` with an input value, and triggers the resource cleanup callback when the object is reclaimed.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| obj | [AutoFinalizer&lt;T&gt;](#autofinalizert22) | Yes| Object that implements `AutoFinalizer`. The `onFinalization` method is called when the object is reclaimed.|
+| heldValue | T | Yes| When the listened object is reclaimed, this value is passed to the `obj.onFinalization` method.|
+
+**Example**
+
+```ts
+class DeviceManageViewModel implements util.AutoFinalizer<string> {
+  constructor(heldValue: string) {
+    util.AutoFinalizerCleaner.register(this, heldValue);
+  }
+
+  onFinalization(heldValue: string) {
+    console.info("onFinalization: ", heldValue);
+    // Wait for the garbage collection to be triggered. Once it is triggered, the following result is displayed: onFinalization: test
+  }
+}
+
+const device = new DeviceManageViewModel("test");
+```
+
 ## LruBuffer<sup>(deprecated)</sup>
 
 > **NOTE**
@@ -5180,7 +5329,7 @@ Checks whether the value is of the SharedArrayBuffer type.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | length | number | Yes| No| Total number of values in this cache.|
 
@@ -6508,7 +6657,7 @@ A constructor used to create a **Base64** object.
 
 encodeSync(src: Uint8Array): Uint8Array
 
-Encodes the input content into a Uint8Array object. This API returns the result synchronously.
+Performs Base64 encoding on the input Uint8Array byte array and returns the encoded Uint8Array.
 
 > **NOTE**
 >
@@ -6542,7 +6691,7 @@ Encodes the input content into a Uint8Array object. This API returns the result 
 
 encodeToStringSync(src: Uint8Array): string
 
-Encodes the input content into a string. This API returns the result synchronously.
+Performs Base64 encoding on the input Uint8Array byte array and returns the encoded string.
 
 > **NOTE**
 >

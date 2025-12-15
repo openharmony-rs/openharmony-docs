@@ -1,5 +1,11 @@
 # Application Model Development
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @ccllee1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 ## How do I obtain a notification when the device orientation changes? (API version 9)
 
@@ -74,10 +80,10 @@ Add the field **"srcEntry": "./ets/myabilitystage/MyAbilityStage.ts"** under **m
 
 **References**
 
-[AbilityStage Component Container](../application-models/abilitystage.md)
+[AbilityStage Component Manager](../application-models/abilitystage.md)
 
 
-## How do I delete the mission snapshot in Recents after terminateself is called in the multiton scenario? (API version 9)
+## How do I delete the mission snapshot in the recent task list after terminateSelf is called in the multiton scenario? (API version 9)
 
 **Solution**
 
@@ -147,7 +153,7 @@ You can split the HAP into multiple HAPs.
 
 **Solution**
 
-The target UIAbilities uses **AbilityContext.terminateSelfWithResult** to terminate itself and pass the result to **startAbilityForResult**.
+The target UIAbility uses **AbilityContext.terminateSelfWithResult** to terminate itself and pass the result to **startAbilityForResult**.
 
 **References**
 
@@ -232,7 +238,7 @@ Obtain them from the application context. Specifically, use **this.context.getAp
 [Obtaining Application File Paths](../application-models/application-context-stage.md#obtaining-application-file-paths)
 
 
-## Why the application is not deleted from the background mission list after it calls terminateSelf? (API version 9)
+## Why is the application not deleted from the background mission list after it calls terminateSelf? (API version 9)
 
 **Solution**
 

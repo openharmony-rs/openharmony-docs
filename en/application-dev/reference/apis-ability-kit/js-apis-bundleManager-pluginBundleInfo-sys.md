@@ -1,4 +1,10 @@
 # PluginBundleInfo (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The module defines plugin information, which is obtained through the [bundleManager.getAllPluginInfo](js-apis-bundleManager-sys.md#bundlemanagergetallplugininfo19) API.
 
@@ -28,7 +34,7 @@ Defines the plugin information.
 | icon   | string | Yes  | No  | Plugin icon.  |
 | iconId   | number | Yes  | No  | Resource ID of the plugin icon.  |
 | pluginBundleName   | string | Yes  | No  | Bundle name of the application for which the plugin is installed.  |
-| versionCode   | string | Yes  | No  | Version number of the plugin.  |
+| versionCode   | number | Yes  | No  | Version number of the plugin.  |
 | versionName   | string | Yes  | No  | Version name of the plugin.  |
 | pluginModuleInfos   | Array<[PluginModuleInfo](js-apis-bundleManager-pluginBundleInfo-sys.md#pluginmoduleinfo)> | Yes  | No  | Module information of the plugin.  |
 

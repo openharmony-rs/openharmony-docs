@@ -1,4 +1,10 @@
 # NotificationSubscriber (System API)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationSubscriber** module provides callbacks for receiving or removing notifications and serves as the input parameter of [subscribe](./js-apis-notificationSubscribe-sys.md).
 
@@ -129,7 +135,7 @@ let subscribeCallback = (err: BusinessError) => {
 
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onUpdate: (map) => {
-    console.info('===> onUpdateCallback map:' + JSON.stringify(map));
+    console.info(`===> onUpdateCallback map: ${JSON.stringify(map)}`);
   }
 };
 
@@ -244,7 +250,7 @@ Called when the service is disconnected.
 
 | Name| Type| Mandatory| Description|
 | ------------ | ------------------------ | ---- | -------------------------- |
-| onDestroy | () => void | No| Callback used when the service is disconnected.|
+| onDestroy | () => void | No| Callback to be invoked when the service is disconnected.|
 
 **Example**
 
@@ -270,7 +276,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDoNotDisturbDateChange<sup>8+</sup>(deprecated)
+## onDoNotDisturbDateChange<sup>8+</sup> (deprecated)
 
 onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 
@@ -346,7 +352,7 @@ let subscribeCallback = (err: BusinessError) => {
 };
 
 let onDoNotDisturbChangedCallback = (mode: notificationManager.DoNotDisturbDate) => {
-  console.info('===> onDoNotDisturbChanged:' + JSON.stringify(mode));
+  console.info(`===> onDoNotDisturbChanged: ${JSON.stringify(mode)}`);
 }
 
 let subscriber: notificationSubscribe.NotificationSubscriber = {
@@ -468,7 +474,7 @@ let subscribeCallback = (err: BusinessError) => {
 };
 
 let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
-  console.info('onBadgeEnabledChanged, badge enabled state change to: ', JSON.stringify(data));
+  console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
 };
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onBadgeEnabledChanged: BadgeEnabledChangedCallback
@@ -519,19 +525,84 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
+
+## onEnabledPriorityChanged<sup>23+</sup>
+
+onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void
+
+Called when the enabling status of the priority notification changes.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                      |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| onEnabledPriorityChanged | (callbackData: [EnabledPriorityNotificationCallbackData](#enabledprioritynotificationcallbackdata23)>) => void | No  | Callback used to return the result.|
+
+**Example**
+
+```ts
+import { notificationSubscribe } from '@kit.NotificationKit';
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledPriorityChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationCallbackData) => {
+    console.info(`onEnabledPriorityChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
+## onEnabledPriorityByBundleChanged<sup>23+</sup>
+
+onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void
+
+Called when the enabling status of the application priority notification changes.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                      |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| onEnabledPriorityByBundleChanged | (callbackData: [EnabledPriorityNotificationByBundleCallbackData](#enabledprioritynotificationbybundlecallbackdata23)>) => void | No  | Callback used to return the result.|
+
+**Example**
+
+```ts
+import { notificationSubscribe } from '@kit.NotificationKit';
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledPriorityByBundleChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationByBundleCallbackData) => {
+    console.info(`onEnabledPriorityByBundleChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
 ## SubscribeCallbackData
 
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
 
-| Name           | Type                                                                | Readable| Writable| Description    |
+| Name           | Type                                                                | Read Only| Optional| Description    |
 | --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
 | request         | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | Yes | No | Notification content.|
-| sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | Yes | No | Notification sorting information.|
-| reason          | number                                                             | Yes | No | Reason for deletion. The options are as follows:<br>**1**: The notification is deleted after being clicked.<br>**2**: The notification is deleted by the user.|
-| sound           | string                                                             | Yes | No | Sound used for notification.|
-| vibrationValues | Array\<number\>                                                    | Yes | No | Vibration used for notification.|
+| sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | Yes | Yes | Notification sorting information.|
+| reason          | number                                                             | Yes | Yes | Reason for deletion. The options are as follows:<br>**1**: The notification is deleted after being clicked.<br>**2**: The notification is deleted by the user.|
+| sound           | string                                                             | Yes | Yes | Sound used for notification.|
+| vibrationValues | Array\<number\>                                                    | Yes | Yes | Vibration used for notification.|
 
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
@@ -540,7 +611,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 **System API**: This is a system API.
 
-| Name  | Type   | Readable| Writable| Description            |
+| Name  | Type   | Read Only| Optional| Description            |
 | ------ | ------- | ---- | --- | ---------------- |
 | bundle | string  | Yes | No | Bundle name of the application.      |
 | uid    | number  | Yes | No | UID of the application.       |
@@ -553,21 +624,51 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 **System API**: This is a system API.
 
-| Name       | Type  | Readable| Writable| Description        |
+| Name       | Type  | Read Only| Optional| Description        |
 | ----------- | ------ | ---- | ---- | ------------ |
 | bundle      | string | Yes  | No  | Bundle name of the application.|
 | uid         | number | Yes  | No  | UID of the application. |
 | badgeNumber | number | Yes  | No  | Number of notifications displayed on the application icon.  |
-| instanceKey<sup>(deprecated)</sup>  | number | Yes  | No  | Key value of an application instance.  |
-| appInstanceKey<sup>15+</sup>  | string | Yes  | No  | Key value of an application instance.  |
+| instanceKey<sup>(deprecated)</sup>  | number | Yes  | Yes  | Key value of an application instance.  |
+| appInstanceKey<sup>15+</sup>  | string | Yes  | Yes  | Key value of an application instance.  |
 
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
+
+### (data: EnabledNotificationCallbackData)<sup>12+</sup>
+
+(data: EnabledNotificationCallbackData): void
+
+Defines a callback function to listen for the enabling status changes of the application badge.
 
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
 
-| Name       | Type  | Read Only| Optional| Description    |
-| ----------- | ------ | ---- | ---- |------------ |
-| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | Yes  | Yes   |   Callback used to return the listened badge enabling state.|
+**Parameters**
+
+| Name       | Type  | Mandatory| Description    |
+| --------- | ------ | ---- | ------------ |
+| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | Yes   |   Callback used to return the listened badge enabling state.|
+
+## EnabledPriorityNotificationCallbackData<sup>23+</sup>
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name       | Type  | Read Only| Optional| Description        |
+| ----------- | ------ | ---- | ---- | ------------ |
+| enable | boolean | Yes | No | Whether the priority notification is enabled.<br> - **true**: The priority notification is enabled.<br> - **false**: The priority notification is disabled.|
+
+## EnabledPriorityNotificationByBundleCallbackData<sup>23+</sup>
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name       | Type  | Read Only| Optional| Description        |
+| ----------- | ------ | ---- | ---- | ------------ |
+| bundle      | string | Yes  | No  | Bundle name of the application.|
+| uid         | number | Yes  | No  | UID of the application. |
+| enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | Yes | No | Whether the priority notification for an application is enabled.<br> - **DISABLE**: The priority notification is disabled.<br> - **ENABLE_BY_INTELLIGENT**: The priority notification can be enabled through intelligent recognition, user keyword matching, or application rule matching.<br> - **ENABLE**: The priority notification is enabled for all applications.|

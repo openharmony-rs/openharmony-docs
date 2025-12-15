@@ -1,6 +1,12 @@
-# @ohos.bundle.launcherBundleManager (launcherBundleManager) (System API)
+# @ohos.bundle.launcherBundleManager (launcherBundleManager Module) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The module providers APIs for the Home Screen application to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) and [shortcut information](js-apis-bundleManager-shortcutInfo.md).
+The module providers APIs for launcher applications (applications with icons on the home screen) to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) and [shortcut information](js-apis-bundleManager-shortcutInfo.md).
 
 > **NOTE**
 >
@@ -11,7 +17,7 @@ The module providers APIs for the Home Screen application to obtain the [launche
 ## Modules to Import
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
+import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
 
@@ -33,7 +39,7 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | Yes  | Bundle name.|
 | userId     | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| Callback used to return the LauncherAbilityInfo object obtained.|
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -51,8 +57,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100,
@@ -93,7 +99,7 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 
 | Type                         | Description                                              |
 | ----------------------------- | -------------------------------------------------- |
-| Promise\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Promise used to return the LauncherAbilityInfo object obtained.|
+| Promise\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Promise used to return the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects obtained.|
 
 **Error codes**
 
@@ -111,8 +117,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
@@ -145,7 +151,7 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | -------------- |
 | userId | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| Callback used to return the array of LauncherAbilityInfo objects obtained.|
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -162,8 +168,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 Example
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getAllLauncherAbilityInfo(100,
@@ -202,7 +208,7 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 
 | Type                         | Description                                                  |
 | ----------------------------- | ------------------------------------------------------ |
-| Promise\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Promise used to return the array of LauncherAbilityInfo objects obtained.|
+| Promise\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Promise used to return the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects obtained.|
 
 **Error codes**
 
@@ -219,8 +225,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getAllLauncherAbilityInfo(100)
@@ -240,7 +246,7 @@ try {
 
 getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>) : void
 
-Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo.md) of the current user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20).
+Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo.md) of the current user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20). This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -255,7 +261,7 @@ No permission is required for obtaining the caller's own information.
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | Yes  | Bundle name.|
-| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Yes| Callback used to return the [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) object obtained.|
+| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the array of [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) objects obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -272,8 +278,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getShortcutInfo("com.example.demo",
@@ -295,7 +301,7 @@ try {
 
 getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
-Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo.md) of the current user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20).
+Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo.md) of the current user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20). This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -315,7 +321,7 @@ No permission is required for obtaining the caller's own information.
 
 | Type                  | Description                                           |
 | ---------------------- | ----------------------------------------------- |
-| Promise\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Promise used to return the [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) object obtained.|
+| Promise\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Promise used to return the array of [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) objects obtained.|
 
 **Error codes**
 
@@ -332,8 +338,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getShortcutInfo("com.example.demo")
@@ -390,8 +396,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data = launcherBundleManager.getShortcutInfoSync("com.example.demo");
@@ -446,8 +452,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
@@ -463,7 +469,7 @@ try {
 
 startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void\>
 
-Starts an ability based on the specified [shortcut information](js-apis-bundleManager-shortcutInfo.md).
+Starts an ability based on the specified [shortcut information](js-apis-bundleManager-shortcutInfo.md). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.START_SHORTCUT
 
@@ -499,8 +505,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data : Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.demo");

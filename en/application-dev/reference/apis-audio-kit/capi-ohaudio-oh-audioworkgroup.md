@@ -1,4 +1,14 @@
 # OH_AudioWorkgroup
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AudioWorkgroup OH_AudioWorkgroup
+```
 
 ## Overview
 

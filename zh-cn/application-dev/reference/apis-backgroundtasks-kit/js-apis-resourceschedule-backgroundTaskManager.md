@@ -1,6 +1,13 @@
 # @ohos.resourceschedule.backgroundTaskManager (后台任务管理)
 
-本模块提供申请后台任务的接口。当应用退至后台时，开发者可以通过本模块接口为应用申请短时、长时任务，避免应用进程被终止或挂起。
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @Brilliantry_Rui-->
+
+本模块提供申请后台任务的接口。当应用退至后台时，开发者可以通过本模块接口为应用申请短时、长时任务，避免应用进程被终止或挂起。开发指导请参考[长时任务开发指南](../../task-management/continuous-task.md)、[短时任务开发指南](../../task-management/transient-task.md)。
 
 >  **说明：**
 >
@@ -56,6 +63,7 @@ requestSuspendDelay(reason: string, callback: Callback&lt;void&gt;): DelaySuspen
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let myReason = 'test requestSuspendDelay';
 try {
@@ -86,7 +94,7 @@ getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;):
 
 | 参数名       | 类型                          | 必填   | 说明                                       |
 | --------- | --------------------------- | ---- | ---------------------------------------- |
-| requestId | number                      | 是    | 短时任务的请求ID。                               |
+| requestId | number                      | 是    | 短时任务的请求ID。通过申请短时任务[requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay)接口获取。  |
 | callback  | AsyncCallback&lt;number&gt; | 是    | 回调函数，返回本次短时任务的剩余时间，单位：ms。 |
 
 **错误码**：
@@ -108,13 +116,14 @@ getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;):
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let id = 1;
 backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: number) => {
     if(error) {
         console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
     } else {
-        console.log('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+        console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
     }
 })
 ```
@@ -124,7 +133,7 @@ backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: numb
 
 getRemainingDelayTime(requestId: number): Promise&lt;number&gt;
 
-获取本次短时任务的剩余时间，使用promise异步回调。
+获取本次短时任务的剩余时间，使用Promise异步回调。
 
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
@@ -132,7 +141,7 @@ getRemainingDelayTime(requestId: number): Promise&lt;number&gt;
 
 | 参数名       | 类型     | 必填   | 说明         |
 | --------- | ------ | ---- | ---------- |
-| requestId | number | 是    | 短时任务的请求ID。 |
+| requestId | number | 是    | 短时任务的请求ID。通过申请短时任务[requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay)接口获取。 |
 
 **返回值**：
 
@@ -158,10 +167,11 @@ getRemainingDelayTime(requestId: number): Promise&lt;number&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let id = 1;
 backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
-    console.log('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+    console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((error: BusinessError) => {
     console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
 })
@@ -180,7 +190,7 @@ cancelSuspendDelay(requestId: number): void
 
 | 参数名       | 类型     | 必填   | 说明         |
 | --------- | ------ | ---- | ---------- |
-| requestId | number | 是    | 短时任务的请求ID。 |
+| requestId | number | 是    | 短时任务的请求ID。通过申请短时任务[requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay)接口获取。 |
 
 **错误码**：
 
@@ -200,6 +210,7 @@ cancelSuspendDelay(requestId: number): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
   let id = 1;
   try {
@@ -254,7 +265,7 @@ try {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void
 
-申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。
+申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
 
 **需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -293,8 +304,9 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+// 在原子化服务中，请删除WantAgent导入
 
 function callback(error: BusinessError, data: void) {
     if (error) {
@@ -324,10 +336,11 @@ export default class EntryAbility extends UIAbility {
 
         try {
             // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+            // 在原子化服务中，请使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
             wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
                 try {
                     backgroundTaskManager.startBackgroundRunning(this.context,
-                        backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj, callback)
+                        backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj, callback)
                 } catch (error) {
                     console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
                 }
@@ -343,7 +356,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;
 
-申请长时任务，支持申请一种类型，使用promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。
+申请长时任务，支持申请一种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
 
 **需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -387,8 +400,9 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+// 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -410,10 +424,11 @@ export default class EntryAbility extends UIAbility {
 
         try {
             // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+            // 在原子化服务中，请使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
             wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
                 try {
                     backgroundTaskManager.startBackgroundRunning(this.context,
-                        backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj).then(() => {
+                        backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj).then(() => {
                         console.info("Operation startBackgroundRunning succeeded");
                     }).catch((error: BusinessError) => {
                         console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
@@ -433,7 +448,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context, callback: AsyncCallback&lt;void&gt;): void
 
-取消长时任务，使用callback异步回调。
+取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用callback异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -491,7 +506,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context): Promise&lt;void&gt;
 
-取消长时任务，使用promise异步回调。
+取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -550,7 +565,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;
 
-申请长时任务，支持申请多种类型，使用promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。
+申请长时任务，支持申请多种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
 
 **需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -570,7 +585,7 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
 **错误码**：
 
@@ -593,10 +608,10 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
 import { notificationManager } from '@kit.NotificationKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+// 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
   id: number = 0; // 保存通知id
@@ -620,9 +635,11 @@ export default class EntryAbility extends UIAbility {
 
     try {
       // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+      // 在原子化服务中，请使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
       wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
           let list: Array<string> = ["dataTransfer"];
+          // 在原子化服务中，let list: Array<string> = ["audioPlayback"];
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
             console.info("Operation startBackgroundRunning succeeded");
             // 对于上传下载类的长时任务，应用可以使用res中返回的notificationId来更新通知，比如发送带进度条的模板通知
@@ -641,7 +658,7 @@ export default class EntryAbility extends UIAbility {
 
   // 应用更新进度
   updateProcess(process: number) {
-    // 应用定义下载类通知模版
+    // 定义通知类型，更新进度时的通知类型必须为实况窗
     let downLoadTemplate: notificationManager.NotificationTemplate = {
       name: 'downloadTemplate', // 当前只支持downloadTemplate，保持不变
       data: {
@@ -682,7 +699,12 @@ export default class EntryAbility extends UIAbility {
 
 updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;ContinuousTaskNotification&gt;
 
-更新长时任务类型，使用promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。
+更新长时任务类型，使用Promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。
+</br>更新长时任务前，可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20)接口获取当前所有长时任务信息，如果当前没有已经存在的长时任务，会更新失败。
+</br>该接口仅支持更新如下三个接口申请的长时任务：
+</br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void](#backgroundtaskmanagerstartbackgroundrunning)
+</br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](#backgroundtaskmanagerstartbackgroundrunning-1)
+</br>[startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning12)
 
 **需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -701,7 +723,7 @@ updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;Continu
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
 **错误码**：
 
@@ -747,7 +769,7 @@ export default class EntryAbility extends UIAbility {
 
 getAllContinuousTasks(context: Context): Promise&lt;ContinuousTaskInfo[]&gt;
 
-获取所有长时任务信息，如长时任务Id、长时任务类型等，使用Promise异步回调。
+获取所有长时任务信息，如长时任务ID、长时任务类型等，使用Promise异步回调。
 
 **需要权限**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -799,6 +821,63 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+## backgroundTaskManager.getAllContinuousTasks<sup>20+</sup>
+
+getAllContinuousTasks(context: Context, includeSuspended: boolean): Promise&lt;ContinuousTaskInfo[]&gt;
+
+获取所有长时任务信息，如长时任务ID、长时任务类型等。可选择是否获取暂停的长时任务信息，使用Promise异步回调。
+
+**需要权限**: ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**参数**：
+
+| 参数名       | 类型                                 | 必填   | 说明                                       |
+| --------- | ---------------------------------- | ---- | ---------------------------------------- |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 |
+| includeSuspended   | boolean                            | 是    | 是否获取暂停的长时任务信息， true表示获取， false表示不获取。 |
+
+**返回值**：
+
+| 类型                                            | 说明          |
+|-----------------------------------------------|-------------|
+|  Promise&lt;[ContinuousTaskInfo](#continuoustaskinfo20)[]&gt; | Promise对象，返回所有长时任务信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID   | 错误信息 |
+| --------- | ------- |
+| 201 | Permission denied. |
+| 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**示例**：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        try {
+            // 如果当前没有申请长时任务，则获取到一个空数组
+            backgroundTaskManager.getAllContinuousTasks(this.context, false).then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
+                console.info(`Operation getAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
+            }).catch((error: BusinessError) => {
+                console.error(`Operation getAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
+            });
+        } catch (error) {
+            console.error(`Operation getAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+    }
+};
+```
+
 ## backgroundTaskManager.on('continuousTaskCancel')<sup>15+</sup>
 
 on(type: 'continuousTaskCancel', callback: Callback&lt;ContinuousTaskCancelInfo&gt;): void
@@ -813,7 +892,7 @@ on(type: 'continuousTaskCancel', callback: Callback&lt;ContinuousTaskCancelInfo&
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| type   | string                            | 是    | 取消长时任务，固定取值为'continuousTaskCancel'。 |
+| type   | string                            | 是    | 事件回调类型，固定取值为'continuousTaskCancel'，表示长时任务取消。 |
 | callback   | Callback\<[ContinuousTaskCancelInfo](#continuoustaskcancelinfo15)>       | 是    | 回调函数，返回长时任务取消原因等信息。 |
 
 **错误码**：
@@ -899,7 +978,7 @@ export default class EntryAbility extends UIAbility {
 
 on(type: 'continuousTaskSuspend', callback: Callback&lt;ContinuousTaskSuspendInfo&gt;): void
 
-注册长时任务暂停的监听，使用callback异步回调。
+注册长时任务暂停的监听，使用callback异步回调。注册该回调后，如果系统首次检测到应用未执行相应的业务，不会直接取消长时任务，而是将长时任务标记为暂停状态，如果连续检测失败，仍会取消长时任务。<br>长时任务处于暂停状态时，应用退后台会被挂起，回前台自动激活。
 
 **需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1089,6 +1168,256 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+## backgroundTaskManager.startBackgroundRunning<sup>21+</sup>
+
+startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;
+
+申请长时任务，一个UIAbility（FA模型则为ServiceAbility）下支持通过本接口申请多个长时任务，使用Promise异步回调。通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考[ContinuousTaskRequest](#continuoustaskrequest21)。</br>同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息，没有提示音。</br>如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同步移除。接口返回的长时任务通知Id为数据传输类型的Id，主要用于数据传输的进度更新。
+
+**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**参数**：
+
+| 参数名       | 类型                                 | 必填   | 说明                                       |
+| --------- | ---------------------------------- | ---- | ---------------------------------------- |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 |
+| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | 是    | 长时任务请求信息，包括长时任务主类型、子类型等。|
+
+**返回值**：
+
+| 类型             | 说明               |
+| -------------- | ---------------- |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回长时任务通知信息，包括长时任务ID等。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 9800001 | Memory operation failed. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+| 9800006 | Notification verification failed for a continuous task. |
+| 9800007 | Continuous task storage failed. |
+
+**示例**：
+
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  notificationId: number = 0; // 保存通知id
+  continuousTaskId: number | undefined = -1;
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // 请开发者替换为实际被拉起应用的bundleName和abilityName
+      wants: [
+        {
+          bundleName: "com.example.myapplication",
+          abilityName: "EntryAbility"
+        }
+      ],
+      // 设置点击通知后的动作类型
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // 开发者自定义的请求码，用于标识将被执行的动作
+      requestCode: 0,
+      // 设置点击通知后的动作执行属性
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    try {
+      // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          // 如果要合并通知，主类型和子类型都必须相同，combinedTaskNotification为true，continuousTaskId必须存在且合法
+          // 申请主类型为MODE_LOCATION的长时任务
+          let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_LOCATION];
+          let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_NORMAL_NOTIFICATION];
+          let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+          continuousTaskRequest.backgroundTaskModes =  modeList;
+          continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+          continuousTaskRequest.wantAgent = wantAgentObj;
+          continuousTaskRequest.combinedTaskNotification = false;
+          continuousTaskRequest.continuousTaskId = this.continuousTaskId;
+          backgroundTaskManager.startBackgroundRunning(this.context, continuousTaskRequest).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
+            console.info(`Operation startBackgroundRunning succeeded. notificationId is ${res.notificationId} continuousTaskId is ${res.continuousTaskId}`);
+            this.notificationId = res.notificationId;
+            this.continuousTaskId = res.continuousTaskId;
+          }).catch((error: BusinessError) => {
+            console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+          });
+        } catch (error) {
+          console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+## backgroundTaskManager.updateBackgroundRunning<sup>21+</sup>
+
+updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;
+
+更新长时任务，使用Promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。
+</br>更新长时任务还存在如下约束限制：
+1. 本接口仅支持更新如下接口申请的长时任务：[startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning21)。
+2. 已经合并的长时任务，且后台任务主类型和子类型均相同，仅支持更新ContinuousTaskRequest.wantAgent中的wants信息（abilityName等），如果类型不同，更新失败。
+3. 如果待更新的长时任务或指定的更新类型中包含数据传输类型，直接返回失败。
+
+**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**参数**：
+
+| 参数名       | 类型                                 | 必填   | 说明                                       |
+| --------- | ---------------------------------- | ---- | ---------------------------------------- |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 |
+| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | 是    | 长时任务请求信息, 包括待更新的长时任务ID等。 |
+
+**返回值**：
+
+| 类型             | 说明               |
+| -------------- | ---------------- |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回更新后的长时任务通知信息，包括长时任务ID等。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 9800001 | Memory operation failed. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+| 9800006 | Notification verification failed for a continuous task. |
+| 9800007 | Continuous task storage failed. |
+
+**示例**：
+
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  notificationId: number = 0; // 保存通知id
+  continuousTaskId: number | undefined = -1; //长时任务ID
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // 添加需要被拉起应用的bundleName和abilityName, 请开发者替换为实际的bundleName和abilityName
+      wants: [
+        {
+          bundleName: "com.example.myapplication",
+          abilityName: "EntryAbility"
+        }
+      ],
+      // 设置点击通知后的动作类型
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // 开发者自定义的请求码，用于标识将被执行的动作
+      requestCode: 0,
+      // 设置点击通知后的动作执行属性
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    try {
+      // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          // 必须先执行startBackgroundRunning，才能调用updateBackgroundRunning，请开发者提前申请长时任务
+          let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_LOCATION];
+          let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_NORMAL_NOTIFICATION];
+          let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+          continuousTaskRequest.backgroundTaskModes =  modeList;
+          continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+          continuousTaskRequest.wantAgent = wantAgentObj;
+          continuousTaskRequest.combinedTaskNotification = false;
+          continuousTaskRequest.continuousTaskId = this.continuousTaskId; //对于更新接口，长时任务ID必须要传且为存在的ID，否则更新失败
+          backgroundTaskManager.updateBackgroundRunning(this.context, continuousTaskRequest).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
+            console.info("Operation updateBackgroundRunning succeeded");
+            this.notificationId = res.notificationId;
+          }).catch((error: BusinessError) => {
+            console.error(`Operation updateBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+          });
+        } catch (error) {
+          console.error(`Operation updateBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+## backgroundTaskManager.stopBackgroundRunning<sup>21+</sup>
+
+stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;void&gt;
+
+取消指定Id的长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning)取消当前UIAbility下所有长时任务。
+
+**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**参数**：
+
+| 参数名       | 类型                                 | 必填   | 说明                                       |
+| --------- | ---------------------------------- | ---- | ---------------------------------------- |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 |
+| continuousTaskId   | number | 是    | 长时任务ID。</br>**说明 :** 可以通过[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)接口的返回值获取当前申请的长时任务ID，或者通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口获取所有长时任务信息。  |
+
+**返回值**：
+
+| 类型             | 说明               |
+| -------------- | ---------------- |
+| Promise\<void> | 无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 9800001 | Memory operation failed. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+| 9800006 | Notification verification failed for a continuous task. |
+| 9800007 | Continuous task storage failed. |
+
+**示例**：
+
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  continuousTaskId: number = 0;
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+        backgroundTaskManager.stopBackgroundRunning(this.context, this.continuousTaskId).then(() => {
+            console.info("Operation stopBackgroundRunning succeeded");
+        }).catch((error: BusinessError) => {
+            console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+        });
+    } catch (error) {
+        console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
 ## DelaySuspendInfo
 
 短时任务信息。
@@ -1119,14 +1448,14 @@ export default class EntryAbility extends UIAbility {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| DATA_TRANSFER           | 1    | 数据传输。                  |
-| AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
-| AUDIO_RECORDING         | 3    | 录制。                    |
+| DATA_TRANSFER           | 1    | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。       |
+| AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**说明：** 从API version 20开始，申请/更新AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。 <br/>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br/>对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。                 |
+| AUDIO_RECORDING         | 3    | 录制。<br/>使用场景举例：录音、录屏退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                    |
 | LOCATION                | 4    | 定位导航。                  |
-| BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。                  |
-| MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
-| VOIP<sup>13+</sup> | 8    | 音视频通话。                 |
-| TASK_KEEPING            | 9    | 计算任务（仅对2in1设备开放）。        |
+| BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。                  |
+| MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
+| VOIP<sup>13+</sup> | 8    | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
+| TASK_KEEPING            | 9    | 计算任务（仅对2in1设备开放）。<br/>使用场景举例：杀毒软件。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。        |
 
 ## ContinuousTaskNotification<sup>12+</sup>
 
@@ -1243,11 +1572,264 @@ export default class EntryAbility extends UIAbility {
 | abilityName | string   | 否    | 否    | UIAbility名称。          |
 | uid         | number   | 否    | 否    | 应用的UID。               |
 | pid         | number   | 否    | 否    | 应用进程的PID。               |
-| isFromWebView | boolean  | 否    | 否    | 是否通过Webview方式申请，即通过系统代理应用申请长时任务。      |
+| isFromWebView | boolean  | 否    | 否    | 是否通过Webview方式申请，即通过系统代理应用申请长时任务。true表示通过Webview方式申请，false表示不通过Webview方式申请。|
 | [backgroundModes](#backgroundmode) | string[] | 否    | 否    | 长时任务类型。               |
 | [backgroundSubModes](#backgroundsubmode16) | string[] | 否    | 否    | 长时任务子类型。              |
 | notificationId | number   | 否    | 否    | 通知 Id。                |
-| continuousTaskId | number   | 否    | 否    | 长时任务Id。              |
+| continuousTaskId | number   | 否    | 否    | 长时任务ID。              |
 | abilityId | number   | 否    | 否    | UIAbility Id。         |
-| wantAgentBundleName | string   | 否    | 否    | WantAgent配置的包名。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。        |
-| wantAgentAbilityName | string   | 否    | 否    | WantAgent配置的ability名称。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。 |
+| wantAgentBundleName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的包名。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。        |
+| wantAgentAbilityName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的ability名称。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。 |
+| suspendState | boolean   | 否    | 否    | 申请的长时任务是否处于暂停状态。true表示处于暂停状态，false表示处于激活状态。|
+| bundleName<sup>23+</sup> | string   | 否    | 是    | 应用包名。          |
+| appIndex<sup>23+</sup>   | number   | 否    | 是    | 应用分身ID。               |
+
+## ContinuousTaskRequest<sup>21+</sup>
+
+通常作为[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21)和[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口的入参，用于指定申请或更新的长时任务信息。其中：
+1. 通过[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21)接口申请长时任务时，如果待申请长时任务与当前应用下已存在长时任务，两者的主类型和子类型均相同，且combinedTaskNotification均取值为true，则会合并通知。否则不会合并通知。
+2. 如果长时任务本身没有通知，则不会合并，长时任务类型是否会通知请参考[BackgroundTaskMode](#backgroundtaskmode21)。
+3. 如果长时任务类型中包含数据传输类型，则不会合并通知。
+4. 通知合并后不能取消合并，已合并的不能更新成不合并。
+5. 通知合并后，点击通知栏消息，会跳转到第一个申请的长时任务对应的UIAbility，如果调用了更新接口，则跳转到最后一次更新的长时任务对应的UIAbility。
+6. 通过[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。
+7. 从API version 22开始支持[特殊场景类型的长时任务](#backgroundtaskmode21)。必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
+
+### 属性
+
+**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+| 名称             | 类型     | 只读   | 可选   | 说明                                       |
+| --------------- | ------ | ---- | ---- | ---------------------------------------- |
+| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**说明：** 主类型与子类型必须匹配。     |
+| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。 <br/>**说明：** 主类型与子类型必须匹配。|
+| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。 |
+| combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。|
+| continuousTaskId | number   | 否    | 是    | 长时任务ID，默认值为-1。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
+
+### isModeSupported<sup>21+</sup>
+
+isModeSupported(): boolean
+
+查询当前[ContinuousTaskRequest](#continuoustaskrequest21)设置的长时任务主类型，是否支持申请长时任务。是否支持申请长时任务请参考[BackgroundTaskMode](#backgroundtaskmode21)的说明。
+
+**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**返回值**：
+
+| 类型             | 说明               |
+| -------------- | ---------------- |
+| boolean | 返回长时任务主类型是否支持。true表示支持，false表示不支持。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 9800005 | Continuous task verification failed. |
+
+**示例**：
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let isModeSupported: boolean = false; 
+    let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+    let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_TASK_KEEPING];
+    continuousTaskRequest.backgroundTaskModes = modeList;
+    try {
+      isModeSupported = continuousTaskRequest.isModeSupported();
+      console.info(`Operation isModeSupported succeeded. isModeSupported is ${isModeSupported}`);
+    } catch (error) {
+      console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+### requestAuthFromUser<sup>22+</sup>
+
+requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
+
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会发送横幅通知，有提示音。仅适用于[特殊场景类型长时任务](#backgroundtaskmode21)。
+
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常调用，在其他设备类型中返回9800005错误码。
+
+**参数：**
+
+| 参数名      | 类型                                                  | 必填   | 说明           |
+| -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。 |
+| callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**示例：**
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
+    console.info('Operation requestAuthFromUser success. auth result: ' + JSON.stringify(authResult));
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+    let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_SPECIAL_SCENARIO_PROCESSING];
+    continuousTaskRequest.backgroundTaskModes = modeList;
+    let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION];
+    continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+    try {
+      continuousTaskRequest.requestAuthFromUser(this.context, callbackAuth);
+      console.info('Operation requestAuthFromUser succeeded.');
+    } catch (error) {
+      console.error(`Operation requestAuthFromUser failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+### checkSpecialScenarioAuth<sup>22+</sup>
+
+checkSpecialScenarioAuth(context: Context): Promise&lt;UserAuthResult&gt;
+
+查询用户是否授权能在后台长时间运行。使用Promise异步回调。
+
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常调用，在其他设备类型中返回9800005错误码。
+
+**参数：**
+
+| 参数名      | 类型                                                  | 必填   | 说明           |
+| -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。 |
+
+**返回值：**
+
+| 类型             | 说明                |
+| -------------- |-------------------|
+| Promise&lt;[UserAuthResult](#userauthresult22)&gt; | Promise对象，返回用户授权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**示例：**
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+      continuousTaskRequest.checkSpecialScenarioAuth(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
+        console.info('Operation checkSpecialScenarioAuth succeeded. data: ' + JSON.stringify(res));
+      }).catch((error: BusinessError) => {
+        console.error(`Operation checkSpecialScenarioAuth failed. code is ${error.code} message is ${error.message}`);
+      });
+    } catch (error) {
+      console.error(`Operation checkSpecialScenarioAuth failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+## BackgroundTaskMode<sup>21+</sup>
+
+长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者共同作为API version 21新增的[申请](#backgroundtaskmanagerstartbackgroundrunning21)、[更新](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+| 名称                     | 值  | 说明                    |
+| ------------------------ | ---- | --------------------- |
+| MODE_DATA_TRANSFER              | 1         | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** <br/>1. 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>2. 更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。                 |
+| MODE_AUDIO_PLAYBACK             | 2         | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**说明：** 申请/更新MODE_AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。              |
+| MODE_AUDIO_RECORDING            | 3         | 录制。<br/>使用场景举例：录音、录屏退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
+| MODE_LOCATION                   | 4         | 定位导航。                  |
+| MODE_BLUETOOTH_INTERACTION      | 5         | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。            |
+| MODE_MULTI_DEVICE_CONNECTION    | 6         | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。          |
+| MODE_VOIP                       | 8         | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
+| MODE_TASK_KEEPING               | 9         | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 |
+| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br/>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。            |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>使用场景举例：应用在后台导出媒体文件导出、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br/>2. 仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。 |
+
+## BackgroundTaskSubmode<sup>21+</sup>
+
+长时任务子类型。通常与长时任务主类型[BackgroundTaskMode](#backgroundtaskmode21)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者共同作为API version 21新增的申请、更新长时任务接口入参，用于指定长时任务类型。
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+| 名称                     | 值  | 说明                    |
+| ----------------------- | ---- | --------------------- |
+| SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型，通知类型为普通文本通知。       |
+| SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通文本通知。                  |
+| SUBMODE_LIVE_VIEW_NOTIFICATION  | 3    | 实况窗通知。            |
+| SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../media/avsession/avsession-overview.md)。            |
+| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 已接入[AVSession](../../media/avsession/avsession-overview.md)的音视频播放场景，通知类型为普通文本类型。            |
+| SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 6    | 录音，通知类型为普通文本通知。            |
+| SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 7    | 录屏，通知类型为普通文本通知。            |
+| SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | 通话，通知类型为普通文本通知。            |
+| SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | 媒体处理，例如：应用在后台导出媒体文件，通知类型为普通文本通知。    |
+| SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  | 10 | 视频投播，例如：应用使用三方投播组件在后台进行投播，通知类型为普通文本通知。  |
+| SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup>  | 11 | 运动，例如：应用在后台有室内跑步场景，通知类型为普通文本通知。  |
+
+**长时任务主类型与子类型对照表：**
+
+| [长时任务主类型](#backgroundtaskmode21) | [长时任务子类型](#backgroundtasksubmode21)  |
+| --------------------------------- | ----------------------------------- |
+| MODE_DATA_TRANSFER                | SUBMODE_LIVE_VIEW_NOTIFICATION      |
+| MODE_AUDIO_PLAYBACK               | SUBMODE_NORMAL_NOTIFICATION         |
+| MODE_AUDIO_RECORDING              | SUBMODE_NORMAL_NOTIFICATION         |
+| MODE_LOCATION                     | SUBMODE_NORMAL_NOTIFICATION         |
+| MODE_BLUETOOTH_INTERACTION        | SUBMODE_NORMAL_NOTIFICATION <br/>SUBMODE_CAR_KEY_NORMAL_NOTIFICATION         |
+| MODE_MULTI_DEVICE_CONNECTION      | SUBMODE_NORMAL_NOTIFICATION         |
+| MODE_VOIP                         | SUBMODE_NORMAL_NOTIFICATION         |
+| MODE_TASK_KEEPING                 | SUBMODE_NORMAL_NOTIFICATION         |
+| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup><br/>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup>  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup> <br/>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  <br/>SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup> |
+
+## UserAuthResult<sup>22+</sup>
+
+用户授权结果。
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+| 名称           | 值 | 说明     |
+| ------------ |---|--------|
+| NOT_SUPPORTED | 0 | 不支持。例如：申请的长时任务主类型非MODE_SPECIAL_SCENARIO_PROCESSING时，不支持申请用户授权是否能在后台长时间运行。 |
+| NOT_DETERMINED | 1 | 用户未操作。 |
+| DENIED  | 2 | 拒绝。    |
+| GRANTED_ONCE | 3 | 本次允许。<br/>**说明：** 在应用退出时该授权记录会被清除。  |
+| GRANTED_ALWAYS | 4 | 始终允许。<br/>**说明：** <br/>当接收到以下公共事件时，相关授权记录将被清除：<br/>[COMMON_EVENT_PACKAGE_ADDED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_added)、[COMMON_EVENT_PACKAGE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_BUNDLE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_PACKAGE_FULLY_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_fully_removed)、[COMMON_EVENT_PACKAGE_CHANGED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_changed)。  |

@@ -1,4 +1,14 @@
 # OH_Pixelmap_HdrMetadataValue
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yaozhupeng-->
+<!--Designer: @yaozhupeng-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_Pixelmap_HdrMetadataValue {...} OH_Pixelmap_HdrMetadataValue
+```
 
 ## 概述
 
@@ -17,8 +27,6 @@ Pixelmap使用的HDR元数据值，和OH_Pixelmap_HdrMetadataKey关键字相对�
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_HdrMetadataType](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatatype) type | HDR_METADATA_TYPE关键字对应的具体值。 |
-| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | HDR_STATIC_METADATA关键字对应的具体值。 |
+| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) staticMetadata | HDR_STATIC_METADATA关键字对应的具体值。 |
 | [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) dynamicMetadata | HDR_DYNAMIC_METADATA关键字对应的具体值。 |
 | [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) gainmapMetadata | HDR_GAINMAP_METADATA关键字对应的具体值。 |
-
-

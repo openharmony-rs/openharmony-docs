@@ -1,4 +1,14 @@
 # OH_AVSession
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVSession OH_AVSession
+```
 
 ## 概述
 

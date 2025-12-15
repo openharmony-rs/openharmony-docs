@@ -2,8 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--SE: @liuzuming-->
-<!--TSE: @lpw_work-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -17,7 +18,7 @@ The application is not an administrator application of the device.
 
 **错误描述**
 
-当应用没有激活成设备管理器时，则会产生此错误码。
+当应用没有激活成设备管理器时，会产生此错误码。
 
 **可能原因**
 
@@ -53,7 +54,7 @@ The administrator ability component is invalid.
 
 **错误描述**
 
-当应用传入参数中指定的设备管理器元能力组件无效，则会产生此错误码。
+当应用传入参数中指定的设备管理器元能力组件无效时，会产生此错误码。
 
 **可能原因**
 
@@ -74,7 +75,7 @@ Failed to activate the administrator application of the device.
 
 **错误描述**
 
-当应用重复激活不同类型的设备管理器或激活多个管理器时，则会产生此错误码。
+当应用重复激活不同类型的设备管理器或激活多个管理器时，会产生此错误码。
 
 **可能原因**
 
@@ -97,7 +98,7 @@ Failed to deactivate the administrator application of the device.
 
 **错误描述**
 
-当应用没有激活过或者解除激活其他设备管理器时，则会产生此错误码。
+当应用没有激活过或者解除激活的是其他设备管理器时，会产生此错误码。
 
 **可能原因**
 
@@ -119,18 +120,18 @@ The specified user ID is invalid.
 
 **错误描述**
 
-当应用调用接口设置用户策略，指定的user id不存在、或DA管理器跨用户设置，则会产生此错误码。
+当应用调用接口设置用户策略，指定的user ID不存在、或DA管理器跨用户设置，则会产生此错误码。
 
 **可能原因**
 
 该错误码表示指定的用户ID非法，可能原因如下。
-1. 调用接口设置用户策略，指定的user id不存在。
-2. DA管理器不允许跨用户设置，指定的user id和调用者user id不同。
+1. 调用接口设置用户策略，指定的user ID不存在。
+2. DA管理器不允许跨用户设置，指定的user ID和调用者user ID不同。
 
 **处理步骤**
 
-1. 检查去调用接口中指定的user id是否是有效的user id。
-2. 检查调用者user id和指定设置的user id是否是同一user id，DA模式下不允许跨用户设置策略。
+1. 检查调用接口中指定的user ID是否是有效的user ID。
+2. 检查调用者user ID和指定设置的user ID是否是同一user ID，DA模式下不允许跨用户设置策略。
 
 ## 9200007 系统服务工作异常
 
@@ -256,6 +257,24 @@ Parameter verification failed.
 4. 检查传入参数值是否在接口支持取值范围内。
 5. 移除前先查询是否有设置相应的名单。
 
+## 9200013 管控未实时生效
+
+**错误信息**
+
+The enterprise management policy has been successfully set, but the function has not taken effect in real time.
+
+**错误描述**
+
+企业管控策略设置成功，但是管控未实时生效。
+
+**可能原因**
+
+在外置存储管控场景，禁用外置存储时，由于外置存储有文件正在被使用，导致禁用未实时生效，此时无法立即卸载外置存储。
+
+**处理步骤**
+
+重启设备，重启后管控生效。在外置存储管控场景下，重启后禁用外置存储生效，不会主动加载外置存储。
+   
 ## 9201001 管理证书失败
 
 **错误信息**
@@ -264,7 +283,7 @@ Failed to manage the certificate.
 
 **错误描述**
 
-当超级设备管理应用安装或者卸载用户证书失败时，则会产生此错误码。
+当超级设备管理应用安装或卸载用户证书失败时，会产生此错误码。
 
 **可能原因**
 
@@ -306,7 +325,7 @@ Failed to add an OS account.
 
 **错误描述**
 
-当企业设备管理创建账号失败时，则会产生此错误码。
+当企业设备管理创建账号失败时，会产生此错误码。
 
 **可能原因**
 
@@ -331,7 +350,7 @@ The update packages do not exist or analyzing failed.
 
 **错误描述**
 
-当企业设备管理通知系统更新包失败时，则会产生此错误码。
+当企业设备管理通知系统更新包失败时，会产生此错误码。
 
 **可能原因**
 

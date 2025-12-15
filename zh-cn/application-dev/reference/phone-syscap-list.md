@@ -1,4 +1,11 @@
-# 系统能力SystemCapability列表
+# Phone
+
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 SysCap，全称SystemCapability，即系统能力，指操作系统中每一个相对独立的特性。
 
@@ -56,12 +63,10 @@ SysCap，全称SystemCapability，即系统能力，指操作系统中每一个�
 - SystemCapability.MultimodalInput.Input.Pointer
 - SystemCapability.MultimodalInput.Input.ShortKey
 - SystemCapability.MultimodalInput.Input.InfraredEmitter
-- SystemCapability.PowerManager.BatteryManager.Extension
 - SystemCapability.PowerManager.DisplayPowerManager
 - SystemCapability.PowerManager.ThermalManager
 - SystemCapability.PowerManager.PowerManager.Core
 - SystemCapability.PowerManager.BatteryManager.Core
-- SystemCapability.PowerManager.PowerManager.Extension
 - SystemCapability.Multimedia.Media.Core
 - SystemCapability.Multimedia.Media.AudioPlayer
 - SystemCapability.Multimedia.Media.AudioRecorder

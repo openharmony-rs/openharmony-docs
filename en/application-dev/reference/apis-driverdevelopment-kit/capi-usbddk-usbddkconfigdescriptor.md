@@ -1,4 +1,10 @@
 # UsbDdkConfigDescriptor
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -18,5 +24,5 @@ Defines configuration descriptors.
 | -- | -- |
 | struct UsbConfigDescriptor configDescriptor | Standard configuration descriptor.|
 | struct UsbDdkInterface* interface | Interfaces contained in the configuration.|
-| uint8_t* extra | Unresolved descriptor, including class- or vendor-specific descriptors.|
+| const uint8_t* extra | Unresolved descriptor, including class- or vendor-specific descriptors.|
 | uint32_t extraLength | Length of the unresolved descriptor.|

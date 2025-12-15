@@ -1,4 +1,10 @@
 # FormEditExtensionContext
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 FormEditExtensionContext是[FormEditExtensionAbility](./js-apis-app-form-formEditExtensionAbility.md)的上下文，继承自[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)。
 
@@ -51,11 +57,13 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
 
 ```ts
 import { FormEditExtensionAbility } from '@kit.FormKit'
-import { Want,UIExtensionContentSession } from '@kit.AbilityKit';
+import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
 
 const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
 export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   abilityName: string = 'FormEditSecPageAbility'
+
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     try {
       this.context.startSecondPage({
@@ -65,7 +73,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
         }
 
       }).then(data => {
-        console.log(TAG, `startSecondPage result want: ${JSON.stringify(data)}`)
+        console.info(TAG, `startSecondPage result want: ${JSON.stringify(data)}`)
       });
     } catch (e) {
       console.error(TAG, `startSecondPage failed:${e}`)

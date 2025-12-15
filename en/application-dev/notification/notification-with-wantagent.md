@@ -1,5 +1,12 @@
 # Adding a WantAgent Object to a Notification
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 An application requests [WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) from Ability Kit and encapsulates it into the notification. When a notification is published, the user may tap a message or a button in the notification panel to start the target application or publish a common event.
 
 The following figure shows a notification carrying action buttons.
@@ -43,8 +50,8 @@ The following figure shows a notification carrying action buttons.
      wants: [
        {
          deviceId: '',
-         bundleName: 'com.samples.notification',
-         abilityName: 'SecondAbility',
+         bundleName: 'com.samples.notification', // Use the actual bundle name.
+         abilityName: 'SecondAbility', // Use the actual ability name.
          action: '',
          entities: [],
          uri: '',
@@ -53,7 +60,7 @@ The following figure shows a notification carrying action buttons.
      ],
      actionType: wantAgent.OperationType.START_ABILITY,
      requestCode: 0,
-     wantAgentFlags:[wantAgent.WantAgentFlags.CONSTANT_FLAG]
+     actionFlags:[wantAgent.WantAgentFlags.CONSTANT_FLAG]
    };
    ```
 
@@ -72,7 +79,7 @@ The following figure shows a notification carrying action buttons.
      ],
      actionType: wantAgent.OperationType.SEND_COMMON_EVENT,
      requestCode: 0,
-     wantAgentFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG],
+     actionFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG],
    };
    ```
 
@@ -132,3 +139,9 @@ The following figure shows a notification carrying action buttons.
      hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
    });
    ```
+<!--RP1-->
+
+## Sample Code
+
+  - [Custom Notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/CustomNotification/README.md)
+<!--RP1End-->

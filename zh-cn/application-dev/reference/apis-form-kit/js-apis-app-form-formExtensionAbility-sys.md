@@ -1,4 +1,10 @@
 # @ohos.app.form.FormExtensionAbility (FormExtensionAbility)(系统接口)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。
 
@@ -43,7 +49,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onShareForm(formId: string) {
-    console.log(`FormExtensionAbility onShareForm, formId: ${formId}`);
+    console.info(`FormExtensionAbility onShareForm, formId: ${formId}`);
     let wantParams: Record<string, Object> = {
       'temperature': '20',
       'time': '2022-8-8 09:59',
@@ -82,7 +88,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAcquireFormData(formId: string) {
-    console.log(`FormExtensionAbility onAcquireFormData, formId: ${formId}`);
+    console.info(`FormExtensionAbility onAcquireFormData, formId: ${formId}`);
     let wantParams: Record<string, Object> = {
       'temperature': '20',
       'time': '2022-8-8 09:59',

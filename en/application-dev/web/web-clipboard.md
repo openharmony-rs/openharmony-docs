@@ -1,4 +1,10 @@
 # Processing Web Page Content by Interacting with the System Clipboard
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zourongchun-->
+<!--Designer: @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 ArkWeb provides the capability of interacting with the system clipboard to cut, copy, and paste various types of data through the following methods: the [Menu](web_menu.md) component, keyboard shortcuts, and [W3C clipboard API and events](https://www.w3.org/TR/clipboard-apis/).
 
@@ -6,13 +12,13 @@ ArkWeb provides the capability of interacting with the system clipboard to cut, 
 
 You can customize options in the menu. When a user selects a specific option, the [cut](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#cut9), [copy](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copy9) and [copyImage](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copyimage9) APIs can be called to cut or copy the text, HTML or image data to the system clipboard. The [paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9) and [pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20) APIs can be used to paste the data to the input area of the web page.
 
-For details about how to use the APIs provided by the **Menu** component, see [Processing Web Page Content Using the Menu Component](web_menu.md).
+For details about how to use them, see [Using Web Menus](web_menu.md).
 
 When a device has a physical keyboard, a user can also use keyboard shortcuts **Ctrl+X** (cut), **Ctrl+C** (copy), and **Ctrl+V** (paste) to interact with the clipboard.
 
 > **NOTE**
 >
-> To access the clipboard content through the [paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9) and [pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20) APIs, you need to [request permissions to access the pasteboard](../basic-services/pasteboard/get-pastedata-permission-guidelines.md) by requesting the **ohos.permission.READ_PASTEBOARD** permission.
+> To access the clipboard content through the [paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9) and [pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20) APIs, you need to [request permissions to access the pasteboard](../basic-services/pasteboard/get-pastedata-permission-guidelines.md): **ohos.permission.READ_PASTEBOARD**.
 
 ## Using the W3C Asynchronous Clipboard API
 
@@ -22,7 +28,7 @@ When a device has a physical keyboard, a user can also use keyboard shortcuts **
 
 ```javascript
 // Write text content to the clipboard.
-await navigator.clipboard.writeText ("Text content");
+await navigator.clipboard.writeText("Text content");
 ```
 
 - Use **write** to write content of any type to the system clipboard.
@@ -52,10 +58,11 @@ const htmlBlob = await clipboardItems[0].getType('text/html');
 
 > **NOTE**
 >
-> To access the clipboard content through the **read()** and **readText()** methods of the asynchronous API, you need to [request the permission to access the pasteboard](../basic-services/pasteboard/get-pastedata-permission-guidelines.md): **ohos.permission.READ_PASTEBOARD**.
+> To access the system clipboard content through **read()** and **readText()**, you need to [request permissions to access the pasteboard](../basic-services/pasteboard/get-pastedata-permission-guidelines.md): **ohos.permission.READ_PASTEBOARD**.
 
-```ts
-// xxx.ets
+<!-- @[web_clipboard_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboard.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -65,11 +72,12 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("clipboard.html"), controller: this.controller })
+      Web({ src: $rawfile('clipboard.html'), controller: this.controller })
     }
   }
 }
 ```
+
 
 Loaded HTML:
 
@@ -146,7 +154,7 @@ Loaded HTML:
                 return;
             }
         }
-        document.getElementById ('result').innerText = "No HTML content on the clipboard.";
+        document.getElementById('result').innerText = "No HTML content on the clipboard.";
     }
 
     function clearOutput() {
@@ -167,12 +175,15 @@ Loaded HTML:
 
 Configure permissions for the **module.json5** file.
 
-```json
-// module.json5
+**Required permissions**: **ohos.permission.READ_PASTEBOARD**. To access clipboard content, applications need to [request permissions to access the pasteboard](../basic-services/pasteboard/get-pastedata-permission-guidelines.md).
+
+<!-- @[web_clipboard_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/module.json5) -->
+
+``` JSON5
 {
-  "module" : {
-    // ...
-    "requestPermissions":[
+  "module": {
+    // ···
+    "requestPermissions": [
       {
         "name" : "ohos.permission.READ_PASTEBOARD",
         "reason": "$string:module_desc",
@@ -188,14 +199,16 @@ Configure permissions for the **module.json5** file.
 }
 ```
 
+
 ![clipboard_api](./figures/web-clipboard_api.gif)
 
 ## Using the W3C Clipboard Event API
 
 [Clipboard events](https://www.w3.org/TR/clipboard-apis/#clipboard-events-and-interfaces) describes the **cut**, **copy**, and **paste** events related to the clipboard. When a user performs the cut, copy, or paste operation, the corresponding event is triggered. By listening for these events, you can read and write the system clipboard or intercept the default behavior to change the copy or paste result.
 
-```ts
-// xxx.ets
+<!-- @[web_clipboard_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboardEvent.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -205,11 +218,12 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("clipboard_event.html"), controller: this.controller })
+      Web({ src: $rawfile('clipboard_event.html'), controller: this.controller })
     }
   }
 }
 ```
+
 
 Loaded HTML:
 
@@ -231,7 +245,7 @@ Loaded HTML:
     </style>
 </head>
 <body>
-<h2>Example of listening a clipboad event</h2>
+<h2>Example of listening a clipboard event</h2>
 <textarea id="inputArea" rows="4" cols="50" placeholder="Input text here and try to copy and paste..."></textarea>;
 
 <div class="output" id="output">
@@ -278,8 +292,9 @@ Loaded HTML:
 
 You can set the [copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11) attribute of a **Web** component to specify the copy scope of the clipboard on the **Web** component. The available options are **CopyOptions.None** (copy is not supported), **CopyOptions.InApp** (in-application copy is supported), and **CopyOptions.LocalDevice** (in-device copy is supported). The default value is **CopyOptions.LocalDevice**, indicating that copy within a device is supported by default.
 
-```ts
-// xxx.ets
+<!-- @[web_clipboard_copyOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebCopyOptions.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -290,12 +305,13 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("copyOptions.html"), controller: this.controller })
+      Web({ src: $rawfile('copyOptions.html'), controller: this.controller })
         .copyOptions(this.copyOption)
     }
   }
 }
 ```
+
 
 Loaded HTML:
 

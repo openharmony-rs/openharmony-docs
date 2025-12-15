@@ -1,8 +1,18 @@
 # Image_String
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+struct Image_String {...}
+```
 
 ## Overview
 
-The Image_String struct describes an image string.
+The struct describes an image string.
 
 **Since**: 12
 

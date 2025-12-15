@@ -1,20 +1,20 @@
 # $$语法：系统组件双向同步
-
+<!--Kit: ArkUI--> 
+<!--Subsystem: ArkUI--> 
+<!--Owner: @Cuecuexiaoyu--> 
+<!--Designer: @lixingchi1--> 
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 `$$`运算符为系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步。
 
 
-内部状态具体指什么取决于组件。例如，[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)组件的text参数。
-
-
-> **说明：**
->
-> `$$`还用于[@Builder装饰器的按引用传递参数](arkts-builder.md#按引用传递参数)，开发者需要注意两种用法的区别。
+内部状态的具体含义取决于组件。例如，[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)组件的text参数。
 
 
 ## 使用规则
 
-- 当前`$$`支持基础类型变量，以及[\@State](arkts-state.md)、[\@Link](arkts-link.md)和[\@Prop](arkts-prop.md)装饰的变量。
+- 当前`$$`支持基础类型变量，当该变量使用[\@State](arkts-state.md)、[\@Link](arkts-link.md)、[\@Prop](arkts-prop.md)、[\@Provide](arkts-provide-and-consume.md)等状态管理V1装饰器装饰，或者[\@Local](arkts-new-local.md)等状态管理V2装饰器装饰时，变量值的变化会触发UI刷新。
 
 - 当前`$$`支持的组件：
 
@@ -46,21 +46,19 @@
   | [GridItem](../../reference/apis-arkui/arkui-ts/ts-container-griditem.md) | selected | 10 |
   | [ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md) | selected | 10 |
 
-- `$$`绑定的变量变化时，会触发UI的同步刷新。
-
 
 ## 使用示例
 
 以[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)方法的text参数为例：
+<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
 
-
-```ts
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
 struct TextInputExample {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
 
   build() {
     Column({ space: 20 }) {
@@ -70,10 +68,12 @@ struct TextInputExample {
         .placeholderFont({ size: 14, weight: 400 })
         .caretColor(Color.Blue)
         .width(300)
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
-
 
 ![TextInputDouble](figures/TextInputDouble.gif)

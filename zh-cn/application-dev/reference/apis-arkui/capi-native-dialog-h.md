@@ -1,4 +1,10 @@
 # native_dialog.h
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -13,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：**  <!--RP1-->[NativeDialogSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeDialogSample)<!--RP1End-->
 
 ## 汇总
 
@@ -44,7 +52,7 @@
 | [void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getuserdata) | - | 获取弹窗关闭事件对象中的用户自定义数据指针。 |
 | [int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getdismissreason) | - | 获取交互式关闭事件指针中的关闭原因。 |
 | [int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (\*callback)(int32_t dialogId))](#oh_arkui_customdialog_opendialog) | - | 弹出自定义弹窗。 |
-| [int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options)](#oh_arkui_customdialog_updatedialog) | - | 更新自定义弹窗。 |
+| [int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))](#oh_arkui_customdialog_updatedialog) | - | 更新自定义弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)](#oh_arkui_customdialog_closedialog) | - | 关闭自定义弹窗。 |
 | [ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)](#oh_arkui_customdialog_createoptions) | - | 创建自定义弹窗options。 |
 | [void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)](#oh_arkui_customdialog_disposeoptions) | - | 销毁自定义弹窗options. |
@@ -82,7 +90,7 @@
 
 ### ArkUI_DismissReason
 
-```
+```c
 enum ArkUI_DismissReason
 ```
 
@@ -102,7 +110,7 @@ enum ArkUI_DismissReason
 
 ### ArkUI_LevelMode
 
-```
+```c
 enum ArkUI_LevelMode
 ```
 
@@ -120,7 +128,7 @@ enum ArkUI_LevelMode
 
 ### ArkUI_ImmersiveMode
 
-```
+```c
 enum ArkUI_ImmersiveMode
 ```
 
@@ -138,7 +146,7 @@ enum ArkUI_ImmersiveMode
 
 ### ArkUI_DialogState
 
-```
+```c
 enum ArkUI_DialogState
 ```
 
@@ -163,7 +171,7 @@ enum ArkUI_DialogState
 
 ### ArkUI_OnWillDismissEvent()
 
-```
+```c
 typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 ```
 
@@ -180,9 +188,15 @@ typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 | -------- | -------- |
 | reason | 触发弹窗关闭的原因。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回任意值都表示不关闭弹窗。 |
+
 ### OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss()
 
-```
+```c
 void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)
 ```
 
@@ -203,7 +217,7 @@ void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent*
 
 ### OH_ArkUI_DialogDismissEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)
 ```
 
@@ -229,7 +243,7 @@ void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)
 
 ### OH_ArkUI_DialogDismissEvent_GetDismissReason()
 
-```
+```c
 int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)
 ```
 
@@ -255,7 +269,7 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 ### OH_ArkUI_CustomDialog_OpenDialog()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))
 ```
 
@@ -282,8 +296,8 @@ int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, voi
 
 ### OH_ArkUI_CustomDialog_UpdateDialog()
 
-```
-int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options)
+```c
+int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))
 ```
 
 **描述：**
@@ -299,6 +313,7 @@ int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options)
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
+| callback                               | 更新弹窗的回调，返回入参是弹窗ID。 |
 
 **返回：**
 
@@ -308,7 +323,7 @@ int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options)
 
 ### OH_ArkUI_CustomDialog_CloseDialog()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 ```
 
@@ -334,7 +349,7 @@ int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 
 ### OH_ArkUI_CustomDialog_CreateOptions()
 
-```
+```c
 ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)
 ```
 
@@ -360,14 +375,14 @@ ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle 
 
 ### OH_ArkUI_CustomDialog_DisposeOptions()
 
-```
+```c
 void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 ```
 
 **描述：**
 
 
-销毁自定义弹窗options.
+销毁自定义弹窗options。
 
 **起始版本：** 19
 
@@ -376,11 +391,11 @@ void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 自定义弹窗options的指针. |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 自定义弹窗options的指针。 |
 
 ### OH_ArkUI_CustomDialog_SetLevelMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, ArkUI_LevelMode levelMode)
 ```
 
@@ -388,6 +403,10 @@ int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, A
 
 
 设置弹窗的显示层级。
+
+> **说明：** 
+>
+> 本方法需要在调用[OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog)方法之前调用。
 
 **起始版本：** 19
 
@@ -407,7 +426,7 @@ int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, A
 
 ### OH_ArkUI_CustomDialog_SetLevelUniqueId()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* options, int32_t uniqueId)
 ```
 
@@ -415,6 +434,10 @@ int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* option
 
 
 设置弹窗显示层级页面下的节点id。
+
+> **说明：** 
+>
+> 本方法需要在调用[OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog)方法之前调用。
 
 **起始版本：** 19
 
@@ -434,7 +457,7 @@ int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* option
 
 ### OH_ArkUI_CustomDialog_SetImmersiveMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMode immersiveMode)
 ```
 
@@ -461,7 +484,7 @@ int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* option
 
 ### OH_ArkUI_CustomDialog_SetBackgroundColor()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* options, uint32_t backgroundColor)
 ```
 
@@ -488,7 +511,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* opti
 
 ### OH_ArkUI_CustomDialog_SetCornerRadius()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options, float topLeft, float topRight, float bottomLeft, float bottomRight)
 ```
 
@@ -518,7 +541,7 @@ int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options
 
 ### OH_ArkUI_CustomDialog_SetBorderWidth()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -549,7 +572,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options,
 
 ### OH_ArkUI_CustomDialog_SetBorderColor()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)
 ```
 
@@ -579,7 +602,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options,
 
 ### OH_ArkUI_CustomDialog_SetBorderStyle()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options, int32_t top, int32_t right, int32_t bottom, int32_t left)
 ```
 
@@ -609,7 +632,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options,
 
 ### OH_ArkUI_CustomDialog_SetWidth()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float width, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -637,7 +660,7 @@ int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float
 
 ### OH_ArkUI_CustomDialog_SetHeight()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, float height, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -665,7 +688,7 @@ int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, floa
 
 ### OH_ArkUI_CustomDialog_SetShadow()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkUI_ShadowStyle shadow)
 ```
 
@@ -692,7 +715,7 @@ int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkU
 
 ### OH_ArkUI_CustomDialog_SetCustomShadow()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* customShadow)
 ```
 
@@ -709,7 +732,7 @@ int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* customShadow | 弹窗的自定义阴影参数，格式与NODE_CUSTOM_SHADOW属性一致。 |
+| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* customShadow | 弹窗的自定义阴影参数，格式与[ArkUI_NodeAttributeType](./capi-native-node-h.md#arkui_nodeattributetype)中的NODE_CUSTOM_SHADOW属性一致。 |
 
 **返回：**
 
@@ -719,7 +742,7 @@ int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options
 
 ### OH_ArkUI_CustomDialog_SetBackgroundBlurStyle()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* options, ArkUI_BlurStyle blurStyle)
 ```
 
@@ -746,7 +769,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* 
 
 ### OH_ArkUI_CustomDialog_SetAlignment()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, int32_t alignment, float offsetX, float offsetY)
 ```
 
@@ -775,7 +798,7 @@ int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, i
 
 ### OH_ArkUI_CustomDialog_SetModalMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)
 ```
 
@@ -792,7 +815,7 @@ int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, b
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| bool isModal | 设置是否开启模态窗口。模态窗口有蒙层,非模态窗口无蒙层。设置为true表示开启模态窗口。 |
+| bool isModal | 设置是否开启模态窗口。模态窗口有蒙层，非模态窗口无蒙层。设置为true表示开启模态窗口。设置为false表示关闭模态窗口。<br/>默认值：false |
 
 **返回：**
 
@@ -802,7 +825,7 @@ int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, b
 
 ### OH_ArkUI_CustomDialog_SetAutoCancel()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)
 ```
 
@@ -819,7 +842,7 @@ int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| bool autoCancel | 设置是否允许点击遮罩层退出，true表示关闭弹窗，false表示不关闭弹窗。 |
+| bool autoCancel | 设置是否允许点击遮罩层退出，true表示关闭弹窗，false表示不关闭弹窗。<br/>默认值：ture |
 
 **返回：**
 
@@ -829,7 +852,7 @@ int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, 
 
 ### OH_ArkUI_CustomDialog_SetSubwindowMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)
 ```
 
@@ -846,7 +869,7 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| bool showInSubwindow | 设置弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。默认false，弹窗显示在应用内，而非独立子窗口。 |
+| bool showInSubwindow | 设置弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。默认false，弹窗显示在应用内，而非独立子窗口。值为true时，可以显示在主窗口外。 |
 
 **返回：**
 
@@ -856,7 +879,7 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 
 ### OH_ArkUI_CustomDialog_SetMask()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)
 ```
 
@@ -884,7 +907,7 @@ int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32
 
 ### OH_ArkUI_CustomDialog_SetKeyboardAvoidMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* options, ArkUI_KeyboardAvoidMode keyboardAvoidMode)
 ```
 
@@ -911,7 +934,7 @@ int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* op
 
 ### OH_ArkUI_CustomDialog_SetHoverModeEnabled()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* options, bool enabled)
 ```
 
@@ -928,7 +951,7 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| bool enabled | 是否响应悬停态，默认false。 |
+| bool enabled | 是否响应悬停态，默认false。值为true时响应悬停态，值为false时不响应悬停态。 |
 
 **返回：**
 
@@ -938,7 +961,7 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* opt
 
 ### OH_ArkUI_CustomDialog_SetHoverModeArea()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* options, ArkUI_HoverModeAreaType hoverModeAreaType)
 ```
 
@@ -965,7 +988,7 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* option
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))
 ```
 
@@ -993,7 +1016,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOp
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1021,7 +1044,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOpt
 
 ### OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1039,7 +1062,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOpti
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | void* userData | 用户自定义数据指针。 |
-| callback | 弹窗弹出时的事件回调。 |
+| callback | 弹窗弹出后的事件回调。 |
 
 **返回：**
 
@@ -1049,7 +1072,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOpti
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1077,7 +1100,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialog
 
 ### OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1105,7 +1128,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogO
 
 ### OH_ArkUI_CustomDialog_GetState()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_DialogState* state)
 ```
 
@@ -1132,7 +1155,7 @@ int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_Di
 
 ### OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundBlurStyleOptions)
 ```
 
@@ -1159,7 +1182,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOp
 
 ### OH_ArkUI_CustomDialog_SetBackgroundEffect()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundEffect)
 ```
 

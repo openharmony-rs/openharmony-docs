@@ -1,4 +1,10 @@
 # @ohos.base (公共回调信息)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Base-->
+<!--Owner: @majiajun518-->
+<!--Designer: @majiajun518-->
+<!--Tester: @jiyong_sd-->
+<!--Adviser: @fang-jinxu-->
 
 本模块定义了OpenHarmony ArkTS接口的公共回调类型，包括接口调用时出现的公共回调和公共错误信息。
 
@@ -11,7 +17,7 @@
 ## 导入模块
 
 ```
-import base from '@ohos.base';
+import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.BasicServicesKit';
 ```
 
 ## Callback

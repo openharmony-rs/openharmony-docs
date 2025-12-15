@@ -1,4 +1,14 @@
 # JSVM_CallbackInfo__*
+<!--Kit: Common Basic Capability-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
+
+```c
+typedef struct JSVM_CallbackInfo__* JSVM_CallbackInfo
+```
 
 ## 概述
 

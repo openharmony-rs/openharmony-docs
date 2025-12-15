@@ -1,5 +1,12 @@
 # drawing_color.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 文件中定义了与颜色相关的功能函数。
@@ -24,7 +31,7 @@
 
 ### OH_Drawing_ColorSetArgb()
 
-```
+```c
 uint32_t OH_Drawing_ColorSetArgb(uint32_t alpha, uint32_t red, uint32_t green, uint32_t blue)
 ```
 

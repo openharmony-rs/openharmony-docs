@@ -1,8 +1,16 @@
 # arkweb_scheme_handler.h
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 ## 概述
 
 声明用于拦截来自ArkWeb的请求的API。
+
+**引用文件：** <web/arkweb_scheme_handler.h>
 
 **库：** libohweb.so
 
@@ -12,7 +20,7 @@
 
 **相关模块：** [Web](capi-web.md)
 
-**相关示例：** <!--RP1-->[ArkWebSchemeHandler](https://gitee.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler)<!--RP1End-->
+**相关示例：** <!--RP1-->[ArkWebSchemeHandler](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler)<!--RP1End-->
 
 ## 汇总
 
@@ -103,7 +111,8 @@
 | [int32_t OH_ArkWebResourceHandler_DidReceiveResponse(const ArkWeb_ResourceHandler* resourceHandler,const ArkWeb_Response* response)](#oh_arkwebresourcehandler_didreceiveresponse) | - | 将构造的响应头传递给被拦截的请求。 |
 | [int32_t OH_ArkWebResourceHandler_DidReceiveData(const ArkWeb_ResourceHandler* resourceHandler,const uint8_t* buffer,int64_t bufLen)](#oh_arkwebresourcehandler_didreceivedata) | - | 将构造的响应体传递给被拦截的请求。 |
 | [int32_t OH_ArkWebResourceHandler_DidFinish(const ArkWeb_ResourceHandler* resourceHandler)](#oh_arkwebresourcehandler_didfinish) | - | 通知ArkWeb内核被拦截的请求已经完成，并且没有更多的数据可用。 |
-| [int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* resourceHandler,ArkWeb_NetError errorCode)](#oh_arkwebresourcehandler_didfailwitherror) | - | 通知ArkWeb内核被拦截请求应该失败。 |
+| [int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* resourceHandler,ArkWeb_NetError errorCode)](#oh_arkwebresourcehandler_didfailwitherror) | - | 通知ArkWeb内核，被拦截的请求应该失败。 |
+| [int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler* resourceHandler,ArkWeb_NetError errorCode,bool completeIfNoResponse)](#oh_arkwebresourcehandler_didfailwitherrorv2) | - | 通知ArkWeb内核，被拦截的请求应该失败。对比OH_ArkWebResourceHandler_DidFailWithError接口，新增参数completeIfNoResponse，当值为true时，若之前未调用过OH_ArkWebResourceHandler_DidReceiveResponse，则会自动生成一个response以完成此次网络请求，网络错误码为-104；值为false时，将等待应用调用OH_ArkWebResourceHandler_DidReceiveResponse并传入response，不会直接完成此次网络请求。 |
 | [void OH_ArkWeb_ReleaseString(char* string)](#oh_arkweb_releasestring) | - | 释放由NDK接口创建的字符串。 |
 | [void OH_ArkWeb_ReleaseByteArray(uint8_t* byteArray)](#oh_arkweb_releasebytearray) | - | 释放由NDK接口创建的字节数组。 |
 
@@ -111,7 +120,7 @@
 
 ### ArkWeb_CustomSchemeOption
 
-```
+```c
 enum ArkWeb_CustomSchemeOption
 ```
 
@@ -125,6 +134,7 @@ custom scheme的配置信息。
 
 | 枚举项 | 描述 |
 | -- | -- |
+| OH_ARKWEB_SCHEME_OPTION_NONE = 0 | 表示注册自定义scheme时不赋予它任何特殊行为或能力。 |
 | ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0 | 如果设置了ARKWEB_SCHEME_OPTION_STANDARD，那么该scheme将被视为标准scheme来处理。 |
 | ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1 | 如果设置了ARKWEB_SCHEME_OPTION_LOCAL，则将使用与“file” URL相同的安全规则来处理该scheme。 |
 | ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2 | 如果设置了ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED，则该scheme的请求只能由使用相同scheme加载的页面中发起。 |
@@ -136,7 +146,7 @@ custom scheme的配置信息。
 
 ### ArkWeb_ResourceType
 
-```
+```c
 enum ArkWeb_ResourceType
 ```
 
@@ -176,7 +186,7 @@ enum ArkWeb_ResourceType
 
 ### ArkWeb_OnRequestStart()
 
-```
+```c
 typedef void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler,ArkWeb_ResourceRequest* resourceRequest,const ArkWeb_ResourceHandler* resourceHandler,bool* intercept)
 ```
 
@@ -200,7 +210,7 @@ typedef void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler,
 
 ### ArkWeb_OnRequestStop()
 
-```
+```c
 typedef void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler,const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -224,7 +234,7 @@ typedef void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler,c
 
 ### ArkWeb_HttpBodyStreamReadCallback()
 
-```
+```c
 typedef void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream,uint8_t* buffer,int bytesRead)
 ```
 
@@ -247,7 +257,7 @@ typedef void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* h
 
 ### ArkWeb_HttpBodyStreamAsyncReadCallback()
 
-```
+```c
 typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream *httpBodyStream,uint8_t *buffer,int bytesRead)
 ```
 
@@ -270,7 +280,7 @@ typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStre
 
 ### ArkWeb_HttpBodyStreamInitCallback()
 
-```
+```c
 typedef void (*ArkWeb_HttpBodyStreamInitCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, ArkWeb_NetError result)
 ```
 
@@ -291,7 +301,7 @@ ArkWeb_HttpBodyStream初始化操作完成时回调函数。
 
 ### OH_ArkWebRequestHeaderList_Destroy()
 
-```
+```c
 void OH_ArkWebRequestHeaderList_Destroy(ArkWeb_RequestHeaderList* requestHeaderList)
 ```
 
@@ -312,7 +322,7 @@ void OH_ArkWebRequestHeaderList_Destroy(ArkWeb_RequestHeaderList* requestHeaderL
 
 ### OH_ArkWebRequestHeaderList_GetSize()
 
-```
+```c
 int32_t OH_ArkWebRequestHeaderList_GetSize(const ArkWeb_RequestHeaderList* requestHeaderList)
 ```
 
@@ -339,7 +349,7 @@ int32_t OH_ArkWebRequestHeaderList_GetSize(const ArkWeb_RequestHeaderList* reque
 
 ### OH_ArkWebRequestHeaderList_GetHeader()
 
-```
+```c
 void OH_ArkWebRequestHeaderList_GetHeader(const ArkWeb_RequestHeaderList* requestHeaderList,int32_t index,char** key,char** value)
 ```
 
@@ -363,7 +373,7 @@ void OH_ArkWebRequestHeaderList_GetHeader(const ArkWeb_RequestHeaderList* reques
 
 ### OH_ArkWebResourceRequest_SetUserData()
 
-```
+```c
 int32_t OH_ArkWebResourceRequest_SetUserData(ArkWeb_ResourceRequest* resourceRequest, void* userData)
 ```
 
@@ -391,7 +401,7 @@ int32_t OH_ArkWebResourceRequest_SetUserData(ArkWeb_ResourceRequest* resourceReq
 
 ### OH_ArkWebResourceRequest_GetUserData()
 
-```
+```c
 void* OH_ArkWebResourceRequest_GetUserData(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -418,7 +428,7 @@ void* OH_ArkWebResourceRequest_GetUserData(const ArkWeb_ResourceRequest* resourc
 
 ### OH_ArkWebResourceRequest_GetMethod()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetMethod(const ArkWeb_ResourceRequest* resourceRequest, char** method)
 ```
 
@@ -440,7 +450,7 @@ void OH_ArkWebResourceRequest_GetMethod(const ArkWeb_ResourceRequest* resourceRe
 
 ### OH_ArkWebResourceRequest_GetUrl()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetUrl(const ArkWeb_ResourceRequest* resourceRequest, char** url)
 ```
 
@@ -462,7 +472,7 @@ void OH_ArkWebResourceRequest_GetUrl(const ArkWeb_ResourceRequest* resourceReque
 
 ### OH_ArkWebResourceRequest_GetHttpBodyStream()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetHttpBodyStream(const ArkWeb_ResourceRequest* resourceRequest,ArkWeb_HttpBodyStream** httpBodyStream)
 ```
 
@@ -484,7 +494,7 @@ void OH_ArkWebResourceRequest_GetHttpBodyStream(const ArkWeb_ResourceRequest* re
 
 ### OH_ArkWebResourceRequest_DestroyHttpBodyStream()
 
-```
+```c
 void OH_ArkWebResourceRequest_DestroyHttpBodyStream(ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -505,7 +515,7 @@ void OH_ArkWebResourceRequest_DestroyHttpBodyStream(ArkWeb_HttpBodyStream* httpB
 
 ### OH_ArkWebResourceRequest_GetResourceType()
 
-```
+```c
 int32_t OH_ArkWebResourceRequest_GetResourceType(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -532,7 +542,7 @@ int32_t OH_ArkWebResourceRequest_GetResourceType(const ArkWeb_ResourceRequest* r
 
 ### OH_ArkWebResourceRequest_GetFrameUrl()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetFrameUrl(const ArkWeb_ResourceRequest* resourceRequest, char** frameUrl)
 ```
 
@@ -554,7 +564,7 @@ void OH_ArkWebResourceRequest_GetFrameUrl(const ArkWeb_ResourceRequest* resource
 
 ### OH_ArkWebHttpBodyStream_SetUserData()
 
-```
+```c
 int32_t OH_ArkWebHttpBodyStream_SetUserData(ArkWeb_HttpBodyStream* httpBodyStream, void* userData)
 ```
 
@@ -582,7 +592,7 @@ int32_t OH_ArkWebHttpBodyStream_SetUserData(ArkWeb_HttpBodyStream* httpBodyStrea
 
 ### OH_ArkWebHttpBodyStream_GetUserData()
 
-```
+```c
 void* OH_ArkWebHttpBodyStream_GetUserData(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -609,7 +619,7 @@ void* OH_ArkWebHttpBodyStream_GetUserData(const ArkWeb_HttpBodyStream* httpBodyS
 
 ### OH_ArkWebHttpBodyStream_SetReadCallback()
 
-```
+```c
 int32_t OH_ArkWebHttpBodyStream_SetReadCallback(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamReadCallback readCallback)
 ```
 
@@ -637,7 +647,7 @@ int32_t OH_ArkWebHttpBodyStream_SetReadCallback(ArkWeb_HttpBodyStream* httpBodyS
 
 ### OH_ArkWebHttpBodyStream_SetAsyncReadCallback()
 
-```
+```c
 int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamAsyncReadCallback readCallback)
 ```
 
@@ -666,7 +676,7 @@ int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* http
 
 ### OH_ArkWebHttpBodyStream_Init()
 
-```
+```c
 int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamInitCallback initCallback)
 ```
 
@@ -694,7 +704,7 @@ int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream,ArkWe
 
 ### OH_ArkWebHttpBodyStream_Read()
 
-```
+```c
 void OH_ArkWebHttpBodyStream_Read(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bufLen)
 ```
 
@@ -717,13 +727,13 @@ void OH_ArkWebHttpBodyStream_Read(const ArkWeb_HttpBodyStream* httpBodyStream, u
 
 ### OH_ArkWebHttpBodyStream_AsyncRead()
 
-```
+```c
 void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bufLen)
 ```
 
 **描述：**
 
-将请求的上传数据读取到buffer。buffer的大小必须大于bufLen。buffer的大小必须大于bufLen。数据将从工作线程读取数据到buffer，因此在回调函数返回之前，不应在其他线程中使用buffer，以避免并发问题。
+将请求的上传数据读取至buffer，buffer的大小必须超过bufLen。数据将由工作线程读取至buffer，因此在回调函数返回前，不应在其他线程中使用缓冲区，以避免并发问题。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -740,7 +750,7 @@ void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStre
 
 ### OH_ArkWebHttpBodyStream_GetSize()
 
-```
+```c
 uint64_t OH_ArkWebHttpBodyStream_GetSize(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -767,7 +777,7 @@ uint64_t OH_ArkWebHttpBodyStream_GetSize(const ArkWeb_HttpBodyStream* httpBodySt
 
 ### OH_ArkWebHttpBodyStream_GetPosition()
 
-```
+```c
 uint64_t OH_ArkWebHttpBodyStream_GetPosition(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -794,7 +804,7 @@ uint64_t OH_ArkWebHttpBodyStream_GetPosition(const ArkWeb_HttpBodyStream* httpBo
 
 ### OH_ArkWebHttpBodyStream_IsChunked()
 
-```
+```c
 bool OH_ArkWebHttpBodyStream_IsChunked(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -821,7 +831,7 @@ bool OH_ArkWebHttpBodyStream_IsChunked(const ArkWeb_HttpBodyStream* httpBodyStre
 
 ### OH_ArkWebHttpBodyStream_IsEof()
 
-```
+```c
 bool OH_ArkWebHttpBodyStream_IsEof(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -848,7 +858,7 @@ bool OH_ArkWebHttpBodyStream_IsEof(const ArkWeb_HttpBodyStream* httpBodyStream)
 
 ### OH_ArkWebHttpBodyStream_IsInMemory()
 
-```
+```c
 bool OH_ArkWebHttpBodyStream_IsInMemory(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -875,7 +885,7 @@ bool OH_ArkWebHttpBodyStream_IsInMemory(const ArkWeb_HttpBodyStream* httpBodyStr
 
 ### OH_ArkWebResourceRequest_Destroy()
 
-```
+```c
 int32_t OH_ArkWebResourceRequest_Destroy(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -902,7 +912,7 @@ int32_t OH_ArkWebResourceRequest_Destroy(const ArkWeb_ResourceRequest* resourceR
 
 ### OH_ArkWebResourceRequest_GetReferrer()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetReferrer(const ArkWeb_ResourceRequest* resourceRequest, char** referrer)
 ```
 
@@ -924,7 +934,7 @@ void OH_ArkWebResourceRequest_GetReferrer(const ArkWeb_ResourceRequest* resource
 
 ### OH_ArkWebResourceRequest_GetRequestHeaders()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetRequestHeaders(const ArkWeb_ResourceRequest* resourceRequest,ArkWeb_RequestHeaderList** requestHeaderList)
 ```
 
@@ -946,7 +956,7 @@ void OH_ArkWebResourceRequest_GetRequestHeaders(const ArkWeb_ResourceRequest* re
 
 ### OH_ArkWebResourceRequest_IsRedirect()
 
-```
+```c
 bool OH_ArkWebResourceRequest_IsRedirect(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -973,7 +983,7 @@ bool OH_ArkWebResourceRequest_IsRedirect(const ArkWeb_ResourceRequest* resourceR
 
 ### OH_ArkWebResourceRequest_IsMainFrame()
 
-```
+```c
 bool OH_ArkWebResourceRequest_IsMainFrame(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -1000,7 +1010,7 @@ bool OH_ArkWebResourceRequest_IsMainFrame(const ArkWeb_ResourceRequest* resource
 
 ### OH_ArkWebResourceRequest_HasGesture()
 
-```
+```c
 bool OH_ArkWebResourceRequest_HasGesture(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -1027,7 +1037,7 @@ bool OH_ArkWebResourceRequest_HasGesture(const ArkWeb_ResourceRequest* resourceR
 
 ### OH_ArkWeb_RegisterCustomSchemes()
 
-```
+```c
 int32_t OH_ArkWeb_RegisterCustomSchemes(const char* scheme, int32_t option)
 ```
 
@@ -1055,7 +1065,7 @@ int32_t OH_ArkWeb_RegisterCustomSchemes(const char* scheme, int32_t option)
 
 ### OH_ArkWebServiceWorker_SetSchemeHandler()
 
-```
+```c
 bool OH_ArkWebServiceWorker_SetSchemeHandler(const char* scheme, ArkWeb_SchemeHandler* schemeHandler)
 ```
 
@@ -1085,7 +1095,7 @@ bool OH_ArkWebServiceWorker_SetSchemeHandler(const char* scheme, ArkWeb_SchemeHa
 
 ### OH_ArkWeb_SetSchemeHandler()
 
-```
+```c
 bool OH_ArkWeb_SetSchemeHandler(const char* scheme, const char* webTag, ArkWeb_SchemeHandler* schemeHandler)
 ```
 
@@ -1116,7 +1126,7 @@ bool OH_ArkWeb_SetSchemeHandler(const char* scheme, const char* webTag, ArkWeb_S
 
 ### OH_ArkWebServiceWorker_ClearSchemeHandlers()
 
-```
+```c
 int32_t OH_ArkWebServiceWorker_ClearSchemeHandlers()
 ```
 
@@ -1136,7 +1146,7 @@ int32_t OH_ArkWebServiceWorker_ClearSchemeHandlers()
 
 ### OH_ArkWeb_ClearSchemeHandlers()
 
-```
+```c
 int32_t OH_ArkWeb_ClearSchemeHandlers(const char* webTag)
 ```
 
@@ -1163,7 +1173,7 @@ int32_t OH_ArkWeb_ClearSchemeHandlers(const char* webTag)
 
 ### OH_ArkWeb_CreateSchemeHandler()
 
-```
+```c
 void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)
 ```
 
@@ -1180,11 +1190,11 @@ void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)** schemeHandler | 返回创建的ArkWeb_SchemeHandler。在不需要时使用OH_ArkWeb_DestoryschemeHandler销毁它。 |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)** schemeHandler | 返回创建的ArkWeb_SchemeHandler。在不需要时使用OH_ArkWeb_DestroyschemeHandler销毁它。 |
 
 ### OH_ArkWeb_DestroySchemeHandler()
 
-```
+```c
 void OH_ArkWeb_DestroySchemeHandler(ArkWeb_SchemeHandler* schemeHandler)
 ```
 
@@ -1205,7 +1215,7 @@ void OH_ArkWeb_DestroySchemeHandler(ArkWeb_SchemeHandler* schemeHandler)
 
 ### OH_ArkWebSchemeHandler_SetUserData()
 
-```
+```c
 int32_t OH_ArkWebSchemeHandler_SetUserData(ArkWeb_SchemeHandler* schemeHandler, void* userData)
 ```
 
@@ -1233,7 +1243,7 @@ int32_t OH_ArkWebSchemeHandler_SetUserData(ArkWeb_SchemeHandler* schemeHandler, 
 
 ### OH_ArkWebSchemeHandler_GetUserData()
 
-```
+```c
 void* OH_ArkWebSchemeHandler_GetUserData(const ArkWeb_SchemeHandler* schemeHandler)
 ```
 
@@ -1260,7 +1270,7 @@ void* OH_ArkWebSchemeHandler_GetUserData(const ArkWeb_SchemeHandler* schemeHandl
 
 ### OH_ArkWebSchemeHandler_SetOnRequestStart()
 
-```
+```c
 int32_t OH_ArkWebSchemeHandler_SetOnRequestStart(ArkWeb_SchemeHandler* schemeHandler,ArkWeb_OnRequestStart onRequestStart)
 ```
 
@@ -1288,7 +1298,7 @@ int32_t OH_ArkWebSchemeHandler_SetOnRequestStart(ArkWeb_SchemeHandler* schemeHan
 
 ### OH_ArkWebSchemeHandler_SetOnRequestStop()
 
-```
+```c
 int32_t OH_ArkWebSchemeHandler_SetOnRequestStop(ArkWeb_SchemeHandler* schemeHandler,ArkWeb_OnRequestStop onRequestStop)
 ```
 
@@ -1316,7 +1326,7 @@ int32_t OH_ArkWebSchemeHandler_SetOnRequestStop(ArkWeb_SchemeHandler* schemeHand
 
 ### OH_ArkWeb_CreateResponse()
 
-```
+```c
 void OH_ArkWeb_CreateResponse(ArkWeb_Response** response)
 ```
 
@@ -1333,11 +1343,11 @@ void OH_ArkWeb_CreateResponse(ArkWeb_Response** response)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)** response | 返回创建的ArkWeb_Response。在不需要时使用OH_ArkWeb_DestoryResponse进行销毁。 |
+| [ArkWeb_Response](capi-web-arkweb-response.md)** response | 返回创建的ArkWeb_Response。在不需要时使用OH_ArkWeb_DestroyResponse进行销毁。 |
 
 ### OH_ArkWeb_DestroyResponse()
 
-```
+```c
 void OH_ArkWeb_DestroyResponse(ArkWeb_Response* response)
 ```
 
@@ -1357,7 +1367,7 @@ void OH_ArkWeb_DestroyResponse(ArkWeb_Response* response)
 
 ### OH_ArkWebResponse_SetUrl()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetUrl(ArkWeb_Response* response, const char* url)
 ```
 
@@ -1385,7 +1395,7 @@ int32_t OH_ArkWebResponse_SetUrl(ArkWeb_Response* response, const char* url)
 
 ### OH_ArkWebResponse_GetUrl()
 
-```
+```c
 void OH_ArkWebResponse_GetUrl(const ArkWeb_Response* response, char** url)
 ```
 
@@ -1407,7 +1417,7 @@ void OH_ArkWebResponse_GetUrl(const ArkWeb_Response* response, char** url)
 
 ### OH_ArkWebResponse_SetError()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetError(ArkWeb_Response* response, ArkWeb_NetError errorCode)
 ```
 
@@ -1435,7 +1445,7 @@ int32_t OH_ArkWebResponse_SetError(ArkWeb_Response* response, ArkWeb_NetError er
 
 ### OH_ArkWebResponse_GetError()
 
-```
+```c
 ArkWeb_NetError OH_ArkWebResponse_GetError(const ArkWeb_Response* response)
 ```
 
@@ -1462,7 +1472,7 @@ ArkWeb_NetError OH_ArkWebResponse_GetError(const ArkWeb_Response* response)
 
 ### OH_ArkWebResponse_SetStatus()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetStatus(ArkWeb_Response* response, int status)
 ```
 
@@ -1490,7 +1500,7 @@ int32_t OH_ArkWebResponse_SetStatus(ArkWeb_Response* response, int status)
 
 ### OH_ArkWebResponse_GetStatus()
 
-```
+```c
 int OH_ArkWebResponse_GetStatus(const ArkWeb_Response* response)
 ```
 
@@ -1517,7 +1527,7 @@ int OH_ArkWebResponse_GetStatus(const ArkWeb_Response* response)
 
 ### OH_ArkWebResponse_SetStatusText()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetStatusText(ArkWeb_Response* response, const char* statusText)
 ```
 
@@ -1545,7 +1555,7 @@ int32_t OH_ArkWebResponse_SetStatusText(ArkWeb_Response* response, const char* s
 
 ### OH_ArkWebResponse_GetStatusText()
 
-```
+```c
 void OH_ArkWebResponse_GetStatusText(const ArkWeb_Response* response, char** statusText)
 ```
 
@@ -1567,7 +1577,7 @@ void OH_ArkWebResponse_GetStatusText(const ArkWeb_Response* response, char** sta
 
 ### OH_ArkWebResponse_SetMimeType()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetMimeType(ArkWeb_Response* response, const char* mimeType)
 ```
 
@@ -1595,7 +1605,7 @@ int32_t OH_ArkWebResponse_SetMimeType(ArkWeb_Response* response, const char* mim
 
 ### OH_ArkWebResponse_GetMimeType()
 
-```
+```c
 void OH_ArkWebResponse_GetMimeType(const ArkWeb_Response* response, char** mimeType)
 ```
 
@@ -1617,7 +1627,7 @@ void OH_ArkWebResponse_GetMimeType(const ArkWeb_Response* response, char** mimeT
 
 ### OH_ArkWebResponse_SetCharset()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetCharset(ArkWeb_Response* response, const char* charset)
 ```
 
@@ -1645,7 +1655,7 @@ int32_t OH_ArkWebResponse_SetCharset(ArkWeb_Response* response, const char* char
 
 ### OH_ArkWebResponse_GetCharset()
 
-```
+```c
 void OH_ArkWebResponse_GetCharset(const ArkWeb_Response* response, char** charset)
 ```
 
@@ -1667,7 +1677,7 @@ void OH_ArkWebResponse_GetCharset(const ArkWeb_Response* response, char** charse
 
 ### OH_ArkWebResponse_SetHeaderByName()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetHeaderByName(ArkWeb_Response* response,const char* name,const char* value,bool overwrite)
 ```
 
@@ -1697,7 +1707,7 @@ int32_t OH_ArkWebResponse_SetHeaderByName(ArkWeb_Response* response,const char* 
 
 ### OH_ArkWebResponse_GetHeaderByName()
 
-```
+```c
 void OH_ArkWebResponse_GetHeaderByName(const ArkWeb_Response* response, const char* name, char** value)
 ```
 
@@ -1720,7 +1730,7 @@ void OH_ArkWebResponse_GetHeaderByName(const ArkWeb_Response* response, const ch
 
 ### OH_ArkWebResourceHandler_Destroy()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_Destroy(const ArkWeb_ResourceHandler* resourceHandler)
 ```
 
@@ -1747,7 +1757,7 @@ int32_t OH_ArkWebResourceHandler_Destroy(const ArkWeb_ResourceHandler* resourceH
 
 ### OH_ArkWebResourceHandler_DidReceiveResponse()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_DidReceiveResponse(const ArkWeb_ResourceHandler* resourceHandler,const ArkWeb_Response* response)
 ```
 
@@ -1775,7 +1785,7 @@ int32_t OH_ArkWebResourceHandler_DidReceiveResponse(const ArkWeb_ResourceHandler
 
 ### OH_ArkWebResourceHandler_DidReceiveData()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_DidReceiveData(const ArkWeb_ResourceHandler* resourceHandler,const uint8_t* buffer,int64_t bufLen)
 ```
 
@@ -1804,7 +1814,7 @@ int32_t OH_ArkWebResourceHandler_DidReceiveData(const ArkWeb_ResourceHandler* re
 
 ### OH_ArkWebResourceHandler_DidFinish()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_DidFinish(const ArkWeb_ResourceHandler* resourceHandler)
 ```
 
@@ -1831,13 +1841,13 @@ int32_t OH_ArkWebResourceHandler_DidFinish(const ArkWeb_ResourceHandler* resourc
 
 ### OH_ArkWebResourceHandler_DidFailWithError()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* resourceHandler,ArkWeb_NetError errorCode)
 ```
 
 **描述：**
 
-通知ArkWeb内核被拦截请求应该失败。
+通知ArkWeb内核，被拦截的请求应该失败。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1848,8 +1858,37 @@ int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 该请求的ArkWeb_ResourceHandler。 |
+| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | 该请求的错误码。请参考[arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 如果返回0，表示成功；返回17100101，表示参数无效。 |
+
+### OH_ArkWebResourceHandler_DidFailWithErrorV2()
+
+```c
+int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler* resourceHandler,ArkWeb_NetError errorCode,bool completeIfNoResponse)
+```
+
+**描述：**
+
+通知ArkWeb内核，被拦截的请求应该失败。对比[OH_ArkWebResourceHandler_DidFailWithError](#oh_arkwebresourcehandler_didfailwitherror)接口，新增参数completeIfNoResponse，值为true时，若之前未调用过[OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse)，则会自动生成一个response以完成此次网络请求，网络错误码为-104；值为false时，将等待应用调用[OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse)并传入response，不会直接完成此次网络请求。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 20
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
+| [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | 该请求的错误码。请参考[arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md)。 |
+| bool completeIfNoResponse | 若之前未调用过[OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse)，调用[OH_ArkWebResourceHandler_DidFailWithErrorV2](#oh_arkwebresourcehandler_didfailwitherrorv2)时，此次网络请求是否完成；值为true时，若之前未调用过[OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse)，则会自动生成一个response以完成此次网络请求，网络错误码为-104；值为false时，将等待应用调用[OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse)并传入response，不会直接完成此次网络请求。 |
 
 **返回：**
 
@@ -1859,7 +1898,7 @@ int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* 
 
 ### OH_ArkWeb_ReleaseString()
 
-```
+```c
 void OH_ArkWeb_ReleaseString(char* string)
 ```
 
@@ -1880,7 +1919,7 @@ void OH_ArkWeb_ReleaseString(char* string)
 
 ### OH_ArkWeb_ReleaseByteArray()
 
-```
+```c
 void OH_ArkWeb_ReleaseByteArray(uint8_t* byteArray)
 ```
 

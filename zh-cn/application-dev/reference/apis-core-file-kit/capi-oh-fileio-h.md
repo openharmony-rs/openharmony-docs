@@ -1,8 +1,15 @@
 # oh_fileio.h
 
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
+
 ## 概述
 
-fileio模块接口定义，使用fileio提供的native接口，进行文件基础操作。
+fileio模块接口定义，提供获取文件存储位置的native接口。
 
 **引用文件：** <filemanagement/fileio/oh_fileio.h>
 
@@ -26,13 +33,13 @@ fileio模块接口定义，使用fileio提供的native接口，进行文件基�
 
 | 名称 | 描述 |
 | -- | -- |
-| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | 获取文件存储位置。 |
+| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | 获取文件存储位置。 |
 
 ## 枚举类型说明
 
 ### FileIO_FileLocation
 
-```
+```c
 enum FileIO_FileLocation
 ```
 
@@ -53,8 +60,8 @@ enum FileIO_FileLocation
 
 ### OH_FileIO_GetFileLocation()
 
-```
-FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO_FileLocation *location)
+```c
+FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)
 ```
 
 **描述**
@@ -62,7 +69,6 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO
 获取文件存储位置。
 
 **起始版本：** 12
-
 
 **参数：**
 

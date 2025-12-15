@@ -1,4 +1,10 @@
 # Web组件的生命周期
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @weixin_41848015-->
+<!--Designer: @libing23232323-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 ## 概述
 
@@ -10,7 +16,7 @@ Web组件的状态主要包括：Controller绑定到Web组件、网页加载开�
 
 Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)。
 
-自定义组件析构销毁时执行[aboutToDisAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)函数，Web组件会被销毁，Web组件与WebviewController解绑，js运行环境也会一并销毁。
+自定义组件析构销毁时执行[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)函数，Web组件会被销毁，Web组件与WebviewController解绑，js运行环境也会一并销毁。
 
 **图1**  Web组件网页正常加载过程中的回调事件
 
@@ -26,14 +32,14 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
 
 - [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)事件：当Web组件加载url之前触发该回调，用于拦截url并返回响应数据。
 
-- [onPageBegin](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagebegin)事件：网页开始加载时触发该回调，且只在主frame（表示一个HTML元素，用于展示HTML页面的HTML元素）触发。如果是iframe或者frameset（用于包含frame的HTML标签）的内容加载时则不会触发此回调。多frame页面可能同时加载，主frame加载结束时子frame可能仍在加载。同一页面导航或失败的导航不会触发该回调。
+- [onPageBegin](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagebegin)事件：网页开始加载时触发该回调，且只在主frame（表示一个用于展示HTML页面的元素）触发。如果是iframe或者frameset（用于包含frame的HTML标签）的内容加载时则不会触发此回调。多frame页面可能同时加载，主frame加载结束时子frame可能仍在加载。同一页面导航或失败的导航不会触发该回调。
 
 - [onProgressChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprogresschange)事件：告知开发者当前页面加载的进度。多frame页面或者子frame可能还在继续加载而主frame已经加载结束，所以在[onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend)事件后仍可能收到该事件。
 
 - [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend)事件：网页加载完成时触发该回调，且只在主frame触发。多frame页面有可能同时开始加载，即使主frame已经加载结束，子frame也有可能才开始或者继续加载中。同一页面导航或失败的导航不会触发该回调。建议在此回调中执行JavaScript脚本。注意，收到该回调不能保证下一帧反映DOM状态。
 
 ## Web组件网页异常加载过程所涉及的状态说明 
-- [onOverrideUrlLoading](../reference/apis-arkweb/arkts-basic-components-web-events.md#onoverrideurlloading12)事件：当URL将要加载到当前Web中时，让宿主应用程序有机会获得控制权，回调函数返回true将导致当前Web中止加载URL，而返回false则会导致Web继续照常加载URL。onLoadIntercept接口和onOverrideUrlLoading接口行为不一致，触发时机也不同，所以在应用场景上存在一定区别。onLoadIntercept事件在LoadUrl和iframe加载时触发，但onOverrideUrlLoading事件在LoadUrl和特定iframe加载时不会触发。详情见文档。
+- [onOverrideUrlLoading](../reference/apis-arkweb/arkts-basic-components-web-events.md#onoverrideurlloading12)事件：当URL将要加载到当前Web中时，让宿主应用程序有机会获得控制权，回调函数返回true将导致当前Web中止加载URL，而返回false则会导致Web继续照常加载URL。onLoadIntercept接口和onOverrideUrlLoading接口行为不一致，触发时机也不同，所以在应用场景上存在一定区别。onLoadIntercept事件在LoadUrl和iframe加载时触发，但onOverrideUrlLoading事件在LoadUrl和特定iframe加载时不会触发。
 
 - [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9)事件：Web回调事件。渲染流程中当HTTP响应的主体开始加载，新页面即将可见时触发该回调。此时文档加载还处于早期，因此链接的资源比如在线CSS、在线图片等可能尚不可用。
 
@@ -74,18 +80,18 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
 
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: 'www.example.com', controller: this.controller })
           .onControllerAttached(() => {
             // 推荐在此loadUrl、设置自定义用户代理、注入JS对象等
-            console.log('onControllerAttached execute')
+            console.info('onControllerAttached execute')
           })
           .onLoadIntercept((event) => {
             if (event) {
-              console.log('onLoadIntercept url:' + event.data.getRequestUrl())
-              console.log('url:' + event.data.getRequestUrl())
-              console.log('isMainFrame:' + event.data.isMainFrame())
-              console.log('isRedirect:' + event.data.isRedirect())
-              console.log('isRequestGesture:' + event.data.isRequestGesture())
+              console.info('onLoadIntercept url:' + event.data.getRequestUrl())
+              console.info('url:' + event.data.getRequestUrl())
+              console.info('isMainFrame:' + event.data.isMainFrame())
+              console.info('isRedirect:' + event.data.isRedirect())
+              console.info('isRequestGesture:' + event.data.isRequestGesture())
             }
             // 返回true表示阻止此次加载，否则允许此次加载
             return false;
@@ -98,7 +104,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
           })
           .onInterceptRequest((event) => {
             if (event) {
-              console.log('url:' + event.request.getRequestUrl());
+              console.info('url:' + event.request.getRequestUrl());
             }
             let head1: Header = {
               headerKey: "Connection",
@@ -111,7 +117,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
             // 将新元素追加到数组的末尾，并返回数组的新长度。
             let length = this.heads.push(head1);
             length = this.heads.push(head2);
-            console.log('The response header result length is :' + length);
+            console.info('The response header result length is :' + length);
             this.responseWeb.setResponseHeader(this.heads);
             this.responseWeb.setResponseData(this.webData);
             this.responseWeb.setResponseEncoding('utf-8');
@@ -123,33 +129,33 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
           })
           .onPageBegin((event) => {
             if (event) {
-              console.log('onPageBegin url:' + event.url);
+              console.info('onPageBegin url:' + event.url);
             }
           })
           .onFirstContentfulPaint(event => {
             if (event) {
-              console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+              console.info("onFirstContentfulPaint:" + "[navigationStartTick]:" +
               event.navigationStartTick + ", [firstContentfulPaintMs]:" +
               event.firstContentfulPaintMs);
             }
           })
           .onProgressChange((event) => {
             if (event) {
-              console.log('newProgress:' + event.newProgress);
+              console.info('newProgress:' + event.newProgress);
             }
           })
           .onPageEnd((event) => {
             // 推荐在此事件中执行JavaScript脚本
             if (event) {
-              console.log('onPageEnd url:' + event.url);
+              console.info('onPageEnd url:' + event.url);
             }
           })
           .onPageVisible((event) => {
-            console.log('onPageVisible url:' + event.url);
+            console.info('onPageVisible url:' + event.url);
           })
           .onRenderExited((event) => {
             if (event) {
-              console.log('onRenderExited reason:' + event.renderExitReason);
+              console.info('onRenderExited reason:' + event.renderExitReason);
             }
           })
           .onDisAppear(() => {
@@ -163,26 +169,12 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
   }
   ```
 
-前端index.html。
-
-  ```html
-  <!-- index.html -->
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset="UTF-8">
-  </head>
-  <body>
-  <h1>Hello, ArkWeb</h1>
-  </body>
-  </html>
-  ```
 
 ## Web组件网页加载的性能指标
 
 网页加载过程中需要关注一些重要的性能指标。例如，FCP(First Contentful Paint)首次内容绘制，FMP(First Meaningful Paint)首次有效绘制，LCP(Largest Contentful Paint)最大内容绘制等。Web组件提供了如下接口来通知开发者，接口仅支持在线非PDF网页，不支持本地网页和PDF网页。
 
-- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10)事件：网页首次内容绘制的回调函数。首次绘制文本、图像、首次绘制文本、图像、非空白Canvas或SVG的时间点。
+- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10)事件：网页首次内容绘制的回调函数。首次绘制文本、图像、非空白Canvas或SVG的时间点。
 
 - [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12)事件：网页绘制页面主要内容的回调函数。首次绘制主要内容的时间点。
 
@@ -235,14 +227,14 @@ struct WebComponent {
               // 设置重试次数上限保护，避免必现问题导致页面被循环加载。
               return;
             }
-            console.log('renderReloadCountForCrashed: ' + this.renderReloadCountForCrashed);
+            console.info('renderReloadCountForCrashed: ' + this.renderReloadCountForCrashed);
             this.renderReloadCountForCrashed++;
           } else {
             if (this.renderReloadCountForOthers >= this.renderReloadMaxForOthers) {
               // 设置重试次数上限保护, 避免必现问题导致页面被循环加载。
               return;
             }
-            console.log('renderReloadCountForOthers: ' + this.renderReloadCountForOthers);
+            console.info('renderReloadCountForOthers: ' + this.renderReloadCountForOthers);
             this.renderReloadCountForOthers++;
           }
           if (this.webIsVisible) {

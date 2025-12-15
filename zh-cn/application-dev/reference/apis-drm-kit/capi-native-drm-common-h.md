@@ -1,12 +1,19 @@
 # native_drm_common.h
 
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 概述
 
 定义DRM数据类型。
 
 **引用文件：** <multimedia/drm_framework/native_drm_common.h>
 
-**库：** libnative_drm.z.so
+**库：** libnative_drm.so
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -81,13 +88,15 @@
 
 ### DRM_EventType
 
-```
+```c
 enum DRM_EventType
 ```
 
 **描述**
 
 监听事件类型。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
 
@@ -102,7 +111,7 @@ enum DRM_EventType
 
 ### DRM_ContentProtectionLevel
 
-```
+```c
 enum DRM_ContentProtectionLevel
 ```
 
@@ -124,7 +133,7 @@ enum DRM_ContentProtectionLevel
 
 ### DRM_MediaKeyType
 
-```
+```c
 enum DRM_MediaKeyType
 ```
 
@@ -143,7 +152,7 @@ enum DRM_MediaKeyType
 
 ### DRM_MediaKeyRequestType
 
-```
+```c
 enum DRM_MediaKeyRequestType
 ```
 
@@ -166,7 +175,7 @@ enum DRM_MediaKeyRequestType
 
 ### DRM_OfflineMediaKeyStatus
 
-```
+```c
 enum DRM_OfflineMediaKeyStatus
 ```
 
@@ -186,7 +195,7 @@ enum DRM_OfflineMediaKeyStatus
 
 ### DRM_CertificateStatus
 
-```
+```c
 enum DRM_CertificateStatus
 ```
 
@@ -211,7 +220,7 @@ enum DRM_CertificateStatus
 
 ### DRM_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 

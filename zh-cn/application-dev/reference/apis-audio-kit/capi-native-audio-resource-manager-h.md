@@ -1,4 +1,10 @@
 # native_audio_resource_manager.h
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -28,8 +34,8 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceManager **resourceManager)](#oh_audiomanager_getaudioresourcemanager) | 获取音频资源管理器。<br> 使用音频资源管理器相关功能，首先需要获取音频资源管理器实例。 |
-| [OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceManager *resourceManager,const char *name, OH_AudioWorkgroup **group)](#oh_audioresourcemanager_createworkgroup) | 创建音频工作组。 |
-| [OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceManager *resourceManager,OH_AudioWorkgroup *group)](#oh_audioresourcemanager_releaseworkgroup) | 释放音频工作组。 |
+| [OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceManager *resourceManager, const char *name, OH_AudioWorkgroup **group)](#oh_audioresourcemanager_createworkgroup) | 创建音频工作组。 |
+| [OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceManager *resourceManager, OH_AudioWorkgroup *group)](#oh_audioresourcemanager_releaseworkgroup) | 释放音频工作组。 |
 | [OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *group, int32_t *tokenId)](#oh_audioworkgroup_addcurrentthread) | 将当前线程加入group指向的音频工作组。 |
 | [OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, int32_t tokenId)](#oh_audioworkgroup_removethread) | 将tokenId对应的线程从group音频工作组中移除。 |
 | [OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t startTime, uint64_t deadlineTime)](#oh_audioworkgroup_start) | 通知系统group指向的音频工作组开始工作，并告知系统当前工作组预期完成时间。 |
@@ -39,7 +45,7 @@
 
 ### OH_AudioManager_GetAudioResourceManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceManager **resourceManager)
 ```
 
@@ -64,7 +70,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceMa
 
 ### OH_AudioResourceManager_CreateWorkgroup()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceManager *resourceManager,const char *name, OH_AudioWorkgroup **group)
 ```
 
@@ -91,7 +97,7 @@ OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceMa
 
 ### OH_AudioResourceManager_ReleaseWorkgroup()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceManager *resourceManager,OH_AudioWorkgroup *group)
 ```
 
@@ -117,7 +123,7 @@ OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceM
 
 ### OH_AudioWorkgroup_AddCurrentThread()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *group, int32_t *tokenId)
 ```
 
@@ -143,7 +149,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *grou
 
 ### OH_AudioWorkgroup_RemoveThread()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, int32_t tokenId)
 ```
 
@@ -169,7 +175,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, i
 
 ### OH_AudioWorkgroup_Start()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t startTime, uint64_t deadlineTime)
 ```
 
@@ -196,7 +202,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t
 
 ### OH_AudioWorkgroup_Stop()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)
 ```
 

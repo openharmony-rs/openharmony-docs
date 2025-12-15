@@ -1,5 +1,10 @@
 # wukong稳定性工具使用指导
-
+<!--Kit: Test Kit-->
+<!--Subsystem: Test-->
+<!--Owner: @qkfg-->
+<!--Designer: @qkfg-->
+<!--Tester: @caixincen-->
+<!--Adviser: @Brilliantry_Rui-->
 ## 功能介绍
 
 wukong是系统自带的一种命令行工具，支持Ability的随机事件注入、控件注入、异常捕获、报告生成和对Ability数据遍历截图等特性。通过模拟用户行为，对系统或应用进行稳定性压力测试。wukong分为随机测试、专项测试和专注测试。
@@ -15,7 +20,7 @@ wukong是系统自带的一种命令行工具，支持Ability的随机事件注�
 wukong部件架构图以及部件内子模块职责如下所述。  
 ![Alternate text](figures/wukongRandomTestFlow.png)
 
-- 命令行解析：支持命令行获取参数并解析命令行参数。
+- 命令行解析：支持命令行获取参数并解析。
 - 运行环境管理：根据命令行初始化wukong整体运行环境。
 - 系统接口管理：检查并获取指定的mgr，注册controller和dfx的faultlog的回调函数。
 - 随机事件生成：通过random函数生成指定种子数的随机序列，生成事件。
@@ -26,11 +31,9 @@ wukong部件架构图以及部件内子模块职责如下所述。
 
 1. wukong测试工具在API 9版本开始预置使用。
 
-2. PC被检测设备连接后，才可执行命令行，支持单个和多个设备。
-
-3. 所有命令行执行前需要先进入shell模式。
+2. 所有命令执行前需完成<!--RP1-->[hdc环境配置](../dfx/hdc.md)<!--RP1End-->，并进入shell模式。
 <!--Del-->
-4. 在低于API 9版本，不能随版本编译，使用时需自行编译后推送至被检测设备，具体步骤如下。
+3. 在低于API 9版本，不能随版本编译，使用时需自行编译后推送至被检测设备，具体步骤如下。
 
    ```bash
    # 构建方式
@@ -47,7 +50,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
 
 | 命令           | 说明                                           |
 | -------------- | ---------------------------------------------- |
-| version | 获取wukong版本信息。                             |
+| -v/--version | 获取wukong版本信息。                             |
 | help    | 获取wukong帮助信息。                             |
 | appinfo | 查询支持拉起应用bundleName和对应的mainAbility名。 |
 | special | wukong专项测试。                                   |
@@ -59,10 +62,10 @@ wukong部件架构图以及部件内子模块职责如下所述。
 - 进入shell模式
 
   ```bash
-  #若为单设备，则直接输入如下命令进入shell模式
+  #若连接单个设备，则直接输入如下命令进入shell模式
   C:\Users>hdc shell
   $
-  #若为多设备，则需先获取sn号，先输入hdc list targets获取sn号，然后进入shell模式
+  #若同时连接多个设备，则需先获取sn号，先输入hdc list targets获取sn号，然后进入shell模式
   C:\Users>hdc list targets
   15xxx424axxxx345209d94xxxx8fxx900
   C:\Users>hdc -t 15xxx424axxxx345209d94xxxx8fxx900 shell

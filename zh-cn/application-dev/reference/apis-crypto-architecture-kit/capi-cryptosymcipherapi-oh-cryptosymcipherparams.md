@@ -1,5 +1,16 @@
 # OH_CryptoSymCipherParams
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoSymCipherParams OH_CryptoSymCipherParams
+```
+
 ## 概述
 
 定义对称加解密参数结构体。

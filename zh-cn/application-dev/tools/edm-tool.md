@@ -2,8 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--SE: @liuzuming-->
-<!--TSE: @lpw_work-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Enterprise Device Manager（企业设备管理工具，简称为edm），为设备管理应用提供调试和测试能力，例如激活企业设备管理拓展能力、解除激活企业设备管理拓展能力。
 
@@ -22,20 +23,20 @@ Enterprise Device Manager（企业设备管理工具，简称为edm），为设�
 ## 帮助命令（help）
 
 
-  ```bash
+```bash
 # 显示帮助信息
 edm help
-  ```
+```
 
 ## 激活命令（enable-admin）
 
 
-  ```bash
+```bash
 # 显示帮助信息
 edm enable-admin -h
 # 激活
 edm enable-admin -n <bundleName> -a <abilityName> [-t <adminType>]
-  ```
+```
 
 **激活命令参数列表**
 
@@ -58,12 +59,12 @@ enable-admin success.
 
 ## 解除激活命令（disable-admin）
 
-  ```bash
+```bash
 # 显示帮助信息
 edm disable-admin -h
 # 解除激活
 edm disable-admin -n <bundleName>
-  ```
+```
 
 **解除激活命令参数列表**
 
@@ -75,12 +76,12 @@ edm disable-admin -n <bundleName>
   **示例**：
 
 
-  ```bash
+```bash
 # 解除激活所在应用包名为com.example.mdmsample的EnterpriseAdminExtensionAbility。
 edm disable-admin -n com.example.mdmsample
 # 执行结果
 disable-admin success.
-  ```
+```
 
 ## edm工具错误信息
 

@@ -1,12 +1,19 @@
 # Camera Kit（相机服务）
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 - [Camera Kit简介](camera-overview.md)
 - [申请相机开发的权限](camera-preparation.md)
-- 开发相机应用(ArkTS)<!--camera-dev-arkts-->
-  - [通过系统相机拍照和录像(CameraPicker)](camera-picker.md)
+- 开发相机应用必选能力(ArkTS)<!--camera-dev-arkts-mandatory-->
   - [相机管理(ArkTS)](camera-device-management.md)
   - [设备输入(ArkTS)](camera-device-input.md)
   - [会话管理(ArkTS)](camera-session-management.md)
+- 开发相机应用基础能力(ArkTS)<!--camera-dev-arkts-->
+  - [通过系统相机拍照和录像(CameraPicker)](camera-picker.md)
   - [预览(ArkTS)](camera-preview.md)
   - [双路预览(ArkTS)](camera-dual-channel-preview.md)
   - [拍照(ArkTS)](camera-shooting.md)
@@ -22,17 +29,23 @@
   - [相机基础动效(ArkTS)](camera-animation.md)
   - [在Worker线程中使用相机(ArkTS)](camera-worker.md)
   - [相机启动恢复实践(ArkTS)](camera-background-recovery.md)
-  - [自动切换摄像头实践(ArkTS)](camera_auto_switch.md)
+  - [自动切换摄像头实践(ArkTS)](camera-auto-switch.md)
+  - [白平衡设置(ArkTS)](camera-whitebalance.md)
+  - [压力管控(ArkTS)](camera-system-pressure.md)
+  - [相机控制器(ArkTS)](camera-control-center.md)
+  - [微距能力设置(ArkTS)](camera-macro.md)
+  - [多摄同开(ArkTS)](camera-concurrent-open.md)<!--RP1--><!--RP1End-->
   <!--Del-->
-  - [高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo.md)
-  - [高性能拍照实践(仅对系统应用开放)(ArkTS)](camera-deferred-photo-case.md)
-  - [深度信息(仅对系统应用开放)(ArkTS)](camera-depth-data.md)
-  - [性能提升实践(仅对系统应用开放)(ArkTS)](camera-performance-improvement.md)
+  - [高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo-sys.md)
+  - [高性能拍照实践(仅对系统应用开放)(ArkTS)](camera-deferred-photo-case-sys.md)
+  - [深度信息(仅对系统应用开放)(ArkTS)](camera-depth-data-sys.md)
+  - [性能提升实践(仅对系统应用开放)(ArkTS)](camera-performance-improvement-sys.md)
   <!--DelEnd-->
-- 开发相机应用(C/C++)<!--camera-dev-native-->
+- 开发相机应用必选能力(C/C++)<!--camera-dev-native-mandatory-->
   - [相机管理(C/C++)](native-camera-device-management.md)
   - [设备输入(C/C++)](native-camera-device-input.md)
   - [会话管理(C/C++)](native-camera-session-management.md)
+- 开发相机应用基础能力(C/C++)<!--camera-dev-native-->
   - [预览(C/C++)](native-camera-preview.md)
   - [预览流二次处理(C/C++)](native-camera-preview-imageReceiver.md)
   - [拍照(C/C++)](native-camera-shooting.md)
@@ -42,3 +55,6 @@
   - [录像实践(C/C++)](native-camera-recording-case.md)
   - [元数据(C/C++)](native-camera-metadata.md)
   - [手电筒使用(C/C++)](native-camera-torch-use.md)
+  - [压力管控(C/C++)](native-camera-system-pressure.md)
+  - [微距能力设置(C/C++)](native-camera-macro.md)
+  - [多摄同开(C/C++)](native-camera-concurrent-open.md)<!--RP2--><!--RP2End-->

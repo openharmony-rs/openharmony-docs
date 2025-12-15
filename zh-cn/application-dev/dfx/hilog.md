@@ -1,5 +1,11 @@
 # hilog
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liuyifeifei;@buzhenwang-->
+<!--Designer: @shenchenkai-->
+<!--Tester: @liyang2235-->
+<!--Adviser: @foryourself-->
 
 HiLog日志系统，提供给系统框架、服务、以及应用，用于打印日志，记录用户操作、系统运行状态等。开发者可以通过hilog命令行查询相关日志信息。
 
@@ -30,6 +36,10 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
   开启/关闭落盘任务，参考[查看和设置落盘任务](#查看和设置落盘任务)。
 
 ### hilog日志格式说明
+
+```text
+04-19 17:02:14.735  5394  5394 I A03200/testTag: this is a info level hilog
+```
 
 | 第一列 | 第二列 | 第三列 | 第四列 |  第五列 | 第六列 | 第七列 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
@@ -252,7 +262,7 @@ hilog -a 8
    11-15 16:04:08.603   506   506 I I02C01/CustCarrierMount: MountCarrierToShared start
    11-15 16:04:08.604   506   506 I I02C01/CustCarrierMount: success to mount carrier to shared
    11-15 16:04:15.394   972   972 I I02C01/CustCarrierMount: UpdateCotaOpkeyLink start
-   11-15 16:04:15.396   972   972 W I02C01/CustCarrierMount: not exsit CUST_GLOBAL_CARRIER_DIR or COTA_PARAM_CARRIER_DIR
+   11-15 16:04:15.396   972   972 W I02C01/CustCarrierMount: not exist CUST_GLOBAL_CARRIER_DIR or COTA_PARAM_CARRIER_DIR
    11-15 16:04:15.887   972   972 I I02C01/CustCarrierMount: success to update cota carrier
    11-15 16:04:48.749  5777  5901 I A00001/HiAI_Metadata: metadata is null
    11-15 16:04:48.749  5777  5901 I A00001/HiAI_PluginAbilityInfo: abilityInfo is null
@@ -332,7 +342,7 @@ hilog -v time/color/epoch/monotonic/usec/nsec/year/zone/wrap
 
 **使用样例**：
 
-显示本地时间，以纳秒为单位显示时间。
+显示本地时间，以毫秒为单位显示时间。
 
 <!--RP10-->
    ```shell
@@ -647,7 +657,7 @@ Set flow control by domain to disabled successfully
 ```
 <!--RP11End-->
 
-本条日志表示进程com.example.myapplication在17:02:34时存在日志打印超限，在17:02:34.219的前一秒内，有3091行日志由于超限管控丢弃，未打印出来。
+本条日志表示进程com.example.myapplication存在日志打印超限，在17:02:34.219时间点前，有3091行日志由于超限管控丢弃，未打印出来。
 
 **处理方式**：可参考[进程超限开关](#进程超限开关)，关闭对应管控机制。
 
@@ -662,7 +672,7 @@ domainID维度管控，打印到LOG_CORE buffer里面的系统日志适配了dom
 ```
 <!--RP12End-->
 
-本条日志表示domainID为02C02的日志在17:02:34时存在日志打印超限，在17:02:34.219的前一秒内，有108行日志由于超限管控丢弃，未打印出来。
+本条日志表示domainID为02C02的日志存在日志打印超限，在17:02:34.219时间点前，有108行日志由于超限管控丢弃，未打印出来。
 
 **处理方式**：可参考[domain超限开关](#domain超限开关)，关闭对应管控机制。
 
@@ -713,7 +723,7 @@ LOGLIMIT是进程或domainID超限管控的丢失；Slow reader missed是全局�
 
 **处理方式**：
 
-- 通过hilog -g命令查询buffer大小（hilog buffer大小默认是256KB）。
+- 通过hilog -g命令查询当前buffer大小。
 
 - 通过hilog -G命令扩大hilog buffer大小。如下命令表示将buffer大小修改为16MB（当前允许的最大规格为16MB）。
 

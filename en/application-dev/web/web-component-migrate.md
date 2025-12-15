@@ -1,4 +1,10 @@
 # Migrating Web Components Between Different Windows
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @weixin_41848015-->
+<!--Designer: @libing23232323-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component can be attached to and detached from the component trees in different windows, which enables the same **Web** component to be migrated between different windows. For example, you can drag a tab page to an independent window or drag it to another window.
 
@@ -12,10 +18,13 @@ In the following example, a **Web** component is created using a command when th
 >
 > Do not attach a **Web** component under two parent nodes at the same time. Otherwise, unexpected behavior occurs.
 
-```ts
+<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
+
+``` TypeScript
 // Main window ability.
-// EntryAbility.ets
-import { createNWeb, defaultUrl } from '../pages/common'
+import { createNWeb, defaultUrl } from '../pages/common';
+
+// ···
 
 // ...
 
@@ -23,7 +32,7 @@ import { createNWeb, defaultUrl } from '../pages/common'
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
+      if (err && err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
@@ -140,8 +149,9 @@ export const getWebviewController = (url : string) : webview.WebviewController |
 }
 
 ```
+<!-- @[web_module_dynamic_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 // Use the pages of NodeController.
 // pages/Index.ets
 import { getBuilderNode, MyNodeController, defaultUrl, getWebviewController } from "./common"
@@ -169,13 +179,12 @@ struct Index {
         // NodeContainer is used to bind to the NodeController node. Calling rebuild() triggers makeNode().
         // The Page is bound to NodeController() through NodeContainer(). As a result, the dynamic component page is successfully displayed.
         NodeContainer(this.nodeController)
-          .height("80%")
-          .width("80%")
+          .height('80%')
+          .width('80%')
       }
       .width('100%')
     }
     .height('100%')
   }
 }
-
 ```

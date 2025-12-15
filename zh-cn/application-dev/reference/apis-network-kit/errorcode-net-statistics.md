@@ -1,8 +1,16 @@
 # 流量管理错误码
 
+
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
 
 ## 2100001 无效的参数
 
@@ -134,3 +142,21 @@ Failed to read the database.
 **处理步骤**
 
 检查本机数据库文件是否被损坏。
+
+## 2103019 时间戳无效
+
+**错误信息**
+
+The timestamp in param is invalid.
+
+**错误描述**
+
+参数中的时间戳无效。
+
+**可能原因**
+
+参数中传入的起始时间戳或结束时间戳早于当前系统时间31天以上。
+
+**处理步骤**
+
+修改时间戳，确保时间戳不早于当前系统时间31天以上。

@@ -1,245 +1,146 @@
-# Contribution Process
+# OpenHarmony Community Contribution Workflow
 
-## Preparations
+This workflow aims to guide contributors to participate in the OpenHarmony project efficiently, securely, and in compliance with community standards. It integrates key stages such as development, automated gating, manual review, and security assurance. Please refer to the following flowchart for the complete process.
 
--   Install, configure, and use Git. For details, visit  [https://gitee.com/help/categories/43](https://gitee.com/help/categories/43).
--   Register an SSH public key. For details, visit  [https://gitee.com/help/articles/4191](https://gitee.com/help/articles/4191).
--   Find the repository that you are interested in on the code hosting platform of OpenHarmony.
+```mermaid
+graph TD
+    subgraph "Phase 1: Contributor Local Development"
+        A1["Fork main repo to personal repo"] --> A2["Clone personal repo to local workspace"]
+        A2 --> A3["Coding & Developer Self-Test"]
+        A3 --> A4["Local Security & Spec Check (IDE Plugin)"]
+        A4 --> A5["Commit Code (Sign DCO)"]
+        A5 --> A6["Push to personal remote repo"]
+    end
+    
+    subgraph "Phase 2: PR Submission & Automated Gating (CI/CD Pipeline)"
+        A6 --> B1["Create Pull Request"]
+        B1 --> B2["Trigger Automated CI Gate"]
+        B2 --> B2_1["Sensitive Word/Secret Scan"]
+        B2 --> B2_2["Coding Style Check"]
+        B2 --> B2_3["Compliance Scan (incl. OAT/SCANOSS dependency check)"]
+        B2 --> B2_4["Static Code Analysis (CleanCode)"]
+        B2_1 --> B3{"Gate Check Passed?"}
+        B2_2 --> B3
+        B2_3 --> B3
+        B2_4 --> B3
+    end
+    
+    subgraph "Phase 3: Code Review & Merge (Committer & Reviewer)"
+        B3 -- "Pass" --> C1["Assign Reviewers"]
+        C1 --> C2["Code Review"]
+        C2 --> C2_1["Function Logic & Design"]
+        C2 --> C2_2["Readability & Maintainability"]
+        C2 --> C2_3["Security Logic Review (High-risk changes)"]
+        C2_1 --> C3["Approve PR"]
+        C2_2 --> C3
+        C2_3 --> C3
+        C3 --> C4{"Merge Decision"}
+        C4 -- "Approve" --> C5["Merge PR to main branch"]
+    end
+    
+    subgraph "Phase 4: Build, Archive & Test (CI/CD Pipeline)"
+        C5 --> D1["Trigger Compilation & Build"]
+        D1 --> D2["Version Archiving"]
+        D2 --> D3["Trigger Version-level Testing"]
+    end
+    
+    B3 -- "Fail" --> A3
+    C4 -- "Changes required" --> A3
+    
+    style B2_1 fill:#ffefef,stroke:#ff6347,stroke-width:2px
+    style B2_3 fill:#ffefef,stroke:#ff6347,stroke-width:2px
+    style B2_4 fill:#ffefef,stroke:#ff6347,stroke-width:2px
+    style C2_3 fill:#ffefef,stroke:#ff6347,stroke-width:2px
+    style A4 fill:#eef4ff,stroke:#4a86e8,stroke-width:2px
+```
 
-## Downloading Code
+## 1. Contribution Preparation (Code Download)
 
-## Forking a Code Branch from the Cloud
+### Environment Setup
+-   Install and configure Git. Refer to the GitCode Help Center: [Git Handbook](https://gitcode.com/help/categories/43)
+-   Configure your SSH public key on GitCode. Refer to: [Public Key Management](https://gitcode.com/help/articles/4191)
 
-1.  Find and open the homepage of the repository.
-2.  Click the  **Fork**  button in the upper right corner, and create an individual cloud fork branch as prompted.
-
-## Downloading the Fork Repository to the Local Host
-
-Perform the following steps to download the code in the repository to your computer:
-
-1.  Create a local working directory.
-
-    A local working directory is used for searching and managing local code.
-
+### Get the Code
+1.  **Fork the Main Repository**: Find the repository you are interested in under the OpenHarmony GitCode organization, click the "Fork" button in the upper right corner to create a copy under your personal account (personal repository).
+2.  **Clone to Your Local Machine**: Clone your personal repository to your local computer to set up your local workspace.
+    ```bash
+    git clone git@gitcode.com:{your_gitcode_id}/{repository_name}.git
+    cd {repository_name}
     ```
-    mkdir ${your_working_dir}
-    ```
-
-2.  Clone the remote repository to the local host.
-    1.  Switch to the local path.
-
-        ```
-        mkdir -p ${your_working_dir}
-        cd ${your_working_dir}
-        ```
-
-    2.  Clone the remote repository.
-        - You can copy the address of the remote repository on the repository page.
-
-          **Figure  1** Cloning the remote repository  
-
-          ![](figures/clone.png "clone")
-
-        -   Run the following command on the local host:
-        
-            ```
-            git clone $remote_link
-            ```
-
-
-
-
-## Using the repo Tool to Download Code Repositories in Batches
-
-1.  Download the repo tool. \(For details, see  [https://gitee.com/help/articles/4316](https://gitee.com/help/articles/4316).\)
-
-    ```
-    curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo
-    chmod a+x /usr/local/bin/repo
-    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests
-    ```
-
-2.  Download code repositories. \(There is no  **repo branch**  parameter.\)
-
-    ```
-    repo init -u https://gitee.com/openharmony/manifest.git -b master
-    repo sync -c
-    ```
-
-
-## Committing Code
-
-## Committing a Repository \(git clone\)
-
-1.  **Update the branch.**
-
-    Update your local branch.
-
-    ```
-    git remote add origin $remote_link
-    git fetch origin
-    git checkout master  
-    git pull --rebase 
+3.  **Create a Development Branch**: Create a new local branch for your contribution based on the latest code from the main branch.
+    ```bash
+    # Add the upstream repository (only needed the first time)
+    git remote add upstream https://gitcode.com/openharmony/{repository_name}.git
+    
+    # Sync the latest code and create a new branch
+    git fetch upstream
+    git checkout -b my-awesome-feature upstream/master
     ```
 
-    Update the local debugging branch \(**myfeature**  branch\) based on the remote  **master**  branch.
+## 2. Local Development and Self-Check (Coding)
 
-    ```
-    git branch myfeature origin/master
-    git checkout myfeature  
-    ```
+### Code Development and Testing
+-   On the `my-awesome-feature` branch you created, write, modify, and develop your code.
+-   Perform necessary self-tests to ensure your changes do not break existing functionality and that new features work as expected.
 
-    Then, edit and modify the code in the  **myfeature**  branch.
+### **Local Static Check (IDE Plugin)**
+-   It is **strongly recommended** to use community-approved IDE plugins (e.g., for code style and static analysis) during development.
+-   These plugins can help you identify and fix issues related to coding standards, potential defects, and simple security vulnerabilities before you commit, serving as the first line of defense for contribution quality.
 
-2.  **Commit the changes in the local working directory.**
-
-    ```
+### Commit Local Changes
+-   The OpenHarmony community requires all contributors to sign the **Developer Certificate of Origin (DCO)**. This is done by using the `-s` or `--signoff` flag when running `git commit`.
+-   The commit message should follow community conventions and clearly describe the changes.
+    ```bash
     git add .
-    git commit -sm "xxxxxx"  // Commit changes with a message containing the signoff email address.
+    git commit -sm "feat: your feature description
+    
+    Detailed description of the changes you made.
+    
+    issue: #IXXXXX"
+    ```
+-   Push the local branch to your personal remote repository on GitCode.
+    ```bash
+    git push origin my-awesome-feature
     ```
 
-    You may continue to edit and test more content after the previous commit. You can use  **commit --amend**  to commit these changes.
+## 3. PR Submission and Automated Gating
 
-3.  **Push the changes to your remote directory.**
+### Create a Pull Request (PR)
+-   Go to your personal repository page on GitCode and click the "Pull Request" button.
+-   Select your source branch (`my-awesome-feature`) and the target branch (usually `openharmony/master`), then fill in the PR title and description before submitting.
+-   **[Security Enhancement]** If your changes involve security-sensitive areas (e.g., cryptography, permissions, kernel), please state this clearly in the PR description to draw the attention of security experts.
 
-    If you plan to review \(or just establish a remote backup of your work\), push the branch to your fork repository:
+### Automated CI Gate Build
+After submitting a PR, the CI/CD pipeline will automatically trigger a series of gate checks. **A failure in any of these checks will prevent the PR from being merged.** You must fix the issues based on the failure report and resubmit.
 
-    ```
-    git push -f origin myfeature
-    ```
+Gate checks include, but are not limited to:
 
+-   **Compilation and Build**: Ensures your code compiles successfully.
+-   **Unit/Functional Tests**: Runs automated test cases.
+-   **[Security Enhancement] Static Check Capabilities**:
+    1.  **Coding Style Check**: Verifies that the code style adheres to community standards.
+    2.  **Sensitive Word/Secret Scan**: Automatically scans code to prevent hard-coded secrets, passwords, or tokens from being exposed.
+    3.  **Compliance Scan**:
+        -   **License Check**: Ensures that all introduced files and dependencies have licenses compatible with the community policy.
+        -   **Software Composition Analysis (SCANOSS)**: Scans for third-party open-source software snippets and dependencies to check for known security vulnerabilities (CVEs).
+    4.  **Static Code Analysis**: Uses tools like CleanCode to perform deep scans of the code to find potential quality defects and security vulnerabilities.
 
-## Committing Multiple Repositories \(repo init/sync\)
+## 4. Code Review and Merge
 
-1. Configure the token of the global environment.
+### Code Review
+-   After the gate checks pass, a Committer will **assign Reviewers** to conduct a manual review of your code.
+-   Reviewers will provide feedback on aspects like functional logic, code design, readability, and maintainability.
+-   **Specialized Security Review**: For high-risk PRs or those marked as security-sensitive, an additional review by members of the **Security Committee (Security SIG)** or designated security experts is required.
+-   You will need to modify your code based on the review feedback and push the updates again. This process may involve multiple rounds.
 
-```
-repo config --global repo.token {TOKEN}
-```
+### Approval and Merge
+-   Once your PR has been approved by a sufficient number of reviewers, a Committer will perform a final check.
+-   After the review and testing are passed, the CI system will **merge** your PR into the project's main branch. At this point, your contribution officially becomes part of the OpenHarmony project.
 
-The token is generated by choosing  **Settings**  \>  **Security Settings**  \>  [**Private Token**](https://gitee.com/profile/personal_access_tokens)  on Gitee. Example:
+## 5. Build, Archive, and Test
 
-```
-repo config --global repo.token 211XXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-2. Create an issue under any repository to be modified on Gitee, and record the issue number \(for example, \#I1TVV4 in the following figure\). \(The issue provides a function similar to change ID of Gerrit and is used to associate multiple repositories to be modified. Skip this step if modification of multiple repositories is not involved.\)
-
-3. Create a branch in the local code workspace, modify the code, and commit the changes.
-
-```
-repo start branchname --all
-```
-
-After the code is modified, run the following command in multiple repositories:
-
-```
-git add .
-git commit -sm "xxxxxx"
-```
-
-Alternatively, use the repo tool to batch add or commit the changes in the root directory of the code project:
-
-```
-repo forall -c 'git add .'
-repo forall -c 'git commit -sm "xxxxxx"'
-```
-
-4. Push the code. \(repo upload is not supported.\)
-
-Specify whether to directly generate a pull request \(PR\) during code push. The value  **False**  indicates that a PR is not directly generated and needs to be manually generated in the fork warehouse. The value  **True**  indicates that a PR is generated when the code is pushed to the fork repository.
-
-```
-repo config repo.pullrequest {True/False}
-```
-
-For example, if the PR is generated when the push code is selected, run the following command:
-
-```
-repo config repo.pullrequest True
-```
-
-Run the following command to push the code:
-
-```
-repo push --br={BRANCH} --d={DEST_BRANCH} --content={PR_CONTENT}
-```
-
-**BRANCH**  indicates the local branch,  **DEST\_BRANCH**  indicates the destination branch \(trunk branch\), which is usually  **master**, and  **PR\_CONTENT**  indicates the PR description. If multi-repository committing is involved, the issue number must be entered. Example:
-
-```
-repo push --br="20200903" --d="master" --content="#I1TVV4"
-```
-
-On the editing page displayed, open the comment tags for the repository, branch, and commit.
-
-![](figures/figure2.png)
-
-Save the settings and exit. The repo tool automatically pushes the local branch to the remote fork repository \(creates a fork repository if there is no fork repository\) and generates a PR.
-
-![](figures/figure3.png)
-
-The tool automatically associates the PR with the issue.
-
-## Creating a Pull Request
-
-Access the fork repository on Gitee, click the button for creating a PR, and select the  **myfeature**  branch to generate a PR. \(Skip this step if a PR has been automatically created using the repo tool.\)
-
-For details, visit  [https://gitee.com/help/articles/4128](https://gitee.com/help/articles/4128).
-
->![](public_sys-resources/icon-notice.gif) **NOTICE**
->
->**How do I create PRs at the same time if multiple code repositories have compilation dependencies?**
->During the development of the operating system \(OS\), it is common that multiple code repositories have compilation dependencies. Therefore, the PRs need to be created and merged at the same time. For this reason, Gitee uses issues as the dependency identifiers for code repositories with compilation dependencies to commit the PRs. Follow the operations below:
->
->1.  Create an issue in any of the code repositories.
->2.  Associate PRs that need to be built and merged at the same time with the issue. For details, visit  [https://gitee.com/help/articles/4142](https://gitee.com/help/articles/4142).
->3.  After the build is triggered, the build center identifies the PRs associated with the same issue, downloads the build, and merges the PRs into the code library after the code is approved.
-
-## Building Access Control
-
-## Creating an Issue
-
-1.  Go to the homepage of the repository.
-2.  Click the  **Issues**  tab in the upper left corner. Then, click the issue creation button on the right, and create a dedicated task as prompted to execute continuous integration \(CI\) access control for associated code \(feature development/bug fixing\).
-
-## Associating the Issue with the PR
-
-When creating a PR or compiling an existing PR, enter  **\#+I+_five-digit issue ID_**  in the description box to associate the issue with the PR.
-
-**Constraints**
-
--   One PR can be associated with only one issue. Otherwise, CI cannot be triggered.
--   If feature development or bug fixing involves multiple code repositories, multiple PRs can be associated with the same issue.
--   Among the PRs associated with the issue, no PR that has been merged or closed is allowed. Otherwise, the CI cannot be triggered.
--   If an issue has been associated with a merged or closed PR, the issue cannot be reused. In this case, create another issue and associate it with an open PR.
-
-## Triggering Code Access Control
-
-Comment "start build" in the PR to trigger CI access control.
-
-If multiple PRs are associated with the same issue, the comment "start build" on any PR can trigger the CI access control of the issue.
-
-After the access control is executed, the execution result will be automatically commented in all the PRs associated with the issue.
-
-If the access control is passed, all PRs associated with the issue will be automatically marked as "Passed".
-
-## CI Portal
-
-The continuous integration (CI) portal is a platform where you can promptly view and analyze the execution results of code access control and daily build.
-
-On the CI portal, you can detect code bugs in a timely manner to ensure code reliability and function stability. The CI portal provides the following functions:
-
-- Code Access Control: After submitting a merge request to commit code, code access checks, such as the static code check, code build, and function test, are triggered. Code can be committed only after all checks are passed.
-
-
-- Daily Build: The continuous integration pipeline is automatically executed every day to detect issues with static code, code build, and functions in advance, thereby allowing you to resolve these issues in time to ensure high code quality.
-
-Visit [CI portal](http://ci.openharmony.cn/#/pipeLine).
-
-## Reviewing Code
-
-For details, visit [https://gitee.com/help/articles/4304](https://gitee.com/help/articles/4304).
-
-Related topic: [FAQs](FAQ.md)
+After the PR is merged into the main branch, the CI/CD pipeline will execute the following tasks:
+1.  **Compilation and Build**: Compiles the latest main branch, now including your code.
+2.  **Version Archiving**: Archives the successful build artifacts, creating daily builds or release candidates.
+3.  **Testing**: Performs more comprehensive integration and system tests on the archived version to ensure the overall stability and quality of the system.
 

@@ -1,4 +1,10 @@
 # camera.h
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -32,7 +38,7 @@
 | [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | 要设置的拍照捕获选项。 |
 | [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | 帧快门回调信息。 |
 | [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | 捕获结束信息。 |
-| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 矩形定义。 |
+| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)， 返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
 | [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | Camera_MetadataObject | 元数据对象基础。 |
 | [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | Camera_TorchStatusInfo | 手电筒状态信息。 |
 | [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | Camera_SmoothZoomInfo | 平滑变焦参数信息。 |
@@ -74,6 +80,7 @@
 | [Camera_ConcurrentType](#camera_concurrenttype) | Camera_ConcurrentType | 相机并发状态的枚举。 |
 | [Camera_WhiteBalanceMode](#camera_whitebalancemode) | Camera_WhiteBalanceMode | 白平衡模式枚举。 |
 | [Camera_ControlCenterEffectType](#camera_controlcentereffecttype) | Camera_ControlCenterEffectType | 控制器效果类型枚举。 |
+| [Camera_PhotoQualityPrioritization](#camera_photoqualityprioritization) | Camera_PhotoQualityPrioritization | 拍照画质优先策略枚举。 |
 
 ### 函数
 
@@ -86,7 +93,7 @@
 
 ### Camera_ErrorCode
 
-```
+```c
 enum Camera_ErrorCode
 ```
 
@@ -109,11 +116,11 @@ enum Camera_ErrorCode
 | CAMERA_DEVICE_DISABLED = 7400108 | 由于安全原因，相机已禁用。 |
 | CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。 |
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务致命错误。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
 
 ### Camera_Status
 
-```
+```c
 enum Camera_Status
 ```
 
@@ -132,7 +139,7 @@ enum Camera_Status
 
 ### Camera_SceneMode
 
-```
+```c
 enum Camera_SceneMode
 ```
 
@@ -150,7 +157,7 @@ enum Camera_SceneMode
 
 ### Camera_Position
 
-```
+```c
 enum Camera_Position
 ```
 
@@ -168,7 +175,7 @@ enum Camera_Position
 
 ### Camera_Type
 
-```
+```c
 enum Camera_Type
 ```
 
@@ -188,7 +195,7 @@ enum Camera_Type
 
 ### Camera_Connection
 
-```
+```c
 enum Camera_Connection
 ```
 
@@ -206,7 +213,7 @@ enum Camera_Connection
 
 ### Camera_Format
 
-```
+```c
 enum Camera_Format
 ```
 
@@ -226,7 +233,7 @@ enum Camera_Format
 
 ### Camera_FlashMode
 
-```
+```c
 enum Camera_FlashMode
 ```
 
@@ -245,7 +252,7 @@ enum Camera_FlashMode
 
 ### Camera_ExposureMode
 
-```
+```c
 enum Camera_ExposureMode
 ```
 
@@ -263,7 +270,7 @@ enum Camera_ExposureMode
 
 ### Camera_FocusMode
 
-```
+```c
 enum Camera_FocusMode
 ```
 
@@ -282,7 +289,7 @@ enum Camera_FocusMode
 
 ### Camera_FocusState
 
-```
+```c
 enum Camera_FocusState
 ```
 
@@ -300,7 +307,7 @@ enum Camera_FocusState
 
 ### Camera_VideoStabilizationMode
 
-```
+```c
 enum Camera_VideoStabilizationMode
 ```
 
@@ -320,7 +327,7 @@ enum Camera_VideoStabilizationMode
 
 ### Camera_ImageRotation
 
-```
+```c
 enum Camera_ImageRotation
 ```
 
@@ -332,14 +339,18 @@ enum Camera_ImageRotation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。 |
-| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。 |
-| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。 |
-| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。 |
+| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br>**起始版本：** 22 |
+| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br>**起始版本：** 22 |
+| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br>**起始版本：** 22 |
+| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br>**起始版本：** 22 |
 
 ### Camera_QualityLevel
 
-```
+```c
 enum Camera_QualityLevel
 ```
 
@@ -357,7 +368,7 @@ enum Camera_QualityLevel
 
 ### Camera_MetadataObjectType
 
-```
+```c
 enum Camera_MetadataObjectType
 ```
 
@@ -369,11 +380,11 @@ enum Camera_MetadataObjectType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FACE_DETECTION = 0 | metadata对象类型，用于人脸检测。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)， 返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
+| FACE_DETECTION = 0 | metadata对象类型，用于人脸检测。 |
 
 ### Camera_TorchMode
 
-```
+```c
 enum Camera_TorchMode
 ```
 
@@ -385,13 +396,16 @@ enum Camera_TorchMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OFF = 0 | 设备手电筒常关。 |
-| ON = 1 | 设备手电筒常开。 |
-| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。 |
+| OFF = 0 | 设备手电筒常关。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](#camera_torchmode)。 |
+| CAMERA_TORCH_MODE_OFF = 0 | 设备手电筒常关。<br>**起始版本：** 22 |
+| ON = 1 | 设备手电筒常开。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](#camera_torchmode)。 |
+| CAMERA_TORCH_MODE_ON = 1 | 设备手电筒常开。<br>**起始版本：** 22 |
+| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](#camera_torchmode)。 |
+| CAMERA_TORCH_MODE_AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br>**起始版本：** 22 |
 
 ### Camera_SmoothZoomMode
 
-```
+```c
 enum Camera_SmoothZoomMode
 ```
 
@@ -403,11 +417,12 @@ enum Camera_SmoothZoomMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL = 0 | 贝塞尔曲线模式。 |
+| NORMAL = 0 | 贝塞尔曲线模式。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode)。 |
+| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | 贝塞尔曲线模式。<br>**起始版本：** 22 |
 
 ### Camera_SystemPressureLevel
 
-```
+```c
 enum Camera_SystemPressureLevel
 ```
 
@@ -427,7 +442,7 @@ enum Camera_SystemPressureLevel
 
 ### Camera_PreconfigType
 
-```
+```c
 enum Camera_PreconfigType
 ```
 
@@ -446,7 +461,7 @@ enum Camera_PreconfigType
 
 ### Camera_PreconfigRatio
 
-```
+```c
 enum Camera_PreconfigRatio
 ```
 
@@ -464,7 +479,7 @@ enum Camera_PreconfigRatio
 
 ### Camera_HostDeviceType
 
-```
+```c
 enum Camera_HostDeviceType
 ```
 
@@ -482,7 +497,7 @@ enum Camera_HostDeviceType
 
 ### Camera_FoldStatus
 
-```
+```c
 enum Camera_FoldStatus
 ```
 
@@ -494,13 +509,16 @@ enum Camera_FoldStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NON_FOLDABLE = 0 | 不可折叠。 |
-| EXPANDED = 1 | 展开状态。 |
-| FOLDED = 2 | 折叠状态。 |
+| NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus)。 |
+| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | 不可折叠状态。<br>**起始版本：** 22 |
+| EXPANDED = 1 | 展开状态。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus)。 |
+| CAMERA_FOLD_STATUS_EXPANDED = 1 | 展开状态。<br>**起始版本：** 22 |
+| FOLDED = 2 | 折叠状态。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus)。 |
+| CAMERA_FOLD_STATUS_FOLDED = 2 | 折叠状态。<br>**起始版本：** 22 |
 
 ### Camera_QualityPrioritization
 
-```
+```c
 enum Camera_QualityPrioritization
 ```
 
@@ -517,7 +535,7 @@ enum Camera_QualityPrioritization
 
 ### Camera_ConcurrentType
 
-```
+```c
 enum Camera_ConcurrentType
 ```
 
@@ -534,7 +552,7 @@ enum Camera_ConcurrentType
 
 ### Camera_WhiteBalanceMode
 
-```
+```c
 enum Camera_WhiteBalanceMode
 ```
 
@@ -556,7 +574,7 @@ enum Camera_WhiteBalanceMode
 
 ### Camera_ControlCenterEffectType
 
-```
+```c
 enum Camera_ControlCenterEffectType
 ```
 
@@ -571,12 +589,29 @@ enum Camera_ControlCenterEffectType
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。 |
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。 |
 
+### Camera_PhotoQualityPrioritization
+
+```c
+enum Camera_PhotoQualityPrioritization
+```
+
+**描述**
+
+拍照画质优先策略枚举。
+
+**起始版本：** 21
+
+| 枚举项 | 描述 |
+| -- | -- |
+| CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY = 0 | 画质优先，拍照需要较长的时间，以输出高画质的图片。 |
+| CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED = 1 | 性能优先，会降低画质来提升拍照的速度。 |
+
 
 ## 函数说明
 
 ### OH_Camera_GetCameraManager()
 
-```
+```c
 Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 ```
 
@@ -585,7 +620,6 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 创建CameraManager实例。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -597,11 +631,11 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_Camera_DeleteCameraManager()
 
-```
+```c
 Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 ```
 
@@ -610,7 +644,6 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 删除CameraManager实例。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -622,6 +655,6 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务出现致命错误。 |
+| [Camera_ErrorCode](#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 

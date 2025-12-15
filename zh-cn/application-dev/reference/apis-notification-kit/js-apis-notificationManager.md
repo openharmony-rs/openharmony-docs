@@ -1,4 +1,10 @@
 # @ohos.notificationManager (NotificationManager模块)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 本模块提供通知管理的能力，包括发布、更新、取消通知，创建、获取、移除通知渠道，获取发布通知应用的使能状态，获取通知的相关信息等。
 
@@ -31,7 +37,7 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -102,7 +108,7 @@ publish(request: NotificationRequest): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -335,7 +341,7 @@ cancelAll(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -587,7 +593,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -750,7 +756,7 @@ removeAllSlots(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -786,7 +792,7 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- |
@@ -829,7 +835,7 @@ isNotificationEnabled(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -888,9 +894,9 @@ setBadgeNumber(badgeNumber: number): Promise\<void\>
 
 设定角标个数，在应用的桌面图标上呈现。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **参数：**
 
@@ -936,9 +942,9 @@ setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void
 
 设定角标个数，在应用的桌面图标上呈现。使用callback异步回调。
 
-该接口不支持wearable设备。
-
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **参数：**
 
@@ -974,6 +980,42 @@ let setBadgeNumberCallback = (err: BusinessError): void => {
 }
 let badgeNumber: number = 10;
 notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
+```
+
+## notificationManager.getBadgeNumber<sup>22+</sup>
+
+getBadgeNumber(): Promise\<long\>
+
+获取当前应用角标数量。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**返回值：**
+
+| 类型              | 说明                                        |
+| ----------------- | ------------------------------------------- |
+| Promise\<long\> | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getBadgeNumber().then((badgeNumber) => {
+  console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+}).catch((err: BusinessError) => {
+  console.info(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.getActiveNotificationCount
@@ -1033,7 +1075,7 @@ getActiveNotificationCount(): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1109,7 +1151,7 @@ getActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1441,7 +1483,7 @@ requestEnableNotification(callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
-> 从API version 12开始不再维护，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10)代替。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1487,7 +1529,7 @@ requestEnableNotification(): Promise\<void\>
 
 > **说明：**
 >
-> 从API version 12开始不再维护，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10-1)代替。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10-1)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1499,7 +1541,7 @@ requestEnableNotification(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1526,6 +1568,8 @@ notificationManager.requestEnableNotification().then(() => {
 isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 查询设备是否支持跨设备协同通知。使用callback异步回调。
+
+**设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1568,6 +1612,8 @@ isDistributedEnabled(): Promise\<boolean>
 
 查询设备是否支持跨设备协同通知。使用Promise异步回调。
 
+**设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **返回值：**
@@ -1578,7 +1624,7 @@ isDistributedEnabled(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1605,8 +1651,6 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 拉起应用的通知设置界面，该页面以半模态形式呈现，可用于设置通知开关、通知提醒方式等。使用Promise异步回调。
 
-该接口不支持wearable设备。
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Notification.NotificationSettings
@@ -1632,7 +1676,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 
 **示例：**
 
@@ -1962,3 +2006,17 @@ type NotificationProgress = _NotificationProgress
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationProgress](js-apis-inner-notification-notificationContent.md#notificationprogress11) | 描述通知进度。 |
+
+## PriorityNotificationType<sup>23+</sup>
+
+描述通知的优先级类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| OTHER   | "OTHER"   | 表示通知优先级类型为默认。            |
+| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | 表示通知优先级类型为重要联系人。                 |
+| AT_ME  | "AT_ME"   | 表示通知优先级类型为@我。            |
+| URGENT_MESSAGE   | "URGENT_MESSAGE"   | 表示通知优先级类型为加急消息。                 |
+| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | 表示通知优先级类型为日程待办。                 |

@@ -1,4 +1,11 @@
-# @system.fetch (数据请求)（已废弃）
+# @system.fetch (数据请求)
+
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 > - 从API Version 6开始，该接口不再维护，推荐使用新接口[`@ohos.net.http`](js-apis-http.md)。
@@ -56,11 +63,11 @@ fetch(options:{ <br>
 
 **系统能力：** SystemCapability.Communication.NetStack 
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | 是 | 否 | 表示服务器的状态code。 |
-| data | string \| Object | 是 | 否 | 返回数据类型由responseType确定，详见表 responseType与success中data关系。 |
-| headers | Object | 是 | 否 | 表示服务器response的所有header。 |
+| code | number | 否 | 否 | 表示服务器的状态code。 |
+| data | string \| Object | 否 | 否 | 返回数据类型由responseType确定，详见表 responseType与success中data关系。 |
+| headers | Object | 否 | 否 | 表示服务器response的所有header。 |
 
 **表2** responseType与success中data关系
 
@@ -98,16 +105,16 @@ export default {
 > **说明：**
 >   默认支持https，如果要支持http，需要在config.json里增加network标签，属性标识 "cleartextTraffic":  true。即：
 >   
-> ```
-> {
->   "deviceConfig": {
->     "default": {
->       "network": {
->         "cleartextTraffic": true
->       }
->       ... // 用户的其它配置信息
->     }
->   }
->   ... // 用户的其它配置信息
-> }
-> ```
+ ```
+ {
+   "deviceConfig": {
+     "default": {
+      "network": {
+         "cleartextTraffic": true
+       }
+       ... // 用户的其它配置信息
+     }
+   }
+   ... // 用户的其它配置信息
+ }
+```

@@ -1,4 +1,10 @@
 # AbilityComponent (系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
 独立显示Ability的容器。
@@ -13,7 +19,7 @@
 
 ## 使用约束
 
-AbilityComponent为独立层次渲染，不能再之上叠加其他显示内容。
+AbilityComponent为独立层次渲染，不能在之上叠加其他显示内容。
 
 AbilityComponent不支持处理输入事件，事件不经过当前Ability，直接分发给内部的Ability处理。
 

@@ -1,5 +1,14 @@
 # OH_NativeBuffer_Plane
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
+```c
+typedef struct {...} OH_NativeBuffer_Plane
+```
 ## 概述
 
 单个图像平面格式信息。

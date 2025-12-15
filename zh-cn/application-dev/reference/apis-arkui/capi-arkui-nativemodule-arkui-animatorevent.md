@@ -1,4 +1,14 @@
 # ArkUI_AnimatorEvent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_AnimatorEvent ArkUI_AnimatorEvent
+```
 
 ## 概述
 

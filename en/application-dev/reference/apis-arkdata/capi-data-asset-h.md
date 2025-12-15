@@ -1,10 +1,16 @@
 # data_asset.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
 Defines data asset structs.<br>Asset is a data struct used in data management. You can use it to set and obtain file attributes, including the name, absolute path, relative path, creation time, modification time, status, and size of a file.
 
-**File to include**: <database/rdb/data_asset.h>
+**File to include**: <database/data/data_asset.h>
 
 **Library**: libnative_rdb_ndk.z.so
 
@@ -20,7 +26,7 @@ Defines data asset structs.<br>Asset is a data struct used in data management. Y
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Data_Asset | Defines a struct for a data asset, which provides information about a data asset. |
+| [Data_Asset](capi-rdb-data-asset.md) | Data_Asset | Defines a struct for a data asset, which provides information about a data asset.|
 
 ### Enums
 
@@ -47,7 +53,7 @@ Defines data asset structs.<br>Asset is a data struct used in data management. Y
 | [int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)](#oh_data_asset_getsize) | Obtains the space occupied by an asset.|
 | [int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)](#oh_data_asset_getstatus) | Obtains the status of a data asset.|
 | [Data_Asset *OH_Data_Asset_CreateOne(void)](#oh_data_asset_createone) | Creates a [Data_Asset](capi-rdb-data-asset.md) instance.|
-| [int OH_Data_Asset_DestroyOne(Data_Asset *asset)](#oh_data_asset_destroyone) | Destroys an [Data_Asset](capi-rdb-data-asset.md) object and reclaims the memory occupied by the object.|
+| [int OH_Data_Asset_DestroyOne(Data_Asset *asset)](#oh_data_asset_destroyone) | Destroys a [Data_Asset](capi-rdb-data-asset.md) object and reclaims the memory occupied by the object.|
 | [Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)](#oh_data_asset_createmultiple) | Creates a specified number of [Data_Asset](capi-rdb-data-asset.md) instances.|
 | [int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)](#oh_data_asset_destroymultiple) | Destroys multiple [Data_Asset](capi-rdb-data-asset.md) objects and reclaims the memory occupied by the objects.|
 
@@ -122,7 +128,7 @@ Sets the absolute path (URI) of an asset in the system.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| uri |  Pointer to the URI to set.|
+| const char *uri |  Pointer to the URI to set.|
 
 **Returns**
 
@@ -285,7 +291,7 @@ Obtains the name of a data asset.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the execute function is abnormal.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the operation fails.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Data_Asset_GetUri()
 
@@ -312,7 +318,7 @@ Obtains the absolute path (URI) of a data asset.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the execute function is abnormal.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the operation fails.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Data_Asset_GetPath()
 
@@ -339,7 +345,7 @@ Obtains the relative path of a data asset.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the execute function is abnormal.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the operation fails.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Data_Asset_GetCreateTime()
 
@@ -359,13 +365,13 @@ Obtains the creation time of a data asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| int64_t *createTime | Ponter to the creation time obtained, in int64_t format.|
+| int64_t *createTime | Pointer to the creation time obtained, in int64_t format.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the execute function is abnormal.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the operation fails.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 **See**
 
@@ -395,7 +401,7 @@ Obtains the last modification time of an asset.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the execute function is abnormal.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the operation fails.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Data_Asset_GetSize()
 
@@ -421,7 +427,7 @@ Obtains the space occupied by an asset.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the execute function is abnormal.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns an error code. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_ERR** indicates that the operation fails.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Data_Asset_GetStatus()
 
@@ -475,10 +481,9 @@ int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 
 **Description**
 
-Destroys an [Data_Asset](capi-rdb-data-asset.md) object and reclaims the memory occupied by the object.
+Destroys a [Data_Asset](capi-rdb-data-asset.md) object and reclaims the memory occupied by the object.
 
 **Since**: 11
-
 
 **Parameters**
 

@@ -1,5 +1,12 @@
 # 证书管理错误码
 
+<!--Kit: Device Certificate Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @chaceli-->
+<!--Designer: @chande-->
+<!--Tester: @zhangzhi1995-->
+<!--Adviser: @zengyawen-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -8,7 +15,7 @@
 
 **错误信息**
 
-Internal error.
+Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.
 
 **可能原因**
 
@@ -101,3 +108,31 @@ The device does not support the specified certificate store path.
 **处理步骤**
 
 检查输入的证书类型是否正确。
+
+## 17500010 访问USB证书凭据失败
+
+**错误信息**
+
+The USB key service access failed.
+
+**可能原因**
+
+USB硬件驱动服务发生异常。
+
+**处理步骤**
+
+检查USB是否正常连接或USB驱动是否正常工作。
+
+## 17500011 入参校验失败
+
+**错误信息**
+
+The input parameters validation failed.
+
+**可能原因**
+
+参数格式异常或参数范围无效。
+
+**处理步骤**
+
+检查接口入参格式或范围。

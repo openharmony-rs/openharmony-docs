@@ -1,0 +1,21 @@
+# ArkUI_FloatPropertyHandle
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_FloatProperty* ArkUI_FloatPropertyHandle
+```
+
+## 概述
+
+定义浮点数属性指针。
+
+**起始版本：** 20
+
+**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**所在头文件：** [native_render.h](capi-native-render-h.md)

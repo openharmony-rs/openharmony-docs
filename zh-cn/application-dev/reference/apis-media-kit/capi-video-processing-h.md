@@ -1,10 +1,18 @@
 # video_processing.h
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
 声明视频处理函数。
 
 提供视频处理能力，包括颜色空间转换、元数据生成和视频缩放。
+
+**引用文件：** <multimedia/video_processing_engine/video_processing.h>
 
 **库：** libvideo_processing.so
 
@@ -22,14 +30,14 @@
 | -- | -- |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_InitializeEnvironment(void)](#oh_videoprocessing_initializeenvironment) | 初始化视频处理全局环境。<br>该函数是可选的。<br>该函数只在主进程启动时被调用一次，用于初始化视频处理全局环境，这样可以减少[OH_VideoProcessing_Create](#oh_videoprocessing_create)的时间。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_DeinitializeEnvironment(void)](#oh_videoprocessing_deinitializeenvironment) | 释放视频处理全局环境。<br>调用前，必须调用[OH_VideoProcessing_InitializeEnvironment](#oh_videoprocessing_initializeenvironment)初始化。<br>通常在主进程即将退出时调用该函数来释放通过调用[OH_VideoProcessing_InitializeEnvironment](#oh_videoprocessing_initializeenvironment)函数初始化的全局环境。<br>如果仍有视频处理的实例运行中，就不能调用该函数。 |
-| [bool OH_VideoProcessing_IsColorSpaceConversionSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo,const VideoProcessing_ColorSpaceInfo* destinationVideoInfo)](#oh_videoprocessing_iscolorspaceconversionsupported) | 查询是否支持视频颜色空间转换。 |
+| [bool OH_VideoProcessing_IsColorSpaceConversionSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo, const VideoProcessing_ColorSpaceInfo* destinationVideoInfo)](#oh_videoprocessing_iscolorspaceconversionsupported) | 查询是否支持视频颜色空间转换。 |
 | [bool OH_VideoProcessing_IsMetadataGenerationSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo)](#oh_videoprocessing_ismetadatagenerationsupported) | 查询是否支持视频元数据生成。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_Create(OH_VideoProcessing** videoProcessor, int type)](#oh_videoprocessing_create) | 创建视频处理实例。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_Destroy(OH_VideoProcessing* videoProcessor)](#oh_videoprocessing_destroy) | 销毁视频处理实例。<br>销毁之前先停止实例，参阅[OH_VideoProcessing_Stop](#oh_videoprocessing_stop)。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_RegisterCallback(OH_VideoProcessing* videoProcessor,const VideoProcessing_Callback* callback, void* userData)](#oh_videoprocessing_registercallback) | 注册回调函数。<br>在开始视频处理之前注册回调函数，视频处理过程中无法注册回调函数。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_SetSurface(OH_VideoProcessing* videoProcessor,const OHNativeWindow* window)](#oh_videoprocessing_setsurface) | 设置视频处理输出surface。<br>在视频处理启动之前设置输出surface。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* videoProcessor, OHNativeWindow** window)](#oh_videoprocessing_getsurface) | 创建surface。<br>在视频处理启动之前创建输入surface。调用[OH_NativeWindow_DestroyNativeWindow](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_destroynativewindow)销毁输入surface。 |
-| [VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* videoProcessor,const OH_AVFormat* parameter)](#oh_videoprocessing_setparameter) | 设置视频处理输出参数。 |
+| [VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* videoProcessor, const OH_AVFormat* parameter)](#oh_videoprocessing_setparameter) | 设置视频处理输出参数。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* videoProcessor, OH_AVFormat* parameter)](#oh_videoprocessing_getparameter) | 获取视频处理参数。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_Start(OH_VideoProcessing* videoProcessor)](#oh_videoprocessing_start) | 启动视频处理。<br>成功启动后，回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)会报告[VIDEO_PROCESSING_STATE_RUNNING](capi-video-processing-types-h.md#videoprocessing_state)状态。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProcessor)](#oh_videoprocessing_stop) | 停止视频处理。<br>成功停止后，回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)会报告[VIDEO_PROCESSING_STATE_STOPPED](capi-video-processing-types-h.md#videoprocessing_state)状态。 |
@@ -44,7 +52,7 @@
 
 ### OH_VideoProcessing_InitializeEnvironment()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_InitializeEnvironment(void)
 ```
 
@@ -70,7 +78,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_InitializeEnvironment(void)
 
 ### OH_VideoProcessing_DeinitializeEnvironment()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_DeinitializeEnvironment(void)
 ```
 
@@ -94,7 +102,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_DeinitializeEnvironment(void)
 
 ### OH_VideoProcessing_IsColorSpaceConversionSupported()
 
-```
+```c
 bool OH_VideoProcessing_IsColorSpaceConversionSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo,const VideoProcessing_ColorSpaceInfo* destinationVideoInfo)
 ```
 
@@ -120,7 +128,7 @@ bool OH_VideoProcessing_IsColorSpaceConversionSupported(const VideoProcessing_Co
 
 ### OH_VideoProcessing_IsMetadataGenerationSupported()
 
-```
+```c
 bool OH_VideoProcessing_IsMetadataGenerationSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo)
 ```
 
@@ -145,7 +153,7 @@ bool OH_VideoProcessing_IsMetadataGenerationSupported(const VideoProcessing_Colo
 
 ### OH_VideoProcessing_Create()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Create(OH_VideoProcessing** videoProcessor, int type)
 ```
 
@@ -171,7 +179,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Create(OH_VideoProcessing** videoPr
 
 ### OH_VideoProcessing_Destroy()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Destroy(OH_VideoProcessing* videoProcessor)
 ```
 
@@ -198,7 +206,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Destroy(OH_VideoProcessing* videoPr
 
 ### OH_VideoProcessing_RegisterCallback()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_RegisterCallback(OH_VideoProcessing* videoProcessor,const VideoProcessing_Callback* callback, void* userData)
 ```
 
@@ -227,7 +235,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_RegisterCallback(OH_VideoProcessing
 
 ### OH_VideoProcessing_SetSurface()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_SetSurface(OH_VideoProcessing* videoProcessor,const OHNativeWindow* window)
 ```
 
@@ -245,7 +253,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetSurface(OH_VideoProcessing* vide
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | 指向视频处理实例的指针。 |
-| const [OHNativeWindow](../apis-arkgraphics2d/capi-nativewindow-nativewindow.md)* window | 指向输出surface的指针。 |
+| const [OHNativeWindow](capi-videoprocessing-nativewindow.md)* window | 指向输出surface的指针。 |
 
 **返回：**
 
@@ -255,7 +263,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetSurface(OH_VideoProcessing* vide
 
 ### OH_VideoProcessing_GetSurface()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* videoProcessor, OHNativeWindow** window)
 ```
 
@@ -273,7 +281,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* vide
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | 指向视频处理实例的指针。 |
-| [OHNativeWindow](../apis-arkgraphics2d/capi-nativewindow-nativewindow.md)** window | 指向输入surface的指针。例如，此输入surface指针可以指向视频解码器输出surface。 |
+| [OHNativeWindow](capi-videoprocessing-nativewindow.md)** window | 指向输入surface的指针。例如，此输入surface指针可以指向视频解码器输出surface。 |
 
 **返回：**
 
@@ -283,7 +291,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* vide
 
 ### OH_VideoProcessing_SetParameter()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* videoProcessor,const OH_AVFormat* parameter)
 ```
 
@@ -299,7 +307,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* vi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | 指向视频处理实例的指针。 |
-| const [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* parameter | 指向视频处理参数实例的指针。 |
+| const [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* parameter | 指向视频处理参数实例的指针。 |
 
 **返回：**
 
@@ -309,7 +317,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* vi
 
 ### OH_VideoProcessing_GetParameter()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* videoProcessor, OH_AVFormat* parameter)
 ```
 
@@ -325,7 +333,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* vi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | 指向视频处理实例的指针。 |
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* parameter | 指向视频处理参数实例的指针。 |
+| [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* parameter | 指向视频处理参数实例的指针。 |
 
 **返回：**
 
@@ -335,7 +343,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* vi
 
 ### OH_VideoProcessing_Start()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Start(OH_VideoProcessing* videoProcessor)
 ```
 
@@ -362,7 +370,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Start(OH_VideoProcessing* videoProc
 
 ### OH_VideoProcessing_Stop()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProcessor)
 ```
 
@@ -389,7 +397,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProce
 
 ### OH_VideoProcessing_RenderOutputBuffer()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_RenderOutputBuffer(OH_VideoProcessing* videoProcessor, uint32_t index)
 ```
 
@@ -417,7 +425,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_RenderOutputBuffer(OH_VideoProcessi
 
 ### OH_VideoProcessingCallback_Create()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_Create(VideoProcessing_Callback** callback)
 ```
 
@@ -442,7 +450,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_Create(VideoProcessing_Call
 
 ### OH_VideoProcessingCallback_Destroy()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_Destroy(VideoProcessing_Callback* callback)
 ```
 
@@ -467,7 +475,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_Destroy(VideoProcessing_Cal
 
 ### OH_VideoProcessingCallback_BindOnError()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnError onError)
 ```
 
@@ -493,7 +501,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing
 
 ### OH_VideoProcessingCallback_BindOnState()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnState onState)
 ```
 
@@ -519,7 +527,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing
 
 ### OH_VideoProcessingCallback_BindOnNewOutputBuffer()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnNewOutputBuffer onNewOutputBuffer)
 ```
 

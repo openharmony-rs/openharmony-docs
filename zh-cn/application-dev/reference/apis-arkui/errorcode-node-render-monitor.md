@@ -1,4 +1,10 @@
 # 注册节点渲染状态监听错误码
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -20,4 +26,4 @@ The count of nodes monitoring render state is over the limitation.
 
 **处理步骤**
 
-NA
+请确保注册的监视渲染状态的节点数小于64。

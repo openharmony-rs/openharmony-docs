@@ -7,7 +7,7 @@
 
 | **正例** | **反例** |
 | -------- | -------- |
-| 使用IDE创建卡片工程。 | 我们使用IDE创建卡片工程。 |
+| 创建卡片工程。 | 我们接下来创建卡片工程。 |
 
 【建议】尽量使用主动语态。即句子主语是执行动作的人或事物，而不是被操作的事物。
 
@@ -80,7 +80,7 @@
 
 【规则】通过写作模板来保证内容的完整性：
 
-- OpenHarmony文档遵从结构化、模块化理念，对于每类信息，均根据用户的信息需求提供相应内容模板，即“[OpenHarmony文档写作模板](https://gitee.com/openharmony/docs/tree/master/zh-cn/contribute/template)”。请从中选择最贴近待写作内容的模板，保证知识点覆盖完整。
+- OpenHarmony文档遵从结构化、模块化理念，对于每类信息，均根据用户的信息需求提供相应内容模板，即“[OpenHarmony文档写作模板](https://gitcode.com/openharmony/docs/tree/master/zh-cn/contribute/template)”。请从中选择最贴近待写作内容的模板，保证知识点覆盖完整。
 
 - 写作模板中“必选”的节点，禁止删除。
 
@@ -143,7 +143,7 @@
 - 避免使用含义模糊的词，如表示程度、强调等语气的词。
     | **正例** | **反例** |
   | -------- | -------- |
-  | 无 | -&nbsp;表示程度的词：较多（more）、较好（better）、基本地（basically）、决定性的（decisively）、最后的&nbsp;&nbsp;(&nbsp;finally&nbsp;)、很（very）、可能（may/maybe/could）、大概（probably）、通常(&nbsp;usually&nbsp;)、一般&nbsp;&nbsp;(&nbsp;generally&nbsp;)。<br/>-&nbsp;表示转折的词：当然（of&nbsp;&nbsp;course）、然而（however）。<br/>-&nbsp;表示量的词：有些（some）、非常（very）、大量（large&nbsp;&nbsp;number）、一些（several）、少许（few）。 |
+  | 无 | -&nbsp;表示程度的词：较多（more）、较好（better）、基本地（basically）、决定性的（decisively）、最后的&nbsp;&nbsp;(&nbsp;finally&nbsp;)、很（very）、可能（may/maybe/could）、大概（probably）、一般&nbsp;&nbsp;(&nbsp;generally&nbsp;)。<br/>-&nbsp;表示转折的词：当然（of&nbsp;&nbsp;course）、然而（however）。<br/>-&nbsp;表示量的词：有些（some）、非常（very）、大量（large&nbsp;&nbsp;number）、一些（several）、少许（few）。 |
 
 【规则】确保逻辑清晰：
 
@@ -160,7 +160,9 @@
 
 - 对于存在分支的步骤，提供明确的选取原则。
 
-- 适当使用图、表，使逻辑和表意更直观。
+【规则】适当使用图、表，使逻辑和表意更直观。
+
+【规则】在阐述规格、约束限制类信息时，不应使用具体设备型号，而应告知开发者如何以可感知、可操作的方式判断目标功能/场景是否可用，如具备某特征、通过某接口查询等，以便举一反三。
 
 
 ## 一致
@@ -173,8 +175,6 @@ OpenHarmony常用词必须遵从下表。
 | -------- | -------- |
 | 登录 | 登陆 |
 | 单击 | 点击 |
-| 帐户 | 账户 |
-| 帐号 | 账号 |
 | 图像 | 图象 |
 | 计费 | 记费 |
 | 阈值 | 阀值 |
@@ -182,7 +182,7 @@ OpenHarmony常用词必须遵从下表。
 | 命令 | 指令 |
 | 外形 | 外型 |
 
-【规则】结构一致：相同文档或者同类信息，保持结构一致，有助于用户对文档结构的把握，方便信息的查找和理解。请优先在“[OpenHarmony文档写作模板](https://gitee.com/openharmony/docs/tree/master/zh-cn/contribute/template)”中选择最贴近待写作内容的模板，遵循模板要求写作。
+【规则】结构一致：相同文档或者同类信息，保持结构一致，有助于用户对文档结构的把握，方便信息的查找和理解。请优先在“[OpenHarmony文档写作模板](https://gitcode.com/openharmony/docs/tree/master/zh-cn/contribute/template)”中选择最贴近待写作内容的模板，遵循模板要求写作。
 
 【规则】句式一致：使用一致的句式，不但使技术文档对外表现出一致的风格，也有助于用户在理解内容时，符合已经形成的思维惯性，理解起来更简单。例如统一使用祈使句描述动作。
 

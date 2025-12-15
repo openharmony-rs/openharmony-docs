@@ -1,4 +1,10 @@
 # 转场样式
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -28,8 +34,8 @@
 
 2. 共享元素的exchange效果类似下图。
 
-**图1** 共享元素转场默认效果
-![zh-cn_image_0000001238424309](figures/zh-cn_image_0000001238424309.png)
+   **图1** 共享元素转场默认效果
+   ![zh-cn_image_0000001238424309](figures/zh-cn_image_0000001238424309.png)
 
 3. 共享元素动画对元素的边框、背景色不生效。
 

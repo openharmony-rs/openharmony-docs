@@ -1,4 +1,15 @@
 # ArkWeb_WebMessage*
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+
+```
+typedef struct ArkWeb_WebMessage* ArkWeb_WebMessagePtr
+```
 
 
 ## Overview

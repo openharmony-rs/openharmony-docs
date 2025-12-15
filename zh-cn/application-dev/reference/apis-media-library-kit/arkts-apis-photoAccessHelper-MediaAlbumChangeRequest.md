@@ -1,15 +1,19 @@
 # Class (MediaAlbumChangeRequest)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+
+相册变更请求。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 11开始支持。
-
-MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)
-
-相册变更请求。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## 导入模块
 
@@ -66,7 +70,9 @@ getAlbum(): Album
 
 获取当前相册变更请求中的相册。
 
-**注意**：对于创建相册的变更请求，在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效之前，该接口返回null。
+> **注意：**
+>
+> 对于创建相册的变更请求，在调用接口[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)的提交生效之前，该接口会返回null。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -113,7 +119,7 @@ setAlbumName(name: string): void
 
 相册名参数规格：
 - 相册名字符串长度为1~255。
-- 不允许出现非法字符，包括：<br> . \ / : * ? " ' ` < > | { } [ ]
+- 不允许出现的非法英文字符，包括：<br> . \ / : * ? " ' ` < > | { } [ ]
 - 英文字符大小写不敏感。
 - 相册名不允许重名。
 

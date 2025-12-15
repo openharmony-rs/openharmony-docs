@@ -1,4 +1,10 @@
 # @ohos.application.BackupExtensionAbility (BackupExtensionAbility)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @lvzhenjie-->
+<!--Designer: @wang_zhangjun; @chenxi0605-->
+<!--Tester: @liuhonggang123-->
+<!--Adviser: @foryourself-->
 
 The **BackupExtensionAbility** module provides extended backup and restore capabilities for applications.
 
@@ -20,10 +26,10 @@ Defines the version information required for data restore. You can determine the
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name| Type  | Mandatory| Description            |
-| ---- | ------ | ---- | ---------------- |
-| code | number | Yes  | Internal version number of the application.  |
-| name | string | Yes  | Version name of the application.|
+| Name| Type  | Read-Only| Optional| Description            |
+| ---- | ------ | ---- | --- | ---------------- |
+| code | number | No  | No | Internal version number of the application.  |
+| name | string | No  | No | Version name of the application.|
 
 ## BackupExtensionAbility
 
@@ -33,9 +39,9 @@ Implements backup and restore for application access data. You can use [onBackup
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name                 | Type                                                             | Mandatory| Description                                               |
-| --------------------- | ----------------------------------------------------------------- | ---- | --------------------------------------------------- |
-| context<sup>11+</sup> | [BackupExtensionContext](js-apis-file-backupextensioncontext.md) | Yes | Context of the BackupExtensionAbility. This context is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).|
+| Name                 | Type                                                             | Read-Only| Optional| Description                                               |
+| --------------------- | ----------------------------------------------------------------- | ---- | --- | --------------------------------------------------- |
+| context<sup>11+</sup> | [BackupExtensionContext](js-apis-file-backupextensioncontext.md) | No | No| Context of the BackupExtensionAbility. This context is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).|
 
 ### onBackup
 
@@ -50,7 +56,7 @@ Called when data is being backed up. You need to implement extended data backup 
   ```ts
   class BackupExt extends BackupExtensionAbility {
     async onBackup() {
-      console.log('onBackup');
+      console.info('onBackup');
     }
   }
   ```
@@ -98,7 +104,7 @@ class BackupExt extends BackupExtensionAbility {
         // When backupInfo is empty, you need to handle this based on the service logic of the application.
         console.info("backupInfo is empty");
       }
-      console.log(`onBackupEx ok`);
+      console.info(`onBackupEx ok`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -135,7 +141,7 @@ class BackupExt extends BackupExtensionAbility {
         // When backupInfo is empty, you need to handle this based on the service logic of the application.
         console.info("backupInfo is empty");
       }
-      console.log(`onBackupEx ok`);
+      console.info(`onBackupEx ok`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -171,7 +177,7 @@ Called when data is being restored. You need to implement the extended data rest
 
   class BackupExt extends BackupExtensionAbility {
     async onRestore(bundleVersion : BundleVersion) {
-      console.log(`onRestore ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestore ok ${JSON.stringify(bundleVersion)}`);
     }
   }
   ```
@@ -221,7 +227,7 @@ class BackupExt extends BackupExtensionAbility {
         // When restoreInfo is empty, you need to handle this based on the service logic of the application.
         console.info("restoreInfo is empty");
       }
-      console.log(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -258,7 +264,7 @@ class BackupExt extends BackupExtensionAbility {
         // When restoreInfo is empty, you need to handle this based on the service logic of the application.
         console.info("restoreInfo is empty");
       }
-      console.log(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -297,66 +303,75 @@ Called to return the progress information. This callback is executed synchronous
 **Example**
 
   ```ts
-  import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+  import { BackupExtensionAbility } from '@kit.CoreFileKit';
   import { taskpool } from '@kit.ArkTS';
 
-  interface ProgressInfo {
-    name: string, // appName
-    processed: number, // Processed data records.
-    total: number, // Total count.
-    isPercentage: boolean // (Optional) The value true means to display the progress in percentage; the value false or not implemented means to display the progress by the number of items.
+  @Sendable
+  class MigrateProgressInfo {
+    private migrateProgress: string = '';
+    private name: string = "test"; // appName
+    private processed: number = 0; // Processed data
+    private total: number = 100; // Total number
+    private isPercentage: boolean = true // (Optional) The value true means to display the progress in percentage; the value false or an unimplemented field means to display the progress by the number of items.
+
+    getMigrateProgress(): string {
+      this.migrateProgress = `{"progressInfo": [{"name": "${this.name}", "processed": "${this.processed}", "total": "${
+        this.total}", "isPercentage": "${this.isPercentage}"}]}`;
+      return this.migrateProgress;
+    }
+
+    updateProcessed(processed: number) {
+      this.processed = processed;
+    }
   }
 
   class BackupExt extends BackupExtensionAbility {
+    private progressInfo: MigrateProgressInfo = new MigrateProgressInfo();
+
     // In the following code, the appJob method is the simulated service code, and args specifies the parameters of appJob(). This method is used to start a worker thread in the task pool.
     async onBackup() {
-      console.log(`onBackup begin`);
+      console.info(`onBackup begin`);
       let args = 100; // args is a parameter of appJob().
-      let jobTask: taskpool.Task = new taskpool.LongTask(appJob, args);
+      let jobTask: taskpool.Task = new taskpool.LongTask(appJob, this.progressInfo, args);
       try {
         await taskpool.execute(jobTask, taskpool.Priority.LOW);
       } catch (error) {
         console.error("onBackup error." + error.message);
       }
       taskpool.terminateTask(jobTask); // Manually destroy the task.
-      console.log(`onBackup end`);
+      console.info(`onBackup end`);
     }
 
     async onRestore() {
-      console.log(`onRestore begin`);
+      console.info(`onRestore begin`);
       let args = 100; // args is a parameter of appJob().
-      let jobTask: taskpool.Task = new taskpool.LongTask(appJob, args);
+      let jobTask: taskpool.Task = new taskpool.LongTask(appJob, this.progressInfo, args);
       try {
         await taskpool.execute(jobTask, taskpool.Priority.LOW);
       } catch (error) {
         console.error("onRestore error." + error.message);
       }
       taskpool.terminateTask(jobTask); // Manually destroy the task.
-      console.log(`onRestore end`);
+      console.info(`onRestore end`);
     }
  
 
     onProcess(): string {
-      console.log(`onProcess begin`);
-      let process: string = `{
-       "progressInfo":[
-         {
-          "name": "callact", // appName
-          "processed": 100, // Processed data records.
-          "total": 1000, // Total count.
-          "isPercentage", true // (Optional) The value true means to display the progress in percentage; the value false or not implemented means to display the progress by the number of items.
-         }
-       ]
-      }`;
-      console.log(`onProcess end`);
-      return JSON.stringify(process);
+      console.info(`onProcess begin`);
+      return this.progressInfo.getMigrateProgress();
     }
   }
 
   @Concurrent
-  function appJob(args: number) : string {
-    // Service logic.
-    console.log(`appJob begin, args is: ` + args);
+  function appJob(progressInfo: MigrateProgressInfo, args: number) : string {
+    console.info(`appJob begin, args is: ` + args);
+    // Update the processing progress during service execution.
+    let currentProcessed: number = 0;
+    // Simulate the actual service logic.
+    for (let i = 0; i < args; i++) {
+      currentProcessed = i;
+      progressInfo.updateProcessed(currentProcessed);
+    }
     return "ok";
   }
   ```

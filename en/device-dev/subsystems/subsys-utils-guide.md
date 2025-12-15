@@ -29,8 +29,8 @@ The following lists the functions provided by each utils.
 -   APIs for internal functions, such as the timer
 
 ## Development Guide
-[c_utils](https://gitee.com/openharmony/commonlibrary_c_utils/blob/master/README.md)
+[c_utils](https://gitcode.com/openharmony/commonlibrary_c_utils/blob/master/README.md)
 
 # FAQs
 ## c_utils FAQs
-See [c_utils](https://gitee.com/openharmony/commonlibrary_c_utils/blob/master/README.md).
+See [c_utils](https://gitcode.com/openharmony/commonlibrary_c_utils/blob/master/README.md).

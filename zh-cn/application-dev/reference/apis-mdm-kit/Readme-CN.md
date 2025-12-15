@@ -2,16 +2,18 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--SE: @liuzuming-->
-<!--TSE: @lpw_work-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - ArkTS API<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager（账户管理）](js-apis-enterprise-accountManager.md)
-  - [@ohos.enterprise.adminManager (企业设备管理)](js-apis-enterprise-adminManager.md)
+  - [@ohos.enterprise.adminManager（admin权限管理）](js-apis-enterprise-adminManager.md)
   - [@ohos.enterprise.applicationManager（应用管理）](js-apis-enterprise-applicationManager.md)
   - [@ohos.enterprise.bluetoothManager（蓝牙管理）](js-apis-enterprise-bluetoothManager.md)
   - [@ohos.enterprise.browser（浏览器管理）](js-apis-enterprise-browser.md)
   - [@ohos.enterprise.bundleManager（包管理）](js-apis-enterprise-bundleManager.md)
+  - [@ohos.enterprise.common（Enterprise公共模块）](js-apis-enterprise-common.md)
   - [@ohos.enterprise.deviceControl（设备控制管理）](js-apis-enterprise-deviceControl.md)
   - [@ohos.enterprise.deviceInfo（设备信息管理）](js-apis-enterprise-deviceInfo.md)
   - [@ohos.enterprise.deviceSettings （设备设置管理）](js-apis-enterprise-deviceSettings.md)
@@ -26,7 +28,7 @@
   - [@ohos.enterprise.telephony（通话管理）](js-apis-enterprise-telephonyManager.md)
   <!--Del-->
   - [@ohos.enterprise.accountManager（账户管理）(系统接口)](js-apis-enterprise-accountManager-sys.md)
-  - [@ohos.enterprise.adminManager (企业设备管理)(系统接口)](js-apis-enterprise-adminManager-sys.md)
+  - [@ohos.enterprise.adminManager（admin权限管理）(系统接口)](js-apis-enterprise-adminManager-sys.md)
   - [@ohos.enterprise.applicationManager（应用管理）(系统接口)](js-apis-enterprise-applicationManager-sys.md)
   - [@ohos.enterprise.bluetoothManager（蓝牙管理）(系统接口)](js-apis-enterprise-bluetoothManager-sys.md)
   - [@ohos.enterprise.browser（浏览器管理）(系统接口)](js-apis-enterprise-browser-sys.md)

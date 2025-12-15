@@ -1,5 +1,16 @@
 # ResourceManager_Configuration
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ResourceManager_Configuration {...} ResourceManager_Configuration
+```
+
 ## 概述
 
 设备状态的枚举。

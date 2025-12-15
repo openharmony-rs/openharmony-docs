@@ -1,4 +1,10 @@
 # Using Same-Layer Rendering
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @ding-xin88-->
+<!--Designer: @LongLie-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 In the system, applications can use the **Web** component to load web pages. If the capability or performance of non-system UI components is inferior to that of system components, you can use the ArkUI component to render these components (same-layer components).
 
@@ -40,7 +46,7 @@ The following specifications take effect in both web pages and third-party frame
 
 - Self-drawing components: [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md), [Web](../reference/apis-arkweb/arkts-basic-components-web.md)
 
-- Command-based custom drawing nodes: [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md), [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md), [ContentSlot](../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md), [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md), [Graphics](../reference/apis-arkui/js-apis-arkui-graphics.md), [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md), [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md), [XComponentNode](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md), [AttributeUpdater](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md) and [CAPI](../reference/apis-arkui/_ark_u_i___native_module.md) (The components that support same-layer rendering are the same as that of ArkTS.)
+- Command-based custom drawing nodes: [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md), [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md), [ContentSlot](../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md), [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md), [Graphics](../reference/apis-arkui/js-apis-arkui-graphics.md), [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md), [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md), [XComponentNode](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md), [AttributeUpdater](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md) and [CAPI](../reference/apis-arkui/capi-arkui-nativemodule.md). (The components that support same-layer rendering are the same as that of ArkTS.)
 
 **Supported Common Component Attributes and Events**:
 
@@ -93,6 +99,15 @@ The [onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-basic-compone
 
 - By default, visibility changes caused by the CSS style or size change of the same-layer tag are not reported. For details, see [onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedvisibilitychange12).
 
+Status change of the **param** element embedded in the same-layer rendering tag **\<object>**:
+The [onNativeEmbedObjectParamChange()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedobjectparamchange21) callback is triggered when the param element of the same-layer rendering tag **\<object>** changes.
+
+- The addition, modification, and deletion of the **param** element can be reported.
+
+- A maximum of 500 **param** element changes can be reported at a time. More changes will be reported subsequently.
+
+- For details about the report, see [NativeEmbedParamDataInfo](../reference/apis-arkweb/arkts-basic-components-web-i.md#nativeembedparamdatainfo21).
+
 **Constraints**:
 
 - A maximum of five same-layer tag can be displayed on a web page. Otherwise, the rendering performance deteriorates.
@@ -126,7 +141,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
 
    The **\<embed>** and **\<object>** tags support same-layer rendering, and the **type** can be specified randomly. They are case insensitive and will be converted to lowercase letters by the ArkWeb kernel. The **tag** string is matched using the entire string, and the **type** string is matched using the prefix.
 
-   If this API is not used or receives an invalid string (empty string), the ArkWeb kernel uses the default setting, that is, "embed" + "native/" prefix. If the specified **type** is the same as the W3C standard **object** or **embed** type, for example, **registerNativeEmbedRule** ("**object**," "**application**/**pdf**"), ArkWeb will comply with the W3C standard behavior and will not identify it as a same-layer tag.
+   If this API is not used or receives an invalid string (empty string), the ArkWeb kernel uses the default setting, that is, "embed" + "native/" prefix. If the specified **type** is the same as the W3C standard **\<object>** or **\<embed>** type, for example, **registerNativeEmbedRule**("**object**," "**application**/**pdf**"), ArkWeb will comply with the W3C standard behavior and will not identify it as a same-layer tag.
 
    - Use the \<embed> tags.
 
@@ -274,7 +289,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
        if (this.isDestroy_) { // rootNode is null.
          return null;
        }
-       if (!this.rootNode) { // When rootNode is set to undefined
+       if (!this.rootNode) {// rootNode is set to undefined.
          this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
          if(this.rootNode) {
            this.rootNode.build(wrapBuilder(TextInputBuilder), {  textOne: "myTextInput", width: this.width_, height: this.height_  })
@@ -329,16 +344,16 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
             Web({src: $rawfile("text.html"), controller: this.browserTabController})
               // Enable same-layer rendering.
               .enableNativeEmbedMode(true)
-                // Register the same-layer tag of "object" and type of "test."
+                // Register the same-layer tag of <object> and type of "test."
               .registerNativeEmbedRule("object", "test")
-                // Obtain the lifecycle change data of the embed tag.
+                // Obtain the lifecycle change data of the <embed> tag.
               .onNativeEmbedLifecycleChange((embed) => {
-                console.log("NativeEmbed surfaceId" + embed.surfaceId);
+                console.info("NativeEmbed surfaceId" + embed.surfaceId);
                 // If embed.info.id is used as the key for mapping nodeController, explicitly specify the ID on the HTML5 page.
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
-                  console.log("NativeEmbed create" + JSON.stringify(embed.info));
-                  // Create a NodeController instance, set parameters, and rebuild.
+                  console.info("NativeEmbed create" + JSON.stringify(embed.info));
+                  // Create a node controller and set parameters.
                   let nodeController = new MyNodeController()
                   // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -358,23 +373,23 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
                   this.componentIdArr.push(componentId)
                 } else if (embed.status == NativeEmbedStatus.UPDATE) {
                   let nodeController = this.nodeControllerMap.get(componentId);
-                  console.log("NativeEmbed update" + JSON.stringify(embed));
+                  console.info("NativeEmbed update" + JSON.stringify(embed));
                   this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
                   this.positionMap.set(componentId, this.edges);
                   this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
                   this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
                   nodeController?.updateNode({textOne: 'update', width: this.uiContext.px2vp(embed.info?.width), height: this.uiContext.px2vp(embed.info?.height)} as ESObject)
                 } else if (embed.status == NativeEmbedStatus.DESTROY) {
-                  console.log("NativeEmbed destroy" + JSON.stringify(embed));
+                  console.info("NativeEmbed destroy" + JSON.stringify(embed));
                   let nodeController = this.nodeControllerMap.get(componentId);
-                  nodeController?.setDestroy(true)
-                  this.nodeControllerMap.clear();
+                  nodeController?.setDestroy(true);
+                  this.nodeControllerMap.delete(componentId);
                   this.positionMap.delete(componentId);
                   this.widthMap.delete(componentId);
                   this.heightMap.delete(componentId);
-                  this.componentIdArr.filter((value: string) => value != componentId)
+                  this.componentIdArr = this.componentIdArr.filter((value: string) => value !== componentId);
                 } else {
-                  console.log("NativeEmbed status" + embed.status);
+                  console.info("NativeEmbed status" + embed.status);
                 }
               })
           }.height("80%")
@@ -404,21 +419,21 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
             Web({src: $rawfile("text.html"), controller: this.browserTabController})
               // Enable same-layer rendering.
               .enableNativeEmbedMode(true)
-                // Obtain the lifecycle change data of the embed tag.
+                // Obtain the lifecycle change data of the <embed> tag.
               .onNativeEmbedLifecycleChange((embed) => {
                 // Implement lifecycle changes.
               })
               .onNativeEmbedGestureEvent((touch) => {
-                console.log("NativeEmbed onNativeEmbedGestureEvent" + JSON.stringify(touch.touchEvent));
+                console.info("NativeEmbed onNativeEmbedGestureEvent" + JSON.stringify(touch.touchEvent));
                 this.componentIdArr.forEach((componentId: string) => {
                   let nodeController = this.nodeControllerMap.get(componentId);
                   // Send the obtained event of the region at the same layer to the nodeController corresponding to embedId of the region.
                   if(nodeController?.getEmbedId() == touch.embedId) {
                     let ret = nodeController?.postEvent(touch.touchEvent)
                     if(ret) {
-                      console.log("onNativeEmbedGestureEvent success " + componentId);
+                      console.info("onNativeEmbedGestureEvent success " + componentId);
                     } else {
-                      console.log("onNativeEmbedGestureEvent fail " + componentId);
+                      console.info("onNativeEmbedGestureEvent fail " + componentId);
                     }
                     if(touch.result) {
                       // Notify the Web component of the consumption result of the gesture event.
@@ -440,7 +455,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    - Tapping or holding with the left, middle, or right mouse button.
    - Tapping or holding the left, middle, or right mouse button using the touchpad.
 
-   Call [onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20) to listen for the mouse events of the same-layer rendered region.
+   Call [onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20) to listen for the mouse events in the same-layer rendering region.
 
     ```ts
     build() {
@@ -457,7 +472,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
             Web({src: $rawfile("text.html"), controller: this.browserTabController})
               // Enable same-layer rendering.
               .enableNativeEmbedMode(true)
-                // Obtain the lifecycle change data of the embed tag.
+                // Obtain the lifecycle change data of the <embed> tag.
               .onNativeEmbedLifecycleChange((embed) => {
                 // Implement lifecycle changes.
               })
@@ -465,16 +480,16 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
                 // Process the gesture event at the same layer.
               })
               .onNativeEmbedMouseEvent((mouse) => {
-                console.log("NativeEmbed onNativeEmbedMouseEvent" + JSON.stringify(mouse.mouseEvent));
+                console.info("NativeEmbed onNativeEmbedMouseEvent" + JSON.stringify(mouse.mouseEvent));
                 this.componentIdArr.forEach((componentId: string) => {
                   let nodeController = this.nodeControllerMap.get(componentId);
                   // Send the obtained event of the region at the same layer to the nodeController corresponding to embedId of the region.
                   if(nodeController?.getEmbedId() == mouse.embedId) {
-                    let ret = nodeController?.postInputEvent(mouse.touchEvent)
+                    let ret = nodeController?.postInputEvent(mouse.mouseEvent)
                     if(ret) {
-                      console.log("onNativeEmbedMouseEvent success " + componentId);
+                      console.info("onNativeEmbedMouseEvent success " + componentId);
                     } else {
-                      console.log("onNativeEmbedMouseEvent fail " + componentId);
+                      console.info("onNativeEmbedMouseEvent fail " + componentId);
                     }
                     if(mouse.result) {
                       // Notify the Web component of the consumption result of the mouse event.
@@ -490,15 +505,17 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
     ```
 **Sample Code**
 
-To start with, add the Internet permission to the **module.json5** file. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+To start with, add network permissions to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
-  ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-  ```
+<!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/module.json5) -->
+
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
+```
 
 Code on the application side:
 
@@ -552,7 +569,7 @@ Code on the application side:
       if (this.isDestroy_) { // rootNode is null.
         return null;
       }
-      if (!this.rootNode) { // When rootNode is set to undefined
+      if (!this.rootNode) {// rootNode is set to undefined.
         this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
         if(this.rootNode) {
           this.rootNode.build(wrapBuilder(TextInputBuilder), {  textOne: "myTextInput", width: this.width_, height: this.height_  })
@@ -645,14 +662,14 @@ Code on the application side:
             Web({src: $rawfile("text.html"), controller: this.browserTabController})
               // Enable same-layer rendering.
               .enableNativeEmbedMode(true)
-              // Obtain the lifecycle change data of the embed tag.
+              // Obtain the lifecycle change data of the <embed> tag.
               .onNativeEmbedLifecycleChange((embed) => {
-                 console.log("NativeEmbed surfaceId" + embed.surfaceId);
+                 console.info("NativeEmbed surfaceId" + embed.surfaceId);
                  // If embed.info.id is used as the key for mapping nodeController, explicitly specify the ID on the HTML5 page.
                  const componentId = embed.info?.id?.toString() as string
                  if (embed.status == NativeEmbedStatus.CREATE) {
-                   console.log("NativeEmbed create" + JSON.stringify(embed.info));
-                   // Create a NodeController instance, set parameters, and rebuild.
+                   console.info("NativeEmbed create" + JSON.stringify(embed.info));
+                   // Create a node controller and set parameters.
                    let nodeController = new MyNodeController()
                    // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                    nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -672,36 +689,36 @@ Code on the application side:
                    this.componentIdArr.push(componentId)
                  } else if (embed.status == NativeEmbedStatus.UPDATE) {
                    let nodeController = this.nodeControllerMap.get(componentId);
-                   console.log("NativeEmbed update" + JSON.stringify(embed));
+                   console.info("NativeEmbed update" + JSON.stringify(embed));
                    this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
                    this.positionMap.set(componentId, this.edges);
                    this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
                    this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
                    nodeController?.updateNode({textOne: 'update', width: this.uiContext.px2vp(embed.info?.width), height: this.uiContext.px2vp(embed.info?.height)} as ESObject)
                  } else if (embed.status == NativeEmbedStatus.DESTROY) {
-                   console.log("NativeEmbed destroy" + JSON.stringify(embed));
+                   console.info("NativeEmbed destroy" + JSON.stringify(embed));
                    let nodeController = this.nodeControllerMap.get(componentId);
-                   nodeController?.setDestroy(true)
-                   this.nodeControllerMap.clear();
+                   nodeController?.setDestroy(true);
+                   this.nodeControllerMap.delete(componentId);
                    this.positionMap.delete(componentId);
                    this.widthMap.delete(componentId);
                    this.heightMap.delete(componentId);
-                   this.componentIdArr.filter((value: string) => value != componentId)
+                   this.componentIdArr = this.componentIdArr.filter((value: string) => value !== componentId);
                  } else {
-                   console.log("NativeEmbed status" + embed.status);
+                   console.info("NativeEmbed status" + embed.status);
                  }
                })// Obtain the touch event information of components for same-layer rendering.
               .onNativeEmbedGestureEvent((touch) => {
-                console.log("NativeEmbed onNativeEmbedGestureEvent" + JSON.stringify(touch.touchEvent));
+                console.info("NativeEmbed onNativeEmbedGestureEvent" + JSON.stringify(touch.touchEvent));
                 this.componentIdArr.forEach((componentId: string) => {
                   let nodeController = this.nodeControllerMap.get(componentId);
                   // Send the obtained event of the region at the same layer to the nodeController corresponding to embedId of the region.
                   if(nodeController?.getEmbedId() == touch.embedId) {
                     let ret = nodeController?.postEvent(touch.touchEvent)
                     if(ret) {
-                      console.log("onNativeEmbedGestureEvent success " + componentId);
+                      console.info("onNativeEmbedGestureEvent success " + componentId);
                     } else {
-                      console.log("onNativeEmbedGestureEvent fail " + componentId);
+                      console.info("onNativeEmbedGestureEvent fail " + componentId);
                     }
                     if(touch.result) {
                       // Notify the Web component of the consumption result of the gesture event.
@@ -711,16 +728,16 @@ Code on the application side:
                 })
               })
               .onNativeEmbedMouseEvent((mouse) => {
-                console.log("NativeEmbed onNativeEmbedMouseEvent" + JSON.stringify(mouse.mouseEvent));
+                console.info("NativeEmbed onNativeEmbedMouseEvent" + JSON.stringify(mouse.mouseEvent));
                 this.componentIdArr.forEach((componentId: string) => {
                   let nodeController = this.nodeControllerMap.get(componentId);
                   // Send the obtained event of the region at the same layer to the nodeController corresponding to embedId of the region.
                   if(nodeController?.getEmbedId() == mouse.embedId) {
                     let ret = nodeController?.postInputEvent(mouse.mouseEvent)
                     if(ret) {
-                      console.log("onNativeEmbedMouseEvent success " + componentId);
+                      console.info("onNativeEmbedMouseEvent success " + componentId);
                     } else {
-                      console.log("onNativeEmbedMouseEvent fail " + componentId);
+                      console.info("onNativeEmbedMouseEvent fail " + componentId);
                     }
                     if(mouse.result) {
                       // Notify the Web component of the consumption result of the mouse event.
@@ -789,7 +806,7 @@ Code on the application side:
       if (this.isDestroy_) { // rootNode is null.
         return null;
       }
-      if (!this.rootNode) { // When rootNode is set to undefined
+      if (!this.rootNode) { // rootNode is set to undefined.
         this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_});
         if (this.type_ === 'native/video') {
           this.rootNode.build(wrapBuilder(VideoBuilder), {textOne: "myButton", width : this.width_, height : this.height_});
@@ -890,14 +907,14 @@ Code on the application side:
             Web({ src: $rawfile("test.html"), controller: this.browserTabController })
               // Enable same-layer rendering.
               .enableNativeEmbedMode(true)
-                // Obtain the lifecycle change data of the embed tag.
+                // Obtain the lifecycle change data of the <embed> tag.
               .onNativeEmbedLifecycleChange((embed) => {
-                console.log("NativeEmbed surfaceId" + embed.surfaceId);
+                console.info("NativeEmbed surfaceId" + embed.surfaceId);
                 // 1. If embed.info.id is used as the key for mapping nodeController, explicitly specify the ID on the HTML5 page.
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
-                  console.log("NativeEmbed create" + JSON.stringify(embed.info))
-                  // Create a NodeController instance, set parameters, and rebuild.
+                  console.info("NativeEmbed create" + JSON.stringify(embed.info))
+                  // Create a node controller and set parameters.
                   let nodeController = new MyNodeController()
                   // 1. The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string, type : embed.info?.type as string,
@@ -921,27 +938,27 @@ Code on the application side:
                   nodeController?.updateNode({textOne: 'update', width: this.uiContext.px2vp(embed.info?.width), height: this.uiContext.px2vp(embed.info?.height)} as ESObject)
                 } else if (embed.status == NativeEmbedStatus.DESTROY) {
                   let nodeController = this.nodeControllerMap.get(componentId);
-                  nodeController?.setDestroy(true)
-                  this.nodeControllerMap.clear();
+                  nodeController?.setDestroy(true);
+                  this.nodeControllerMap.delete(componentId);
                   this.positionMap.delete(componentId);
                   this.widthMap.delete(componentId);
                   this.heightMap.delete(componentId);
-                  this.componentIdArr.filter((value: string) => value != componentId)
+                  this.componentIdArr = this.componentIdArr.filter((value: string) => value !== componentId);
                 } else {
-                  console.log("NativeEmbed status" + embed.status);
+                  console.info("NativeEmbed status" + embed.status);
                 }
               })// Obtain the touch event information of components for same-layer rendering.
               .onNativeEmbedGestureEvent((touch) => {
-                console.log("NativeEmbed onNativeEmbedGestureEvent" + JSON.stringify(touch.touchEvent));
+                console.info("NativeEmbed onNativeEmbedGestureEvent" + JSON.stringify(touch.touchEvent));
                 this.componentIdArr.forEach((componentId: string) => {
                   let nodeController = this.nodeControllerMap.get(componentId)
                   // Send the obtained event of the region at the same layer to the nodeController corresponding to embedId of the region.
                   if (nodeController?.getEmbedId() === touch.embedId) {
                     let ret = nodeController?.postEvent(touch.touchEvent)
                     if (ret) {
-                      console.log("onNativeEmbedGestureEvent success " + componentId)
+                      console.info("onNativeEmbedGestureEvent success " + componentId)
                     } else {
-                      console.log("onNativeEmbedGestureEvent fail " + componentId)
+                      console.info("onNativeEmbedGestureEvent fail " + componentId)
                     }
                     if (touch.result) {
                       // Notify the Web component of the consumption result of the gesture event.
@@ -951,16 +968,16 @@ Code on the application side:
                 })
               })
               .onNativeEmbedMouseEvent((mouse) => {
-                console.log("NativeEmbed onNativeEmbedMouseEvent" + JSON.stringify(mouse.mouseEvent));
+                console.info("NativeEmbed onNativeEmbedMouseEvent" + JSON.stringify(mouse.mouseEvent));
                 this.componentIdArr.forEach((componentId: string) => {
                   let nodeController = this.nodeControllerMap.get(componentId);
                   // Send the obtained event of the region at the same layer to the nodeController corresponding to embedId of the region.
                   if(nodeController?.getEmbedId() == mouse.embedId) {
                     let ret = nodeController?.postInputEvent(mouse.mouseEvent)
                     if(ret) {
-                      console.log("onNativeEmbedMouseEvent success " + componentId);
+                      console.info("onNativeEmbedMouseEvent success " + componentId);
                     } else {
-                      console.log("onNativeEmbedMouseEvent fail " + componentId);
+                      console.info("onNativeEmbedMouseEvent fail " + componentId);
                     }
                     if(mouse.result) {
                       // Notify the Web component of the consumption result of the mouse event.
@@ -981,7 +998,7 @@ Code on the application side:
   ```ts
   // HAP's src/main/ets/pages/PlayerDemo.ets
   import { media } from '@kit.MediaKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export class AVPlayerDemo {
     private count: number = 0;
@@ -989,7 +1006,7 @@ Code on the application side:
     private isSeek: boolean = true; // Specify whether the seek operation is supported.
 
     setSurfaceID(surface_id: string){
-      console.log('setSurfaceID : ' + surface_id);
+      console.info('setSurfaceID : ' + surface_id);
       this.surfaceID = surface_id;
     }
     // Set AVPlayer callback functions.
@@ -1020,7 +1037,7 @@ Code on the application side:
             avPlayer.play(); // Call play() to start playback.
             break;
           case 'playing': // This state is reported upon a successful callback of play().
-            console.info('AVPlayer state prepared called.');
+            console.info('AVPlayer state playing called.');
             if(this.count !== 0) {
               if (this.isSeek) {
                 console.info('AVPlayer start to seek.');
@@ -1039,7 +1056,7 @@ Code on the application side:
             avPlayer.play(); // Call play() again to start playback.
             break;
           case 'completed': // This state is reported upon the completion of the playback.
-            console.info('AVPlayer state paused called.');
+            console.info('AVPlayer state completed called.');
             avPlayer.stop(); // Call the playback API.
             break;
           case 'stopped': // This state is reported upon a successful callback of stop().
@@ -1088,7 +1105,7 @@ Code on the application side:
   </html>
   ```
 
-- Demo:
+- Demo
 
   ![web-same-layer](figures/web-same-layer.png)
 
@@ -1151,7 +1168,7 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
       if (this.isDestroy_) { // rootNode is null.
         return null;
       }
-      if (!this.rootNode) { // When rootNode is set to undefined
+      if (!this.rootNode) {// rootNode is set to undefined.
         this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
         if (this.type_ == 'native/view1') {
           this.rootNode.build(wrapBuilder(TextInputBuilder1), {  textOne: "myTextInput", width: this.width_, height: this.height_  })
@@ -1276,14 +1293,14 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
             Web({src: $rawfile("overlay.html"), controller: this.browserTabController})
               // Enable same-layer rendering.
               .enableNativeEmbedMode(true)
-                // Obtain the lifecycle change data of the embed tag.
+                // Obtain the lifecycle change data of the <embed> tag.
               .onNativeEmbedLifecycleChange((embed) => {
-                console.log("NativeEmbed surfaceId" + embed.surfaceId);
+                console.info("NativeEmbed surfaceId" + embed.surfaceId);
                 // If embed.info.id is used as the key for mapping nodeController, explicitly specify the ID on the HTML5 page.
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
-                  console.log("NativeEmbed create" + JSON.stringify(embed.info));
-                  // Create a NodeController instance, set parameters, and rebuild.
+                  console.info("NativeEmbed create" + JSON.stringify(embed.info));
+                  // Create a node controller and set parameters.
                   let nodeController = new MyNodeController()
                   // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -1303,36 +1320,36 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
                   this.componentIdArr.push(componentId)
                 } else if (embed.status == NativeEmbedStatus.UPDATE) {
                   let nodeController = this.nodeControllerMap.get(componentId);
-                  console.log("NativeEmbed update" + JSON.stringify(embed));
+                  console.info("NativeEmbed update" + JSON.stringify(embed));
                   this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
                   this.positionMap.set(componentId, this.edges);
                   this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
                   this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
                   nodeController?.updateNode({textOne: 'update', width: this.uiContext.px2vp(embed.info?.width), height: this.uiContext.px2vp(embed.info?.height)} as ESObject)
                 } else if (embed.status == NativeEmbedStatus.DESTROY) {
-                  console.log("NativeEmbed destroy" + JSON.stringify(embed));
+                  console.info("NativeEmbed destroy" + JSON.stringify(embed));
                   let nodeController = this.nodeControllerMap.get(componentId);
-                  nodeController?.setDestroy(true)
-                  this.nodeControllerMap.clear();
+                  nodeController?.setDestroy(true);
+                  this.nodeControllerMap.delete(componentId);
                   this.positionMap.delete(componentId);
                   this.widthMap.delete(componentId);
                   this.heightMap.delete(componentId);
-                  this.componentIdArr.filter((value: string) => value != componentId)
+                  this.componentIdArr = this.componentIdArr.filter((value: string) => value !== componentId);
                 } else {
-                  console.log("NativeEmbed status" + embed.status);
+                  console.info("NativeEmbed status" + embed.status);
                 }
               })// Obtain the touch event information of components for same-layer rendering.
               .onNativeEmbedGestureEvent((touch) => {
-                console.log("NativeEmbed onNativeEmbedGestureEvent" + JSON.stringify(touch.touchEvent));
+                console.info("NativeEmbed onNativeEmbedGestureEvent" + JSON.stringify(touch.touchEvent));
                 this.componentIdArr.forEach((componentId: string) => {
                   let nodeController = this.nodeControllerMap.get(componentId);
                   // Send the obtained event of the region at the same layer to the nodeController corresponding to embedId of the region.
                   if(nodeController?.getEmbedId() == touch.embedId) {
                     let ret = nodeController?.postEvent(touch.touchEvent)
                     if(ret) {
-                      console.log("onNativeEmbedGestureEvent success " + componentId);
+                      console.info("onNativeEmbedGestureEvent success " + componentId);
                     } else {
-                      console.log("onNativeEmbedGestureEvent fail " + componentId);
+                      console.info("onNativeEmbedGestureEvent fail " + componentId);
                     }
                     if(touch.result) {
                       // Notify the Web component of the consumption result of the gesture event.
@@ -1352,7 +1369,7 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
 
 - Example of a frontend page:
 
-  The sample code uses the **embed** tag. If the **object** tag is used, register the **object** tag and **type** on the eTS side.
+  The sample code uses the **\<embed>** tag. To use the **\<object>** tag, register it and **\<type>** on the eTS side.
   ```html
   <!--HAP's src/main/resources/rawfile/overlay.html-->
   <!DOCTYPE html>

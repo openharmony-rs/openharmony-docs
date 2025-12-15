@@ -1,5 +1,11 @@
 # tensor.h
-<!--Kit_MindSpore Lite Kit--><!--System_AI-->
+
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
@@ -67,7 +73,7 @@ Creates a tensor object.
 
 | Name| Description|
 | -- | -- |
-| const char *name | Tensor name.|
+| const char *name | Tensor name. The string length is subject to system restrictions.|
 | [OH_AI_DataType](capi-data-type-h.md#oh_ai_datatype) type | Tensor data type.|
 | const int64_t *shape | Tensor dimension array.|
 | size_t shape_num | Length of the tensor dimension array.|
@@ -116,7 +122,7 @@ Clones a tensor.
 
 | Name| Description|
 | -- | -- |
-| [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) tensor | Pointer to the tensor to clone.|
+| [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) tensor | Handle of the tensor object.|
 
 **Returns**
 
@@ -142,7 +148,7 @@ Sets the tensor name.
 | Name| Description|
 | -- | -- |
 | [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) tensor | Handle of the tensor object.|
-| const char *name | Tensor name.|
+| const char *name | Tensor name. The string length is subject to system restrictions.|
 
 ### OH_AI_TensorGetName()
 

@@ -1,5 +1,14 @@
 # OH_NN_UInt32Array
-<!--Kit_Neural Network Runtime Kit--><!--System_AI-->
+<!--Kit: Neural Network Runtime Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @GbuzhidaoR-->
+<!--Designer: @GbuzhidaoR-->
+<!--Tester: @GbuzhidaoR-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_NN_UInt32Array {...} OH_NN_UInt32Array
+```
 
 ## 概述
 

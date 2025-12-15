@@ -1,5 +1,12 @@
 # WorkSchedulerExtensionContext
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @Brilliantry_Rui-->
+
 WorkSchedulerExtensionContext是WorkSchedulerExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文环境，提供允许访问特定于WorkSchedulerExtensionAbility的资源的能力。
@@ -14,8 +21,7 @@ WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文�
 通过WorkSchedulerExtensionAbility子类实例来获取。
 
 ```ts
-import WorkSchedulerExtensionAbility from '@ohos.WorkSchedulerExtensionAbility';
-import workScheduler from '@ohos.resourceschedule.workScheduler';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
     onWorkStart(workInfo: workScheduler.WorkInfo) {

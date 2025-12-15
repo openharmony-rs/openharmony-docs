@@ -1,4 +1,10 @@
 # Wrapping a Native Object in an ArkTS Object
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -23,7 +29,7 @@ You can use **napi_wrap** to wrap a C++ object in an ArkTS object, and use **nap
 
    **Configure compile settings.**
 
-   ```
+   ```txt
    # Minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
    project(napi_wrap_demo)
@@ -70,8 +76,6 @@ You can use **napi_wrap** to wrap a C++ object in an ArkTS object, and use **nap
      napi_ref wrapper_;
    };
 
-   static thread_local napi_ref g_ref = nullptr;
-
    MyObject::MyObject(double value)
        : value_(value), env_(nullptr), wrapper_(nullptr) {}
 
@@ -99,7 +103,6 @@ You can use **napi_wrap** to wrap a C++ object in an ArkTS object, and use **nap
      napi_define_class(env, "MyObject", NAPI_AUTO_LENGTH, New, nullptr, 2,
                               properties, &cons);
 
-     napi_create_reference(env, cons, 1, &g_ref);
      napi_set_named_property(env, exports, "MyObject", cons);
      return exports;
    }
@@ -179,10 +182,12 @@ You can use **napi_wrap** to wrap a C++ object in an ArkTS object, and use **nap
        // Invoked as the plain function `MyObject(...)`.
        size_t argc = 1;
        napi_value args[1];
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       napi_value jsThis = nullptr;
+       napi_get_cb_info(env, info, &argc, args, &jsThis, nullptr);
 
        napi_value cons;
-       napi_get_reference_value(env, g_ref, &cons);
+       const char* constructorName = "MyObject";
+       napi_get_named_property(env, jsThis, constructorName, &cons);
        napi_value instance;
        napi_new_instance(env, cons, argc, args, &instance);
 
@@ -249,7 +254,7 @@ You can use **napi_wrap** to wrap a C++ object in an ArkTS object, and use **nap
 4. The following provides the sample ArkTS code.
 
    ```ts
-   import hilog from '@ohos.hilog';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    import { MyObject } from 'libentry.so';
 
    let object : MyObject = new MyObject(0);

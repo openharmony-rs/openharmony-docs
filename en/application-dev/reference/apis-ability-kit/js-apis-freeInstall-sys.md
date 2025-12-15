@@ -1,4 +1,10 @@
-# @ohos.bundle.freeInstall (freeInstall) (System API)
+# @ohos.bundle.freeInstall (freeInstall Module) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The module provides APIs for setting and obtaining installation-free information and APIs for obtaining BundlePackInfo and DispatchInfo.
 
@@ -85,19 +91,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
 try {
-    freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag, err => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed');
-        }
-    });
+  freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag, err => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed');
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -144,18 +151,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
 try {
-    freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag).then(() => {
-        console.info('Operation succeed')
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag).then(() => {
+    console.info('Operation succeed')
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -177,7 +185,7 @@ Checks whether a module can be removed. This API uses an asynchronous callback t
 | ---------- | ---------------------- | ---- | --------------------------------------------- |
 | bundleName | string                 | Yes  | Bundle name.                     |
 | moduleName | string                 | Yes  | Module name.                           |
-| callback   | AsyncCallback\<boolean> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the module can be removed, **true** is returned; otherwise, **false** is returned.|
+| callback   | AsyncCallback\<boolean> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is a Boolean value (**true** if the module can be removed, **false** otherwise). If the operation fails, **err** is an error object.|
 
 **Error codes**
 
@@ -196,18 +204,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
-    freeInstall.isHapModuleRemovable(bundleName, moduleName, (err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.isHapModuleRemovable(bundleName, moduleName, (err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -253,17 +262,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
-    freeInstall.isHapModuleRemovable(bundleName, moduleName).then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.isHapModuleRemovable(bundleName, moduleName).then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -303,18 +313,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
-    freeInstall.getBundlePackInfo(bundleName, bundlePackFlag, (err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag, (err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 ## getBundlePackInfo
@@ -358,17 +369,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
-    freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -404,16 +416,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 try {
-    freeInstall.getDispatchInfo((err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.getDispatchInfo((err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -449,15 +462,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    freeInstall.getDispatchInfo().then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.getDispatchInfo().then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 

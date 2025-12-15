@@ -1,9 +1,19 @@
 # ArkWeb_WebMessageAPI
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct {...} ArkWeb_WebMessageAPI
+```
 
 
 ## 概述
 
-Post Message数据相关的Native API结构体。在调用接口前建议通过ARKWEB_MEMBER_MISSING校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。
+Post Message数据相关的Native API结构体。在调用接口前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。WebMessage相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。
 
 **起始版本：** 12
 
@@ -29,13 +39,13 @@ Post Message数据相关的Native API结构体。在调用接口前建议通过A
 | [void (\*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)](#settype)    | 设置消息类型。                     |
 | [ArkWeb_WebMessageType (\*getType)(ArkWeb_WebMessagePtr webMessage)](#gettype)               | 获取消息类型。                         |
 | [void (\*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)](#setdata) | 设置数据。 |
-| [void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)](#getdata)            | 获取数据。                                                                  |
+| [void* (\*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)](#getdata)           | 获取数据。                         |
 
 ## 成员函数说明
 
 ### createWebMessage()
 
-```
+```c
 ArkWeb_WebMessagePtr (*createWebMessage)()
 ```
 
@@ -51,7 +61,7 @@ ArkWeb_WebMessagePtr (*createWebMessage)()
 
 ### destroyWebMessage()
 
-```
+```c
 void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 ```
 
@@ -59,9 +69,15 @@ void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 
 销毁消息。
 
+**参数：**
+
+| 参数项                                                                       | 描述 |
+|---------------------------------------------------------------------------|----|
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md)* webMessage            | 需要销毁的消息。   |
+
 ### setType()
 
-```
+```c
 void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 ```
 
@@ -78,7 +94,7 @@ void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 
 ### getType()
 
-```
+```c
 ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 ```
 
@@ -94,7 +110,7 @@ ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 
 ### setData()
 
-```
+```c
 void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
 ```
 
@@ -113,7 +129,7 @@ void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
 
 ### getData()
 
-```
+```c
 void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)
 ```
 

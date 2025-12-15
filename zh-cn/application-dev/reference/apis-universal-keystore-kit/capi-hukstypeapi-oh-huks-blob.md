@@ -1,5 +1,16 @@
 # OH_Huks_Blob
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
+```c
+struct OH_Huks_Blob {...}
+```
+
 ## 概述
 
 定义存放数据的结构体类型。

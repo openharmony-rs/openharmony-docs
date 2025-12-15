@@ -51,7 +51,7 @@ You are advised to copy the configuration file of Hi3516D V300 and delete the **
 
 ### Directory Planning
 
-This solution designs the directory structure using the [board and SoC decoupling idea](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md), and plans the SoC adaptation directory as follows:
+This solution designs the directory structure using the [board and SoC decoupling idea](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md), and plans the SoC adaptation directory as follows:
 
 ```
 device
@@ -130,11 +130,11 @@ genext2fs -B ${blocks} -b ${block_size} -d boot_linux -i 8192 -U boot_linux.img
 
 For details about modification for calling **make-boot.sh**, see the following:
 
-https://gitee.com/openharmony/build/pulls/569/files
+https://gitcode.com/openharmony/build/pulls/569/files
 
 ### INIT Configuration
 
-For details about the init configuration, see the [specifications of the startup subsystem](https://gitee.com/openharmony/docs/blob/master/en/readme/startup.md).
+For details about the init configuration, see the [specifications of the startup subsystem](https://gitcode.com/openharmony/docs/blob/master/en/readme/startup.md).
 
 ## **Audio**
 
@@ -294,7 +294,7 @@ Register the driver node under **audio** in the **device_info.hcs** file.
 
 Select the Codec node or Accessory node based on the connected device, and configure the private attributes (including the start address of the register and the address of the related control register) corresponding to the device. **Codec_config.hcs** and **DAI_config.hcs** are involved.
 
-For details about the configuration, see the HCS configuration section and **audio_parse** module code of the ADM framework in [Audio](https://gitee.com/openharmony/docs/blob/master/en/device-dev/driver/driver-peripherals-audio-des.md).
+For details about the configuration, see the HCS configuration section and **audio_parse** module code of the ADM framework in [Audio](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/driver/driver-peripherals-audio-des.md).
 
 ##### Codec/Accessory Module
 
@@ -1912,7 +1912,7 @@ The source code directory structure is as follows:
 │   └── unittest      # Unit test code
 ```
 
-For details, see [README](https://gitee.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md) of the input subsystem.
+For details, see [README](https://gitcode.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md) of the input subsystem.
 
 ### TP HDF Driver Adaptation
 
@@ -2051,11 +2051,11 @@ The following tasks need to be performed for display adaptation: graphics servic
 
 ### Display HDI
 
-[Display HDI](https://gitee.com/openharmony/drivers_peripheral/blob/master/display/README_zh.md) provides display driver capabilities for graphics services, including display layer management, display memory management, and hardware acceleration. Display HDI adaptation involves **gralloc** and **display_device**.
+[Display HDI](https://gitcode.com/openharmony/drivers_peripheral/blob/master/display/README_zh.md) provides display driver capabilities for graphics services, including display layer management, display memory management, and hardware acceleration. Display HDI adaptation involves **gralloc** and **display_device**.
 
 #### Gralloc Adaptation
 
-The gralloc module provides the display memory management function. OpenHarmony provides the reference implementation of Hi3516D V300. Vendors can refer to and adapt the implementation based on the actual situation. The implementation is developed based on the DRM. [Source code link](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/hal/default_standard)
+The gralloc module provides the display memory management function. OpenHarmony provides the reference implementation of Hi3516D V300. Vendors can refer to and adapt the implementation based on the actual situation. The implementation is developed based on the DRM. [Source code link](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/hal/default_standard)
 
 The DRM device node is defined in the **//drivers_peripheral/display/hal/default_standard/srd/display_gralloc/display_gralloc_gbm.c** file. You can modify the file as required.
 
@@ -2077,7 +2077,7 @@ In this implementation, a HiSilicon private IOCTL command code **DRM_IOCTL_HISIL
 
 The display device module provides functions such as display device management, layer management, and hardware acceleration.
 
-OpenHarmony provides the [DRM-based Hi3516D V300 reference implementation](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/hal/default_standard/src/display_device), which supports hardware composition by default.
+OpenHarmony provides the [DRM-based Hi3516D V300 reference implementation](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/hal/default_standard/src/display_device), which supports hardware composition by default.
 
 If the development board does not support hardware composition, skip the initialization of the GFX in the **drm_display.cpp** file.
 

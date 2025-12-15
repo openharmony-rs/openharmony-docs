@@ -1,4 +1,10 @@
 # Class (GeolocationPermissions)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zhang-yinglie-->
+<!--Designer: @handyohos-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Web组件地理位置权限管理对象。
 
@@ -35,11 +41,11 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
 | origin | string | 是   |指定源的字符串索引 |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下允许指定来源使用地理位置，false表示正常非隐私模式下允许指定来源使用地理位置。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下允许指定来源使用地理位置，false表示正常非隐私模式下允许指定来源使用地理位置。<br>默认值：false。<br>传入null或undefined时为false。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -88,11 +94,11 @@ static deleteGeolocation(origin: string, incognito?: boolean): void
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
 | origin | string | 是   | 指定源的字符串索引 |
-| incognito<sup>11+</sup>   | boolean | 否   | true表示隐私模式下清除指定来源的地理位置权限状态，false表示正常非隐私模式下清除指定来源的地理位置权限状态。 |
+| incognito<sup>11+</sup>   | boolean | 否   | true表示隐私模式下清除指定来源的地理位置权限状态，false表示正常非隐私模式下清除指定来源的地理位置权限状态。<br>默认值：false。<br>传入null或undefined时为false。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -142,11 +148,11 @@ static getAccessibleGeolocation(origin: string, callback: AsyncCallback\<boolean
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | origin   | string                 | 是   | 指定源的字符串索引                                           |
 | callback | AsyncCallback\<boolean> | 是   | 返回指定源的地理位置权限状态。<br>获取成功，true表示已授权，false表示拒绝访问。<br>获取失败，表示不存在指定源的权限状态。 |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示获取隐私模式下以回调方式异步获取指定源的地理位置权限状态，false表示正常非隐私模式下以回调方式异步获取指定源的地理位置权限状态。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示获取隐私模式下以回调方式异步获取指定源的地理位置权限状态，false表示正常非隐私模式下以回调方式异步获取指定源的地理位置权限状态。<br>默认值：false。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -176,7 +182,7 @@ struct WebComponent {
                 console.error(`getAccessibleGeolocationAsync error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('getAccessibleGeolocationAsync result: ' + result);
+              console.info('getAccessibleGeolocationAsync result: ' + result);
             });
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -201,7 +207,7 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<b
 | 参数名 | 类型 | 必填 | 说明             |
 | ------ | -------- | ---- | -------------------- |
 | origin | string   | 是   | 指定源的字符串索引。 |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示获取隐私模式下以Promise方式异步获取指定源的地理位置权限状态，false表示正常非隐私模式下以Promise方式异步获取指定源的地理位置权限状态。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示获取隐私模式下以Promise方式异步获取指定源的地理位置权限状态，false表示正常非隐私模式下以Promise方式异步获取指定源的地理位置权限状态。<br>默认值：false。 |
 
 **返回值：**
 
@@ -211,7 +217,7 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<b
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -238,7 +244,7 @@ struct WebComponent {
           try {
             webview.GeolocationPermissions.getAccessibleGeolocation(this.origin)
               .then(result => {
-                console.log('getAccessibleGeolocationPromise result: ' + result);
+                console.info('getAccessibleGeolocationPromise result: ' + result);
               }).catch((error: BusinessError) => {
               console.error(`getAccessibleGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
             });
@@ -265,11 +271,11 @@ static getStoredGeolocation(callback: AsyncCallback\<Array\<string>>, incognito?
 | 参数名   | 类型                         | 必填 | 说明                                     |
 | -------- | ---------------------------- | ---- | ---------------------------------------- |
 | callback | AsyncCallback\<Array\<string>> | 是   | 返回已存储地理位置权限状态的所有源信息。 |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示获取隐私模式下以回调方式异步获取已存储地理位置权限状态的所有源信息，false表示正常非隐私模式下以回调方式异步获取已存储地理位置权限状态的所有源信息。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示获取隐私模式下以回调方式异步获取已存储地理位置权限状态的所有源信息，false表示正常非隐私模式下以回调方式异步获取已存储地理位置权限状态的所有源信息。<br>默认值：false。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------ |
@@ -298,7 +304,7 @@ struct WebComponent {
                 return;
               }
               let origins_str: string = origins.join();
-              console.log('getStoredGeolocationAsync origins: ' + origins_str);
+              console.info('getStoredGeolocationAsync origins: ' + origins_str);
             });
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -322,7 +328,7 @@ static getStoredGeolocation(incognito?: boolean): Promise\<Array\<string>>
 
 | 参数名   | 类型                         | 必填 | 说明                                     |
 | -------- | ---------------------------- | ---- | ---------------------------------------- |
-| incognito<sup>11+</sup>   | boolean | 否   | true表示获取隐私模式下以Promise方式异步获取已存储地理位置权限状态的所有源信息，false表示正常非隐私模式下以Promise方式异步获取已存储地理位置权限状态的所有源信息。 |
+| incognito<sup>11+</sup>   | boolean | 否   | true表示获取隐私模式下以Promise方式异步获取已存储地理位置权限状态的所有源信息，false表示正常非隐私模式下以Promise方式异步获取已存储地理位置权限状态的所有源信息。<br>默认值：false。 |
 
 **返回值：**
 
@@ -332,7 +338,7 @@ static getStoredGeolocation(incognito?: boolean): Promise\<Array\<string>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------ |
@@ -358,7 +364,7 @@ struct WebComponent {
             webview.GeolocationPermissions.getStoredGeolocation()
               .then(origins => {
                 let origins_str: string = origins.join();
-                console.log('getStoredGeolocationPromise origins: ' + origins_str);
+                console.info('getStoredGeolocationPromise origins: ' + origins_str);
               }).catch((error: BusinessError) => {
               console.error(`getStoredGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
             });
@@ -384,7 +390,7 @@ static deleteAllGeolocation(incognito?: boolean): void
 
 | 参数名   | 类型                         | 必填 | 说明                                     |
 | -------- | ---------------------------- | ---- | ---------------------------------------- |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示获取隐私模式下清除所有来源的地理位置权限状态，false表示正常非隐私模式下清除所有来源的地理位置权限状态。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示获取隐私模式下清除所有来源的地理位置权限状态，false表示正常非隐私模式下清除所有来源的地理位置权限状态。<br>默认值：false。<br>传入null或undefined时为false。 |
 
 **示例：**
 

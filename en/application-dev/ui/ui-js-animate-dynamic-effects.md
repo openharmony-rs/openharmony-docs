@@ -1,4 +1,10 @@
 # Animation Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 You can set the interpolator to implement the animation effect.
@@ -6,7 +12,7 @@ You can set the interpolator to implement the animation effect.
 
 ## Creating an Animation Object
 
-Use createAnimator to create an animation object and set the animation attributes by using the options parameter.
+Use **createAnimator** to create an **animation** object and set the animation attributes by using the **options** parameter.
 
 ```html
 <!-- xxx.hml -->
@@ -43,7 +49,6 @@ button{
 
 ```js
 // xxx.js
-import animator from '@ohos.animator';
 export default {
   data: {
     translateVal: 0,
@@ -60,13 +65,13 @@ export default {
       iterations: 2,
       begin: 0,
       end: 180
-    };// Set attributes.
-    this.animation = animator.createAnimator(options)// Create an animation.
+    };// Set parameters.
+    this.animation = this.getUIContext().createAnimator(options);// Create an animation.
   },
   playAnimation() {
     var _this = this;
     this.animation.onframe = function(value) {
-      _this.translateVal= value
+      _this.translateVal= value;
     };
     this.animation.play();
   }
@@ -77,16 +82,16 @@ export default {
 
 > **NOTE**
 >
-> - When you use createAnimator to create an animation object, you must pass the options parameter.
+> - When you use **createAnimator** to create an animation object, you must pass the **options** parameter.
 >
-> - begin indicates the start point of the animation interpolation. If it is not set, the default value 0 is used.
+> - **begin** indicates the start point of the animation interpolation. If it is not set, the default value **0** is used.
 >
-> - end indicates the end point of the animation interpolation. If it is not set, the default value 1 is used.
+> - **end** indicates the end point of the animation interpolation. If it is not set, the default value **1** is used.
 
 
 ## Adding Animation Events and Calling Methods
 
-The animator supports events and methods, which you can use to customize the animation effect. Events include frame, cancel, repeat, and finish. Methods include update, play, pause, cancel, reverse, and finish. For details about the supported events and methods, see [animator supported events and animator supported APIs](../reference/apis-arkui/js-apis-animator.md).
+The **animator** supports events and methods, which you can use to customize the animation effect. Events include **frame**, **cancel**, **repeat**, and **finish**. Methods include **update**, **play**, **pause**, **cancel**, **reverse**, and **finish**. For details about the events and APIs supported by **animator**, see [createAnimator](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator).
 
 ```html
 <!-- xxx.hml -->
@@ -150,8 +155,6 @@ button{
 
 ```js
 // xxx.js
-import animator from '@ohos.animator';
-import promptAction from '@ohos.promptAction';
 export default {
   data: {
     scaleVal:1,
@@ -160,38 +163,37 @@ export default {
     translateVal:0,
     animation: null
   },
-  onInit() {
+  onInit() {},
+  onShow() {
     var options = {
       duration: 3000,
       fill: 'forwards',
       begin: 200,
       end: 270
     };
-    this.animation = animator.createAnimator(options);
-  },
-  onShow() {
+    this.animation = this.getUIContext().createAnimator(options);
     var _this= this;
     // Add an animation repeat event.
     this.animation.onrepeat = function() {
-      promptAction.showToast({
+      this.getUIContext().getPromptAction().showToast({
         message: 'repeat'
       });
-      var repeatoptions = {
+      var repeatOptions = {
         duration: 2000,
         iterations: 1,
          direction: 'alternate',
          begin: 180,
          end: 240
        };
-        _this.animation.update(repeatoptions);
-        _this.animation.play();
+        _this.animation?.update(repeatOptions);
+        _this.animation?.play();
       };
   },
   playAnimation() {
     var _this= this;
     // Add the frame-by-frame interpolation callback event for the animation.
     this.animation.onframe = function(value) {
-      _this. scaleVal= value/150,
+      _this.scaleVal= value/150,
       _this.DivWidth = value,
       _this.DivHeight = value,
       _this.translateVal = value-180
@@ -206,26 +208,26 @@ export default {
       end: 180
     };
     this.animation.update(newoptions);
-    this.animation.play();// Play this animation.
+    this.animation.play();// Play the animation.
   },
   pauseAnimation() {
-    this.animation.pause();// Pause this animation.
+    this.animation.pause();// Pause the animation.
   },
   finishAnimation() {
     var _this= this;
    // Add an animation completion event.
     this.animation.onfinish = function() {
-      promptAction.showToast({
+      this.getUIContext().getPromptAction().showToast({
         message: 'finish'
-      })
+      });
     };
-    this.animation.finish(); // Finish this animation.
+    this.animation.finish(); // Finish the animation.
   },
   cancelAnimation() {
-    this.animation.cancel(); // Cancel this animation.
+    this.animation.cancel(); // Cancel the animation.
   },
   reverseAnimation() {
-    this.animation.reverse(); // Reverse this animation.
+    this.animation.reverse(); // Reverse the animation.
   }
 }
 ```
@@ -234,4 +236,4 @@ export default {
 
 > **NOTE**
 >
-> When calling the update method, you can use it to update the animation parameters. The input parameters are the same as those of createAnimator.
+> When calling the [reset](../reference/apis-arkui/js-apis-animator.md#reset9) API, you can use it to update the animation parameters. The input parameters are the same as those of [createAnimator](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator).

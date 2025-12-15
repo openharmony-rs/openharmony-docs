@@ -1,4 +1,10 @@
 # ImageSpan
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 [Text](ts-basic-components-text.md)、[ContainerSpan](ts-basic-components-containerspan.md)组件的子组件，用于显示行内图片。
 
@@ -67,7 +73,7 @@ objectFit(value: ImageFit)
 
 alt(value:&nbsp;PixelMap)
 
-设置图片加载时显示的占位图。
+设置图片加载过程中显示的占位图。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -77,7 +83,7 @@ alt(value:&nbsp;PixelMap)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 加载时显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。<br/>默认值：null |
+| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 设置图片加载过程中显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。<br/>默认值：null |
 
 ### colorFilter<sup>14+</sup>
 
@@ -93,7 +99,25 @@ colorFilter(filter: ColorFilter | DrawingColorFilter)
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| filter  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵为：<br/>![image-matrix-1](figures/image_matrix_1.png)<br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>2. 支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，svg类型的图源只对stroke属性生效。|
+| filter  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵为：<br/>![image-matrix-1](figures/image_matrix_1.png)<br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>2. 支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>该接口中的DrawingColorFilter类型支持在原子化服务中使用。其中，svg类型的图源只对stroke属性生效。|
+
+### supportSvg2<sup>22+</sup>
+
+supportSvg2(enable: Optional\<boolean>)
+
+开启或关闭[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
+
+ImageSpan组件创建后，不支持动态修改该属性的值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                     | 必填 | 说明                                                         |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| enable  | Optional\<boolean> | 是   | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false |
 
 ## 事件
 
@@ -141,6 +165,8 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 参数名 | 类型                       | 必填 | 说明                               |
 | ------ | -------------------------- | ---- | ---------------------------------- |
 | result  | [ImageLoadResult](#imageloadresult12对象说明) | 是   | 图片数据加载成功和解码成功触发回调时返回的对象。 |
@@ -153,17 +179,17 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                       | 类型   | 必填 | 说明                                                         |
-| ---------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| width                        | number | 是   | 图片的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
-| height                       | number | 是   | 图片的高。<br/>单位：[px](ts-pixel-units.md)                                    |
-| componentWidth               | number | 是   | 组件的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
-| componentHeight              | number | 是   | 组件的高。<br/>单位：[px](ts-pixel-units.md)                                    |
-| loadingStatus                | number | 是   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
-| contentWidth   | number | 是   | 图片实际绘制的宽度。<br/>单位：[px](ts-pixel-units.md)<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentHeight  | number | 是   | 图片实际绘制的高度。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetX | number | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetY | number | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| 名称                       | 类型   | 只读 | 可选 | 说明                                                         |
+| ---------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| width                        | number | 否   | 否 | 图片的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
+| height                       | number | 否   | 否   | 图片的高。<br/>单位：[px](ts-pixel-units.md)                                    |
+| componentWidth               | number | 否   | 否   | 组件的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
+| componentHeight              | number | 否   | 否   | 组件的高。<br/>单位：[px](ts-pixel-units.md)                                    |
+| loadingStatus                | number | 否   | 否   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
+| contentWidth   | number | 否   | 否   | 图片实际绘制的宽度。<br/>单位：[px](ts-pixel-units.md)<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentHeight  | number | 否   | 否   | 图片实际绘制的高度。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetX | number | 否   | 否   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetY | number | 否   | 否   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
 
 
 
@@ -171,7 +197,7 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 ### 示例1（设置对齐方式）
 
-该示例通过verticalAlign、objectFit属性展示了ImageSpan的对齐方式以及缩放效果。
+从API version 10开始，该示例通过[verticalAlign](#verticalalign)、[objectFit](#objectfit)属性展示了ImageSpan组件的对齐方式以及缩放效果。
 
 ```ts
 // xxx.ets
@@ -186,6 +212,7 @@ struct SpanExample {
       }.width('100%').textAlign(TextAlign.Center)
 
       Text() {
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
         ImageSpan($r('app.media.app_icon'))
           .width('200px')
           .height('200px')
@@ -222,7 +249,7 @@ struct SpanExample {
 
 ### 示例2（设置背景样式）
 
-该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
+从API version 11开始，该示例通过[textBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11)属性展示了文本设置背景样式的效果。
 
 ```ts
 // xxx.ets
@@ -233,7 +260,8 @@ struct Index {
     Row() {
       Column() {
         Text() {
-          ImageSpan($r('app.media.sky'))//建议使用自定义的本地图片
+          // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
+          ImageSpan($r('app.media.sky'))
             .width('60vp')
             .height('60vp')
             .verticalAlign(ImageSpanAlignment.CENTER)
@@ -249,13 +277,14 @@ struct Index {
 
 ### 示例3（为图片添加事件）
 
-该示例通过onComplete、onError为图片添加加载成功和加载异常的事件。
+从API version 12开始，该示例通过[onComplete](#oncomplete12)、[onError](#onerror12)为图片添加加载成功和加载异常的事件。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
+  // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
   @State src: ResourceStr = $r('app.media.app_icon');
 
   build() {
@@ -264,10 +293,10 @@ struct Index {
         ImageSpan(this.src)
           .width(100).height(100)
           .onError((err) => {
-            console.log("onError: " + err.message);
+            console.info("onError: " + err.message);
           })
           .onComplete((event) => {
-            console.log("onComplete: " + event.loadingStatus);
+            console.info("onComplete: " + event.loadingStatus);
           })
       }
     }.width('100%').height('100%')
@@ -276,7 +305,7 @@ struct Index {
 ```
 ### 示例4（设置颜色滤镜）
 
-该示例通过colorFilter属性展示了给ImageSpan图像设置颜色滤镜的效果。
+从API version 14开始，该示例通过[colorFilter](#colorfilter14)属性展示了给ImageSpan图像设置颜色滤镜的效果。
 
 ```ts
 // xxx.ets
@@ -293,7 +322,8 @@ struct SpanExample {
       Column({ space: 10 }) {
         //创建ColorFilter对象的方式为图片设置颜色滤镜
         Text() {
-          ImageSpan($r('app.media.sky'))//建议使用自定义的本地图片
+          // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
+          ImageSpan($r('app.media.sky'))
             .width('60vp')
             .height('60vp')
             .colorFilter(this.DrawingColorFilterFirst)
@@ -301,7 +331,8 @@ struct SpanExample {
 
         //通过drawing.ColorFilter的方式为图片设置颜色滤镜
         Text() {
-          ImageSpan($r('app.media.sky'))//建议使用自定义的本地图片
+          // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
+          ImageSpan($r('app.media.sky'))
             .width('60vp')
             .height('60vp')
             .colorFilter(drawing.ColorFilter.createBlendModeColorFilter({
@@ -320,7 +351,7 @@ struct SpanExample {
 
 ### 示例5（设置加载占位图）
 
-该示例alt属性展示了ImageSpan设置加载网络图片时占位图的效果。
+从API version 12开始，该示例[alt](#alt12)属性展示了ImageSpan设置加载网络图片时占位图的效果。
 
 ```ts
 // xxx.ets
@@ -339,7 +370,7 @@ struct SpanExample {
       if (error) {
         console.error(`http request failed with. Code: ${error.code}, message: ${error.message}`);
       } else {
-        console.log(`http request success.`);
+        console.info(`http request success.`);
         let imageData: ArrayBuffer = data.result as ArrayBuffer;
         let imageSource: image.ImageSource = image.createImageSource(imageData);
 
@@ -384,3 +415,43 @@ struct SpanExample {
 ```
 
 ![imagespan](figures/image_span_alt.gif)
+### 示例6（使用supportSvg2属性时，SVG图片的显示效果）
+
+从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效。
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('属性字符串不支持svg2')
+        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+        Text('属性字符串支持svg2')
+        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .supportSvg2(true)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![styledString_17](figures/styledString_17.png)

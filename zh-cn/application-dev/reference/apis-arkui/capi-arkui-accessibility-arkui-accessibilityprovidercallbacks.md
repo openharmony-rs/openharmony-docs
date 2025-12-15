@@ -1,4 +1,14 @@
 # ArkUI_AccessibilityProviderCallbacks
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhanghangkai10241-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_AccessibilityProviderCallbacks
+```
 
 ## 概述
 
@@ -28,7 +38,7 @@
 
 ### findAccessibilityNodeInfosById()
 
-```
+```c
 int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_AccessibilitySearchMode mode,int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)
 ```
 
@@ -43,7 +53,7 @@ int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_Accessibility
 
 | 参数项                                                                            | 描述 |
 |--------------------------------------------------------------------------------| -- |
-| int64_t elementId                                                              | 表示元素ID。 |
+| int64_t elementId                                                              | 无障碍元素的唯一编号。 |
 | [ArkUI_AccessibilitySearchMode](capi-native-interface-accessibility-h.md) mode | 表示无障碍搜索模式。 |
 | int32_t requestId                                                              | 表示请求ID。 |
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList                            | 表示无障碍元素信息列表。 |
@@ -56,7 +66,7 @@ int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_Accessibility
 
 ### findAccessibilityNodeInfosByText()
 
-```
+```c
 int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text, int32_t requestId,ArkUI_AccessibilityElementInfoList* elementList)
 ```
 
@@ -70,7 +80,7 @@ int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text,
 
 | 参数项 | 描述 |
 | -- | -- |
-| int64_t elementId | 表示元素ID。 |
+| int64_t elementId | 无障碍元素的唯一编号。 |
 |  const char* text | 表示无障碍文本。 |
 |  int32_t requestId | 表示请求ID。 |
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList | 表示无障碍元素信息列表。 |
@@ -83,7 +93,7 @@ int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text,
 
 ### findFocusedAccessibilityNode()
 
-```
+```c
 int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusType focusType,int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -97,7 +107,7 @@ int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFo
 
 | 参数项                                                                                                             | 描述 |
 |-----------------------------------------------------------------------------------------------------------------| -- |
-| int64_t elementId                                                                                               | 表示元素ID。 |
+| int64_t elementId                                                                                               | 无障碍元素的唯一编号。 |
 | [ArkUI_AccessibilityFocusType](capi-native-interface-accessibility-h.md#arkui_accessibilityfocustype) focusType | 表示焦点的类型。 |
 | int32_t requestId                                                                                               | 表示请求ID。 |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo                                                                 | 表示无障碍元素信息。 |
@@ -110,7 +120,7 @@ int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFo
 
 ### findNextFocusAccessibilityNode()
 
-```
+```c
 int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction,int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -124,7 +134,7 @@ int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_Accessibility
 
 | 参数项                                                                                                                               | 描述 |
 |-----------------------------------------------------------------------------------------------------------------------------------| -- |
-| int64_t elementId                                                                                                                 | 表示元素ID。 |
+| int64_t elementId                                                                                                                 | 无障碍元素的唯一编号。 |
 | [ArkUI_AccessibilityFocusMoveDirection](capi-native-interface-accessibility-h.md#arkui_accessibilityfocusmovedirection) direction | 表示查找方向。 |
 | int32_t requestId                                                                                                                 | 表示请求ID。 |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo                                                                                       | 表示无障碍元素信息。 |
@@ -137,7 +147,7 @@ int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_Accessibility
 
 ### executeAccessibilityAction()
 
-```
+```c
 int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_ActionType action,ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
 ```
 
@@ -151,7 +161,7 @@ int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_Act
 
 | 参数项                                                                                                              | 描述 |
 |------------------------------------------------------------------------------------------------------------------| -- |
-| int64_t elementId                                                                                                | 表示元素ID。 |
+| int64_t elementId                                                                                                | 无障碍元素的唯一编号。 |
 | [ArkUI_Accessibility_ActionType](capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) action | 表示要执行的动作。 |
 | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) *actionArguments                                                          | 表示动作的参数。 |
 | int32_t requestId                                                                                                | 表示请求的ID。 |
@@ -164,7 +174,7 @@ int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_Act
 
 ### clearFocusedFocusAccessibilityNode()
 
-```
+```c
 int32_t (*clearFocusedFocusAccessibilityNode)()
 ```
 
@@ -182,7 +192,7 @@ int32_t (*clearFocusedFocusAccessibilityNode)()
 
 ### getAccessibilityNodeCursorPosition()
 
-```
+```c
 int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t requestId, int32_t* index)
 ```
 
@@ -196,7 +206,7 @@ int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t request
 
 | 参数项 | 描述 |
 | -- | -- |
-| int64_t elementId | 表示元素ID。 |
+| int64_t elementId | 无障碍元素的唯一编号。 |
 |  int32_t requestId | 表示请求的ID。 |
 |  int32_t* index | 表示光标位置的索引。 |
 

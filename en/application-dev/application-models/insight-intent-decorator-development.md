@@ -1,4 +1,12 @@
 # Developing Intents Using Decorators
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## When to Use
 Starting from API version 20, you can develop intents using decorators, allowing you to quickly integrate existing features into system entry points. The table below lists some typical scenarios.
 
@@ -14,7 +22,7 @@ Starting from API version 20, you can develop intents using decorators, allowing
 | --- | --- | --- |
 | Developing intents using [@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)| 1. Add a new intent execution file. If the execution file is not imported by other files, configure its path through the **insightIntentsSrcEntry** field in the **insight_intent.json** file to include it in compilation.<br> 2. Use decorators to define the application component to be bound to the intent and the intent execution mode.| The system entry point matches the intent and triggers the startup of the application component and intent execution according to the intent execution mode.|
 | Developing intents using [@InsightIntentLink](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)| Define an intent for link redirection, which can be an existing or a new URI.| The system entry point matches the intent, transfers a URI, and triggers intent execution via [openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12). For parameter processing during intent execution, see the **paramCategory** description in [LinkIntentParamMapping](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#linkintentparammapping).|
-| Developing intents using [@InsightIntentPage](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)| Define a page redirection intent, and configure the corresponding UIAbility, [page route](../ui/arkts-routing.md) path, and [Navigation](../ui/arkts-navigation-navigation.md) path for the intent.| 1. The system entry point uses **startAbility** to start the UIAbility bound to the intent. If the intent is not bound to a UIAbility, it starts the UIAbility corresponding to the [mainElement](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) of the module where the intent is located.<br>2. During intent execution, if the application is not started, it jumps to the page corresponding to the intent after loading the home page of the UIAbility; if the application is already started, it jumps to the page corresponding to the intent from the current page.<br>3. Parameters are passed to the target page during intent execution.<br>4. If the **navigationId** or **navDestinationName** field fails to match, the system falls back to page redirection corresponding to the **pagePath** field.|
+| Developing intents using [@InsightIntentPage](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)| Define a page redirection intent, and configure the corresponding UIAbility, [page route](../ui/arkts-routing.md) path, and [Navigation](../ui/arkts-navigation-architecture.md) path for the intent.| 1. The system entry point uses **startAbility** to start the UIAbility bound to the intent. If the intent is not bound to a UIAbility, it starts the UIAbility corresponding to the [mainElement](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) of the module where the intent is located.<br>2. During intent execution, if the application is not started, it jumps to the page corresponding to the intent after loading the home page of the UIAbility; if the application is already started, it jumps to the page corresponding to the intent from the current page.<br>3. Parameters are passed to the target page during intent execution.<br>4. If the **navigationId** or **navDestinationName** field fails to match, the system falls back to page redirection corresponding to the **pagePath** field.|
 | Developing intents using [@InsightIntentFunctionMethod](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)| Define an intent for a static method, which can be an existing or a new method.| The system entry point uses [Call](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#background-communication-capability) to start the UIAbility corresponding to the [mainElement](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) of the module where the intent is located.|
 | Developing intents using [@InsightIntentForm](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform)| Define an intent for a widget, which can be an existing or a new widget.| The system entry point creates an intent widget using the FormComponent.|
 
@@ -26,7 +34,7 @@ This section uses the development of standard intents and custom intents with @I
 
 The following uses the standard intent [ViewLogistics](./insight-intent-access-specifications.md#viewing-logistics) as an example to describe how to develop a standard intent with the @InsightIntentEntry decorator.
 
-1. If a new intent execution file is added and not referenced by other entry files, declare the executor path via the **insightIntentsSrcEntry** field in the **insight_intent.json** file to include it in compilation.
+1. Declare the intent execution file in the **insightIntentsSrcEntry** field of the **insight_intent.json** file.
 
     ```json
     {
@@ -41,13 +49,16 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
 2. Implement the intent executor.
 
     When developing a standard intent, you do not need to define the large language model description, intent parameters, or intent execution results. Standard intents are matched from the [Appendix: Standard Intent Access Specifications](insight-intent-access-specifications.md) based on the **schema** and **intentVersion** fields. The intent executor must inherit from the **InsightIntentEntryExector\<T>** class and implement the **onExecute()** API.
-    ```ts
+
+    <!-- @[insight_intent_view_logistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ViewLogisticsImpl.ets) -->
+    
+    ``` TypeScript
     import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
-
+    
     class ViewLogisticsResultDef {
-      msg?: string = '';
+      public msg?: string = '';
     }
-
+    
     @InsightIntentEntry({
       intentName: 'ViewLogistics',
       domain: 'LocalDomain',
@@ -57,12 +68,12 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
       schema: 'ViewLogistics',
       icon: $r('app.media.viewLogistics'), // $r indicates a local icon, which must be defined in the resource catalog.
       abilityName: 'EntryAbility',
-      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND],
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND]
     })
     export default class ViewLogisticsImpl extends InsightIntentEntryExecutor<ViewLogisticsResultDef> {
-      trackingNo?: string = '';
-      entityId?: string = '';
-
+      public trackingNo?: string = '';
+      public entityId?: string = '';
+    
       onExecute(): Promise<insightIntent.IntentResult<ViewLogisticsResultDef>> {
         // Execute logistics query logic.
         let result: insightIntent.IntentResult<ViewLogisticsResultDef> = {
@@ -70,9 +81,9 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
           result: {
             msg: 'the logistics is being delivered'
           }
-        }
+        };
         return Promise.resolve(result);
-      }
+      };
     }
     ```
 
@@ -85,7 +96,7 @@ The intent execution process is as follows:
 
 The following uses the development of a custom intent "Play Music" as an example. You are required to define the large language model description, intent search keywords, intent parameters, and intent execution results for the intent.
 
-1. If a new intent execution file is added and not referenced by other entry files, declare the executor path via the **insightIntentsSrcEntry** field in the **insight_intent.json** file to include it in compilation.
+1. Declare the intent execution file in the **insightIntentsSrcEntry** field of the **insight_intent.json** file.
 
     ```json
     {
@@ -101,15 +112,17 @@ The following uses the development of a custom intent "Play Music" as an example
 
     When developing custom intents, you are required to define the large language model description, intent search keywords, intent parameters, and intent execution results. The intent executor must inherit from the **InsightIntentEntryExector\<T>** class and implement the **onExecute()** API.
 
-    ```ts
+    <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
+    
+    ``` TypeScript
     // Implementation of the insightIntentsSrcEntry field in the insight_intent.json file.
-    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntity, InsightIntentEntry } from '@kit.AbilityKit';
-
+    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
+    
     // Data format definition of the intent execution result.
     class PlayMusicResultDef {
-      msg?: string = '';
+      public msg?: string = '';
     }
-
+    
     // Intent definition.
     @InsightIntentEntry({
       intentName: 'PlayMusic',
@@ -123,27 +136,27 @@ The following uses the development of a custom intent "Play Music" as an example
       abilityName: 'EntryAbility',
       executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
       parameters: {
-        "type": "object",
-        "description": "A schema for describing songs and their artists",
-        "properties": {
-          "songName": {
-            "type": "string",
-            "description": "The name of the song",
-            "minLength": 1
+        'type': 'object',
+        'description': 'A schema for describing songs and their artists',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
           },
-          "singer": {
-            "type": "string",
-            "description": "The name of the singer",
-            "minLength": 1
+          'singer': {
+            'type': 'string',
+            'description': 'The name of the singer',
+            'minLength': 1
           }
         },
-        "required": ["songName"]
+        'required': ['songName']
       }
     })
-    export class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
-      songName: string = '';
-      singer?: string = '';
-
+    export default class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
+      public songName: string = '';
+      public singer?: string = '';
+    
       onExecute(): Promise<insightIntent.IntentResult<PlayMusicResultDef>> {
         // Execute the music playback logic.
         let result: insightIntent.IntentResult<PlayMusicResultDef> = {
@@ -151,9 +164,9 @@ The following uses the development of a custom intent "Play Music" as an example
           result: {
             msg: 'play music succeed'
           }
-        }
+        };
         return Promise.resolve(result);
-      }
+      };
     }
     ```
 
@@ -174,9 +187,11 @@ To implement this, you can define singer information as an intent entity and dev
 
     Define singer information (including name, country, city, and more) as a class and use the @InsightIntentEntity decorator to define this class as an intent entity. The **parameters** property of the decorator lists the class's data members, data formats, and the required status of each member.
 
-    ```ts
+    <!-- @[insight_intent_artist_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ArtistClassDef.ets) -->
+    
+    ``` TypeScript
     import { insightIntent, InsightIntentEntity } from '@kit.AbilityKit';
-
+    
     @InsightIntentEntity({
       entityCategory: 'artist entity category',
       parameters: {
@@ -204,32 +219,35 @@ To implement this, you can define singer information as an intent entity and dev
       }
     })
     export class ArtistClassDef implements insightIntent.IntentEntity {
-      entityId: string = '0x11';
-      country?: string = '';
-      city?: string = '';
-      name: string = '';
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
     }
     ```
 
+
 2. Use the intent entity. Add an intent decorated with [@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry) that uses the song name and singer information (the **ArtistClassDef** intent entity) as input parameters for music playback.
 
-    ```ts
+    <!-- @[insight_intent_use_intent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/feature/src/main/ets/insightintents/PlayMusicDemo.ets) -->
+    
+    ``` TypeScript
     import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor, InsightIntentEntity } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const LOG_TAG: string = 'testTag-EntryIntent';
-
+    
     @InsightIntentEntity({
       entityCategory: 'artist entity category',
       // The ArtistClassDef intent entity information has been described in parameters of the @InsightIntentEntry decorator. Therefore, parameters can be left unspecified.
     })
     export class ArtistClassDef implements insightIntent.IntentEntity {
-      entityId: string = '0x11';
-      country?: string = '';
-      city?: string = '';
-      name: string = '';
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
     }
-
+    
     // Use the @InsightIntentEntry decorator to define an intent.
     @InsightIntentEntry({
       intentName: 'PlayMusic',
@@ -279,10 +297,10 @@ To implement this, you can define singer information as an intent entity and dev
       }
     })
     export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
-      songName: string = '';
+      public songName: string = '';
       // Use the intent entity.
-      artist?: ArtistClassDef;
-
+      public artist?: ArtistClassDef;
+    
       onExecute(): Promise<insightIntent.IntentResult<string>> {
         hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo executeMode %{public}s', JSON.stringify(this.executeMode));
         hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo artist %{public}s', JSON.stringify(this.artist));
@@ -305,3 +323,4 @@ To implement this, you can define singer information as an intent entity and dev
       }
     }
     ```
+<!--no_check-->

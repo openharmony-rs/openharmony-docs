@@ -1,4 +1,14 @@
 # ArkUI_AccessibilityProvider
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhanghangkai10241-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_AccessibilityProvider ArkUI_AccessibilityProvider
+```
 
 ## 概述
 

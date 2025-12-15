@@ -1,14 +1,22 @@
-# 自定义组件冻结功能
+# 自定义组件冻结功能（V2）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liwenzhen3-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 当@ComponentV2装饰的自定义组件处于非激活状态时，状态变量将不响应更新，即[@Monitor](./arkts-new-monitor.md)不会调用，状态变量关联的节点不会刷新。该冻结机制在复杂UI场景下能显著优化性能，避免非激活组件因状态变量更新进行无效刷新，从而减少资源消耗。通过freezeWhenInactive属性来决定是否使用冻结功能，不传参数时默认不使用。支持的场景有：[页面路由](../../reference/apis-arkui/js-apis-router.md)、[TabContent](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md)、[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)、[Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
 
-在阅读本文档前，开发者需要了解\@ComponentV2基本语法。建议提前阅读：[\@ComponentV2](./arkts-new-componentV2.md)。
+在阅读本文档前，开发者需要了解\@ComponentV2基本语法。建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。
 
 > **说明：**
 >
 > 从API version 12开始，支持@ComponentV2装饰的自定义组件冻结功能。
 >
-> 从API version 18开始，支持自定义组件冻结功能的混用场景冻结。
+> 从API version 18开始，支持自定义组件冻结混用场景。
+>
+> 从API version 22开始，通过将[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)的[inheritFreezeOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)配置为true，可实现如下场景：当父组件启用组件冻结，且组件树的中间层级启用了BuilderNode时，BuilderNode的子组件能够被冻结。具体可参考[设置BuilderNode继承冻结能力](../arkts-user-defined-arktsNode-builderNode.md#设置buildernode继承冻结能力)。
 >
 > 与@Component的组件冻结不同，@ComponentV2装饰的自定义组件不支持在LazyForEach场景下缓存节点组件冻结。
 
@@ -20,17 +28,25 @@
 >
 > 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
 
-- 当页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
+当页面1调用this.getUIContext().getRouter().pushUrl()接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
+
 图示如下：
 
 ![freezeInPage](./figures/freezeInPage.png)
 
 页面1：
 
-```ts
+<!-- @[freeze_template1_Page1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page1.ets) -->    
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const BOOK_INITIAL_NAME = '100';
+
 @ObservedV2
 export class Book {
-  @Trace name: string = "100";
+  @Trace public name: string = BOOK_INITIAL_NAME;
 
   constructor(page: string) {
     this.name = page;
@@ -40,11 +56,11 @@ export class Book {
 @Entry
 @ComponentV2({ freezeWhenInactive: true })
 export struct Page1 {
-  @Local bookTest: Book = new Book("A Midsummer Night’s Dream");
+  @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
 
-  @Monitor("bookTest.name")
+  @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
-    console.info(`The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', `The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
@@ -52,13 +68,13 @@ export struct Page1 {
       Text(`Book name is  ${this.bookTest.name}`).fontSize(25)
       Button('changeBookName').fontSize(25)
         .onClick(() => {
-          this.bookTest.name = "The Old Man and the Sea";
+          this.bookTest.name = 'The Old Man and the Sea';
         })
       Button('go to next page').fontSize(25)
         .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/Page2' });
+          this.getUIContext().getRouter().pushUrl({ url: 'pages/freeze/template1/Page2' });
           setTimeout(() => {
-            this.bookTest = new Book("Jane Austen's Pride and Prejudice");
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
           }, 1000)
         })
     }
@@ -66,15 +82,19 @@ export struct Page1 {
 }
 ```
 
+
+
 页面2：
 
-```ts
+<!-- @[freeze_template1_Page2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page2.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Page2 {
   build() {
     Column() {
-      Text(`This is the page2`).fontSize(25)
+      Text('This is the page2').fontSize(25)
       Button('Back')
         .onClick(() => {
           this.getUIContext().getRouter().back();
@@ -84,30 +104,38 @@ struct Page2 {
 }
 ```
 
+
 在上面的示例中：
 
-1. 点击页面1中的Button “changeBookName”，bookTest变量的name属性改变，@Monitor中注册的方法onMessageChange会被调用。
+1.在页面1中点击`changeBookName`，bookTest变量的name属性改变，@Monitor中注册的方法onMessageChange会被调用。
 
-2. 点击页面1中的Button “go to next page”，跳转到页面2，然后延迟1s更新状态变量“bookTest”。在更新“bookTest”的时候，已经跳转到页面2，页面1处于inactive状态，[@Local](./arkts-new-local.md)装饰的状态变量bookTest将不响应更新，其@Monitor不会调用，关联的节点不会刷新。
+2.在页面1中点击`go to next page`，跳转到页面2，然后延迟1s更新状态变量bookTest。在更新bookTest的时候，已经跳转到页面2，页面1处于inactive状态，[@Local](./arkts-new-local.md)装饰的状态变量bookTest将不响应更新，其@Monitor不会调用，关联的节点不会刷新。
 
 Trace如下：
 
 ![Example Image](./figures/freeze1.png)
 
-3. 点击“back”，页面2被销毁，页面1的状态由inactive变为active。状态变量“bookTest”的更新被观察到，@Monitor中注册的方法onMessageChange被调用，对应的Text显示内容改变。
+3.点击`Back`，页面2被销毁，页面1的状态由inactive变为active。状态变量bookTest的更新被观察到，@Monitor中注册的方法onMessageChange被调用，对应的Text显示内容改变。
 
 ![freezeV2Page](./figures/freezeV2page.gif)
 
 ### TabContent
 
-- 对Tabs中当前不可见的TabContent进行冻结，不会触发组件的更新。
+对Tabs中当前不可见的TabContent进行冻结，修改状态变量不会触发冻结组件的更新。
 
-- 需要注意的是：在首次渲染的时候，Tab只会创建当前正在显示的TabContent，当切换全部的TabContent后，TabContent才会被全部创建。
+需要注意的是：在首次渲染的时候，Tabs只会创建当前正在显示的TabContent，当切换全部的TabContent后，TabContent才会被全部创建。
 
 图示如下：
+
 ![freezeWithTab](./figures/freezewithTabs.png)
 
-```ts
+<!-- @[freeze_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
 @Entry
 @ComponentV2
 struct TabContentTest {
@@ -141,33 +169,45 @@ struct FreezeChild {
   @Param index: number = 0;
 
   @Monitor('message') onMessageUpdated(mon: IMonitor) {
-    console.info(`FreezeChild message callback func ${this.message}, index: ${this.index}`);
+    hilog.info(DOMAIN, 'testTag', `FreezeChild message callback func ${this.message}, index: ${this.index}`);
   }
 
   build() {
-    Text("message" + `${this.message}, index: ${this.index}`)
+    Text('message' + `${this.message}, index: ${this.index}`)
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
   }
 }
 ```
 
+
 在上面的示例中：
 
-1.点击“change message”更改message的值，当前正在显示的TabContent组件中的@Monitor中注册的方法onMessageUpdated被触发。
+1.点击`change message`更改message的值，当前正在显示的TabContent组件中@Monitor注册的方法onMessageUpdated被触发。
 
-2.点击TabBar“tab1”切换到另外的TabContent，TabContent状态由inactive变为active，对应的@Monitor中注册的方法onMessageUpdated被触发。 
+2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的@Monitor注册的方法onMessageUpdated被触发。 
 
-3.再次点击“change message”更改message的值，仅当前显示的TabContent子组件中的@Monitor中注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
+3.再次点击`change message`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
 
 ![TabContent.gif](figures/TabContent.gif)
 
 
 ### Navigation
 
-- 当NavDestination不可见时，会将其子自定义组件设置成非激活态，不会触发组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Monitor回调进行刷新。
+当NavDestination不可见时，会将其子自定义组件设置成非激活态，修改状态变量不会触发冻结组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Monitor回调进行刷新。
 
-```ts
+需要注意：本文档里说的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和[NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组件中的[onActive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17)和[onInactive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17)不同。
+
+<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) -->    
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const PAGE_ONE_INDEX = 1;
+const PAGE_TWO_INDEX = 2;
+const PAGE_THREE_INDEX = 3;
+
 @Entry
 @ComponentV2
 struct MyNavigationTestStack {
@@ -175,7 +215,7 @@ struct MyNavigationTestStack {
   @Local message: number = 0;
 
   @Monitor('message') info() {
-    console.info(`freeze-test MyNavigation message callback ${this.message}`);
+    hilog.info(DOMAIN, 'testTag', `freeze-test MyNavigation message callback ${this.message}`);
   }
 
   @Builder
@@ -212,14 +252,14 @@ struct MyNavigationTestStack {
 @ComponentV2
 struct PageOneStack {
   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @Local index: number = 1;
+  @Local index: number = PAGE_ONE_INDEX;
   @Param message: number = 0;
 
   build() {
     NavDestination() {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index })
-        Text("cur stack size:" + `${this.pageInfo.size()}`)
+        Text('cur stack size:' + `${this.pageInfo.size()}`)
           .fontSize(30)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .onClick(() => {
@@ -241,14 +281,14 @@ struct PageOneStack {
 @ComponentV2
 struct PageTwoStack {
   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @Local index: number = 2;
+  @Local index: number = PAGE_TWO_INDEX;
   @Param message: number = 0;
 
   build() {
     NavDestination() {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index })
-        Text("cur stack size:" + `${this.pageInfo.size()}`)
+        Text('cur stack size:' + `${this.pageInfo.size()}`)
           .fontSize(30)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .onClick(() => {
@@ -270,14 +310,14 @@ struct PageTwoStack {
 @ComponentV2
 struct PageThreeStack {
   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @Local index: number = 3;
+  @Local index: number = PAGE_THREE_INDEX;
   @Param message: number = 0;
 
   build() {
     NavDestination() {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index })
-        Text("cur stack size:" + `${this.pageInfo.size()}`)
+        Text('cur stack size:' + `${this.pageInfo.size()}`)
           .fontSize(30)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .height(40)
@@ -304,40 +344,41 @@ struct NavigationContentMsgStack {
   @Param index: number = 0;
 
   @Monitor('message') info() {
-    console.info(`freeze-test NavigationContent message callback ${this.message}`);
-    console.info(`freeze-test ---- called by content ${this.index}`);
+    hilog.info(DOMAIN, 'testTag', `freeze-test NavigationContent message callback ${this.message}`);
+    hilog.info(DOMAIN, 'testTag', `freeze-test ---- called by content ${this.index}`);
   }
 
   build() {
     Column() {
-      Text("msg:" + `${this.message}`)
+      Text('msg:' + `${this.message}`)
         .fontSize(30)
     }
   }
 }
 ```
 
+
 在上面的示例中：
 
-1.点击“change message”更改message的值，当前正在显示的MyNavigationTestStack组件中的@Monitor中注册的方法info被触发。
+1.点击`change message`更改message的值，当前正在显示的MyNavigationTestStack组件中@Monitor注册的方法info被触发。
 
-2.点击“Next Page”切换到PageOne，创建PageOneStack节点。 
+2.点击`Next Page`切换到PageOne，创建PageOneStack节点。
 
-3.再次点击“change message”更改message的值，仅PageOneStack中的NavigationContentMsgStack子组件中的@Monitor中注册的方法info被触发。
+3.再次点击`change message`更改message的值，仅PageOneStack中的NavigationContentMsgStack子组件中@Monitor注册的方法info被触发。
 
-4.再次点击“Next Page”切换到PageTwo，创建PageTwoStack节点。PageOneStack节点状态由active变为inactive。
+4.再次点击`Next Page`切换到PageTwo，创建PageTwoStack节点。PageOneStack节点状态由active变为inactive。
 
-5.再次点击“change message”更改message的值，仅PageTwoStack中的NavigationContentMsgStack子组件中的@Monitor中注册的方法info被触发。Navigation路由栈中非栈顶的NavDestination中的子自定义组件，将是inactive状态。@Monitor方法不会触发。
+5.再次点击`change message`更改message的值，仅PageTwoStack中的NavigationContentMsgStack子组件中@Monitor注册的方法info被触发。Navigation路由栈中非栈顶的NavDestination中的子自定义组件是inactive状态，@Monitor方法不会触发。
 
-6.再次点击“Next Page”切换到PageThree，创建PageThreeStack节点。PageTwoStack节点状态由active变为inactive。
+6.再次点击`Next Page`切换到PageThree，创建PageThreeStack节点。PageTwoStack节点状态由active变为inactive。
 
-7.再次点击“change message”更改message的值，仅PageThreeStack中的NavigationContentMsgStack子组件中的@Monitor中注册的方法info被触发。Navigation路由栈中非栈顶的NavDestination中的子自定义组件，将是inactive状态。@Monitor方法不会触发。
+7.再次点击`change message`更改message的值，仅PageThreeStack中的NavigationContentMsgStack子组件中@Monitor注册的方法info被触发。Navigation路由栈中非栈顶的NavDestination中的子自定义组件是inactive状态，@Monitor方法不会触发。
 
-8.点击“Back Page”回到PageTwo，此时，PageTwoStack节点状态由inactive变为active，其NavigationContentMsgStack子组件中的@Monitor中注册的方法info被触发。
+8.点击`Back Page`回到PageTwo，此时，PageTwoStack节点状态由inactive变为active，其NavigationContentMsgStack子组件中@Monitor注册的方法info被触发。
 
-9.再次点击“Back Page”回到PageOne，此时，PageOneStack节点状态由inactive变为active，其NavigationContentMsgStack子组件中的@Monitor中注册的方法info被触发。
+9.再次点击`Back Page`回到PageOne，此时，PageOneStack节点状态由inactive变为active，其NavigationContentMsgStack子组件中@Monitor注册的方法info被触发。
 
-10.再次点击“Back Page”回到初始页。
+10.再次点击`Back Page`回到初始页，此时，无任何触发。
 
 ![navigation-freeze.gif](figures/navigation-freeze.gif)
 
@@ -347,9 +388,15 @@ struct NavigationContentMsgStack {
 >
 > Repeat从API version 18开始支持自定义组件冻结。
 
-对Repeat缓存池中的自定义组件进行冻结，避免不必要的组件刷新。建议提前阅读[Repeat节点更新/复用能力说明](./arkts-new-rendering-control-repeat.md#节点更新复用能力说明)。
+对Repeat缓存池中的自定义组件进行冻结，避免不必要的组件刷新。建议提前阅读[Repeat节点更新/复用能力说明](../rendering-control/arkts-new-rendering-control-repeat.md#节点更新复用能力说明)。
 
-```ts
+<!-- @[freeze_template4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template4/RepeatVirtualScrollFreeze.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
 @Entry
 @ComponentV2
 struct RepeatVirtualScrollFreeze {
@@ -365,11 +412,11 @@ struct RepeatVirtualScrollFreeze {
   build() {
     Column() {
       Row() {
-        Button(`Reduce length to 5`)
+        Button('Reduce length to 5')
           .onClick(() => {
             this.simpleList = this.simpleList.slice(0, 5);
           })
-        Button(`Change bgColor`)
+        Button('Change bgColor')
           .onClick(() => {
             this.bgColor = this.bgColor == Color.Pink ? Color.Blue : Color.Pink;
           })
@@ -381,8 +428,8 @@ struct RepeatVirtualScrollFreeze {
           })
           .key((item: string, index: number) => item)
           .virtualScroll({ totalCount: this.simpleList.length })
-          .templateId(() => `a`)
-          .template(`a`, (ri) => {
+          .templateId(() => 'a')
+          .template('a', (ri) => {
             ChildComponent({
               message: ri.item,
               bgColor: this.bgColor
@@ -392,19 +439,19 @@ struct RepeatVirtualScrollFreeze {
       .cachedCount(0)
       .height(500)
     }
-    .height(`100%`)
+    .height('100%')
   }
 }
 
 // 开启组件冻结
 @ComponentV2({ freezeWhenInactive: true })
 struct ChildComponent {
-  @Param @Require message: string = ``;
+  @Param @Require message: string = '';
   @Param @Require bgColor: Color = Color.Pink;
-  @Monitor(`bgColor`)
+  @Monitor('bgColor')
   onBgColorChange(monitor: IMonitor) {
     // bgColor改变时，缓存池中组件不刷新，不会打印日志
-    console.info(`repeat---bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', `repeat---bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
@@ -415,24 +462,31 @@ struct ChildComponent {
 }
 ```
 
+
 在上面的示例中：
 
-点击“Reduce length to 5”后，被移除的两个组件会进入Repeat缓存池，然后点击“Change bgColor”更改bgColor的值触发节点刷新。
+点击`Reduce length to 5`后，被移除的两个组件会进入Repeat缓存池，然后点击`Change bgColor`更改bgColor的值触发节点刷新。
 
 开启组件冻结（freezeWhenInactive: true），只有剩余节点中@Monitor装饰的方法onBgColorChange被触发，如示例中屏上的5个节点会刷新并打印5条日志，缓存池中的节点则不会。
 
 ![freeze_repeat_L2.gif](figures/freeze_repeat_L2.gif)
 
-```ts
+<!-- @[freeze_template4_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template4/PageB.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+// ···
 // 关闭组件冻结
 @ComponentV2({ freezeWhenInactive: false })
-struct ChildComponent {
-  @Param @Require message: string = ``;
+struct ChildComponent1 {
+  @Param @Require message: string = '';
   @Param @Require bgColor: Color = Color.Pink;
-  @Monitor(`bgColor`)
+  @Monitor('bgColor')
   onBgColorChange(monitor: IMonitor) {
     // bgColor改变时，缓存池组件也会刷新，并打印日志
-    console.info(`repeat---bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', `repeat---bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
@@ -442,6 +496,8 @@ struct ChildComponent {
   }
 }
 ```
+
+
 
 不开启组件冻结（freezeWhenInactive: false，当未指定freezeWhenInactive参数时默认不开启组件冻结），剩余节点和缓存池节点中@Monitor装饰的方法onBgColorChange都会被触发，即会有7个节点会刷新并打印7条日志。
 
@@ -451,11 +507,17 @@ struct ChildComponent {
 
 如果开发者只想冻结某个子组件，可以选择只在子组件设置freezeWhenInactive为true。
 
-```ts
-// Page1.ets
+<!-- @[freeze_template5_PageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageA.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/freeze/template5/PageA.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
 @ObservedV2
 class Book {
-  @Trace name: string = 'TS';
+  @Trace public name: string = 'TS';
 
   constructor(name: string) {
     this.name = name;
@@ -464,7 +526,7 @@ class Book {
 
 @Entry
 @ComponentV2
-struct Page1 {
+struct PageA {
   pageInfo: NavPathStack = new NavPathStack();
 
   build() {
@@ -474,7 +536,7 @@ struct Page1 {
 
         Button('Go to next page').fontSize(30)
           .onClick(() => {
-            this.pageInfo.pushPathByName('Page2', null);
+            this.pageInfo.pushPathByName('PageB', null);
           })
       }
     }
@@ -487,11 +549,11 @@ export struct Child {
 
   @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
-    console.info(`The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', `The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   textUpdate(): number {
-    console.info('The text is update');
+    hilog.info(DOMAIN, 'testTag', 'The text is update');
     return 25;
   }
 
@@ -502,7 +564,7 @@ export struct Child {
       Button('change BookName')
         .onClick(() => {
           setTimeout(() => {
-            this.bookTest = new Book("Jane Austen's Pride and Prejudice");
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
           }, 3000);
         })
     }
@@ -510,21 +572,24 @@ export struct Child {
 }
 ```
 
-```ts
-// Page2.ets
+
+<!-- @[freeze_template5_PageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageB.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/freeze/template5/PageB.ets
 @Builder
-function Page2Builder() {
-  Page2()
+function pageBBuilder() {
+  PageB()
 }
 
 @ComponentV2
-struct Page2 {
+struct PageB {
   pathStack: NavPathStack = new NavPathStack();
 
   build() {
     NavDestination() {
       Column() {
-        Text('This is the Page2')
+        Text('This is the PageB')
 
         Button('Back').fontSize(30)
           .onClick(() => {
@@ -538,46 +603,54 @@ struct Page2 {
 }
 ```
 
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageB页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
 
 ```json
 {
   "routerMap": [
     {
-      "name": "Page2",
-      "pageSourceFile": "src/main/ets/pages/Page2.ets",
-      "buildFunction": "Page2Builder",
+      "name": "PageB",
+      "pageSourceFile": "src/main/ets/pages/freeze/template5/PageB.ets",
+      "buildFunction": "pageBBuilder",
       "data": {
-        "description" : "This is the Page2"
+        "description" : "This is the PageB"
       }
     }
   ]
 }
 ```
 
-上述示例：
-- Page1的子组件Child，设置`freezeWhenInactive: true`, 开启了组件冻结功能。
-- 点击`Button('change BookName')`，然后3s内点击`Button('Go to next page')`。在更新bookTest的时候，已经跳转到Page2，Page1的组件处于inactive状态，又因为Child组件开启了组件冻结，状态变量`@Local bookTest`将不响应更新，其@Monitor装饰的回调方法不会被调用，状态变量关联的组件不会刷新。
-- 点击`Button('Back')`回到前一个页面，调用@Monitor装饰的回调方法，状态变量关联的组件刷新。
+在上面的示例中：
+- PageA的子组件Child，设置`freezeWhenInactive: true`, 开启了组件冻结功能。
+- 点击`change BookName`，然后3s内点击`Go to next page`。在更新bookTest的时候，已经跳转到PageB，PageA的组件处于inactive状态，又因为Child组件开启了组件冻结，状态变量`@Local bookTest`将不响应更新，其@Monitor装饰的回调方法不会被调用，状态变量关联的组件不会刷新。
+- 点击`Back`回到前一个页面，调用@Monitor装饰的回调方法，状态变量关联的组件刷新。
 
 ### 混用场景
 
-组件冻结混用场景即当支持组件冻结的场景彼此之间组合使用，对于不同的API version版本，冻结行为会有不同。给父组件设置组件冻结标志，在API version 17及以下，当父组件解冻时，会解冻自己子组件所有的节点；从API version 18开始，父组件解冻时，只会解冻子组件的屏上节点，详细说明见[\@Component的自定义组件冻结的混用场景](./arkts-custom-components-freeze.md#组件混用)。
+当支持组件冻结的场景彼此之间组合使用时，对于不同的API版本，冻结行为会有不同。给父组件设置组件冻结标志，在API version 17及以下，当父组件解冻时，会解冻自己子组件所有的节点；从API version 18开始，父组件解冻时，只会解冻子组件的屏上节点，详细说明见[\@Component的自定义组件冻结的混用场景](./arkts-custom-components-freeze.md#组件混用)。
 
-#### Navigation和TabContent的混用
+**Navigation和TabContent的混用**
 
-```ts
+<!-- @[freeze_template6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets) -->    
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAB_STATE_INITIAL_VALUE = 47;
+
 @ComponentV2
 struct ChildOfParamComponent {
-  @Require @Param child_val: number;
+  @Require @Param childVal: number;
 
-  @Monitor('child_val') onChange(m: IMonitor) {
-    console.info(`Appmonitor ChildOfParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+  @Monitor('childVal') onChange(m: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', `Appmonitor ChildOfParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
   }
 
   build() {
     Column() {
-      Text(`Child Param： ${this.child_val}`);
+      Text(`Child Param： ${this.childVal}`)
     }
   }
 }
@@ -587,13 +660,13 @@ struct ParamComponent {
   @Require @Param val: number;
 
   @Monitor('val') onChange(m: IMonitor) {
-    console.info(`Appmonitor ParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', `Appmonitor ParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
   }
 
   build() {
     Column() {
-      Text(`val： ${this.val}`);
-      ChildOfParamComponent({child_val: this.val});
+      Text(`val： ${this.val}`)
+      ChildOfParamComponent({childVal: this.val})
     }
   }
 }
@@ -603,12 +676,12 @@ struct DelayComponent {
   @Require @Param delayVal1: number;
 
   @Monitor('delayVal1') onChange(m: IMonitor) {
-    console.info(`Appmonitor DelayComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', `Appmonitor DelayComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
   }
 
   build() {
     Column() {
-      Text(`Delay Param： ${this.delayVal1}`);
+      Text(`Delay Param： ${this.delayVal1}`)
     }
   }
 }
@@ -616,10 +689,10 @@ struct DelayComponent {
 @ComponentV2 ({freezeWhenInactive: true})
 struct TabsComponent {
   private controller: TabsController = new TabsController();
-  @Local tabState: number = 47;
+  @Local tabState: number = TAB_STATE_INITIAL_VALUE;
 
   @Monitor('tabState') onChange(m: IMonitor) {
-    console.info(`Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', `Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
   }
 
   build() {
@@ -627,16 +700,16 @@ struct TabsComponent {
       Button(`Incr state ${this.tabState}`)
         .fontSize(25)
         .onClick(() => {
-          console.info('Button increment state value');
+          hilog.info(DOMAIN, 'testTag', 'Button increment state value');
           this.tabState = this.tabState + 1;
         })
 
       Tabs({ barPosition: BarPosition.Start, index: 0, controller: this.controller}) {
         TabContent() {
-          ParamComponent({val: this.tabState});
+          ParamComponent({val: this.tabState})
         }.tabBar('Update')
         TabContent() {
-          DelayComponent({delayVal1: this.tabState});
+          DelayComponent({delayVal1: this.tabState})
         }.tabBar('DelayUpdate')
       }
       .vertical(false)
@@ -652,15 +725,15 @@ struct TabsComponent {
 
 @Entry
 @Component
-struct MyNavigationTestStack {
+struct MyNavigationTestStack1 {
   @Provide('pageInfo') pageInfo: NavPathStack = new NavPathStack();
 
   @Builder
   PageMap(name: string) {
     if (name === 'pageOne') {
-      PageOneStack()
+      PageOneStack1()
     } else if (name === 'pageTwo') {
-      PageTwoStack()
+      PageTwoStack2()
     }
   }
 
@@ -684,13 +757,13 @@ struct MyNavigationTestStack {
 }
 
 @Component
-struct PageOneStack {
+struct PageOneStack1 {
   @Consume('pageInfo') pageInfo: NavPathStack;
 
   build() {
     NavDestination() {
       Column() {
-        TabsComponent();
+        TabsComponent()
 
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -709,7 +782,7 @@ struct PageOneStack {
 }
 
 @Component
-struct PageTwoStack {
+struct PageTwoStack2 {
   @Consume('pageInfo') pageInfo: NavPathStack;
 
   build() {
@@ -732,29 +805,35 @@ struct PageTwoStack {
 }
 ```
 
+
 在API version 17及以下：
 
-点击Next page进入下一个页面并返回，会解冻Tabcontent所有的标签。
+点击`Next page`进入下一个页面并返回，会解冻Tabcontent所有的标签。
 
 在API version 18及以上：
 
-点击Next page进入下一个页面并返回，只会解冻对应标签的节点。
+点击`Next page`进入下一个页面并返回，只会解冻对应标签的节点。
 
 ## 限制条件
 
-如下面的例子所示，FreezeBuildNode中使用了自定义节点[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。
+API version 21及之前版本，如下面示例所示，FreezeBuildNode中使用了自定义节点[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。从API version 22开始，可以[设置BuilderNode继承冻结能力](../arkts-user-defined-arktsNode-builderNode.md#设置buildernode继承冻结能力)。
 
-```
+<!-- @[freeze_template7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template7/BuilderNode.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 // 定义一个Params类，用于传递参数
 @ObservedV2
 class Params {
   // 单例模式，确保只有一个Params实例
-  static singleton_: Params;
+  public static singleton_: Params;
 
   // 获取Params实例的方法
-  static instance() {
+  public static instance() {
     if (!Params.singleton_) {
       Params.singleton_ = new Params(0);
     }
@@ -762,25 +841,26 @@ class Params {
   }
 
   // 使用@Trace装饰器装饰message属性，以便跟踪其变化
-  @Trace message: string = "Hello";
-  index: number = 0;
+  @Trace public message: string = 'Hello';
+  public index: number = 0;
 
   constructor(index: number) {
     this.index = index;
   }
 }
 
-// 定义一个buildNodeChild组件，它包含一个message属性和一个index属性
+// 定义一个BuildNodeChild组件，它包含一个storage属性和一个index属性
 @ComponentV2
-struct buildNodeChild {
+struct BuildNodeChild {
   // 使用Params实例作为storage属性
   storage: Params = Params.instance();
   @Param index: number = 0;
 
   // 使用@Monitor装饰器监听storage.message的变化
-  @Monitor("storage.message")
+  @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
-    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
+    hilog.info(DOMAIN, 'onMessageChange',
+      `FreezeBuildNode BuildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
   }
 
   build() {
@@ -792,14 +872,14 @@ struct buildNodeChild {
 @Builder
 function buildText(params: Params) {
   Column() {
-    buildNodeChild({ index: params.index })
+    BuildNodeChild({ index: params.index })
   }
 }
 
 class TextNodeController extends NodeController {
   private textNode: BuilderNode<[Params]> | null = null;
   private index: number = 0;
-  
+
   // 构造函数接收一个index参数
   constructor(index: number) {
     super();
@@ -825,7 +905,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("change").fontSize(30)
+        Button('change').fontSize(30)
           .onClick(() => {
             this.storage.message += 'a';
           })
@@ -856,9 +936,10 @@ struct FreezeBuildNode {
   @Param index: number = 0;
 
   // 使用@Monitor装饰器监听storage.message的变化
-  @Monitor("storage.message")
+  @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
-    console.info(`FreezeBuildNode message callback func ${this.storage.message}, index: ${this.index}`);
+    hilog.info(DOMAIN, 'onMessageChange',
+      `FreezeBuildNode message callback func ${this.storage.message}, index: ${this.index}`);
   }
 
   build() {
@@ -870,6 +951,5 @@ struct FreezeBuildNode {
 }
 ```
 
-点击Button("change")。改变message的值，当前正在显示的TabContent组件中的[@Watch](./arkts-watch.md)中注册的方法onMessageUpdated被触发。未显示的TabContent中的BuilderNode节点下组件的@Watch方法onMessageUpdated也被触发，并没有被冻结。
-
+点击`change`，改变message的值，当前正在显示的TabContent组件中@Monitor注册的方法onMessageChange被触发。未显示的TabContent中的BuilderNode节点下组件的@Monitor方法onMessageChange也被触发，并没有被冻结。
 ![builderNode.gif](figures/builderNode.gif)

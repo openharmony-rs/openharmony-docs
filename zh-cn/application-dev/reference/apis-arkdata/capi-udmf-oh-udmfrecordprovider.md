@@ -1,4 +1,14 @@
 # OH_UdmfRecordProvider
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_UdmfRecordProvider OH_UdmfRecordProvider
+```
 
 ## 概述
 

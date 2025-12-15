@@ -1,4 +1,10 @@
 # OverlayModuleInfo
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The module provides information about a module with the overlay feature. An application can obtain such information through [overlay.getOverlayModuleInfo](js-apis-overlay.md#overlaygetoverlaymoduleinfo).
 
@@ -20,6 +26,6 @@ import { overlay } from '@kit.AbilityKit';
 | --------------------- | ---------------------------------------------------| ---- | ---- | ---------------------------------------------- |
 | bundleName            | string                                             | Yes  | No  | Bundle name of the application to which the module with the overlay feature belongs.          |
 | moduleName            | string                                             | Yes  | No  | Name of the module with the overlay feature.                      |
-| targetModuleName      | string                                             | Yes  | No  | Name of the target module specified by the module with the overlay feature.       |
+| targetModuleName      | string                                             | Yes  | No  | Name of the target module specified by the overlay feature, that is, the name of the module whose resources are to be replaced by the overlay package.       |
 | priority              | number                                             | Yes  | No  | Priority of the module with the overlay feature. The value is an integer ranging from 1 to 100. A larger value indicates a higher priority.   |
 | state                 | number                                             | Yes  | No  | Whether the module with the overlay feature is [disabled](js-apis-overlay.md#overlaysetoverlayenabled). The value **0** means that the module with the overlay feature is disabled, and **1** means the opposite.                      |

@@ -1,4 +1,10 @@
 # @ohos.file.storageStatistics (Application Storage Statistics)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 The **storageStatistics** module provides APIs for obtaining storage space information, including the space of built-in and plug-in memory cards, space occupied by different types of data, and space of application data.
 
@@ -9,7 +15,7 @@ The **storageStatistics** module provides APIs for obtaining storage space infor
 ## Modules to Import
 
 ```ts
-import  { storageStatistics } from '@kit.CoreFileKit';
+import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
 ## storageStatistics.getCurrentBundleStats<sup>9+</sup>
@@ -28,7 +34,7 @@ Obtains the storage space (in bytes) of this application. This API uses a promis
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -63,7 +69,7 @@ Obtains the storage space (in bytes) of this application. This API uses a promis
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -135,7 +141,7 @@ Obtains the total space of the built-in storage, in bytes. This API uses an asyn
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -243,7 +249,7 @@ Obtains the available space of the built-in storage, in bytes. This API uses an 
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -305,8 +311,8 @@ try {
 
 **System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
 
-| Name     | Type  | Mandatory| Description          |
-| --------- | ------ | --- | -------------- |
-| appSize   | number | Yes| Size of the application installation files, in bytes.   |
-| cacheSize | number | Yes| Size of the application cache files, in bytes.  |
-| dataSize  | number | Yes| Size of other files of the application, in bytes.|
+| Name                   | Type                                         | Read-Only| Optional| Description                                      |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| appSize   | number  | No| No| Size of the application installation files, in bytes.   |
+| cacheSize | number  | No| No | Size of the application cache files, in bytes.  |
+| dataSize  | number  | No| No | Size of application files (excluding application installation files), in bytes.|

@@ -1,4 +1,14 @@
 # ImagePacker_Native_
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ImagePacker_Native_ ImagePacker_Native
+```
 
 ## 概述
 

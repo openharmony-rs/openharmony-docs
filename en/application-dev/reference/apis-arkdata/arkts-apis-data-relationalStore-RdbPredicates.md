@@ -1,10 +1,16 @@
 # Class (RdbPredicates)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+Defines the predicates for an RDB store. This class determines whether the conditional expression for the RDB store is true or false. Multiple predicates statements can be concatenated by using **and()** by default. **RdbPredicates** cannot be passed across threads using Sendable.
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-Defines the predicates for an RDB store. This class determines whether the conditional expression for the RDB store is true or false. Multiple predicates statements can be concatenated by using **and()** by default. **RdbPredicates** cannot be passed across threads using Sendable.
 
 ## Module to Import
 
@@ -63,7 +69,7 @@ When calling **sync()**, you need to call **inDevices** to specify the devices. 
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -111,7 +117,7 @@ Creates an **RdbPredicates** object to specify all remote devices on the network
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Example**:
 
@@ -139,7 +145,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -177,7 +183,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -315,7 +321,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -352,7 +358,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -389,7 +395,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -425,7 +431,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -460,7 +466,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -490,13 +496,13 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
 | field  | string | Yes  | Column name in the database table.    |
-| value  | string | Yes  | Value to match.|
+| value  | string | Yes  | Condition for fuzzy match. Generally, this parameter is used together with a wildcard. A percent sign (%) represents any character of any length, and an underscore (_) represents a single character.|
 
 **Return value**
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -527,13 +533,13 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | field  | string | Yes  | Column name in the database table.                                          |
-| value  | string | Yes  | Value to match.<br>Wildcards are supported. ***** indicates zero, one, or multiple digits or characters. **?** indicates a single digit or character.|
+| value  | string | Yes  | Value to match.<br>Wildcards are supported. An asterisk (*) indicates zero, one, or multiple digits or characters, and a question mark (?) indicates a single digit or character.|
 
 **Return value**
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -571,7 +577,7 @@ Creates an **RdbPredicates** object to search for the records that are within th
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -609,7 +615,7 @@ Creates an **RdbPredicates** object to search for the records that are out of th
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -646,7 +652,7 @@ Creates an **RdbPredicates** object to search for the records that are greater t
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -683,7 +689,7 @@ Creates an **RdbPredicates** object to search for the records that are less than
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -720,7 +726,7 @@ Creates an **RdbPredicates** object to search for the records that are greater t
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -757,7 +763,7 @@ Creates an **RdbPredicates** object to search for the records that are less than
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -793,7 +799,7 @@ Creates an **RdbPredicates** object to sort the records in the specified column 
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -828,7 +834,7 @@ Creates an **RdbPredicates** object to sort the records in the specified column 
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1012,6 +1018,10 @@ in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
 Creates an **RdbPredicates** object to search for the records that are in the given range in the specified column.
 
+> **NOTE**
+>
+> The **value** array cannot be empty; otherwise, this condition becomes invalid. As a result, the operation (such as full query, update, or deletion) is performed on all data. Before calling this API, check whether the **value** array is empty to avoid misoperations.
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters**
@@ -1025,7 +1035,7 @@ Creates an **RdbPredicates** object to search for the records that are in the gi
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1062,7 +1072,7 @@ Creates an **RdbPredicates** object to search for the records that are out of th
 
 | Type                                | Description                      |
 | ------------------------------------ | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1099,7 +1109,7 @@ Creates an **RdbPredicates** object to search for the records that do not contai
 
 | Type                           | Description                      |
 | ------------------------------- | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1121,7 +1131,7 @@ predicates.notContains("NAME", "os");
 
 notLike(field: string, value: string): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records that are not similar to the given value in the specified column.
+Creates an **RdbPredicates** object to search for the records in the specified column that are not similar to the given value.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1130,13 +1140,13 @@ Creates an **RdbPredicates** object to search for the records that are not simil
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
 | field  | string | Yes  | Column name in the database table.    |
-| value  | string | Yes  | Value to match.|
+| value  | string | Yes  | Condition for fuzzy match. Generally, this parameter is used together with a wildcard. A percent sign (%) represents any character of any length, and an underscore (_) represents a single character.|
 
 **Return value**
 
 | Type                           | Description                      |
 | ------------------------------- | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1149,9 +1159,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-// Find the records that are not "os" in the NAME column, for example, Rose.
+// Find all the records that are not similar to "os" in the NAME column, for example, Lisa.
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-predicates.notLike("NAME", "os");
+predicates.notLike("NAME", "%os%");
 ```
 
 ## having<sup>20+</sup>
@@ -1166,14 +1176,14 @@ Filters for group data that meets the conditions.
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| conditions  | string | Yes  | Condition used to filter the data obtained using [groupBy](#groupby). This parameter cannot be empty and must be used with [groupBy](#groupby). |
+| conditions  | string | Yes  | Condition used to filter the data obtained using [groupBy](#groupby). This parameter cannot be empty and must be used with [groupBy](#groupby).|
 | args  | Array<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | No  | Parameters used in **conditions**, which replace the placeholder in the conditional statement. If this parameter is not specified, the default value is an empty array.|
 
 **Return value**
 
 | Type                           | Description                      |
 | ------------------------------- | -------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicates that match the specified field.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
 
 **Error codes**
 
@@ -1181,7 +1191,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                                                                      |
 | --------- |----------------------------------------------------------------------------------------------------------------|
-| 14800001       | Invalid arguments. Possible causes: 1. Empty conditions; 2. Missing GROUP BY clause. |
+| 14800001       | Invalid arguments. Possible causes: 1. Parameter is out of valid range; 2. Missing GROUP BY clause. |
 
 **Example 1**:
 

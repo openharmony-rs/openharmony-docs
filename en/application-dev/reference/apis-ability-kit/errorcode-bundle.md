@@ -1,4 +1,10 @@
 # Bundle Error Codes
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -10,7 +16,7 @@
 The specified bundle name is not found.
 
 **Description**<br>
-When a query API is called, the bundle name passed in does not exist.
+The specified bundle name does not exist.
 
 **Possible Causes**<br>
 
@@ -19,7 +25,11 @@ When a query API is called, the bundle name passed in does not exist.
 
 **Solution**<br>
 1. Check whether the spelling of the bundle name is correct.
-2. Check whether the corresponding bundle is installed.
+2. Run the [dump command](../../tools/bm-tool.md#dump), and check the command output. If the bundle is not installed, an error is reported.
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700002 Module Name Does Not Exist
 
@@ -27,7 +37,7 @@ When a query API is called, the bundle name passed in does not exist.
 The specified module name is not found.
 
 **Description**<br>
-When a query API or an installation-free API is called, the module name passed in does not exist.
+The specified module name does not exist.
 
 **Possible Causes**<br>
 1. The module name is misspelled.
@@ -35,7 +45,11 @@ When a query API or an installation-free API is called, the module name passed i
 
 **Solution**<br>
 1. Check whether the spelling of the module name is correct.
-2. Check whether the module is installed.
+2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether the module name exists in the list of the **hapModuleNames** field in the output. If not, the module is not installed.
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700003 Ability Name Does Not Exist
 
@@ -43,15 +57,21 @@ When a query API or an installation-free API is called, the module name passed i
 The specified ability name is not found.
 
 **Description**<br>
-When a query API is called, the ability name passed in does not exist.
+The specified ability name does not exist.
 
 **Possible Causes**<br>
 1. The ability name is misspelled.
 2. The application does not have the ability specified by **abilityName**.
+3. When [bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability) or [bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyextensionability) is used for query based on a combination of ability name and module name, the application does not have the module specified by **moduleName** or the specified ability under that module.
 
 **Solution**<br>
 1. Check whether the spelling of the ability name is correct.
-2. Check whether the application has the ability specified by **abilityName**.
+2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether **abilityInfos** under the **hapModuleInfos** field in the output contains an entry where the name equals this ability name. If no such entry is found, the ability name does not exist.
+3. Run the [dump command](../../tools/bm-tool.md#dump), and check the **hapModuleNames** field in the output. If the specified module name is not in the list, the application has not installed the module, and the ability under that module also does not exist.
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700004 User ID Does Not Exist
 
@@ -75,7 +95,7 @@ When a user-related API is called, the user ID passed in does not exist. <!--Del
 The specified app ID is an empty string.
 
 **Description**<br>
-When an API of the [appControl module](../apis-ability-kit/js-apis-appControl-sys.md) is called, the application ID passed in does not exist.
+When an API of the [appControl module](../apis-ability-kit/js-apis-appControl-sys.md) is called, the appId passed in does not exist.
 
 **Possible Causes**<br>
 **appId** is an empty string.
@@ -214,13 +234,11 @@ The version number is earlier than the version in use.
 **Solution**<br>
 Ensure that the version of the bundle to install is not earlier than the version in use.
 
-1. To query the version of an existing application, use [the HDC tool](../../dfx/hdc.md#environment-setup).
-```
-// Obtain the last field from the dump output.
-hdc shell bm dump -n com.xxx.demo |grep versionCode
-```
-
-![Example](figures/installed_hap_verisonCode.PNG)
+1. To query the version of an existing application, run [the dump command](../../dfx/hdc.md#environment-setup). The output contains the version code of the installed application. If multiple version codes are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell "bm dump -n com.xxx.demo |grep versionCode"
+    ```
 
 2. To query the version of a newly installed application, use DevEco Studio to open the HAP or HSP file and check the value of **versionCode** in the **module.json** file.
 
@@ -265,12 +283,15 @@ The specified uid is invalid.
 When the [getBundleNameByUid](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14) API of the bundleManager module is called, the UID passed in is invalid.
 
 **Possible Causes**<br>
-1. The UID is misspelled.
-2. The UID does not exist.
+The application corresponding to the UID does not exist.
 
 **Solution**<br>
-1. Check whether the UID is correct.
-2. Check whether the UID exists.
+Check whether the UID exists in the system. Run the [dump command](../../tools/bm-tool.md#dump), and check the UID of the installed application. If multiple UIDs are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
+```shell
+# Replace **com.xxx.demo** with the actual bundle name.
+hdc shell "bm dump -n com.xxx.demo |grep uid"
+```
+
 <!--Del-->
 ## 17700022 Invalid Source File
 
@@ -313,12 +334,16 @@ When an API for querying the profile is called, the profile does not exist.
 **Possible Causes**<br>
 1. The metadata name passed in the API does not exist in the profile.
 2. The content of the profile is not in JSON format.
+<!--Del-->
 3. The type of the profile to query does not exist.
+<!--DelEnd-->
 
 **Solution**<br>
 1. Check whether the metadata name in the **ability** or **extensionAbility** to be queried exists.
 2. Check whether the content of the profile to be queried is in JSON format.
+<!--Del-->
 3. Check whether the application contains a profile that matches the value of **profileType** passed in.
+<!--DelEnd-->
 <!--Del-->
 ## 17700025 Invalid Type
 
@@ -563,7 +588,7 @@ During application uninstall, the bundle name of an inter-application shared lib
 Failed to install the HAP because the installation is forbidden by enterprise device management.
 
 **Description**<br>
-The installation of this application is prohibited by enterprise device management. When [BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall) throws this error code, an internal error code, for example, [8519687], is added to the error message to pinpoint the reason for the error.
+The application installation is forbidden by [enterprise device management](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md). When [BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall) throws this error code, an internal error code, for example, [8519687], is added to the error message to pinpoint the reason for the error.
 
 **Possible Causes**<br>
 The enterprise device management does not allow the installation of this application.
@@ -620,7 +645,7 @@ Set the **isolationMode** field in the HAP based on the isolation mode of the de
 Failed to uninstall the HAP because the uninstall is forbidden by enterprise device management.
 
 **Description**<br>
-The uninstall of this application is prohibited by enterprise device management.
+The application uninstall is forbidden by [enterprise device management](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md).
 
 **Possible Causes**<br>
 The enterprise device management does not allow the installation of this application.
@@ -673,19 +698,19 @@ The HAP or HSP to be installed does not belong to the current application.
 **Solution**<br>
 Ensure that the HAP or HSP to be installed belongs to the current application.
 
-## 17700050 Enterprise Device Verification Failure
+## 17700050 Installation of Enterprise MDM Applications and Standard Enterprise Applications Not Allowed
 **Error Message**<br>
 Failed to install the HAP because an enterprise normal/MDM bundle cannot be installed on non-enterprise devices.
 
 **Description**<br>
-Users try to install an enterprise Normal or MDM application on a non-enterprise device. When [BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall) throws this error code, an internal error code, for example, [8519687], is added to the error message to pinpoint the reason for the error.
+The current device prohibits the installation of enterprise MDM applications or standard enterprise applications.
 
 **Possible Causes**<br>
-The device is not an enterprise device.
+The current device does not allow the installation of applications with the following two distribution types in the [profile signing file](../../security/app-provision-structure.md): **enterprise_mdm** (enterprise MDM application) and **enterprise_normal** (standard enterprise application).
+For details about the distribution types, see [ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
 
 **Solution**<br>
-1. Use an enterprise device.
-2. Ensure that **const.bms.allowenterprisebundle** is set to **true**.
+Change the distribution type in the profile signing file.
 
 ## 17700051 HAP Installation Failure Due to Incorrect Distribution Type in the Signing Certificate Profile of the Caller
 **Error Message**<br>
@@ -767,7 +792,7 @@ When the [canOpenLink](../apis-ability-kit/js-apis-bundleManager.md#bundlemanage
 The scheme of the link is not configured in the **querySchemes** field.
 
 **Solution**<br>
-Check whether the URL scheme is configured in the **querySchemes** field.
+Check whether the URL scheme is configured in the **querySchemes** field. For details, see [Using canOpenLink to Check Application Accessibility](../../application-models/canopenlink.md).
 <!--Del-->
 ## 17700057 Specified Application Is Not a Preset Application
 
@@ -898,19 +923,21 @@ Failed to uninstall the HAP because uninstalling the native package failed.
 
 **Solution**<br>Check whether any process occupies the native software package.
 
-## 17700069 AppClone Instance Cannot Be Created for an Application in Multi-App Mode Not Set to appClone
+## 17700069 Application Clone Is Not Supported
 
 **Error Message**<br>
 The app does not support the creation of an appClone instance.
 
 **Description**<br>
-An AppClone instance cannot be created for an application that is not in appClone mode.
+The application does not support creating a clone instance.
 
 **Possible Causes**<br>
-The multi-app mode is set to another mode other than appClone.
+1. The clone mode is not configured for the application.
+2. Enterprise security policies prohibit the creation of application clones.
 
 **Solution**<br>
-Check whether the application to update supports clones.
+1. Check whether the application is configured to support clone mode. For details, see [Creating an Application Clone](../../quick-start/app-clone.md).
+2. Check whether the enterprise device has security policies that disable application cloning. You can verify this by navigating to **Settings > System > App Clone** on the device to see whether cloning is supported for the application.<!--DelEnd-->
 
 ## 17700070 Invalid Shortcut ID
 
@@ -924,8 +951,9 @@ The specified shortcut ID is invalid.
 A shortcut with the same bundle name, clone index, user ID, and shortcut ID already exists, or the passed-in shortcut ID does not exist or is empty.
 
 **Solution**<br>
-Check whether the bundle name and shortcut ID are correct.
+1. Check whether the bundle name and shortcut ID are correct.
 
+<!--Del-->
 ## 17700071 Enterprise Applications Cannot Be Installed
 **Error Message**<br>
 It is not allowed to install the enterprise bundle.
@@ -945,13 +973,13 @@ Use the [install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerin
 The launch want is not found.
 
 **Description**<br>
-The launch want does not exist.
+The Want information in the [bundleManager.getLaunchWant](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetlaunchwant13) API does not exist.
 
 **Possible Causes**<br>
-The application does not have an ability, or does not have an ability for which **entities** is set to **entity.system.home** and **actions** is set to **ohos.want.action.home**.
+The application does not have a UIAbility with **entities** containing **"entity.system.home"** and **actions** containing **"ohos.want.action.home"**.
 
 **Solution**<br>
-Configure an ability with **entities** set to **entity.system.home** and **actions** set to **ohos.want.action.home** for the application.
+Configure a UIAbility with **entities** containing **"entity.system.home"** and **actions** containing **"ohos.want.action.home"** for the application.
 
 <!--Del-->
 ## 17700073 Installation Failure Caused by an Application with the Same Bundle Name but Different Signature Information
@@ -976,7 +1004,7 @@ The installation fails because an application with the same bundle name but diff
 The specified appIdentifier is invalid.
 
 **Description**<br>
-When an API of the [appControl module](../apis-ability-kit/js-apis-appControl-sys.md) is called, the app identifier passed in does not exist.
+When an API of the [appControl module](../apis-ability-kit/js-apis-appControl-sys.md) is called, the appIdentifier passed in does not exist.
 
 **Possible Causes**<br>
 **appIdentifier** is an empty string.
@@ -1020,7 +1048,7 @@ Failed to install the HAP and restore to preinstalled bundle.
 If the preinstalled application corresponding to the specified application has been uninstalled, the system first attempts to reinstall the preinstalled application. If the preinstalled application is successfully reinstalled but the specified application fails to install afterward, this error code is reported. When [BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall) throws this error code, an internal error code, for example, [8519687], is added to the error message to pinpoint the reason for the error.
 
 **Possible Causes**<br>
-The version number of the application to be installed is earlier than or the same as the version number of the preinstalled application.
+1. The version number of the application to be installed is earlier than or the same as the version number of the preinstalled application.
 
 **Solution**<br>
 1. Ensure that the version number of the specified application is later than that of the preinstalled application.
@@ -1138,7 +1166,7 @@ Errors related to file operations occurs, such as insufficient space at the dest
 ## 17700087 Unsupported Plugin Installation
 
 **Error Message**<br>
-Failed to install the plugin because the current device does not support plugin. 
+Failed to install the plugin because the current device does not support plugins. 
 
 **Description**<br>
 The plugin fails to be installed on the current device.
@@ -1177,11 +1205,11 @@ The plugin fails to be installed because its ID fails to be parsed.
 The **pluginDistributionIDs** in the signing certificate profile does not conform to the specifications.
 
 **Solution**<br>
-Reconfigure the **app-services-capabilities** field as follows in the signing certificate profile of the plugin:
-```
+Reconfigure the **app-services-capabilities** field in the [profile](../../security/app-provision-structure.md) as follows:
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
-        "pluginDistributionIDs":"value-1|value-2|···"
+        "pluginDistributionIDs":"value-1,value-2,···"
     }
 }
 ```
@@ -1199,12 +1227,19 @@ The **pluginDistributionIDs** between the plugin and the application do not shar
 The **pluginDistributionIDs** between the plugin and the application do not share any common values.
 
 **Solution**<br>
-Reconfigure the **pluginDistributionIDs** in the [singing certification profile](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-releaseprofile-0000001914714796) of the application or plugin.
+Reconfigure the **pluginDistributionIDs** field in the [profile](../../security/app-provision-structure.md) as follows:
+```json
+"app-services-capabilities":{
+    "ohos.permission.kernel.SUPPORT_PLUGIN":{
+        "pluginDistributionIDs":"value-1,value-2,···"
+    }
+}
+```
 
 ## 17700091 Plugin Installation Failure Because of the Same Plugin Name and Host Bundle Name
 
 **Error Message**<br>
-Failed to install the plugin because the plugin name is same as host bundle name.
+Failed to install the plugin because the plugin name is the same as the host bundle name.
 
 **Description**<br>
 The plugin fails to be installed because the plugin name is the same as the host bundle name.
@@ -1233,7 +1268,7 @@ Run the [bm dump -n command](../../tools/bm-tool.md#dump) to query application i
 
 ## 17700101 Bundle Manager Service Abnormal
 **Error Message**<br>
-Bundle manager service is excepted.
+Bundle manager service exception.
 
 **Description**<br>
 The Bundle Manager service is abnormal.
@@ -1252,7 +1287,7 @@ The system throws an uncaught error code, such as IPC failure or file copy failu
 
 2. If the request still fails after the preceding steps are performed for three to five times, check whether a crash file containing **foundation** exists in the **/data/log/faultlog/faultlogger/** directory of the device.
 
-    ```
+    ```shell
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1260,7 +1295,7 @@ The system throws an uncaught error code, such as IPC failure or file copy failu
 
 3. Export the crash file and log file and submit them to [online tickets](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-    ```
+    ```shell
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -1383,3 +1418,59 @@ The user uses a custom theme (for example, a non-official theme set in the theme
 **Solution**<br>
 1. Check whether the current theme is a custom theme.<br>
 2. Switch to an official theme and retry the API call.<!--DelEnd-->
+
+<!--Del-->
+## 17700351 Invalid File Type
+**Error Message**<br>
+Invalid fileTypes.
+
+**Description**<br>
+The file type configuration is invalid.
+
+**Possible Causes**<br>
+The file type array is invalid. For example:
+1. The array length exceeds 1024.
+2. The array contains empty items.
+3. The length of an individual item exceeds 512 characters.
+4. The array contains wildcard characters or [general.object](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
+
+**Solution**<br>
+Verify the file type array configuration. Refer to the parameter specifications and check for the issues listed above.
+
+## 18100001 Inconsistent bundleName and appIndex Combinations in the shortcutInfo List
+**Error Message**<br>
+A combination of bundleName and appIndex in the shutcutInfo list is different from the others.
+
+**Description**<br>
+The **shortcutInfo** list contains a combination of **bundleName** and **appIndex** that is inconsistent with other entries.
+
+**Possible Causes**<br>
+The **shortcutInfo** list contains a combination of **bundleName** and **appIndex** that is inconsistent with other entries.
+For example, the following list is passed to [shortcutManager.addDynamicShortcutInfos](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanageradddynamicshortcutinfos23):
+```ts
+const bundleName = "com.example.dynamic";
+const bundleName1 = "com.example.dynamic1";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+    // Verification fails because the bundleName and appIndex combination is different from other shortcutInfo entries.
+  { id: "3", bundleName: bundleName1, moduleName: moduleName, appIndex: 0, sourceType: 2 }
+]
+```
+Or:
+```ts
+const bundleName = "com.example.dynamic";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  // Verification fails because the bundleName and appIndex combination is different from other shortcutInfo entries.
+  { id: "3", bundleName: bundleName, moduleName: moduleName, appIndex: 1, sourceType: 2 }
+]
+```
+
+**Solution**<br>
+Check the **shortcutInfo** list to ensure all **bundleName** and **appIndex** combinations are consistent.
+
+<!--DelEnd-->

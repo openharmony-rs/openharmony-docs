@@ -1,5 +1,12 @@
 # image_effect.h
 
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zyj208-->
+<!--Designer: @wangshoucheng-->
+<!--Tester: @gengfei-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 概述
 
 声明效果器相关接口。<br> 效果器提供了滤镜的添加、删除、查询等功能。开发者可以通过效果器提供的接口将多个滤镜组合串联，从而实现较为复杂的效果调节功能。<br> 同时，效果器支持多种输入类型，如Pixelmap、URI、Surface、Picture。不同的输入类型在效果器内部都会转换为内存对象，通过滤镜的效果处理，获得处理结果。
@@ -30,14 +37,14 @@
 | [OH_EffectFilter *OH_ImageEffect_AddFilter(OH_ImageEffect *imageEffect, const char *filterName)](#oh_imageeffect_addfilter) | 添加滤镜。 |
 | [ImageEffect_ErrorCode OH_ImageEffect_AddFilterByFilter(OH_ImageEffect *imageEffect, OH_EffectFilter *filter)](#oh_imageeffect_addfilterbyfilter) | 添加指定滤镜。 |
 | [OH_EffectFilter *OH_ImageEffect_InsertFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)](#oh_imageeffect_insertfilter) | 插入滤镜。 |
-| [ImageEffect_ErrorCode OH_ImageEffect_InsertFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index,OH_EffectFilter *filter)](#oh_imageeffect_insertfilterbyfilter) | 按指定位置插入滤镜。 |
+| [ImageEffect_ErrorCode OH_ImageEffect_InsertFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index, OH_EffectFilter *filter)](#oh_imageeffect_insertfilterbyfilter) | 按指定位置插入滤镜。 |
 | [int32_t OH_ImageEffect_RemoveFilter(OH_ImageEffect *imageEffect, const char *filterName)](#oh_imageeffect_removefilter) | 移除滤镜。 |
 | [ImageEffect_ErrorCode OH_ImageEffect_RemoveFilterByIndex(OH_ImageEffect *imageEffect, uint32_t index)](#oh_imageeffect_removefilterbyindex) | 移除指定位置滤镜。 |
 | [OH_EffectFilter *OH_ImageEffect_ReplaceFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)](#oh_imageeffect_replacefilter) | 替换滤镜。 |
-| [ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index,const char *filterName)](#oh_imageeffect_replacefilterbyfilter) | 替换指定位置滤镜。 |
+| [ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)](#oh_imageeffect_replacefilterbyfilter) | 替换指定位置滤镜。 |
 | [int32_t OH_ImageEffect_GetFilterCount(OH_ImageEffect *imageEffect)](#oh_imageeffect_getfiltercount) | 查询已添加滤镜个数。 |
 | [OH_EffectFilter *OH_ImageEffect_GetFilter(OH_ImageEffect *imageEffect, uint32_t index)](#oh_imageeffect_getfilter) | 查询已添加滤镜。 |
-| [ImageEffect_ErrorCode OH_ImageEffect_Configure(OH_ImageEffect *imageEffect, const char *key,const ImageEffect_Any *value)](#oh_imageeffect_configure) | 设置配置信息。 |
+| [ImageEffect_ErrorCode OH_ImageEffect_Configure(OH_ImageEffect *imageEffect, const char *key, const ImageEffect_Any *value)](#oh_imageeffect_configure) | 设置配置信息。 |
 | [ImageEffect_ErrorCode OH_ImageEffect_SetOutputSurface(OH_ImageEffect *imageEffect, OHNativeWindow *nativeWindow)](#oh_imageeffect_setoutputsurface) | 设置输出Surface。 |
 | [ImageEffect_ErrorCode OH_ImageEffect_GetInputSurface(OH_ImageEffect *imageEffect, OHNativeWindow **nativeWindow)](#oh_imageeffect_getinputsurface) | 获取输入Surface。 |
 | [ImageEffect_ErrorCode OH_ImageEffect_SetInputPixelmap(OH_ImageEffect *imageEffect, OH_PixelmapNative *pixelmap)](#oh_imageeffect_setinputpixelmap) | 设置输入的Pixelmap。 |
@@ -60,7 +67,7 @@
 
 ### OH_ImageEffect_Create()
 
-```
+```c
 OH_ImageEffect *OH_ImageEffect_Create(const char *name)
 ```
 
@@ -87,7 +94,7 @@ OH_ImageEffect *OH_ImageEffect_Create(const char *name)
 
 ### OH_ImageEffect_AddFilter()
 
-```
+```c
 OH_EffectFilter *OH_ImageEffect_AddFilter(OH_ImageEffect *imageEffect, const char *filterName)
 ```
 
@@ -115,7 +122,7 @@ OH_EffectFilter *OH_ImageEffect_AddFilter(OH_ImageEffect *imageEffect, const cha
 
 ### OH_ImageEffect_AddFilterByFilter()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_AddFilterByFilter(OH_ImageEffect *imageEffect, OH_EffectFilter *filter)
 ```
 
@@ -143,7 +150,7 @@ ImageEffect_ErrorCode OH_ImageEffect_AddFilterByFilter(OH_ImageEffect *imageEffe
 
 ### OH_ImageEffect_InsertFilter()
 
-```
+```c
 OH_EffectFilter *OH_ImageEffect_InsertFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)
 ```
 
@@ -172,7 +179,7 @@ OH_EffectFilter *OH_ImageEffect_InsertFilter(OH_ImageEffect *imageEffect, uint32
 
 ### OH_ImageEffect_InsertFilterByFilter()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_InsertFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index,OH_EffectFilter *filter)
 ```
 
@@ -201,7 +208,7 @@ ImageEffect_ErrorCode OH_ImageEffect_InsertFilterByFilter(OH_ImageEffect *imageE
 
 ### OH_ImageEffect_RemoveFilter()
 
-```
+```c
 int32_t OH_ImageEffect_RemoveFilter(OH_ImageEffect *imageEffect, const char *filterName)
 ```
 
@@ -229,7 +236,7 @@ int32_t OH_ImageEffect_RemoveFilter(OH_ImageEffect *imageEffect, const char *fil
 
 ### OH_ImageEffect_RemoveFilterByIndex()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_RemoveFilterByIndex(OH_ImageEffect *imageEffect, uint32_t index)
 ```
 
@@ -257,7 +264,7 @@ ImageEffect_ErrorCode OH_ImageEffect_RemoveFilterByIndex(OH_ImageEffect *imageEf
 
 ### OH_ImageEffect_ReplaceFilter()
 
-```
+```c
 OH_EffectFilter *OH_ImageEffect_ReplaceFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)
 ```
 
@@ -285,7 +292,7 @@ OH_EffectFilter *OH_ImageEffect_ReplaceFilter(OH_ImageEffect *imageEffect, uint3
 
 ### OH_ImageEffect_ReplaceFilterByFilter()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index,const char *filterName)
 ```
 
@@ -314,7 +321,7 @@ ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *image
 
 ### OH_ImageEffect_GetFilterCount()
 
-```
+```c
 int32_t OH_ImageEffect_GetFilterCount(OH_ImageEffect *imageEffect)
 ```
 
@@ -341,7 +348,7 @@ int32_t OH_ImageEffect_GetFilterCount(OH_ImageEffect *imageEffect)
 
 ### OH_ImageEffect_GetFilter()
 
-```
+```c
 OH_EffectFilter *OH_ImageEffect_GetFilter(OH_ImageEffect *imageEffect, uint32_t index)
 ```
 
@@ -369,7 +376,7 @@ OH_EffectFilter *OH_ImageEffect_GetFilter(OH_ImageEffect *imageEffect, uint32_t 
 
 ### OH_ImageEffect_Configure()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Configure(OH_ImageEffect *imageEffect, const char *key,const ImageEffect_Any *value)
 ```
 
@@ -398,7 +405,7 @@ ImageEffect_ErrorCode OH_ImageEffect_Configure(OH_ImageEffect *imageEffect, cons
 
 ### OH_ImageEffect_SetOutputSurface()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputSurface(OH_ImageEffect *imageEffect, OHNativeWindow *nativeWindow)
 ```
 
@@ -426,7 +433,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputSurface(OH_ImageEffect *imageEffec
 
 ### OH_ImageEffect_GetInputSurface()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_GetInputSurface(OH_ImageEffect *imageEffect, OHNativeWindow **nativeWindow)
 ```
 
@@ -454,7 +461,7 @@ ImageEffect_ErrorCode OH_ImageEffect_GetInputSurface(OH_ImageEffect *imageEffect
 
 ### OH_ImageEffect_SetInputPixelmap()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputPixelmap(OH_ImageEffect *imageEffect, OH_PixelmapNative *pixelmap)
 ```
 
@@ -482,7 +489,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputPixelmap(OH_ImageEffect *imageEffec
 
 ### OH_ImageEffect_SetOutputPixelmap()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputPixelmap(OH_ImageEffect *imageEffect, OH_PixelmapNative *pixelmap)
 ```
 
@@ -510,7 +517,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputPixelmap(OH_ImageEffect *imageEffe
 
 ### OH_ImageEffect_SetInputNativeBuffer()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputNativeBuffer(OH_ImageEffect *imageEffect, OH_NativeBuffer *nativeBuffer)
 ```
 
@@ -538,7 +545,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputNativeBuffer(OH_ImageEffect *imageE
 
 ### OH_ImageEffect_SetOutputNativeBuffer()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputNativeBuffer(OH_ImageEffect *imageEffect, OH_NativeBuffer *nativeBuffer)
 ```
 
@@ -566,7 +573,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputNativeBuffer(OH_ImageEffect *image
 
 ### OH_ImageEffect_SetInputUri()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputUri(OH_ImageEffect *imageEffect, const char *uri)
 ```
 
@@ -594,7 +601,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputUri(OH_ImageEffect *imageEffect, co
 
 ### OH_ImageEffect_SetOutputUri()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputUri(OH_ImageEffect *imageEffect, const char *uri)
 ```
 
@@ -622,7 +629,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputUri(OH_ImageEffect *imageEffect, c
 
 ### OH_ImageEffect_SetInputPicture()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputPicture(OH_ImageEffect *imageEffect, OH_PictureNative *picture)
 ```
 
@@ -650,7 +657,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputPicture(OH_ImageEffect *imageEffect
 
 ### OH_ImageEffect_SetOutputPicture()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputPicture(OH_ImageEffect *imageEffect, OH_PictureNative *picture)
 ```
 
@@ -678,7 +685,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputPicture(OH_ImageEffect *imageEffec
 
 ### OH_ImageEffect_SetInputTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputTextureId(OH_ImageEffect *imageEffect, int32_t textureId,int32_t colorSpace)
 ```
 
@@ -707,7 +714,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputTextureId(OH_ImageEffect *imageEffe
 
 ### OH_ImageEffect_SetOutputTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputTextureId(OH_ImageEffect *imageEffect, int32_t textureId)
 ```
 
@@ -735,7 +742,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputTextureId(OH_ImageEffect *imageEff
 
 ### OH_ImageEffect_Start()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Start(OH_ImageEffect *imageEffect)
 ```
 
@@ -762,7 +769,7 @@ ImageEffect_ErrorCode OH_ImageEffect_Start(OH_ImageEffect *imageEffect)
 
 ### OH_ImageEffect_Stop()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)
 ```
 
@@ -789,7 +796,7 @@ ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)
 
 ### OH_ImageEffect_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Release(OH_ImageEffect *imageEffect)
 ```
 
@@ -816,7 +823,7 @@ ImageEffect_ErrorCode OH_ImageEffect_Release(OH_ImageEffect *imageEffect)
 
 ### OH_ImageEffect_Save()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Save(OH_ImageEffect *imageEffect, char **info)
 ```
 
@@ -844,7 +851,7 @@ ImageEffect_ErrorCode OH_ImageEffect_Save(OH_ImageEffect *imageEffect, char **in
 
 ### OH_ImageEffect_Restore()
 
-```
+```c
 OH_ImageEffect *OH_ImageEffect_Restore(const char *info)
 ```
 

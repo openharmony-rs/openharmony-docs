@@ -1,5 +1,16 @@
 # OH_CryptoSymKey
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoSymKey OH_CryptoSymKey
+```
+
 ## 概述
 
 定义对称密钥生成器结构体。

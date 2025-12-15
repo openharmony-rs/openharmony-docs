@@ -1,9 +1,10 @@
 # @ohos.util.LightWeightSet (非线性容器LightWeightSet)
 <!--Kit: ArkTS-->
-<!--Subsystem: commonlibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello; @yuanyao14; @lzj0614-->
-<!--SE: @yuanyao14-->
-<!--TSE: @kirl75; @zsw_zhushiwei-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 LightWeightSet可用于存储一系列值的集合，存储元素中value值唯一。
 
@@ -21,7 +22,24 @@ LightWeightSet和[HashSet](js-apis-hashset.md)都是用来存储键值的集合�
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
+## 规格限制
+
+当LightWeightSet存入的value为number类型且值大于INT32_MAX或小于INT32_MIN时，针对LightWeightSet的操作，其结果可能与预期不一致。
+
+这是因为，当value为number类型且值大于INT32_MAX或小于INT32_MIN时，存储结构会发生改变。
+
+例如在以下示例针对value的计算中，1758783600000大于INT32_MAX，此时会通过TaggedDouble存储；1758783600小于INT32_MIN，此时会通过TaggedInt存储。由于以上存储方式的差异，当对其进行hash算法即会计算出不同的hash值，从而导致映射结果不同，产生与预期不一致的现象。
+
+```ts
+let st = new LightWeightSet<number>();
+let value = 1758783600000 / 1000;  // 1758783600000 > INT32_MAX
+st.add(value);
+console.info("result:", st.has(1758783600));  // result: false 
+console.info("result:", st.has(value));  // result: true
+```
 
 ## 导入模块
 
@@ -771,7 +789,7 @@ equal(obj: Object): boolean
 
 > **说明：**
 >
-> 此接口从API version 10开始支持，从API version 12开始废弃。无替代接口。
+> 此接口从API version 8开始支持，从API version 12开始废弃。无替代接口。
 
 **系统能力：** SystemCapability.Utils.Lang
 

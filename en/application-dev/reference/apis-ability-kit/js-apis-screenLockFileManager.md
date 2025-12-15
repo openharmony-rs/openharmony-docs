@@ -1,5 +1,12 @@
 # @ohos.ability.screenLockFileManager (Sensitive Data Access Management Under Lock Screen)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 Once the screen is locked, the keys for sensitive data are destroyed, preventing any read or write operations on that data. These keys can be restored only after the screen is unlocked. To facilitate data access on the lock screen, the screenLockFileManager module has been introduced. This module provides APIs to request and release the permission to access sensitive data on the lock screen, thereby managing sensitive data access securely.
 
 > **NOTE**
@@ -11,6 +18,17 @@ Once the screen is locked, the keys for sensitive data are destroyed, preventing
 ```ts
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
+
+## DataType
+
+Enumerates the types of sensitive data that can be accessed on the lock screen.
+
+ **System capability**: SystemCapability.Security.ScreenLockFileManager
+
+| Name      | Value        | Description          |
+| ---------- | ---------- | -------------- |
+| MEDIA_DATA | 0x00000001 | Media data.|
+| ALL_DATA   | 0xffffffff | All encrypted data.    |
 
 ## AccessStatus
 
@@ -51,7 +69,7 @@ Enumerates the statuses for access permissions for sensitive data on the lock sc
 
 acquireAccess(): AccessStatus
 
-Requests the permission to access sensitive data on the lock screen. This API returns the result synchronously. Generally sensitive data cannot be accessed after the screen is locked. However, you can call this API to access sensitive data on the lock screen.
+Requests the permission to access the application's sensitive data on the lock screen. This API returns the result synchronously. Generally, sensitive data cannot be accessed once the screen is locked. However, you can call this API to access the application's sensitive data on the lock screen.
 
 **System capability**: SystemCapability.Security.ScreenLockFileManager
 
@@ -95,7 +113,7 @@ try {
 
 releaseAccess(): ReleaseStatus
 
-Releases the permission to access sensitive data on the lock screen. This API returns the result synchronously.
+Releases the permission to access the application's sensitive data on the lock screen. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Security.ScreenLockFileManager
 
@@ -139,7 +157,7 @@ try {
 
 queryAppKeyState(): KeyStatus
 
-Obtains the state of access permissions for sensitive data on the lock screen. This API returns the result synchronously.
+Obtains the state of access permissions for the application's sensitive data on the lock screen. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Security.ScreenLockFileManager
 

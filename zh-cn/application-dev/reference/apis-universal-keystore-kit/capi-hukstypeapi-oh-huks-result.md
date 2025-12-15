@@ -1,5 +1,16 @@
 # OH_Huks_Result
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
+```c
+struct OH_Huks_Result {...}
+```
+
 ## 概述
 
 表示状态返回数据，包括返回码和消息。

@@ -1,5 +1,12 @@
 # Application Access Control
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @xia-bubai-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 - [Access Control Overview](access-token-overview.md)
 - Application Permission Management<!--app-permission-mgmt-->
   - [Application Permission Management Overview](app-permission-mgmt-overview.md)
@@ -18,7 +25,7 @@
     - [Restricted Permissions](restricted-permissions.md)
     <!--Del-->
     - [system_grant Permissions Available for System Applications via ACL](permissions-for-system-apps.md)
-    - [system_grant Non-ACL Permissions for System Applications](permissions-for-system-apps-no-acl.md)
+    - [system_grant Permissions for System Applications That Cannot Be Requested via ACL](permissions-for-system-apps-no-acl.md)
     - [user_grant Permissions for System Applications](permissions-for-system-apps-user.md)
     <!--DelEnd-->
     - [Permissions for Enterprise Applications](permissions-for-enterprise-apps.md)

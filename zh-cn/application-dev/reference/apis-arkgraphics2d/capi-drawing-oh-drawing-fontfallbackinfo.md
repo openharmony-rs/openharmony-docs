@@ -1,4 +1,13 @@
 # OH_Drawing_FontFallbackInfo
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
+```c
+typedef struct OH_Drawing_FontFallbackInfo {...} OH_Drawing_FontFallbackInfo
+```
 
 ## 概述
 

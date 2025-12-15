@@ -1,5 +1,12 @@
 # effect_types.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanamaru-->
+<!--Designer: @gaoweihua-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 声明滤镜效果的数据类型。
@@ -35,7 +42,7 @@
 
 ### EffectErrorCode
 
-```
+```c
 enum EffectErrorCode
 ```
 
@@ -54,7 +61,7 @@ enum EffectErrorCode
 
 ### EffectTileMode
 
-```
+```c
 enum EffectTileMode
 ```
 

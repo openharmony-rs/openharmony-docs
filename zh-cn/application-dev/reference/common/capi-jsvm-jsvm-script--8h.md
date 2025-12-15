@@ -1,4 +1,14 @@
 # JSVM_Script__*
+<!--Kit: Common Basic Capability-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
+
+```c
+typedef struct JSVM_Script__* JSVM_Script
+```
 
 ## 概述
 

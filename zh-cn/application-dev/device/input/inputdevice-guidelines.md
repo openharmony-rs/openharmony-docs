@@ -1,5 +1,12 @@
 # 输入设备开发指导
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 场景介绍
 
 输入设备管理提供设备热插拔监听、查询指定设备的键盘类型等能力。使用场景例如：当用户需要输入文本时，输入法会根据当前是否插入了物理键盘来决定是否弹出虚拟键盘，开发者可以通过监听设备热插拔判断是否有物理键盘插入。
@@ -30,49 +37,74 @@ import { inputDevice } from '@kit.InputKit';
 1. 调用[getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9)方法查询所有连接的输入设备，调用[getKeyboardType](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9)方法遍历所有连接的设备，判断是否有物理键盘，若有则标记已有物理键盘连接，该步骤确保监听设备热插拔之前，检测所有插入的输入设备。
 2. 调用[on](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdeviceon9)接口监听输入设备热插拔事件，若监听到有物理键盘插入，则标记已有物理键盘连接；若监听到有物理键盘拔掉，则标记没有物理键盘连接。
 
+<!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) -->
 
-```js
+``` TypeScript
 import { inputDevice } from '@kit.InputKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0x0000;
 
 @Entry
 @Component
 struct Index {
+  @State isPhysicalKeyboardExist: boolean = false;
+  @State message: string = "Click to obtain the device list and monitor device hot-plug events";
+  keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
+
+// ···
+
   build() {
     RelativeContainer() {
-      Text()
-        .onClick(() => {
-          let isPhysicalKeyboardExist = true;
-          try {
-            // 1.获取设备列表，判断是否有物理键盘连接
-            inputDevice.getDeviceList().then(data => {
-              for (let i = 0; i < data.length; ++i) {
-                inputDevice.getKeyboardType(data[i]).then(type => {
-                  if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
-                    // 物理键盘已连接
-                    isPhysicalKeyboardExist = true;
-                  }
-                });
-              }
-            });
-            // 2.监听设备热插拔
-            inputDevice.on("change", (data) => {
-              console.info(`Device event info: ${JSON.stringify(data)}`);
-              inputDevice.getKeyboardType(data.deviceId).then((type) => {
-                console.info("The keyboard type is: " + type);
-                if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'add') {
-                  // 物理键盘已插入
-                  isPhysicalKeyboardExist = true;
-                } else if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'remove') {
-                  // 物理键盘已拔掉
-                  isPhysicalKeyboardExist = false;
+      Column() {
+        // ···
+
+        Text(this.message)
+          .onClick(() => {
+            try {
+              // 1.获取设备列表，判断是否有物理键盘连接
+              inputDevice.getDeviceList().then(data => {
+                for (let i = 0; i < data.length; ++i) {
+                  inputDevice.getKeyboardType(data[i]).then(type => {
+                    if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
+                      // 物理键盘已连接
+                      this.isPhysicalKeyboardExist = true;
+                      this.keyBoards.set(data[i], type);
+                    }
+                  });
                 }
               });
-            });
-          } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
-          }
-        })
+              // 2.监听设备热插拔
+              inputDevice.on("change", (data) => {
+                hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
+                inputDevice.getKeyboardType(data.deviceId).then((type) => {
+                  hilog.info(DOMAIN, 'InputDevice', 'The keyboard type is: %{public}d', type);
+                  if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
+                    // 物理键盘已插入
+                    this.isPhysicalKeyboardExist = true;
+                    this.keyBoards.set(data.deviceId, type);
+                  }
+                });
+                if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                  data.type === 'remove') {
+                  // 物理键盘已拔掉
+                  this.isPhysicalKeyboardExist = false;
+                  this.keyBoards.delete(data.deviceId);
+                }
+              });
+              this.message = "Device monitoring enabled successfully"
+            } catch (error) {
+              hilog.error(DOMAIN, 'InputDevice', `Execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
+              this.message = `Failed to enable device monitoring. Click to retry. Error message:${JSON.stringify(error,
+                ["code", "message"])}`
+            }
+          })
+        // ···
+      }
+    // ···
     }
   }
 }
 ```
+

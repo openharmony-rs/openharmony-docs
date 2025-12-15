@@ -1,32 +1,20 @@
 # 截图错误码
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 100001 内部错误
-
-**错误信息**
-
-Internal error.
-
-**错误描述**
-
-该错误码在内部运行时状态出现异常时被触发。
-
-**可能原因**
-
-无法获取正确的UI实例、空指针异常、UI实例内部状态校验异常等。
-
-**处理步骤**
-
-NA
-
 ## 160001 图像加载错误
 
 **错误信息**
 
-ComponentSnapshot error.
+An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.
 
 **错误描述**
 
@@ -38,13 +26,13 @@ ComponentSnapshot error.
 
 **处理步骤**
 
-NA
+设置相应截图接口的delay延时参数，以确保图像加载成功。
 
 ## 160002 截图超时
 
 **错误信息**
 
-ComponentSnapshot timeout.
+Timeout.
 
 **错误描述**
 
@@ -56,4 +44,4 @@ ComponentSnapshot timeout.
 
 **处理步骤**
 
-NA
+改用当前截图接口对应的异步接口。

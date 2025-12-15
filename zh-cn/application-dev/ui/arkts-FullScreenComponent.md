@@ -1,4 +1,10 @@
 # 全屏启动原子化服务组件（FullScreenLaunchComponent）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 FullScreenLaunchComponent允许开发者以全屏方式拉起原子化服务，使得应用能够提供更友好的用户体验。
 
@@ -8,7 +14,7 @@ FullScreenLaunchComponent允许开发者以全屏方式拉起原子化服务，�
 
 - [FullScreenLaunchComponent](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md)组件
 
-  FullScreenLaunchComponent是由ArkUI提供的组件，允许在使用方应用中通过ArkTS的声明式范式进行定义和使用。<!--Del-->该组件基于[UIExtension](./arkts-ui-extension-components.md)封装，但不同于系统接口 [UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)，<!--DelEnd-->FullScreenLaunchComponent向第三方应用开放使用权限，当被拉起方授权使用方应用嵌入式运行原子化服务时，使用方应用可全屏嵌入式运行该服务。若未授权，则使用方应用将以跳出式方式拉起原子化服务。
+  FullScreenLaunchComponent是由ArkUI提供的组件，允许在使用方应用中通过ArkTS的声明式范式进行定义和使用。<!--Del-->该组件基于[UIExtension](./arkts-ui-extension-components-sys.md)封装，但不同于系统接口 [UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)，<!--DelEnd-->FullScreenLaunchComponent向第三方应用开放使用权限，当被拉起方授权使用方应用嵌入式运行原子化服务时，使用方应用可全屏嵌入式运行该服务。若未授权，则使用方应用将以跳出式方式拉起原子化服务。
 
 - [EmbeddableUIAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md)组件
 
@@ -19,7 +25,7 @@ FullScreenLaunchComponent允许开发者以全屏方式拉起原子化服务，�
 
 FullScreenLaunchComponent提供的一种全屏启动原子化服务的能力。需要拉起原子化服务时，拉起方向AMS查询拉起方是否授权使用方可以嵌入式运行原子化服务。已授权时，使用方全屏嵌入式运行原子化服务；未授权时，使用方跳出式拉起原子化服务。
 
-<!--Del-->全屏嵌入式运行原子化服务是指，通过[UIExtension](./arkts-ui-extension-components.md)封装的组件方式嵌入到使用方的组件树中，拉起EmbeddableUIAbility，展示提供方的应用内容，以实现组件式的交互体验。<!--DelEnd-->
+<!--Del-->全屏嵌入式运行原子化服务是指，通过[UIExtension](./arkts-ui-extension-components-sys.md)封装的组件方式嵌入到使用方的组件树中，拉起EmbeddableUIAbility，展示提供方的应用内容，以实现组件式的交互体验。<!--DelEnd-->
 
 跳出式运行原子化服务是指，非组件化的方式拉起EmbeddableUIAbility，交互体验接近独立窗口。
 
@@ -65,7 +71,7 @@ FullScreenLaunchComponent为了实现跨应用的能力共享，存在较开放�
 | [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md) | 不支持   | EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成页面布局和渲染。 | 由于是一种跨应用调度的能力，FullScreenLaunchComponent中暂不支持嵌套拉起。  |
 | <!--DelRow-->[RemoteWindow](../reference/apis-arkui/arkui-ts/ts-basic-components-remotewindow-sys.md) | 不支持   | 远程控制窗口组件，可以通过此组件控制应用窗口，提供启动退出过程中控件动画和应用窗口联动动画能力。 | FullScreenLaunchComponent中的组件已经在另一个进程中，无法影响控制宿主应用的窗口。 |
 | [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | 不支持   | 富文本组件，解析并显示HTML格式文本。                         | —                                                            |
-| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md) | 不支持   | 通常用于有Abc热更新诉求的模块化开发场景。FolderStack继承于Stack(层叠布局)控件，新增了折叠屏悬停能力，通过识别upperItems自动避让折叠屏折痕区后移到上半屏。 | 折叠屏划分组件能力，需要和宿主方窗口形成联动，从而需要在提供方内获取宿主主窗的信息，目前无法支持。 |
+| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md) | 不支持   | 通常用于有Abc热更新（可动态替换Isolated加载的abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。FolderStack继承于Stack(层叠布局)控件，新增了折叠屏悬停能力，通过识别upperItems自动避让折叠屏折痕区后移到上半屏。 | 折叠屏划分组件能力，需要和宿主方窗口形成联动，从而需要在提供方内获取宿主主窗的信息，目前无法支持。 |
 | [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) | 不支持   | 可用于EGL/OpenGLES和媒体数据写入，并显示在XComponent组件。   | —                                                            |
 | [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md) | 不支持   | 提供静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。 | 卡片提供的是跨进程的组件调用能力，FullScreenLaunchComponent中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
 | [HyperLink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md) | 不支持   | 超链接组件，组件宽高范围内点击实现跳转。                     | —                                                            |

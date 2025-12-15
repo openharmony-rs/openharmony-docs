@@ -1,8 +1,17 @@
 # image_processing_types.h
 
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xjtu_liushang-->
+<!--Designer: @yangwang01-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 概述
 
 图片处理的类型定义。
+
+**引用文件：** <multimedia/video_processing_engine/image_processing_types.h>
 
 **库：** libimage_processing.so
 
@@ -21,7 +30,7 @@
 | [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md) | ImageProcessing_ColorSpaceInfo | 色彩空间信息，用于色彩空间转换能力查询。 |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md) | OH_ImageProcessing | 提供OH_ImageProcessing结构体声明。<br>定义了OH_ImageProcessing的空指针并调用[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)来创建图片处理实例。在创建实例之前，指针应为空。用户可以为不同的处理类型创建多个图片实例。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | OH_PixelmapNative | 提供OH_PixelmapNative结构体声明。 |
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat) | OH_AVFormat | 提供OH_AVFormat结构体声明。 |
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md) | OH_AVFormat | 提供OH_AVFormat结构体声明。 |
 
 ### 枚举
 
@@ -34,7 +43,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | 用于创建色彩空间转换的图片处理实例。<br>色彩空间转换包括单层HDR图片转换SDR图片，SDR图片之间的转换，以及SDR图片转换单层HDR图片，部分能力由厂商支持。使用[OH_ImageProcessing_IsColorSpaceConversionSuported](capi-image-processing-h.md#oh_imageprocessing_iscolorspaceconversionsupported)查询某种转换是否支持在单层图片之间进行。<br>**起始版本：** 13<br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create) |
+| const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | 用于创建色彩空间转换的图片处理实例。<br>色彩空间转换包括单层HDR图片转换SDR图片，SDR图片之间的转换，以及SDR图片转换单层HDR图片，部分能力由厂商支持。使用[OH_ImageProcessing_IsColorSpaceConversionSupported](capi-image-processing-h.md#oh_imageprocessing_iscolorspaceconversionsupported)查询某种转换是否支持在单层图片之间进行。<br>**起始版本：** 13<br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create) |
 | const int32_t IMAGE_PROCESSING_TYPE_COMPOSITION | 用于创建双层HDR图片转换单层HDR图片的图片处理实例。<br>包括从双层HDR图片转换为单层HDR图片的能力。部分能力由厂商支持。使用[OH_ImageProcessing_IsCompositionSupported](capi-image-processing-h.md#oh_imageprocessing_iscompositionsupported)查询是否支持从双层HDR图片到单层HDR图片的转换。<br>**起始版本：** 13<br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create) |
 | const int32_t IMAGE_PROCESSING_TYPE_DECOMPOSITION | 用于创建单层HDR图片转换双层HDR图片的图片处理实例。<br>包括从单层HDR图片转换为双层HDR图片的能力。部分能力由厂商支持。使用[OH_ImageProcessing_IsDecompositionSupported](capi-image-processing-h.md#oh_imageprocessing_isdecompositionsupported)查询是否支持从单层HDR图片到双层HDR图片的转换。<br>**起始版本：** 13<br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create) |
 | const int32_t IMAGE_PROCESSING_TYPE_METADATA_GENERATION | 用于创建元数据生成的图片处理实例。<br>生成单层HDR图片的HDR Vivid元数据。该能力由厂商支持。如果不支持该能力，[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)将返回[IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-image-processing-types-h.md#imageprocessing_errorcode)。<br>**起始版本：** 13<br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create) |
@@ -45,7 +54,7 @@
 
 ### ImageDetailEnhancer_QualityLevel
 
-```
+```c
 enum ImageDetailEnhancer_QualityLevel
 ```
 
@@ -70,7 +79,7 @@ enum ImageDetailEnhancer_QualityLevel
 
 ### ImageProcessing_ErrorCode
 
-```
+```c
 enum ImageProcessing_ErrorCode
 ```
 

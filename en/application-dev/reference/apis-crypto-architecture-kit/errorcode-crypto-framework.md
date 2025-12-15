@@ -1,4 +1,11 @@
-#  Crypto Framework Error Codes
+# Crypto Framework Error Codes
+
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 >
@@ -9,6 +16,10 @@
 **Error Message**
 
 Memory error.
+
+**Description**
+
+A memory error occurs.
 
 **Possible Causes**
 
@@ -25,6 +36,10 @@ The memory allocation failed.
 
 Runtime error.
 
+**Description**
+
+An external error occurs during running.
+
 **Possible Causes**
 
 An unexpected error occurs.
@@ -33,11 +48,15 @@ An unexpected error occurs.
 
 Check whether the system is running properly.
 
-## 19030001 Crypto Operation Error
+## 17630001 Crypto Operation Error
 
 **Error Message**
 
 Crypto operation error.
+
+**Description**
+
+Failed to invoke the third-party cryptographic API.
 
 **Possible Causes**
 

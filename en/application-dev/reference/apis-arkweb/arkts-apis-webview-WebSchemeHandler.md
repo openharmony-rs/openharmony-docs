@@ -1,4 +1,10 @@
 # Class (WebSchemeHandler)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Represents a **WebSchemeHandler** object used to intercept requests for a specific scheme.
 
@@ -32,7 +38,7 @@ Called when a request starts. In this callback, you can determine whether to int
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
@@ -42,10 +48,9 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 ```ts
 // xxx.ets
-import { webview } from '@kit.ArkWeb';
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
-import { WebNetErrorList } from '@ohos.web.netErrorList';
 
 @Entry
 @Component
@@ -60,25 +65,25 @@ struct WebComponent {
         .onControllerAttached(() => {
           try {
             this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
-              console.log("[schemeHandler] onRequestStart");
+              console.info("[schemeHandler] onRequestStart");
               try {
-                console.log("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
-                console.log("[schemeHandler] onRequestStart method:" + request.getRequestMethod());
-                console.log("[schemeHandler] onRequestStart referrer:" + request.getReferrer());
-                console.log("[schemeHandler] onRequestStart isMainFrame:" + request.isMainFrame());
-                console.log("[schemeHandler] onRequestStart hasGesture:" + request.hasGesture());
-                console.log("[schemeHandler] onRequestStart header size:" + request.getHeader().length);
-                console.log("[schemeHandler] onRequestStart resource type:" + request.getRequestResourceType());
-                console.log("[schemeHandler] onRequestStart frame url:" + request.getFrameUrl());
+                console.info("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
+                console.info("[schemeHandler] onRequestStart method:" + request.getRequestMethod());
+                console.info("[schemeHandler] onRequestStart referrer:" + request.getReferrer());
+                console.info("[schemeHandler] onRequestStart isMainFrame:" + request.isMainFrame());
+                console.info("[schemeHandler] onRequestStart hasGesture:" + request.hasGesture());
+                console.info("[schemeHandler] onRequestStart header size:" + request.getHeader().length);
+                console.info("[schemeHandler] onRequestStart resource type:" + request.getRequestResourceType());
+                console.info("[schemeHandler] onRequestStart frame url:" + request.getFrameUrl());
                 let header = request.getHeader();
                 for (let i = 0; i < header.length; i++) {
-                  console.log("[schemeHandler] onRequestStart header:" + header[i].headerKey + " " + header[i].headerValue);
+                  console.info("[schemeHandler] onRequestStart header:" + header[i].headerKey + " " + header[i].headerValue);
                 }
                 let stream = request.getHttpBodyStream();
                 if (stream) {
-                  console.log("[schemeHandler] onRequestStart has http body stream");
+                  console.info("[schemeHandler] onRequestStart has http body stream");
                 } else {
-                  console.log("[schemeHandler] onRequestStart has no http body stream");
+                  console.info("[schemeHandler] onRequestStart has no http body stream");
                 }
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -104,12 +109,12 @@ struct WebComponent {
               let buf = buffer.from(this.htmlData)
               try {
                 if (buf.length == 0) {
-                  console.log("[schemeHandler] length 0");
+                  console.info("[schemeHandler] length 0");
                   resourceHandler.didReceiveResponse(response);
                   // If the value of buf.length is 0 in normal cases, call resourceHandler.didFinish(). Otherwise, call resourceHandler.didFail().
                   resourceHandler.didFail(WebNetErrorList.ERR_FAILED);
                 } else {
-                  console.log("[schemeHandler] length 1");
+                  console.info("[schemeHandler] length 1");
                   resourceHandler.didReceiveResponse(response);
                   resourceHandler.didReceiveResponseBody(buf.buffer);
                   resourceHandler.didFinish();
@@ -121,7 +126,7 @@ struct WebComponent {
             })
 
             this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
-              console.log("[schemeHandler] onRequestStop");
+              console.info("[schemeHandler] onRequestStop");
             });
 
             this.controller.setWebSchemeHandler('https', this.schemeHandler);
@@ -139,7 +144,7 @@ struct WebComponent {
 
 onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
 
-Called when a request is complete, under the prerequisite that the request is indicated as intercepted in the **onRequestStart** callback. Specifically, this callback is invoked in the following cases:
+Called when the request is complete. This callback is triggered only when the [onRequestStart](#onrequeststart12) callback intercepts the request. Specifically, this callback is invoked in the following cases:
 
 1. The **WebResourceHandler** object calls **didFail** or **didFinish**.
 
@@ -155,7 +160,7 @@ Called when a request is complete, under the prerequisite that the request is in
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |

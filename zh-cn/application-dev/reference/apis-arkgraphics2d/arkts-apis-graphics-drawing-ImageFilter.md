@@ -1,5 +1,12 @@
 # Class (ImageFilter)
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -230,8 +237,8 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
-let clolorfilter = drawing.ColorFilter.createSRGBGammaToLinear();
-let imgFilter1 = drawing.ImageFilter.createFromColorFilter(clolorfilter, imgFilter);
+let colorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
+let imgFilter1 = drawing.ImageFilter.createFromColorFilter(colorFilter, imgFilter);
 ```
 ## createOffsetImageFilter<sup>20+</sup>
 

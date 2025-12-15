@@ -1,5 +1,11 @@
 # types.h
-<!--Kit_MindSpore Lite Kit--><!--System_AI-->
+
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -39,7 +45,7 @@
 
 ### OH_AI_ModelType
 
-```
+```c
 enum OH_AI_ModelType
 ```
 
@@ -56,7 +62,7 @@ enum OH_AI_ModelType
 
 ### OH_AI_DeviceType
 
-```
+```c
 enum OH_AI_DeviceType
 ```
 
@@ -76,7 +82,7 @@ enum OH_AI_DeviceType
 
 ### OH_AI_NNRTDeviceType
 
-```
+```c
 enum OH_AI_NNRTDeviceType
 ```
 
@@ -95,7 +101,7 @@ NNRt管理的硬件设备类型。
 
 ### OH_AI_PerformanceMode
 
-```
+```c
 enum OH_AI_PerformanceMode
 ```
 
@@ -115,7 +121,7 @@ NNRt硬件的工作性能模式。
 
 ### OH_AI_Priority
 
-```
+```c
 enum OH_AI_Priority
 ```
 
@@ -134,7 +140,7 @@ NNRt推理任务优先级。
 
 ### OH_AI_OptimizationLevel
 
-```
+```c
 enum OH_AI_OptimizationLevel
 ```
 
@@ -154,7 +160,7 @@ enum OH_AI_OptimizationLevel
 
 ### OH_AI_QuantizationType
 
-```
+```c
 enum OH_AI_QuantizationType
 ```
 

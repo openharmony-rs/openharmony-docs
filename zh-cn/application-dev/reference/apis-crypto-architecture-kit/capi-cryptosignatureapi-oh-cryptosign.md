@@ -1,5 +1,16 @@
 # OH_CryptoSign
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoSign OH_CryptoSign
+```
+
 ## 概述
 
 定义签名结构体。

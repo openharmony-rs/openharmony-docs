@@ -1,4 +1,10 @@
 # Cursor Control
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can control the display style of the mouse cursor.
 
@@ -23,7 +29,7 @@ Sets the current mouse cursor style. This API can be used globally in method sta
 
 | Name| Type| Mandatory| Description|
 | ----- | ------ | ---- | ---- |
-| value | [PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) | All consistent  | Cursor style.|
+| value | [PointerStyle](#pointerstyle) | All consistent  | Cursor style.|
 
 
 ### restoreDefault
@@ -36,14 +42,27 @@ restoreDefault(): void
 
 Restores the mouse cursor to the default arrow style. This API can be used globally in method statements.
 
+## PointerStyle
+
+type PointerStyle = pointer.PointerStyle
+
+Defines the pointer style.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+|Type|Description|
+| -- | -- |
+|[pointer.PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) |Pointer style.|
+
+> **NOTE**
+> 
+> Directly using **cursorControl** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call the [getCursorController](../arkts-apis-uicontext-uicontext.md#getcursorcontroller12) API through this object.
 
 ## Example
 
 This example demonstrates how to change the mouse cursor style using **setCursor**.
-
-> **NOTE**
-> 
-> Directly using **cursorControl** can lead to [ambiguous instance issues](../../../ui/arkts-global-interface.md). To avoid this, obtain a **UIContext** instance using [getUIContext](../js-apis-arkui-UIContext.md#uicontext), and then obtain the associated **cursorControl** object using [getCursorController](../js-apis-arkui-UIContext.md#getcursorcontroller12).
 
 ```ts
 // xxx.ets
@@ -57,7 +76,11 @@ struct CursorControlExample {
 
   build() {
     Column() {
-      Row().height(200).width(200).backgroundColor(Color.Green).position({x: 150 ,y:70})
+      Row()
+        .height(200)
+        .width(200)
+        .backgroundColor(Color.Green)
+        .position({ x: 150, y: 70 })
         .onHover((flag) => {
           if (flag) {
             // You are advised to use this.getUIContext().getCursorController().setCursor().
@@ -67,7 +90,11 @@ struct CursorControlExample {
             cursorControl.restoreDefault()
           }
         })
-      Row().height(200).width(200).backgroundColor(Color.Blue).position({x: 220 ,y:120})
+      Row()
+        .height(200)
+        .width(200)
+        .backgroundColor(Color.Blue)
+        .position({ x: 220, y: 120 })
         .onHover((flag) => {
           if (flag) {
             // You are advised to use this.getUIContext().getCursorController().setCursor().
@@ -87,6 +114,6 @@ When the mouse hovers over the blue area, it displays a west-pointing arrow curs
 
 ![cursor_blue](figures/cursor_blue.jpg)
 
-When the mouse hovers over the blue area, it displays an east-pointing arrow cursor style.
+When the mouse hovers over the green area, it displays an east-pointing arrow cursor style.
 
 ![cursor_green](figures/cursor_green.jpg)

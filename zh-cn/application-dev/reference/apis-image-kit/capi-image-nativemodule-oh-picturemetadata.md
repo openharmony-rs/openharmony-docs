@@ -1,4 +1,14 @@
 # OH_PictureMetadata
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_PictureMetadata OH_PictureMetadata
+```
 
 ## 概述
 

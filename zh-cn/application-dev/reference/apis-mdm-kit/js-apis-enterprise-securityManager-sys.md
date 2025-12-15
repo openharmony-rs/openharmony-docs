@@ -2,8 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--SE: @liuzuming-->
-<!--TSE: @lpw_work-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供设备安全管理的能力，包括查询安全补丁状态、查询文件加密状态等。
 
@@ -13,9 +14,9 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-guide.md#功能介绍)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md)。
 
 ## 导入模块
 
@@ -35,13 +36,13 @@ getSecurityPatchTag(admin: Want): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -70,7 +71,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -92,13 +93,13 @@ getDeviceEncryptionStatus(admin: Want): DeviceEncryptionStatus
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 
 **返回值：**
 
@@ -127,7 +128,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -148,7 +149,7 @@ getPasswordPolicy(): PasswordPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **返回值：**
 
@@ -185,7 +186,7 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统API**: 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称         | 类型     | 只读 | 可选 |  说明                            |
 | ----------- | --------| ---- | ----| ---------------------------- |

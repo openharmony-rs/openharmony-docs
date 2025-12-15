@@ -1,5 +1,12 @@
 # @ohos.app.ability.abilityManager (Ability Information Management)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025 -->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The AbilityManager module provides APIs for obtaining ability information and running status information.
 
 > **NOTE**
@@ -34,6 +41,10 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
 Obtains the UIAbility running information. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> If the application has requested the ohos.permission.GET_RUNNING_INFO permission, it can obtain the UIAbility running information of all applications; otherwise, it can obtain the UIAbility running information of the current application.
+
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -42,7 +53,7 @@ Obtains the UIAbility running information. This API uses a promise to return the
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise used to return the API call result and the UIAbility running information. You can perform error handling or custom processing in it.|
+| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise used to return the UIAbility running information. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -61,7 +72,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   abilityManager.getAbilityRunningInfos()
     .then((data: abilityManager.AbilityRunningInfo[]) => {
-      console.log(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
+      console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
     })
     .catch((error: BusinessError) => {
       console.error(`getAbilityRunningInfos fail, error code: ${JSON.stringify(error.code)}, error msg: ${JSON.stringify(error.message)}`);
@@ -83,13 +94,12 @@ Restarts the current atomic service.
 >
 > - Currently, atomic services can be started only in an independent window.
 >
-> - The interval between two calls of this API cannot be less than 3 seconds.
+> - If you call this API, [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12), or [UIAbilityContext.restartApp()](js-apis-inner-application-uiAbilityContext.md#restartapp22) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -97,7 +107,7 @@ Restarts the current atomic service.
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| context    | [Context](./js-apis-inner-application-context.md)   | Yes   | Context of the ability.<br>**NOTE**: Currently, only [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) is supported.<br>|
+| context    | [Context](./js-apis-inner-application-context.md)   | Yes   | Context of the ability.<br>Note: Currently, only [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) is supported.<br>|
 
 **Error codes**
 

@@ -1,9 +1,10 @@
 # SendableLruCache<K, V>
 <!--Kit: ArkTS-->
-<!--Subsystem: commonlibrary-->
+<!--Subsystem: CommonLibrary-->
 <!--Owner: @lijiamin2025-->
-<!--SE: @weng-changcheng-->
-<!--TSE: @kirl75; @zsw_zhushiwei-->
+<!--Designer: @weng-changcheng-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 SendableLruCache在缓存空间不足时，会用新数据替换近期最少使用的数据。此设计基于资源访问的考虑：近期访问的数据可能在不久的将来再次访问，因此最少访问的数据价值最小，应优先移出缓存。SendableLruCache支持Sendable特性，可保存Sendable对象，确保跨线程安全访问。
 
@@ -57,14 +58,6 @@ constructor(capacity?: number)
 | 参数名   | 类型   | 必填 | 说明                         |
 | -------- | ------ | ---- | ---------------------------- |
 | capacity | number | 否   | 指示缓冲区的自定义容量。不传时，默认值为64，最大值不能超过2147483647；小于等于0时会抛出异常。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID  | 错误信息                                    |
-| -------- | ------------------------------------------|
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 
 **示例：**
 

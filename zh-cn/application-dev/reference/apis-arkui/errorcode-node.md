@@ -1,4 +1,10 @@
 # 自定义节点错误码
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @wangchensu1-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -60,6 +66,81 @@ Parameter error. Possible causes: 1. The component type of the node is incorrect
 
 调整传入的参数值，或是提前进行判断。
 
+## 100024 节点没有公共祖先节点
+
+**错误信息**
+
+The current FrameNode and the target FrameNode do not have a common ancestor node.
+
+**错误描述**
+
+当前节点和目标节点没有共同父节点。
+
+**可能原因**
+
+找不到当前节点和目标节点的共同父节点。
+
+**处理步骤**
+
+修改传入的参数值。
+
+## 100025 传入参数不符合要求
+
+**错误信息**
+
+The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed."
+
+**错误描述**
+
+传入参数有误。
+
+**可能原因**
+
+如果传入null、undefined或其他有误参数，请查看错误信息以了解具体原因。
+
+**处理步骤**
+
+1. 当报错信息显示传入参数为null，改为传入一个非空的FrameNode对象。
+2. 当报错信息显示找不到公共父节点，传入之前判断目标节点是否为离屏节点，修改目标节点。
+3. 其他原因的报错可参考错误信息进行修改。
+
+## 100026 调用接口的实例对象已与后端实体节点解绑
+
+**错误信息**
+
+The current item has been disposed.
+
+**错误描述**
+
+当前调用接口的实例对象已与后端实体节点解绑。
+
+**可能原因**
+
+开发者在之前的某个地方使用该实例对象调用了[disposeNode](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)接口，例如：item.dispose()。
+
+**处理步骤**
+
+1. 如果还需要使用该实例对象，请勿对其执行dispose操作。
+2. 如果不确定当前实例对象是否可用，可以调用isDisposed接口进行判断。
+
+## 100027 当前节点已被接纳为附属节点
+
+**错误信息**
+
+The current node has been adopted.
+
+**错误描述**
+
+当前节点已经被接纳为附属节点，不支持当前操作。
+
+**可能原因**
+
+当前节点已经被接纳为附属节点，不支持当前操作。
+
+**处理步骤**
+
+将当前节点取消被接纳，再执行当前操作。
+
 ## 106103 对应的操作不支持ArkTS创建的节点
 
 **错误信息**
@@ -82,6 +163,8 @@ The corresponding operation does not support nodes created by ArkTS.
 
 **错误信息**
 
+The node not mounted to component tree.
+
 **错误描述**
 
 传入的节点未挂载到组件树上。
@@ -93,3 +176,25 @@ The corresponding operation does not support nodes created by ArkTS.
 **处理步骤**
 
 调整函数调用时机，确保传入的节点已挂载到组件树上。
+
+## 106204 不支持在非UI线程操作传入的节点
+
+**错误信息**
+
+Operation on passed in nodes in non UI threads is not supported.
+
+**错误描述**
+
+不支持在非UI线程操作传入的节点。
+
+**可能原因**
+
+1. 接口只支持在UI线程调用。
+2. 接口支持多线程调用，但是传入的节点已挂载到UI主树上。
+3. 接口支持多线程调用，但是传入的节点不是通过支持多线程的[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的。
+
+**处理步骤**
+
+1. 调整函数调用时机，确保接口在UI线程调用。
+2. 将传入的节点从UI主树上卸载后再调用接口。
+3. 使用支持多线程调用[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建节点后再调用接口。

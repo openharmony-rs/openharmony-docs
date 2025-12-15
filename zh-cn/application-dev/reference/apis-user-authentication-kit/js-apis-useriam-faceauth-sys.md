@@ -1,5 +1,12 @@
 # @ohos.userIAM.faceAuth (人脸认证)(系统接口)
 
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
+
 提供人脸录入相关接口。
 
 > **说明：**
@@ -44,7 +51,7 @@ let faceAuthManager = new faceAuth.FaceAuthManager();
 
 ### setSurfaceId
 
-setSurfaceId(surfaceId: string): void;
+setSurfaceId(surfaceId: string): void
 
 该接口仅用于在录入人脸时，设置人脸预览界面 [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) 持有 Surface 的 ID，需要配合[人脸录入接口](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)来使用。
 
@@ -60,20 +67,21 @@ setSurfaceId(surfaceId: string): void;
 | -------------- | ---------------------------------- | ---- | -------------------------- |
 | surfaceId       | string     | 是   | [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) 持有 Surface 的 ID。 |
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
+| 201 | Permission denied. |
+| 202 | Permission denied. Called by non-system application. |
 | 12700001 | The service is unavailable. |
 
 **示例：**
 
 ```ts
 import { faceAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 该surfaceId应该从XComponent控件获取，此处仅用作示例。
 let surfaceId = '123456';
@@ -82,6 +90,7 @@ try {
   manager.setSurfaceId(surfaceId);
   console.info('set surface id success');
 } catch (error) {
-  console.error('set surface id failed, error = ' + error);
+  const err: BusinessError = error as BusinessError;
+  console.error(`set surface id failed, Code is ${err?.code}, message is ${err?.message}`);
 }
 ```

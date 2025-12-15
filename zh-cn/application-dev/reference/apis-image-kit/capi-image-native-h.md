@@ -1,8 +1,16 @@
 # image_native.h
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
 声明图像的剪辑矩形、大小和组件数据的接口函数。
+
+**引用文件：** <multimedia/image_framework/image/image_native.h>
 
 **库：** libohimage.so
 
@@ -25,11 +33,11 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Image_ErrorCode OH_ImageNative_GetImageSize(OH_ImageNative *image, Image_Size *size)](#oh_imagenative_getimagesize) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象的[Image_Size](capi-image-nativemodule-image-size.md)信息。 |
-| [Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t **types, size_t *typeSize)](#oh_imagenative_getcomponenttypes) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象的组件列表信息。 |
-| [Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t componentType, OH_NativeBuffer **nativeBuffer)](#oh_imagenative_getbytebuffer) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的缓冲区。 |
-| [Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t componentType, size_t *size)](#oh_imagenative_getbuffersize) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的缓冲区的大小。 |
-| [Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t componentType, int32_t *rowStride)](#oh_imagenative_getrowstride) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的像素行宽。 |
-| [Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t componentType, int32_t *pixelStride)](#oh_imagenative_getpixelstride) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的像素大小。 |
+| [Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image, uint32_t **types, size_t *typeSize)](#oh_imagenative_getcomponenttypes) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象的组件列表信息。 |
+| [Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image, uint32_t componentType, OH_NativeBuffer **nativeBuffer)](#oh_imagenative_getbytebuffer) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的缓冲区。 |
+| [Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image, uint32_t componentType, size_t *size)](#oh_imagenative_getbuffersize) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的缓冲区的大小。 |
+| [Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image, uint32_t componentType, int32_t *rowStride)](#oh_imagenative_getrowstride) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的像素行宽。 |
+| [Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image, uint32_t componentType, int32_t *pixelStride)](#oh_imagenative_getpixelstride) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的像素大小。 |
 | [Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *timestamp)](#oh_imagenative_gettimestamp) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中的时间戳信息。 |
 | [Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)](#oh_imagenative_release) | 释放Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象。 |
 
@@ -37,7 +45,7 @@
 
 ### OH_ImageNative_GetImageSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetImageSize(OH_ImageNative *image, Image_Size *size)
 ```
 
@@ -67,7 +75,7 @@ OH_ImageNative对象所存储的数据是预览流还是拍照流，取决于应
 
 ### OH_ImageNative_GetComponentTypes()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t **types, size_t *typeSize)
 ```
 
@@ -94,7 +102,7 @@ Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t 
 
 ### OH_ImageNative_GetByteBuffer()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t componentType, OH_NativeBuffer **nativeBuffer)
 ```
 
@@ -121,7 +129,7 @@ Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t comp
 
 ### OH_ImageNative_GetBufferSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t componentType, size_t *size)
 ```
 
@@ -148,7 +156,7 @@ Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t comp
 
 ### OH_ImageNative_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t componentType, int32_t *rowStride)
 ```
 
@@ -177,9 +185,8 @@ Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t compo
 
 ### OH_ImageNative_GetPixelStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t componentType, int32_t *pixelStride)
-	
 ```
 
 **描述**
@@ -205,7 +212,7 @@ Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t com
 
 ### OH_ImageNative_GetTimestamp()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *timestamp)
 ```
 
@@ -235,7 +242,7 @@ Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *time
 
 ### OH_ImageNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)
 ```
 

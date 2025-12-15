@@ -1,5 +1,12 @@
 # 输入设备错误码
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -17,12 +24,12 @@ The specified device does not exist.
 
 **可能原因**
 
-1. 输入设备的设备id变更。
+1. 输入设备的设备ID变更。
 2. 输入设备的物理连接断开。
 
 **处理步骤**
 
-1. 通过[inputDevice.getDeviceList](js-apis-inputdevice.md#inputdevicegetdevicelist9)查询设备id，并传入正确的设备id。
+1. 通过[inputDevice.getDeviceList](js-apis-inputdevice.md#inputdevicegetdevicelist9)查询设备ID，并传入正确的设备ID。
 2. 检查设备的物理连接是否断开。<!--DelEnd-->
 
 ## 3900002 键盘设备没有连接
@@ -55,8 +62,26 @@ It is prohibited for non-input applications.
 
 **可能原因**
 
-该接口不支持三方应用或者非输入法系统应用调用。
+非输入法应用调用此接口。
 
 **处理步骤**
 
 请使用输入法应用调用该接口。
+
+## 3800001 多模输入服务内部错误
+
+**错误信息**
+
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
+
+**错误描述**
+
+多模输入服务内部错误。
+
+**可能原因**
+
+内存分配失败，线程繁忙，服务异常退出等非预期错误。
+
+**处理步骤**
+
+建议稍后重试。

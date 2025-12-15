@@ -1,5 +1,12 @@
 # raw_dir.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 提供rawfile目录相关功能。功能包括遍历和关闭rawfile目录。
@@ -34,7 +41,7 @@
 
 ### OH_ResourceManager_GetRawFileName()
 
-```
+```c
 const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 ```
 
@@ -64,7 +71,7 @@ const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 
 ### OH_ResourceManager_GetRawFileCount()
 
-```
+```c
 int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)
 ```
 
@@ -93,7 +100,7 @@ int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)
 
 ### OH_ResourceManager_CloseRawDir()
 
-```
+```c
 void OH_ResourceManager_CloseRawDir(RawDir *rawDir)
 ```
 

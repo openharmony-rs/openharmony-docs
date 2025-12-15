@@ -1,5 +1,16 @@
 # OH_AVMuxer
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVMuxer OH_AVMuxer
+```
+
 ## 概述
 
 定义封装接口native层对象类型。

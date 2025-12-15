@@ -1,4 +1,10 @@
 # AppStorage：应用全局的UI状态存储
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzq212050299-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 在阅读本文档前，建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)，从而对状态管理框架中AppStorage的定位有一个宏观了解。
 
@@ -6,13 +12,19 @@ AppStorage是与应用进程绑定的全局UI状态存储中心，由UI框架在
 
 作为应用的“中枢”，AppStorage是[持久化数据PersistentStorage](arkts-persiststorage.md)和[环境变量Environment](arkts-environment.md)与UI交互的中转桥梁。其核心价值在于为开发者提供跨ability的大范围UI状态数据共享能力。
 
-AppStorage提供了API接口，允许开发者在自定义组件外手动触发AppStorage对应key的增、删、改、查操作。建议配合[AppStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+AppStorage提供了API接口，允许开发者在自定义组件外手动触发AppStorage对应属性的增、删、改、查操作。建议配合[AppStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+
+> **说明：**
+>
+> 多组件间状态共享和同步、状态管理和UI解耦，可以参考解决方案[基于StateStore的全局状态管理开发实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-global-state-management-state-store)。
+>
+> 不涉及UI组件同步的数据处理工作，建议[通过用户首选项实现数据持久化](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/data-persistence-by-preferences)。
 
 ## 概述
 
 AppStorage是在应用启动时创建的单例，用于提供应用状态数据的中心存储。这些状态数据在应用级别可访问。AppStorage在应用运行过程中保留其属性。
 
-AppStorage中保存的属性通过唯一的字符串类型key值访问，该属性可以和UI组件同步，且可以在应用业务逻辑中被访问。
+AppStorage中保存的属性通过唯一的字符串类型属性名（key）访问，该属性可以和UI组件同步，且可以在应用业务逻辑中被访问。
 
 AppStorage支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
 
@@ -22,14 +34,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 ## \@StorageProp
 
-在上文中已经提到，如果要建立AppStorage和自定义组件的联系，需使用\@StorageProp和\@StorageLink装饰器。使用\@StorageProp(key)或\@StorageLink(key)装饰组件内的变量，key标识了AppStorage的属性。
-
-当自定义组件初始化时，使用AppStorage中对应key的属性值初始化\@StorageProp(key)或\@StorageLink(key)装饰的变量。由于应用逻辑的差异，无法确认组件初始化前是否已向AppStorage实例中存入对应属性，因此对\@StorageProp(key)或\@StorageLink(key)装饰的变量进行本地初始化是必要的。
-
-\@StorageProp(key)与AppStorage中key对应的属性建立单向数据同步：
-
-1. 本地修改时，该修改不会被写回AppStorage中。
-2. AppStorage修改key对应的属性时，该修改会被同步到所有绑定AppStorage对应key的属性上，覆盖本地的修改。
+\@StorageProp与AppStorage中对应的属性建立单向数据同步。
 
 > **说明：**
 >
@@ -39,22 +44,23 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 | \@StorageProp变量装饰器 | 说明                                                         |
 | ----------------------- | ------------------------------------------------------------ |
-| 装饰器参数              | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API12及以上支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>API12及以上还支持上述支持类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。 <br/>**注意**<br/>变量类型必须被指定，建议和AppStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。<br/>当使用undefined和null的时候，建议显式指定类型，遵循TypeScript类型校验，比如：`@StorageProp("AA") a: number \| null = null`是支持的，不支持`@StorageProp("AA") a: number = null`。<br/>不支持any。 |
+| 装饰器参数              | 常量字符串，必填（字符串需要有引号）。<br/>**说明：**<br/>使用null和undefined作为key时，会隐式转换为对应的字符串，不建议该用法。                |
+| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API Version 12及以上支持Map、Set、Date、undefined和null类型以及这些类型的联合类型，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。<br/>嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。 <br/>**说明：**<br/>变量类型必须被指定，建议和AppStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。|
+| 不允许装饰的变量类型                | 不支持装饰Function类型。 |
 | 同步类型                | 单向同步：从AppStorage的对应属性到组件的状态变量。<br/>组件本地的修改是允许的，但是AppStorage中给定的属性一旦发生变化，将覆盖本地的修改。 |
-| 被装饰变量的初始值      | 必须指定，如果AppStorage实例中不存在属性，则用该初始值初始化该属性，并存入AppStorage中。 |
+| 被装饰变量的初始值      | 必须本地初始化，如果AppStorage实例中不存在属性，则用该初始值初始化该属性，并存入AppStorage中。 |
 
 ### 变量的传递/访问规则说明
 
 | 传递/访问      | 说明                                       |
 | ---------- | ---------------------------------------- |
 | 从父节点初始化和更新 | 禁止从父节点初始化和更新@StorageProp。仅支持使用AppStorage中对应key的属性进行初始化，如果不存在对应key，则使用本地默认值进行初始化。 |
-| 初始化子节点     | 支持，可用于初始化\@State、\@Link、\@Prop、\@Provide。 |
+| 初始化子节点     | 支持，可用于初始化[\@State](./arkts-state.md)、[\@Link](./arkts-link.md)、[\@Prop](./arkts-prop.md)、[\@Provide](./arkts-provide-and-consume.md)。 |
 | 是否支持组件外访问  | 否。                                       |
 
   **图1** \@StorageProp初始化规则图示  
 
-![zh-cn_image_0000001552978157](figures/zh-cn_image_0000001552978157.png)
+![storageprop-initialization](figures/storageprop-initialization.png)
 
 ### 观察变化和行为表现
 
@@ -62,7 +68,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 - 当装饰的类型为boolean、string、number时，可以观察到数值的变化。
 
-- 当装饰的数据类型为class或者Object时，可以观察到对象整体赋值和属性变化（详见[从ui内部使用appstorage和localstorage](#从ui内部使用appstorage和localstorage)）。
+- 当装饰的数据类型为class或者Object时，可以观察到对象整体赋值和属性变化（详见[从ui内部使用appstorage](#从ui内部使用appstorage)）。
 
 - 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。
 
@@ -80,24 +86,21 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 ## \@StorageLink
 
+\@StorageLink与AppStorage中对应的属性建立双向数据同步。
+
 > **说明：**
 >
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
-
-\@StorageLink(key)是和AppStorage中key对应的属性建立双向数据同步：
-
-1. 本地修改发生时，该修改会被写回AppStorage中。
-
-2. 当AppStorage中的修改发生后，该修改会被同步到所有绑定AppStorage对应key的属性上，包括单向（\@StorageProp和通过@Prop创建的单向绑定变量）、双向（\@StorageLink和通过link创建的双向绑定变量）变量和其他实例（如PersistentStorage）。
 
 ### 装饰器使用规则说明
 
 | \@StorageLink变量装饰器 | 说明                                                         |
 | ----------------------- | ------------------------------------------------------------ |
-| 装饰器参数              | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API12及以上支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现-1)。<br/>API12及以上还支持上述支持类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。 <br/>**注意**<br/>变量类型必须被指定，建议和AppStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。<br/>当使用undefined和null的时候，建议显式指定类型，遵循TypeScript类型校验，比如：`@StorageLink("AA") a: number \| null = null`是支持的，不支持`@StorageLink("AA") a: number = null`。<br/>不支持any。 |
+| 装饰器参数              | key：常量字符串，必填（字符串需要有引号）。<br/>**注意：**<br/>使用null和undefined作为key时，会隐式转换为对应的字符串，不建议该用法。                  |
+| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API Version 12及以上支持Map、Set、Date、undefined和null类型以及这些类型的联合类型，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。<br/>嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现-1)。 <br/>**注意：**<br/>变量类型必须被指定，建议和AppStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。 |
+| 不允许装饰的变量类型                | 不支持装饰Function类型。 |
 | 同步类型                | 双向同步：从AppStorage的对应属性到自定义组件，从自定义组件到AppStorage对应属性。 |
-| 被装饰变量的初始值      | 必须指定，如果AppStorage实例中不存在属性，则用该初始值初始化该属性，并存入AppStorage中。 |
+| 被装饰变量的初始值      | 必须本地初始化，如果AppStorage实例中不存在属性，则用该初始值初始化该属性，并存入AppStorage中。 |
 
 
 ### 变量的传递/访问规则说明
@@ -110,7 +113,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
   **图2** \@StorageLink初始化规则图示  
 
-![zh-cn_image_0000001501938718](figures/zh-cn_image_0000001501938718.png)
+![storagelink-initialization](figures/storagelink-initialization.png)
 
 ### 观察变化和行为表现
 
@@ -118,7 +121,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 - 装饰的数据类型为boolean、string、number时，可以观察到数值变化。
 
-- 装饰的数据类型为class或Object时，可以观察到对象整体赋值和属性变化。（详见[从ui内部使用appstorage和localstorage](#从ui内部使用appstorage和localstorage)）。
+- 装饰的数据类型为class或Object时，可以观察到对象整体赋值和属性变化。（详见[从ui内部使用appstorage](#从ui内部使用appstorage)）。
 
 - 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。
 
@@ -142,112 +145,344 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 1. \@StorageProp/\@StorageLink的参数必须为string类型，否则编译期会报错。
 
     ```ts
-    AppStorage.setOrCreate('PropA', 47);
+    AppStorage.setOrCreate('propA', 47);
 
     // 错误写法，编译报错
     @StorageProp() storageProp: number = 1;
     @StorageLink() storageLink: number = 2;
 
     // 正确写法
-    @StorageProp('PropA') storageProp: number = 1;
-    @StorageLink('PropA') storageLink: number = 2;
+    @StorageProp('propA') storageProp: number = 1;
+    @StorageLink('propA') storageLink: number = 2;
     ```
 
-2. \@StorageProp与\@StorageLink不支持装饰Function类型的变量，框架会抛出运行时错误。
+2. \@StorageProp与\@StorageLink不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@StorageProp与\@StorageLink装饰Function类型变量的校验，编译期会报错。
 
 3. AppStorage与[PersistentStorage](arkts-persiststorage.md)以及[Environment](arkts-environment.md)配合使用时，需要注意以下几点：
 
-    1. 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议使用相反的调用顺序。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
+    a. 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议使用相反的调用顺序。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
 
-    2. 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
+    b. 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
+    
+    ```ts
+    AppStorage.setOrCreate('languageCode', 'en');
+    // result结果为false
+    let result = Environment.envProp('languageCode','en'); 
+    ```
 
-4. 状态装饰器装饰的变量，改变会引起UI的渲染更新。如果改变的变量仅用于消息传递，不用于UI更新，推荐使用emitter方式。具体示例可见[不建议借助@StorageLink的双向同步机制实现事件通知](#不建议借助storagelink的双向同步机制实现事件通知)。
+4. 状态装饰器装饰的变量，改变会引起UI的渲染更新。如果改变的变量仅用于消息传递，不用于UI更新，推荐使用[emitter](../../reference/apis-basic-services-kit/js-apis-emitter.md)方式。具体示例可见[不建议借助@StorageLink的双向同步机制实现事件通知](#不建议借助storagelink的双向同步机制实现事件通知)。
 
-5. AppStorage同一进程内共享，UIAbility和<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability.md)<!--DelEnd-->是两个进程，所以在<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability.md)<!--DelEnd-->中不共享主进程的AppStorage。
+5. AppStorage同一进程内共享，UIAbility和<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability-sys.md)<!--DelEnd-->是两个进程，所以在<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability-sys.md)<!--DelEnd-->中不共享主进程的AppStorage。
 
 ## 使用场景
 
 ### 从应用逻辑使用AppStorage和LocalStorage
 
-AppStorage是单例，其所有API均为静态方法，使用方法类似于LocalStorage中对应的非静态方法。
+AppStorage是单例，其所有API均为静态方法，使用方法类似于[LocalStorage](./arkts-localstorage.md)中对应的非静态方法。
 
 ```ts
-AppStorage.setOrCreate('PropA', 47);
+AppStorage.setOrCreate('propA', 47);
 
 let storage: LocalStorage = new LocalStorage();
-storage.setOrCreate('PropA',17);
-let propA: number | undefined = AppStorage.get('PropA'); // propA in AppStorage == 47, propA in LocalStorage == 17
-let link1: SubscribedAbstractProperty<number> = AppStorage.link('PropA'); // link1.get() == 47
-let link2: SubscribedAbstractProperty<number> = AppStorage.link('PropA'); // link2.get() == 47
-let prop: SubscribedAbstractProperty<number> = AppStorage.prop('PropA'); // prop.get() == 47
+storage.setOrCreate('propA',17);
+let propA: number | undefined = AppStorage.get('propA'); // propA in AppStorage == 47, propA in LocalStorage == 17
+let link1: SubscribedAbstractProperty<number> = AppStorage.link('propA'); // link1.get() == 47
+let link2: SubscribedAbstractProperty<number> = AppStorage.link('propA'); // link2.get() == 47
+let prop: SubscribedAbstractProperty<number> = AppStorage.prop('propA'); // prop.get() == 47
 
 link1.set(48); // 双向同步: link1.get() == link2.get() == prop.get() == 48
 prop.set(1); // 单向同步: prop.get() == 1; 但 link1.get() == link2.get() == 48
 link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
 
-storage.get<number>('PropA') // == 17
-storage.set('PropA', 101);
-storage.get<number>('PropA') // == 101
+storage.get<number>('propA') // == 17
+storage.set('propA', 101);
+storage.get<number>('propA') // == 101
 
-AppStorage.get<number>('PropA') // == 49
+AppStorage.get<number>('propA') // == 49
 link1.get() // == 49
 link2.get() // == 49
 prop.get() // == 49
 ```
 
-
-### 从UI内部使用AppStorage和LocalStorage
+### 从UI内部使用AppStorage
 
 @StorageLink与AppStorage配合使用，通过AppStorage中的属性创建双向数据同步。
+@StorageProp与AppStorage配合使用，通过AppStorage中的属性创建单向数据同步。
 
-```ts
+<!-- @[appstorage_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleAppStorage]';
+
 class Data {
-  code: number;
+  public code: number;
 
   constructor(code: number) {
     this.code = code;
   }
 }
 
-AppStorage.setOrCreate('PropA', 47);
-AppStorage.setOrCreate('PropB', new Data(50));
+AppStorage.setOrCreate('propA', 47);
+AppStorage.setOrCreate('propB', new Data(50));
 let storage = new LocalStorage();
-storage.setOrCreate('LinkA', 48);
-storage.setOrCreate('LinkB', new Data(100));
+storage.setOrCreate('linkA', 48);
+storage.setOrCreate('linkB', new Data(100));
 
 @Entry(storage)
 @Component
-struct Index {
-  @StorageLink('PropA') storageLink: number = 1;
-  @LocalStorageLink('LinkA') localStorageLink: number = 1;
-  @StorageLink('PropB') storageLinkObject: Data = new Data(1);
-  @LocalStorageLink('LinkB') localStorageLinkObject: Data = new Data(1);
+struct TestStorageProp {
+  @StorageLink('propA') storageLink: number = 1;
+  @StorageProp('propA') storageProp: number = 1;
+  @StorageLink('propB') storageLinkObject: Data = new Data(1);
+  @StorageProp('propB') storagePropObject: Data = new Data(1);
 
   build() {
     Column({ space: 20 }) {
-      Text(`From AppStorage ${this.storageLink}`)
+      // @StorageLink与AppStorage建立双向联系，更改数据会同步回AppStorage中key为'propA'的值
+      Text(`storageLink ${this.storageLink}`)
         .onClick(() => {
           this.storageLink += 1;
         })
 
-      Text(`From LocalStorage ${this.localStorageLink}`)
+      // @StorageProp与AppStorage建立单向联系，更改数据不会同步回AppStorage中key为'propA'的值
+      // 但能被AppStorage的set/setorCreate更新值
+      Text(`storageProp ${this.storageProp}`)
         .onClick(() => {
-          this.localStorageLink += 1;
+          this.storageProp += 1;
         })
 
-      Text(`From AppStorage ${this.storageLinkObject.code}`)
+      // AppStorage的API虽然能获取值，但是不具有刷新UI的能力，日志能看到数值更改
+      // 依赖@StorageLink/@StorageProp才能建立起与自定义组件的联系，刷新UI
+      Text(`change by AppStorage: ${AppStorage.get<number>('propA')}`)
+        .onClick(() => {
+          hilog.info(DOMAIN, TAG, `Appstorage.get: ${AppStorage.get<number>('propA')}`);
+          AppStorage.set<number>('propA', 100);
+        })
+
+      Text(`storageLinkObject ${this.storageLinkObject.code}`)
         .onClick(() => {
           this.storageLinkObject.code += 1;
         })
 
-      Text(`From LocalStorage ${this.localStorageLinkObject.code}`)
+      Text(`storagePropObject ${this.storagePropObject.code}`)
         .onClick(() => {
-          this.localStorageLinkObject.code += 1;
+          this.storagePropObject.code += 1;
         })
     }
   }
 }
 ```
+
+### AppStorage支持联合类型
+
+在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
+
+<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) -->
+
+``` TypeScript
+@Component
+struct StorageLinkComponent {
+  @StorageLink('linkA') linkA: number | null = null;
+  @StorageLink('linkB') linkB: number | undefined = undefined;
+
+  build() {
+    Column() {
+      Text('@StorageLink接口初始化，@StorageLink取值')
+      Text(`${this.linkA}`).fontSize(20).onClick(() => {
+        this.linkA ? this.linkA = null : this.linkA = 1;
+      })
+      Text(`${this.linkB}`).fontSize(20).onClick(() => {
+        this.linkB ? this.linkB = undefined : this.linkB = 1;
+      })
+    }
+    .borderWidth(3).borderColor(Color.Red)
+  }
+}
+
+@Component
+struct StoragePropComponent {
+  @StorageProp('propA') propA: number | null = null;
+  @StorageProp('propB') propB: number | undefined = undefined;
+
+  build() {
+    Column() {
+      Text('@StorageProp接口初始化，@StorageProp取值')
+      Text(`${this.propA}`).fontSize(20).onClick(() => {
+        this.propA ? this.propA = null : this.propA = 1;
+      })
+      Text(`${this.propB}`).fontSize(20).onClick(() => {
+        this.propB ? this.propB = undefined : this.propB = 1;
+      })
+    }
+    .borderWidth(3).borderColor(Color.Blue)
+  }
+}
+
+@Entry
+@Component
+struct TestPageStorageLink {
+  build() {
+    Row() {
+      Column() {
+        StorageLinkComponent()
+        StoragePropComponent()
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### 装饰Date类型变量
+
+> **说明：**
+>
+> 从API version 12开始，AppStorage支持Date类型。
+
+在下面的示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
+
+<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct DateSample {
+  @StorageLink('date') selectedDate: Date = new Date('2021-08-08');
+
+  build() {
+    Column() {
+      Button('set selectedDate to 2023-07-08')
+        .margin(10)
+        .onClick(() => {
+          AppStorage.setOrCreate('date', new Date('2023-07-08'));
+        })
+      Button('increase the year by 1')
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+        })
+      Button('increase the month by 1')
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+        })
+      Button('increase the day by 1')
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      DatePicker({
+        start: new Date('1970-1-1'),
+        end: new Date('2100-1-1'),
+        selected: $$this.selectedDate
+      })
+    }.width('100%')
+  }
+}
+```
+
+### 装饰Map类型变量
+
+> **说明：**
+>
+> 从API version 12开始，AppStorage支持Map类型。
+
+在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
+
+<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct MapSample {
+  @StorageLink('map') message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+          Text(`${item[0]}`).fontSize(30)
+          Text(`${item[1]}`).fontSize(30)
+          Divider()
+        })
+        Button('init map').onClick(() => {
+          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+        })
+        Button('set new one').onClick(() => {
+          this.message.set(4, 'd');
+        })
+        Button('clear').onClick(() => {
+          this.message.clear();
+        })
+        Button('replace the existing one').onClick(() => {
+          this.message.set(0, 'aa');
+        })
+        Button('delete the existing one').onClick(() => {
+          AppStorage.get<Map<number, string>>('map')?.delete(0);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+
+### 装饰Set类型变量
+
+> **说明：**
+>
+> 从API version 12开始，AppStorage支持Set类型。
+
+在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
+
+<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct SetSample {
+  @StorageLink('set') memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(Array.from(this.memberSet.entries()), (item: [number, number]) => {
+          Text(`${item[0]}`)
+            .fontSize(30)
+          Divider()
+        })
+        Button('init set')
+          .onClick(() => {
+            this.memberSet = new Set([0, 1, 2, 3, 4]);
+          })
+        Button('set new one')
+          .onClick(() => {
+            AppStorage.get<Set<number>>('set')?.add(5);
+          })
+        Button('clear')
+          .onClick(() => {
+            this.memberSet.clear();
+          })
+        Button('delete the first one')
+          .onClick(() => {
+            this.memberSet.delete(0);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+## AppStorage使用建议
 
 ### 不建议借助@StorageLink的双向同步机制实现事件通知
 
@@ -255,27 +490,35 @@ struct Index {
 
 示例代码中，`TapImage`中的点击事件会触发`AppStorage`中`tapIndex`对应属性的改变。由于`@StorageLink`是双向同步的，修改会同步回`AppStorage`中，因此所有绑定`AppStorage`的`tapIndex`自定义组件都能感知到`tapIndex`的变化。使用`@Watch`监听到`tapIndex`的变化后，修改状态变量`tapColor`，从而触发UI刷新（此处`tapIndex`未直接绑定在UI上，因此`tapIndex`的变化不会直接触发UI刷新）。
 
-使用该机制实现事件通知时，应确保AppStorage中的变量不直接被绑定到UI上，同时控制@Watch函数的复杂度。如果@Watch函数执行时间过长，会影响UI刷新效率。
+使用该机制实现事件通知时，应确保AppStorage中的变量不直接被绑定到UI上，同时控制[@Watch](./arkts-watch.md)函数的复杂度。如果@Watch函数执行时间过长，会影响UI刷新效率。
 
-```ts
-// xxx.ets
+<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/ViewData.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleAppStorage]';
+
 class ViewData {
-  title: string;
-  uri: Resource;
-  color: Color = Color.Black;
+  public title: string;
+  public uri: Resource;
+  public color: Color = Color.Black;
 
   constructor(title: string, uri: Resource) {
     this.title = title;
-    this.uri = uri
+    this.uri = uri;
   }
 }
 
 @Entry
 @Component
 struct Gallery {
-  // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon'))]
-  scroller: Scroller = new Scroller()
+  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  dataList: Array<ViewData> =
+    [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
+      new ViewData('OMG', $r('app.media.startIcon'))];
+  scroller: Scroller = new Scroller();
 
   build() {
     Column() {
@@ -305,17 +548,17 @@ export struct TapImage {
   private uri: Resource = {
     id: 0,
     type: 0,
-    moduleName: "",
-    bundleName: ""
+    moduleName: '',
+    bundleName: ''
   };
 
   // 判断是否被选中
   onTapIndexChange() {
     if (this.tapIndex >= 0 && this.index === this.tapIndex) {
-      console.info(`tapindex: ${this.tapIndex}, index: ${this.index}, red`);
+      hilog.info(DOMAIN, TAG, `tapindex: ${this.tapIndex}, index: ${this.index}, red`);
       this.tapColor = Color.Red;
     } else {
-      console.info(`tapindex: ${this.tapIndex}, index: ${this.index}, black`);
+      hilog.info(DOMAIN, TAG, `tapindex: ${this.tapIndex}, index: ${this.index}, black`);
       this.tapColor = Color.Black;
     }
   }
@@ -340,31 +583,37 @@ export struct TapImage {
 >
 > emit接口不支持在Previewer预览器中使用。
 
+<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { emitter } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let NextID: number = 0;
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleAppStorage]';
+
+let nextId: number = 0;
 
 class ViewData {
-  title: string;
-  uri: Resource;
-  color: Color = Color.Black;
-  id: number;
+  public title: string;
+  public uri: Resource;
+  public color: Color = Color.Black;
+  public id: number;
 
   constructor(title: string, uri: Resource) {
     this.title = title;
     this.uri = uri;
-    this.id = NextID++;
+    this.id = nextId++;
   }
 }
 
 @Entry
 @Component
 struct Gallery {
-  // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon'))]
+  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  dataList: Array<ViewData> =
+    [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
+      new ViewData('OMG', $r('app.media.startIcon'))];
   scroller: Scroller = new Scroller();
   private preIndex: number = -1;
 
@@ -386,18 +635,18 @@ struct Gallery {
             // 选中态：黑变红
             let eventData: emitter.EventData = {
               data: {
-                "colorTag": 1
+                'colorTag': 1
               }
             };
             emitter.emit(innerEvent, eventData);
 
             if (this.preIndex != -1) {
-              console.info(`preIndex: ${this.preIndex}, index: ${item.id}, black`);
+              hilog.info(DOMAIN, TAG, `preIndex: ${this.preIndex}, index: ${item.id}, black`);
               let innerEvent: emitter.InnerEvent = { eventId: this.preIndex };
               // 取消选中态：红变黑
               let eventData: emitter.EventData = {
                 data: {
-                  "colorTag": 0
+                  'colorTag': 0
                 }
               };
               emitter.emit(innerEvent, eventData);
@@ -418,13 +667,13 @@ export struct TapImage {
   private uri: Resource = {
     id: 0,
     type: 0,
-    moduleName: "",
-    bundleName: ""
+    moduleName: '',
+    bundleName: ''
   };
 
   onTapIndexChange(colorTag: emitter.EventData) {
     if (colorTag.data != null) {
-      this.tapColor = colorTag.data.colorTag ? Color.Red : Color.Black
+      this.tapColor = colorTag.data.colorTag ? Color.Red : Color.Black;
     }
   }
 
@@ -446,14 +695,17 @@ export struct TapImage {
 }
 ```
 
+
 以上通知事件逻辑简单，也可以简化成三元表达式。
 
-```ts
-// xxx.ets
+<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->
+
+``` TypeScript
+
 class ViewData {
-  title: string;
-  uri: Resource;
-  color: Color = Color.Black;
+  public title: string;
+  public uri: Resource;
+  public color: Color = Color.Black;
 
   constructor(title: string, uri: Resource) {
     this.title = title;
@@ -464,8 +716,10 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon'))];
+  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  dataList: Array<ViewData> =
+    [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
+      new ViewData('OMG', $r('app.media.startIcon'))];
   scroller: Scroller = new Scroller();
 
   build() {
@@ -495,8 +749,8 @@ export struct TapImage {
   private uri: Resource = {
     id: 0,
     type: 0,
-    moduleName: "",
-    bundleName: ""
+    moduleName: '',
+    bundleName: ''
   };
 
   build() {
@@ -516,220 +770,27 @@ export struct TapImage {
 }
 ```
 
+### \@StorageProp和AppStorage接口配合使用时，需要注意更新规则
 
-### AppStorage支持联合类型
+使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认己通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
+示例如下。
 
-在下面的示例中，变量A的类型为number | null，变量B的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
+<!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->
 
-```ts
-@Component
-struct StorageLinkComponent {
-  @StorageLink("LinkA") LinkA: number | null = null;
-  @StorageLink("LinkB") LinkB: number | undefined = undefined;
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  build() {
-    Column() {
-      Text("@StorageLink接口初始化，@StorageLink取值")
-      Text(this.LinkA + "").fontSize(20).onClick(() => {
-        this.LinkA ? this.LinkA = null : this.LinkA = 1;
-      })
-      Text(this.LinkB + "").fontSize(20).onClick(() => {
-        this.LinkB ? this.LinkB = undefined : this.LinkB = 1;
-      })
-    }
-    .borderWidth(3).borderColor(Color.Red)
-
-  }
-}
-
-@Component
-struct StoragePropComponent {
-  @StorageProp("PropA") PropA: number | null = null;
-  @StorageProp("PropB") PropB: number | undefined = undefined;
-
-  build() {
-    Column() {
-      Text("@StorageProp接口初始化，@StorageProp取值")
-      Text(this.PropA + "").fontSize(20).onClick(() => {
-        this.PropA ? this.PropA = null : this.PropA = 1;
-      })
-      Text(this.PropB + "").fontSize(20).onClick(() => {
-        this.PropB ? this.PropB = undefined : this.PropB = 1;
-      })
-    }
-    .borderWidth(3).borderColor(Color.Blue)
-  }
-}
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleAppStorage]';
+AppStorage.setOrCreate('propA', false);
 
 @Entry
 @Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        StorageLinkComponent()
-        StoragePropComponent()
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### 装饰Date类型变量
-
-> **说明：**
->
-> 从API version 12开始，AppStorage支持Date类型。
-
-以下示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
-
-```ts
-@Entry
-@Component
-struct DateSample {
-  @StorageLink("date") selectedDate: Date = new Date('2021-08-08');
-
-  build() {
-    Column() {
-      Button('set selectedDate to 2023-07-08')
-        .margin(10)
-        .onClick(() => {
-          AppStorage.setOrCreate("date", new Date('2023-07-08'));
-        })
-      Button('increase the year by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: $$this.selectedDate
-      })
-    }.width('100%')
-  }
-}
-```
-
-
-### 装饰Map类型变量
-
-> **说明：**
->
-> 从API version 12开始，AppStorage支持Map类型。
-
-在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
-
-```ts
-@Entry
-@Component
-struct MapSample {
-  @StorageLink("map") message: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]);
-
-  build() {
-    Row() {
-      Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
-          Divider()
-        })
-        Button('init map').onClick(() => {
-          this.message = new Map([[0, "a"], [1, "b"], [3, "c"]]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.set(4, "d");
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('replace the existing one').onClick(() => {
-          this.message.set(0, "aa");
-        })
-        Button('delete the existing one').onClick(() => {
-          AppStorage.get<Map<number, string>>("map")?.delete(0);
-        })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-
-### 装饰Set类型变量
-
-> **说明：**
->
-> 从API version 12开始，AppStorage支持Set类型。
-
-在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
-
-```ts
-@Entry
-@Component
-struct SetSample {
-  @StorageLink("set") memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
-
-  build() {
-    Row() {
-      Column() {
-        ForEach(Array.from(this.memberSet.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`)
-            .fontSize(30)
-          Divider()
-        })
-        Button('init set')
-          .onClick(() => {
-            this.memberSet = new Set([0, 1, 2, 3, 4]);
-          })
-        Button('set new one')
-          .onClick(() => {
-            AppStorage.get<Set<number>>("set")?.add(5);
-          })
-        Button('clear')
-          .onClick(() => {
-            this.memberSet.clear();
-          })
-        Button('delete the first one')
-          .onClick(() => {
-            this.memberSet.delete(0);
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-## 常见问题
-
-### \@StorageProp本地更改值后，无法通过AppStorage接口更新
-
-```ts
-AppStorage.setOrCreate('PropA', false);
-
-@Entry
-@Component
-struct Index {
-  @StorageProp('PropA') @Watch('onChange') propA: boolean = false;
+struct PageStorageProp {
+  @StorageProp('propA') @Watch('onChange') propA: boolean = false;
 
   onChange() {
-    console.log(`propA change`);
+    hilog.info(DOMAIN, TAG, `propA change`);
   }
 
   aboutToAppear(): void {
@@ -741,16 +802,16 @@ struct Index {
       Text(`${this.propA}`)
       Button('change')
         .onClick(() => {
-          AppStorage.setOrCreate('PropA', false);
-          console.log(`PropA: ${this.propA}`);
+          AppStorage.setOrCreate('propA', false);
+          hilog.info(DOMAIN, TAG, `propA: ${this.propA}`);
         })
     }
   }
 }
 ```
 
-上述示例，在点击事件之前，PropA的值已经在本地被更改为true，而AppStorage中存的值仍为false。当点击事件通过setOrCreate接口尝试更新PropA的值为false时，由于AppStorage中的值为false，两者相等，不会触发更新同步，因此@StorageProp的值仍为true。
+上述示例，在点击事件之前，propA的值已经在本地被更改为true，而AppStorage中存的值仍为false。当点击事件通过setOrCreate接口尝试更新propA的值为false时，由于AppStorage中的值为false，两者相等，不会触发更新同步，因此@StorageProp的值仍为true。
 
 实现二者同步有以下两种方式：
 1. 将\@StorageProp更改为\@StorageLink。
-2. 本地更改值的方式变为使用AppStorage.setOrCreate('PropA', true)的方式。
+2. 本地更改值的方式变为使用AppStorage.setOrCreate('propA', true)的方式。

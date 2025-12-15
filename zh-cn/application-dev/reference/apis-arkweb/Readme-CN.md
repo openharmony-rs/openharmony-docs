@@ -1,4 +1,10 @@
 # ArkWeb（方舟Web）
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yp99ustc-->
+<!--Designer: @ctqctq99-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 - ArkTS API<!--arkweb-arkts-->
   - @ohos.web.webview (Webview)<!--js-apis-webview-->
@@ -13,6 +19,7 @@
     - [Class (NativeMediaPlayerSurfaceInfo)](arkts-apis-webview-NativeMediaPlayerSurfaceInfo.md)
     - [Class (PdfData)](arkts-apis-webview-PdfData.md)
     - [Class (ProxyConfig)](arkts-apis-webview-ProxyConfig.md)
+    - [Class (PrefetchOptions)](arkts-apis-webview-PrefetchOptions.md)
     - [Class (ProxyController)](arkts-apis-webview-ProxyController.md)
     - [Class (ProxyRule)](arkts-apis-webview-ProxyRule.md)
     - [Class (WebviewController)](arkts-apis-webview-WebviewController.md)
@@ -28,14 +35,18 @@
     - [Class (WebSchemeHandlerRequest)](arkts-apis-webview-WebSchemeHandlerRequest.md)
     - [Class (WebSchemeHandlerResponse)](arkts-apis-webview-WebSchemeHandlerResponse.md)
     - [Class (WebStorage)](arkts-apis-webview-WebStorage.md)  
+    - [Class (VerifyPinHandler)](arkts-basic-components-web-VerifyPinHandler.md)
     - [Interface (BackForwardList)](arkts-apis-webview-BackForwardList.md)
     - [Interface (NativeMediaPlayerBridge)](arkts-apis-webview-NativeMediaPlayerBridge.md)
     - [Interface (NativeMediaPlayerHandler)](arkts-apis-webview-NativeMediaPlayerHandler.md)
     - [Interface (WebMessagePort)](arkts-apis-webview-WebMessagePort.md)
-    - [Interfaces（其他）](arkts-apis-webview-i.md)
+    - [Interfaces (其他)](arkts-apis-webview-i.md)
     - [Enums](arkts-apis-webview-e.md)
     - [Types](arkts-apis-webview-t.md)
   - [@ohos.web.netErrorList](arkts-apis-netErrorList.md)
+  - [@ohos.web.webNativeMessagingExtensionAbility](arkts-apis-web-webNativeMessagingExtensionAbility.md)
+  - [@ohos.web.webNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md)
+  - [@ohos.web.webNativeMessagingExtensionManager](arkts-apis-web-webNativeMessagingExtensionManager.md)
 - ArkTS 组件<!--arkweb-comp-->
   - Web<!--ts-basic-components-web-->
     - [组件描述](arkts-basic-components-web.md)
@@ -78,6 +89,7 @@
     - [native_interface_arkweb.h](capi-native-interface-arkweb-h.md)
   - 结构体<!--arkweb-struct-->
     - [ArkWeb_AnyNativeAPI](capi-web-arkweb-anynativeapi.md)
+    - [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md)
     - [ArkWeb_SchemeHandler_](capi-web-arkweb-schemehandler.md)
     - [ArkWeb_ResourceHandler_](capi-web-arkweb-resourcehandler.md)
     - [ArkWeb_Response_](capi-web-arkweb-response.md)

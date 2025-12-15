@@ -1,5 +1,12 @@
 # WantAgentInfo
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines the information required for triggering a WantAgent.
 
 > **NOTE**
@@ -27,5 +34,5 @@ Defines the information required for triggering a local WantAgent object. The in
 | Name          | Type                           | Read-Only | Optional | Description                  |
 | -------------- | ------------------------------- | --- | ---- | ---------------------- |
 | wants          | Array\<[Want](js-apis-app-ability-want.md)\>                          | No  | No  | Array of all Want objects. Currently, only one Want object is supported. If multiple values are passed in, only the first member in the array is used.   |
-| operationType  | [wantAgent.OperationType](js-apis-wantAgent.md#operationtype)         | No  | Yes  | Type of the operation to execute.     |
+| operationType  | [abilityWantAgent.OperationType](js-apis-app-ability-wantAgent.md#operationtype)        | No  | Yes  | Type of the operation to execute.     |
 | requestCode    | number                          | No  | No  | Custom request code, which is used to identify the operation to execute.|

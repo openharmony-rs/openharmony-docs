@@ -1,5 +1,11 @@
 # tensor.h
-<!--Kit_MindSpore Lite Kit--><!--System_AI-->
+
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -52,7 +58,7 @@
 
 ### OH_AI_TensorCreate()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType type, const int64_t *shape,size_t shape_num, const void *data, size_t data_len)
 ```
 
@@ -67,7 +73,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | 张量名称。 |
+| const char *name | 张量名称。字符串长度跟随系统限制。 |
 | [OH_AI_DataType](capi-data-type-h.md#oh_ai_datatype) type | 张量的数据类型。 |
 | const int64_t *shape | 张量的维度数组。 |
 | size_t shape_num | 张量维度数组长度。 |
@@ -82,7 +88,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType
 
 ### OH_AI_TensorDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_TensorDestroy(OH_AI_TensorHandle *tensor)
 ```
 
@@ -101,7 +107,7 @@ OH_AI_API void OH_AI_TensorDestroy(OH_AI_TensorHandle *tensor)
 
 ### OH_AI_TensorClone()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)
 ```
 
@@ -116,7 +122,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) tensor | 待拷贝张量的指针。 |
+| [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) tensor | 张量对象句柄。 |
 
 **返回：**
 
@@ -126,7 +132,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorSetName()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetName(OH_AI_TensorHandle tensor, const char *name)
 ```
 
@@ -142,11 +148,11 @@ OH_AI_API void OH_AI_TensorSetName(OH_AI_TensorHandle tensor, const char *name)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) tensor | 张量对象句柄。 |
-| const char *name | 张量名称。 |
+| const char *name | 张量名称。字符串长度跟随系统限制。 |
 
 ### OH_AI_TensorGetName()
 
-```
+```c
 OH_AI_API const char *OH_AI_TensorGetName(const OH_AI_TensorHandle tensor)
 ```
 
@@ -171,7 +177,7 @@ OH_AI_API const char *OH_AI_TensorGetName(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorSetDataType()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetDataType(OH_AI_TensorHandle tensor, OH_AI_DataType type)
 ```
 
@@ -191,7 +197,7 @@ OH_AI_API void OH_AI_TensorSetDataType(OH_AI_TensorHandle tensor, OH_AI_DataType
 
 ### OH_AI_TensorGetDataType()
 
-```
+```c
 OH_AI_API OH_AI_DataType OH_AI_TensorGetDataType(const OH_AI_TensorHandle tensor)
 ```
 
@@ -216,7 +222,7 @@ OH_AI_API OH_AI_DataType OH_AI_TensorGetDataType(const OH_AI_TensorHandle tensor
 
 ### OH_AI_TensorSetShape()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetShape(OH_AI_TensorHandle tensor, const int64_t *shape, size_t shape_num)
 ```
 
@@ -237,7 +243,7 @@ OH_AI_API void OH_AI_TensorSetShape(OH_AI_TensorHandle tensor, const int64_t *sh
 
 ### OH_AI_TensorGetShape()
 
-```
+```c
 OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, size_t *shape_num)
 ```
 
@@ -263,7 +269,7 @@ OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, s
 
 ### OH_AI_TensorSetFormat()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetFormat(OH_AI_TensorHandle tensor, OH_AI_Format format)
 ```
 
@@ -283,7 +289,7 @@ OH_AI_API void OH_AI_TensorSetFormat(OH_AI_TensorHandle tensor, OH_AI_Format for
 
 ### OH_AI_TensorGetFormat()
 
-```
+```c
 OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)
 ```
 
@@ -308,7 +314,7 @@ OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorSetData()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)
 ```
 
@@ -328,7 +334,7 @@ OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)
 
 ### OH_AI_TensorGetData()
 
-```
+```c
 OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)
 ```
 
@@ -353,7 +359,7 @@ OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorGetMutableData()
 
-```
+```c
 OH_AI_API void *OH_AI_TensorGetMutableData(const OH_AI_TensorHandle tensor)
 ```
 
@@ -378,7 +384,7 @@ OH_AI_API void *OH_AI_TensorGetMutableData(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorGetElementNum()
 
-```
+```c
 OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)
 ```
 
@@ -403,7 +409,7 @@ OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorGetDataSize()
 
-```
+```c
 OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)
 ```
 
@@ -428,7 +434,7 @@ OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)
 
 ### OH_AI_TensorSetUserData()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *data, size_t data_size)
 ```
 
@@ -455,7 +461,7 @@ OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *
 
 ### OH_AI_TensorGetAllocator()
 
-```
+```c
 OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tensor)
 ```
 
@@ -480,7 +486,7 @@ OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tens
 
 ### OH_AI_TensorSetAllocator()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TensorSetAllocator(OH_AI_TensorHandle tensor, OH_AI_AllocatorHandle allocator)
 ```
 

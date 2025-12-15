@@ -1,5 +1,12 @@
 # Class (ShaderEffect)
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -96,8 +103,9 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 import { RenderNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const width = 1000;
     const height = 1000;
     const bufferSize = width * height * 4;
@@ -111,7 +119,7 @@ class DrawingRenderNode extends RenderNode {
       colorData[i+3] = 255;
     }
 
-    let opts : image.InitializationOptions = {
+    let opts: image.InitializationOptions = {
       editable: true,
       pixelFormat: 3,
       size: { height, width }
@@ -121,7 +129,9 @@ class DrawingRenderNode extends RenderNode {
     let matrix = new drawing.Matrix();
     let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
     if (pixelMap != null) {
-      let imageShader = drawing.ShaderEffect.createImageShader(pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
+      let imageShader =
+        drawing.ShaderEffect.createImageShader(pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options,
+          matrix);
     }
   }
 }

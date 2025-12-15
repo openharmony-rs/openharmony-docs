@@ -1,4 +1,14 @@
 # ArkUI_NativeAnimateAPI_1
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_NativeAnimateAPI_1
+```
 
 ## 概述
 
@@ -25,7 +35,7 @@ ArkUI提供的Native侧动画接口集合。
 
 ### animateTo()
 
-```
+```c
 int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, ArkUI_ContextCallback* update,ArkUI_AnimateCompleteCallback* complete)
 ```
 
@@ -33,6 +43,10 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 
 
 显式动画接口。
+
+> **说明：**
+>
+> event闭包中要设置的组件属性，必须在其之前设置过。
 
 **参数：**
 
@@ -51,7 +65,7 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 
 ### keyframeAnimateTo()
 
-```
+```c
 int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateOption* option)
 ```
 
@@ -75,7 +89,7 @@ int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateO
 
 ### createAnimator()
 
-```
+```c
 ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_AnimatorOption* option)
 ```
 
@@ -99,7 +113,7 @@ ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_Animat
 
 ### disposeAnimator()
 
-```
+```c
 void (*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)
 ```
 

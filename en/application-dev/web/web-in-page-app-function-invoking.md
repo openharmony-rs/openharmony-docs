@@ -1,4 +1,10 @@
 # Invoking Application Functions on the Frontend Page
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Register your application code with frontend pages. Then you can invoke application methods with the registered object names on frontend pages.
 
@@ -11,57 +17,63 @@ The following example registers the **test()** function with the frontend page. 
 
 - Sample code for using [javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy):
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
 
-  class TestClass {
-    constructor() {
-    }
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    test(): string {
-      return 'ArkTS Hello World!';
-    }
+class TestClass {
+  constructor() {
   }
 
-  @Entry
-  @Component
-  struct WebComponent {
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    // Declare the object to be registered.
-    @State testObj: TestClass = new TestClass();
+  test(): string {
+    return 'ArkTS Hello World!';
+  }
+}
 
-    build() {
-      Column() {
-        Button('deleteJavaScriptRegister')
-          .onClick(() => {
-            try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        // Load the local index.html page.
-        Web({ src: $rawfile('index.html'), controller: this.webviewController})
-          // Inject the object to the web client.
-          .javaScriptProxy({
-            object: this.testObj,
-            name: "testObjName",
-            methodList: ["test"],
-            controller: this.webviewController,
-            // Optional parameter.
-            asyncMethodList: [],
-            permission: '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
-                        '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
-                        '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
-                        '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
-                        '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
-          })
-      }
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+  // Declare the object to be registered.
+  @State testObj: TestClass = new TestClass();
+
+  build() {
+    Column() {
+      Button('deleteJavaScriptRegister')
+        .onClick(() => {
+          try {
+            this.webviewController.deleteJavaScriptRegister('testObjName');
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // Load the local index.html page.
+      Web({ src: $rawfile('index1.html'), controller: this.webviewController})
+        // Inject the object to the web client.
+        .javaScriptProxy({
+          object: this.testObj,
+          name: 'testObjName',
+          methodList: ['test'],
+          controller: this.webviewController,
+          // Optional parameter.
+          asyncMethodList: [],
+          permission: '{"javascriptProxyPermission":{"urlPermissionList":' +
+            '[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
+            '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":' +
+            '[{"methodName":"test","urlPermissionList":' +
+            '[{"scheme":"https","host":"xxx.com","port":"","path":""},' +
+            '{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
+            '{"methodName":"test11","urlPermissionList":' +
+            '[{"scheme":"q","host":"r","port":"","path":"t"},' +
+            '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+        })
     }
   }
-  ```
+}
+```
 - Sample code for the application using [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) for registration:
 
   ```ts
@@ -78,7 +90,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 
@@ -131,7 +143,7 @@ The following example registers the **test()** function with the frontend page. 
 
   > **NOTE**
   >
-  > - You need to call the [refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh) method for the registration to take effect after using the [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) method.
+  > - The registration performed by [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) takes effect after the next loading or reloading.
 
 - The optional parameter permission is a JSON string. The following is an example:
   ```json
@@ -159,7 +171,7 @@ The following example registers the **test()** function with the frontend page. 
               "scheme": "https",   // Exact match. This field is mandatory and cannot be empty.
               "host": "xxx.com",   // Exact match. This field is mandatory and cannot be empty.
               "port": "",          // Exact match. If the value is empty, the check is not performed. This field is mandatory.
-              "path": ""           // Prefix match. If the value is empty, the check is not performed. This parameter is mandatory.
+              "path": ""           // Prefix match. If the value is empty, the check is not performed. This field is mandatory.
             },
             {
               "scheme": "resource",// Exact match. This field is mandatory and cannot be empty.
@@ -224,12 +236,12 @@ The following example registers the **test()** function with the frontend page. 
     constructor() {
     }
 
-    test(): Array<Number> {
+    test(): Array<number> {
       return [1, 2, 3, 4]
     }
 
-    toString(param: String): void {
-      console.log('Web Component toString' + param);
+    toString(param: string): void {
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -311,7 +323,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: ESObject): void {
-      console.log('Web Component toString' + param["name"]);
+      console.info('Web Component toString' + param["name"]);
     }
   }
 
@@ -385,7 +397,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: String): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -458,8 +470,8 @@ The following example registers the **test()** function with the frontend page. 
       param.hello("call obj func");
     }
 
-    toString(param: String): void {
-      console.log('Web Component toString' + param);
+    toString(param: string): void {
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -573,7 +585,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -646,15 +658,15 @@ The following example registers the **test()** function with the frontend page. 
     test(): Promise<string> {
       let p: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log ('Execution completed');
+          console.info('Execution completed');
           reject('fail');
         }, 10000);
       });
       return p;
     }
 
-    toString(param: String): void {
-      console.log(" " + param);
+    toString(param: string): void {
+      console.info(" " + param);
     }
   }
 
@@ -725,8 +737,8 @@ The following example registers the **test()** function with the frontend page. 
       setTimeout( () => { param("suc") }, 10000)
     }
 
-    toString(param:String): void {
-      console.log(" " + param);
+    toString(param:string): void {
+      console.info(" " + param);
     }
   }
 

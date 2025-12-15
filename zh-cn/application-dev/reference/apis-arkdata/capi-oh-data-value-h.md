@@ -1,10 +1,16 @@
 # oh_data_value.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
 提供与单条数据值相关的函数和枚举。<br>从API version 18开始，OH_ColumnType从oh_cursor.h移动至此头文件呈现，对于此类型，API version 18之前即支持使用，各版本均可正常使用。
 
-**引用文件：** <database/rdb/oh_data_value.h>
+**引用文件：** <database/data/oh_data_value.h>
 
 **库：** libnative_rdb_ndk.z.so
 
@@ -61,7 +67,7 @@
 
 ### OH_ColumnType
 
-```
+```c
 enum OH_ColumnType
 ```
 
@@ -88,7 +94,7 @@ enum OH_ColumnType
 
 ### OH_Value_Create()
 
-```
+```c
 OH_Data_Value *OH_Value_Create(void)
 ```
 
@@ -106,7 +112,7 @@ OH_Data_Value *OH_Value_Create(void)
 
 ### OH_Value_Destroy()
 
-```
+```c
 int OH_Value_Destroy(OH_Data_Value *value)
 ```
 
@@ -131,7 +137,7 @@ int OH_Value_Destroy(OH_Data_Value *value)
 
 ### OH_Value_PutNull()
 
-```
+```c
 int OH_Value_PutNull(OH_Data_Value *value)
 ```
 
@@ -156,7 +162,7 @@ int OH_Value_PutNull(OH_Data_Value *value)
 
 ### OH_Value_PutInt()
 
-```
+```c
 int OH_Value_PutInt(OH_Data_Value *value, int64_t val)
 ```
 
@@ -182,7 +188,7 @@ int OH_Value_PutInt(OH_Data_Value *value, int64_t val)
 
 ### OH_Value_PutReal()
 
-```
+```c
 int OH_Value_PutReal(OH_Data_Value *value, double val)
 ```
 
@@ -208,7 +214,7 @@ int OH_Value_PutReal(OH_Data_Value *value, double val)
 
 ### OH_Value_PutText()
 
-```
+```c
 int OH_Value_PutText(OH_Data_Value *value, const char *val)
 ```
 
@@ -234,7 +240,7 @@ int OH_Value_PutText(OH_Data_Value *value, const char *val)
 
 ### OH_Value_PutBlob()
 
-```
+```c
 int OH_Value_PutBlob(OH_Data_Value *value, const unsigned char *val, size_t length)
 ```
 
@@ -261,7 +267,7 @@ int OH_Value_PutBlob(OH_Data_Value *value, const unsigned char *val, size_t leng
 
 ### OH_Value_PutAsset()
 
-```
+```c
 int OH_Value_PutAsset(OH_Data_Value *value, const Data_Asset *val)
 ```
 
@@ -287,7 +293,7 @@ int OH_Value_PutAsset(OH_Data_Value *value, const Data_Asset *val)
 
 ### OH_Value_PutAssets()
 
-```
+```c
 int OH_Value_PutAssets(OH_Data_Value *value, const Data_Asset * const * val, size_t length)
 ```
 
@@ -314,7 +320,7 @@ int OH_Value_PutAssets(OH_Data_Value *value, const Data_Asset * const * val, siz
 
 ### OH_Value_PutFloatVector()
 
-```
+```c
 int OH_Value_PutFloatVector(OH_Data_Value *value, const float *val, size_t length)
 ```
 
@@ -341,7 +347,7 @@ int OH_Value_PutFloatVector(OH_Data_Value *value, const float *val, size_t lengt
 
 ### OH_Value_PutUnlimitedInt()
 
-```
+```c
 int OH_Value_PutUnlimitedInt(OH_Data_Value *value, int sign, const uint64_t *trueForm, size_t length)
 ```
 
@@ -369,7 +375,7 @@ int OH_Value_PutUnlimitedInt(OH_Data_Value *value, int sign, const uint64_t *tru
 
 ### OH_Value_GetType()
 
-```
+```c
 int OH_Value_GetType(OH_Data_Value *value, OH_ColumnType *type)
 ```
 
@@ -395,7 +401,7 @@ int OH_Value_GetType(OH_Data_Value *value, OH_ColumnType *type)
 
 ### OH_Value_IsNull()
 
-```
+```c
 int OH_Value_IsNull(OH_Data_Value *value, bool *val)
 ```
 
@@ -411,7 +417,7 @@ int OH_Value_IsNull(OH_Data_Value *value, bool *val)
 | 参数项                                        | 描述                                                       |
 | --------------------------------------------- | ---------------------------------------------------------- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。 |
-| bool *val                                     | 一个输出参数，ture表示空，false表示不为空。                |
+| bool *val                                     | 一个输出参数，true表示空，false表示不为空。                |
 
 **返回：**
 
@@ -421,7 +427,7 @@ int OH_Value_IsNull(OH_Data_Value *value, bool *val)
 
 ### OH_Value_GetInt()
 
-```
+```c
 int OH_Value_GetInt(OH_Data_Value *value, int64_t *val)
 ```
 
@@ -447,7 +453,7 @@ int OH_Value_GetInt(OH_Data_Value *value, int64_t *val)
 
 ### OH_Value_GetReal()
 
-```
+```c
 int OH_Value_GetReal(OH_Data_Value *value, double *val)
 ```
 
@@ -473,7 +479,7 @@ int OH_Value_GetReal(OH_Data_Value *value, double *val)
 
 ### OH_Value_GetText()
 
-```
+```c
 int OH_Value_GetText(OH_Data_Value *value, const char **val)
 ```
 
@@ -499,7 +505,7 @@ int OH_Value_GetText(OH_Data_Value *value, const char **val)
 
 ### OH_Value_GetBlob()
 
-```
+```c
 int OH_Value_GetBlob(OH_Data_Value *value, const uint8_t **val, size_t *length)
 ```
 
@@ -526,7 +532,7 @@ int OH_Value_GetBlob(OH_Data_Value *value, const uint8_t **val, size_t *length)
 
 ### OH_Value_GetAsset()
 
-```
+```c
 int OH_Value_GetAsset(OH_Data_Value *value, Data_Asset *val)
 ```
 
@@ -552,7 +558,7 @@ int OH_Value_GetAsset(OH_Data_Value *value, Data_Asset *val)
 
 ### OH_Value_GetAssetsCount()
 
-```
+```c
 int OH_Value_GetAssetsCount(OH_Data_Value *value, size_t *length)
 ```
 
@@ -578,7 +584,7 @@ int OH_Value_GetAssetsCount(OH_Data_Value *value, size_t *length)
 
 ### OH_Value_GetAssets()
 
-```
+```c
 int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, size_t *outLen)
 ```
 
@@ -606,7 +612,7 @@ int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, siz
 
 ### OH_Value_GetFloatVectorCount()
 
-```
+```c
 int OH_Value_GetFloatVectorCount(OH_Data_Value *value, size_t *length)
 ```
 
@@ -628,11 +634,11 @@ int OH_Value_GetFloatVectorCount(OH_Data_Value *value, size_t *length)
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS返回。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int  | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示参数无效。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetFloatVector()
 
-```
+```c
 int OH_Value_GetFloatVector(OH_Data_Value *value, float *val, size_t inLen, size_t *outLen)
 ```
 
@@ -660,7 +666,7 @@ int OH_Value_GetFloatVector(OH_Data_Value *value, float *val, size_t inLen, size
 
 ### OH_Value_GetUnlimitedIntBand()
 
-```
+```c
 int OH_Value_GetUnlimitedIntBand(OH_Data_Value *value, size_t *length)
 ```
 
@@ -686,7 +692,7 @@ int OH_Value_GetUnlimitedIntBand(OH_Data_Value *value, size_t *length)
 
 ### OH_Value_GetUnlimitedInt()
 
-```
+```c
 int OH_Value_GetUnlimitedInt(OH_Data_Value *value, int *sign, uint64_t *trueForm, size_t inLen, size_t *outLen)
 ```
 

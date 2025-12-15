@@ -1,4 +1,14 @@
 # OH_AudioSession_DeactivatedEvent
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioSession_DeactivatedEvent {...} OH_AudioSession_DeactivatedEvent
+```
 
 ## 概述
 

@@ -1,4 +1,14 @@
 # ArkWeb_ProxyObject
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct {...} ArkWeb_ProxyObject
+```
 
 ## 概述
 

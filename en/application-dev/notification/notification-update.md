@@ -1,10 +1,17 @@
 # Updating a Notification
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 You can use this API to update published notifications, such as the upload/download progress and IMs.
 
 ## Available APIs
 
-The table below lists the API for updating notifications. You can use the **updateOnly** field in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest) to specify the notification to update. The value is set to **false** if no notification is specified.
+The table below lists the API for updating notifications. You can use the **updateOnly** field in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) to specify the notification to update. The value is set to **false** if no notification is specified.
 
 - Set **updateOnly** to **true**, the notification is updated if the notification with the same ID exists; the notification fails to update if the notification with the same ID does not exist and no notification is created.
 
@@ -60,7 +67,7 @@ The following uses the progress bar notification as an example.
    });
    ```
 
-3. Update the progress bar notification using the **updateOnly** field in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest) API.
+3. Update the progress bar notification using the **updateOnly** field in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) API.
 
    ```ts
    let notificationRequest: notificationManager.NotificationRequest = {

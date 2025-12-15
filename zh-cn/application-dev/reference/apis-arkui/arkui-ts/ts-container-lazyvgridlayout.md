@@ -1,5 +1,12 @@
 # LazyVGridLayout
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 该组件用于实现支持懒加载的网格布局，其父组件仅限于[WaterFlow](ts-container-waterflow.md)或[FlowItem](ts-container-flowitem.md)，并支持使用自定义组件、[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后，在WaterFlow或FlowItem组件下应用。
 
 该组件仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向为FlexDirection.Column的情况下支持懒加载。在WaterFlow的多列模式或布局方向为FlexDirection.Row或FlexDirection.RowReverse的情况下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。当懒加载功能生效时，该组件仅加载WaterFlow显示区域内的子组件，并在帧间空闲时隙预加载显示区域上方和下方各半屏的内容。
@@ -104,6 +111,8 @@ rowsGap(value: LengthMetrics): T
 
 该示例通过WaterFlow和LazyVGridLayout实现懒加载网格布局。
 
+MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyVGridLayout提供子组件。 
+
 <!--code_no_check-->
 ```ts
 import { LengthMetrics } from '@kit.ArkUI'
@@ -118,21 +127,21 @@ struct LazyVGridLayoutSample1 {
       WaterFlow() {
         LazyVGridLayout() {
           LazyForEach(this.arr, (item:number)=>{
-            Text("item" + item.toString())
+            Text('item' + item.toString())
               .height(64)
-              .width("100%")
+              .width('100%')
               .borderRadius(5)
               .backgroundColor(Color.White)
               .textAlign(TextAlign.Center)
           })
         }
-        .columnsTemplate("1fr 1fr")
+        .columnsTemplate('1fr 1fr')
         .rowsGap(LengthMetrics.vp(10))
         .columnsGap(LengthMetrics.vp(10))
       }.padding(10)
     }
     .width('100%').height('100%')
-    .backgroundColor("#DCDCDC")
+    .backgroundColor('#DCDCDC')
   }
 
   aboutToAppear(): void {

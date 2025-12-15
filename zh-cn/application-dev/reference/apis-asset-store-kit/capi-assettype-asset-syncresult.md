@@ -1,5 +1,16 @@
 # Asset_SyncResult
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct {...} Asset_SyncResult
+```
+
 ## 概述
 
 关键资产同步结果。

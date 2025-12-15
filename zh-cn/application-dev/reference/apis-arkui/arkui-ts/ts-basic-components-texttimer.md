@@ -1,4 +1,10 @@
 # TextTimer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 通过文本显示计时信息并控制其计时器状态的组件。
 
@@ -6,7 +12,7 @@
 
 >  **说明：**
 >
-> 该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -38,11 +44,11 @@ TextTimer(options?: TextTimerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型     | 必填  | 说明                   |
-| ----------- | -------- | -------- | -------- |
-| isCountDown | boolean  | 否   | 倒计时开关。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br/>默认值：false |
-| count       | number   | 否   | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。&nbsp;0&lt;count&lt;86400000时，count值为计时器初始值。否则，使用默认值为计时器初始值。<br/>默认值：60000 |
-| controller  | [TextTimerController](#texttimercontroller) | 否  | TextTimer控制器。 |
+| 名称   | 类型     | 只读 | 可选 | 说明                   |
+| ----------- | -------- | -------- | -------- | -------- |
+| isCountDown | boolean  | 否  | 是  | 倒计时开关。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br/>默认值：false |
+| count       | number   | 否  | 是  | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。&nbsp;0&lt;count&lt;86400000时，count值为计时器初始值。否则，使用默认值为计时器初始值。<br/>默认值：60000 |
+| controller  | [TextTimerController](#texttimercontroller) | 否 | 是 | TextTimer控制器。 |
 
 ## 属性
 
@@ -165,6 +171,10 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。不支持fill字段, 不支持智能取色模式。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -285,12 +295,12 @@ ContentModifier接口使用的TextTimer配置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型    |    必填      |  说明              |
-| ------ | ------ | ------ |-------------------------------- |
-| count | number | 是 | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br> 默认值：60000。 |
-| isCountDown | boolean| 是 | 是否倒计时。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br> 默认值：false |
-| started | boolean | 是 | 是否已经开始了计时。默认值：false， 表示未开始计时。|
-| elapsedTime | number | 是 | 计时器经过的时间，单位为设置格式的最小单位。 |
+| 名称 | 类型    |  只读  |  可选   |  说明              |
+| ------ | ------ | ------ | ------ |-------------------------------- |
+| count | number | 否 | 否 | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br> 默认值：60000。 |
+| isCountDown | boolean| 否 | 否 | 是否倒计时。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br> 默认值：false |
+| started | boolean | 否 | 否 | 是否已经开始了计时。默认值：false， 表示未开始计时。|
+| elapsedTime | number | 否 | 否 |计时器经过的时间，单位为设置格式的最小单位。 |
 
 ## 示例
 ### 示例1（支持手动启停的文本计时器）

@@ -1,4 +1,10 @@
 # SymbolSpan
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 作为Text组件的子组件，用于显示图标小符号的组件。
 
@@ -44,6 +50,10 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 设置SymbolSpan组件颜色。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -61,6 +71,10 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 fontSize(value: number | string | Resource)
 
 设置SymbolSpan组件大小。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -82,6 +96,10 @@ fontWeight(value: number | FontWeight | string)
 
 sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -99,6 +117,10 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 renderingStrategy(value: SymbolRenderingStrategy)
 
 设置SymbolSpan渲染策略。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -121,6 +143,10 @@ renderingStrategy(value: SymbolRenderingStrategy)
 effectStrategy(value: SymbolEffectStrategy)
 
 设置SymbolSpan动效策略。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -157,7 +183,7 @@ attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute>)
 ## 示例
 
 ### 示例1（设置渲染和动效策略）
-该示例通过renderingStrategy、effectStrategy属性展示了不同的渲染和动效策略。
+从API version 11开始，该示例通过[renderingStrategy](#renderingstrategy)、[effectStrategy](#effectstrategy)属性展示了不同的渲染和动效策略。
 
 ```ts
 // xxx.ets
@@ -262,7 +288,7 @@ struct Index {
 ![SymbolSpan](figures/symbolSpan.gif)
 
 ### 示例2（设置动态属性）
-该示例通过attributeModifier属性创建指定样式图标。
+从API version 12开始，该示例通过[attributeModifier](#attributemodifier12)属性创建指定样式图标。
 
 ```ts
 import { SymbolSpanModifier } from '@kit.ArkUI';
@@ -279,6 +305,11 @@ struct Index {
         Text() {
           SymbolSpan(undefined).attributeModifier(this.modifier)
         }
+
+        Button('更改SymbolSpanModifier')
+          .onClick(() => {
+            this.modifier = new SymbolSpanModifier($r("sys.symbol.ohos_trash")).fontColor([Color.Red]).fontSize(100);
+          })
       }
       .width('100%')
     }
@@ -286,4 +317,4 @@ struct Index {
   }
 }
 ```
-![SymbolSpanModifier](figures/symbolSpanModifier.png)
+![SymbolSpanModifier](figures/symbolSpanModifier.gif)

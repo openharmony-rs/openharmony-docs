@@ -1,4 +1,14 @@
 # ArkUI_GestureRecognizerHandle*
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
+```
 
 ## 概述
 

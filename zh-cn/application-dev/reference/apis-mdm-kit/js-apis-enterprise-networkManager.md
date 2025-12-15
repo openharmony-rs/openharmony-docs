@@ -2,8 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--SE: @liuzuming-->
-<!--TSE: @lpw_work-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供设备网络管理能力，包括查询设备IP地址、MAC地址信息等。
 
@@ -38,7 +39,7 @@ getAllNetworkInterfacesSync(admin: Want): Array&lt;string&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -66,7 +67,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -93,7 +94,7 @@ getIpAddressSync(admin: Want, networkInterface: string): string
 
 | 参数名           | 类型                                                    | 必填 | 说明           |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string                                                  | 是   | 指定网络接口。 |
 
 **返回值：**
@@ -122,7 +123,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -150,7 +151,7 @@ getMacSync(admin: Want, networkInterface: string): string
 
 | 参数名           | 类型                                                    | 必填 | 说明           |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string                                                  | 是   | 指定网络接口。 |
 
 **返回值：**
@@ -179,7 +180,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -207,7 +208,7 @@ isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean
 
 | 参数名           | 类型                                                    | 必填 | 说明           |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string                                                  | 是   | 指定网络接口。 |
 
 **返回值：**
@@ -236,7 +237,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -264,7 +265,7 @@ setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, isDisable
 
 | 参数名           | 类型                                                    | 必填 | 说明                                              |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------------------------------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                            |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                            |
 | networkInterface | string                                                  | 是   | 指定网络接口。                                    |
 | isDisabled       | boolean                                                 | 是   | true表示禁用该网络接口，false表示开启该网络接口。 |
 
@@ -289,7 +290,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -317,7 +318,7 @@ setGlobalProxySync(admin: Want, httpProxy: connection.HttpProxy): void
 
 | 参数名    | 类型                                                         | 必填 | 说明                       |
 | --------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。             |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。             |
 | httpProxy | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 是   | 网络全局Http代理配置信息。 |
 
 **错误码**：
@@ -341,7 +342,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 需根据实际情况进行替换
@@ -365,11 +366,13 @@ try {
 
 setGlobalProxyForAccount(admin: Want, httpProxy: connection.HttpProxy, accountId: number): void
 
-设置指定用户下的网络代理，当前仅支持PC/2in1设备。
+设置指定用户下的网络代理。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -377,7 +380,7 @@ setGlobalProxyForAccount(admin: Want, httpProxy: connection.HttpProxy, accountId
 
 | 参数名    | 类型                                                         | 必填 | 说明                       |
 | --------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 设备管理应用。             |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。             |
 | httpProxy | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 是   | 网络代理配置信息。 |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
@@ -391,6 +394,7 @@ setGlobalProxyForAccount(admin: Want, httpProxy: connection.HttpProxy, accountId
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -402,7 +406,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let httpProxy: connection.HttpProxy = {
@@ -437,7 +441,7 @@ getGlobalProxySync(admin: Want): connection.HttpProxy
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -466,7 +470,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -479,13 +483,15 @@ try {
 
 ## networkManager.getGlobalProxyForAccount<sup>15+</sup>
 
-getGlobalProxyForAccount(admin: Want, accountId: number): connection.HttpProxy
+getGlobalProxyForAccount(admin: Want | null, accountId: number): connection.HttpProxy
 
-获取指定用户下的网络代理，当前仅支持PC/2in1设备。
+获取指定用户下的网络代理。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -493,7 +499,7 @@ getGlobalProxyForAccount(admin: Want, accountId: number): connection.HttpProxy
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 设备管理应用。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
 **返回值：**
@@ -511,7 +517,7 @@ getGlobalProxyForAccount(admin: Want, accountId: number): connection.HttpProxy
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -523,7 +529,7 @@ import { connection } from '@kit.NetworkKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -539,7 +545,7 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-为设备添加防火墙过滤规则，仅支持IPv4。<br/>
+为设备添加防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -552,7 +558,7 @@ addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                 |
 | ------------ | ------------------------------------------------------- | ---- | -------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。       |
 | firewallRule | [FirewallRule](#firewallrule)                           | 是   | 添加防火墙过滤规则。 |
 
 **错误码**：
@@ -575,28 +581,34 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let firewallRule: networkManager.FirewallRule = {
   // 需根据实际情况进行替换
-  "srcAddr": "192.168.1.1-192.188.22.66",
+  "srcAddr": "192.168.1.1-192.168.22.66",
   "destAddr": "10.1.1.1",
   "srcPort": "8080",
   "destPort": "8080",
   "appUid": "9696",
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP
+  "protocol": networkManager.Protocol.UDP,
+  "family": 1
 };
 
-networkManager.addFirewallRule(wantTemp, firewallRule);
+try {
+  networkManager.addFirewallRule(wantTemp, firewallRule);
+  console.info('Succeeded in adding firewall rule.');
+} catch (err) {
+  console.error(`Failed to add firewall rule. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.removeFirewallRule
 
 removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
-移除设备防火墙过滤规则，仅支持IPv4。<br/>
+移除设备防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 移除规则后如果不存在[Action](#action)为ALLOW规则后，会将[addFirewallRule](#networkmanageraddfirewallrule)添加的默认DENY规则清空。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -609,7 +621,7 @@ removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                 |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | firewallRule | [FirewallRule](#firewallrule)                           | 否   | 移除防火墙过滤规则。值为空时，清空所有的防火墙规则。 |
 
 **错误码**：
@@ -632,32 +644,44 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let firewallRule: networkManager.FirewallRule = {
   // 需根据实际情况进行替换
-  "srcAddr": "192.168.1.1-192.188.22.66",
+  "srcAddr": "192.168.1.1-192.168.22.66",
   "destAddr": "10.1.1.1",
   "srcPort": "8080",
   "destPort": "8080",
   "appUid": "9696",
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP
+  "protocol": networkManager.Protocol.UDP,
+  "family": 1
 };
+
 // 移除指定的规则
-networkManager.removeFirewallRule(wantTemp, firewallRule);
+try {
+  networkManager.removeFirewallRule(wantTemp, firewallRule);
+  console.info('Succeeded in removing firewall rule.');
+} catch (err) {
+  console.error(`Failed to remove firewall rule. Code: ${err.code}, message: ${err.message}`);
+}
 
 // 清空所有规则
-networkManager.removeFirewallRule(wantTemp);
+try {
+  networkManager.removeFirewallRule(wantTemp);
+  console.info('Succeeded in removing all firewall rule.');
+} catch (err) {
+  console.error(`Failed to remove all firewall rule. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.getFirewallRules
 
 getFirewallRules(admin: Want): Array\<FirewallRule>
 
-查询设备防火墙过滤规则，仅支持IPv4。
+查询设备防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -669,7 +693,7 @@ getFirewallRules(admin: Want): Array\<FirewallRule>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -697,17 +721,22 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let firewallRule: Array<networkManager.FirewallRule>;
-firewallRule = networkManager.getFirewallRules(wantTemp);
+try {
+  firewallRule = networkManager.getFirewallRules(wantTemp);
+  console.info('Succeeded in getting firewall rules');
+} catch (err) {
+  console.error(`Failed to get firewall rules. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.addDomainFilterRule
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-为设备添加域名过滤规则，仅支持IPv4。<br/>
+为设备添加域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -720,7 +749,7 @@ addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
 | 参数名           | 类型                                                    | 必填 | 说明               |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------ |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。     |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。     |
 | domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | 是   | 添加域名过滤规则。 |
 
 **错误码**：
@@ -743,23 +772,29 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let domainFilterRule: networkManager.DomainFilterRule = {
   // 需根据实际情况进行替换
   "domainName": "www.example.com",
   "appUid": "9696",
-  "action": networkManager.Action.DENY
+  "action": networkManager.Action.DENY,
+  "family": 1
 };
 
-networkManager.addDomainFilterRule(wantTemp, domainFilterRule);
+try {
+  networkManager.addDomainFilterRule(wantTemp, domainFilterRule);
+  console.info('Succeeded in adding domain filter rules');
+} catch (err) {
+  console.error(`Failed to add domain filter rules. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.removeDomainFilterRule
 
 removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
-移除设备域名过滤规则，仅支持IPv4。<br/>
+移除设备域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 移除规则后如果不存在[Action](#action)为ALLOW规则后，会将[addDomainFilterRule](#networkmanageradddomainfilterrule)添加的默认DENY规则清空。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -772,7 +807,7 @@ removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
 | 参数名           | 类型                                                    | 必填 | 说明                                             |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------------------------------------ |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                   |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
 | domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | 否   | 移除域名过滤规则。值为空时，清空所有的域名规则。 |
 
 **错误码**：
@@ -795,28 +830,39 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let domainFilterRule: networkManager.DomainFilterRule = {
   // 需根据实际情况进行替换
   "domainName": "www.example.com",
   "appUid": "9696",
-  "action": networkManager.Action.DENY
+  "action": networkManager.Action.DENY,
+  "family": 1
 };
 
 // 移除指定的规则
-networkManager.removeDomainFilterRule(wantTemp, domainFilterRule);
+try {
+  networkManager.removeDomainFilterRule(wantTemp, domainFilterRule);
+  console.info('Succeeded in removing domain filter rules');
+} catch (err) {
+  console.error(`Failed to remove domain filter rules. Code: ${err.code}, message: ${err.message}`);
+}
 
 // 清空所有规则
-networkManager.removeDomainFilterRule(wantTemp);
+try {
+  networkManager.removeDomainFilterRule(wantTemp);
+  console.info('Succeeded in removing all domain filter rules');
+} catch (err) {
+  console.error(`Failed to remove all domain filter rules. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.getDomainFilterRules
 
 getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
-查询设备域名过滤规则，仅支持IPv4。
+查询设备域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -828,7 +874,7 @@ getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -856,10 +902,15 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let domainFilterRule: Array<networkManager.DomainFilterRule>;
-domainFilterRule = networkManager.getDomainFilterRules(wantTemp);
+try {
+  domainFilterRule = networkManager.getDomainFilterRules(wantTemp);
+  console.info('Succeeded in getting  domain filter rules');
+} catch (err) {
+  console.error(`Failed to get domain filter rules. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.turnOnMobileData<sup>20+</sup>
@@ -878,7 +929,7 @@ turnOnMobileData(admin: Want, isForce: boolean): void
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | isForce  | boolean | 是   | 是否强制打开移动数据网络。true表示强制开启，强制开启后不支持用户在设备上手动关闭，必须采用[turnOffMobileData](#networkmanagerturnoffmobiledata20)接口关闭。false表示非强制开启，此时用户可以在设备上手动操作关闭移动数据网络。 |
 
 **错误码**：
@@ -901,7 +952,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   networkManager.turnOnMobileData(wantTemp, true);
@@ -927,7 +978,7 @@ turnOffMobileData(admin: Want): void
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **错误码**：
 
@@ -949,7 +1000,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   networkManager.turnOffMobileData(wantTemp);
@@ -975,7 +1026,7 @@ addApn(admin: Want, apnInfo: Record\<string, string>): void
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnInfo  | Record\<string, string> | 是   | 需要添加的APN参数信息。<br/>- apnName：APN配置的名称标识符，必选。<br/>- mcc：3位数字的移动国家代码，必选。<br/>- mnc：2-3位数字的移动网络代码，必选。<br/>- apn：接入点名称，必选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- password：APN身份验证的密码，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
 
 **错误码**：
@@ -997,7 +1048,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
   //需根据实际情况进行替换
@@ -1030,7 +1081,7 @@ deleteApn(admin: Want, apnId: string): void
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnId  | string | 是   | 需要删除的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
 
 **错误码**：
@@ -1052,7 +1103,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnId: string = "1"; //需根据实际情况进行替换
 try {
@@ -1079,7 +1130,7 @@ updateApn(admin: Want, apnInfo: Record\<string, string>, apnId: string): void
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnInfo  | Record\<string, string> | 是   | 需要更新的APN参数信息。<br/>- apnName：APN配置的名称标识符，可选。<br/>- mcc：3位数字的移动国家代码，可选。<br/>- mnc：2-3位数字的移动网络代码，可选。<br/>- APN：接入点名称，可选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- password：APN身份验证的密码，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
 | apnId  | string | 是   | 需要更新的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
 
@@ -1102,7 +1153,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
   //需根据实际情况进行替换
@@ -1136,7 +1187,7 @@ setPreferredApn(admin: Want, apnId: string): void
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnId  | string | 是   | 需要设置成优选的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
 
 **错误码**：
@@ -1158,7 +1209,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnId: string = "1"; //需根据实际情况进行替换
 try {
@@ -1185,7 +1236,7 @@ queryApn(admin: Want, apnInfo: Record\<string, string>): Array\<string>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnInfo  | Record\<string, string> | 是   | APN的查询条件。<br/>- apnName：APN配置的名称标识符，可选。<br/>- mcc：3位数字的移动国家代码，可选。<br/>- mnc：2-3位数字的移动网络代码，可选。<br/>- apn：接入点名称，可选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
 
 **返回值：**
@@ -1213,7 +1264,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
   //需根据实际情况进行替换
@@ -1246,7 +1297,7 @@ queryApn(admin: Want, apnId: string): Record\<string, string>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnId  | string | 是   | 指定的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
 
 **返回值：**
@@ -1274,7 +1325,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let apnId: string = "1"; //需根据实际情况进行替换
 try {
@@ -1285,9 +1336,68 @@ try {
 }
 ```
 
+## networkManager.setEthernetConfig<sup>23+</sup>
+
+setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig): void
+
+设置特定以太网网络接口的IP地址。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明           |
+| ------ | ------------------------------------------------------- | ---- | -------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| networkInterface  | string | 是   | 要设置的网络接口名。 |
+| config  | [InterfaceConfig](#interfaceconfig23) | 是   | 要设置的网络接口配置信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { networkManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility',
+};
+let config: networkManager.InterfaceConfig = {
+  // 需根据实际情况进行替换
+  "ipSetMode": networkManager.IpSetMode.STATIC,
+  "ipAddress": "192.168.1.121",
+  "gateway": "192.168.1.1",
+  "netMask": "255.255.255.0",
+  "dnsServers": "192.168.1.1"
+}
+let networkInterface: string = "eth0"; // 需根据实际情况进行替换
+try {
+  networkManager.setEthernetConfig(wantTemp, networkInterface, config);
+  console.info('Succeeded in setting ethernet config.');
+} catch (err) {
+  console.error(`Failed to set ethernet config. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## FirewallRule
 
-防火墙过滤规则。
+防火墙过滤规则。从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1301,21 +1411,23 @@ try {
 | appUid    | string                  | 否   | 是 |应用uid。                                                    |
 | direction | [Direction](#direction) | 否   | 是 |规则链。<br/>添加防火墙过滤规则时必填；<br/>移除防火墙时非必填，当值为空时，表示清空所有的[Direction](#direction)链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传入空值。 |
 | action    | [Action](#action)       | 否   | 是 |接收或者丢弃数据包。<br/>添加防火墙过滤规则时必填；<br/>移除防火墙时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传入空值。 |
-| protocol  | [Protocol](#protocol)   | 否   | 是 |网络协议。当值为ALL或者ICMP时，不允许设置srcPort与destPort。 |
+| protocol  | [Protocol](#protocol)   | 否   | 是 |网络协议。当值为ALL或者ICMP时，设置srcPort与destPort无效。 |
+| family<sup>22+</sup>    | number    | 否   | 是 |IP协议版本。支持取值为1或2，取值为1表示IPv4，取值为2表示IPv6。|
 
 ## DomainFilterRule
 
-域名过滤规则。
+域名过滤规则。从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 
 | 名称       | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
-| domainName | string            | 否   | 是 |域名。添加域名过滤规则时必填。                               |
+| domainName | string            | 否   | 是 |域名。添加域名过滤规则时必填。支持域名分段匹配，例如，domainName传入"example.com"，那么"example.com"、"www.example.com"、"www.test.example.com"会被匹配，"linkexample.com"不会被匹配。                               |
 | appUid     | string            | 否   | 是 |应用uid。                                                    |
 | action     | [Action](#action) | 否   | 是 |接收或者丢弃数据包。<br/>添加域名过滤规则时必填；<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且domainName，appUid也必须传入空值。 |
-| direction<sup>15+</sup> | [Direction](#direction) | 否 | 是 |规则链。<br/>添加防火墙过滤规则时必填；<br/>移除防火墙时非必填，当值为空时，表示清空所有的[Direction](#direction)链，且domainName，appUid也必须传入空值。|
+| direction<sup>15+</sup> | [Direction](#direction) | 否 | 是 |规则链。<br/>添加域名过滤规则时非必填；当值设为输出链或输入链时，实际效果为输出链。设为转发链时，appUid需设置为空，否则会报401错误码。<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的[Direction](#direction)链，且domainName，appUid也必须传入空值。|
+| family<sup>22+</sup>    | number| 否   | 是 |IP协议版本。支持取值为1或2，取值为1表示IPv4，取值为2表示IPv6。|
 
 ## Direction
 
@@ -1356,3 +1468,31 @@ try {
 | TCP  | 1    | 网络协议TCP。  |
 | UDP  | 2    | 网络协议UDP。  |
 | ICMP | 3    | 网络协议ICMP。 |
+
+## InterfaceConfig<sup>23+</sup>
+
+以太网的网络接口配置。仅支持IPv4。<br/>
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+
+| 名称      | 类型                    | 只读 | 可选 | 说明                                                         |
+| --------- | ----------------------- | ---- | ---- |------------------------------------------------------------ |
+| ipSetMode   | [IpSetMode](#ipsetmode23)                  | 否   | 否 |以太网连接配置模式。 |
+| ipAddress  | string                  | 否   | 是 |静态IP地址，地址值范围0.0.0.0到255.255.255.255（DHCP模式无需配置）。 |
+| gateway  | string                  | 否   | 是 |网关，地址值范围0.0.0.0到255.255.255.255（DHCP模式无需配置）。 |
+| netMask  | string                  | 否   | 是 |子网掩码，地址值范围0.0.0.0到255.255.255.255（DHCP模式无需配置）。 |
+| dnsServers  | string                  | 否   | 是 |DNS服务地址，地址值范围0.0.0.0到255.255.255.255（DHCP模式无需配置），多地址间用“,”隔开。 |
+
+## IpSetMode<sup>23+</sup>
+
+以太网连接模式。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+
+| 名称 | 值   | 说明           |
+| ---- | ---- | -------------- |
+| STATIC  | 0    | 以太网连接静态配置网络信息，设置为该模式时，需要同步设置IP地址、子网掩码、默认网关、DNS服务器。 |
+| DHCP  | 1    | 以太网连接动态配置网络信息，设置为该模式时，由网络中的DHCP服务器自动分配IP地址等信息。  |
+

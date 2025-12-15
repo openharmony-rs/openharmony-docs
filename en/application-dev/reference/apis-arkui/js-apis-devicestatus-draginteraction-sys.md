@@ -1,5 +1,12 @@
 # @ohos.deviceStatus.dragInteraction (Drag Interaction) (System API)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Msdp-->
+<!--Owner: @wuliangdong-->
+<!--Designer: @butterls-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
+
 The **dragInteraction** module provides the APIs to enable and disable listening for dragging status changes.
 
 > **NOTE**
@@ -24,9 +31,9 @@ Enumerates dragging states.
 
 | Name                 | Value  | Description          |
 | --------------------- | ---- | -------------- |
-| MSG_DRAG_STATE_START  | 1    | Dragging starts. |
-| MSG_DRAG_STATE_STOP   | 2    | Dragging is ended. |
-| MSG_DRAG_STATE_CANCEL | 3    | Dragging is canceled. |
+| MSG_DRAG_STATE_START  | 1    | Dragging starts.|
+| MSG_DRAG_STATE_STOP   | 2    | Dragging is ended.|
+| MSG_DRAG_STATE_CANCEL | 3    | Dragging is canceled.|
 
 ## Summary<sup>11+</sup>
 
@@ -36,10 +43,10 @@ Defines the data summary of the dragged object.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Drag
 
-| Name      | Type    | Mandatory | Description              |
-| ---------- | -------- | ---- | ------------------ |
-| dataType   | string   | Yes  | Type of the dragged object.    |
-| dataSize   | number   | Yes  | Data length of the dragged object. |
+| Name          | Type           | Read-Only| 	Optional| Description                          |
+| ---------      | -------------- | ---- | ---- | ------------------------     |
+| dataType     | string          | No  | No  | Type of the dragged object.|
+| dataSize       | number         | No  | No  | Data length of the dragged object.|
 
 ## dragInteraction.on('drag')
 
@@ -53,18 +60,18 @@ Enables listening for dragging status changes.
 
 **Parameters**
 
-| Name  | Type                              | Mandatory | Description                            |
+| Name  | Type                              | Mandatory| Description                            |
 | -------- | ---------------------------------- | ---- | -------------------------------- |
 | type     | string                             | Yes  | Event type. This field has a fixed value of **drag**.   |
-| callback | Callback\<[DragState](#dragstate)> | Yes  | Callback used to return the dragging status. |
+| callback | Callback\<[DragState](#dragstate)> | Yes  | Callback used to return the dragging status.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
@@ -72,10 +79,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 try {
   dragInteraction.on('drag', (data: dragInteraction.DragState) => {
-    console.log(`Drag interaction event: ${JSON.stringify(data)}`);
+    console.info(`Drag interaction event: ${data}`);
   });
 } catch (error) {
-  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Register failed, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -91,18 +98,18 @@ Disables listening for dragging status changes.
 
 **Parameters**
 
-| Name  | Type                              | Mandatory | Description                                                                  |
+| Name  | Type                              | Mandatory| Description                                                                  |
 | -------- | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
 | type     | string                             | Yes  | Event type. This field has a fixed value of **drag**.                                         |
-| callback | Callback\<[DragState](#dragstate)> | No  | Callback to be unregistered. If this parameter is not specified, all callbacks registered by the current application will be unregistered. |
+| callback | Callback\<[DragState](#dragstate)> | No  | Callback to be unregistered. If this parameter is not specified, all callbacks registered by the current application will be unregistered.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
@@ -110,28 +117,28 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // Unregister a single callback.
 function single_callback(event: dragInteraction.DragState) {
-  console.log(`Drag interaction event: ${JSON.stringify(event)}`);
+  console.info(`Drag interaction event: ${event}`);
   return false;
 }
 try {
   dragInteraction.on('drag', single_callback);
   dragInteraction.off("drag", single_callback);
 } catch (error) {
-  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Execute failed, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
 ```ts
 // Unregister all callbacks.
 function all_callback(event: dragInteraction.DragState) {
-  console.log(`Drag interaction event: ${JSON.stringify(event)}`);
+  console.info(`Drag interaction event: ${event}`);
   return false;
 }
 try {
   dragInteraction.on('drag', all_callback);
   dragInteraction.off("drag");
 } catch (error) {
-  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Execute failed, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -149,21 +156,21 @@ Obtains the data summary of all dragged objects.
 
 | Type                         | Description                                                |
 | ----------------------------- | ---------------------------------------------------- |
-| Array\<[Summary](#summary11)> | Data summary of all dragged objects, including their type and data length. |
+| Array\<[Summary](#summary11)> | Data summary of all dragged objects, including their type and data length.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
 ```ts
-let summarys: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
-console.log(`Drag interaction summarys: ${JSON.stringify(summarys)}`);
+let summary: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
+console.info(`Drag interaction summary: ${summary}`);
 ```
 
 ## dragInteraction.setDragSwitchState<sup>18+</sup>
@@ -188,7 +195,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -219,7 +226,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**

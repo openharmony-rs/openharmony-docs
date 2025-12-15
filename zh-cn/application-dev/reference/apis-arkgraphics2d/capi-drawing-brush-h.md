@@ -1,11 +1,18 @@
 # drawing_brush.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 文件中定义了与画刷相关的功能函数。
 
 <!--RP1-->
-**相关示例：** [NDKAPIDrawing (API14)](https://gitee.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKAPIDrawing)<!--RP1End-->
+**相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **引用文件：** <native_drawing/drawing_brush.h>
 
@@ -52,7 +59,7 @@
 
 ### OH_Drawing_BrushCreate()
 
-```
+```c
 OH_Drawing_Brush* OH_Drawing_BrushCreate(void)
 ```
 
@@ -72,7 +79,7 @@ OH_Drawing_Brush* OH_Drawing_BrushCreate(void)
 
 ### OH_Drawing_BrushCopy()
 
-```
+```c
 OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)
 ```
 
@@ -99,7 +106,7 @@ OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)
 
 ### OH_Drawing_BrushDestroy()
 
-```
+```c
 void OH_Drawing_BrushDestroy(OH_Drawing_Brush* brush)
 ```
 
@@ -120,7 +127,7 @@ void OH_Drawing_BrushDestroy(OH_Drawing_Brush* brush)
 
 ### OH_Drawing_BrushIsAntiAlias()
 
-```
+```c
 bool OH_Drawing_BrushIsAntiAlias(const OH_Drawing_Brush* brush)
 ```
 
@@ -147,7 +154,7 @@ bool OH_Drawing_BrushIsAntiAlias(const OH_Drawing_Brush* brush)
 
 ### OH_Drawing_BrushSetAntiAlias()
 
-```
+```c
 void OH_Drawing_BrushSetAntiAlias(OH_Drawing_Brush* brush, bool antiAlias)
 ```
 
@@ -169,7 +176,7 @@ void OH_Drawing_BrushSetAntiAlias(OH_Drawing_Brush* brush, bool antiAlias)
 
 ### OH_Drawing_BrushGetColor()
 
-```
+```c
 uint32_t OH_Drawing_BrushGetColor(const OH_Drawing_Brush* brush)
 ```
 
@@ -196,7 +203,7 @@ uint32_t OH_Drawing_BrushGetColor(const OH_Drawing_Brush* brush)
 
 ### OH_Drawing_BrushSetColor()
 
-```
+```c
 void OH_Drawing_BrushSetColor(OH_Drawing_Brush* brush, uint32_t color)
 ```
 
@@ -218,7 +225,7 @@ void OH_Drawing_BrushSetColor(OH_Drawing_Brush* brush, uint32_t color)
 
 ### OH_Drawing_BrushGetAlpha()
 
-```
+```c
 uint8_t OH_Drawing_BrushGetAlpha(const OH_Drawing_Brush* brush)
 ```
 
@@ -245,7 +252,7 @@ uint8_t OH_Drawing_BrushGetAlpha(const OH_Drawing_Brush* brush)
 
 ### OH_Drawing_BrushSetAlpha()
 
-```
+```c
 void OH_Drawing_BrushSetAlpha(OH_Drawing_Brush* brush, uint8_t alpha)
 ```
 
@@ -267,7 +274,7 @@ void OH_Drawing_BrushSetAlpha(OH_Drawing_Brush* brush, uint8_t alpha)
 
 ### OH_Drawing_BrushSetShaderEffect()
 
-```
+```c
 void OH_Drawing_BrushSetShaderEffect(OH_Drawing_Brush* brush, OH_Drawing_ShaderEffect* shaderEffect)
 ```
 
@@ -289,7 +296,7 @@ void OH_Drawing_BrushSetShaderEffect(OH_Drawing_Brush* brush, OH_Drawing_ShaderE
 
 ### OH_Drawing_BrushSetShadowLayer()
 
-```
+```c
 void OH_Drawing_BrushSetShadowLayer(OH_Drawing_Brush* brush, OH_Drawing_ShadowLayer* shadowLayer)
 ```
 
@@ -311,7 +318,7 @@ void OH_Drawing_BrushSetShadowLayer(OH_Drawing_Brush* brush, OH_Drawing_ShadowLa
 
 ### OH_Drawing_BrushSetFilter()
 
-```
+```c
 void OH_Drawing_BrushSetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filter)
 ```
 
@@ -333,7 +340,7 @@ void OH_Drawing_BrushSetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filte
 
 ### OH_Drawing_BrushGetFilter()
 
-```
+```c
 void OH_Drawing_BrushGetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filter)
 ```
 
@@ -355,7 +362,7 @@ void OH_Drawing_BrushGetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filte
 
 ### OH_Drawing_BrushSetBlendMode()
 
-```
+```c
 void OH_Drawing_BrushSetBlendMode(OH_Drawing_Brush* brush, OH_Drawing_BlendMode blendMode)
 ```
 
@@ -377,7 +384,7 @@ void OH_Drawing_BrushSetBlendMode(OH_Drawing_Brush* brush, OH_Drawing_BlendMode 
 
 ### OH_Drawing_BrushReset()
 
-```
+```c
 void OH_Drawing_BrushReset(OH_Drawing_Brush* brush)
 ```
 
@@ -399,7 +406,7 @@ void OH_Drawing_BrushReset(OH_Drawing_Brush* brush)
 
 ### OH_Drawing_BrushSetColor4f()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushSetColor4f(OH_Drawing_Brush* brush, float a, float r, float g, float b,OH_NativeColorSpaceManager* colorSpaceManager)
 ```
 
@@ -430,7 +437,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushSetColor4f(OH_Drawing_Brush* brush, float a
 
 ### OH_Drawing_BrushGetAlphaFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushGetAlphaFloat(const OH_Drawing_Brush* brush, float* a)
 ```
 
@@ -457,7 +464,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushGetAlphaFloat(const OH_Drawing_Brush* brush
 
 ### OH_Drawing_BrushGetRedFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushGetRedFloat(const OH_Drawing_Brush* brush, float* r)
 ```
 
@@ -484,7 +491,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushGetRedFloat(const OH_Drawing_Brush* brush, 
 
 ### OH_Drawing_BrushGetGreenFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushGetGreenFloat(const OH_Drawing_Brush* brush, float* g)
 ```
 
@@ -511,7 +518,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushGetGreenFloat(const OH_Drawing_Brush* brush
 
 ### OH_Drawing_BrushGetBlueFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushGetBlueFloat(const OH_Drawing_Brush* brush, float* b)
 ```
 

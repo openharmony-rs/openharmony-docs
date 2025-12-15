@@ -1,4 +1,14 @@
 # ArkWeb_HttpBodyStream_
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct ArkWeb_HttpBodyStream_ ArkWeb_HttpBodyStream
+```
 
 ## 概述
 

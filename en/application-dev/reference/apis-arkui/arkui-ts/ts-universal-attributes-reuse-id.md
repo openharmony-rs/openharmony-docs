@@ -1,4 +1,10 @@
 # Reuse ID
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **reuseId** is an ID that identifies the reuse group of a custom component. The reuse framework identifies and groups reusable custom components based on their reuse IDs.
 
@@ -9,13 +15,15 @@
 
 ## reuseId
 
-reuseId(id: string)
+reuseId(id: string): T
 
 Sets the ID that identifies the reuse group of the component.
 
 >  **NOTE**
 >
-> Set **reuseId** flexibly based on different scenarios to achieve optimal reuse effects. For best practices, see [Using reuseId to Mark Components with Layout Changes](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section1239555818211).
+> - Set **reuseId** flexibly based on different scenarios to achieve optimal reuse effects. For best practices, see [Using reuseId to Mark Components with Layout Changes](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section1239555818211).
+>
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -26,6 +34,12 @@ Sets the ID that identifies the reuse group of the component.
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | id     | string | Yes  | ID that identifies the reuse group of the component.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+| T | Current component.|
 
 ## Example
 
@@ -65,11 +79,11 @@ struct ReusableChildComponent {
   @State type: string = ''
 
   aboutToAppear() {
-    console.log(`ReusableChildComponent Appear ${this.type}`)
+    console.info(`ReusableChildComponent Appear ${this.type}`)
   }
 
   aboutToReuse(params: ESObject) {
-    console.log(`ReusableChildComponent Reuse ${this.type}`)
+    console.info(`ReusableChildComponent Reuse ${this.type}`)
     this.type = params.type;
   }
 

@@ -1,4 +1,14 @@
 # OH_UdsContentForm
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_UdsContentForm OH_UdsContentForm
+```
 
 ## Overview
 

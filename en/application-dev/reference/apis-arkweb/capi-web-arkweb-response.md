@@ -1,4 +1,14 @@
 # ArkWeb_Response_
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```
+typedef struct ArkWeb_Response_ ArkWeb_Response
+```
 
 ## Overview
 

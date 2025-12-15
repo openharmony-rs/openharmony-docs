@@ -1,4 +1,14 @@
 # OH_Predicates
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct {...} OH_Predicates
+```
 
 ## 概述
 
@@ -50,7 +60,7 @@
 
 ### equalTo()
 
-```
+```c
 OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -76,7 +86,7 @@ OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObje
 
 ### notEqualTo()
 
-```
+```c
 OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -102,7 +112,7 @@ OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VO
 
 ### beginWrap()
 
-```
+```c
 OH_Predicates *(*beginWrap)(OH_Predicates *predicates)
 ```
 
@@ -116,7 +126,7 @@ OH_Predicates *(*beginWrap)(OH_Predicates *predicates)
 
 | 参数项                   | 描述                              |
 | ------------------------ | --------------------------------- |
-| H_Predicates *predicates | 表示指向OH_Predicates实例的指针。 |
+| OH_Predicates *predicates | 表示指向OH_Predicates实例的指针。 |
 
 **返回：**
 
@@ -126,7 +136,7 @@ OH_Predicates *(*beginWrap)(OH_Predicates *predicates)
 
 ### endWrap()
 
-```
+```c
 OH_Predicates *(*endWrap)(OH_Predicates *predicates)
 ```
 
@@ -150,7 +160,7 @@ OH_Predicates *(*endWrap)(OH_Predicates *predicates)
 
 ### orOperate()
 
-```
+```c
 OH_Predicates *(*orOperate)(OH_Predicates *predicates)
 ```
 
@@ -174,7 +184,7 @@ OH_Predicates *(*orOperate)(OH_Predicates *predicates)
 
 ### andOperate()
 
-```
+```c
 OH_Predicates *(*andOperate)(OH_Predicates *predicates)
 ```
 
@@ -198,7 +208,7 @@ OH_Predicates *(*andOperate)(OH_Predicates *predicates)
 
 ### isNull()
 
-```
+```c
 OH_Predicates *(*isNull)(OH_Predicates *predicates, const char *field)
 ```
 
@@ -223,7 +233,7 @@ OH_Predicates *(*isNull)(OH_Predicates *predicates, const char *field)
 
 ### isNotNull()
 
-```
+```c
 OH_Predicates *(*isNotNull)(OH_Predicates *predicates, const char *field)
 ```
 
@@ -248,7 +258,7 @@ OH_Predicates *(*isNotNull)(OH_Predicates *predicates, const char *field)
 
 ### like()
 
-```
+```c
 OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -275,7 +285,7 @@ OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject 
 
 ### between()
 
-```
+```c
 OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -301,7 +311,7 @@ OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObje
 
 ### notBetween()
 
-```
+```c
 OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -327,7 +337,7 @@ OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VO
 
 ### greaterThan()
 
-```
+```c
 OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -353,7 +363,7 @@ OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_V
 
 ### lessThan()
 
-```
+```c
 OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -379,7 +389,7 @@ OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObj
 
 ### greaterThanOrEqualTo()
 
-```
+```c
 OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -405,7 +415,7 @@ OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *fi
 
 ### lessThanOrEqualTo()
 
-```
+```c
 OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -431,7 +441,7 @@ OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field
 
 ### orderBy()
 
-```
+```c
 OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_OrderType type)
 ```
 
@@ -457,7 +467,7 @@ OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_Order
 
 ### distinct()
 
-```
+```c
 OH_Predicates *(*distinct)(OH_Predicates *predicates)
 ```
 
@@ -481,7 +491,7 @@ OH_Predicates *(*distinct)(OH_Predicates *predicates)
 
 ### limit()
 
-```
+```c
 OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)
 ```
 
@@ -506,7 +516,7 @@ OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)
 
 ### offset()
 
-```
+```c
 OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)
 ```
 
@@ -531,7 +541,7 @@ OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)
 
 ### groupBy()
 
-```
+```c
 OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, int length)
 ```
 
@@ -557,7 +567,7 @@ OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, 
 
 ### in()
 
-```
+```c
 OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -583,7 +593,7 @@ OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *v
 
 ### notIn()
 
-```
+```c
 OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)
 ```
 
@@ -609,7 +619,7 @@ OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject
 
 ### clear()
 
-```
+```c
 OH_Predicates *(*clear)(OH_Predicates *predicates)
 ```
 
@@ -633,7 +643,7 @@ OH_Predicates *(*clear)(OH_Predicates *predicates)
 
 ### destroy()
 
-```
+```c
 int (*destroy)(OH_Predicates *predicates)
 ```
 

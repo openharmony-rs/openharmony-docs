@@ -1,4 +1,14 @@
 # OH_VideoEncInfo
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_VideoEncInfo {...} OH_VideoEncInfo
+```
 
 ## 概述
 

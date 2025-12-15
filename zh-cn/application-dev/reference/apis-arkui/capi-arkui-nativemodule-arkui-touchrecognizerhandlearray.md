@@ -1,4 +1,14 @@
 # ArkUI_TouchRecognizerHandle*
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray
+```
 
 ## 概述
 

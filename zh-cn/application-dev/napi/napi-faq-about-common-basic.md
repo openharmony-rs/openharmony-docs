@@ -1,4 +1,10 @@
 # 常见基本功能问题汇总
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 模块加载失败，报错信息显示`Error message: is not callable`.
 
@@ -193,22 +199,22 @@ ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callab
    确定所依赖的其它so是否打包到应用中以及是否有权限打开。常见加载失败原因有权限不足、so文件不存在等。
 
 
-| **已知关键错误日志** | **修改建议** |
-| -------- | -------- |
-| module $SO is not allowed to load in restricted runtime. | $SO表示模块名。该模块不在受限worker线程的so加载白名单，不允许加载，建议用户删除该模块。 |
-| module $SO is in blocklist, loading prohibited. | $SO表示模块名。受卡片或者Extension管控，该模块在黑名单内，不允许加载，建议用户删除该模块。 |
-| load module failed. $ERRMSG. | 动态库加载失败。$ERRMSG表示加载失败原因，一般常见原因是so文件不存在、依赖的so文件不存在或者符号未定义，需根据加载失败原因具体分析。 |
-| try to load abc file from $FILEPATH failed. | 通常加载动态库和abc文件为二选一：如果是要加载动态库并且加载失败，该告警可以忽略；如果是要加载abc文件，则该错误打印的原因是abc文件不存在，$FILEPATH表示模块路径。 |
+   | **已知关键错误日志** | **修改建议** |
+   | -------- | -------- |
+   | module $SO is not allowed to load in restricted runtime. | $SO表示模块名。该模块不在受限worker线程的so加载白名单，不允许加载，建议用户删除该模块。 |
+   | module $SO is in blocklist, loading prohibited. | $SO表示模块名。受卡片或者Extension管控，该模块在黑名单内，不允许加载，建议用户删除该模块。 |
+   | load module failed. $ERRMSG. | 动态库加载失败。$ERRMSG表示加载失败原因，一般常见原因是so文件不存在、依赖的so文件不存在或者符号未定义，需根据加载失败原因具体分析。 |
+   | try to load abc file from $FILEPATH failed. | 通常加载动态库和abc文件为二选一：如果是要加载动态库并且加载失败，该告警可以忽略；如果是要加载abc文件，则该错误打印的原因是abc文件不存在，$FILEPATH表示模块路径。 |
 
-5. 如果有明确的Error message，可以通过Error message判断当前问题。
+4. 如果有明确的Error message，可以通过Error message判断当前问题。
 
-| **Error message** | **修改建议** |
-| -------- | -------- |
-| First attempt: $ERRMSG. | 首先加载后缀不拼接'_napi'的模块名为'xxx'的so，如果加载失败会有该错误信息，$ERRMSG表示具体加载时的错误信息。 |
-| Second attempt: $ERRMSG. | 第二次加载后缀拼接'_napi'的模块名为'xxx_napi'的so，如果加载失败会有该错误信息，$ERRMSG表示具体加载时的错误信息。 |
-| try to load abc file from xxx failed. | 第三次加载名字为'xxx'的abc文件，如果加载失败会有该错误信息。 |
-| module xxx is not allowed to load in restricted runtime. | 该模块不允许在受限运行时中使用，xxx表示模块名，建议用户删除该模块。 |
-| module xxx is in blocklist, loading prohibited. | 该模块不允许在当前extension下使用，xxx表示模块名，建议用户删除该模块。 |
+   | **Error message** | **修改建议** |
+   | -------- | -------- |
+   | First attempt: $ERRMSG. | 首先加载后缀不拼接'_napi'的模块名为'xxx'的so，如果加载失败会有该错误信息，$ERRMSG表示具体加载时的错误信息。 |
+   | Second attempt: $ERRMSG. | 第二次加载后缀拼接'_napi'的模块名为'xxx_napi'的so，如果加载失败会有该错误信息，$ERRMSG表示具体加载时的错误信息。 |
+   | try to load abc file from xxx failed. | 第三次加载名字为'xxx'的abc文件，如果加载失败会有该错误信息。 |
+   | module xxx is not allowed to load in restricted runtime. | 该模块不允许在受限运行时中使用，xxx表示模块名，建议用户删除该模块。 |
+   | module xxx is in blocklist, loading prohibited. | 该模块不允许在当前extension下使用，xxx表示模块名，建议用户删除该模块。 |
 
 ## 接口执行结果非预期
 
@@ -306,3 +312,9 @@ void FinalizeB(napi_env env, void* data, void* hint) {
 原因一：`napi_call_threadsafe_function`函数调用返回值不为`napi_ok`。请确认调用`napi_call_threadsafe_function`相关函数的返回值是否都是`napi_ok`，若不是，请根据[Node-API接口返回状态码介绍](napi_status_introduction.md)排查返回值非`napi_ok`的原因。  
 原因二：env所在的ArkTS线程被阻塞。`napi_call_threadsafe_function`函数的回调将执行在env所在的ArkTS线程上，若ArkTS线程被阻塞，则线程安全函数回调不会被执行。  
 原因三：线程安全函数被重复初始化的`uv_async_t`句柄影响，导致任务不执行。若某个`uv_async_t`句柄被重新初始化，第一次初始化和重复初始化范围内所创建所有`uv_async_t`句柄将无法被uv访问。线程安全函数是基于`uv_async_t`机制实现，在该特殊场景下创建线程安全函数将失效。  
+
+## 使用开发工具支撑C/C++代码快速进行Node-API开发
+
+OpenHarmony提供了丰富的Node-API接口示例。参考开发指南和示例工程，可以快速掌握Node-API模块开发流程。
+
+可以使用[AKI](https://gitcode.com/openharmony-sig/aki)或[napi-generator](https://gitcode.com/openharmony/napi_generator)等开发工具，辅助Node-API开发，降低学习难度并提高开发效率。

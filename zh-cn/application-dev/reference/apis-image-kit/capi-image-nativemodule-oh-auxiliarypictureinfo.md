@@ -1,4 +1,14 @@
 # OH_AuxiliaryPictureInfo
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AuxiliaryPictureInfo OH_AuxiliaryPictureInfo
+```
 
 ## 概述
 

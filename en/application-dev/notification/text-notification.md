@@ -1,5 +1,12 @@
 # Publishing a Text Notification
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 You can publish text notifications to send SMS messages, alert messages, and more. There are two types of text notifications: normal text and multi-line text.
 
 **Table 1** Basic notification content types
@@ -11,7 +18,7 @@ You can publish text notifications to send SMS messages, alert messages, and mor
 
 ## Available APIs
 
-The following table describes the APIs for notification publishing. You specify the notification information – content, ID, slot type, and publish time – by setting the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest) parameter in the APIs.
+The following table describes the APIs for notification publishing. You specify the notification information – content, ID, slot type, and publish time – by setting the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) parameter in the APIs.
 
 | Name| Description|
 | -------- | -------- |

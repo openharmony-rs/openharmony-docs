@@ -1,10 +1,16 @@
 # Interface (PhotoAsset)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+提供封装文件属性的方法。
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-提供封装文件属性的方法。
 
 ## 导入模块
 
@@ -16,9 +22,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                      | 类型                     | 可读 | 可写 | 说明                                                   |
+| 名称                      | 类型                     | 只读 | 可选 | 说明                                                   |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
-| uri                       | string                   | 是   | 否   | 媒体文件资源uri（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件uri介绍中的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
+| uri                       | string                   | 是   | 否   | 媒体文件资源uri（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件uri介绍中的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 是   | 否   | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                               |
 | displayName               | string                   | 是   | 否   | 显示文件名，包含后缀名。字符串长度为1~255。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
 
@@ -92,7 +98,7 @@ set(member: string, value: string): void
 | 参数名      | 类型                        | 必填   | 说明    |
 | -------- | ------------------------- | ---- | ----- |
 | member | string | 是    | 成员参数名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度为1~255。 |
-| value | string | 是    | 设置成员参数名称，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。<br>- 不允许出现非法字符，包括：. \ / : * ? " ' ` < > \| { } [ ]  |
+| value | string | 是    | 设置成员参数名称，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ]  |
 
 **错误码：**
 
@@ -218,7 +224,7 @@ commitModify(): Promise&lt;void&gt;
 
 错误码14000001，请参考 [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)获取有关文件名的格式和长度要求。
 
-在API 13及之前的版本，无相关权限返回错误码13900012；从API 14开始，无相关权限返回错误码201。
+在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -244,6 +250,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset === undefined) {
+    console.error('commitModifyPromise photoAsset is undefined');
+    return;
+  }
   let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
   let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
   console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
@@ -388,6 +398,8 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -444,6 +456,8 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -482,16 +496,20 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   let size: image.Size = { width: 720, height: 720 };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-  let asset = await fetchResult.getFirstObject();
-  console.info('asset displayName = ', asset.displayName);
-  asset.getThumbnail(size, (err, pixelMap) => {
-    if (err === undefined) {
-      console.info('getThumbnail successful ' + pixelMap);
-    } else {
-      console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
-    }
-  });
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset = await fetchResult.getFirstObject();
+    console.info('asset displayName = ', asset.displayName);
+    asset.getThumbnail(size, (err, pixelMap) => {
+      if (err === undefined) {
+        console.info('getThumbnail successful ' + pixelMap);
+      } else {
+        console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
+      }
+    });
+  } catch (error) {
+    console.error(`Error fetching assets: ${error.message}`);
+  }
 }
 ```
 
@@ -502,6 +520,8 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 获取文件的缩略图，传入缩略图尺寸，使用promise方式返回异步结果。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -562,7 +582,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 clone(title: string): Promise&lt;PhotoAsset&gt;
 
-克隆资产。可设置文件名，但不支持修改文件类型。
+克隆资产，可设置文件名，但不支持修改文件类型。使用promise异步回调。
 
 **需要权限**：ohos.permission.WRITE\_IMAGEVIDEO
 
@@ -572,7 +592,7 @@ clone(title: string): Promise&lt;PhotoAsset&gt;
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。<br>- 不允许出现非法字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
+| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
 
 **返回值：**
 
@@ -620,13 +640,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
-以只读方式打开当前文件，使用callback方式返回异步结果。
+以只读方式打开当前文件。使用callback异步回调。
+
+使用完毕后调用close释放文件描述符。
 
 > **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。出于安全考量，不再提供获取正式媒体文件句柄的接口。
-
-**注意**：使用完毕后调用close释放文件描述符。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -642,14 +662,14 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-在API 13及之前的版本，无相关权限返回错误码13900012；从API 14开始，无相关权限返回错误码201。
+在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
-| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
+| 14000011       | System inner fail.        |
 
 **示例：**
 
@@ -683,13 +703,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFd(): Promise&lt;number&gt;
 
-以只读方式打开当前文件，使用promise方式返回异步结果。
+以只读方式打开当前文件。使用promise异步回调。
+
+返回的文件描述符在使用完毕后需要调用close进行释放。
 
 > **说明：**
 >
 > 从API version 10开始支持，从API version 11开始废弃。出于安全考量，不再提供获取正式媒体文件句柄的接口。
-
-**注意**：返回的文件描述符在使用完毕后需要调用close进行释放。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -705,14 +725,14 @@ getReadOnlyFd(): Promise&lt;number&gt;
 
 接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-在API 13及之前的版本，无相关权限返回错误码13900012；从API 14开始，无相关权限返回错误码201。
+在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
-| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
+| 14000011       | System inner fail.        |
 
 **示例：**
 
@@ -732,6 +752,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
     let fd: number = await photoAsset.getReadOnlyFd();
     if (fd !== undefined) {
       console.info('File fd' + fd);

@@ -1,5 +1,12 @@
 # @ohos.net.networkSecurity (Network Security)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **networkSecurity** module provides the network security verification capability. Specifically, it provides APIs for applications to verify the certificates in use.
 
 > **NOTE**
@@ -16,6 +23,7 @@ import { networkSecurity } from '@kit.NetworkKit';
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -60,17 +68,17 @@ Defines the certificate data.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name | Type                  | Mandatory     | Description          |
-| ----- | --------------------- | --------- | -------------- |
-| type  | CertType              | Yes     | Certificate type. |
-| data  | string \| ArrayBuffer | Yes      | Certificate data.     |
+| Name | Type                  | Read-Only     |Optional| Description          |
+| ----- | --------------------- | --------- | ----|---------- |
+| type  | CertType              | No   |No|Certificate type. |
+| data  | string \| ArrayBuffer | No   | No|Certificate data.     |
 
 
 ## networkSecurity.certVerification
 
 certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application.
+Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -88,6 +96,8 @@ Obtains the preset CA certificate and custom CA certificate from the certificate
 | Promise\<number\> | Promise used to return the result. The value **0** indicates that the certificate verification is successful, and a non-0 value indicates that the verification has failed.|
 
 **Error codes**
+
+For details about the error codes, see [Network Security Error Codes](errorcode-net-networkSecurity.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
@@ -112,7 +122,7 @@ Obtains the preset CA certificate and custom CA certificate from the certificate
 
 > **NOTE**
 > 
-> If any of the preceding error codes is reported during certificate verification, rectify the error based on the detailed information about the error description.
+> The preceding error codes indicate errors that may occur during certificate verification.
 
 **Example**
 
@@ -150,7 +160,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application.
+Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -168,6 +178,8 @@ Obtains the preset CA certificate and custom CA certificate from the certificate
 | number | Certificate verification result. The value **0** indicates that the certificate verification is successful, and a non-0 value indicates that the verification has failed.|
 
 **Error codes**
+
+For details about the error codes, see [Network Security Error Codes](errorcode-net-networkSecurity.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
@@ -192,7 +204,7 @@ Obtains the preset CA certificate and custom CA certificate from the certificate
 
 > **NOTE**
 >
-> If any of the preceding error codes is reported during certificate verification, rectify the error based on the detailed information about the error description.
+> The preceding error codes indicate errors that may occur during certificate verification.
 
 **Example**
 
@@ -247,6 +259,8 @@ Checks whether plaintext HTTP access is allowed from the preset **network_config
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission denied.                                  |
@@ -288,6 +302,8 @@ Checks whether host name–based plaintext HTTP access is allowed from the prese
 | boolean | Boolean value indicating whether host name–based plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite. The default value is **true**.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |

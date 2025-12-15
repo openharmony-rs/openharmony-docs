@@ -1,5 +1,16 @@
 # OH_Huks_PubKeyInfo
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
+```c
+struct OH_Huks_PubKeyInfo {...}
+```
+
 ## 概述
 
 定义公钥信息的结构体类型。

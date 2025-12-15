@@ -1,4 +1,14 @@
 # OH_RDB_TransOptions
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_RDB_TransOptions OH_RDB_TransOptions
+```
 
 ## Overview
 

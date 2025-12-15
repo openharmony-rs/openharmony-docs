@@ -1,8 +1,18 @@
 # OhosPixelMapCreateOps
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+struct OhosPixelMapCreateOps {...}
+```
 
 ## Overview
 
-The OhosPixelMapCreateOps struct describes the options used for creating a PixelMap.
+The struct describes the options used for creating a PixelMap.
 
 **Since**: 10
 

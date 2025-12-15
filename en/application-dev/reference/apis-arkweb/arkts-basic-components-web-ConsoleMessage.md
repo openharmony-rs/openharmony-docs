@@ -1,4 +1,10 @@
 # Class (ConsoleMessage)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **ConsoleMessage** object. For details about the sample code, see [onConsole](./arkts-basic-components-web-events.md#onconsole).
 
@@ -21,6 +27,15 @@ Constructs a **ConsoleMessage** object.
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [constructor](#constructor9) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type                                     | Mandatory| Description                              |
+| --------- | ----------------------------------------- | ---- | ---------------------------------- |
+| message | string | Yes  | Log output information of **ConsoleMessage**.|
+| sourceId | string | Yes  | Path and name of the web page source file.|
+| lineNumber | number | Yes  | Line number of **ConsoleMessage**.|
+| messageLevel | [MessageLevel](./arkts-basic-components-web-e.md#messagelevel) | Yes  | Log level of **ConsoleMessage**.|
 
 ## constructor<sup>9+</sup>
 
@@ -85,3 +100,17 @@ Obtains the path and name of the web page source file.
 | Type    | Description           |
 | ------ | ------------- |
 | string | Path and name of the web page source file.|
+
+## getSource<sup>23+</sup>
+
+getSource(): ConsoleMessageSource
+
+Obtains the log source of this console message.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type    | Description           |
+| ------ | ------------- |
+| [ConsoleMessageSource](./arkts-basic-components-web-e.md#consolemessagesource23) | Log source of the console message.|

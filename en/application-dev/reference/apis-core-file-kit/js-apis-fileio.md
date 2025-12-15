@@ -1,4 +1,10 @@
 # @ohos.fileio (File Management)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 The **FileIO** module provides APIs for file storage and management, including basic file management, directory management, file information statistics, and stream read and write.
 
@@ -55,7 +61,7 @@ Obtains file information. This API uses a promise to return the result.
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;[Stat](#stat)&gt; | Promise used to return the file information obtained.|
+  | Promise&lt;[Stat](#stat)&gt; | Promise that returns the file information obtained.|
 
 **Example**
 
@@ -154,7 +160,7 @@ Opens a directory. This API uses a promise to return the result.
 
   | Type                        | Description      |
   | -------------------------- | -------- |
-  | Promise&lt;[Dir](#dir)&gt; | Promise used to return the **Dir** object opened.|
+  | Promise&lt;[Dir](#dir)&gt; | Promise that returns the **Dir** object opened.|
 
 **Example**
 
@@ -652,7 +658,7 @@ Opens a file. This API uses a promise to return the result.
 
   | Type                   | Description         |
   | --------------------- | ----------- |
-  | Promise&lt;number&gt; | Promise used to return the file descriptor of the file opened.|
+  | Promise&lt;number&gt; | Promise that returns the file descriptor of the file opened.|
 
 **Example**
 
@@ -725,30 +731,6 @@ Opens a file. This API returns the result synchronously.
   | ------ | ----------- |
   | number | File descriptor of the file opened.|
 
-**Example**
-
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let fd = fileio.openSync(filePath, 0o102, 0o640);
-  ```
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let fd = fileio.openSync(filePath, 0o102, 0o666);
-  fileio.writeSync(fd, 'hello world');
-  let fd1 = fileio.openSync(filePath, 0o2002);
-  fileio.writeSync(fd1, 'hello world');
-  class Option {
-    offset: number = 0;
-    length: number = 4096;
-    position: number = 0;
-  }
-  let option = new Option();
-  option.position = 0;
-  let buf = new ArrayBuffer(4096)
-  let num = fileio.readSync(fd1, buf, option);
-  console.info("num == " + num);
-  ```
-
 
 ## fileio.read
 
@@ -774,25 +756,7 @@ Reads data from a file. This API uses a promise to return the result.
 
   | Type                                | Description    |
   | ---------------------------------- | ------ |
-  | Promise&lt;[ReadOut](#readout)&gt; | Promise used to return the data read.|
-
-**Example**
-
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  import buffer from '@ohos.buffer';
-  let filePath = pathDir + "/test.txt";
-  let fd = fileio.openSync(filePath, 0o102, 0o640);
-  let arrayBuffer = new ArrayBuffer(4096);
-  fileio.read(fd, arrayBuffer).then((readResult: fileio.ReadOut) => {
-    console.info("Read file data successfully");
-    let buf = buffer.from(arrayBuffer, 0, readResult.bytesRead);
-    console.log(`The content of file: ${buf.toString()}`);
-    fileio.closeSync(fd);
-  }).catch((err: BusinessError) => {
-    console.error("read file data failed with error:" + err);
-  });
-  ```
+  | Promise&lt;[ReadOut](#readout)&gt; | Promise that returns the data read.|
 
 
 ## fileio.read
@@ -815,24 +779,6 @@ Reads data from a file. This API uses an asynchronous callback to return the res
   | buffer   | ArrayBuffer                              | Yes   | Buffer used to store the file data read.                       |
   | options  | Object                                   | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
   | callback | AsyncCallback&lt;[ReadOut](#readout)&gt; | Yes   | Callback invoked when the data is read asynchronously.                            |
-
-**Example**
-
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  import buffer from '@ohos.buffer';
-  let filePath = pathDir + "/test.txt";
-  let fd = fileio.openSync(filePath, 0o102, 0o640);
-  let arrayBuffer = new ArrayBuffer(4096);
-  fileio.read(fd, arrayBuffer, (err: BusinessError, readResult: fileio.ReadOut) => {
-    if (readResult) {
-      console.info("Read file data successfully");
-      let buf = buffer.from(arrayBuffer, 0, readResult.bytesRead);
-      console.info(`The content of file: ${buf.toString()}`);
-    }
-    fileio.closeSync(fd);
-  });
-  ```
 
 
 ## fileio.readSync
@@ -1082,7 +1028,7 @@ Writes data into a file. This API uses a promise to return the result.
 
   | Type                   | Description      |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise used to return the length of the data written.|
+  | Promise&lt;number&gt; | Promise that returns the length of the data written.|
 
 **Example**
 
@@ -1191,7 +1137,7 @@ Calculates the hash value of a file. This API uses a promise to return the resul
 
   | Type                   | Description                        |
   | --------------------- | -------------------------- |
-  | Promise&lt;string&gt; | Promise used to return the hash value. The hash value is a hexadecimal string consisting of digits and uppercase letters.|
+  | Promise&lt;string&gt; | Promise that returns the hash value. The hash value is a hexadecimal string consisting of digits and uppercase letters.|
 
 **Example**
 
@@ -1357,7 +1303,7 @@ Obtains file status based on the file descriptor. This API uses a promise to ret
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;[Stat](#stat)&gt; | Promise used to return the detailed file status obtained.|
+  | Promise&lt;[Stat](#stat)&gt; | Promise that returns the detailed file status obtained.|
 
 **Example**
 
@@ -1660,7 +1606,7 @@ Reads the text content of a file. This API uses a promise to return the result.
 
   | Type                   | Description        |
   | --------------------- | ---------- |
-  | Promise&lt;string&gt; | Promise used to return the file content read.|
+  | Promise&lt;string&gt; | Promise that returns the file content read.|
 
 **Example**
 
@@ -1777,7 +1723,7 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;[Stat](#stat)&gt; | Promise used to return the symbolic link information obtained. For details, see **stat**.|
+  | Promise&lt;[Stat](#stat)&gt; | Promise that returns the symbolic link information obtained. For details, see **stat**.|
 
 **Example**
 
@@ -2006,7 +1952,7 @@ Synchronizes a file. This API uses an asynchronous callback to return the result
   | Name     | Type                       | Mandatory  | Description             |
   | -------- | ------------------------- | ---- | --------------- |
   | fd       | number                    | Yes   | File descriptor of the file to synchronize.   |
-  | Callback | AsyncCallback&lt;void&gt; | Yes   | Callback invoked when the file is synchronized in asynchronous mode.|
+  | callback | AsyncCallback&lt;void&gt; | Yes   | Callback invoked when the file is synchronized in asynchronous mode.|
 
 **Example**
 
@@ -2365,7 +2311,7 @@ Creates a temporary directory. This API uses a promise to return the result.
 
   | Type                  | Description        |
   | --------------------- | ---------- |
-  | Promise&lt;string&gt; | Promise used to return the directory created.|
+  | Promise&lt;string&gt; | Promise that returns the directory created.|
 
 **Example**
 
@@ -2564,7 +2510,7 @@ Creates a stream based on the file path. This API uses a promise to return the r
 
   | Type                               | Description       |
   | --------------------------------- | --------- |
-  | Promise&lt;[Stream](#stream)&gt; | Promise used to return the stream opened.|
+  | Promise&lt;[Stream](#stream)&gt; | Promise that returns the stream opened.|
 
 **Example**
 
@@ -2666,7 +2612,7 @@ Opens a stream based on the file descriptor. This API uses a promise to return t
 
   | Type                              | Description       |
   | --------------------------------- | --------- |
-  | Promise&lt;[Stream](#stream)&gt; | Promise used to return the stream opened.|
+  | Promise&lt;[Stream](#stream)&gt; | Promise that returns the stream opened.|
 
 **Example**
 
@@ -2961,13 +2907,17 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 
 Listens for file or directory changes. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API is deprecated since API version 10.
+
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Parameters**
 
 | Name  | Type                             | Mandatory| Description                                                        |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| filePath | string                            | Yes  | Application sandbox path of the file.                                  |
+| filename | string                            | Yes  | Application sandbox path of the file.                                  |
 | events   | number                            | Yes  | - **1**: The file or directory is renamed.<br>- **2**: The file or directory is modified.<br>- **3**: The file or directory is modified and renamed.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Called each time a change is detected.                            |
 
@@ -2975,7 +2925,7 @@ Listens for file or directory changes. This API uses an asynchronous callback to
 
   | Type                 | Description        |
   | -------------------- | ---------- |
-  | [Watcher](#watcher7) | Promise used to return the result.|
+  | [Watcher](#watcher7) | Promise that returns the file change.|
 
 **Example**
 
@@ -3218,12 +3168,19 @@ Checks whether this file is a symbolic link.
 
 Listens for file change. You can call the **Watcher.stop()** method synchronously or asynchronously to stop the listening.
 
+> **NOTE**
+>
+> This API is deprecated since API version 10.
 
 ### stop<sup>7+</sup>
 
 stop(): Promise&lt;void&gt;
 
 Stops the **watcher** instance. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is deprecated since API version 10.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3245,6 +3202,10 @@ Stops the **watcher** instance. This API uses a promise to return the result.
 stop(callback: AsyncCallback&lt;void&gt;): void
 
 Stops the **watcher** instance. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is deprecated since API version 10.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3291,7 +3252,7 @@ Closes the file stream. This API uses a promise to return the result.
 
   | Type                 | Description           |
   | ------------------- | ------------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns the file stream closed.|
 
 **Example**
 
@@ -3374,7 +3335,7 @@ Flushes the file stream. This API uses a promise to return the result.
 
   | Type                 | Description           |
   | ------------------- | ------------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns the file stream flushed.|
 
 **Example**
 
@@ -3464,7 +3425,7 @@ Writes data to a stream file. This API uses a promise to return the result.
 
   | Type                   | Description      |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise used to return the length of the data written.|
+  | Promise&lt;number&gt; | Promise that returns the length of the data written.|
 
 **Example**
 
@@ -3602,7 +3563,7 @@ Reads data from a stream file. This API uses a promise to return the result.
 
   | Type                                | Description    |
   | ---------------------------------- | ------ |
-  | Promise&lt;[ReadOut](#readout)&gt; | Promise used to return the data read.|
+  | Promise&lt;[ReadOut](#readout)&gt; | Promise that returns the data read.|
 
 **Example**
 
@@ -3746,7 +3707,7 @@ Reads the next directory entry. This API uses a promise to return the result.
 
   | Type                              | Description           |
   | -------------------------------- | ------------- |
-  | Promise&lt;[Dirent](#dirent)&gt; | Promise used to return the result.|
+  | Promise&lt;[Dirent](#dirent)&gt; | Promise that returns the next directory entry.|
 
 **Example**
 

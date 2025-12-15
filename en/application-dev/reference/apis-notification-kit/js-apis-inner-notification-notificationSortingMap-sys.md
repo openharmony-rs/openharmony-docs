@@ -1,4 +1,10 @@
 # NotificationSortingMap (System API)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationSortingMap** module provides APIs for defining the sorting information of active notifications in all subscribed notifications.
 
@@ -8,13 +14,13 @@ The **NotificationSortingMap** module provides APIs for defining the sorting inf
 >
 > The APIs provided by this module are system APIs.
 
-## Attributes
+## Properties
 
 **System capability**: SystemCapability.Notification.Notification
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
-| Name       | Type    | Read Only| Mandatory| Description                                      |
+| Name       | Type    | Read Only| Optional| Description                                      |
 | ----------- | ------- | --- | ----- |------------------------------------------ |
-| sortings    | Record<string, [NotificationSorting](js-apis-inner-notification-notificationSorting-sys.md)\> | Yes| Yes | Array of notification sorting information.                                  |
-| sortedHashCode | Array<string\> | Yes| Yes | Hash codes for notification sorting.|
+| sortings    | Record<string, [NotificationSorting](js-apis-inner-notification-notificationSorting-sys.md)\> | Yes| No | Array of notification sorting information.                                  |
+| sortedHashCode | Array<string\> | Yes| No | Hash codes for notification sorting.|

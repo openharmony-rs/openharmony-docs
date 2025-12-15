@@ -1,5 +1,12 @@
 # Universal Keystore Kit简介
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
 Universal Keystore Kit（密钥管理服务，下述简称为HUKS）向业务/应用提供各类密钥的统一安全操作能力，包括密钥管理（密钥生成/销毁、密钥导入、密钥证明、密钥协商、密钥派生）及密钥使用（加密/解密、签名/验签、访问控制）等功能。
 
 HUKS管理的密钥可以由业务/应用导入或调用HUKS的接口生成。同时，HUKS提供了密钥访问控制能力，确保存储在HUKS中的密钥被合法正确的访问。
@@ -13,8 +20,10 @@ HUKS管理的密钥可以由业务/应用导入或调用HUKS的接口生成。�
 - HUKS服务层：实现密钥会话管理及存储管理。
 
 - HUKS核心层：承载HUKS的核心功能，包括密钥的密码学运算、明文密钥的加解密、密钥访问控制等。
+
   > **说明：**
-  > 对于具备安全环境（如[TEE](huks-concepts.md)、安全芯片）的系统/设备，HUKS核心层必须运行在安全环境内。由于安全环境依赖硬件支持，在开源仓中仅为模拟实现，需OEM厂商适配。
+  >
+  > 对于具备安全环境（如[TEE](huks-concepts.md)）的系统、设备，HUKS核心层必须运行在安全环境内。<!--Del-->由于安全环境依赖硬件支持，在开源仓中仅为模拟实现，需OEM厂商适配。<!--DelEnd-->
 
 ![zh-cn_image_0000001736030930](figures/zh-cn_image_0000001736030930.png)
 

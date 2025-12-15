@@ -1,4 +1,10 @@
 # @ohos.zlib (Zip模块)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供压缩解压缩文件的能力。
 
@@ -15,7 +21,7 @@ import { zlib } from '@kit.BasicServicesKit';
 ## zlib.zipFile<sup>(deprecated)</sup>
 zipFile(inFile: string, outFile: string, options: Options): Promise&lt;void&gt;
 
-压缩接口，压缩完成后返回执行结果，使用Promise异步返回。
+压缩接口，压缩完成后返回执行结果，使用Promise异步回调。
 
 > **说明：**
 >
@@ -40,11 +46,11 @@ zipFile(inFile: string, outFile: string, options: Options): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/haps,也可以通过context获取。
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/xxx/filename.xxx';
-let outFile = '/xxx/xxx.zip';
+let inFile = '/data/storage/el2/base/temp/filename.xxx';
+let outFile = '/data/storage/el2/base/temp/xxx.zip';
 let options: zlib.Options = {
   level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
   memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
@@ -62,13 +68,13 @@ zlib.zipFile(inFile, outFile, options).then((data: void) => {
 
 unzipFile(inFile:string, outFile:string, options: Options): Promise&lt;void&gt;
 
-解压文件，解压完成后返回执行结果，使用Promise异步返回。
+解压文件，解压完成后返回执行结果，使用Promise异步回调。
 
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.decompressFile](#zlibdecompressfile9)。
 >
-> 传入的压缩包内部文件或者文件夹名称不能包含“..”，否则会返回-1错误码。
+> 传入的压缩包内部文件或者文件夹名称不能包含“../”，否则会返回-1错误码。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -89,11 +95,11 @@ unzipFile(inFile:string, outFile:string, options: Options): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/haps,也可以通过context获取。
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/xx/xxx.zip';
-let outFile = '/xxx';
+let inFile = '/data/storage/el2/base/temp/xxx.zip';
+let outFile = '/data/storage/el2/base/temp/xxx';
 let options: zlib.Options = {
   level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
   memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
@@ -143,11 +149,11 @@ compressFile(inFile: string, outFile: string, options: Options, callback: AsyncC
 **示例：**
 
 ```ts
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/haps,也可以通过context获取。
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/xxx/filename.xxx';
-let outFile = '/xxx/xxx.zip';
+let inFile = '/data/storage/el2/base/temp/filename.xxx';
+let outFile = '/data/storage/el2/base/temp/xxx.zip';
 let options: zlib.Options = {
   level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
   memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
@@ -173,7 +179,7 @@ try {
 
 compressFile(inFile: string, outFile: string, options: Options): Promise\<void>
 
-压缩文件，压缩的结果，使用Promise异步返回。成功时返回null，失败时返回错误码。
+压缩文件，压缩的结果，使用Promise异步回调。成功时返回null，失败时返回错误码。
 
 > **说明：**
 >
@@ -210,11 +216,11 @@ compressFile(inFile: string, outFile: string, options: Options): Promise\<void>
 **示例：**
 
 ```ts
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/haps,也可以通过context获取。
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/xxx/filename.xxx';
-let outFile = '/xxx/xxx.zip';
+let inFile = '/data/storage/el2/base/temp/filename.xxx';
+let outFile = '/data/storage/el2/base/temp/xxx.zip';
 let options: zlib.Options = {
   level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
   memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
@@ -244,7 +250,7 @@ decompressFile(inFile: string, outFile: string, options: Options, callback: Asyn
 >
 > 为了避免路径穿越，从API version 13开始，inFile和outFile传入的参数不允许包含“../”，否则会返回900001、900002错误码。
 >
-> 传入的压缩包内部文件或者文件夹名称不能包含“..”，否则会返回900003错误码。
+> 传入的压缩包内部文件或者文件夹名称不能包含“../”，否则会返回900003错误码。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -273,11 +279,11 @@ decompressFile(inFile: string, outFile: string, options: Options, callback: Asyn
 **示例：**
 
 ```ts
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/haps,也可以通过context获取。
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/xx/xxx.zip';
-let outFileDir = '/xxx';
+let inFile = '/data/storage/el2/base/temp/xxx.zip';
+let outFileDir = '/data/storage/el2/base/temp';
 let options: zlib.Options = {
   level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
   parallel: zlib.ParallelStrategy.PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION
@@ -302,13 +308,13 @@ try {
 
 decompressFile(inFile: string, outFile: string, options?: Options): Promise\<void>
 
-解压文件，解压的结果，使用Promise异步返回，成功时返回null，失败时返回错误码。
+解压文件，解压的结果，使用Promise异步回调，成功时返回null，失败时返回错误码。
 
 > **说明：**
 >
 > 为了避免路径穿越，从API version 13开始，inFile和outFile传入的参数不允许包含“../”，否则会返回900001、900002错误码。
 >
-> 传入的压缩包内部文件或者文件夹名称不能包含“..”，否则会返回900003错误码。
+> 传入的压缩包内部文件或者文件夹名称不能包含“../”，否则会返回900003错误码。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -342,11 +348,11 @@ decompressFile(inFile: string, outFile: string, options?: Options): Promise\<voi
 **示例：**
 
 ```ts
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/haps,也可以通过context获取。
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/xx/xxx.zip';
-let outFileDir = '/xxx';
+let inFile = '/data/storage/el2/base/temp/xxx.zip';
+let outFileDir = '/data/storage/el2/base/temp';
 let options: zlib.Options = {
   level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
 };
@@ -374,7 +380,7 @@ decompressFile(inFile: string, outFile: string, callback: AsyncCallback\<void\>)
 >
 > 为了避免路径穿越，从API version 13开始，inFile和outFile传入的参数不允许包含“../”，否则会返回900001、900002错误码。
 >
-> 传入的压缩包内部文件或者文件夹名称不能包含“..”，否则会返回900003错误码。
+> 传入的压缩包内部文件或者文件夹名称不能包含“../”，否则会返回900003错误码。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -402,11 +408,11 @@ decompressFile(inFile: string, outFile: string, callback: AsyncCallback\<void\>)
 **示例：**
 
 ```ts
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/haps,也可以通过context获取。
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/xx/xxx.zip';
-let outFileDir = '/xxx';
+let inFile = '/data/storage/el2/base/temp/xxx.zip';
+let outFileDir = '/data/storage/el2/base/temp';
 
 try {
   zlib.decompressFile(inFile, outFileDir, (errData: BusinessError) => {
@@ -427,7 +433,7 @@ try {
 
 getOriginalSize(compressedFile: string): Promise\<number>
 
-获取压缩文件的原始大小，使用Promise异步返回。成功时返回压缩文件的原始大小，失败时返回错误码。
+获取压缩文件的原始大小，使用Promise异步回调。成功时返回压缩文件的原始大小，失败时返回错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -480,7 +486,7 @@ try {
 
 compressFiles(inFiles: Array&lt;string&gt;, outFile: string, options: Options): Promise&lt;void&gt;
 
-压缩指定的多个文件，使用Promise异步返回。成功时返回null，失败时返回错误码。
+压缩指定的多个文件，使用Promise异步回调。成功时返回null，失败时返回错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -516,9 +522,9 @@ compressFiles(inFiles: Array&lt;string&gt;, outFile: string, options: Options): 
 // 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp，也可以通过context获取。
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/xxx/filename.xxx';
-let pathDir = '';
-let outFile = '/xxx/xxx.zip';
+let inFile = '/data/storage/el2/base/temp/filename.xxx';
+let pathDir = 'data/storage/el2/base/temp/xxx';
+let outFile = '/data/storage/el2/base/temp/xxx.zip';
 let options: zlib.Options = {
   level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
   memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
@@ -526,7 +532,7 @@ let options: zlib.Options = {
 };
 
 try {
-  zlib.compressFiles([inFile, pathDir, pathDir], outFile, options).then((data: void) => {
+  zlib.compressFiles([inFile, pathDir], outFile, options).then((data: void) => {
     console.info('compressFiles success. data: ' + JSON.stringify(data));
   }).catch((errData: BusinessError) => {
     console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
@@ -542,7 +548,7 @@ try {
 
 createChecksum(): Promise&lt;Checksum&gt;
 
-创建校验对象，使用Promise异步返回。成功时返回Checksum对象实例。
+创建校验对象，使用Promise异步回调。成功时返回Checksum对象实例。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -596,7 +602,7 @@ let checksum = zlib.createChecksumSync()
 
 adler32(adler: number, buf: ArrayBuffer): Promise&lt;number&gt;
 
-计算Adler-32校验和，使用Promise异步返回。成功时返回计算后的Adler-32校验和，失败时返回错误码。
+计算Adler-32校验和，使用Promise异步回调。成功时返回计算后的Adler-32校验和，失败时返回错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -647,7 +653,7 @@ checksum.adler32(0, arrayBufferIn).then(data => {
 
 adler32Combine(adler1: number, adler2: number, len2: number): Promise&lt;number&gt;
 
-将两个Adler-32校验和合并，使用Promise异步返回。成功时返回合并后的Adler-32校验和，失败时返回错误码。
+将两个Adler-32校验和合并，使用Promise异步回调。成功时返回合并后的Adler-32校验和，失败时返回错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -710,7 +716,7 @@ async function demo() {
 
 crc32(crc: number, buf: ArrayBuffer): Promise&lt;number&gt;
 
-更新CRC-32校验，使用Promise异步返回。成功时返回更新后的CRC-32校验，失败时返回错误码。
+更新CRC-32校验，使用Promise异步回调。成功时返回更新后的CRC-32校验，失败时返回错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -763,7 +769,7 @@ checksum.crc32(0, arrayBufferIn).then((data) => {
 
 crc32Combine(crc1: number, crc2: number, len2: number): Promise&lt;number&gt;
 
-将两个CRC-32校验合并，使用Promise异步返回。成功时返回合并后的CRC-32校验，失败时返回错误码。
+将两个CRC-32校验合并，使用Promise异步回调。成功时返回合并后的CRC-32校验，失败时返回错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -826,7 +832,7 @@ async function demo() {
 
 crc64(crc: number, buf: ArrayBuffer): Promise&lt;number&gt;
 
-更新CRC-64校验，使用Promise异步返回。成功时返回更新后的CRC-64校验，失败时返回错误码。
+更新CRC-64校验，使用Promise异步回调。成功时返回更新后的CRC-64校验，失败时返回错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -879,7 +885,7 @@ checksum.crc64(0, arrayBufferIn).then((data) => {
 
 getCrcTable(): Promise&lt;Array&lt;number&gt;&gt;
 
-输出CRC-32校验表，使用Promise异步返回。成功时返回CRC-32校验表。
+输出CRC-32校验表，使用Promise异步回调。成功时返回CRC-32校验表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -909,7 +915,7 @@ checksum.getCrcTable().then((data) => {
 
 getCrc64Table(): Promise&lt;Array&lt;number&gt;&gt;
 
-输出CRC-64校验表，使用Promise异步返回。成功时返回CRC-64校验表。
+输出CRC-64校验表，使用Promise异步回调。成功时返回CRC-64校验表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -939,7 +945,7 @@ checksum.getCrc64Table().then((data) => {
 
 createZip(): Promise&lt;Zip&gt;
 
-创建压缩解压缩对象实例，使用Promise异步返回，成功时返回压缩解压缩对象实例。
+创建压缩解压缩对象实例，使用Promise异步回调，成功时返回压缩解压缩对象实例。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -955,8 +961,6 @@ createZip(): Promise&lt;Zip&gt;
 
 ```ts
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
-
-let zip = zlib.createZipSync();
 
 zlib.createZip().then(data => {
   console.info('createZip success');
@@ -997,7 +1001,7 @@ let zip = zlib.createZipSync();
 
 getZStream(): Promise&lt;ZStream&gt;
 
-输出流，使用Promise异步返回。
+输出流，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1025,7 +1029,7 @@ zip.getZStream().then(data => {
 
 zlibVersion(): Promise&lt;string&gt;
 
-获取当前链接的zlib库的版本信息，使用Promise异步返回。成功时返回当前zlib库的版本信息。
+获取当前链接的zlib库的版本信息，使用Promise异步回调。成功时返回当前zlib库的版本信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1053,7 +1057,7 @@ zip.zlibVersion().then((data) => {
 
 zlibCompileFlags(): Promise&lt;number&gt;
 
-返回指示编译时选项的标志，使用Promise异步返回。成功时返回指示编译时选项的标志。
+返回指示编译时选项的标志，使用Promise异步回调。成功时返回指示编译时选项的标志。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1081,7 +1085,7 @@ zip.zlibCompileFlags().then((data) => {
 
 compress(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&lt;ZipOutputInfo&gt;
 
-将源缓冲区压缩到目标缓冲区，使用Promise异步返回。成功时返回结果状态和目标缓冲区的总大小。
+将源缓冲区压缩到目标缓冲区，使用Promise异步回调。成功时返回结果状态和目标缓冲区的总大小。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1137,7 +1141,7 @@ zip.compress(arrayBufferOut, arrayBufferIn, 20).then((data) => {
 
 compress2(dest: ArrayBuffer, source: ArrayBuffer, level: CompressLevel, sourceLen?: number): Promise&lt;ZipOutputInfo&gt;
 
-将源缓冲区压缩到目标缓冲区，使用Promise异步返回。成功时返回结果状态和目标缓冲区的总大小。
+将源缓冲区压缩到目标缓冲区，使用Promise异步回调。成功时返回结果状态和目标缓冲区的总大小。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1195,7 +1199,7 @@ zip.compress2(arrayBufferOut, arrayBufferIn, zlib.CompressLevel.COMPRESS_LEVEL_B
 
 uncompress(dest:ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&lt;ZipOutputInfo&gt;
 
-将压缩后的数据解压缩为原始的未压缩形式，使用Promise异步返回。成功时返回结果状态和目标缓冲区的总大小。
+将压缩后的数据解压缩为原始的未压缩形式，使用Promise异步回调。成功时返回结果状态和目标缓冲区的总大小。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1256,7 +1260,7 @@ async function demo() {
 
 uncompress2(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&lt;DecompressionOutputInfo&gt;
 
-将压缩后的数据解压缩为原始的未压缩形式，使用Promise异步返回。成功时返回结果状态、目标缓冲区的总大小和源数据长度。
+将压缩后的数据解压缩为原始的未压缩形式，使用Promise异步回调。成功时返回结果状态、目标缓冲区的总大小和源数据长度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1317,7 +1321,7 @@ async function demo() {
 
 compressBound(sourceLen: number): Promise&lt;number&gt;
 
-计算返回压缩大小的上限，使用Promise异步返回。成功时返回压缩大小的上限。
+计算返回压缩大小的上限，使用Promise异步回调。成功时返回压缩大小的上限。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1369,7 +1373,7 @@ zip.compressBound(str.length).then((data) => {
 
 inflateValidate(strm: ZStream, check: number): Promise&lt;ReturnStatus&gt;
 
-验证压缩流结构内部的校验和，使用Promise异步返回。成功时返回结果状态。
+验证压缩流结构内部的校验和，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1429,7 +1433,7 @@ async function demo() {
 
 inflateSyncPoint(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-查找当前解压缩流的同步点，使用Promise异步返回。成功时返回结果状态。
+查找当前解压缩流的同步点，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1488,7 +1492,7 @@ async function demo() {
 
 inflateSync(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-跳过无效的压缩数据，直到找到一个可能的完整刷新点为止，使用Promise异步返回。成功时返回结果状态。
+跳过无效的压缩数据，直到找到一个可能的完整刷新点为止，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1580,7 +1584,7 @@ async function demo() {
 
 inflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-重置解压缩流的状态，以保留分配的霍夫曼解码树和预设字典，使用Promise异步返回。成功时返回结果状态。
+重置解压缩流的状态，以保留分配的霍夫曼解码树和预设字典，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1639,7 +1643,7 @@ async function demo() {
 
 inflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnStatus&gt;
 
-从给定的未压缩字节序列初始化解压缩字典，使用Promise异步返回。成功时返回结果状态。
+使用给定的字典数据初始化当前解压缩流的字典内容，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1737,7 +1741,7 @@ async function demo() {
 
 inflateReset2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
-从给定的未压缩字节序列初始化解压缩字典，使用Promise异步返回。成功时返回结果状态。
+重置指定解压缩流的状态并更新窗口大小配置，以重新开始新的解压操作。不会释放或重新分配内部缓冲区。使用Promise异步回调，成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1797,7 +1801,7 @@ async function demo() {
 
 inflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-这个函数相当于先调用inflateEnd再调用inflateInit，但是并不会释放和重新分配内部解压缩状态，使用Promise异步返回。成功时返回结果状态。
+重置指定解压缩流的状态，使其恢复到初始化状态以重新开始新的解压操作。不会释放或重新分配内部缓冲区。使用Promise异步回调，成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1856,7 +1860,7 @@ async function demo() {
 
 inflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatus&gt;
 
-从给定的未压缩字节序列初始化解压缩字典，使用Promise异步返回。成功时返回结果状态。
+在指定解压缩流中设置初始比特数和比特值，用于在解压流开始时预填充比特缓冲区，以正确处理流起始位置的数据。使用Promise异步回调，成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1867,8 +1871,8 @@ inflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatu
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
-| bits   | number  | 是   | 提供的位。                      |
-| value  | number  | 是   | 提供的值。                      |
+| bits   | number  | 是   | 指定要写入比特缓冲区的比特数。                      |
+| value  | number  | 是   | 用于填充比特缓冲区的比特值。                      |
 
 **返回值：**
 
@@ -1917,7 +1921,7 @@ async function demo() {
 
 inflateMark(strm: ZStream): Promise&lt;number&gt;
 
-用于标记输入数据中的位置以供随机访问，使用Promise异步返回。成功时返回位置信息。
+用于标记输入数据中的位置以供随机访问，使用Promise异步回调。成功时返回位置信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1975,7 +1979,7 @@ async function demo() {
 
 inflateInit2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
-初始化内部流状态以进行解压缩，使用Promise异步返回。成功时返回结果状态。
+初始化解压缩流并设置指定的 windowBits 参数，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2031,7 +2035,7 @@ zip.inflateInit2({ nextIn: arrayBufferIn, availableIn: 1, nextOut: arrayBufferOu
 
 inflateInit(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-初始化内部流状态以进行解压缩，使用Promise异步返回。成功时返回结果状态。
+初始化解压缩流，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2085,7 +2089,7 @@ zip.inflateInit({ nextIn: arrayBufferIn, availableIn: 1, nextOut: arrayBufferOut
 
 inflateGetHeader(strm: ZStream, header: GzHeader): Promise&lt;ReturnStatus&gt;
 
-用于在解压缩数据前设置gzip文件头部信息，使用Promise异步返回。成功时返回结果状态。
+用于在解压缩数据前设置gzip文件头部信息，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2145,7 +2149,7 @@ async function demo() {
 
 inflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;DictionaryOutputInfo&gt;
 
-获取当前解压缩流中使用的解压缩字典内容及其长度，使用Promise异步返回。成功时返回结果状态和字典的长度。
+获取当前解压缩流中使用的解压缩字典内容及其长度，使用Promise异步回调。成功时返回结果状态和字典的长度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2205,7 +2209,7 @@ async function demo() {
 
 inflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-解压流的所有动态分配的数据结构都被释放，使用Promise异步返回。成功时返回结果状态。
+解压流的所有动态分配的数据结构都被释放，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2269,7 +2273,7 @@ async function demo() {
 
 inflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
-复制解压流，使用Promise异步返回。成功时返回结果状态。
+复制解压流，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2316,7 +2320,8 @@ async function demo() {
   }).catch((errData: BusinessError) => {
     console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
   })
-  await zip.inflateCopy(zip).then((data) => {
+  let destZip = zlib.createZipSync();
+  await destZip.inflateCopy(zip).then((data) => {
     console.info('inflateCopy success')
   }).catch((errData: BusinessError) => {
     console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
@@ -2328,7 +2333,7 @@ async function demo() {
 
 inflateCodesUsed(strm: ZStream): Promise&lt;number&gt;
 
-当前解压缩流中使用的霍夫曼编码树的数量，使用Promise异步返回。成功时返回已使用的霍夫曼编码树的数量。
+当前解压缩流中使用的霍夫曼编码树的数量，使用Promise异步回调。成功时返回已使用的霍夫曼编码树的数量。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2386,7 +2391,7 @@ async function demo() {
 
 inflateBackInit(strm: ZStream, windowBits: number, window: ArrayBuffer): Promise&lt;ReturnStatus&gt;
 
-使用inflateBack()函数前初始化内部流状态以进行解压缩，使用Promise异步返回。成功时返回结果状态。
+使用inflateBack()函数前初始化内部流状态以进行解压缩，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2423,7 +2428,7 @@ inflateBackInit(strm: ZStream, windowBits: number, window: ArrayBuffer): Promise
 
 inflateBackEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-inflateBackInit()函数分配的所有内存都被释放，使用Promise异步返回。成功时返回结果状态。
+inflateBackInit()函数分配的所有内存都被释放，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2458,7 +2463,7 @@ inflateBackInit()函数分配的所有内存都被释放，使用Promise异步�
 
 inflateBack(strm: ZStream, backIn: InflateBackInputCallback, inDesc: object, backOut: InflateBackOutputCallback, outDesc: object): Promise&lt;ReturnStatus&gt;
 
-实现原始解压缩，采用回调接口来处理输入和输出，使用Promise异步返回。成功时返回结果状态。
+实现原始解压缩，采用回调接口来处理输入和输出，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2676,7 +2681,7 @@ type InflateBackOutputCallback = (outDesc: object, buf: ArrayBuffer, length: num
 
 inflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
-解压数据，使用Promise异步返回。成功时返回结果状态。
+解压数据，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2763,7 +2768,7 @@ async function demo() {
 
 deflateInit(strm: ZStream, level: CompressLevel): Promise&lt;ReturnStatus&gt;
 
-初始化内部流状态以进行压缩，使用Promise异步返回。成功时返回结果状态。
+初始化压缩流并设置指定压缩级别，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2823,7 +2828,7 @@ async function demo() {
 
 deflateInit2(strm: ZStream, level: CompressLevel, method: CompressMethod, windowBits: number, memLevel: MemLevel, strategy: CompressStrategy): Promise&lt;ReturnStatus&gt;
 
-初始化内部流状态以进行压缩，使用Promise异步返回。成功时返回结果状态。
+初始化压缩流并设置压缩级别、压缩方法、窗口大小、内存级别和压缩策略，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2888,7 +2893,7 @@ async function demo() {
 
 deflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
-压缩数据，使用Promise异步返回。成功时返回结果状态。
+压缩数据，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2954,7 +2959,7 @@ async function demo() {
 
 deflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-压缩流的所有动态分配的数据结构都被释放，使用Promise异步返回。成功时返回结果状态。
+压缩流的所有动态分配的数据结构都被释放，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3023,7 +3028,7 @@ async function demo() {
 
 deflateBound(strm: ZStream, sourceLength: number): Promise&lt;number&gt;
 
-计算压缩大小的上限，使用Promise异步返回。成功时返回压缩大小的上限。
+计算压缩大小的上限，使用Promise异步回调。成功时返回压缩大小的上限。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3087,7 +3092,7 @@ async function demo() {
 
 deflateSetHeader(strm: ZStream, head: GzHeader): Promise&lt;ReturnStatus&gt;
 
-当deflateInit2()请求gzip流时，提供gzip标头信息，使用Promise异步返回。成功时返回结果状态。
+当deflateInit2()请求gzip流时，提供gzip标头信息，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3153,7 +3158,7 @@ async function demo() {
 
 deflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
-复制压缩流，使用Promise异步返回。成功时返回结果状态。
+复制压缩流，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3217,7 +3222,7 @@ async function demo() {
 
 deflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnStatus&gt;
 
-从给定的字节序列初始化压缩字典，使用Promise异步返回。成功时返回结果状态。
+从给定的字节序列初始化压缩字典，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3282,7 +3287,7 @@ async function demo() {
 
 deflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;DictionaryOutputInfo&gt;
 
-获取当前解压缩流中使用的解压缩字典内容及其长度，使用Promise异步返回。成功时返回结果状态和字典的长度。
+获取当前压缩流中使用的解压缩字典内容及其长度，使用Promise异步回调。成功时返回结果状态和字典的长度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3293,7 +3298,7 @@ deflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;Diction
 | 参数名     | 类型        | 必填 | 说明                            |
 | ---------- | ----------- | ---- | ------------------------------- |
 | strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。 |
-| dictionary | ArrayBuffer | 是   | 接收解压缩字典的实际内容。      |
+| dictionary | ArrayBuffer | 是   | 接收压缩字典的实际内容。      |
 
 **返回值：**
 
@@ -3352,7 +3357,7 @@ async function demo() {
 
 deflateTune(strm: ZStream, goodLength: number, maxLazy: number, niceLength: number, maxChain: number): Promise&lt;ReturnStatus&gt;
 
-微调deflate的内部压缩参数，使用Promise异步返回。成功时返回结果状态。
+微调deflate的内部压缩参数，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3420,7 +3425,7 @@ async function demo() {
 
 deflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-这个函数相当于先调用deflateEnd再调用deflateInit，但是并不会释放和重新分配内部解压缩状态，使用Promise异步返回。成功时返回结果状态。
+这个函数相当于先调用deflateEnd再调用deflateInit，但是并不会释放和重新分配内部解压缩状态，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3484,7 +3489,7 @@ async function demo() {
 
 deflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-重置初始化的deflate压缩流，但保留其设置的压缩参数和字典，使用Promise异步返回。成功时返回结果状态。
+重置初始化的deflate压缩流，但保留其设置的压缩参数和字典，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3548,7 +3553,7 @@ async function demo() {
 
 deflatePending(strm: ZStream): Promise&lt;DeflatePendingOutputInfo&gt;
 
-返回已生成但尚未在可用输出中提供的输出的字节数和位数，使用Promise异步返回。成功时返回结果状态、输出位数和输出字节数。
+返回已生成但尚未在可用输出中提供的输出的字节数和位数，使用Promise异步回调。成功时返回结果状态、输出位数和输出字节数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3612,7 +3617,7 @@ async function demo() {
 
 deflateParams(strm: ZStream, level: CompressLevel, strategy: CompressStrategy): Promise&lt;ReturnStatus&gt;
 
-动态更新压缩级别和压缩策略，使用Promise异步返回。成功时返回结果状态。
+动态更新压缩级别和压缩策略，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3678,7 +3683,7 @@ async function demo() {
 
 deflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatus&gt;
 
-在压缩流中插入位和值，使用Promise异步返回。成功时返回结果状态。
+在压缩流中插入位和值，使用Promise异步回调。成功时返回结果状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3742,14 +3747,17 @@ async function demo() {
 
 ## Options
 
+Options用于指定在压缩或解压Zip文件时的选项。
+
 **系统能力：** SystemCapability.BundleManager.Zlib
 
-| 名称     | 类型             | 可读 | 可写 | 说明                                                       |
+| 名称     | 类型             | 只读 | 可选 | 说明                                                       |
 | -------- | ---------------- | ---- | ---------------------------------------------------------- | ---- |
-| level    | [CompressLevel](#compresslevel)     | 是   | 否  | 参考[CompressLevel枚举定义](#compresslevel)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| memLevel | [MemLevel](#memlevel)         | 是   | 否  | 参考[MemLevel枚举定义](#memlevel)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| strategy | [CompressStrategy](#compressstrategy) | 是   | 否  | 参考[CompressStrategy枚举定义](#compressstrategy)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | 是   | 否  | 参考[ParallelStrategy枚举定义](#parallelstrategy18)。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
+| level    | [CompressLevel](#compresslevel)     | 否   | 是  | 压缩或解压时指定的压缩等级。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| memLevel | [MemLevel](#memlevel)         | 否   | 是  | 压缩时指定的使用内存等级。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| strategy | [CompressStrategy](#compressstrategy) | 否   | 是  | 压缩时指定的压缩策略。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | 否   | 是  | 压缩或解压时指定的串行或并行策略。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
+| pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | 否   | 是  | 解压时指定的压缩包内文件路径中分隔符的处理策略。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。        |
 
 ## CompressLevel
 
@@ -3801,6 +3809,19 @@ async function demo() {
 | PARALLEL_STRATEGY_SEQUENTIAL             | 0    | 默认值，串行压缩/解压策略。|
 | PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | 并行解压策略。            |
 
+## PathSeparatorStrategy<sup>21+</sup>
+
+PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.BundleManager.Zlib
+
+| 名称                                      | 值   | 说明                                       |
+| ----------------------------------------- | ---- | ----------------------------------------- |
+| PATH_SEPARATOR_STRATEGY_DEFAULT           | 0    | 默认值，压缩包内文件路径中的分隔符不做处理。    |
+| PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH | 1    | 压缩包内文件路径中的反斜杠'\\'替换为斜杠'/'。|
+
 ## ErrorCode<sup>(deprecated)<sup>
 
 > **说明：**
@@ -3844,15 +3865,18 @@ async function demo() {
 
 ## ReturnStatus<sup>12+</sup>
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 | 名称       | 值   | 说明                                           |
 | ---------- | ---- | ---------------------------------------------- |
-| OK         | 0    | 函数调用成功。                                 |
-| STREAM_END | 1    | 函数调用成功，表示已处理了整个数据。           |
-| NEED_DICT  | 2    | 函数调用成功，表示需要预设字典才能继续解压缩。 |
+| OK         | 0    | 函数调用成功。该接口支持在原子化服务中使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| STREAM_END | 1    | 函数调用成功，表示已处理了整个数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| NEED_DICT  | 2    | 函数调用成功，表示需要预设字典才能继续解压缩。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ERRNO<sup>22+</sup>| -1 | 函数调用失败，表示文件操作错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| STREAM_ERROR<sup>22+</sup>| -2 | 函数调用失败，表示压缩或解压缩流错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| DATA_ERROR<sup>22+</sup>| -3 | 函数调用失败，表示输入数据不正确。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| MEM_ERROR<sup>22+</sup>| -4 | 函数调用失败，表示内存分配失败。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| BUF_ERROR<sup>22+</sup>| -5 | 函数调用失败，表示输入缓冲区不正确。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ## ZStream<sup>12+</sup>
 
@@ -3860,16 +3884,16 @@ async function demo() {
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
-| 名称         | 类型        | 可读 | 可写 | 说明                                                         |
+| 名称         | 类型        | 只读 | 可选 | 说明                                                         |
 | ------------ | ----------- | ---- | ---- | ------------------------------------------------------------ |
-| nextIn       | ArrayBuffer | 是   | 否   | 需要压缩的输入字节。                                           |
-| availableIn  | number      | 是   | 否   | nextIn可用的字节数。                                           |
-| totalIn      | number      | 是   | 否   | 到目前为止读取的输入字节总数。                                 |
-| nextOut      | ArrayBuffer | 是   | 否   | 压缩后的输出字节。                                             |
-| availableOut | number      | 是   | 否   | nextOut的剩余可用字节数。                                      |
-| totalOut     | number      | 是   | 否   | 到目前为止输出字节总数。                                       |
-| dataType     | number      | 是   | 否   | 关于数据类型的最佳猜测：deflate的二进制或文本，或inflate的解码状态。 |
-| adler        | number      | 是   | 否   | 未压缩数据的Adler-32或CRC-32值。                               |
+| nextIn       | ArrayBuffer | 否   | 是   | 需要压缩的输入字节。                                           |
+| availableIn  | number      | 否   | 是   | nextIn可用的字节数。                                           |
+| totalIn      | number      | 否   | 是   | 到目前为止读取的输入字节总数。                                 |
+| nextOut      | ArrayBuffer | 否   | 是   | 压缩后的输出字节。                                             |
+| availableOut | number      | 否   | 是   | nextOut的剩余可用字节数。                                      |
+| totalOut     | number      | 否   | 是   | 到目前为止输出字节总数。                                       |
+| dataType     | number      | 否   | 是   | 关于数据类型的最佳猜测：deflate的二进制或文本，或inflate的解码状态。 |
+| adler        | number      | 否   | 是   | 未压缩数据的Adler-32或CRC-32值。                               |
 
 ## ZipOutputInfo<sup>12+</sup>
 
@@ -3877,10 +3901,10 @@ async function demo() {
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
-| 名称    | 类型         | 可读 | 可写 | 说明                                          |
+| 名称    | 类型         | 只读 | 可选 | 说明                                          |
 | ------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status  | ReturnStatus | 是   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
-| destLen | number       | 是   | 否   | 目标缓冲区的总长度。                          |
+| status  | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| destLen | number       | 否   | 否   | 目标缓冲区的总长度。                          |
 
 ## DictionaryOutputInfo<sup>12+</sup>
 
@@ -3888,10 +3912,10 @@ async function demo() {
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
-| 名称             | 类型         | 可读 | 可写 | 说明                                          |
+| 名称             | 类型         | 只读 | 可选 | 说明                                          |
 | ---------------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status           | ReturnStatus | 是   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
-| dictionaryLength | number       | 是   | 否   | 字典的长度。                                  |
+| status           | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| dictionaryLength | number       | 否   | 否   | 字典的长度。                                  |
 
 ## DecompressionOutputInfo<sup>12+</sup>
 
@@ -3899,11 +3923,11 @@ async function demo() {
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
-| 名称         | 类型         | 可读 | 可写 | 说明                                          |
+| 名称         | 类型         | 只读 | 可选 | 说明                                          |
 | ------------ | ------------ | ---- | ---- | --------------------------------------------- |
-| status       | ReturnStatus | 是   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
-| destLength   | number       | 是   | 否   | 目标缓冲区的长度。                            |
-| sourceLength | number       | 是   | 否   | 源缓冲区的长度。                              |
+| status       | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| destLength   | number       | 否   | 否   | 目标缓冲区的长度。                            |
+| sourceLength | number       | 否   | 否   | 源缓冲区的长度。                              |
 
 ## DeflatePendingOutputInfo<sup>12+</sup>
 
@@ -3911,11 +3935,11 @@ async function demo() {
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
-| 名称    | 类型         | 可读 | 可写 | 说明                                          |
+| 名称    | 类型         | 只读 | 可选 | 说明                                          |
 | ------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status  | ReturnStatus | 是   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
-| pending | number       | 是   | 否   | 已生成的输出字节数。                          |
-| bits    | number       | 是   | 否   | 已生成的输出位数。                            |
+| status  | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| pending | number       | 否   | 否   | 已生成的输出字节数。                          |
+| bits    | number       | 否   | 否   | 已生成的输出位数。                            |
 
 ## GzHeader<sup>12+</sup>
 
@@ -3923,24 +3947,24 @@ async function demo() {
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
-| 名称     | 类型        | 可读 | 可写 | 说明                                 |
+| 名称     | 类型        | 只读 | 可选 | 说明                                 |
 | -------- | ----------- | ---- | ---- | ------------------------------------ |
-| isText   | boolean     | 是   | 否   | 如果压缩数据被认为是文本，则为True。 |
-| os       | number      | 是   | 否   | 操作系统。                           |
-| time     | number      | 是   | 否   | 修改时间。                           |
-| xflags   | number      | 是   | 否   | 额外标志。                           |
-| extra    | ArrayBuffer | 是   | 否   | 额外字段。                           |
-| extraLen | number      | 是   | 否   | 额外字段的长度。                     |
-| name     | ArrayBuffer | 是   | 否   | 文件名。                             |
-| comment  | ArrayBuffer | 是   | 否   | 注释。                               |
-| hcrc     | boolean     | 是   | 否   | 如果存在crc标头，则为True。          |
-| done     | boolean     | 是   | 否   | 读取gzip标头后为True。               |
+| isText   | boolean     | 否   | 是   | 如果压缩数据被认为是文本，则为True。 |
+| os       | number      | 否   | 是   | 操作系统。                           |
+| time     | number      | 否   | 是   | 修改时间。                           |
+| xflags   | number      | 否   | 是   | 额外标志。                           |
+| extra    | ArrayBuffer | 否   | 是   | 额外字段。                           |
+| extraLen | number      | 否   | 是   | 额外字段的长度。                     |
+| name     | ArrayBuffer | 否   | 是   | 文件名。                             |
+| comment  | ArrayBuffer | 否   | 是   | 注释。                               |
+| hcrc     | boolean     | 否   | 是   | 如果存在crc标头，则为True。          |
+| done     | boolean     | 否   | 是   | 读取gzip标头后为True。               |
 
 ## zlib.createGZip<sup>12+</sup>
 
 createGZip(): Promise&lt;GZip&gt;
 
-创建GZip对象，使用Promise异步返回。成功时返回Gzip对象实例。
+创建GZip对象，使用Promise异步回调。成功时返回Gzip对象实例。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4566,7 +4590,7 @@ async function gzgetcDemo(pathDir: string) {
   await gzip.gzputc(1);
   await gzip.gzclose();
   await gzip.gzopen(path, "rb");
-  let resulit = await gzip.gzgetc();
+  let result = await gzip.gzgetc();
   await gzip.gzclose();
 }
 
@@ -4713,7 +4737,7 @@ async function gzfwriteDemo(pathDir: string) {
   for (let i = 0; i < uint8View.length; i++) {
     uint8View[i] = i;
   }
-  let resulit = await gzip.gzfwrite(bufferWithData, 8, 2)
+  let result = await gzip.gzfwrite(bufferWithData, 8, 2)
   await gzip.gzclose();
 }
 
@@ -4959,6 +4983,8 @@ gzwrite(buf: ArrayBuffer, len: number): Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
+**参数：**
+
 | 参数名 | 类型        | 必填 | 说明                         |
 | ------ | ----------- | ---- | ---------------------------- |
 | buf    | ArrayBuffer | 是   | 对象指向要写入的数据缓冲区。 |
@@ -5032,6 +5058,8 @@ gzungetc(c: number): Promise&lt;number&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
+
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
@@ -5799,10 +5827,10 @@ struct Index {
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
-| 名称      | 类型         | 可读 | 可写 | 说明                                         |
+| 名称      | 类型         | 只读 | 可选 | 说明                                         |
 | --------- | ------------ | ---- | ---- | -------------------------------------------- |
-| status    | ReturnStatus | 是   | 否   | 返回zlib文件状态码，参考ReturnStatus的定义。 |
-| statusMsg | string       | 是   | 否   | zlib文件上发生的最后一个状态的状态消息。     |
+| status    | ReturnStatus | 否   | 否   | 返回zlib文件状态码，参考ReturnStatus的定义。 |
+| statusMsg | string       | 否   | 否   | zlib文件上发生的最后一个状态的状态消息。     |
 
 ## OffsetReferencePoint<sup>12+</sup>
 

@@ -1,4 +1,10 @@
 # native_node_napi.h
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -13,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[native_node_napi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeNodeNapi/native_node_napi)<!--RP1End-->
 
 ## 汇总
 
@@ -47,7 +55,7 @@
 
 ### OH_ArkUI_GetNodeHandleFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle)
 ```
 
@@ -75,7 +83,7 @@ int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, 
 
 ### OH_ArkUI_GetContextFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_ContextHandle* context)
 ```
 
@@ -103,7 +111,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 
 ### OH_ArkUI_GetNodeContentFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)
 ```
 
@@ -121,7 +129,7 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 | -- | -- |
 | napi_env env | napi的环境指针。 |
 | napi_value value | ArkTS侧创建的NodeContent对象。 |
-| context | ArkUI_NodeContentHandle指针。 |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md)* content | ArkUI_NodeContentHandle指针。 |
 
 **返回：**
 
@@ -131,7 +139,7 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 
 ### OH_ArkUI_GetDrawableDescriptorFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)
 ```
 
@@ -159,7 +167,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value val
 
 ### OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)
 ```
 
@@ -187,7 +195,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 
 ### OH_ArkUI_GetNavigationId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -216,7 +224,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, in
 
 ### OH_ArkUI_GetNavDestinationName()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -245,7 +253,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buff
 
 ### OH_ArkUI_GetNavStackLength()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)
 ```
 
@@ -272,7 +280,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* lengt
 
 ### OH_ArkUI_GetNavDestinationNameByIndex()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int32_t index, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -302,7 +310,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int
 
 ### OH_ArkUI_GetNavDestinationId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -331,7 +339,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer
 
 ### OH_ArkUI_GetNavDestinationState()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)
 ```
 
@@ -358,7 +366,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_Nav
 
 ### OH_ArkUI_GetNavDestinationIndex()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)
 ```
 
@@ -385,7 +393,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* 
 
 ### OH_ArkUI_GetNavDestinationParam()
 
-```
+```c
 napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)
 ```
 
@@ -407,11 +415,11 @@ napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| napi_value | 参数对象。 |
+| napi_value | 参数对象。如返回为空，则说明参数不存在或指定的节点为空。|
 
 ### OH_ArkUI_GetRouterPageIndex()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)
 ```
 
@@ -434,11 +442,11 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* inde
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点不在Navigation中。 |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 指定的节点或传递的索引异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点不在Navigation中。 |
 
 ### OH_ArkUI_GetRouterPageName()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -467,7 +475,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, 
 
 ### OH_ArkUI_GetRouterPagePath()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -496,7 +504,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, 
 
 ### OH_ArkUI_GetRouterPageState()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterPageState* state)
 ```
 
@@ -523,7 +531,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterP
 
 ### OH_ArkUI_GetRouterPageId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -552,7 +560,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, in
 
 ### OH_ArkUI_InitModuleForArkTSEnv()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)
 ```
 
@@ -578,7 +586,7 @@ ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)
 
 ### OH_ArkUI_NotifyArkTSEnvDestroy()
 
-```
+```c
 void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)
 ```
 
@@ -598,7 +606,7 @@ void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)
 
 ### OH_ArkUI_PostFrameCallback()
 
-```
+```c
 int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData,void (*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))
 ```
 
@@ -614,21 +622,21 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 
 | 参数项 | 描述 |
 | -- | -- |
-| uiContext | UIContext对象，用以绑定实例。 |
-|  void* userData | 自定义事件参数，当事件触发时在回调参数中携带回来。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UIContext对象，用以绑定实例。 |
+| void* userData | 自定义事件参数，当事件触发时在回调参数中携带回来。 |
 | callback | 自定义回调函数。 |
 | uint64_t nanoTimestamp | 帧信号的时间戳。 |
-|  uint32_t frameCount | 帧号。 |
+| uint32_t frameCount | 帧号。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t (ArkUI_ContextHandle uiContext, void* userData,void (*callback) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-native-type-h.md#arkui_errorcode) uiContext对象无效。<br>         [ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-native-type-h.md#arkui_errorcode) 回调函数无效。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-native-type-h.md#arkui_errorcode) uiContext对象无效。<br>         [ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-native-type-h.md#arkui_errorcode) 回调函数无效。 |
 
 ### OH_ArkUI_PostIdleCallback()
 
-```
+```c
 int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,void (*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))
 ```
 
@@ -644,16 +652,16 @@ int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,
 
 | 参数项 | 描述 |
 | -- | -- |
-| uiContext | UIContext对象，用以绑定实例。 |
-|  void* userData | 自定义事件参数，当自定义回调函数触发时在回调参数中携带回来。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UIContext对象，用以绑定实例。 |
+| void* userData | 自定义事件参数，当自定义回调函数触发时在回调参数中携带回来。 |
 | callback | 自定义回调函数，会在下一帧事件结束后剩余时间大于1ms时回调执行。 |
 | uint64_t nanoTimeLeft | 下一帧渲染后的剩余时间。 |
-|  uint32_t frameCount | 帧号。 |
+| uint32_t frameCount | 帧号。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t (ArkUI_ContextHandle uiContext, void* userData,void (*callback) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-native-type-h.md#arkui_errorcode) uiContext对象无效。<br>         [ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-native-type-h.md#arkui_errorcode) 回调函数无效。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-native-type-h.md#arkui_errorcode) uiContext对象无效。<br>         [ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-native-type-h.md#arkui_errorcode) 回调函数无效。 |
 
 

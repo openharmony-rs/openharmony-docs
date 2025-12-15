@@ -1,5 +1,12 @@
 # raw_file.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 提供rawfile文件相关功能，功能包括搜索、读取和关闭。
@@ -51,7 +58,7 @@
 
 ### OH_ResourceManager_ReadRawFile()
 
-```
+```c
 int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length)
 ```
 
@@ -78,7 +85,7 @@ int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t len
 
 ### OH_ResourceManager_SeekRawFile()
 
-```
+```c
 int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int whence)
 ```
 
@@ -105,7 +112,7 @@ int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int when
 
 ### OH_ResourceManager_GetRawFileSize()
 
-```
+```c
 long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)
 ```
 
@@ -130,7 +137,7 @@ long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)
 
 ### OH_ResourceManager_GetRawFileRemainingLength()
 
-```
+```c
 long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)
 ```
 
@@ -155,7 +162,7 @@ long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)
 
 ### OH_ResourceManager_CloseRawFile()
 
-```
+```c
 void OH_ResourceManager_CloseRawFile(RawFile *rawFile)
 ```
 
@@ -178,7 +185,7 @@ void OH_ResourceManager_CloseRawFile(RawFile *rawFile)
 
 ### OH_ResourceManager_GetRawFileOffset()
 
-```
+```c
 long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 ```
 
@@ -203,7 +210,7 @@ long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 
 ### OH_ResourceManager_GetRawFileDescriptor()
 
-```
+```c
 bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor)
 ```
 
@@ -229,7 +236,7 @@ bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDesc
 
 ### OH_ResourceManager_ReleaseRawFileDescriptor()
 
-```
+```c
 bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)
 ```
 
@@ -254,7 +261,7 @@ bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descri
 
 ### OH_ResourceManager_ReleaseRawFileDescriptorData()
 
-```
+```c
 bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *descriptor)
 ```
 
@@ -279,7 +286,7 @@ bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *de
 
 ### OH_ResourceManager_ReadRawFile64()
 
-```
+```c
 int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, int64_t length)
 ```
 
@@ -306,7 +313,7 @@ int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, in
 
 ### OH_ResourceManager_SeekRawFile64()
 
-```
+```c
 int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, int whence)
 ```
 
@@ -333,7 +340,7 @@ int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, i
 
 ### OH_ResourceManager_GetRawFileSize64()
 
-```
+```c
 int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)
 ```
 
@@ -358,7 +365,7 @@ int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)
 
 ### OH_ResourceManager_GetRawFileRemainingLength64()
 
-```
+```c
 int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)
 ```
 
@@ -383,7 +390,7 @@ int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)
 
 ### OH_ResourceManager_CloseRawFile64()
 
-```
+```c
 void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)
 ```
 
@@ -406,7 +413,7 @@ void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)
 
 ### OH_ResourceManager_GetRawFileOffset64()
 
-```
+```c
 int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)
 ```
 
@@ -431,7 +438,7 @@ int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)
 
 ### OH_ResourceManager_GetRawFileDescriptor64()
 
-```
+```c
 bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFileDescriptor64 *descriptor)
 ```
 
@@ -457,7 +464,7 @@ bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFile
 
 ### OH_ResourceManager_ReleaseRawFileDescriptor64()
 
-```
+```c
 bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *descriptor)
 ```
 

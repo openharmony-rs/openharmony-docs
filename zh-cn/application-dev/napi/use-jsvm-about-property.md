@@ -1,4 +1,10 @@
 # 使用JSVM-API接口设置JavaScript对象的属性
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 
 ## 简介
 
@@ -22,7 +28,7 @@
 | OH_JSVM_GetProperty        | 用给定的属性的名称，检索目标对象的属性 |
 | OH_JSVM_HasProperty        | 用给定的属性的名称，查询目标对象是否有此属性 |
 | OH_JSVM_DeleteProperty     | 用给定的属性的名称，删除目标对象属性 |
-| OH_JSVM_HasOwnProperty     | 判断给定Object中是否有名为key的own property。|
+| OH_JSVM_HasOwnProperty     | 判断给定Object中是否有指定名称的own property。|
 | OH_JSVM_SetNamedProperty   | 用给定的属性的名称为目标对象设置属性，此方法等效于调用OH_JSVM_SetProperty， 其中，通过utf8Name传入的字符串用于创建JSVM_Value。|
 | OH_JSVM_GetNamedProperty   | 用给定的属性的名称，检索目标对象的属性，此方法等效于调用OH_JSVM_GetProperty， 其中，通过utf8Name传入的字符串用于创建JSVM_Value。|
 | OH_JSVM_HasNamedProperty   | 用给定的属性的名称，查询目标对象是否有此属性，此方法等效于使用从作为utf8Name传入的字符串创建的JSVM_Value调用OH_JSVM_HasProperty。|
@@ -74,7 +80,7 @@ const char *srcCallNative = R"JS(
     let script = getPropertyNames(obj);
 )JS";
 ```
-<!-- @[oh_jsvm_get_property_names](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -126,7 +132,7 @@ const char *srcCallNative = R"JS(
     setProperty(obj, "code", "hi")
 )JS";
 ```
-<!-- @[oh_jsvm_set_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setproperty/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -174,7 +180,7 @@ const char *srcCallNative = R"JS(
     getProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_get_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getproperty/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -205,9 +211,9 @@ static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_HasProperty success:%{public}d", result);
     }
     // 若传入属性存在传入对象中，则输出true将结果转化为JSVM_Value类型抛出
-    JSVM_Value returnReslut = nullptr;
-    OH_JSVM_GetBoolean(env, result, &returnReslut);
-    return returnReslut;
+    JSVM_Value returnResult = nullptr;
+    OH_JSVM_GetBoolean(env, result, &returnResult);
+    return returnResult;
 }
 // HasProperty注册回调
 static JSVM_CallbackStruct param[] = {
@@ -226,7 +232,7 @@ const char *srcCallNative = R"JS(
     hasProperty(obj, 0)
 )JS";
 ```
-<!-- @[oh_jsvm_has_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -287,7 +293,7 @@ const char *srcCallNative = R"JS(
     deleteProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_delete_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/deleteproperty/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/deleteproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -353,7 +359,7 @@ const char *srcCallNative = R"JS(
     hasOwnProperty(obj, "__defineGetter__")
 )JS";
 ```
-<!-- @[oh_jsvm_has_own_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasownproperty/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasownproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -415,7 +421,7 @@ const char *srcCallNative = R"JS(
     setNamedProperty("message")
 )JS";
 ```
-<!-- @[oh_jsvm_set_named_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setnamedproperty/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setnamedproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -467,7 +473,7 @@ const char *srcCallNative = R"JS(
     getNamedProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_get_named_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getnamedproperty/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getnamedproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -522,7 +528,7 @@ const char *srcCallNative = R"JS(
     hasNamedProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_has_named_property](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasnamedproperty/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasnamedproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -663,7 +669,7 @@ const char *srcCallNative = R"JS(
     defineProperties(obj)
 )JS";
 ```
-<!-- @[oh_jsvm_define_properties](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/defineproperties/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/defineproperties/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -682,7 +688,7 @@ cpp部分代码：
 // OH_JSVM_GetAllPropertyNames的样例方法
 static JSVM_Value GetAllPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // // 获取js侧传入的一个参数
+    // 获取js侧传入的一个参数
     size_t argc = 1;
     JSVM_Value args[1];
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -716,7 +722,7 @@ const char *srcCallNative = R"JS(
     let script = getAllPropertyNames(obj);
 )JS";
 ```
-<!-- @[oh_jsvm_get_all_property_names](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts

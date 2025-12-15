@@ -1,5 +1,16 @@
 # OH_CryptoKdf
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoKdf OH_CryptoKdf
+```
+
 ## 概述
 
 定义密钥派生函数(KDF)结构。

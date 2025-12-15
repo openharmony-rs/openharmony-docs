@@ -1,4 +1,14 @@
 # Camera_FrameShutterEndInfo
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Camera_FrameShutterEndInfo {...} Camera_FrameShutterEndInfo
+```
 
 ## 概述
 

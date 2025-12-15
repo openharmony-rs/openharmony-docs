@@ -1,5 +1,12 @@
 # @ohos.security.huks (HUKS) (System API)
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
 The **huks** module provides keystore capabilities with the user who performs the key operation specified.
 
 > **NOTE**
@@ -9,7 +16,7 @@ The **huks** module provides keystore capabilities with the user who performs th
 ## Modules to Import
 
 ```ts
-import { huks } from '@kit.UniversalKeystoreKit'
+import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
 ## huks.generateKeyItemAsUser
@@ -17,6 +24,8 @@ import { huks } from '@kit.UniversalKeystoreKit'
 generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
 Generates a key for the specified user. This API uses a promise to return the result. Because the key is always protected in a trusted environment (such as a TEE), the promise does not return the key content. It returns only the information indicating whether the API is successfully called.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -27,8 +36,14 @@ Generates a key for the specified user. This API uses a promise to return the re
 | Name  | Type                       | Mandatory| Description                    |
 | -------- | --------------------------- | ---- | ------------------------ |
 | userId   | number                      | Yes  | User ID.                |
-| keyAlias | string                      | Yes  | Alias of the key to generate.              |
-| options  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | [Property tags](native__huks__type_8h.md#enums) of the key to generate. The algorithm, key purpose, and key length are mandatory.|
+| keyAlias | string                      | Yes  | Key alias. The value can contain up to 128 bytes and should not include sensitive data such as personal information.              |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | [Attribute tags](capi-native-huks-type-h.md#enums) of the key to generate. The algorithm, key purpose, and key length are mandatory.|
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -46,10 +61,11 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
-| 12000015 | call service failed. |
+| 12000015 | Failed to obtain the security information via UserIAM. |
+| 12000017 | The key with same alias is already exist. |
 
 **Example**
 
@@ -59,6 +75,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit"
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -93,8 +110,8 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
     console.info("Generated a key with alias of: " + keyAlias + "")
-  }).catch((err: Error) => {
-    console.error("Failed to generate the key. Error: "+ JSON.stringify(err))
+  }).catch((err: BusinessError) => {
+    console.error("Failed to generate the key. Error code: " + err.code + " Error message: " + err.message)
   })
 }
 
@@ -111,6 +128,8 @@ deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 Deletes a key for the specified user. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -121,7 +140,13 @@ Deletes a key for the specified user. This API uses a promise to return the resu
 | -------- | --------------------------- | ---- | ----------------------------------- |
 | userId   | number                      | Yes  | User ID.                |
 | keyAlias | string                      | Yes  | Alias of the key to delete. It must be the key alias passed in when the key was generated.|
-| options  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for deleting the key. For example, you can pass in [HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11) to specify the storage security level of the key to delete. If **HuksAuthStorageLevel** is left empty, **HUKS_AUTH_STORAGE_LEVEL_DE** is used by default.           |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Attribute tag of the key to be deleted. If [HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11) is used to specify the security level of the key to be deleted,<br>this parameter can be left empty. If the API version is 12 or later, the default value **CE** is passed in. If the API version is earlier than 12, the default value **DE** is passed in.           |
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -136,7 +161,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000011 | queried entity does not exist. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 
 **Example**
@@ -215,6 +240,8 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 Imports a plaintext key for the specified user. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -224,8 +251,14 @@ Imports a plaintext key for the specified user. This API uses a promise to retur
 | Name  | Type                       | Mandatory| Description                               |
 | -------- | --------------------------- | ---- | ----------------------------------- |
 | userId   | number                      | Yes  | User ID.                |
-| keyAlias | string                      | Yes  | Alias of the key to import.                         |
-| options  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for importing the key. The algorithm, key purpose, and key length are mandatory.|
+| keyAlias | string                      | Yes  | Key alias. The value can contain up to 128 bytes and should not include sensitive data such as personal information.                         |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for importing the key. The algorithm, key purpose, and key length are mandatory.|
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -244,10 +277,11 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
-| 12000015 | call service failed. |
+| 12000015 | Failed to obtain the security information via UserIAM. |
+| 12000017 | The key with same alias is already exist. |
 
 **Example**
 
@@ -312,7 +346,9 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 Attests a key for the specified user. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.ATTEST_KEY and  ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ATTEST_KEY and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
@@ -322,7 +358,7 @@ Attests a key for the specified user. This API uses a promise to return the resu
 | -------- | --------------------------- | ---- | ------------------------------------ |
 | userId   | number                      | Yes  | User ID.                |
 | keyAlias | string                      | Yes  | Alias of the key. The certificate to be obtained stores the key.|
-| options  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for attesting the key.  |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for attesting the key.  |
 
 **Return value**
 
@@ -347,7 +383,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 
 **Example**
@@ -466,6 +502,8 @@ Performs anonymous key attestation. This API uses a promise to return the result
 
 This operation requires Internet access and takes time.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -476,7 +514,7 @@ This operation requires Internet access and takes time.
 | -------- | --------------------------- | ---- | ------------------------------------ |
 | userId   | number                      | Yes  | User ID.                |
 | keyAlias | string                      | Yes  | Alias of the key. The certificate to be obtained stores the key.|
-| options  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for attesting the key.  |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for attesting the key.  |
 
 **Return value**
 
@@ -501,7 +539,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 
 **Example**
@@ -619,6 +657,8 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 
 Imports a wrapped (encrypted) key for the specified user. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -630,7 +670,13 @@ Imports a wrapped (encrypted) key for the specified user. This API uses a promis
 | userId   | number                      | Yes  | User ID.                |
 | keyAlias         | string                      | Yes  | Alias of the wrapped key to import.             |
 | wrappingKeyAlias | string                      | Yes  | Alias of the key used to decrypt the wrapped key.   |
-| options          | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for importing the wrapped key. The algorithm, key purpose, and key length are mandatory.|
+| huksOptions          | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for importing the wrapped key. The algorithm, key purpose, and key length are mandatory.|
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -649,10 +695,11 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
-| 12000015 | call service failed. |
+| 12000015 | Failed to obtain the security information via UserIAM. |
+| 12000017 | The key with same alias is already exist. |
 
 **Example**
 
@@ -670,7 +717,7 @@ const nonce = "hahahahahaha";
 const tagSize = 16;
 const unsignedInt32Bytes = 4;
 const importedAes192PlainKey = "The aes192 key to import";
-const callerAes256Kek = "The is kek to encrypt aes192 key";
+const callerAes256Kek = "This is kek to encrypt aes192 key";
 const callerKeyAlias = "test_caller_key_ecdh_aes192";
 const callerKekAliasAes256 = "test_caller_kek_ecdh_aes256";
 const callerAgreeKeyAliasAes256 = "test_caller_agree_key_ecdh_aes256";
@@ -722,7 +769,7 @@ const genWrappingKeyParams: huks.HuksOptions = {
     },
     {
       tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-      value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
     },
     {
       tag: huks.HuksTag.HUKS_TAG_PADDING,
@@ -1198,7 +1245,8 @@ async function EncryptImportedPlainKeyAndKek(
   return result
 }
 
-async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey: Uint8Array, callerSelfPublicKey: Uint8Array, encData: KeyEncAndKekEnc) {
+async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey: Uint8Array,
+  callerSelfPublicKey: Uint8Array, encData: KeyEncAndKekEnc) {
   const plainKeySizeBuff = new Uint8Array(4);
   AssignLength(plainKey.length, plainKeySizeBuff, 0);
 
@@ -1251,7 +1299,8 @@ export async function HuksSecurityImportTest(userId: number) {
     userId,
     callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
   const encData: KeyEncAndKekEnc = await EncryptImportedPlainKeyAndKek(userId, importedAes192PlainKey);
-  const wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey, huksPubKey, callerSelfPublicKey, encData);
+  const wrappedData =
+    await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey, huksPubKey, callerSelfPublicKey, encData);
   importWrappedAes192Params.inData = wrappedData;
   await PublicImportWrappedKeyFunc(userId,
     importedKeyAliasAes192, srcKeyAliasWrap, importWrappedAes192Params);
@@ -1275,6 +1324,8 @@ exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 Exports the public key for the specified user. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -1285,7 +1336,7 @@ Exports the public key for the specified user. This API uses a promise to return
 | -------- | --------------------------- | ---- | -------------------------------------------- |
 | userId   | number                      | Yes  | User ID.                |
 | keyAlias | string                      | Yes  | Key alias, which must be the same as the alias used when the key was generated.|
-| options  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Empty object (leave this parameter empty).                    |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Empty object (leave this parameter empty).                    |
 
 **Return value**
 
@@ -1310,7 +1361,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 
 **Example**
@@ -1393,6 +1444,8 @@ getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 
 Obtains key properties for the specified user. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -1403,7 +1456,7 @@ Obtains key properties for the specified user. This API uses a promise to return
 | -------- | --------------------------- | ---- | -------------------------------------------- |
 | userId   | number                      | Yes  | User ID.                |
 | keyAlias | string                      | Yes  | Key alias, which must be the same as the alias used when the key was generated.|
-| options  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Empty object (leave this parameter empty).                    |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Empty object (leave this parameter empty).                    |
 
 **Return value**
 
@@ -1428,7 +1481,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 
 **Example**
@@ -1508,6 +1561,8 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 
 Checks whether a key exists for the specified user. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -1518,7 +1573,7 @@ Checks whether a key exists for the specified user. This API uses a promise to r
 | -------- | --------------------------- | ---- | ------------------------ |
 | userId   | number                      | Yes  | User ID.                |
 | keyAlias | string                      | Yes  | Alias of the key to check.  |
-| options  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for checking the key. For example, you can pass in [HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11) to specify the storage security level of the key to check. If **HuksAuthStorageLevel** is left empty, **HUKS_AUTH_STORAGE_LEVEL_DE** is used by default.    |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Attribute tag of the key to be checked. If [HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11) is used to specify the security level of the key to be checked,<br>this parameter can be left empty. If the API version is 12 or later, the default value **CE** is passed in. If the API version is earlier than 12, the default value **DE** is passed in.    |
 
 **Return value**
 
@@ -1541,7 +1596,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 
 **Example**
@@ -1551,6 +1606,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit"
+
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
@@ -1599,7 +1655,7 @@ async function HasKey(keyAlias: string) {
   await huks.hasKeyItemAsUser(userId, keyAlias, options).then((data) => {
     console.info("Check result of the key with the alias of "+ keyAlias +" " + JSON.stringify(data))
   }).catch((err: BusinessError) => {
-    console.error("Failed to delete the key. Error code: " + err.code + " Error message: " + err.message)
+    console.error("Failed to check the key. Error code: " + err.code + " Error message: " + err.message)
   })
 }
 
@@ -1620,6 +1676,8 @@ initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : 
 
 Initialize a key session for the specified user. This API uses a promise to return the result. **huks.initSessionAsUser**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -1630,7 +1688,7 @@ Initialize a key session for the specified user. This API uses a promise to retu
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------ |
 | userId   | number                                            | Yes  | User ID.                |
 | keyAlias | string                                            | Yes  | Alias of the key for the **initSessionAsUser** operation.                            |
-| options  | [HuksOptions](js-apis-huks.md#huksoptions)        | Yes  | Parameters for **initSessionAsUser**.                                  |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions)        | Yes  | Parameters for **initSessionAsUser**.                                  |
 
 **Return value**
 
@@ -1656,7 +1714,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 12000006 | error occurred in crypto engine. |
 | 12000010 | the number of sessions has reached limit. |
 | 12000011 | queried entity does not exist. |
-| 12000012 | external error. |
+| 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 
 **Example**
@@ -1744,7 +1802,7 @@ function GetAesDecryptProperties(): Array<huks.HuksParam> {
     value: huks.HuksKeyAlg.HUKS_ALG_AES
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
   }, {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT

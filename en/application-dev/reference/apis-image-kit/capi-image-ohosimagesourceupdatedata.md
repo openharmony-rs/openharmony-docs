@@ -1,8 +1,18 @@
 # OhosImageSourceUpdateData
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+struct OhosImageSourceUpdateData {...}
+```
 
 ## Overview
 
-The OhosImageSourceUpdateData struct describes the update data option of the image source. It is obtained by calling [OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata).
+The struct describes the update data option of the image source. It is obtained by calling [OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata).
 
 **Since**: 10
 

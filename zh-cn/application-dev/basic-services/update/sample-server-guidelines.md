@@ -1,9 +1,10 @@
 # 示例服务器开发指导
-<!--Kit: Basics Service Kit-->
+<!--Kit: Basic Services Kit-->
 <!--Subsystem: Update-->
 <!--Owner: @RainyDay_005; @huangsiping3-->
-<!--SE: @zhangzhengxue;@jackd320-->
-<!--TSE: @mamba-ting-->
+<!--Designer: @zhangzhengxue; @jackd320-->
+<!--Tester: @mamba-ting-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 开发步骤
 
@@ -188,7 +189,7 @@
 
 8. 升级包制作
 
-	参考[update_packaging_tools仓](https://gitee.com/openharmony/update_packaging_tools)制作升级包。
+	参考[update_packaging_tools仓](https://gitcode.com/openharmony/update_packaging_tools)制作升级包。
 
 9. 启动搜包服务器
 

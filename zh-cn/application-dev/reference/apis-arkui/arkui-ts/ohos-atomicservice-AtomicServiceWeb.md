@@ -1,5 +1,12 @@
 # AtomicServiceWeb
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @qq_36417014-->
+<!--Designer: @autojuan-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @zengyawen-->
+
 为开发者提供满足定制化诉求的Web高阶组件，屏蔽原生Web组件中无需关注的接口，并提供JS扩展能力。
 
 > **说明：**
@@ -62,7 +69,7 @@ AtomicServiceWeb({
 | navPathStack         | [NavPathStack](ts-basic-components-navigation.md#navpathstack10)                                                 | 否  | -           | 路由栈信息。当使用NavDestination作为页面的根容器时，需传入NavDestination容器对应的NavPathStack处理页面路由。                                           |
 | mixedMode            | [MixedMode](../../apis-arkweb/arkts-basic-components-web-e.md#mixedmode)                                          | 否  | @Prop       | 设置是否允许加载超文本传输协议（HTTP）和超文本传输安全协议（HTTPS）混合内容，默认不允许加载HTTP和HTTPS混合内容。                                                    |
 | darkMode             | [WebDarkMode](../../apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)                                     | 否  | @Prop       | 设置Web深色模式，默认关闭。                                                                                                      |
-| forceDarkAccess      | boolean                                                                                                          | 否  | @Prop       | 设置网页是否开启强制深色模式。默认关闭。该属性仅在darkMode开启深色模式时生效。                                                                          |
+| forceDarkAccess      | boolean                                                                                                          | 否  | @Prop       | 设置网页是否开启强制深色模式。true表示设置网页开启强制深色模式，false表示设置网页不开启强制深色模式。默认值：false。该属性仅在darkMode开启深色模式时生效。                                                                          |
 | nestedScroll<sup>15+</sup>      | [NestedScrollOptions](../../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](../../apis-arkweb/arkts-basic-components-web-i.md#nestedscrolloptionsext14) | 否  | @Prop       | 设置嵌套滚动选项。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。                                                                              |
 | onMessage            | Callback\<[OnMessageEvent](#onmessageevent)\>                                                                    | 否  | -           | H5页面通过JS SDK的postMessage()发送消息后，Web组件对应的页面返回或销毁时，触发该回调。                                                              |
 | onErrorReceive       | Callback\<[OnErrorReceiveEvent](#onerrorreceiveevent)\>                                                          | 否  | -           | 网页加载遇到错误时触发该回调。出于性能考虑，建议此回调中尽量执行简单逻辑。在无网络的情况下，触发此回调。                                                                 |
@@ -344,9 +351,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型       | 必填 | 说明    |
-|------|----------|----|-------|
-| data | object[] | 是  | 消息列表。 |
+| 名称   | 类型       | 只读 | 可选 | 说明    |
+|------|----------|----|--|-------|
+| data | object[] | 否 | 否 | 消息列表。 |
 
 ## OnErrorReceiveEvent
 
@@ -356,10 +363,10 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型                                                                                    | 必填 | 说明              |
-|---------|---------------------------------------------------------------------------------------|----|-----------------|
-| request | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 是  | 网页请求的封装信息。      |
-| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | 是  | 网页加载资源错误的封装信息 。 |
+| 名称      | 类型                                                                                    | 只读 | 可选 | 说明              |
+|---------|---------------------------------------------------------------------------------------|----|--|-----------------|
+| request | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 否 | 否 | 网页请求的封装信息。      |
+| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | 否 | 否 | 网页加载资源错误的封装信息 。 |
 
 ## OnHttpErrorReceiveEvent
 
@@ -369,10 +376,10 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 类型                                                                                      | 必填 | 说明         |
-|----------|-----------------------------------------------------------------------------------------|----|------------|
-| request  | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md)   | 是  | 网页请求的封装信息。 |
-| response | [WebResourceResponse](../../apis-arkweb/arkts-basic-components-web-WebResourceResponse.md) | 是  | 资源响应的封装信息。 |
+| 名称       | 类型                                                                                      | 只读 | 可选 | 说明         |
+|----------|-----------------------------------------------------------------------------------------|----|--|------------|
+| request  | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md)   | 否 | 否 | 网页请求的封装信息。 |
+| response | [WebResourceResponse](../../apis-arkweb/arkts-basic-components-web-WebResourceResponse.md) | 否 | 否 | 资源响应的封装信息。 |
 
 ## OnPageBeginEvent
 
@@ -381,10 +388,10 @@ Web组件返回的请求/响应头对象。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称  | 类型     | 必填 | 说明        |
-|-----|--------|----|-----------|
-| url | string | 是  | 页面的URL地址。 |
+  
+| 名称  | 类型     | 只读 | 可选 | 说明        |
+|-----|--------|----|--|-----------|
+| url | string | 否 | 否 | 页面的URL地址。 |
 
 ## OnPageEndEvent
 
@@ -394,9 +401,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型     | 必填 | 说明        |
-|-----|--------|----|-----------|
-| url | string | 是  | 页面的URL地址。 |
+| 名称  | 类型     | 只读 | 可选 | 说明        |
+|-----|--------|----|--|-----------|
+| url | string | 否 | 否 | 页面的URL地址。 |
 
 ## OnLoadInterceptEvent
 
@@ -406,9 +413,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| data | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 是 | 网页请求的封装信息。 |
+| 名称             | 类型      | 只读 | 可选  | 说明                                       |
+| -------------- | ---- | ---- | -- |-------------------------------------- |
+| data | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 否 | 否 | 网页请求的封装信息。 |
 
 ## OnProgressChangeEvent
 
@@ -418,9 +425,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| newProgress | number | 是 | 新的加载进度，取值范围为0到100的整数。                       |
+| 名称             | 类型      | 只读 | 可选  | 说明                                       |
+| -------------- | ---- | ---- | -- | -------------------------------------- |
+| newProgress | number | 否 | 否 | 新的加载进度，取值范围为0到100的整数。                       |
 
 ## OnLoadInterceptCallback
 
@@ -442,7 +449,7 @@ type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 
 | 类型      | 说明        |
 |---------|-----------|
-| boolean | 返回资源是否被拦截 |
+| boolean | 返回资源是否被拦截，true表示被拦截。 |
 
 ## 事件
 

@@ -1,4 +1,10 @@
 # 使用AudioRenderer开发音频播放功能
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音频数据，相比[AVPlayer](../media/using-avplayer-for-playback.md)而言，可以在输入前添加数据预处理，更适合有音频开发经验的开发者，以实现更灵活的播放功能。
 
@@ -88,7 +94,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
-     // 确保该沙箱路径下存在该资源。
+     // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
      let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 
@@ -139,7 +145,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
-     // 确保该沙箱路径下存在该资源。
+     // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
      let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
      let writeDataCallback = (buffer: ArrayBuffer) => {
@@ -184,6 +190,8 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
     ```
 
 5. 调用release()方法销毁实例，释放资源。
+
+    应用需根据实际业务需求合理使用AudioRenderer实例，按需创建并及时释放，避免占用过多音频资源导致异常。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -237,8 +245,7 @@ class Options {
   length?: number;
 }
 
-let bufferSize: number = 0;
-let renderModel: audio.AudioRenderer | undefined = undefined;
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
 let audioStreamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
   channels: audio.AudioChannel.CHANNEL_2, // 通道。
@@ -253,47 +260,51 @@ let audioRendererOptions: audio.AudioRendererOptions = {
   streamInfo: audioStreamInfo,
   rendererInfo: audioRendererInfo
 };
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let path = context.cacheDir;
-// 确保该沙箱路径下存在该资源。
-let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
-let writeDataCallback = (buffer: ArrayBuffer) => {
-  let options: Options = {
-    offset: bufferSize,
-    length: buffer.byteLength
-  };
+let file: fs.File;
+let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
-  try {
-    let bufferLength = fs.readSync(file.fd, buffer, options);
-    bufferSize += buffer.byteLength;
-    // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
-    if (bufferLength < buffer.byteLength) {
+async function initArguments(context: common.UIAbilityContext) {
+  let bufferSize: number = 0;
+  let path = context.cacheDir;
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
+  let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  writeDataCallback = (buffer: ArrayBuffer) => {
+    let options: Options = {
+      offset: bufferSize,
+      length: buffer.byteLength
+    };
+
+    try {
+      let bufferLength = fs.readSync(file.fd, buffer, options);
+      bufferSize += buffer.byteLength;
+      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
+      if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-            // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
-            view.setUint8(i, 0);
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          view.setUint8(i, 0);
         }
+      }
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
+      // 如果开发者不希望播放某段buffer，返回audio.AudioDataCallbackResult.INVALID即可。
+      return audio.AudioDataCallbackResult.VALID;
+    } catch (error) {
+      console.error('Error reading file:', error);
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
+      return audio.AudioDataCallbackResult.INVALID;
     }
-    // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
-    // 如果开发者不希望播放某段buffer，返回audio.AudioDataCallbackResult.INVALID即可。
-    return audio.AudioDataCallbackResult.VALID;
-  } catch (error) {
-    console.error('Error reading file:', error);
-    // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
-    return audio.AudioDataCallbackResult.INVALID;
-  }
-};
+  };
+}
 
 // 初始化，创建实例，设置监听事件。
-function init() {
+async function init() {
   audio.createAudioRenderer(audioRendererOptions, (err, renderer) => { // 创建AudioRenderer实例。
     if (!err) {
       console.info(`${TAG}: creating AudioRenderer success`);
-      renderModel = renderer;
-      if (renderModel !== undefined) {
-        (renderModel as audio.AudioRenderer).on('writeData', writeDataCallback);
+      audioRenderer = renderer;
+      if (audioRenderer !== undefined) {
+        audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
       console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
@@ -302,15 +313,15 @@ function init() {
 }
 
 // 开始一次音频渲染。
-function start() {
-  if (renderModel !== undefined) {
+async function start() {
+  if (audioRenderer !== undefined) {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
-    if (stateGroup.indexOf((renderModel as audio.AudioRenderer).state.valueOf()) === -1) { // 当且仅当状态为prepared、paused和stopped之一时才能启动渲染。
+    if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // 当且仅当状态为prepared、paused和stopped之一时才能启动渲染。
       console.error(TAG + 'start failed');
       return;
     }
     // 启动渲染。
-    (renderModel as audio.AudioRenderer).start((err: BusinessError) => {
+    audioRenderer.start((err: BusinessError) => {
       if (err) {
         console.error('Renderer start failed.');
       } else {
@@ -321,15 +332,15 @@ function start() {
 }
 
 // 暂停渲染。
-function pause() {
-  if (renderModel !== undefined) {
+async function pause() {
+  if (audioRenderer !== undefined) {
     // 只有渲染器状态为running的时候才能暂停。
-    if ((renderModel as audio.AudioRenderer).state.valueOf() !== audio.AudioState.STATE_RUNNING) {
+    if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING) {
       console.info('Renderer is not running');
       return;
     }
     // 暂停渲染。
-    (renderModel as audio.AudioRenderer).pause((err: BusinessError) => {
+    audioRenderer.pause((err: BusinessError) => {
       if (err) {
         console.error('Renderer pause failed.');
       } else {
@@ -341,18 +352,17 @@ function pause() {
 
 // 停止渲染。
 async function stop() {
-  if (renderModel !== undefined) {
+  if (audioRenderer !== undefined) {
     // 只有渲染器状态为running或paused的时候才可以停止。
-    if ((renderModel as audio.AudioRenderer).state.valueOf() !== audio.AudioState.STATE_RUNNING && (renderModel as audio.AudioRenderer).state.valueOf() !== audio.AudioState.STATE_PAUSED) {
+    if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING && audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
       console.info('Renderer is not running or paused.');
       return;
     }
     // 停止渲染。
-    (renderModel as audio.AudioRenderer).stop((err: BusinessError) => {
+    audioRenderer.stop((err: BusinessError) => {
       if (err) {
         console.error('Renderer stop failed.');
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
       }
     });
@@ -361,20 +371,105 @@ async function stop() {
 
 // 销毁实例，释放资源。
 async function release() {
-  if (renderModel !== undefined) {
+  if (audioRenderer !== undefined) {
     // 渲染器状态不是released状态，才能release。
-    if (renderModel.state.valueOf() === audio.AudioState.STATE_RELEASED) {
+    if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
       console.info('Renderer already released');
       return;
     }
     // 释放资源。
-    (renderModel as audio.AudioRenderer).release((err: BusinessError) => {
+    audioRenderer.release((err: BusinessError) => {
       if (err) {
         console.error('Renderer release failed.');
       } else {
+        fs.closeSync(file);
         console.info('Renderer release success.');
       }
     });
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Scroll() {
+      Column() {
+        Row() {
+          Column() {
+            Text('初始化').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            initArguments(context);
+            init();
+          });
+
+          Column() {
+            Text('开始播放').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ bottom: 12 })
+          .onClick(async () => {
+            start();
+          });
+        }
+
+        Row() {
+          Column() {
+            Text('暂停播放').fontSize(16).margin({ top: 12 });
+          }
+          .id('audio_effect_manager_card')
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            pause();
+          });
+
+          Column() {
+            Text('停止播放').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ bottom: 12 })
+          .onClick(async () => {
+            stop();
+          });
+        }
+
+        Row() {
+          Column() {
+            Text('释放资源').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .id('audio_volume_card')
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            release();
+          });
+        }
+        .padding(12)
+      }
+      .height('100%')
+      .width('100%')
+      .backgroundColor('#F1F3F5');
+    }
   }
 }
 ```

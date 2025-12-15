@@ -1,16 +1,21 @@
-# Using AVPlayer to Play DRM Content (C/C++)
-
+# DRM Playback with AVCodec (C/C++)
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 ## When to Use
 
-You can call the native APIs of DRM Kit to play DRM-protected programs.
+To play DRM-protected content using AVCodec, you can use the native APIs provided by DRM Kit.
 
 Currently, the following decryption capabilities are supported:
 
-| Audio Container Format| Audio Decryption Type|
+| Audio Container| Audio Decryption|
 |----------|:-------|
 | mp4      | AAC    |
 
-| Video Container Format| Video Decryption Type|
+| Video Container| Video Decryption|
 |----------|:------------|
 | ts       | AVC(H.264)  |
 | mp4      | AVC(H.264)  |
@@ -18,15 +23,15 @@ Currently, the following decryption capabilities are supported:
 
 **Usage Scenario**
 
-Before creating DRM, obtain the DRM information. For details, see step 4 in [Media Data Demuxing](../avcodec/audio-video-demuxer.md#how-to-develop).
+Before setting up DRM, obtain the DRM information. For details, see step 4 in [Media Data Demultiplexing](../avcodec/audio-video-demuxer.md#how-to-develop).
 
-## How to Develop
+## Development Guidelines
 
-Read [DRM](../../reference/apis-drm-kit/_drm.md) for the API reference.
+For details on the APIs, see [DRM API](../../reference/apis-drm-kit/capi-drm.md).
 
-Refer to the following sample code to complete the entire DRM process, including obtaining the name and ID list of the DRM solutions supported by the device, creating MediaKeySystem and MediaKeySession instances, generating a media key request, processing a media key response, checking whether secure video decoding is required, and destroying resources.
+Follow the sample code below to implement the entire DRM workflow, including obtaining a name and ID list of the DRM solutions supported by the device, creating a MediaKeySystem, creating a MediaKeySession, generating a media key request, processing a media key response, checking for secure video decoding requirements, and cleaning up resources.
 
-During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.  
+When developing your application, follow the specified order of API calls to avoid exceptions or undefined behaviors. The development steps and explanations below outline the correct sequence.
 
 ### Linking the Dynamic Libraries in the CMake Script
 
@@ -36,7 +41,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 > **NOTE**
 >
-> The word **sample** in the preceding code snippet is only an example. Use the actual project directory name.
+> Replace 'sample' with your actual project name as needed.
 >
 
 ## How to Develop
@@ -53,7 +58,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 2. Obtain the name and ID list of the DRM solutions supported by the device.
 
     ```c++
-    uint32_t count = 3; // count indicates the number of DRM plugins supported by the device. Pass in the actual number.
+    uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));
     Drm_ErrCode ret = OH_MediaKeySystem_GetMediaKeySystems(descriptions, &count);
@@ -62,9 +67,9 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     }
     ```
 
-    After obtaining the name and ID list of DRM solutions supported by the device, match against the DRM information and create the corresponding DRM solution. You can obtain the DRM information by referring to step 4 in the [Media Data Demuxing](../avcodec/audio-video-demuxer.md#how-to-develop).
+    After obtaining the name and ID list of the DRM solutions supported by the device, match this list with the DRM information to create the appropriate DRM solution. You can obtain the DRM information by referring to step 4 in [Media Data Demultiplexing](../avcodec/audio-video-demuxer.md#how-to-develop).
 
-    Alternatively, directly parse the media protocol or media data to obtain the unique identifier of the DRM solution and the PSSH data, so as to generate the DRM information.
+    Alternatively, directly parse the media protocol or media data to extract the unique identifier of the DRM solution and the PSSH data to generate the DRM information.
 
 3. Create a MediaKeySystem instance.
 
@@ -108,10 +113,19 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     memset(&info, 0, sizeof(DRM_MediaKeyRequestInfo));
     info.initDataLen = sizeof(initData);
     info.type = MEDIA_KEY_TYPE_ONLINE; // MEDIA_KEY_TYPE_ONLINE: online media key request; MEDIA_KEY_TYPE_OFFLINE: offline media key request.
-    memcpy(info.mimeType, (char *)"video/mp4", sizeof("video/mp4"));
-    memcpy(info.initData, initData, sizeof(initData));
-    memcpy(info.optionName[0], (char *)"optionalDataName", sizeof("optionalDataName"));
-    memcpy(info.optionData[0], (char *)"optionalDataValue", sizeof("optionalDataValue"));
+    if (sizeof("video/mp4") <= sizeof(info.mimeType)) {
+    memcpy(info.mimeType, "video/mp4", sizeof("video/mp4"));
+    }
+    if (info.initDataLen <= sizeof(info.initData)) {
+    memcpy(info.initData, initData, info.initDataLen);
+    }
+    if (sizeof("optionalDataName") <= sizeof(info.optionName[0])) {
+    memcpy(info.optionName[0], "optionalDataName", sizeof("optionalDataName"));
+    }
+
+    if (sizeof("optionalDataValue") <= sizeof(info.optionData[0])) {
+    memcpy(info.optionData[0], "optionalDataValue", sizeof("optionalDataValue"));
+    }
     info.optionsCount = 1;
     ret = OH_MediaKeySession_GenerateMediaKeyRequest(mediaKeySession, &info, &mediaKeyRequest);
     if (ret != DRM_ERR_OK) {
@@ -133,7 +147,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     }
     ```
 
-    If required, set the audio decryption configuration by following step 4 in [Audio Decoding](../avcodec/audio-decoding.md#how-to-develop), and set the video decryption configuration by following step 4 in [Surface Output in Video Decoding](../avcodec/video-decoding.md#surface-mode) or step 4 in [Buffer Output in Video Decoding](../avcodec/video-decoding.md#buffer-mode).
+    If required, set the audio decryption configuration by following step 4 in [Audio Decoding](../avcodec/audio-decoding.md#how-to-develop), and set the video decryption configuration by following step 4 in [Surface Mode in Video Decoding](../avcodec/video-decoding.md#surface-mode) or step 4 in [Buffer Mode in Video Decoding](../avcodec/video-decoding.md#buffer-mode).
 
 7. Destroy the MediaKeySession instance.
 

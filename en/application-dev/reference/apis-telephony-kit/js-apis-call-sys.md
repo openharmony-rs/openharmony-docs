@@ -1,4 +1,10 @@
 # @ohos.telephony.call (Call) (System API)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **call** module provides call management functions, including making calls, redirecting to the dial screen, obtaining the call status, and formatting phone numbers.
 
@@ -111,7 +117,7 @@ let dialCallOptions: call.DialCallOptions = {
     accountId: 0,
     videoState: 0,
     dialScene: 0,
-    dialType: 0,
+    dialType: 0
 }
 call.dialCall("138xxxxxxxx", dialCallOptions, (err: BusinessError) => {
     if (err) {
@@ -173,7 +179,7 @@ let dialCallOptions: call.DialCallOptions = {
     accountId: 0,
     videoState: 0,
     dialScene: 0,
-    dialType: 0,
+    dialType: 0
 }
 call.dialCall("138xxxxxxxx", dialCallOptions).then(() => {
     console.log(`dialCall success.`);
@@ -1987,7 +1993,7 @@ the system reports a **postDialDelay** event when the call is connected. The app
 | Name  | Type                     | Mandatory| Description                                                          |
 | -------- | ------------------------- | ---- | -------------------------------------------------------------- |
 | callId   | number                    | Yes  | Call ID.                                                      |
-| proceed  | boolean                   | Yes  | Whether to send DTMF tones.|
+| proceed  | boolean                   | Yes  | Whether to send DTMF tones. The default value is **false**.<br>- **true**: Send DTMF tones.<br>- **false**: Do not send DTMF tones.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                   |
 
 **Error codes**
@@ -2035,7 +2041,7 @@ the system reports a **postDialDelay** event when the call is connected. The app
 | Name  | Type                     | Mandatory| Description                   |
 | -------- | ------------------------- | ---- | ----------------------- |
 | callId   | number                    | Yes  | Call ID.               |
-| proceed  | boolean                   | Yes  | Whether to send DTMF tones.|
+| proceed  | boolean                   | Yes  | Whether to send DTMF tones. The default value is **false**.<br>- **true**: Send DTMF tones.<br>- **false**: Do not send DTMF tones.|
 
 **Return value**
 
@@ -5085,7 +5091,7 @@ Defines the VoIP call information.
 | --------------- | ------------------- | ---- | -------------- |
 | voipCallId   | string    | Yes  | Unique ID of a VoIP call.      |
 | userName  | string    | Yes  | User nickname.|
-| userProfile       | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)    | Yes  | User profile picture. |
+| userProfile       | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | Yes  | User profile picture. |
 | extensionId      | string     | Yes  |  Process ID of the third-party application. |
 | abilityName      | string     | Yes  |  Ability name of the third-party application. |
 | voipBundleName    | string     | Yes  |  Bundle name of the third-party application. |
@@ -5561,7 +5567,7 @@ Uses the specified camera to make a video call. If **cameraId** is left empty, t
 | Name| Type                        | Mandatory| Description          |
 | ------ | ---------------------------- | ---- | -------------- |
 | callId | number                       | Yes  | Call ID. You can obtain the value by subscribing to **callDetailsChange** events.      |
-| cameraId | string                     | Yes  | Camera ID. For details about how to obtain **cameraId**, see [Camera Management](../apis-camera-kit/js-apis-camera.md#getsupportedcameras).|
+| cameraId | string                     | Yes  | Camera ID. For details about how to obtain the camera ID, see [Camera Management](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras).|
 
 **Return value**
 
@@ -5612,7 +5618,7 @@ Sets the local preview window. This API uses a promise to return the result.
 | Name| Type                        | Mandatory| Description          |
 | ------ | ---------------------------- | ---- | -------------- |
 | callId | number                       | Yes  | Call ID. You can obtain the value by subscribing to **callDetailsChange** events.      |
-| surfaceId | string                    | Yes  | Preview window ID. For details about how to obtain **surfaceId**, see [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid).  |
+| surfaceId | string                    | Yes  | Preview window ID. For details about how to obtain **surfaceId**, see [getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9).  |
 
 **Return value**
 
@@ -5663,7 +5669,7 @@ Sets the remote display window. This API uses a promise to return the result.
 | Name| Type                        | Mandatory| Description          |
 | ------ | ---------------------------- | ---- | -------------- |
 | callId | number                       | Yes  | Call ID. You can obtain the value by subscribing to **callDetailsChange** events.      |
-| surfaceId | string                    | Yes  | Display window ID. For details about how to obtain **surfaceId**, see [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid).  |
+| surfaceId | string                    | Yes  | Display window ID. For details about how to obtain **surfaceId**, see [getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9).  |
 
 **Return value**
 
@@ -6207,7 +6213,7 @@ Defines a number mark.
 | markContent | string | No | Mark content. When **markType** is set to **MARK_TYPE_ENTERPRISE**, the returned information consists of the employee name and ID.|
 | markCount | number       | No | Mark count.|
 | markSource | string | No| Mark source.|
-| isCloud | boolean | No| Whether the number mark is from the cloud.|
+| isCloud | boolean | No| Whether the number mark is from the cloud. The default value is **false**.<br>- **true**: The number mark is from the cloud.<br>- **false**: The number mark is not from the cloud.|
 | markDetails<sup>14+</sup> | string | No| Mark details. When **markType** is set to **MARK_TYPE_ENTERPRISE**, the value of this parameter is the department position.|
 
 ## MarkType<sup>12+</sup>

@@ -1,5 +1,12 @@
 # 使用HiChecker检测问题（ArkTS）
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @lu-tao-->
+<!--Designer: @martin-duan-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## 简介
 
 HiChecker可以作为应用开发阶段使用的检测能力，用于检测代码运行过程中部分易忽略的问题，如应用线程出现耗时调用、应用进程中元能力资源泄露等问题。开发者可以通过日志记录或进程crash等形式查看具体问题并进行修改，提升应用的使用体验。
@@ -38,58 +45,59 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
 开发者如果期望检测耗时函数调用，并期望检测到时通过打印日志来记录，可参考如下步骤进行开发。
 
 1. 新建一个ArkTS应用工程，在“Project”窗口点击“entry > src > main > ets > entryability ”，打开工程中的“EntryAbility.ets”文件；在页面执行加载后，在自己的业务中调用HiChecker的接口，添加检测规则， 示例代码如下：
-
-   ```ts
+   <!-- @[HiChecker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/PerformanceAnalysisTool/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hichecker, hilog } from '@kit.PerformanceAnalysisKit';
    import { window } from '@kit.ArkUI';
    import { image } from '@kit.ImageKit';
-   import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
-   import { hichecker, hilog } from '@kit.PerformanceAnalysisKit';
    
    export default class EntryAbility extends UIAbility {
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       // 添加检测规则，规则意义见检测模式API参考
+        // 添加检测规则，规则意义见检测模式API参考
        hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
        let filePath: string = this.context.cacheDir + '/test.JPG';
        const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
        const imagePackerApi = image.createImagePacker();
        let packOpts: image.PackingOption = { format:"image/jpeg", quality:98 };
-       imagePackerApi.packToData(imageSourceApi, packOpts);
+       imagePackerApi.packing(imageSourceApi, packOpts);
        // 以上5行通过image子系统触发检测规则
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreateend');
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
      }
    
-     onDestroy() {
+     onDestroy(): void {
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
      }
    
-     onWindowStageCreate(windowStage: window.WindowStage) {
+     onWindowStageCreate(windowStage: window.WindowStage): void {
        // Main window is created, set main page for this ability
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
    
-       windowStage.loadContent('pages/Index', (err, data) => {
+       windowStage.loadContent('pages/Index', (err) => {
          if (err.code) {
            hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
            return;
          }
-         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
        });
      }
    
-     onWindowStageDestroy() {
+     onWindowStageDestroy(): void {
        // Main window is destroyed, release UI related resources
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
      }
    
-     onForeground() {
+     onForeground(): void {
        // Ability has brought to foreground
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
      }
    
-     onBackground() {
+     onBackground(): void {
        // Ability has back to background
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
      }
-   }
+   };
    ```
 
 2. 安装hap后运行，通过DevEco Studio Log插件过滤 HICHECKER 关键字日志或者通过 hdc shell "hilog | grep HICHECKER" 命令查询，有如下调用栈信息说明检测成功（调用栈为触发检测规则时的调用栈）。

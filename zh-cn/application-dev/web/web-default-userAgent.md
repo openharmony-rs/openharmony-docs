@@ -1,4 +1,10 @@
 # User-Agent开发指导
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 <!--RP1-->
 User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操作系统及版本等关键信息。在Web开发中，这个字符串使服务器能够识别请求的来源设备及其特性，从而根据这些信息提供定制化的内容和服务。如果页面无法正确识别UA，可能会导致多种异常情况。例如，为移动设备优化的页面布局可能会在桌面设备上显示错乱，反之亦然。此外，某些特定的浏览器功能或CSS样式可能仅在特定的浏览器版本中受支持，如果页面无法根据UA字符串做出正确的判断，就可能导致渲染问题或逻辑错误。
 
@@ -42,9 +48,9 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
 ## 自定义User-Agent结构
 
 在下面的示例中，通过调用[getUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getuseragent)接口获取当前默认的用户代理（User-Agent）字符串。这一接口提供的默认User-Agent信息为开发者提供了基础，使开发者能够基于这个默认信息进行定制或扩展。
+<!-- @[get_the_current_default_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_one.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -59,9 +65,10 @@ struct WebComponent {
         .onClick(() => {
           try {
             let userAgent = this.controller.getUserAgent();
-            console.log("userAgent: " + userAgent);
+            console.info('userAgent: ' + userAgent);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -75,9 +82,9 @@ struct WebComponent {
 当Web组件src设置了url时，建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，会概率性出现设置失败。如果未在onControllerAttached回调事件中设置User-Agent。再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
 
 当Web组件src设置为空字符串时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
+<!-- @[set_up_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_two.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -91,15 +98,16 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
-      .onControllerAttached(() => {
-        console.log("onControllerAttached");
-        try {
-          let userAgent = this.controller.getUserAgent() + this.customUserAgent;
-          this.controller.setCustomUserAgent(userAgent);
-        } catch (error) {
-          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-        }
-      })
+        .onControllerAttached(() => {
+          console.info('onControllerAttached');
+          try {
+            let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+            this.controller.setCustomUserAgent(userAgent);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
     }
   }
 }
@@ -107,47 +115,48 @@ struct WebComponent {
 
 从API version 20开始，可通过[setAppCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setappcustomuseragent20)接口设置应用级自定义用户代理，或者通过[setUserAgentForHosts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setuseragentforhosts20)对特定网站设置应用级自定义用户代理，覆盖系统的用户代理，应用内所有Web组件生效。
 
-建议在Web组件创建前调用setAppCustomUserAgent，setUserAgentForHosts方法设置User-Agent，再创建指定src的Web组件或通过loadUrl加载具体页面。
+建议在Web组件创建前先调用静态接口[getDefaultUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14)获取默认的用户代理（User-Agent）字符串，然后调用setAppCustomUserAgent，setUserAgentForHosts方法设置User-Agent，再创建指定src的Web组件或通过loadUrl加载具体页面。
+<!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+``` TypeScript
+import { webview } from '@kit.ArkWeb';    
+import { BusinessError } from '@kit.BasicServicesKit';    
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+@Entry    
+@Component    
+struct WebComponent {    
+  controller: webview.WebviewController = new webview.WebviewController();    
 
-  aboutToAppear(): void {
-    try {
-      webview.WebviewController.initializeWebEngine();
-      let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();
-      let appUA = " appUA";
-      webview.WebviewController.setUserAgentForHosts(
-        appUA,
-        [
-          "www.example.com",
-          "www.baidu.com"
-        ]
-      );
-    } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-    }
-  }
+  aboutToAppear(): void {    
+    try {    
+      webview.WebviewController.initializeWebEngine();    
+      let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();    
+      let appUA = defaultUserAgent + ' appUA';    
+      webview.WebviewController.setAppCustomUserAgent(appUA);    
+      webview.WebviewController.setUserAgentForHosts(    
+        appUA,    
+        [    
+          'www.example.com',    
+          'www.baidu.com'    
+        ]    
+      );    
+    } catch (error) {    
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);    
+    }    
+  }    
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
+  build() {    
+    Column() {    
+      Web({ src: 'www.example.com', controller: this.controller })    
+    }    
+  }    
 }
 ```
 
 在下面的示例中，通过[getCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getcustomuseragent10)接口获取自定义用户代理。
+<!-- @[get_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -163,9 +172,10 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.userAgent = this.controller.getCustomUserAgent();
-            console.log("userAgent: " + this.userAgent);
+            console.info('userAgent: ' + this.userAgent);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -203,7 +213,7 @@ OpenHarmony设备的识别主要通过User-Agent中的系统、系统版本和�
 
    ```ts
    const matches = navigator.userAgent.match(/OpenHarmony (\d+\.?\d*)/);  
-   matches?.length && Number(matches[1]) >= 5;  
+   matches?.length && Number(matches[1]) > 0;  
    ```
 
 3. 设备类型识别
@@ -224,4 +234,8 @@ OpenHarmony设备的识别主要通过User-Agent中的系统、系统版本和�
 ### 如何模拟OpenHarmony操作系统的User-Agent进行前端调试
 
 在Windows/Mac/Linux等操作系统中，可以通过Chrome/Edge/Firefox等浏览器DevTools提供的User-Agent复写能力，模拟OpenHarmony User-Agent。
+
+### 如何在OpenHarmony中自定义User-Agent以实现H5兼容性
+
+OpenHarmony提供[setCustomUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)接口以支持User-Agent的自定义设置。为适配移动端H5页面通常依赖的UA标识检测（如Mobile、Android等），并确保不覆盖系统默认UA信息，推荐按如下方式操作：首先通过[getDefaultUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14)接口获取系统默认User-Agent字符串，随后将H5兼容所需的自定义标识字段追加至该字符串末尾，最后调用setCustomUserAgent接口设置修改后的完整UA字符串。
 <!--RP1End-->

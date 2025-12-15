@@ -1,5 +1,12 @@
 # drawing_mask_filter.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 声明与绘图模块中的对象相关的函数。
@@ -31,7 +38,7 @@
 
 ### OH_Drawing_BlurType
 
-```
+```c
 enum OH_Drawing_BlurType
 ```
 
@@ -53,7 +60,7 @@ enum OH_Drawing_BlurType
 
 ### OH_Drawing_MaskFilterCreateBlur()
 
-```
+```c
 OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurType, float sigma, bool respectCTM)
 ```
 
@@ -72,7 +79,7 @@ OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurT
 | -- | -- |
 | [OH_Drawing_BlurType](#oh_drawing_blurtype) blurType | 表示模糊类型。 |
 | float sigma | 表示要应用的高斯模糊的标准偏差。必须大于0。 |
-| bool respectCTM | 表示模糊标准差值被CTM修改，默认为真。 |
+| bool respectCTM | 表示模糊标准差值被CTM（当前变换矩阵）修改，默认为真。true表示模糊标准差值受CTM影响，false表示模糊标准差值固定，不受CTM影响。 |
 
 **返回：**
 
@@ -82,7 +89,7 @@ OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurT
 
 ### OH_Drawing_MaskFilterDestroy()
 
-```
+```c
 void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)
 ```
 

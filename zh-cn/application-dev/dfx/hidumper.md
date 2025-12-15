@@ -1,9 +1,16 @@
 # hidumper
 
-HiDumper是用于统一系统信息导出的命令行工具，支持分析CPU、内存、存储等系统资源使用情况，查询系统服务运行情况，定位资源使用异常、通信等等相关问题。
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @m0_55013956-->
+<!--Designer: @milkbread123-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+HiDumper是用于统一系统信息导出的命令行工具，支持分析CPU、内存、存储等系统资源使用情况，查询系统服务运行情况，定位资源使用异常、通信等相关问题。
 
 
-针对HiDumper所支撑的使用场景，本章节讲介绍其查询内存信息、查询CPU使用情况、查询系统能力、查询进程信息、查询存储信息、查询系统信息等基础功能，以及系统故障日志获取，进程间通信记录导出，导出信息支持压缩转储等能力。
+针对HiDumper所支撑的使用场景，本章节将介绍其查询内存信息、查询CPU使用情况、查询系统能力、查询进程信息、查询存储信息、查询系统信息等基础功能，以及系统故障日志获取，进程间通信记录导出，导出信息支持压缩转储等能力。
 
 
 HiDumper命令行工具使用常见问题汇总在[常见问题](#常见问题)章节。
@@ -13,40 +20,41 @@ HiDumper命令行工具使用常见问题汇总在[常见问题](#常见问题)�
 
 - 根据hdc命令行工具指导，完成[环境准备](hdc.md#环境准备)。
 
-- 确保设备已正常连接，并执行hdc shell。
+- 请确保设备已正常连接，并执行hdc shell。
 
 
 ## 命令行说明
 
-<!--RP1-->
 | 选项 | 说明 |
 | -------- | -------- |
 | -h | 帮助命令。 |
 | [-lc](#查询系统信息) | 列出系统信息簇。 |
 | [-ls](#查询系统服务列表) | 列出正在运行的系统能力。 |
-| [-c](#查询系统信息) | 获取系统全量信息簇详细信息，包含设备信息、内核信息、环境变量等。 |
+| [-c](#查询系统信息) | 获取系统全量信息簇详细信息，包含设备信息、内核信息和环境变量等。 |
 | [-c [base system]](#查询系统信息) | 获取指定信息簇详细信息，可选"base"或者"system"。 |
 | [-s](#获取系统服务详细信息) | 获取所有系统能力详细信息。 |
-| [-s [SA0 SA1]](#获取系统服务详细信息) | 获取一个或多个系统能力详细信息。多个系统能力名称间使用空格分隔。可通过 -ls 查询系统能力名称。 |
+| [-s [SA0 SA1]](#获取系统服务详细信息) | 获取一个或多个系统能力的详细信息。多个系统能力名称之间使用空格分隔。可通过 -ls 查询系统能力名称。 |
 | [-s [SA] -a ["option"]](#获取指定系统服务提供的能力) | 执行单个系统能力的特定选项。<br />SA：系统能力名称。<br />option：该系统能力支持的选项。可通过 -s [SA] -a ["-h"] 获取单个系统能力支持的所有选项。 |
-| [-e](#获取系统故障日志) | 获取记录的故障日志。 |
+| [-e](#获取系统故障日志) | 获取记录的故障日志。输出日志的规格可参考：[CppCrash](cppcrash-guidelines.md#日志规格)、[JSCrash](jscrash-guidelines.md#日志规格)、[AppFreeze](appfreeze-guidelines.md#日志规格)。 |
+| [-e --list [process_name] [-n num] [--since timestamp] [--until timestamp]](#获取异常退出记录列表) | 获取异常退出记录列表。<br />**说明**：从API version 22开始，支持该参数。 |
+| [-e --print [process_name] [-n num] [--since timestamp] [--until timestamp]](#获取异常退出故障日志) | 获取异常退出故障日志。输出日志的规格可参考：[CppCrash](cppcrash-guidelines.md#日志规格)、[JSCrash](jscrash-guidelines.md#日志规格)、[AppFreeze](appfreeze-guidelines.md#日志规格)。<br />**说明**：从API version 22开始，支持该参数。 |
+| [-e --print record_id](#获取异常退出故障日志) | 获取指定异常退出记录id的故障日志。输出日志的规格可参考：[CppCrash](cppcrash-guidelines.md#日志规格)、[JSCrash](jscrash-guidelines.md#日志规格)、[AppFreeze](appfreeze-guidelines.md#日志规格)。<br />**说明**：从API version 22开始，支持该参数。 |
 | [--net [pid]](#查询网络信息) | 获取网络信息，包含网络流量、网络接口统计、IP信息等。如果指定了进程的pid，则只输出该进程的网络流量使用信息。 |
-| [--storage [pid]](#查询存储信息) | 获取存储信息，包含磁盘统计、磁盘使用量、文件句柄等信息。如果指定了进程的pid，则只输出该进程的io信息。 |
+| [--storage [pid]](#查询存储信息) | 获取存储信息，包含磁盘统计、磁盘使用量、文件句柄等信息。如果指定了进程的pid，则只显示该进程的io信息。 |
 | [-p [pid]](#查询进程信息) | 获取进程信息，包括进程和线程的列表和信息。 |
-| [--cpuusage [pid]](#查询进程cpu使用率) | 获取CPU使用率，取值范围(0, CPU核数]，按进程和类别分类；如果指定pid，则获取指定pid的CPU使用率等情况。 |
+| [--cpuusage [pid]](#查询进程cpu使用率) | 获取CPU使用率，取值范围(0, CPU核数]，按进程和类别分类；如果指定pid，则获取指定pid的CPU使用率。 |
 | [--cpufreq](#查询cpu频率) | 获取CPU每个核的真实频率，单位：kHz。 |
-| [--mem [--prune]](#查询整机内存) | 获取总内存使用情况。如果指定--prune，则只导出精简的内存使用情况。 |
-| [--mem [pid]  [--show-ashmem]](#查询进程内存) | 获取指定pid的进程内存使用情况，如果指定 --show-ashmem，则补充打印ashmem使用详细信息。 |
-| [--zip](#导出信息压缩存储) | 保存命令输出到/data/log/hidumper下的压缩文件，压缩格式为ZIP。 |
-| [--ipc [pid]/-a --start-stat/stat/--stop-stat](#获取进程间通信信息) | 统计一段时间进程IPC信息，如果使用-a则统计所有进程IPC数据，--start-stat开始统计，--stat获取统计数据，--stop-stat结束统计。 |
-| [--mem-smaps pid [-v]](#查询进程内存) | 获取pid内存统计信息，数据来源于/proc/pid/smaps，使用-v指定更多详细信息。（仅支持导出[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)） |
-| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]](#查询虚拟机堆内存) | pid为必选参数。命令触发ArkTS应用JS线程gc和堆内存快照导出。如果指定线程的tid，只触发该线程gc和堆内存快照导出；如果指定--gc，只触发gc不做快照导出；如果指定--leakobj，则在应用开启泄露检测时可获取泄露对象的列表；如果指定--raw，堆快照按照rawheap格式导出。 |
-| [--mem-cjheap pid [--gc]](#查询虚拟机堆内存) | pid为必选参数。命令触发仓颉应用gc和堆内存快照导出。如果指定--gc，只触发gc不做快照导出。<br />**说明**：从API version 20开始。支持该参数。 |
-<!--RP1End-->
+| [--mem [--prune]](#查询整机内存) | 获取总内存使用情况。如果指定--prune，只导出精简的内存使用情况。<br />**说明**：从API version 20开始，支持--prune参数。 |
+| [--mem pid [--show-ashmem] [--show-dmabuf]](#查询进程内存) | 获取指定pid的进程内存使用情况。<br />指定 --show-ashmem，则补充打印该进程的ashmem使用详细信息。<br />如果是应用进程，指定--show-dmabuf，则补充打印DMA内存详情信息。<br />**说明**：从API version 20开始，支持--show-ashmem、--show-dmabuf参数。 |
+| [--zip](#导出信息压缩存储) | 保存命令输出到 /data/log/hidumper 下的压缩文件，压缩格式为 ZIP。 |
+| [--ipc [pid]/-a --start-stat/stat/--stop-stat](#获取进程间通信信息) | 统计一段时间进程IPC信息。如果使用-a，则统计所有进程IPC数据。使用--start-stat开始统计，使用--stat获取统计数据，使用--stop-stat结束统计。 |
+| [--mem-smaps pid [-v]](#查询进程内存) | 获取pid内存统计信息，数据来源于/proc/pid/smaps，使用-v指定更多详细信息。（仅支持导出[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)）<br />**说明**：从API version 20开始，支持该参数。 |
+| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]](#查询虚拟机堆内存) | 必选参数pid。触发ArkTS应用JS线程的gc和堆内存快照导出。指定线程tid时，仅触发该线程的gc和堆内存快照导出；指定--gc时，仅触发gc，不导出快照；指定--leakobj时，应用开启泄露检测可获取泄露对象列表。<br>文件命名格式为：<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->，文件内容为JSON结构的JS堆快照。<br>指定--raw时，堆快照以rawheap格式导出。<br />**说明**：从API version 19开始，支持--raw参数。 |
+| <!--DelRow-->[--mem-cjheap pid [--gc]](#查询虚拟机堆内存) | pid为必选参数。触发仓颉应用gc和堆内存快照导出。如果指定--gc，只触发gc不做快照导出。<br />**说明**：从API version 20开始，支持该参数。 |
 
 ## 查询内存信息
 
-HiDumper内存信息查询模块，主要用于查看系统整机内存使用情况和单个进程内存使用情况。
+HiDumper内存信息查询模块主要用于查看系统整机内存使用情况和单个进程内存使用情况。开发者需要了解相关的[内存基础知识](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-memory-basic-knowledge)。
 
 ### 查询整机内存
 
@@ -120,7 +128,9 @@ PurgSum（Purgeable Summary）表示当前进程可回收内存的总量。
 
 PurgPin（Purgeable Pinned）表示可回收但暂时无法立即回收的内存。
 
-GL（Graphics Library）代表图形内存，包含应用纹理内存和图形渲染内存。其中Graph和Dma的值相等。
+GL代表GPU内存，包含应用使用的GPU内存和统一渲染在服务进程内产生的GPU内存。
+
+Graph代表图形内存，即DMA内存。
 
 可使用hidumper --mem --prune命令获取整机内存精简的使用情况。
 
@@ -141,7 +151,7 @@ AdjLabel代表该进程内存的回收优先级，取值范围为[-1000, 1000]�
 
 ### 查询进程内存
 
-使用hidumper --mem pid命令获取指定进程的内存使用情况，pid为指定的进程号。
+可使用hidumper --mem pid命令获取指定进程的内存使用情况，pid为指定的进程号。
 
 使用样例：
 
@@ -192,7 +202,7 @@ Total Ashmem:144 kB
 使用样例：
 
 ```shell
-$ hidumper --mem-smaps 27336
+$ hidumper --mem 27336 --show-ashmem
 -------------------------------[memory]-------------------------------
 
                           Pss         Shared         Shared        Private        Private           Swap        SwapPss           Heap           Heap           Heap
@@ -231,15 +241,77 @@ DMA:
 Ashmem:
 Total Ashmem:144 kB
 Process_name    Process_ID      Fd      Cnode_idx       Applicant_Pid   Ashmem_name     Virtual_size    Physical_size   magic    -> 详细ashmem信息
-wei.hmos.xxx  27336   72      328415  27336   dev/ashmem/Paf.Permission.appImg        147456  147456  14105
+wei.xxx.xxx  27336   72      328415  27336   dev/ashmem/Paf.Permission.appImg        147456  147456  14105
 ```
 
-可使用hidumper --mem-smaps pid命令获取指定进程的详细内存使用情况，该命令会将相同内存段对应的内存值累加起来。
+使用hidumper --mem pid --show-dmabuf命令可获取指定PID的内存使用情况，并打印DMA内存详细信息。
+
+使用样例：
+
+```shell
+$ hidumper --mem 27336 --show-dmabuf
+-------------------------------[memory]-------------------------------
+
+                          Pss         Shared         Shared        Private        Private           Swap        SwapPss           Heap           Heap           Heap
+                        Total          Clean          Dirty          Clean          Dirty          Total          Total           Size          Alloc           Free
+                       ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )
+              ------------------------------------------------------------------------------------------------------------------------------------------------------
+            GL              0              0              0              0              0              0              0              0              0              0
+         Graph              0              0              0              0              0              0              0              0              0              0
+   ark ts heap          12657           5516              0          12468              0           3068           3068              0              0              0
+         guard              0              0              0              0              0              0              0              0              0              0
+   native heap          15191          27132              0          14252              0          18780          18780          55792          53527           2629
+          .hap              4              0              0              4              0              0              0              0              0              0
+AnonPage other           1094           4932              0            964              0           4280           4280              0              0              0
+         stack           1388              0              0           1388              0             28             28              0              0              0
+           .db             32              0              0             32              0              0              0              0              0              0
+           .so          12557          59184          18868           5372           2028           1036           1036              0              0              0
+           dev             52              0            284             52              0              0              0              0              0              0
+          .ttf            296           1264              0              0              0              0              0              0              0              0
+FilePage other          21916           1432           4300          21524            148              0              0              0              0              0
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         Total          92379          99460          23452          56056           2176          27192          27192          55792          53527           2629
+
+native heap:
+  jemalloc meta:          1008            276              0           1000              0            156            156              0              0              0
+  jemalloc heap:         12892          22412              0          12088              0          17880          17880              0              0              0
+       brk heap:          1259           4444              0           1132              0            744            744              0              0              0
+      musl heap:            32              0              0             32              0              0              0              0              0              0
+
+Purgeable:
+        PurgSum:0 kB
+        PurgPin:0 kB
+
+DMA:
+            Dma:0 kB
+Process               pid         fd        size_bytes        ino       exp_pid       exp_task_comm     buf_name      exp_name      buf_type      leak_type
+m.xxx.xxx             7612        87        40960             2750      1424          allocatxxxx       RSxxxxxx      xxxxx          xx            xxxx
+
+Ashmem:
+Total Ashmem:144 kB
+```
+字段说明：
+
+| 字段 | 说明 |
+| -------- | -------- |
+| Process | 持有ION内存块的应用进程包名（16个字符截断）。 |
+| pid | 发生故障进程pid。 |
+| fd | 进程持有的句柄。 |
+| size_bytes | 进程持有的ION内存buffer大小，单位：B。 |
+| ino | 文件inode号（索引节点号）。 |
+| exp_pid | 从内核申请ION内存的进程pid。 |
+| exp_task_comm | 从内核申请ION内存的进程名。 |
+| buf_name | ION内存的buffer名字。 |
+| exp_name | ION内存的buffer扩展名。 |
+| buf_type | ION内存的buffer类型。 |
+| leak_type | ION内存泄漏维测的buffer类型。 |
+
+可使用hidumper --mem-smaps pid命令获取指定进程的详细内存使用情况，该命令会累加相同内存段的内存值。
 
 使用样例：
 
 ```txt
-$ hidumper --mem-smaps 1
+$ hidumper --mem-smaps 3456  # 3456 为目标可调试应用进程号
 
 -------------------------------[memory]-------------------------------
 
@@ -254,32 +326,13 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
 
 统计信息说明：
 
-| 字段 | 说明 | 
+| 字段 | 说明 |
 | -------- | -------- |
-| Counts | 相同内存段出现的次数。 | 
-| Category | 内存所属类别。 | 
+| Counts | 相同内存段出现的次数。 |
+| Category | 内存所属类别。 |
 
 可使用hidumper --mem-smaps pid -v命令获取指定进程的详细内存使用情况，该命令会直接打印进程的所有内存信息，不会对相同内存信息做二次处理。
 
-> **注意：**
->
-> hidumper --mem-smaps [pid] [-v]命令调试的进程应为“使用调试证书签名的应用”，同[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)。
-> 
-> 确认命令指定的应用是否为可调试应用，可执行hdc shell "bm dump -n [应用包名] | grep appProvisionType"查询，预期返回信息为"appProvisionType": "debug"。
-> 
-> 以包名com.example.myapplication为例，可执行如下命令查询：
-> 
-> ```shell
-> hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
-> ```
-> 
-> 如包名对应的应用是可调试应用，预期返回信息：
-> 
-> ```shell
-> "appProvisionType": "debug",
-> ```
-> 
-> 构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
 
 使用样例：
 
@@ -287,46 +340,76 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
 $ hidumper --mem-smaps 3456 -v   # 3456 为目标可调试应用进程号
 
 -------------------------------[memory]-------------------------------
-                                    Shared      Shared      Private     Private                                                                             
+                                    Shared      Shared      Private     Private
 Size        Rss         Pss         Clean       Dirty       Clean       Dirty       Swap        SwapPss     Category                   Name
 4           4           2           0           4           0           0           0           0           FilePage other             [anon]
 4           4           2           0           4           0           0           0           0           FilePage other             /bin/init
 ...
 ```
 
+**注意事项**
+
+hidumper --mem-smaps [pid] [-v]命令调试的进程应为“使用调试证书签名的应用”，同[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)。
+
+要确认命令指定的应用是否为可调试应用，可以执行以下命令进行查询：hdc shell "bm dump -n [应用包名] | grep appProvisionType"，预期返回信息为"appProvisionType": "debug"。
+
+以包名com.example.myapplication为例，可执行如下命令查询：
+
+```shell
+hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
+```
+
+如包名对应的应用是可调试应用，预期返回信息：
+
+```shell
+"appProvisionType": "debug",
+```
+
+构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
+
 
 ### 查询虚拟机堆内存
 
 <!--RP2-->
 使用hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]命令可以查看ArkTS应用虚拟机堆内存，使用hidumper --mem-cjheap pid [--gc]命令可以查看仓颉应用虚拟机堆内存。生成的堆内存文件存放于/data/log/faultlog/temp目录。
+<!--RP2End-->
 
 > **注意：**
-> 
+>
 > hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]命令调试的进程应为“使用调试证书签名的应用”，同[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)。
-> 
+>
 > 确认命令指定的应用是否为可调试应用：参考上述hidumper --mem-smaps [pid] [-v]命令中的注意事项。
 
-- 可使用hidumper --mem-jsheap pid命令获取指定进程所有JS线程的虚拟机堆内存，文件命名为：jsheap-进程号-JS线程号-时间戳，如果有多个JS线程会生成多个文件。
+- 可使用hidumper --mem-jsheap pid命令获取指定进程所有JS线程的虚拟机堆内存，文件命名为：<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->，如果有多个JS线程会生成多个文件。
+
   使用样例：
-  
+
+  <!--RP3-->
   ```shell
   $ hidumper --mem-jsheap 64949  -> 64949 为目标应用进程号
   $ ls | grep jsheap   -> 进入堆内存文件存放目录后执行
   jsheap-64949-64949-1751075546050
   jsheap-64949-64989-1751075546050
   ```
-- 可使用hidumper --mem-jsheap pid -T tid命令获取指定进程指定JS线程的虚拟机堆内存，文件命名为：jsheap-进程号-JS线程号-时间戳。
+  <!--RP3End-->
+
+- 可使用hidumper --mem-jsheap pid -T tid命令获取指定进程指定JS线程的虚拟机堆内存，文件命名为：<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->。
+
   使用样例：
-  
-  ```txt
+
+  <!--RP4-->
+  ```shell
   $ hidumper --mem-jsheap 64949 -T 64949  -> 64949 为目标应用进程号
   $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
   jsheap-64949-64949-1751075567710
   ```
-- 可使用hidumper --mem-jsheap pid [-T tid] --raw获取指定进程或指定JS线程的虚拟机堆内存，生成的堆内存文件为rawheap格式，文件命名为jsheap-进程号-JS线程号-时间戳.rawheap。rawheap的解析转换可参考使用：[rawheap-translator工具](../tools/rawheap-translator.md)。
-  
+  <!--RP4End-->
+
+- 可使用hidumper --mem-jsheap pid [-T tid] --raw获取指定进程或指定JS线程的虚拟机堆内存，生成的堆内存文件为rawheap格式，文件命名为<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->.rawheap。rawheap的解析转换可参考使用：[rawheap-translator工具](../tools/rawheap-translator.md)。
+
   使用样例：
-  
+
+  <!--RP5-->
   ```shell
   $ hidumper --mem-jsheap 64949 --raw  -> 64949 为目标应用进程号
   $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
@@ -336,47 +419,55 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
   $ ls | grep jsheap
   jsheap-64949-64949-1751075546055.rawheap
   ```
+  <!--RP5End-->
+
 - 可使用hidumper --mem-jsheap pid --gc命令触发指定应用进程GC。该命令不会生成任何文件，执行成功不会有命令回显。
+
   使用样例：
-  
+
   ```shell
   $ hidumper --mem-jsheap 64949 --gc  -> 64949 为目标应用进程号
   ```
-- 可使用hidumper --mem-jsheap pid --leakobj获取指定进程的虚拟机堆内存和泄露对象信息，文件命名为：leaklist-进程号-时间戳。
-  
-  > **注意：**
-  > 
-  > 获取指定进程的虚拟机堆内存和泄露对象信息的前置条件为应用通过[@ohos.hiviewdfx.jsLeakWatcher (js泄露检测)](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md)接口开启泄露检测功能。
-  > 
-  > 具体使用步骤为：
-  > 
-  > 1. 应用调用[jsLeakWatcher.enable](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md#jsleakwatcherenable)接口。
-  > 2. 应用调用[jsLeakWatcher.watch](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md#jsleakwatcherwatch)接口。
-  > 3. 用户执行hidumper --mem-jsheap [pid] --leakobj命令，导出虚拟机堆内存和泄露对象信息。
-  
+
+- 可使用hidumper --mem-jsheap pid --leakobj获取指定进程的虚拟机堆内存和泄漏对象信息，文件命名为：<!--RP6-->leaklist-进程号-时间戳<!--RP6End-->。
+
+    获取指定进程的虚拟机堆内存和泄露对象信息的前提是应用已通过[@ohos.hiviewdfx.jsLeakWatcher (js泄露检测)](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md)接口开启了泄漏检测功能。
+
+    具体使用步骤为：
+
+    1. 应用调用[jsLeakWatcher.enable](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md#jsleakwatcherenable)接口。
+    2. 应用调用[jsLeakWatcher.watch](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md#jsleakwatcherwatch)接口。
+    3. 执行hidumper --mem-jsheap [pid] --leakobj命令，导出虚拟机堆内存和泄漏对象信息。
+
   使用样例：
-  
+
+  <!--RP7-->
   ```shell
   $ hidumper --mem-jsheap 64949 --leakobj
   $ ls | grep leaklist
   leaklist-64949-1730873210483
   ```
+  <!--RP7End-->
+
+<!--Del-->
 - 可使用hidumper --mem-cjheap pid命令获取指定仓颉进程的虚拟机堆内存，文件命名为：cjheap-进程号-时间戳。
+
   使用样例：
-  
+
   ```shell
   $ hidumper --mem-cjheap 65012  -> 65012 为目标应用进程号
   $ ls | grep cjheap   -> 进入堆内存文件存放目录后执行
   cjheap-65012-1751075546050
   ```
+
 - 可使用hidumper --mem-cjheap pid --gc命令触发指定仓颉应用进程GC。该命令不会生成任何文件，执行成功不会有命令回显。
+
   使用样例：
-  
+
   ```shell
   $ hidumper --mem-cjheap 65012 --gc  -> 65012 为目标应用进程号
   ```
-<!--RP2End-->
-
+<!--DelEnd-->
 上述生成的文件，可以通过hdc[文件传输](hdc.md#文件传输)命令从设备中获取。
 
 
@@ -387,7 +478,7 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
 
 ### 查询整机CPU使用率
 
-使用 hidumper --cpuusage获取整机CPU使用率。
+可使用hidumper --cpuusage获取整机CPU使用率。
 
 打印效果为：
 
@@ -409,7 +500,7 @@ Details of Processes:
 
 ### 查询进程CPU使用率
 
-使用hidumper --cpuusage pid获取指定进程的CPU使用率。
+可使用hidumper --cpuusage pid获取指定进程的CPU使用率。
 
 打印效果为：
 
@@ -429,7 +520,7 @@ Details of Processes:
 
 ### 查询CPU频率
 
-使用hidumper --cpufreq获取CPU频率信息。
+可使用hidumper --cpufreq获取CPU频率信息。
 
 打印效果为：
 
@@ -455,7 +546,7 @@ cmd is: cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
 
 ### 查询系统服务列表
 
-- 使用hidumper -ls命令获取正在运行的系统服务列表。
+- 可使用hidumper -ls命令获取正在运行的系统服务列表。
 
 打印效果为：
 
@@ -477,7 +568,7 @@ NetPolicyManager                 NetStatsManager                  NetTetheringMa
 
 ### 获取系统服务详细信息
 
-- 使用hidumper -s可以获取所有系统服务的详细信息。
+- 可使用hidumper -s获取所有系统服务的详细信息。
 
 打印效果为：
 
@@ -501,7 +592,7 @@ h                             |help text for the tool
 ```
 
 
-- 使用hidumper -s [SA0] [SA1]可以获取指定的一个或多个系统服务的详细信息。其中系统能力名[SA0] [SA1]可通过上述hidumper -ls命令查询得到。
+- 可使用hidumper -s [SA0] [SA1]获取指定的一个或多个系统服务的详细信息。其中系统能力名[SA0] [SA1]可通过上述hidumper -ls命令查询得到。
 
 
 打印效果为：
@@ -550,10 +641,10 @@ composer fps                   |dump the fps info of composer
 ### 获取指定系统服务提供的能力
 
 
-使用hidumper -s [SA] -a ["option"]可以获取指定系统服务提供的能力。
+可使用hidumper -s [SA] -a ["option"]可以获取指定系统服务提供的能力。
 
 
-以RenderSerivce系统渲染服务为例，获取RenderService的使用帮助，打印效果如下：
+以RenderService系统渲染服务为例，获取其使用帮助，打印效果如下：
 
 
 ```shell
@@ -591,8 +682,7 @@ screen                        |dump all screen infomation in the system
 ```
 
 
-系统服务提供的具体功能，例如获取GPU相关信息，可以使用以下命令，打印结果如下：
-
+系统服务提供的具体功能，如获取GPU相关信息，可以使用以下命令，打印结果如下：
 
 ```shell
 $ hidumper -s RenderService -a "gles"
@@ -612,13 +702,13 @@ GL_SHADING_LANGUAGE_VERSION: OpenGL ES GLSL ES 3.20
 
 ## 查询进程信息
 
-使用hidumper -p [pid]命令可以获取指定进程的相关信息，包括进程的挂载信息，进程的线程信息，线程的运行时间，进程等待通道信息。
+可使用hidumper -p [pid]命令获取指定进程的相关信息，包括进程的挂载信息，进程的线程信息，线程的运行时间，进程等待通道信息。
 
 
 > **注意：**
 >
 > hidumper -p [pid]命令调试的进程应为“使用调试证书签名的应用”。
-> 
+>
 > 确认命令指定的应用是否为可调试应用：参考hidumper --mem-smaps [pid] [-v]命令中的介绍。
 
 
@@ -654,7 +744,7 @@ root             2     4     0  127 10:46:59 ?     00:00:00 [call_ebr]
 
 ## 查询网络信息
 
-使用hidumper --net命令可以获取网络流量信息，网络接口统计信息、网口统计信息、ip信息、iptable信息和binder信息。其功能是通过netstat、ifconfig、iptables等系统命令获取网络信息。
+可使用hidumper --net命令获取网络流量信息，网络接口统计信息、网口统计信息、IP信息、iptable信息和binder信息。该功能是通过netstat、ifconfig、iptables等系统命令获取网络信息。
 
 打印效果为：
 
@@ -673,7 +763,7 @@ cmd is: netstat -nW  -> 通过netstat -nW命令查询网络连接、路由表、
 ```
 
 
-使用hidumper --net [pid]命令可以获取指定进程的网络流量信息。
+可使用hidumper --net [pid]命令获取指定进程的网络流量信息。
 
 
 打印效果为：
@@ -691,7 +781,7 @@ Sent Bytes:51885
 
 ## 查询存储信息
 
-- 使用hidumper --storage命令可以获取磁盘统计信息、磁盘使用量信息、文件句柄信息、IO流量统计信息和挂载信息。
+- 可使用hidumper --storage命令获取磁盘统计信息、磁盘使用量信息、文件句柄信息、IO流量统计信息和挂载信息。
 
 打印效果为：
 
@@ -706,7 +796,7 @@ cmd is: storaged -u -p
 ```
 
 
-- 使用hidumper --storage [pid]命令可以获取指定进程的IO信息。
+- 可使用hidumper --storage [pid]命令获取指定进程的IO信息。
 
 
 打印效果为：
@@ -750,7 +840,7 @@ IO信息的相关字段解释如下：
 
 ## 查询系统信息
 
-- 使用hidumper -lc命令获取系统信息簇列表。
+- 可使用hidumper -lc命令获取系统信息簇列表。
 
 打印效果为：
 
@@ -760,7 +850,7 @@ System cluster list:
 base                             system
 ```
 
-- 使用 hidumper -c [系统通信息簇名称] 命令以获取指定信息簇信息。
+- 可使用hidumper -c [系统通信息簇名称]命令获取指定信息簇信息。
 
 例如可使用hidumper -c base命令获取设备信息、内核版本、启动参数和启动时间。打印效果为：
 
@@ -884,12 +974,12 @@ PID        Total Pss(xxx in SwapPss)    Total Vss    Total Rss    Total Uss     
 ...
 ```
 
-- 可使用hidumper -c命令可以获取全量信息簇信息。即包含上述base和system信息簇合集。
+- 可使用hidumper -c命令获取全量信息簇信息。这包含上述base和system信息簇合集。
 
 
 ## 获取系统故障日志
 
-使用hidumper -e命令获取系统故障日志。命令会打印对应故障日志的文件名及详细内容。
+可使用hidumper -e命令获取系统故障日志，打印对应故障日志的文件名及详细内容。
 
 ```shell
 $ hidumper -e
@@ -904,9 +994,210 @@ Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
 ```
 
 
+## 获取异常退出记录列表
+
+可使用hidumper -e --list命令获取异常退出记录列表。
+
+```shell
+$ hidumper -e --list
+time                  foreground               reason              record_id              process_name
+2025-09-26 15:45:06   False                    ThreadBlock6S       05233453489239878113   xxx.xxx.sceneboard
+2025-09-26 15:45:03   False                    LowMemoryKill       23123453489239875544   xxx.xxx.sceneboard
+2025-09-26 14:43:06   False                    LowMemoryKill       45453453489233242345   xxx.xxx.sceneboard
+2025-09-26 12:42:05   True                     LowMemoryKill       45455345348923987811   xxx.xxx.sceneboard
+2025-09-26 10:45:45   False                    LowMemoryKill       78767783489239873255   xxx.xxx.sceneboard
+2025-09-26 10:40:06   False                    LowMemoryKill       78767783489239454666   xxx.xxx.systemui
+...
+```
+
+可使用hidumper -e --list process_name命令可获取指定进程的异常退出记录列表。
+
+```shell
+$ hidumper -e --list sceneboard
+time                  foreground               reason              record_id              process_name
+2025-09-26 15:45:06   False                    ThreadBlock6S       05233453489239878113   xxx.xxx.sceneboard
+2025-09-26 15:45:03   False                    LowMemoryKill       23123453489239875544   xxx.xxx.sceneboard
+2025-09-26 14:43:06   False                    LowMemoryKill       45453453489233242345   xxx.xxx.sceneboard
+2025-09-26 12:42:05   True                     LowMemoryKill       45455345348923987811   xxx.xxx.sceneboard
+2025-09-26 10:45:45   False                    LowMemoryKill       78767783489239873255   xxx.xxx.sceneboard
+...
+```
+
+可使用hidumper -e --list -n num命令获取异常退出记录列表，其中num参数用于指定要展示的记录条数。
+
+```shell
+$ hidumper -e --list -n 2
+time                  foreground               reason              record_id              process_name
+2025-09-26 15:45:06   False                    ThreadBlock6S       05233453489239878113   xxx.xxx.sceneboard
+2025-09-26 15:45:03   False                    LowMemoryKill       23123453489239875544   xxx.xxx.sceneboard
+```
+
+可使用hidumper -e --list process_name -n num --since timestamp --until timestamp命令获取指定进程指定时间内最新num条异常退出记录列表，其中num参数控制展示条数，timestamp参数控制时间范围。
+
+> **说明**：
+>
+> 时间区间控制为前闭后开，且当起始时间和结束时间完全一致时，无法查到数据。
+
+```shell
+$ hidumper -e --list sceneboard -n 4 --since '2025-09-26 12:42:05' --until '2025-09-26 15:45:07'
+time                  foreground               reason              record_id              process_name
+2025-09-26 15:45:06   False                    ThreadBlock6S       05233453489239878113   xxx.xxx.sceneboard
+2025-09-26 15:45:03   False                    LowMemoryKill       23123453489239875544   xxx.xxx.sceneboard
+2025-09-26 14:43:06   False                    LowMemoryKill       45453453489233242345   xxx.xxx.sceneboard
+2025-09-26 12:42:05   True                     LowMemoryKill       45455345348923987811   xxx.xxx.sceneboard
+$ hidumper -e --list --since '2025-09-26 12:42:05' --until '2025-09-26 12:42:05'
+no records found.
+```
+字段说明：
+
+| 字段 | 说明 |
+| -------- | -------- |
+| time | 异常退出发生的时间。 |
+| foreground | 异常退出发生时，进程是否在前台。True表示处于前台；False表示处于后台。 |
+| reason | 异常退出原因，原因范围详见[reason字段说明](#reason字段说明)。 |
+| record_id | 异常退出记录ID。 |
+| process_name | 发生异常退出的进程名。 |
+
+### reason字段说明
+以下异常退出原因，可参考[应用终止分析思路和分析步骤](appkilled-guidelines.md#分析思路和分析步骤)进行问题排查处理。
+
+| 类型   | 说明                       |
+| ------- | ------------------------- |
+| IllegalAudioRendererBySuspend | 应用未申请合理的后台任务，但是后台有大量音频播放。 |
+| LowMemoryKill | 整机低内存。 |
+| OomKiller | 整机内存耗尽，无法继续分配。 |
+| PowerSaveClean | 整机切换到省电模式或应急模式。 |
+| ResourceLeak(AshmemLeak) | 应用Ashmem内存占用超标。 |
+| ResourceLeak(GpuLeak) | 应用GPU内存占用超标。 |
+| ResourceLeak(GpuRsLeak) | 应用在Render Service进程内的GPU内存占用超标。 |
+| ResourceLeak(IonLeak) | 应用的Ion内存占用超标。 |
+| RssThresholdKiller | 应用的RSS（Resident Size Set）占用超标。 |
+| SwapFull | 整机Swap空间耗尽。 |
+| ThreadBlock6S | 应用主进程阻塞，该类型支持根据record_id查看故障日志详情。 |
+| AppInputBlock | 输入事件无响应，该类型支持根据record_id查看故障日志详情。 |
+| LifecycleTimeout | 生命周期超时，该类型支持根据record_id查看故障日志详情。 |
+| JsError | JS崩溃，该类型支持根据record_id查看故障日志详情。 |
+| CppCrash | Native崩溃，该类型支持根据record_id查看故障日志详情。 |
+
+## 获取异常退出故障日志
+
+可使用 hidumper -e --print 命令获取系统故障日志，打印文件名和详细内容。
+
+> **说明**：
+>
+> 异常退出记录最长保持30天，同一进程同类型的故障日志最多保留10条。查询的日志已被删除时，会给予提示。
+
+```shell
+$ hidumper -e --print
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.sceneboard-20020022-20250926154006  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...   -> 故障日志详细内容，大量的文本内容，此处省略
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.sceneboard-20020022-20250926124106  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...   -> 故障日志详细内容，大量的文本内容，此处省略
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.sceneboard-20020022-20250926114206  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...   -> 故障日志详细内容，大量的文本内容，此处省略
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.systemui-20020022-20250926104506  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...   -> 故障日志详细内容，大量的文本内容，此处省略
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.hidumper-20020022-20250926104206  -> 故障日志文件名
+
+The faultlog has been deleted by the system due to expiration.  -> 日志过期被删除提示
+```
+
+可使用hidumper -e --print process_name命令打印指定进程的系统故障日志文件名及详细内容。
+
+```shell
+$ hidumper -e --print systemui
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.systemui-20020022-20250926104506  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...
+```
+
+可使用hidumper -e --print -n num命令打印系统故障日志的文件名及详细内容，并限制打印文件数量。
+
+```shell
+$ hidumper -e --print -n 2
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.sceneboard-20020022-20250926154006  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...   -> 故障日志详细内容，大量的文本内容，此处省略
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.sceneboard-20020022-20250926124106  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...   -> 故障日志详细内容，大量的文本内容，此处省略
+```
+
+可使用hidumper -e --print process_name -n num --since timestamp --until timestamp命令获取系统故障日志，打印文件名和详细内容，同时限制指定进程的文件数量和时间范围。
+
+```shell
+$ hidumper -e --print sceneboard -n 2 --since '2025-09-26 12:40:05' --until '2025-09-26 15:45:07'
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.sceneboard-20020022-20250926154006  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...   -> 故障日志详细内容，大量的文本内容，此处省略
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.sceneboard-20020022-20250926124106  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...   -> 故障日志详细内容，大量的文本内容，此处省略
+```
+
+可使用hidumper -e --print record_id命令获取指定异常退出记录id的系统故障日志，包括文件名及详细内容。若无匹配记录，则提示查询失败原因。
+
+```shell
+$ hidumper -e --print 05233453489239878113
+
+-------------------------------[faultlog]-------------------------------
+
+/data/log/faultlog/faultlogger/xxxx-com.xxx.sceneboard-20020022-20250926104006  -> 故障日志文件名
+
+Generated by HiviewDFX@OpenHarmony  -> 故障日志详细内容
+...   -> 故障日志详细内容，大量的文本内容，此处省略
+
+$ hidumper -e --print 23123453489239875544
+this type of record does not have faultlog.  -> 查询失败原因
+```
+
+
 ## 获取进程间通信信息
 
-使用hidumper --ipc -a --start-stat/stop-stat/stat命令获取整机采集时间区间内IPC信息。
+可使用hidumper --ipc -a --start-stat/stop-stat/stat命令获取整机采集时间区间内IPC信息。
 
 打印效果为：
 
@@ -932,7 +1223,7 @@ StopIpcStatistics pid:1472 success
 ...
 ```
 
-使用hidumper --ipc [pid] --start-stat/stop-stat/stat命令获取指定进程采集时间区间内的IPC信息。
+可使用hidumper --ipc [pid] --start-stat/stop-stat/stat命令获取指定进程采集时间区间内的IPC信息。
 
 打印效果为：
 
@@ -963,16 +1254,14 @@ StopIpcStatistics pid:1473 success
 
 ## 导出信息压缩存储
 
-hidumper提供有--zip命令支持将任意类型导出信息输出到 /data/log/hidumper 下的压缩文件，可以与其他命令组合使用，压缩格式为ZIP，文件命名为当前时间戳，如下打印效果作为参考。
-
-打印效果为：
+hidumper提供有--zip命令支持将任意类型导出信息输出到 /data/log/hidumper 下的压缩文件，可以与其他命令组合使用，压缩格式为ZIP，文件命名为当前时间戳，如下打印效果所示。
 
 ```shell
 $ hidumper --zip
 100%,[-],The result is:/data/log/hidumper/20250622-120444-166.zip
 ```
 
-例如，对于 hidumper -e 命令获取系统故障日志，其输出的文本内容较多，可以考虑使用压缩存储，执行效果如下：
+例如，对于 hidumper -e 命令获取系统故障日志，其输出的文本内容较多，可以考虑使用压缩存储，打印效果如下：
 
 ```shell
 $ hidumper -e
@@ -1186,7 +1475,7 @@ hdc shell "hidumper -s WindowManagerService -a '-w 5 -inspector'"
 
 > **说明：**
 >
-> 仅支持通过[Navigation](../ui/arkts-navigation-navigation.md)组件实现页面路由的应用。
+> 仅支持通过[Navigation](../ui/arkts-navigation-architecture.md)组件实现页面路由的应用。
 
 命令：
 
@@ -1236,14 +1525,14 @@ Navigation number: 4
       | [1]{ ID: 5, Name: "pageSix", Mode: "STANDARD", IsOnShow: "FALSE" }
   | [2]{ ID: 6, Name: "pageThree", Mode: "STANDARD", IsOnShow: "TRUE" }
 ```
-> **说明：** 
+> **说明：**
 >
 > 同一级别的节点，显示在最下方的节点为栈顶节点。
 
 ## 常见问题
 
 
-### hidumper 查询到的内存使用情况与hidebug接口获取到的内存使用情况之间的关系
+### hidumper 查询到的内存使用情况与Hidebug接口获取到的内存使用情况之间的关系
 
 **现象描述**
 
@@ -1253,16 +1542,16 @@ hidumper --mem 系列命令与[HiDebug](../reference/apis-performance-analysis-k
 
 hidumper --mem命令与HiDebug接口内存获取功能详细对比参考下表。
 
-**表1** 
+**表1**
 
-| 命令或接口 | 使用场景 | 数据来源 | 是否导出图形内存 | 
+| 命令或接口 | 使用场景 | 数据来源 | 是否导出图形内存 |
 | -------- | -------- | -------- | -------- |
-| hidumper --mem | 命令行获取**所有进程**的内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 是 | 
-| hidumper --mem [pid] | 命令行获取**单个进程**的内存使用情况 | 系统节点：/proc/pid/smaps | 是 | 
-| hidumper --mem-smaps [pid] | 命令行获取**单个进程**的详细内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 | 
-| [hidebug.getAppNativeMemInfo](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebuggetappnativememinfo12) | 获取**应用自身**的内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 | 
+| hidumper --mem | 命令行获取**所有进程**的内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 是 |
+| hidumper --mem [pid] | 命令行获取**单个进程**的内存使用情况 | 系统节点：/proc/pid/smaps | 是 |
+| hidumper --mem-smaps [pid] | 命令行获取**单个进程**的详细内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 |
+| [hidebug.getAppNativeMemInfo](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebuggetappnativememinfo12) | 获取**应用自身**的内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 |
 
-若想通过hidebug获取图形内存，参考：[HiDebug能力概述](hidebug-guidelines.md)。
+若想通过Hidebug获取图形内存，请参考[HiDebug能力概述](hidebug-guidelines.md)中的相关说明。
 
 
 ### hidumper获取进程虚拟机内存和泄露对象信息为空
@@ -1273,4 +1562,4 @@ hidumper --mem命令与HiDebug接口内存获取功能详细对比参考下表�
 
 **可能原因&amp;解决方法**
 
-hidumper --mem-jsheap [pid] --leakobj 命令参数底层是依赖[JsLeakWatcher](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md)提供的能力。获取指定进程的虚拟机堆内存和泄露对象信息的前置条件为应用通过JsLeakWatcher接口开启泄露检测功能。具体步骤参考：[查询虚拟机堆内存](#查询虚拟机堆内存)。
+hidumper --mem-jsheap [pid] --leakobj 命令依赖[JsLeakWatcher](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md)。应用需通过JsLeakWatcher接口开启泄漏检测功能。具体步骤参考：[查询虚拟机堆内存](#查询虚拟机堆内存)。

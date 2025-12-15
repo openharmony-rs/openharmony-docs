@@ -1,4 +1,14 @@
 # OH_AVPlayer
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xushubo; @chennotfound-->
+<!--Designer: @dongyu_dy-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVPlayer OH_AVPlayer
+```
 
 ## Overview
 

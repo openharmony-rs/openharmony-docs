@@ -1,10 +1,16 @@
 # 在Web中打开摄像头和麦克风
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @qq_42700029-->
+<!--Designer: @qiu-gongkai-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 WebRTC（Web Real-Time Communications）是一项实时通讯技术，它允许网络应用或站点在无需中间媒介的情况下建立浏览器之间的点对点（Peer-to-Peer）连接，实现视频流、音频流或其他任意数据的传输。WebRTC所包含的标准使得用户无需安装任何插件或第三方软件即可创建点对点（Peer-to-Peer）的数据共享与电话会议。WebRTC技术适用于所有现代浏览器和主要平台的本机客户端，其背后的技术作为开放的Web标准实现，并在所有主要浏览器中作为常规JavaScript API提供。
 
 Web组件可以通过W3C标准协议接口拉起摄像头和麦克风，通过[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口接收权限请求通知，需在配置文件中声明相应的音频权限。
 
-- 使用摄像头和麦克风功能前请在module.json5中添加音频相关权限，权限的添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md)。
+- 使用摄像头和麦克风功能前请在module.json5中添加音频相关权限，权限的添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
    ```json
     // src/main/resources/base/element/string.json
@@ -49,19 +55,19 @@ Web组件可以通过W3C标准协议接口拉起摄像头和麦克风，通过[o
 在下面的示例中，点击前端页面中的开启摄像头按钮再点击onConfirm，打开摄像头和麦克风。
 
 - 应用侧代码。
-
-  ```ts
-  // xxx.ets
+  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { abilityAccessCtrl } from '@kit.AbilityKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
-
+  
     aboutToAppear() {
       // 配置Web开启调试模式
       webview.WebviewController.setWebDebuggingAccess(true);
@@ -76,7 +82,7 @@ Web组件可以通过W3C标准协议接口拉起摄像头和麦克风，通过[o
         console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
       })
     }
-
+  
     build() {
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
@@ -138,7 +144,7 @@ Web组件可以通过W3C标准协议接口拉起摄像头和麦克风，通过[o
         video.srcObject = MediaStream;
         video.play();
       }).catch(function(err) {
-    	  console.log(err.name + ": " + err.message);
+    	  console.info(err.name + ": " + err.message);
       });
     }
   </script>

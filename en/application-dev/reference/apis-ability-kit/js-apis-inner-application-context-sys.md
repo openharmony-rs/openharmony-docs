@@ -1,5 +1,12 @@
 # Context (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The Context module provides context for abilities or applications. It allows access to application-specific resources.
 
 > **NOTE**
@@ -14,7 +21,9 @@ The Context module provides context for abilities or applications. It allows acc
 import { common } from '@kit.AbilityKit';
 ```
 
-## Context.createBundleContext<sup>(deprecated)</sup>
+## Context
+
+### createBundleContext<sup>(deprecated)</sup>
 
 createBundleContext(bundleName: string): Context
 
@@ -60,7 +69,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let bundleContext: common.Context;
     try {
       bundleContext = this.context.createBundleContext('com.example.test');
@@ -71,7 +80,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## Context.createModuleContext<sup>(deprecated)</sup>
+### createModuleContext<sup>(deprecated)</sup>
 
 createModuleContext(bundleName: string, moduleName: string): Context
 
@@ -114,7 +123,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let moduleContext: common.Context;
     try {
       moduleContext = this.context.createModuleContext('com.example.test', 'entry');
@@ -125,7 +134,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## Context.createModuleResourceManager<sup>11+</sup>
+### createModuleResourceManager<sup>11+</sup>
 
 createModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 
@@ -148,7 +157,7 @@ Creates a resource management object for a module.
 
 | Type| Description|
 | -------- | -------- |
-| resmgr.ResourceManager | Object for resource management.|
+| [resmgr.ResourceManager](../apis-localization-kit/js-apis-resource-manager.md#resourcemanager) | Object for resource management.|
 
 **Error codes**
 
@@ -156,6 +165,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
@@ -167,7 +178,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let ModuleResourceManager: resourceManager.ResourceManager;
     try {
       ModuleResourceManager = this.context.createModuleResourceManager('com.example.test', 'entry');
@@ -177,7 +188,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-## Context.createSystemHspModuleResourceManager<sup>12+</sup>
+### createSystemHspModuleResourceManager<sup>12+</sup>
 
 createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 
@@ -210,9 +221,8 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     this.context.createSystemHspModuleResourceManager("com.example.myapplication", "library");
   }
 }
 ```
-<!--no_check-->

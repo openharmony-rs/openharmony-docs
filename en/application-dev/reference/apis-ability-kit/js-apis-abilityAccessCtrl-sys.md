@@ -1,5 +1,12 @@
 # @ohos.abilityAccessCtrl (Application Access Control) (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @xia-bubai-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 The **abilityAccessCtrl** module provides APIs for application permission management, including authentication, authorization, and revocation.
 
 > **NOTE**
@@ -10,7 +17,7 @@ The **abilityAccessCtrl** module provides APIs for application permission manage
 ## Modules to Import
 
 ```ts
-import { abilityAccessCtrl } from '@kit.AbilityKit'
+import { abilityAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## AtManager
@@ -35,7 +42,7 @@ Grants a user_grant permission to an application. This API uses a promise to ret
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
 | tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
 | permissionName | Permissions              | Yes  | Permission to grant. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is granted to the user only this time. The authorization is revoked after the application switches to the background or exits.|
+| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
 
 **Return value**
 
@@ -49,12 +56,12 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters, or the flags value is invalid. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
-| 12100003 | The specified permission does not exist. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100006 | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | 12100007 | The service is abnormal. |
 
@@ -68,9 +75,9 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
-  console.log('grantUserGrantedPermission success');
+  console.info('grantUserGrantedPermission success');
 }).catch((err: BusinessError) => {
-  console.error(`grantUserGrantedPermission fail, err->${JSON.stringify(err)}`);
+  console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -92,7 +99,7 @@ Grants a user_grant permission to an application. This API uses an asynchronous 
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
 | tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
 | permissionName | Permissions              | Yes  | Permission to grant. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is granted to the user only this time. The authorization is revoked after the application switches to the background or exits.|
+| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the permission is granted, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -101,12 +108,12 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters, or the flags value is invalid. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
-| 12100003 | The specified permission does not exist. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100006 | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | 12100007 | The service is abnormal. |
 
@@ -121,9 +128,9 @@ let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`grantUserGrantedPermission fail, err->${JSON.stringify(err)}`);
+    console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.log('grantUserGrantedPermission success');
+    console.info('grantUserGrantedPermission success');
   }
 });
 ```
@@ -146,7 +153,7 @@ Revokes a user_grant permission from an application. This API uses a promise to 
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
 | tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
 | permissionName | Permissions              | Yes  | Permission to revoke. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is granted to the user only this time. The authorization is revoked after the application switches to the background or exits.|
+| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
 
 **Return value**
 
@@ -160,12 +167,12 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters, or the flags value is invalid. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
-| 12100003 | The specified permission does not exist. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100006 | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | 12100007 | The service is abnormal. |
 
@@ -179,9 +186,9 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
-  console.log('revokeUserGrantedPermission success');
+  console.info('revokeUserGrantedPermission success');
 }).catch((err: BusinessError) => {
-  console.error(`revokeUserGrantedPermission fail, err->${JSON.stringify(err)}`);
+  console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -203,7 +210,7 @@ Revokes a user_grant permission from an application. This API uses an asynchrono
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
 | tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
 | permissionName | Permissions              | Yes  | Permission to revoke. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is granted to the user only this time. The authorization is revoked after the application switches to the background or exits.|
+| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the permission is successfully revoked, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -212,12 +219,12 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters, or the flags value is invalid. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
-| 12100003 | The specified permission does not exist. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100006 | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | 12100007 | The service is abnormal. |
 
@@ -232,9 +239,9 @@ let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`revokeUserGrantedPermission fail, err->${JSON.stringify(err)}`);
+    console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.log('revokeUserGrantedPermission success');
+    console.info('revokeUserGrantedPermission success');
   }
 });
 ```
@@ -256,7 +263,7 @@ Obtains the flag of the specified permission of an application. This API uses a 
 | Name   | Type               | Mandatory| Description                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
 | tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
-| permissionName | Permissions              | Yes  | Permission whose flag is to be obtained. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionName | Permissions              | Yes  | Target permission. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 
 **Return value**
 
@@ -270,12 +277,12 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission specified below. |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
 | 12100002 | The specified tokenID does not exist. |
-| 12100003 | The specified permission does not exist. |
+| 12100003 | The specified permission does not exist or is not declared in the module.json file. |
 | 12100006 | The operation is not allowed. Either the application is a sandbox or the tokenID is from a remote device. |
 | 12100007 | The service is abnormal. |
 
@@ -288,9 +295,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: number) => {
-  console.log(`getPermissionFlags success, data->${JSON.stringify(data)}`);
+  console.info(`getPermissionFlags success, result: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`getPermissionFlags fail, err->${JSON.stringify(err)}`);
+  console.error(`getPermissionFlags fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -325,12 +332,13 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission specified below. |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The permissionName exceeds 256 characters, or the status value is invalid. |
+| 12100001 | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the status value is invalid. |
 | 12100003 | The specified permission does not exist. |
 | 12100007 | The service is abnormal. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **Example**
 
@@ -342,9 +350,9 @@ let atManager = abilityAccessCtrl.createAtManager();
 let permission: Permissions = 'ohos.permission.CAMERA';
 
 atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED).then((err) => {
-  console.info('toggle_status: Set closed successful');
+  console.info('setPermissionRequestToggleStatus: set closed successful');
 }).catch((err: BusinessError) => {
-  console.error('toggle_status: Code is ${err.code}, message is ${err.message}');
+  console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -378,10 +386,10 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission specified below. |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The permissionName exceeds 256 characters. |
+| 12100001 | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | 12100003 | The specified permission does not exist. |
 | 12100007 | The service is abnormal. |
 
@@ -396,12 +404,12 @@ let permission: Permissions = 'ohos.permission.CAMERA';
 
 atManager.getPermissionRequestToggleStatus(permission).then((res) => {
   if (res == abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED) {
-    console.info('toggle_status: The toggle status is close');
+    console.info('getPermissionRequestToggleStatus: The toggle status is close');
   } else {
-    console.info('toggle_status: The toggle status is open');
+    console.info('getPermissionRequestToggleStatus: The toggle status is open');
   }
 }).catch((err: BusinessError) => {
-console.error('toggle_status: Code is ${err.code}, message is ${err.message}');
+console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -419,7 +427,7 @@ Obtains the data version of the permission management. This API uses a promise t
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the version obtained.|
+| Promise&lt;number&gt; | Promise used to return the version number obtained.|
 
 | ID| Error Message|
 | -------- | -------- |
@@ -433,7 +441,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let promise = atManager.getVersion();
 promise.then((data: number) => {
-    console.log(`promise: data->${JSON.stringify(data)}`);
+    console.info(`getVersion promise: data->${data}`);
 });
 ```
 
@@ -460,7 +468,7 @@ Obtains the status of the specified permissions. This API uses a promise to retu
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[PermissionStatus](#permissionstatus12)&gt;&gt; | Promise used to return the permission statuses obtained.|
+| Promise&lt;Array&lt;[PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20)&gt;&gt; | Promise used to return the permission statuses obtained.|
 
 **Error codes**
 
@@ -468,10 +476,10 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
+| 12100001 | Invalid parameter. The tokenID is 0 or the permissionList is empty or exceeds the size limit. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100007 | The service is abnormal. |
 
@@ -484,9 +492,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.PermissionStatus>) => {
-  console.log(`getPermissionsStatus success, data->${JSON.stringify(data)}`);
+  console.info(`getPermissionsStatus success, result: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`getPermissionsStatus fail, err->${JSON.stringify(err)}`);
+  console.error(`getPermissionsStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -511,9 +519,9 @@ If **tokenIDList** and **permissionList** have common values with the **tokenIDL
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'permissionStateChange'**, which indicates the permission state changes. |
-| tokenIDList        | Array&lt;number&gt;   | Yes  | List of application token IDs. If this parameter is not specified, this API will subscribe to the permission state changes of all applications. |
-| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. If this parameter is not specified, this API will subscribe to state changes of all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md). |
-| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | Yes| Callback invoked to return the permission state change. |
+| tokenIDList        | Array&lt;number&gt;   | Yes  | List of application token IDs. If this parameter is not specified, this API will subscribe to the permission state changes of all applications.|
+| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. If this parameter is not specified, this API will subscribe to state changes of all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | Yes| Callback invoked to return the permission state change.|
 
 **Error codes**
 
@@ -521,12 +529,11 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
-| 12100004 | The API is used repeatedly with the same input. |
-| 12100005 | The registration time has exceeded the limitation. |
+| 12100001 | Invalid parameter. Possible causes: 1. The tokenIDList or permissionList exceeds the size limit; 2. The tokenIDs or permissionNames in the list are all invalid. |
+| 12100005 | The registration time has exceeded the limit. |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
 
@@ -541,10 +548,10 @@ let tokenIDList: Array<number> = [appInfo.accessTokenId];
 let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
 try {
     atManager.on('permissionStateChange', tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-        console.debug('receive permission state change, data:' + JSON.stringify(data));
+        console.debug(`receive permission state change, data: ${data}`);
     });
 } catch(err) {
-    console.error(`catch err->${JSON.stringify(err)}`);
+    console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -554,7 +561,7 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 
 Unsubscribes from changes in the state of specified permissions for the given applications. This API uses an asynchronous callback to return the result.
 
-If **callback** is not specified, this API will unregister all callbacks for **tokenIDList** and **permissionList**.
+During unsubscribing, if no callback is passed, all callbacks in **tokenIDList** and **permissionList** are deleted in batches.
 
 **System API**: This is a system API.
 
@@ -567,7 +574,7 @@ If **callback** is not specified, this API will unregister all callbacks for **t
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string         | Yes  | Event type. The value is **'permissionStateChange'**, which indicates the permission state changes. |
-| tokenIDList        | Array&lt;number&gt;   | Yes  | List of application token IDs. The value must be the same as that in **on()**. If this parameter is not specified, this API will unsubscribe from the permission state changes of all applications. |
+| tokenIDList        | Array&lt;number&gt;   | Yes  | List of application token IDs. The value must be the same as that in **on()**. If this parameter is not specified, this API will unsubscribe from the permission state changes of all applications.|
 | permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. The value must be the same as that in **on()**. If this parameter is not specified, this API will unsubscribe from state changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 | callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | No| Callback to unregister.|
 
@@ -577,13 +584,11 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenIDs or permissionNames in the list are all invalid. |
-| 12100004 | The API is not used in pair with 'on'. |
+| 12100001 | Invalid parameter. The tokenIDList or permissionList is not in the listening list. |
 | 12100007 | The service is abnormal. |
-| 12100008 | Out of memory. |
 
 **Example**
 
@@ -597,7 +602,7 @@ let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'
 try {
     atManager.off('permissionStateChange', tokenIDList, permissionList);
 } catch(err) {
-    console.error(`catch err->${JSON.stringify(err)}`);
+    console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -642,11 +647,127 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // System applications can obtain the token ID using bundleManager.getApplicationInfo.
+let tokenID: number = 0; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
 atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
-  console.log('requestPermissionOnApplicationSetting success');
+  console.info('requestPermissionOnApplicationSetting success');
 }).catch((err: BusinessError) => {
-  console.error(`requestPermissionOnApplicationSetting fail, err->${JSON.stringify(err)}`);
+  console.error(`requestPermissionOnApplicationSetting fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### grantPermission<sup>21+</sup>
+
+grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
+
+Grants the application permission. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GRANT_SENSITIVE_PERMISSIONS (available only to system applications)
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Parameters**
+
+| Name   | Type               | Mandatory| Description                                                        |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| permissionName | Permissions              | Yes  | Permission to grant. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
+
+**Return value**
+
+| Type         | Description                               |
+| :------------ | :---------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
+| 12100002 | The specified tokenID does not exist. |
+| 12100003 | The specified permission does not exist. |
+| 12100006 | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
+| 12100007 | The service is abnormal. |
+| 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
+
+**Example**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // System applications can obtain the token ID using bundleManager.getApplicationInfo.
+let permissionFlags: number = 2;
+atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
+  console.info('grantPermission success');
+}).catch((err: BusinessError) => {
+  console.error(`grantPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### revokePermission<sup>21+</sup>
+
+revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
+
+Revokes the application permission. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.REVOKE_SENSITIVE_PERMISSIONS (available only to system applications)
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Parameters**
+
+| Name   | Type               | Mandatory| Description                                                        |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| permissionName | Permissions              | Yes  | Permission to revoke. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
+
+**Return value**
+
+| Type         | Description                               |
+| :------------ | :---------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
+| 12100002 | The specified tokenID does not exist. |
+| 12100003 | The specified permission does not exist. |
+| 12100006 | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
+| 12100007 | The service is abnormal. |
+| 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
+
+**Example**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // System applications can obtain the token ID using bundleManager.getApplicationInfo.
+let permissionFlags: number = 2;
+atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
+  console.info('revokePermission success');
+}).catch((err: BusinessError) => {
+  console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -658,21 +779,5 @@ Enumerates the permission toggle states.
 
 | Name              |    Value| Description       |
 | ------------------ | ----- | ----------- |
-| CLOSED  | 0    | The permission is toggled off. |
-| OPEN | 1     | The permission is toggled on. |
-
-### PermissionStatus<sup>12+</sup>
-
-Enumerates the permission states.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Security.AccessToken
-
-| Name              |    Value| Description       |
-| ------------------ | ----- | ----------- |
-| DENIED  | -1    | The permission is not granted.|
-| GRANTED | 0     | The permission is granted.|
-| NOT_DETERMINED | 1     | The permission state is not determined.|
-| INVALID | 2     | The permission is invalid.|
-| RESTRICTED | 3     | The permission is restricted.|
+| CLOSED  | 0    | The permission is toggled off.|
+| OPEN | 1     | The permission is toggled on.|

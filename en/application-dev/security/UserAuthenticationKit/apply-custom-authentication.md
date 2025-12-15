@@ -1,5 +1,12 @@
 # Applying Custom Authentication
 
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
+
 If the biometric authentication fails and the user taps the navigation button for a custom authentication, the unified identity authentication framework will terminate the system authentication process and instruct the caller to launch the custom authentication page.
 
 For example, if the facial or fingerprint authentication provided by the system fails in a payment process, the user can switch to the password authentication defined by the device vendor.
@@ -15,18 +22,17 @@ When the user taps this button, the application that initiates the custom authen
 As shown in the following figure, the selected area is the **WidgetParam.navigationButtonText** field. You can configure this field to guide users to switch from biometric authentication to the service password authentication customized by the application.
 
 > **NOTE**
->
 > The lock screen password authentication and custom authentication are mutually exclusive.
 
-| Authentication Type| Switch to Custom Authentication<br>(√ indicates supported, x indicates not supported)|
+| Authentication Type| Switch to Custom Authentication<br>(√ indicates supported, x indicates not supported)| 
 | -------- | -------- |
-| Lock screen password authentication| × |
-| Facial authentication| √ |
-| Fingerprint authentication| √ |
-| Facial + fingerprint authentication<sup>18+</sup>| √ |
-| Facial + lock screen password authentication| × |
-| Fingerprint + lock screen password authentication| × |
-| Facial + fingerprint + lock screen password authentication| × |
+| Lock screen password authentication| × | 
+| Facial authentication| √ | 
+| Fingerprint authentication| √ | 
+| Facial + fingerprint authentication<sup>18+</sup>| √ | 
+| Facial + lock screen password authentication| × | 
+| Fingerprint + lock screen password authentication| × | 
+| Facial + fingerprint + lock screen password authentication| × | 
 
 ## Development Example
 
@@ -34,44 +40,65 @@ For details about how to initiate the authentication request in the transition f
 
 This example only shows how to configure the UI and select the custom authentication UI. You need to add the code for launching the custom authentication page at the commented line in the example.
 
-```ts
-import { BusinessError } from  '@kit.BasicServicesKit';
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+<!-- @[custom_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
-try {
-  const rand = cryptoFramework.createRandom();
-  const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
-  const authParam: userAuth.AuthParam = {
-    challenge: randData,
-    authType: [userAuth.UserAuthType.FACE],
-    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-  };
-  // Set navigationButtonText for the authentication page.
-  const widgetParam: userAuth.WidgetParam = {
-    title: 'Verify identity',
-    navigationButtonText: 'Use password',
-  };
-  // Obtain an authentication object.
-  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
-  // Subscribe to the authentication result.
-  userAuthInstance.on('result', {
-    onResult(result) {
-      // If the ResultCode 12500000 is returned, the operation is successful.
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
-      // If the ResultCode 12500011 is returned, the user taps the navigation button to switch to the custom authentication page.
-      if (result.result == 12500011) {
-        // You need to implement the process of launching the custom authentication page.
+``` TypeScript
+  handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
+	// ···
+      userAuthInstance.on('result', {
+        onResult: (result: userAuth.UserAuthResult) => {
+		// ···
+              Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
+			// ···
+            if (result.result == userAuth.UserAuthResultCode.CANCELED_FROM_WIDGET ||
+              result.result == userAuth.UserAuthResultCode.NOT_ENROLLED) {
+              // You need to implement the process of launching the custom authentication page.
+			// ···
+            }
+			// ···
+        }
+      });
+      // Start authentication.
+      userAuthInstance.start();
+      Logger.info('auth start success');
+	// ···
+  }
+
+  /*
+   * apply-custom-authentication.md
+   * This example shows how to configure the page and switch to the custom authorizer page. You need to implement the pages to be started and the corresponding pages.
+   * */
+  applyingCustomAuthentication() {
+    try {
+      const randData = getRandData();
+      if (!randData) {
+        return;
       }
+      const authParam: userAuth.AuthParam = {
+        challenge: randData,
+        authType: [userAuth.UserAuthType.FACE],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      };
+      // Configure custom authentication and set the text on the navigation button.
+      const widgetParam: userAuth.WidgetParam = {
+        title: resourceToString($r('app.string.title')),
+        navigationButtonText: resourceToString($r('app.string.navigationButtonText'))
+      };
+      // Obtain an authentication object.
+      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+      Logger.info('get userAuth instance success');
+      // Subscribe to the authentication result.
+      this.handleCustomAuthResult(userAuthInstance, ResultIndex.CUSTOMIZE);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
     }
-  });
-  console.info('auth on success');
-  userAuthInstance.start();
-  console.info('auth start success');
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
-}
+  }
+
 ```
+
+
+## Sample Code
+
+  - [Switching to custom authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  

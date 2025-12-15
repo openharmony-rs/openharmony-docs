@@ -1,4 +1,10 @@
 # 记忆链接开发指导
+<!--Kit: Multimodal Awareness Kit-->
+<!--Subsystem: MultimodalAwareness-->
+<!--Owner: @dilligencer-->
+<!--Designer: @zou_ye-->
+<!--Tester: @judan-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
@@ -11,6 +17,9 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
 第三方应用可使用记忆链接功能，将鸿蒙App Linking链接映射到调用接口的系统应用或服务。例如，用户在【电商应用】中浏览某个商品时，截图保存了该商品的图片，系统将记录图片与【电商应用】提供的鸿蒙App Linking链接的映射关系。当用户再次浏览该图片时，系统会提醒用户是否需要返回【电商应用】查看商品详情。
 
 ## 接口说明
+
+  - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+  - 本模块支持记忆链接的功能。
 
 | 接口名                                                       | 描述                                   |
 | ------------------------------------------------------------ | -------------------------------------- |
@@ -29,48 +38,53 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
    ```ts
    import { metadataBinding } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { Callback } from '@ohos.base';
+   import { Callback } from '@kit.BasicServicesKit';
    ```
+   <!-- @[import_the_metadata_binding_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
-2. 定义记忆服务回调，函数接收回传编码的内容。
+2. 定义记忆服务回调及包名, 函数接收回传编码的内容。   
 
    ```
    let callback : Callback<number> = (event: number) => {};
+   let bundleName: string = '';
    ```
+   <!-- @[metadata_binding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅记忆服务。
 
    ```
-   let bundleName: string = '';
    try {
-      metadataBinding.on('operationSubmitMetadata', bundleName, this.callback);  
+      metadataBinding.on('operationSubmitMetadata', bundleName, callback);  
       console.info("on succeeded");
    } catch (err) {
       let error = err as BusinessError;
       console.error("Register event error and err code is " + error.code);
    }
    ```
+   <!-- @[metadata_binding_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 4. 提供鸿蒙App Linking链接。
 
    ```
-    let metadata: string = "";
-    try {
-        metadataBinding.submitMetadata(metadata);
-    } catch (err) {
-        let error = err as BusinessError;
-        console.error("Submit metadata error and err code is " + error.code);
-    }
+   let metadata: string = "";
+   try {
+      metadataBinding.submitMetadata(metadata);
+   } catch (err) {
+      let error = err as BusinessError;
+      console.error("Submit metadata error and err code is " + error.code);
+   }
    ```
+   <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 5. 取消订阅记忆服务。
 
    ```
    try {
-      metadataBinding.off('operationSubmitMetadata', bundleName, this.callback);
-      console.info("off succeeded");
+     metadataBinding.off('operationSubmitMetadata', bundleName, callback);
+     console.info("off succeeded");
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Unregister event error and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error("Unregister event error and err code is " + error.code);
    }
    ```
+   <!-- @[metadata_binding_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->

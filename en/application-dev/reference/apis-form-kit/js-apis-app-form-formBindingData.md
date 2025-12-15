@@ -1,5 +1,11 @@
 # @ohos.app.form.formBindingData (formBindingData)
 
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @HelloShuo-->
 The **FormBindingData** module provides APIs for widget data binding. You can use the APIs to create a **FormBindingData** object and obtain related information.
 
 > **NOTE**
@@ -23,10 +29,10 @@ Defines the subscription information about the widget update by proxy.
 
 **System capability**: SystemCapability.Ability.Form
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| key<sup>10+</sup> | string | Yes| Subscriber ID of the widget update by proxy. The value is the same as that of the data publisher.|
-| subscriberId<sup>10+</sup> | string | No| Subscription condition of the widget update by proxy. The default value is the current widget ID (specified by **formId**).|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| key<sup>10+</sup> | string | No| No| Subscriber ID of the widget update by proxy. The value is the same as that of the data publisher.|
+| subscriberId<sup>10+</sup> | string | No| Yes| Subscription condition of the widget update by proxy. The default value is the current widget ID (specified by **formId**).|
 
 
 ## FormBindingData
@@ -37,10 +43,10 @@ Describes a **FormBindingData** object.
 
 **System capability**: SystemCapability.Ability.Form
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| data | Object | Yes| Data to be displayed on the widget. The value can be an object containing multiple key-value pairs or a string in JSON format.|
-| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | No| Subscription information of the widget update by proxy. The default value is an empty array.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- |-------- | -------- |
+| data | Object | No| No| Data to be displayed on the widget. The value can be an object containing multiple key-value pairs or a string in JSON format.|
+| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | No| Yes| Subscription information of the widget update by proxy. The default value is an empty array.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 
 ## formBindingData.createFormBindingData
 
@@ -56,7 +62,7 @@ Creates a **FormBindingData** object.
 
 | Name| Type          | Mandatory| Description                                                        |
 | ------ | -------------- | ---- | ------------------------------------------------------------ |
-| obj    | Object\|string | No  | Data to be displayed on the widget. The value can be an object containing multiple key-value pairs or a string in JSON format. The image data is identified by **'formImages'**, and the content is multiple key-value pairs, each of which consists of an image identifier and image file descriptor. The final format is {'formImages': {'key1': fd1, 'key2': fd2}}.<br>**NOTE**<br>During [widget update](../../form/arkts-ui-widget-interaction-overview.md), when the widget UI receives widget data through @LocalStorageProp, the **FormBindingData** object is serialized, that is, the widget data is converted into the string type. Since API version 20, the maximum number of image files is 20, and the total memory size of all images cannot exceed 10 MB. If the total memory size exceeds 10 MB, the images will be displayed abnormally. In API version 19 and earlier versions, the maximum number of image files is 5, and the maximum memory size of each image is 2 MB.|
+| obj    | Object\|string | No  | Data to be displayed on the widget. The value can be an object containing multiple key-value pairs or a string in JSON format. The image data is identified by **'formImages'**, and the content is multiple key-value pairs, each of which consists of an image identifier and image file descriptor. The final format is {'formImages': {'key1': fd1, 'key2': fd2}}.<br>**NOTE**<br>During [widget update](../../form/arkts-ui-widget-interaction-overview.md), when the widget UI receives widget data through @LocalStorageProp, the **FormBindingData** object is serialized, that is, the widget data is converted into the string type. Since API version 20, if the widget data is updated using shared memory, the total size of the updated data cannot exceed 10 MB, and the number of updated images cannot exceed 20. In API version 19 and earlier versions, the maximum number of image files is 5, and the maximum memory size of each image is 2 MB. Exceeding this 2 MB limit for any image will result in abnormal display.|
 
 
 **Return value**
@@ -78,24 +84,38 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { formBindingData } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
 
-try {
-  let file = fileIo.openSync('/path/to/form.png');
-  let formImagesParam: Record<string, number> = {
-    'image': file.fd
-  };
-  let createFormBindingDataParam: Record<string, string | Object> = {
-    'name': '21°',
-    'imgSrc': 'image',
-    'formImages': formImagesParam
-  };
+@Entry
+@Component
+struct Index {
+  content = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  pathDir: string = this.content.filesDir;
 
-  formBindingData.createFormBindingData(createFormBindingDataParam);
-} catch (error) {
-  let code = (error as BusinessError).code;
-  let message = (error as BusinessError).message;
-  console.error(`catch error, code: ${code}, message: ${message}`);
+  createFormBindingData() {
+    try {
+      let filePath = this.pathDir + "/form.png";
+      let file = fileIo.openSync(filePath);
+      let formImagesParam: Record<string, number> = {
+        'image': file.fd
+      };
+      let createFormBindingDataParam: Record<string, string | Record<string, number>> = {
+        'name': '21°',
+        'imgSrc': 'image',
+        'formImages': formImagesParam
+      };
+      formBindingData.createFormBindingData(createFormBindingDataParam);
+    } catch (error) {
+      console.error(`catch error, error: ${JSON.stringify(error)}`);
+    }
+  }
+
+  build() {
+    Button('createFormBindingData')
+      .onClick((event: ClickEvent) => {
+        this.createFormBindingData();
+      })
+  }
 }
 ```

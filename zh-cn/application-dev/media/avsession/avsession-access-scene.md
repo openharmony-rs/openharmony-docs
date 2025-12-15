@@ -1,4 +1,10 @@
 # 应用接入AVSession场景介绍
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 音视频应用在实现音视频功能的同时，需要接入媒体会话即AVSession Kit，下文将提供一些典型的接入AVSession的展示和控制场景，方便开发者根据场景进行适配。
 
@@ -8,7 +14,7 @@
 
 AVSession会对后台的音频播放、VOIP通话做约束，所以通常来说，长音频应用、听书类应用、长视频应用、VOIP类应用等都需要接入AVSession。当应用在没有创建接入AVSession的情况下进行了上述业务，那么系统会在检测到应用后台时，停止对应的音频播放，静音通话声音，以达到约束应用行为的目的。这种约束，应用上架前在本地就可以验证。
 
-对于其他使用到音频播放的应用，比如游戏，直播等场景，接入AVSession不是必选项，只是可选，取决于应用是否有后台播放的使用诉求。若应用需要后台播放，那么接入AVSession仍然是必须的，否则业务的正常功能会受到限制。
+对于其他使用到音频播放的应用，比如游戏、直播等场景，接入AVSession只是可选，取决于应用是否有后台播放的使用诉求。若应用需要后台播放，那么接入AVSession仍然是必须的，否则业务的正常功能会受到限制。
 
 当应用需要实现后台播放等功能时，需要使用[BackgroundTasks Kit](../../task-management/background-task-overview.md)（后台任务管理）的能力，申请对应的长时任务，避免进入挂起（Suspend）状态。
 
@@ -93,21 +99,27 @@ struct Index {
     Column() {
       Text(this.message)
         .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
-          // 设置必要的媒体信息。
-          let metadata: AVSessionManager.AVMetadata = {
-            assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
-            title: 'TITLE',
-            mediaImage: 'IMAGE',
-            artist: 'ARTIST',
-          };
-          session.setAVMetadata(metadata).then(() => {
-            console.info(`SetAVMetadata successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-          });
+          try {
+            let context = this.getUIContext().getHostContext() as Context;
+            // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
+            // 设置必要的媒体信息。
+            let metadata: AVSessionManager.AVMetadata = {
+              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
+              title: 'TITLE',
+              mediaImage: 'IMAGE',
+              artist: 'ARTIST',
+            };
+            session.setAVMetadata(metadata).then(() => {
+              console.info(`SetAVMetadata successfully`);
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+            });
+          } catch (err) {
+            if (err) {
+              console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+            }
+          }
         })
     }
     .width('100%')
@@ -168,7 +180,7 @@ struct Index {
 
 ### 媒体资源金标
 
-对于长音频，播控中心提供了媒体资源金标的展示，媒体资源金标又可称为应用媒体音频音源的标识，目前暂时只支持展示Audio Vivid标识。
+对于长音频，播控中心提供了媒体资源金标（即应用媒体音频音源的标识）的展示，目前只支持展示Audio Vivid标识。
 对于应用来说，接入只需要在AVMetadata中通知系统，当前播放音频的音源标识，播控就会同步展示。
 
 ```ts
@@ -415,54 +427,76 @@ struct Index {
 
 ### 快进快退
 
-系统支持三种快进快退的时长，应用可以通过接口进行设置；同时注册快进快退的回调命令，以响应控制。
+系统支持三种快进/快退的时长，应用可以通过接口进行设置；同时注册快进/快退的回调命令，以响应控制。
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+> **说明：**
+>
+> 应用注册快进/快退及上/下一首资源切换的命令时，在播控中心的显示存在实际差异。
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
+- **当AVSessionType是audio时：**
 
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+    | 应用注册的事件组合 | 播放中心显示按钮 | 按钮是否可用 |
+    | ------------ | ------------ | ------------ |
+    | 未注册任何事件 | “上一首”、“下一首” | 所有按钮置灰，无法点击。 |
+    | 注册上一首/下一首事件 | “上一首”、“下一首” | 注册上一首事件 →“上一首”按钮可用。<br>注册下一首事件 →“下一首”按钮可用。<br>未注册对应事件的按钮不可用。  |
+    | 注册快进/快退事件 | “上一首”、“下一首”|  所有按钮置灰，无法点击。 |
+    | 注册上一首/下一首及快进/快退事件 | “上一首”、“下一首” | 注册上一首事件 →“上一首”按钮可用。<br>注册下一首事件 →“下一首”按钮可用。<br>未注册对应事件的按钮不可用。  |
 
-          // 设置支持的快进快退的时长设置给AVSession。
-          let metadata: AVSessionManager.AVMetadata = {
-            assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
-            title: 'TITLE',
-            mediaImage: 'IMAGE',
-            skipIntervals: AVSessionManager.SkipIntervals.SECONDS_10,
-          };
-          session.setAVMetadata(metadata).then(() => {
-            console.info(`SetAVMetadata successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-          });
+- **当AVSessionType是video时：**
 
-          session.on('fastForward', (time ?: number) => {
-            console.info(`on fastForward , do fastForward task`);
-            // do some tasks ···
-          });
-          session.on('rewind', (time ?: number) => {
-            console.info(`on rewind , do rewind task`);
-            // do some tasks ···
-          });
-        })
+    | 应用注册的事件组合 | 播放中心显示按钮 | 按钮是否可用 |
+    | ------------ | ------------ | ------------ |
+    | 未注册任何事件 | “快进”、“快退” | 所有按钮置灰，无法点击。 |
+    | 注册上一首/下一首事件 | “上一首”、“下一首” | 注册上一首事件 →“上一首”按钮可用。<br>注册下一首事件 →“下一首”按钮可用。<br>未注册对应事件的按钮不可用。  |
+    | 注册快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
+    | 注册上一首/下一首及快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
+
+  ```ts
+  import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct Index {
+    @State message: string = 'hello world';
+
+    build() {
+      Column() {
+        Text(this.message)
+          .onClick(async () => {
+            let context = this.getUIContext().getHostContext() as Context;
+            // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+            let type: AVSessionManager.AVSessionType = 'audio';
+            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+
+            // 设置支持的快进快退的时长设置给AVSession。
+            let metadata: AVSessionManager.AVMetadata = {
+              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
+              title: 'TITLE',
+              mediaImage: 'IMAGE',
+              skipIntervals: AVSessionManager.SkipIntervals.SECONDS_10,
+            };
+            session.setAVMetadata(metadata).then(() => {
+              console.info(`SetAVMetadata successfully`);
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+            });
+
+            session.on('fastForward', (time ?: number) => {
+              console.info(`on fastForward , do fastForward task`);
+              // do some tasks ···
+            });
+            session.on('rewind', (time ?: number) => {
+              console.info(`on rewind , do rewind task`);
+              // do some tasks ···
+            });
+          })
+      }
+      .width('100%')
+      .height('100%')
     }
-    .width('100%')
-    .height('100%')
   }
-}
-```
+  ```
 
 ### 收藏
 
@@ -661,33 +695,39 @@ struct Index {
     Column() {
       Text(this.message)
         .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-          // 设置必要的媒体信息，务必设置，否则接收不到控制事件。
-          let metadata: AVSessionManager.AVMetadata = {
-            assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
-            title: 'TITLE',
-            mediaImage: 'IMAGE',
-            artist: 'ARTIST'
-          };
-          session.setAVMetadata(metadata).then(() => {
-            console.info(`SetAVMetadata successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-          });
-          // 一般在监听器中会对播放器做相应逻辑处理。
-          // 不要忘记处理完后需要通过set接口同步播放相关信息，参考上面的用例。
-          session.on('play', () => {
-            console.info(`on play , do play task`);
-            // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('play')取消监听。
-            // 处理完毕后，请使用SetAVPlayState上报播放状态。
-          });
-          session.on('pause', () => {
-            console.info(`on pause , do pause task`);
-            // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('pause')取消监听。
-            // 处理完毕后，请使用SetAVPlayState上报播放状态。
-          });
+          try {
+            let context = this.getUIContext().getHostContext() as Context;
+            let type: AVSessionManager.AVSessionType = 'audio';
+            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+            // 设置必要的媒体信息，务必设置，否则接收不到控制事件。
+            let metadata: AVSessionManager.AVMetadata = {
+              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
+              title: 'TITLE',
+              mediaImage: 'IMAGE',
+              artist: 'ARTIST'
+            };
+            session.setAVMetadata(metadata).then(() => {
+              console.info(`SetAVMetadata successfully`);
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+            });
+            // 一般在监听器中会对播放器做相应逻辑处理。
+            // 处理完后需要通过set接口同步播放相关信息，参考上面的用例。
+            session.on('play', () => {
+              console.info(`on play , do play task`);
+              // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('play')取消监听。
+              // 处理完毕后，请使用setAVPlayState上报播放状态。
+            });
+            session.on('pause', () => {
+              console.info(`on pause , do pause task`);
+              // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('pause')取消监听。
+              // 处理完毕后，请使用setAVPlayState上报播放状态。
+            });
+          } catch (err) {
+            if (err) {
+              console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+            }
+          }
         })
     }
     .width('100%')

@@ -1,4 +1,10 @@
 # 使用Node-API接口进行primitive类相关开发
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 简介
 
@@ -51,7 +57,7 @@ static napi_value CoerceToBool(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_coerce_to_bool](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -59,7 +65,7 @@ static napi_value CoerceToBool(napi_env env, napi_callback_info info)
 // index.d.ts
 export const coerceToBool: <T>(data: T) => boolean;
 ```
-<!-- @[napi_coerce_to_bool_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_coerce_to_bool_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -81,7 +87,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_bool:%{public}s', re
 // false
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_bool:%{public}s', result);
 ```
-<!-- @[ark_napi_coerce_to_bool](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_coerce_to_number
 
@@ -104,7 +110,7 @@ static napi_value CoerceToNumber(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_coerce_to_number](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -112,7 +118,7 @@ static napi_value CoerceToNumber(napi_env env, napi_callback_info info)
 // index.d.ts
 export const coerceToNumber: <T>(data: T) => number;
 ```
-<!-- @[napi_coerce_to_number_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_coerce_to_number_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -127,7 +133,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_number:%{public}d', 
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_number:%{public}d', str);    // 返回的为NAN
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_number:%{public}d', bool);   // 返回的是1
 ```
-<!-- @[ark_napi_coerce_to_number](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_coerce_to_object
 
@@ -150,7 +156,7 @@ static napi_value CoerceToObject(napi_env env, napi_callback_info info)
     return obj;
 }
 ```
-<!-- @[napi_coerce_to_object](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -158,7 +164,7 @@ static napi_value CoerceToObject(napi_env env, napi_callback_info info)
 // index.d.ts
 export const coerceToObject: <T>(data: T) => Object;
 ```
-<!-- @[napi_coerce_to_object_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_coerce_to_object_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -175,7 +181,7 @@ if (typeof value === 'object') {
   hilog.info(0x0000, 'testTag', 'Node-API The value is not an object.');
 }
 ```
-<!-- @[ark_napi_coerce_to_object](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_coerce_to_string
 
@@ -198,7 +204,7 @@ static napi_value CoerceToString(napi_env env, napi_callback_info info)
     return str;
 }
 ```
-<!-- @[napi_coerce_to_string](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -206,7 +212,7 @@ static napi_value CoerceToString(napi_env env, napi_callback_info info)
 // index.d.ts
 export const coerceToString: <T>(data: T) => string;
 ```
-<!-- @[napi_coerce_to_string_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_coerce_to_string_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -222,7 +228,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_string:%{public}s', 
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_string:%{public}s', typeof res);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_string:%{public}s', bool);
 ```
-<!-- @[ark_napi_coerce_to_string](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_boolean
 
@@ -260,7 +266,7 @@ static napi_value GetBoolean(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_get_boolean](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -268,7 +274,7 @@ static napi_value GetBoolean(napi_env env, napi_callback_info info)
 // index.d.ts
 export const getBoolean: <T>(data: T, value: string) => boolean;
 ```
-<!-- @[napi_get_boolean_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_boolean_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -281,7 +287,7 @@ let data = testNapi.getBoolean<string>('sss', '1');
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_boolean:%{public}s', value);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_boolean:%{public}s', data);
 ```
-<!-- @[ark_napi_get_boolean](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_value_bool
 
@@ -314,7 +320,7 @@ static napi_value GetValueBool(napi_env env, napi_callback_info info)
     return boolNapi;
 }
 ```
-<!-- @[napi_get_value_bool](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -322,7 +328,7 @@ static napi_value GetValueBool(napi_env env, napi_callback_info info)
 // index.d.ts
 export const getValueBool: (value: boolean | string) => boolean | undefined;
 ```
-<!-- @[napi_get_value_bool_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_value_bool_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -335,7 +341,7 @@ hilog.info(0x0000, 'Node-API', 'get_value_bool_not_bool %{public}s', testNapi.ge
 hilog.info(0x0000, 'Node-API', 'get_value_bool_true %{public}s', testNapi.getValueBool(true));
 hilog.info(0x0000, 'Node-API', 'get_value_bool_false %{public}s', testNapi.getValueBool(false));
 ```
-<!-- @[ark_napi_get_value_bool](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_global
 
@@ -354,7 +360,7 @@ static napi_value GetGlobal(napi_env env, napi_callback_info info)
     return global;
 }
 ```
-<!-- @[napi_get_global](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -362,7 +368,7 @@ static napi_value GetGlobal(napi_env env, napi_callback_info info)
 // index.d.ts
 export const getGlobal: () => Object;
 ```
-<!-- @[napi_get_global_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_global_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -374,7 +380,7 @@ let globalObj = testNapi.getGlobal();
 // 判断获取的global是否具有global的自身属性
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_global:%{public}s', globalObj.hasOwnProperty!("undefined"));
 ```
-<!-- @[ark_napi_get_global](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_null
 
@@ -392,7 +398,7 @@ static napi_value GetNull(napi_env env, napi_callback_info info)
     return nullValue;
 }
 ```
-<!-- @[napi_get_null](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -400,7 +406,7 @@ static napi_value GetNull(napi_env env, napi_callback_info info)
 // index.d.ts
 export const getNull: () => null;
 ```
-<!-- @[napi_get_null_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_null_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -411,7 +417,7 @@ import testNapi from 'libentry.so';
 let value = testNapi.getNull();
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_null:%{public}s', value);
 ```
-<!-- @[ark_napi_get_null](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_undefined
 
@@ -441,7 +447,7 @@ static napi_value GetUndefined(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_undefined](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -449,7 +455,7 @@ static napi_value GetUndefined(napi_env env, napi_callback_info info)
 // index.d.ts
 export const getUndefined: (value: undefined) => boolean;
 ```
-<!-- @[napi_get_undefined_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_undefined_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -461,7 +467,7 @@ let data: undefined = undefined;
 let value = testNapi.getUndefined(data);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_undefined:%{public}s', value);
 ```
-<!-- @[ark_napi_get_undefined](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 

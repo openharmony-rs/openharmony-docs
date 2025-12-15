@@ -1,5 +1,12 @@
 # 从TypeScript到ArkTS的适配规则
 
+<!--Kit: ArkTS-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @husenlin-->
+<!--Designer: @qyhuo32-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @zhang_yixin13-->
+
 ArkTS规范约束了TypeScript（简称TS）中影响开发正确性或增加运行时开销的特性。本文罗列了ArkTS中限制的TS特性，并提供重构代码的建议。ArkTS保留了TS大部分语法特性，未在本文中约束的TS特性，ArkTS完全支持。例如，ArkTS支持自定义装饰器，语法与TS一致。按本文约束进行代码重构后，代码仍为合法有效的TS代码。
 
 **示例**
@@ -53,18 +60,23 @@ function addTen(x: number): number {
 ```typescript
 // 不支持：
 let res: any = some_api_function('hello', 'world');
-// `res`是什么？错误代码的数字？字符串？对象？
-// 该如何处理它？
 // 支持：
 class CallResult {
-  public succeeded(): boolean { ... }
-  public errorMessage(): string { ... }
+  public succeeded(): boolean {
+    return false;
+  }
+  public errorMessage(): string {
+    return '123';
+  }
+}
+function some_api_function(param1: string, param2: string): CallResult {
+  return new CallResult();
 }
 
 let res: CallResult = some_api_function('hello', 'world');
 if (!res.succeeded()) {
-  console.info('Call failed: ' + res.errorMessage());
-}
+  console.info('Call failed: ' + res.errorMessage());   
+}  
 ```
 
 `any`类型在TypeScript中并不常见，仅约1%的TypeScript代码库使用。代码检查工具（例如ESLint）也制定了一系列规则来禁止使用`any`。因此，虽然禁止`any`将导致代码重构，但重构量很小，有助于整体性能提升。
@@ -521,10 +533,6 @@ class C {
 }
 ```
 
-**说明**
-
-当前尚不支持静态块的语法。支持该语法后，在.ets文件中使用静态块需遵循此约束。
-
 ### 不支持index signature
 
 **规则：**`arkts-no-indexed-signatures`
@@ -633,8 +641,8 @@ class C {
 **ArkTS**
 
 ```typescript
-interface ListItem {
-  getHead(): ListItem
+interface testListItem {
+  getHead(): testListItem
 }
 
 class C {
@@ -685,7 +693,7 @@ type YI<Item, T extends Array<Item>> = Item
 
 **错误码：10605025**
 
-ArkTS禁止在构造函数中声明类字段，所有字段都必须在`class`作用域内显示声明。
+ArkTS禁止在构造函数中声明类字段，所有字段都必须在`class`作用域内显式声明。
 
 **TypeScript**
 
@@ -1288,8 +1296,8 @@ const Rectangle = class {
     this.width = width;
   }
 
-  height
-  width
+  height;
+  width;
 }
 
 const rectangle = new Rectangle(0.0, 0.0);
@@ -1298,17 +1306,17 @@ const rectangle = new Rectangle(0.0, 0.0);
 **ArkTS**
 
 ```typescript
-class Rectangle {
-  constructor(height: number, width: number) {
-    this.height = height;
-    this.width = width;
+class testRectangle {
+  constructor(testHeight: number, testWidth: number) {
+    this.testHeight = testHeight;
+    this.testWidth = testWidth;
   }
 
-  height: number
-  width: number
+  testHeight: number;
+  testWidth: number;
 }
 
-const rectangle = new Rectangle(0.0, 0.0);
+const rectangle = new testRectangle(0.0, 0.0);
 ```
 
 ### 类不允许`implements`
@@ -1421,20 +1429,20 @@ c3.foo(); // Extra foo
 **TypeScript**
 
 ```typescript
-class Shape {}
-class Circle extends Shape { x: number = 5 }
-class Square extends Shape { y: string = 'a' }
+class testShape {}
+class testCircle extends testShape { x: number = 5 }
+class testSquare extends testShape { y: string = 'a' }
 
-function createShape(): Shape {
-  return new Circle();
+function createShape(): testShape {
+  return new testCircle();
 }
 
-let c1 = <Circle> createShape();
+let c1 = <testCircle> createShape();
 
-let c2 = createShape() as Circle;
+let c2 = createShape() as testCircle;
 
 // 如果转换错误，不会产生编译时或运行时报错
-let c3 = createShape() as Square;
+let c3 = createShape() as testSquare;
 console.info(c3.y); // undefined
 
 // 在TS中，由于`as`关键字不会在运行时生效，所以`instanceof`的左操作数不会在运行时被装箱成引用类型
@@ -1447,21 +1455,17 @@ let e2 = (new Number(5.0)) instanceof Number; // true
 **ArkTS**
 
 ```typescript
-class Shape {}
-class Circle extends Shape { x: number = 5 }
-class Square extends Shape { y: string = 'a' }
+class testShape {}
+class testCircle extends testShape { x: number = 5 }
 
-function createShape(): Shape {
-  return new Circle();
+function createShape(): testShape {
+  return new testCircle();
 }
 
-let c2 = createShape() as Circle;
-
-// 运行时抛出ClassCastException异常：
-let c3 = createShape() as Square;
+let c1 = createShape() as testCircle;
 
 // 创建Number对象，获得预期结果：
-let e2 = (new Number(5.0)) instanceof Number; // true
+let e1 = (new Number(5.0)) instanceof Number; // true
 ```
 
 ### 不支持JSX表达式
@@ -1482,7 +1486,7 @@ let e2 = (new Number(5.0)) instanceof Number; // true
 
 **错误码：10605055**
 
-ArkTS对一元运算符实施严格的类型检查，仅允许操作数值类型。与TypeScript不同，ArkTS禁止隐式的字符串转换到数值，开发者必须使用显示类型的转换方法。
+ArkTS对一元运算符实施严格的类型检查，仅允许操作数值类型。与TypeScript不同，ArkTS禁止隐式的字符串转换到数值，开发者必须使用显式类型的转换方法。
 
 **TypeScript**
 
@@ -2118,7 +2122,7 @@ function* counter(start: number, end: number) {
 }
 
 for (let num of counter(1, 5)) {
-  console.info(num);
+  console.info(num.toString());
 }
 ```
 
@@ -2176,8 +2180,8 @@ function doStuff(arg: Foo | Bar) {
   }
 }
 
-doStuff({ foo: 123, common: '123' });
-doStuff({ bar: 123, common: '123' });
+doStuff({ foo: '123', common: '123' });
+doStuff({ bar: '123', common: '123' });
 ```
 
 **ArkTS**
@@ -2391,29 +2395,29 @@ ArkTS不支持类和接口的声明合并。
 
 ```typescript
 interface Document {
-  createElement(tagName: any): Element
+  createElement(tagName: any): number;
 }
 
 interface Document {
-  createElement(tagName: string): HTMLElement
+  createElement(tagName: string): boolean;
 }
 
 interface Document {
-  createElement(tagName: number): HTMLDivElement
-  createElement(tagName: boolean): HTMLSpanElement
-  createElement(tagName: string, value: number): HTMLCanvasElement
+  createElement(tagName: number): number;
+  createElement(tagName: boolean): boolean;
+  createElement(tagName: string, value: number): string;
 }
 ```
 
 **ArkTS**
-
+ 
 ```typescript
 interface Document {
-  createElement(tagName: number): HTMLDivElement
-  createElement(tagName: boolean): HTMLSpanElement
-  createElement(tagName: string, value: number): HTMLCanvasElement
-  createElement(tagName: string): HTMLElement
-  createElement(tagName: Object): Element
+  createElement(tagName: number): number;
+  createElement(tagName: boolean): boolean;
+  createElement(tagName: string, value: number): number;
+  createElement(tagName: string): string;
+  createElement(tagName: Object): object;
 }
 ```
 
@@ -2895,7 +2899,7 @@ class C {
     console.info(this.p);
   }
   q(r: string) {
-    return this.p == r;
+    return this.p === r;
   }
 }
 ```
@@ -3076,11 +3080,9 @@ ArkTS不允许使用TypeScript或JavaScript标准库中的某些接口。大部�
 
 ### 强制进行严格类型检查
 
-**规则：**`arkts-strict-typing`
-
 **级别：错误**
 
-**错误码：10605145**
+**错误码：10605999**
 
 在编译阶段，会进行TypeScript严格模式的类型检查，包括：
 `noImplicitReturns`, 
@@ -3293,7 +3295,7 @@ function f() {
   e5.prop;               // API18以前，编译时错误：不能访问ESObject类型变量的属性；API18以后，OK，支持点操作符访问
 
   let e6: ESObject = foo(); // OK，显式标注ESObject类型
-  let e7 = e6;              // OK，使用ESObject类型赋值
+  let e7: ESObject = e6;    // OK，使用ESObject类型赋值
   bar(e7);                  // OK，ESObject类型变量传给跨语言调用的函数
 }
 ```

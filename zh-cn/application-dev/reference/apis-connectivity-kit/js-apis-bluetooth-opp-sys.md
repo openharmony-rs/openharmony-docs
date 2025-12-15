@@ -1,5 +1,12 @@
 # @ohos.bluetooth.opp (蓝牙opp模块)(系统接口)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 OPP模块提供了使用蓝牙传输文件的功能，包括发送文件、接收文件和获取文件传输进度等。
 
 > **说明：**
@@ -42,7 +49,7 @@ createOppServerProfile(): OppServerProfile
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let oppProfile = opp.createOppServerProfile();
     console.info('oppServer success');
@@ -59,7 +66,7 @@ Profile类，使用opp方法之前需要创建该类的实例进行操作，通�
 
 sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&gt;
 
-使用蓝牙发送文件。
+使用蓝牙发送文件。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -74,6 +81,12 @@ sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&
 | deviceId | string | 是    | 接收端的蓝牙MAC地址。 |
 | fileHolds | Array&lt;[FileHolder](#fileholder)&gt;| 是    | 发送的文件数据，依据插入Array的次序进行发送。 |
 
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
@@ -81,12 +94,12 @@ sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.                 |
+|202 | Non-system applications are not allowed to use system APIs.                 |
 |203 | This function is prohibited by enterprise management policies.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
+|2900003 | Bluetooth switch is off.                 |
 |2900004 | Profile is not supported.                 |
 |2900099 | Failed to send file.                        |
 |2903001 | The file type is not supported.                 |
@@ -97,7 +110,7 @@ sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+import { fileIo as fs} from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // 创建fileHolders
 try {
@@ -118,7 +131,7 @@ try {
         fileHolders.push(fileHolder);
     }
     oppProfile.sendFile("11:22:33:44:55:66", fileHolders);
-    // 等待文件传输完后，记得关闭文件描述符  fs.colse(file.fd);
+    // 等待文件传输完后，记得关闭文件描述符  fs.close(file.fd);
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -128,7 +141,7 @@ try {
 
 setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt;
 
-蓝牙接收文件。
+蓝牙接收文件。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -143,6 +156,12 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 | accept | boolean | 是    | 表示是否接受接收文件。true表示接受，false表示不接受。 |
 | fileFd | number| 是    | 接收的文件描述符，接收过程中需要保持开启。 |
 
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
@@ -150,12 +169,12 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.                 |
+|202 | Non-system applications are not allowed to use system APIs.                 |
 |203 | This function is prohibited by enterprise management policies.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter.                |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
+|2900003 | Bluetooth switch is off.                 |
 |2900004 | Profile is not supported.                 |
 |2900099 | Failed to confirm the received file information.                        |
 |2903002 | Current Transfer Information is busy.                 |
@@ -165,18 +184,22 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+import { fileIo as fs} from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // 创建fileHolders
+let file: fs.File | undefined = undefined;
 try {
     let oppProfile = opp.createOppServerProfile();
-    let pathDir = this.context.filesDir + "/test.jpg";
-    let file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let pathDir = "/test.jpg"; // 应用根据实际情况填写路径
+    file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
     oppProfile.setIncomingFileConfirmation(true, file.fd);
-    // 接收完成后关闭  
-    fs.close(file.fd);
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+} finally {
+  // 接收完成后关闭  
+  if (file) {
+    fs.close(file.fd);
+  }
 }
 ```
 
@@ -206,16 +229,13 @@ on(type: 'transferStateChange', callback: Callback&lt;OppTransferInformation&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.                 |
+|202 | Non-system applications are not allowed to use system APIs.                 |
 |203 | This function is prohibited by enterprise management policies.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile is not supported.                 |
-|2903001 | The file type is not supported.                 |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2900004 | Profile not supported.                 |
 
 **示例：**
 
@@ -265,15 +285,13 @@ off(type: 'transferStateChange', callback?: Callback&lt;OppTransferInformation&g
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile is not supported.                 |
-|2903001 | The file type is not supported.                 |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2900004 | Profile not supported.                 |
 
 **示例：**
 
@@ -316,15 +334,13 @@ on(type: 'receiveIncomingFile', callback: Callback&lt;OppTransferInformation&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile is not supported.                 |
-|2903001 | The file type is not supported.                 |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2900004 | Profile not supported.                 |
 
 **示例：**
 
@@ -374,21 +390,18 @@ off(type: 'receiveIncomingFile', callback?: Callback&lt;OppTransferInformation&g
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile is not supported.                 |
-|2903001 | The file type is not supported.                 |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2900004 | Profile not supported.                 |
 
 **示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // 创建fileHolders
 try {
@@ -403,13 +416,19 @@ try {
 
 cancelTransfer(): Promise&lt;void&gt;
 
-取消文件传输。
+取消文件传输。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码**：
 
@@ -418,11 +437,11 @@ cancelTransfer(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
+|2900003 | Bluetooth switch is off.                 |
 |2900004 | Profile is not supported.                 |
 |2900099 | Failed to cancel the current transfer.                        |
 |2903002 | Current Transfer Information is busy.                 |
@@ -446,13 +465,19 @@ try {
 
 getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransferinformation)&gt;
 
-获取当前传输的文件信息。
+获取当前传输的文件信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;[OppTransferInformation](#opptransferinformation)&gt; | Promise对象。返回当前传输的文件信息对象。 |
 
 **错误码**：
 
@@ -461,11 +486,11 @@ getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransfe
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
+|2900003 | Bluetooth switch is off.                 |
 |2900004 | Profile is not supported.                 |
 |2900099 | Failed to obtain the current transmission information.                        |
 |2903004 | Current Transfer Information is empty.                 |
@@ -480,7 +505,6 @@ import { opp } from '@kit.ConnectivityKit';
 try {
     let oppProfile = opp.createOppServerProfile();
     let data = oppProfile.getCurrentTransferInformation();
-    console.info('[opp_js] data ', data.status);
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -490,7 +514,7 @@ try {
 
 setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 
-设置最后一个接收文件的URI。
+设置最后一个接收文件的URI。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -504,6 +528,12 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 | ------- | --------------------------- | ---- | ------------------------ |
 | uri | string | 是    | 最后一个接收文件的URI。 |
 
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
@@ -511,7 +541,7 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Permission denied. Non-system applications are not allowed to use system APIs.          |
+|202 | Non-system applications are not allowed to use system APIs.          |
 |203 | This function is prohibited by enterprise management policies.          |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -524,12 +554,11 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // 创建fileHolders
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.setLastReceivedFileUri("file://media/Photo/1/IMG_1739266559_000/screenshot_20250211_173419.jpg ");
+    oppProfile.setLastReceivedFileUri("file://media/Photo/1/IMG_1739266559_000/screenshot_20250211_173419.jpg"); // 应用根据实际情况填写路径
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

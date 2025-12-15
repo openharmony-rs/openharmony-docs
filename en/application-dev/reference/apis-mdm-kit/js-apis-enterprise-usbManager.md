@@ -1,4 +1,10 @@
 # @ohos.enterprise.usbManager (USB Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **usbManager** module provides APIs for USB management.
 
@@ -34,6 +40,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -41,7 +48,7 @@ A policy conflict is reported when this API is called in the following scenarios
 | Name      | Type                                                   | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
-| usbDeviceIds | Array<[UsbDeviceId](#usbdeviceid)>                      | Yes  | USB device IDs, which can be obtained through [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices). This array can hold a maximum of 1000 USB device IDs.|
+| usbDeviceIds | Array<[UsbDeviceId](#usbdeviceid)>                      | Yes  | USB device IDs, which can be obtained through [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices). The maximum number of USB devices is 1,000. If there are already 300 USB device IDs, only 700 more can be added.|
 
 **Error codes**
 
@@ -58,11 +65,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
@@ -86,6 +95,7 @@ Removes allowed USB devices.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -109,11 +119,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
@@ -137,6 +149,7 @@ Obtains allowed USB devices.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -165,11 +178,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<usbManager.UsbDeviceId> = usbManager.getAllowedUsbDevices(wantTemp);
@@ -185,15 +200,20 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
 Sets the access policy of the USB storage device.
 
+> **NOTE**
+> Before calling the API, read and write operations on the USB storage device should be suspended to ensure operational stability and data integrity. Otherwise, unexpected exceptions may occur.
+
 A policy conflict occurs when you set the USB storage device access policy to read, write, or read-only in the following scenarios:
 
 1. The USB capability of the device has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API.
-2. A USB storage device has been disallowed to use through [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14).
+2. The USB storage device has been disallowed to use through [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14).
+3. USB storage write access has been disabled for specific users via the [setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14) API.
 
 A policy conflict is reported if the USB storage device access policy is disabled by calling this API in the following scenarios:
 
 1. The USB capability of the device has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API.
 2. The available USB devices have been added through [addAllowedUsbDevices](#usbmanageraddallowedusbdevices).
+3. USB storage write access has been disabled for specific users via the [setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14) API.
 
 You can disable a USB storage device by calling this API or [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14). The latter is recommended.
 
@@ -201,6 +221,7 @@ You can disable a USB storage device by calling this API or [addDisallowedUsbDev
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -225,11 +246,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.DISABLED;
@@ -250,6 +273,7 @@ Obtains the access policy of the USB storage device.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -278,11 +302,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: usbManager.UsbPolicy = usbManager.getUsbStorageDeviceAccessPolicy(wantTemp);
@@ -302,11 +328,13 @@ A policy conflict is reported when this API is called in the following scenarios
 
 1. The USB capability of the device has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API.
 2. The available USB devices have been added through [addAllowedUsbDevices](#usbmanageraddallowedusbdevices).
+3. USB storage write access has been disabled for specific users via the [setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14) API.
 
 **Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -314,7 +342,7 @@ A policy conflict is reported when this API is called in the following scenarios
 | Name    | Type                                                   | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
-| usbDevices | Array<[UsbDeviceType](#usbdevicetype14)>                | Yes  | Array of the USB devices to be added, which can be obtained through [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices). This array can hold a maximum of 200 USB device IDs.|
+| usbDevices | Array<[UsbDeviceType](#usbdevicetype14)>                | Yes  | Array of the USB devices to be added, which can be obtained through [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices). The maximum number of USB devices is 200. If there are already 100 USB device IDs, only 100 more can be added.|
 
 **Error codes**
 
@@ -331,11 +359,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
@@ -361,6 +391,7 @@ Removes the disallowed USB device types.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -384,11 +415,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
@@ -414,6 +447,7 @@ Obtains the disallowed USB device types.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -442,11 +476,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(wantTemp);
@@ -469,16 +505,16 @@ Represents the USB device identity information.
 
 ## UsbDeviceType<sup>14+</sup>
 
-Represents the USB device type information. For details about the ID, see [defined-class-codes](https://www.usb.org/defined-class-codes).
+Represents the USB device type information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 | Name      | Type                       | Read-Only| Optional| Description                                                        |
 | ---------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| baseClass  | number                      | No  | No| Type ID, which can be obtained through [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices). If the value of descriptor is **DEVICE**, obtain the **USBDevice.clazz** field. If the value of descriptor is **INTERFACE**, obtain the **USBDevice.configs.interfaces.clazz** field.|
-| subClass   | number                      | No  | No| Subtype ID, which can be obtained through [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices). If the value of descriptor is **DEVICE**, obtain the **USBDevice.subClass** field. If the value of descriptor is **INTERFACE**, obtain the **USBDevice.configs.interfaces.subClass** field.|
-| protocol   | number                      | No  | No| Protocol ID, which can be obtained through [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices). If the value of descriptor is **DEVICE**, obtain the **USBDevice.protocol** field. If the value of descriptor is **INTERFACE**, obtain the **USBDevice.configs.interfaces.protocol** field.|
-| descriptor | [Descriptor](#descriptor14) | No  | No| USB descriptor. Obtain the value of Descriptor Usage corresponding to **baseClass** as the input parameter based on [defined-class-codes](https://www.usb.org/defined-class-codes). If the value of Descriptor Usage is set to **Both**, **DEVICE** is input for disallowed devices, and **INTERFACE** is input for disallowed interfaces.|
+| baseClass  | number                      | No  | No| Type code.<br>You can obtain the list of USB devices connected to the host device through the [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices) API, find the current device in the returned list, and check its value.<br>First, determine the type of descriptor to pass in based on this value. If the descriptor is **DEVICE**, this field takes the value of the **USBDevice.clazz** field; if the descriptor is **INTERFACE**, this field takes the value of the **USBDevice.configs.interfaces.clazz** field.<br>If the field value is 255 (indicating the device's type code is a vendor-defined code), calling the [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14) or [removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14) API to enable or disable the device will not take effect. If the field value is not defined in [defined-class-codes](https://www.usb.org/defined-class-codes), calling the [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14) or [removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14) API to enable or disable the device will also not take effect.|
+| subClass   | number                      | No  | No| Subtype code.<br>You can obtain the list of USB devices connected to the host device through the [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices) API, find the current device in the returned list, and check its value.<br>First, determine the type of descriptor to pass in based on the value of baseClass. If the descriptor is **DEVICE**, this field takes the value of the **USBDevice.subClass** field; if the descriptor is **INTERFACE**, this field takes the value of the **USBDevice.configs.interfaces.subClass** field.<br>If the field value is 255 (indicating that the subtype code of the device is a vendor-defined code), calling the [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14) or [removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14) API to enable or disable the device will not take effect. If the field value is not defined in [defined-class-codes](https://www.usb.org/defined-class-codes), calling the [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14) or [removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14) API to enable or disable the device will also not take effect.|
+| protocol   | number                      | No  | No| Protocol code.<br>You can obtain the list of USB devices connected to the host device through the [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices) API, find the current device in the returned list, and check its value.<br>First, determine the type of descriptor to pass in based on the value of baseClass. If the descriptor is **DEVICE**, this field takes the value of the **USBDevice.protocol** field; if the descriptor is **INTERFACE**, this field takes the value of the **USBDevice.configs.interfaces.protocol** field.<br>If the field value is 255 (indicating the device's protocol code is a vendor-defined code), calling the [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14) or [removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14) API to enable or disable the device will not take effect. If the field value is not defined in [defined-class-codes](https://www.usb.org/defined-class-codes), calling the [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14) or [removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14) API to enable or disable the device will also not take effect.|
+| descriptor | [Descriptor](#descriptor14) | No  | No| USB descriptor.<br>You can obtain the list of USB devices connected to the host device through the [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices) API, find the current device in the returned list, and check its value.<br>If the value of **USBDevice.clazz** is **0**, you need to find the value of **USBDevice.configs.interfaces.clazz** in the Base Class column in [defined-class-codes](https://www.usb.org/defined-class-codes). The Descriptor Usage column in the row where the search result is located indicates the descriptor type to be transferred. If the value of Descriptor Usage is **Both**, both types can be transferred. If device-level disabling is required, transfer **DEVICE**. If interface-level disabling is required, transfer **INTERFACE**.<br>If the value of **USBDevice.clazz** is **255** (indicating the device's type code is a vendor-defined code), calling the [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14) or [removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14) API to enable or disable the device will not take effect. If the value of **USBDevice.clazz** is another value, search for the value in the Base Class column of [defined-class-codes](https://www.usb.org/defined-class-codes). The Descriptor Usage column in the row where the search result is located indicates the descriptor type to be transferred. If the value of Descriptor Usage is **Both**, both types can be transferred. If device-level disabling is required, transfer **DEVICE**. If interface-level disabling is required, transfer **INTERFACE**.|
 
 ## UsbPolicy
 

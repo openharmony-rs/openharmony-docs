@@ -1,16 +1,22 @@
 # 动态属性设置
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 动态设置组件的属性，支持开发者在属性设置时使用if/else语法，且根据需要使用多态样式设置属性。
 
 > **说明：**
 >
-> 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
+> - 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
 >
-> 对于仅需根据条件设置组件单一属性的简单场景，可以使用[三目表达式](../../../ui/state-management/arkts-declarative-ui-description.md#配置属性)（如.width(isFullScreen ? 200 : 100)）。
+> - 对于仅需根据条件设置组件单一属性的简单场景，可以使用[三目表达式](../../../ui/state-management/arkts-declarative-ui-description.md#配置属性)（如.width(isFullScreen ? 200 : 100)）。
 >
-> 从API version 20开始，attributeModifier支持自定义组件。
+> - 从API version 20开始，attributeModifier支持自定义组件。
 
 ## attributeModifier
 
@@ -42,12 +48,13 @@ attributeModifier(modifier: AttributeModifier\<T>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
->  **说明：**
+> **说明：**
 >
->  在以下回调函数中，当对instance对象的同一个属性重复设置相同的值或对象时，不会触发该属性的更新。
+> 在以下回调函数中，当对instance对象的同一个属性重复设置相同的值或对象时，不会触发该属性的更新。
 
 ### applyNormalAttribute
-applyNormalAttribute(instance: T) : void
+
+applyNormalAttribute?(instance: T): void
 
 组件普通状态时的样式。
 
@@ -55,39 +62,17 @@ applyNormalAttribute(instance: T) : void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                                                                                                         |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
+
 ### applyPressedAttribute
-applyPressedAttribute(instance: T) : void
 
-组件按压状态的样式。
+applyPressedAttribute?(instance: T): void
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-### applyFocusedAttribute
-applyFocusedAttribute(instance: T) : void
-
-组件获焦状态的样式。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-### applyDisabledAttribute
-applyDisabledAttribute(instance: T) : void
-
-组件禁用状态的样式。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-### applySelectedAttribute
-applySelectedAttribute(instance: T) : void
-
-组件选中状态的样式。
-
-开发者可根据需要自定义实现这些方法，通过传入的参数识别组件类型，对instance设置属性，支持使用if/else语法进行动态设置。
+组件按压状态的样式。参考[示例2（组件绑定Modifier实现按压态效果）](#示例2组件绑定modifier实现按压态效果)、[示例8（自定义组件绑定Modifier实现按压态效果）](#示例8自定义组件绑定modifier实现按压态效果)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -95,13 +80,63 @@ applySelectedAttribute(instance: T) : void
 
 **参数：**
 
-| 参数     | 描述                                                                                                         |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| instance | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。 |
+| 参数名    | 类型   | 必填   | 说明                                                                                                         |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
+
+### applyFocusedAttribute
+
+applyFocusedAttribute?(instance: T): void
+
+组件获焦状态的样式。参考[示例5（组件绑定Modifier获焦样式）](#示例5组件绑定modifier获焦样式)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                                                                                                         |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
+
+### applyDisabledAttribute
+
+applyDisabledAttribute?(instance: T): void
+
+组件禁用状态的样式。参考[示例6（组件绑定modifier禁用状态的样式）](#示例6组件绑定modifier禁用状态的样式)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                                                                                                         |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
+
+### applySelectedAttribute
+
+applySelectedAttribute?(instance: T): void
+
+组件选中状态的样式。
+
+开发者可根据需要自定义实现这些方法，通过传入的参数识别组件类型，对instance设置属性，支持使用if/else语法进行动态设置。参考[示例7（组件绑定modifier选中状态样式）](#示例7组件绑定modifier选中状态样式)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                                                                                                         |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
 
 **instance参数支持范围：**
 
-AlphabetIndexerAttribute、BadgeAttribute、BlankAttribute、ButtonAttribute、CalendarPickerAttribute、CanvasAttribute、CheckboxAttribute、CheckboxGroupAttribute、CircleAttribute、ColumnAttribute、ColumnSplitAttribute、ShapeAttribute、CommonAttribute、CounterAttribute、DataPanelAttribute、DatePickerAttribute、DividerAttribute、EllipseAttribute、FlexAttribute、FlowItemAttribute、FormLinkAttribute、GaugeAttribute、GridAttribute、GridColAttribute、ColumnAttribute、GridItemAttribute、GridRowAttribute、HyperlinkAttribute、IndicatorComponentAttribute、ImageAttribute、ImageAnimatorAttribute、ImageSpanAttribute、LineAttribute、LinearIndicatorAttribute、ListAttribute、ListItemAttribute、ListItemGroupAttribute、LoadingProgressAttribute、MarqueeAttribute、MenuAttribute、MenuItemAttribute、MenuItemGroupAttribute、NavDestinationAttribute、NavigationAttribute、NavigatorAttribute、NavRouterAttribute、PanelAttribute、PathAttribute、PatternLockAttribute、PolygonAttribute、PolylineAttribute、ProgressAttribute、QRCodeAttribute、RadioAttribute、RatingAttribute、RectAttribute、RefreshAttribute、RelativeContainerAttribute、RichEditorAttribute、RichTextAttribute、RowAttribute、RowSplitAttribute、ScrollAttribute、ScrollBarAttribute、SearchAttribute、SelectAttribute、ShapeAttribute、SideBarContainerAttribute、SliderAttribute、SpanAttribute、StackAttribute、StepperAttribute、StepperItemAttribute、SwiperAttribute、SymbolGlyphAttribute、TabContentAttribute、TabsAttribute、TextAttribute、TextAreaAttribute、TextClockAttribute、TextInputAttribute、TextPickerAttribute、TextTimerAttribute、TimePickerAttribute、ToggleAttribute、VideoAttribute、WaterFlowAttribute、XComponentAttribute、ParticleAttribute<!--Del-->、EffectComponentAttribute、FormComponentAttribute、PluginComponentAttribute、RemoteWindowAttribute、UIExtensionComponentAttribute<!--DelEnd-->。
+[AlphabetIndexerAttribute](ts-container-alphabet-indexer.md#属性)、[BadgeAttribute](ts-container-badge.md#属性)、[BlankAttribute](ts-basic-components-blank.md#属性)、[ButtonAttribute](ts-basic-components-button.md#属性)、[CalendarPickerAttribute](ts-basic-components-calendarpicker.md#属性)、[CanvasAttribute](ts-components-canvas-canvas.md#属性)、[CheckboxAttribute](ts-basic-components-checkbox.md#属性)、[CheckboxGroupAttribute](ts-basic-components-checkboxgroup.md#属性)、[CircleAttribute](ts-drawing-components-circle.md#属性)、[ColumnAttribute](ts-container-column.md#属性)、[ColumnSplitAttribute](ts-container-columnsplit.md#属性)、[ShapeAttribute](ts-drawing-components-shape.md#属性)、[CommonAttribute](ts-component-general-attributes.md)、[CounterAttribute](ts-container-counter.md#属性)、[DataPanelAttribute](ts-basic-components-datapanel.md#属性)、[DatePickerAttribute](ts-basic-components-datepicker.md#属性)、[DividerAttribute](ts-basic-components-divider.md#属性)、[EllipseAttribute](ts-drawing-components-ellipse.md#属性)、[FlexAttribute](ts-container-flex.md#属性)、[FlowItemAttribute](ts-container-flowitem.md#属性)、[FormLinkAttribute](ts-container-formlink.md#属性)、[GaugeAttribute](ts-basic-components-gauge.md#属性)、[GridAttribute](ts-container-grid.md#属性)、[GridColAttribute](ts-container-gridcol.md#属性)、[ColumnAttribute](ts-container-column.md#属性)、[GridItemAttribute](ts-container-griditem.md#属性)、[GridRowAttribute](ts-container-gridrow.md#属性)、[HyperlinkAttribute](ts-container-hyperlink.md#属性)、[IndicatorComponentAttribute](ts-swiper-components-indicator.md#属性)、[ImageAttribute](ts-basic-components-image.md#属性)、[ImageAnimatorAttribute](ts-basic-components-imageanimator.md#属性)、[ImageSpanAttribute](ts-basic-components-imagespan.md#属性)、[LineAttribute](ts-drawing-components-line.md#属性)、LinearIndicatorAttribute、[ListAttribute](ts-container-list.md#属性)、[ListItemAttribute](ts-container-listitem.md#属性)、[ListItemGroupAttribute](ts-container-listitemgroup.md#属性)、[LoadingProgressAttribute](ts-basic-components-loadingprogress.md#属性)、[MarqueeAttribute](ts-basic-components-marquee.md#属性)、[MenuAttribute](ts-basic-components-menu.md#属性)、[MenuItemAttribute](ts-basic-components-menuitem.md#属性)、MenuItemGroupAttribute、[NavDestinationAttribute](ts-basic-components-navdestination.md#属性)、[NavigationAttribute](ts-basic-components-navigation.md#属性)、[NavigatorAttribute](ts-container-navigator.md#属性)、[NavRouterAttribute](ts-basic-components-navrouter.md#属性)、[PanelAttribute](ts-container-panel.md#属性)、[PathAttribute](ts-drawing-components-path.md#属性)、[PatternLockAttribute](ts-basic-components-patternlock.md#属性)、[PolygonAttribute](ts-drawing-components-polygon.md#属性)、[PolylineAttribute](ts-drawing-components-polyline.md#属性)、[ProgressAttribute](ts-basic-components-progress.md#属性)、[QRCodeAttribute](ts-basic-components-qrcode.md#属性)、[RadioAttribute](ts-basic-components-radio.md#属性)、[RatingAttribute](ts-basic-components-rating.md#属性)、[RectAttribute](ts-drawing-components-rect.md#属性)、[RefreshAttribute](ts-container-refresh.md#属性)、[RelativeContainerAttribute](ts-container-relativecontainer.md#属性)、[RichEditorAttribute](ts-basic-components-richeditor.md#属性)、[RichTextAttribute](ts-basic-components-richtext.md#属性)、[RowAttribute](ts-container-row.md#属性)、[RowSplitAttribute](ts-container-rowsplit.md#属性)、[ScrollAttribute](ts-container-scroll.md#属性)、[ScrollBarAttribute](ts-basic-components-scrollbar.md#属性)、[SearchAttribute](ts-basic-components-search.md#属性)、[SelectAttribute](ts-basic-components-select.md#属性)、[ShapeAttribute](ts-drawing-components-shape.md#属性)、[SideBarContainerAttribute](ts-container-sidebarcontainer.md#属性)、[SliderAttribute](ts-basic-components-slider.md#属性)、[SpanAttribute](ts-basic-components-span.md#属性)、[StackAttribute](ts-container-stack.md#属性)、[StepperAttribute](ts-basic-components-stepper.md#属性)、[StepperItemAttribute](ts-basic-components-stepperitem.md#属性)、[SwiperAttribute](ts-container-swiper.md#属性)、[SymbolGlyphAttribute](ts-basic-components-symbolGlyph.md#属性)、[TabContentAttribute](ts-container-tabcontent.md#属性)、[TabsAttribute](ts-container-tabs.md#属性)、[TextAttribute](ts-basic-components-text.md#属性)、[TextAreaAttribute](ts-basic-components-textarea.md#属性)、[TextClockAttribute](ts-basic-components-textclock.md#属性)、[TextInputAttribute](ts-basic-components-textinput.md#属性)、[TextPickerAttribute](ts-basic-components-textpicker.md#属性)、[TextTimerAttribute](ts-basic-components-texttimer.md#属性)、[TimePickerAttribute](ts-basic-components-timepicker.md#属性)、[ToggleAttribute](ts-basic-components-toggle.md#属性)、[VideoAttribute](ts-media-components-video.md#属性)、[WaterFlowAttribute](ts-container-waterflow.md#属性)、[XComponentAttribute](ts-basic-components-xcomponent.md#属性)、[ParticleAttribute](ts-particle-animation.md#属性)<!--Del-->、[EffectComponentAttribute](ts-container-effectcomponent-sys.md#属性)、[FormComponentAttribute](ts-basic-components-formcomponent-sys.md#属性)、[PluginComponentAttribute](ts-basic-components-plugincomponent-sys.md#属性)、[RemoteWindowAttribute](ts-basic-components-remotewindow-sys.md#属性)、[UIExtensionComponentAttribute](../js-apis-arkui-uiExtension.md#属性)<!--DelEnd-->。
 
 **属性支持范围：**
 
@@ -111,34 +146,38 @@ AlphabetIndexerAttribute、BadgeAttribute、BlankAttribute、ButtonAttribute、C
 4. 不支持[gesture](../../../ui/arkts-gesture-events-binding.md)类型的属性。
 5. 不支持[stateStyles](./ts-universal-attributes-polymorphic-style.md)属性。
 6. 不支持已废弃属性。
-<!--Del-->
+   <!--Del-->
 7. 不支持系统组件属性。<!--DelEnd-->
 
-不支持或者未实现的属性在使用时会抛出"Method not implemented."、"is not callable"、"Builder is not supported."等异常信息。具体Modifier支持范围同基类属性接口的支持范围，详见表格[Attribute支持范围](#attribute支持范围)。
+不支持或者未实现的属性在使用时会抛出"Method not implemented."、"is not callable"、"Builder is not supported."等异常信息。具体Modifier支持范围可参考[属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
 
 ## 自定义Modifier
-从API version 12开始，开发者可使用自定义Modifier构建组件并配置属性，通过此自定义的Modifier可调用所封装组件的属性和样式接口。 
+
+从API version 12开始，开发者可使用自定义Modifier构建组件并配置属性，通过此自定义的Modifier可调用所封装组件的属性和样式接口。
 
 **自定义Modifier支持范围：**  
 
 CommonModifier、ColumnModifier、ColumnSplitModifier、RowModifier、RowSplitModifier、SideBarContainerModifier、BlankModifier、DividerModifier、GridColModifier、GridRowModifier、NavDestinationModifier、NavigatorModifier、StackModifier、NavigationModifier、NavRouterModifier、StepperItemModifier、TabsModifier、GridModifier、GridItemModifier、ListModifier、ListItemModifier、ListItemGroupModifier、ScrollModifier、SwiperModifier、WaterFlowModifier、ButtonModifier、CounterModifier、TextPickerModifier、TimePickerModifier、ToggleModifier、CalendarPickerModifier、CheckboxModifier、CheckboxGroupModifier、DatePickerModifier、RadioModifier、RatingModifier、SelectModifier、SliderModifier、PatternLockModifier、SpanModifier、RichEditorModifier、RefreshModifier、SearchModifier、TextAreaModifier、TextModifier、TextInputModifier、ImageSpanModifier、ImageAnimatorModifier、ImageModifier、VideoModifier、DataPanelModifier、GaugeModifier、LoadingProgressModifier、MarqueeModifier、ProgressModifier、QRCodeModifier、TextClockModifier、TextTimerModifier、LineModifier、PathModifier、PolygonModifier、PolylineModifier、RectModifier、ShapeModifier、AlphabetIndexerModifier、FormComponentModifier、HyperlinkModifier、MenuModifier、MenuItemModifier、PanelModifier、SymbolGlyphModifier、ParticleModifier。  
-未暴露的组件Modifier可以使用CommonModifier。 
+未暴露的组件Modifier可以使用CommonModifier。
 
 **注意事项**
+
 1. 设置自定义Modifier给一个组件，该组件对应属性生效。  
 2. 自定义Modifier属性值变化，组件对应属性也会变化。自定义Modifier类型为基类，构造的对象为子类对象，使用时要通过as进行类型断言为子类。  
 3. 一个自定义Modifier设置给两个组件，Modifier属性变化的时候对两个组件同时生效。  
 4. 一个Modifier设置了属性A和属性B，再设置属性C和属性D，4个属性同时在组件上生效。  
 5. 自定义Modifier不支持@State标注的状态数据的变化感知，见[示例3（自定义Modifier不支持感知@State装饰的状态数据变化）](#示例3自定义modifier不支持感知state装饰的状态数据变化)。  
-6. 多次通过attributeModifier设置属性时，生效的属性为所有属性的并集，相同属性按照设置顺序生效。   
+6. 多次通过attributeModifier设置属性时，生效的属性为所有属性的并集，相同属性按照设置顺序生效。
 
 ## 示例
+
 ### 示例1（组件绑定Modifier切换背景颜色）
 
 该示例通过Button绑定Modifier实现了点击切换背景颜色的效果。
 
 ```ts
 // xxx.ets
+// 设置Button组件属性的自定义AttributeModifier
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   public isDark: boolean = false;
 
@@ -171,14 +210,16 @@ struct attributeDemo {
   }
 }
 ```
+
 ![attributeModifier_ifelse](figures/attributeModifier_ifelse.gif)
 
 ### 示例2（组件绑定Modifier实现按压态效果）
 
-该示例通过Button绑定Modifier实现了按压态的效果。如果配合状态管理V2使用，详情见：[Modifier与makeObserved](../../../ui/state-management/arkts-v1-v2-migration.md#modifier)。
+该示例通过Button绑定Modifier实现了按压态的效果。如果配合状态管理V2使用，详情见：[Modifier与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#modifier)。
 
 ```ts
 // xxx.ets
+// 设置Button组件属性的自定义AttributeModifier
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.backgroundColor(Color.Black);
@@ -206,6 +247,7 @@ struct attributePressedDemo {
   }
 }
 ```
+
 ![attributeModifier_ifelse](figures/attributeModifier_ifelse.gif)
 
 ### 示例3（自定义Modifier不支持感知@State装饰的状态数据变化）
@@ -216,6 +258,7 @@ struct attributePressedDemo {
 import { CommonModifier } from "@kit.ArkUI";
 
 const TEST_TAG : string = "AttributeModifier";
+// 设置通用组件属性的自定义AttributeModifier
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
     super.applyNormalAttribute?.(instance);
@@ -244,14 +287,14 @@ struct Index {
       Button($r("app.string.EntryAbility_label"))
         .margin(10)
         .onClick(() => {
-          console.log(TEST_TAG, "onClick");
+          console.info(TEST_TAG, "onClick");
           this.index++;
           if (this.index % 2 === 1) {
             this.width1 = 10;
-            console.log(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, "setGroup1");
           } else {
-            this.width1 = 10;
-            console.log(TEST_TAG, "setGroup2");
+            this.height1 = 10;
+            console.info(TEST_TAG, "setGroup2");
           }
         })
       MyImage1({ modifier: this.myModifier })
@@ -260,17 +303,19 @@ struct Index {
   }
 }
 ```
+
 ![attributeModifier2](figures/attributeModifier2.gif)
 
 ### 示例4（Modifier和自定义Modifier的属性同时生效）
 
-该示例通过自定义Modifier设置了width和height，点击按钮时设置borderStyle和borderWidth，点击后4个属性同时生效。 
+该示例通过自定义Modifier设置了width和height，点击按钮时设置[borderStyle](ts-appendix-enums.md#borderstyle)和[borderWidth](ts-universal-attributes-border.md#borderwidth)，点击后4个属性同时生效。
 
 ```ts
 import { CommonModifier } from "@kit.ArkUI";
 
 const TEST_TAG: string = "AttributeModifier";
 
+// 设置通用组件属性的自定义AttributeModifier
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
     super.applyNormalAttribute?.(instance);
@@ -307,14 +352,14 @@ struct Index {
       Button($r("app.string.EntryAbility_label"))
         .margin(10)
         .onClick(() => {
-          console.log(TEST_TAG, "onClick");
+          console.info(TEST_TAG, "onClick");
           this.index++;
           if (this.index % 2 === 1) {
             (this.myModifier as MyModifier).setGroup1();
-            console.log(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, "setGroup1");
           } else {
             (this.myModifier as MyModifier).setGroup2();
-            console.log(TEST_TAG, "setGroup2");
+            console.info(TEST_TAG, "setGroup2");
           }
         })
       MyImage1({ modifier: this.myModifier })
@@ -323,6 +368,7 @@ struct Index {
   }
 }
 ```
+
 ![attributeModifier](figures/attributeModifier.gif)
 
 ### 示例5（组件绑定Modifier获焦样式）
@@ -330,6 +376,7 @@ struct Index {
 该示例通过Button绑定Modifier实现了组件在获得焦点时的样式效果。点击Button2后，Button会显示获得焦点后的样式。
 
 ```ts
+// 设置Button组件属性的自定义AttributeModifier
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
   applyNormalAttribute(instance: ButtonAttribute): void {
@@ -366,6 +413,7 @@ struct attributeDemo {
   }
 }
 ```
+
 ![applyFocusedAttribute](figures/applyFocusedAttribute.gif)
 
 ### 示例6（组件绑定Modifier禁用状态的样式）
@@ -373,6 +421,7 @@ struct attributeDemo {
 该示例通过Button绑定Modifier实现了组件禁用时的样式效果。点击Button2后，Button会显示禁用状态的样式。
 
 ```ts
+// 设置Button组件属性的自定义AttributeModifier
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyDisabledAttribute(instance: ButtonAttribute): void {
     instance.width(200);
@@ -403,6 +452,7 @@ struct attributeDemo {
   }
 }
 ```
+
 ![applyDisabledAttribute](figures/applyDisabledAttribute.gif)
 
 ### 示例7（组件绑定Modifier选中状态样式）
@@ -410,6 +460,7 @@ struct attributeDemo {
 该示例通过Radio绑定Modifier实现了展示组件选中时样式的效果。
 
 ```ts
+// 设置Radio组件属性的自定义AttributeModifier
 class MyRadioModifier implements AttributeModifier<RadioAttribute> {
   applyNormalAttribute(instance: RadioAttribute): void {
     instance.backgroundColor(Color.Blue);
@@ -447,6 +498,7 @@ struct attributeDemo {
   }
 }
 ```
+
 ![applySelectedAttribute](figures/applySelectedAttribute.gif)
 
 ### 示例8（自定义组件绑定Modifier实现按压态效果）
@@ -455,13 +507,14 @@ struct attributeDemo {
 
 ```ts
 // xxx.ets
+// 设置自定义组件属性的自定义AttributeModifier
 class CustomModifier implements AttributeModifier<CommonAttribute> {
   applyNormalAttribute(instance: CommonAttribute): void {
     instance.backgroundColor(Color.Blue)
   }
 
   applyPressedAttribute(instance: CommonAttribute): void {
-    instance.backgroundColor(Color.Red)
+    instance.backgroundColor(Color.Gray)
   }
 }
 
@@ -482,52 +535,15 @@ struct attributePressedDemo {
   }
 }
 
+// 自定义组件
 @Component
 struct ChildComponent {
   build() {
-    Text("common").fontColor(Color.Green).fontSize(28).textAlign(TextAlign.Center)
+    Text("common").fontColor(Color.White).fontSize(28).textAlign(TextAlign.Center)
       .width('35%')
       .height('10%')
   }
 }
 ```
+
 ![attributeModifier_common](figures/attributeModifier_common.gif)
-
-## Attribute支持范围
-
-未在表格中列举的属性默认为支持。
-
-**表1** CommonAttribute属性接口支持例外范围
-
-| 属性                     | 支持情况 | 告警信息                  | 备注                                      |
-| ------------------------ | -------- | ------------------------- | ----------------------------------------- |
-| accessibilityChecked     | 不支持   | is not callable           | -                                         |
-| accessibilitySelected    | 不支持   | is not callable           | -                                         |
-| accessibilityTextHint    | 不支持   | is not callable           | -                                         |
-| accessibilityVirtualNode | 不支持   | is not callable           | 不支持入参为CustomBuilder。               |
-| animation                | 不支持   | Method not implemented.   | 不支持animation相关属性。                 |
-| attributeModifier        | 不支持   | -                         | attributeModifier不支持嵌套使用，不生效。 |
-| background               | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| backgroundFilter         | 不支持   | is not callable           | -                                         |
-| bindContentCover         | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| bindContextMenu          | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| bindPopup                | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| bindSheet                | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| chainWeight              | 不支持   | is not callable           | -                                         |
-| compositingFilter        | 不支持   | is not callable           | -                                         |
-| drawModifier             | 不支持   | is not callable           | 不支持modifier相关的属性。                |
-| foregroundFilter         | 不支持   | is not callable           | -                                         |
-| freeze                   | 不支持   | is not callable           | -                                         |
-| gesture                  | 不支持   | Method not implemented.   | 不支持gesture相关的属性。                 |
-| gestureModifier          | 不支持   | is not callable           | 不支持modifier相关的属性。                |
-| onAccessibilityHover     | 不支持   | is not callable           | -                                         |
-| onDigitalCrown           | 不支持   | is not callable.          | -                                       |
-| onDragStart              | 不支持   | Method not implemented.   | 不支持返回值为CustomBuilder。             |
-| parallelGesture          | 不支持   | Method not implemented.   | 不支持gesture相关的属性。                 |
-| priorityGesture          | 不支持   | Method not implemented.   | 不支持gesture相关的属性。                 |
-| reuseId                  | 不支持   | Method not implemented.   | -                                         |
-| stateStyles              | 不支持   | Method not implemented.   | 不支持stateStyles相关的属性。             |
-| useSizeType              | 不支持   | Method not implemented.   | 不支持已废弃属性。                        |
-| visualEffect             | 不支持   | is not callable           | -                                         |
-| bindMenu                 | 部分支持 | -                         | 不支持入参为CustomBuilder。               |
-| dragPreview              | 部分支持 | Builder is not supported. | 不支持入参为CustomBuilder。               |

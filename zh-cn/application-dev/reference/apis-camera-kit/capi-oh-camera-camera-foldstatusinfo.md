@@ -1,4 +1,14 @@
 # Camera_FoldStatusInfo
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Camera_FoldStatusInfo {...} Camera_FoldStatusInfo
+```
 
 ## 概述
 

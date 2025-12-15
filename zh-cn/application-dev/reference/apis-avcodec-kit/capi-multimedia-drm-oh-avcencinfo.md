@@ -1,5 +1,16 @@
 # OH_AVCencInfo
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVCencInfo OH_AVCencInfo
+```
+
 ## 概述
 
 AVCencInfo结构。

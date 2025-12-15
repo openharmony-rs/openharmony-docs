@@ -1,5 +1,16 @@
 # HiDebug_MemoryLimit
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+```c
+typedef struct HiDebug_MemoryLimit {...} HiDebug_MemoryLimit
+```
+
 ## 概述
 
 应用程序进程内存限制结构类型定义。

@@ -1,5 +1,11 @@
 # UIAbility Launch Type
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel; @Luobniz21-->
+<!--Designer: @wendel-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The launch type of the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) component refers to the state of the UIAbility instance at startup. Three launch types are available:
 
@@ -30,21 +36,23 @@ Each time [startAbility()](../reference/apis-ability-kit/js-apis-inner-applicati
 
 To use the singleton mode, set **launchType** in the [module.json5 file](../quick-start/module-configuration-file.md) to **singleton**.
 
+<!-- @[singleton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
+    // ···
       {
         "launchType": "singleton",
-        // ...
+        // ···
       }
+    // ···
     ]
   }
 }
 ```
-
 
 ## Multiton
 
@@ -56,21 +64,23 @@ In multiton mode, each time [startAbility()](../reference/apis-ability-kit/js-ap
 
 To use the multiton mode, set **launchType** in the [module.json5 file](../quick-start/module-configuration-file.md) to **multiton**.
 
+<!-- @[multiton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
+    // ···
       {
         "launchType": "multiton",
-        // ...
+        // ···
       }
+    // ···
     ]
   }
 }
 ```
-
 
 ## Specified
 
@@ -93,53 +103,60 @@ This section assumes that an application has two [UIAbility](../reference/apis-a
 ![uiability-launch-type3](figures/uiability-launch-type3.gif)  
 
 1. In SpecifiedAbility, set **launchType** in the [module.json5 file](../quick-start/module-configuration-file.md) to **specified**.
-
-   ```json
-   {
-     "module": {
-       // ...
-       "abilities": [
-         {
-           "launchType": "specified",
-           // ...
-         }
-       ]
-     }
-   }
-   ```
+   
+    <!-- @[specified](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
+    
+    ``` JSON5
+    {
+      "module": {
+        // ···
+        "abilities": [
+          {
+            "launchType": "specified",
+            // ···
+          }
+        // ···
+        ]
+      }
+    }
+    ```
 
 2. In EntryAbility, pass the custom parameter **instanceKey** as the unique identifier into the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter in [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) to specify the target UIAbility instance. In the example, **instanceKey** is set to **'KEY'**.
 
-   ```ts
+    <!-- @[Page_StartModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/ets/pages/SpecifiedPage.ets) -->  
+    
+    ``` TypeScript
     // Configure a unique key for each UIAbility instance.
     // For example, in the document usage scenario, use the document path as the key.
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[Page_StartModel]';
+    
+    const TAG: string = '[SpecifiedPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     function getInstance(): string {
       return 'KEY';
     }
-
+    
     @Entry
     @Component
-    struct Page_StartModel {
+    struct SpecifiedPage {
       private KEY_NEW = 'KEY';
-
+    
       build() {
         Row() {
           Column() {
-            // ...
-            Button()
+            // ···
+            // The value of app.string.new_doc in the resource file is 'Create document'.
+            Button($r('app.string.new_doc'))
+            // ···
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // context is the UIAbilityContext of the initiator UIAbility.
                 let want: Want = {
                   deviceId: '', // An empty deviceId indicates the local device.
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilitylaunchtype',
                   abilityName: 'SpecifiedFirstAbility',
                   moduleName: 'entry', // moduleName is optional.
                   parameters: {
@@ -151,17 +168,19 @@ This section assumes that an application has two [UIAbility](../reference/apis-a
                   hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting SpecifiedAbility.');
                 }).catch((err: BusinessError) => {
                   hilog.error(DOMAIN_NUMBER, TAG, `Failed to start SpecifiedAbility. Code is ${err.code}, message is ${err.message}`);
-                })
+                });
                 this.KEY_NEW = this.KEY_NEW + 'a';
               })
-            // ...
-            Button()
+    
+            // The value of app.string.open_old_doc in the resource file is 'Open saved document'.
+            Button($r('app.string.open_old_doc'))
+            // ···
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // context is the UIAbilityContext of the initiator UIAbility.
                 let want: Want = {
                   deviceId: '', // An empty deviceId indicates the local device.
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilitylaunchtype',
                   abilityName: 'SpecifiedSecondAbility',
                   moduleName: 'entry', // moduleName is optional.
                   parameters: {
@@ -173,21 +192,22 @@ This section assumes that an application has two [UIAbility](../reference/apis-a
                   hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting SpecifiedAbility.');
                 }).catch((err: BusinessError) => {
                   hilog.error(DOMAIN_NUMBER, TAG, `Failed to start SpecifiedAbility. Code is ${err.code}, message is ${err.message}`);
-                })
+                });
                 this.KEY_NEW = this.KEY_NEW + 'a';
               })
-            // ...
           }
           .width('100%')
         }
         .height('100%')
       }
     }
-   ```
+    ```
    
-3. Set the UIAbility identifier based on the [onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant) lifecycle callback of SpecifiedAbility. In the example, the identifier is set to **SpecifiedAbilityInstance_KEY**.
+3. Set the UIAbility identifier based on the [onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant) lifecycle callback of the AbilityStage corresponding to SpecifiedAbility. In the example, the identifier is set to **SpecifiedAbilityInstance_KEY**.
 
-   ```ts
+    <!-- @[MyAbilityStage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/ets/abilitystage/MyAbilityStage.ets) -->
+
+    ``` TypeScript
     import { AbilityStage, Want } from '@kit.AbilityKit';
 
     export default class MyAbilityStage extends AbilityStage {
@@ -200,16 +220,15 @@ This section assumes that an application has two [UIAbility](../reference/apis-a
             return `SpecifiedAbilityInstance_${want.parameters.instanceKey}`;
           }
         }
-        // ...
         return 'MyAbilityStage';
       }
     }
-   ```
+    ```
 
    > **NOTE**
    >
    > - If [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) is called to start an existing UIAbility instance in specified mode, and the [onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant) callback of [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md) matches that UIAbility instance, that instance is started, and no new UIAbility instance is created. In this case, the **onNewWant()** callback is invoked, but the **onCreate()** and **onWindowStageCreate()** callbacks are not.
-   > - AbilityStage is not automatically generated by default in the project of DevEco Studio. For details about how to create an AbilityStage file, see [AbilityStage Component Container](abilitystage.md).
+   > - AbilityStage is not automatically generated by default in the project of DevEco Studio. For details about how to create an AbilityStage file, see [AbilityStage Component Container](abilitystage.md#how-to-develop).
 
 For example, in the document application, different keys are bound to different document instances. Each time a document is created, a new key (for example, file path) is passed in, and a new [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance is created when the UIAbility is started in [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md). However, when an existing document is opened, the same UIAbility instance is started again in AbilityStage.
 

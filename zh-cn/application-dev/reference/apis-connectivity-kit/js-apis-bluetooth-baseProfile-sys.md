@@ -1,5 +1,12 @@
 # @ohos.bluetooth.baseProfile (蓝牙baseProfile模块)(系统接口)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 baseProfile模块提供了基础的profile方法。
 
 > **说明：**
@@ -217,11 +224,11 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|2900001 | Service stopped.                  
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
-|801 | Capability not supported.          |       |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
 |2900003 | Bluetooth disabled.                 |
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |

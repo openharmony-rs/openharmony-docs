@@ -1,5 +1,14 @@
 # OH_NNExecutor
-<!--Kit_Neural Network Runtime Kit--><!--System_AI-->
+<!--Kit: Neural Network Runtime Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @GbuzhidaoR-->
+<!--Designer: @GbuzhidaoR-->
+<!--Tester: @GbuzhidaoR-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_NNExecutor OH_NNExecutor
+```
 
 ## 概述
 

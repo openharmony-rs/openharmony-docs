@@ -1,6 +1,13 @@
-# @ohos.multimodalInput.pointer (鼠标指针)
+# @ohos.multimodalInput.pointer (鼠标光标)
 
-本模块提供鼠标指针管理能力，包括查询、设置鼠标指针属性。
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
+本模块提供鼠标光标管理能力，包括查询、设置鼠标光标属性。
 
 > **说明**：
 >
@@ -16,7 +23,7 @@ import { pointer } from '@kit.InputKit';
 
 setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标指针显示或者隐藏，使用Callback异步回调。
+设置当前窗口的鼠标光标是否显示，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -24,7 +31,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| visible  | boolean                   | 是    | 鼠标指针是否显示。true表示显示，false表示不显示。 |
+| visible  | boolean                   | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码**：
@@ -54,7 +61,7 @@ struct Index {
                 console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set pointer visible success`);
+              console.info(`Set pointer visible success`);
             });
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -69,7 +76,7 @@ struct Index {
 
 setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
-设置鼠标指针显示或者隐藏，使用Promise异步回调。
+设置当前窗口的鼠标光标是否显示，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -77,13 +84,13 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型      | 必填   | 说明                                       |
 | ------- | ------- | ---- | ---------------------------------------- |
-| visible | boolean | 是    | 鼠标指针是否显示。true表示显示，false表示不显示。 |
+| visible | boolean | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
 
 **返回值**：
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -108,7 +115,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerVisible(false).then(() => {
-              console.log(`Set pointer visible success`);
+              console.info(`Set pointer visible success`);
             });
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -123,7 +130,7 @@ struct Index {
 
 setPointerVisibleSync(visible: boolean): void
 
-设置鼠标指针的显示或隐藏，使用同步方式。
+设置当前窗口鼠标光标的显示状态，使用同步方式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -131,7 +138,7 @@ setPointerVisibleSync(visible: boolean): void
 
 | 参数名      | 类型      | 必填   | 说明                                       |
 | ------- | ------- | ---- | ---------------------------------------- |
-| visible | boolean | 是    | 鼠标指针是否显示。true表示显示，false表示不显示。 |
+| visible | boolean | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
 
 **错误码**：
 
@@ -155,7 +162,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerVisibleSync(false);
-            console.log(`Set pointer visible success`);
+            console.info(`Set pointer visible success`);
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -169,7 +176,7 @@ struct Index {
 
 isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
-获取鼠标指针显示状态，使用callback异步回调。
+获取鼠标光标显示状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -177,7 +184,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名       | 类型                           | 必填   | 说明             |
 | -------- | ---------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，返回鼠标指针状态，true为显示，false为隐藏。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，返回鼠标光标状态，true为显示，false为隐藏。 |
 
 **错误码**：
 
@@ -205,7 +212,7 @@ struct Index {
                 console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+              console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
             });
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -220,7 +227,7 @@ struct Index {
 
 isPointerVisible(): Promise&lt;boolean&gt;
 
-获取鼠标指针显示状态，使用Promise异步回调。
+获取鼠标光标显示状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -228,7 +235,7 @@ isPointerVisible(): Promise&lt;boolean&gt;
 
 | 类型                     | 说明                  |
 | ---------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回鼠标指针状态查询结果。true代表显示状态，false代表隐藏状态。 |
+| Promise&lt;boolean&gt; | Promise对象，返回鼠标光标状态查询结果。true代表显示状态，false代表隐藏状态。 |
 
 **示例**：
 
@@ -244,7 +251,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.isPointerVisible().then((visible: boolean) => {
-              console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+              console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
             });
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -259,7 +266,7 @@ struct Index {
 
 isPointerVisibleSync(): boolean
 
-使用同步方式获取鼠标指针显示或者隐藏。
+获取当前窗口鼠标光标的显示状态，使用同步方式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -267,7 +274,7 @@ isPointerVisibleSync(): boolean
 
 | 类型                     | 说明                  |
 | ---------------------- | ------------------- |
-| boolean | 返回鼠标指针显示或隐藏状态。true代表显示状态，false代表隐藏状态。 |
+| boolean | 返回鼠标光标显示或隐藏状态。true代表显示状态，false代表隐藏状态。 |
 
 **示例**：
 
@@ -283,7 +290,7 @@ struct Index {
         .onClick(() => {
           try {
             let visible: boolean = pointer.isPointerVisibleSync();
-            console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+            console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -297,7 +304,7 @@ struct Index {
 
 getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): void
 
-获取鼠标样式类型，使用Callback异步回调。
+获取指定窗口的鼠标样式类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -305,7 +312,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| windowId | number                                   | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。    |
+| windowId | number                                   | 是    | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 | callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数，返回鼠标样式类型。 |
 
 **错误码**：
@@ -337,12 +344,12 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.getPointerStyle(windowId, (error: Error, style: pointer.PointerStyle) => {
-                console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+                console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
               });
             } catch (error) {
               console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -366,13 +373,13 @@ getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。 |
+| windowId | number | 是   | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle-1)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值**：
 
 | 类型                                       | 说明                  |
 | ---------------------------------------- | ------------------- |
-| Promise&lt;[PointerStyle](#pointerstyle)&gt; | Promise实例，返回鼠标样式类型。 |
+| Promise&lt;[PointerStyle](#pointerstyle)&gt; | Promise对象，返回鼠标样式类型。 |
 
 **错误码**：
 
@@ -403,12 +410,12 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.getPointerStyle(windowId).then((style: pointer.PointerStyle) => {
-                console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+                console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
               });
             } catch (error) {
               console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -424,7 +431,7 @@ struct Index {
 
 getPointerStyleSync(windowId: number): PointerStyle
 
-查询鼠标样式类型，如向东箭头、向西箭头、向南箭头、向北箭头等。
+查询指定窗口的鼠标样式类型，如向东箭头、向西箭头、向南箭头、向北箭头等。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -432,7 +439,7 @@ getPointerStyleSync(windowId: number): PointerStyle
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。<br>默认值为-1，表示获取全局的鼠标样式。 |
+| windowId | number | 是   | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyleSync](#pointersetpointerstylesync10)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值**：
 
@@ -463,7 +470,7 @@ struct Index {
           let windowId = -1;
           try {
             let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
-            console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+            console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
           } catch (error) {
             console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -477,7 +484,7 @@ struct Index {
 
 setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标样式类型，使用Callback异步回调。
+设置指定窗口的鼠标样式类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -485,7 +492,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 
 | 参数名           | 类型                             | 必填   | 说明                                  |
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
-| windowId     | number                         | 是    | 窗口id。                          |
+| windowId     | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle)获取。 |
 | pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
 | callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。 |
 
@@ -518,12 +525,12 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS, error => {
-                console.log(`Set pointer style success`);
+                console.info(`Set pointer style success`);
               });
             } catch (error) {
               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -538,7 +545,7 @@ struct Index {
 
 setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&gt;
 
-设置鼠标样式类型，使用Promise异步回调。
+设置指定窗口的鼠标样式类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -546,14 +553,14 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&g
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | 是    | 窗口id。       |
+| windowId            | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle-1)获取。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **返回值**：
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -584,12 +591,12 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
-                console.log(`Set pointer style success`);
+                console.info(`Set pointer style success`);
               });
             } catch (error) {
               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -605,7 +612,7 @@ struct Index {
 
 setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 
-设置鼠标样式类型，使用同步方式返回结果。
+设置指定窗口的鼠标样式类型，使用同步方式返回结果。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -613,7 +620,7 @@ setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | 是    | 窗口id。       |
+| windowId            | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyleSync](#pointergetpointerstylesync10)获取。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **错误码**：
@@ -644,12 +651,12 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.setPointerStyleSync(windowId, pointer.PointerStyle.CROSS);
-              console.log(`Set pointer style success`);
+              console.info(`Set pointer style success`);
             } catch (error) {
               console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             }
@@ -687,7 +694,7 @@ struct Index {
 
 ## PointerStyle
 
-鼠标样式类型。
+鼠标光标样式类型。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -735,15 +742,23 @@ struct Index {
 | HORIZONTAL_TEXT_CURSOR<sup>10+</sup> | 39 | 垂直文本选择 |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
 | CURSOR_CROSS<sup>10+</sup> | 40 | 十字光标 |![Cursor_Cross.png](./figures/Cursor_Cross.png)|
 | CURSOR_CIRCLE<sup>10+</sup> | 41 | 圆形光标 |![Cursor_Circle.png](./figures/Cursor_Circle.png)|
-| LOADING<sup>10+</sup> | 42 | 正在载入动画光标 |![Loading.png](./figures/Loading.png)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| RUNNING<sup>10+</sup> | 43 | 后台运行中动画光标 |![Running.png](./figures/Running.png)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| LOADING<sup>10+</sup> | 42 | 正在载入动画光标<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |![Loading.png](./figures/Loading.png)|
+| RUNNING<sup>10+</sup> | 43 | 后台运行中动画光标<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |![Running.png](./figures/Running.png)|
 | MIDDLE_BTN_EAST_WEST<sup>18+</sup>          | 44   | 向东西滚动 |![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
+| RUNNING_LEFT<sup>22+</sup>         | 45   | 后台运行中动画光标(拓展1) |![Loading_Left.png](./figures/Loading_Left.png)|
+| RUNNING_RIGHT<sup>22+</sup>         | 46   | 后台运行中动画光标(拓展2) |![Loading_Right.png](./figures/Loading_Right.png)|
+| AECH_DEVELOPER_DEFINED_ICON<sup>22+</sup>         | 47   | 圆形自定义光标 |![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
+| SCREENRECORDER_CURSOR<sup>20+</sup>         | 48   | 录屏光标  |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
+| LASER_CURSOR<sup>22+</sup>        | 49   | 悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
+| LASER_CURSOR_DOT<sup>22+</sup>        | 50   | 点击光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
+| LASER_CURSOR_DOT_RED<sup>22+</sup>        | 51   | 激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
+| DEVELOPER_DEFINED_ICON<sup>22+</sup>        | -100 | 自定义光标，开发者可使用[setCustomCursor](#pointersetcustomcursor15)设置自定义光标，不支持使用[setPointerStyle](#pointersetpointerstyle-1)直接设置。 |自定义光标样式，通过接口设置。|
 
 ## pointer.setCustomCursor<sup>11+</sup>
 
 setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): Promise&lt;void&gt;
 
-设置自定义光标样式，使用Promise异步回调。
+设置指定窗口的自定义光标样式，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -751,7 +766,7 @@ setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, foc
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | number  | 是    | 窗口id。                          |
+| windowId  | number  | 是    | 窗口ID。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
 | focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
 | focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
@@ -760,7 +775,7 @@ setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, foc
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -786,16 +801,17 @@ struct Index {
       Text()
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
-          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
+            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
-            let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
-            let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
-            svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+            let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
+            let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
+            svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
                   pointer.setCustomCursor(windowId, pixelMap).then(() => {
-                    console.log(`setCustomCursor success`);
+                    console.info(`setCustomCursor success`);
                   });
                 } catch (error) {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -833,7 +849,7 @@ struct Index {
 
 setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
 
-设置自定义光标样式，使用Promise异步回调。
+设置指定窗口的自定义光标样式，使用Promise异步回调。
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
@@ -842,7 +858,7 @@ setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): P
 
 | 参数名    | 类型    | 必填    | 说明    |
 | -------- | -------- | -------- | -------- |
-| windowId  | number  | 是    | 窗口id。                          |
+| windowId  | number  | 是    | 窗口ID。                          |
 | cursor  | [CustomCursor](js-apis-pointer.md#customcursor15) | 是    | 自定义光标资源。 |
 | config  | [CursorConfig](js-apis-pointer.md#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
 
@@ -850,7 +866,7 @@ setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): P
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -877,16 +893,18 @@ struct Index {
       Text()
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
-          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
+            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
-            let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
-            let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
-            svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+            let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
+            let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
+            svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
-                  pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 25, focusY: 25}, {followSystem: false}).then(() => {
-                    console.log(`setCustomCursor success`);
+                  pointer.setCustomCursor(windowId, { pixelMap: pixelMap, focusX: 25, focusY: 25 },
+                    { followSystem: false }).then(() => {
+                    console.info(`setCustomCursor success`);
                   });
                 } catch (error) {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -904,7 +922,7 @@ struct Index {
 
 setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
 
-设置自定义光标样式，使用同步方式进行设置。
+设置指定窗口的自定义光标样式，使用同步方式进行设置。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -912,7 +930,7 @@ setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number,
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | number  | 是    | 窗口id。取值为大于0的整数。                          |
+| windowId  | number  | 是    | 窗口ID。取值为大于0的整数。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
 | focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
 | focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
@@ -941,16 +959,17 @@ struct Index {
       Text()
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
-          const svgFileData = this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
+            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
-            let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
-            let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
-            svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+            let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
+            let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
+            svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
                   pointer.setCustomCursorSync(windowId, pixelMap, 25, 25);
-                  console.log(`setCustomCursorSync success`);
+                  console.info(`setCustomCursorSync success`);
                 } catch (error) {
                   console.error(`setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }

@@ -1,10 +1,22 @@
 # Interface (ImageSource)
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+ImageSource类，用于获取图片相关信息。
+
+在调用ImageSource的方法前，需要先通过[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)构建一个ImageSource实例。
+
+ImageSource的所有方法均不支持并发调用。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-ImageSource类，用于获取图片相关信息。在调用ImageSource的方法前，需要先通过[createImageSource](arkts-apis-image-f.md#imagecreateimagesource)构建一个ImageSource实例。
 
 ## 导入模块
 
@@ -18,13 +30,13 @@ import { image } from '@kit.ImageKit';
 
 | 名称             | 类型           | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
-| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：png，jpeg，bmp，gif，webp，dng，heic<sup>12+</sup>（不同硬件设备支持情况不同）。 |
+| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：png、jpeg、bmp、gif、webp、dng、heic<sup>12+</sup>、wbmp<sup>23+</sup>（不同硬件设备支持情况不同）。 |
 
 ## getImageInfo
 
 getImageInfo(index: number, callback: AsyncCallback\<ImageInfo>): void
 
-获取指定序号的图片信息，使用callback形式返回图片信息。
+获取指定序号的图片信息。使用callback异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -44,20 +56,22 @@ getImageInfo(index: number, callback: AsyncCallback\<ImageInfo>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.getImageInfo(0, (error: BusinessError, imageInfo: image.ImageInfo) => {
-  if (error) {
-    console.error(`Failed to obtain the image information.code is ${error.code}, message is ${error.message}`);
-  } else {
-    console.info('Succeeded in obtaining the image information.');
-  }
-})
+async function GetImageInfo(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getImageInfo(0, (error: BusinessError, imageInfo: image.ImageInfo) => {
+    if (error) {
+      console.error(`Failed to obtain the image information.code is ${error.code}, message is ${error.message}`);
+    } else {
+      console.info('Succeeded in obtaining the image information.');
+    }
+  })
+}
 ```
 
 ## getImageInfo
 
 getImageInfo(callback: AsyncCallback\<ImageInfo>): void
 
-获取图片信息，使用callback形式返回图片信息。
+获取图片信息。使用callback异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -76,20 +90,22 @@ getImageInfo(callback: AsyncCallback\<ImageInfo>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.getImageInfo((err: BusinessError, imageInfo: image.ImageInfo) => {
-  if (err) {
-    console.error(`Failed to obtain the image information.code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('Succeeded in obtaining the image information.');
-  }
-})
+async function GetImageInfo(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getImageInfo((err: BusinessError, imageInfo: image.ImageInfo) => {
+    if (err) {
+      console.error(`Failed to obtain the image information.code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('Succeeded in obtaining the image information.');
+    }
+  })
+}
 ```
 
 ## getImageInfo
 
 getImageInfo(index?: number): Promise\<ImageInfo>
 
-获取图片信息，使用Promise形式返回图片信息。
+获取图片信息。使用Promise异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -114,12 +130,14 @@ getImageInfo(index?: number): Promise\<ImageInfo>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.getImageInfo(0)
-  .then((imageInfo: image.ImageInfo) => {
-    console.info('Succeeded in obtaining the image information.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to obtain the image information.code is ${error.code}, message is ${error.message}`);
-  })
+async function GetImageInfo(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getImageInfo(0)
+    .then((imageInfo: image.ImageInfo) => {
+      console.info('Succeeded in obtaining the image information.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to obtain the image information.code is ${error.code}, message is ${error.message}`);
+    })
+}
 ```
 
 ## getImageInfoSync<sup>12+</sup>
@@ -127,6 +145,10 @@ imageSourceApi.getImageInfo(0)
 getImageInfoSync(index?: number): ImageInfo
 
 获取指定序号的图片信息，使用同步形式返回图片信息。
+
+> **说明：**
+>
+> 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -144,23 +166,19 @@ getImageInfoSync(index?: number): ImageInfo
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-import { common } from '@kit.AbilityKit';
-import { image } from '@kit.ImageKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-let filePath: string = context.filesDir + "/test.jpg";
-let imageSource = image.createImageSource(filePath);
-let imageInfo = imageSource.getImageInfoSync(0);
-if (imageInfo == undefined) {
-  console.error('Failed to obtain the image information.');
-} else {
-  console.info('Succeeded in obtaining the image information.');
-  console.info('imageInfo.size.height:' + imageInfo.size.height);
-  console.info('imageInfo.size.width:' + imageInfo.size.width);
+function GetImageInfoSync(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  let filePath: string = context.filesDir + "/test.jpg";
+  let imageSource = image.createImageSource(filePath);
+  let imageInfo = imageSource.getImageInfoSync(0);
+  if (imageInfo == undefined) {
+    console.error('Failed to obtain the image information.');
+  } else {
+    console.info('Succeeded in obtaining the image information.');
+    console.info('imageInfo.size.height:' + imageInfo.size.height);
+    console.info('imageInfo.size.width:' + imageInfo.size.width);
+  }
 }
 ```
 
@@ -168,7 +186,9 @@ if (imageInfo == undefined) {
 
 getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<string>
 
-获取图片中给定索引处图像的指定属性键的值，用Promise形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+获取图片中给定索引处图像的指定属性键的值。用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -197,7 +217,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 | 62980110 | The image source data is incorrect.      |
 | 62980111 | The image source data is incomplete. |
 | 62980112 | The image format does not match.       |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid image parameter.      |
 | 62980118 | Failed to create the image plugin.   |
 | 62980122 | Failed to decode the image header.   |
@@ -209,20 +229,24 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: image.ImagePropertyOptions = { index: 0, defaultValue: '9999' }
-imageSourceApi.getImageProperty(image.PropertyKey.BITS_PER_SAMPLE, options)
-.then((data: string) => {
-  console.info('Succeeded in getting the value of the specified attribute key of the image.');
-}).catch((error: BusinessError) => {
-  console.error('Failed to get the value of the specified attribute key of the image.');
-})
+async function GetImageProperty(imageSourceObj : image.ImageSource) {
+  let options: image.ImagePropertyOptions = { index: 0, defaultValue: '9999' }
+  imageSourceObj.getImageProperty(image.PropertyKey.BITS_PER_SAMPLE, options)
+    .then((data: string) => {
+      console.info('Succeeded in getting the value of the specified attribute key of the image.');
+    }).catch((error: BusinessError) => {
+    console.error(`Failed to get the value of the specified attribute key of the image, error.code ${error.code}, error.message ${error.message}`);
+  })
+}
 ```
 
 ## getImageProperties<sup>12+</sup>
 
 getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey, string|null>>
 
-批量获取图片中的指定属性键的值，用Promise形式返回结果。仅支持JPEG、PNG和HEIF（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+批量获取图片中的指定属性键的值。使用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -247,35 +271,37 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 | 401  | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed;     |
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980110| The image source data is incorrect.            |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980116| Failed to decode the image.            |
 
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let key = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
-imageSourceApi.getImageProperties(key).then((data) => {
-  console.info(JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(JSON.stringify(err));
-});
+async function GetImageProperties(imageSourceObj : image.ImageSource) {
+  let key = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
+  imageSourceObj.getImageProperties(key).then((data) => {
+    console.info(JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
+  });
+}
 ```
 
 ## getImagePropertySync<sup>20+</sup>
 
 getImagePropertySync(key:PropertyKey): string
 
-获取图片exif指定属性键的值，用String形式返回结果。
+获取图片Exif指定属性键的值，使用同步形式返回结果。
 
 >**说明：**
 >
-> 该方法仅支持JPEG、PNG和HEIF（不同硬件设备支持情况不同）文件，且需要包含exif信息。
+>- 该方法仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 >
-> exif信息是图片的元数据，包含拍摄时间、相机型号、光圈、焦距、ISO等。
-
+>- Exif信息是图片的元数据，包含拍摄时间、相机型号、光圈、焦距、ISO等。
+>
+>- 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -289,7 +315,7 @@ getImagePropertySync(key:PropertyKey): string
 
 | 类型             | 说明                                                              |
 | ---------------- | ----------------------------------------------------------------- |
-| string | 返回图片exif中指定属性键的值（如获取失败则返回属性默认值），各个数据值作用请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)。 |
+| string | 返回图片Exif中指定属性键的值（如获取失败则返回属性默认值），各个数据值作用请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)。 |
 
 **错误码：**
 
@@ -302,30 +328,28 @@ getImagePropertySync(key:PropertyKey): string
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-import { image } from '@kit.ImageKit';
-import { common } from '@kit.AbilityKit';
+function GetImagePropertySync(context : Context) {
+  let resourceMgr = context.resourceManager;
+  if (resourceMgr == null) {
+    return;
+  }
+  let fd = resourceMgr.getRawFdSync("example.jpg");
 
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let resourceMgr = context.resourceManager;
-if (resourceMgr == null) {
-  return;
+  const imageSourceObj = image.createImageSource(fd);
+  console.info("getImagePropertySync");
+  let bits_per_sample = imageSourceObj.getImagePropertySync(image.PropertyKey.BITS_PER_SAMPLE);
+  console.info("bits_per_sample : " + bits_per_sample);
 }
-let fd = resourceMgr.getRawFdSync("example.jpg");
-
-const imageSourceApi = image.createImageSource(fd);
-console.info("getImagePropertySync");
-let bits_per_sample = imageSourceApi.getImagePropertySync(image.PropertyKey.BITS_PER_SAMPLE);
-console.info("bits_per_sample : " + bits_per_sample);
 ```
 
 ## modifyImageProperty<sup>11+</sup>
 
 modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
-通过指定的键修改图片属性的值，使用Promise形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+通过指定的键修改图片属性的值。使用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -363,22 +387,26 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.modifyImageProperty(image.PropertyKey.IMAGE_WIDTH, "120").then(() => {
-  imageSourceApi.getImageProperty(image.PropertyKey.IMAGE_WIDTH).then((width: string) => {
-    console.info(`ImageWidth is :${width}`);
+async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
+  imageSourceObj.modifyImageProperty(image.PropertyKey.IMAGE_WIDTH, "120").then(() => {
+    imageSourceObj.getImageProperty(image.PropertyKey.IMAGE_WIDTH).then((width: string) => {
+      console.info(`ImageWidth is :${width}`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get the Image Width, error.code ${error.code}, error.message ${error.message}`);
+    })
   }).catch((error: BusinessError) => {
-    console.error('Failed to get the Image Width.');
+    console.error(`Failed to modify the Image Width, error.code ${error.code}, error.message ${error.message}`);
   })
-}).catch((error: BusinessError) => {
-  console.error('Failed to modify the Image Width');
-})
+}
 ```
 
 ## modifyImageProperties<sup>12+</sup>
 
 modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
-批量通过指定的键修改图片属性的值，使用Promise形式返回结果。仅支持JPEG、PNG和HEIF（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+批量通过指定的键修改图片属性的值。使用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -412,30 +440,90 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function ModifyImageProperties(imageSourceObj : image.ImageSource) {
+  let keyValues: Record<PropertyKey, string|null> = {
+    [image.PropertyKey.IMAGE_WIDTH] : "1024",
+    [image.PropertyKey.IMAGE_LENGTH] : "1024"
+  };
+  let checkKey = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
+  imageSourceObj.modifyImageProperties(keyValues).then(() => {
+    imageSourceObj.getImageProperties(checkKey).then((data) => {
+      console.info(`Image Width and Image Height:${data}`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to modify the Image Width and Image Height, error.code ${err.code}, error.message ${err.message}`);
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to modify the Image Width and Image Height, error.code ${err.code}, error.message ${err.message}`);
+  });
+}
+```
+
+## modifyImagePropertiesEnhanced<sup>22+</sup>
+
+modifyImagePropertiesEnhanced(records: Record\<string, string | null\>): Promise\<void\>
+
+批量修改图片属性。使用Promise异步回调。
+
+> **说明：**
+>
+> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[ImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[ImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
+> - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
+> - 支持修改JPEG、PNG、HEIF和WEBP文件类型的图片属性，图片需要包含Exif信息。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明         |
+| ------- | ------ | ---- | ------------ |
+| records | Record\<string, string \| null>|是| 包含图片属性名和属性值的键值对集合。|
+
+**返回值：**
+
+| 类型           | 说明                        |
+| -------------- | --------------------------- |
+| Promise\<void> | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7700102 | Unsupported MIME type.             |
+| 7700202 | Unsupported metadata. For example, the property key is not supported, or the property value is invalid.             |
+| 7700304 | Failed to write image properties to the file.             |
+
+**示例：**
+```ts
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let keyValues: Record<PropertyKey, string|null> = {
-    [image.PropertyKey.IMAGE_WIDTH] : "1024",
-    [image.PropertyKey.IMAGE_LENGTH] : "1024"
-};
-let checkKey = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
-imageSourceApi.modifyImageProperties(keyValues).then(() => {
-  imageSourceApi.getImageProperties(checkKey).then((data) => {
-    console.info(JSON.stringify(data));
+async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource) {
+  let keyValues: Record<string, string|null> = {
+    "ImageWidth" : "1024",
+    "ImageLength" : "1024"
+  };
+  let checkKey = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
+  imageSourceObj.modifyImagePropertiesEnhanced(keyValues).then(() => {
+    imageSourceObj.getImageProperties(checkKey).then((data) => {
+      console.info(`Image Width and Image Height:${data}`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to modify the Image Width and Image Height, error.code ${err.code}, error.message ${err.message}`);
+    });
   }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error(`Failed to modify the Image Width and Image Height, error.code ${err.code}, error.message ${err.message}`);
   });
-}).catch((err: BusinessError) => {
-  console.error(JSON.stringify(err));
-});
+}
 ```
 
 ## updateData<sup>9+</sup>
 
 updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number): Promise\<void>
 
-更新增量数据，使用Promise形式返回结果。
+更新增量数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -459,12 +547,14 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const array: ArrayBuffer = new ArrayBuffer(100);
-imageSourceApi.updateData(array, false, 0, 10).then(() => {
-  console.info('Succeeded in updating data.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to update data.code is ${err.code},message is ${err.message}`);
-})
+async function UpdateDatay(imageSourceObj : image.ImageSource) {
+  const array: ArrayBuffer = new ArrayBuffer(100);
+  imageSourceObj.updateData(array, false, 0, 10).then(() => {
+    console.info('Succeeded in updating data.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to update data.code is ${err.code},message is ${err.message}`);
+  })
+}
 ```
 
 
@@ -472,7 +562,7 @@ imageSourceApi.updateData(array, false, 0, 10).then(() => {
 
 updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number, callback: AsyncCallback\<void>): void
 
-更新增量数据，callback形式返回结果。
+更新增量数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -491,21 +581,27 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const array: ArrayBuffer = new ArrayBuffer(100);
-imageSourceApi.updateData(array, false, 0, 10, (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to update data.code is ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in updating data.');
-  }
-})
+async function UpdateDatay(imageSourceObj : image.ImageSource) {
+  const array: ArrayBuffer = new ArrayBuffer(100);
+  imageSourceObj.updateData(array, false, 0, 10, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to update data.code is ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in updating data.');
+    }
+  })
+}
 ```
 
 ## createPicture<sup>13+</sup>
 
 createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 
-通过图片解码参数创建Picture对象,使用Promise形式返回。
+通过图片解码参数创建Picture对象。使用Promise异步回调。
+
+由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](./arkts-apis-image-Picture.md#release13)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -533,13 +629,11 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
-async function CreatePicture() {
+async function CreatePicture(imageSourceObj : image.ImageSource) {
   let options: image.DecodingOptionsForPicture = {
-    desiredAuxiliaryPictures: [image.AuxiliaryPictureType.GAINMAP] //GAINMAP为需要解码的辅助图类型。 
+    desiredAuxiliaryPictures: [image.AuxiliaryPictureType.GAINMAP] // GAINMAP为需要解码的辅助图类型。 
   };
-  let pictureObj: image.Picture = await imageSourceApi.createPicture(options);
+  let pictureObj: image.Picture = await imageSourceObj.createPicture(options);
   if (pictureObj != null) {
     console.info('Create picture succeeded');
   } else {
@@ -553,6 +647,10 @@ async function CreatePicture() {
 createPictureAtIndex(index: number): Promise\<Picture>
 
 通过指定序号的图片（目前仅支持GIF格式）创建Picture对象。使用Promise异步回调。
+
+由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](./arkts-apis-image-Picture.md#release13)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -583,13 +681,11 @@ createPictureAtIndex(index: number): Promise\<Picture>
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
-async function CreatePictures() {
-  let frameCount: number = await imageSourceApi.getFrameCount();
+async function CreatePictures(imageSourceObj : image.ImageSource) {
+  let frameCount: number = await imageSourceObj.getFrameCount();
   for (let index = 0; index < frameCount; index++) {
     try {
-      let pictureObj: image.Picture = await imageSourceApi.createPictureAtIndex(index);
+      let pictureObj: image.Picture = await imageSourceObj.createPictureAtIndex(index);
       console.info('Create picture succeeded for frame: ' + index);
     } catch (e) {
       console.error('Create picture failed for frame: ' + index);
@@ -602,7 +698,11 @@ async function CreatePictures() {
 
 createPixelMap(options?: DecodingOptions): Promise\<PixelMap>
 
-通过图片解码参数创建PixelMap对象。
+通过图片解码参数创建PixelMap对象。使用Promise异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
@@ -629,18 +729,24 @@ createPixelMap(options?: DecodingOptions): Promise\<PixelMap>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.createPixelMap().then((pixelMap: image.PixelMap) => {
-  console.info('Succeeded in creating pixelMap object through image decoding parameters.');
-}).catch((error: BusinessError) => {
-  console.error('Failed to create pixelMap object through image decoding parameters.');
-})
+async function CreatePixelMap(imageSourceObj : image.ImageSource) {
+  imageSourceObj.createPixelMap().then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating pixelMap object through image decoding parameters.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create pixelMap object through image decoding parameters, error.code ${error.code}, error.message ${error.message}`);
+  })
+}
 ```
 
 ## createPixelMap<sup>7+</sup>
 
 createPixelMap(callback: AsyncCallback\<PixelMap>): void
 
-通过默认参数创建PixelMap对象，使用callback形式返回结果。
+通过默认参数创建PixelMap对象。使用callback异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
@@ -661,20 +767,26 @@ createPixelMap(callback: AsyncCallback\<PixelMap>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.createPixelMap((err: BusinessError, pixelMap: image.PixelMap) => {
-  if (err) {
-    console.error(`Failed to create pixelMap.code is ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in creating pixelMap object.');
-  }
-})
+async function CreatePixelMap(imageSourceObj : image.ImageSource) {
+  imageSourceObj.createPixelMap((err: BusinessError, pixelMap: image.PixelMap) => {
+    if (err) {
+      console.error(`Failed to create pixelMap.code is ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in creating pixelMap object.');
+    }
+  })
+}
 ```
 
 ## createPixelMap<sup>7+</sup>
 
 createPixelMap(options: DecodingOptions, callback: AsyncCallback\<PixelMap>): void
 
-通过图片解码参数创建PixelMap对象。
+通过图片解码参数创建PixelMap对象。使用callback异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
@@ -696,23 +808,26 @@ createPixelMap(options: DecodingOptions, callback: AsyncCallback\<PixelMap>): vo
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let decodingOptions: image.DecodingOptions = {
-  sampleSize: 1,
-  editable: true,
-  desiredSize: { width: 1, height: 2 },
-  rotate: 10,
-  desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
-  desiredRegion: { size: { width: 1, height: 2 }, x: 0, y: 0 },
-  cropAndScaleStrategy: image.CropAndScaleStrategy.CROP_FIRST,
-  index: 0
-};
-imageSourceApi.createPixelMap(decodingOptions, (err: BusinessError, pixelMap: image.PixelMap) => {
-  if (err) {
-    console.error(`Failed to create pixelMap.code is ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in creating pixelMap object.');
-  }
-})
+async function CreatePixelMap(imageSourceObj : image.ImageSource) {
+  let decodingOptions: image.DecodingOptions = {
+    sampleSize: 1,
+    editable: true,
+    desiredSize: { width: 1, height: 2 },
+    rotate: 10,
+    desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+    desiredRegion: { size: { width: 1, height: 2 }, x: 0, y: 0 },
+    // 若解码接口同时传入了desiredSize参数与desiredRegion参数，需进一步传入cropAndScaleStrategy参数指定缩放与裁剪的先后顺序，推荐设置CROP_FIRST。
+    cropAndScaleStrategy: image.CropAndScaleStrategy.CROP_FIRST,
+    index: 0
+  };
+  imageSourceObj.createPixelMap(decodingOptions, (err: BusinessError, pixelMap: image.PixelMap) => {
+    if (err) {
+      console.error(`Failed to create pixelMap.code is ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in creating pixelMap object.');
+    }
+  })
+}
 ```
 
 ## createPixelMapSync<sup>12+</sup>
@@ -721,7 +836,15 @@ createPixelMapSync(options?: DecodingOptions): PixelMap
 
 通过图片解码参数同步创建PixelMap对象。
 
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 从API version 15开始，推荐使用[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+> **说明：**
+>
+> 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -739,31 +862,28 @@ createPixelMapSync(options?: DecodingOptions): PixelMap
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-import { common } from '@kit.AbilityKit';
-import { image } from '@kit.ImageKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-let filePath: string = context.filesDir + "/test.jpg";
-let imageSource = image.createImageSource(filePath);
-let decodingOptions: image.DecodingOptions = {
-  sampleSize: 1,
-  editable: true,
-  desiredSize: { width: 1, height: 2 },
-  rotate: 10,
-  desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
-  desiredRegion: { size: { width: 1, height: 2 }, x: 0, y: 0 },
-  cropAndScaleStrategy: image.CropAndScaleStrategy.CROP_FIRST,
-  index: 0
-};
-let pixelmap = imageSource.createPixelMapSync(decodingOptions);
-if (pixelmap != undefined) {
-  console.info('Succeeded in creating pixelMap object.');
-} else {
-  console.error('Failed to create pixelMap.');
+function CreatePixelMapSync(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  let filePath: string = context.filesDir + "/test.jpg";
+  let imageSource = image.createImageSource(filePath);
+  let decodingOptions: image.DecodingOptions = {
+    sampleSize: 1,
+    editable: true,
+    desiredSize: { width: 1, height: 2 },
+    rotate: 10,
+    desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+    desiredRegion: { size: { width: 1, height: 2 }, x: 0, y: 0 },
+    // 若解码接口同时传入了desiredSize参数与desiredRegion参数，需进一步传入cropAndScaleStrategy参数指定缩放与裁剪的先后顺序，推荐设置CROP_FIRST。
+    cropAndScaleStrategy: image.CropAndScaleStrategy.CROP_FIRST,
+    index: 0
+  };
+  let pixelmap = imageSource.createPixelMapSync(decodingOptions);
+  if (pixelmap != undefined) {
+    console.info('Succeeded in creating pixelMap object.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
 }
 ```
 
@@ -771,7 +891,13 @@ if (pixelmap != undefined) {
 
 createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 
-通过图片解码参数创建PixelMap数组。针对动图如Gif、Webp，此接口返回每帧图片数据；针对静态图，此接口返回唯一的一帧图片数据。
+通过图片解码参数创建PixelMap数组。使用Promise异步回调。
+
+针对动态图（如Gif、Webp），该接口会返回每帧图片数据；针对静态图，该接口会返回唯一的一帧图片数据。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **注意：**
 > 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
@@ -788,7 +914,7 @@ createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise<Array<[PixelMap](arkts-apis-image-PixelMap.md)>> | 异步返回PixeMap数组。 |
+| Promise<Array<[PixelMap](arkts-apis-image-PixelMap.md)>> | 异步返回PixelMap数组。 |
 
 **错误码：**
 
@@ -815,26 +941,34 @@ createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let decodeOpts: image.DecodingOptions = {
-  sampleSize: 1,
-  editable: true,
-  desiredSize: { width: 198, height: 202 },
-  rotate: 0,
-  desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
-  index: 0,
-};
-imageSourceApi.createPixelMapList(decodeOpts).then((pixelMapList: Array<image.PixelMap>) => {
-  console.info('Succeeded in creating pixelMapList object.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create pixelMapList object, error code is ${err}`);
-})
+async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
+  let decodeOpts: image.DecodingOptions = {
+    sampleSize: 1,
+    editable: true,
+    desiredSize: { width: 198, height: 202 },
+    rotate: 0,
+    desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+    index: 0,
+  };
+  imageSourceObj.createPixelMapList(decodeOpts).then((pixelMapList: Array<image.PixelMap>) => {
+    console.info('Succeeded in creating pixelMapList object.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to create pixelMapList object, error code is ${err}`);
+  })
+}
 ```
 
 ## createPixelMapList<sup>10+</sup>
 
 createPixelMapList(callback: AsyncCallback<Array\<PixelMap>>): void
 
-通过默认参数创建PixelMap数组，使用callback形式返回结果。针对动图如Gif、Webp，此接口返回每帧图片数据；针对静态图，此接口返回唯一的一帧图片数据。
+通过默认参数创建PixelMap数组。使用callback异步回调。
+
+针对动态图（如Gif、Webp），该接口会返回每帧图片数据；针对静态图，该接口会返回唯一的一帧图片数据。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **注意：**
 > 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
@@ -872,20 +1006,28 @@ createPixelMapList(callback: AsyncCallback<Array\<PixelMap>>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.createPixelMapList((err: BusinessError, pixelMapList: Array<image.PixelMap>) => {
-  if (err) {
-    console.error(`Failed to create pixelMapList object, error code is ${err}`);
-  } else {
-    console.info('Succeeded in creating pixelMapList object.');
-  }
-})
+async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
+  imageSourceObj.createPixelMapList((err: BusinessError, pixelMapList: Array<image.PixelMap>) => {
+    if (err) {
+      console.error(`Failed to create pixelMapList object, error code is ${err}`);
+    } else {
+      console.info('Succeeded in creating pixelMapList object.');
+    }
+  })
+}
 ```
 
 ## createPixelMapList<sup>10+</sup>
 
 createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array\<PixelMap>>): void
 
-通过图片解码参数创建PixelMap数组，使用callback形式返回结果。针对动图如Gif、Webp，此接口返回每帧图片数据；针对静态图，此接口返回唯一的一帧图片数据。
+通过图片解码参数创建PixelMap数组。使用callback异步回调。
+
+针对动态图（如Gif、Webp），该接口会返回每帧图片数据；针对静态图，该接口会返回唯一的一帧图片数据。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **注意：**
 > 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
@@ -924,21 +1066,23 @@ createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array\<Pixe
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let decodeOpts: image.DecodingOptions = {
-  sampleSize: 1,
-  editable: true,
-  desiredSize: { width: 198, height: 202 },
-  rotate: 0,
-  desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
-  index: 0,
-};
-imageSourceApi.createPixelMapList(decodeOpts, (err: BusinessError, pixelMapList: Array<image.PixelMap>) => {
-  if (err) {
-    console.error(`Failed to create pixelMapList object, error code is ${err}`);
-  } else {
-    console.info('Succeeded in creating pixelMapList object.');
-  }
-})
+async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
+  let decodeOpts: image.DecodingOptions = {
+    sampleSize: 1,
+    editable: true,
+    desiredSize: { width: 198, height: 202 },
+    rotate: 0,
+    desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+    index: 0,
+  };
+  imageSourceObj.createPixelMapList(decodeOpts, (err: BusinessError, pixelMapList: Array<image.PixelMap>) => {
+    if (err) {
+      console.error(`Failed to create pixelMapList object, error code is ${err}`);
+    } else {
+      console.info('Succeeded in creating pixelMapList object.');
+    }
+  })
+}
 ```
 
 ## createPixelMapUsingAllocator<sup>15+</sup>
@@ -946,6 +1090,10 @@ imageSourceApi.createPixelMapList(decodeOpts, (err: BusinessError, pixelMapList:
 createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
 
 使用指定的分配器根据图像解码参数异步创建PixelMap对象。使用Promise异步回调。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -979,30 +1127,27 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-import { common } from '@kit.AbilityKit';
-import image from '@ohos.multimedia.image';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-let filePath: string = context.filesDir + "/test.jpg";
-let imageSource = image.createImageSource(filePath);
-let decodingOptions: image.DecodingOptions = {
-  editable: true,
-  desiredSize: { width: 3072, height: 4096 },
-  rotate: 10,
-  desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
-  desiredRegion: { size: { width: 3072, height: 4096 }, x: 0, y: 0 },
-  cropAndScaleStrategy: image.CropAndScaleStrategy.CROP_FIRST,
-  index: 0
-};
-let pixelmap = imageSource.createPixelMapUsingAllocator(decodingOptions, image.AllocatorType.AUTO);
-if (pixelmap != undefined) {
-  console.info('Succeeded in creating pixelMap object.');
-} else {
-  console.error('Failed to create pixelMap.');
+async function CreatePixelMapUsingAllocator(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  let filePath: string = context.filesDir + "/test.jpg";
+  let imageSource = image.createImageSource(filePath);
+  let decodingOptions: image.DecodingOptions = {
+    editable: true,
+    desiredSize: { width: 3072, height: 4096 },
+    rotate: 10,
+    desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+    desiredRegion: { size: { width: 3072, height: 4096 }, x: 0, y: 0 },
+    // 若解码接口同时传入了desiredSize参数与desiredRegion参数，需进一步传入cropAndScaleStrategy参数指定缩放与裁剪的先后顺序，推荐设置CROP_FIRST。
+    cropAndScaleStrategy: image.CropAndScaleStrategy.CROP_FIRST,
+    index: 0
+  };
+  let pixelmap = imageSource.createPixelMapUsingAllocator(decodingOptions, image.AllocatorType.AUTO);
+  if (pixelmap != undefined) {
+    console.info('Succeeded in creating pixelMap object.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
 }
 ```
 
@@ -1011,6 +1156,14 @@ if (pixelmap != undefined) {
 createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
 
 根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
+> **说明：**
+>
+> 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1044,30 +1197,27 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-import { common } from '@kit.AbilityKit';
-import image from '@ohos.multimedia.image';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-let filePath: string = context.filesDir + "/test.jpg";
-let imageSource = image.createImageSource(filePath);
-let decodingOptions: image.DecodingOptions = {
-  editable: true,
-  desiredSize: { width: 3072, height: 4096 },
-  rotate: 10,
-  desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
-  desiredRegion: { size: { width: 3072, height: 4096 }, x: 0, y: 0 },
-  cropAndScaleStrategy: image.CropAndScaleStrategy.CROP_FIRST,
-  index: 0
-};
-let pixelmap = imageSource.createPixelMapUsingAllocatorSync(decodingOptions, image.AllocatorType.AUTO);
-if (pixelmap != undefined) {
-  console.info('Succeeded in creating pixelMap object.');
-} else {
-  console.error('Failed to create pixelMap.');
+async function CreatePixelMapUsingAllocator(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  let filePath: string = context.filesDir + "/test.jpg";
+  let imageSource = image.createImageSource(filePath);
+  let decodingOptions: image.DecodingOptions = {
+    editable: true,
+    desiredSize: { width: 3072, height: 4096 },
+    rotate: 10,
+    desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+    desiredRegion: { size: { width: 3072, height: 4096 }, x: 0, y: 0 },
+    // 若解码接口同时传入了desiredSize参数与desiredRegion参数，需进一步传入cropAndScaleStrategy参数指定缩放与裁剪的先后顺序，推荐设置CROP_FIRST。
+    cropAndScaleStrategy: image.CropAndScaleStrategy.CROP_FIRST,
+    index: 0
+  };
+  let pixelmap = imageSource.createPixelMapUsingAllocatorSync(decodingOptions, image.AllocatorType.AUTO);
+  if (pixelmap != undefined) {
+    console.info('Succeeded in creating pixelMap object.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
 }
 ```
 
@@ -1075,7 +1225,7 @@ if (pixelmap != undefined) {
 
 getDelayTimeList(callback: AsyncCallback<Array\<number>>): void
 
-获取图像延迟时间数组，使用callback形式返回结果。此接口仅用于gif图片和webp图片。
+获取图像延迟时间数组。使用callback异步回调。此接口仅用于gif图片和webp图片。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1105,20 +1255,22 @@ getDelayTimeList(callback: AsyncCallback<Array\<number>>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.getDelayTimeList((err: BusinessError, delayTimes: Array<number>) => {
-  if (err) {
-    console.error(`Failed to get delayTimes object.code is ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in getting delayTimes object.');
-  }
-})
+async function GetDelayTimeList(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getDelayTimeList((err: BusinessError, delayTimes: Array<number>) => {
+    if (err) {
+      console.error(`Failed to get delayTimes object.code is ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in getting delayTimes object.');
+    }
+  })
+}
 ```
 
 ## getDelayTimeList<sup>10+</sup>
 
 getDelayTimeList(): Promise<Array\<number>>
 
-获取图像延迟时间数组，使用Promise形式返回结果。此接口仅用于gif图片和webp图片。
+获取图像延迟时间数组。使用Promise异步回调。此接口仅用于gif图片和webp图片。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1148,18 +1300,20 @@ getDelayTimeList(): Promise<Array\<number>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.getDelayTimeList().then((delayTimes: Array<number>) => {
-  console.info('Succeeded in getting delayTimes object.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get delayTimes object.code is ${err.code},message is ${err.message}`);
-})
+async function GetDelayTimeList(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getDelayTimeList().then((delayTimes: Array<number>) => {
+    console.info('Succeeded in getting delayTimes object.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get delayTimes object.code is ${err.code},message is ${err.message}`);
+  })
+}
 ```
 
 ## getFrameCount<sup>10+</sup>
 
 getFrameCount(callback: AsyncCallback\<number>): void
 
-获取图像帧数，使用callback形式返回结果。
+获取图像帧数。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1178,7 +1332,7 @@ getFrameCount(callback: AsyncCallback\<number>): void
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980111| The image source data is incomplete. |
 | 62980112| The image format does not match. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115| Invalid image parameter. |
 | 62980116| Failed to decode the image. |
 | 62980118| Failed to create the image plugin. |
@@ -1190,20 +1344,22 @@ getFrameCount(callback: AsyncCallback\<number>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.getFrameCount((err: BusinessError, frameCount: number) => {
-  if (err) {
-    console.error(`Failed to get frame count.code is ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in getting frame count.');
-  }
-})
+async function GetFrameCount(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getFrameCount((err: BusinessError, frameCount: number) => {
+    if (err) {
+      console.error(`Failed to get frame count.code is ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in getting frame count.');
+    }
+  })
+}
 ```
 
 ## getFrameCount<sup>10+</sup>
 
 getFrameCount(): Promise\<number>
 
-获取图像帧数，使用Promise形式返回结果。
+获取图像帧数。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1222,7 +1378,7 @@ getFrameCount(): Promise\<number>
 | 62980096 | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980111 | The image source data is incomplete. |
 | 62980112 | The image format does not match.        |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid image parameter.      |
 | 62980116 | Failed to decode the image.          |
 | 62980118 | Failed to create the image plugin.   |
@@ -1234,18 +1390,20 @@ getFrameCount(): Promise\<number>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.getFrameCount().then((frameCount: number) => {
-  console.info('Succeeded in getting frame count.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get frame count.code is ${err.code},message is ${err.message}`);
-})
+async function GetFrameCount(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getFrameCount().then((frameCount: number) => {
+    console.info('Succeeded in getting frame count.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get frame count.code is ${err.code},message is ${err.message}`);
+  })
+}
 ```
 
 ## getDisposalTypeList<sup>12+</sup>
 
 getDisposalTypeList(): Promise\<Array\<number>>
 
-获取图像帧过渡模式数组，使用Promise形式返回结果。此接口仅用于gif图片。
+获取图像帧过渡模式数组。使用Promise异步回调。此接口仅用于gif图片。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1270,20 +1428,25 @@ getDisposalTypeList(): Promise\<Array\<number>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-imageSourceApi.getDisposalTypeList().then((disposalTypes: Array<number>) => {
-  console.info('Succeeded in getting disposalTypes object.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get disposalTypes object.code ${err.code},message is ${err.message}`);
-})
+
+async function GetDisposalTypeList(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getDisposalTypeList().then((disposalTypes: Array<number>) => {
+    console.info('Succeeded in getting disposalTypes object.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get disposalTypes object.code ${err.code},message is ${err.message}`);
+  })
+}
 ```
 
 ## release
 
 release(callback: AsyncCallback\<void>): void
 
-释放ImageSource实例，使用callback形式返回结果。
+释放ImageSource实例。使用callback异步回调。
 
-ArkTS有内存回收机制，ImageSource对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1298,22 +1461,26 @@ ArkTS有内存回收机制，ImageSource对象不调用release方法，内存最
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.release((err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to release the image source instance.code ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in releasing the image source instance.');
-  }
-})
+async function Release(imageSourceObj : image.ImageSource) {
+  imageSourceObj.release((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to release the image source instance.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in releasing the image source instance.');
+    }
+  })
+}
 ```
 
 ## release
 
 release(): Promise\<void>
 
-释放ImageSource实例，使用Promise形式返回结果。
+释放ImageSource实例。使用Promise异步回调。
 
-ArkTS有内存回收机制，ImageSource对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1328,22 +1495,26 @@ ArkTS有内存回收机制，ImageSource对象不调用release方法，内存最
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.release().then(() => {
-  console.info('Succeeded in releasing the image source instance.');
-}).catch((error: BusinessError) => {
-  console.error(`Failed to release the image source instance.code ${error.code},message is ${error.message}`);
-})
+async function Release(imageSourceObj : image.ImageSource) {
+  imageSourceObj.release().then(() => {
+    console.info('Succeeded in releasing the image source instance.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to release the image source instance.code ${error.code},message is ${error.message}`);
+  })
+}
 ```
 
 ## getImageProperty<sup>(deprecated)</sup>
 
 getImageProperty(key:string, options?: GetImagePropertyOptions): Promise\<string>
 
-获取图片中给定索引处图像的指定属性键的值，用Promise形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+获取图片中给定索引处图像的指定属性键的值。使用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
-> 从API version 11开始不再维护，建议使用[getImageProperty](#getimageproperty11)代替。
+> 从API version 7开始支持，从API version 11废弃，建议使用[getImageProperty](#getimageproperty11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1365,23 +1536,27 @@ getImageProperty(key:string, options?: GetImagePropertyOptions): Promise\<string
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.getImageProperty("BitsPerSample")
-  .then((data: string) => {
-    console.info('Succeeded in getting the value of the specified attribute key of the image.');
-  }).catch((error: BusinessError) => {
-    console.error('Failed to get the value of the specified attribute key of the image.');
+async function GetImageProperty(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getImageProperty("BitsPerSample")
+    .then((data: string) => {
+      console.info('Succeeded in getting the value of the specified attribute key of the image.');
+    }).catch((error: BusinessError) => {
+    console.error(`Failed to get the value of the specified attribute key of the image, error.code ${error.code}, error.message ${error.message}`);
   })
+}
 ```
 
 ## getImageProperty<sup>(deprecated)</sup>
 
 getImageProperty(key:string, callback: AsyncCallback\<string>): void
 
-获取图片中给定索引处图像的指定属性键的值，用callback形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+获取图片中给定索引处图像的指定属性键的值。使用callback异步回调。
+
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
-> 从API version 11开始不再维护，建议使用[getImageProperty](#getimageproperty11)代替。
+> 从API version 7开始支持，从API version 11废弃，建议使用[getImageProperty](#getimageproperty11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1397,24 +1572,28 @@ getImageProperty(key:string, callback: AsyncCallback\<string>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.getImageProperty("BitsPerSample", (error: BusinessError, data: string) => {
-  if (error) {
-    console.error('Failed to get the value of the specified attribute key of the image.');
-  } else {
-    console.info('Succeeded in getting the value of the specified attribute key of the image.');
-  }
-})
+async function GetImageProperty(imageSourceObj : image.ImageSource) {
+  imageSourceObj.getImageProperty("BitsPerSample", (error: BusinessError, data: string) => {
+    if (error) {
+      console.error('Failed to get the value of the specified attribute key of the image.');
+    } else {
+      console.info('Succeeded in getting the value of the specified attribute key of the image.');
+    }
+  })
+}
 ```
 
 ## getImageProperty<sup>(deprecated)</sup>
 
 getImageProperty(key:string, options: GetImagePropertyOptions, callback: AsyncCallback\<string>): void
 
-获取图片指定属性键的值，callback形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+获取图片指定属性键的值。使用callback异步回调。
+
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
-> 从API version 11开始不再维护，建议使用[getImageProperty](#getimageproperty11)代替。
+> 从API version 7开始支持，从API version 11废弃，建议使用[getImageProperty](#getimageproperty11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1431,27 +1610,31 @@ getImageProperty(key:string, options: GetImagePropertyOptions, callback: AsyncCa
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let property: image.GetImagePropertyOptions = { index: 0, defaultValue: '9999' }
-imageSourceApi.getImageProperty("BitsPerSample", property, (error: BusinessError, data: string) => {
-  if (error) {
-    console.error('Failed to get the value of the specified attribute key of the image.');
-  } else {
-    console.info('Succeeded in getting the value of the specified attribute key of the image.');
-  }
-})
+async function GetImageProperty(imageSourceObj : image.ImageSource) {
+  let property: image.GetImagePropertyOptions = { index: 0, defaultValue: '9999' }
+  imageSourceObj.getImageProperty("BitsPerSample", property, (error: BusinessError, data: string) => {
+    if (error) {
+      console.error('Failed to get the value of the specified attribute key of the image.');
+    } else {
+      console.info('Succeeded in getting the value of the specified attribute key of the image.');
+    }
+  })
+}
 ```
 
 ## modifyImageProperty<sup>(deprecated)</sup>
 
 modifyImageProperty(key: string, value: string): Promise\<void>
 
-通过指定的键修改图片属性的值，使用Promise形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+通过指定的键修改图片属性的值。使用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
 > 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
-> 从API version 11开始不再维护，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+> 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1473,28 +1656,32 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.modifyImageProperty("ImageWidth", "120").then(() => {
-  imageSourceApi.getImageProperty("ImageWidth").then((width: string) => {
-    console.info(`ImageWidth is :${width}`);
+async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
+  imageSourceObj.modifyImageProperty("ImageWidth", "120").then(() => {
+    imageSourceObj.getImageProperty("ImageWidth").then((width: string) => {
+      console.info(`ImageWidth is :${width}`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get the Image Width, error.code ${error.code}, error.message ${error.message}`);
+    })
   }).catch((error: BusinessError) => {
-    console.error('Failed to get the Image Width.');
+    console.error(`Failed to modify the Image Width, error.code ${error.code}, error.message ${error.message}`);
   })
-}).catch((error: BusinessError) => {
-  console.error('Failed to modify the Image Width');
-})
+}
 ```
 
 ## modifyImageProperty<sup>(deprecated)</sup>
 
 modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>): void
 
-通过指定的键修改图片属性的值，callback形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+通过指定的键修改图片属性的值。使用callback异步回调。
+
+仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
 > 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
-> 
->从API version 11开始不再维护，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+>
+> 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1511,11 +1698,13 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageSourceApi.modifyImageProperty("ImageWidth", "120", (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to modify the Image Width.code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('Succeeded in modifying the Image Width.');
-  }
-})
+async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
+  imageSourceObj.modifyImageProperty("ImageWidth", "120", (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to modify the Image Width.code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('Succeeded in modifying the Image Width.');
+    }
+  })
+}
 ```

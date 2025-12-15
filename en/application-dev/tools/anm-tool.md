@@ -1,4 +1,10 @@
 # Advanced Notification Manager
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @huipeizi-->
 
 The Advanced Notification Manager enables you to print notifications and set notification parameters. It provides the notification debugging and testing capabilities, for example, printing published notification details, setting the number of notification caches, and enabling the notification functionality.
 
@@ -6,7 +12,7 @@ The Advanced Notification Manager enables you to print notifications and set not
 
 Before using this tool, you must obtain the <!--Del-->[<!--DelEnd-->hdc tool<!--Del-->](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)<!--DelEnd--> and run the hdc shell command.
 
-This tool can be used only in the **eng** edition. If it is used in the **user** edition, the message **error: user version cannot use setting** is reported.
+This tool can be used only in the eng version. If it is used in the user version, the error `/bin/sh: anm: inaccessible or not found.` is reported.
 
 ## anm Commands
 
@@ -51,7 +57,7 @@ This tool can be used only in the **eng** edition. If it is used in the **user**
 ## setting
 
   ```bash
-  # Sets notification parameters.
+  # Set notification parameters.
   anm setting [<options>]
   ```
 
@@ -61,7 +67,7 @@ This tool can be used only in the **eng** edition. If it is used in the **user**
   | ------------------------ | ------------------------------------ |
   | -c/--recent-count        | Maximum number of recent notifications stored in the memory.|
   | -e/--enable-notification | Whether to enable the notification capability.                    |
-  | -k/--collaboration-switch        | Whether notifications can be sent to devices of a specified type through cross-device collaboration.<br>`anm setting -k <deviceType>:<status>`<br>**Note**: This parameter is supported since API version 18.<br>**deviceType**: device type. The value can be **wearable**, **litewearable**, or **headset**.<br>**status**: status of the cross-device collaboration switch. The value **0** indicates that the cross-device collaboration is disabled, and the value **1** indicates the opposite.
+  | -k/--collaboration-switch        | Whether notifications can be sent to devices of a specified type through cross-device collaboration.<br>`anm setting -k <deviceType>:<status>`<br>**Note**: This parameter is supported since API version 18.<br>**deviceType**: device type. The value can be **wearable**, **litewearable**, or **headset**.<br>**status**: status of the cross-device collaboration switch. The value **0** indicates that the cross-device collaboration is disabled, and the value **1** indicates the opposite.|
   | -b/--collaboration-switch-bundle | Whether notifications of a specified bundle can be sent to devices of a specified type through cross-device collaboration.<br>`anm setting -b <deviceType>:<bundleName>:<uid>:<status>`<br>**Note**: This parameter is supported since API version 18.<br>**deviceType**: device type. The value can be **wearable**, **litewearable**, or **headset**.<br>**status**: status of the cross-device collaboration switch. The value **0** indicates that the cross-device collaboration is disabled, and the value **1** indicates the opposite.|
   | -o/--collaboration-switch-slot   | Whether notifications of a specified slot can be sent to devices of a specified type through cross-device collaboration.<br>`anm setting -o <deviceType>:<slotType>:<status>`<br>**Note**: This parameter is supported since API version 18.<br>**deviceType**: device type. The value can be **wearable**, **litewearable**, or **headset**.<br>**slotType**: notification slot type. For details about the value range, see [SlotType](../reference/apis-notification-kit/js-apis-notificationManager.md#slottype).<br>**status**: status of the cross-device collaboration switch. The value **0** indicates that the cross-device collaboration is disabled, and the value **1** indicates the opposite.|
   | -h/--help                | Help information.                            |

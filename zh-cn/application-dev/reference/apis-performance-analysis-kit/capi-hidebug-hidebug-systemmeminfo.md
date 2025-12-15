@@ -1,5 +1,16 @@
 # HiDebug_SystemMemInfo
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+```c
+typedef struct HiDebug_SystemMemInfo {...} HiDebug_SystemMemInfo
+```
+
 ## 概述
 
 系统内存信息结构类型定义。

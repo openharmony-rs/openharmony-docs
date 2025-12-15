@@ -1,8 +1,14 @@
 # @system.storage (Data Storage)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 >  **NOTE**
 >
->  - The APIs of this module are no longer maintained since API version 6, and you are advised to use [`@ohos.data.storage`](js-apis-data-storage.md). From API version 9, you are advised to use [`@ohos.data.preferences`](js-apis-data-preferences.md).
+>  - The APIs of this module are no longer maintained since API version 6, and you are advised to use [@ohos.data.storage](js-apis-data-storage.md). From API version 9, you are advised to use [@ohos.data.preferences](js-apis-data-preferences.md).
 >
 >  - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >  
@@ -151,10 +157,10 @@ export default {
 
 | Name    | Type         | Mandatory| Description                    |
 | -------- | ---------------- | ---- | ------------------- |
-| key      | string                               | Yes  | Key of the target data.                                     |
+| key      | string                               | Yes  | Key of the data to obtain.                                            |
 | default  | string                               | No  | Default value returned when the specified key does not exist.                             |
-| success  | (data: any) => void                  | No  | Called to return the result when **storage.get()** is called successfully. **data** is the value indexed by the specified key. |
-| fail     | (data: string, code: number) => void | No  | Called to return the result when **storage.get()** fails to be called. **data** is the error information, and **code** indicates the error code. |
+| success  | (data: any) => void                  | No  | Called to return the value obtained when **storage.get()** is successfully called.    |
+| fail     | (data: string, code: number) => void | No  | Called to return the result when **storage.get()** fails to be called. **data** indicates the error information, and **code** indicates the error code.|
 | complete | () => void                           | No  | Called when **storage.get()** is complete.                              |
 
 
@@ -166,8 +172,8 @@ export default {
 | -------- | ------------------- | ---- | -------------------- |
 | key      | string                               | Yes  | Key of the data to set.                                |
 | value    | string                               | Yes  | New value to set. The length must be less than 128 bytes.                             |
-| success  | () => void                           | No  | Called when **storage.set()** is called successfully.                     |
-| fail     | (data: string, code: number) => void | No  | Called to return the result when **storage.set()** fails to be called. **data** is the error information, and **code** indicates the error code. |
+| success  | () => void                           | No  | Called when **storage.set()** is successfully called.                              |
+| fail     | (data: string, code: number) => void | No  | Called to return the result when **storage.set()** fails to be called. **data** indicates the error information, and **code** indicates the error code.|
 | complete | () => void                           | No  | Called when **storage.set()** is complete.                              |
 
 
@@ -177,8 +183,8 @@ export default {
 
 | Name    | Type            | Mandatory| Description                        |
 | -------- | --------------------- | ---- | -------------------- |
-| success  | () => void                           | No  | Called when **storage.clear()** is called successfully.                |
-| fail     | (data: string, code: number) => void | No  | Called to return the result when **storage.clear()** fails to be called. **data** is the error information, and **code** indicates the error code. |
+| success  | () => void                           | No  | Called when **storage.clear()** is successfully called.                              |
+| fail     | (data: string, code: number) => void | No  | Called to return the result when **storage.clear()** fails to be called. **data** indicates the error information, and **code** indicates the error code.|
 | complete | () => void                           | No  | Called when **storage.clear()** is complete.                              |
 
 
@@ -189,6 +195,6 @@ export default {
 | Name    | Type                | Mandatory| Description                 |
 | -------- | -------------------- | ---- | ------------------ |
 | key      | string                               | Yes  | Key of the data to delete.                                            |
-| success  | () => void                           | No  | Called when **storage.delete()** is called successfully.               |
-| fail     | (data: string, code: number) => void | No  | Called to return the result when **storage.delete()** fails to be called. **data** is the error information, and **code** indicates the error code. |
+| success  | () => void                           | No  | Called when **storage.delete()** is successfully called.                              |
+| fail     | (data: string, code: number) => void | No  | Called to return the result when **storage.delete()** fails to be called. **data** indicates the error information, and **code** indicates the error code.|
 | complete | () => void                           | No  | Called when **storage.delete()** is complete.                              |

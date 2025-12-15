@@ -1,14 +1,20 @@
 # Interface (RdbStore)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+Provides APIs for managing data in an RDB store.
+
+Before using the following APIs, you should obtain an **RdbStore** instance by calling the [getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore-1) method and then call the corresponding method through the instance.
+
+In addition, use [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12) to initialize the database table structure and related data first, ensuring that the prerequisites for related API calls are met.
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-Provides APIs for managing data in an RDB store.
-
-Before using the following APIs, you should obtain a **RdbStore** instance by calling the [getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore-1) method and then call the corresponding method through the instance.
-
-In addition, use [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12) to initialize the database table structure and related data first, ensuring that the prerequisites for related API calls are met.
 
 ## Modules to Import
 
@@ -16,7 +22,7 @@ In addition, use [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12
 import { relationalStore } from '@kit.ArkData';
 ```
 
-## Property
+## Properties
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -48,6 +54,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example:**
 
+For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
+
 ```ts
 // Set the RDB store version.
 import { UIAbility } from '@kit.AbilityKit';
@@ -67,18 +75,18 @@ class EntryAbility extends UIAbility {
       store = rdbStore;
       await (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE);
       console.info('Get RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-    });
 
-    // Set the RDB store version.
-    if (store != undefined) {
-      (store as relationalStore.RdbStore).version = 3;
-      // Obtain the RDB store version.
-      console.info(`RdbStore version is ${store.version}`);
-      // Whether the RDB store has been rebuilt.
-      console.info(`RdbStore rebuilt is ${store.rebuilt}`);
-    }
+      // Set the RDB store version.
+      if (store != undefined) {
+        (store as relationalStore.RdbStore).version = 3;
+        // Obtain the RDB store version.
+        console.info(`RdbStore version is ${store.version}`);
+        // Whether the RDB store has been rebuilt.
+        console.info(`RdbStore rebuilt is ${store.rebuilt}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+    });
   }
 }
 ```
@@ -87,7 +95,7 @@ class EntryAbility extends UIAbility {
 
 insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt;):void
 
-Inserts a row of data into a table. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Inserts a row of data into a table. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -169,7 +177,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-Inserts a row of data into a table. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Inserts a row of data into a table. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -253,7 +261,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
-Inserts a row of data into a table. This API uses a promise to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Inserts a row of data into a table. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -340,7 +348,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promise&lt;number&gt;
 
-Inserts a row of data into a table. This API uses a promise to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Inserts a row of data into a table. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -428,7 +436,7 @@ if (store != undefined) {
 
 insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):number
 
-Inserts a row of data into a table. This API returns the result synchronously. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Inserts a row of data into a table. This API returns the result synchronously. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -438,7 +446,7 @@ Inserts a row of data into a table. This API returns the result synchronously. D
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | table    | string                                      | Yes  | Name of the target table.                                            |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | Yes  | Row of data to insert.                                  |
-| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict.<br> Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
+| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict.<br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
 **Return value**
 
@@ -476,8 +484,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let value1 = "Lisa";
 let value2 = 18;
 let value3 = 100.5;
@@ -517,7 +523,7 @@ if (store != undefined) {
 
 insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution):number
 
-Inserts a row of Sendable data into a table. This API returns the result synchronously. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Inserts a row of Sendable data into a table. This API returns the result synchronously. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -527,7 +533,7 @@ Inserts a row of Sendable data into a table. This API returns the result synchro
 | -------- | ---------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
 | table    | string                                                                                         | Yes  | Name of the target table.                                                               |
 | values   | [sendableRelationalStore.ValuesBucket](js-apis-data-sendableRelationalStore.md#valuesbucket) | Yes  | Sendable data to insert.                                           |
-| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)                                                   | No  | Resolution used to resolve the conflict.<br> Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
+| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)                                                   | No  | Resolution used to resolve the conflict.<br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
 **Return value**
 
@@ -589,7 +595,9 @@ if (store != undefined) {
 
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;):void
 
-Inserts a batch of data into a table. This API uses an asynchronous callback to return the result.
+Inserts data into a table in batches. This API uses an asynchronous callback to return the result.
+
+This API returns either an error or **-1** if the data fails to be inserted.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported since API version 20.
 
@@ -668,7 +676,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsert("EMPLOYEE", valueBuckets, (err, insertNum) => {
-    if (err) {
+    if (err || insertNum == -1) {
       console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
       return;
     }
@@ -681,7 +689,9 @@ if (store != undefined) {
 
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&gt;
 
-Inserts a batch of data into a table. This API uses a promise to return the result.
+Inserts data into a table in batches. This API uses a promise to return the result.
+
+This API returns either an error or **-1** if the data fails to be inserted.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported since API version 20.
 
@@ -769,6 +779,10 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsert("EMPLOYEE", valueBuckets).then((insertNum: number) => {
+    if (insertNum == -1) {
+      console.error(`batchInsert is failed`);
+      return;
+    }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   }).catch((err: BusinessError) => {
     console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
@@ -797,7 +811,9 @@ await store!.batchInsert("test", valueBucketArray); // Execute batched writes.
 
 batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
-Inserts a batch of data into a table with conflict resolutions. This API returns the result synchronously.
+Inserts data into a table with conflict resolutions in batches. This API returns the result synchronously.
+
+This API returns either an error or **-1** if the data fails to be inserted.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -844,8 +860,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let value1 = "Lisa";
 let value2 = 18;
 let value3 = 100.5;
@@ -882,6 +896,10 @@ let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   try {
     let insertNum: number = (store as relationalStore.RdbStore).batchInsertSync("EMPLOYEE", valueBuckets);
+    if (insertNum == -1) {
+      console.error(`batchInsertSync is failed`);
+      return;
+    }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   } catch (err) {
     console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
@@ -893,7 +911,13 @@ if (store != undefined) {
 
 batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
 
-Inserts a batch of data into a table. You can specify a resolution used to resolve the conflict. This API uses a promise to return the result.
+Inserts data into a table in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result.
+
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+
+For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -989,7 +1013,13 @@ if (store != undefined) {
 
 batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
 
-Inserts a batch of data into a table with conflict resolutions. This API returns the result synchronously.
+Inserts data into a table in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10).
+
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+
+For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1037,8 +1067,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let value1 = "Lisa";
 let value2 = 18;
 let value3 = 100.5;
@@ -1086,7 +1114,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
 
-Updates data in the RDB store based on the specified **RdbPredicates** object. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Updates data in the RDB store based on the specified **RdbPredicates** object. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1170,7 +1198,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-Updates data in the RDB store based on the specified **RdbPredicates** object. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Updates data based on the specified **RdbPredicates** object. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1255,7 +1283,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 
-Updates data based on the specified **RdbPredicates** object. This API uses a promise to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Updates data based on the specified **RdbPredicates** object. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1332,7 +1360,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).update(valueBucket1, predicates).then(async (rows: Number) => {
+  (store as relationalStore.RdbStore).update(valueBucket1, predicates).then(async (rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
     console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
@@ -1344,7 +1372,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution):Promise&lt;number&gt;
 
-Updates data based on the specified **RdbPredicates** object. This API uses a promise to return Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Updates data based on the specified **RdbPredicates** object. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1422,7 +1450,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).update(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then(async (rows: Number) => {
+  (store as relationalStore.RdbStore).update(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then(async (rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
     console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
@@ -1434,7 +1462,7 @@ if (store != undefined) {
 
 updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution):number
 
-Updates data in the RDB store based on the specified **RdbPredicates** object. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Updates data in the RDB store based on the specified **RdbPredicates** object. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1444,7 +1472,7 @@ Updates data in the RDB store based on the specified **RdbPredicates** object. D
 | ---------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | Yes  | Rows of data to update in the RDB store. The key-value pair is associated with the column name in the target table.|
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)             | Yes  | Update conditions specified by the **RdbPredicates** object.                     |
-| conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict.<br> Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
+| conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict.<br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
 **Return value**
 
@@ -1482,8 +1510,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let value1 = "Rose";
 let value2 = 22;
 let value3 = 200.5;
@@ -1513,7 +1539,7 @@ let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   try {
-    let rows: Number = (store as relationalStore.RdbStore).updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
+    let rows: number = (store as relationalStore.RdbStore).updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Updated row count: ${rows}`);
   } catch (error) {
     console.error(`Updated failed, code is ${error.code},message is ${error.message}`);
@@ -1534,7 +1560,7 @@ Deletes data from the RDB store based on the specified **RdbPredicates** object.
 | Name    | Type                                | Mandatory| Description                                     |
 | ---------- | ------------------------------------ | ---- | ----------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Deletion conditions specified by the **RdbPredicates** object.|
-| callback   | AsyncCallback&lt;number&gt;          | Yes  | Callback used to return the result. Number of rows deleted.|
+| callback   | AsyncCallback&lt;number&gt;          | Yes  | Callback used to return the number of rows deleted.|
 
 **Error codes**
 
@@ -1634,7 +1660,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).delete(predicates).then((rows: Number) => {
+  (store as relationalStore.RdbStore).delete(predicates).then((rows: number) => {
     console.info(`Delete rows: ${rows}`);
   }).catch((err: BusinessError) => {
     console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
@@ -1692,13 +1718,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   try {
-    let rows: Number = (store as relationalStore.RdbStore).deleteSync(predicates);
+    let rows: number = (store as relationalStore.RdbStore).deleteSync(predicates);
     console.info(`Delete rows: ${rows}`);
   } catch (err) {
     console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
@@ -1710,7 +1734,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1745,15 +1769,20 @@ if (store != undefined) {
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   });
 }
 ```
@@ -1762,7 +1791,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Queries data from the RDB store based on specified conditions (for example, column). This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1798,15 +1827,20 @@ if (store != undefined) {
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   });
 }
 ```
@@ -1815,7 +1849,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
 
-Queries data from the RDB store based on specified conditions. This API uses a promise to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Queries data from the RDB store based on specified conditions. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1854,15 +1888,20 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
   });
@@ -1873,7 +1912,7 @@ if (store != undefined) {
 
 querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;):ResultSet
 
-Queries data in a database based on specified conditions. This API returns the result synchronously. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySync()**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
+Queries data in a database based on specified conditions. This API returns the result synchronously. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1904,13 +1943,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
   try {
-    let resultSet: relationalStore.ResultSet = (store as relationalStore.RdbStore).querySync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
+    resultSet = store.querySync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
     while (resultSet.goToNextRow()) {
@@ -1920,10 +1958,13 @@ if (store != undefined) {
       const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
       console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   } catch (err) {
-    console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  } finally {
+    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+    if (resultSet) {
+      resultSet.close();
+    }
   }
 }
 ```
@@ -1988,15 +2029,20 @@ if (store != undefined && deviceId != undefined) {
   (store as relationalStore.RdbStore).remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Failed to remoteQuery, code is ${err.code},message is ${err.message}`);
   });
@@ -2068,15 +2114,20 @@ if (store != undefined && deviceId != undefined) {
   (store as relationalStore.RdbStore).remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Failed to remoteQuery, code is ${err.code},message is ${err.message}`);
   });
@@ -2087,7 +2138,7 @@ if (store != undefined && deviceId != undefined) {
 
 querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses an asynchronous callback to return the result.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported. For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
 
@@ -2126,15 +2177,20 @@ if (store != undefined) {
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   });
 }
 ```
@@ -2159,7 +2215,7 @@ let resultSet2 = await store.querySql(querySql2);
 
 querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses an asynchronous callback to return the result.
+Queries data using the specified SQL statements. The number of relational operators in the SQL statements cannot exceed 1000. The parameter values in the SQL statement can be passed in. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported. For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
 
@@ -2197,15 +2253,20 @@ if (store != undefined) {
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   });
 }
 ```
@@ -2214,7 +2275,7 @@ if (store != undefined) {
 
 querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt;
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses a promise to return the result.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported. For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
 
@@ -2257,15 +2318,20 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'").then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
   });
@@ -2316,11 +2382,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
   try {
-    let resultSet: relationalStore.ResultSet = (store as relationalStore.RdbStore).querySqlSync("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
+    resultSet = store.querySqlSync("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
     while (resultSet.goToNextRow()) {
@@ -2330,10 +2395,13 @@ if (store != undefined) {
       const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
       console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   } catch (err) {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+  } finally {
+    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+    if (resultSet) {
+      resultSet.close();
+    }
   }
 }
 ```
@@ -2404,7 +2472,7 @@ if (store != undefined) {
 
 executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;void&gt;):void
 
-Executes an SQL statement. The number of relational operators between expressions and operators in the statement cannot exceed 1000. This API uses an asynchronous callback to return the result.
+Executes an SQL statement. The parameter values in the SQL statement can be passed in. The number of relational operators in the SQL statements cannot exceed 1000. This API uses an asynchronous callback to return the result.
 
 This API does not support query, attach, or transaction operations. To perform these operations, use [querySql](#querysql10), [query](#query10), [attach](#attach12), [beginTransaction](#begintransaction), and [commit](#commit).
 
@@ -2703,13 +2771,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((txId: number) => {
+  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
+    txId = temTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
-        (store as relationalStore.RdbStore).commit(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).commit(txId);
+        }
       })
       .catch((err: BusinessError) => {
-        (store as relationalStore.RdbStore).rollback(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).rollback(txId);
+        }
         console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
       });
   });
@@ -2773,8 +2846,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // Check the RDB store integrity.
 if (store != undefined) {
   const SQL_CHECK_INTEGRITY = 'PRAGMA integrity_check';
@@ -3043,13 +3114,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((txId: number) => {
+  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
+    txId = temTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
-        (store as relationalStore.RdbStore).commit(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).commit(txId);
+        }
       })
       .catch((err: BusinessError) => {
-        (store as relationalStore.RdbStore).rollback(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).rollback(txId);
+        }
         console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
       });
   });
@@ -3105,7 +3181,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).createTransaction().then((transaction: relationalStore.Transaction) => {
+  (store as relationalStore.RdbStore).createTransaction().then(async (transaction: relationalStore.Transaction) => {
     transaction.execute("DELETE FROM test WHERE age = ? OR age = ?", [21, 20]).then(() => {
       transaction.commit();
     }).catch((e: BusinessError) => {
@@ -3122,7 +3198,7 @@ if (store != undefined) {
 
 commit():void
 
-Commits the executed SQL statement. This API must be used with [beginTransaction](#begintransaction).
+Commits this executed SQL statement. This API must be used with [beginTransaction](#begintransaction).
 This API does not allow nested transactions and cannot be used across processes or threads.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -3178,7 +3254,7 @@ if (store != undefined) {
 
 commit(txId : number):Promise&lt;void&gt;
 
-Commits the executed SQL statement. This API must be used with [beginTrans](#begintrans12).
+Commits an executed SQL statement. This API is used together with [beginTrans](#begintrans12) and uses a promise to return the result.
 
 This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
 
@@ -3228,13 +3304,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((txId: number) => {
+  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
+    txId = temTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
-        (store as relationalStore.RdbStore).commit(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).commit(txId);
+        }
       })
       .catch((err: BusinessError) => {
-        (store as relationalStore.RdbStore).rollback(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).rollback(txId);
+        }
         console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
       });
   });
@@ -3310,7 +3391,7 @@ if (store != undefined) {
 
 rollback(txId : number):Promise&lt;void&gt;
 
-Rolls back the executed SQL statement. This API must be used with [beginTrans](#begintrans12).
+Rolls back an executed SQL statement. This API is used together with [beginTrans](#begintrans12) and uses a promise to return the result.
 
 This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
 
@@ -3360,13 +3441,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((txId: number) => {
+  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
+    txId = temTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
-        (store as relationalStore.RdbStore).commit(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).commit(txId);
+        }
       })
       .catch((err: BusinessError) => {
-        (store as relationalStore.RdbStore).rollback(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).rollback(txId);
+        }
         console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
       });
   });
@@ -3707,7 +3793,7 @@ if (store != undefined) {
 
 setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callback: AsyncCallback&lt;void&gt;): void
 
-Sets distributed tables. This API uses an asynchronous callback to return the result.
+Sets distributed tables. The distributed type of the table can be specified. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3751,7 +3837,7 @@ if (store != undefined) {
 
 setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config: DistributedConfig, callback: AsyncCallback&lt;void&gt;): void
 
-Sets distributed tables. This API uses an asynchronous callback to return the result.
+Sets distributed tables. The distributed type and configuration of the table can be specified. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3798,7 +3884,7 @@ if (store != undefined) {
 
  setDistributedTables(tables: Array&lt;string>, type?: DistributedType, config?: DistributedConfig): Promise&lt;void>
 
-Sets distributed tables. This API uses a promise to return the result.
+Sets distributed tables. The distributed type and configuration of the table can be specified. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3809,7 +3895,7 @@ Sets distributed tables. This API uses a promise to return the result.
 | Name| Type                                     | Mandatory| Description                                                             |
 | ------ | ----------------------------------------- | ---- |-----------------------------------------------------------------|
 | tables | Array&lt;string&gt;                       | Yes  | Names of the distributed tables to set.                                                 |
-| type   | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10)     | No  | Distributed type of the tables.<br> Default value: **relationalStore.DistributedType.DISTRIBUTED_DEVICE**.|
+| type   | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10)     | No  | Distributed type of the tables.<br>Default value: **relationalStore.DistributedType.DISTRIBUTED_DEVICE**.|
 | config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | No  | Configuration of the distributed mode. If this parameter is not specified, the value of **autoSync** is **false** by default, which means only manual sync is supported.                       |
 
 **Return value**
@@ -3913,7 +3999,7 @@ if (store != undefined && deviceId != undefined) {
 
  obtainDistributedTableName(device: string, table: string): Promise&lt;string&gt;
 
-Obtains the distributed table name of a remote device based on the local table name of the device. The distributed table name is required when the RDB store of a remote device is queried.
+Obtains the distributed table name of a remote device based on the local table name of the device. The distributed table name is required when the RDB store of a remote device is queried. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -3959,7 +4045,11 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  deviceId = devices[0].networkId;
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -4323,11 +4413,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
-  if (devices != undefined) {
+  if (devices !== undefined) {
     for (let i = 0; i < devices.length; i++) {
       console.info(`device= ${devices[i]} data changed`);
     }
@@ -4375,11 +4464,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 Example 1: **type** is **SUBSCRIBE_TYPE_REMOTE**.
 
 ```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
-  if (devices != undefined) {
+  if (devices !== undefined) {
     for (let i = 0; i < devices.length; i++) {
       console.info(`device= ${devices[i]} data changed`);
     }
@@ -4404,7 +4492,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let changeInfos = (changeInfos: Array<relationalStore.ChangeInfo>) => {
   for (let i = 0; i < changeInfos.length; i++) {
-    console.info(`changeInfos = ${changeInfos[i]}`);
+    console.info(`changeInfos = ${JSON.stringify(changeInfos[i])}`);
   }
 };
 
@@ -4454,7 +4542,7 @@ Subscribes to the intra-process or inter-process events of this RDB store. The r
 | Name      | Type           | Mandatory| Description                                                        |
 | ------------ | --------------- | ---- | ------------------------------------------------------------ |
 | event        | string          | Yes  | Event name, which must match the event name in **emit**.              |
-| interProcess | boolean         | Yes  | Type of the data to observe.<br> **true**: inter-process.<br> **false**: intra-process.|
+| interProcess | boolean         | Yes  | Type of the data to observe.<br>**true**: inter-process.<br>**false**: intra-process.|
 | observer     | Callback\<void> | Yes  | Callback used to return the result.                                                  |
 
 **Error codes**
@@ -4510,7 +4598,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**   |
 |-----------|--------|
-| 401       | Parameter error. Possible causes: 1. Need 2 - 3  parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.  |
 | 14800014  | The RdbStore or ResultSet is already closed.     |
 
@@ -4634,7 +4722,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    let exceptionMessage: relationalStore.ExceptionMessage;
     store.on('sqliteErrorOccurred', exceptionMessage => {
       let sqliteCode = exceptionMessage.code;
       let sqliteMessage = exceptionMessage.message;
@@ -4727,7 +4814,8 @@ try {
     'CODES': value4
   };
   if (store != undefined) {
-    (store as relationalStore.RdbStore).insert('test', valueBucket);
+    const rowId = await store.insert('EMPLOYEE', valueBucket);
+    console.info(`Insert success, rowId is: ${rowId}`);
   }
 } catch (err) {
   console.error(`insert fail, code:${err.code}, message: ${err.message}`);
@@ -4766,7 +4854,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
-  if (devices != undefined) {
+  if (devices !== undefined) {
     for (let i = 0; i < devices.length; i++) {
       console.info(`device= ${devices[i]} data changed`);
     }
@@ -4825,11 +4913,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example:**
 
 ```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
-  if (devices != undefined) {
+  if (devices !== undefined) {
     for (let i = 0; i < devices.length; i++) {
       console.info(`device= ${devices[i]} data changed`);
     }
@@ -4870,7 +4957,7 @@ Unsubscribes from process events.
 | Name      | Type           | Mandatory| Description                                                        |
 | ------------ | --------------- | ---- | ------------------------------------------------------------ |
 | event        | string          | Yes  | Event name, which matches the event name in **on()**.|
-| interProcess | boolean         | Yes  | Type of the data to observe.<br> **true**: inter-process.<br> **false**: intra-process.|
+| interProcess | boolean         | Yes  | Type of the data to observe.<br>**true**: inter-process.<br>**false**: intra-process.|
 | observer     | Callback\<void> | No  | If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
@@ -5242,7 +5329,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
-Clears the dirty data whose cursor is smaller than the specified cursor from the local device. The dirty data is the data that has been deleted from the cloud. If **cursor** is not specified, all the dirty data will be cleared.
+Cleans the dirty data whose cursor is smaller than the specified cursor from the local device. The dirty data is the data that has been deleted from the cloud. This API uses a promise to return the result. If **cursor** is not specified, all the dirty data will be cleared.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5255,7 +5342,7 @@ Clears the dirty data whose cursor is smaller than the specified cursor from the
 
 **Return value**
 
-| Name   | Description                                              |
+| Type    | Description                                             |
 | -------- | ------------------------------------------------- |
 | Promise\<void> | Promise that returns no value.       |
 
@@ -5304,7 +5391,7 @@ if (store != undefined) {
 
 attach(fullPath: string, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-Attaches an RDB store to this RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement.
+Attaches an RDB store to this RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement. This API uses a promise to return the result.
 
 The RDB store is attached via a database file. This API cannot be used for encrypted RDB stores. After the **attach** API is called, the RDB store is switched to the non-WAL mode, which may affect the performance.
 
@@ -5320,7 +5407,7 @@ The **attach** API cannot be called concurrently. Concurrent calls may cause the
 | ----------- | ------ | --- | ------------ |
 | fullPath | string | Yes  | Path of the database file to attach.|
 | attachName | string | Yes  | Alias of the RDB store formed after the attach operation.|
-| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: 2|
+| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: **2**|
 
 **Return value**
 
@@ -5376,7 +5463,7 @@ if (store != undefined) {
 
 attach(context: Context, config: StoreConfig, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-Attaches an RDB store to this RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement.
+Attaches an RDB store of the current application to this RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement. This API uses a promise to return the result.
 
 This API cannot be used to attach a non-encrypted RDB store to an encrypted RDB store. After the **attach** API is called, the RDB store is switched to the non-WAL mode, which may affect the performance.
 
@@ -5390,10 +5477,10 @@ The **attach** API cannot be called concurrently. Concurrent calls may cause the
 
 | Name       | Type    | Mandatory | Description          |
 | ----------- | ------ | --- | ------------ |
-| context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
 | attachName | string | Yes  | Alias of the RDB store formed after the attach operation.|
-| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: 2|
+| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: **2**|
 
 **Return value**
 
@@ -5447,17 +5534,16 @@ const STORE_CONFIG1: relationalStore.StoreConfig = {
 relationalStore.getRdbStore(this.context, STORE_CONFIG1).then(async (rdbStore: relationalStore.RdbStore) => {
   attachStore = rdbStore;
   console.info('Get RdbStore successfully.');
+  if (store != undefined) {
+    (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG1, "attachDB").then((number: number) => {
+      console.info(`attach succeeded, number is ${number}`);
+    }).catch((err: BusinessError) => {
+      console.error(`attach failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
 }).catch((err: BusinessError) => {
   console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
 });
-
-if (store != undefined) {
-  (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG1, "attachDB").then((number: number) => {
-    console.info(`attach succeeded, number is ${number}`);
-  }).catch((err: BusinessError) => {
-    console.error(`attach failed, code is ${err.code},message is ${err.message}`);
-  });
-}
 ```
 
 Example 2: Attach an encrypted RDB store to a non-encrypted RDB store.
@@ -5476,24 +5562,23 @@ const STORE_CONFIG2: relationalStore.StoreConfig = {
 relationalStore.getRdbStore(this.context, STORE_CONFIG2).then(async (rdbStore: relationalStore.RdbStore) => {
   attachStore = rdbStore;
   console.info('Get RdbStore successfully.');
+  if (store != undefined) {
+    (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG2, "attachDB2", 10).then((number: number) => {
+      console.info(`attach succeeded, number is ${number}`);
+    }).catch((err: BusinessError) => {
+      console.error(`attach failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
 }).catch((err: BusinessError) => {
   console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
 });
-
-if (store != undefined) {
-  (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG2, "attachDB2", 10).then((number: number) => {
-    console.info(`attach succeeded, number is ${number}`);
-  }).catch((err: BusinessError) => {
-    console.error(`attach failed, code is ${err.code},message is ${err.message}`);
-  });
-}
 ```
 
 ## detach<sup>12+</sup>
 
 detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-Detaches an RDB store from this RDB store.
+Detaches an RDB store from this RDB store. This API uses a promise to return the result.
 
 After all attached RDB stores are detached, the RDB is switched to the WAL mode.
 
@@ -5506,7 +5591,7 @@ Before calling **detach()**, ensure that all database operations are complete an
 | Name       | Type    | Mandatory | Description          |
 | ----------- | ------ | --- | ------------ |
 | attachName | string | Yes  | Alias of the RDB store formed after the attach operation.|
-| waitTime | number | No  | Maximum time period (in seconds) allowed for detaching the RDB store. <br>Value range: 1 to 300<br>Default value: 2|
+| waitTime | number | No  | Maximum time period (in seconds) allowed for detaching the RDB store. <br>Value range: 1 to 300<br>Default value: **2**|
 
 **Return value**
 
@@ -5693,7 +5778,6 @@ if (store != undefined) {
 queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
 
 Queries the locked data in this RDB store. This API uses a promise to return the result.
-Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5747,15 +5831,20 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).queryLockedRow(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
     }
-    // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
   });
@@ -5773,7 +5862,7 @@ Closes this RDB store. This API uses a promise to return the result.
 
 | Type               | Description         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -5806,7 +5895,7 @@ Updates the key of an encrypted database. This API uses a promise to return the 
 
 Key update is not supported for databases in non-WAL mode.
 
-Key update requires exclusive access to the database. If any result set, transaction, or database opened by another process is not released, the update will fail.
+Manual update requires exclusive access to the database. If any result set, transaction, or database opened by another process is not released, the update will fail.
 
 Only encrypted databases can be updated. Non-encrypted databases cannot be changed to encrypted databases, and vice versa. The encryption parameters and key generation mode must be the same as those used during database creation.
 
@@ -5846,6 +5935,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800029     | SQLite: The database is full.                                          |
 
 **Example:**
+
+For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -5929,6 +6020,412 @@ export default class EntryAbility extends UIAbility {
     }).catch((err: BusinessError) => {
       console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
     });
+  }
+}
+```
+
+## setLocale<sup>20+</sup>
+
+setLocale(locale: string) : Promise\<void>
+
+Sets locale. This API uses a promise to return the result.
+
+The value complies with the ISO 639 standard and supports some languages in ICU. For languages not supported, error code 14800001 is reported when the locale is set.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name| Type    | Mandatory| Description                                      |
+| ------ | ------- | ---- | ----------------------------------------- |
+| locale  | string | Yes  | Locale to set. The value complies with the ISO 639 standard, for example, **zh**.|
+
+**Return value**
+
+| Type         | Description                      |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md).
+
+| **ID**| **Error Message**                                                           |
+| ------------ | ---------------------------------------------------------------------- |
+| 801          | Capability not supported.                                              |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800014     | The RdbStore or ResultSet is already closed.                           |
+| 14800024     | SQLite: The database file is locked.                                   |
+| 14800026     | SQLite: The database is out of memory.                                 |
+| 14800034     | SQLite: Library used incorrectly.                                         |
+
+**Example:**
+
+```ts
+try {
+  if (store != undefined) {
+    await store.setLocale("zh");
+    store.querySql("SELECT * FROM EMPLOYEE ORDER BY NAME COLLATE LOCALES", async (err, resultSet) => {
+      if (err) {
+        console.error(`Query failed, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info(`ResultSet rowCount ${resultSet.rowCount}`);
+    });
+  }
+} catch (err) {
+  console.error(`SetLocale failed, code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## rekeyEx<sup>22+</sup>
+
+rekeyEx(cryptoParam: CryptoParam): Promise\<void>
+
+Manually updates the database key or encryption parameters. This API uses a promise to return the result.
+
+Key update is not supported for databases in non-WAL mode.
+
+Manual update requires exclusive access to the database. If any result set, transaction, or database opened by another process is not released, the update will fail.
+
+Parameter update for an encrypted database and conversion between an encrypted database and a non-encrypted database are supported.
+
+The larger the database, the longer the update takes.
+
+> **NOTE**
+>
+> Exercise caution when changing encryption parameters. After **rekeyEx** is executed, you must use the new parameters to open the database when calling **getRdbStore**. Otherwise, the database may fail to be opened.
+> 
+> If the rekey process is interrupted due to device power-off or other reasons, the operation may succeed or fail. Therefore, it is recommended that the service party perform a redundancy retry based on the parameters modified before and after **RekeyEx** is used to ensure the database status is correctly determined and the database can be opened.
+> 
+> If the encryption parameters are changed, do not use the **AllowedRebuild** parameter when calling **getRdbStore** to prevent the database from being rebuilt due to incorrect encryption parameters.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name      | Type                                                              | Mandatory| Description                                      |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| cryptoParam  | [CryptoParam](arkts-apis-data-relationalStore-i.md#cryptoparam14) | Yes  | Custom encryption parameters.|
+
+**Return value**
+
+| Type         | Description                      |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md).
+
+| **ID**| **Error Message**                                                            |
+| ------------ | ----------------------------------------------------------------------- |
+| 801          | Capability not supported.                                               |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | Failed to open the database because it is corrupted.                    |
+| 14800014     | The RdbStore or ResultSet is already closed.                            |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800023     | SQLite: Access permission denied.                                       |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800026     | SQLite: The database is out of memory.                                  |
+| 14800027     | SQLite: Attempt to write a readonly database.                           |
+| 14800028     | SQLite: Some kind of disk I/O error occurred.                           |
+| 14800029     | SQLite: The database is full.                                           |
+
+**Example 1: The original database is encrypted using default parameters. Change the key and encryption parameters.**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        iterationCount: 1000,
+        cryptoPageSize: 2048,
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // After rekeyEx is used, use new parameters for getRdbStore to reopen the database.
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**Example 2: The original database is encrypted using custom parameters. Change the custom key and encryption parameters.**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // Security reminder: 1. An empty array encryptionKey indicates that the key generated by the system is used (applicable only to some scenarios). 2. In the production environment, use the application sandbox key or secure storage service management key. Do not use hard-coded key in the code.
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+        iterationCount: 5000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA512,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512,
+        cryptoPageSize: 2048
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // After rekeyEx is used, use new parameters for getRdbStore to reopen the database.
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**Example 3: The original database is encrypted using default parameters. Change the default key and parameters to the custom key and encryption parameters.**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        // Security reminder: 1. An empty array encryptionKey indicates that the key generated by the system is used (applicable only to some scenarios). 2. In the production environment, use the application sandbox key or secure storage service management key. Do not use hard-coded key in the code.
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        iterationCount: 1000,
+        cryptoPageSize: 2048,
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // After rekeyEx is used, use new parameters for getRdbStore to reopen the database.
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**Example 4: The original database is encrypted using custom parameters. Change the key generated by database and custom encryption parameters.**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // Security reminder: 1. An empty array encryptionKey indicates that the key generated by the system is used (applicable only to some scenarios). 2. In the production environment, use the application sandbox key or secure storage service management key. Do not use hard-coded key in the code.
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore2.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        iterationCount: 5000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA512,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512,
+        cryptoPageSize: 2048
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // After rekeyEx is used, use new parameters for getRdbStore to reopen the database.
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**Example 5: The original database is an encrypted database. Change it to a non-encrypted database.**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // Security reminder: 1. An empty array encryptionKey indicates that the key generated by the system is used (applicable only to some scenarios). 2. In the production environment, use the application sandbox key or secure storage service management key. Do not use hard-coded key in the code.
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        encryptionAlgo: relationalStore.EncryptionAlgo.PLAIN_TEXT
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // After rekeyEx is used, use new parameters for getRdbStore to reopen the database.
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**Example 6: The original database is a non-encrypted database. Change it to a database encrypted using custom parameters.**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: false,
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        // Security reminder: 1. An empty array encryptionKey indicates that the key generated by the system is used (applicable only to some scenarios). 2. In the production environment, use the application sandbox key or secure storage service management key. Do not use hard-coded key in the code.
+        encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+        iterationCount: 1000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        cryptoPageSize: 1024
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // After rekeyEx is used, use new parameters for getRdbStore to reopen the database.
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
   }
 }
 ```

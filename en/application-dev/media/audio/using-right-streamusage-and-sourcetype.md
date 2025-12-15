@@ -1,4 +1,10 @@
 # Selecting the Appropriate Audio Stream Types
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 [Audio stream](audio-kit-intro.md#introduction-to-audio-streams) types are crucial for determining the mode of audio playback and recording. For audio playback streams, the stream type is determined by [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage). For audio recording streams, the stream type is determined by [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8). These types pose a significant impact on volume control, audio focus management, and input/output device selection.
 
@@ -32,13 +38,13 @@ The following table describes the typical stream types used for audio recording.
 | Stream Type| Use Case|
 | ---------- | ---------- |
 | SOURCE_TYPE_MIC | Common audio recording.|
-| SOURCE_TYPE_RECOGNITION<sup>9+</sup> | Voice recognition.|
+| SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup> | Voice recognition.|
 | SOURCE_TYPE_PLAYBACK_CAPTURE | (Deprecated in API version 12) Recording raw audio data sent by other applications to the system for playback.<br>Audio Kit does not provide APIs for internal recording. You can use [AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture.md) to perform internal recording.|
 | SOURCE_TYPE_VOICE_COMMUNICATION | VoIP voice calls.|
 | SOURCE_TYPE_VOICE_MESSAGE | Recording voice short messages.|
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup> | Camera recording.|
-| SOURCE_TYPE_UNPROCESSD<sup>14+</sup> | Obtaining pure audio data captured by the microphone (without any system processing).|
-| SOURCE_TYPE_LIVE<sup>20+</sup> | Live streaming. This source type provides system echo cancellation capabilities on supported platforms.|
+| SOURCE_TYPE_UNPROCESSED<sup>14+</sup> | Obtaining pure audio data captured by the microphone (without any system processing).|
+| SOURCE_TYPE_LIVE<sup>20+</sup> | Live streaming. This source type provides system echo cancellation capabilities on supported devices.|
 
 ## Effects of Audio Stream Types on Audio Services
 
@@ -63,7 +69,7 @@ The audio stream type plays a key role in audio focus management. Different type
 
 When an application starts audio playback or recording, the system automatically applies for focus based on the audio stream type. This may interrupt or duck other audio streams. For details about the audio focus, see [Introduction to Audio Focus and Audio Session](audio-playback-concurrency.md).
 
-This section describes only how the typical audio stream types affect the audio focus.
+This section describes only how the typical audio stream types affect the audio focus. For details about other types, see [Default Focus Strategies](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-audio-focus-management#section17923135513547).
 
 - When a Navigation stream starts playing, the Music stream that is playing will be ducked. After the Navigation stream ends, the volume of the Music stream will be restored.
 
@@ -139,5 +145,3 @@ Common methods for setting the audio recording stream type are as follows:
   Pass [AudioSourceType](../../reference/apis-media-kit/arkts-apis-media-e.md#audiosourcetype9) in [AVRecorder.prepare](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#prepare9-1) to specify the stream type.
 
   The **config** parameter in **AVRecorder.prepare** is of the **AVRecorderConfig** type, in which **AVRecorderConfig.audioSourceType** specifies the audio source type.
-
-<!--no_check-->

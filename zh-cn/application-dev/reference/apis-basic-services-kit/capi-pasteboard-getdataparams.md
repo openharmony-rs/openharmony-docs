@@ -1,4 +1,14 @@
 # Pasteboard_GetDataParams
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @yangxiaodong41-->
+<!--Designer: @guo867-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @fang-jinxu-->
+
+```c
+typedef struct Pasteboard_GetDataParams Pasteboard_GetDataParams
+```
 
 ## 概述
 

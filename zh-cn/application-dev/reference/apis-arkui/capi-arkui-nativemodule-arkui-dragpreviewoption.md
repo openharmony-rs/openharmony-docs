@@ -1,4 +1,14 @@
 # ArkUI_DragPreviewOption
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_DragPreviewOption ArkUI_DragPreviewOption
+```
 
 ## 概述
 

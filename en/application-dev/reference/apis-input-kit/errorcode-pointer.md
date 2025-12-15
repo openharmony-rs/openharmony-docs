@@ -1,5 +1,12 @@
 # Mouse Pointer Error Codes
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -8,7 +15,7 @@
 
 **Error Message**
 
-Invalid windowId.
+Invalid windowId. Possible causes: The window id does not belong to the current process.
 
 **Description**
 
@@ -20,4 +27,4 @@ The window ID does not belong to the current process.
 
 **Solution**
 
-Pass in the window ID of the current process. You can obtain the attributes of the current window by calling [getWindowProperties()](../apis-arkui/js-apis-window.md#getwindowproperties9). The window attributes contain the window ID.
+Pass in the window ID of the current process. You can obtain the attributes of the current window by calling [getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9). The window ID is contained in the returned window attributes.

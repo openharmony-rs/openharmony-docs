@@ -1,5 +1,10 @@
 # drawing_text_typography.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 ## 概述
 
 定义绘制模块中排版相关的函数。
@@ -7,6 +12,8 @@
 **引用文件：** <native_drawing/drawing_text_typography.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -54,6 +61,9 @@
 | [OH_Drawing_TextHeightBehavior](#oh_drawing_textheightbehavior) | - | 文本高度修饰符模式枚举。 |
 | [OH_Drawing_TextStyleType](#oh_drawing_textstyletype) | - | 文本样式类型枚举。 |
 | [OH_Drawing_TextVerticalAlignment](#oh_drawing_textverticalalignment) | OH_Drawing_TextVerticalAlignment | 垂直对齐方式枚举。 |
+| [OH_Drawing_LineHeightStyle](#oh_drawing_lineheightstyle) | OH_Drawing_LineHeightStyle | 行高缩放基数样式枚举。默认样式为TEXT_LINE_HEIGHT_BY_FONT_SIZE。 |
+| [OH_Drawing_TextStyleAttributeId](#oh_drawing_textstyleattributeid) | OH_Drawing_TextStyleAttributeId | 文本样式属性枚举。 |
+| [OH_Drawing_TypographyStyleAttributeId](#oh_drawing_typographystyleattributeid) | OH_Drawing_TypographyStyleAttributeId | 排版样式属性枚举。<br>针对排版样式和文本样式中的共有属性，建议优先使用文本样式属性（可由[OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid)获取）。 |
 
 ### 函数
 
@@ -84,7 +94,7 @@
 | [void OH_Drawing_TextStyleGetForegroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundBrush)](#oh_drawing_textstylegetforegroundbrush) | 返回设置的前景色画刷。 |
 | [void OH_Drawing_SetTextStyleForegroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* foregroundPen)](#oh_drawing_settextstyleforegroundpen) | 设置指定文本样式中的前景色画笔。 |
 | [void OH_Drawing_TextStyleGetForegroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* foregroundPen)](#oh_drawing_textstylegetforegroundpen) | 返回设置的前景色画笔。 |
-| [void OH_Drawing_SetTextStyleBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundPen)](#oh_drawing_settextstylebackgroundbrush) | 设置指定文本样式中的背景色画刷。 |
+| [void OH_Drawing_SetTextStyleBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)](#oh_drawing_settextstylebackgroundbrush) | 设置指定文本样式中的背景色画刷。 |
 | [void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)](#oh_drawing_textstylegetbackgroundbrush) | 返回设置的背景色画刷。 |
 | [void OH_Drawing_SetTextStyleBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_settextstylebackgroundpen) | 设置指定文本样式中的背景色画笔。 |
 | [void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_textstylegetbackgroundpen) | 返回设置的背景色画笔。 |
@@ -96,7 +106,7 @@
 | [OH_Drawing_Typography* OH_Drawing_CreateTypography(OH_Drawing_TypographyCreate* handler)](#oh_drawing_createtypography) | 创建指向OH_Drawing_Typography对象的指针。不再需要[OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)时，请使用[OH_Drawing_DestroyTypography](capi-drawing-text-typography-h.md#oh_drawing_destroytypography)接口释放该对象的指针。 |
 | [void OH_Drawing_DestroyTypography(OH_Drawing_Typography* typography)](#oh_drawing_destroytypography) | 释放OH_Drawing_Typography对象占据的内存。 |
 | [void OH_Drawing_TypographyLayout(OH_Drawing_Typography* typography, double maxWidth)](#oh_drawing_typographylayout) | 排版布局。 |
-| [void OH_Drawing_TypographyPaint(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,double potisionX, double potisionY)](#oh_drawing_typographypaint) | 在指定位置绘制文本，从左上角开始绘制，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用并生效之后调用。 |
+| [void OH_Drawing_TypographyPaint(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,double positionX, double positionY)](#oh_drawing_typographypaint) | 在指定位置绘制文本，从左上角开始绘制，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用并生效之后调用。 |
 | [void OH_Drawing_TypographyPaintOnPath(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,OH_Drawing_Path* path, double hOffset, double vOffset)](#oh_drawing_typographypaintonpath) | 沿指定路径绘制文本。建议搭配[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置最大行为1行，避免因文本宽度超过排版宽度出现跨行重叠问题。 |
 | [double OH_Drawing_TypographyGetMaxWidth(OH_Drawing_Typography* typography)](#oh_drawing_typographygetmaxwidth) | 获取用户设置的排版宽度，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。 |
 | [double OH_Drawing_TypographyGetHeight(OH_Drawing_Typography* typography)](#oh_drawing_typographygetheight) | 获取排版对象整体的高度，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。 |
@@ -267,18 +277,28 @@
 | [OH_Drawing_TypographyStyle* OH_Drawing_CopyTypographyStyle(OH_Drawing_TypographyStyle* style)](#oh_drawing_copytypographystyle) | 创建一个段落样式的对象副本，用于拷贝一个已有的段落样式对象。 |
 | [OH_Drawing_TextStyle* OH_Drawing_CopyTextStyle(OH_Drawing_TextStyle* style)](#oh_drawing_copytextstyle) | 创建一个文本样式的对象副本，用于拷贝一个已有的文本样式对象。 |
 | [OH_Drawing_TextShadow* OH_Drawing_CopyTextShadow(OH_Drawing_TextShadow* shadow)](#oh_drawing_copytextshadow) | 创建一个文本阴影的对象副本，用于拷贝一个已有的文本阴影对象。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](#oh_drawing_settextstyleattributedouble) | 设置double类型文本样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)](#oh_drawing_gettextstyleattributedouble) | 获取double类型文本样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)](#oh_drawing_settextstyleattributeint) | 设置int类型文本样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)](#oh_drawing_gettextstyleattributeint) | 获取int类型文本样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)](#oh_drawing_settypographystyleattributedouble) | 设置double类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* value)](#oh_drawing_gettypographystyleattributedouble) | 获取double类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int value)](#oh_drawing_settypographystyleattributeint) | 设置int类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | 获取int类型排版样式的属性。 |
 
 ## 枚举类型说明
 
 ### OH_Drawing_TextDirection
 
-```
+```c
 enum OH_Drawing_TextDirection
 ```
 
 **描述**
 
 文字方向。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -287,13 +307,15 @@ enum OH_Drawing_TextDirection
 
 ### OH_Drawing_TextAlign
 
-```
+```c
 enum OH_Drawing_TextAlign
 ```
 
 **描述**
 
 文字对齐方式。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -306,13 +328,15 @@ enum OH_Drawing_TextAlign
 
 ### OH_Drawing_FontWeight
 
-```
+```c
 enum OH_Drawing_FontWeight
 ```
 
 **描述**
 
 字重。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -328,13 +352,15 @@ enum OH_Drawing_FontWeight
 
 ### OH_Drawing_TextBaseline
 
-```
+```c
 enum OH_Drawing_TextBaseline
 ```
 
 **描述**
 
 基线位置。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -343,13 +369,15 @@ enum OH_Drawing_TextBaseline
 
 ### OH_Drawing_TextDecoration
 
-```
+```c
 enum OH_Drawing_TextDecoration
 ```
 
 **描述**
 
 文本装饰。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -360,7 +388,7 @@ enum OH_Drawing_TextDecoration
 
 ### OH_Drawing_FontStyle
 
-```
+```c
 enum OH_Drawing_FontStyle
 ```
 
@@ -368,15 +396,17 @@ enum OH_Drawing_FontStyle
 
 区分字体是否为斜体。
 
+**起始版本：** 8
+
 | 枚举项 | 描述 |
 | -- | -- |
 | FONT_STYLE_NORMAL | 非斜体。 |
 | FONT_STYLE_ITALIC | 斜体。 |
-| FONT_STYLE_OBLIQUE | 倾斜字体。<br>**起始版本：** 12 |
+| FONT_STYLE_OBLIQUE | 倾斜字体。|
 
 ### OH_Drawing_PlaceholderVerticalAlignment
 
-```
+```c
 enum OH_Drawing_PlaceholderVerticalAlignment
 ```
 
@@ -398,7 +428,7 @@ enum OH_Drawing_PlaceholderVerticalAlignment
 
 ### OH_Drawing_TextVerticalAlignment
 
-```
+```c
 enum OH_Drawing_TextVerticalAlignment
 ```
 
@@ -417,7 +447,7 @@ enum OH_Drawing_TextVerticalAlignment
 
 ### OH_Drawing_TextDecorationStyle
 
-```
+```c
 enum OH_Drawing_TextDecorationStyle
 ```
 
@@ -437,7 +467,7 @@ enum OH_Drawing_TextDecorationStyle
 
 ### OH_Drawing_EllipsisModal
 
-```
+```c
 enum OH_Drawing_EllipsisModal
 ```
 
@@ -455,7 +485,7 @@ enum OH_Drawing_EllipsisModal
 
 ### OH_Drawing_BreakStrategy
 
-```
+```c
 enum OH_Drawing_BreakStrategy
 ```
 
@@ -473,7 +503,7 @@ enum OH_Drawing_BreakStrategy
 
 ### OH_Drawing_WordBreakType
 
-```
+```c
 enum OH_Drawing_WordBreakType
 ```
 
@@ -492,7 +522,7 @@ enum OH_Drawing_WordBreakType
 
 ### OH_Drawing_RectHeightStyle
 
-```
+```c
 enum OH_Drawing_RectHeightStyle
 ```
 
@@ -513,7 +543,7 @@ enum OH_Drawing_RectHeightStyle
 
 ### OH_Drawing_RectWidthStyle
 
-```
+```c
 enum OH_Drawing_RectWidthStyle
 ```
 
@@ -530,7 +560,7 @@ enum OH_Drawing_RectWidthStyle
 
 ### OH_Drawing_TextBadgeType
 
-```
+```c
 enum OH_Drawing_TextBadgeType
 ```
 
@@ -548,7 +578,7 @@ enum OH_Drawing_TextBadgeType
 
 ### OH_Drawing_FontConfigInfoErrorCode
 
-```
+```c
 enum OH_Drawing_FontConfigInfoErrorCode
 ```
 
@@ -568,7 +598,7 @@ enum OH_Drawing_FontConfigInfoErrorCode
 
 ### OH_Drawing_FontWidth
 
-```
+```c
 enum OH_Drawing_FontWidth
 ```
 
@@ -592,7 +622,7 @@ enum OH_Drawing_FontWidth
 
 ### OH_Drawing_TextHeightBehavior
 
-```
+```c
 enum OH_Drawing_TextHeightBehavior
 ```
 
@@ -611,7 +641,7 @@ enum OH_Drawing_TextHeightBehavior
 
 ### OH_Drawing_TextStyleType
 
-```
+```c
 enum OH_Drawing_TextStyleType
 ```
 
@@ -633,12 +663,68 @@ enum OH_Drawing_TextStyleType
 | TEXT_STYLE_LETTER_SPACING | 文本字符间距样式。 |
 | TEXT_STYLE_WORD_SPACING | 文本单词间距样式。 |
 
+### OH_Drawing_LineHeightStyle
+
+```c
+enum OH_Drawing_LineHeightStyle
+```
+
+**描述**
+
+行高缩放基数样式枚举。默认样式为TEXT_LINE_HEIGHT_BY_FONT_SIZE。
+
+**起始版本：** 21
+
+| 枚举项 | 描述 |
+| -- | -- |
+| TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0 | 以字号大小作为缩放基数。<br>行高计算公式：FontSize * FontHeight。<br>FontSize可由[OH_Drawing_TextStyleGetFontSize](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontsize)接口获取。<br>FontHeight可由[OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)接口获取。 |
+| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1 | 以字形高度作为缩放基数。<br>行高计算公式：字形高度 * FontHeight。<br>字形高度由文本经过字体文件塑形得到。<br>FontHeight（可由[OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)获取）。 |
+
+### OH_Drawing_TextStyleAttributeId
+
+```c
+enum OH_Drawing_TextStyleAttributeId
+```
+
+**描述**
+
+文本样式属性枚举。
+
+**起始版本：** 21
+
+| 枚举项 | 描述 |
+| -- | -- |
+| TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0 | 行高上限。<br>若同时开启行高缩放，当FontHeight（可由[OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)接口获取）大于0时行高上限才生效。<br>取值范围为单精度浮点数正数部分，默认值为单精度浮点数上限。 |
+| TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | 行高下限。<br>若同时开启行高缩放，当FontHeight（可由[OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)接口获取）大于0时行高下限才生效。<br>取值范围为单精度浮点数非负部分，默认值为0。 |
+| TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2 | 行高缩放基数样式。具体行高缩放基数样式可见[OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle)。 |
+| TEXT_STYLE_ATTR_I_FONT_WIDTH = 3 | 字宽。 |
+
+### OH_Drawing_TypographyStyleAttributeId
+
+```c
+enum OH_Drawing_TypographyStyleAttributeId
+```
+
+**描述**
+
+排版样式属性枚举。<br>针对排版样式和文本样式中的共有属性，建议优先使用文本样式属性（可由[OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid)获取）。
+
+**起始版本：** 21
+
+| 枚举项 | 描述 |
+| -- | -- |
+| TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0 | 行高上限。<br>若同时开启行高缩放，当FontHeight（可由[OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)接口获取）大于0时行高上限才生效。<br>取值范围为单精度浮点数正数部分。 |
+| TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | 行高下限。<br>若同时开启行高缩放，当FontHeight（可由[OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)接口获取）大于0时行高下限才生效。<br>取值范围为单精度浮点数非负部分，默认值为0。 |
+| TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2 | 行间距。<br>lineSpacing不受行高上下限的限制。<br>尾行默认添加行间距。<br>可通过[OH_Drawing_TypographyTextSetHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_typographytextsetheightbehavior)接口设置textHeightBehavior为DISABLE_LAST_ASCENT禁用尾行行间距。<br>默认值为0。 |
+| TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | 行高缩放基数样式。具体行高缩放基数样式可见[OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle)。 |
+| TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | 字宽。 |
+
 
 ## 函数说明
 
 ### OH_Drawing_CreateTypographyStyle()
 
-```
+```c
 OH_Drawing_TypographyStyle* OH_Drawing_CreateTypographyStyle(void)
 ```
 
@@ -658,7 +744,7 @@ OH_Drawing_TypographyStyle* OH_Drawing_CreateTypographyStyle(void)
 
 ### OH_Drawing_DestroyTypographyStyle()
 
-```
+```c
 void OH_Drawing_DestroyTypographyStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -679,7 +765,7 @@ void OH_Drawing_DestroyTypographyStyle(OH_Drawing_TypographyStyle* style)
 
 ### OH_Drawing_SetTypographyTextDirection()
 
-```
+```c
 void OH_Drawing_SetTypographyTextDirection(OH_Drawing_TypographyStyle* style, int direction)
 ```
 
@@ -701,7 +787,7 @@ void OH_Drawing_SetTypographyTextDirection(OH_Drawing_TypographyStyle* style, in
 
 ### OH_Drawing_SetTypographyTextAlign()
 
-```
+```c
 void OH_Drawing_SetTypographyTextAlign(OH_Drawing_TypographyStyle* style, int align)
 ```
 
@@ -723,7 +809,7 @@ void OH_Drawing_SetTypographyTextAlign(OH_Drawing_TypographyStyle* style, int al
 
 ### OH_Drawing_TypographyGetEffectiveAlignment()
 
-```
+```c
 int OH_Drawing_TypographyGetEffectiveAlignment(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -735,6 +821,9 @@ int OH_Drawing_TypographyGetEffectiveAlignment(OH_Drawing_TypographyStyle* style
 
 **起始版本：** 12
 
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_TypographyStyleGetEffectiveAlignment](capi-drawing-text-typography-h.md#oh_drawing_typographystylegeteffectivealignment)
 
 **参数：**
 
@@ -750,7 +839,7 @@ int OH_Drawing_TypographyGetEffectiveAlignment(OH_Drawing_TypographyStyle* style
 
 ### OH_Drawing_SetTypographyTextMaxLines()
 
-```
+```c
 void OH_Drawing_SetTypographyTextMaxLines(OH_Drawing_TypographyStyle* style, int lineNumber)
 ```
 
@@ -772,7 +861,7 @@ void OH_Drawing_SetTypographyTextMaxLines(OH_Drawing_TypographyStyle* style, int
 
 ### OH_Drawing_CreateTextStyle()
 
-```
+```c
 OH_Drawing_TextStyle* OH_Drawing_CreateTextStyle(void)
 ```
 
@@ -792,7 +881,7 @@ OH_Drawing_TextStyle* OH_Drawing_CreateTextStyle(void)
 
 ### OH_Drawing_TypographyGetTextStyle()
 
-```
+```c
 OH_Drawing_TextStyle* OH_Drawing_TypographyGetTextStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -819,7 +908,7 @@ OH_Drawing_TextStyle* OH_Drawing_TypographyGetTextStyle(OH_Drawing_TypographySty
 
 ### OH_Drawing_DestroyTextStyle()
 
-```
+```c
 void OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle* style)
 ```
 
@@ -840,7 +929,7 @@ void OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_SetTextStyleColor()
 
-```
+```c
 void OH_Drawing_SetTextStyleColor(OH_Drawing_TextStyle* style, uint32_t color)
 ```
 
@@ -862,7 +951,7 @@ void OH_Drawing_SetTextStyleColor(OH_Drawing_TextStyle* style, uint32_t color)
 
 ### OH_Drawing_SetTextStyleFontSize()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontSize(OH_Drawing_TextStyle* style, double fontSize)
 ```
 
@@ -884,7 +973,7 @@ void OH_Drawing_SetTextStyleFontSize(OH_Drawing_TextStyle* style, double fontSiz
 
 ### OH_Drawing_SetTextStyleFontWeight()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontWeight(OH_Drawing_TextStyle* style, int fontWeight)
 ```
 
@@ -906,7 +995,7 @@ void OH_Drawing_SetTextStyleFontWeight(OH_Drawing_TextStyle* style, int fontWeig
 
 ### OH_Drawing_SetTextStyleBaseLine()
 
-```
+```c
 void OH_Drawing_SetTextStyleBaseLine(OH_Drawing_TextStyle* style, int baseline)
 ```
 
@@ -928,7 +1017,7 @@ void OH_Drawing_SetTextStyleBaseLine(OH_Drawing_TextStyle* style, int baseline)
 
 ### OH_Drawing_SetTextStyleDecoration()
 
-```
+```c
 void OH_Drawing_SetTextStyleDecoration(OH_Drawing_TextStyle* style, int decoration)
 ```
 
@@ -950,7 +1039,7 @@ void OH_Drawing_SetTextStyleDecoration(OH_Drawing_TextStyle* style, int decorati
 
 ### OH_Drawing_AddTextStyleDecoration()
 
-```
+```c
 void OH_Drawing_AddTextStyleDecoration(OH_Drawing_TextStyle* style, int decoration)
 ```
 
@@ -972,7 +1061,7 @@ void OH_Drawing_AddTextStyleDecoration(OH_Drawing_TextStyle* style, int decorati
 
 ### OH_Drawing_RemoveTextStyleDecoration()
 
-```
+```c
 void OH_Drawing_RemoveTextStyleDecoration(OH_Drawing_TextStyle* style, int decoration)
 ```
 
@@ -994,7 +1083,7 @@ void OH_Drawing_RemoveTextStyleDecoration(OH_Drawing_TextStyle* style, int decor
 
 ### OH_Drawing_SetTextStyleDecorationColor()
 
-```
+```c
 void OH_Drawing_SetTextStyleDecorationColor(OH_Drawing_TextStyle* style, uint32_t color)
 ```
 
@@ -1016,7 +1105,7 @@ void OH_Drawing_SetTextStyleDecorationColor(OH_Drawing_TextStyle* style, uint32_
 
 ### OH_Drawing_SetTextStyleFontHeight()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight)
 ```
 
@@ -1038,7 +1127,7 @@ void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontH
 
 ### OH_Drawing_SetTextStyleFontFamilies()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontFamilies(OH_Drawing_TextStyle* style,int fontFamiliesNumber, const char* fontFamilies[])
 ```
 
@@ -1061,7 +1150,7 @@ void OH_Drawing_SetTextStyleFontFamilies(OH_Drawing_TextStyle* style,int fontFam
 
 ### OH_Drawing_SetTextStyleFontStyle()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontStyle(OH_Drawing_TextStyle* style, int fontStyle)
 ```
 
@@ -1083,7 +1172,7 @@ void OH_Drawing_SetTextStyleFontStyle(OH_Drawing_TextStyle* style, int fontStyle
 
 ### OH_Drawing_SetTextStyleLocale()
 
-```
+```c
 void OH_Drawing_SetTextStyleLocale(OH_Drawing_TextStyle* style, const char* locale)
 ```
 
@@ -1105,7 +1194,7 @@ void OH_Drawing_SetTextStyleLocale(OH_Drawing_TextStyle* style, const char* loca
 
 ### OH_Drawing_SetTextStyleForegroundBrush()
 
-```
+```c
 void OH_Drawing_SetTextStyleForegroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundBrush)
 ```
 
@@ -1127,7 +1216,7 @@ void OH_Drawing_SetTextStyleForegroundBrush(OH_Drawing_TextStyle* style, OH_Draw
 
 ### OH_Drawing_TextStyleGetForegroundBrush()
 
-```
+```c
 void OH_Drawing_TextStyleGetForegroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundBrush)
 ```
 
@@ -1149,7 +1238,7 @@ void OH_Drawing_TextStyleGetForegroundBrush(OH_Drawing_TextStyle* style, OH_Draw
 
 ### OH_Drawing_SetTextStyleForegroundPen()
 
-```
+```c
 void OH_Drawing_SetTextStyleForegroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* foregroundPen)
 ```
 
@@ -1171,7 +1260,7 @@ void OH_Drawing_SetTextStyleForegroundPen(OH_Drawing_TextStyle* style, OH_Drawin
 
 ### OH_Drawing_TextStyleGetForegroundPen()
 
-```
+```c
 void OH_Drawing_TextStyleGetForegroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* foregroundPen)
 ```
 
@@ -1193,8 +1282,8 @@ void OH_Drawing_TextStyleGetForegroundPen(OH_Drawing_TextStyle* style, OH_Drawin
 
 ### OH_Drawing_SetTextStyleBackgroundBrush()
 
-```
-void OH_Drawing_SetTextStyleBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundPen)
+```c
+void OH_Drawing_SetTextStyleBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)
 ```
 
 **描述**
@@ -1211,11 +1300,11 @@ void OH_Drawing_SetTextStyleBackgroundBrush(OH_Drawing_TextStyle* style, OH_Draw
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向文本样式[OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)对象的指针，由[OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle)获取。 |
-| [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* foregroundPen | 指向画刷[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)对象的指针，由[OH_Drawing_BrushCreate](capi-drawing-brush-h.md#oh_drawing_brushcreate)获取。 |
+| [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* backgroundBrush | 指向画刷[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)对象的指针，由[OH_Drawing_BrushCreate](capi-drawing-brush-h.md#oh_drawing_brushcreate)获取。 |
 
 ### OH_Drawing_TextStyleGetBackgroundBrush()
 
-```
+```c
 void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)
 ```
 
@@ -1237,7 +1326,7 @@ void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Draw
 
 ### OH_Drawing_SetTextStyleBackgroundPen()
 
-```
+```c
 void OH_Drawing_SetTextStyleBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)
 ```
 
@@ -1259,7 +1348,7 @@ void OH_Drawing_SetTextStyleBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawin
 
 ### OH_Drawing_TextStyleGetBackgroundPen()
 
-```
+```c
 void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)
 ```
 
@@ -1281,7 +1370,7 @@ void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawin
 
 ### OH_Drawing_CreateTypographyHandler()
 
-```
+```c
 OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_TypographyStyle* style,OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -1309,7 +1398,7 @@ OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_Typog
 
 ### OH_Drawing_DestroyTypographyHandler()
 
-```
+```c
 void OH_Drawing_DestroyTypographyHandler(OH_Drawing_TypographyCreate* handler)
 ```
 
@@ -1330,7 +1419,7 @@ void OH_Drawing_DestroyTypographyHandler(OH_Drawing_TypographyCreate* handler)
 
 ### OH_Drawing_TypographyHandlerPushTextStyle()
 
-```
+```c
 void OH_Drawing_TypographyHandlerPushTextStyle(OH_Drawing_TypographyCreate* handler, OH_Drawing_TextStyle* style)
 ```
 
@@ -1352,7 +1441,7 @@ void OH_Drawing_TypographyHandlerPushTextStyle(OH_Drawing_TypographyCreate* hand
 
 ### OH_Drawing_TypographyHandlerAddText()
 
-```
+```c
 void OH_Drawing_TypographyHandlerAddText(OH_Drawing_TypographyCreate* handler, const char* text)
 ```
 
@@ -1374,7 +1463,7 @@ void OH_Drawing_TypographyHandlerAddText(OH_Drawing_TypographyCreate* handler, c
 
 ### OH_Drawing_TypographyHandlerPopTextStyle()
 
-```
+```c
 void OH_Drawing_TypographyHandlerPopTextStyle(OH_Drawing_TypographyCreate* handler)
 ```
 
@@ -1395,7 +1484,7 @@ void OH_Drawing_TypographyHandlerPopTextStyle(OH_Drawing_TypographyCreate* handl
 
 ### OH_Drawing_CreateTypography()
 
-```
+```c
 OH_Drawing_Typography* OH_Drawing_CreateTypography(OH_Drawing_TypographyCreate* handler)
 ```
 
@@ -1422,7 +1511,7 @@ OH_Drawing_Typography* OH_Drawing_CreateTypography(OH_Drawing_TypographyCreate* 
 
 ### OH_Drawing_DestroyTypography()
 
-```
+```c
 void OH_Drawing_DestroyTypography(OH_Drawing_Typography* typography)
 ```
 
@@ -1443,7 +1532,7 @@ void OH_Drawing_DestroyTypography(OH_Drawing_Typography* typography)
 
 ### OH_Drawing_TypographyLayout()
 
-```
+```c
 void OH_Drawing_TypographyLayout(OH_Drawing_Typography* typography, double maxWidth)
 ```
 
@@ -1465,8 +1554,8 @@ void OH_Drawing_TypographyLayout(OH_Drawing_Typography* typography, double maxWi
 
 ### OH_Drawing_TypographyPaint()
 
-```
-void OH_Drawing_TypographyPaint(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,double potisionX, double potisionY)
+```c
+void OH_Drawing_TypographyPaint(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,double positionX, double positionY)
 ```
 
 **描述**
@@ -1484,12 +1573,12 @@ void OH_Drawing_TypographyPaint(OH_Drawing_Typography* typography, OH_Drawing_Ca
 | -- | -- |
 | [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 指向OH_Drawing_Typography对象的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向OH_Drawing_Canvas对象的指针，由[OH_Drawing_CanvasCreate](capi-drawing-canvas-h.md#oh_drawing_canvascreate)获取。 |
-| double potisionX | x坐标。 |
-| double potisionY | y坐标。 |
+| double positionX | x坐标。 |
+| double positionY | y坐标。 |
 
 ### OH_Drawing_TypographyPaintOnPath()
 
-```
+```c
 void OH_Drawing_TypographyPaintOnPath(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,OH_Drawing_Path* path, double hOffset, double vOffset)
 ```
 
@@ -1513,7 +1602,7 @@ void OH_Drawing_TypographyPaintOnPath(OH_Drawing_Typography* typography, OH_Draw
 
 ### OH_Drawing_TypographyGetMaxWidth()
 
-```
+```c
 double OH_Drawing_TypographyGetMaxWidth(OH_Drawing_Typography* typography)
 ```
 
@@ -1540,7 +1629,7 @@ double OH_Drawing_TypographyGetMaxWidth(OH_Drawing_Typography* typography)
 
 ### OH_Drawing_TypographyGetHeight()
 
-```
+```c
 double OH_Drawing_TypographyGetHeight(OH_Drawing_Typography* typography)
 ```
 
@@ -1567,7 +1656,7 @@ double OH_Drawing_TypographyGetHeight(OH_Drawing_Typography* typography)
 
 ### OH_Drawing_TypographyGetLongestLine()
 
-```
+```c
 double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography* typography)
 ```
 
@@ -1594,7 +1683,7 @@ double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography* typography)
 
 ### OH_Drawing_TypographyGetLongestLineWithIndent()
 
-```
+```c
 double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography* typography)
 ```
 
@@ -1621,7 +1710,7 @@ double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography* typo
 
 ### OH_Drawing_TypographyGetMinIntrinsicWidth()
 
-```
+```c
 double OH_Drawing_TypographyGetMinIntrinsicWidth(OH_Drawing_Typography* typography)
 ```
 
@@ -1648,7 +1737,7 @@ double OH_Drawing_TypographyGetMinIntrinsicWidth(OH_Drawing_Typography* typograp
 
 ### OH_Drawing_TypographyGetMaxIntrinsicWidth()
 
-```
+```c
 double OH_Drawing_TypographyGetMaxIntrinsicWidth(OH_Drawing_Typography* typography)
 ```
 
@@ -1675,7 +1764,7 @@ double OH_Drawing_TypographyGetMaxIntrinsicWidth(OH_Drawing_Typography* typograp
 
 ### OH_Drawing_TypographyGetAlphabeticBaseline()
 
-```
+```c
 double OH_Drawing_TypographyGetAlphabeticBaseline(OH_Drawing_Typography* typography)
 ```
 
@@ -1702,7 +1791,7 @@ double OH_Drawing_TypographyGetAlphabeticBaseline(OH_Drawing_Typography* typogra
 
 ### OH_Drawing_TypographyGetIdeographicBaseline()
 
-```
+```c
 double OH_Drawing_TypographyGetIdeographicBaseline(OH_Drawing_Typography* typography)
 ```
 
@@ -1729,7 +1818,7 @@ double OH_Drawing_TypographyGetIdeographicBaseline(OH_Drawing_Typography* typogr
 
 ### OH_Drawing_TypographyHandlerAddPlaceholder()
 
-```
+```c
 void OH_Drawing_TypographyHandlerAddPlaceholder(OH_Drawing_TypographyCreate* handler,OH_Drawing_PlaceholderSpan* span)
 ```
 
@@ -1751,7 +1840,7 @@ void OH_Drawing_TypographyHandlerAddPlaceholder(OH_Drawing_TypographyCreate* han
 
 ### OH_Drawing_TypographyDidExceedMaxLines()
 
-```
+```c
 bool OH_Drawing_TypographyDidExceedMaxLines(OH_Drawing_Typography* typography)
 ```
 
@@ -1778,7 +1867,7 @@ bool OH_Drawing_TypographyDidExceedMaxLines(OH_Drawing_Typography* typography)
 
 ### OH_Drawing_TypographyGetRectsForRange()
 
-```
+```c
 OH_Drawing_TextBox* OH_Drawing_TypographyGetRectsForRange(OH_Drawing_Typography* typography,size_t start, size_t end, OH_Drawing_RectHeightStyle heightStyle, OH_Drawing_RectWidthStyle widthStyle)
 ```
 
@@ -1809,7 +1898,7 @@ OH_Drawing_TextBox* OH_Drawing_TypographyGetRectsForRange(OH_Drawing_Typography*
 
 ### OH_Drawing_TypographyGetRectsForPlaceholders()
 
-```
+```c
 OH_Drawing_TextBox* OH_Drawing_TypographyGetRectsForPlaceholders(OH_Drawing_Typography* typography)
 ```
 
@@ -1836,7 +1925,7 @@ OH_Drawing_TextBox* OH_Drawing_TypographyGetRectsForPlaceholders(OH_Drawing_Typo
 
 ### OH_Drawing_GetLeftFromTextBox()
 
-```
+```c
 float OH_Drawing_GetLeftFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -1864,7 +1953,7 @@ float OH_Drawing_GetLeftFromTextBox(OH_Drawing_TextBox* textbox, int index)
 
 ### OH_Drawing_GetRightFromTextBox()
 
-```
+```c
 float OH_Drawing_GetRightFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -1892,7 +1981,7 @@ float OH_Drawing_GetRightFromTextBox(OH_Drawing_TextBox* textbox, int index)
 
 ### OH_Drawing_GetTopFromTextBox()
 
-```
+```c
 float OH_Drawing_GetTopFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -1920,7 +2009,7 @@ float OH_Drawing_GetTopFromTextBox(OH_Drawing_TextBox* textbox, int index)
 
 ### OH_Drawing_GetBottomFromTextBox()
 
-```
+```c
 float OH_Drawing_GetBottomFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -1948,7 +2037,7 @@ float OH_Drawing_GetBottomFromTextBox(OH_Drawing_TextBox* textbox, int index)
 
 ### OH_Drawing_GetTextDirectionFromTextBox()
 
-```
+```c
 int OH_Drawing_GetTextDirectionFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -1976,7 +2065,7 @@ int OH_Drawing_GetTextDirectionFromTextBox(OH_Drawing_TextBox* textbox, int inde
 
 ### OH_Drawing_GetSizeOfTextBox()
 
-```
+```c
 size_t OH_Drawing_GetSizeOfTextBox(OH_Drawing_TextBox* textBox)
 ```
 
@@ -2003,7 +2092,7 @@ size_t OH_Drawing_GetSizeOfTextBox(OH_Drawing_TextBox* textBox)
 
 ### OH_Drawing_TypographyGetGlyphPositionAtCoordinate()
 
-```
+```c
 OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinate(OH_Drawing_Typography* typography,double dx, double dy)
 ```
 
@@ -2015,6 +2104,9 @@ OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinat
 
 **起始版本：** 11
 
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_TypographyGetGlyphPositionAtCoordinateWithCluster](capi-drawing-text-typography-h.md#oh_drawing_typographygetglyphpositionatcoordinatewithcluster)
 
 **参数：**
 
@@ -2032,7 +2124,7 @@ OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinat
 
 ### OH_Drawing_TypographyGetGlyphPositionAtCoordinateWithCluster()
 
-```
+```c
 OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinateWithCluster(OH_Drawing_Typography* typography, double dx, double dy)
 ```
 
@@ -2061,7 +2153,7 @@ OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinat
 
 ### OH_Drawing_GetPositionFromPositionAndAffinity()
 
-```
+```c
 size_t OH_Drawing_GetPositionFromPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)
 ```
 
@@ -2088,7 +2180,7 @@ size_t OH_Drawing_GetPositionFromPositionAndAffinity(OH_Drawing_PositionAndAffin
 
 ### OH_Drawing_GetAffinityFromPositionAndAffinity()
 
-```
+```c
 int OH_Drawing_GetAffinityFromPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)
 ```
 
@@ -2115,7 +2207,7 @@ int OH_Drawing_GetAffinityFromPositionAndAffinity(OH_Drawing_PositionAndAffinity
 
 ### OH_Drawing_TypographyGetWordBoundary()
 
-```
+```c
 OH_Drawing_Range* OH_Drawing_TypographyGetWordBoundary(OH_Drawing_Typography* typography, size_t offset)
 ```
 
@@ -2143,7 +2235,7 @@ OH_Drawing_Range* OH_Drawing_TypographyGetWordBoundary(OH_Drawing_Typography* ty
 
 ### OH_Drawing_GetStartFromRange()
 
-```
+```c
 size_t OH_Drawing_GetStartFromRange(OH_Drawing_Range* range)
 ```
 
@@ -2170,7 +2262,7 @@ size_t OH_Drawing_GetStartFromRange(OH_Drawing_Range* range)
 
 ### OH_Drawing_GetEndFromRange()
 
-```
+```c
 size_t OH_Drawing_GetEndFromRange(OH_Drawing_Range* range)
 ```
 
@@ -2197,7 +2289,7 @@ size_t OH_Drawing_GetEndFromRange(OH_Drawing_Range* range)
 
 ### OH_Drawing_TypographyGetLineCount()
 
-```
+```c
 size_t OH_Drawing_TypographyGetLineCount(OH_Drawing_Typography* typography)
 ```
 
@@ -2224,7 +2316,7 @@ size_t OH_Drawing_TypographyGetLineCount(OH_Drawing_Typography* typography)
 
 ### OH_Drawing_SetTextStyleDecorationStyle()
 
-```
+```c
 void OH_Drawing_SetTextStyleDecorationStyle(OH_Drawing_TextStyle* style, int decorationStyle)
 ```
 
@@ -2246,7 +2338,7 @@ void OH_Drawing_SetTextStyleDecorationStyle(OH_Drawing_TextStyle* style, int dec
 
 ### OH_Drawing_SetTextStyleDecorationThicknessScale()
 
-```
+```c
 void OH_Drawing_SetTextStyleDecorationThicknessScale(OH_Drawing_TextStyle* style, double decorationThicknessScale)
 ```
 
@@ -2268,7 +2360,7 @@ void OH_Drawing_SetTextStyleDecorationThicknessScale(OH_Drawing_TextStyle* style
 
 ### OH_Drawing_SetTextStyleLetterSpacing()
 
-```
+```c
 void OH_Drawing_SetTextStyleLetterSpacing(OH_Drawing_TextStyle* style, double letterSpacing)
 ```
 
@@ -2290,7 +2382,7 @@ void OH_Drawing_SetTextStyleLetterSpacing(OH_Drawing_TextStyle* style, double le
 
 ### OH_Drawing_SetTextStyleWordSpacing()
 
-```
+```c
 void OH_Drawing_SetTextStyleWordSpacing(OH_Drawing_TextStyle* style, double wordSpacing)
 ```
 
@@ -2312,7 +2404,7 @@ void OH_Drawing_SetTextStyleWordSpacing(OH_Drawing_TextStyle* style, double word
 
 ### OH_Drawing_SetTextStyleHalfLeading()
 
-```
+```c
 void OH_Drawing_SetTextStyleHalfLeading(OH_Drawing_TextStyle* style, bool halfLeading)
 ```
 
@@ -2334,7 +2426,7 @@ void OH_Drawing_SetTextStyleHalfLeading(OH_Drawing_TextStyle* style, bool halfLe
 
 ### OH_Drawing_SetTextStyleEllipsis()
 
-```
+```c
 void OH_Drawing_SetTextStyleEllipsis(OH_Drawing_TextStyle* style, const char* ellipsis)
 ```
 
@@ -2346,6 +2438,9 @@ void OH_Drawing_SetTextStyleEllipsis(OH_Drawing_TextStyle* style, const char* el
 
 **起始版本：** 11
 
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_SetTypographyTextEllipsis](capi-drawing-text-typography-h.md#oh_drawing_settypographytextellipsis)
 
 **参数：**
 
@@ -2356,7 +2451,7 @@ void OH_Drawing_SetTextStyleEllipsis(OH_Drawing_TextStyle* style, const char* el
 
 ### OH_Drawing_SetTextStyleEllipsisModal()
 
-```
+```c
 void OH_Drawing_SetTextStyleEllipsisModal(OH_Drawing_TextStyle* style, int ellipsisModal)
 ```
 
@@ -2368,17 +2463,20 @@ void OH_Drawing_SetTextStyleEllipsisModal(OH_Drawing_TextStyle* style, int ellip
 
 **起始版本：** 11
 
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_SetTypographyTextEllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_settypographytextellipsismodal)
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向OH_Drawing_TextStyle对象的指针，由[OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle)获取。 |
-| int ellipsisModal | 设置省略号样式，支持可选的省略号样式具体可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)枚举。 |
+| int ellipsisModal | 设置省略号样式，可选的省略号样式具体可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)枚举。 |
 
 ### OH_Drawing_SetTypographyTextBreakStrategy()
 
-```
+```c
 void OH_Drawing_SetTypographyTextBreakStrategy(OH_Drawing_TypographyStyle* style, int breakStrategy)
 ```
 
@@ -2400,7 +2498,7 @@ void OH_Drawing_SetTypographyTextBreakStrategy(OH_Drawing_TypographyStyle* style
 
 ### OH_Drawing_SetTypographyTextWordBreakType()
 
-```
+```c
 void OH_Drawing_SetTypographyTextWordBreakType(OH_Drawing_TypographyStyle* style, int wordBreakType)
 ```
 
@@ -2422,7 +2520,7 @@ void OH_Drawing_SetTypographyTextWordBreakType(OH_Drawing_TypographyStyle* style
 
 ### OH_Drawing_SetTypographyTextEllipsisModal()
 
-```
+```c
 void OH_Drawing_SetTypographyTextEllipsisModal(OH_Drawing_TypographyStyle* style, int ellipsisModal)
 ```
 
@@ -2440,11 +2538,11 @@ void OH_Drawing_SetTypographyTextEllipsisModal(OH_Drawing_TypographyStyle* style
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向OH_Drawing_TypographyStyle对象的指针，由[OH_Drawing_CreateTypographyStyle](capi-drawing-text-typography-h.md#oh_drawing_createtypographystyle)获取。 |
-| int ellipsisModal | 设置省略号样式，支持可选的省略号样式样式具体可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)枚举。 |
+| int ellipsisModal | 设置省略号样式，可选的省略号样式具体可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)枚举。 |
 
 ### OH_Drawing_SetTypographyTextEllipsis()
 
-```
+```c
 void OH_Drawing_SetTypographyTextEllipsis(OH_Drawing_TypographyStyle* style, const char* ellipsis)
 ```
 
@@ -2466,7 +2564,7 @@ void OH_Drawing_SetTypographyTextEllipsis(OH_Drawing_TypographyStyle* style, con
 
 ### OH_Drawing_TypographyGetLineHeight()
 
-```
+```c
 double OH_Drawing_TypographyGetLineHeight(OH_Drawing_Typography* typography, int lineNumber)
 ```
 
@@ -2494,7 +2592,7 @@ double OH_Drawing_TypographyGetLineHeight(OH_Drawing_Typography* typography, int
 
 ### OH_Drawing_TypographyGetLineWidth()
 
-```
+```c
 double OH_Drawing_TypographyGetLineWidth(OH_Drawing_Typography* typography, int lineNumber)
 ```
 
@@ -2522,7 +2620,7 @@ double OH_Drawing_TypographyGetLineWidth(OH_Drawing_Typography* typography, int 
 
 ### OH_Drawing_SetTypographyTextSplitRatio()
 
-```
+```c
 void OH_Drawing_SetTypographyTextSplitRatio(OH_Drawing_TypographyStyle* style, float textSplitRatio)
 ```
 
@@ -2544,7 +2642,7 @@ void OH_Drawing_SetTypographyTextSplitRatio(OH_Drawing_TypographyStyle* style, f
 
 ### OH_Drawing_TypographyIsLineUnlimited()
 
-```
+```c
 bool OH_Drawing_TypographyIsLineUnlimited(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -2571,7 +2669,7 @@ bool OH_Drawing_TypographyIsLineUnlimited(OH_Drawing_TypographyStyle* style)
 
 ### OH_Drawing_TypographyIsEllipsized()
 
-```
+```c
 bool OH_Drawing_TypographyIsEllipsized(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -2598,7 +2696,7 @@ bool OH_Drawing_TypographyIsEllipsized(OH_Drawing_TypographyStyle* style)
 
 ### OH_Drawing_SetTypographyTextLocale()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLocale(OH_Drawing_TypographyStyle* style, const char* locale)
 ```
 
@@ -2620,7 +2718,7 @@ void OH_Drawing_SetTypographyTextLocale(OH_Drawing_TypographyStyle* style, const
 
 ### OH_Drawing_TextStyleGetFontMetrics()
 
-```
+```c
 bool OH_Drawing_TextStyleGetFontMetrics(OH_Drawing_Typography* typography,OH_Drawing_TextStyle* style, OH_Drawing_Font_Metrics* fontmetrics)
 ```
 
@@ -2649,7 +2747,7 @@ bool OH_Drawing_TextStyleGetFontMetrics(OH_Drawing_Typography* typography,OH_Dra
 
 ### OH_Drawing_SetTypographyTextStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyTextStyle(OH_Drawing_TypographyStyle* handler, OH_Drawing_TextStyle* style)
 ```
 
@@ -2671,7 +2769,7 @@ void OH_Drawing_SetTypographyTextStyle(OH_Drawing_TypographyStyle* handler, OH_D
 
 ### OH_Drawing_CreateFontDescriptor()
 
-```
+```c
 OH_Drawing_FontDescriptor* OH_Drawing_CreateFontDescriptor(void)
 ```
 
@@ -2691,7 +2789,7 @@ OH_Drawing_FontDescriptor* OH_Drawing_CreateFontDescriptor(void)
 
 ### OH_Drawing_DestroyFontDescriptor()
 
-```
+```c
 void OH_Drawing_DestroyFontDescriptor(OH_Drawing_FontDescriptor* descriptor)
 ```
 
@@ -2712,7 +2810,7 @@ void OH_Drawing_DestroyFontDescriptor(OH_Drawing_FontDescriptor* descriptor)
 
 ### OH_Drawing_CreateFontParser()
 
-```
+```c
 OH_Drawing_FontParser* OH_Drawing_CreateFontParser(void)
 ```
 
@@ -2732,7 +2830,7 @@ OH_Drawing_FontParser* OH_Drawing_CreateFontParser(void)
 
 ### OH_Drawing_DestroyFontParser()
 
-```
+```c
 void OH_Drawing_DestroyFontParser(OH_Drawing_FontParser* parser)
 ```
 
@@ -2753,7 +2851,7 @@ void OH_Drawing_DestroyFontParser(OH_Drawing_FontParser* parser)
 
 ### OH_Drawing_FontParserGetSystemFontList()
 
-```
+```c
 char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser, size_t* num)
 ```
 
@@ -2781,7 +2879,7 @@ char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser,
 
 ### OH_Drawing_DestroySystemFontList()
 
-```
+```c
 void OH_Drawing_DestroySystemFontList(char** fontList, size_t num)
 ```
 
@@ -2803,7 +2901,7 @@ void OH_Drawing_DestroySystemFontList(char** fontList, size_t num)
 
 ### OH_Drawing_FontParserGetFontByName()
 
-```
+```c
 OH_Drawing_FontDescriptor* OH_Drawing_FontParserGetFontByName(OH_Drawing_FontParser* fontParser, const char* name)
 ```
 
@@ -2831,7 +2929,7 @@ OH_Drawing_FontDescriptor* OH_Drawing_FontParserGetFontByName(OH_Drawing_FontPar
 
 ### OH_Drawing_TypographyGetLineMetrics()
 
-```
+```c
 OH_Drawing_LineMetrics* OH_Drawing_TypographyGetLineMetrics(OH_Drawing_Typography* typography)
 ```
 
@@ -2858,7 +2956,7 @@ OH_Drawing_LineMetrics* OH_Drawing_TypographyGetLineMetrics(OH_Drawing_Typograph
 
 ### OH_Drawing_LineMetricsGetSize()
 
-```
+```c
 size_t OH_Drawing_LineMetricsGetSize(OH_Drawing_LineMetrics* lineMetrics)
 ```
 
@@ -2885,7 +2983,7 @@ size_t OH_Drawing_LineMetricsGetSize(OH_Drawing_LineMetrics* lineMetrics)
 
 ### OH_Drawing_DestroyLineMetrics()
 
-```
+```c
 void OH_Drawing_DestroyLineMetrics(OH_Drawing_LineMetrics* lineMetrics)
 ```
 
@@ -2906,7 +3004,7 @@ void OH_Drawing_DestroyLineMetrics(OH_Drawing_LineMetrics* lineMetrics)
 
 ### OH_Drawing_TypographyGetLineMetricsAt()
 
-```
+```c
 bool OH_Drawing_TypographyGetLineMetricsAt(OH_Drawing_Typography* typography,int lineNumber, OH_Drawing_LineMetrics* lineMetric)
 ```
 
@@ -2935,7 +3033,7 @@ bool OH_Drawing_TypographyGetLineMetricsAt(OH_Drawing_Typography* typography,int
 
 ### OH_Drawing_TypographyGetLineInfo()
 
-```
+```c
 bool OH_Drawing_TypographyGetLineInfo(OH_Drawing_Typography* typography, int lineNumber, bool oneLine,bool includeWhitespace, OH_Drawing_LineMetrics* drawingLineMetrics)
 ```
 
@@ -2966,7 +3064,7 @@ bool OH_Drawing_TypographyGetLineInfo(OH_Drawing_Typography* typography, int lin
 
 ### OH_Drawing_SetTypographyTextFontWeight()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontWeight(OH_Drawing_TypographyStyle* style, int weight)
 ```
 
@@ -2988,7 +3086,7 @@ void OH_Drawing_SetTypographyTextFontWeight(OH_Drawing_TypographyStyle* style, i
 
 ### OH_Drawing_SetTypographyTextFontStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontStyle(OH_Drawing_TypographyStyle* style, int fontStyle)
 ```
 
@@ -3010,7 +3108,7 @@ void OH_Drawing_SetTypographyTextFontStyle(OH_Drawing_TypographyStyle* style, in
 
 ### OH_Drawing_SetTypographyTextFontFamily()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontFamily(OH_Drawing_TypographyStyle* style, const char* fontFamily)
 ```
 
@@ -3032,7 +3130,7 @@ void OH_Drawing_SetTypographyTextFontFamily(OH_Drawing_TypographyStyle* style, c
 
 ### OH_Drawing_SetTypographyTextFontSize()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontSize(OH_Drawing_TypographyStyle* style, double fontSize)
 ```
 
@@ -3054,7 +3152,7 @@ void OH_Drawing_SetTypographyTextFontSize(OH_Drawing_TypographyStyle* style, dou
 
 ### OH_Drawing_SetTypographyTextFontHeight()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontHeight(OH_Drawing_TypographyStyle* style, double fontHeight)
 ```
 
@@ -3076,7 +3174,7 @@ void OH_Drawing_SetTypographyTextFontHeight(OH_Drawing_TypographyStyle* style, d
 
 ### OH_Drawing_SetTypographyTextHalfLeading()
 
-```
+```c
 void OH_Drawing_SetTypographyTextHalfLeading(OH_Drawing_TypographyStyle* style, bool halfLeading)
 ```
 
@@ -3098,7 +3196,7 @@ void OH_Drawing_SetTypographyTextHalfLeading(OH_Drawing_TypographyStyle* style, 
 
 ### OH_Drawing_SetTypographyTextUseLineStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyTextUseLineStyle(OH_Drawing_TypographyStyle* style, bool useLineStyle)
 ```
 
@@ -3120,7 +3218,7 @@ void OH_Drawing_SetTypographyTextUseLineStyle(OH_Drawing_TypographyStyle* style,
 
 ### OH_Drawing_SetTypographyTextLineStyleFontWeight()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontWeight(OH_Drawing_TypographyStyle* style, int weight)
 ```
 
@@ -3142,7 +3240,7 @@ void OH_Drawing_SetTypographyTextLineStyleFontWeight(OH_Drawing_TypographyStyle*
 
 ### OH_Drawing_SetTypographyTextLineStyleFontStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontStyle(OH_Drawing_TypographyStyle* style, int fontStyle)
 ```
 
@@ -3164,7 +3262,7 @@ void OH_Drawing_SetTypographyTextLineStyleFontStyle(OH_Drawing_TypographyStyle* 
 
 ### OH_Drawing_SetTypographyTextLineStyleFontFamilies()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontFamilies(OH_Drawing_TypographyStyle* style,int fontFamiliesNumber, const char* fontFamilies[])
 ```
 
@@ -3187,7 +3285,7 @@ void OH_Drawing_SetTypographyTextLineStyleFontFamilies(OH_Drawing_TypographyStyl
 
 ### OH_Drawing_SetTypographyTextLineStyleFontSize()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontSize(OH_Drawing_TypographyStyle* style, double lineStyleFontSize)
 ```
 
@@ -3209,7 +3307,7 @@ void OH_Drawing_SetTypographyTextLineStyleFontSize(OH_Drawing_TypographyStyle* s
 
 ### OH_Drawing_SetTypographyTextLineStyleFontHeight()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontHeight(OH_Drawing_TypographyStyle* style, double lineStyleFontHeight)
 ```
 
@@ -3231,7 +3329,7 @@ void OH_Drawing_SetTypographyTextLineStyleFontHeight(OH_Drawing_TypographyStyle*
 
 ### OH_Drawing_SetTypographyTextLineStyleHalfLeading()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleHalfLeading(OH_Drawing_TypographyStyle* style, bool lineStyleHalfLeading)
 ```
 
@@ -3253,7 +3351,7 @@ void OH_Drawing_SetTypographyTextLineStyleHalfLeading(OH_Drawing_TypographyStyle
 
 ### OH_Drawing_SetTypographyTextLineStyleSpacingScale()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleSpacingScale(OH_Drawing_TypographyStyle* style, double spacingScale)
 ```
 
@@ -3275,7 +3373,7 @@ void OH_Drawing_SetTypographyTextLineStyleSpacingScale(OH_Drawing_TypographyStyl
 
 ### OH_Drawing_SetTypographyTextLineStyleOnly()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleOnly(OH_Drawing_TypographyStyle* style, bool lineStyleOnly)
 ```
 
@@ -3297,7 +3395,7 @@ void OH_Drawing_SetTypographyTextLineStyleOnly(OH_Drawing_TypographyStyle* style
 
 ### OH_Drawing_CreateTextShadow()
 
-```
+```c
 OH_Drawing_TextShadow* OH_Drawing_CreateTextShadow(void)
 ```
 
@@ -3317,7 +3415,7 @@ OH_Drawing_TextShadow* OH_Drawing_CreateTextShadow(void)
 
 ### OH_Drawing_DestroyTextShadow()
 
-```
+```c
 void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow* shadow)
 ```
 
@@ -3338,7 +3436,7 @@ void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow* shadow)
 
 ### OH_Drawing_TextStyleGetShadows()
 
-```
+```c
 OH_Drawing_TextShadow* OH_Drawing_TextStyleGetShadows(OH_Drawing_TextStyle* style)
 ```
 
@@ -3365,7 +3463,7 @@ OH_Drawing_TextShadow* OH_Drawing_TextStyleGetShadows(OH_Drawing_TextStyle* styl
 
 ### OH_Drawing_TextStyleGetShadowCount()
 
-```
+```c
 int OH_Drawing_TextStyleGetShadowCount(OH_Drawing_TextStyle* style)
 ```
 
@@ -3392,7 +3490,7 @@ int OH_Drawing_TextStyleGetShadowCount(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleAddShadow()
 
-```
+```c
 void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle* style, const OH_Drawing_TextShadow* shadow)
 ```
 
@@ -3414,7 +3512,7 @@ void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle* style, const OH_Drawing
 
 ### OH_Drawing_TextStyleClearShadows()
 
-```
+```c
 void OH_Drawing_TextStyleClearShadows(OH_Drawing_TextStyle* style)
 ```
 
@@ -3435,7 +3533,7 @@ void OH_Drawing_TextStyleClearShadows(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleGetShadowWithIndex()
 
-```
+```c
 OH_Drawing_TextShadow* OH_Drawing_TextStyleGetShadowWithIndex(OH_Drawing_TextStyle* style, int index)
 ```
 
@@ -3463,7 +3561,7 @@ OH_Drawing_TextShadow* OH_Drawing_TextStyleGetShadowWithIndex(OH_Drawing_TextSty
 
 ### OH_Drawing_TypographySetIndents()
 
-```
+```c
 void OH_Drawing_TypographySetIndents(OH_Drawing_Typography* typography, int indentsNumber, const float indents[])
 ```
 
@@ -3486,7 +3584,7 @@ void OH_Drawing_TypographySetIndents(OH_Drawing_Typography* typography, int inde
 
 ### OH_Drawing_TypographyGetIndentsWithIndex()
 
-```
+```c
 float OH_Drawing_TypographyGetIndentsWithIndex(OH_Drawing_Typography* typography, int index)
 ```
 
@@ -3514,7 +3612,7 @@ float OH_Drawing_TypographyGetIndentsWithIndex(OH_Drawing_Typography* typography
 
 ### OH_Drawing_TypographyGetLineTextRange()
 
-```
+```c
 OH_Drawing_Range* OH_Drawing_TypographyGetLineTextRange(OH_Drawing_Typography* typography,int lineNumber, bool includeSpaces)
 ```
 
@@ -3543,7 +3641,7 @@ OH_Drawing_Range* OH_Drawing_TypographyGetLineTextRange(OH_Drawing_Typography* t
 
 ### OH_Drawing_DestroyTextShadows()
 
-```
+```c
 void OH_Drawing_DestroyTextShadows(OH_Drawing_TextShadow* shadow)
 ```
 
@@ -3564,7 +3662,7 @@ void OH_Drawing_DestroyTextShadows(OH_Drawing_TextShadow* shadow)
 
 ### OH_Drawing_GetSystemFontConfigInfo()
 
-```
+```c
 OH_Drawing_FontConfigInfo* OH_Drawing_GetSystemFontConfigInfo(OH_Drawing_FontConfigInfoErrorCode* errorCode)
 ```
 
@@ -3591,7 +3689,7 @@ OH_Drawing_FontConfigInfo* OH_Drawing_GetSystemFontConfigInfo(OH_Drawing_FontCon
 
 ### OH_Drawing_DestroySystemFontConfigInfo()
 
-```
+```c
 void OH_Drawing_DestroySystemFontConfigInfo(OH_Drawing_FontConfigInfo* drawFontCfgInfo)
 ```
 
@@ -3612,7 +3710,7 @@ void OH_Drawing_DestroySystemFontConfigInfo(OH_Drawing_FontConfigInfo* drawFontC
 
 ### OH_Drawing_SetTextStyleFontStyleStruct()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontStyleStruct(OH_Drawing_TextStyle* drawingTextStyle,OH_Drawing_FontStyleStruct fontStyle)
 ```
 
@@ -3634,7 +3732,7 @@ void OH_Drawing_SetTextStyleFontStyleStruct(OH_Drawing_TextStyle* drawingTextSty
 
 ### OH_Drawing_SetTextStyleBadgeType()
 
-```
+```c
 void OH_Drawing_SetTextStyleBadgeType(OH_Drawing_TextStyle* style, OH_Drawing_TextBadgeType textBadgeType)
 ```
 
@@ -3656,7 +3754,7 @@ void OH_Drawing_SetTextStyleBadgeType(OH_Drawing_TextStyle* style, OH_Drawing_Te
 
 ### OH_Drawing_TextStyleGetFontStyleStruct()
 
-```
+```c
 OH_Drawing_FontStyleStruct OH_Drawing_TextStyleGetFontStyleStruct(OH_Drawing_TextStyle* drawingTextStyle)
 ```
 
@@ -3683,7 +3781,7 @@ OH_Drawing_FontStyleStruct OH_Drawing_TextStyleGetFontStyleStruct(OH_Drawing_Tex
 
 ### OH_Drawing_SetTypographyStyleFontStyleStruct()
 
-```
+```c
 void OH_Drawing_SetTypographyStyleFontStyleStruct(OH_Drawing_TypographyStyle* drawingStyle,OH_Drawing_FontStyleStruct fontStyle)
 ```
 
@@ -3705,7 +3803,7 @@ void OH_Drawing_SetTypographyStyleFontStyleStruct(OH_Drawing_TypographyStyle* dr
 
 ### OH_Drawing_TypographyStyleGetFontStyleStruct()
 
-```
+```c
 OH_Drawing_FontStyleStruct OH_Drawing_TypographyStyleGetFontStyleStruct(OH_Drawing_TypographyStyle* drawingStyle)
 ```
 
@@ -3732,7 +3830,7 @@ OH_Drawing_FontStyleStruct OH_Drawing_TypographyStyleGetFontStyleStruct(OH_Drawi
 
 ### OH_Drawing_TextStyleSetBackgroundRect()
 
-```
+```c
 void OH_Drawing_TextStyleSetBackgroundRect(OH_Drawing_TextStyle* style,const OH_Drawing_RectStyle_Info* rectStyleInfo, int styleId)
 ```
 
@@ -3755,7 +3853,7 @@ void OH_Drawing_TextStyleSetBackgroundRect(OH_Drawing_TextStyle* style,const OH_
 
 ### OH_Drawing_TypographyHandlerAddSymbol()
 
-```
+```c
 void OH_Drawing_TypographyHandlerAddSymbol(OH_Drawing_TypographyCreate* handler, uint32_t symbol)
 ```
 
@@ -3777,7 +3875,7 @@ void OH_Drawing_TypographyHandlerAddSymbol(OH_Drawing_TypographyCreate* handler,
 
 ### OH_Drawing_TextStyleAddFontFeature()
 
-```
+```c
 void OH_Drawing_TextStyleAddFontFeature(OH_Drawing_TextStyle* style, const char* tag, int value)
 ```
 
@@ -3800,7 +3898,7 @@ void OH_Drawing_TextStyleAddFontFeature(OH_Drawing_TextStyle* style, const char*
 
 ### OH_Drawing_TextStyleAddFontVariation()
 
-```
+```c
 void OH_Drawing_TextStyleAddFontVariation(OH_Drawing_TextStyle* style, const char* axis, const float value)
 ```
 
@@ -3823,7 +3921,7 @@ void OH_Drawing_TextStyleAddFontVariation(OH_Drawing_TextStyle* style, const cha
 
 ### OH_Drawing_TextStyleGetFontFeatures()
 
-```
+```c
 OH_Drawing_FontFeature* OH_Drawing_TextStyleGetFontFeatures(OH_Drawing_TextStyle* style)
 ```
 
@@ -3850,7 +3948,7 @@ OH_Drawing_FontFeature* OH_Drawing_TextStyleGetFontFeatures(OH_Drawing_TextStyle
 
 ### OH_Drawing_TextStyleDestroyFontFeatures()
 
-```
+```c
 void OH_Drawing_TextStyleDestroyFontFeatures(OH_Drawing_FontFeature* fontFeature, size_t fontFeatureSize)
 ```
 
@@ -3872,7 +3970,7 @@ void OH_Drawing_TextStyleDestroyFontFeatures(OH_Drawing_FontFeature* fontFeature
 
 ### OH_Drawing_TextStyleGetFontFeatureSize()
 
-```
+```c
 size_t OH_Drawing_TextStyleGetFontFeatureSize(OH_Drawing_TextStyle* style)
 ```
 
@@ -3899,7 +3997,7 @@ size_t OH_Drawing_TextStyleGetFontFeatureSize(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleClearFontFeature()
 
-```
+```c
 void OH_Drawing_TextStyleClearFontFeature(OH_Drawing_TextStyle* style)
 ```
 
@@ -3920,7 +4018,7 @@ void OH_Drawing_TextStyleClearFontFeature(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleGetBaselineShift()
 
-```
+```c
 double OH_Drawing_TextStyleGetBaselineShift(OH_Drawing_TextStyle* style)
 ```
 
@@ -3947,7 +4045,7 @@ double OH_Drawing_TextStyleGetBaselineShift(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleSetBaselineShift()
 
-```
+```c
 void OH_Drawing_TextStyleSetBaselineShift(OH_Drawing_TextStyle* style, double lineShift)
 ```
 
@@ -3969,7 +4067,7 @@ void OH_Drawing_TextStyleSetBaselineShift(OH_Drawing_TextStyle* style, double li
 
 ### OH_Drawing_TypographyTextSetHeightBehavior()
 
-```
+```c
 void OH_Drawing_TypographyTextSetHeightBehavior(OH_Drawing_TypographyStyle* style,OH_Drawing_TextHeightBehavior heightMode)
 ```
 
@@ -3991,7 +4089,7 @@ void OH_Drawing_TypographyTextSetHeightBehavior(OH_Drawing_TypographyStyle* styl
 
 ### OH_Drawing_TypographyTextGetHeightBehavior()
 
-```
+```c
 OH_Drawing_TextHeightBehavior OH_Drawing_TypographyTextGetHeightBehavior(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4018,7 +4116,7 @@ OH_Drawing_TextHeightBehavior OH_Drawing_TypographyTextGetHeightBehavior(OH_Draw
 
 ### OH_Drawing_TypographyGetLineFontMetrics()
 
-```
+```c
 OH_Drawing_Font_Metrics* OH_Drawing_TypographyGetLineFontMetrics(OH_Drawing_Typography* typography,size_t lineNumber, size_t* fontMetricsSize)
 ```
 
@@ -4047,7 +4145,7 @@ OH_Drawing_Font_Metrics* OH_Drawing_TypographyGetLineFontMetrics(OH_Drawing_Typo
 
 ### OH_Drawing_TypographyDestroyLineFontMetrics()
 
-```
+```c
 void OH_Drawing_TypographyDestroyLineFontMetrics(OH_Drawing_Font_Metrics* lineFontMetric)
 ```
 
@@ -4068,7 +4166,7 @@ void OH_Drawing_TypographyDestroyLineFontMetrics(OH_Drawing_Font_Metrics* lineFo
 
 ### OH_Drawing_TextStyleIsEqual()
 
-```
+```c
 bool OH_Drawing_TextStyleIsEqual(const OH_Drawing_TextStyle* style, const OH_Drawing_TextStyle* comparedStyle)
 ```
 
@@ -4096,7 +4194,7 @@ bool OH_Drawing_TextStyleIsEqual(const OH_Drawing_TextStyle* style, const OH_Dra
 
 ### OH_Drawing_TextStyleIsEqualByFont()
 
-```
+```c
 bool OH_Drawing_TextStyleIsEqualByFont(const OH_Drawing_TextStyle* style, const OH_Drawing_TextStyle* comparedStyle)
 ```
 
@@ -4124,7 +4222,7 @@ bool OH_Drawing_TextStyleIsEqualByFont(const OH_Drawing_TextStyle* style, const 
 
 ### OH_Drawing_TextStyleIsAttributeMatched()
 
-```
+```c
 bool OH_Drawing_TextStyleIsAttributeMatched(const OH_Drawing_TextStyle* style,const OH_Drawing_TextStyle* comparedStyle, OH_Drawing_TextStyleType textStyleType)
 ```
 
@@ -4153,7 +4251,7 @@ bool OH_Drawing_TextStyleIsAttributeMatched(const OH_Drawing_TextStyle* style,co
 
 ### OH_Drawing_TextStyleSetPlaceholder()
 
-```
+```c
 void OH_Drawing_TextStyleSetPlaceholder(OH_Drawing_TextStyle* style)
 ```
 
@@ -4174,7 +4272,7 @@ void OH_Drawing_TextStyleSetPlaceholder(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleIsPlaceholder()
 
-```
+```c
 bool OH_Drawing_TextStyleIsPlaceholder(OH_Drawing_TextStyle* style)
 ```
 
@@ -4201,7 +4299,7 @@ bool OH_Drawing_TextStyleIsPlaceholder(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TypographyStyleGetEffectiveAlignment()
 
-```
+```c
 OH_Drawing_TextAlign OH_Drawing_TypographyStyleGetEffectiveAlignment(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4228,7 +4326,7 @@ OH_Drawing_TextAlign OH_Drawing_TypographyStyleGetEffectiveAlignment(OH_Drawing_
 
 ### OH_Drawing_TypographyStyleIsHintEnabled()
 
-```
+```c
 bool OH_Drawing_TypographyStyleIsHintEnabled(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4255,7 +4353,7 @@ bool OH_Drawing_TypographyStyleIsHintEnabled(OH_Drawing_TypographyStyle* style)
 
 ### OH_Drawing_SetTypographyStyleTextStrutStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyStyleTextStrutStyle(OH_Drawing_TypographyStyle* style, OH_Drawing_StrutStyle* strutstyle)
 ```
 
@@ -4277,7 +4375,7 @@ void OH_Drawing_SetTypographyStyleTextStrutStyle(OH_Drawing_TypographyStyle* sty
 
 ### OH_Drawing_TypographyStyleGetStrutStyle()
 
-```
+```c
 OH_Drawing_StrutStyle* OH_Drawing_TypographyStyleGetStrutStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4304,7 +4402,7 @@ OH_Drawing_StrutStyle* OH_Drawing_TypographyStyleGetStrutStyle(OH_Drawing_Typogr
 
 ### OH_Drawing_TypographyStyleDestroyStrutStyle()
 
-```
+```c
 void OH_Drawing_TypographyStyleDestroyStrutStyle(OH_Drawing_StrutStyle* strutstyle)
 ```
 
@@ -4325,7 +4423,7 @@ void OH_Drawing_TypographyStyleDestroyStrutStyle(OH_Drawing_StrutStyle* strutsty
 
 ### OH_Drawing_TypographyStyleStrutStyleEquals()
 
-```
+```c
 bool OH_Drawing_TypographyStyleStrutStyleEquals(OH_Drawing_StrutStyle* from, OH_Drawing_StrutStyle* to)
 ```
 
@@ -4347,7 +4445,7 @@ bool OH_Drawing_TypographyStyleStrutStyleEquals(OH_Drawing_StrutStyle* from, OH_
 
 ### OH_Drawing_TypographyStyleSetHintsEnabled()
 
-```
+```c
 void OH_Drawing_TypographyStyleSetHintsEnabled(OH_Drawing_TypographyStyle* style, bool hintsEnabled)
 ```
 
@@ -4369,7 +4467,7 @@ void OH_Drawing_TypographyStyleSetHintsEnabled(OH_Drawing_TypographyStyle* style
 
 ### OH_Drawing_TypographyMarkDirty()
 
-```
+```c
 void  OH_Drawing_TypographyMarkDirty(OH_Drawing_Typography* typography)
 ```
 
@@ -4390,7 +4488,7 @@ void  OH_Drawing_TypographyMarkDirty(OH_Drawing_Typography* typography)
 
 ### OH_Drawing_TypographyGetUnresolvedGlyphsCount()
 
-```
+```c
 int32_t OH_Drawing_TypographyGetUnresolvedGlyphsCount(OH_Drawing_Typography* typography)
 ```
 
@@ -4417,7 +4515,7 @@ int32_t OH_Drawing_TypographyGetUnresolvedGlyphsCount(OH_Drawing_Typography* typ
 
 ### OH_Drawing_TypographyUpdateFontSize()
 
-```
+```c
 void OH_Drawing_TypographyUpdateFontSize(OH_Drawing_Typography* typography, size_t from, size_t to, float fontSize)
 ```
 
@@ -4441,7 +4539,7 @@ void OH_Drawing_TypographyUpdateFontSize(OH_Drawing_Typography* typography, size
 
 ### OH_Drawing_TypographyUpdateFontColor()
 
-```
+```c
 void OH_Drawing_TypographyUpdateFontColor(OH_Drawing_Typography* typography, uint32_t color)
 ```
 
@@ -4463,7 +4561,7 @@ void OH_Drawing_TypographyUpdateFontColor(OH_Drawing_Typography* typography, uin
 
 ### OH_Drawing_TypographyUpdateDecoration()
 
-```
+```c
 void OH_Drawing_TypographyUpdateDecoration(OH_Drawing_Typography* typography, OH_Drawing_TextDecoration decoration)
 ```
 
@@ -4485,7 +4583,7 @@ void OH_Drawing_TypographyUpdateDecoration(OH_Drawing_Typography* typography, OH
 
 ### OH_Drawing_TypographyUpdateDecorationThicknessScale()
 
-```
+```c
 void OH_Drawing_TypographyUpdateDecorationThicknessScale(OH_Drawing_Typography* typography,double decorationThicknessScale)
 ```
 
@@ -4507,7 +4605,7 @@ void OH_Drawing_TypographyUpdateDecorationThicknessScale(OH_Drawing_Typography* 
 
 ### OH_Drawing_TypographyUpdateDecorationStyle()
 
-```
+```c
 void OH_Drawing_TypographyUpdateDecorationStyle(OH_Drawing_Typography* typography,OH_Drawing_TextDecorationStyle decorationStyle)
 ```
 
@@ -4529,7 +4627,7 @@ void OH_Drawing_TypographyUpdateDecorationStyle(OH_Drawing_Typography* typograph
 
 ### OH_Drawing_TypographyTextGetLineStyle()
 
-```
+```c
 bool OH_Drawing_TypographyTextGetLineStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4556,7 +4654,7 @@ bool OH_Drawing_TypographyTextGetLineStyle(OH_Drawing_TypographyStyle* style)
 
 ### OH_Drawing_TypographyTextlineStyleGetFontWeight()
 
-```
+```c
 OH_Drawing_FontWeight OH_Drawing_TypographyTextlineStyleGetFontWeight(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4583,7 +4681,7 @@ OH_Drawing_FontWeight OH_Drawing_TypographyTextlineStyleGetFontWeight(OH_Drawing
 
 ### OH_Drawing_TypographyTextlineStyleGetFontStyle()
 
-```
+```c
 OH_Drawing_FontStyle OH_Drawing_TypographyTextlineStyleGetFontStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4610,7 +4708,7 @@ OH_Drawing_FontStyle OH_Drawing_TypographyTextlineStyleGetFontStyle(OH_Drawing_T
 
 ### OH_Drawing_TypographyTextlineStyleGetFontFamilies()
 
-```
+```c
 char** OH_Drawing_TypographyTextlineStyleGetFontFamilies(OH_Drawing_TypographyStyle* style, size_t* num)
 ```
 
@@ -4638,7 +4736,7 @@ char** OH_Drawing_TypographyTextlineStyleGetFontFamilies(OH_Drawing_TypographySt
 
 ### OH_Drawing_TypographyTextlineStyleDestroyFontFamilies()
 
-```
+```c
 void OH_Drawing_TypographyTextlineStyleDestroyFontFamilies(char** fontFamilies, size_t fontFamiliesNum)
 ```
 
@@ -4655,12 +4753,12 @@ void OH_Drawing_TypographyTextlineStyleDestroyFontFamilies(char** fontFamilies, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| char** fontFamilies | 表示指向字体字体类型的指针。 |
+| char** fontFamilies | 表示指向字体类型的指针。 |
 | size_t fontFamiliesNum | 字体名称的数量。 |
 
 ### OH_Drawing_TypographyTextlineStyleGetFontSize()
 
-```
+```c
 double OH_Drawing_TypographyTextlineStyleGetFontSize(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4687,7 +4785,7 @@ double OH_Drawing_TypographyTextlineStyleGetFontSize(OH_Drawing_TypographyStyle*
 
 ### OH_Drawing_TypographyTextlineStyleGetHeightScale()
 
-```
+```c
 double OH_Drawing_TypographyTextlineStyleGetHeightScale(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4714,7 +4812,7 @@ double OH_Drawing_TypographyTextlineStyleGetHeightScale(OH_Drawing_TypographySty
 
 ### OH_Drawing_TypographyTextlineStyleGetHeightOnly()
 
-```
+```c
 bool OH_Drawing_TypographyTextlineStyleGetHeightOnly(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4741,7 +4839,7 @@ bool OH_Drawing_TypographyTextlineStyleGetHeightOnly(OH_Drawing_TypographyStyle*
 
 ### OH_Drawing_TypographyTextlineStyleGetHalfLeading()
 
-```
+```c
 bool OH_Drawing_TypographyTextlineStyleGetHalfLeading(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4768,7 +4866,7 @@ bool OH_Drawing_TypographyTextlineStyleGetHalfLeading(OH_Drawing_TypographyStyle
 
 ### OH_Drawing_TypographyTextlineStyleGetSpacingScale()
 
-```
+```c
 double OH_Drawing_TypographyTextlineStyleGetSpacingScale(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4795,7 +4893,7 @@ double OH_Drawing_TypographyTextlineStyleGetSpacingScale(OH_Drawing_TypographySt
 
 ### OH_Drawing_TypographyTextlineGetStyleOnly()
 
-```
+```c
 bool OH_Drawing_TypographyTextlineGetStyleOnly(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4822,7 +4920,7 @@ bool OH_Drawing_TypographyTextlineGetStyleOnly(OH_Drawing_TypographyStyle* style
 
 ### OH_Drawing_TypographyGetTextAlign()
 
-```
+```c
 OH_Drawing_TextAlign OH_Drawing_TypographyGetTextAlign(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4849,7 +4947,7 @@ OH_Drawing_TextAlign OH_Drawing_TypographyGetTextAlign(OH_Drawing_TypographyStyl
 
 ### OH_Drawing_TypographyGetTextDirection()
 
-```
+```c
 OH_Drawing_TextDirection OH_Drawing_TypographyGetTextDirection(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4876,7 +4974,7 @@ OH_Drawing_TextDirection OH_Drawing_TypographyGetTextDirection(OH_Drawing_Typogr
 
 ### OH_Drawing_TypographyGetTextMaxLines()
 
-```
+```c
 size_t OH_Drawing_TypographyGetTextMaxLines(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4903,7 +5001,7 @@ size_t OH_Drawing_TypographyGetTextMaxLines(OH_Drawing_TypographyStyle* style)
 
 ### OH_Drawing_TypographyGetTextEllipsis()
 
-```
+```c
 char* OH_Drawing_TypographyGetTextEllipsis(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4930,7 +5028,7 @@ char* OH_Drawing_TypographyGetTextEllipsis(OH_Drawing_TypographyStyle* style)
 
 ### OH_Drawing_TypographyDestroyEllipsis()
 
-```
+```c
 void OH_Drawing_TypographyDestroyEllipsis(char* ellipsis)
 ```
 
@@ -4951,7 +5049,7 @@ void OH_Drawing_TypographyDestroyEllipsis(char* ellipsis)
 
 ### OH_Drawing_TypographyStyleEquals()
 
-```
+```c
 bool OH_Drawing_TypographyStyleEquals(OH_Drawing_TypographyStyle* from, OH_Drawing_TypographyStyle* to)
 ```
 
@@ -4979,7 +5077,7 @@ bool OH_Drawing_TypographyStyleEquals(OH_Drawing_TypographyStyle* from, OH_Drawi
 
 ### OH_Drawing_TextStyleGetColor()
 
-```
+```c
 uint32_t OH_Drawing_TextStyleGetColor(OH_Drawing_TextStyle* style)
 ```
 
@@ -5006,7 +5104,7 @@ uint32_t OH_Drawing_TextStyleGetColor(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleGetDecorationStyle()
 
-```
+```c
 OH_Drawing_TextDecorationStyle OH_Drawing_TextStyleGetDecorationStyle(OH_Drawing_TextStyle* style)
 ```
 
@@ -5033,7 +5131,7 @@ OH_Drawing_TextDecorationStyle OH_Drawing_TextStyleGetDecorationStyle(OH_Drawing
 
 ### OH_Drawing_TextStyleGetFontWeight()
 
-```
+```c
 OH_Drawing_FontWeight OH_Drawing_TextStyleGetFontWeight(OH_Drawing_TextStyle* style)
 ```
 
@@ -5060,7 +5158,7 @@ OH_Drawing_FontWeight OH_Drawing_TextStyleGetFontWeight(OH_Drawing_TextStyle* st
 
 ### OH_Drawing_TextStyleGetFontStyle()
 
-```
+```c
 OH_Drawing_FontStyle OH_Drawing_TextStyleGetFontStyle(OH_Drawing_TextStyle* style)
 ```
 
@@ -5087,7 +5185,7 @@ OH_Drawing_FontStyle OH_Drawing_TextStyleGetFontStyle(OH_Drawing_TextStyle* styl
 
 ### OH_Drawing_TextStyleGetBaseline()
 
-```
+```c
 OH_Drawing_TextBaseline OH_Drawing_TextStyleGetBaseline(OH_Drawing_TextStyle* style)
 ```
 
@@ -5114,7 +5212,7 @@ OH_Drawing_TextBaseline OH_Drawing_TextStyleGetBaseline(OH_Drawing_TextStyle* st
 
 ### OH_Drawing_TextStyleGetFontFamilies()
 
-```
+```c
 char** OH_Drawing_TextStyleGetFontFamilies(OH_Drawing_TextStyle* style, size_t* num)
 ```
 
@@ -5142,7 +5240,7 @@ char** OH_Drawing_TextStyleGetFontFamilies(OH_Drawing_TextStyle* style, size_t* 
 
 ### OH_Drawing_TextStyleDestroyFontFamilies()
 
-```
+```c
 void OH_Drawing_TextStyleDestroyFontFamilies(char** fontFamilies, size_t num)
 ```
 
@@ -5164,7 +5262,7 @@ void OH_Drawing_TextStyleDestroyFontFamilies(char** fontFamilies, size_t num)
 
 ### OH_Drawing_TextStyleGetFontSize()
 
-```
+```c
 double OH_Drawing_TextStyleGetFontSize(OH_Drawing_TextStyle* style)
 ```
 
@@ -5191,7 +5289,7 @@ double OH_Drawing_TextStyleGetFontSize(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleGetLetterSpacing()
 
-```
+```c
 double OH_Drawing_TextStyleGetLetterSpacing(OH_Drawing_TextStyle* style)
 ```
 
@@ -5218,7 +5316,7 @@ double OH_Drawing_TextStyleGetLetterSpacing(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleGetWordSpacing()
 
-```
+```c
 double OH_Drawing_TextStyleGetWordSpacing(OH_Drawing_TextStyle* style)
 ```
 
@@ -5245,7 +5343,7 @@ double OH_Drawing_TextStyleGetWordSpacing(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleGetFontHeight()
 
-```
+```c
 double OH_Drawing_TextStyleGetFontHeight(OH_Drawing_TextStyle* style)
 ```
 
@@ -5272,7 +5370,7 @@ double OH_Drawing_TextStyleGetFontHeight(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleGetHalfLeading()
 
-```
+```c
 bool OH_Drawing_TextStyleGetHalfLeading(OH_Drawing_TextStyle* style)
 ```
 
@@ -5299,7 +5397,7 @@ bool OH_Drawing_TextStyleGetHalfLeading(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TextStyleGetLocale()
 
-```
+```c
 const char* OH_Drawing_TextStyleGetLocale(OH_Drawing_TextStyle* style)
 ```
 
@@ -5326,7 +5424,7 @@ const char* OH_Drawing_TextStyleGetLocale(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_TypographyDestroyTextBox()
 
-```
+```c
 void OH_Drawing_TypographyDestroyTextBox(OH_Drawing_TextBox* textBox)
 ```
 
@@ -5347,7 +5445,7 @@ void OH_Drawing_TypographyDestroyTextBox(OH_Drawing_TextBox* textBox)
 
 ### OH_Drawing_SetTextShadow()
 
-```
+```c
 void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow* shadow, uint32_t color, OH_Drawing_Point* offset,double blurRadius)
 ```
 
@@ -5371,7 +5469,7 @@ void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow* shadow, uint32_t color, OH_
 
 ### OH_Drawing_CreateTextTab()
 
-```
+```c
 OH_Drawing_TextTab* OH_Drawing_CreateTextTab(OH_Drawing_TextAlign alignment, float location)
 ```
 
@@ -5399,7 +5497,7 @@ OH_Drawing_TextTab* OH_Drawing_CreateTextTab(OH_Drawing_TextAlign alignment, flo
 
 ### OH_Drawing_DestroyTextTab()
 
-```
+```c
 void OH_Drawing_DestroyTextTab(OH_Drawing_TextTab* tab)
 ```
 
@@ -5420,7 +5518,7 @@ void OH_Drawing_DestroyTextTab(OH_Drawing_TextTab* tab)
 
 ### OH_Drawing_GetTextTabAlignment()
 
-```
+```c
 OH_Drawing_TextAlign OH_Drawing_GetTextTabAlignment(OH_Drawing_TextTab* tab)
 ```
 
@@ -5447,7 +5545,7 @@ OH_Drawing_TextAlign OH_Drawing_GetTextTabAlignment(OH_Drawing_TextTab* tab)
 
 ### OH_Drawing_GetTextTabLocation()
 
-```
+```c
 float OH_Drawing_GetTextTabLocation(OH_Drawing_TextTab* tab)
 ```
 
@@ -5474,7 +5572,7 @@ float OH_Drawing_GetTextTabLocation(OH_Drawing_TextTab* tab)
 
 ### OH_Drawing_SetTypographyTextTab()
 
-```
+```c
 void OH_Drawing_SetTypographyTextTab(OH_Drawing_TypographyStyle* style, OH_Drawing_TextTab* tab)
 ```
 
@@ -5496,7 +5594,7 @@ void OH_Drawing_SetTypographyTextTab(OH_Drawing_TypographyStyle* style, OH_Drawi
 
 ### OH_Drawing_GetDrawingArraySize()
 
-```
+```c
 size_t OH_Drawing_GetDrawingArraySize(OH_Drawing_Array* drawingArray)
 ```
 
@@ -5523,7 +5621,7 @@ size_t OH_Drawing_GetDrawingArraySize(OH_Drawing_Array* drawingArray)
 
 ### OH_Drawing_SetTypographyTextTrailingSpaceOptimized()
 
-```
+```c
 void OH_Drawing_SetTypographyTextTrailingSpaceOptimized(OH_Drawing_TypographyStyle* style, bool trailingSpaceOptimized)
 ```
 
@@ -5545,7 +5643,7 @@ void OH_Drawing_SetTypographyTextTrailingSpaceOptimized(OH_Drawing_TypographySty
 
 ### OH_Drawing_TypographyHandlerAddEncodedText()
 
-```
+```c
 void OH_Drawing_TypographyHandlerAddEncodedText(OH_Drawing_TypographyCreate* handler, const void* text,size_t byteLength, OH_Drawing_TextEncoding textEncodingType)
 ```
 
@@ -5569,7 +5667,7 @@ void OH_Drawing_TypographyHandlerAddEncodedText(OH_Drawing_TypographyCreate* han
 
 ### OH_Drawing_SetTypographyTextAutoSpace()
 
-```
+```c
 void OH_Drawing_SetTypographyTextAutoSpace(OH_Drawing_TypographyStyle *style, bool enableAutoSpace)
 ```
 
@@ -5591,7 +5689,7 @@ void OH_Drawing_SetTypographyTextAutoSpace(OH_Drawing_TypographyStyle *style, bo
 
 ### OH_Drawing_TypographyUpdateDecorationColor()
 
-```
+```c
 void OH_Drawing_TypographyUpdateDecorationColor(OH_Drawing_Typography* typography, uint32_t color)
 ```
 
@@ -5612,7 +5710,7 @@ void OH_Drawing_TypographyUpdateDecorationColor(OH_Drawing_Typography* typograph
 
 ### OH_Drawing_SetTypographyVerticalAlignment()
 
-```
+```c
 void OH_Drawing_SetTypographyVerticalAlignment(OH_Drawing_TypographyStyle* style,OH_Drawing_TextVerticalAlignment align)
 ```
 
@@ -5634,7 +5732,7 @@ void OH_Drawing_SetTypographyVerticalAlignment(OH_Drawing_TypographyStyle* style
 
 ### OH_Drawing_CopyTypographyStyle()
 
-```
+```c
 OH_Drawing_TypographyStyle* OH_Drawing_CopyTypographyStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -5661,7 +5759,7 @@ OH_Drawing_TypographyStyle* OH_Drawing_CopyTypographyStyle(OH_Drawing_Typography
 
 ### OH_Drawing_CopyTextStyle()
 
-```
+```c
 OH_Drawing_TextStyle* OH_Drawing_CopyTextStyle(OH_Drawing_TextStyle* style)
 ```
 
@@ -5688,7 +5786,7 @@ OH_Drawing_TextStyle* OH_Drawing_CopyTextStyle(OH_Drawing_TextStyle* style)
 
 ### OH_Drawing_CopyTextShadow()
 
-```
+```c
 OH_Drawing_TextShadow* OH_Drawing_CopyTextShadow(OH_Drawing_TextShadow* shadow)
 ```
 
@@ -5711,3 +5809,227 @@ OH_Drawing_TextShadow* OH_Drawing_CopyTextShadow(OH_Drawing_TextShadow* shadow)
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_TextShadow](capi-drawing-oh-drawing-textshadow.md)* | 返回拷贝的[OH_Drawing_TextShadow](capi-drawing-oh-drawing-textshadow.md)对象指针。如果返回空指针，表示创建失败；可能的原因是无可用内存，或者shadow为空指针。不再需要时，请使用[OH_Drawing_DestroyTextShadow](capi-drawing-text-typography-h.md#oh_drawing_destroytextshadow)释放该对象指针。 |
+
+### OH_Drawing_SetTextStyleAttributeDouble()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)
+```
+
+**描述**
+
+设置double类型文本样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向文本样式对象[OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)的指针。 |
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | 文本样式属性id。 |
+| double value | 文本样式属性值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_GetTextStyleAttributeDouble()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)
+```
+
+**描述**
+
+获取double类型文本样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向文本样式对象[OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)的指针。 |
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | 文本样式属性id。 |
+| double* value | 指向double类型属性的指针。作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_SetTextStyleAttributeInt()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)
+```
+
+**描述**
+
+设置int类型文本样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向文本样式对象[OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)的指针。 |
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | 文本样式属性id。 |
+| int value | 待设置属性值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入的value超出待设置属性取值范围。 |
+
+### OH_Drawing_GetTextStyleAttributeInt()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)
+```
+
+**描述**
+
+获取int类型文本样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向文本样式对象[OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)的指针。 |
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | 文本样式属性id。 |
+| int* value | 指向int类型属性的指针。作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_SetTypographyStyleAttributeDouble()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)
+```
+
+**描述**
+
+设置double类型排版样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
+| double value | 待设置属性值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_GetTypographyStyleAttributeDouble()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* value)
+```
+
+**描述**
+
+获取double类型排版样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
+| double* value | 指向double类型属性的指针。作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_SetTypographyStyleAttributeInt()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int value)
+```
+
+**描述**
+
+设置int类型排版样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
+| int value | 待设置属性值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入的value超出待设置属性取值范围。 |
+
+### OH_Drawing_GetTypographyStyleAttributeInt()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)
+```
+
+**描述**
+
+获取int类型排版样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
+| int* value | 指向int类型属性的指针。作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |

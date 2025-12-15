@@ -1,8 +1,16 @@
 # 扩展认证错误码
 
+
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
 
 ## 33200001 无效的netId值
 
@@ -20,7 +28,7 @@ net Id值不存在。
 
 **处理步骤**
 
-输入一个合法的net Id值。
+输入一个合法的net ID值。
 
 ## 33200002 退出指定netId网卡扩展认证失败
 
@@ -38,7 +46,7 @@ net Id值不存在。
 
 **处理步骤**
 
-输入一个合法的net Id值。
+输入一个合法的net ID值。
 
 ## 33200003 无效的eth eap配置
 

@@ -1,4 +1,14 @@
 # OH_Rdb_Transaction
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_Rdb_Transaction OH_Rdb_Transaction
+```
 
 ## 概述
 

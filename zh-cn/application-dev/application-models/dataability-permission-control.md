@@ -1,4 +1,10 @@
 # DataAbility权限控制
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 
 DataAbility提供数据服务，并不是所有的Ability都有权限读写它，DataAbility有一套权限控制机制来保证数据安全。分为静态权限控制和动态权限控制两部分。
@@ -11,7 +17,7 @@ DataAbility作为服务端，在被拉起的时候，会根据config.json里面�
 
 ```json
 "abilities": [
-  ...
+  // ...
   {
     "name": ".DataAbility",
     "srcLanguage": "ets",
@@ -24,7 +30,7 @@ DataAbility作为服务端，在被拉起的时候，会根据config.json里面�
     "readPermission": "ohos.permission.READ_CONTACTS",
     "writePermission": "ohos.permission.WRITE_CONTACTS"
   },
-  ...
+  // ...
 ]
 ```
 
@@ -33,9 +39,9 @@ DataAbility作为服务端，在被拉起的时候，会根据config.json里面�
 
 ```json
 {
-  ...
+  // ...
   "module": {
-    ...
+    // ...
     "reqPermissions": [
       {
         "name": "ohos.permission.READ_CONTACTS"
@@ -43,9 +49,9 @@ DataAbility作为服务端，在被拉起的时候，会根据config.json里面�
       {
         "name": "ohos.permission.WRITE_CONTACTS"
       },
-      ...
+      // ...
     ],
-    ...
+    // ...
   }
 }
 ```
@@ -59,7 +65,7 @@ DataAbility作为服务端，在被拉起的时候，会根据config.json里面�
 
   **表1** 接口对应的读写权限配置
 
-| 需要配置读权限的接口 | 需要配置写权限的接口 | 据实际操作配置读写权限的接口 |
+| 需要配置读权限的接口 | 需要配置写权限的接口 | 根据实际操作配置读写权限的接口 |
 | -------- | -------- | -------- |
 | query、normalizeUri、denormalizeUri、openfile（传入mode有'r'） | insert、batchInsert、delete、update、openfile（传入mode有'w'） | executeBatch |
 

@@ -1,11 +1,17 @@
 # UI调优
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lushi871202-->
+<!--Designer: @lushi871202-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本章节主要介绍UI的dump和调优能力，用于提高开发效率和优化开发者体验。
 
 ## 状态管理hidumper、调试与调优
 为提升开发者定位状态管理问题的效率，UI提供针对状态变量的hidumper、调试与调优功能，将状态变量的黑盒信息暴露给开发者，帮助开发者深入了解状态变量和UI组件的变化过程，提升开发高性能应用的效率。
 ### 状态管理hidumper能力
-状态管理接入[hidumper](../dfx/hidumper.md)，支持通过`-jsdump`获取状态变量关联的组件、自定义组件树等信息，方便开发者了解状态变量影响的UI范围，便于写出高性能应用代码。
+状态管理接入[hidumper](../dfx/hidumper.md)，支持通过`-jsdump`获取状态变量关联的组件、自定义组件树等信息，方便开发者了解状态变量影响的UI范围，写出高性能应用代码。
 
 下面介绍dump状态变量每个参数的含义：
 
@@ -205,10 +211,10 @@ DevEco Studio的Profiler工具可抓取状态变量的变化打点。在Profiler
 **图2** ArkUI State泳道图示意图
 
 ![UI-StateProfiler2](figures/UI-StateProfiler2.png)
-> **说明：**
->
-> 由于隐私安全政策，已上架应用市场的应用不支持录制ArkUI State泳道。
 
+<!--RP3-->
+
+<!--RP3End-->
 
 ### 状态管理Inspector调试能力
 DevEco Studio的ArkUI Inspector可以显示当前页面自定义组件内的状态变量的详细信息，具体包括以下内容。
@@ -227,18 +233,16 @@ DevEco Studio的ArkUI Inspector可以显示当前页面自定义组件内的状�
 
 ![UI-StateInspector](figures/UI-StateInspector.png)
 
-> **说明：**
->
-> 由于隐私安全政策，已上架应用市场的应用不支持使用ArkUI Inspector。
+<!--RP4-->
 
-更多Inspector使用方法及案例，请参考：[ArkUI Inspector使用指导](../performance/arkUI-inspector.md)。
+<!--RP4End-->
 
 
 以上主要介绍了状态管理的hidumper、调试与调优能力，这些工具方便开发者调测，有助于提升开发高性能应用的效率。
 
 ## Trace调试能力
 
-ArkUI内部针对关键的UI处理流程添加了trace信息，帮助开发者通过trace工具观测应用的UI耗时，辅助定位问题。详细Trace说明及案例参考：<!--RP1-->[常用Trace使用指导](../performance/common-trace-using-instructions.md)<!--RP1End-->。
+ArkUI内部针对关键的UI处理流程添加了Trace信息，帮助开发者通过Trace工具观测应用的UI耗时，辅助定位问题。详细Trace说明及案例参考：<!--RP1-->[常用Trace使用指导](../performance/common-trace-using-instructions.md)<!--RP1End-->。
 
 ## Inspector调试能力
 

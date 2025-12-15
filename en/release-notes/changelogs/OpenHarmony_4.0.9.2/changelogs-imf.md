@@ -34,4 +34,4 @@ When calling the preceding APIs, you can pass the **callback** parameter to spec
 
 **Adaptation Guide**
 
-Follow the description in [@ohos.inputMethod.d.ts](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-inputmethod.md).
+Follow the description in [@ohos.inputMethod.d.ts](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-inputmethod.md).

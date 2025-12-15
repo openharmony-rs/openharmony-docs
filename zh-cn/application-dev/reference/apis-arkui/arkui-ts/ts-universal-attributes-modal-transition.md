@@ -1,4 +1,10 @@
 # 全屏模态转场
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 通过bindContentCover属性为组件绑定全屏模态页面，在组件插入和移除时可通过设置转场参数ModalTransition显示过渡动效。
 
@@ -12,9 +18,37 @@
 
 ## bindContentCover
 
-bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions)
+bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition): T
 
 给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名  | 类型                                        | 必填 | 说明                                                         |
+| ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| isShow  | boolean                        | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。                                       |
+| type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。                                 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
+
+## bindContentCover
+
+bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions): T
+
+给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，可自定义设置转场方式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -28,14 +62,22 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCover
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。                                       |
 | options | [ContentCoverOptions](#contentcoveroptions) | 否   | 配置全屏模态页面的可选属性。                                 |
 
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
+
 ## ContentCoverOptions
 继承自[BindOptions](ts-universal-attributes-sheet-transition.md#bindoptions)。
+
+全屏模态页面内容选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称              | 类型                                       | 只读 |  可选   | 说明            |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
-| modalTransition | [ModalTransition](ts-types.md#modaltransition10) | 否 | 是    | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| modalTransition | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否 | 是    | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | onWillDismiss<sup>12+</sup> | Callback&lt;[DismissContentCoverAction](#dismisscontentcoveraction12类型说明)&gt; | 否 | 是   | 全屏模态页面交互式关闭回调函数。<br/>**说明：**<br />当用户执行back事件关闭交互操作时，如果注册该回调函数，则不会立刻关闭。在回调函数中可以通过reason得到阻拦关闭页面的操作类型，从而根据原因选择是否关闭全屏模态页面。在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否 | 是   | 全屏模态页面的自定义转场方式。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | enableSafeArea<sup>20+</sup> | boolean  | 否 | 是  | 全屏模态是否适配安全区域，true表示全屏模态适配安全区域，将内容限制在安全区内，避让导航条和状态栏，false表示不做处理，和之前的样式保持一致。默认值为false。  <br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -44,10 +86,12 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCover
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-| 名称              | 类型                                       | 必填   | 描述            |
-| --------------- | ---------------------------------------- | ---- | ------------- |
-| dismiss | function | 是    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。 |
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 是    | 返回本次拦截全屏模态页面退出的事件原因。  |
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称              | 类型                                       | 只读 | 可选   | 说明            |
+| --------------- | -------------------- | -------------------- | ---- | ------------- |
+| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否 | 否    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。 |
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否 | 否    | 返回本次拦截全屏模态页面退出的事件原因。  |
 
 ## 示例
 
@@ -89,16 +133,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.NONE,
         backgroundColor: Color.Orange,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -126,16 +170,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.NONE,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -199,16 +243,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.NONE,
         backgroundColor: Color.Orange,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -238,16 +282,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.NONE,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -301,16 +345,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.DEFAULT,
         backgroundColor: Color.Gray,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -338,16 +382,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.DEFAULT,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -400,16 +444,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.ALPHA,
         backgroundColor: Color.Gray,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -437,16 +481,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.ALPHA,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -505,7 +549,7 @@ struct ModalTransitionExample {
             transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
             onWillDismiss: ((dismissContentCoverAction: DismissContentCoverAction) => {
               if (dismissContentCoverAction.reason == DismissReason.PRESS_BACK) {
-                console.log("BindContentCover dismiss reason is back pressed");
+                console.info("BindContentCover dismiss reason is back pressed");
               }
               dismissContentCoverAction.dismiss();
             }),
@@ -553,16 +597,16 @@ struct ModalTransitionExample {
             ),
             onWillDismiss: ((dismissContentCoverAction: DismissContentCoverAction) => {
               if (dismissContentCoverAction.reason == DismissReason.PRESS_BACK) {
-                console.log("back pressed");
+                console.info("back pressed");
               }
               dismissContentCoverAction.dismiss();
             }),
             onAppear: () => {
-              console.log("BindContentCover onAppear.");
+              console.info("BindContentCover onAppear.");
             },
             onDisappear: () => {
               this.isShow = false;
-              console.log("BindContentCover onDisappear.");
+              console.info("BindContentCover onDisappear.");
             }
           })
     }
@@ -578,7 +622,7 @@ struct ModalTransitionExample {
 
 ### 示例6（设置全模态适配安全区）
 
-该示例主要演示通过设置enableSafeArea = true时，全模态适配安全区后，其内容效果。全模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
+从API version 20开始，该示例主要演示通过设置enableSafeArea = true时，全模态适配安全区后，其内容效果。全模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
 
 ```ts
 // xxx.ets

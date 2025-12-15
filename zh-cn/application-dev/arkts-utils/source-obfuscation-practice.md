@@ -1,4 +1,10 @@
 # 不同包类型的源码混淆建议
+<!--Kit: ArkTS-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @zju-wyx-->
+<!--Designer: @xiao-peiyang; @dengxinyu-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @foryourself-->
 
 不同包类型的用途和构建流程存在差异，对不同包类型使用混淆时，开发者需要注意不同事项。本文针对[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)和[HSP](../quick-start/in-app-hsp.md)三种包类型，分别提供混淆建议，帮助开发者高效使用混淆。
 
@@ -62,13 +68,19 @@
 
 作为一个未发布的静态包，本地源码HAR包不会独立进行编译混淆，而是会跟随依赖它的主模块（如HAP）一同进行编译混淆，开发者需参阅[HAP包混淆建议](#hap包混淆建议)了解相关行为。
 
+由于本地源码HAR包会随着主模块一同进行混淆，多个HAP或HSP依赖相同本地源码HAR时，本地源码HAR在不同模块中的混淆结果可能不同。当开启`useNormalizedOHMUrl`（即在工程级`build-profile.json5`文件中，将`strictMode`属性的`useNormalizedOHMUrl`字段设置为true）时，运行时只会加载一份HAR，导致HAP和HSP无法找到对应的HAR，从而在调用HAR的方法时出现找不到的问题。
+
+解决方案：
+1. 使用[混淆助手配置保留选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123)，选择HAR对外暴露的接口场景，并将生成的白名单添加到HAR的`consumer-rules.txt`文件中。
+2. 将本地源码`HAR`改造为[字节码HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415)，单独编译生成对应的`HAR`包，然后依赖此`HAR`包。
+
 ### 发布态源码HAR包
 
 1. 开启混淆规则。建议开启推荐的[四项混淆规则](#推荐混淆功能)，其它选项按需添加。
 2. 了解需要[配置白名单的场景](source-obfuscation.md#保留选项)，配置HAR中的白名单：
     - obfuscation-rules.txt中配置HAR包对外导出接口及其相关属性名称、此次构建过程不能被混淆的名称等。
     - consumer-rules.txt配置不能被二次混淆的接口、属性等名称。
-3. HAR包功能验证。需注意，在构建本模块HAR时会进行一次混淆，当发布后的HAR包被使用方依赖时，如果使用方开启混淆，则本HAR包发布后的代码还会跟随使用方被二次混淆，因为需要充分验证使用方开启混淆时HAR包功能是否正常。
+3. HAR包功能验证。需注意，在构建本模块HAR时会进行一次混淆，当发布后的HAR包被使用方依赖时，如果使用方开启混淆，则本HAR包发布后的代码还会跟随使用方被二次混淆，因此需要充分验证使用方开启混淆时HAR包功能是否正常。
 4. 发布HAR包。
 
 > **说明**：

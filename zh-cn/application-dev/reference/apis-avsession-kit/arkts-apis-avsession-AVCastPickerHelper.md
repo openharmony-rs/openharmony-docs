@@ -1,4 +1,10 @@
 # Class (AVCastPickerHelper)
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -17,7 +23,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 constructor(context: Context)
 
-创建AVCastPickerHelper对象，获取context参考[getContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
+创建AVCastPickerHelper对象，获取context参考[getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -36,13 +42,13 @@ constructor(context: Context)
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-import { common } from '@kit.AbilityKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -54,7 +60,7 @@ struct Index {
         Text(this.message)
           .fontSize(40)
           .fontWeight(FontWeight.Bold)
-          .onClick(()=>{
+          .onClick(() => {
             let context = this.getUIContext().getHostContext() as Context;
             let avCastPicker = new avSession.AVCastPickerHelper(context);
           })
@@ -101,6 +107,7 @@ select(options?: AVCastPickerOptions): Promise\<void>
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
 async function avCastPicker(context: common.Context) {
   let avCastPickerOptions : avSession.AVCastPickerOptions = {
@@ -111,6 +118,36 @@ async function avCastPicker(context: common.Context) {
     console.info('select successfully');
   }).catch((err: BusinessError) => {
     console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+## resetCommunicationDevice<sup>21+</sup>
+
+resetCommunicationDevice(): Promise\<void>
+
+将应用通话设备恢复至默认设备。比如在语音通话场景下，手机设备的通话装置将恢复成听筒。使用Promise异步回调。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function avCastPicker(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('resetCommunicationDevice successfully');
   });
 }
 ```
@@ -141,13 +178,14 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
 import { common } from '@kit.AbilityKit';
 import { AVCastPickerState } from '@kit.AVSessionKit';
+import { avSession } from '@kit.AVSessionKit';
 
 async function onPickerStateChange(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
@@ -181,12 +219,13 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
 import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
 
 async function onPickerStateChange(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);

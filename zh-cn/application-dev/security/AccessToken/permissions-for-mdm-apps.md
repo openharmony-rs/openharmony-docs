@@ -1,5 +1,12 @@
 # 仅MDM应用可用权限
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Security-->
+<!--Owner: @harylee-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 以下权限仅对MDM（Mobile Device Management）设备管理应用开放。MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
 
 > **注意：**
@@ -9,6 +16,8 @@
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
 允许应用激活设备管理应用。
+
+包括读取设备ID、读取设备硬盘序列号，读取OS版本、读取机器名。
 
 **权限级别**：system_basic
 
@@ -22,6 +31,8 @@
 ## ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
 允许设备管理应用查询网络信息。
+
+包括查询网卡设置、IP地址、MAC地址，网卡启用状态。
 
 **权限级别**：system_basic
 
@@ -75,6 +86,8 @@
 
 允许设备管理应用设置账户管理策略。
 
+比如新增账号。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -87,6 +100,8 @@
 ## ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 允许设备管理应用设置包安装管理策略。
+
+比如设置包安装白名单。
 
 **权限级别**：system_basic
 
@@ -101,6 +116,8 @@
 
 允许设备管理应用设置系统时间。
 
+包括设置系统时间值，禁止用户修改系统时间策略。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -113,6 +130,8 @@
 ## ohos.permission.ENTERPRISE_SET_NETWORK
 
 允许设备管理应用设置网络信息。
+
+包括禁用、开启网卡。
 
 **权限级别**：system_basic
 
@@ -127,6 +146,8 @@
 
 允许设备管理应用设置和查询WiFi信息。
 
+可设置和查询WiFi禁用，设置WiFi连接。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -140,6 +161,8 @@
 
 允许设备管理应用订阅管理事件。
 
+比如锁屏事件，有可能软件版本更新事件，订阅成功，事件会通知MDM应用。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -152,6 +175,8 @@
 ## ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 允许设备管理员下发和获取限制类策略。
+
+比如禁用HDC，禁用直连打印服务等。
 
 **权限级别**：system_basic
 
@@ -227,32 +252,6 @@
 
 **起始版本**：10
 
-## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
-
-允许在企业设备上安装企业MDM应用包。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-<!--Del-->
-**ACL使能**：true<!--DelEnd-->
-
-**起始版本**：10
-
-## ohos.permission.INSTALL_SELF_BUNDLE
-
-允许企业MDM应用在企业设备上自升级。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-<!--Del-->
-**ACL使能**：true<!--DelEnd-->
-
-**起始版本**：10
-
 ## ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
 允许设备设置/取消浏览器策略。
@@ -269,6 +268,8 @@
 ## ohos.permission.SET_ENTERPRISE_INFO
 
 允许设备管理应用设置企业信息。
+
+企业设备管理器激活后可设置企业组织信息，包括企业名称和描述信息，用于system UI展示设备被所属管理信息。
 
 **权限级别**：system_basic
 
@@ -583,6 +584,21 @@
 
 **起始版本**：20
 
+## ohos.permission.MANAGE_PREINSTALLED_ANTIVIRUS
+
+允许MDM应用管理系统预装的防病毒软件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
 ## ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
 允许设备管理应用（MDM）设置user_grant类权限策略。
@@ -599,3 +615,52 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
+
+## ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
+
+允许MDM应用识别文件敏感内容。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：21
+
+## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+允许设备管理应用（MDM）生成、解密DLP文件，查询DLP文件策略。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
+**变更信息**：在API20，该权限面向系统应用开放；从API 21开始，面向MDM应用开放。
+
+## ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+允许应用管理其他设备管理应用。
+
+获取该权限后，超级设备管理应用可管理其他设备管理应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：23

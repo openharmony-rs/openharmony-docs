@@ -1,4 +1,14 @@
 # OH_AVRecorder_Location
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @shiwei75-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVRecorder_Location {...} OH_AVRecorder_Location
+```
 
 ## Overview
 

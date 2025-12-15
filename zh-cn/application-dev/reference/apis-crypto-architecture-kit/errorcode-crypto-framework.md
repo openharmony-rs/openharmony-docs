@@ -1,5 +1,12 @@
 # crypto framework错误码
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -9,6 +16,10 @@
 **错误信息**
 
 Memory error.
+
+**错误描述**
+
+内存错误。
 
 **可能原因**
 
@@ -25,6 +36,10 @@ Memory error.
 
 Runtime error.
 
+**错误描述**
+
+运行时外部错误。
+
 **可能原因**
 
 系统出现的不可预料的错误。
@@ -38,6 +53,10 @@ Runtime error.
 **错误信息**
 
 Crypto operation error.
+
+**错误描述**
+
+调用三方算法库API出错。
 
 **可能原因**
 

@@ -1,12 +1,19 @@
 # AbilityDelegatorArgs
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The **AbilityDelegatorArgs** module provides APIs to obtain an **AbilityDelegatorArgs** object during the execution of test cases.
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module can be used only in <!--RP1-->[arkxtest](../../application-test/arkxtest-guidelines.md)<!--RP1End-->.
+> The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 
 ## Modules to Import
 
@@ -20,18 +27,16 @@ An **AbilityDelegatorArgs** object is obtained by calling [getArguments](js-apis
 
 ## AbilityDelegatorArgs
 
-Describes the ability delegator arguments.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name               | Type                  | Readable| Writable| Description                                                        |
+| Name               | Type                  | Read-Only| Optional| Description                                                        |
 | ------------------- | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
-| bundleName          | string                 | Yes  | Yes  | Bundle name of the application to test.|
-| parameters          | Record\<string, string> | Yes  | Yes  | Parameters of the unit test that is started currently.|
-| testCaseNames       | string                 | Yes  | Yes  | Test case names.|
-| testRunnerClassName | string                 | Yes  | Yes  | Names of the test case executors.|
+| bundleName          | string                 | No  | No  | Bundle name of the application to test.|
+| parameters          | Record\<string, string> | No  | No  | Parameters of the unit test that is started currently.|
+| testCaseNames       | string                 | No  | No  | Test case name.|
+| testRunnerClassName | string                 | No  | No  | Names of the test case executors.|
 
 **Example**
 

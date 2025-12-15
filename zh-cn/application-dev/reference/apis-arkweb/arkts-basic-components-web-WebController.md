@@ -1,4 +1,10 @@
 # Class (WebController, deprecated)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yp99ustc; @aohui; @zourongchun-->
+<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 通过WebController可以控制Web组件各种行为。一个WebController对象只能控制一个Web组件，且必须在Web组件和WebController绑定后，才能调用WebController上的方法。
 
@@ -129,7 +135,7 @@ accessBackward(): boolean
         Button('accessBackward')
           .onClick(() => {
             let result = this.controller.accessBackward()
-            console.log('result:' + result)
+            console.info('result:' + result)
           })
         Web({ src: 'www.example.com', controller: this.controller })
       }
@@ -167,7 +173,7 @@ accessForward(): boolean
         Button('accessForward')
           .onClick(() => {
             let result = this.controller.accessForward()
-            console.log('result:' + result)
+            console.info('result:' + result)
           })
         Web({ src: 'www.example.com', controller: this.controller })
       }
@@ -212,7 +218,7 @@ accessStep(step: number): boolean
         Button('accessStep')
           .onClick(() => {
             let result = this.controller.accessStep(this.steps)
-            console.log('result:' + result)
+            console.info('result:' + result)
           })
         Web({ src: 'www.example.com', controller: this.controller })
       }
@@ -334,7 +340,7 @@ getHitTest(): HitTestType
 
 | 类型                              | 说明          |
 | ------------------------------- | ----------- |
-| [HitTestType](./arkts-basic-components-web-e.md#hittesttype) | 被点击区域的元素类型。 |
+| [HitTestType](./arkts-basic-components-web-e.md#hittesttypedeprecated) | 被点击区域的元素类型。 |
 
 **示例：**
 
@@ -350,7 +356,7 @@ getHitTest(): HitTestType
         Button('getHitTest')
           .onClick(() => {
             let hitType = this.controller.getHitTest()
-            console.log("hitType: " + hitType)
+            console.info("hitType: " + hitType)
           })
         Web({ src: 'www.example.com', controller: this.controller })
       }
@@ -611,7 +617,7 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
     }
 
     toString(): void {
-      console.log('Web Component toString')
+      console.info('Web Component toString')
     }
   }
 
@@ -651,7 +657,7 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
           <script type="text/javascript">
               function htmlTest() {
                   str = objName.test("test function")
-                  console.log('objName.test result:'+ str)
+                  console.info('objName.test result:'+ str)
               }
           </script>
       </body>
@@ -717,7 +723,7 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
         Hello world!
         <script type="text/javascript">
             function test() {
-                console.log('Ark WebComponent')
+                console.info('Ark WebComponent')
                 return "This value is from index.html"
             }
         </script>

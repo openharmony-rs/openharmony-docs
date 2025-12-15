@@ -1,4 +1,10 @@
 # SceneNode
+<!--Kit: ArkGraphics 3D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @zzhao0-->
+<!--Designer: @zdustc-->
+<!--Tester: @zhangyue283-->
+<!--Adviser: @ge-yafang-->
 
 本模块提供3D图形中场景资源结点的类型及操作方法。
 
@@ -35,19 +41,21 @@ getEnabled(index: number): boolean
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
-function layerMask() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function layerMask(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode_");
       if (node) {
           // 获取掩码的使能状态
-          let enabled: Boolean = node.layerMask.getEnabled(1);
+          let enabled: boolean = node.layerMask.getEnabled(1);
       }
     }
+  }).catch((error: Error) => {
+    console.error('Scene load failed:', error);
   });
 }
 ```
@@ -68,11 +76,11 @@ setEnabled(index: number, enabled: boolean): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
-function layerMask() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function layerMask(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
@@ -81,6 +89,8 @@ function layerMask() : void {
           node.layerMask.setEnabled(1, true);
       }
     }
+  }).catch((error: Error) => {
+    console.error('Scene load failed:', error);
   });
 }
 ```
@@ -95,6 +105,7 @@ function layerMask() : void {
 | GEOMETRY | 2 | 几何类型结点。 |
 | CAMERA | 3 | 相机类型结点。 |
 | LIGHT | 4 | 灯光类型结点。 |
+| CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。 |
 
 ## Container\<T>
 定义场景对象的容器。容器提供了一种将场景对象分组到层次结构中的方法。
@@ -113,17 +124,21 @@ append(item: T): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
-function append() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function append(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // append 节点
-      result.root?.children.get(0)?.children.append(node);
+      if (node) {
+        // append 结点，如果node已经在children中，数量不会增加，但操作仍然生效
+        result.root?.children.get(0)?.children.append(node);
+      }
     }
+  }).catch((error: Error) => {
+    console.error('Scene load failed:', error);
   });
 }
 ```
@@ -143,17 +158,21 @@ insertAfter(item: T, sibling: T | null): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
-function insertAfter() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function insertAfter(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // insertAfter 节点
-      result.root?.children.get(0)?.children.insertAfter(node, null);
+      if (node) {
+        // insertAfter 结点，如果node已经在children中，数量不会增加，但操作仍然生效
+        result.root?.children.get(0)?.children.insertAfter(node, null);
+      }
     }
+  }).catch((error: Error) => {
+    console.error('Scene load failed:', error);
   });
 }
 ```
@@ -172,17 +191,21 @@ remove(item: T): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
-function remove() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function remove(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // remove 节点
-      result.root?.children.remove(node);
+      if (node) {
+        // remove 节点
+        result.root?.children.remove(node);
+      }
     }
+  }).catch((error: Error) => {
+    console.error('Scene load failed:', error);
   });
 }
 ```
@@ -206,17 +229,19 @@ get(index: number): T | null
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
-function get() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function get(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
       // 从children中get 0号节点
       result.root?.children.get(0)?.children.insertAfter(node, null);
     }
+  }).catch((error: Error) => {
+    console.error('Scene load failed:', error);
   });
 }
 ```
@@ -230,17 +255,21 @@ clear(): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
-function clear() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function clear(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // 清空children节点
-      result.root?.children.clear();
+      if (node) {
+        // 清空 node 节点下的所有子节点
+        node.children.clear();
+      }
     }
+  }).catch((error: Error) => {
+    console.error('Scene load failed:', error);
   });
 }
 ```
@@ -259,11 +288,11 @@ count(): number
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Container, Scene, Node } from '@kit.ArkGraphics3D';
 
-function count() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function count(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode_");
@@ -294,7 +323,7 @@ function count() : void {
 | layerMask | [LayerMask](#layermask) | 是 | 否 | 结点的图层掩码。 |
 | path | string | 是 | 否 | 结点路径。 |
 | parent | [Node](#node) \| null | 是 | 否 | 结点的父结点，不存在则为空值。 |
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的结点，不存在则为空值。 |
+| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的子结点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子结点（如[append()](#append)、[insertAfter()](#insertafter)、[remove()](#remove)或[clear()](#clear)）。如果append或insertAfter的结点已存在于容器中，容器会先移除该结点再插入，因此数量不会增加，看似“无效”；添加新结点才会真正增加子结点数量。 |
 
 ### getNodeByPath
 getNodeByPath(path: string): Node | null
@@ -315,11 +344,11 @@ getNodeByPath(path: string): Node | null
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
-function getNode() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function getNode(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result && result.root) {
       // 查找节点
@@ -331,8 +360,6 @@ function getNode() : void {
 
 ## Geometry
 几何节点类型，用于承载可渲染的网格数据，并支持可选的形变功能，继承自[Node](#node)。
-
-### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -354,8 +381,6 @@ function getNode() : void {
 ## Light
 光源，继承自[Node](#node)。
 
-### 属性
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -367,9 +392,21 @@ function getNode() : void {
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
 
 ## SpotLight
-点光源类型，继承自[Light](#light)。
+聚光灯类型，继承自[Light](#light)。
+
+聚光灯会朝某个方向发出锥形光，强度随着圆锥角度的衰减由innerAngle和outerAngle两个参数定义。另外与点光源类似，强度也会随着距离光源位置的增加而衰减。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| innerAngle<sup>23+</sup> | number | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。以弧度制表示，默认值为0。设置的值必须大于等于0，小于等于outerAngle。 |
+| outerAngle<sup>23+</sup> | number | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。以弧度制表示，默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 |
+
+> **注意：** 
+> 
+> 用户需要保证设置的innerAngle与outerAngle值是合理的。当outerAngle设置的值大于PI/2时，内部会强制其等于PI/2。当outerAngle设置的值小于innerAngle时，内部会强制其等于innerAngle。
+
 
 ## DirectionalLight
 平行光类型，继承自[Light](#light)。
@@ -391,7 +428,10 @@ function getNode() : void {
 | farPlane | number | 否 | 否 | 远平面，取值大于nearPlane。 |
 | enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。 |
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。 |
+| effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | 是 | 否 | 应用于相机输出的后处理特效。 |
 | clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。 |
+| msaa<sup>22+</sup> | boolean | 否 | 是 | 控制MSAA是否使能。true表示使能MSAA，false表示不使能MSAA。若未设置，默认为false。 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否 | 是 | 控制渲染管线。若未设置，默认使用轻量级前向渲染管线。（如果选择了FORWARD_LIGHTWEIGHT管线，某些功能将不可用。） |
 
 ### raycast<sup>20+</sup>
 raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
@@ -403,7 +443,7 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | 是 | 标准化设备坐标(NDC)，范围[-1, 1]。(-1, -1)为屏幕左下角，(1, 1)为屏幕右上角。|
+| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | 是 | 使用UI坐标系定义的屏幕归一化坐标，取值范围为[0, 1]。其中(0,0)表示Component3D控件的左上角，(1,1)表示Component3D控件的右下角。|
 | params | [RaycastParameters](js-apis-inner-scene.md#raycastparameters20) | 是 | 射线检测的配置参数（如检测范围、过滤节点等）。|
 
 **返回值：**
@@ -413,12 +453,11 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, Vec2, Vec3,
-  Quaternion } from '@kit.ArkGraphics3D';
-import { RaycastParameters } from '@ohos.graphics.scene';
+import { SceneNodeParameters, Camera, SceneResourceFactory, Scene, Node, Vec2, Vec3, Quaternion,
+  RaycastParameters } from '@kit.ArkGraphics3D';
 
 function Raycast(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
   Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
     .then(async (result: Scene) => {
       if (!result.root) {

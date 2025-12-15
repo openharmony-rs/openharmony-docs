@@ -1,4 +1,14 @@
 # ArkUI_Curve
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_Curve ArkUI_Curve
+```
 
 ## 概述
 

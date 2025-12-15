@@ -1,10 +1,18 @@
 # image_pixel_map_napi.h
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yaozhupeng-->
+<!--Designer: @yaozhupeng-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
 声明可以锁定并访问pixelmap数据的方法，声明解锁的方法。
 
-**库：** libpixelmap_ndk.so
+**库：** libpixelmap_ndk.z.so
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **引用文件：** <multimedia/image_framework/image_pixel_map_napi.h>
 
@@ -40,7 +48,7 @@
 
 ### 方法返回的错误码
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -59,7 +67,7 @@ enum anonymous enum
 
 ### 像素格式
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -79,7 +87,7 @@ enum anonymous enum
 
 ### PixelMap缩放类型
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -99,7 +107,7 @@ PixelMap缩放类型的枚举。
 
 ### OH_GetImageInfo()
 
-```
+```c
 int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 ```
 
@@ -128,7 +136,7 @@ int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 
 ### OH_AccessPixels()
 
-```
+```c
 int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 ```
 
@@ -159,7 +167,7 @@ int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 
 ### OH_UnAccessPixels()
 
-```
+```c
 int32_t OH_UnAccessPixels(napi_env env, napi_value value)
 ```
 

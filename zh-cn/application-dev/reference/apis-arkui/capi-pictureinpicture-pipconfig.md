@@ -1,4 +1,14 @@
 # PictureInPicture_PipConfig
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef void* PictureInPicture_PipConfig
+```
 
 ## 概述
 

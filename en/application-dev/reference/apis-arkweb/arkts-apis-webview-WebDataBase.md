@@ -1,4 +1,10 @@
 # Class (WebDataBase)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yuzhouhang1-->
+<!--Designer: @handyohos-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebDataBase** object.
 
@@ -41,7 +47,7 @@ Retrieves HTTP authentication credentials for a given host and realm. This API r
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -68,7 +74,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.username_password = webview.WebDataBase.getHttpAuthCredentials(this.host, this.realm);
-            console.log('num: ' + this.username_password.length);
+            console.info('num: ' + this.username_password.length);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -98,7 +104,7 @@ Saves HTTP authentication credentials for a given host and realm. This API retur
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                                               |
 | -------- | ------------------------------------------------------ |

@@ -1,5 +1,12 @@
 # Calendar Setting
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Use Cases
 
 Users in different locales use different calendars. To be specific, the Gregorian calendar is used in most locales, whereas calendars such as the lunar, Islamic, and Hebrew calendars are used in some other locales. The time and date on the calendar are calculated based on the calendar and may vary according to the time zone and DST. Therefore, the system should allow users to choose calendars that comply with their local habits. This is made real with the complete set of APIs provided by the [Calendar](../reference/apis-localization-kit/js-apis-i18n.md#calendar8) class. Besides setting the calendar type, date (year, month, and day), time zone, start date of a week, and minimum number of days in the first week of a year, users can even determine whether a day is a weekend on the calendar and calculate the day difference between two dates. During application development, you can choose functions that suit your needs in a flexible manner.
@@ -8,13 +15,10 @@ Users in different locales use different calendars. To be specific, the Gregoria
 
 The following illustrates how to view the lunar calendar date corresponding to the Gregorian calendar date as an example to help you understand the usage of [Calendar](../reference/apis-localization-kit/js-apis-i18n.md#calendar8) APIs.
 
-1. Import the **i18n** module.
+1. Configure the Gregorian calendar.
    ```ts
    import { i18n } from '@kit.LocalizationKit';
-   ```
 
-2. Configure the Gregorian calendar.
-   ```ts
    let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans', 'gregory');
    // Set the date and time of the Calendar object to 2022.06.13 08:00:00.
    calendar.setTime(new Date(2022, 5, 13, 8, 0, 0));
@@ -59,8 +63,10 @@ The following illustrates how to view the lunar calendar date corresponding to t
    let daysDifference: number = calendar.compareDays(new Date(2023, 10, 15)); // daysDifference = -3
    ```
 
-3. Obtain the lunar calendar date corresponding to a Gregorian calendar date.
+2. Obtain the lunar calendar date corresponding to a Gregorian calendar date.
    ```ts
+   import { i18n } from '@kit.LocalizationKit';
+
    let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans', 'chinese');
    // Pass the Gregorian calendar date to the Calendar object, with the date and time being 2023.07.25 08:00:00.
    calendar.setTime(new Date(2023, 6, 25, 8, 0, 0));

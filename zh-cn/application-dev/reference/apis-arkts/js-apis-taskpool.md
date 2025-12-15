@@ -1,9 +1,10 @@
 # @ohos.taskpool（启动任务池）
 <!--Kit: ArkTS-->
-<!--Subsystem: commonlibrary-->
+<!--Subsystem: CommonLibrary-->
 <!--Owner: @lijiamin2025-->
-<!--SE: @weng-changcheng-->
-<!--TSE: @kirl75; @zsw_zhushiwei-->
+<!--Designer: @weng-changcheng-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 任务池（taskpool）的作用是为应用程序提供多线程运行环境，降低资源消耗并提升系统性能，且您无需关心线程的生命周期。您可以使用任务池API创建后台任务（Task），并进行如执行任务或取消任务等操作。理论上，任务池API允许创建的任务数量不受限制，但由于内存限制，不建议这样做。此外，不建议在任务中执行阻塞操作，尤其是无限期阻塞操作，因为长时间的阻塞操作会占用工作线程，可能阻塞其他任务的调度，影响应用性能。
 
@@ -34,7 +35,7 @@ import { taskpool } from '@kit.ArkTS';
 
 execute(func: Function, ...args: Object[]): Promise\<Object>
 
-将待执行的函数放入taskpool的内部任务队列，函数不会立即执行，而是等待分发到工作线程执行。在当前执行模式下，不支持取消任务。
+将待执行的函数放入taskpool的内部任务队列，函数不会立即执行，而是等待分发到工作线程执行。在当前执行模式下，不支持取消任务。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -82,7 +83,7 @@ taskpool.execute(printArgs, 100).then((value: Object) => { // 100: test number
 
 execute<A extends Array\<Object>, R>(func: (...args: A) => R | Promise\<R>, ...args: A): Promise\<R>
 
-校验并发函数的参数类型和返回类型后，将函数添加到taskpool的任务队列。
+校验并发函数的参数类型和返回类型后，将函数添加到taskpool的任务队列。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -148,7 +149,7 @@ taskpool.execute<[[number, string]], string>(testWithArray, [100, "test"]).then(
 
 execute(task: Task, priority?: Priority): Promise\<Object>
 
-将创建好的任务添加到taskpool的内部任务队列中，任务不会立即执行，而是等待分发到工作线程执行。当前模式支持设置任务优先级和通过cancel取消任务。任务不能是任务组任务、串行队列任务或异步队列任务。非长时任务可以多次调用执行。
+将创建好的任务添加到taskpool的内部任务队列中，任务不会立即执行，而是等待分发到工作线程执行。当前模式支持设置任务优先级和通过cancel取消任务。任务不能是任务组任务、串行队列任务或异步队列任务。非长时任务可以多次调用执行。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -207,7 +208,7 @@ taskpool.execute(task3, taskpool.Priority.HIGH).then((value: Object) => {
 
 execute<A extends Array\<Object>, R>(task: GenericsTask<A, R>, priority?: Priority): Promise\<R>
 
-将创建好的泛型任务放入taskpool的内部任务队列，不校验任务的参数类型和返回值类型。
+将创建好的泛型任务放入taskpool的内部任务队列，不校验任务的参数类型和返回值类型。使用Promise异步回调。
 
 execute任务的校验是结合new GenericsTask一起用的，参数、返回值类型需与new GenericsTask中的类型保持一致。
 
@@ -268,7 +269,7 @@ taskpool.execute<[number], number>(task3, taskpool.Priority.HIGH).then((value: n
 
 execute(group: TaskGroup, priority?: Priority): Promise<Object[]>
 
-将创建好的任务组放入taskpool内部任务队列，任务组中的任务不会立即执行，而是等待分发到工作线程执行。任务组中任务全部执行完成后，结果数组统一返回。此模式适用于执行关联任务。
+将创建好的任务组放入taskpool内部任务队列，任务组中的任务不会立即执行，而是等待分发到工作线程执行。任务组中任务全部执行完成后，结果数组统一返回。此模式适用于执行关联任务。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -329,7 +330,7 @@ taskpool.execute(taskGroup2).then((res: Array<Object>) => {
 
 executeDelayed(delayTime: number, task: Task, priority?: Priority): Promise\<Object>
 
-延时执行任务。当前执行模式可以设置任务优先级，并且可以尝试调用cancel取消任务。该任务不能是任务组任务、串行队列任务、异步队列任务或周期任务。如果任务不是长时任务，可以多次调用executeDelayed执行；如果是长时任务，则仅支持执行一次。
+延时执行任务。当前执行模式可以设置任务优先级，并且可以尝试调用cancel取消任务。该任务不能是任务组任务、串行队列任务、异步队列任务或周期任务。如果任务不是长时任务，可以多次调用executeDelayed执行；如果是长时任务，则仅支持执行一次。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -339,7 +340,7 @@ executeDelayed(delayTime: number, task: Task, priority?: Priority): Promise\<Obj
 
 | 参数名       | 类型          | 必填 | 说明                 |
 | ----------- | ------------- | ---- | -------------------- |
-| delayTime   | number        | 是   | 延时时间。单位为ms。  |
+| delayTime   | number        | 是   | 延时时间。单位为ms。delayTime值必须要大于等于0。  |
 | task        | [Task](#task) | 是   | 需要延时执行的任务。 |
 | priority    | [Priority](#priority)       | 否   | 延时执行的任务的优先级，该参数默认值为taskpool.Priority.MEDIUM。 |
 
@@ -388,7 +389,7 @@ taskpool.executeDelayed(1000, task).then(() => { // 1000: delayTime is 1000ms
 
 executeDelayed<A extends Array\<Object>, R>(delayTime: number, task: GenericsTask\<A, R>, priority?: Priority): Promise\<R>
 
-延时执行泛型任务，不校验任务的参数类型和返回值类型。
+延时执行泛型任务，不校验任务的参数类型和返回值类型。使用Promise异步回调。
 
 executeDelayed任务的校验是结合new GenericsTask一起用的，参数、返回值类型需与new GenericsTask中的类型保持一致。
 
@@ -400,7 +401,7 @@ executeDelayed任务的校验是结合new GenericsTask一起用的，参数、�
 
 | 参数名       | 类型          | 必填 | 说明                 |
 | ----------- | ------------- | ---- | -------------------- |
-| delayTime   | number        | 是   | 延时时间。单位为ms。  |
+| delayTime   | number        | 是   | 延时时间。单位为ms。delayTime值必须要大于等于0。  |
 | task        | [GenericsTask\<A, R>](#genericstask13) | 是   | 需要延时执行的泛型任务。 |
 | priority    | [Priority](#priority)       | 否   | 延时执行的任务的优先级，默认值为taskpool.Priority.MEDIUM。 |
 
@@ -446,7 +447,7 @@ taskpool.executeDelayed<[number], string>(1000, task).then((res: string) => { //
 
 executePeriodically(period: number, task: Task, priority?: Priority): void
 
-周期任务每隔period时长执行一次。当前执行模式支持设置任务优先级，并可以通过调用cancel取消周期任务的执行。周期任务不能是任务组任务、串行队列任务或异步队列任务，不能再次调用执行接口，且不能拥有依赖关系。
+周期任务每隔period时长执行一次。当前执行模式支持设置任务优先级，并可以通过调用cancel取消周期任务的执行。周期任务不能是任务组任务、串行队列任务或异步队列任务，不能再次调用执行接口，且执行的任务不能拥有依赖关系。
 
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -457,7 +458,7 @@ executePeriodically(period: number, task: Task, priority?: Priority): void
 
 | 参数名       | 类型          | 必填  | 说明                 |
 | -----------  | ------------- | ----- | -------------------- |
-| period       | number        | 是    | 周期时长。单位为ms。  |
+| period       | number        | 是    | 周期时长。单位为ms。period值必须要大于等于0。  |
 | task         | [Task](#task) | 是    | 需要周期执行的任务。 |
 | priority     | [Priority](#priority) | 否   | 周期执行的任务的优先级，该参数默认值为taskpool.Priority.MEDIUM。 |
 
@@ -534,7 +535,7 @@ executePeriodically任务的校验是结合new GenericsTask一起用的，参数
 
 | 参数名       | 类型          | 必填  | 说明                 |
 | -----------  | ------------- | ----- | -------------------- |
-| period       | number        | 是    | 周期时长。单位为ms。  |
+| period       | number        | 是    | 周期时长。单位为ms。period值必须要大于等于0。  |
 | task         | [GenericsTask\<A, R>](#genericstask13) | 是    | 需要周期执行的泛型任务。 |
 | priority     | [Priority](#priority) | 否   | 周期执行的任务的优先级，该参数默认值为taskpool.Priority.MEDIUM。 |
 
@@ -599,7 +600,7 @@ taskpoolTest();
 
 cancel(task: Task): void
 
-取消任务池中的任务。当任务在taskpool等待队列中，取消该任务后该任务将不再执行，并返回任务被取消的异常；当任务已经在taskpool工作线程执行，取消该任务并不影响任务继续执行，执行结果在catch分支返回，搭配isCanceled使用可以对任务取消行为作出响应。taskpool.cancel对其之前的taskpool.execute或taskpool.executeDelayed生效。
+取消任务池中的任务。当任务在taskpool等待队列中，取消该任务后该任务将不再执行，并返回任务被取消的异常；当任务已经在taskpool工作线程执行，取消该任务并不影响任务继续执行，执行结果在catch分支返回，搭配isCanceled使用可以对任务取消行为作出响应。taskpool.cancel对其之前的taskpool.execute、taskpool.executeDelayed或taskpool.executePeriodically生效。
 
 从API version 20开始，支持在执行cancel操作后，在catch分支里使用BusinessError<[taskpool.TaskResult](#taskresult20)>的泛型标记，来获取任务中抛出的异常信息或最终的执行结果。
 
@@ -627,6 +628,8 @@ cancel(task: Task): void
 **正在执行的任务取消示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function inspectStatus(arg: number): number {
   // 第一次检查任务是否已经取消并作出响应
@@ -656,6 +659,8 @@ function concurrentFunc() {
   let task6: taskpool.Task = new taskpool.Task(inspectStatus, 600); // 600: test number
   taskpool.execute(task1).then((res: Object) => {
     console.info("taskpool test result: " + res);
+  }).catch((err: BusinessError) => {
+    console.error("taskpool catch err: " + err.message);
   });
   taskpool.execute(task2);
   taskpool.execute(task3);
@@ -705,6 +710,8 @@ cancel(group: TaskGroup): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function printArgs(args: number): number {
   let t: number = Date.now();
@@ -725,6 +732,8 @@ function concurrentFunc() {
   });
   taskpool.execute(taskGroup2).then((res: Array<Object>) => {
     console.info("taskGroup2 res is:" + res);
+  }).catch((err: BusinessError) => {
+    console.error("taskGroup2 catch err: " + err.message);
   });
   setTimeout(() => {
     try {
@@ -768,6 +777,8 @@ cancel(taskId: number): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function printArgs(args: number): number {
   let t: number = Date.now();
@@ -793,7 +804,9 @@ function cancelFunction(taskId: number) {
 
 function concurrentFunc() {
   let task = new taskpool.Task(printArgs, 100); // 100: test number
-  taskpool.execute(task);
+  taskpool.execute(task).catch((err: BusinessError) => {
+    console.error("taskpool catch err: " + err.message);
+  });
   setTimeout(() => {
     let cancelTask = new taskpool.Task(cancelFunction, task.taskId);
     taskpool.execute(cancelTask);
@@ -913,11 +926,78 @@ getTaskPoolInfo(): TaskPoolInfo
 let taskpoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
 ```
 
+## taskpool.getTask<sup>22+</sup>
+
+getTask(taskId: number, taskName?: string): Task | undefined
+
+通过taskId或taskId与taskName获取对应的Task实例。
+
+> **说明：**
+>
+> - 如果传入的taskId查询不到对应的Task实例，则会返回undefined；
+> - 如果传入的taskId能够查询到对应的Task实例，但是调用getTask方法的线程和创建Task实例的线程不一致，则会返回undefined；
+> - 如果传入了taskId和taskName，通过taskId查询到的Task实例的name和传入的taskName不一致，则会返回undefined。
+>
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型          | 必填 | 说明                 |
+| ------ | ------------- | ---- | -------------------- |
+| taskId   | number | 是   | 任务ID。 |
+| taskName   | string | 否   | 任务名称。默认值为undefined。 |
+
+**返回值：**
+
+| 类型    | 说明                                 |
+| ------- | ------------------------------------ |
+| [Task](#task) \| undefined | 返回Task实例；当情况异常时，返回undefined，具体可见上文说明。 |
+
+**示例：**
+
+```ts
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+function addNum(num1: number, num2: number) {
+  return num1 + num2;
+}
+
+function checkTask() {
+  try {
+    taskpool.getTask(null);
+  } catch (e) {
+    console.error("error:" + e);
+    // error:BusinessError: Parameter error. The input parameters are invalid, the type of the first param must be number.
+  }
+
+  let task1:taskpool.Task = new taskpool.Task("addNum", addNum, 1, 2);
+  let task2:taskpool.Task | undefined = taskpool.getTask(task1.taskId, "addNum"); // task2 is not undefined
+  let task3:taskpool.Task | undefined = taskpool.getTask(task1.taskId, "add"); // task3 is undefined
+  let task4:taskpool.Task | undefined = taskpool.getTask(0); // task4 is undefined
+}
+
+function dealTask() {
+  let task1:taskpool.Task = new taskpool.Task(addNum, 1, 2);
+  let task2:taskpool.Task | undefined = taskpool.getTask(task1.taskId);
+  if (task2 === undefined) {
+    return;
+  }
+
+  taskpool.execute(task2).then((result) => {
+    console.info("task2 result: " + result); // task2 result: 3
+  })
+}
+```
+
 ## Priority
 
 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../napi/qos-guidelines.md#qos等级定义)。
 
-**系统能力：**  SystemCapability.Utils.Lang
+**系统能力：** SystemCapability.Utils.Lang
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -974,11 +1054,11 @@ for (let i: number = 0; i < taskArray.length; i+=4) { // 4: 每次执行4个任�
 | -------------------- | --------- | ---- | ---- | ------------------------------------------------------------ |
 | function             | Function  | 否   | 否   | 创建任务时需要传入的函数，支持的函数返回值类型请查[序列化支持类型](#序列化支持类型)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | arguments            | Object[]  | 否   | 是   | 创建任务传入函数所需的参数，支持的参数类型请查[序列化支持类型](#序列化支持类型)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| name<sup>11+</sup>   | string    | 是   | 否   | 创建任务时指定的任务名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| taskId<sup>18+</sup>   | number    | 是   | 否   | 任务的ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| totalDuration<sup>11+</sup>  | number    | 是   | 否   | 执行任务总耗时。单位为ms。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| ioDuration<sup>11+</sup>     | number    | 是   | 否   | 执行任务异步IO耗时。单位为ms。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| cpuDuration<sup>11+</sup>    | number    | 是   | 否   | 执行任务CPU耗时。单位为ms。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| name<sup>11+</sup>   | string    | 否   | 否   | 创建任务时指定的任务名称。不建议修改此值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| taskId<sup>18+</sup>   | number    | 否   | 否   | 任务的ID。任务的标识符，系统默认提供全局唯一值，不建议修改此值。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| totalDuration<sup>11+</sup>  | number    | 否   | 否   | 执行任务总耗时。单位为ms。不建议修改此值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| ioDuration<sup>11+</sup>     | number    | 否   | 否   | 执行任务异步IO耗时。单位为ms。不建议修改此值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| cpuDuration<sup>11+</sup>    | number    | 否   | 否   | 执行任务CPU耗时。单位为ms。不建议修改此值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 
 ### constructor
 
@@ -1362,6 +1442,7 @@ static sendData(...args: Object[]): void
 >
 > - 该接口应在taskpool的线程中调用。
 > - 避免在回调函数中调用该方法，否则可能导致消息无法传递到宿主线程。
+> - 避免在异步函数中调用该方法，否则可能导致消息无法传递到宿主线程。如果在异步函数中使用，则需要使用await来确保该异步函数在任务中同步执行完成。
 > - 调用该接口时，请确保处理数据的回调函数已在宿主线程注册。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -1413,6 +1494,35 @@ async function taskpoolTest(): Promise<void> {
 taskpoolTest();
 ```
 
+```ts
+// 异步函数中调用该方法
+@Concurrent
+async function sendDataTest(num: number) {
+  let func = async () => {
+    let asyncSleep = async (time: number): Promise<Object> => {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
+    await asyncSleep(10000);
+    let res: number = num * 10;
+    taskpool.Task.sendData(res);
+  }
+  await func(); // 需要使用await来确保该异步函数在任务中同步执行完成。
+}
+
+function taskpoolTest() {
+  try {
+    let task: taskpool.Task = new taskpool.Task(sendDataTest, 10);
+    task.onReceiveData((data: string) => {
+      console.info("taskpool: data is: " + data);
+    });
+    taskpool.execute(task);
+  } catch (e) {
+    console.error(`taskpool: error code: ${e.code}, info: ${e.message}`);
+  }
+}
+
+taskpoolTest();
+```
 
 ### onReceiveData<sup>11+</sup>
 
@@ -1870,11 +1980,13 @@ type CallbackFunctionWithError = (e: Error) => void
 
 ## LongTask<sup>12+</sup>
 
-**系统能力：** SystemCapability.Utils.Lang
-
 表示长时任务。LongTask继承自[Task](#task)。
 长时任务不设置执行时间上限，长时间运行不会触发超时异常，但不支持将同一任务多次执行或者将该任务加入任务组（TaskGroup）。
 执行长时任务的线程会持续存在，直到任务完成并调用[terminateTask](#taskpoolterminatetask12)后，该线程在空闲时被回收。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **示例：**
 
@@ -1891,10 +2003,10 @@ let task: taskpool.LongTask = new taskpool.LongTask(printArgs, "this is my first
 
 ## GenericsTask<sup>13+</sup>
 
-**系统能力：** SystemCapability.Utils.Lang
-
 表示泛型任务。GenericsTask继承自[Task](#task)。
 相比创建Task，创建GenericsTask可以在编译阶段校验并发函数的传参和返回值类型。其余行为与Task相同。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 ### constructor<sup>13+</sup>
 
@@ -2205,7 +2317,7 @@ let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner("runner1", task
 
 execute(task: Task): Promise\<Object>
 
-执行串行任务。使用该方法前需先构造SequenceRunner。串行队列不能执行任务组任务、其他串行队列任务、异步队列任务、有依赖关系的任务和已执行的任务。
+执行串行任务。使用该方法前需先构造SequenceRunner。串行队列不能执行任务组任务、其他串行队列任务、异步队列任务、有依赖关系的任务和已执行的任务。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2355,7 +2467,7 @@ let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
 
 execute(task: Task, priority?: Priority): Promise\<Object>
 
-执行异步任务。使用该方法前需要先构造AsyncRunner。
+执行异步任务。使用该方法前需要先构造AsyncRunner。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2399,6 +2511,9 @@ execute(task: Task, priority?: Priority): Promise\<Object>
 **示例：**
 
 ```ts
+import { taskpool } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function additionDelay(delay: number): void {
   let start: number = new Date().getTime();
@@ -2456,7 +2571,7 @@ async function asyRunner2() {
 
 | 名称     | 类型                | 只读 | 可选 | 说明                                                           |
 | -------- | ------------------ | ---- | ---- | ------------------------------------------------------------- |
-| name<sup>12+</sup> | string   | 否   | 否   | 任务的名字。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                    |
+| name<sup>12+</sup> | string   | 否   | 否   | 任务的名字，不建议修改此值。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                    |
 | taskId   | number             | 否   | 否   | 任务的ID。任务的标识符，系统默认提供全局唯一值，不建议修改此值。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                     |
 | state    | [State](#state10)  | 否   | 否   | 任务的状态。state标识任务的当前状态，不建议修改此值。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                    |
 | duration | number             | 否   | 是   | 任务执行至当前所用的时间，默认为0，单位为ms。当返回为0时，表示任务未执行；返回为空时，表示没有任务执行。不建议修改此值。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
@@ -2477,7 +2592,7 @@ async function asyRunner2() {
 | 名称     | 类型                    | 只读 | 可选 | 说明                                                      |
 | -------- | ---------------------- | ---- | ---- | -------------------------------------------------------- |
 | tid      | number                 | 否   | 否   | 工作线程的标识符。如果返回为空，表示当前没有任务执行。不建议修改此值。 |
-| taskIds  | number[]               | 否   | 是   | 在当前线程上运行的任务id列表。返回为空时，代表没有任务执行。不建议修改此值。   |
+| taskIds  | number[]               | 否   | 是   | 在当前线程上运行的任务ID列表。返回为空时，代表没有任务执行。不建议修改此值。   |
 | priority | [Priority](#priority)  | 否   | 是   | 当前线程的优先级。返回为空时，代表没有任务执行。 不建议修改此值。             |
 
 ## TaskPoolInfo<sup>10+</sup>
@@ -2595,7 +2710,7 @@ function runningCancelError() {
 ## 其他说明
 
 ### 序列化支持类型
-序列化支持类型包括：目前支持的数据类型有[普通对象](../../arkts-utils/normal-object.md)、[ArrayBuffer对象](../../arkts-utils/arraybuffer-object.md)、[SharedArrayBuffer对象](../../arkts-utils/shared-arraybuffer-object.md)、[Transferable对象（NativeBinding对象）](../../arkts-utils/transferabled-object.md)、[Sendable对象](../../arkts-utils/arkts-sendable.md)五种。
+序列化支持类型参考[线程间通信对象概述](../../arkts-utils/serializable-overview.md)里的介绍。
 
 ### 简单使用
 
@@ -2656,7 +2771,7 @@ taskpoolExecute();
 ```ts
 // 支持async函数
 @Concurrent
-async function delayExecute(): Promise<Object> {
+async function delayExecute(): Promise<Array<Object>> {
   let ret = await Promise.all<Object>([
     new Promise<Object>(resolve => setTimeout(resolve, 1000, "resolved"))
   ]);

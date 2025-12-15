@@ -1,6 +1,22 @@
 # @ohos.bluetooth.socket (蓝牙socket模块)
 
-socket模块提供了操作和管理蓝牙socket的方法。
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
+本模块提供一种蓝牙套接字功能，可实现设备间连接和数据传输。当两个设备间进行蓝牙套接字通信交互时，依据设备功能的不同，可区分客户端与服务端。
+
+支持的套接字链路类型包括[RFCOMM](../../connectivity/terminology.md#rfcomm)和[L2CAP](../../connectivity/terminology.md#l2cap)。
+
+- RFCOMM链路类型也称为串口通信协议（Serial Port Profile, [SPP](../../connectivity/terminology.md#spp)），适用于传统蓝牙（[BR](../../connectivity/terminology.md#br)/[EDR](../../connectivity/terminology.md#edr)）。
+- L2CAP链路类型适用于传统蓝牙（BR/EDR）和低功耗蓝牙（[BLE](../../connectivity/terminology.md#ble)）。
+
+通过[socket.sppConnect](#socketsppconnect)创建客户端套接字并向服务端发起连接。
+
+通过[socket.sppListen](#socketspplisten)创建服务端套接字并监听客户端的连接。
 
 > **说明：**
 >
@@ -18,23 +34,26 @@ import { socket } from '@kit.ConnectivityKit';
 
 sppListen(name: string, options: SppOptions, callback: AsyncCallback&lt;number&gt;): void
 
-创建一个服务端监听Socket。使用Callback异步回调。
+服务端使用，创建一个服务端监听套接字。使用Callback异步回调。
+- 通过入参[socket.SppOptions](#sppoptions)的type参数，可以创建不同链路类型的服务端套接字，适用于不同的场景。该操作会在蓝牙子系统中注册对应的服务，表示服务端支持的能力。
+- 客户端可通过[socket.sppConnect](#socketsppconnect)向该服务端发起连接请求。
+- 当应用不再需要该服务端套接字时，需通过[socket.sppCloseServerSocket](#socketsppcloseserversocket)主动关闭创建时获取到的套接字，蓝牙子系统会删除此前注册的服务。如果此时客户端发起连接，就会连接失败。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明                      |
 | -------- | --------------------------- | ---- | ----------------------- |
 | name     | string                      | 是    | 服务的名称，该字符串的字符个数范围为[0, 256]。                  |
-| options   | [SppOptions](#sppoptions)     | 是    | spp监听配置参数。              |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当创建服务端scoket成功，err为undefined，data为获取到的服务端socket的id；否则为错误对象。 |
+| options   | [SppOptions](#sppoptions)     | 是    | 用于监听的套接字配置参数。              |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当创建服务端套接字成功，err为undefined，data为获取到的服务端套接字的ID，有效值为非负值；否则为错误对象。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -49,7 +68,8 @@ sppListen(name: string, options: SppOptions, callback: AsyncCallback&lt;number&g
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let serverNumber = -1;
 let serverSocket = (code: BusinessError, number: number) => {
   if (code) {
@@ -61,7 +81,8 @@ let serverSocket = (code: BusinessError, number: number) => {
   }
 }
 
-let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: 0};
+// 以RFCOMM链路类型套接字为例
+let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: socket.SppType.SPP_RFCOMM};
 try {
     socket.sppListen('server1', sppOption, serverSocket);
 } catch (err) {
@@ -69,22 +90,60 @@ try {
 }
 ```
 
+## socket.getL2capPsm<sup>20+</sup>
+getL2capPsm(serverSocket: number): number
 
-## socket.sppAccept
+获取服务端L2CAP链路类型套接字的协议/服务多路复用器值（Protocol/Service Multiplexer, [PSM](../../connectivity/terminology.md#psm)），该值用于标识特定的服务数据传输通道。
 
-sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
+>**说明：**
+>
+> 需要在服务端调用完[socket.sppListen](#socketspplisten)后调用该接口，且传入的链路类型[SppType](#spptype)需是SPP_L2CAP或SPP_L2CAP_BLE。
 
-服务端监听socket等待客户端连接。使用Callback异步回调。
-
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名          | 类型                          | 必填   | 说明                      |
 | ------------ | --------------------------- | ---- | ----------------------- |
-| serverSocket | number                      | 是    | 服务端socket的id。<br>该值是调用[sppListen](#socketspplisten)接口后，通过其异步callback获取到的。           |
-| callback     | AsyncCallback&lt;number&gt; | 是    | 回调函数。当收到客户端的连接时，err为undefined，data为该客户端socket的id；否则为错误对象。 |
+| serverSocket | number | 是 | 服务端套接字的ID。<br>该值是调用[socket.sppListen](#socketspplisten)接口后，通过其异步callback获取到的。           |
 
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| number | 返回L2CAP链路类型套接字的psm值。<br>- [SppType](#spptype)设置为SPP_L2CAP_BLE时，返回值的有效值范围为[0x01, 0xFF]。<br>- [SppType](#spptype)设置为SPP_L2CAP时，返回值的有效值范围为[0x0000, 0xFFFF]。<br>- 服务端通道建立异常或[SppType](#spptype)非L2CAP链路类型时，返回-1。|          
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 服务端获取客户端设备地址。
+let serverNumber = 1; // 此处serverNumber需赋值为调用sppListen接口后，回调中得到的serverNumber。
+try {
+    let l2capPsm: number = socket.getL2capPsm(serverNumber);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+## socket.sppAccept
+
+sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
+
+服务端使用，接受客户端的套接字连接请求。使用Callback异步回调。
+- 须在调用[socket.sppListen](#socketspplisten)创建服务端套接字成功后，才能调用该接口监听客户端的连接请求。
+- 客户端可通过[socket.sppConnect](#socketsppconnect)向该服务端发起连接请求。
+- 连接建立成功后，即可通过[socket.sppWrite](#socketsppwrite)、[socket.sppWriteAsync](#socketsppwriteasync18)、[socket.sppReadAsync](#socketsppreadasync18)等接口，同客户端进行数据传输。
+- 当服务端不再需要已建立的连接时，可通过[socket.sppCloseClientSocket](#socketsppcloseclientsocket)主动断开指定的客户端套接字连接。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                      |
+| ------------ | --------------------------- | ---- | ----------------------- |
+| serverSocket | number                      | 是    | 服务端套接字的ID。<br>该值是调用[socket.sppListen](#socketspplisten)接口后，通过其异步callback获取到的。           |
+| callback     | AsyncCallback&lt;number&gt; | 是    | 回调函数。当收到客户端的连接请求且连接建立成功时，err为undefined，data是用于标识发起此次连接请求的客户端套接字ID，有效值为非负值；否则err为错误对象。 |
 **错误码**：
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
@@ -101,9 +160,10 @@ sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let clientNumber = -1;
-let serverNumber = -1;
+let serverNumber = 1;
 let acceptClientSocket = (code: BusinessError, number: number) => {
   if (code) {
     console.error('sppListen error, code is ' + code);
@@ -125,19 +185,23 @@ try {
 
 sppConnect(deviceId: string, options: SppOptions, callback: AsyncCallback&lt;number&gt;): void
 
-客户端向远端设备发起spp连接。使用Callback异步回调。
+客户端使用，创建一个客户端套接字，并向服务端的特定服务发起连接请求。
+- 通过[SppOptions](#sppoptions)参数的type表示需要连接的服务类型。
+- 需确保服务端设备已具备需要连接的服务。服务端可通过[socket.sppListen](#socketspplisten)注册并监听连接请求。
+- 连接建立成功后，即可通过[socket.sppWrite](#socketsppwrite)或[socket.sppWriteAsync](#socketsppwriteasync18)接口，同服务端进行数据传输。
+- 当客户端不再需要已建立的连接时，可通过[socket.sppCloseclientSocket](#socketsppcloseclientsocket)主动断开连接。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明                             |
 | -------- | --------------------------- | ---- | ------------------------------ |
-| deviceId | string                      | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| options   | [SppOptions](#sppoptions)     | 是    | spp客户端连接配置参数。                  |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当客户端发起连接成功，err为undefined，data为当前客户端socket的id；否则为错误对象。        |
+| deviceId | string                      | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
+| options   | [SppOptions](#sppoptions)     | 是    | 客户端套接字连接配置参数。                  |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当客户端发起连接成功，err为undefined，data为当前客户端套接字的ID，有效值为非负值；否则为错误对象。        |
 
 **错误码**：
 
@@ -167,7 +231,9 @@ let clientSocket = (code: BusinessError, number: number) => {
     console.info('bluetooth clientSocket Number: ' + number);
   }
 }
-let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: 0};
+
+// 以RFCOMM链路类型套接字为例
+let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: socket.SppType.SPP_RFCOMM};
 try {
     socket.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 } catch (err) {
@@ -180,7 +246,7 @@ try {
 
 getDeviceId(clientSocket: number): string
 
-通过clientSocket获取对端设备地址。服务端、客户端均可调用，传入非法clientSocket无法获取。
+客户端和服务端均可使用，获取套接字连接中的对端设备蓝牙地址。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -188,13 +254,13 @@ getDeviceId(clientSocket: number): string
 
 | 参数名      | 类型                          | 必填   | 说明                             |
 | -------- | ------------------------------- | ---- | ------------------------------ |
-| clientSocket | number                      | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。 |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[socket.sppAccept](#socketsppaccept)或[socket.sppConnect](#socketsppconnect)接口后，通过其异步callback获取到的。 |
 
 **返回值：**
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
-| string | 返回对端设备地址。 |
+| string | 返回对端设备地址。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。 |
 
 **错误码**：
 
@@ -207,10 +273,10 @@ getDeviceId(clientSocket: number): string
 **示例：**
 
 ```js
-import { socket } from '@kit.ConnectivityKit';
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // 服务端获取客户端设备地址。
-let clientSocket = -1; // clientSocket是sppAccept回调中得到的，调getDeviceId接口前需更新clientSocket。
+let clientSocket = 1; // clientSocket是sppAccept回调中得到的，调用getDeviceId接口前需更新clientSocket。
 try {
     let deviceAddr: string = socket.getDeviceId(clientSocket);
 } catch (err) {
@@ -231,15 +297,18 @@ try {
 
 sppCloseServerSocket(socket: number): void
 
-关闭服务端监听Socket，入参socket由sppListen接口返回。
+服务端使用，删除指定的服务端套接字。
+- 需先调用[socket.sppListen](#socketspplisten)并获取到有效的服务端监听套接字标识符。
+- 若服务端无需继续监听，可调用本接口以关闭监听套接字，蓝牙子系统会删除此前注册的服务。如果此时客户端发起连接，就会连接失败。
+- 若服务端此时与其他客户端存在连接，该接口调用后，也会主动断开与客户端的连接。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明              |
 | ------ | ------ | ---- | --------------- |
-| socket | number | 是    | 服务端监听socket的id。<br>该值是调用[sppListen](#socketspplisten)接口，通过其异步callback获取到的。 |
+| socket | number | 是    | 服务端监听套接字的ID。<br>该值是调用[socket.sppListen](#socketspplisten)接口，通过其异步callback获取到的。 |
 
 **错误码**：
 
@@ -255,8 +324,9 @@ sppCloseServerSocket(socket: number): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-let serverNumber = -1; // 此处serverNumber需赋值为调用sppListen接口后，回调中得到的serverNumber。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let serverNumber = 1; // 此处serverNumber需赋值为调用sppListen接口后，在回调中得到的serverNumber。
 try {
     socket.sppCloseServerSocket(serverNumber);
 } catch (err) {
@@ -269,15 +339,18 @@ try {
 
 sppCloseClientSocket(socket: number): void
 
-关闭客户端socket，入参socket由sppAccept或sppConnect接口获取。
+客户端和服务端均可使用，关闭指定的客户端套接字，并断开客户端和服务端之间的连接。
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 当应用不再需要已建立好的套接字连接时，需主动调用该接口断开客户端和服务端之间的连接。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | ------------- |
-| socket | number | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。 |
+| socket | number | 是    | 客户端套接字的ID。<br>该值是调用[socket.sppAccept](#socketsppaccept)或[socket.sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。 |
 
 **错误码**：
 
@@ -293,8 +366,9 @@ sppCloseClientSocket(socket: number): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-let clientNumber = -1; // 入参clientNumber由sppAccept或sppConnect接口获取。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let clientNumber = 1; // 入参clientNumber由sppAccept或sppConnect接口获取。
 try {
     socket.sppCloseClientSocket(clientNumber);
 } catch (err) {
@@ -307,15 +381,20 @@ try {
 
 sppWrite(clientSocket: number, data: ArrayBuffer): void
 
-通过socket向远端发送数据，入参clientSocket由sppAccept或sppConnect接口获取 。
+客户端和服务端均可使用，向对端设备发送数据。
+- 仅在双方成功建立连接后，调用本接口才有效。
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 若开发者需感知传输过程中异常断连等错误，建议使用[socket.sppWriteAsync](#socketsppwriteasync18)。
+<!--RP1--><!--RP1End-->
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名          | 类型          | 必填   | 说明            |
 | ------------ | ----------- | ---- | ------------- |
-| clientSocket | number      | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。 |
+| clientSocket | number      | 是    | 客户端套接字的ID。<br>该值是调用[socket.sppAccept](#socketsppaccept)或[socket.sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。 |
 | data         | ArrayBuffer | 是    | 写入的数据。        |
 
 **错误码**：
@@ -332,8 +411,9 @@ sppWrite(clientSocket: number, data: ArrayBuffer): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-let clientNumber = -1; // 入参clientNumber由sppAccept或sppConnect接口获取。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let clientNumber = 1; // 入参clientNumber由sppAccept或sppConnect接口获取。
 let arrayBuffer = new ArrayBuffer(8);
 let data = new Uint8Array(arrayBuffer);
 data[0] = 123;
@@ -348,17 +428,22 @@ try {
 ## socket.on('sppRead')
 
 on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;): void
+客户端和服务端均可使用，订阅套接字读请求事件。调用该接口后，当收到对端发送的数据会执行订阅的回调函数。
 
-订阅spp读请求事件，入参clientSocket由sppAccept或sppConnect接口获取。使用Callback异步回调。
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 不可以和API version 18开始支持的[socket.sppReadAsync](#socketsppreadasync18)接口混用，同一路套接字连接只能使用socket.on('sppRead')接口或者[socket.sppReadAsync](#socketsppreadasync18)接口。
+- 若开发者需感知传输过程中异常断连等错误，建议使用[socket.sppReadAsync](#socketsppreadasync18)。
+<!--RP2--><!--RP2End-->
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名          | 类型                          | 必填   | 说明                         |
 | ------------ | --------------------------- | ---- | -------------------------- |
 | type         | string                      | 是    | 事件回调类型，支持的事件为'sppRead'，表示订阅spp读请求事件。<br>当收到了对端发送的数据时，触发该事件。|
-| clientSocket | number                      | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。              |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[socket.sppAccept](#socketsppaccept)或[socket.sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。              |
 | callback     | Callback&lt;ArrayBuffer&gt; | 是    | 指定订阅的回调函数，会返回读取到的数据。       |
 
 **错误码**：
@@ -375,11 +460,12 @@ on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;)
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-let clientNumber = -1; // 入参clientNumber由sppAccept或sppConnect接口获取。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let clientNumber = 1; // 入参clientNumber由sppAccept或sppConnect接口获取。
 let dataRead = (dataBuffer: ArrayBuffer) => {
     let data = new Uint8Array(dataBuffer);
-    console.info('bluetooth data is: ' + data[0]);
+    console.info('bluetooth data length is: ' + data.byteLength);
 }
 try {
     socket.on('sppRead', clientNumber, dataRead);
@@ -393,16 +479,16 @@ try {
 
 off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt;): void
 
-取消订阅spp读请求事件，入参clientSocket由sppAccept或sppConnect接口获取。
+取消订阅套接字读请求事件。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名          | 类型                          | 必填   | 说明                                       |
 | ------------ | --------------------------- | ---- | ---------------------------------------- |
 | type         | string                      | 是    | 事件回调类型，支持的事件为'sppRead'，表示取消订阅spp读请求事件。               |
-| clientSocket | number                      | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[socket.sppAccept](#socketsppaccept)或[socket.sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
 | callback     | Callback&lt;ArrayBuffer&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[socket.on('sppRead')](#socketonsppread)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。 |
 
 **错误码**：
@@ -417,8 +503,9 @@ off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-let clientNumber = -1; // 入参clientNumber由sppAccept或sppConnect接口获取。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let clientNumber = 1; // 入参clientNumber由sppAccept或sppConnect接口获取。
 try {
     socket.off('sppRead', clientNumber);
 } catch (err) {
@@ -431,7 +518,11 @@ try {
 
 sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
-通过socket向远端发送数据的异步接口，该接口支持断开连接时SPP操作异常错误返回。
+客户端和服务端均可使用，向对端设备发送数据。使用Promise异步回调。该接口支持断开连接时，会抛出错误码并返回。
+- 仅在双方成功建立连接后，调用本接口才有效。
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+<!--RP3--><!--RP3End-->
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -439,7 +530,7 @@ sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
 | 参数名          | 类型                          | 必填   | 说明                                       |
 | ------------ | --------------------------- | ---- | ---------------------------------------- |
-| clientSocket | number                      | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
 | data         | ArrayBuffer                 | 是    | 写入的数据。 |
 
 **返回值：**
@@ -461,9 +552,9 @@ sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { socket } from '@kit.ConnectivityKit';
-import { AsyncCallback,BusinessError } from '@kit.BasicServicesKit';
-let clientNumber = -1; // 入参clientNumber由sppAccept或sppConnect接口获取。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let clientNumber = 1; // 入参clientNumber由sppAccept或sppConnect接口获取。
 let arrayBuffer = new ArrayBuffer(8);
 let data = new Uint8Array(arrayBuffer);
 try {
@@ -480,13 +571,14 @@ try {
 
 sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
-通过socket读取对端所发送数据的异步接口，该接口支持断开连接时SPP操作异常错误返回。
+客户端和服务端均可使用，读取对端发送数据的异步接口。使用Promise异步回调。该接口支持断开连接时，会抛出错误码并返回。
 
-> **注意**：
->
-> - 该接口不可与[socket.on('sppRead')](#socketonsppread)接口混用，同一路socket只能使用[socket.on('sppRead')](#socketonsppread)或者socket.sppReadAsync其中一个接口。
->
-> - 该接口与[socket.on('sppRead')](#socketonsppread)使用方式不同，需要业务循环使用读取数据。
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 不可以和API version 10开始支持的[socket.on('sppRead')](#socketonsppread)接口混用，同一路socket只能使用[socket.on('sppRead')](#socketonsppread)接口或者socket.sppReadAsync接口。
+- 通过Promise异步返回读取的数据，建议在连接成功后循环调用去获取接收到的数据，若不及时调用会丢失接收的数据。
+- 该接口为异步接口，需要等异步回调结果返回后才能进行下一次调用。
+<!--RP4--><!--RP4End-->
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -494,7 +586,7 @@ sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
 | 参数名          | 类型                          | 必填   | 说明                                       |
 | ------------ | --------------------------- | ---- | ---------------------------------------- |
-| clientSocket | number                      | 是    | 客户端socket的id。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
 
 **返回值：**
 
@@ -515,49 +607,166 @@ sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 **示例：**
 
 ```js
-import { socket } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-let clientNumber = -1; // 入参clientNumber由sppAccept或sppConnect接口获取。
-let buffer = new ArrayBuffer(1024);
-let data = new Uint8Array(buffer);
-let flag = 1;
-while (flag) {
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+async function readAsync(clientNumber: number) {
+  let flag = 1;
   try {
-    socket.sppReadAsync(clientNumber).then((outBuffer: ArrayBuffer) => {
-      buffer = outBuffer;
-    });
-    if (buffer != null) {
-      console.info('sppRead success, data = ' + JSON.stringify(buffer));
-    } else {
-      console.error('sppRead error, data is null');
+    while (flag) { // 该接口需业务循环调用读取，具体循环形式按业务需要来实现，这里只是示例。
+      let buffer = await socket.sppReadAsync(clientNumber); // 使用await确保顺序读取。
+      let data = new Uint8Array(buffer);
+      if (data) {
+        console.info('sppRead success, data length = ' + data.byteLength);
+        // 在此处理接收到的数据。
+      }
     }
   } catch (err) {
-    flag = 0;
     console.error('startSppRead errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    socket.sppCloseClientSocket(clientNumber); // 发生错误时关闭连接。
   }
 }
 ```
 
+## socket.getMaxReceiveDataSize<sup>22+</sup>
+
+getMaxReceiveDataSize(clientSocket: number): number
+
+客户端和服务端均可使用，获取当前套接字链路类型下最大接收数据的大小。
+
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 若套接字链路类型为[SPP_RFCOMM](#spptype)时，最大接收数据大小无限制且返回值为0。
+
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                                       |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| number | 返回最大接收数据的大小，单位：Byte。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+let clientSocket = 1; 
+try {
+    let result: number = socket.getMaxReceiveDataSize(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## socket.getMaxTransmitDataSize<sup>22+</sup>
+
+getMaxTransmitDataSize(clientSocket: number): number
+
+客户端和服务端均可使用，获取套接字当前链路类型下最大发送数据的大小。
+
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 若套接字链路类型为[SPP_RFCOMM](#spptype)时，最大发送数据大小无限制且返回值为0。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                                       |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| number | 返回最大发送数据的大小，单位：Byte。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+let clientSocket = 1; 
+try {
+    let result: number = socket.getMaxTransmitDataSize(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## socket.isConnected<sup>22+</sup>
+
+isConnected(clientSocket: number): boolean
+
+客户端和服务端均可使用，检查当前链路是否已连接。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名          | 类型                          | 必填   | 说明                                       |
+| ------------ | --------------------------- | ---- | ---------------------------------------- |
+| clientSocket | number                      | 是    | 客户端套接字的ID。<br>该值是调用[sppAccept](#socketsppaccept)或[sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。                            |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| boolean | 套接字链路是否已连接，true表示已连接，false表示未连接。 |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 入参clientNumber由sppAccept或sppConnect接口获取。
+let clientSocket = 1; 
+try {
+    let result: boolean = socket.isConnected(clientSocket);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## SppOptions
 
-描述spp的配置参数。
+描述套接字的配置参数。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 | 名称     | 类型                | 只读   | 可选   | 说明          |
 | ------ | ------------------- | ---- | ---- | ----------- |
-| uuid   | string              | 否    | 否    | spp单据的uuid。 |
+| uuid   | string              | 否    | 否    | RFCOMM套接字链路类型的服务UUID，例如"00001101-0000-1000-8000-00805F9B34FB"。<br>- 建议开发者使用自定义的服务UUID（可通过工具函数[util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)生成），也可以使用标准协议定义的Serial Port UUID服务(00001101-0000-1000-8000-00805F9B34FB)。<br>- SppType设置为SPP_RFCOMM时该参数必选。<br>- SppType设置为SPP_L2CAP或SPP_L2CAP_BLE时设置为空字符串。|
 | secure | boolean             | 否    | 否    | 是否是安全通道。true表示是安全通道，false表示非安全通道。    |
-| type   | [SppType](#spptype)            | 否    | 否    | Spp链路类型。    |
+| type   | [SppType](#spptype)            | 否    | 否    | 蓝牙套接字链路类型。    |
+| psm<sup>20+</sup>   | number              | 否    | 是    |协议/服务多路复用器值，用于标识特定的服务数据传输通道。不填写该参数时默认值为-1。<br>对于客户端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>-  SppType设置为SPP_L2CAP_BLE或SPP_L2CAP时，需和服务端的psm值保持一致。<br>对于服务端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>- SppType设置为SPP_L2CAP_BLE时，psm值必须由系统自动分配，有效值范围为[0x01, 0xFF]。<br>- SppType设置为SPP_L2CAP时，psm值可以主动设置或蓝牙子系统分配，若为主动设置，其有效范围为[0x00, 0xFFFF]，并且需要满足低位字节最低位必须为1，高位字节最低位必须为0；若为蓝牙子系统分配，该参数不填，可以通过[socket.getL2capPsm](#socketgetl2cappsm20)接口获取psm值。|
 
 
-## SppType
 
-枚举，Spp链路类型。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+## SppType 
+
+枚举，蓝牙套接字链路类型。
+
+- 不同类型的蓝牙设备需要选取不同的链路类型。
+- 针对低功耗蓝牙（BLE）设备，必须使用L2CAP链路类型。
+- 针对传统蓝牙（BR/EDR）设备，建议优先采用RFCOMM链路进行连接。其优势在于可通过UUID服务动态协商信道（即设备通过查询服务UUID自动确定通信频道的过程），同时具备更高的安全性和可靠性。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 | 名称         | 值  | 说明            |
 | ---------- | ---- | ------------- |
-| SPP_RFCOMM | 0    | 表示rfcomm链路类型。 |
+| SPP_RFCOMM | 0    | 基于传统蓝牙（BR/EDR）的RFCOMM链路。 |
+| SPP_L2CAP<sup>20+</sup> | 1    | 基于传统蓝牙（BR/EDR）的L2CAP链路。 |
+| SPP_L2CAP_BLE<sup>20+</sup> | 2    | 基于低功耗蓝牙（BLE）的L2CAP链路。 |

@@ -1,5 +1,12 @@
 # @ohos.multimedia.videoProcessingEngine (视频处理引擎)
 
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @pxh123456-->
+<!--Designer: @gongzheng92-->
+<!--Tester: @gongzheng92-->
+<!--Adviser: @w_Machine_cc-->
+
 本模块提供图片内容的清晰度增强及缩放能力。
 
 本模块包含一个基础类：[ImageProcessor](#imageprocessor)类。
@@ -46,8 +53,9 @@ initializeEnvironment(): Promise\<void>
 
 ```ts
 import { videoProcessingEngine } from '@kit.ImageKit';
+
 async function initializeEnvironment() {
-videoProcessingEngine.initializeEnvironment();
+  videoProcessingEngine.initializeEnvironment();
 }
 ```
 
@@ -79,6 +87,7 @@ deinitializeEnvironment(): Promise\<void>
 
 ```ts
 import { videoProcessingEngine } from '@kit.ImageKit';
+
 async function deinitializeEnvironment() {
   videoProcessingEngine.initializeEnvironment();
   videoProcessingEngine.deinitializeEnvironment();
@@ -115,9 +124,10 @@ create(): ImageProcessor
 
 ```ts
 import { videoProcessingEngine } from '@kit.ImageKit';
+
 async function create() {
-videoProcessingEngine.initializeEnvironment();
-let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
+  videoProcessingEngine.initializeEnvironment();
+  let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
 }
 ```
 
@@ -144,9 +154,9 @@ enhanceDetail(sourceImage: image.PixelMap, width: number, height: number, level?
 
 |  参数名 | 类型  | 必填  | 说明  |
 | :------------ | :------------ | :------------ | :------------ |
-|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像。  |
-|  width |  number | 是  | 目标宽度（单位为像素，px）。  |
-|  height |  number | 是  |  目标高度（单位为像素，px）。 |
+|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像，内存类型需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。 |
+|  width |  number | 是  |  目标宽度，单位为像素（px）。 <br>当level为high时，支持范围[512, 2000]；当level为其他时，支持范围[32, 3000]。  |
+|  height |  number | 是  |  目标高度，单位为像素（px）。 <br>当level为high时，支持范围[512, 2000]；当level为其他时，支持范围[32, 3000]。  |
 |  level | [QualityLevel](#qualitylevel)| 否  |  算法档位（HIGH、MEDIUM、LOW、NONE），默认为NONE。 |
 
 **返回值：**
@@ -169,10 +179,13 @@ enhanceDetail(sourceImage: image.PixelMap, width: number, height: number, level?
 
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
+
 async function enhanceDetail(sourceImage: image.PixelMap, width: number, height: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
-  let enhancedPixelmap: Promise<image.PixelMap> = imageProcessor.enhanceDetail(sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
+  // 示例：width可配置为1024，height可配置为1280。
+  let enhancedPixelmap: Promise<image.PixelMap> =
+    imageProcessor.enhanceDetail(sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
 
@@ -190,8 +203,8 @@ enhanceDetail(sourceImage: image.PixelMap, scale: number, level?: QualityLevel):
 
 |  参数名 | 类型  | 必填  | 说明  |
 | :------------ | :------------ | :------------ | :------------ |
-|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像。  |
-|  scale |  number |  是 |  目标缩放比例。 |
+|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像，内存类型需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。  |
+|  scale |  number |  是 |  目标缩放比例。取值范围(0.0, 32.0]（在满足[上述分辨率范围](#enhancedetail)的前提下，最高支持32倍放大）。 |
 |  level | [QualityLevel](#qualitylevel)| 否  |  算法档位（HIGH、MEDIUM、LOW、NONE），默认为NONE。 |
 
 **返回值：**
@@ -214,10 +227,13 @@ enhanceDetail(sourceImage: image.PixelMap, scale: number, level?: QualityLevel):
 
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
+
 async function enhanceDetail(sourceImage: image.PixelMap, scale: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
-  let enhancedPixelmap: Promise<image.PixelMap> = imageProcessor.enhanceDetail(sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
+  // 示例：scale可配置为2.0。
+  let enhancedPixelmap: Promise<image.PixelMap> =
+    imageProcessor.enhanceDetail(sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
 
@@ -235,9 +251,9 @@ enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number, le
 
 |  参数名 | 类型  | 必填  | 说明  |
 | :------------ | :------------ | :------------ | :------------ |
-|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像。  |
-|  width |  number | 是  | 目标宽度（单位为像素，px）。  |
-|  height |  number | 是 |  目标高度（单位为像素，px）。 |
+|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像，内存类型需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。  |
+|  width |  number | 是  |  目标宽度，单位为像素（px）。 <br>当level为high时，支持范围[512, 2000]；当level为其他时，支持范围[32, 3000]。  |
+|  height |  number | 是 |  目标高度，单位为像素（px）。 <br>当level为high时，支持范围[512, 2000]；当level为其他时，支持范围[32, 3000]。  |
 |  level | [QualityLevel](#qualitylevel)| 否  |  算法档位（HIGH、MEDIUM、LOW、NONE），默认为NONE。 |
 
 **返回值：**
@@ -261,11 +277,13 @@ enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number, le
 
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
-async function enhanceDetailSync(sourceImage:image.PixelMap, width: number, height: number) {
+
+async function enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
+  // 示例：width可配置为1024，height可配置为1280。
   let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
-sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
+    sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
 
@@ -283,8 +301,8 @@ enhanceDetailSync(sourceImage: image.PixelMap, scale: number, level?: QualityLev
 
 |  参数名 | 类型  | 必填  | 说明  |
 | :------------ | :------------ | :------------ | :------------ |
-|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像。  |
-|  scale |  number |  是 |  目标缩放比例。 |
+|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像，内存类型需为DMA内存，具体情况请参考[PixelMap的内存类型介绍](../../media/image/image-allocator-type.md#内存类型介绍)。  |
+|  scale |  number |  是 |  目标缩放比例。取值范围(0.0, 32.0]（在满足[上述分辨率范围](#enhancedetail)的前提下，最高支持32倍放大）。 |
 |  level | [QualityLevel](#qualitylevel)| 否  |  算法档位（HIGH、MEDIUM、LOW、NONE），默认为NONE。 |
 
 **返回值：**
@@ -308,11 +326,13 @@ enhanceDetailSync(sourceImage: image.PixelMap, scale: number, level?: QualityLev
 
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
-async function enhanceDetailSync(sourceImage:image.PixelMap, scale: number) {
+
+async function enhanceDetailSync(sourceImage: image.PixelMap, scale: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
+  // 示例：scale可配置为2.0。
   let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
-sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
+    sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
 

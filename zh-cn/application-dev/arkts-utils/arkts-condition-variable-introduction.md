@@ -1,9 +1,10 @@
 # 异步等待
 <!--Kit: ArkTS-->
-<!--Subsystem: commonlibrary-->
+<!--Subsystem: CommonLibrary-->
 <!--Owner: @lijiamin2025-->
-<!--SE: @weng-changcheng-->
-<!--TSE: @kirl75; @zsw_zhushiwei-->
+<!--Designer: @weng-changcheng-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 ArkTS引入了异步任务的等待和被唤醒能力，以解决多线程任务时序控制问题。异步任务的等待和被唤醒[ConditionVariable](../reference/apis-arkts/arkts-apis-arkts-utils-locks.md#conditionvariable18)对象支持跨线程引用传递。
 
@@ -33,14 +34,14 @@ function notifyOne(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
 @Concurrent
 async function wait(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
   await conditionVariable.wait().then(() => {
-    console.log(`TaskPool Thread Wait: success`);
+    console.info(`TaskPool Thread Wait: success`);
   });
 }
 
 @Concurrent
 async function waitFor(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
   await conditionVariable.waitFor(3000).then(() => {
-    console.log(`TaskPool Thread WaitFor: success`);
+    console.info(`TaskPool Thread WaitFor: success`);
   });
 }
 

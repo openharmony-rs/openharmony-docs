@@ -1,31 +1,31 @@
 # 资源分类与访问
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 应用开发过程中，需要使用字符串、颜色、字体、间距和图标等资源。不同设备或配置下，这些资源的值会有所不同。本文档对资源类型进行介绍，并提供资源开发指导。
 根据来源差异，可以将资源分为：
 
 - 应用资源：开发者在应用中自定义的资源，可以利用资源文件管理资源在不同的设备或配置中的表现。
-- 系统资源：系统提供的资源，开发者可以通过[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)获取系统symbol图标资源信息、通过[系统资源分层设计表](https://gitee.com/openharmony/docs/blob/master/zh-cn/design/ux-design/design-resources.md)获取系统颜色、间距、圆角等资源信息。此外，系统颜色资源还可以通过[系统色彩全量表](https://developer.huawei.com/consumer/cn/doc/design-guides/color-0000001776857164#section17672143841113)获取，系统色彩全量表与系统资源分层设计表内的资源不重合，均为推荐使用的系统颜色资源。<br>表格中未列出的其他系统资源均为系统组件和底层能力参数，推荐开发者优先使用上述表格中提供的系统资源。
+- 系统资源：系统提供的资源，开发者可以通过[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)获取系统symbol图标资源信息、通过[系统资源分层设计表](https://gitcode.com/openharmony/docs/blob/master/zh-cn/design/ux-design/design-resources.md)获取系统颜色、间距、圆角等资源信息。此外，系统颜色资源还可以通过[系统色彩全量表](https://developer.huawei.com/consumer/cn/doc/design-guides/color-0000001776857164#section17672143841113)获取，系统色彩全量表与系统资源分层设计表内的资源不重合，均为推荐使用的系统颜色资源。<br>表格中未列出的其他系统资源均为系统组件和底层能力参数，推荐开发者优先使用上述表格中提供的系统资源。
 
 ## 资源分类
 
 应用开发中使用的各类资源文件，需要放入特定子目录中存储管理。目录结构如下所示，base目录、限定词目录、rawfile目录、resfile目录称为资源目录，element、media、profile称为资源组目录。
 
-> **说明**
->
-> - 资源目录和资源组目录下的文件均被视为资源文件，在应用打包时不会进行混淆。
->
-> - stage模型多工程情况下，共有的资源文件放到AppScope下的resources目录。
-
-资源目录和资源组目录示例：
-```
+```text
 resources
 |---base  // 默认存在的目录
 |   |---element
-|   |   |---string.json
+|   |   |---string.json // 字符串资源
 |   |---media
-|   |   |---icon.png
+|   |   |---icon.png // 图片、视频等媒体资源文件
 |   |---profile
-|   |   |---test_profile.json
+|   |   |---test_profile.json // 自定义profile文件，文件内容可自定义
 |---en_GB-vertical-car-mdpi // 自定义限定词目录示例，由开发者创建
 |   |---element
 |   |   |---string.json
@@ -36,56 +36,32 @@ resources
 |---rawfile // 其他类型文件，原始文件形式保存，不会被集成到resources.index文件中。文件名可自定义。
 |---resfile // 其他类型文件，原始文件形式保存，不会被集成到resources.index文件中。文件名可自定义。
 ```
+> **说明**
+>
+> - 资源目录和资源组目录下的文件均被视为资源文件，在应用打包时不会进行混淆。
+>
+> - stage模型多工程情况下，共有的资源文件放到AppScope下的resources目录。
+>
+> - 在编译构建时，AppScope目录下的资源文件会合入到模块下面的资源文件中，如果两个目录下的相同资源目录和资源组目录下存在重名资源，编译打包后只会保留AppScope目录下的资源。
+
 ### 资源目录
 
-#### base目录
+表1 资源目录说明 
 
-base目录默认存在。二级子目录element用于存放字符串、颜色、布尔值等基础元素，media和profile子目录存放媒体、动画、布局等资源文件。<br/>目录中的资源文件会被编译成二进制文件，并分配资源ID。通过指定资源类型（type）和资源名称（name）来访问。
-
-#### 限定词目录
-
-限定词目录需要开发者根据开发需要自行创建，二级子目录element用于存放字符串、颜色、布尔值等基础元素，media和profile子目录存放媒体、动画、布局等资源文件。<br/>同样，目录中的资源文件会被编译成二进制文件，并分配资源ID。通过指定资源类型（type）和资源名称（name）来访问。
-
-**限定词目录的命名要求**
-
-限定词目录由一个或多个表征应用场景或设备特征的限定词组合而成，限定词包括移动国家码和移动网络码、语言、文字、国家或地区、横竖屏、设备类型、颜色模式和屏幕密度，限定词之间通过下划线（\_）或者中划线（\-）连接。开发者在创建限定词目录时，需要遵守如下限定词目录命名规则。
-
-- 限定词的组合顺序：移动国家码_移动网络码-语言_文字_国家或地区-横竖屏-设备类型-颜色模式-屏幕密度。开发者可以根据应用的使用场景和设备特征，选择其中的一类或几类限定词组成目录名称。
-
-- 限定词的连接方式：移动国家码和移动网络码之间采用下划线（\_）连接，语言、文字、国家或地区之间也采用下划线（\_）连接，除此之外的其他限定词之间均采用中划线（-）连接。例如：**mcc460_mnc00-zh_Hant_CN**、**zh_CN-car-ldpi**。
-
-- 限定词的取值范围：每类限定词的取值必须符合限定词取值要求表中的条件，如表1。否则，将无法匹配目录中的资源文件。
-
-表1 限定词取值要求
-
-| 限定词类型       | 含义与取值说明                                  |
-| ----------- | ---------------------------------------- |
-| 移动国家码和移动网络码 | 移动国家码（MCC）和移动网络码（MNC）的值取自设备注册的网络。<br/>MCC可与MNC合并使用，使用下划线（_）连接，也可以单独使用。例如：mcc460表示中国，mcc460_mnc00表示中国_中国移动。<br/>详细取值范围，请查阅[**ITU-T&nbsp;E.212**](https://www.itu.int/rec/T-REC-E.212)（国际电联相关标准）。 |
-| 语言          | 表示设备使用的语言类型，由2~3个小写字母组成。例如：zh表示中文，en表示英语，mai表示迈蒂利语。<br/>详细取值范围，请查阅[**ISO&nbsp;639**](https://www.iso.org/iso-639-language-code)（ISO制定的语言编码标准）。 |
-| 文字          | 表示设备使用的文字类型，由1个大写字母（首字母）和3个小写字母组成。例如：Hans表示简体中文，Hant表示繁体中文。<br/>详细取值范围，请查阅[**ISO&nbsp;15924**](https://www.iso.org/standard/81905.html)（ISO制定的文字编码标准）。 |
-| 国家或地区       | 表示用户所在的国家或地区，由2~3个大写字母或者3个数字组成。例如：CN表示中国，GB表示英国。<br/>详细取值范围，请查阅[**ISO&nbsp;3166-1**](https://www.iso.org/iso-3166-country-codes.html)（ISO制定的国家和地区编码标准）。 |
-| 横竖屏         | 表示设备的屏幕方向，取值如下：<br/>-&nbsp;vertical：竖屏<br/>-&nbsp;horizontal：横屏 |
-| 设备类型        | <!--RP1-->表示设备的类型，取值如下：<br/>-&nbsp;car：车机<br/>-&nbsp;tablet：平板<br/>-&nbsp;tv：智慧屏<br/>-&nbsp;wearable：智能穿戴<!--RP1End--> |
-| 颜色模式        | 表示设备的颜色模式，取值如下：<br/>-&nbsp;dark：深色模式<br/>-&nbsp;light：浅色模式 |
-| 屏幕密度        | 表示设备的屏幕密度（单位为dpi），取值如下：<br/>-&nbsp;sdpi：表示小规模的屏幕密度（Small-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(0,&nbsp;120]的设备。<br/>-&nbsp;mdpi：表示中规模的屏幕密度（Medium-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(120,&nbsp;160]的设备。<br/>-&nbsp;ldpi：表示大规模的屏幕密度（Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(160,&nbsp;240]的设备。<br/>-&nbsp;xldpi：表示特大规模的屏幕密度（Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(240,&nbsp;320]的设备。<br/>-&nbsp;xxldpi：表示超大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(320,&nbsp;480]的设备。<br/>-&nbsp;xxxldpi：表示超特大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(480,&nbsp;640]的设备。 |
-
-#### rawfile目录
-
-支持创建多层子目录，子目录名称可以自定义，文件夹内可以自由放置各类资源文件。<br/>目录中的资源文件会被直接打包进应用，不经过编译，也不会分配资源ID。通过指定文件路径和文件名访问。
-
-#### resfile目录
-
-支持创建多层子目录，子目录名称可以自定义，文件夹内可以自由放置各类资源文件。<br/>目录中的资源文件会被直接打包进应用，不经过编译，也不会分配资源ID。应用安装后，resfile资源会被解压到应用沙箱路径，通过Context属性[resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取到resfile资源目录后，可通过文件路径访问，且该路径仅能以只读方式访问。
+| 目录类型 | 说明 |
+|--- | --- |
+| base目录 | base目录默认存在。二级子目录element用于存放字符串、颜色、布尔值等基础元素，media和profile子目录存放媒体、动画、布局等资源文件。<br/>目录中的资源文件会被编译成二进制文件，并分配资源ID。通过指定资源类型（type）和资源名称（name）来访问。 |
+| 限定词目录 | 限定词目录需要开发者根据开发需要自行创建，二级子目录element用于存放字符串、颜色、布尔值等基础元素，media和profile子目录存放媒体、动画、布局等资源文件。<br/>同样，目录中的资源文件会被编译成二进制文件，并分配资源ID。通过指定资源类型（type）和资源名称（name）来访问。限定词的含义和取值范围以及限定词目录的命名规则请参考下方[限定词目录](#限定词目录)中的说明。 |
+| rawfile目录 | 支持创建多层子目录，子目录名称可以自定义，文件夹内可以自由放置各类资源文件。<br/>目录中的资源文件会被直接打包进应用，不经过编译，也不会分配资源ID。通过指定文件路径和文件名访问。 |
+| resfile目录 | 支持创建多层子目录，子目录名称可以自定义，文件夹内可以自由放置各类资源文件。<br/>目录中的资源文件会被直接打包进应用，不经过编译，也不会分配资源ID。应用安装后，resfile资源会被解压到应用沙箱路径，通过Context属性[resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取到resfile资源目录后，可通过文件路径访问，且该路径仅能以只读方式访问。 |
 
 ### 资源组目录
 
-资源组目录包括element、media、profile三种类型的资源文件，用于存放特定类型资源。
-
-  表2 资源组目录说明
+表2 资源组目录说明 
 
 | 目录类型    | 说明                                     | 资源文件                                     |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| element | 表示元素资源，以下每一类数据都采用相应的JSON文件来表征（目录下仅支持文件类型）。<br/>-&nbsp;boolean，布尔型<br/>-&nbsp;color，颜色<br/>-&nbsp;float，浮点型，范围是`-2^128到2^128`<br/>-&nbsp;intarray，整型数组<br/>-&nbsp;integer，整型，范围是`-2^31到2^31-1`<!--Del--><br/>-&nbsp;pattern，样式（仅支持系统应用使用）<!--DelEnd--><br/>-&nbsp;plural，复数形式<br/>-&nbsp;strarray，字符串数组<br/>-&nbsp;string，字符串，[格式化字符串请参考API文档](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10)<!--Del--><br/>-&nbsp;theme，主题（仅支持系统应用使用）<!--DelEnd-->| element目录中的文件名称建议与下面的文件名保持一致。每个文件中只能包含同一类型的数据。<br/>-&nbsp;boolean.json<br/>-&nbsp;color.json<br/>-&nbsp;float.json<br/>-&nbsp;intarray.json<br/>-&nbsp;integer.json<!--Del--><br/>-&nbsp;pattern.json<!--DelEnd--><br/>-&nbsp;plural.json<br/>-&nbsp;strarray.json<br/>-&nbsp;string.json |
+| element | 表示元素资源，以下每一类数据都采用相应的JSON文件来表征（目录下仅支持文件类型）。<br/>-&nbsp;boolean，布尔型<br/>-&nbsp;color，颜色<br/>-&nbsp;float，浮点型，范围是`-2^128到2^128`<br/>-&nbsp;intarray，整型数组<br/>-&nbsp;integer，整型，范围是`-2^31到2^31-1`<br/>-&nbsp;plural，复数形式<br/>-&nbsp;strarray，字符串数组<br/>-&nbsp;string，字符串，[格式化字符串请参考API文档](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10)<!--Del--><br/>-&nbsp;pattern，样式（仅支持系统应用使用）<!--DelEnd--><!--Del--><br/>-&nbsp;theme，主题（仅支持系统应用使用）<!--DelEnd-->| element目录中的文件名称建议与下面的文件名保持一致。每个文件中只能包含同一类型的数据。<br/>-&nbsp;boolean.json<br/>-&nbsp;color.json<br/>-&nbsp;float.json<br/>-&nbsp;intarray.json<br/>-&nbsp;integer.json<br/>-&nbsp;plural.json<br/>-&nbsp;strarray.json<br/>-&nbsp;string.json<!--Del--><br/>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br/>-&nbsp;theme.json<!--DelEnd--> |
 | media   | 表示媒体资源，包括图片、音频、视频等非文本格式的文件（目录下只支持文件类型）。<br/>图片和音视频的类型说明见表3和表4。              | 文件名可自定义，例如：icon.png。                     |
 | profile  | 表示自定义配置文件，其文件内容可[通过包管理接口](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability)获取（目录下只支持json文件类型）。       | 文件名可自定义，例如：test_profile.json。           |
 
@@ -109,6 +85,30 @@ base目录默认存在。二级子目录element用于存放字符串、颜色、
 | H.264 AVC |.3gp |
 | Baseline Profile (BP) | .mp4   |
 
+
+### 限定词目录
+
+限定词目录由一个或多个表征应用场景或设备特征的限定词组合而成，限定词包括移动国家码和移动网络码、语言、文字、国家或地区、横竖屏、设备类型、颜色模式和屏幕密度，限定词之间通过下划线（\_）或者中划线（\-）连接。开发者在创建限定词目录时，需要遵守如下限定词目录命名规则。
+
+- 限定词的组合顺序：移动国家码_移动网络码-语言_文字_国家或地区-横竖屏-设备类型-颜色模式-屏幕密度。开发者可以根据应用的使用场景和设备特征，选择其中的一类或几类限定词组成目录名称。
+
+- 限定词的连接方式：移动国家码和移动网络码之间采用下划线（\_）连接，语言、文字、国家或地区之间也采用下划线（\_）连接，除此之外的其他限定词之间均采用中划线（-）连接。例如：**mcc460_mnc00-zh_Hant_CN**、**zh_CN-car-ldpi**。
+
+- 限定词的取值范围：每类限定词的取值必须符合限定词取值要求表中的条件，如表5。否则，将无法匹配目录中的资源文件。
+
+表5 限定词取值要求
+
+| 限定词类型       | 含义与取值说明                                  |
+| ----------- | ---------------------------------------- |
+| 移动国家码和移动网络码 | 移动国家码（MCC）和移动网络码（MNC）的值取自设备注册的网络。<br/>MCC可与MNC合并使用，使用下划线（_）连接，也可以单独使用。例如：mcc460表示中国，mcc460_mnc00表示中国_中国移动。<br/>详细取值范围，请查阅[**ITU-T&nbsp;E.212**](https://www.itu.int/rec/T-REC-E.212)（国际电联相关标准）。 |
+| 语言          | 表示设备使用的语言类型，由2~3个小写字母组成。例如：zh表示中文，en表示英语，mai表示迈蒂利语。<br/>详细取值范围，请查阅[**ISO&nbsp;639**](https://www.iso.org/iso-639-language-code)（ISO制定的语言编码标准）。 |
+| 文字          | 表示设备使用的文字类型，由1个大写字母（首字母）和3个小写字母组成。例如：Hans表示简体中文，Hant表示繁体中文。<br/>详细取值范围，请查阅[**ISO&nbsp;15924**](https://www.iso.org/standard/81905.html)（ISO制定的文字编码标准）。 |
+| 国家或地区       | 表示用户所在的国家或地区，由2~3个大写字母或者3个数字组成。例如：CN表示中国，GB表示英国。<br/>详细取值范围，请查阅[**ISO&nbsp;3166-1**](https://www.iso.org/iso-3166-country-codes.html)（ISO制定的国家和地区编码标准）。 |
+| 横竖屏         | 表示设备的屏幕方向，取值如下：<br/>-&nbsp;vertical：竖屏<br/>-&nbsp;horizontal：横屏 |
+| 设备类型        | <!--RP1-->表示设备的类型，取值如下：<br/>-&nbsp;car：车机<br/>-&nbsp;tablet：平板<br/>-&nbsp;tv：智慧屏<br/>-&nbsp;wearable：智能穿戴<!--RP1End--> |
+| 颜色模式        | 表示设备的颜色模式，取值如下：<br/>-&nbsp;dark：深色模式<br/>-&nbsp;light：浅色模式 |
+| 屏幕密度        | 表示设备的屏幕密度（单位为dpi），取值如下：<br/>-&nbsp;sdpi：表示小规模的屏幕密度（Small-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(0,&nbsp;120]的设备。<br/>-&nbsp;mdpi：表示中规模的屏幕密度（Medium-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(120,&nbsp;160]的设备。<br/>-&nbsp;ldpi：表示大规模的屏幕密度（Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(160,&nbsp;240]的设备。<br/>-&nbsp;xldpi：表示特大规模的屏幕密度（Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(240,&nbsp;320]的设备。<br/>-&nbsp;xxldpi：表示超大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(320,&nbsp;480]的设备。<br/>-&nbsp;xxxldpi：表示超特大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(480,&nbsp;640]的设备。 |
+
 ### 资源文件示例
 
 color.json文件的内容如下：
@@ -116,16 +116,16 @@ color.json文件的内容如下：
 标准的十六进制颜色值由八位十六进制数字组成，前两位表示透明度，后六位表示颜色值。
 ```json
 {
-    "color": [
-        {
-            "name": "color_hello",
-            "value": "#ffff0000"
-        },
-        {
-            "name": "color_world",
-            "value": "#ff0000ff"
-        }
-    ]
+  "color": [
+    {
+      "name": "color_hello",
+      "value": "#ffff0000"
+    },
+    {
+      "name": "color_world",
+      "value": "#ff0000ff"
+    }
+  ]
 }
 ```
 
@@ -133,16 +133,16 @@ float.json文件的内容如下：
 
 ```json
 {
-    "float": [
-        {
-            "name": "font_hello",
-            "value": "28.0fp"
-        },
-	    {
-            "name": "font_world",
-            "value": "20.0fp"
-        }
-    ]
+  "float": [
+    {
+      "name": "font_hello",
+      "value": "28.0fp"
+    },
+    {
+      "name": "font_world",
+      "value": "20.0fp"
+    }
+  ]
 }
 ```
 
@@ -150,24 +150,24 @@ string.json文件的内容如下：
 
 ```json
 {
-    "string": [
-        {
-            "name": "string_hello",
-            "value": "Hello"
-        },
-	    {
-            "name": "string_world",
-            "value": "World"
-        },
-	    {
-            "name": "message_arrive",
-            "value": "We will arrive at %1$s."
-        },
-        {
-            "name": "message_notification",
-            "value": "Hello, %1$s!,You have %2$d new messages."
-        }
-    ]
+  "string": [
+    {
+      "name": "string_hello",
+      "value": "Hello"
+    },
+    {
+      "name": "string_world",
+      "value": "World"
+    },
+    {
+      "name": "message_arrive",
+      "value": "We will arrive at %1$s."
+    },
+    {
+      "name": "message_notification",
+      "value": "Hello, %1$s!,You have %2$d new messages."
+    }
+  ]
 }
 ```
 
@@ -175,21 +175,21 @@ plural.json文件的内容如下：
 
 ```json
 {
-    "plural": [
+  "plural": [
+    {
+      "name": "eat_apple",
+      "value": [
         {
-            "name": "eat_apple",
-            "value": [
-                {
-                    "quantity": "one",
-                    "value": "%d apple"
-                },
-                {
-                    "quantity": "other",
-                    "value": "%d apples"
-                }
-            ]
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
         }
-    ]
+      ]
+    }
+  ]
 }
 ```
 
@@ -201,7 +201,7 @@ plural.json文件的内容如下：
 
 在resources目录右键菜单选择“New > Resource File”，可同时创建资源目录和资源文件，文件默认创建在base目录的对应资源组中。如果选择了限定词，则会按照命名规范自动生成限定词和资源组目录，并将文件创建在限定词目录中。
 
-不同类型的限定词可以组合，如同时选择Locale为zh_CN，ColorMode为Dark，将创建zh_CN-dark目录，具体组合规则参考[限定词目录](#资源目录)。
+不同类型的限定词可以组合，如同时选择Locale为zh_CN，ColorMode为Dark，将创建zh_CN-dark目录，具体组合规则参考[限定词目录](#限定词目录)。
 
 图中File name为需要创建的文件名。Resource type为资源组类型，默认是element。Root Element为资源类型。Available qualifiers为供选择的限定词目录，通过右边的小箭头可添加或者删除。<br/>创建的目录名自动生成，格式固定为“限定词.资源组”，例如：创建一个限定词为dark的element目录，自动生成的目录名称为“dark/element”。
 
@@ -249,7 +249,7 @@ plural.json文件的内容如下：
 
 ### 使用约束
 可翻译特性使能范围：base目录下string、strarray、plural类型资源。
-```
+```text
 resources
 |---base
 |   |---element
@@ -286,23 +286,28 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 
 ### 单HAP包应用资源
 
- - 通过`$r`或`$rawfile`访问资源。<br/>对于color、float、string、plural、media、profile等类型的资源，通过`$r('app.type.name')`形式访问。其中，app为resources目录中定义的资源，type为资源类型，name为资源名，由开发者定义资源时确定。<br/>对于string.json中使用多个占位符的情况，例如资源值value中存在`$s`和`$d`两个占位符，需要通过`$r('app.string.label', 'aaa', 444)`形式访问。其中label为资源名称name，'aaa'和444用来替代占位符。<br/>对于rawfile目录资源，通过`$rawfile('filename')`形式访问。其中，filename为rawfile目录下文件的相对路径，文件名需要包含后缀，路径开头不可以"/"开头。
+ - 通过`$r`或`$rawfile`访问资源。<br/>对于color、float、string、plural、media、profile等类型的资源，通过`$r('app.type.name')`形式访问。其中，app为resources目录中定义的资源，type为资源类型，name为资源名，由开发者定义资源时确定。<br/>对于string.json中使用多个占位符的情况，例如资源值value中存在`%1$s`和`%2$d`两个占位符，需要通过`$r('app.string.label', 'aaa', 444)`形式访问。其中label为资源名称name，'aaa'和444用来替代占位符。<br/>对于rawfile目录资源，通过`$rawfile('filename')`形式访问。其中，filename为rawfile目录下文件的相对路径，文件名需要包含后缀，路径开头不可以"/"开头。
 
    > **说明：**
    >
    > rawfile的native的访问方式请参考[Rawfile开发指导](../napi/rawfile-guidelines.md)。
 
-  [资源组目录](#资源组目录)下的“资源文件示例”显示了.json文件内容，包含color.json、string.json和plural.json，访问应用资源时需先了解.json文件的使用规范。<br/>资源的具体使用方法如下：
+  [资源文件示例](#资源文件示例)中显示了.json文件内容，包含color.json、string.json和plural.json，访问应用资源时需先了解.json文件的使用规范。<br/>资源的具体使用方法如下：
 
-  ```ts
-    //通过$r('app.type.name')访问
-    Text($r('app.string.string_hello'))
+  <!-- @[app_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  // 通过$r('app.type.name')访问
+  // 资源name仅作示例，请替换为实际使用的资源
+  Text($r('app.string.string_hello'))
+    .id('app_resource')
     .fontColor($r('app.color.color_emphasize'))
     .fontSize($r('app.float.text_size_headline1'))
     .fontFamily($r('app.string.font_family_medium'))
     .backgroundColor($r('app.color.color_palette_aux1'))
-
-    Image($r('app.media.app_icon'))
+  
+  // 资源name仅作示例，请替换为实际使用的资源
+  Image($r('app.media.app_icon'))
     .border({
       color: $r('app.color.color_palette_aux1'),
       radius: $r('app.float.corner_radius_button'), width: 2
@@ -311,12 +316,19 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
       top: $r('app.float.elements_margin_horizontal_m'),
       bottom: $r('app.float.elements_margin_horizontal_l')
     })
-    .height(200)
-    .width(300)
-
-    // 对于string.json中name为"message_notification"，value为"Hello, %1$s!,You have %2$d new messages."
-    // 该资源存在$s、$d两个占位符，需要替代为'LiHua'、2，则采用如下方式访问
-    Text($r('app.string.message_notification', 'LiHua', 2))
+    .height(100)
+    .width(100)
+  
+  // 对于string.json中name为"message_notification"，value为"Hello, %1$s!,You have %2$d new messages."
+  // 该资源存在%1$s、%2$d两个占位符，需要替代为'LiHua'、2，则采用如下方式访问
+  // 资源name仅作示例，请替换为实际使用的资源
+  Text($r('app.string.message_notification', 'LiHua', 2)).id('app_string_resource')
+  
+  // 对于plural.json中name为"eat_apple"，单数的value为"%d apple"，复数的value为"%d apples"
+  // 访问plural.json资源，第一个参数控制字符串显示单数形式或复数形式，传递1表示单数，大于1表示复数，且在中文环境下始终为复数
+  // 该资源存在%d一个占位符，需要替代为2，则采用如下方式访问
+  // 资源name仅作示例，请替换为实际使用的资源
+  Text($r('app.plural.eat_apple', 2, 2)).id('app_plural_resource')
   ```
 
 - 通过本应用上下文获取ResourceManager后，可调用不同[资源管理接口](../reference/apis-localization-kit/js-apis-resource-manager.md)通过资源ID值或资源名称访问各类资源。例如：<br/>`getContext().resourceManager.getStringByNameSync('test')`可获取字符串资源。<br/>`getContext().resourceManager.getRawFd('rawfilepath')`可获取Rawfile所在hap包的descriptor信息，访问rawfile文件时需{fd, offset, length}一起使用。
@@ -324,62 +336,77 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 ### 跨HAP/HSP包应用资源
 
 <!--Del-->
-#### bundle不同，跨bundle访问（仅支持系统应用使用）
+**bundle不同，跨bundle访问（仅支持系统应用使用）**
 
 - 通过[createBundleContext(context, bundleName)](../reference/apis-ability-kit/js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12)接口创建对应HAP/HSP包的上下文，获取resourceManager对象后，调用不同[资源管理接口](../reference/apis-localization-kit/js-apis-resource-manager.md)通过资源ID值或资源名称访问各类资源。
 <!--DelEnd-->
 
-#### bundle相同，跨module访问
+**bundle相同，跨module访问**
 
 - 通过[createModuleContext(context, moduleName)](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12)接口创建同应用中不同module的上下文，获取resourceManager对象后，调用不同[资源管理接口](../reference/apis-localization-kit/js-apis-resource-manager.md)通过资源ID值或资源名称访问各类资源。
 
 - 通过`$r`或`$rawfile`访问资源。具体操作如下：
 
-  1.在entry的oh-package.json5文件中添加依赖。如`"dependencies": {"library": "file":../library}`。
+  1.在entry的oh-package.json5文件中添加依赖。如`"dependencies": {"library": "file:../library"}`。
 
   ![Alt text](figures/add_dependencies.png)
 
-  2.使用字面量`[hsp].type.name`获取资源。其中，hsp为hsp模块名，type为资源类型，name为资源名称，示例如下：
-  
-    ```ts
-      Text($r('[hsp].string.test_string'))
-        .fontSize($r('[hsp].float.font_size'))
-        .fontColor($r('[hsp].color.font_color'))  
-      Image($rawfile('[hsp].icon.png'))
-    ```
-  3.使用变量获取资源。示例如下：
+  2.使用字面量`[模块名].type.name`或变量获取资源。其中，模块名为hsp模块的名称，type为资源类型，name为资源名称，示例如下：
 
-   ```ts
-    @Entry
-    @Component
-    struct Index {
-      text: string = '[hsp].string.test_string';
-      fontSize: string = '[hsp].float.font_size';
-      fontColor: string = '[hsp].color.font_color';
-      image: string = '[hsp].media.string';
-      rawfile: string = '[hsp].icon.png';
-  
-      build() {
-        Row() {
-          Text($r(this.text))
-            .fontSize($r(this.fontSize))
-            .fontColor($r(this.fontColor))
-  
-          Image($r(this.image))
-  
-          Image($rawfile(this.rawfile))
-        }
-      }
-    }
+   <!-- @[hsp_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Second.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct Second {
+     // [library]仅为示例模块名，请替换为实际模块名
+     // 资源name仅作示例，请替换为实际使用的资源
+     text: string = '[library].string.test_string';
+     fontSize: string = '[library].float.font_size';
+     fontColor: string = '[library].color.font_color';
+     image: string = '[library].media.image';
+     rawfile: string = '[library].icon.png';
+   
+     build() {
+       Column() {
+         // 使用字面量[模块名].type.name获取资源
+         // 资源name仅作示例，请替换为实际使用的资源
+         Text($r('[library].string.test_string'))
+           .id('hsp_resource_one')
+           .fontSize($r('[library].float.font_size'))
+           .fontColor($r('[library].color.font_color'))
+         Image($rawfile('[library].icon.png'))
+           .height(100)
+           .width(100)
+   
+         // 使用变量获取资源
+         Text($r(this.text))
+           .id('hsp_resource_two')
+           .fontSize($r(this.fontSize))
+           .fontColor($r(this.fontColor))
+   
+         Image($r(this.image))
+           .height(100)
+           .width(100)
+   
+         Image($rawfile(this.rawfile))
+           .height(100)
+           .width(100)
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
    ```
+
   > **说明** 
   >
-  > hsp包名必须写在[]内，rawfile下有多层目录，需要从rawfile下面第一个目录开始写，如`$rawfile('[hsp].oneFile/twoFile/icon.png')`，使用`$r`和`$rawfile`跨包访问HSP包资源无法提供编译时的资源校验，需要开发者自行保证使用资源存在于对应包中。
+  > hsp包名必须写在[]内，rawfile下有多层目录，需要从rawfile下面第一个目录开始写，如`$rawfile('[hsp].oneDir/twoDir/icon.png')`，使用`$r`和`$rawfile`跨包访问HSP包资源无法提供编译时的资源校验，需要开发者自行保证使用资源存在于对应包中。
 
 
 ### 系统资源
 
-开发者可以通过[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)获取系统symbol图标资源信息、通过[系统资源分层设计表](https://gitee.com/openharmony/docs/blob/master/zh-cn/design/ux-design/design-resources.md)获取系统颜色、间距、圆角等资源信息。此外，系统颜色资源还可以通过[系统色彩全量表](https://developer.huawei.com/consumer/cn/doc/design-guides/color-0000001776857164#section17672143841113)获取，系统色彩全量表与系统资源分层设计表内的资源不重合，均为推荐使用的系统颜色资源。
+开发者可以通过[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)获取系统symbol图标资源信息、通过[系统资源分层设计表](https://gitcode.com/openharmony/docs/blob/master/zh-cn/design/ux-design/design-resources.md)获取系统颜色、间距、圆角等资源信息。此外，系统颜色资源还可以通过[系统色彩全量表](https://developer.huawei.com/consumer/cn/doc/design-guides/color-0000001776857164#section17672143841113)获取，系统色彩全量表与系统资源分层设计表内的资源不重合，均为推荐使用的系统颜色资源。
 获取的symbol图标资源可通过[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)对图标颜色等进一步设置。
 
 对于系统资源，可以通过`$r('sys.type.name')`的形式访问。其中，sys表示系统资源，type为资源类型，取值包括“color”、“float”、“string”、“media”、“symbol”，name为资源名称。
@@ -393,7 +420,9 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 >
 > - 当前，界面显示时默认使用的系统字体是鸿蒙黑体（HarmonyOS Sans），支持的字符范围是[中文编码字符集GB18030-2022（级别一/级别二）](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3)。若要显示的字符不在鸿蒙黑体支持的字符范围内，系统会在其他支持该字符的字体中选择优先级最高的字体用来显示。关于系统字体的优先级顺序，可以查看设备上的配置文件`system/etc/fontconfig.json`。
 
-```ts
+<!-- @[system_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 Text('Hello')
   .fontColor($r('sys.color.ohos_id_color_emphasize'))
   .fontSize($r('sys.float.ohos_id_text_size_headline1'))
@@ -409,13 +438,17 @@ Image($r('sys.media.ohos_app_icon'))
     top: $r('sys.float.ohos_id_elements_margin_horizontal_m'),
     bottom: $r('sys.float.ohos_id_elements_margin_horizontal_l')
   })
-  .height(200)
-  .width(300)
+  .height(100)
+  .width(100)
 ```
 
 ## 资源匹配
 
 应用使用某资源时，系统会根据当前设备状态优先从相匹配的限定词目录中寻找该资源。只有当resources目录中没有与设备状态匹配的限定词目录，或者在限定词目录中找不到该资源时，才会去base目录中查找。rawfile和resfile是原始文件目录，不会根据设备状态去匹配资源。
+
+> **说明**
+>
+> - 在编译构建时，AppScope目录下的资源文件会合入到模块下面的资源文件中，如果两个目录下的相同资源目录和资源组目录下存在重名资源，编译打包后只会保留AppScope目录下的资源。
 
 ### 限定词目录与设备状态的匹配规则
 
@@ -429,13 +462,13 @@ Image($r('sys.media.ohos_app_icon'))
 
 ### 获取指定配置的资源
 
-#### 基本概念
+**基本概念**
 
 开发者可以在工程的resources目录下添加限定词目录，满足多语言、深浅色模式等不同类型的系统设置。然而，在获取资源时，由于限定词目录匹配规则，只能筛选出最匹配的资源，无法获取其它目录资源。
 
 应用如果有获取指定配置的资源的诉求，可以通过以下方法进行获取。
 
-#### 接口说明
+**接口说明**
 
 | 接口名                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -443,9 +476,9 @@ Image($r('sys.media.ohos_app_icon'))
 | [getOverrideConfiguration](../reference/apis-localization-kit/js-apis-resource-manager.md#getoverrideconfiguration12)() : [Configuration](../reference/apis-localization-kit/js-apis-resource-manager.md#configuration) | 获取指定的配置，使用同步方式返回。                             |
 | [updateOverrideConfiguration](../reference/apis-localization-kit/js-apis-resource-manager.md#updateoverrideconfiguration12)(configuration: [Configuration](../reference/apis-localization-kit/js-apis-resource-manager.md#configuration)) : void | 更新指定的配置。                                               |
 
-#### 示例
+**示例**
 
-以获取非当前系统语言的资源为例，说明如何获取指定配置的资源。假设工程中定义了中文、英文、德文的同名资源如下：
+以获取非当前系统语言的资源为例，说明如何获取指定配置的资源。假设工程中定义了中文、英文、日文的同名资源如下：
 
 - entry/src/main/resources/zh_CN/element/string.json
 
@@ -473,14 +506,14 @@ Image($r('sys.media.ohos_app_icon'))
 }
 ```
 
-- entry/src/main/resources/de_DE/element/string.json
+- entry/src/main/resources/ja_JP/element/string.json
 
 ```json
 {
   "string": [
     {
       "name": "greetings",
-      "value": "Hallo, Welt"
+      "value": "こんにちは、世界"
     }
   ]
 }
@@ -488,52 +521,68 @@ Image($r('sys.media.ohos_app_icon'))
 
 在`Index.ets`中，分别获取三种语言的资源并显示在文本框中，运行设备当前系统语言为中文，`entry/src/main/ets/pages/Index.ets`的代码如下：
 
-```ts
-import { common } from '@kit.AbilityKit';
+<!-- @[config_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
-  @State englishString: string = "";
-  @State germanString: string = "";
-
-  getString(): string {
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    let resMgr = context.resourceManager;
-    let resId = $r('app.string.greetings').id;
-
-    //获取符合当前系统语言地区、颜色模式、分辨率等配置的资源
-    let currentLanguageString = resMgr.getStringSync(resId);
-
-    //获取符合当前系统颜色模式、分辨率等配置的英文资源
-    let overrideConfig = resMgr.getOverrideConfiguration();
-    overrideConfig.locale = "en_US"; //指定资源的语言为英语，地区为美国
-    let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
-    this.englishString = overrideResMgr.getStringSync(resId);
-
-    //获取符合当前系统颜色模式、分辨率等配置的德文资源
-    overrideConfig.locale = "de_DE"; //指定资源的语言为德语，地区为德国
-    overrideResMgr.updateOverrideConfiguration(overrideConfig); //等效于resMgr.updateOverrideConfiguration(overrideConfig)
-    this.germanString = overrideResMgr.getStringSync(resId);
-    return currentLanguageString;
-  }
+  @State englishString: string = '';
+  @State japaneseString: string = '';
 
   build() {
-    Row() {
-      Column() {
-        Text(this.getString())
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Text(this.englishString)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Text(this.germanString)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
+    Column() {
+    // ···
+      Text(this.getString())
+        .id('config_resource_one')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Text(this.englishString)
+        .id('config_resource_two')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Text(this.japaneseString)
+        .id('config_resource_three')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    // ···
     }
     .height('100%')
+    .width('100%')
+  }
+
+  getString(): string {
+    let resMgr = this.getUIContext().getHostContext()?.resourceManager;
+    if (!resMgr) {
+      return '';
+    }
+    let currentLanguageString: string = '';
+    try {
+      // 资源name仅作示例，请替换为实际使用的资源
+      let resId = $r('app.string.greetings').id;
+
+      // 获取符合当前系统语言地区、颜色模式、分辨率等配置的资源
+      currentLanguageString = resMgr.getStringSync(resId);
+
+      // 获取符合当前系统颜色模式、分辨率等配置的英文资源
+      let overrideConfig = resMgr.getOverrideConfiguration();
+      overrideConfig.locale = 'en_US'; // 指定资源的语言为英语，地区为美国
+      let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
+      this.englishString = overrideResMgr.getStringSync(resId);
+
+      // 获取符合当前系统颜色模式、分辨率等配置的日文资源
+      overrideConfig.locale = 'ja_JP'; // 指定资源的语言为日文，地区为日本
+      // 等效于resMgr.updateOverrideConfiguration(overrideConfig)
+      overrideResMgr.updateOverrideConfiguration(overrideConfig);
+      this.japaneseString = overrideResMgr.getStringSync(resId);
+    } catch (err) {
+      const code = (err as BusinessError).code;
+      const message = (err as BusinessError).message;
+      console.error(`get override resource failed, error code: ${code}, error msg: ${message}`);
+    }
+    return currentLanguageString;
   }
 }
 ```
@@ -544,14 +593,15 @@ overlay是一种资源替换机制，针对不同品牌、产品的显示风格�
 
 ### 动态overlay使用方式
 
-1、对应的overlay资源包需要放在对应应用安装路径下，通过`hdc install`的方式安装。如应用`com.example.overlay`的安装路径为`data/app/el1/bundle/public/com.example.overlay/`。
-
-2、应用通过[addResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#addresource10)，实现资源覆盖；通过[removeResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#removeresource10)，实现overlay删除。overlay资源路径需经过元能力的getContext().bundleCodeDir获取此应用对应的沙箱根目录，由应用的沙箱根目录与overlay资源包名称拼接而成。如：`let path = getContext().bundleCodeDir + "overlay资源包名称"`，其对应沙箱路径为`/data/storage/el1/bundle/overlay资源包名称`。
+1. 对应的overlay资源包需要放在对应应用安装路径下。如应用`com.example.overlay`的安装路径为`data/app/el1/bundle/public/com.example.overlay/`。
+2. 应用通过[addResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#addresource10)，实现资源覆盖；通过[removeResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#removeresource10)，实现overlay删除。overlay资源路径需经过元能力的getContext().bundleCodeDir获取此应用对应的沙箱根目录，由应用的沙箱根目录与overlay资源包名称拼接而成。如：`let path = getContext().bundleCodeDir + "overlay资源包名称"`，其对应沙箱路径为`/data/storage/el1/bundle/overlay资源包名称`。
 
 ### 静态overlay配置方式
 
+该功能默认使能，使能及去使能请参考[包管理接口](../reference/apis-ability-kit/js-apis-overlay.md)。
+
 包内overlay资源包中的配置文件app.json5中支持的字段：
-```
+```json
 {
   "app":{
     "bundleName": "com.example.myapplication.overlay",
@@ -559,12 +609,12 @@ overlay是一种资源替换机制，针对不同品牌、产品的显示风格�
     "versionCode": "1000000",
     "versionName": "1.0.0.1",
     "icon": "$media:app_icon",
-    "label": "$string:app_name",
+    "label": "$string:app_name"
   }
 }
 ```
 包内overlay资源包中的配置文件module.json5中支持的字段：
-```
+```json
 {
   "module":{
     "name": "entry_overlay_module_name",
@@ -572,17 +622,17 @@ overlay是一种资源替换机制，针对不同品牌、产品的显示风格�
     "description": "$string:entry_overlay_desc",
     "deviceTypes": [
       "default",
-      "tablet",
+      "tablet"
     ],
     "deliverywithInstall": true,
     "targetModuleName": "entry_module_name",
-    "targetPriority": 1,
+    "targetPriority": 1
   }
 }
 ```
 <!--Del-->
 包间overlay资源包中的配置文件app.json5中支持的字段，仅对系统应用开放：
-```
+```json
 {
   "app":{
     "bundleName": "com.example.myapplication.overlay",
@@ -592,12 +642,12 @@ overlay是一种资源替换机制，针对不同品牌、产品的显示风格�
     "icon": "$media:app_icon",
     "label": "$string:app_name",
     "targetBundleName": "com.example.myapplication",
-    "targetPriority": 1,
+    "targetPriority": 1
   }
 }
 ```
 包间overlay资源包中的配置文件module.json5中支持的字段，仅对系统应用开放：
-```
+```json
 {
   "module":{
     "name": "entry_overlay_module_name",
@@ -605,11 +655,11 @@ overlay是一种资源替换机制，针对不同品牌、产品的显示风格�
     "description": "$string:entry_overlay_desc",
     "deviceTypes": [
       "default",
-      "tablet",
+      "tablet"
     ],
     "deliverywithInstall": true,
     "targetModuleName": "entry_module_name",
-    "targetPriority": 1,
+    "targetPriority": 1
   }
 }
 ```
@@ -628,12 +678,10 @@ overlay是一种资源替换机制，针对不同品牌、产品的显示风格�
 
 在DevEco Studio中创建应用工程时，module的配置文件module.json5中包含targetModuleName和targetPriority字段时，该module将会在安装阶段被识别为overlay特征的module。overlay特征的module一般是为设备上存在的非overlay特征的module提供覆盖的资源文件，以便于targetModuleName指向的module在运行阶段可以使用overlay资源文件展示不同的颜色，标签，主题等等。
 
-该功能默认使能，使能及去使能请参考[包管理接口](../reference/apis-ability-kit/js-apis-overlay.md)。
-
 <!--Del-->
 ## 相关实例
 
 针对访问应用资源，有以下相关实例可供参考：
 
-- [资源管理（ArkTS）（API10）](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Resource/ResourceManager)
+- [资源管理（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Resource/ResourceManager)
 <!--DelEnd-->

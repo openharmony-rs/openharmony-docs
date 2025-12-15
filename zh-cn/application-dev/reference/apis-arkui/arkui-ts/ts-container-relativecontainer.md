@@ -1,4 +1,10 @@
 # RelativeContainer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 相对布局组件，用于复杂场景中元素对齐的布局。
 
@@ -35,7 +41,7 @@ RelativeContainer()
 
 guideLine(value: Array&lt;GuideLineStyle&gt;)
 
-设置RelativeContainer容器内的辅助线，Array中每个项目即为一条guideline，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+设置RelativeContainer容器内的[辅助线](../../../ui/arkts-layout-development-relative-layout.md#使用辅助线辅助定位子组件)，Array中每个项目即为一条guideLine。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -51,7 +57,7 @@ guideLine(value: Array&lt;GuideLineStyle&gt;)
 
 barrier(value: Array&lt;BarrierStyle&gt;)
 
-设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+设置RelativeContainer容器内的[屏障](../../../ui/arkts-layout-development-relative-layout.md#多个组件的屏障)，Array中每个项目即为一条barrier。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -67,7 +73,7 @@ barrier(value: Array&lt;BarrierStyle&gt;)
 
 barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt;)
 
-设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier，支持定义镜像模式的屏障线。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -81,7 +87,7 @@ barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt;)
 
 ## GuideLineStyle<sup>12+</sup>对象说明
 
-guideLine参数，用于定义一条guideline的id、方向和位置。
+guideLine参数，用于定义一条guideLine的id、方向和位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -89,13 +95,13 @@ guideLine参数，用于定义一条guideline的id、方向和位置。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| id  | string  | 否 | 否    | guideline的id，必须是唯一的并且不可与容器内组件重名。|
-| direction | [Axis](ts-appendix-enums.md#axis) | 否 | 否    | 指定guideline的方向。</br> 垂直方向的guideline仅能作为组件水平方向的锚点，作为垂直方向的锚点时值为0；水平方向的guideline仅能作为组件垂直方向的锚点，作为水平方向的锚点时值为0。</br>默认值：Axis.Vertical <br />非法值：按默认值处理。 |
-| position | [GuideLinePosition](#guidelineposition12对象说明) |  否 | 否    | 指定guideline的位置。</br>当未声明或声明异常值（如undefined）时，guideline的位置默认为start: 0。start和 end两种声明方式选择一种即可。若同时声明，仅start生效。若容器在某个方向的size被声明为"auto"，则该方向上guideline的位置只能使用start方式声明（不允许使用百分比）。<br />默认值：<br />{<br />start: 0<br />} <br />非法值：按默认值处理。 |
+| id  | string  | 否 | 否    | guideLine的id，必须是唯一的并且不可与容器内组件重名。|
+| direction | [Axis](ts-appendix-enums.md#axis) | 否 | 否    | 指定guideLine的方向。</br> 垂直方向的guideLine仅能作为组件水平方向的锚点，作为垂直方向的锚点时值为0；水平方向的guideLine仅能作为组件垂直方向的锚点，作为水平方向的锚点时值为0。</br>默认值：Axis.Vertical <br />非法值：按默认值处理。 |
+| position | [GuideLinePosition](#guidelineposition12对象说明) |  否 | 否    | 指定guideLine的位置。</br>当未声明或声明异常值（如undefined）时，guideLine的位置默认为start: 0。start和end两种声明方式选择一种即可。若同时声明，仅start生效。若容器在某个方向的size被声明为"auto"，则该方向上guideLine的位置只能使用start方式声明（不允许使用百分比）。<br />默认值：<br />{<br />start: 0<br />} <br />非法值：按默认值处理。 |
 
 ## GuideLinePosition<sup>12+</sup>对象说明
 
-guideLine位置参数，用于定义guideline的位置。
+guideLine位置参数，用于定义guideLine的位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -103,8 +109,8 @@ guideLine位置参数，用于定义guideline的位置。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| start  | [Dimension](ts-types.md#dimension10)  | 否 | 是    | guideline距离容器左侧或者顶部的距离。|
-| end | [Dimension](ts-types.md#dimension10) | 否 | 是   | guideline距离容器右侧或者底部的距离。|
+| start  | [Dimension](ts-types.md#dimension10)  | 否 | 是    | guideLine距离容器左侧或者顶部的距离。|
+| end | [Dimension](ts-types.md#dimension10) | 否 | 是   | guideLine距离容器右侧或者底部的距离。|
 
 ## BarrierStyle<sup>12+</sup>对象说明
 
@@ -128,12 +134,12 @@ barrier参数，用于定义一条barrier的id、方向和生成时所依赖的�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                          |
-| ------ | ----------------------------- |
-| LEFT | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最左侧。|
-| RIGHT | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最右侧。|
-| TOP  | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最上方。|
-| BOTTOM  | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最下方。|
+| 名称     | 值   | 说明                          |
+| ------ | ---- | ----------------------------- |
+| LEFT | 0 | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最左侧。|
+| RIGHT | 1 | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最右侧。|
+| TOP  | 2 | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最上方。|
+| BOTTOM  | 3 | 屏障在其所有[referencedId](ts-container-relativecontainer.md#barrierstyle12对象说明)的最下方。|
 
 ## LocalizedBarrierStyle<sup>12+</sup>对象说明
 
@@ -256,7 +262,7 @@ struct Index {
 
 ### 示例2（子组件设置外边距）
 
-本示例展示了容器内子组件设置外边距的用法。
+本示例展示容器内子组件设置外边距的方法。
 
 ```ts
 @Entry
@@ -400,7 +406,7 @@ struct Index {
 
 ### 示例4（设置偏移）
 
-本示例通过[bias](ts-universal-attributes-location.md#bias对象说明)实现了子组件的位置在竖直方向的两个锚点间偏移的效果。
+本示例通过[bias](ts-types.md#bias对象说明)实现了子组件的位置在垂直方向的两个锚点间偏移的效果。
 
 ```ts
 @Entry
@@ -690,7 +696,7 @@ struct Index {
 
 ### 示例8（链中设置偏移）
 
-本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-universal-attributes-location.md#bias对象说明)接口实现了水平方向的带偏移的[PACKED链](ts-universal-attributes-location.md#chainstyle12)。
+本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-types.md#bias对象说明)接口实现了水平方向的带偏移的[PACKED链](ts-universal-attributes-location.md#chainstyle12)。
 
 ```ts
 @Entry
@@ -865,7 +871,7 @@ struct Index {
           top: { anchor: "row1", align: VerticalAlign.Top }
         })
         .id("row2")
-        .chainWeight({horizontal:1})
+        .chainWeight({ horizontal: 1 })
 
         Row() {
           Text('row3')
@@ -880,7 +886,7 @@ struct Index {
           top: { anchor: "row1", align: VerticalAlign.Top }
         })
         .id("row3")
-        .chainWeight({horizontal:2})
+        .chainWeight({ horizontal: 2 })
       }
       .width(300).height(300)
       .margin({ left: 50 })

@@ -1,4 +1,10 @@
 # Obtaining Device Location Information (C/C++)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 
 ## When to Use
@@ -16,7 +22,7 @@ You can call location-related APIs to listen for device location changes.
 | OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length) | Obtains additional information from the location result. The additional information is a string in JSON format.|
 | OH_Location_CreateRequestConfig(void) | Creates a **Location_RequestConfig** instance.   |
 | OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig) | Destroys the **Location_RequestConfig** instance and reclaims the memory. |
-| OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene) | Sets the user activity scenario in a location request.<br>If **useScene** is set, **powerConsumptionScene** is invalid.<br>Otherwise, **powerConsumptionScene** takes effect.<br>If neither of the two parameters is set, **useScene** is defaulted to **LOCATION_USE_SCENE_DAILY_LIFE_SERVICE**, and **powerConsumptionCenario** is invalid.    |
+| OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene) | Sets the user activity scenario in a location request.<br>If **useScene** is set, **powerConsumptionScene** is invalid.<br>Otherwise, **powerConsumptionScene** takes effect.<br>If neither of the two parameters is set, **useScene** is defaulted to **LOCATION_USE_SCENE_DAILY_LIFE_SERVICE**, and **powerConsumptionScene** is invalid.    |
 | OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene) | Sets the power consumption scenario in a location request.     |
 | OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval) | Sets the interval for reporting location results.                              |
 | OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData) | Sets the callback for receiving reported location information.    |
@@ -85,7 +91,7 @@ You can call location-related APIs to listen for device location changes.
         Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
         char additionalInfo[1024] = "";
         Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
-        if (mydata == userdata) {
+        if (mydata == userData) {
             OH_LOG_INFO(LOG_APP, "userData is mydata");
         }
         return;
