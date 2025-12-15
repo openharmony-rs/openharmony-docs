@@ -3987,7 +3987,7 @@ isCollaborativePlaybackSupported(): boolean
 
 查询系统移动全景声支持能力，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -4028,7 +4028,7 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 
 当前只有A2DP设备支持移动全景声。开启移动全景声后，指定A2DP设备和本地扬声器将同时播放音频。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -4037,7 +4037,7 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 | 参数名            | 类型                                                                 | 必填 | 说明             |
 | ----------       | -------------------------------------------------------------------- | ---- |------------------|
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 是   | 指定设备的描述。   |
-| enabled          | boolean                                                              | 是   | 表示开启/关闭移动全景声。true表示开启，false表示关闭。|
+| enabled          | boolean                                                              | 是   | 表示开启或关闭移动全景声。true表示开启，false表示关闭。|
 
 **返回值：**
 
@@ -4090,7 +4090,7 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 
 查询指定设备移动全景声状态，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -4113,7 +4113,7 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 202     | Not system application.                     |
-| 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
+| 6800101 | Parameter verification failed.              |
 
 **示例：**
 
