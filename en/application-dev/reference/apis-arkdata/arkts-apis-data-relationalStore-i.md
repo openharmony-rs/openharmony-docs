@@ -60,7 +60,7 @@ Represents the asset (such as a document, image, or video).
 | path | string | No| No| Path of an asset in the application sandbox.|
 | createTime | string | No| No| Time when an asset is created.|
 | modifyTime | string | No| No| Time when an asset is last modified.|
-| size | string | No| No| Asset size.|
+| size | string | No| No| Asset size. In the device-cloud synchronization mechanism, this field is one of the key bases for determining whether an asset is changed. Ensure that the storage format and value logic are consistent across the end-to-end link. It is recommended that all system nodes use the standard processing format (unit: byte; value: a non-negative integer) to avoid synchronization exceptions or misjudgment caused by format differences.|
 | status | [AssetStatus](arkts-apis-data-relationalStore-e.md#assetstatus10) | No  | Yes  | Asset status. <br>Default value: **ASSET_NORMAL**.|
 
 ## ChangeInfo<sup>10+</sup>

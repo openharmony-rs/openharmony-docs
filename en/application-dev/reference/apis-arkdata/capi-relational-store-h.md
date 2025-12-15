@@ -613,7 +613,7 @@ Sets the custom directory of the database.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_SetReadOnly()
 
@@ -639,7 +639,7 @@ Sets whether the RDB store is in read-only mode.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_SetPlugins()
 
@@ -666,7 +666,7 @@ Sets the dynamic library with specific capabilities (such as full-text search).
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_SetCryptoParam()
 
@@ -692,7 +692,7 @@ Sets custom encryption parameters.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_IsTokenizerSupported()
 
@@ -1051,7 +1051,7 @@ Inserts a row of data into the target table and supports conflict resolution.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
 
 ### OH_Rdb_BatchInsert()
 
@@ -1086,7 +1086,7 @@ Ensure that you comply with this constraint when calling this API to avoid error
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
 
 ### OH_Rdb_Update()
 
@@ -1142,7 +1142,7 @@ Updates data in the database based on specified conditions and supports conflict
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
 
 ### OH_Rdb_Delete()
 
@@ -1254,7 +1254,7 @@ Executes an SQL statement with a return value. This API supports vector stores.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
 
 **See**
 
@@ -2033,7 +2033,7 @@ Creates a transaction object.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_DATABASE_BUSY** indicates that the database does not respond.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_CANT_OPEN** indicates an SQLite error: unable to open the database file.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_DATABASE_BUSY** indicates that the database does not respond.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_CANT_OPEN** indicates an SQLite error: unable to open the database file.|
 
 ### OH_Rdb_Attach()
 
@@ -2062,7 +2062,7 @@ Attaches a database file to the database that is currently connected.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_DATABASE_BUSY** indicates that the database does not respond.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_DATABASE_BUSY** indicates that the database does not respond.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
 
 ### OH_Rdb_Detach()
 
@@ -2090,7 +2090,7 @@ Detaches a specified store from the current database.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_DATABASE_BUSY** indicates that the database does not respond.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_DATABASE_BUSY** indicates that the database does not respond.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
 
 ### OH_Rdb_SetLocale()
 
@@ -2116,4 +2116,4 @@ Sets locale.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_ERR** indicates that the operation fails.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.|
+| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_ERR** indicates that the operation fails.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.|

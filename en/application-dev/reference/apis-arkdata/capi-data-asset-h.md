@@ -92,7 +92,7 @@ int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 
 **Description**
 
-Sets the name of a data asset.
+Sets the name of an asset.
 
 **Since**: 11
 
