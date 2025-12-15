@@ -5,9 +5,9 @@
 > **说明：**
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
+
 >  - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+
 > -  本模块为系统接口。
 
 
@@ -16,7 +16,7 @@
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 ```
 
-## metadataBinding.encodeImage<sup>18+</sup>
+## metadataBinding.encodeImage
 
 encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>;
 
@@ -67,7 +67,7 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 });
 ```
 
-## metadataBinding.decodeImage<sup>18+</sup>
+## metadataBinding.decodeImage
 function decodeImage(encodedImage: image.PixelMap): Promise\<string\>
 
 
@@ -121,7 +121,7 @@ if (encodeImage) {
 }
 ```
 
-## metadataBinding.notifyMetadataBindingEvent<sup>18+</sup>
+## metadataBinding.notifyMetadataBindingEvent
 notifyMetadataBindingEvent(metadata: string): void;
 
 
