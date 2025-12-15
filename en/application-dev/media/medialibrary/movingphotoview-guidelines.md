@@ -21,10 +21,10 @@ The restrictions on using the **MovingPhotoView** component are as follows:
 
 1. Import modules.
 
-    **NOTE**
-   
-    - **MovingPhotoViewAttribute** is essential for configuring the **MovingPhotoView** component. In API version 21 and earlier, you must manually import **MovingPhotoViewAttribute** after importing the **MovingPhotoView** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **MovingPhotoViewAttribute** when it detects the **MovingPhotoView** component, so manual import is no longer necessary.
-    - If you manually import **MovingPhotoViewAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+   > **NOTE**
+   >
+   > - **MovingPhotoViewAttribute** is essential for configuring the **MovingPhotoView** component. In API version 21 and earlier, you must manually import **MovingPhotoViewAttribute** after importing the **MovingPhotoView** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **MovingPhotoViewAttribute** when it detects the **MovingPhotoView** component, so manual import is no longer necessary.
+   > - After **MovingPhotoViewAttribute** is imported, DevEco Studio displays it as grayed out, but this does not affect its usage.
 
     API version 21 and earlier:
 
