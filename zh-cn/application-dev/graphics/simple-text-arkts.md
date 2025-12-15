@@ -63,6 +63,15 @@
 4. 初始化段落对象，并添加文本。
 
    <!-- @[arkts_drawing_simple_text_builder_add_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let fontCollection = text.FontCollection.getGlobalInstance();
+   let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   // 更新文本样式
+   ParagraphGraphBuilder.pushStyle(myTextStyle);
+   // 添加文本
+   ParagraphGraphBuilder.addText("Hello World");
+   ```
    <!-- -->
 
 5. 排版段落并进行文本绘制。
