@@ -85,6 +85,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 5. 定义一个全局变量用来记录编码所支持的格式。
 
    <!-- @[packSource_supportedFormats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
+   
+   ``` C++
+   static std::set<std::string> g_encodeSupportedFormats;
+   ```
 
 6. 创建GetJsResult函数处理napi返回值。
 
