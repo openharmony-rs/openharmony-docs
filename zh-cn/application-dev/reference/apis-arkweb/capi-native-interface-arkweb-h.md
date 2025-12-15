@@ -580,7 +580,7 @@ ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()
 
 ### OH_NativeArkWeb_IsActiveWebEngineEvergreen()
 
-```
+```c
 bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()
 ```
 
@@ -598,7 +598,7 @@ bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()
 
 ### OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager()
 
-```
+```c
 void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)
 ```
 

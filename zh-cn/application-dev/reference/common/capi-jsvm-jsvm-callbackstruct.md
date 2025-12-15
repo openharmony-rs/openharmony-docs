@@ -39,7 +39,7 @@ typedef struct {...} JSVM_CallbackStruct
 
 ### callback()
 
-```
+```c
 JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)
 ```
 
