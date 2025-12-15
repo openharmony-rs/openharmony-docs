@@ -24,7 +24,13 @@
 
 - [AuxiliaryPicture](arkts-apis-image-AuxiliaryPicture.md)类，辅助图一般用于辅助主图进行特殊信息的展示，使图像包含更丰富的信息。目前支持的辅助图的类型可参考[AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)。
 
-- [Metadata](arkts-apis-image-Metadata.md)类，用于存储图像的元数据。目前支持的元数据类型可参考[MetadataType](arkts-apis-image-e.md#metadatatype13)。包含EXIF元数据和水印裁剪图元数据，它们都是以Key-Value的形式存储的，EXIF元数据的Key可参考[PropertyKey](arkts-apis-image-e.md#propertykey7)，水印裁剪图元数据的Key可参考[FragmentPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
+- [Metadata](arkts-apis-image-Metadata.md)类，以Key-Value的形式存储图像的元数据。目前支持的元数据类型可参考[MetadataType](arkts-apis-image-e.md#metadatatype13)，包含Exif元数据、水印裁剪图元数据和HEIF序列图像元数据。Exif元数据的Key可参考[PropertyKey](arkts-apis-image-e.md#propertykey7)；水印裁剪图元数据的Key可参考[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)；HEIF序列图像元数据的Key可参考[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
+
+- [ExifMetadata](arkts-apis-image-ExifMetadata.md)类，以Key-Value的形式存储图像的Exif元数据。Exif元数据的Key可参考[PropertyKey](arkts-apis-image-e.md#propertykey7)。
+
+- [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetadata.md)类，以Key-Value的形式存储图像Huawei相机定义的照片元数据。Huawei相机定义的照片元数据的Key可参考[PropertyKey](arkts-apis-image-e.md#propertykey7)。
+
+- [HeifsMetadata](arkts-apis-image-HeifsMetadata.md)类，以Key-Value的形式存储图像的HEIF序列图像元数据。HEIF序列图像元数据的Key可参考[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
 - [ImageReceiver](arkts-apis-image-ImageReceiver.md)类，作为图片的消费者，用于从Surface中接收、读取图片。
 

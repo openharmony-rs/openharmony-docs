@@ -231,6 +231,20 @@ Gainmap图单个通道的数据内容，参考ISO 21496-1。
 | baseOffset  | number     | 否 | 否 | 基础图的偏移，参考ISO 21496-1。   |
 | alternateOffset  | number    | 否 | 否 | 提取的可选择图像偏移量，参考ISO 21496-1。    |
 
+## ImageMetadata<sup>23+</sup>
+
+图像的元数据集。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称                    | 类型                    | 只读 | 可选 | 说明                            |
+| ----------------------- | ----------------------- | ---- | ---- | ------------------------------- |
+| exifMetadata            | [ExifMetadata](arkts-apis-image-ExifMetadata.md) | 否   | 是   | Exif元数据。                    |
+| makerNoteHuaweiMetadata | [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetadata.md) | 否   | 是   | 来自Huawei相机的照片元数据。 |
+| heifsMetadata | [HeifsMetadata](arkts-apis-image-HeifsMetadata.md) | 否   | 是   | HEIF序列图像元数据类，用于存储图像的元数据。 |
+
 ## HdrGainmapMetadata<sup>12+</sup>
 
 Gainmap使用的元数据值，[HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)中HDR_GAINMAP_METADATA关键字对应的值，参考ISO 21496-1。
