@@ -22,7 +22,7 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
@@ -63,7 +63,7 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -128,7 +128,7 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -199,7 +199,7 @@ ArkTS-Sta: open(portId: int): void
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -273,7 +273,7 @@ ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattri
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -364,7 +364,7 @@ ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribu
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -452,7 +452,7 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -543,7 +543,7 @@ ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -635,7 +635,7 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -726,7 +726,7 @@ ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -818,7 +818,7 @@ ArkTS-Sta: close(portId: int): void
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -899,7 +899,7 @@ ArkTS-Sta: cancelSerialRight(portId: int): void
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -969,7 +969,7 @@ try {
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称       |          类型        |  只读   |  可选 | 说明        |
 |----------|--------|----------|-----------|----------------------|
@@ -986,7 +986,7 @@ try {
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称     | 类型  |  只读 | 可选 | 说明    |
 |--------|--------|------|-------|--------|
@@ -1001,7 +1001,7 @@ try {
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -1044,7 +1044,7 @@ try {
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -1061,7 +1061,7 @@ try {
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -1079,7 +1079,7 @@ try {
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
