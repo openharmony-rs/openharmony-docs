@@ -23,6 +23,10 @@
 1. 通过context获取到Canvas画布对象。
 
    <!-- @[arkts_drawing_simple_text_create_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let canvas = context.canvas;
+   ```
    <!-- -->
 
 2. 初始化文本样式，此处设置字体颜色为红色，字体大小为50。
