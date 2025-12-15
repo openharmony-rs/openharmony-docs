@@ -5,7 +5,7 @@
 > **说明：**
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
+
 >  - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -27,7 +27,7 @@
 | STATUS_EXIT  | 0    | 表示设备退出支架态。 |
 | STATUS_ENTER | 1    | 表示设备进入支架态。 |
 
-## deviceStatus.on('steadyStandingDetect')<sup>18+</sup>
+## deviceStatus.on('steadyStandingDetect')
 
  on(type: 'steadyStandingDetect', callback: Callback&lt;SteadyStandingStatus&gt;): void;
 
@@ -68,7 +68,7 @@ try {
 }
   ```
 
-## deviceStatus.off('steadyStandingDetect')<sup>18+</sup>
+## deviceStatus.off('steadyStandingDetect')
 
 off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt;): void;
 
