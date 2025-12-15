@@ -277,7 +277,7 @@ zh-cn/application-dev/ui/arkts-common-components-button.md	@liyi0309	@lxl007	@Br
 zh-cn/application-dev/ui/arkts-common-components-custom-dialog.md	@houguobiao	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-components-progress-indicator.md	@weixin_52725220	@xiong0104	@Brilliantry_Ru
 zh-cn/application-dev/ui/arkts-common-components-radio-button.md	@houguobiao	@lxl007	@Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-common-components-richeditor.md	@pssea	@mateng_Holtens	@Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-common-components-richeditor.md	@carnivore233	@mateng_Holtens	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-components-switch.md	@houguobiao	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-components-symbol.md	@pssea	@jiaoaozihao	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-components-text-display.md	@pssea	@jiaoaozihao	@Brilliantry_Rui
@@ -1493,8 +1493,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-progress
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-radio.md	@houguobiao	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-rating.md	@liyi0309	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-richeditor-sys.md	@pssea	@mateng_Holtens	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md	@pssea	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-richeditor-sys.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md	@yylong	@rongShao-Z @songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-search.md	@pssea	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select.md	@zhanghaibo0	@lxl007	 @Brilliantry_Rui
