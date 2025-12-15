@@ -547,7 +547,7 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 
 ## notificationManager.getAllNotificationEnabledBundles<sup>23+</sup>
 
-getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
+getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleOption\>>
 
 获取指定用户下允许通知的应用程序列表。使用Promise异步回调。
 
@@ -561,7 +561,7 @@ getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| userId   | int | 是 | 要获取允许通知的应用程序列表的用户。 |
+| userId   | number | 是 | 要获取允许通知的应用程序列表的用户。 |
 
 **返回值：**
 
@@ -587,22 +587,17 @@ getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-getAllNotificationEnabledBundlesByUserId = (userId: number): void => {
-let funcName: string = 'getAllNotificationEnabledBundlesByUserId';
+let userId : number = 100;
 
-try {
-  notificationManager.getAllNotificationEnabledBundles(userId)
-    .then((data: Array<notificationManager.BundleOption>) => {
-    hilog.info(DOMAIN, TAG, `${funcName} success. data: ${JSON.stringify(data)}`);
-  })
-  .catch((err: BusinessError) => {
-    hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
+notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<notificationManager.BundleOption>) => {
+  console.info(`Enable bundle data is ${JSON.stringify(data)}`);
+  data.forEach(element => {
+    console.info(`Enable uid is ${JSON.stringify(element.uid)}`);
+    console.info(`Enable bundle is ${JSON.stringify(element.bundle)}`);
   });
-  } catch (e) {
-    let err: BusinessError = e as BusinessError;
-    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
-  }
-};
+}).catch((err: BusinessError) => {
+  console.error(`getAllNotificationEnabledBundles failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.isNotificationEnabled
@@ -4152,7 +4147,6 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -4556,7 +4550,7 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 
 ## notificationManager.addDoNotDisturbProfile<sup>23+</sup>
 
-addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
+addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number): Promise\<void\>
 
 向指定用户添加勿扰模式配置信息。使用Promise异步回调。
 
@@ -4566,6 +4560,8 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Pro
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -4573,7 +4569,7 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Pro
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
 | templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | 是 | 勿扰模式的配置信息。 |
-| userId   | int | 是 | 添加勿扰模式配置信息的用户ID。 |
+| userId   | number | 是 | 添加勿扰模式配置信息的用户ID。 |
 
 **返回值：**
 
@@ -4601,61 +4597,32 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Pro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-addDoNotDisturbProfileByUserId = (
-  userId: number, 
-  bundleList: string, 
-  uidList: string, 
-  id: number
-): void => {
-  let fName: string = 'addDoNotDisturbProfileByUserId';
-
-  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
-    hilog.info(DOMAIN, TAG, `${fName} 参数不正确. 请输入逗号分割的一一对应的bundleList和uidList`);
-    return;
+let userId : number = 100;
+let trustlist: Array<notificationManager.BundleOption> = [
+  {
+    //需根据实际情况进行替换
+    bundle: 'bundleName',
+    uid: 0
+  },
+  {
+    //需根据实际情况进行替换
+    bundle: 'bundleName1',
+    uid: 1
   }
-
-  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
-    return value !== undefined && value.trim().length > 0;
-  });
-  let arrUid: string[] = uidList.split(',').filter((value: string) => {
-    return value !== undefined && value.trim().length > 0;
-  });
-
-  if (arrBundle.length === 0 || arrUid.length === 0) {
-    hilog.info(DOMAIN, TAG, `${fName} 没有指定应用.`);
-    return;
+]
+let templates: Array<notificationManager.DoNotDisturbProfile> = [
+  {
+    id: 3,
+    name: '工作模式',
+    trustlist: trustlist
   }
+]
 
-  let cnt: number = Math.min(arrBundle.length, arrUid.length);
-  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
-  for (let i = 0; i < cnt; i++) {
-    trustList[i] = {
-      bundle: arrBundle[i].trim(),
-      uid: Number(arrUid[i].trim())
-    };
-  }
-
-  let templates: Array<notificationManager.DoNotDisturbProfile> = [
-    {
-      id: id,
-      name: '工作模式',
-      trustlist: trustList
-    }
-  ];
-
-  try {
-    notificationManager.addDoNotDisturbProfile(templates, userId)
-      .then(() => {
-        hilog.info(DOMAIN, TAG, `${fName} success. ${userId}, ${JSON.stringify(templates)}`);
-      })
-      .catch((err: BusinessError) => {
-        hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
-      });
-  } catch (e) {
-    let err: BusinessError = e as BusinessError;
-    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
-  }
-};
+notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
+  console.info("addDoNotDisturbProfile success.");
+}).catch((err: BusinessError) => {
+  console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.removeDoNotDisturbProfile<sup>12+</sup>
@@ -4718,7 +4685,7 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
 ```
 ## notificationManager.removeDoNotDisturbProfile<sup>23+</sup>
 
-removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
+removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number): Promise\<void\>
 
 删除指定用户的勿扰模式配置。使用Promise异步回调。
 
@@ -4728,6 +4695,8 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): 
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -4735,7 +4704,7 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
 | templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | 是  | 勿扰模式的配置信息。 |
-| userId   | int | 是 | 删除勿扰模式配置的用户ID。 |
+| userId   | number | 是 | 删除勿扰模式配置的用户ID。 |
 
 **返回值：**
 
@@ -4763,60 +4732,18 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-removeDoNotDisturbProfileByUserId = (
-  userId: number,
-  bundleList: string,
-  uidList: string,
-  id: number
-): void => {
-  let funcName: string = 'removeDoNotDisturbProfileByUserId';
-
-  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
-    hilog.info(DOMAIN, TAG, `${funcName} 参数不正确. 请输入逗号分割的一一对应的bundleList和uidList`);
-    return;
+let userId : number = 100;
+let templates: Array<notificationManager.DoNotDisturbProfile> = [
+  {
+    id: 3,
+    name: '工作模式'
   }
-
-  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
-    return value !== undefined && value.trim().length > 0;
-  });
-  let arrUid: string[] = uidList.split(',').filter((value: string) => {
-    return value !== undefined && value.trim().length > 0;
-  });
-
-  if (arrBundle.length === 0 || arrUid.length === 0) {
-    hilog.info(DOMAIN, TAG, `${funcName} 没有指定应用.`);
-    return;
-  }
-
-  let cnt: number = Math.min(arrBundle.length, arrUid.length);
-  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
-  for (let i = 0; i < cnt; i++) {
-    trustList[i] = {
-      bundle: arrBundle[i].trim(),
-      uid: Number(arrUid[i].trim())
-    };
-  }
-
-  let templates: Array<notificationManager.DoNotDisturbProfile> = [
-    {
-      id: id,
-      name: '工作模式',
-      trustlist: trustList
-    }
-  ];
-
-  try {
-    notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
-      hilog.info(DOMAIN, TAG, `${funcName} success. userId: ${userId}, templates: ${JSON.stringify(templates)}`);
-    })
-      .catch((err: BusinessError) => {
-        hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
-      });
-  } catch (e) {
-    let err: BusinessError = e as BusinessError;
-    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
-  }
-};
+]
+notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
+  console.info("removeDoNotDisturbProfile success.");
+}).catch((err: BusinessError) => {
+  console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setAdditionalConfig<sup>12+</sup>
@@ -4927,7 +4854,7 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 
 ## notificationManager.getDoNotDisturbProfile<sup>23+</sup>
 
-getDoNotDisturbProfile(id: long, userId: int): Promise\<DoNotDisturbProfile\>
+getDoNotDisturbProfile(id: long, userId: number): Promise\<DoNotDisturbProfile\>
 
 查询指定用户的勿扰模式配置信息。使用Promise异步回调。
 
@@ -4937,6 +4864,8 @@ getDoNotDisturbProfile(id: long, userId: int): Promise\<DoNotDisturbProfile\>
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -4944,7 +4873,7 @@ getDoNotDisturbProfile(id: long, userId: int): Promise\<DoNotDisturbProfile\>
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
 | id   | number | 是  | 勿扰模式编号。 |
-| userId   | int | 是  | 待查询勿扰模式配置信息的用户。 |
+| userId   | number | 是  | 待查询勿扰模式配置信息的用户。 |
 
 
 **返回值：**
@@ -4973,20 +4902,14 @@ getDoNotDisturbProfile(id: long, userId: int): Promise\<DoNotDisturbProfile\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-getDoNotDisturbProfileByUserId = (id: number, userId: number): void => {
-  let fName: string = 'getDoNotDisturbProfileByUserId';
-  hilog.info(DOMAIN, TAG, `${fName} id: ${id}, userId: ${userId}`);
-  try {
-    notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationManager.DoNotDisturbProfile) => {
-      hilog.info(DOMAIN, TAG, `${fName} success. data: ${JSON.stringify(data)}`);
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
-    });
-  } catch (e) {
-    let err: BusinessError = e as BusinessError;
-    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
-  }
-};
+let id : number = 101;
+let userId : number = 100;
+
+notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationManager.DoNotDisturbProfile) => {
+  console.info(`getDoNotDisturbProfile success: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`getDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.disableNotificationFeature<sup>18+</sup>
