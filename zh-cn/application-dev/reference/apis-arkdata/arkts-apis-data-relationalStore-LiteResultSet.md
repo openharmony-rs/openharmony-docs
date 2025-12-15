@@ -10,7 +10,7 @@
 
 LiteResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
 
-下列API示例中，都需先使用[queryWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#queryWithoutRowCount)、[querySqlWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#querySqlWithoutRowCount)等query类方法中任一方法获取到LiteResultSet实例，再通过此实例调用对应方法。
+下列API示例中，都需先使用[queryWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#queryWithoutRowCount23)、[querySqlWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#querySqlWithoutRowCount23)等query类方法中任一方法获取到LiteResultSet实例，再通过此实例调用对应方法。
 
 ## 导入模块
 
@@ -20,7 +20,7 @@ import { relationalStore } from '@kit.ArkData';
 
 ## getColumnIndex<sup>23+</sup>
 
-getColumnIndex(columnName: string): int
+getColumnIndex(columnName: string): number
 
 根据指定的列名获取列索引。
 
@@ -36,7 +36,7 @@ getColumnIndex(columnName: string): int
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| int | 返回指定列的索引。 |
+| number | 返回指定列的索引。 |
 
 **错误码：**
 
@@ -72,7 +72,7 @@ try {
 
 ## getColumnName<sup>23+</sup>
 
-getColumnName(columnIndex: int): string
+getColumnName(columnIndex: number): string
 
 根据指定的列索引获取列名。
 
@@ -82,7 +82,7 @@ getColumnName(columnIndex: int): string
 
 | 参数名      | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | -------------------------- |
-| columnIndex | int | 是   | 表示结果集中指定列的索引。 |
+| columnIndex | number | 是   | 表示结果集中指定列的索引。 |
 
 **返回值：**
 
@@ -125,7 +125,7 @@ try {
 
 ## getColumnType<sup>23+</sup>
 
-getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
+getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
 根据指定的列索引或列名称获取列数据类型，使用Promise异步回调。
 
@@ -135,7 +135,7 @@ getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | int \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
+| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
 
 **返回值：**
 
@@ -187,7 +187,7 @@ try {
 
 ## getColumnTypeSync<sup>23+</sup>
 
-getColumnTypeSync(columnIdentifier: int | string): ColumnType
+getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 根据指定的列索引或列名称获取列数据类型。
 
@@ -197,7 +197,7 @@ getColumnTypeSync(columnIdentifier: int | string): ColumnType
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | int \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
+| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
 
 **返回值：**
 
@@ -294,9 +294,9 @@ try {
 
 ## getValue<sup>23+</sup>
 
-getValue(columnIndex: int): ValueType
+getValue(columnIndex: number): ValueType
 
-获取当前行中指定列的值。如果值类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring)接口获取。
+获取当前行中指定列的值。如果值类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring23)接口获取。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -304,7 +304,7 @@ getValue(columnIndex: int): ValueType
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+| columnIndex | number | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -339,7 +339,7 @@ try {
 
 ## getBlob<sup>23+</sup>
 
-getBlob(columnIndex: int): Uint8Array
+getBlob(columnIndex: number): Uint8Array
 
 以字节数组的形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成字节数组类型返回指定值，如果该列内容为空时，会返回空字节数组。
 
@@ -349,7 +349,7 @@ getBlob(columnIndex: int): Uint8Array
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+| columnIndex | number | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -376,7 +376,7 @@ try {
   resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
   if (resultSet != undefined) {
     resultSet.goToNextRow();
-    const name = resultSet.getBlob(getColumnIndex("CODES"));
+    const name = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
   }
 } catch (err) {
   console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -385,9 +385,9 @@ try {
 
 ## getString<sup>23+</sup>
 
-getString(columnIndex: int): string
+getString(columnIndex: number): string
 
-以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble)接口获取。
+以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble23)接口获取。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -395,7 +395,7 @@ getString(columnIndex: int): string
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+| columnIndex | number | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -431,9 +431,9 @@ try {
 
 ## getLong<sup>23+</sup>
 
-getLong(columnIndex: int): long
+getLong(columnIndex: number): number
 
-以Long形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成Long类型返回指定值，如果该列内容为空时，会返回0。如果当前列的数据类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring)接口获取。如果当前列的数据类型为DOUBLE且不希望丢失精度，建议使用[getDouble](#getdouble)接口获取。
+以Long形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成Long类型返回指定值，如果该列内容为空时，会返回0。如果当前列的数据类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring23)接口获取。如果当前列的数据类型为DOUBLE且不希望丢失精度，建议使用[getDouble](#getdouble23)接口获取。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -441,13 +441,13 @@ getLong(columnIndex: int): long
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+| columnIndex | number | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| long | 以Long形式返回指定列的值。<br>该接口支持的精度范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议对于DOUBLE类型的值使用[getDouble](#getdouble)，对于INTEGER类型的值使用[getString](#getstring)。 |
+| number | 以Long形式返回指定列的值。<br>该接口支持的精度范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议对于DOUBLE类型的值使用[getDouble](#getdouble23)，对于INTEGER类型的值使用[getString](#getstring23)。 |
 
 **错误码：**
 
@@ -477,7 +477,7 @@ try {
 
 ## getDouble<sup>23+</sup>
 
-getDouble(columnIndex: int): double
+getDouble(columnIndex: number): number
 
 以double形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成double类型返回指定值，如果该列内容为空时，会返回0.0，其他类型则返回14800041。
 
@@ -487,13 +487,13 @@ getDouble(columnIndex: int): double
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+| columnIndex | number | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
 | 类型   | 说明                         |
 | ------ | ---------------------------- |
-| double | 以double形式返回指定列的值。 |
+| number | 以double形式返回指定列的值。 |
 
 **错误码：**
 
@@ -523,7 +523,7 @@ try {
 
 ## getAsset<sup>23+</sup>
 
-getAsset(columnIndex: int): Asset
+getAsset(columnIndex: number): Asset
 
 以[Asset](arkts-apis-data-relationalStore-i.md#asset10)形式获取当前行中指定列的值，如果当前列的数据类型为Asset类型，会以Asset类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800041。
 
@@ -533,7 +533,7 @@ getAsset(columnIndex: int): Asset
 
 | 参数名         | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| columnIndex | int | 是   | 指定的列索引，从0开始。 |
+| columnIndex | number | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -560,7 +560,7 @@ try {
   resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
   if (resultSet != undefined) {
     resultSet.goToNextRow();
-    const doc = resultSet.getAsset(getColumnIndex("DOC"));
+    const doc = resultSet.getAsset(resultSet.getColumnIndex("DOC"));
   }
 } catch (err) {
   console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -569,7 +569,7 @@ try {
 
 ## getAssets<sup>23+</sup>
 
-getAssets(columnIndex: int): Assets
+getAssets(columnIndex: number): Assets
 
 以[Assets](arkts-apis-data-relationalStore-t.md#assets10)形式获取当前行中指定列的值，如果当前列的数据类型为Assets类型，会以Assets类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800041。
 
@@ -579,7 +579,7 @@ getAssets(columnIndex: int): Assets
 
 | 参数名         | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| columnIndex | int    | 是   | 指定的列索引，从0开始。 |
+| columnIndex | number    | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -660,9 +660,9 @@ try {
 
 ## getRows<sup>23+</sup>
 
-getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
+getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 
-从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
+从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -670,8 +670,8 @@ getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
 
 | 参数名       | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| maxCount    | int    | 是   | 正整数，指定要从结果集中获取数据的条数。|
-| position    | int    | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。|
+| maxCount    | number    | 是   | 正整数，指定要从结果集中获取数据的条数。|
+| position    | number    | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。|
 
 
 **返回值：**
@@ -702,13 +702,15 @@ getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
 ```ts
 // 以查到100条数据为例
 try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
   // 示例1：仅指定maxCount
   if (resultSet != undefined) {
     let rows: Array<relationalStore.ValuesBucket>;
     let maxCount: number = 50;
     // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
     // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
-    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount)).length != 0) {
+    while ((rows = await resultSet.getRows(maxCount)).length != 0) {
       console.info(JSON.stringify(rows[0]));
     }
   }
@@ -718,7 +720,7 @@ try {
     let rows: Array<relationalStore.ValuesBucket>;
     let maxCount: number = 50;
     let position: number = 50;
-    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position)).length != 0) {
+    while ((rows = await resultSet.getRows(maxCount, position)).length != 0) {
       console.info(JSON.stringify(rows[0]));
       position += rows.length;
     }
@@ -730,7 +732,7 @@ console.error(`failed, code is ${err.code}, message is ${err.message}`);
 
 ## isColumnNull<sup>23+</sup>
 
-isColumnNull(columnIndex: int): boolean
+isColumnNull(columnIndex: number): boolean
 
 检查当前行中指定列的值是否为null。
 
@@ -740,7 +742,7 @@ isColumnNull(columnIndex: int): boolean
 
 | 参数名      | 类型   | 必填  | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | int    | 是   | 指定的列索引，从0开始。 |
+| columnIndex | number    | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 

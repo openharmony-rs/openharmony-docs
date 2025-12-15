@@ -1255,9 +1255,9 @@ if (store != undefined) {
 
 ## queryWithoutRowCount<sup>23+</sup>
 
-queryWithoutRowCount(predicates: RdbPredicates, columns?: Array<string>): Promise&lt;LiteResultSet>&gt;
+queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;LiteResultSet>&gt;
 
-根据指定条件查询数据库中的数据，查询时不计算行数，与[query](#query-1)接口相比，性能优化约30%。使用Promise异步回调。
+根据指定条件查询数据库中的数据，查询时不计算行数，与[query](#query14)接口相比，性能优化约30%。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1314,7 +1314,7 @@ if (store != undefined) {
       }
       await transaction.rollback();
     }
-  } catch (error) {
+  } catch (err) {
     console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   }
 }
@@ -1322,7 +1322,7 @@ if (store != undefined) {
 
 ## queryWithoutRowCountSync<sup>23+</sup>
 
-queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array<string>): LiteResultSet;
+queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): LiteResultSet;
 
 根据指定条件查询数据库中的数据，查询时不计算行数。对queryWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
@@ -1382,17 +1382,17 @@ if (store != undefined) {
       }
       await transaction.rollback();
     }
-  } catch (error) {
+  } catch (err) {
     console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
 
-## querySqlWithoutRowCount
+## querySqlWithoutRowCount<sup>23+</sup>
 
-querySqlWithoutRowCount(sql: string, bindArgs?: Array<ValueType>): Promise&lt;LiteResultSet>&gt;
+querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;LiteResultSet>&gt;
 
-根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。与[querySql](#querysql-1)接口相比，性能优化约30%。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
+根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。与[querySql](#querysql14)接口相比，性能优化约30%。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1448,7 +1448,7 @@ if (store != undefined) {
       }
       await transaction.rollback();
     }
-  } catch (error) {
+  } catch (err) {
   console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   }
 }
@@ -1458,7 +1458,7 @@ if (store != undefined) {
 
 querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):LiteResultSet
 
-根据指定SQL语句查询数据库中的数据，查询时不计算行数。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对querySqlWithoutRowCountSync同步接口获得的LiteesultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
+根据指定SQL语句查询数据库中的数据，查询时不计算行数。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对querySqlWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1514,7 +1514,7 @@ if (store != undefined) {
       }
       await transaction.rollback();
     }
-  } catch (error) {
+  } catch (err) {
   console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   }
 }
