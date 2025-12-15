@@ -81,7 +81,7 @@ Defines APIs of the HiTraceMeter and HiTraceChain modules for performance tracin
 
 ### HiTraceId_Valid
 
-```
+```c
 enum HiTraceId_Valid
 ```
 
@@ -100,7 +100,7 @@ Enumerates whether a **HiTraceId** instance is valid.
 
 ### HiTrace_Version
 
-```
+```c
 enum HiTrace_Version
 ```
 
@@ -118,7 +118,7 @@ Enumerates the HiTrace versions.
 
 ### HiTrace_Flag
 
-```
+```c
 enum HiTrace_Flag
 ```
 
@@ -143,7 +143,7 @@ Enumerates the HiTrace flags.
 
 ### HiTrace_Tracepoint_Type
 
-```
+```c
 enum HiTrace_Tracepoint_Type
 ```
 
@@ -165,7 +165,7 @@ Enumerates the trace point types.
 
 ### HiTrace_Communication_Mode
 
-```
+```c
 enum HiTrace_Communication_Mode
 ```
 
@@ -186,7 +186,7 @@ Enumerates the trace communication types.
 
 ### HiTrace_Output_Level
 
-```
+```c
 enum HiTrace_Output_Level
 ```
 
@@ -211,7 +211,7 @@ Enumerates the HiTrace output levels. The trace output level lower than the thre
 
 ### OH_HiTrace_BeginChain()
 
-```
+```c
 HiTraceId OH_HiTrace_BeginChain(const char *name, int flags)
 ```
 
@@ -239,7 +239,7 @@ Starts tracing.<br> If the current thread's TLS does not contain a valid HiTrace
 
 ### OH_HiTrace_EndChain()
 
-```
+```c
 void OH_HiTrace_EndChain()
 ```
 
@@ -253,13 +253,13 @@ Stops tracing.<br> Stops tracing and sets the HiTrace ID in the TLS of the curre
 
 ### OH_HiTrace_GetId()
 
-```
+```c
 HiTraceId OH_HiTrace_GetId()
 ```
 
 **Description**
 
-Obtains the trace ID.<br> Obtains the HiTrace ID in the TLS of the current thread.<br>
+ <br>Obtains the HiTrace ID in the TLS of the current thread.<br>
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -273,13 +273,13 @@ Obtains the trace ID.<br> Obtains the HiTrace ID in the TLS of the current threa
 
 ### OH_HiTrace_SetId()
 
-```
+```c
 void OH_HiTrace_SetId(const HiTraceId *id)
 ```
 
 **Description**
 
-Sets the trace ID.<br> Sets the given HiTrace ID to the TLS of the current thread. If the given HiTrace ID is invalid, no operation is performed.<br>
+ <br>Sets the given HiTrace ID to the TLS of the current thread. If the given HiTrace ID is invalid, no operation is performed.<br>
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -294,7 +294,7 @@ Sets the trace ID.<br> Sets the given HiTrace ID to the TLS of the current threa
 
 ### OH_HiTrace_ClearId()
 
-```
+```c
 void OH_HiTrace_ClearId(void)
 ```
 
@@ -308,7 +308,7 @@ void OH_HiTrace_ClearId(void)
 
 ### OH_HiTrace_CreateSpan()
 
-```
+```c
 HiTraceId OH_HiTrace_CreateSpan(void)
 ```
 
@@ -328,7 +328,7 @@ Creates a trace span.<br> Specifically, create a **HiTraceId**, use the **chainI
 
 ### OH_HiTrace_Tracepoint()
 
-```
+```c
 void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId *id, const char *fmt, ...)
 ```
 
@@ -352,7 +352,7 @@ Adds a trace point for the HiTraceMeter logging.<br>When type is set to CS (clie
 
 ### OH_HiTrace_InitId()
 
-```
+```c
 void OH_HiTrace_InitId(HiTraceId *id)
 ```
 
@@ -373,7 +373,7 @@ Initializes a **HiTraceId**.
 
 ### OH_HiTrace_IdFromBytes()
 
-```
+```c
 void OH_HiTrace_IdFromBytes(HiTraceId *id, const uint8_t *pIdArray, int len)
 ```
 
@@ -396,7 +396,7 @@ Creates a **HiTraceId** based on a byte array.
 
 ### OH_HiTrace_IsIdValid()
 
-```
+```c
 bool OH_HiTrace_IsIdValid(const HiTraceId *id)
 ```
 
@@ -423,7 +423,7 @@ Checks whether the **HiTraceId** is valid.
 
 ### OH_HiTrace_IsFlagEnabled()
 
-```
+```c
 bool OH_HiTrace_IsFlagEnabled(const HiTraceId *id, HiTrace_Flag flag)
 ```
 
@@ -451,7 +451,7 @@ Checks whether the trace flag is enabled for the **HiTraceId**.
 
 ### OH_HiTrace_EnableFlag()
 
-```
+```c
 void OH_HiTrace_EnableFlag(const HiTraceId *id, HiTrace_Flag flag)
 ```
 
@@ -473,7 +473,7 @@ Enables the trace flag specified in **HiTraceId**.
 
 ### OH_HiTrace_GetFlags()
 
-```
+```c
 int OH_HiTrace_GetFlags(const HiTraceId *id)
 ```
 
@@ -500,7 +500,7 @@ Obtains the trace flag set in **HiTraceId**.
 
 ### OH_HiTrace_SetFlags()
 
-```
+```c
 void OH_HiTrace_SetFlags(HiTraceId *id, int flags)
 ```
 
@@ -522,7 +522,7 @@ Sets the trace flag to [HiTraceId](capi-hitrace-hitraceid.md).
 
 ### OH_HiTrace_GetChainId()
 
-```
+```c
 uint64_t OH_HiTrace_GetChainId(const HiTraceId *id)
 ```
 
@@ -549,7 +549,7 @@ Obtains the trace chain ID in **HiTraceId**.
 
 ### OH_HiTrace_SetChainId()
 
-```
+```c
 void OH_HiTrace_SetChainId(HiTraceId *id, uint64_t chainId)
 ```
 
@@ -571,7 +571,7 @@ Sets the trace chain ID in **HiTraceId**.
 
 ### OH_HiTrace_GetSpanId()
 
-```
+```c
 uint64_t OH_HiTrace_GetSpanId(const HiTraceId *id)
 ```
 
@@ -598,7 +598,7 @@ Obtains the span ID in **HiTraceId**.
 
 ### OH_HiTrace_SetSpanId()
 
-```
+```c
 void OH_HiTrace_SetSpanId(HiTraceId *id, uint64_t spanId)
 ```
 
@@ -620,7 +620,7 @@ Sets the span ID in **HiTraceId**.
 
 ### OH_HiTrace_GetParentSpanId()
 
-```
+```c
 uint64_t OH_HiTrace_GetParentSpanId(const HiTraceId *id)
 ```
 
@@ -647,7 +647,7 @@ Obtains the parent span ID in **HiTraceId**.
 
 ### OH_HiTrace_SetParentSpanId()
 
-```
+```c
 void OH_HiTrace_SetParentSpanId(HiTraceId *id, uint64_t parentSpanId)
 ```
 
@@ -669,7 +669,7 @@ Sets the **ParentSpanId** in a **HiTraceId** instance.
 
 ### OH_HiTrace_IdToBytes()
 
-```
+```c
 int OH_HiTrace_IdToBytes(const HiTraceId* id, uint8_t* pIdArray, int len)
 ```
 
@@ -698,7 +698,7 @@ Converts **HiTraceId** into a byte array for cache or communication.
 
 ### OH_HiTrace_StartTrace()
 
-```
+```c
 void OH_HiTrace_StartTrace(const char *name)
 ```
 
@@ -719,7 +719,7 @@ Marks the start of a synchronous trace.<br> This API is used with **OH_HiTrace_F
 
 ### OH_HiTrace_FinishTrace()
 
-```
+```c
 void OH_HiTrace_FinishTrace(void)
 ```
 
@@ -733,7 +733,7 @@ Marks the end of a synchronous trace.<br> This API must be used with **OH_HiTrac
 
 ### OH_HiTrace_StartAsyncTrace()
 
-```
+```c
 void OH_HiTrace_StartAsyncTrace(const char *name, int32_t taskId)
 ```
 
@@ -755,7 +755,7 @@ Marks the start of an asynchronous trace.<br> This API is used to start tracing 
 
 ### OH_HiTrace_FinishAsyncTrace()
 
-```
+```c
 void OH_HiTrace_FinishAsyncTrace(const char *name, int32_t taskId)
 ```
 
@@ -777,7 +777,7 @@ Marks the end of an asynchronous trace.<br> This API is called in the callback f
 
 ### OH_HiTrace_CountTrace()
 
-```
+```c
 void OH_HiTrace_CountTrace(const char *name, int64_t count)
 ```
 
@@ -799,7 +799,7 @@ Traces the value change of an integer variable based on its name.<br> This API c
 
 ### OH_HiTrace_StartTraceEx()
 
-```
+```c
 void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char *name, const char *customArgs)
 ```
 
@@ -820,7 +820,7 @@ Marks the start of a synchronous trace task with the trace output level specifie
 
 ### OH_HiTrace_FinishTraceEx()
 
-```
+```c
 void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level)
 ```
 
@@ -839,7 +839,7 @@ Marks the end of a synchronous trace task with the trace output level specified.
 
 ### OH_HiTrace_StartAsyncTraceEx()
 
-```
+```c
 void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char *name, int32_t taskId, const char *customCategory, const char *customArgs)
 ```
 
@@ -862,7 +862,7 @@ Marks the start of an asynchronous trace task with the trace output level specif
 
 ### OH_HiTrace_FinishAsyncTraceEx()
 
-```
+```c
 void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char *name, int32_t taskId)
 ```
 
@@ -883,7 +883,7 @@ Marks the end of an asynchronous trace task with the trace output level specifie
 
 ### OH_HiTrace_CountTraceEx()
 
-```
+```c
 void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char *name, int64_t count)
 ```
 
@@ -904,7 +904,7 @@ Marks an integer variable trace task with the trace output level specified.
 
 ### OH_HiTrace_IsTraceEnabled()
 
-```
+```c
 bool OH_HiTrace_IsTraceEnabled(void)
 ```
 
