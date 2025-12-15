@@ -57,6 +57,18 @@
 
 3. 根据沉浸模式开关状态，设置当前的卡片显示模式
 
+   - 卡片提供方导入基础依赖包。在`EntryFormAbility.ets`中添加以下代码:
+
+   ``` TypeScript
+   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+
+   import { Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   ```
+
    - 卡片提供方在[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)回调中，传递`visualEffectType`配置。
 
    ``` TypeScript
