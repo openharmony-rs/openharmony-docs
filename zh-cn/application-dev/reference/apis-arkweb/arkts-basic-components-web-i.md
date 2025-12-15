@@ -1004,3 +1004,33 @@ Web屏幕捕获的配置。
 | id                | string                              | 否    | 否 | param元素的id信息。             |
 | name              | string                              | 否    | 是 | param元素的参数名称。           |
 | value             | string                              | 否    | 是 | param元素的参数值。          |
+
+## CameraCaptureStateChangeInfo<sup>23+</sup>
+
+定义摄像头触发回调时的改变前后的状态信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 原来的状态   |
+| newState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 改变后的状态   |
+
+## MicrophoneCaptureStateChangeInfo<sup>23+</sup>
+
+定义麦克风触发回调时的改变前后的状态信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
+| newState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
