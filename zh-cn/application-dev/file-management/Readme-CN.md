@@ -45,3 +45,5 @@
   - [设置分布式文件数据等级](set-security-label.md)
   - [跨设备文件访问](file-access-across-devices.md)
   - [跨设备文件拷贝](file-copy-across-devices.md)
+- 端云文件协同<!--cloud-sync-file-->
+      - [端云文件协同概述](cloud-sync-file-overview.md)

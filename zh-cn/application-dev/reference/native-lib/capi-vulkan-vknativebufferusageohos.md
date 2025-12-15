@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct VkNativeBufferUsageOHOS {...} VkNativeBufferUsageOHOS
+```
+
 ## 概述
 
 提供OpenHarmony NativeBuffer用途的说明。

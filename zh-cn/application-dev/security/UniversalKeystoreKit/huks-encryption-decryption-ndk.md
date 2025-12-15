@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以AES256密钥为例，完成加解密。具体的场景介绍及支持的算法规格，请参考[加解密支持的算法](huks-encryption-decryption-overview.md#支持的算法)。
+以AES256、RSA1024、SM2和DES64为例，完成加解密。具体的场景介绍及支持的算法规格，请参考[加解密支持的算法](huks-encryption-decryption-overview.md#支持的算法)。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -31,7 +31,19 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 获取待加密的数据。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。在下方示例中，使用算法AES进行加密时，必须要选择其对应分组模式以及填充模式，用例中选取的分组模式为CBC、填充模式为PKCS7，此时必须要填参数IV。
+3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。
+    
+   文档中提供多个示例，当使用不同算法时，请注意配置对应参数。
+   - 使用AES算法加密，选取的分组模式为CBC、填充模式为PKCS7时，参数IV必选，请见[开发案例：AES/CBC/PKCS7](#aescbcpkcs7)。
+   - 使用AES算法加密，选取的分组模式为GCM时，参数NONCE可选，AAD可选，请见[开发案例：AES/GCM/NoPadding](#aesgcmnopadding)。
+   - 使用AES算法加密，选取的分组模式为CCM时，参数NONCE可选，AAD可选，请见[开发案例：AES/CCM/NoPadding](#aesccmnopadding)。
+   - 使用RSA算法加密，需要选择相对应的分组模式、填充模式以及摘要算法DIGEST，请见[开发案例：RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5)和[开发案例：RSA/ECB/OAEP/SHA256](#rsaecboaepsha256)。
+   - 使用SM2算法加密，摘要算法DIGEST需要指定为SM3，请见[开发案例：SM2](#sm2)。
+   <!--Del-->
+   - 使用DES算法加密，选取的分组模式为CBC时，参数IV必选，请见[开发案例：DES/CBC/NoPadding](#descbcnopadding)。
+   <!--DelEnd-->
+   
+   详细规格请参考[加密/解密介绍及算法规格](huks-encryption-decryption-overview.md)。
 
 4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 
@@ -43,7 +55,13 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 获取待解密的密文。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。在下方示例中，使用算法AES进行解密时，必须要选择其对应分组模式以及填充模式，用例中选取的分组模式为CBC、填充模式为PKCS7，此时必须要填参数IV。
+3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。
+
+   文档中提供多个示例，当使用不同算法时，请注意配置对应参数。
+   - 使用AES算法解密，用例中选取的分组模式为GCM时，必须要填参数NONCE和参数AEAD，AAD可选，请见[开发案例：AES/GCM/NoPadding](#aesgcmnopadding)。
+   - 其余示例参数与加密要求一致。
+   
+   详细规格请参考[加密/解密介绍及算法规格](huks-encryption-decryption-overview.md)。
 
 4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 
@@ -53,16 +71,20 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 当密钥废弃不用时，需要调用OH_Huks_DeleteKeyItem删除密钥，具体请参考[密钥删除](huks-delete-key-ndk.md)。
 
-### AES/CBC/NoPadding
+## 开发案例
 
-```c++
+
+### AES/CBC/PKCS7
+<!-- @[encrypt_and_decrypt_AESCBCPKCS7_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_aescbcpkcs7.cpp) -->
+
+``` C++
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
 #include "napi/native_api.h"
-#include <string.h>
-OH_Huks_Result InitParamSet(
-    struct OH_Huks_ParamSet **paramSet,
-    const struct OH_Huks_Param *params,
+#include <cstring>
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+
+static OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
     uint32_t paramCount)
 {
     OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
@@ -81,78 +103,65 @@ OH_Huks_Result InitParamSet(
     }
     return ret;
 }
+
+static OH_Crypto_ErrCode genRandomNumber(uint32_t randomLength, uint8_t *out)
+{
+    // 创建随机数生成器。
+    OH_CryptoRand *rand = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoRand_Create(&rand);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    Crypto_DataBlob blob = {out, randomLength};
+    // 生成指定长度的随机数。
+    ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &blob);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoRand_Destroy(rand);
+        return ret;
+    }
+    OH_CryptoRand_Destroy(rand);
+
+    return CRYPTO_SUCCESS;
+}
+
 static const uint32_t IV_SIZE = 16;
-static uint8_t IV[IV_SIZE] = { 0 }; // this is a test value, for real use the iv should be different every time.
+static uint8_t IV[IV_SIZE] = {0};
+static OH_Crypto_ErrCode ret = genRandomNumber(IV_SIZE, IV);
 static struct OH_Huks_Param g_genEncDecParams[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CBC
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CBC}};
+
 static struct OH_Huks_Param g_encryptParams[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CBC
-    }, {
-        .tag = OH_HUKS_TAG_IV,
-        .blob = {
-            .size = IV_SIZE,
-            .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time.
-        }
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CBC},
+    {.tag = OH_HUKS_TAG_IV,
+     .blob = {
+         .size = IV_SIZE,
+         .data = (uint8_t *)IV
+     }}};
+
 static struct OH_Huks_Param g_decryptParams[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CBC
-    }, {
-        .tag = OH_HUKS_TAG_IV,
-        .blob = {
-            .size = IV_SIZE,
-            .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time. 
-        }
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CBC},
+    {.tag = OH_HUKS_TAG_IV,
+     .blob = {
+         .size = IV_SIZE,
+         .data = (uint8_t *)IV
+     }}};
+
 static const uint32_t AES_COMMON_SIZE = 1024;
-OH_Huks_Result HksAesCipherTestEncrypt(
-        const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *encryptParamSet,
-        const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *cipherText)
+OH_Huks_Result HksAesCipherTestEncrypt(const struct OH_Huks_Blob *keyAlias,
+                                       const struct OH_Huks_ParamSet *encryptParamSet,
+                                       const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *cipherText)
 {
     uint8_t handleE[sizeof(uint64_t)] = {0};
     struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
@@ -163,9 +172,11 @@ OH_Huks_Result HksAesCipherTestEncrypt(
     ret = OH_Huks_FinishSession(&handleEncrypt, encryptParamSet, inData, cipherText);
     return ret;
 }
+
 OH_Huks_Result HksAesCipherTestDecrypt(const struct OH_Huks_Blob *keyAlias,
-    const struct OH_Huks_ParamSet *decryptParamSet, const struct OH_Huks_Blob *cipherText,
-    struct OH_Huks_Blob *plainText, const struct OH_Huks_Blob *inData)
+                                       const struct OH_Huks_ParamSet *decryptParamSet,
+                                       const struct OH_Huks_Blob *cipherText, struct OH_Huks_Blob *plainText,
+                                       const struct OH_Huks_Blob *inData)
 {
     uint8_t handleD[sizeof(uint64_t)] = {0};
     struct OH_Huks_Blob handleDecrypt = {sizeof(uint64_t), handleD};
@@ -176,74 +187,54 @@ OH_Huks_Result HksAesCipherTestDecrypt(const struct OH_Huks_Blob *keyAlias,
     ret = OH_Huks_FinishSession(&handleDecrypt, decryptParamSet, cipherText, plainText);
     return ret;
 }
-static napi_value EncDecKey(napi_env env, napi_callback_info info)
+
+napi_value TestAesCbc(napi_env env, napi_callback_info info)
 {
     char tmpKeyAlias[] = "test_enc_dec";
-    struct OH_Huks_Blob keyAlias = { (uint32_t)strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias };
+    struct OH_Huks_Blob keyAlias = {(uint32_t)strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
     struct OH_Huks_ParamSet *genParamSet = nullptr;
     struct OH_Huks_ParamSet *encryptParamSet = nullptr;
     struct OH_Huks_ParamSet *decryptParamSet = nullptr;
     OH_Huks_Result ohResult;
     do {
-        /* 1. Generate Key */
+        /* 1. 模拟生成密钥场景 */
         /*
-        * 模拟生成密钥场景
-        * 1.1. 确定密钥别名
-        */
-        /*
-        * 1.2. 获取生成密钥算法参数配置
-        */
+         * 1.1. 获取生成密钥算法参数配置
+         */
         ohResult = InitParamSet(&genParamSet, g_genEncDecParams, sizeof(g_genEncDecParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
         /*
-        * 1.3. 调用generateKeyItem
-        */
+         * 1.2. 调用generateKeyItem
+         */
         ohResult = OH_Huks_GenerateKeyItem(&keyAlias, genParamSet, nullptr);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        /* 2. Encrypt */
+        /* 2. 模拟加密场景 */
         /*
-        * 模拟加密场景
-        * 2.1. 获取密钥别名
-        */
-        /*
-        * 2.2. 获取待加密的数据
-        */
-        /*
-        * 2.3. 获取加密算法参数配置
-        */
+         * 2.1. 获取加密算法参数配置
+         */
         ohResult = InitParamSet(&encryptParamSet, g_encryptParams, sizeof(g_encryptParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
         char tmpInData[] = "AES_ECB_INDATA_1";
-        struct OH_Huks_Blob inData = { (uint32_t)strlen(tmpInData), (uint8_t *)tmpInData };
+        struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};
         /*
-        * 2.4. 调用initSession获取handle
-        */
-        /*
-        * 2.5. 调用finishSession获取加密后的密文
-        */
+         * 2.2. 调用HksAesCipherTestEncrypt获取加密后的密文
+         */
         ohResult = HksAesCipherTestEncrypt(&keyAlias, encryptParamSet, &inData, &cipherText);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        /* 3. Decrypt */
+        /* 3. 模拟解密场景 */
         /*
-        * 模拟解密场景
-        * 3.1. 获取密钥别名
-        */
-        /*
-        * 3.2. 获取待解密的密文
-        */
-        /*
-        * 3.3. 获取解密算法参数配置
-        */
+         * 3.1. 获取解密算法参数配置
+         */
         ohResult = InitParamSet(&decryptParamSet, g_decryptParams, sizeof(g_decryptParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
@@ -251,23 +242,16 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         uint8_t plain[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob plainText = {AES_COMMON_SIZE, plain};
         /*
-        * 3.4. 调用initSession获取handle
-        */
-        /*
-        * 3.5. 调用finishSession获取解密后的数据
-        */
+         * 3.2. 调用HksAesCipherTestDecrypt获取解密后的数据
+         */
         ohResult = HksAesCipherTestDecrypt(&keyAlias, decryptParamSet, &cipherText, &plainText, &inData);
     } while (0);
-    /* 4. Delete Key */
+    /* 4. 模拟删除密钥场景 */
     /*
-    * 模拟删除密钥场景
-    * 4.1. 获取密钥别名
-    */
-    /*
-    * 4.2. 调用deleteKeyItem删除密钥    
-    */
+     * 4.1. 调用deleteKeyItem删除密钥
+     */
     (void)OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
-        
+
     OH_Huks_FreeParamSet(&genParamSet);
     OH_Huks_FreeParamSet(&encryptParamSet);
     OH_Huks_FreeParamSet(&decryptParamSet);
@@ -277,6 +261,223 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
+<!-- -->
+
+### AES/GCM/NoPadding
+准备加解密密钥材料：
+<!-- @[prepare_AESGCMNoPadding_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_aesgcmnopadding.cpp) -->
+
+``` C++
+#include "huks/native_huks_api.h"
+#include "huks/native_huks_param.h"
+#include "napi/native_api.h"
+#include <cstring>
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+
+static OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
+    uint32_t paramCount)
+{
+    OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_AddParams(*paramSet, params, paramCount);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    ret = OH_Huks_BuildParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    return ret;
+}
+
+static OH_Crypto_ErrCode genRandomNumber(uint32_t randomLength, uint8_t *out)
+{
+    // 创建随机数生成器。
+    OH_CryptoRand *rand = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoRand_Create(&rand);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    Crypto_DataBlob blob = {out, randomLength};
+    // 生成指定长度的随机数。
+    ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &blob);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoRand_Destroy(rand);
+        return ret;
+    }
+    OH_CryptoRand_Destroy(rand);
+ 
+    return CRYPTO_SUCCESS;
+}
+
+static const uint32_t NONCE_SIZE = 12;
+static const uint32_t AAD_SIZE = 16;
+static const uint32_t AE_TAG_SIZE = 16;
+static char AEAD[AE_TAG_SIZE] = {0};
+static char AAD[AAD_SIZE] = "cdcdcdcdcdcdcdc"; // this is a test value, for real use it should be different every time
+static uint8_t NONCE[NONCE_SIZE] = {0};
+static OH_Crypto_ErrCode ret = genRandomNumber(NONCE_SIZE, NONCE);
+static struct OH_Huks_Param g_genEncDecParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_GCM}};
+
+static struct OH_Huks_Param g_encryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_GCM},
+    {.tag = OH_HUKS_TAG_NONCE,
+     .blob = {
+         .size = NONCE_SIZE,
+         .data = (uint8_t *)NONCE // this is a test value, for real use the iv should be different every time
+     }},
+    {.tag = OH_HUKS_TAG_ASSOCIATED_DATA,
+     .blob = {
+         .size = AAD_SIZE,
+         .data = (uint8_t *)AAD // this is a test value, for real use the iv should be different every time
+     }}};
+
+static struct OH_Huks_Param g_decryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_GCM},
+    {.tag = OH_HUKS_TAG_NONCE,
+     .blob = {
+         .size = NONCE_SIZE,
+         .data = (uint8_t *)NONCE // this is a test value, for real use the iv should be different every time
+     }},
+    {.tag = OH_HUKS_TAG_ASSOCIATED_DATA,
+     .blob = {
+         .size = AAD_SIZE,
+         .data = (uint8_t *)AAD // this is a test value, for real use the iv should be different every time
+     }},
+    {.tag = OH_HUKS_TAG_AE_TAG,
+     .blob = {
+         .size = AE_TAG_SIZE,
+         .data = (uint8_t *)AEAD // this is a test value, for real use the iv should be different every time
+     }}};
+
+static const uint32_t AES_GCM_SIZE = 1024;
+OH_Huks_Result HksAesGcmTestEncrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *encryptParamSet,
+    const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *cipherText)
+{
+    uint8_t handleE[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, encryptParamSet, &handleEncrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleEncrypt, encryptParamSet, inData, cipherText);
+    return ret;
+}
+
+OH_Huks_Result HksAesGcmTestDecrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *decryptParamSet,
+    const struct OH_Huks_Blob *cipherText, struct OH_Huks_Blob *plainText,
+    const struct OH_Huks_Blob *inData)
+{
+    uint8_t handleD[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleDecrypt = {sizeof(uint64_t), handleD};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, decryptParamSet, &handleDecrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleDecrypt, decryptParamSet, cipherText, plainText);
+    return ret;
+}
+```
+执行加解密流程：
+<!-- @[encrypt_and_decrypt_AESGCMNoPadding_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_aesgcmnopadding.cpp) -->
+
+``` C++
+napi_value TestAesGcm(napi_env env, napi_callback_info info)
+{
+    char tmpKeyAlias[] = "test_enc_dec";
+    struct OH_Huks_Blob keyAlias = {(uint32_t)strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
+    struct OH_Huks_ParamSet *genParamSet = nullptr;
+    struct OH_Huks_ParamSet *encryptParamSet = nullptr;
+    struct OH_Huks_ParamSet *decryptParamSet = nullptr;
+    OH_Huks_Result ohResult;
+    do {
+        /* 1. 模拟生成密钥场景 */
+        /*
+         * 1.1. 获取生成密钥算法参数配置
+         */
+        ohResult = InitParamSet(&genParamSet, g_genEncDecParams, sizeof(g_genEncDecParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /*
+         * 1.2. 调用generateKeyItem
+         */
+        ohResult = OH_Huks_GenerateKeyItem(&keyAlias, genParamSet, nullptr);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 2. 模拟加密场景 */
+        /*
+         * 2.1. 获取加密算法参数配置
+         */
+        ohResult = InitParamSet(&encryptParamSet, g_encryptParams, sizeof(g_encryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        char tmpInData[] = "AES_GCM_INDATA_1";
+        struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
+        uint8_t cipher[AES_GCM_SIZE] = {0};
+        struct OH_Huks_Blob cipherText = {AES_GCM_SIZE, cipher};
+        /*
+         * 2.2. 调用HksAesGcmTestEncrypt获取加密后的密文
+         */
+        ohResult = HksAesGcmTestEncrypt(&keyAlias, encryptParamSet, &inData, &cipherText);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 3. 模拟解密场景 */
+        /*
+         * 3.1. 获取解密算法参数配置
+         */
+        strncpy(AEAD, (char *)cipherText.data + strlen(tmpInData), AE_TAG_SIZE);
+        cipherText.data[strlen(tmpInData)] = '\0';
+        cipherText.size -= AE_TAG_SIZE;
+        ohResult = InitParamSet(&decryptParamSet, g_decryptParams, sizeof(g_decryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /*
+         * 3.2. 调用HksAesGcmTestDecrypt获取解密后的数据
+         */
+        uint8_t plainBuffer[AES_GCM_SIZE] = {0};
+        struct OH_Huks_Blob plainText = {AES_GCM_SIZE, plainBuffer};
+        ohResult = HksAesGcmTestDecrypt(&keyAlias, decryptParamSet, &cipherText, &plainText, &inData);
+    } while (0);
+    /* 4. 模拟删除密钥场景 */
+    /*
+     * 4.1. 调用deleteKeyItem删除密钥
+     */
+    (void)OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
+
+    OH_Huks_FreeParamSet(&genParamSet);
+    OH_Huks_FreeParamSet(&encryptParamSet);
+    OH_Huks_FreeParamSet(&decryptParamSet);
+    
+    napi_value ret;
+    napi_create_int32(env, ohResult.errorCode, &ret);
+    return ret;
+}
+```
+<!-- -->
 
 ### AES/CCM/NoPadding
 
@@ -538,3 +739,662 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
+
+### RSA/ECB/PKCS1_V1_5
+<!-- @[encrypt_and_decrypt_RSAECBPKCS1_V1_5_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_rsaecbpkcs1_v1_5.cpp) -->
+
+``` C++
+#include "huks/native_huks_api.h"
+#include "huks/native_huks_param.h"
+#include "napi/native_api.h"
+#include <cstring>
+
+static OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
+                                   uint32_t paramCount)
+{
+    OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_AddParams(*paramSet, params, paramCount);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    ret = OH_Huks_BuildParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    return ret;
+}
+
+static struct OH_Huks_Param g_genEncDecParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_1024},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_PKCS1_V1_5},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE}};
+
+static struct OH_Huks_Param g_encryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_1024},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_PKCS1_V1_5},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE}};
+
+static struct OH_Huks_Param g_decryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_1024},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_PKCS1_V1_5},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE}};
+
+static const uint32_t RSA_COMMON_SIZE = 1024;
+OH_Huks_Result HksRsaPkcsTestEncrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *encryptParamSet,
+    const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *cipherText)
+{
+    uint8_t handleE[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, encryptParamSet, &handleEncrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleEncrypt, encryptParamSet, inData, cipherText);
+    return ret;
+}
+
+OH_Huks_Result HksRsaPkcsTestDecrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *decryptParamSet,
+    const struct OH_Huks_Blob *cipherText, struct OH_Huks_Blob *plainText,
+    const struct OH_Huks_Blob *inData)
+{
+    uint8_t handleD[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleDecrypt = {sizeof(uint64_t), handleD};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, decryptParamSet, &handleDecrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleDecrypt, decryptParamSet, cipherText, plainText);
+    return ret;
+}
+
+napi_value TestRsaEcbPkcs(napi_env env, napi_callback_info info)
+{
+    char tmpKeyAlias[] = "test_enc_dec";
+    struct OH_Huks_Blob keyAlias = {(uint32_t)strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
+    struct OH_Huks_ParamSet *genParamSet = nullptr;
+    struct OH_Huks_ParamSet *encryptParamSet = nullptr;
+    struct OH_Huks_ParamSet *decryptParamSet = nullptr;
+    OH_Huks_Result ohResult;
+    do {
+        /* 1. 模拟生成密钥场景 */
+        /*
+         * 1.1. 获取生成密钥算法参数配置
+         */
+        ohResult = InitParamSet(&genParamSet, g_genEncDecParams, sizeof(g_genEncDecParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /*
+         * 1.2. 调用generateKeyItem
+         */
+        ohResult = OH_Huks_GenerateKeyItem(&keyAlias, genParamSet, nullptr);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 2. 模拟加密场景 */
+        /*
+         * 2.1. 获取加密算法参数配置
+         */
+        ohResult = InitParamSet(&encryptParamSet, g_encryptParams, sizeof(g_encryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        char tmpInData[] = "RSA_ECB_OAEP_IN";
+        struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
+        uint8_t cipher[RSA_COMMON_SIZE] = {0};
+        struct OH_Huks_Blob cipherText = {RSA_COMMON_SIZE, cipher};
+        /*
+         * 2.2. 调用HksRsaPkcsTestEncrypt获取加密后的密文
+         */
+        ohResult = HksRsaPkcsTestEncrypt(&keyAlias, encryptParamSet, &inData, &cipherText);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 3. 模拟解密场景 */
+        /*
+         * 3.1. 获取解密算法参数配置
+         */
+        ohResult = InitParamSet(&decryptParamSet, g_decryptParams, sizeof(g_decryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        uint8_t plain[RSA_COMMON_SIZE] = {0};
+        struct OH_Huks_Blob plainText = {RSA_COMMON_SIZE, plain};
+        /*
+         * 3.2. 调用HksRsaPkcsTestDecrypt获取解密后的数据
+         */
+        ohResult = HksRsaPkcsTestDecrypt(&keyAlias, decryptParamSet, &cipherText, &plainText, &inData);
+    } while (0);
+    /* 4. 模拟删除密钥场景 */
+    /*
+     * 4.1. 调用deleteKeyItem删除密钥
+     */
+    (void)OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
+
+    OH_Huks_FreeParamSet(&genParamSet);
+    OH_Huks_FreeParamSet(&encryptParamSet);
+    OH_Huks_FreeParamSet(&decryptParamSet);
+    
+    napi_value ret;
+    napi_create_int32(env, ohResult.errorCode, &ret);
+    return ret;
+}
+```
+<!-- -->
+
+### RSA/ECB/OAEP/SHA256
+<!-- @[encrypt_and_decrypt_RSAECBOAEPSHA256_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_rsaecboaepsha256.cpp) -->
+
+``` C++
+#include "huks/native_huks_api.h"
+#include "huks/native_huks_param.h"
+#include "napi/native_api.h"
+#include <cstring>
+
+static OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
+    uint32_t paramCount)
+{
+    OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_AddParams(*paramSet, params, paramCount);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    ret = OH_Huks_BuildParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    return ret;
+}
+
+static struct OH_Huks_Param g_genEncDecParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_1024},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_OAEP},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256}};
+
+static struct OH_Huks_Param g_encryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_1024},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_OAEP},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256}};
+
+static struct OH_Huks_Param g_decryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_1024},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_OAEP},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256}};
+
+static const uint32_t RSA_COMMON_SIZE = 1024;
+OH_Huks_Result HksRsaOaepTestEncrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *encryptParamSet,
+    const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *cipherText)
+{
+    uint8_t handleE[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, encryptParamSet, &handleEncrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleEncrypt, encryptParamSet, inData, cipherText);
+    return ret;
+}
+
+OH_Huks_Result HksRsaOaepTestDecrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *decryptParamSet,
+    const struct OH_Huks_Blob *cipherText, struct OH_Huks_Blob *plainText,
+    const struct OH_Huks_Blob *inData)
+{
+    uint8_t handleD[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleDecrypt = {sizeof(uint64_t), handleD};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, decryptParamSet, &handleDecrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleDecrypt, decryptParamSet, cipherText, plainText);
+    return ret;
+}
+
+napi_value TestRsaEcbOaep(napi_env env, napi_callback_info info)
+{
+    char tmpKeyAlias[] = "test_enc_dec";
+    struct OH_Huks_Blob keyAlias = {(uint32_t)strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
+    struct OH_Huks_ParamSet *genParamSet = nullptr;
+    struct OH_Huks_ParamSet *encryptParamSet = nullptr;
+    struct OH_Huks_ParamSet *decryptParamSet = nullptr;
+    OH_Huks_Result ohResult;
+    do {
+        /* 1. 模拟生成密钥场景 */
+        /*
+         * 1.1. 获取生成密钥算法参数配置
+         */
+        ohResult = InitParamSet(&genParamSet, g_genEncDecParams, sizeof(g_genEncDecParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /*
+         * 1.2. 调用generateKeyItem
+         */
+        ohResult = OH_Huks_GenerateKeyItem(&keyAlias, genParamSet, nullptr);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 2. 模拟加密场景 */
+        /*
+         * 2.1. 获取加密算法参数配置
+         */
+        ohResult = InitParamSet(&encryptParamSet, g_encryptParams, sizeof(g_encryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        char tmpInData[] = "RSA_ECB_OAEP_IN";
+        struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
+        uint8_t cipher[RSA_COMMON_SIZE] = {0};
+        struct OH_Huks_Blob cipherText = {RSA_COMMON_SIZE, cipher};
+        /*
+         * 2.2. 调用HksRsaOaepTestEncrypt获取加密后的密文
+         */
+        ohResult = HksRsaOaepTestEncrypt(&keyAlias, encryptParamSet, &inData, &cipherText);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 3. 模拟解密场景 */
+        /*
+         * 3.1. 获取解密算法参数配置
+         */
+        ohResult = InitParamSet(&decryptParamSet, g_decryptParams, sizeof(g_decryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        uint8_t plain[RSA_COMMON_SIZE] = {0};
+        struct OH_Huks_Blob plainText = {RSA_COMMON_SIZE, plain};
+        /*
+         * 3.2. 调用HksRsaOaepTestDecrypt获取解密后的数据
+         */
+        ohResult = HksRsaOaepTestDecrypt(&keyAlias, decryptParamSet, &cipherText, &plainText, &inData);
+    } while (0);
+    /* 4. 模拟删除密钥场景 */
+    /*
+     * 4.1. 调用deleteKeyItem删除密钥
+     */
+    (void)OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
+
+    OH_Huks_FreeParamSet(&genParamSet);
+    OH_Huks_FreeParamSet(&encryptParamSet);
+    OH_Huks_FreeParamSet(&decryptParamSet);
+    
+    napi_value ret;
+    napi_create_int32(env, ohResult.errorCode, &ret);
+    return ret;
+}
+```
+<!-- -->
+
+### SM2
+<!-- @[encrypt_and_decrypt_SM2_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_sm2.cpp) -->
+
+``` C++
+#include "huks/native_huks_api.h"
+#include "huks/native_huks_param.h"
+#include "napi/native_api.h"
+#include <cstring>
+
+static OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
+    uint32_t paramCount)
+{
+    OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_AddParams(*paramSet, params, paramCount);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    ret = OH_Huks_BuildParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    return ret;
+}
+
+static struct OH_Huks_Param g_genEncDecParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_SM2},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_SM2_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SM3}};
+
+static struct OH_Huks_Param g_encryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_SM2},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_SM2_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SM3}};
+
+static struct OH_Huks_Param g_decryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_SM2},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_SM2_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SM3}};
+
+static const uint32_t SM2_SIZE = 1024;
+OH_Huks_Result HksSm2TestEncrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *encryptParamSet,
+    const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *cipherText)
+{
+    uint8_t handleE[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, encryptParamSet, &handleEncrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleEncrypt, encryptParamSet, inData, cipherText);
+    return ret;
+}
+
+OH_Huks_Result HksSm2TestDecrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *decryptParamSet,
+    const struct OH_Huks_Blob *cipherText, struct OH_Huks_Blob *plainText,
+    const struct OH_Huks_Blob *inData)
+{
+    uint8_t handleD[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleDecrypt = {sizeof(uint64_t), handleD};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, decryptParamSet, &handleDecrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleDecrypt, decryptParamSet, cipherText, plainText);
+    return ret;
+}
+
+napi_value TestSm2(napi_env env, napi_callback_info info)
+{
+    char tmpKeyAlias[] = "test_sm2key";
+    struct OH_Huks_Blob keyAlias = {(uint32_t)strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
+    struct OH_Huks_ParamSet *genParamSet = nullptr;
+    struct OH_Huks_ParamSet *encryptParamSet = nullptr;
+    struct OH_Huks_ParamSet *decryptParamSet = nullptr;
+    OH_Huks_Result ohResult;
+    do {
+        /* 1. 模拟生成密钥场景 */
+        /*
+         * 1.1. 获取生成密钥算法参数配置
+         */
+        ohResult = InitParamSet(&genParamSet, g_genEncDecParams, sizeof(g_genEncDecParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /*
+         * 1.2. 调用generateKeyItem
+         */
+        ohResult = OH_Huks_GenerateKeyItem(&keyAlias, genParamSet, nullptr);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 2. 模拟加密场景 */
+        /*
+         * 2.1. 获取加密算法参数配置
+         */
+        ohResult = InitParamSet(&encryptParamSet, g_encryptParams, sizeof(g_encryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        char tmpInData[] = "AES_ECB_INDATA_1";
+        struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
+        uint8_t cipher[SM2_SIZE] = {0};
+        struct OH_Huks_Blob cipherText = {SM2_SIZE, cipher};
+        /*
+         * 2.2. 调用HksSm2TestEncrypt获取加密后的密文
+         */
+        ohResult = HksSm2TestEncrypt(&keyAlias, encryptParamSet, &inData, &cipherText);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 3. 模拟解密场景 */
+        /*
+         * 3.1. 获取解密算法参数配置
+         */
+        ohResult = InitParamSet(&decryptParamSet, g_decryptParams, sizeof(g_decryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        uint8_t plain[SM2_SIZE] = {0};
+        struct OH_Huks_Blob plainText = {SM2_SIZE, plain};
+        /*
+         * 3.2. 调用HksSm2TestDecrypt获取解密后的数据
+         */
+        ohResult = HksSm2TestDecrypt(&keyAlias, decryptParamSet, &cipherText, &plainText, &inData);
+    } while (0);
+    /* 4. 模拟删除密钥场景 */
+    /*
+     * 4.1. 调用deleteKeyItem删除密钥
+     */
+    (void)OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
+
+    OH_Huks_FreeParamSet(&genParamSet);
+    OH_Huks_FreeParamSet(&encryptParamSet);
+    OH_Huks_FreeParamSet(&decryptParamSet);
+    
+    napi_value ret;
+    napi_create_int32(env, ohResult.errorCode, &ret);
+    return ret;
+}
+```
+
+
+<!--Del-->
+### DES/CBC/NoPadding
+<!-- @[encrypt_and_decrypt_DESCBCNoPadding_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_descbcnopadding.cpp) -->
+
+``` C++
+#include "huks/native_huks_api.h"
+#include "huks/native_huks_param.h"
+#include "napi/native_api.h"
+#include <cstring>
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+
+static OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
+    uint32_t paramCount)
+{
+    OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_AddParams(*paramSet, params, paramCount);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    ret = OH_Huks_BuildParamSet(paramSet);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        OH_Huks_FreeParamSet(paramSet);
+        return ret;
+    }
+    return ret;
+}
+
+static OH_Crypto_ErrCode genRandomNumber(uint32_t randomLength, uint8_t *out)
+{
+    // 创建随机数生成器。
+    OH_CryptoRand *rand = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoRand_Create(&rand);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    Crypto_DataBlob blob = {out, randomLength};
+    // 生成指定长度的随机数。
+    ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &blob);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoRand_Destroy(rand);
+        return ret;
+    }
+    OH_CryptoRand_Destroy(rand);
+
+    return CRYPTO_SUCCESS;
+}
+
+static const uint32_t IV_SIZE = 8;
+static uint8_t IV[IV_SIZE] = {0};
+static OH_Crypto_ErrCode ret = genRandomNumber(IV_SIZE, IV);
+static struct OH_Huks_Param g_genEncDecParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_DES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_DES_KEY_SIZE_64},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CBC}};
+
+static struct OH_Huks_Param g_encryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_DES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_DES_KEY_SIZE_64},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CBC},
+    {.tag = OH_HUKS_TAG_IV,
+     .blob = {
+         .size = IV_SIZE,
+         .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time
+     }}};
+
+static struct OH_Huks_Param g_decryptParams[] = {
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_DES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_DES_KEY_SIZE_64},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CBC},
+    {.tag = OH_HUKS_TAG_IV,
+     .blob = {
+         .size = IV_SIZE,
+         .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time
+     }}};
+
+static const uint32_t DES_CBC_SIZE = 1024;
+OH_Huks_Result HksDesTestEncrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *encryptParamSet,
+    const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *cipherText)
+{
+    uint8_t handleE[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, encryptParamSet, &handleEncrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleEncrypt, encryptParamSet, inData, cipherText);
+    return ret;
+}
+
+OH_Huks_Result HksDesTestDecrypt(const struct OH_Huks_Blob *keyAlias,
+    const struct OH_Huks_ParamSet *decryptParamSet,
+    const struct OH_Huks_Blob *cipherText, struct OH_Huks_Blob *plainText,
+    const struct OH_Huks_Blob *inData)
+{
+    uint8_t handleD[sizeof(uint64_t)] = {0};
+    struct OH_Huks_Blob handleDecrypt = {sizeof(uint64_t), handleD};
+    OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, decryptParamSet, &handleDecrypt, nullptr);
+    if (ret.errorCode != OH_HUKS_SUCCESS) {
+        return ret;
+    }
+    ret = OH_Huks_FinishSession(&handleDecrypt, decryptParamSet, cipherText, plainText);
+    return ret;
+}
+
+napi_value TestDesCbc(napi_env env, napi_callback_info info)
+{
+    char tmpKeyAlias[] = "test_des_key";
+    struct OH_Huks_Blob keyAlias = {(uint32_t)strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
+    struct OH_Huks_ParamSet *genParamSet = nullptr;
+    struct OH_Huks_ParamSet *encryptParamSet = nullptr;
+    struct OH_Huks_ParamSet *decryptParamSet = nullptr;
+    OH_Huks_Result ohResult;
+    do {
+        /* 1. 模拟生成密钥场景 */
+        /*
+         * 1.1. 获取生成密钥算法参数配置
+         */
+        ohResult = InitParamSet(&genParamSet, g_genEncDecParams, sizeof(g_genEncDecParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /*
+         * 1.2. 调用generateKeyItem
+         */
+        ohResult = OH_Huks_GenerateKeyItem(&keyAlias, genParamSet, nullptr);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 2. 模拟加密场景 */
+        /*
+         * 2.1. 获取加密算法参数配置
+         */
+        ohResult = InitParamSet(&encryptParamSet, g_encryptParams, sizeof(g_encryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        char tmpInData[] = "AES_DES_INDATA_1";
+        struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
+        uint8_t cipher[DES_CBC_SIZE] = {0};
+        struct OH_Huks_Blob cipherText = {DES_CBC_SIZE, cipher};
+        /*
+         * 2.2. 调用HksDesTestEncrypt获取加密后的密文
+         */
+        ohResult = HksDesTestEncrypt(&keyAlias, encryptParamSet, &inData, &cipherText);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        /* 3. 模拟解密场景 */
+        /*
+         * 3.1. 获取解密算法参数配置
+         */
+        ohResult = InitParamSet(&decryptParamSet, g_decryptParams, sizeof(g_decryptParams) / sizeof(OH_Huks_Param));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        uint8_t plain[DES_CBC_SIZE] = {0};
+        struct OH_Huks_Blob plainText = {DES_CBC_SIZE, plain};
+        /*
+         * 3.2. 调用HksDesTestDecrypt获取解密后的数据
+         */
+        ohResult = HksDesTestDecrypt(&keyAlias, decryptParamSet, &cipherText, &plainText, &inData);
+    } while (0);
+    /* 4. 模拟删除密钥场景 */
+    /*
+     * 4.1. 调用deleteKeyItem删除密钥
+     */
+    (void)OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
+
+    OH_Huks_FreeParamSet(&genParamSet);
+    OH_Huks_FreeParamSet(&encryptParamSet);
+    OH_Huks_FreeParamSet(&decryptParamSet);
+   
+    napi_value ret;
+    napi_create_int32(env, ohResult.errorCode, &ret);
+    return ret;
+}
+```
+
+<!--DelEnd-->

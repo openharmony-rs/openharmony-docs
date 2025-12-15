@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_Drawing_LineMetrics
+typedef struct OH_Drawing_LineMetrics {...} OH_Drawing_LineMetrics
 ```
 
 ## 概述

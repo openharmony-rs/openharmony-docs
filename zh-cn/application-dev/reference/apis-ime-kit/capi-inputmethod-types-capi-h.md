@@ -39,7 +39,7 @@
 
 ### InputMethod_KeyboardStatus
 
-```
+```c
 enum InputMethod_KeyboardStatus
 ```
 
@@ -57,7 +57,7 @@ enum InputMethod_KeyboardStatus
 
 ### InputMethod_EnterKeyType
 
-```
+```c
 enum InputMethod_EnterKeyType
 ```
 
@@ -81,7 +81,7 @@ enum InputMethod_EnterKeyType
 
 ### InputMethod_Direction
 
-```
+```c
 enum InputMethod_Direction
 ```
 
@@ -101,7 +101,7 @@ enum InputMethod_Direction
 
 ### InputMethod_ExtendAction
 
-```
+```c
 enum InputMethod_ExtendAction
 ```
 
@@ -120,7 +120,7 @@ enum InputMethod_ExtendAction
 
 ### InputMethod_TextInputType
 
-```
+```c
 enum InputMethod_TextInputType
 ```
 
@@ -150,7 +150,7 @@ enum InputMethod_TextInputType
 
 ### InputMethod_CommandValueType
 
-```
+```c
 enum InputMethod_CommandValueType
 ```
 
@@ -169,7 +169,7 @@ enum InputMethod_CommandValueType
 
 ### InputMethod_ErrorCode
 
-```
+```c
 enum InputMethod_ErrorCode
 ```
 
@@ -197,7 +197,7 @@ enum InputMethod_ErrorCode
 
 ### InputMethod_RequestKeyboardReason
 
-```
+```c
 enum InputMethod_RequestKeyboardReason
 ```
 

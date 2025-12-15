@@ -70,7 +70,7 @@ struct AnimateToImmediatelyExample {
         .margin(30)
         .onClick(() => {
           if (this.flag) {
-            this.getUIContext()?.animateToImmediately({
+            animateToImmediately({
               delay: 0,
               duration: 1000
             }, () => {
@@ -84,7 +84,7 @@ struct AnimateToImmediatelyExample {
               this.heightSize = 60;
             })
           } else {
-            this.getUIContext()?.animateToImmediately({
+            animateToImmediately({
               delay: 0,
               duration: 1000
             }, () => {

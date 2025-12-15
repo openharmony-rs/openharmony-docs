@@ -104,7 +104,7 @@ Column组件构造函数中space支持的数据类型，取值类型为下表类
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-|类型	|说明|
+|类型|说明|
 |---|---|
 |number|表示类型为数字，可取任意值。|
 |string|表示值类型为字符串，可取任意值。|

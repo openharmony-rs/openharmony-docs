@@ -86,3 +86,19 @@ OS\(操作系统\)开发时，经常会遇到多个代码仓的修改具有编�
 
 请参考码云帮助中心：[https://gitee.com/help/articles/4194](https://gitee.com/help/articles/4194)
 
+## 门禁检测问题处理
+
+| 门禁检查项  |  常见报错信息 |
+| ------------ | ------------ |
+| [有序列表格式](./markdown-check/md-style-check.md#有序列表格式)  | 序列号格式异常 |
+| [代码块格式](./markdown-check/md-style-check.md#代码块格式)  | 代码块格式错误  |
+| [代码块缩进格式](./markdown-check/md-style-check.md#代码块缩进格式)  | 代码块缩进异常  |
+| [代码块未指定语言提示](./markdown-check/md-style-check.md#代码块未指定语言提示)  | 代码块未指定语言  |
+| [表格格式](./markdown-check/md-style-check.md#表格格式)  | 1. 存在制表符<br>2. 表格至少需要三行（标题行、分隔符行和数据行）<br>3. 标题行格式不正确，存在空列<br>4. 标题行格式不正确<br>5. 缺少标题行<br>6. 缺少分隔符行、或分隔符行格式不正确<br>7. 标题行和分隔符行的列数不一致<br>8. 数据行格式不正确，存在空列<br>9. 数据行格式不正确<br>10. 数据行的列数与标题行不一致  |
+| ["说明"，"注意"格式规范](./markdown-check/md-style-check.md#说明注意格式规范)  | 1. 表格中错误：第xxx行表格总说明或注意格式不符合写作规范<br>2. 正文中错误：第xxx行提示语错误；错误信息：  |
+| [HTML标签规范](./markdown-check/md-style-check.md#html标签规范)  |  1. 第xxx行br错误<br>2. 第xxx行sup错误 |
+| [@link异常检测](./markdown-check/md-style-check.md#link异常检测)  | 第xxx行链接错误；错误信息  |
+| [链接（图片链接）格式错误](./markdown-check/md-style-check.md#链接图片链接格式错误)  | 链接格式错误  |
+
+
+<!--no_check-->

@@ -33,6 +33,7 @@ Defines the information about an auto-fill request.
 | viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No  | No  | Page data.             |
 | customData<sup>13+</sup>    | [CustomData](js-apis-inner-application-customData-sys.md)               | No  | No  | Custom data.            |
 | isPopup<sup>12+</sup>    | boolean               | No  | No  | Whether a dialog box is displayed for the auto-fill request.<br>**true**: A dialog box is displayed<br>**false**: A modal window is displayed             |
+| triggerType<sup>23+</sup> | [AutoFillTriggerType](js-apis-inner-application-autoFillTriggerType-sys.md) | No| Yes| Trigger type for the autofill service.|
 
 ## SaveRequest
 

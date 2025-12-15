@@ -96,7 +96,7 @@ struct PageServiceAbility {
 ```
 
 
-同时，Service侧也需要在[onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect)时返回[IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject)，从而定义与Service进行通信的接口。onConnect()需要返回一个IRemoteObject对象。系统提供了IRemoteObject的默认实现，开发者可以通过继承[rpc.RemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#remoteobject)来创建自定义的实现类。
+同时，Service侧也需要在[onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#connectoptions-1)时返回[IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject)，从而定义与Service进行通信的接口。onConnect()需要返回一个IRemoteObject对象。系统提供了IRemoteObject的默认实现，开发者可以通过继承[rpc.RemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#remoteobject)来创建自定义的实现类。
 
 
 Service侧把自身的实例返回给调用侧的示例代码如下：

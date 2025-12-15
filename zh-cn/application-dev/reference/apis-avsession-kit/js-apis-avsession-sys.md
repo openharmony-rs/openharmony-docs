@@ -587,6 +587,55 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 });
 ```
 
+## avSession.startAVPlayback<sup>22+</sup>
+
+startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise\<void>
+
+启动媒体播放应用程序。使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名        | 类型                                                   | 必填 | 说明         |	
+| ------------ |------------------------------------------------------|----|------------|	
+| bundleName   | string                                               | 是  | 指定启动的应用包名。 |	
+| assetId      | string                                               | 是  | 指定启动的媒体ID。 |
+| info      | [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) | 是  | 指定相关的命令信息。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avSession.startAVPlayback("com.example.myapplication", "121278", "entry").then(() => {
+  console.info('startAVPlayback : SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## avSession.getDistributedSessionController<sup>18+</sup>
 
 getDistributedSessionController(distributedSessionType: DistributedSessionType): Promise<Array\<AVSessionController>>

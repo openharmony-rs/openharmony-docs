@@ -290,14 +290,14 @@ try {
 
 Call **napi_typeof** to obtain the ArkTS type of an ArkTS value.
 
-**Note**: **napi_typeof** can determine the following types:  
+**NOTE**<br>**napi_typeof** can determine the following types.  
 |Type| 
 |-----|
 |undefined|
 |null|  
 |boolean|  
 |number|  
-|string  
+|string|
 |object|  
 |function|  
 |bigint|
@@ -470,6 +470,8 @@ try {
 ### napi_type_tag_object
 
 Call **napi_type_tag_object** to associate the value of a **type_tag** pointer with an ArkTS object so that the object can be identified more accurately.
+
+In the ArkTS version, **napi_type_tag_object** does not use private symbols. As a result, the type_tag may be overwritten. You are advised not to use this API in key security scenarios.
 
 ### napi_check_object_type_tag
 
