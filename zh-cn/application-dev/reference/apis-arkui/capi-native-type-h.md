@@ -3316,7 +3316,7 @@ enum ArkUI_TextResponseType
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如，同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单，此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
 
 ### ArkUI_MarqueeStartPolicy
-```
+```c
 enum ArkUI_MarqueeStartPolicy
 ```
 
@@ -3332,7 +3332,7 @@ enum ArkUI_MarqueeStartPolicy
 | ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | 获焦以及鼠标悬浮时开始滚动。|
 
 ### ArkUI_MarqueeUpdatePolicy
-```
+```c
 enum ArkUI_MarqueeUpdatePolicy
 ```
 
@@ -3427,7 +3427,7 @@ enum ArkUI_RenderStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RENDERSTRATEGY_FAST  = 0 | 	在线绘制模式。 |
+| ARKUI_RENDERSTRATEGY_FAST  = 0 | 在线绘制模式。 |
 | ARKUI_RENDERSTRATEGY_OFFSCREEN = 1 | 离屏绘制模式。 |
 
 
