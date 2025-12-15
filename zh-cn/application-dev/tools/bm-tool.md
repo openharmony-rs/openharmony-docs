@@ -782,55 +782,52 @@ error: install parse profile prop check error.
 
 **可能原因**
 
-1. [app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中的bundleName、[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中name不符合命名规则。
+1. [app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中的bundleName、[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中name不符合命名规则。<!--Del-->
 
-<!--Del-->
-2. [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities标签)中type字段配置为service或dataShare。
-<!--DelEnd-->
-
+2. [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities标签)中type字段配置为service或dataShare。<!--DelEnd-->
 
 **处理步骤**
-1. 根据命名规则调整app.json5配置文件中bundleName、module.json5文件中的name字段。
-<!--Del-->
+1. 根据命名规则调整app.json5配置文件中bundleName、module.json5文件中的name字段。<!--Del-->
+
 2. 若extensionAbilities中type字段配置为service或dataShare，应用需要配置[allowAppUsePrivilegeExtension特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)，配置方式如下。
 
     1. 获取新的签名指纹。
 
-        a. 在工程级build-profile.json5(工程根目录下)文件中，signingConfigs字段内的profile的值即为签名文件的存储路径。
+        * 在工程级build-profile.json5(工程根目录下)文件中，signingConfigs字段内的profile的值即为签名文件的存储路径。
 
-        b. 打开该签名文件（后缀为.p7b），打开后在文件内搜索“development-certificate”，将“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”以及中间的信息拷贝到新的文本中，注意换行并去掉换行符，保存为一个新的.cer文件，如命名为xxx.cer。
+        * 打开该签名文件（后缀为.p7b），打开后在文件内搜索“development-certificate”，将“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”以及中间的信息拷贝到新的文本中，注意换行并去掉换行符，保存为一个新的.cer文件，如命名为xxx.cer。
 
-        新的.cer文件格式如下图（仅作为格式示意，内容以实际为准）：
+           新的.cer文件格式如下图（仅作为格式示意，内容以实际为准）：
 
-        ![示例图](figures/zh-cn_image_0000001585521364.png)
+           ![示例图](figures/zh-cn_image_0000001585521364.png)
 
-        c. 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
+        * 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
 
             ```shell
             keytool -printcert -file xxx.cer
             ```
-        d. 将证书指纹中SHA256的内容去掉冒号，即为最终要获得的签名指纹。
+        * 将证书指纹中SHA256的内容去掉冒号，即为最终要获得的签名指纹。
 
-        如下图（仅作为格式示意，内容以实际为准）：
+           如下图（仅作为格式示意，内容以实际为准）：
 
-        ![示例图](figures/zh-cn_image_0000001635921233.png)
+           ![示例图](figures/zh-cn_image_0000001635921233.png)
 
-        去掉冒号后的签名指纹为：5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB。
+           去掉冒号后的签名指纹为：5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB。
 
     2. 获取设备的特权管控白名单文件install_list_capability.json。
 
-        a. 连接设备，进入shell。
+        * 连接设备，进入shell。
 
             ```shell
             hdc shell
             ```
-        b. 执行如下命令查看设备的特权管控白名单文件install_list_capability.json。
+        * 执行如下命令查看设备的特权管控白名单文件install_list_capability.json。
 
             ```shell
             // 设备中查询白名单文件的位置
             find /system -name install_list_capability.json
             ```
-        c. 执行如下命令拉取install_list_capability.json。
+        * 执行如下命令拉取install_list_capability.json。
 
             ```shell
             hdc target mount
@@ -838,7 +835,7 @@ error: install parse profile prop check error.
             ```
 
     3. 将步骤1获取到的签名指纹配置到install_list_capability.json文件的app_signature中，注意要配置到对应的bundleName下。
-    ![示例图](figures/zh-cn_image_0000001635641893.png)
+       ![示例图](figures/zh-cn_image_0000001635641893.png)
     4. 将修改后的install_list_capability.json文件重新推到设备上，并重启设备。
 
         ```shell
@@ -1115,8 +1112,9 @@ error: signature verification failed due to not trusted app source.
 **处理步骤**
 
 <!--RP9-->
-<!--RP9End--><!--Del-->1. <!--DelEnd-->使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-<!--Del-->
+<!--RP9End-->
+1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。<!--Del-->
+
 2. 如果使用的是手动签名，对于OpenHarmony应用，请参考[OpenHarmony应用手动签名](../security/hapsigntool-guidelines.md)，在UnsgnedDebugProfileTemplate.json文件中添加该调试设备的**UDID**。
 
     1. 获取当前设备的UDID。
@@ -1137,8 +1135,8 @@ error: signature verification failed due to not trusted app source.
 
     3. 在UnsgnedDebugProfileTemplate.json文件的device-ids字段中，添加当前设备的UDID。
 
-3. 使用文本编辑器打开已签名的HAP，检查签名中是否包含调试设备的UDID，搜索device-ids。
-<!--DelEnd-->
+3. 使用文本编辑器打开已签名的HAP，检查签名中是否包含调试设备的UDID，搜索device-ids。<!--DelEnd-->
+
 
 
 ### 9568286 安装应用的签名证书profile文件中的类型与已安装应用的不相同
@@ -1266,7 +1264,7 @@ SysCap不一致导致安装失败。
 
 **处理步骤**
 
-检查多HAP/HSP中配置的SysCap配置，请保持一致。
+检查多HAP/HSP中配置的SysCap，请保持一致。
 
 
 ### 9568294 appType不一致导致的安装失败
@@ -2921,10 +2919,9 @@ error: Failed to install the plugin because host application check permission fa
 
 **处理步骤**
 
-1. 参考[权限申请指导](../security/AccessToken/declare-permissions.md)申请[ohos.permission.kernel.SUPPORT_PLUGIN权限](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)。
-<!--Del-->
-2. 该权限等级为system_basic，若[应用APL等级](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)低于system_basic，请[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)。
-<!--DelEnd-->
+1. 参考[权限申请指导](../security/AccessToken/declare-permissions.md)申请[ohos.permission.kernel.SUPPORT_PLUGIN权限](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)。<!--Del-->
+
+2. 该权限等级为system_basic，若[应用APL等级](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)低于system_basic，请[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)。<!--DelEnd-->
 
 
 ### 9568333 模块名称为空
