@@ -15,10 +15,13 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 ```
 
 ## metadataBinding.encodeImage
+
 encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>;
 
 在图片中加入信息  
+
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
+
 **系统API**：此接口为系统接口
 
 **ArkTS-Dyn起始版本**：18
@@ -63,10 +66,13 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ```
 
 ## metadataBinding.decodeImage
+
 function decodeImage(encodedImage: image.PixelMap): Promise\<string\>
 
 解析图片中携带的信息。
+
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
+
 **系统API**：此接口为系统接口
 
 **ArkTS-Dyn起始版本**：18
@@ -114,10 +120,13 @@ if (encodeImage) {
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent
+
 notifyMetadataBindingEvent(metadata: string): void;
 
 推送待嵌入的信息给调用编码接口的应用或服务。
+
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
+
 **系统API**：此接口为系统接口
 
 **ArkTS-Dyn起始版本**：18
