@@ -1108,7 +1108,7 @@ List组件的滚动控制器，通过它控制List组件的滚动，仅支持一
 
 ### 导入对象
 
-```
+```ts
 listScroller: ListScroller = new ListScroller();
 ```
 
@@ -2285,3 +2285,123 @@ struct ListExample {
 ```
 
 ![list_contentStartOffset](figures/listContentSize.gif)
+
+### 示例15（在两个列表之间实现拖拽功能）
+
+该示例通过OnItemDragStart等事件实现了ListItem在两个List组件间的拖拽效果。
+
+```ts
+// xxx.ets
+@ObservedV2
+class ListData {
+  @Trace public title: string = '';
+  @Trace public data: string[] = [];
+
+  constructor(title: string, data: string[]) {
+    this.title = title;
+    this.data = data;
+  }
+}
+
+class DraggingData {
+  public data?: string;
+}
+
+@ComponentV2
+struct DraggableList {
+  @Require @Param data: string[];
+  @Require @Param draggingData: DraggingData;
+
+  @Builder
+  ItemBuilder(data: string, size: SizeOptions, event: ItemDragInfo): void {
+    Stack() {
+      Text(data)
+    }
+    .backgroundColor(Color.White)
+    .borderRadius(4)
+    .size(size)
+  }
+
+  viewWidth: number = 0;
+  lastInsertIndex: number = 0;
+  scroller: Scroller = new Scroller();
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.data, (item: string) => {
+        ListItem() {
+          Text(item)
+        }
+        .width('100%')
+        .height('10%')
+        .margin(10)
+        .backgroundColor(Color.White)
+        .borderRadius(4)
+        .aspectRatio(1)
+      }, (item: string) => item)
+    }
+    .width('50%')
+    .layoutWeight(1)
+    .padding(10)
+    .onItemDragStart((event: ItemDragInfo, itemIndex: number) => {
+      let rect = this.scroller.getItemRect(itemIndex);
+      let size: SizeOptions = {
+        width: rect.width,
+        height: rect.height
+      };
+      this.lastInsertIndex = itemIndex;
+      this.draggingData.data = this.data[itemIndex];
+      this.data.splice(itemIndex, 1);
+
+      return this.ItemBuilder(this.draggingData.data, size, event);
+    })
+    .onItemDragEnter((event: ItemDragInfo) => {
+      console.info('Item drag enter at position:', event.x, event.y);
+    })
+    .onItemDragMove((event: ItemDragInfo, itemIndex: number, insertIndex: number) => {
+      if (this.lastInsertIndex != insertIndex){
+        console.info('insertIndex change from ', this.lastInsertIndex, 'to', insertIndex);
+        this.lastInsertIndex = insertIndex;
+      }
+    })
+    .onItemDragLeave((event: ItemDragInfo, itemIndex: number) => {
+      console.info('Item ' + itemIndex + ' drag leave at position:', event.x, event.y);
+    })
+    .onItemDrop((event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => {
+      if (!isSuccess) {
+        this.draggingData.data = undefined;
+        return;
+      }
+      if (insertIndex >= 0) {
+        this.data.splice(insertIndex, 0, this.draggingData.data!);
+      }
+      this.draggingData.data = undefined;
+    })
+    .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+      this.viewWidth = newValue.width as number;
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local data: ListData[] = [
+    new ListData('A', ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8']),
+    new ListData('B', ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']),
+  ]
+  @Local draggingData: DraggingData = new DraggingData();
+
+  build() {
+    Stack() {
+      Row() {
+        DraggableList({ data: this.data[0].data, draggingData: this.draggingData })
+        DraggableList({ data: this.data[1].data, draggingData: this.draggingData })
+      }
+    }
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![OnItemDrag](figures/listOnItemDrag.gif)
