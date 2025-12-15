@@ -173,7 +173,7 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name  | Type  | Mandatory| Description          |
 | -------- | ------ | ---- | -------------- |
-| total    | number | Yes  | Maximum number of records.<br>If the KV store is used and **total** is **undefined** or **null**, the maximum number of records is 0. For details about the value range, see the description of this parameter in [limit](./js-apis-distributedKVStore.md#limit).<br>If the RDB store is used and **total** is **undefined** or **null**, the maximum number of records is not limited. For details about the value range, see the description of this parameter in [limitAs](./js-apis-distributedKVStore.md#limit). |
+| total    | number | Yes  | Maximum number of records.<br>If the KV store is used and **total** is **undefined** or **null**, the maximum number of records is 0. For details about the value range, see the description of this parameter in [limit](./js-apis-distributedKVStore.md#limit).<br>If the RDB store is used and **total** is **undefined** or **null**, the maximum number of records is not limited. For details about the value range, see the description of this parameter in [limitAs](./js-apis-distributedKVStore.md#limit).|
 | offset | number | Yes  | Start position of the query result.<br>If this parameter is set to **undefined** or **null**, the start position is the beginning of the result set.<br>For details about the value range in a KV store, see the description of this parameter in [limit](./js-apis-distributedKVStore.md#limit).<br>For details about the value range in an RDB store, see the description of the **rowOffset** parameter in [offsetAs](arkts-apis-data-relationalStore-RdbPredicates.md#offsetas).|
 
 **Return value**
@@ -366,7 +366,7 @@ predicates.like("NAME", "%os%");
 
 between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
-Creates a **DataSharePredicates** object to match the data that is within the specified range. including the start and end values. The data type must be int.
+Creates a **DataSharePredicates** object to match the data that is within the specified range, including the start and end values.
 
 Currently, only RDB store supports this predicate.
 
@@ -376,9 +376,9 @@ Currently, only RDB store supports this predicate.
 
 | Name| Type                                               | Mandatory| Description                    |
 | ------ | --------------------------------------------------- | ---- | ------------------------ |
-| field  | string                                              | Yes  | Column name in the database table.<br>If this parameter is set to **undefined** or **null**, the predicate used is invalid.<br>If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs.      |
-| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Minimum value of the range to set.<br>If low is not of the int type, the result is unexpected.|
-| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Maximum value to match the **DataAbilityPredicates**.<br>If high is not of the int type, the result is unexpected.|
+| field  | string                                              | Yes  | Column name in the database table.<br>If this parameter is set to **undefined** or **null**, the predicate used is invalid.<br>If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs.|
+| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Minimum value of the range to set.<br>If **low** is set to a number, the matching range is specified based on the numeric order.<br>If **low** is set to a string, the matching range is specified based on the lexicographical order.<br>If **low** is set to boolean, the matching range is specified based on the numeric order.|
+| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Maximum value to match the **DataAbilityPredicates**.<br>If **high** is set to a number, the matching range is specified based on the numeric order.<br>If **high** is set to a string, the matching range is specified based on the lexicographical order.<br>If **high** is set to boolean, the matching range is specified based on the numeric order.|
 
 **Return value**
 
@@ -397,7 +397,7 @@ predicates.between("AGE", 10, 50);
 
 notBetween(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
-Creates a **DataSharePredicates** object to match the data that is out of the specified range, excluding the start and end values. The data type must be int.
+Creates a **DataSharePredicates** object to match the data that is out of the specified range, excluding the start and end values.
 
 Currently, only RDB store supports this predicate.
 
@@ -408,8 +408,8 @@ Currently, only RDB store supports this predicate.
 | Name| Type                                               | Mandatory| Description                    |
 | ------ | --------------------------------------------------- | ---- | ------------------------ |
 | field  | string                                              | Yes  | Column name in the database table.<br>If this parameter is set to **undefined** or **null**, the predicate used is invalid.<br>If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs.      |
-| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Minimum value of the range to set.<br>If low is not of the int type, the result is unexpected.|
-| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Maximum value to match the **DataAbilityPredicates**.<br>If high is not of the int type, the result is unexpected.|
+| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Minimum value of the range to set.<br>If **low** is set to a number, the matching range is specified based on the numeric order.<br>If **low** is set to a string, the matching range is specified based on the lexicographical order.<br>If **low** is set to boolean, the matching range is specified based on the numeric order.|
+| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Maximum value to match the **DataAbilityPredicates**.<br>If **high** is set to a number, the matching range is specified based on the numeric order.<br>If **high** is set to a string, the matching range is specified based on the lexicographical order.<br>If **high** is set to boolean, the matching range is specified based on the numeric order.|
 
 **Return value**
 
