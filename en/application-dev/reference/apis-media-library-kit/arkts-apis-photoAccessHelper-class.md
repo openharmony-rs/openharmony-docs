@@ -22,7 +22,7 @@ Defines the image recommendation options. The image recommendation feature depen
 | recommendationType | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | No  | Yes| Type of the recommended image.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | textContextInfo<sup>12+</sup> | [TextContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12)   | No  | Yes| Text based on which images are recommended. If both **recommendationType** and **textContextInfo** are set, **textContextInfo** takes precedence over **recommendationType**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
-## BaseSelectOptions<sup>10+</sup>
+## BaseSelectOptions
 
 Defines the basic options for selecting media files from Gallery.
 
@@ -49,14 +49,14 @@ Defines the basic options for selecting media files from Gallery.
 
 PhotoSelectOptions extends BaseSelectOptions
 
-Defines additional options for selecting media files from Gallery. It inherits from [BaseSelectOptions](#baseselectoptions10).
+Defines additional options for selecting media files from Gallery. It inherits from [BaseSelectOptions](#baseselectoptions).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
 | isEditSupported<sup>11+</sup>       | boolean | No  | Yes| Whether the image can be edited. **true** if editable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
-| isOriginalSupported<sup>12+</sup>       | boolean | No  | Yes| Whether to display the button for selecting the original image. **true** to display, **false** otherwise. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
+| isOriginalSupported<sup>12+</sup>       | boolean | No  | Yes| Whether to display the button for selecting the original image. **true** to display, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | subWindowName<sup>12+</sup>       | string | No  | Yes| Name of the child window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | No  | Yes| Text displayed on the complete button.<br>The complete button is located in the lower-right corner of the page. It is used by users to signify that they have finished selecting images.<br>**Atomic service API**: This API can be used in atomic services since API version 14.    |
 | contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | No  | Yes| Information for restoring the PhotoPicker's state from the last exit.<br>When the selection process is complete, the PhotoPicker returns **contextRecoveryInfo** to the application. The application can then use the information to restore the PhotoPicker's state and the last viewed grid interface the next time it starts the PhotoPicker.<br>**Atomic service API**: This API can be used in atomic services since API version 21.    |
@@ -163,5 +163,5 @@ Describes the information about the context of exiting the PhotoPicker. It can b
 | time    | number   | No  | No| Time of the top-left image in the grid interface when the user last selected an image.<br>- For albums sorted by capture time, the capture time is returned.<br>- For albums sorted by save time, the save time is returned. The default value is **0**.|
 | displayName    | string   | No  | No| File name of the top-left image in the grid interface when the user last selected an image. The default value is an empty string.|
 | recommendationType    | number   | No  | No| Enumerated value of the recommended content set by the user during the last selection. For details, see [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11).<br>If no recommendation was set during the last selection, the default value is **0**.|
-| selectRecommendationType    | number   | No  | No| Enumerated value of the recommended content selected by the user during the last selection. For details, see [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11).<br>If no recommendation was selected during the last selection or **All** is selected, the default value is **0**.|
+| selectedRecommendationType    | number   | No  | No| Enumerated value of the recommended content selected by the user during the last selection. For details, see [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11).<br>If no recommendation was selected during the last selection or **All** is selected, the default value is **0**.|
 | version    | number   | No  | No| Version number of the state data, used to verify the compatibility of the state information data with the state recovery capability.<br>The version number must be greater than or equal to 1.0.|
