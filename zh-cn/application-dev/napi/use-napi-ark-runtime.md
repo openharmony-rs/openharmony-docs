@@ -95,48 +95,55 @@
   新建线程并创建ArkTS基础运行时环境，加载自定义模块请参考[napi_load_module_with_info](./use-napi-load-module-with-info.md)。
 
   <!-- @[napi_ark_runtime_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
-   ```cpp
-   // create_ark_runtime.cpp
-   #include <pthread.h>
-   #include "napi/native_api.h"
-
-   static void *CreateArkRuntimeFunc(void *arg)
-   {
-       // 1. 创建基础运行环境
-       napi_env env;
-       napi_status ret = napi_create_ark_runtime(&env);
-       if (ret != napi_ok) {
-           return nullptr;
-       }
-
-       // 2. 加载自定义模块
-       napi_value objUtils;
-       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry", &objUtils);
-       if (ret != napi_ok) {
-           return nullptr;
-       }
-
-       // 3. 使用ArkTS中的logger
-       napi_value logger;
-       ret = napi_get_named_property(env, objUtils, "Logger", &logger);
-       if (ret != napi_ok) {
-           return nullptr;
-       }
-       ret = napi_call_function(env, objUtils, logger, 0, nullptr, nullptr);
-
-       // 4. 销毁ArkTS环境
-       ret = napi_destroy_ark_runtime(&env);
-       return nullptr;
-   }
-
-   static napi_value CreateArkRuntime(napi_env env, napi_callback_info info)
-   {
-       pthread_t tid;
-       pthread_create(&tid, nullptr, CreateArkRuntimeFunc, nullptr);
-       pthread_join(tid, nullptr);
-       return nullptr;
-   }
-   ```
+  
+  ``` C++
+  #include "napi/native_api.h"
+  #include <pthread.h>
+  // ...
+  static void *CreateArkRuntimeFunc(void *arg)
+  {
+      // 1. 创建基础运行环境
+      napi_env env;
+      napi_status ret = napi_create_ark_runtime(&env);
+      if (ret != napi_ok) {
+          return nullptr;
+      }
+  
+      napi_handle_scope scope;
+      napi_open_handle_scope(env, &scope);
+  
+      // 2. 加载自定义模块
+      napi_value objUtils;
+      ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
+                                       &objUtils);
+      if (ret != napi_ok) {
+          return nullptr;
+      }
+  
+      // 3. 使用ArkTS中的logger
+      napi_value logger;
+      ret = napi_get_named_property(env, objUtils, "Logger", &logger);
+      if (ret != napi_ok) {
+          return nullptr;
+      }
+      ret = napi_call_function(env, objUtils, logger, 0, nullptr, nullptr);
+  
+      napi_close_handle_scope(env, scope);
+  
+      // 4. 销毁ArkTS环境
+      ret = napi_destroy_ark_runtime(&env);
+  
+      return nullptr;
+  }
+  
+  static napi_value CreateArkRuntime(napi_env env, napi_callback_info info)
+  {
+      pthread_t tid;
+      pthread_create(&tid, nullptr, CreateArkRuntimeFunc, nullptr);
+      pthread_join(tid, nullptr);
+      return nullptr;
+  }
+  ```
 
 - ArkTS导入头文件
   ``` TypeScript
