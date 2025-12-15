@@ -19,7 +19,8 @@
 - 接口声明
 
    <!-- @[napi_ark_runtime_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-   ```ts
+   
+   ``` TypeScript
    // index.d.ts
    export const createArkRuntime: () => object;
    ```
