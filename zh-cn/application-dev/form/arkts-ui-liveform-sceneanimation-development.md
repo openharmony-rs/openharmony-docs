@@ -17,7 +17,7 @@
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | [onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformcreate)                  | 互动卡片界面对象创建的回调函数。   |
 | [onLiveFormDestroy(liveFormInfo: LiveFormInfo): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformdestroy)                                                    | 互动卡片界面对象销毁、资源清理的回调函数。  |
-| [LiveFormExtensionContext](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)                  | LiveFormExtensionAbility的上下文，继承自ExtensionContext。 <br>**说明：**<br>1、在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext'; 导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行，LiveFormExtensionContext直接使用。<br>2、在API version 22及以后新增通过 import { common } from '@kit.AbilityKit'; 导入LiveFormExtensionContext，通过common.LiveFormExtensionContext方式使用。  |
+| [LiveFormExtensionContext](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)                  | LiveFormExtensionAbility的上下文，继承自ExtensionContext。 <br/>**说明：**<br/>1. 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext'; 导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行，LiveFormExtensionContext直接使用。<br>2. 在API version 22及以后新增通过 import { common } from '@kit.AbilityKit'; 导入LiveFormExtensionContext，通过common.LiveFormExtensionContext方式使用。  |
 | [startAbilityByLiveForm(want: Want): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md#startabilitybyliveform)| 拉起互动卡片提供方（应用）的页面。 |
 | [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) | 卡片提供方发起互动卡片动效请求。   |
 | [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)                                        | 卡片提供方发起取消互动卡片动效请求。 |
@@ -78,9 +78,6 @@
    // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
    import { formInfo, formProvider } from '@kit.FormKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   // 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
-   // 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
-   // 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
    import { common } from '@kit.AbilityKit';
    // Constants实现参考“互动卡片动效工具函数实现”小节
    import { Constants } from '../../common/Constants';
@@ -102,9 +99,6 @@
      private formId: string | undefined = undefined;
      private formRect: formInfo.Rect | undefined = undefined;
      private formBorderRadius: number | undefined = undefined;
-     // 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
-     // 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
-     // 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
      private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
    
      aboutToAppear(): void {
@@ -121,9 +115,6 @@
        this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
        this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
        this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
-       // 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
-       // 导入LiveFormExtensionContext，IDE标红，但不影响编译运行，LiveFormExtensionContext直接使用
-       // 在API version 22及以后使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用
        this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
      }
    
