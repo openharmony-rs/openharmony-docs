@@ -67,6 +67,7 @@ libohinputmethod.so
        OH_AttachOptions_Destroy(attachOptions);
        return;
    }
+   ```
 
 
 ## 显示/隐藏面板功能
@@ -448,4 +449,3 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
        napi_module_register(&demoModule);
    }
    ```
-
