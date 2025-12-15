@@ -356,7 +356,9 @@ getAsset(): PhotoAsset
 
 Obtains the asset in this asset change request.
 
-**NOTE**: For the change request used to create an asset, this API returns **null** before [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called to apply the changes.
+> **NOTE**
+>
+> For the change request used to create an asset, this API returns **null** before [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called to apply the changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -459,9 +461,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getWriteCacheHandler(): Promise&lt;number&gt;
 
-Obtains the handler used for writing a file to cache.
+Obtains the handler used for writing a file to cache. This API uses a promise to return the result.
 
-**NOTE**: For the same asset change request, this API cannot be repeatedly called after a temporary file write handle is successfully obtained.
+> **NOTE**
+>
+> For the same asset change request, this API cannot be repeatedly called after a temporary file write handle is successfully obtained.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -514,7 +518,9 @@ addResource(type: ResourceType, fileUri: string): void
 
 Adds a resource using [fileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
 
-**NOTE**: For the same asset change request, this API cannot be repeatedly called after the resource is successfully added. For a moving photo, you can call this API twice to add the image and video resources.
+> **NOTE**
+>
+> For the same asset change request, this API cannot be repeatedly called after the resource is successfully added. For a moving photo, you can call this API twice to add the image and video resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -566,7 +572,9 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 
 Adds a resource using **ArrayBuffer** data.
 
-**NOTE**: For the same asset change request, this API cannot be repeatedly called after the resource is successfully added. For a moving photo, you can call this API twice to add the image and video resources.
+> **NOTE**
+>
+> For the same asset change request, this API cannot be repeatedly called after the resource is successfully added. For a moving photo, you can call this API twice to add the image and video resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

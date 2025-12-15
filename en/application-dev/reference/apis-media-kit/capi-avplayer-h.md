@@ -912,6 +912,9 @@ Starting from API version 12, [OH_AVPlayer_SetOnInfoCallback](capi-avplayer-h.md
 
 **Since**: 11
 
+**Deprecated from**: 12
+
+**Substitute**: [OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)
 
 **Parameters**
 
