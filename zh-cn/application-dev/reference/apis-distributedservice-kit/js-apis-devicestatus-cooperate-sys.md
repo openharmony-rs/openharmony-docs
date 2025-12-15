@@ -18,9 +18,7 @@ import cooperate from '@ohos.cooperate';
 
 ## cooperate.prepareCooperate<sup>11+</sup>
 
-ArkTS-Dyn：prepareCooperate(callback: AsyncCallback&lt;void&gt;): void
-
-ArkTS-Sta: prepareCooperate(callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn：prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 准备键鼠穿越，使用Callback异步回调。
 
@@ -67,9 +65,7 @@ try {
 
 ## cooperate.prepareCooperate<sup>11+</sup>
 
-ArkTS-Dyn：prepareCooperate(): Promise&lt;void&gt;
-
-ArkTS-Sta: prepareCooperate(): Promise&lt;void&gt;
+prepareCooperate(): Promise&lt;void&gt;;
 
 准备键鼠穿越，使用Promise异步方式返回结果。
 
@@ -114,9 +110,7 @@ try {
 
 ## cooperate.unprepareCooperate<sup>11+</sup>
 
-ArkTS-Dyn：unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void
-
-ArkTS-Sta: unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void
+unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 取消键鼠穿越准备，使用Callback异步回调。
 
@@ -165,9 +159,7 @@ try {
 
 ## cooperate.unprepareCooperate<sup>11+</sup>
 
-ArkTS-Dyn: unprepareCooperate(): Promise&lt;void&gt;
-
-ArkTS-Sta: unprepareCooperate(): Promise&lt;void&gt;
+unprepareCooperate(): Promise&lt;void&gt;;
 
 取消键鼠穿越准备，使用Promise异步回调。
 
@@ -322,9 +314,9 @@ try {
 
 ## cooperate.deactivateCooperate<sup>11+</sup>
 
-ArkTS-Dyn: deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void
+deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void;
 
-ArkTS-Sta: deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void
+
 
 停止键鼠穿越，使用Callback异步回调。
 
@@ -372,9 +364,7 @@ try {
 
 ## cooperate.deactivateCooperate<sup>11+</sup>
 
-ArkTS-Dyn: deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;
-
-ArkTS-Sta: deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;
+deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 
 停止键鼠穿越，使用Promise异步回调。
 
@@ -424,9 +414,7 @@ try {
 
 ## cooperate.getCooperateSwitchState<sup>11+</sup>
 
-ArkTS-Dyn: getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;): void
-
-ArkTS-Sta: getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;): void
+getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;): void;
 
 获取目标设备键鼠穿越开关的状态，使用Callback异步回调。
 
@@ -475,9 +463,7 @@ try {
 
 ## cooperate.getCooperateSwitchState<sup>11+</sup>
 
-ArkTS-Dyn: getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;
-
-ArkTS-Sta: getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;
+getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 获取目标设备键鼠穿越开关的状态，使用Promise异步方式返回结果。
 
