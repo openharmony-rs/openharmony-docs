@@ -18,9 +18,9 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 
 ## metadataBinding.encodeImage<sup>18+</sup>
 
-ArkTS-Dyn：encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>;
+encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>;
 
-ArkTS-Sta：encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>;
+
 
 在图片中加入信息  
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
@@ -68,9 +68,9 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ```
 
 ## metadataBinding.decodeImage<sup>18+</sup>
-ArkTS-Dyn：function decodeImage(encodedImage: image.PixelMap): Promise\<string\>
+function decodeImage(encodedImage: image.PixelMap): Promise\<string\>
 
-ArkTS-Sta：function decodeImage(encodedImage: image.PixelMap): Promise\<string\>
+
 
 解析图片中携带的信息。
 
@@ -122,9 +122,9 @@ if (encodeImage) {
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent<sup>18+</sup>
-ArkTS-Dyn：notifyMetadataBindingEvent(metadata: string): void;
+notifyMetadataBindingEvent(metadata: string): void;
 
-ArkTS-Sta：notifyMetadataBindingEvent(metadata: string): void;
+
 
 推送待嵌入的信息给调用编码接口的应用或服务。
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
