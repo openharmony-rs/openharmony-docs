@@ -4547,7 +4547,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 | WORDS | 2 | 每个单词的首字母大写。|
 | CHARACTERS | 3 | 每个字母都大写。|
 
-### EditorAttribute<sup>8+</sup>
+### EditorAttribute
 
 编辑框属性值。
 
@@ -4568,7 +4568,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 | gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。|
 | extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。|
 
-## KeyEvent<sup>8+</sup>
+## KeyEvent
 
 按键属性值。
 
