@@ -20,10 +20,10 @@
   
   ``` C++
   #include "napi/native_api.h"
-  // ...
   #include <pthread.h>
   #include <hilog/log.h>
   #include <napi/common.h>
+  static constexpr int INT_ARG_2 = 2; // 入参索引
   // ...
   static napi_value ResolvedCallback(napi_env env, napi_callback_info info)
   {
