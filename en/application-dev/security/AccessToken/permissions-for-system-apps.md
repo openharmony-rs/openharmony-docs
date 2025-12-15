@@ -5306,3 +5306,17 @@ Allows an application to query and configure user identity authentication polici
 **Enable via ACL**: true
 
 **Valid since**: 18
+
+## ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
+
+Allows an application to dynamically register or remove custom UTD data types.
+
+**Permission level**：system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 22
