@@ -8521,6 +8521,7 @@ startTryAE(): void
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 | Session not config.     |
+| 7400201 | Camera service fatal error.     |
 
 **示例：**
 
