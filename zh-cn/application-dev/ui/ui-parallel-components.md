@@ -433,8 +433,8 @@ struct Page {
 <!--Del-->
 ## 相关实例
 
-[使用声明式的并行化方法创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/ParallelizeUI/README.md)
+[使用声明式的并行化方法创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS-Sta/ParallelizeUI/README.md)
 
-[List&Grid并行化创建子组件](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/ArkTS1.2/ListAndGridParallelSample/README.md)
+[List&Grid并行化创建子组件](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/ArkTS-Sta/ListAndGridParallelSample/README.md)
 
 <!--DelEnd-->
