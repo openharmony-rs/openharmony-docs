@@ -45,13 +45,13 @@ enableSemiWifi(): void
 **示例：**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.enableSemiWifi();
-	} catch(error) {
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    wifiManager.enableSemiWifi();
+  } catch(error) {
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## wifiManager.setScanAlwaysAllowed<sup>10+</sup>
@@ -89,14 +89,14 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 | 2501000  | Operation failed.|
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let isScanAlwaysAllowed = true;
-		wifiManager.setScanAlwaysAllowed(isScanAlwaysAllowed);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let isScanAlwaysAllowed = true;
+    wifiManager.setScanAlwaysAllowed(isScanAlwaysAllowed);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## wifiManager.getScanAlwaysAllowed<sup>10+</sup>
@@ -131,14 +131,14 @@ getScanAlwaysAllowed(): boolean
 **示例：**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let isScanAlwaysAllowed = wifiManager.getScanAlwaysAllowed();
-		console.info("isScanAlwaysAllowed:" + isScanAlwaysAllowed);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let isScanAlwaysAllowed = wifiManager.getScanAlwaysAllowed();
+    console.info("isScanAlwaysAllowed:" + isScanAlwaysAllowed);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## WifiDeviceConfig<sup>9+</sup>
@@ -260,19 +260,19 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.WifiDeviceConfig = {
-			ssid : "****",
-			preSharedKey : "****",
-			securityType : 3
-		}
-		wifiManager.connectToDevice(config);
-				
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let config:wifiManager.WifiDeviceConfig = {
+      ssid : "****",
+      preSharedKey : "****",
+      securityType : 3
+    }
+    wifiManager.connectToDevice(config);
+        
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## WifiLinkedInfo<sup>9+</sup>
@@ -546,15 +546,15 @@ updateNetwork(config: WifiDeviceConfig): number
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config:wifiManager.WifiDeviceConfig = {
-		ssid : "****",
-		preSharedKey : "****",
-		securityType : 3
-	}
-	let ret = wifiManager.updateNetwork(config);
-	console.info("ret:" + ret);
+  let config:wifiManager.WifiDeviceConfig = {
+    ssid : "****",
+    preSharedKey : "****",
+    securityType : 3
+  }
+  let ret = wifiManager.updateNetwork(config);
+  console.info("ret:" + ret);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -594,10 +594,10 @@ disableNetwork(netId: number): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let netId = 0;
-	wifiManager.disableNetwork(netId);	
+  let netId = 0;
+  wifiManager.disableNetwork(netId);  
 } catch (error) {
-	console.error(`failed: ${JSON.stringify(error)}`);
+  console.error(`failed: ${JSON.stringify(error)}`);
 }
 ```
 
@@ -637,11 +637,11 @@ disableNetwork(netId: int, blockDuration: int): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let netId = 0;
-	let blockDuration = 300;
-	wifiManager.disableNetwork(netId, blockDuration);	
+  let netId = 0;
+  let blockDuration = 300;
+  wifiManager.disableNetwork(netId, blockDuration);  
 } catch (error) {
-	console.error(`failed: ${JSON.stringify(error)}`);
+  console.error(`failed: ${JSON.stringify(error)}`);
 }
 ```
 
@@ -674,9 +674,9 @@ removeAllNetwork(): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.removeAllNetwork();		
+  wifiManager.removeAllNetwork();    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -714,10 +714,10 @@ get5GChannelList(): Array&lt;number&gt;
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let channelList = wifiManager.get5GChannelList();
-	console.info("channelList:" + JSON.stringify(channelList));		
+  let channelList = wifiManager.get5GChannelList();
+  console.info("channelList:" + JSON.stringify(channelList));    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 ## wifiManager.getDisconnectedReason<sup>10+</sup>
@@ -753,10 +753,10 @@ getDisconnectedReason(): DisconnectedReason
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let disconnectedReason = wifiManager.getDisconnectedReason();	
+  let disconnectedReason = wifiManager.getDisconnectedReason();  
     console.info("disconnectedReason:" + disconnectedReason);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -804,9 +804,9 @@ startPortalCertification(): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.startPortalCertification();
+  wifiManager.startPortalCertification();
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -839,9 +839,9 @@ startWifiDetection(): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.startWifiDetection();
+  wifiManager.startWifiDetection();
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -884,17 +884,17 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 import { wifiManager } from '@kit.ConnectivityKit';
 // config数据可以通过getScanInfoList接口获取，只有WifiScanInfo.isHiLinkNetwork为true的热点，才能正常使用该接口
 let config:wifiManager.WifiDeviceConfig = {
-	ssid : "****",
-	preSharedKey : "****",
-	securityType : 0,
-	bssid : "38:37:8b:80:bf:cc",
-	bssidType : 1,
-	isHiddenSsid : false
-}	
+  ssid : "****",
+  preSharedKey : "****",
+  securityType : 0,
+  bssid : "38:37:8b:80:bf:cc",
+  bssidType : 1,
+  isHiddenSsid : false
+}  
 try {
-	wifiManager.enableHiLinkHandshake(true, config.bssid, config);
+  wifiManager.enableHiLinkHandshake(true, config.bssid, config);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -927,9 +927,9 @@ factoryReset(): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.factoryReset();
+  wifiManager.factoryReset();
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 ## wifiManager.enableHotspot<sup>9+</sup>
@@ -994,9 +994,9 @@ disableHotspot(): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.disableHotspot();	
+  wifiManager.disableHotspot();  
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1034,10 +1034,10 @@ isHotspotDualBandSupported(): boolean
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let ret = wifiManager.isHotspotDualBandSupported();
-	console.info("result:" + ret);		
+  let ret = wifiManager.isHotspotDualBandSupported();
+  console.info("result:" + ret);    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1075,10 +1075,10 @@ isOpenSoftApAllowed(): boolean
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let ret = wifiManager.isOpenSoftApAllowed();
-	console.info("result:" + ret);
+  let ret = wifiManager.isOpenSoftApAllowed();
+  console.info("result:" + ret);
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1117,18 +1117,18 @@ setHotspotConfig(config: HotspotConfig): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config:wifiManager.HotspotConfig = {
-		ssid: "****",
-		securityType: 3,
-		band: 0,
-		channel: 0,
-		preSharedKey: "****",
-		maxConn: 0
-	}
-	let ret = wifiManager.setHotspotConfig(config);
-	console.info("result:" + ret);		
+  let config:wifiManager.HotspotConfig = {
+    ssid: "****",
+    securityType: 3,
+    band: 0,
+    channel: 0,
+    preSharedKey: "****",
+    maxConn: 0
+  }
+  let ret = wifiManager.setHotspotConfig(config);
+  console.info("result:" + ret);    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1184,10 +1184,10 @@ getHotspotConfig(): HotspotConfig
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config = wifiManager.getHotspotConfig();
-	console.info("result:" + JSON.stringify(config));		
+  let config = wifiManager.getHotspotConfig();
+  console.info("result:" + JSON.stringify(config));    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1229,10 +1229,10 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let stations = wifiManager.getStations();
-	console.info("result:" + JSON.stringify(stations));		
+  let stations = wifiManager.getStations();
+  console.info("result:" + JSON.stringify(stations));    
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1287,15 +1287,15 @@ addHotspotBlockList(stationInfo: StationInfo)
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config:wifiManager.StationInfo = {
-		name : "testSsid",
-		macAddress : "11:22:33:44:55:66",
-		ipAddress : "192.168.1.111"
-	}
-	// 热点开启后，才能正常将设备添加到连接阻止列表中
-	wifiManager.addHotspotBlockList(config);
+  let config:wifiManager.StationInfo = {
+    name : "testSsid",
+    macAddress : "11:22:33:44:55:66",
+    ipAddress : "192.168.1.111"
+  }
+  // 热点开启后，才能正常将设备添加到连接阻止列表中
+  wifiManager.addHotspotBlockList(config);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1335,14 +1335,14 @@ delHotspotBlockList(stationInfo: StationInfo)
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config:wifiManager.StationInfo = {
-		name : "testSsid",
-		macAddress : "11:22:33:44:55:66",
-		ipAddress : "192.168.1.111"
-	}
-	wifiManager.delHotspotBlockList(config);
+  let config:wifiManager.StationInfo = {
+    name : "testSsid",
+    macAddress : "11:22:33:44:55:66",
+    ipAddress : "192.168.1.111"
+  }
+  wifiManager.delHotspotBlockList(config);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1382,10 +1382,10 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let data = wifiManager.getHotspotBlockList();
-	console.info("result:" + JSON.stringify(data));
+  let data = wifiManager.getHotspotBlockList();
+  console.info("result:" + JSON.stringify(data));
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1428,10 +1428,10 @@ deletePersistentGroup(netId: number): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let netId = 0;
-	wifiManager.deletePersistentGroup(netId);	
+  let netId = 0;
+  wifiManager.deletePersistentGroup(netId);  
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1477,13 +1477,13 @@ if (err) {
     console.error("get P2P groups error");
     return;
 }
-	console.info("get P2P groups: " + JSON.stringify(data));
+  console.info("get P2P groups: " + JSON.stringify(data));
 });
 
 wifiManager.getP2pGroups().then(data => {
-	console.info("get P2P groups: " + JSON.stringify(data));
+  console.info("get P2P groups: " + JSON.stringify(data));
 });
-	
+  
 ```
 
 
@@ -1557,10 +1557,10 @@ setDeviceName(devName: string): void
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let name = "****";
-	wifiManager.setDeviceName(name);	
+  let name = "****";
+  wifiManager.setDeviceName(name);  
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1921,9 +1921,9 @@ isRandomMacDisabled(): boolean
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let ret = wifiManager.isRandomMacDisabled();
-	console.info("result:" + ret);
+  let ret = wifiManager.isRandomMacDisabled();
+  console.info("result:" + ret);
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
