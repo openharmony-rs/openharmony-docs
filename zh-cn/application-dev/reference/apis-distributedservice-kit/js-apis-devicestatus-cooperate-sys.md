@@ -716,11 +716,7 @@ try {
 
 onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
 
-<<<<<<< HEAD
-on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocation&gt;): void
-=======
 注册监听键鼠穿越状态。
->>>>>>> afce2c783db (cooperate doc 1.2)
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -730,18 +726,12 @@ on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocatio
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
-<<<<<<< HEAD
-**ArkTS-Dyn起始版本**：12
-=======
 **ArkTS-Sta起始版本**：22
->>>>>>> afce2c783db (cooperate doc 1.2)
 
 **参数**：
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-<<<<<<< HEAD
-=======
 | type     | string                                                | 是   | 监听类型，取值为'cooperateMessage'   |
 | callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 是   | 回调函数，异步返回键鼠穿越状态消息。 |
 
@@ -838,7 +828,6 @@ on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocatio
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
->>>>>>> afce2c783db (cooperate doc 1.2)
 | type     | string                                                | 是   | 监听类型，取值为'cooperateMouse'。   |
 | networkId| string                                                | 是   | 目标设备描述符   |
 | callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | 是   | 回调函数，异步返回指定监听设备鼠标光标位置信息。 |
@@ -1120,20 +1109,24 @@ try {
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
+
 | 名称      | 类型           | 可读 | 可写 | 说明                     |
 | --------- | -------------- | ---- | ---- | ------------------------ |
 | networkId | string         | 是   | 否   | 键鼠穿越目标设备描述符。 |
 | state     | CooperateState | 是   | 否   | 键鼠穿越的状态。         |
-
-**ArkTS-Dyn起始版本**：11
-
-**ArkTS-Sta起始版本**：22
 
 ## MouseLocation<sup>12+</sup>
 
 键鼠穿越的位置。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：22
 
 | 名称           | 类型            | 可读 | 可写 | 说明                           |
 | ---------      | -------------- | ---- | ---- | ------------------------       |
@@ -1142,15 +1135,15 @@ try {
 | displayWidth   | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 屏幕宽度，单位：px。                      |
 | displayHeight  | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 屏幕高度，单位：px。                      |
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：22
-
 ## CooperateState<sup>11+</sup>
 
 键鼠穿越的状态。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
 
 | 名称                           | 类型    | 可读 | 可写 | 说明                   |
 | ------------------------------ | ------ | ---- | ---- | ---------------------- |
@@ -1165,15 +1158,15 @@ try {
 | COOPERATE_ACTIVATE_FAILURE     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越无法启动。 |
 | COOPERATE_DEACTIVATE_FAILURE   | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越无法停止。 |
 
-**ArkTS-Dyn起始版本**：11
-
-**ArkTS-Sta起始版本**：22
-
 ## MouseLocation<sup>12+</sup>
 
 鼠标光标位置信息。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：22
 
 | 名称           | 类型           | 可读 | 可写 | 说明                     |
 | ---------     | -------------- | ---- | ---- | ------------------------ |
@@ -1182,25 +1175,21 @@ try {
 | displayWidth  | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 鼠标所在屏幕宽度，单位：px。 |
 | displayHeight | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 鼠标所在屏幕高度，单位：px。 |
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：22
-
 ## CooperateOptions<sup>20+</sup>
 
  键鼠穿越可选控制参数，控制穿出点位置。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：22
+
 | 名称      | 类型           | 只读 | 可选 | 说明                     |
 | --------- | -------------- | ---- | ---- | ------------------------ |
 | displayX      | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 否   | 否   | 鼠标X坐标位置。 |
 | displayY      | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 否   | 否   | 鼠标Y坐标位置。 |
 | displayId     | ArkTS-Dyn: number <br>ArkTS-Sta: long         | 否   | 否   | 对端设备屏幕标识。 |
-
-**ArkTS-Dyn起始版本**：20
-
-**ArkTS-Sta起始版本**：22
 
 ## cooperate.prepare<sup>(deprecated)</sup>
 
