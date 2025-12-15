@@ -5,9 +5,7 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
 > - 本模块接口均为系统接口。
 
 ## 导入模块
@@ -125,10 +123,6 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，取消键鼠穿越准备成功时，err为undefined，否则为错误对象。 |
-
-**ArkTS-Dyn起始版本**：11
-
-**ArkTS-Sta起始版本**：22
 
 **错误码：**
 
@@ -315,8 +309,6 @@ try {
 ## cooperate.deactivateCooperate<sup>11+</sup>
 
 deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void;
-
-
 
 停止键鼠穿越，使用Callback异步回调。
 
