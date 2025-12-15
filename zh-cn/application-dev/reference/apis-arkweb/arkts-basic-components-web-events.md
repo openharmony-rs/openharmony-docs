@@ -4825,7 +4825,10 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => boolean)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
-从API version 10开始不再维护，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+
+> **说明：**
+>
+> API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
