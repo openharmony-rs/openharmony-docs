@@ -77,6 +77,15 @@
 5. 排版段落并进行文本绘制。
 
    <!-- @[arkts_drawing_simple_text_layout_paint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 生成段落
+   let paragraph = ParagraphGraphBuilder.build();
+   // 布局
+   paragraph.layoutSync(1250);
+   // 绘制文本
+   paragraph.paint(canvas, 0, 100);
+   ```
 
 ## 效果展示
 
