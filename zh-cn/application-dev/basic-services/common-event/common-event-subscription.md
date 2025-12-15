@@ -52,6 +52,15 @@
    - 自定义公共事件：应用定义的公共事件。
    
      <!-- @[CreateCustomSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+     
+     ``` TypeScript
+     // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+     let subscriberCustom: commonEventManager.CommonEventSubscriber | null = null;
+     // 订阅者信息，其中的'event'字段需要替换为实际的事件名称。
+     let subscribeInfoCustom: commonEventManager.CommonEventSubscribeInfo = {
+       events: ['event']  // 订阅自定义公共事件
+     };
+     ```
 
    - 系统公共事件：CES内部定义的公共事件，当前仅支持系统应用和系统服务发布，例如HAP安装、更新、卸载等公共事件。目前支持的系统公共事件请参见[系统公共事件列表](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md)。
    
