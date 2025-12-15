@@ -1108,7 +1108,7 @@ List组件的滚动控制器，通过它控制List组件的滚动，仅支持一
 
 ### 导入对象
 
-```
+```ts
 listScroller: ListScroller = new ListScroller();
 ```
 
@@ -2244,6 +2244,8 @@ List宽度属于lg及更大的断点区间时显示5列。
 
 ```ts
 // xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct ListExample {
@@ -2266,10 +2268,16 @@ struct ListExample {
       // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
         .onClick(()=> {
-          // 通过调用contentSize函数获取内容尺寸的宽度值
-          this.contentWidth=this.scrollerForList.contentSize().width;
-          // 通过调用contentSize函数获取内容尺寸的高度值
-          this.contentHeight=this.scrollerForList.contentSize().height;
+            // Scroller未绑定组件时会抛异常，需要加上try catch保护
+          	try {
+              // 通过调用contentSize函数获取内容尺寸的宽度值
+              this.contentWidth=this.scrollerForList.contentSize().width;
+              // 通过调用contentSize函数获取内容尺寸的高度值
+              this.contentHeight=this.scrollerForList.contentSize().height;
+            } catch (error) {
+              let err: BusinessError = error as BusinessError;
+      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            }
         })
       // 将获取到的内容尺寸信息通过文本进行呈现
       Text('Width：'+ this.contentWidth+'，Height：'+ this.contentHeight)
