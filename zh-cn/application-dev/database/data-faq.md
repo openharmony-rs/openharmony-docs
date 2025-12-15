@@ -6,13 +6,13 @@
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
-## 如何查看详细的SQL语句报错
+## 如何查看关系型数据库详细的SQL语句报错
 
 * 通过调用接口获取。
 
 可以调用[on('sqliteErrorOccurred')](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#onsqliteerroroccurred20)获取SQL执行时出现的异常信息。
 
-## 如何查看执行的SQL语句
+## 如何查看关系型数据库执行的SQL语句
 
 * 通过调用接口获取。
 
