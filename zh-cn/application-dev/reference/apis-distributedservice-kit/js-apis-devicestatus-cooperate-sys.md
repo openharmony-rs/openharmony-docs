@@ -665,6 +665,7 @@ try {
 ## offCooperateMessage<sup>22+</sup>
 
 offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
+
 取消监听键鼠穿越状态。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
@@ -719,8 +720,6 @@ onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
 注册监听键鼠穿越状态。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
