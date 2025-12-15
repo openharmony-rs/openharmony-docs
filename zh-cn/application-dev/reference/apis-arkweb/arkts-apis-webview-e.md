@@ -416,6 +416,21 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | MATCH_HTTP        | 1 |HTTP请求会使用代理。|
 | MATCH_HTTPS       | 2 |HTTPS请求会使用代理。|
 
+## ScrollbarMode<sup>23+</sup>
+
+Web页面场景下，全局滚动条模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条。 |
+| FORCE_DISPLAY_SCROLLBAR    | 1 | 常驻滚动条。 |
+
 ## WebBlanklessErrorCode<sup>20+</sup>
 
 无白屏加载的异常错误码。
