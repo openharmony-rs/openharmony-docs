@@ -273,6 +273,7 @@ GNSS地理围栏请求参数。
 | monitorTransitionEvents | Array&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt; | 否 | 否 | 表示APP监听的地理围栏事件列表。数组长度不超过3。 |
 | notifications | Array&lt;[NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest)&gt; | 否 | 是 | 表示地理围栏事件发生后弹出的通知对象列表。<br/>monitorTransitionEvents与notifications中的顺序要一一对应，例如monitorTransitionEvents[0]为[GeofenceTransitionEvent](#geofencetransitionevent12).GEOFENCE_TRANSITION_EVENT_ENTER，那notifications[0]中就需要填入用户进入围栏时需要弹出的通知对象。默认值为空数组。 |
 | geofenceTransitionCallback | AsyncCallback&lt;[GeofenceTransition](#geofencetransition12)&gt; | 否 | 否 | 表示用于接收地理围栏事件的回调函数。 |
+| loiterTimeMs | number | 否 | 是 | 表示设备驻留在地理围栏内的时间，单位为毫秒。默认10000毫秒。状态扫描周期为10000毫秒，设置不足10000毫秒倍数时下一扫描周期上报结果。例如：设置15000，将在驻留20000时上报驻留状态。 |
 
 
 ## CountryCode
@@ -2440,6 +2441,8 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
     monitorTransitionEvents: transitionStatusList,
     // 地理围栏事件对应的通知对象，该参数为可选
     notifications: notificationRequestList,
+    // 设备驻留在地理围栏内的时间，该餐数据为可选
+    loiterTimeMs: 10000,
     // 用于监听围栏事件的callback
     geofenceTransitionCallback: (err: BusinessError, transition: geoLocationManager.GeofenceTransition) => {
       if (err) {
