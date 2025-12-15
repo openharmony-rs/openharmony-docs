@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -31,7 +32,11 @@
 
 订阅设备静止姿态感知（支架态）事件。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
+
+**ArkTS-Dyn起始版本**：18
 
 **参数**：
 
@@ -46,7 +51,6 @@
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 32500001 | Service exception. |
 | 32500002 | Subscription failed. |
@@ -54,13 +58,13 @@
 **示例**：
 
   ```ts
-  try {
-    deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
-      console.info('now status = ' + data);
+try {
+    deviceStatus.onSteadyStandingDetect((data:deviceStatus.SteadyStandingStatus) => {
+        console.info('now status = ' + data);
     });
-  } catch (err) {
+} catch (err) {
     console.info('on failed, err = ' + err);
-  }
+}
   ```
 
 ## deviceStatus.off('steadyStandingDetect')
@@ -69,7 +73,11 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 
 取消订阅设备静止姿态感知（支架态）事件。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
+
+**ArkTS-Dyn起始版本**：18
 
 **参数**：
 
@@ -84,7 +92,6 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 32500001 | Service exception. |
 | 32500003 | Unsubscription failed. |
@@ -95,7 +102,7 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 
   ```ts
   try {
-    deviceStatus.off('steadyStandingDetect');
+    deviceStatus.offSteadyStandingDetect();
   } catch (err) {
     console.info('off failed, err = ' + err);
   }
@@ -111,13 +118,13 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
   };
   // 以callback为回调函数，订阅设备静止姿态感知（支架态）事件
   try {
-    deviceStatus.on('steadyStandingDetect', callback);
+    deviceStatus.onSteadyStandingDetect(callback);
   } catch (err) {
     console.info('on failed, err = ' + err);
   }
   // 取消该客户端订阅设备静止姿态感知（支架态）事件的特定回调函数
   try {
-    deviceStatus.off('steadyStandingDetect', callback);
+    deviceStatus.offSteadyStandingDetect(callback);
   } catch (err) {
     console.info('off failed, err = ' + err);
   }

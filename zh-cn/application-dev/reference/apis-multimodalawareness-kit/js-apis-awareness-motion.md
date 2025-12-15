@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -39,15 +40,23 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 | BOTH_HANDS_HELD | 3    | 表示双手握持。 |
 | UNKNOWN_STATUS  | 16   | 表示未识别。   |
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：22
+
 ## motion.on('operatingHandChanged')
 
 on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;): void;
 
 订阅触控操作手感知事件。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
+
+**ArkTS-Dyn起始版本**：15
 
 **参数**：
 
@@ -72,13 +81,14 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import motion from '@ohos.multimodalAwareness.motion';
 
-callback(data:motion.OperatingHandStatus) {
-    console.info('callback success' + data);
-};
+function callback(data: motion.OperatingHandStatus) {
+    console.info("callback success: " + JSON.stringify(data));
+}
 
 try {
-    motion.on('operatingHandChanged', this.callback);  
+    motion.onOperatingHandChanged(callback);
     console.info("on succeeded");
 } catch (err) {
     let error = err as BusinessError;
@@ -92,9 +102,13 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 
 取消订阅触控操作手感知事件。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
+
+**ArkTS-Dyn起始版本**：15
 
 **参数**：
 
@@ -119,9 +133,10 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import motion from '@ohos.multimodalAwareness.motion';
 
 try {
-    motion.off('operatingHandChanged');
+    motion.offOperatingHandChanged();
     console.info("off succeeded");
 } catch (err) {
     let error = err as BusinessError;
@@ -133,11 +148,16 @@ try {
 
 getRecentOperatingHandStatus(): OperatingHandStatus;
 
+
 获取最新触控操作手状态。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
+
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：22
 
 **返回值**：
 
@@ -175,9 +195,13 @@ on(type: 'holdingHandChanged', callback: Callback&lt;HoldingHandStatus&gt;): voi
 
 订阅握持手状态变化感知事件。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.DETECT_GESTURE
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
+
+**ArkTS-Dyn起始版本**：20
 
 **参数**
 
@@ -221,9 +245,13 @@ off(type: 'holdingHandChanged', callback?: Callback&lt;HoldingHandStatus&gt;): v
 
 取消订阅握持手状态变化感知事件。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.DETECT_GESTURE
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
+
+**ArkTS-Dyn起始版本**：20
 
 **参数**
 
@@ -249,10 +277,107 @@ off(type: 'holdingHandChanged', callback?: Callback&lt;HoldingHandStatus&gt;): v
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  motion.off('holdingHandChanged'); // 移除所有同类订阅
+  motion.offHoldingHandChanged(); // 移除所有同类订阅
   console.info('off succeeded');
 } catch (err) {
   let error = err as BusinessError;
   console.error('Failed off; err code = ' + error.code);
+}
+```
+## motion.onOperatingHandChanged()<sup>22+</sup>
+
+onOperatingHandChanged(callback: Callback&lt;OperatingHandStatus&gt;): void;
+
+订阅触控操作手感知事件。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+
+**系统能力**：SystemCapability.MultimodalAwareness.Motion
+
+**ArkTS-Sta起始版本**：22
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                           | 是   | 事件类型。type为“operatingHandChanged”，表示操作手状态变化。 |
+| callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | 是   | 回调函数，返回操作手结果。                                   |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[行为动作感知错误码](errorcode-motion.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to subscribe operatingHandChanged event forbidden by permission: ohos.permission.ACTIVITY_MOTION or ohos.permission.DETECT_GESTURE. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
+| 31500002 | Subscription failed. Possible causes: 1. Callback registration failure; 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
+
+**示例**：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import motion from '@ohos.multimodalAwareness.motion';
+
+callback(data:motion.OperatingHandStatus) {
+    console.info('callback success' + data);
+};
+
+try {
+    motion.onOperatingHandChanged(this.callback);  
+    console.info("on succeeded");
+} catch (err) {
+    let error = err as BusinessError;
+    console.error("Failed on and err code is " + error.code);
+}
+```
+
+## motion.offOperatingHandChanged()<sup>22+</sup>
+
+offOperatingHandChanged(callback?: Callback&lt;OperatingHandStatus&gt;): void;
+
+取消订阅触控操作手感知事件。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+
+**系统能力**：SystemCapability.MultimodalAwareness.Motion
+
+**ArkTS-Sta起始版本**：22
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                           | 是   | 事件类型。type为“operatingHandChanged”，表示操作手状态变化。 |
+| callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | 否   | 回调函数，返回操作手结果。                                   |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[行为动作感知错误码](errorcode-motion.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to unsubscribe operatingHandChanged event forbidden by permission: ohos.permission.ACTIVITY_MOTION or ohos.permission.DETECT_GESTURE. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
+| 31500003 | Unsubscription failed. Possible causes: 1. Callback failure; 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
+
+**示例**：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import motion from '@ohos.multimodalAwareness.motion';
+
+try {
+    motion.offOperatingHandChanged();
+    console.info("off succeeded");
+} catch (err) {
+    let error = err as BusinessError;
+    console.error("Failed off and err code is " + error.code);
 }
 ```
