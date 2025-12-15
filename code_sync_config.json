@@ -3439,7 +3439,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":27,
+						"end_line":28,
 						"name":"rdb_include",
 						"start_line":18
 					},
@@ -8894,7 +8894,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets",
 				"functions":[
 					{
-						"end_line":115,
+						"end_line":114,
 						"name":"persistence_get_store",
 						"start_line":16
 					},
@@ -8958,7 +8958,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":43,
+						"end_line":42,
 						"name":"setDistributedTables",
 						"start_line":24
 					},
@@ -9057,7 +9057,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":20,
+						"end_line":22,
 						"name":"encryption_include",
 						"start_line":18
 					},
@@ -9081,7 +9081,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":20,
+						"end_line":22,
 						"name":"encryption_include",
 						"start_line":18
 					},
@@ -9110,7 +9110,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":20,
+						"end_line":22,
 						"name":"encryption_include",
 						"start_line":18
 					},
