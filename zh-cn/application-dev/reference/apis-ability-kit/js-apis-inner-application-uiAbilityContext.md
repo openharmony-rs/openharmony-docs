@@ -327,8 +327,8 @@ startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;):
 启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。
 
 UIAbility被启动后，有如下情况：
- - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。	
- - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。	
+ - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。
+ - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。
  - 如果被启动的UIAbility是[单实例模式](../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
@@ -421,8 +421,8 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。
 
 UIAbility被启动后，有如下情况：
- - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。	
- - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。	
+ - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。
+ - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。
  - 如果被启动的UIAbility是[单实例模式](../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
@@ -518,8 +518,8 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。仅支持在主线程调用。
 
 UIAbility被启动后，有如下情况：
- - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。	
- - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。	
+ - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。
+ - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。
  - 如果被启动的UIAbility是[单实例模式](../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
