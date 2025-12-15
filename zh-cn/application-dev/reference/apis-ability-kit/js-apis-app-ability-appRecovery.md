@@ -116,7 +116,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.restartApp();
   }
 };
@@ -154,7 +154,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState();
   }
 };
@@ -198,7 +198,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState(this.context);
   }
 };

@@ -192,7 +192,7 @@ The image data is too large.
 
 **可能原因**
 
-图片的大小太大。
+图片太大。
 
 **处理步骤**
 

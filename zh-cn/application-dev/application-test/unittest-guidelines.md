@@ -234,7 +234,7 @@ export default function abilityTest() {
     OHOS_REPORT_STATUS: stream=
     OHOS_REPORT_STATUS: test=testExample
     OHOS_REPORT_STATUS_CODE: 1
-
+    
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -258,7 +258,7 @@ export default function abilityTest() {
     ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
     OHOS_REPORT_CODE: 0
-
+    
     OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
     OHOS_REPORT_STATUS: taskconsuming=16029
     ```
@@ -597,7 +597,7 @@ interface PromiseInfo {
 
 **基础类**
 
-Mockit是Mock的基础类，用于指定需要Mock的实例和函数。
+MockKit是Mock的基础类，用于指定需要Mock的实例和函数。
 | 接口名 | 功能说明                 |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mock某个类实例中的函数，支持使用异步函数。                                                 |

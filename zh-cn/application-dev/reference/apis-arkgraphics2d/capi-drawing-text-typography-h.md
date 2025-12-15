@@ -13,6 +13,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -296,6 +298,8 @@ enum OH_Drawing_TextDirection
 
 文字方向。
 
+**起始版本：** 8
+
 | 枚举项 | 描述 |
 | -- | -- |
 | TEXT_DIRECTION_RTL | 方向：从右到左。 |
@@ -310,6 +314,8 @@ enum OH_Drawing_TextAlign
 **描述**
 
 文字对齐方式。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -329,6 +335,8 @@ enum OH_Drawing_FontWeight
 **描述**
 
 字重。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -352,6 +360,8 @@ enum OH_Drawing_TextBaseline
 
 基线位置。
 
+**起始版本：** 8
+
 | 枚举项 | 描述 |
 | -- | -- |
 | TEXT_BASELINE_ALPHABETIC | 用于表音文字，基线在中间偏下的位置。 |
@@ -366,6 +376,8 @@ enum OH_Drawing_TextDecoration
 **描述**
 
 文本装饰。
+
+**起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -384,11 +396,13 @@ enum OH_Drawing_FontStyle
 
 区分字体是否为斜体。
 
+**起始版本：** 8
+
 | 枚举项 | 描述 |
 | -- | -- |
 | FONT_STYLE_NORMAL | 非斜体。 |
 | FONT_STYLE_ITALIC | 斜体。 |
-| FONT_STYLE_OBLIQUE | 倾斜字体。<br>**起始版本：** 12 |
+| FONT_STYLE_OBLIQUE | 倾斜字体。|
 
 ### OH_Drawing_PlaceholderVerticalAlignment
 
@@ -807,6 +821,9 @@ int OH_Drawing_TypographyGetEffectiveAlignment(OH_Drawing_TypographyStyle* style
 
 **起始版本：** 12
 
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_TypographyStyleGetEffectiveAlignment](capi-drawing-text-typography-h.md#oh_drawing_typographystylegeteffectivealignment)
 
 **参数：**
 
@@ -2087,6 +2104,9 @@ OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinat
 
 **起始版本：** 11
 
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_TypographyGetGlyphPositionAtCoordinateWithCluster](capi-drawing-text-typography-h.md#oh_drawing_typographygetglyphpositionatcoordinatewithcluster)
 
 **参数：**
 
@@ -2418,6 +2438,9 @@ void OH_Drawing_SetTextStyleEllipsis(OH_Drawing_TextStyle* style, const char* el
 
 **起始版本：** 11
 
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_SetTypographyTextEllipsis](capi-drawing-text-typography-h.md#oh_drawing_settypographytextellipsis)
 
 **参数：**
 
@@ -2440,6 +2463,9 @@ void OH_Drawing_SetTextStyleEllipsisModal(OH_Drawing_TextStyle* style, int ellip
 
 **起始版本：** 11
 
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_SetTypographyTextEllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_settypographytextellipsismodal)
 
 **参数：**
 

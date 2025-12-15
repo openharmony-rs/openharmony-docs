@@ -12,7 +12,7 @@ JSVM的内存占用包括Native内存占用(C/C++侧的内存占用)和底层的
 
 ## 定性分析
 
-可以通过hdc连接设备，执行如下命令行的方式对目标应用的内存进行采样，比较一段时间内的内存变化情况，从而定性分析是Native内存泄漏还是JS内存。下图中Pss Total列，native heap对应Native内存占用，AnnonPage other对应js堆内存占用。
+可以通过hdc连接设备，执行如下命令行的方式对目标应用的内存进行采样，比较一段时间内的内存变化情况，从而定性分析是Native内存泄漏还是JS内存。下图中Pss Total列，native heap对应Native内存占用，AnonPage other对应js堆内存占用。
 ```hdc
 hidumper --mem $(pidof dest_app)
 ```
@@ -48,7 +48,7 @@ OH_JSVM_GetReferenceValue(env, reference, &result);
 
 ## JS引擎堆内存泄漏定位
 ### 典型场景
-1. 全局变量滥用，导致dom元素未释放。
+1. 全局变量滥用，导致DOM元素未释放。
 ```js
 const elements = [];
 function createElements() {

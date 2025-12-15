@@ -59,10 +59,13 @@ For details about the APIs, see [Pasteboard](../../reference/apis-basic-services
 1. Include header files.
    
    ```c
+   #include <cstring>
+   #include <hilog/log.h>
    #include <database/pasteboard/oh_pasteboard.h>
    #include <database/udmf/udmf.h>
    #include <database/udmf/uds.h>
    #include <database/udmf/udmf_meta.h>
+   #include <accesstoken/ability_access_control.h>
    ```
 
 2. Define a data providing function for **OH_UdmfRecordProvider** and a callback function for destroying this instance.
@@ -107,31 +110,32 @@ For details about the APIs, see [Pasteboard](../../reference/apis-basic-services
 4. Prepare the data for delayed copy in the pasteboard. The plain text and HTML data is not written to the pasteboard until the **GetDataCallback** function is triggered when the data consumer obtains **OH_UdsPlainText** or **OH_UdsHtml** from **OH_UdmfRecord**.
    
    ```c
-   // 4. Create an OH_UdmfRecord object.
-   OH_UdmfRecord* record = OH_UdmfRecord_Create();
-   // 5. Create an OH_UdmfRecordProvider object and set two callback functions used to provide and destruct data.
-   OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
-   OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
-   
-   // 6. Bind the provider to the record and set the supported data type.
-   #define TYPE_COUNT 2
-   const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
-   OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
-   
-   // 7. Create an OH_UdmfData object and add OH_UdmfRecord to it.
-   OH_UdmfData* setData = OH_UdmfData_Create();
-   if (setData != nullptr) {
-       OH_UdmfData_AddRecord(setData, record);
+   OH_Pasteboard* CreateAndSetPasteboardData()
+   {
+       // 4. Create an OH_UdmfRecord object.
+       OH_UdmfRecord* record = OH_UdmfRecord_Create();
+       // 5. Create an OH_UdmfRecordProvider object and set two callback functions used to provide and destruct data.
+       OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+       OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
+       // 6. Bind the provider to the record and set the supported data type.
+       #define TYPE_COUNT 2
+       const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
+       OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
+       // 7. Create an OH_UdmfData object and add OH_UdmfRecord to it.
+       OH_UdmfData* setData = OH_UdmfData_Create();
+       if (setData != nullptr) {
+           OH_UdmfData_AddRecord(setData, record);
+       }
+       // 8. Create an OH_Pasteboard object and write data to the pasteboard.
+       OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+       if (setData != nullptr) {
+           OH_Pasteboard_SetData(pasteboard, setData);
+       }
+       OH_UdmfRecordProvider_Destroy(provider);
+       OH_UdmfRecord_Destroy(record);
+       OH_UdmfData_Destroy(setData);
+       return pasteboard;
    }
-   
-   // 8. Create an OH_Pasteboard object and write data to the pasteboard.
-   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   if (setData != nullptr) {
-       OH_Pasteboard_SetData(pasteboard, setData);
-   }
-   OH_UdmfRecordProvider_Destroy(provider);
-   OH_UdmfRecord_Destroy(record);
-   OH_UdmfData_Destroy(setData);
    ```
 
 5. Obtain the data for delayed copy from the pasteboard.
@@ -166,14 +170,16 @@ For details about the APIs, see [Pasteboard](../../reference/apis-basic-services
        // 13. Query the data types in OH_UdmfRecord.
        unsigned typeCount = 0;
        char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
-   
        // 14. Traverse data types.
        for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
            const char* recordType = recordTypes[typeIndex];
            ProcessRecordType(record, recordType);
        }
    }
-   // ...
+   
+   static napi_value NAPI_Pasteboard_time(napi_env env, napi_callback_info info)
+   {
+       OH_Pasteboard* pasteboard = CreateAndSetPasteboardData();
        // 9. Record the number of changes to pasteboard data.
        uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
    
@@ -220,10 +226,11 @@ For details about the APIs, see [Pasteboard](../../reference/apis-basic-services
 7. Release the memory after the objects are used.
    
    ```c
-   OH_UdsPlainText_Destroy(udsText);
-   OH_UdsHtml_Destroy(udsHtml);
-   OH_UdmfData_Destroy(getData);
-   OH_Pasteboard_Destroy(pasteboard);
+       OH_UdsPlainText_Destroy(udsText);
+       OH_UdsHtml_Destroy(udsHtml);
+       OH_UdmfData_Destroy(getData);
+       OH_Pasteboard_Destroy(pasteboard);
+   }
    ```
 
 
@@ -246,10 +253,11 @@ You are not allowed to query data type before pasting.
 
 1. Import the **pasteboard**, **unifiedDataChannel**, and **uniformTypeDescriptor** modules.
    
-   ```ts\
+   ```ts
    import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-   import hilog from '@ohos.hilog';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    ```
 
 2. Construct a piece of PlainText data and write the function for obtaining the delay data.
@@ -314,7 +322,7 @@ You are not allowed to query data type before pasting.
      systemPasteboard.setAppShareOptions(pasteboard.ShareOption.LOCALDEVICE);
      hilog.info(0xFF00, '[Sample_pasteboard]', 'Set app share options success.');
    } catch (err) {
-     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to gSet app share options. Cause: ' + err.message);
+     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to Set app share options. Cause: ' + err.message);
      // Error case
    }
    ```

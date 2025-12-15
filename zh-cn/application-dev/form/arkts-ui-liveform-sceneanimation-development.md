@@ -69,7 +69,7 @@
     // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-    // 通过以下方式导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行。
+    // LiveFormExtensionContext导入编译器会标红，但是可以正常编译运行。
     import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
     // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';

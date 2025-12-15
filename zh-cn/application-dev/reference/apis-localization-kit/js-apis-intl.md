@@ -14,7 +14,7 @@
 >
 >  - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块接口依据[CLDR](https://cldr.unicode.org) 国际化数据库进行处理。随着CLDR演进，本模块接口处理结果可能发生变化。其中，API version 12对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)，详细数据变化请参考官方链接。
+>  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如[数字格式化接口](#numberformat)，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅CLDR官方文档。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 >
@@ -30,6 +30,8 @@ import { intl } from '@kit.LocalizationKit';
 ## Locale<sup>(deprecated)</sup>
 
 ### 属性
+
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)替代。
 
 **卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -78,7 +80,7 @@ let localeID = locale.toString();
 
 constructor(locale: string, options?: LocaleOptions)
 
-> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)替代。
 
 创建区域对象。
 
@@ -109,7 +111,7 @@ let localeID = locale.toString(); // localeID = 'zh-CN'
 
 toString(): string
 
-> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/toString)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.toString](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/toString)替代。
 
 获取区域对象的字符串。
 
@@ -138,7 +140,7 @@ let localeID = locale.toString(); // localeID = 'en-GB'
 
 maximize(): Locale
 
-> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.prototype.maximize()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.maximize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize)替代。
 
 最大化区域信息，补齐区域对象中缺少的脚本、国家地区信息。
 
@@ -176,7 +178,7 @@ localeID = maximizedLocale.toString(); // localeID = 'en-Latn-US'
 
 minimize(): Locale
 
-> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.prototype.minimize()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.minimize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize)替代。
 
 最小化区域信息，移除区域对象中的脚本、国家地区信息。
 
@@ -211,7 +213,7 @@ localeID = minimizedLocale.toString(); // localeID = 'en'
 
 ## LocaleOptions<sup>(deprecated)</sup>
 
-> 从API version 6开始支持，从API version 20开始废弃，以calendar为例，建议使用[Intl.Locale.prototype.calendar()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar)替代。
+> 从API version 6开始支持，从API version 20开始废弃，以calendar为例，建议使用[Intl.LocaleOptions.calendar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar)替代。
 
 区域初始化选项。从API version 9开始，LocaleOptions属性由必填改为可选。
 
@@ -248,7 +250,7 @@ localeID = minimizedLocale.toString(); // localeID = 'en'
 
 constructor()
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)替代。
 
 创建时间、日期格式化对象。
 
@@ -270,7 +272,7 @@ let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 
 constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
 
-> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)替代。
 
 创建时间、日期格式化对象。
 
@@ -302,7 +304,7 @@ formatter = new intl.DateTimeFormat(['ban', 'zh'], { dateStyle: 'full', timeStyl
 
 format(date: Date): string
 
-> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.format()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.format](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format)替代。
 
 对时间、日期进行格式化。
 
@@ -342,7 +344,7 @@ formattedDate = formatter.format(date); // formattedDate "Friday, 17 December 20
 
 formatRange(startDate: Date, endDate: Date): string
 
-> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.formatRange()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.formatRange](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange)替代。
 
 对时间段、日期段进行格式化。
 
@@ -380,7 +382,7 @@ let formattedDateRange: string = formatter.formatRange(startDate, endDate); // f
 
 resolvedOptions(): DateTimeOptions
 
-> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)替代。
 
 获取创建时间、日期格式化对象时设置的配置项。
 
@@ -410,7 +412,7 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 ## DateTimeOptions<sup>(deprecated)</sup>
 
-> 从API version 6开始支持，从API version 20开始废弃，建议使用Intl.DateTimeFormatOptions和Intl.ResolvedDateTimeFormatOptions替代。用法参考[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)和[Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用Intl.DateTimeFormatOptions和Intl.ResolvedDateTimeFormatOptions替代。用法参考[Intl.DateTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)和[Intl.DateTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)。
 
 时间、日期格式化时可设置的配置项。从API version 9开始，DateTimeOptions的属性由必填改为可选。
 
@@ -777,7 +779,7 @@ let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
 
 constructor()
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.PluralRules.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)替代。
 
 创建单复数对象来计算数字的单复数类别。
 
@@ -798,7 +800,7 @@ let pluralRules = new intl.PluralRules();
 
 constructor(locale: string | Array&lt;string&gt;, options?: PluralRulesOptions)
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.PluralRules.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)替代。
 
 创建单复数对象来计算数字的单复数类别。
 
@@ -825,7 +827,7 @@ let pluralRules: intl.PluralRules = new intl.PluralRules('zh-CN', { localeMatche
 
 select(n: number): string
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.PluralRules.select](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select)替代。
 
 获取数字的单复数类别。
 
@@ -896,7 +898,7 @@ plural = enPluralRules.select(1); // plural = 'one'
 
 constructor()
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)替代。
 
 创建相对时间格式化对象。
 
@@ -917,7 +919,7 @@ let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 
 constructor(locale: string | Array&lt;string&gt;, options?: RelativeTimeFormatInputOptions)
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)替代。
 
 创建相对时间格式化对象。
 
@@ -949,7 +951,7 @@ let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN', {
 
 format(value: number, unit: string): string
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat.format()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat.format](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format)替代。
 
 对相对时间进行格式化。
 
@@ -985,7 +987,7 @@ let formatResult: string = formatter.format(3, 'quarter'); // formatResult = '3�
 
 formatToParts(value: number, unit: string): Array&lt;object&gt;
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat.formatToParts()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/formatToParts)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat.formatToParts](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/formatToParts)替代。
 
 对相对时间进行格式化，获取格式化结果中各个部分的对象数组。
 
@@ -1020,7 +1022,7 @@ let parts: Array<object> = formatter.formatToParts(10, 'seconds'); // parts = [ 
 
 resolvedOptions(): RelativeTimeFormatResolvedOptions
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions)替代。
 
 获取相对时间格式化对象的格式化配置项。
 
@@ -1066,7 +1068,7 @@ let style: string = options.style; // style = 'short'
 
 ## RelativeTimeFormatResolvedOptions<sup>(deprecated)</sup>
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions#return_value)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions#return_value)替代。
 
 相对时间格式化对象的格式化配置项。
 

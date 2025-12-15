@@ -65,7 +65,7 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
-| 名称        | 类型                 | 可读    | 可写    | 说明                                                         |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
 | hostBundleName  | string               | 是    | 否     | 使用方卡片所属包的Bundle名称。                   |
 | visibilityType  | [VisibilityType](js-apis-app-form-formInfo.md#visibilitytype)               | 是    | 否     | 卡片当前可见类型枚举。                   |
@@ -82,13 +82,13 @@ import { formInfo } from '@kit.FormKit';
 
 **系统接口：** 此接口为系统接口。
 
-| 名称        | 类型                 | 可读    | 可写    | 说明                                                         |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| bundleName  | string               | 是    | 是     | 提供方卡片所属包的Bundle名称。  |
-| formName    | string               | 是    | 是     | 卡片名称。                     |
-| moduleName  | string               | 是    | 是     | 卡片所属模块的模块名称。        |
-| abilityName | string               | 是    | 是     | 卡片所属的Ability名称。        |
-| isUnusedIncluded<sup>11+</sup> | boolean               | 是    | 是     | 是否包含未使用的卡片。<br/>-&nbsp;true：包含未使用的卡片。<br/>-&nbsp;false：不包含未使用的卡片。<br/>默认值：false。        |
+| bundleName  | string               | 否    | 否     | 提供方卡片所属包的Bundle名称。  |
+| formName    | string               | 否    | 是     | 卡片名称。                     |
+| moduleName  | string               | 否    | 是     | 卡片所属模块的模块名称。        |
+| abilityName | string               | 否    | 是     | 卡片所属的Ability名称。        |
+| isUnusedIncluded<sup>11+</sup> | boolean               | 否    | 是     | 是否包含未使用的卡片。<br/>-&nbsp;true：包含未使用的卡片。<br/>-&nbsp;false：不包含未使用的卡片。<br/>默认值：false。        |
 
 
 ## FormInfoFilter
@@ -129,10 +129,10 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称    | 类型                                          | 可读 | 可写 | 说明                       |
+| 名称    | 类型                                          | 只读 | 可选 | 说明                       |
 | ------- | --------------------------------------------- | ---- | ---- | -------------------------- |
-| code    | [PublishFormErrorCode](#publishformerrorcode12) | 是   | 否   | 发布卡片加桌错误码。       |
-| message | string                                        | 是   | 否   | 设置卡片加桌结果返回信息。 |
+| code    | [PublishFormErrorCode](#publishformerrorcode12) | 否   | 否   | 发布卡片加桌错误码。       |
+| message | string                                        | 否   | 否   | 设置卡片加桌结果返回信息。 |
 
 ## PublishFormErrorCode<sup>12+</sup>
 

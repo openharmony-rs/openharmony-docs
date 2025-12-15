@@ -183,7 +183,7 @@
 
 ## 扩展设备能力
 
-扩展外设管理目前提供了HID DDK、USB DDK、USB Serical DDK和SCSI Peripheral DDK四种能力，用于扩展外设专项驱动的开发。具体使用方法，请参考：
+扩展外设管理目前提供了HID DDK、USB DDK、USB Serial DDK和SCSI Peripheral DDK四种能力，用于扩展外设专项驱动的开发。具体使用方法，请参考：
 
 * [开发适用HID协议的设备驱动](hid-ddk-guidelines.md)
 * [开发适用USB协议的设备驱动](usb-ddk-guidelines.md)
@@ -193,7 +193,9 @@
 <!--RP1-->
 ## 应用签名
 
-**注意：** 先配置权限，再自动签名。
+> **注意：**
+>
+> 先配置权限，再自动签名。
 
 应用需要配置签名文件才能在设备上运行，并且扩展外设管理客户端开发，需要配置扩展外设的权限：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER及ohos.permission.ACCESS_DDK_DRIVERS。
 - ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER（API version 10及以上版本，需要申请此权限。）

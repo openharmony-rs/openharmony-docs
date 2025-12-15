@@ -3021,7 +3021,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getForegroundOsAccountLocalId(): Promise&lt;number&gt;
 
-Obtains the ID of the foreground system account.
+Obtains the ID of the foreground system account. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -3061,7 +3061,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
-Obtains the domain account information associated with a specified system account.
+Obtains the domain account information associated with a specified system account. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_DOMAIN_ACCOUNTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available to system applications and enterprise applications)
 

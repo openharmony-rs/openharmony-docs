@@ -567,7 +567,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
    ```
    // 1.导入跨包的路由页面
-   import { PageInHSP } from 'library/src/main/ets/pages/PageInHSP'
+   import { PageInHSP } from 'library';
    
    @Entry
    @Component

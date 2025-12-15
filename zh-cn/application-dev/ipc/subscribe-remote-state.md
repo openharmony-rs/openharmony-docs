@@ -86,7 +86,7 @@ let connect: common.ConnectOptions | undefined;
 
 try{
   dmInstance = distributedDeviceManager.createDeviceManager("ohos.rpc.test");
-} catch(error) {
+} catch (error) {
   let err: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'createDeviceManager errCode:' + err.code + ', errMessage:' + err.message);
 }
@@ -115,7 +115,7 @@ if (dmInstance != undefined) {
         }
       };
     }
-  }catch(error) {
+  } catch (error) {
     let err: BusinessError = error as BusinessError;
     hilog.error(0x0000, 'testTag', 'createDeviceManager err:' + err);
   }
@@ -139,7 +139,7 @@ Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../r
 ```ts
 let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
 // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
-let connectId = context.connectServiceExtensionAbility(want,connect);
+let connectId = context.connectServiceExtensionAbility(want, connect);
 ```
 
 成功连接服务后，onConnect回调函数中的Proxy对象会被赋值。此时，可以调用Proxy对象的[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)接口方法注册死亡回调，在Proxy不再使用的时候，调用[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)接口方法注销死亡回调。

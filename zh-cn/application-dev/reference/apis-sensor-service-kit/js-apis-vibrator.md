@@ -27,7 +27,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -78,14 +78,14 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
            }, (error: BusinessError) => {
              if (error) {
                console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-			   return;
+               return;
              }
              console.info('Succeed in starting vibration');
           
            });
          } catch (err) {
            let e: BusinessError = err as BusinessError;
-		   console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+           console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
          }
        }
      })
@@ -181,7 +181,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -237,14 +237,14 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
            }, (error: BusinessError) => {
              if (error) {
                console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-			         return;
+               return;
              }
              console.info('Succeed in starting vibration');
           
            });
          } catch (err) {
            let e: BusinessError = err as BusinessError;
-		       console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+           console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
          }
        }
      })
@@ -559,7 +559,7 @@ stopVibration(callback: AsyncCallback&lt;void&gt;): void
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -607,7 +607,7 @@ stopVibration(): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -718,7 +718,7 @@ stopVibrationSync(): void
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API Version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1157,8 +1157,8 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 | deviceId            | number  | 否  | 否  | 设备ID。     |
 | vibratorId          | number  | 否  | 否  | 马达ID。     |
 | deviceName          | string  | 否  | 否  | 设备名称。     |
-| isHdHapticSupported | boolean | 否  | 否  | 是否支持高清振动。 |
-| isLocalVibrator     | boolean | 否  | 否  | 是否为本地设备。  |
+| isHdHapticSupported | boolean | 否  | 否  | 是否支持高清振动，true为支持，false为不支持。 |
+| isLocalVibrator     | boolean | 否  | 否  | 是否为本地设备，true为本地设备，false为非本地设备。 |
 
 
 ## vibrator.isHdHapticSupported<sup>12+</sup>
@@ -1173,7 +1173,7 @@ isHdHapticSupported(): boolean
 
 | 类型    | 说明                                                      |
 | ------- | --------------------------------------------------------- |
-| boolean | 返回对象，当返回true表示支持高清振动，返回false不支持。。 |
+| boolean | 返回对象，当返回true表示支持高清振动，返回false不支持。 |
 
 **错误码**：
 
@@ -1242,23 +1242,23 @@ addContinuousEvent(time: number, duration: number, options?: ContinuousParam): V
    // 使用try catch对可能出现的异常进行捕获
    try {
      let pointsMe: vibrator.VibratorCurvePoint[] = [
-	     { time: 0, intensity: 0, frequency: -7 },
-	     { time: 42, intensity: 1, frequency: -6 },
-	     { time: 128, intensity: 0.94, frequency: -4 },
-	     { time: 217, intensity: 0.63, frequency: -14 },
-	     { time: 763, intensity: 0.48, frequency: -14 },
-	     { time: 1125, intensity: 0.53, frequency: -10 },
-	     { time: 1503, intensity: 0.42, frequency: -14 },
-	     { time: 1858, intensity: 0.39, frequency: -14 },
-	     { time: 2295, intensity: 0.34, frequency: -17 },
-	     { time: 2448, intensity: 0.21, frequency: -14 },
-	     { time: 2468, intensity: 0, frequency: -21 }
+       { time: 0, intensity: 0, frequency: -7 },
+       { time: 42, intensity: 1, frequency: -6 },
+       { time: 128, intensity: 0.94, frequency: -4 },
+       { time: 217, intensity: 0.63, frequency: -14 },
+       { time: 763, intensity: 0.48, frequency: -14 },
+       { time: 1125, intensity: 0.53, frequency: -10 },
+       { time: 1503, intensity: 0.42, frequency: -14 },
+       { time: 1858, intensity: 0.39, frequency: -14 },
+       { time: 2295, intensity: 0.34, frequency: -17 },
+       { time: 2448, intensity: 0.21, frequency: -14 },
+       { time: 2468, intensity: 0, frequency: -21 }
      ] // VibratorCurvePoint参数最少设置4个，最大设置16个
      let param: vibrator.ContinuousParam = {
-	     intensity: 97,
-	     frequency: 34,
-	     points:pointsMe,
-	     index: 0
+       intensity: 97,
+       frequency: 34,
+       points:pointsMe,
+       index: 0
      }
      builder.addContinuousEvent(0, 2468, param);
      console.info(`addContinuousEvent builder is ${builder.build()}`);
@@ -1307,9 +1307,9 @@ addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilde
    // 使用try catch对可能出现的异常进行捕获
    try {
      let param: vibrator.TransientParam = {
-	     intensity: 80,
-	     frequency: 70,
-	     index: 0
+       intensity: 80,
+       frequency: 70,
+       index: 0
      }
      builder.addTransientEvent(0, param);
      console.info(`addTransientEvent builder is ${builder.build()}`);
@@ -1342,9 +1342,9 @@ build(): VibratorPattern;
    let builder = new vibrator.VibratorPatternBuilder();
    try {
      let param: vibrator.TransientParam = {
-	     intensity: 80,
-	     frequency: 70,
-	     index: 0
+       intensity: 80,
+       frequency: 70,
+       index: 0
      }
      builder.addTransientEvent(0, param);
      console.info(`addTransientEvent builder is ${builder.build()}`);
@@ -1354,17 +1354,17 @@ build(): VibratorPattern;
    }
    try {
      vibrator.startVibration({
-	     type: "pattern",
-	     pattern: builder.build()
+       type: "pattern",
+       pattern: builder.build()
      }, {
-	   usage: "alarm", // 根据实际选择类型归属不同的开关管控
+       usage: "alarm", // 根据实际选择类型归属不同的开关管控
      }, (error) => {
-	   if (error) {
-	     let e: BusinessError = error as BusinessError;
-	     console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
-	   } else {
-	     console.info(`vibrate success`);
-	   }
+     if (error) {
+       let e: BusinessError = error as BusinessError;
+       console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
+     } else {
+       console.info(`vibrate success`);
+     }
      });
    } catch(error) {
      let e: BusinessError = error as BusinessError;
@@ -1422,7 +1422,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 类型                                  | 说明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
-| [VibrateTime](#vibratetime9)          | 按照指定时长触发马达振动。<br/>**原子化服务API：** 从API Version 11开始，该接口支持在原子化服务中使用。 |
+| [VibrateTime](#vibratetime9)          | 按照指定时长触发马达振动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [VibratePreset](#vibratepreset9)      | 按照预置振动类型触发马达振动。                               |
 | [VibrateFromFile](#vibratefromfile10) | 按照自定义振动配置文件触发马达振动。                         |
 | [VibrateFromPattern<sup>18+</sup>](#vibratefrompattern18)      | 按照自定义振动效果触发马达振动。                             |
@@ -1431,7 +1431,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 指定时长振动类型。
 
-**原子化服务API**：从API Version 11开始，该接口在支持原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口在支持原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1566,14 +1566,14 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 马达振动属性。
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
 | 名称                   | 类型             | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ---------------- | ---- | ---- | ------------------------------------------------------------ |
 | id                     | number           | 否   | 是   | 马达ID， 默认值为0。                                         |
-| deviceId<sup>19+</sup> | number           | 否   | 是   | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API Version 19开始，该接口支持在原子化服务中使用。 |
+| deviceId<sup>19+</sup> | number           | 否   | 是   | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
 | usage                  | [Usage](#usage9) | 否   | 否   | 马达振动的使用场景。默认值为'unknown'，取值范围只允许在[Usage](#usage9)提供的类型中选取。 |
 
 ## Usage<sup>9+</sup>
@@ -1582,7 +1582,7 @@ type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' | '
 
 振动使用场景。
 
-**原子化服务API**：从API Version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 <!--RP1-->
@@ -1607,7 +1607,7 @@ vibrate(duration: number): Promise&lt;void&gt;
 
 按照指定持续时间触发马达振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1644,7 +1644,7 @@ vibrate(duration: number, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定持续时间触发马达振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1679,7 +1679,7 @@ vibrate(effectId: EffectId): Promise&lt;void&gt;
 
 按照预置振动效果触发马达振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1717,7 +1717,7 @@ vibrate(effectId: EffectId, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定振动效果触发马达振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1751,7 +1751,7 @@ stop(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 按照指定模式停止马达的振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1798,7 +1798,7 @@ stop(stopMode: VibratorStopMode, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定模式停止马达的振动。
 
-从API version 9 开始不再维护，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
+从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 

@@ -1401,8 +1401,8 @@ allowWindowOpenMethod(flag: boolean)
 
 **示例：**
 
-  ```ts
-  // xxx.ets
+```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 // 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
@@ -1462,7 +1462,7 @@ struct WebComponent {
         }
     }
 }
-  ```
+```
 **HTML示例：**
 
 ```html

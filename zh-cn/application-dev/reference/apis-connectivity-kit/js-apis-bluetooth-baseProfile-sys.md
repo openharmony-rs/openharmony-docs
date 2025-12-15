@@ -223,12 +223,12 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
 | 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-|2900001 | Service stopped.                  
+| -------- | ---------------------------- |   
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
-|801 | Capability not supported.          |       |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
 |2900003 | Bluetooth disabled.                 |
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |

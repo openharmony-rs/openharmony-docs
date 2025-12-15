@@ -19,11 +19,11 @@
 
 setCursor(value: PointerStyle): void
 
+方法语句中可使用的全局接口，调用该接口可更改当前的鼠标光标样式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-方法语句中可使用的全局接口，调用该接口可更改当前的鼠标光标样式。
 
 **参数：**
 
@@ -31,16 +31,15 @@ setCursor(value: PointerStyle): void
 | ----- | ------ | ---- | ---- |
 | value | [PointerStyle](#pointerstyle) | 是   | 设置的鼠标样式。 |
 
-
 ### restoreDefault
 
 restoreDefault(): void
 
+方法语句中可使用的全局接口，调用此接口可将鼠标光标恢复成默认箭头样式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-方法语句中可使用的全局接口，调用此接口可将鼠标光标恢复成默认箭头样式。
 
 ## PointerStyle
 
@@ -80,7 +79,7 @@ struct CursorControlExample {
         .height(200)
         .width(200)
         .backgroundColor(Color.Green)
-        .position({ x: 150, y: 70 })
+        .position({ x: 60, y: 70 })
         .onHover((flag) => {
           if (flag) {
             // 建议使用this.getUIContext().getCursorController().setCursor()
@@ -94,7 +93,7 @@ struct CursorControlExample {
         .height(200)
         .width(200)
         .backgroundColor(Color.Blue)
-        .position({ x: 220, y: 120 })
+        .position({ x: 130, y: 120 })
         .onHover((flag) => {
           if (flag) {
             // 建议使用this.getUIContext().getCursorController().setCursor()
