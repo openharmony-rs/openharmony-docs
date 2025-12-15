@@ -912,12 +912,12 @@ setDefaultApplicationForAppClone(type: string, elementName: ElementName, appInde
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 801 | Capability not supported. |
-| 17700004 | The specified user ID is not found.            |
+| 17700004 | The specified user id is not found.            |
 | 17700025 | The specified type is invalid.                 |
-| 17700028 | The specified ability does not match the type. |
-| 17700061 | AppIndex not in valid range. |
+| 17700028 | The specified ability and type do not match. |
+| 17700061 | The specified app index is invalid. |
 
 **示例：**
 

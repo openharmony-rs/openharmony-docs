@@ -631,11 +631,12 @@ getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>, resourceF
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission denied.                                   |
-| 202      | Permission denied, non-system app called system api. |
-| 17700001 | The specified bundleName is not found.               |
-| 17700002 | The specified moduleName is not existed.             |
-| 17700003 | The specified abilityName is not existed.            |
-| 17700061 | AppIndex not in valid range or not found.            |
+| 202      | Permission denied. A non-system application is not allowed to call a system API. |
+| 801      | Capability not supported. |
+| 17700001 | The specified bundle is not found.  |
+| 17700002 | The specified module is not found.  |
+| 17700003 | The specified ability is not found. |
+| 17700061 | The specified app index is invalid. |
 
 **示例：**
 
