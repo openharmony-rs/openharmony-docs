@@ -3444,9 +3444,9 @@
 						"start_line":18
 					},
 					{
-						"end_line":781,
+						"end_line":783,
 						"name":"rdb_OH_Rdb_CreateOrOpen",
-						"start_line":726
+						"start_line":727
 					},
 					{
 						"end_line":753,
@@ -3494,9 +3494,9 @@
 						"start_line":792
 					},
 					{
-						"end_line":761,
+						"end_line":763,
 						"name":"rdb_OH_Rdb_SetPlugins",
-						"start_line":755
+						"start_line":756
 					},
 					{
 						"end_line":452,
