@@ -123,6 +123,10 @@ ArkTS-Sta: setFontScale(fontScale: double): Promise\<void>
 
 设置系统字体大小。
 
+> **说明：**
+>
+> 如果未申请`ohos.permission.UPDATE_CONFIGURATION`权限，调用该接口安装应用失败，不会返回202错误码。
+
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
@@ -137,7 +141,7 @@ ArkTS-Sta: setFontScale(fontScale: double): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体大小。 |
+| fontScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体大小。<br/>取值范围：(0.0, 5.0]，超出范围会抛出401错误码的异常。 |
 
 **返回值：** 
 
@@ -185,6 +189,10 @@ ArkTS-Sta: setFontWeightScale(fontWeightScale: double): Promise\<void>
 
 设置系统字体粗细。
 
+> **说明：**
+>
+> 如果未申请`ohos.permission.UPDATE_CONFIGURATION`权限，调用该接口安装应用失败，不会返回202错误码。
+
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
@@ -199,7 +207,7 @@ ArkTS-Sta: setFontWeightScale(fontWeightScale: double): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontWeightScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体粗细。 |
+| fontWeightScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体粗细。<br/>取值范围：(0.0, 5.0]，超出范围会抛出401错误码的异常。 |
 
 **返回值：** 
 
