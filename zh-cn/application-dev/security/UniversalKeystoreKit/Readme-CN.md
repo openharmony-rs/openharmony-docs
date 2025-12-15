@@ -23,6 +23,8 @@
         - [明文导入密钥(C/C++)](huks-import-key-in-plaintext-ndk.md)
         - [加密导入密钥(ArkTS)](huks-import-wrapped-key-arkts.md)
         - [加密导入密钥(C/C++)](huks-import-wrapped-key-ndk.md)
+        - [数字信封导入密钥(ArkTS)](huks-import-envelop-key-arkts.md)
+        - [数字信封导入密钥(C/C++)](huks-import-envelop-key-ndk.md)
   - 密钥使用<!--huks-key-use-->
     - [密钥使用介绍及通用流程](huks-key-use-overview.md)
     - 加密/解密<!--huks-encryption-decryption-->
