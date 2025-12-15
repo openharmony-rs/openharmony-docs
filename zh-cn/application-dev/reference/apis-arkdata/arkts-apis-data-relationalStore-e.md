@@ -203,9 +203,6 @@ import { window } from '@kit.ArkUI';
 // 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
 export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent('pages/Index', (err) => {
-    });
-
     let rdbStore: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
       name: "insert.db",
@@ -220,14 +217,14 @@ export default class EntryAbility extends UIAbility {
       rdbStore = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
       // 使用自定义分词器创建fts5虚拟表，tokenize后面是实现的分词器名称
       await rdbStore.executeSql("CREATE VIRTUAL TABLE IF NOT EXISTS pages USING fts5(title, keywords, body, tokenize=koowork_tokenizer);");
-      console.log("CREATE VIRTUAL TABLE OK");
+      console.info("CREATE VIRTUAL TABLE OK");
       await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('歌曲', 'xxx', '1234歌曲，像北哈升');");
-      console.log("INSERT VIRTUAL TABLE OK, body is '1234歌曲，像北哈升'");
+      console.info("INSERT VIRTUAL TABLE OK, body is '1234歌曲，像北哈升'");
       await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('歌曲', 'xxx', '我爱北京天安门, 天安门上太阳升');");
-      console.log("INSERT VIRTUAL TABLE OK, body is '我爱北京天安门, 天安门上太阳升'");
+      console.info("INSERT VIRTUAL TABLE OK, body is '我爱北京天安门, 天安门上太阳升'");
       let resultSet = await rdbStore.querySql("select * from pages where body match '天安门';");
       while (resultSet.goToNextRow()) {
-        console.log(`query result success, match body:${resultSet.getString(resultSet.getColumnIndex("body"))}`);
+        console.info(`query result success, match body:${resultSet.getString(resultSet.getColumnIndex("body"))}`);
       }
       resultSet.close();
       await relationalStore.deleteRdbStore(this.context, STORE_CONFIG);
