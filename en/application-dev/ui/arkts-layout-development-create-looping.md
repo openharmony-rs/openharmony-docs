@@ -25,44 +25,44 @@ When **loop** is set to **true**, the user can switch to the previous or next pa
 
 - Example of setting **loop** to **true**:
 
-```ts
-Swiper() {
-  Text('0')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Gray)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
+  ```ts
+  Swiper() {
+    Text('0')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Gray)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
 
-  Text('1')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Green)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
+    Text('1')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Green)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
 
-  Text('2')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Pink)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
-}
-.loop(true)
-```
+    Text('2')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Pink)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+  }
+  .loop(true)
+  ```
 
-![loop_true](figures/loop_true.gif)
+  ![loop_true](figures/loop_true.gif)
 
 - Example of setting **loop** to **false**:
 
-```ts
-Swiper() {
-  // ...
-}
-.loop(false)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .loop(false)
+  ```
 
-![loop_false](figures/loop_false.gif)
+  ![loop_false](figures/loop_false.gif)
 
 
 ## Automatic Playback
@@ -91,87 +91,87 @@ With the **indicator** attribute, you can set the position of the indicator rela
 
 - Example of using the navigation indicator in its default style:
 
-```ts
-Swiper() {
-  Text('0')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Gray)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
+  ```ts
+  Swiper() {
+    Text('0')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Gray)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
 
-  Text('1')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Green)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
+    Text('1')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Green)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
 
-  Text('2')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Pink)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
-}
-```
+    Text('2')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Pink)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+  }
+  ```
 
-![indicator](figures/indicator.PNG)
+  ![indicator](figures/indicator.PNG)
 
 - Example of customizing the style of the navigation indicator
 
-The selected navigation indicator has a diameter of 30 vp with blue color, while unselected indicators have a diameter of 15 vp with red color.
+  The selected navigation indicator has a width of 30 vp, a height of 15 vp, and a blue color. The unselected indicators are 15 vp in both width and height, with a red color.
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(
-  Indicator.dot()
-    .left(0)
-    .itemWidth(15)
-    .itemHeight(15)
-    .selectedItemWidth(30)
-    .selectedItemHeight(15)
-    .color(Color.Red)
-    .selectedColor(Color.Blue)
-)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(
+    Indicator.dot()
+      .left(0)
+      .itemWidth(15)
+      .itemHeight(15)
+      .selectedItemWidth(30)
+      .selectedItemHeight(15)
+      .color(Color.Red)
+      .selectedColor(Color.Blue)
+  )
+  ```
 
-![ind](figures/ind.PNG)
+  ![ind](figures/ind.PNG)
 
 You can set the [displayArrow](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displayarrow10) attribute of **Swiper** to control the size, position, color, and background of navigation point arrows, and whether to display arrows on mouse hover.
 
 - Example of using the navigation point arrows in the default style:
 
-```ts
-Swiper() {
-  // ...
-}
-.displayArrow(true, false)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .displayArrow(true, false)
+  ```
 
-![arrow1](figures/arrow1.gif)
+  ![arrow1](figures/arrow1.gif)
 
 - Example of customizing the style of navigation point arrows:
 
-In this example, the arrows are displayed on both sides of the component, with a size of 18 vp and a color of blue.
+  In this example, the arrows are displayed on both sides of the component, with a size of 18 vp and a color of blue.
 
-```ts
-Swiper() {
-  // ...
-}
-.displayArrow({ 
-  showBackground: true,
-  isSidebarMiddle: true,
-  backgroundSize: 24,
-  backgroundColor: Color.White,
-  arrowSize: 18,
-  arrowColor: Color.Blue
-  }, false)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .displayArrow({ 
+    showBackground: true,
+    isSidebarMiddle: true,
+    backgroundSize: 24,
+    backgroundColor: Color.White,
+    arrowSize: 18,
+    arrowColor: Color.Blue
+    }, false)
+  ```
 
-![arrow2](figures/arrow2.gif)
+  ![arrow2](figures/arrow2.gif)
 
 ## Page Switching Mode
 
@@ -261,42 +261,42 @@ struct SwiperDemo {
 }
 ```
 
-![controll](figures/controll.gif)
+![control](figures/control.gif)
 
 
 ## Playback Direction
 
-You can set the playback direction for the Swiper component through its **vertical** attribute.
+You can set the playback direction for the **Swiper** component through its **vertical** attribute.
 
-When **vertical** is set to **true**, vertical swiping is used. The default value of **vertical** is **false**.
+When **vertical** is set to **true**, vertical swiping is used. When **vertical** is set to **false**, horizontal swiping is used. The default value of **vertical** is **false**.
 
 
 - Example of using horizontal swiping:
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(true)
-.vertical(false)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(true)
+  .vertical(false)
+  ```
 
 
-![horizontal-swiping](figures/horizontal-swiping.PNG)
+  ![horizontal-swiping](figures/horizontal-swiping.PNG)
 
 
 - Example of using vertical swiping:
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(true)
-.vertical(true)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(true)
+  .vertical(true)
+  ```
 
 
-![vertical-swiping](figures/vertical-swiping.PNG)
+  ![vertical-swiping](figures/vertical-swiping.PNG)
 
 
 ## Child Components Per Page
@@ -529,31 +529,31 @@ Swiper() {
 
 ## Ignoring the Navigation Indicator Component Size
 
-After the bottom of the navigation indicator is set to 0, there is still spacing between the indicator bottom and the **Swiper** bottom. To eliminate this spacing, invoke the **bottom(bottom, ignoreSize)** attribute. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
+After the bottom of the navigation indicator is set to 0, a gap may still exist between the indicator and the bottom of the **Swiper** component. To remove this gap, apply the **bottom(bottom, ignoreSize)** attribute. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
 
 - Ignoring the dot navigation indicator component size:
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(
-  new DotIndicator()
-    .bottom(LengthMetrics.vp(0), true)
-)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(
+    new DotIndicator()
+      .bottom(LengthMetrics.vp(0), true)
+  )
+  ```
 
 - Ignoring the digit navigation indicator component size:
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(
-  new DigitIndicator()
-    .bottom(LengthMetrics.vp(0), true)
-)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(
+    new DigitIndicator()
+      .bottom(LengthMetrics.vp(0), true)
+  )
+  ```
 
 Complete sample code for setting the dot spacing and ignoring the component size for a dot navigation indicator:
 
@@ -655,11 +655,11 @@ struct SwiperExample {
 }
 ```
 
-![controll](figures/indicator_space.gif)
+![control](figures/indicator_space.gif)
 
 ## Maintaining the Visible Content Position
 
-When using **LazyForEach** to load data (for example, adding data through **onDataAdd**), set the [maintainVisibleContentPosition](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#maintainvisiblecontentposition20) attribute to keep the visible content position stable, preventing view jumps caused by data addition or deletion. Its default value is **false**.
+When using **LazyForEach** to load data (for example, adding data through **onDataAdd**), set the [maintainVisibleContentPosition](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#maintainvisiblecontentposition20) attribute to keep the visible content position stable, preventing view jumps caused by data addition or deletion. The attribute's default value is **false**.
 
 When **maintainVisibleContentPosition** is set to **true**, the visible content position remains unchanged when data is inserted or deleted above or before the display area.
 
@@ -735,11 +735,11 @@ struct SwiperExample {
       Column({ space: 12 }) {
         Text("index:" + this.index).fontSize(20)
         Row() {
-          // Add data to the position whose LazyForEach index is 0.
+          // Insert data at index 0 of the LazyForEach data source.
           Button('header data add').height(30).onClick(() => {
             this.data.addData(0, 'header Data');
           })
-          // Delete data from the position whose LazyForEach index is 0.
+          // Delete data at index 0 of the LazyForEach data source.
           Button('header data delete').height(30).onClick(() => {
             this.data.deleteData(0);
           })
@@ -751,5 +751,5 @@ struct SwiperExample {
 }
 ```
 
-![controll](figures/maintainVisibleContentPosition_true.gif)
+![control](figures/maintainVisibleContentPosition_true.gif)
 

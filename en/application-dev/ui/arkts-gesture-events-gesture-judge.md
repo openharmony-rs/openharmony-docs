@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 Gesture conflicts occur when multiple gesture recognizers compete for recognition on the same component or overlapping areas, resulting in unexpected behavior. Common conflict scenarios include:
-- Multiple gestures on the same component (for example, both tap and long-press gestures on a button)
+- Multiple gestures on the same component (for example, both tap and long press gestures on a button)
 - Gesture recognizers of the same type on parent and child components
 - Conflicts between system default gestures and custom gestures (for example, conflict between the scroll gesture and the click gesture of a child component)
 
@@ -28,7 +28,7 @@ Custom gesture judgment involves the following APIs.
 |[onGestureJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#ongesturejudgebegin)|Used for gesture interception as a universal event. Called when the gesture meets system trigger thresholds, allowing the application to determine whether to intercept the gesture.|
 |[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|Called to implement gesture judgment, obtain gesture recognizers, and set their enabled state. It is an extension of **onGestureJudgeBegin** and can serve as its substitute.<br>When obtaining gesture recognizers, this API obtains all gesture recognizers in the response chain of the current interaction, as well as the recognizer about to be triggered successfully, allowing the enabled state of the gesture to be set.|
 
-In the following example, the **Image** and **Stack** components are located in the same area. Long-pressing the upper half of the **Stack** component triggers the long-press gesture bound to the **Stack** component, while long-pressing the lower half of the **Stack** component triggers the drag operation of the **Image** component.
+In the following example, the **Image** and **Stack** components are located in the same area. Long-pressing the upper half of the **Stack** component triggers the long press gesture bound to the **Stack** component, while long-pressing the lower half of the **Stack** component triggers the drag operation of the **Image** component.
 
 **Figure 2** Example
 
@@ -80,61 +80,68 @@ In the following example, the **Image** and **Stack** components are located in 
 4. Below is the complete code example.
 
    ```ts
-   import { PromptAction } from '@kit.ArkUI';
-   
-   @Entry
-   @Component
-   struct Index {
-     scroller: Scroller = new Scroller();
-     promptAction: PromptAction = this.getUIContext().getPromptAction();
-   
-     build() {
-       Scroll(this.scroller) {
-         Column({ space: 8 }) {
-           Text("There are two layers of components, the upper layer component bound to a long press gesture, and the lower layer component bound to a drag. The lower half of the upper layer component is bound to gesture judgment, making this area respond to the drag gesture of the lower layer.").width('100%').fontSize(20).fontColor('0xffdd00')
-           Stack({ alignContent: Alignment.Center }) {
-             Column() {
-               // Simulate the upper and lower half areas.
-               Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
-               Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
-             }.width('200vp').height('200vp')
-             // The lower half area of the stack is an image area bound to the pan gesture.
-             Image($r('sys.media.ohos_app_icon'))
-               .draggable(true)
-               .onDragStart(()=>{
-                 this.promptAction.showToast({ message: "Drag the lower blue area. The Image component responds." });
-               })
-               .width('200vp').height('200vp')
-             // The upper half of the Stack component is the floating area bound to the long press gesture.
-             Stack() {
-             }
-             .width('200vp')
-             .height('200vp')
-             .hitTestBehavior(HitTestMode.Transparent)
-             .gesture(GestureGroup(GestureMode.Parallel,
-               LongPressGesture()
-                 .onAction((event: GestureEvent) => {
-                   this.promptAction.showToast({ message: "Long-press the upper red area. The red area responds." });
-                 })
-                 .tag("longpress")
-             ))
-             .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-               // If it is a long press gesture, determine whether the touch position is in the upper half area.
-               if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
-                 if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
-                   return GestureJudgeResult.CONTINUE;
-                 } else {
-                   return GestureJudgeResult.REJECT;
-                 }
-               }
-               return GestureJudgeResult.CONTINUE;
-             })
-           }.width('100%')
-         }.width('100%')
-       }
-     }
-   }
+    import { PromptAction } from '@kit.ArkUI';
+
+    @Entry
+    @Component
+    struct Index {
+      scroller: Scroller = new Scroller();
+      promptAction: PromptAction = this.getUIContext().getPromptAction();
+
+      build() {
+        Scroll(this.scroller) {
+          Column({ space: 8 }) {
+            // Replace $r('app.string.Drag_instructions') with the resource file you use.
+            Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('0xffdd00')
+            Stack({ alignContent: Alignment.Center }) {
+              Column() {
+                // Simulate the upper and lower half areas.
+                Stack().width('200vp').height('100vp').backgroundColor(Color.Gray)
+                Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
+              }.width('200vp').height('200vp')
+
+              // The lower half area of the stack is an image area bound to the pan gesture.
+              // Replace $r('sys.media.ohos_app_icon') with the resource file you use.
+              Image($r('sys.media.ohos_app_icon'))
+                .draggable(true)
+                .onDragStart(() => {
+                  // Replace $r('app.string.Allow_dragging_prompt') with the resource file you use.
+                  this.promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
+                })
+                .width('200vp').height('200vp')
+              // The upper half of the Stack component is the floating area bound to the long press gesture.
+              Stack() {
+              }
+              .width('200vp')
+              .height('200vp')
+              .hitTestBehavior(HitTestMode.Transparent)
+              .gesture(GestureGroup(GestureMode.Parallel,
+                LongPressGesture()
+                  .onAction((event: GestureEvent) => {
+                    // Replace $r('app.string.Stop_dragging_prompt') with the resource file you use.
+                    this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
+                  })
+                  .tag('longpress')
+              ))
+              .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+                // If it is a long press gesture, determine whether the touch position is in the upper half area.
+                if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
+                  if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
+                    return GestureJudgeResult.CONTINUE;
+                  } else {
+                    return GestureJudgeResult.REJECT;
+                  }
+                };
+                return GestureJudgeResult.CONTINUE;
+              })
+            }.width('100%')
+          }.width('100%')
+        }
+      }
+    }
    ```
+   
+   ![StackGesure20251119001](figures/StackGesure20251119001.jpg)
 
 ## Parallel Gesture Dynamic Control
 
@@ -456,7 +463,7 @@ The parent container (**video_layer**) has multiple bound gestures:
 - Vertical swipe: adjusts brightness.
 - Horizontal swipe: seeks playback.
 
-The inner **Slider** component (**progress_layer**) does not have a long-press gesture bound to it. This causes the parent container's fast-forward gesture to be triggered when the user long-presses the **Slider** component, which is unexpected behavior.
+The inner **Slider** component (**progress_layer**) does not have a long press gesture bound to it. This causes the parent container's fast-forward gesture to be triggered when the user long-presses the **Slider** component, which is unexpected behavior.
 
 Solution: Register an **onTouchTestDone** callback on the **Slider** component. Use this callback to disable gesture recognizers not belonging to the **Slider** component, thereby resolving the conflict.
 
@@ -466,134 +473,157 @@ The following shows the complete sample code:
 @Entry
 @ComponentV2
 struct Index {
-  @Local progress: number = 496000 // Initial progress, in seconds.
-  @Local total: number = 27490000   // Total duration, in seconds.
-  @Local currentWidth: string = '100%'
-  @Local currentHeight: string = '100%'
-  private currentPosX: number = 0
-  private currentPosY: number = 0
-  private currentFullScreenState: boolean = true
+  @Local progress: number = 496000; // Initial progress, in seconds.
+  @Local total: number = 27490000; // Total duration, in seconds.
+  @Local currentWidth: string = '100%';
+  @Local currentHeight: string = '100%';
+  private currentPosX: number = 0;
+  private currentPosY: number = 0;
+  private currentFullScreenState: boolean = true;
   private normalPlayTimer: number = -1;
   private isPlaying: boolean = true;
   private fastForwardTimer: number = -1;
+  private context = this.getUIContext().getHostContext()
 
   aboutToAppear(): void {
     // Start a periodic timer to refresh the progress every second.
-    this.startNormalPlayTimer()
-  }
+    this.startNormalPlayTimer();
+  };
 
   startNormalPlayTimer(): void {
     if (this.normalPlayTimer != -1) {
       this.stopNormalPlayTimer()
-    }
+    };
     this.normalPlayTimer = setInterval(() => {
       this.progress = this.progress + 1000
-    }, 1000)
-  }
+    }, 1000);
+  };
 
   stopNormalPlayTimer(): void {
     if (this.normalPlayTimer == -1) {
-      return
-    }
-    clearInterval(this.normalPlayTimer)
-    this.normalPlayTimer = -1
-  }
+      return;
+    };
+    clearInterval(this.normalPlayTimer);
+    this.normalPlayTimer = -1;
+  };
 
   startFastForwardTimer(): void {
     if (this.fastForwardTimer != -1) {
-      this.stopFastForwardTimer()
-    }
+      this.stopFastForwardTimer();
+    };
     this.fastForwardTimer = setInterval(() => {
-      this.progress = this.progress + 100000
-    }, 100)
-  }
+      this.progress = this.progress + 100000;
+    }, 100);
+  };
 
   stopFastForwardTimer(): void {
     if (this.fastForwardTimer == -1) {
-      return
-    }
-    clearInterval(this.fastForwardTimer)
-    this.fastForwardTimer = -1
-  }
+      return;
+    };
+    clearInterval(this.fastForwardTimer);
+    this.fastForwardTimer = -1;
+  };
 
   showMessage(message: string): void {
-    this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center })
-  }
+    this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center });
+  };
 
   resetPosInfo(): void {
-    this.currentPosX = 0
-    this.currentPosY = 0
-  }
+    this.currentPosX = 0;
+    this.currentPosY = 0;
+  };
 
   toggleFullScreenState(): void {
-    this.currentFullScreenState = !this.currentFullScreenState
+    this.currentFullScreenState = !this.currentFullScreenState;
     if (this.currentFullScreenState) {
-      this.currentWidth = '100%'
-      this.currentHeight = '100%'
+      this.currentWidth = '100%';
+      this.currentHeight = '100%';
     } else {
-      this.currentWidth = '100%'
-      this.currentHeight = '50%'
-    }
-    this.showMessage(this.currentFullScreenState ? 'Full-screen playback' : 'Exit full-screen')
-  }
+      this.currentWidth = '100%';
+      this.currentHeight = '50%';
+    };
+    // Replace $r('app.string.Play_full_screen') with the resource file you use.
+    // Replace $r('app.string.Exit_play_full_screen') with the resource file you use.
+    this.showMessage(this.currentFullScreenState
+      ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
+      : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
+  };
 
   togglePlayAndPause(): void {
-    this.isPlaying = !this.isPlaying
+    this.isPlaying = !this.isPlaying;
     if (!this.isPlaying) {
-      this.stopNormalPlayTimer()
+      this.stopNormalPlayTimer();
     } else {
       // Restart the timer.
-      this.startNormalPlayTimer()
-    }
-    this.showMessage(this.isPlaying ? 'Pause playback' : 'Resume playback')
-  }
+      this.startNormalPlayTimer();
+    };
+    // Replace $r('app.string.stop_playing') with the resource file you use.
+    // Replace $r('app.string.Continue_playing') with the resource file you use.
+    this.showMessage(this.isPlaying
+      ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
+      : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
+  };
 
   doFastForward(start: boolean): void {
     if (!start) { // Stop fast-forwarding and resume normal playback.
-      this.stopFastForwardTimer()
-      this.startNormalPlayTimer()
-      this.showMessage('Cancel fast-forwarding')
-      return
-    }
+      this.stopFastForwardTimer();
+      this.startNormalPlayTimer();
+      // Replace $r('app.string.Cancel_FastForwarding') with the resource file you use.
+      this.showMessage(
+        this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
+      return;
+    };
 
-    this.stopNormalPlayTimer()
-    this.startFastForwardTimer()
-    this.showMessage('Start fast-forwarding')
-  }
+    this.stopNormalPlayTimer();
+    this.startFastForwardTimer();
+    // Replace $r('app.string.Start_FastForwarding') with the resource file you use.
+    this.showMessage(
+      this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
+  };
 
   updateBrightness(start: boolean, event: BaseGestureEvent): void {
-    let newY = event.fingerList[0].localY
+    let newY = event.fingerList[0].localY;
     if (start) {
-      this.currentPosY = newY
-      this.showMessage('Start adjusting brightness')
-      return
-    }
+      this.currentPosY = newY;
+      // Replace $r('app.string.Start_adjusting_brightness') with the resource file you use.
+      this.showMessage(this.context!.resourceManager
+        .getStringSync($r('app.string.Start_adjusting_brightness').id));
+      return;
+    };
     let offsetY = newY - this.currentPosY;
     if (Math.abs(offsetY) > 10) {
-      this.showMessage((offsetY > 0) ? 'Decrease brightness' : 'Increase brightness')
-      this.currentPosY = newY
-    }
-  }
+      // Replace $r('app.string.Reduce_brightness') with the resource file you use.
+      // Replace $r('app.string.Increase_brightness') with the resource file you use.
+      this.showMessage((offsetY > 0)
+        ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
+        : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id))
+      this.currentPosY = newY;
+    };
+  };
 
   updateProgress(start: boolean, event: BaseGestureEvent): void {
-    let newX = event.fingerList[0].localX
+    let newX = event.fingerList[0].localX;
     if (start) {
-      this.currentPosX = newX
-      this.showMessage('Start adjusting progress')
-      return
-    }
+      this.currentPosX = newX;
+      // Replace $r('app.string.Adjust_schedule') with the resource file you use.
+      this.showMessage(this.context!.resourceManager
+        .getStringSync($r('app.string.Adjust_schedule').id));
+      return;
+    };
     let offsetX = newX - this.currentPosX;
-    this.progress = Math.floor(this.progress + offsetX * 10000)
-    this.currentPosX = newX
-  }
+    this.progress = Math.floor(this.progress + offsetX * 10000);
+    this.currentPosX = newX;
+  };
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
       Column() {
         Column() {
-          Text("Playback progress: " + this.progress)
+          // Replace $r('app.string.Playback_progress') with the resource file you use.
+          Text(this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id) + this.progress)
         }
-          .width("100%").height("90%")
+        .width('100%').height('90%')
+
         Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
           Slider({
             value: this.progress,
@@ -602,23 +632,23 @@ struct Index {
             style: SliderStyle.OutSet
           })
             .onChange((value: number, mode: SliderChangeMode) => {
-              this.progress = value
+              this.progress = value;
             })
-            .id("progress_layer")
+            .id('progress_layer')
             .onTouchTestDone((event, allRecognizers: Array<GestureRecognizer>) => {
               for (let i = 0; i < allRecognizers.length; i++) {
                 let recognizer = allRecognizers[i];
                 let inspectorInfo = recognizer.getEventTargetInfo().getId();
-                if (inspectorInfo !== "progress_layer") {
+                if (inspectorInfo !== 'progress_layer') {
                   // When the user interacts with the progress bar area, disable all gestures not belonging to progress_layer.
                   recognizer.preventBegin();
-                }
-              }
+                };
+              };
             })
             .margin({ left: 5 })
-            .trackColor(Color.Red)
-            .blockColor(Color.Yellow)
-            .selectedColor(Color.Orange)
+            .trackColor(Color.Blue)
+            .blockColor(Color.Gray)
+            .selectedColor(Color.White)
             .trackThickness(2)
             .flexShrink(1)
             .flexGrow(1)
@@ -635,42 +665,42 @@ struct Index {
         PanGesture({ direction: PanDirection.Vertical, distance: 10 })
           .tag('pan_for_brightness_control')
           .onActionStart((event) => {
-            this.updateBrightness(true, event)
+            this.updateBrightness(true, event);
           })
           .onActionUpdate((event) => {
-            this.updateBrightness(false, event)
+            this.updateBrightness(false, event);
           }),
         PanGesture({ direction: PanDirection.Horizontal, distance: 10 })
           .tag('pan_for_play_progress_control')
           .onActionStart((event) => {
-            this.updateProgress(true, event)
+            this.updateProgress(true, event);
           })
           .onActionUpdate((event) => {
-            this.updateProgress(false, event)
+            this.updateProgress(false, event);
           }),
 
         LongPressGesture()
           .tag('long_press_for_fast_forward_control')
           .onAction(() => {
-            this.doFastForward(true) // Start fast-forwarding.
+            this.doFastForward(true); // Start fast-forwarding.
           })
           .onActionEnd(() => {
-            this.doFastForward(false) // Stop fast-forwarding.
+            this.doFastForward(false); // Stop fast-forwarding.
           })
           .onActionCancel(() => {
-            this.doFastForward(false)
+            this.doFastForward(false);
           }),
 
         TapGesture({ count: 2 })
           .tag('double_tap_on_video')
           .onAction(() => {
-            this.toggleFullScreenState()
+            this.toggleFullScreenState();
           }),
 
         TapGesture()
           .tag('single_tap_on_video')
           .onAction(() => {
-            this.togglePlayAndPause()
+            this.togglePlayAndPause();
           })
       )
     )
@@ -678,4 +708,7 @@ struct Index {
     .height(this.currentHeight)
   }
 }
+
 ```
+
+

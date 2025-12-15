@@ -31,7 +31,7 @@ You can use the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-u
 
  - Follow the default toast positioning guidelines.
 
-   By default, toasts appear from the bottom of the screen with appropriate safe area margins. Ensure they do not overlap with other popup components. In specific scenarios, consider adjusting content layout to prevent such conflicts.
+   By default, toasts appear from the bottom of the screen with a safe margin from the bottom edge. As an in-application notification mechanism, retain this default system behavior to avoid overlapping with other popup components. In specific scenarios, consider adjusting content layout to prevent such conflicts.
 
  - Adhere to the maximum font scale for toasts.
 
@@ -52,6 +52,7 @@ Before displaying a TOP_MOST toast, a full-screen subwindow is created (the size
 
 ```ts
 import { promptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -60,19 +61,25 @@ struct Index {
     Column({ space: 10 }) {
       TextInput()
       Button() {
-        Text("Toast of the DEFAULT type")
+        Text('Toast of the DEFAULT type')
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
 
       }
       .width('100%')
       .onClick(() => {
-        this.getUIContext().getPromptAction().showToast({
-          message: "OK, I am DEFAULT toast.",
-          duration: 2000,
-          showMode: promptAction.ToastShowMode.DEFAULT,
-          bottom: 80
-        });
+        try {
+          this.getUIContext().getPromptAction().showToast({
+            message: 'OK, I am DEFAULT toast.',
+            duration: 2000,
+            showMode: promptAction.ToastShowMode.DEFAULT,
+            bottom: 80
+          });
+        } catch (error) {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          console.error(`showToast args error code is ${code}, message is ${message}`);
+        }
       })
 
       Button() {
@@ -83,12 +90,18 @@ struct Index {
       }
       .width('100%')
       .onClick(() => {
-        this.getUIContext().getPromptAction().showToast({
-          message: "OK, I am TOP_MOST toast.",
-          duration: 2000,
-          showMode: promptAction.ToastShowMode.TOP_MOST,
-          bottom: 85
-        });
+        try {
+          this.getUIContext().getPromptAction().showToast({
+            message: "OK, I am TOP_MOST toast.",
+            duration: 2000,
+            showMode: promptAction.ToastShowMode.TOP_MOST,
+            bottom: 85
+          });
+        } catch (error) {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          console.error(`showToast args error code is ${code}, message is ${message}`);
+        }
       })
     }
   }
@@ -131,7 +144,7 @@ struct toastExample {
 
 ![image](figures/UIToast1.gif)
 
-## Creating a Toast with a Close Button
+## Displaying and Closing a Toast
 
 This mode is suitable for scenarios where the dialog box has a longer retention period and the user can close it manually.
 
