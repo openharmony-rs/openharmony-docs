@@ -361,6 +361,7 @@ Obtains analysis data. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ\_IMAGEVIDEO
 
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**
