@@ -35,55 +35,57 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 1. 导入相关头文件。
 
    <!-- @[decodingPixel_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-   
-   ``` C++
-   #include <string>
-   #include <hilog/log.h>
-   #include <multimedia/image_framework/image/image_source_native.h>
-   #include <multimedia/image_framework/image/image_common.h>
-   #include <multimedia/image_framework/image/pixelmap_native.h>
-   ```
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
    <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
-   
-   ``` C++
-   #undef LOG_DOMAIN
-   #undef LOG_TAG
-   #define LOG_DOMAIN 0x3200
-   #define LOG_TAG "IMAGE_SAMPLE"
-   ```
 
 3. 定义ImageSourceNative类。
 
    <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->   
    
-   ``` C
-   class ImageSourceNative {
-   public:
-       OH_ImageSource_Info *imageInfo;
-       OH_ImageSourceNative *source = nullptr;
-       OH_PixelmapNative *resPixMap = nullptr;
-       OH_Pixelmap_ImageInfo *pixelmapImageInfo = nullptr;
-       uint32_t frameCnt = 0;
-       ImageSourceNative() {}
-       ~ImageSourceNative() {}
-   };
-   ```
-
 4. 创建ImageSourceNative的一个实例。
 
    <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
    
-   ``` C++
-   static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
-   ```
-
 5. 创建GetJsResult函数处理napi返回值。
 
-   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->   
+   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->     
 
-6. 在创建ImageSource实例后，进行指定属性值的获取和修改、通过解码参数创建PixelMap对象、获取图像帧数等操作。
+5. 常量定义。
+
+   <!-- @[define_maxStringLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
+
+6. 创建ImageSource实例。
 
    <!-- @[decodingPixel_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+
+7. 在创建ImageSource实例后，进行指定属性值的获取和修改、通过解码参数创建PixelMap对象、获取图像帧数等操作。
+
+   - 创建PixelMap对象。
+
+     <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
+
+   - 创建定义图片信息的结构体对象，并获取图片信息。
+
+     <!-- @[get_imageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+
+   - 读取、编辑Exif信息。
+
+     <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+
+   - 获取图像帧数。
+
+     <!-- @[get_frameCount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+
+   - 通过图片解码参数创建Pixelmap列表。
+
+     <!-- @[create_pixelmapList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->       
+
+   - 获取图像延迟时间列表。
+
+     <!-- @[get_delayTimeList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
+
+8. 释放ImageSource。
+
+     <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
