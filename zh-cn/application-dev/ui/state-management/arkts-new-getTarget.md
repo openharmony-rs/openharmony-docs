@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了获取状态管理框架代理前的原始对象，开发者可以使用[getTarget接口](../../reference/apis-arkui/js-apis-StateManagement.md#gettarget)。
+为了获取状态管理框架代理前的原始对象，开发者可以使用[getTarget接口](../../reference/apis-arkui/js-apis-stateManagement.md#gettarget)。
 
 在阅读本文档前，建议提前阅读：[\@Observed](./arkts-observed-and-objectlink.md)、[\@ObservedV2](./arkts-new-observedV2-and-trace.md)。
 
@@ -35,7 +35,8 @@
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
-  let res = UIUtils.getTarget(2); // 非对象类型入参，直接返回传入值，错误用法
+  let resNumber = UIUtils.getTarget(2); //非对象类型入参，编译时报错
+  let resObject = UIUtils.getTarget(2 as Object); // 非对象类型入参，绕过编译拦截，直接返回传入值，错误用法
   ```
   
   <!-- @[ApplicationLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewOne.ets) -->

@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_CallbackInfo__* JSVM_CallbackInfo
+```
+
 ## Overview
 
 Defines an opaque data type passed to the callback. It can be used to obtain additional information about the context in which the function is called.

@@ -13,7 +13,7 @@
 
 2. 在WgtImgUpdateEntryFormAbility.ts文件中导入相关模块。
 
-    <!-- @[refresh_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) -->
+    <!-- @[refresh_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
@@ -27,13 +27,13 @@
 
 3. 在EntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
 
-    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) -->
+    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
     const TAG: string = 'WgtImgUpdateEntryFormAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
-    // ···
+    // ...
     
     export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
       // 在添加卡片时，打开一个本地图片并将图片内容传递给卡片页面显示
@@ -43,7 +43,7 @@
         hilog.info(DOMAIN_NUMBER, TAG, `tempDir: ${tempDir}`);
         let imgMap: Record<string, number> = {};
         try {
-          // 打开本地图片并获取其打开后的fd
+          // 打开本地图片并获取其打开后的fd, FormExtensionAbility进程销毁时释放
           let file = fileIo.openSync(tempDir + '/' + 'head.PNG');
           imgMap['imgBear'] = file.fd;
         } catch (e) {
@@ -63,13 +63,14 @@
         // 将fd封装在formData中并返回至卡片页面
         return formBindingData.createFormBindingData(formData);
       }
-    // ···
+    
+      // ...
     }
     ```
 
 4. 在EntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
 
-    <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) -->
+    <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
@@ -78,8 +79,9 @@
     const TEXT1: string = '刷新中...'
     const TEXT2: string = '刷新失败'
     
+    
     export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
-    // ···
+      // ...
       async onFormEvent(formId: string, message: string): Promise<void> {
         let param: Record<string, string> = {
           'text': TEXT1
@@ -149,12 +151,14 @@
         // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
         return formInfo.FormState.READY;
       }
+    
     }
+    
     ```
 
 5. 在卡片页面通过backgroundImage属性展示EntryFormAbility传递过来的卡片内容。
 
-    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) -->
+    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets
@@ -208,8 +212,8 @@
         .width('100%').height('100%')
         // $r('app.media.ImageDisp')需要替换为开发者所需的资源文件
         .backgroundImage(this.loaded ? 'memory://' + this.imgName : $r('app.media.ImageDisp'))
-        .backgroundImageSize(ImageSize.Cover) 
-      } 
+        .backgroundImageSize(ImageSize.Cover)
+      }
     }
     ```
 

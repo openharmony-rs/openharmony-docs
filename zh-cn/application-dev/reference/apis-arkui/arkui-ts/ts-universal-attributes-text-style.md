@@ -172,6 +172,16 @@ clearPreviewText(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+### deleteBackward<sup>23+</sup>
+
+deleteBackward(): void
+
+删除基础控制器`controller`绑定的文本输入框内文本光标前的一个字符。如果在调用此功能前已用鼠标或键盘选中了部分文本，则会删除被选中的文本。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## InputCounterOptions<sup>11+</sup>对象说明
 
 计数器的配置项。

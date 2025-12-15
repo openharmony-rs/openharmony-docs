@@ -13,19 +13,19 @@
 > 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 - 在卡片页面通过注册Button的onClick点击事件回调，并在回调中调用postCardAction接口触发message事件拉起FormExtensionAbility。卡片页面中使用[LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop)装饰需要刷新的卡片数据。
-    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) -->
-
+    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
+    
     ``` TypeScript
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
     let storageUpdateByMsg = new LocalStorage();
-
+    
     @Entry(storageUpdateByMsg)
     @Component
     struct UpdateByMessageCard {
       // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
       @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
       @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
-
+    
       build() {
         Column() {
           Column() {
@@ -41,8 +41,9 @@
               .margin({ top: '5%', left: '10%' })
           }.width('100%').height('50%')
           .alignItems(HorizontalAlign.Start)
-
+    
           Row() {
+            // ...
             Button() {
               // $r('app.string.update')需要替换为开发者所需的资源文件
               Text($r('app.string.update'))
@@ -85,16 +86,17 @@
 
 - 在FormExtensionAbility的onFormEvent生命周期中调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
   
-    <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+    <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/entryformability/EntryFormAbility.ts
     const TAG: string = 'EntryFormAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
     
     export default class EntryFormAbility extends FormExtensionAbility {
-    // ···
+      // ...
       onFormEvent(formId: string, message: string): void {
-        // 当卡片提供方的postCardAction接口的message事件被触发时调用
+        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
         class FormDataClass {
           title: string = 'Title Update.'; // 和卡片布局中对应
@@ -110,7 +112,7 @@
         });
       }
     
-    // ···
+      // ...
     }
     ```
   

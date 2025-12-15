@@ -10,7 +10,7 @@
 
 提供资产类型数据结构。<br>资产是指一种可以在数据管理中使用的数据结构，可以存储及查询一个文件的名称、绝对路径、相对路径、创建时间、修改时间、状态、占用空间等属性。
 
-**引用文件：** <database/rdb/data_asset.h>
+**引用文件：** <database/data/data_asset.h>
 
 **库：** libnative_rdb_ndk.z.so
 
@@ -61,7 +61,7 @@
 
 ### Data_AssetStatus
 
-```
+```c
 enum Data_AssetStatus
 ```
 
@@ -86,7 +86,7 @@ enum Data_AssetStatus
 
 ### OH_Data_Asset_SetName()
 
-```
+```c
 int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 ```
 
@@ -112,7 +112,7 @@ int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 
 ### OH_Data_Asset_SetUri()
 
-```
+```c
 int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 ```
 
@@ -138,7 +138,7 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 
 ### OH_Data_Asset_SetPath()
 
-```
+```c
 int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 ```
 
@@ -164,7 +164,7 @@ int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 
 ### OH_Data_Asset_SetCreateTime()
 
-```
+```c
 int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 ```
 
@@ -190,7 +190,7 @@ int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 
 ### OH_Data_Asset_SetModifyTime()
 
-```
+```c
 int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 ```
 
@@ -216,7 +216,7 @@ int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 
 ### OH_Data_Asset_SetSize()
 
-```
+```c
 int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 ```
 
@@ -242,7 +242,7 @@ int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 
 ### OH_Data_Asset_SetStatus()
 
-```
+```c
 int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 ```
 
@@ -268,7 +268,7 @@ int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 
 ### OH_Data_Asset_GetName()
 
-```
+```c
 int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 ```
 
@@ -295,7 +295,7 @@ int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 
 ### OH_Data_Asset_GetUri()
 
-```
+```c
 int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 ```
 
@@ -322,7 +322,7 @@ int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 
 ### OH_Data_Asset_GetPath()
 
-```
+```c
 int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 ```
 
@@ -349,7 +349,7 @@ int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 
 ### OH_Data_Asset_GetCreateTime()
 
-```
+```c
 int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)
 ```
 
@@ -379,7 +379,7 @@ Data_Asset
 
 ### OH_Data_Asset_GetModifyTime()
 
-```
+```c
 int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 ```
 
@@ -405,7 +405,7 @@ int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 
 ### OH_Data_Asset_GetSize()
 
-```
+```c
 int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 ```
 
@@ -431,7 +431,7 @@ int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 
 ### OH_Data_Asset_GetStatus()
 
-```
+```c
 int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 ```
 
@@ -457,7 +457,7 @@ int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 
 ### OH_Data_Asset_CreateOne()
 
-```
+```c
 Data_Asset *OH_Data_Asset_CreateOne(void)
 ```
 
@@ -475,7 +475,7 @@ Data_Asset *OH_Data_Asset_CreateOne(void)
 
 ### OH_Data_Asset_DestroyOne()
 
-```
+```c
 int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 ```
 
@@ -499,7 +499,7 @@ int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 
 ### OH_Data_Asset_CreateMultiple()
 
-```
+```c
 Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 ```
 
@@ -524,7 +524,7 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 ### OH_Data_Asset_DestroyMultiple()
 
-```
+```c
 int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 ```
 

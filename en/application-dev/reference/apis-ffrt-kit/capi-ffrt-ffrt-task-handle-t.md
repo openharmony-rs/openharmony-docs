@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef void* ffrt_task_handle_t
+```
+
 ## Overview
 
 The **ffrt_task_handle_t** struct defines the handle to a concurrent task.

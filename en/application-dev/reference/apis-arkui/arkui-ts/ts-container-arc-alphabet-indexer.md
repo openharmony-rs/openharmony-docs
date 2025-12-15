@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ArcAlphabetIndexer** component is an arc-shaped component designed for quick navigation through alphabetically sorted items. It can be integrated with container components to quickly locate items within the visible area.
 
@@ -15,8 +15,22 @@ The **ArcAlphabetIndexer** component is an arc-shaped component designed for qui
 
 ## Modules to Import
 
+> **NOTE**
+>
+> - **ArcAlphabetIndexerAttribute** is essential for configuring the **ArcAlphabetIndexer** component. In API version 21 and earlier, you must manually import **ArcAlphabetIndexerAttribute** after importing the **ArcAlphabetIndexer** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcAlphabetIndexerAttribute** when it detects the **ArcAlphabetIndexer** component, so manual import is no longer necessary.
+>
+> - If you manually import **ArcAlphabetIndexerAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+
+API version 21 and earlier:
+
 ```
 import { ArcAlphabetIndexer, ArcAlphabetIndexerAttribute } from '@kit.ArkUI';
+```
+
+API version 22 and later:
+
+```
+import { ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 
 
@@ -329,6 +343,7 @@ import {
   ArcAlphabetIndexer,
   ArcAlphabetIndexerAttribute
 } from '@kit.ArkUI';
+// Starting from API version 22, you do not need to manually import ArcListAttribute, ArcListItemAttribute, and ArcAlphabetIndexerAttribute. For details, refer to the Modules to Import section of ArcList, ArcListItem, and ArcAlphabetIndexer.
 
 @Builder
 function buildText() {

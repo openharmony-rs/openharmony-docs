@@ -157,9 +157,9 @@
    OH_Drawing_DestroyRuns(runs);
    ```
 
-### 完整示例
+### 示例和效果
 
-完整的文本塑形示例如下。
+文本塑形示例如下：
 <!-- @[complex_text_c_independent_shaping_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++

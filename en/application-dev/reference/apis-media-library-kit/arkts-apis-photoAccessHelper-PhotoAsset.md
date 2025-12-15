@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+PhotoAsset provides APIs for encapsulating file asset attributes.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-PhotoAsset provides APIs for encapsulating file asset attributes.
 
 ## Modules to Import
 
@@ -642,11 +642,11 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 Opens this file in read-only mode. This API uses an asynchronous callback to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
->
-> - The returned FD must be closed when it is not required.
+> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -705,11 +705,11 @@ getReadOnlyFd(): Promise&lt;number&gt;
 
 Opens this file in read-only mode. This API uses a promise to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
->
-> - The returned FD must be closed when it is not required.
+> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 

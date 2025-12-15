@@ -370,7 +370,7 @@ export struct ProjectAreaFocusFlexExample {
 }
 ```
 
-Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方3、4、5按钮组件。
+Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方4、5按钮组件。
 
 ![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
 
@@ -557,6 +557,14 @@ focusable(value: boolean)
 
 - 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
 
+设置容器组件可获焦：
+
+获焦的主要目的是为了响应用户交互，如果组件不具备交互能力，则其也不会具有可获焦能力。容器组件通常不具备交互能力，因此如果一个容器组件（如Stack、Column）作为叶子节点，即使通过.focusable(true)也无法使其具备可获焦能力。需要注意的是通过动态方式创建的[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点也受限于这个规则。
+如果想让作为叶子节点的容器组件可获焦，可通过以下任一方式实现：
+
+- 在其内添加一个具备获焦能力的叶子节点组件(如button)。
+
+- 为其配置onClick、Tap手势等使其能响应点击交互。
 
 ```ts
 enabled(value: boolean)
@@ -987,7 +995,7 @@ export struct RequestFocusExample {
 
 上述示例包含以下2步：
 
-- 进入[层级页面](#基础概念)，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的蓝色细框。
+- 进入[层级页面](#基础概念)，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的黑色细框。
 - 按下Tab键，走焦到第二个Button，焦点框样式为远离边缘的红色粗框。
 
 ## 主动获焦/失焦
@@ -1424,7 +1432,7 @@ export struct FocusScopePriority {
 上述示例包含以下2步：
 
 - input方框内设置了焦点组，因此按下Tab键后焦点会快速从input中走出去，而按下方向键后可以在input内走焦。
-- 左上角的Column没有设置焦点组，因此只能通过Tab键一个一个地走焦。
+- 左侧的两个Column没有设置焦点组，因此只能通过Tab键一个一个地走焦。
 
 
 在API version 14，焦点组新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。

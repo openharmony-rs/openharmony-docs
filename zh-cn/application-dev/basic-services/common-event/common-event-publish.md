@@ -30,21 +30,26 @@
 
 1. 导入模块。
    
-   ```ts
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) --> 
+   
+   ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
 2. 传入需要发布的事件名称和回调函数，发布事件。
    
-   ```ts
+   <!-- @[PublicEventNoInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // 发布公共事件，其中的event字段需要替换为实际的事件名称。
    commonEventManager.publish('event', (err: BusinessError) => {
      if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
      } else {
        //...
        hilog.info(DOMAIN_NUMBER, TAG, `Publish success`);
@@ -59,17 +64,21 @@
 
 1. 导入模块。
    
-   ```ts
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
 2. 构建需要发布的公共事件信息。
    
-   ```ts
+   <!-- @[PublicEventInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // 公共事件相关信息
    let options: commonEventManager.CommonEventPublishData = {
      code: 1, // 公共事件的初始代码
@@ -79,11 +88,14 @@
 
 3. 传入需要发布的事件名称、需要发布的指定信息和回调函数，发布事件。
    
-   ```ts
+   <!-- @[PublicEventCarryingInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // 发布公共事件，其中的event字段需要替换为实际的事件名称。
    commonEventManager.publish('event', options, (err: BusinessError) => {
      if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
      } else {
        //...
        hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in publishing common event.`);

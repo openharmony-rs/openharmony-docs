@@ -3021,7 +3021,7 @@ getOsAccountName(): Promise&lt;string&gt;
 
 getForegroundOsAccountLocalId(): Promise&lt;number&gt;
 
-获取前台系统账号的ID。
+获取前台系统账号的ID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3061,7 +3061,7 @@ getForegroundOsAccountLocalId(): Promise&lt;number&gt;
 
 getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
-获取指定系统账号关联的域账号信息。
+获取指定系统账号关联的域账号信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限允许系统应用和企业应用进行申请。
 

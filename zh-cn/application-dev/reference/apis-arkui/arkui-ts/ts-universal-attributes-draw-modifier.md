@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-当某些组件本身的绘制内容不满足需求时，可使用自定义组件绘制功能，在原有组件基础上部分绘制、或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。自定义组件绘制提供了自定义绘制修改器，来实现更自由地组件绘制。
+当某些组件本身的绘制内容不满足需求时，可使用自定义组件绘制功能，在原有组件基础上部分绘制，或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。自定义组件绘制提供了自定义绘制修改器，来实现更自由地组件绘制。
 
 > **说明：**
 >
@@ -44,7 +44,7 @@ drawModifier(modifier: DrawModifier | undefined): T
 
 ## DrawModifier
 
-DrawModifier可设置前景(drawForeground)、内容前景(drawFront)、内容(drawContent)和内容背景(drawBehind)的绘制方法，还提供主动触发重绘的方法[invalidate](#invalidate)。每个DrawModifier实例只能设置到一个组件上，禁止进行重复设置。
+DrawModifier可设置遮罩层前景（drawOverlay）、前景（drawForeground）、内容前景（drawFront）、内容（drawContent）和内容背景（drawBehind）的绘制方法，还提供主动触发重绘的方法[invalidate](#invalidate)。每个DrawModifier实例只能设置到一个组件上，禁止进行重复设置。
 
 自定义层级示例图
 
@@ -134,6 +134,84 @@ drawForeground(drawContext: DrawContext): void
 **示例：**
 
 请参考[示例2（通过DrawModifier对容器的前景进行自定义绘制）](#示例2通过drawmodifier对容器的前景进行自定义绘制)。
+
+### drawOverlay<sup>23+</sup>
+
+drawOverlay(drawContext: DrawContext): void
+
+自定义绘制遮罩层的接口，若重载该方法则可进行遮罩层的自定义绘制。需要对其组件的遮罩层进行绘制时重载该方法。与[drawForeground](#drawforeground20)不同的是，drawOverlay可以在组件的边界之外绘制。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                   | 必填 | 说明             |
+| ------- | ------------------------------------------------------ | ---- | ---------------- |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+
+**示例：**
+
+
+```ts
+// test.ets
+import { drawing } from '@kit.ArkGraphics2D';
+
+class MyForegroundDrawModifier extends DrawModifier {
+  public scaleX: number = 3;
+  public scaleY: number = 3;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  // 重载drawOverlay方法，实现自定义绘制遮罩层前景
+  drawOverlay(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 50,
+      blue: 100
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    context.canvas.drawRect({
+      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
+      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
+      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
+      bottom: this.uiContext.vp2px(halfHeight + 60 * this.scaleY)
+    });
+  }
+}
+
+@Entry
+@Component
+struct DrawModifierExample {
+  // 将自定义绘制遮罩层前景的类实例化，传入UIContext实例
+  private overlayModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
+
+  build() {
+    Column() {
+      Text('此文本是子节点')
+        .fontSize(36)
+        .width('100%')
+        .height('100%')
+        .textAlign(TextAlign.Center)
+    }
+    .margin(50)
+    .width(280)
+    .height(300)
+    .backgroundColor(0x87CEEB)
+    // 调用此接口并传入自定义绘制前景的类实例，即可实现自定义绘制前景
+    .drawModifier(this.overlayModifier)
+  }
+}
+```
 
 ### invalidate
 

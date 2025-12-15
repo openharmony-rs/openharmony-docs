@@ -84,8 +84,6 @@ toolbar-item{
 
 Set the **position** style for the **&lt;toolbar&gt;** component and set the font color, size, and background color of **&lt;toolbar-item&gt;** child components.
 
-
-
 ```html
 <!-- xxx.hml -->
 <div class="container">
@@ -174,7 +172,7 @@ export default {
 
 > **NOTE**
 >
-> The **&lt;toolbar&gt;** component does not allow adding of events or methods, but its child components do.
+> The **\<toolbar>** component does not support the addition of events or methods, whereas its child component **\<toolbar-item>** does.
 
 
 ## Example Scenario

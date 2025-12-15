@@ -35,7 +35,7 @@
 
 ### OH_AI_CompCode
 
-```
+```c
 enum OH_AI_CompCode
 ```
 
@@ -56,7 +56,7 @@ MindSpore不同组件的代码。
 
 ### OH_AI_Status
 
-```
+```c
 enum OH_AI_Status
 ```
 

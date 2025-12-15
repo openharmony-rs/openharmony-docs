@@ -678,17 +678,19 @@ let param: PARA = {
   data: new Uint8Array(18)
 };
 
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function controlTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-console.info(`controlTransfer = ${ret}`);
-})
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
+  console.info(`controlTransfer = ${ret}`);
+  })
+}
 ```
 
 ## usbManager.usbControlTransfer<sup>12+</sup>
@@ -744,7 +746,7 @@ let param: PARA = {
   data: new Uint8Array(18)
 };
 
-function controlTransfer() {
+function usbControlTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -876,42 +878,44 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-//获取endpoint端点地址。
-let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
-  return value.direction === 0 && value.type === 2
-})
-//获取设备的第一个id。
-let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
-
-let transferParams: usbManager.UsbDataTransferParams = {
-  devPipe: devicepipe,
-  flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
-  endpoint: 1,
-  type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
-  timeout: 2000,
-  length: 10, 
-  callback: () => {},
-  userData: new Uint8Array(10),
-  buffer: new Uint8Array(10),
-  isoPacketCount: 0,
-};
-try {
-  transferParams.endpoint=endpoint?.address as number;
-  transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-    console.info('callBackData =' +JSON.stringify(callBackData));
+function usbSubmitTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
   }
-  usbManager.usbSubmitTransfer(transferParams); 
-  console.info('USB transfer request submitted.');
-} catch (error) {
-  console.error('USB transfer failed:', error);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  //获取endpoint端点地址。
+  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+    return value.direction === 0 && value.type === 2
+  })
+  //获取设备的第一个id。
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+
+  let transferParams: usbManager.UsbDataTransferParams = {
+    devPipe: devicepipe,
+    flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+    endpoint: 1,
+    type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
+    timeout: 2000,
+    length: 10, 
+    callback: () => {},
+    userData: new Uint8Array(10),
+    buffer: new Uint8Array(10),
+    isoPacketCount: 0,
+  };
+  try {
+    transferParams.endpoint=endpoint?.address as number;
+    transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
+      console.info('callBackData =' +JSON.stringify(callBackData));
+    }
+    usbManager.usbSubmitTransfer(transferParams); 
+    console.info('USB transfer request submitted.');
+  } catch (error) {
+    console.error('USB transfer failed:', error);
+  }
 }
 ```
 
@@ -957,42 +961,44 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-//获取endpoint端点地址。
-let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
-  return value.direction === 0 && value.type === 2
-})
-//获取设备的第一个id。
-let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
-let transferParams: usbManager.UsbDataTransferParams = {
-  devPipe: devicepipe,
-  flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
-  endpoint: 1,
-  type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
-  timeout: 2000,
-  length: 10, 
-  callback: () => {},
-  userData: new Uint8Array(10),
-  buffer: new Uint8Array(10),
-  isoPacketCount: 0,
-};
-try {
-  transferParams.endpoint=endpoint?.address as number;
-  transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-    console.info('callBackData =' +JSON.stringify(callBackData));
+function usbCancelTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
   }
-  usbManager.usbSubmitTransfer(transferParams);
-  usbManager.usbCancelTransfer(transferParams);
-  console.info('USB transfer request submitted.');
-} catch (error) {
-  console.error('USB transfer failed:', error);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  //获取endpoint端点地址。
+  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+    return value.direction === 0 && value.type === 2
+  })
+  //获取设备的第一个id。
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+  let transferParams: usbManager.UsbDataTransferParams = {
+    devPipe: devicepipe,
+    flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+    endpoint: 1,
+    type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
+    timeout: 2000,
+    length: 10, 
+    callback: () => {},
+    userData: new Uint8Array(10),
+    buffer: new Uint8Array(10),
+    isoPacketCount: 0,
+  };
+  try {
+    transferParams.endpoint=endpoint?.address as number;
+    transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
+      console.info('callBackData =' +JSON.stringify(callBackData));
+    }
+    usbManager.usbSubmitTransfer(transferParams);
+    usbManager.usbCancelTransfer(transferParams);
+    console.info('USB transfer request submitted.');
+  } catch (error) {
+    console.error('USB transfer failed:', error);
+  }
 }
 ```
 
@@ -1388,10 +1394,10 @@ function resetUsbDevice() {
 | attributes    | number                                      | 否   | 否 |端点属性。         |
 | interval      | number                                      | 否   | 否 |端点间隔。         |
 | maxPacketSize | number                                      | 否   | 否 |端点最大数据包大小。    |
-| direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 是 |端点的方向。        |
-| number        | number                                      | 否   | 是 |端点号。          |
-| type          | number                                      | 否   | 是 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
-| interfaceId   | number                                      | 否   | 是 |端点所属的接口的唯一标识。 |
+| direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
+| number        | number                                      | 否   | 否 |端点号。          |
+| type          | number                                      | 否   | 否 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
+| interfaceId   | number                                      | 否   | 否 |端点所属的接口的唯一标识。 |
 
 ## USBInterface
 
@@ -1433,19 +1439,19 @@ USB设备信息。
 
 | 名称               | 类型                                 | 只读  | 可选         |说明         |
 | ---------------- | ------------------------------------ | ---- | ---------- |---------- |
-| busNum           | number                               | 否 | 是 |总线地址。      |
-| devAddress       | number                               | 否 | 是 |设备地址。      |
-| serial           | string                               | 否 | 是 |序列号。       |
-| name             | string                               | 否 | 是 |设备名字。      |
-| manufacturerName | string                               | 否 | 是 | 产商信息。      |
-| productName      | string                               | 否 | 是 |产品信息。      |
-| version          | string                               | 否 | 是 |版本。        |
-| vendorId         | number                               | 否 | 是 |厂商ID。      |
-| productId        | number                               | 否 | 是 |产品ID。      |
-| clazz            | number                               | 否 | 是 |设备类。       |
-| subClass         | number                               | 否 | 是 |设备子类。      |
-| protocol         | number                               | 否 | 是 |设备协议码。     |
-| configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | 否 | 是 |设备配置描述符信息。 |
+| busNum           | number                               | 否 | 否 |总线地址。      |
+| devAddress       | number                               | 否 | 否 |设备地址。      |
+| serial           | string                               | 否 | 否 |序列号。       |
+| name             | string                               | 否 | 否 |设备名字。      |
+| manufacturerName | string                               | 否 | 否 | 产商信息。      |
+| productName      | string                               | 否 | 否 |产品信息。      |
+| version          | string                               | 否 | 否 |版本。        |
+| vendorId         | number                               | 否 | 否 |厂商ID。      |
+| productId        | number                               | 否 | 否 |产品ID。      |
+| clazz            | number                               | 否 | 否 |设备类。       |
+| subClass         | number                               | 否 | 否 |设备子类。      |
+| protocol         | number                               | 否 | 否 |设备协议码。     |
+| configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | 否 | 否 |设备配置描述符信息。 |
 
 ## USBDevicePipe
 

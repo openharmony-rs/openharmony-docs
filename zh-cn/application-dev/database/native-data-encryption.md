@@ -33,7 +33,7 @@
 
 2. 导入头文件。
 
-    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     #include "database/rdb/relational_store.h"
@@ -45,25 +45,25 @@
 
     * 场景1：不配置自定义加密/解密参数，此时会使用默认的配置进行数据库的加密/解密。
 
-    <!-- @[DefaultConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+      <!-- @[DefaultConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
-    ``` C++
-    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
-    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
-    OH_Rdb_SetBundleName(config, "com.example.nativedemo");
-    OH_Rdb_SetStoreName(config, "RdbTest.db");
-    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
-    // 设置为使用加密方式创建或打开数据库
-    OH_Rdb_SetEncrypted(config, true);
-    int errCode = 0;
-    // 获取OH_Rdb_Store实例
-    OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
-    OH_Rdb_CloseStore(store);
-    store = nullptr;
-    OH_Rdb_DestroyConfig(config);
-    config = nullptr;
-    ```
+      ``` C++
+      OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+      OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
+      OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
+      OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+      OH_Rdb_SetStoreName(config, "RdbTest.db");
+      OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+      // 设置为使用加密方式创建或打开数据库
+      OH_Rdb_SetEncrypted(config, true);
+      int errCode = 0;
+      // 获取OH_Rdb_Store实例
+      OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+      OH_Rdb_CloseStore(store);
+      store = nullptr;
+      OH_Rdb_DestroyConfig(config);
+      config = nullptr;
+      ```
 
 
 
@@ -71,54 +71,54 @@
     
       如果开发者不关心加密算法及参数，使用默认加密配置即可，无需创建和配置自定义加密参数。
 
-    <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+      <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
-    ``` C++
-    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
-    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
-    OH_Rdb_SetStoreName(config, "RdbTestConfigEncryptParam.db");
-    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
-    OH_Rdb_SetBundleName(config, "com.example.nativedemo");
-    // 设置为使用加密方式创建或打开数据库
-    OH_Rdb_SetEncrypted(config, true);
-    // 创建自定义加密参数对象
-    OH_Rdb_CryptoParam *cryptoParam = OH_Rdb_CreateCryptoParam();
-        
-    // 示例中使用硬编码密钥仅用于演示目的， 实际应用中应使用安全的密钥管理服务
-    uint8_t key[6] = {0x31, 0x32, 0x33, 0x34, 0x35, 0x36};
-    // 使用指定的密钥打开加密数据库。不指定则由数据库负责生成并保存密钥，并使用生成的密钥。
-    const int32_t length = 6;
-    OH_Crypto_SetEncryptionKey(cryptoParam, key, length);
-    // 秘钥信息使用完之后要清空
-    for (size_t i = 0; i < sizeof(key); i++) {
-        key[i] = 0;
-    }
-    // 设置KDF算法迭代次数。迭代次数必须大于零。不指定或等于零则使用默认值10000和默认加密算法。
-    const int64_t iteration = 64000;
-    OH_Crypto_SetIteration(cryptoParam, iteration);
-    // 设置加密算法，如不设置默认为AES_256_GCM
-    OH_Crypto_SetEncryptionAlgo(cryptoParam, Rdb_EncryptionAlgo::RDB_AES_256_CBC);
-    // 设置HMAC算法，如不设置默认为SHA256
-    OH_Crypto_SetHmacAlgo(cryptoParam, RDB_HMAC_SHA512);
-    // 设置KDF算法，如不设置默认为SHA256
-    OH_Crypto_SetKdfAlgo(cryptoParam, RDB_KDF_SHA512);
-    // 设置打开加密数据库时使用的页大小，须为1024到65536之间的整数且为2的幂，如不设置默认为1024
-    const int64_t pageSize = 4096;
-    OH_Crypto_SetCryptoPageSize(cryptoParam, pageSize);
-    // 设置自定义加密参数
-    OH_Rdb_SetCryptoParam(config, cryptoParam);
-        
-    int errCode = 0;
-    OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
-    // 销毁自定义加密参数对象
-    OH_Rdb_DestroyCryptoParam(cryptoParam);
-    cryptoParam = nullptr;
-    OH_Rdb_CloseStore(store);
-    store = nullptr;
-    OH_Rdb_DestroyConfig(config);
-    config = nullptr;
-    ```
+      ``` C++
+      OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+      OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
+      OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
+      OH_Rdb_SetStoreName(config, "RdbTestConfigEncryptParam.db");
+      OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+      OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+      // 设置为使用加密方式创建或打开数据库
+      OH_Rdb_SetEncrypted(config, true);
+      // 创建自定义加密参数对象
+      OH_Rdb_CryptoParam *cryptoParam = OH_Rdb_CreateCryptoParam();
+          
+      // 示例中使用硬编码密钥仅用于演示目的， 实际应用中应使用安全的密钥管理服务
+      uint8_t key[6] = {0x31, 0x32, 0x33, 0x34, 0x35, 0x36};
+      // 使用指定的密钥打开加密数据库。不指定则由数据库负责生成并保存密钥，并使用生成的密钥。
+      const int32_t length = 6;
+      OH_Crypto_SetEncryptionKey(cryptoParam, key, length);
+      // 秘钥信息使用完之后要清空
+      for (size_t i = 0; i < sizeof(key); i++) {
+          key[i] = 0;
+      }
+      // 设置KDF算法迭代次数。迭代次数必须大于零。不指定或等于零则使用默认值10000和默认加密算法。
+      const int64_t iteration = 64000;
+      OH_Crypto_SetIteration(cryptoParam, iteration);
+      // 设置加密算法，如不设置默认为AES_256_GCM
+      OH_Crypto_SetEncryptionAlgo(cryptoParam, Rdb_EncryptionAlgo::RDB_AES_256_CBC);
+      // 设置HMAC算法，如不设置默认为SHA256
+      OH_Crypto_SetHmacAlgo(cryptoParam, RDB_HMAC_SHA512);
+      // 设置KDF算法，如不设置默认为SHA256
+      OH_Crypto_SetKdfAlgo(cryptoParam, RDB_KDF_SHA512);
+      // 设置打开加密数据库时使用的页大小，须为1024到65536之间的整数且为2的幂，如不设置默认为1024
+      const int64_t pageSize = 4096;
+      OH_Crypto_SetCryptoPageSize(cryptoParam, pageSize);
+      // 设置自定义加密参数
+      OH_Rdb_SetCryptoParam(config, cryptoParam);
+          
+      int errCode = 0;
+      OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+      // 销毁自定义加密参数对象
+      OH_Rdb_DestroyCryptoParam(cryptoParam);
+      cryptoParam = nullptr;
+      OH_Rdb_CloseStore(store);
+      store = nullptr;
+      OH_Rdb_DestroyConfig(config);
+      config = nullptr;
+      ```
 
 4. 从API version 22开始，支持更换数据库密钥和加密参数，如果开发者需要更换已创建的加密数据库的密钥或者加密参数，可以使用OH_Rdb_RekeyEx进行更换。
    针对更换数据库密钥和加密参数，有如下场景：

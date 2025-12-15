@@ -246,7 +246,9 @@ struct WebComponent {
 ```
 ![onContextMenuShow](./figures/onContextMenuShow.gif)
 ## Custom Menu
-Custom menus enable you to adjust menu triggering timing and visual display, so that your application can dynamically match feature entries based on user operation scenarios. This simplifies UI adaptation in the development process and makes application interaction more intuitive. Applications can use the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) API to customize menus. Currently, custom menus can respond to operations such as long-pressing images or links.
+Custom menus enable you to adjust menu triggering timing and visual display, so that your application can dynamically match feature entries based on user operation scenarios. This simplifies UI adaptation in the development process and makes application interaction more intuitive.
+
+You can use the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) API to implement the custom menu. Currently, the custom menu and text menu can be triggered by touching and holding an image, link, or text.
 1. Create a [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) component as the menu pop-up window.
 2. Use the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) method of the **Web** component to bind the **MenuBuilder** pop-up window. Set [WebElementType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webelementtype13) to **WebElementType.IMAGE** and [responseType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webresponsetype13) to **WebResponseType.LONG_PRESS**, so that the menu is displayed when the image is pressed for a long time. Define **onAppear**, **onDisappear**, **preview**, and **menuType** in [options](../reference/apis-arkweb/arkts-basic-components-web-i.md#selectionmenuoptionsext13).
 ```ts
@@ -773,138 +775,147 @@ In QR code redirection or payment scenarios, you can implement the context menu 
 1. Create a **MenuBuilder** component as the menu pop-up window and bind it to the **Web** component through **bindContextMenu**.
 2. Obtain the image URL in **onContextMenuShow** and save the image to the application sandbox by calling **copyLocalPicToDir** or **copyUrlPicToDir**.
 3. Use **detectBarcode.decode** to parse the image stored in the sandbox and obtain the result.
-  ```ts
-  import { webview } from '@kit.ArkWeb';
-  import { common } from '@kit.AbilityKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
-  import { systemDateTime } from '@kit.BasicServicesKit';
-  import { http } from '@kit.NetworkKit';
-  import { scanCore, scanBarcode, detectBarcode } from '@kit.ScanKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    saveButtonOptions: SaveButtonOptions = {
-      icon: SaveIconStyle.FULL_FILLED,
-      text: SaveDescription.SAVE_IMAGE,
-      buttonType: ButtonType.Capsule
+<!-- @[web_Scan_QR_code](https://gitee.com/harmonyos_samples/guide-snippets/blob/master/ArkWebKit/ArkWebMenu/entry/src/main/ets/pages/WebScanQRCode.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+import { systemDateTime } from '@kit.BasicServicesKit';
+import { http } from '@kit.NetworkKit';
+import { scanCore, scanBarcode, detectBarcode } from '@kit.ScanKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  saveButtonOptions: SaveButtonOptions = {
+    icon: SaveIconStyle.FULL_FILLED,
+    text: SaveDescription.SAVE_IMAGE,
+    buttonType: ButtonType.Capsule
+  }
+  controller: webview.WebviewController = new webview.WebviewController();
+  private result: WebContextMenuResult | undefined = undefined;
+  @State showMenu: boolean = false;
+  @State imgUrl: string = '';
+  @State decodeResult: string = '';
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
+    let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
+    let dstPath = this.context.filesDir + '/' +newFileName;
+    let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let bufsize = 4096;
+    let buf = new ArrayBuffer(bufsize);
+    let off = 0;
+    let len = 0;
+    let readedLen = 0;
+    while ((len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
+      readedLen += len;
+      fs.writeSync(dest.fd, buf, { offset: off, length: len });
+      off = off + len;
+      if ((srcFileDes.length - readedLen) < bufsize) {
+        bufsize = srcFileDes.length - readedLen;
+      }
     }
-    controller: webview.WebviewController = new webview.WebviewController();
-    private result: WebContextMenuResult | undefined = undefined;
-    @State showMenu: boolean = false;
-    @State imgUrl: string = '';
-    @State decodeResult: string = '';
-    context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    fs.close(dest.fd);
+    return dest.path;
+  }
 
-    copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
-      let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
-      let dstPath = this.context.filesDir + "/" +newFileName;
+  async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
+    let uri = '';
+    let httpRequest = http.createHttp();
+    let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
+    if (data?.responseCode == http.ResponseCode.OK) {
+      let dstPath = this.context.filesDir + '/' + newFileName;
       let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-      let bufsize = 4096;
-      let buf = new ArrayBuffer(bufsize);
-      let off = 0, len = 0, readedLen = 0;
-      while (len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) {
-        readedLen += len;
-        fs.writeSync(dest.fd, buf, { offset: off, length: len });
-        off = off + len;
-        if ((srcFileDes.length - readedLen) < bufsize) {
-          bufsize = srcFileDes.length - readedLen;
-        }
-      }
-      fs.close(dest.fd);
-      return dest.path;
+      let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
+      uri = dest.path;
     }
+    return uri;
+  }
 
-    async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
-      let uri = '';
-      let httpRequest = http.createHttp();
-      let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
-      if (data?.responseCode == http.ResponseCode.OK) {
-        let dstPath = this.context.filesDir + "/" + newFileName;
-        let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-        let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
-        uri = dest.path;
-      }
-      return uri;
-    }
-
-    @Builder
-    MenuBuilder() {
-      Menu() {
-        MenuItem({
-          content: "Scan QR Code",
-        })
-          .width(200)
-          .height(50)
-          .onClick(async () => {
+  @Builder
+  MenuBuilder() {
+    Menu() {
+      MenuItem({
+        content: 'Scan QR Code',
+      })
+        .width(200)
+        .height(50)
+        .onClick(async () => {
+          try {
+            let uri = '';
+            if (this.imgUrl?.includes('rawfile')) {
+              let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
+              uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
+            } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
+              uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
+            }
+            let options: scanBarcode.ScanOptions = { scanTypes: [scanCore.ScanType.ALL],
+              enableMultiMode: true, enableAlbum: true }
+            let inputImage: detectBarcode.InputImage = { uri: uri };
             try {
-              let uri = '';
-              if (this.imgUrl?.includes('rawfile')) {
-                let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
-                uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
-              } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
-                uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
-              }
-              let options: scanBarcode.ScanOptions = { scanTypes: [scanCore.ScanType.ALL], enableMultiMode: true, enableAlbum: true }
-              let inputImage: detectBarcode.InputImage = { uri: uri };
-              try {
-                // Call the image recognition API.
-                detectBarcode.decode(inputImage, options, (error: BusinessError, result: Array<scanBarcode.ScanResult>) => {
+              // Call the image recognition API.
+              detectBarcode.decode(inputImage, options,
+                (error: BusinessError, result: Array<scanBarcode.ScanResult>) => {
                   if (error && error.code) {
                     console.error(`create asset failed with error: ${error.code}, ${error.message}`);
                     return;
                   }
-                this.decodeResult = JSON.stringify(result);
+                  this.decodeResult = JSON.stringify(result);
                 });
-              } catch (err) {
-                console.error(`Failed to detect Barcode. Code: ${err.code}, ${err.message}`);
-              }
+            } catch (err) {
+              console.error(`Failed to detect Barcode. Code: ${err.code}, ${err.message}`);
             }
-            catch (err) {
-              console.error(`create asset failed with error: ${err.code}, ${err.message}`);
-            }
-          })
-      }
-    }
-
-    build() {
-      Column() {
-        Web({src: $rawfile("index.html"), controller: this.controller})
-          .onContextMenuShow((event) => {
-            if (event) {
-              let hitValue = this.controller.getLastHitTest();
-              this.imgUrl = hitValue.extra;
-            }
-            this.showMenu = true;
-            return true;
-          })
-          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
-          .fileAccess(true)
-          .javaScriptAccess(true)
-          .domStorageAccess(true)
-          .height('40%')
-        Text('Decode result is ' + this.decodeResult)
-          .fontSize(20)
-          .height('10%')
-      }
+          } catch (err) {
+            console.error(`create asset failed with error: ${err.code}, ${err.message}`);
+          }
+        })
     }
   }
-  ```
-  ```html
-  <!--index.html-->
-  <!DOCTYPE html>
-  <html>
-  <head>
-      <title>test QR code</title>
-  </head>
-  <body>
-  <h1>Long press and click to scan the QR code</h1>
-  <!--img.png is a QR code image-->
-  <img src="img.png" >
-  </body>
-  </html>
-  ```
+
+  build() {
+    Column() {
+      Web({src: $rawfile('index6.html'), controller: this.controller})
+        .onContextMenuShow((event) => {
+          if (event) {
+            let hitValue = this.controller.getLastHitTest();
+            this.imgUrl = hitValue.extra;
+          }
+          this.showMenu = true;
+          return true;
+        })
+        .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+        .fileAccess(true)
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+        .height('40%')
+      Text('Decode result is ' + this.decodeResult)
+        .fontSize(20)
+        .height('10%')
+    }
+  }
+}
+```
+
+<!---->
+
+```html
+<!--index6.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test QR code</title>
+</head>
+<body>
+<h1>Long press and click to scan the QR code</h1>
+<!--img.png is a QR code image-->
+<img src="img.png" >
+</body>
+</html>
+```
 ![web-menu-scan-qr-code](./figures/web-menu-scan-qrcode.gif)
 
 ## FAQs
@@ -959,4 +970,147 @@ You can use the [editMenuOptions](../reference/apis-arkweb/arkts-basic-component
 Check whether the selection area is operated using the [selection API](https://www.w3.org/TR/selection-api/) of the JavaScript. If yes, the menu with a selection handle is not displayed.
 
 ### How do I modify the style of the text selection menu?
-Currently, the style of the text selection menu cannot be modified.
+Since API version 21, applications can use the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) API to implement the custom text menus.
+
+**Sample Code**
+
+<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  clearSelection() {
+    try {
+      this.controller.runJavaScript(
+        'clearSelection()',
+        (error, result) => {
+          if (error) {
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: $  {(error as BusinessError).message}`);
+            return;
+          }
+          if (result) {
+            console.info(`The clearSelection() return value is: ${result}`);
+          }
+        });
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  @Builder
+  TextMenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'Copy', })
+        .onClick(() => {
+          try {
+            this.controller.runJavaScript(
+              'copySelectedText()',
+              (error, result) => {
+                if (error) {
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code},    Message: ${(error as BusinessError).message}`);
+                  return;
+                }
+                if (result) {
+                  console.info(`The copySelectedText() return value is: ${result}`);
+                }
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+          this.clearSelection()
+        }).backgroundColor(Color.Pink)
+    }
+  }
+  build() {
+    Column() {
+      Web({ src: $rawfile('bindSelectionMenuText.html'), controller: this.controller })
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .onlineImageAccess(true)
+        .imageAccess(true)
+        .domStorageAccess(true)
+        .zoomAccess(true)
+        .bindSelectionMenu(WebElementType.TEXT, this.TextMenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {},
+            menuType: MenuType.SELECTION_MENU,
+          })
+    }
+  }
+  onBackPress(): boolean | void {
+    if (this.controller.accessStep(-1)) {
+      this.controller.backward();
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+```
+
+<!---->
+
+```html
+<!--bindSelectionMenuText.html-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom text menu</title>
+    <style>
+        .container {
+            background-color: white;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .context {
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .context span {
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="context">
+        <span>In this digital age, the text copying functionality has grown increasingly important. Whether quoting famous remarks, saving key information, or sharing interesting content, copying text is an integral part of our daily operations.</span>
+    </div>
+</div>
+
+<script>
+  function copySelectedText() {
+      const selectedText = window.getSelection().toString();
+      if (selectedText.length > 0) {
+          // Use the Clipboard API to copy text.
+          navigator.clipboard.writeText(selectedText)
+              .then(() => {
+                  showNotification();
+              })
+              .catch(err => {
+                  console.error('copy failed:', err);
+              });
+      }
+  }
+  function clearSelection() {
+    if (window.getSelection) {
+      window.getSelection().removeAllRanges();
+    }
+  }
+</script>
+</body>
+</html>
+```
+![bindselectionmen-text](./figures/web-menu-bindselectionmen-text.gif)

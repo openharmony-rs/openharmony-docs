@@ -6,12 +6,6 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-> **说明：**
-> 
-> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 本Interface首批接口从API version 14开始支持。
-
 提供以事务方式管理数据库的方法。事务对象是通过[createTransaction](arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)接口创建的，不同事务对象之间的操作是隔离的，不同类型事务的区别见[TransactionType](arkts-apis-data-relationalStore-e.md#transactiontype14) 。
 
 当前关系型数据库同一时刻仅支持一个写事务，所以如果当前[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)存在写事务未释放，创建IMMEDIATE或EXCLUSIVE事务会返回14800024错误码。如果是创建的DEFERRED事务，则可能在首次使用DEFERRED事务调用写操作时返回14800024错误码。通过IMMEDIATE或EXCLUSIVE创建写事务或者DEFERRED事务升级到写事务之后，[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)的写操作也会返回14800024错误码。
@@ -19,6 +13,12 @@
 当事务并发量较高且写事务持续时间较长时，返回14800024错误码的次数可能会变多，开发者可以通过减少事务占用时长减少14800024出现的次数，也可以通过重试的方式处理14800024错误码。
 
 在使用以下API前，请先通过[createTransaction](./arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)方法获取Transaction实例，再通过此实例调用对应方法。
+
+> **说明：**
+> 
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本Interface首批接口从API version 14开始支持。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -499,6 +499,12 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。
 
+单次插入参数的最大数量限制为32766，超出上限会返回14800000错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -592,6 +598,12 @@ if (store != undefined) {
 batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
 
 向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)。
+
+单次插入参数的最大数量限制为32766，超出上限会返回14800000错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

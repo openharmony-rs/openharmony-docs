@@ -25,6 +25,8 @@
     
     ``` TypeScript
     //src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets
+    let storageEventCall = new LocalStorage();
+    
     @Entry(storageEventCall)
     @Component
     struct WidgetEventCallCard {

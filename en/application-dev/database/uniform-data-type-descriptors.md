@@ -187,11 +187,11 @@ The following walks you through on how to obtain **belongingToTypes** of a media
 1. Import the **uniformTypeDescriptor** module.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // 1. Import the required modules.
     import { uniformTypeDescriptor } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Use **getUniformDataTypesByFilenameExtension()** to obtain the UTD type ID based on the file name extension .mp3, and then obtain properties of the specific UTD.
@@ -258,11 +258,11 @@ The following walks you through on how to obtain MIME types based on the file na
 1. Import the **uniformTypeDescriptor** module.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // 1. Import the required modules.
     import { uniformTypeDescriptor } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Use **getUniformDataTypesByFilenameExtension()** to obtain the UTD type ID (**typeId**) based on the file name extension .ts.
@@ -293,11 +293,11 @@ The following walks you through on how to obtain the file name extensions based 
 1. Import the **uniformTypeDescriptor** module.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // 1. Import the required modules.
     import { uniformTypeDescriptor } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Use **getUniformDataTypesByMIMEType()** to obtain the UTD type ID based on the MIME type **text/plain**.

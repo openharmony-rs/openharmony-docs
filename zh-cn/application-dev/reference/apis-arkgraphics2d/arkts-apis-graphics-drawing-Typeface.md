@@ -260,3 +260,51 @@ class TextRenderNode extends RenderNode {
   }
 }
 ```
+
+## isBold<sup>23+</sup>
+
+isBold(): boolean
+
+检查字体是否加粗。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
+
+| 类型   | 说明                 |
+| ------ | -------------------- |
+| boolean | 返回当前字体是否加粗。true表示字体加粗，false表示字体未加粗。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+let typeface = font.getTypeface();
+let result = typeface.isBold();
+```
+
+## isItalic<sup>23+</sup>
+
+isItalic(): boolean
+
+检查字体是否是斜体。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
+
+| 类型   | 说明                 |
+| ------ | -------------------- |
+| boolean | 返回当前字体是否是斜体。true表示字体是斜体，false表示字体不是斜体。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+let typeface = font.getTypeface();
+let result = typeface.isItalic();
+```

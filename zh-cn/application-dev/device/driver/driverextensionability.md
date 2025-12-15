@@ -33,167 +33,161 @@
 
 4. 在文件中导入相关Kit，并定义请求Code。
 
-    <!-- @[driver_service_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) -->
-
-``` TypeScript
-import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
-import { Want } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-
-const REQUEST_CODE = 99; // 与扩展外设客户端约定请求码。
-```
-
+   <!-- @[driver_service_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
+   
+   ``` TypeScript
+   import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
+   import { Want } from '@kit.AbilityKit';
+   import { rpc } from '@kit.IPCKit';
+   
+   const REQUEST_CODE = 99; // 与扩展外设客户端约定请求码。
+   ```
 
 5. 打开DriverExtAbility.ets文件，导入[RPC通信模块](../../reference/apis-ipc-kit/js-apis-rpc.md)，重载onRemoteMessageRequest()方法，接收应用传递过来的消息，并将处理的结果返回给应用。REQUEST_CODE用于校验应用发送的服务请求码。
 
-    <!-- @[driver_service_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) -->
-
-``` TypeScript
-class StubTest extends rpc.RemoteObject {
-  // 接收应用传递过来的消息处理，以及将处理的结果返回给客户端。
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption) {
-    if (code === REQUEST_CODE) {
-      // 接收应用传递过来的数据。
-      // 应用使用多次调用data.writeString()写入多个数据时，驱动可以通过多次调用data.readString()方法接收对应的数据。
-      let optFir: string = data.readString();
-      // 驱动将数据的处理结果返回给应用。
-      // 示例中为接收了"Hello"，并将"Hello World"返回给应用。
-      reply.writeString(optFir + ` World`);
-    }
-    return true;
-  }
-}
-```
-
+   <!-- @[driver_service_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
+   
+   ``` TypeScript
+   class StubTest extends rpc.RemoteObject {
+     // 接收应用传递过来的消息处理，以及将处理的结果返回给客户端。
+     onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+       option: rpc.MessageOption) {
+       if (code === REQUEST_CODE) {
+         // 接收应用传递过来的数据。
+         // 应用使用多次调用data.writeString()写入多个数据时，驱动可以通过多次调用data.readString()方法接收对应的数据。
+         let optFir: string = data.readString();
+         // 驱动将数据的处理结果返回给应用。
+         // 示例中为接收了"Hello"，并将"Hello World"返回给应用。
+         reply.writeString(optFir + ` World`);
+       }
+       return true;
+     }
+   }
+   ```
 
 6. 在DriverExtAbility.ets文件中，增加导入[DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)的依赖包，该包提供了onInit()、onRelease()、onConnect()和onDisconnect()生命周期回调，自定义类继承[DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)并根据需要重写需要的生命周期回调。
 
-    <!-- @[driver_service_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) -->
-
-``` TypeScript
-export default class DriverExtAbility extends DriverExtensionAbility {
-  onInit(want: Want) {
-    console.info('testTag', `onInit, want: ${want.abilityName}`);
-  }
-
-  onRelease() {
-    console.info('testTag', `onRelease`);
-  }
-
-  onConnect(want: Want) {
-    console.info('testTag', `onConnect, want: ${want.abilityName}`);
-    return new StubTest('test');
-  }
-
-  onDisconnect(want: Want) {
-    console.info('testTag', `onDisconnect, want: ${want.abilityName}`);
-  }
-
-  onDump(params: Array<string>) {
-    console.info('testTag', `onDump, params:` + JSON.stringify(params));
-    return ['params'];
-  }
-}
-```
-
+   <!-- @[driver_service_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
+   
+   ``` TypeScript
+   export default class DriverExtAbility extends DriverExtensionAbility {
+     onInit(want: Want) {
+       console.info('testTag', `onInit, want: ${want.abilityName}`);
+     }
+   
+     onRelease() {
+       console.info('testTag', `onRelease`);
+     }
+   
+     onConnect(want: Want) {
+       console.info('testTag', `onConnect, want: ${want.abilityName}`);
+       return new StubTest('test');
+     }
+   
+     onDisconnect(want: Want) {
+       console.info('testTag', `onDisconnect, want: ${want.abilityName}`);
+     }
+   
+     onDump(params: Array<string>) {
+       console.info('testTag', `onDump, params:` + JSON.stringify(params));
+       return ['params'];
+     }
+   }
+   ```
 
 7. 在工程Module对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中注册DriverExtensionAbility，type标签需要设置为“driver”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-    <!-- @[driver_service_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    "name": "entry",
-    "type": "entry",
-    "description": "$string:module_desc",
-    "mainElement": "EntryAbility",
-    "deviceTypes": [
-      "default",
-      "tablet",
-      "2in1"
-    ],
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // 此处为扩展外设相关权限，必须配置。
-      }
-    ],
-    "deliveryWithInstall": true,
-    "installationFree": false,
-    "pages": "$profile:main_pages",
-    "abilities": [
-      {
-        "name": "EntryAbility",
-        "srcEntry": "./ets/entryability/EntryAbility.ets",
-        "description": "$string:EntryAbility_desc",
-        "icon": "$media:layered_image",
-        "label": "$string:EntryAbility_label",
-        "startWindowIcon": "$media:startIcon",
-        "startWindowBackground": "$color:start_window_background",
-        "exported": true,
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          }
-        ]
-      }
-    ],
-    "extensionAbilities": [
-      {
-        "name": "DriverExtAbility",
-        "icon": "$media:startIcon",
-        "description": "driver",
-        "type": "driver",
-        "exported": true,
-        "srcEntry": "./ets/driverextability/DriverExtAbility.ets",
-        "metadata": [
-          {
-            "name": "bus", // 必填项，所属总线。
-            "value": "USB"
-          },
-          {
-            "name": "desc", // 选填项，必要的驱动描述。
-            "value": "the sample of driverExtensionAbility"
-          },
-          {
-            "name": "vendor", // 选填项，驱动厂商名称。
-            "value": "string"
-          },
-          {
-            "name": "vid", // 支持 USB vendor id 列表，填写16进制，此处为4817的16进制。
-            "value": "0x12D1"
-          },
-          {
-            "name": "pid", // 支持的 USB product id 列表，填写16进制，此处为4258的16进制。
-            "value": "0x10A2"
-          },
-          {
-            "name": "launchOnBind", // 选填项，延迟拉起驱动。此处“true”表示延迟拉起，“false”表示即时拉起，配置错误或不配置，默认为“false”。
-            "value": "true"
-          },
-          {
-            "name": "ohos.permission.ACCESS_DDK_ALLOWED", // 选填项，允许应用访问。此处“true”表示允许访问，“false”表示不允许访问，配置错误或不配置，默认为“false”。
-            "value": "true"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
+   <!-- @[driver_service_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/module.json5) --> 
+   
+   ``` JSON5
+   {
+     "module": {
+       "name": "entry",
+       "type": "entry",
+       "description": "$string:module_desc",
+       "mainElement": "EntryAbility",
+       "deviceTypes": [
+         "default"
+       ],
+       "requestPermissions": [
+         {
+           "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // 此处为扩展外设相关权限，必须配置。
+         }
+       ],
+       "deliveryWithInstall": true,
+       "installationFree": false,
+       "pages": "$profile:main_pages",
+       "abilities": [
+         {
+           "name": "EntryAbility",
+           "srcEntry": "./ets/entryability/EntryAbility.ets",
+           "description": "$string:EntryAbility_desc",
+           "icon": "$media:layered_image",
+           "label": "$string:EntryAbility_label",
+           "startWindowIcon": "$media:startIcon",
+           "startWindowBackground": "$color:start_window_background",
+           "exported": true,
+           "skills": [
+             {
+               "entities": [
+                 "entity.system.home"
+               ],
+               "actions": [
+                 "ohos.want.action.home"
+               ]
+             }
+           ]
+         }
+       ],
+       "extensionAbilities": [
+         {
+           "name": "DriverExtAbility",
+           "icon": "$media:startIcon",
+           "description": "driver",
+           "type": "driver",
+           "exported": true,
+           "srcEntry": "./ets/driverextability/DriverExtAbility.ets",
+           "metadata": [
+             {
+               "name": "bus", // 必填项，所属总线。
+               "value": "USB"
+             },
+             {
+               "name": "desc", // 选填项，必要的驱动描述。
+               "value": "the sample of driverExtensionAbility"
+             },
+             {
+               "name": "vendor", // 选填项，驱动厂商名称。
+               "value": "string"
+             },
+             {
+               "name": "vid", // 支持 USB vendor id 列表，填写16进制，此处为4817的16进制。
+               "value": "0x12D1"
+             },
+             {
+               "name": "pid", // 支持的 USB product id 列表，填写16进制，此处为4258的16进制。
+               "value": "0x10A2"
+             },
+             {
+               "name": "launchOnBind", // 选填项，延迟拉起驱动。此处“true”表示延迟拉起，“false”表示即时拉起，配置错误或不配置，默认为“false”。
+               "value": "true"
+             },
+             {
+               "name": "ohos.permission.ACCESS_DDK_ALLOWED", // 选填项，允许应用访问。此处“true”表示允许访问，“false”表示不允许访问，配置错误或不配置，默认为“false”。
+               "value": "true"
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
 
 8. 完成客户端和驱动示例代码开发后，请参考[使用本地真机运行应用/元服务](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-device)，将Hap导入设备中，并点击hap中的Hello，查看是否会转变为Hello world，即实现ipc通信功能。
 
 ## 扩展设备能力
 
-扩展外设管理目前提供了HID DDK、USB DDK、USB Serical DDK和SCSI Peripheral DDK四种能力，用于扩展外设专项驱动的开发。具体使用方法，请参考：
+扩展外设管理目前提供了HID DDK、USB DDK、USB Serial DDK和SCSI Peripheral DDK四种能力，用于扩展外设专项驱动的开发。具体使用方法，请参考：
 
 * [开发适用HID协议的设备驱动](hid-ddk-guidelines.md)
 * [开发适用USB协议的设备驱动](usb-ddk-guidelines.md)
@@ -203,7 +197,9 @@ export default class DriverExtAbility extends DriverExtensionAbility {
 <!--RP1-->
 ## 应用签名
 
-**注意：** 先配置权限，再自动签名。
+> **注意：**
+>
+> 先配置权限，再自动签名。
 
 应用需要配置签名文件才能在设备上运行，并且扩展外设管理客户端开发，需要配置扩展外设的权限：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER及ohos.permission.ACCESS_DDK_DRIVERS。
 - ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER（API version 10及以上版本，需要申请此权限。）

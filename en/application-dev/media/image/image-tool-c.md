@@ -1,4 +1,4 @@
-# Using Image_NativeModule to Edit EXIF Data
+# Using Image_NativeModule to Edit Exif Data
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -6,13 +6,13 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Image Kit provides the capabilities of reading and editing Exchangeable Image File Format (EXIF) data.
+Image Kit provides the capabilities of reading and editing Exchangeable Image File Format (Exif) data.
 
-EXIF is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos. Currently, JPEG, PNG, and HEIF images that contain EXIF data are supported.
+Exif is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos. Currently, JPEG, PNG, HEIF, and WEBP<sup>23+</sup> images that contain Exif data are supported.
 
-Users may need to view or modify the EXIF data of photos in the Gallery application, for example, when the manual lens parameters of the camera are not automatically written as part of the EXIF data or the shooting time is incorrect due to camera power-off.
+Users may need to view or modify the Exif data of photos in the Gallery application, for example, when the manual lens parameters of the camera are not automatically written as part of the Exif data or the shooting time is incorrect due to camera power-off.
 
-Currently, OpenHarmony allows you to view and modify part of EXIF data. For details, see [OHOS_IMAGE_PROPERTY_XXX](../../reference/apis-image-kit/capi-image-common-h.md#variables).
+Currently, OpenHarmony allows you to view and modify part of Exif data. For details, see [OHOS_IMAGE_PROPERTY_XXX](../../reference/apis-image-kit/capi-image-common-h.md#variables).
 
 ## How to Develop
 
@@ -26,13 +26,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 ### Calling the Native APIs
 
-For details about the C APIs for reading and editing EXIF data, see [OH_ImageSource_GetImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) and [OH_ImageSource_ModifyImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty).
+For details about the C APIs for reading and editing Exif data, see [OH_ImageSource_GetImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) and [OH_ImageSource_ModifyImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty).
 
 Create a native C++ application in DevEco Studio. The project created by default contains the **index.ets** file, and a **hello.cpp** or **napi_init.cpp** file is generated in the **entry\src\main\cpp** directory. In this example, the generated file is **hello.cpp**. Implement the C APIs in **hello.cpp**. Refer to the sample code below.
 
-**Example for Reading and Editing EXIF Data**
+**Example for Reading and Editing Exif Data**
 
-After an ImageSource instance is created, read and edit its EXIF data.
+After an ImageSource instance is created, read and edit its Exif data.
 
 ```c++
 #include <string>
@@ -76,7 +76,7 @@ static napi_value exifTest(napi_env env, napi_callback_info info)
         return getJsResult(env, errCode);
     }
 
-    // Read the EXIF data, where OHOS_IMAGE_PROPERTY_BITS_PER_SAMPLE indicates the number of bits per pixel.
+    // Read the Exif data, where OHOS_IMAGE_PROPERTY_BITS_PER_SAMPLE indicates the number of bits per pixel.
     Image_String getKey;
     const std::string PIXEL_X_DIMENSION = OHOS_IMAGE_PROPERTY_BITS_PER_SAMPLE;
     getKey.data = (char *)PIXEL_X_DIMENSION.c_str();
@@ -88,7 +88,7 @@ static napi_value exifTest(napi_env env, napi_callback_info info)
         return getJsResult(env, errCode);
     }
 
-    // Edit the EXIF data, where OHOS_IMAGE_PROPERTY_ORIENTATION indicates the image orientation.
+    // Edit the Exif data, where OHOS_IMAGE_PROPERTY_ORIENTATION indicates the image orientation.
     Image_String setKey;
     const std::string ORIENTATION = OHOS_IMAGE_PROPERTY_ORIENTATION;
     setKey.data = (char *)ORIENTATION.c_str();

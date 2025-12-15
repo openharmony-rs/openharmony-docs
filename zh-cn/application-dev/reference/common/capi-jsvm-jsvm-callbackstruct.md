@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_CallbackStruct
+```
+
 ## 概述
 
 用户提供的Native回调函数的指针和数据，这些函数通过JSVM-API接口暴露给JavaScript。
@@ -35,7 +39,7 @@
 
 ### callback()
 
-```
+```c
 JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)
 ```
 

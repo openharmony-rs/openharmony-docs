@@ -232,7 +232,7 @@ createIntersectionObserver(param?:  ObserverParam): Observer
 
 | 方法        | 参数                      | 描述                                  |
 | --------- | ----------------------- | ----------------------------------- |
-| observe   | callback:&nbsp;function | 开启observer的订阅方法。超出或小于阈值时触发callback。 |
+| observe   | callback:&nbsp;function | 开启observer的订阅方法，超出或小于阈值时触发callback。 |
 | unobserve | -                       | 取消observer的订阅方法。                    |
 
 **示例：** 

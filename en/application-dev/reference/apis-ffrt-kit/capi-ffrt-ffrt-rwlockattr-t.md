@@ -7,6 +7,11 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+
+```c
+typedef struct {...} ffrt_rwlockattr_t
+```
+
 ## Overview
 
 The **ffrt_rwlockattr_t** struct describes an FFRT read-write lock attribute.

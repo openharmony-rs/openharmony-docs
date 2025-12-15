@@ -849,7 +849,7 @@ class Params {
   }
 }
 
-// 定义一个BuildNodeChild组件，它包含一个message属性和一个index属性
+// 定义一个BuildNodeChild组件，它包含一个storage属性和一个index属性
 @ComponentV2
 struct BuildNodeChild {
   // 使用Params实例作为storage属性

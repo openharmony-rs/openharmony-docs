@@ -185,7 +185,6 @@ function builderOverlay(params: Params) {
 @Entry
 @Component
 export struct OverlayManagerAlertDialog {
-  @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
   private overlayContent:ComponentContent<Params>[] = [];
@@ -207,13 +206,13 @@ export struct OverlayManagerAlertDialog {
   }
 
   build() {
-    // ···
+    // ...
       Column() {
 
       }
       .width('100%')
       .height('100%')
-    // ···
+    // ...
   }
 }
 ```

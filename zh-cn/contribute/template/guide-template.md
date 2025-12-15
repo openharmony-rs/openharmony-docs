@@ -262,7 +262,7 @@ _已发布的Sample code、Codelabs、Demo工程包，请在此处提供链接�
 
 针对Ability开发，有以下相关实例可供参考：
 
-- [UIAbility内和UIAbility间页面的跳转（ArkTS）](https://gitee.com/openharmony/codelabs/tree/master/Ability/StageAbility)
+- [UIAbility内和UIAbility间页面的跳转（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/Ability/StageAbility)
 
 
 ## 环境准备
@@ -469,5 +469,5 @@ _描述开发过程遇到的各类问题以及解决方案，以提高开发效�
 
 ### 1.XX问题
 
-具体写作模板请参见[《FAQ模板》](https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/template/faq-template.md)。
+具体写作模板请参见[《FAQ模板》](https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/template/faq-template.md)。
 

@@ -7,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 struct OH_Filter_ColorMatrix {...}
 ```
 
@@ -27,5 +27,5 @@ struct OH_Filter_ColorMatrix {...}
 
 | 名称          | 描述                               |
 | ------------- | ---------------------------------- |
-| float val[20] | 自定义颜色矩阵，值是一个54的数组。 |
+| float val[20] | 自定义颜色矩阵，值是一个5*4的数组。 |
 

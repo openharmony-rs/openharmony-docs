@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
+```
+
 ## Overview
 
 Defines a struct for triggering the corresponding callback when the getter, setter, deleter, or enumerator of an object is executed.

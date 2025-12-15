@@ -189,11 +189,11 @@ utd.json5文件需要在类型为entry的HAP中配置。
 1. 导入uniformTypeDescriptor模块。
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     //  1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. 针对“.mp3”文件扩展名，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型，并打印对应UTD数据类型的具体属性。
@@ -260,11 +260,11 @@ utd.json5文件需要在类型为entry的HAP中配置。
 1. 导入uniformTypeDescriptor模块。
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     //  1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. 针对“.ts”文件后缀，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型。
@@ -295,11 +295,11 @@ utd.json5文件需要在类型为entry的HAP中配置。
 1. 导入uniformTypeDescriptor模块。
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     //  1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. 针对“text/plain”MIMEType，使用getUniformDataTypesByMIMEType()方法获取对应UTD数据类型。

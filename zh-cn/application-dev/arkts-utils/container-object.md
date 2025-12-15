@@ -17,7 +17,9 @@
 
 ## 使用示例
 
-```ts
+<!-- @[example_container_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ContainerObject.ets) -->
+
+``` TypeScript
 import { taskpool, TreeSet } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -49,8 +51,8 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // 1. 创建TreeSet实例
-          let treeSet : TreeSet<number> = new TreeSet<number>(sendableCompareFunc);
+          // 1. 创建Test实例objA
+          let treeSet: TreeSet<number> = new TreeSet<number>(sendableCompareFunc);
 
           treeSet.add(1);
           treeSet.add(5);
@@ -61,7 +63,7 @@ struct Index {
           // 3. 执行任务
           taskpool.execute(task).then(() => {
             console.info('taskpool: execute task success!');
-          }).catch((e:BusinessError) => {
+          }).catch((e: BusinessError) => {
             console.error(`taskpool: execute task: Code: ${e.code}, message: ${e.message}`);
           })
           this.message = 'success';
@@ -72,5 +74,3 @@ struct Index {
   }
 }
 ```
-<!-- @[example_container_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/
-ContainerObject.ets) -->

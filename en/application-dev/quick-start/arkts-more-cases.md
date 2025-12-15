@@ -1539,7 +1539,7 @@ entries.forEach((key, value) => {
 })
 ```
 
-## arkts-strict-typing(StrictModeError)
+## Strict Mode Check (StrictModeError)
 
 ### strictPropertyInitialization
 
@@ -1983,7 +1983,7 @@ Mode 2: Extract the code that the .ts file depends on from the .ets file to the 
 
 ## arkts-no-special-imports
 
-Use **import { ... } from '...'** to import the type.
+Use **import { ... } from '...'** to import types.
 
 **Before adaptation**
 

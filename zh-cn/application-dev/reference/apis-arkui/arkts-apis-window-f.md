@@ -187,7 +187,7 @@ findWindow(name: string): Window
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -491,7 +491,7 @@ shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Prom
 
 | 错误码ID | 错误信息                                      |
 | ------- | --------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Failed to convert parameter to sourceWindowId; 3. Failed to convert parameter to targetWindowId; 4. Invalid sourceWindowId or targetWindowId. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
@@ -638,9 +638,9 @@ getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?:
 
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
-| 401      | Parameter error. Possible cause: Incorrect parameter types. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -699,7 +699,7 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -740,9 +740,9 @@ getVisibleWindowInfo(): Promise&lt;Array&lt;WindowInfo&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission. |
 | 801     | Capability not supported. Function getVisibleWindowInfo can not work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
 
@@ -801,8 +801,8 @@ getGlobalWindowMode(displayId?: number): Promise&lt;number&gt;
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
 | 801      | Capability not supported. function getGlobalWindowMode can not work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. The parameter format is incorrect. |
 
 **示例：**
 ```ts
@@ -917,8 +917,8 @@ setStartWindowBackgroundColor(moduleName: string, abilityName: string, color: Co
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported.function setStartWindowBackgroundColor can not to work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
+| 1300016 | Parameter error. Possible cause: Parameter exceeds the allowed length. |
 
 **示例：**
 

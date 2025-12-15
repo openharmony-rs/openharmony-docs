@@ -68,6 +68,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   <!-- @[NavigationModeSplit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeSplit.ets) -->
   
   ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   const DOMAIN = 0x0000;
   @Entry
   @Component
@@ -77,7 +78,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',  // 当前目录image文件夹下的图标资源
       'action': () => {}
     };
-    @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+    @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
     private arr: number[] = [1, 2, 3];
   
     @Builder
@@ -93,7 +94,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   
     build() {
       Column() {
-        Navigation(this.pageInfos) {
+        Navigation(this.navPathStack) {
           TextInput({ placeholder: 'search...' })
             .width('90%')
             .height(40)
@@ -111,7 +112,7 @@ Navigation组件通过mode属性设置页面的显示模式。
                   .fontWeight(500)
                   .textAlign(TextAlign.Center)
                   .onClick(() => {
-                    this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                    this.navPathStack.pushPath({ name: 'NavDestinationTitle' + item });
                   })
               }
             }, (item: number) => item.toString())
@@ -155,7 +156,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   
   @Component
   export struct pageOneTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
+    @Consume('navPathStack') navPathStack: NavPathStack;
     context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
@@ -164,8 +165,8 @@ Navigation组件通过mode属性设置页面的显示模式。
         }.width('100%').height('100%')
       }.title('NavDestinationTitle1')
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
+        // $r('app.string.returnValue')资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -175,7 +176,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   
   @Component
   export struct pageTwoTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
+    @Consume('navPathStack') navPathStack: NavPathStack;
     context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
@@ -184,8 +185,8 @@ Navigation组件通过mode属性设置页面的显示模式。
         }.width('100%').height('100%')
       }.title('NavDestinationTitle2')
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
+        // $r('app.string.returnValue')资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -195,7 +196,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   
   @Component
   export struct pageThreeTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
+    @Consume('navPathStack') navPathStack: NavPathStack;
     context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
@@ -204,8 +205,8 @@ Navigation组件通过mode属性设置页面的显示模式。
         }.width('100%').height('100%')
       }.title('NavDestinationTitle3')
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
+        // $r('app.string.returnValue')资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -276,9 +277,9 @@ Navigation组件通过mode属性设置页面的显示模式。
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
    };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
          }
          .menus([toolTmp, toolTmp, toolTmp])
    ```
@@ -293,9 +294,9 @@ Navigation组件通过mode属性设置页面的显示模式。
      'icon': 'resources/base/media/ic_public_add.svg',
      'action': () => {}
    };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
          }
          .menus([toolTmp, toolTmp, toolTmp])
    ```
@@ -312,9 +313,9 @@ Navigation组件通过mode属性设置页面的显示模式。
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
    };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
          }
          // 竖屏最多支持显示3个图标，多余的图标会被放入自动生成的更多图标
          .menus([toolTmp, toolTmp, toolTmp, toolTmp])
@@ -338,9 +339,9 @@ Navigation组件通过mode属性设置页面的显示模式。
      'action': () => {}
    };
    let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
          }
          .toolbarConfiguration(tooBar)
    ```
@@ -435,7 +436,7 @@ NavPathStack通过Push相关的接口（如[pushPath](../reference/apis-arkui/ar
 
 ### 页面返回
 
-NavPathStack通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)相关接口去实现页面返回功能。
+NavPathStack通过pop相关接口（如[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop10)、[popToName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoname10)、[popToIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoindex10)、[clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10)）去实现页面返回功能。
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
    
@@ -1087,11 +1088,12 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 <!-- @[CustomRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/CustomRoutingTable.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0000;
 @Entry
 @Component
 struct NavigationExample {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private arr: number[] = [1, 2];
 
   @Builder
@@ -1105,7 +1107,7 @@ struct NavigationExample {
 
   build() {
     Column() {
-      Navigation(this.pageInfos) {
+      Navigation(this.navPathStack) {
         TextInput({ placeholder: 'search...' })
           .width('90%')
           .height(40)
@@ -1121,7 +1123,7 @@ struct NavigationExample {
                 .fontWeight(500)
                 .textAlign(TextAlign.Center)
                 .onClick(() => {
-                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                  this.navPathStack.pushPath({ name: 'NavDestinationTitle' + item });
                 })
             }
           }, (item: number) => item.toString())
@@ -1129,7 +1131,7 @@ struct NavigationExample {
         .width('90%')
         .margin({ top: 12 })
       }
-      // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件
+      // $r('app.string.mainTitle')资源文件中的value值为“主标题”
       .title($r('app.string.mainTitle'))
       .navDestination(this.pageMap)
       .mode(NavigationMode.Split)
@@ -1141,7 +1143,7 @@ struct NavigationExample {
 
 @Component
 export struct pageTwoTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
+  @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
   build() {
     NavDestination() {
@@ -1150,8 +1152,8 @@ export struct pageTwoTmp {
       }.width('100%').height('100%')
     }.title('NavDestinationTitle2')
     .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')资源文件中的value值为“返回值”
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -1161,7 +1163,7 @@ export struct pageTwoTmp {
 
 @Component
 export struct pageOneTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
+  @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
   build() {
     NavDestination() {
@@ -1170,8 +1172,8 @@ export struct pageOneTmp {
       }.width('100%').height('100%')
     }.title('NavDestinationTitle1')
     .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')资源文件中的value值为“返回值”
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -1197,12 +1199,12 @@ export struct pageOneTmp {
 @Entry
 @Component
 struct NavigationDemo {
-  @Provide('pathInfos') pathInfos: NavPathStack = new NavPathStack();
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
   context = this.getUIContext().getHostContext();
   build() {
     Column() {
-      Navigation(this.pathInfos) {
+      Navigation(this.navPathStack) {
         // $r('app.string.enterKeyWordsToSearch')需要替换为开发者所需的字符串资源文件
         TextInput({ placeholder: $r('app.string.enterKeyWordsToSearch') })
           .width('90%')
@@ -1255,8 +1257,8 @@ struct NavigationDemo {
             }
             .width('100%')
             .onClick(() => {
-              // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件
-              this.pathInfos.pushPathByName(`${item}`,
+              // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“详情页面参数”
+              this.navPathStack.pushPathByName(`${item}`,
                 // 将name指定的NaviDestination页面信息入栈,传递的参数为param
                 this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
             })
@@ -1270,7 +1272,7 @@ struct NavigationDemo {
       }
       .width('100%')
       .mode(NavigationMode.Auto)
-      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件
+      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
       .title($r('app.string.settings')) // 设置标题文字
     }
     .size({ width: '100%', height: '100%' })
@@ -1299,7 +1301,7 @@ export function PageOneBuilder(name: string, param: string) {
 
 @Component
 export struct PageOne {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   @State value: string = '';
   context = this.getUIContext().getHostContext();
@@ -1307,7 +1309,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件
+        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置页面”
         Text(`${this.name}${this.context!.resourceManager.getStringSync($r('app.string.settingPage').id)}`)
           .width('100%')
           .fontSize(20)
@@ -1326,21 +1328,21 @@ export struct PageOne {
           .fontColor(0x666666)
           .textAlign(TextAlign.Center)
           .padding({ top: 45 })
-        // $r('app.string.stepperIndex_text24')需要替换为开发者所需的字符串资源文件
+        // $r('app.string.return')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“返回”
         Button($r('app.string.return'))
           .width('50%')
           .height(40)
           .margin({ top: 50 })
           .onClick(() => {
             //弹出路由栈栈顶元素，返回上个页面
-            this.pathInfos.pop();
+            this.navPathStack.pop();
           })
       }
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }
@@ -1364,7 +1366,7 @@ export function PageTwoBuilder(name: string) {
 
 @Component
 export struct PageTwo {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
   context = this.getUIContext().getHostContext();
@@ -1416,7 +1418,8 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`,
+              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“页面设置参数”
+              this.navPathStack.pushPathByName(`${item}`,
                 this.context!.resourceManager.getStringSync($r('app.string.pageSettingParam').id));
             })
           }, (item: string): string => item)
@@ -1430,7 +1433,7 @@ export struct PageTwo {
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }

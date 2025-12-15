@@ -277,7 +277,7 @@ export class VpnTest extends VpnExtensionAbility {
 
 ## VPN Config参数说明
 
-| 名称                | 类型                                                         | 只读 |可选| 说明                                                         |	
+| 名称       | 类型                                       | 只读 |可选| 说明          |
 | ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |	
 | addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的IP地址。                                        |	
 | routes              | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | 否   | 是|VPN虚拟网卡的路由信息(目前最多可配置1024条路由)。            |	

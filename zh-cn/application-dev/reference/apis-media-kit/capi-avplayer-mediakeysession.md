@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct MediaKeySession MediaKeySession
+```
+
 ## 概述
 
 MediaKeySession类型。

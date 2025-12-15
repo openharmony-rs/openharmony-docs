@@ -200,9 +200,9 @@
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_ImageNative_Release call failed.");
        }
-	   delete[] types;
+       delete[] types;
    }
-   
+
    void OnImageReceiver() {
        // 注册图像回调事件，监听每帧上报的图像。
        Image_ErrorCode errCode = OH_ImageReceiverNative_On(receiver, OnCallback);

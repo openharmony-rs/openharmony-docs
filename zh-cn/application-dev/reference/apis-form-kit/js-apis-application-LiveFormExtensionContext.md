@@ -81,19 +81,19 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 ```
 ```ts
 // pages/MyLiveFormPage.ets
+import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-  private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+  private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
     // 2.获取LiveFormExtensionContext
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
-    this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+    this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
   }
 
    private startAbilityByLiveForm(): void {
@@ -115,9 +115,15 @@ struct MyLiveFormPage {
   }
 
   build() {
+    // 请开发者替换为实际的页面
     Stack() {
-      // 请开发者替换为实际的页面
+      Column()
+        .width('50%')
+        .height('50%')
+        .backgroundColor('#2875F5')
     }
+    .width('100%')
+    .height('100%')
     .onClick(() => {
       // 3.在点击事件回调中直接使用该接口
       console.info('MyLiveFormPage click to start ability');

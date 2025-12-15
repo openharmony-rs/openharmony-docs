@@ -46,7 +46,7 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 ### BatteryInfo_BatteryPluggedType
 
-```
+```c
 enum BatteryInfo_BatteryPluggedType
 ```
 
@@ -69,7 +69,7 @@ Enumerates the battery plugged types.
 
 ### OH_BatteryInfo_GetCapacity()
 
-```
+```c
 int32_t OH_BatteryInfo_GetCapacity()
 ```
 
@@ -89,7 +89,7 @@ Obtains the current battery capacity.
 
 ### OH_BatteryInfo_GetPluggedType()
 
-```
+```c
 BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 ```
 
