@@ -5013,6 +5013,14 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 
 可以通过startCamera，stopCamera，closeCamera这三个接口来切换摄像头的状态。这三个接口分别对应开启，暂停，停止摄像头功能。示例使用场景详见[startCamera](arkts-apis-webview-WebviewController.md#startcamera12)。
 
+> **说明：**
+>
+> 当前网页正在使用摄像头时，返回在捕获中状态。
+>
+> 当前网页暂停使用摄像头时，返回暂停中状态。
+>
+> 当前网页完全没有使用摄像头时，返回无状态。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：** 
@@ -5020,14 +5028,6 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
 | Callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
-
-> **说明：** 
-> 
-> 当前网页正在使用摄像头时，返回在使用状态。
->
-> 当前网页暂停使用摄像头时，返回暂停状态。
-> 
-> 当前网页完全没有使用摄像头时，返回未使用状态。
 
 **示例：**
 
@@ -5150,6 +5150,20 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[网页中麦克风的使用](./arkts-apis-webview-WebviewController.md#resumemicrophone23)。
 
+> **说明：**
+>
+> 当前网页正在使用麦克风时，返回捕获中状态；当前网页暂停使用麦克风时，返回暂停中状态；当前网页完全没有使用麦克风时，返回未工作状态。
+>
+> 当前麦克风处于捕获中状态时，设置暂停使用，当前麦克风变为暂停中状态。可通过ArkWeb设置麦克风开始使用状态进行恢复捕捉。
+>
+> 当前麦克风处于捕获中状态时，设置停止使用，当前麦克风停止捕捉，麦克风变为未工作状态。除非重新前端开始捕捉，否则无法恢复。
+>
+> 当前麦克风处于暂停中状态时，设置开始使用，当前麦克风继续捕捉，变为捕获中状态。
+>
+> 当前麦克风处于暂停中状态时，设置停止使用，当前麦克风停止捕捉，变为未工作状态。除非重新前端开始捕捉，否则无法恢复。
+>
+> 当前麦克风处于未工作状态时，设置开始使用以及暂停使用，麦克风状态均不发生变化。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：** 
@@ -5157,21 +5171,6 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
 | Callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | 是   | 回调函数。当麦克风捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
-
-> **说明：** 
-> 
-> 当前网页正在使用麦克风时，返回Active状态；当前网页暂停使用麦克风时，返回Paused状态；当前网页完全没有使用麦克风时，返回None状态。
->
-> 当前正在使用麦克风时，设置暂停使用，当前麦克风暂停捕捉。可通过ArkWeb设置麦克风开始使用状态进行恢复捕捉。
-> 
-> 当前正在使用麦克风时，设置停止使用，当前麦克风停止捕捉。除非重新前端开始捕捉，否则无法恢复。
-> 
-> 当前暂停使用麦克风状态，设置开始使用，当前麦克风继续捕捉。
-> 
-> 当前暂停使用麦克风状态，设置停止使用，当前麦克风停止捕捉。除非重新前端开始捕捉，否则无法恢复。
-> 
-> 当前不在使用麦克风状态，设置开始使用以及暂停使用，麦克风状态均不发生变化。
-
 
 **示例：**
 
