@@ -785,7 +785,7 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| enterKeyType<sup>10+</sup>  | [EnterKeyType](#enterkeytype10) | 否 | 否 | 输入法enter键类型。|
+| enterKeyType  | [EnterKeyType](#enterkeytype10) | 否 | 否 | 输入法enter键类型。|
 
 ## InputAttribute<sup>10+</sup>
 
@@ -795,8 +795,8 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| textInputType<sup>10+</sup>  | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。|
-| enterKeyType<sup>10+</sup>  | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。|
+| textInputType  | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。|
+| enterKeyType  | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。|
 | placeholder<sup>20+</sup> | string | 否 | 是 | 编辑框设置的占位符信息。 <br/>- 编辑框设置占位符信息时，长度不超过255个字符（如果超出将会自动截断为255个字符），用于提示或引导用户输入临时性文本或符号。（例如：提示输入项为"必填"或"非必填"的输入结果反馈。）<br/>- 编辑框没有设置占位符信息时，默认为空字符串。<br/>- 该字段在调用[attach](#attach10)时提供给输入法应用。|
 | abilityName<sup>20+</sup> | string | 否 | 是 | 编辑框设置的ability名称。<br/>- 编辑框设置ability名称时，长度不超过127个字符（如果超出将会自动截断为127个字符）。<br/>- 编辑框未设置ability名称时，默认为空字符串。<br/>- 该字段在调用绑定[attach](#attach10)时提供给输入法应用。|
 
@@ -808,10 +808,10 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| inputAttribute<sup>10+</sup>  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。|
-| cursorInfo<sup>10+</sup>  | [CursorInfo](#cursorinfo10) | 否 | 是 | 光标信息。|
-| selection<sup>10+</sup>  | [Range](#range10) | 否 | 是 | 文本选中的范围。|
-| windowId<sup>10+</sup>  | number | 否 | 是 | 编辑框所在的窗口Id，该参数应为整数。<br>推荐使用[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| inputAttribute  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。|
+| cursorInfo  | [CursorInfo](#cursorinfo10) | 否 | 是 | 光标信息。|
+| selection  | [Range](#range10) | 否 | 是 | 文本选中的范围。|
+| windowId  | number | 否 | 是 | 编辑框所在的窗口Id，该参数应为整数。<br>推荐使用[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 | newEditBox<sup>20+</sup> | boolean | 否 | 是 | 表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。 |
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 否 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
 
