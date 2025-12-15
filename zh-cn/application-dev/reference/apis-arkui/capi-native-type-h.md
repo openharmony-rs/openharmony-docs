@@ -3203,8 +3203,8 @@ enum ArkUI_FocusPriority
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FOCUS_PRIORITY_AUTO  = 0 | 默认优先级。 |
-| ARKUI_FOCUS_PRIORITY_PRIOR   | 先前的优先级。 |
-| ARKUI_FOCUS_PRIORITY_PREVIOUS   | 上一个焦点优先级。 |
+| ARKUI_FOCUS_PRIORITY_PRIOR = 2000   | 容器内优先获焦的优先级。 |
+| ARKUI_FOCUS_PRIORITY_PREVIOUS = 3000   | 上一次容器整体失焦时获焦节点的优先级。 |
 
 ### ArkUI_MenuPolicy
 
