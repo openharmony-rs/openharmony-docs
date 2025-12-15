@@ -568,13 +568,13 @@ getViewMatrix(): Mat4x4
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| Mat4x4 | 返回获取相机的视图矩阵。 |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x4) | 返回获取相机的视图矩阵。 |
 
 **示例：**
 ```ts
 import { Mat4x4, Scene, Node } from '@kit.ArkGraphics3D';
 
-function GetViewMatrix(): void {
+function GetViewMatrix(): Mat4x4 {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
   Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
     .then(async (result: Scene) => {
@@ -604,13 +604,13 @@ getProjectionMatrix(): Mat4x4
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| Mat4x4 | 返回获取相机的投影矩阵。 |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x4) | 返回获取相机的投影矩阵。 |
 
 **示例：**
 ```ts
 import { Mat4x4, Scene, Node } from '@kit.ArkGraphics3D';
 
-function GetProjectionMatrix(): void {
+function GetProjectionMatrix(): Mat4x4 {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
   Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
     .then(async (result: Scene) => {

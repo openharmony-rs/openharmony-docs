@@ -1236,7 +1236,7 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) \| null | 被克隆的结点。克隆失败则返回null |
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | 被克隆的结点。克隆失败则返回null。 |
 
 **示例：**
 ```ts
