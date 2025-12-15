@@ -75,22 +75,38 @@ The following table lists the APIs commonly used for text measurement. For detai
 
 5. Call the API for obtaining paragraph measurement information to obtain the specified data.
 
-   ```c++
+   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
    // Case 1: Obtain the width of the longest line after typesetting.
    double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
+   DRAWING_LOGI("Line %{public}d: longestLine: %{public}f", longestLine);
    
    // Case 2: Obtain the number of lines in a paragraph after typesetting.
    size_t lineCnt = OH_Drawing_TypographyGetLineCount(typography);
+   DRAWING_LOGI("lineCnt: %{public}zu", lineCnt);
    
    // Case 3: Obtain the measurement information of each line in a paragraph.
-   OH_Drawing_LineMetrics* lineMetrics = OH_Drawing_TypographyGetLineMetrics(typography);
+   OH_Drawing_LineMetrics *lineMetrics = OH_Drawing_TypographyGetLineMetrics(typography);
    int lineMetricsSize = OH_Drawing_LineMetricsGetSize(lineMetrics);
    for (int i = 0; i < lineMetricsSize; ++i) {
-       // lineMetrics is the text measurement information after typesetting.
-       double curLineAscender = lineMetrics[i].ascender;
-       double curLineWidth = lineMetrics[i].width;
+   // lineMetrics is the text measurement information after typesetting.
+   double curLineAscender = lineMetrics[i].ascender;
+   double curLineWidth = lineMetrics[i].width;
+       DRAWING_LOGI("Line %{public}d: lineMetrics ascender: %{public}f", i + 1, curLineAscender);
+       DRAWING_LOGI("Line %{public}d: lineMetrics width: %{public}f", i + 1, curLineWidth);
    }
    
-   // Case 4: Obtain the width of the longest line with indentation in a paragraph.
+   // Case 4: Obtain the maximum line width of the paragraph and the maximum line width with indentation.
    double longestLineWithIndent = OH_Drawing_TypographyGetLongestLineWithIndent(typography);
+   DRAWING_LOGI("longestLineWithIndent: %{public}f", longestLineWithIndent);
+   
+   OH_Drawing_Font_Metrics fontMetrics;
+   // Obtain the font metrics of a text style.
+   bool result = OH_Drawing_TextStyleGetFontMetrics(typography, myTextStyle, &fontMetrics);
+   DRAWING_LOGI("result: %{public}zu, fontMetrics ascent: %{public}f" , result, fontMetrics.ascent);
+   // Obtain the line metrics in a typography object. This function must be called after OH_Drawing_TypographyLayout is called.
+   OH_Drawing_LineMetrics lineMetric;
+   OH_Drawing_TypographyGetLineMetricsAt(typography, 0, &lineMetric);
+   DRAWING_LOGI("lineMetrics ascender: %{public}f" ,lineMetric.ascender of the first line");
    ```

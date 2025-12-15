@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_MetadataOutput Camera_MetadataOutput
+```
+
 ## Overview
 
 The struct describes the metadata output object.

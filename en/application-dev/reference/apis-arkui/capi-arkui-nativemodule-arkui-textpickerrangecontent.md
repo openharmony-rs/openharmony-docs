@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ARKUI_TextPickerRangeContent
+```
+
 ## Overview
 
 Defines the image resource struct for the single-column text picker.

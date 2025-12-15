@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
+```
+
 ## Overview
 
 Defines the input parameters of the **OH_HiCollie_SetTimer** function.

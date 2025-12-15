@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_UdsArrayBuffer OH_UdsArrayBuffer
+```
+
 ## Overview
 
 Defines a struct for the ArrayBuffer type.

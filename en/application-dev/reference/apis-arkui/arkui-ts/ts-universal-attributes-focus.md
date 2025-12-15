@@ -1,12 +1,12 @@
 # Focus Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-Focus control attributes set whether a component is focusable and how it participates in focus navigation.
+Focus control attributes determine whether a component can receive focus and how it participates in focus navigation. Users can switch focus between components using the Tab key or arrow keys.
 
 >  **NOTE**
 >
@@ -44,11 +44,11 @@ Sets whether the component is focusable.
 
 tabIndex(index: number): T
 
-Sets the Tab order of the component in sequential focus navigation with the **Tab** key. If tabIndex is not set for a component, the focus moves according to the preset focus movement rules by default.
+Sets the Tab order of the component in sequential focus navigation with the **Tab** key. Components without explicit **tabIndex** settings follow default focus navigation rules.
 
 >  **NOTE**
 >
->  - tabIndex can be used only to customize the tab key focus navigation capability. If you want to customize the focus navigation capability of arrow keys, you are advised to use [nextFocus](#nextfocus18).
+>  - **tabIndex** only customizes **Tab** key navigation. For arrow key navigation customization, use [nextFocus](#nextfocus18).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -71,7 +71,7 @@ Sets the Tab order of the component in sequential focus navigation with the **Ta
 
 defaultFocus(value: boolean): T
 
-Specifies whether to set this component as the default focus of the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts). If defaultFocus is not set, the component is not the default focus on the current page.
+Specifies whether to set this component as the default focus of the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts). If **defaultFocus** is not set, the component will not receive initial focus on the current page.
 
 >  **NOTE**
 >
@@ -97,7 +97,7 @@ Specifies whether to set this component as the default focus of the current [hie
 
 groupDefaultFocus(value: boolean): T
 
-Specifies whether to set the component as the default focus of the container. If groupDefaultFocus is not set for a component, the component is not the default focus when the container where the component is located is focused.
+Specifies whether to set the component as the default focus of the container. If **groupDefaultFocus** is not set, the component will not receive focus by default when its container is focused.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -119,7 +119,7 @@ Specifies whether to set the component as the default focus of the container. If
 
 focusOnTouch(value: boolean): T
 
-Sets whether the component is focusable on touch. If focusOnTouch is not set for a component, the component does not support the focus on touch capability by default.
+Sets whether the component is focusable on touch. If **focusOnTouch** is not set, the component is not focusable on touch by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -129,7 +129,7 @@ Sets whether the component is focusable on touch. If focusOnTouch is not set for
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether the component is focusable on touch. <br>**true**: The component is focusable on touch.<br>**false**: The component is not focusable on touch.<br>**NOTE**<br>The component is focusable only when it is touchable.|
+| value  | boolean | Yes  | Whether the component is focusable on touch. <br>**true**: The component is focusable on touch.<br>**false**: The component is not focusable on touch.<br>**NOTE**<br>This setting requires the component to be touchable.|
 
 **Return value**
 
@@ -281,7 +281,7 @@ Assigns an ID to this container component and specifies whether the container is
 
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
-Assigns an ID to this container component and specifies whether the container is a focus group.
+Assigns an ID to this container component and specifies whether the container is a focus group. Added the arrowStepOut parameter, which specifies whether the arrow keys can be used to move the focus out of the current focus group.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -376,7 +376,7 @@ Sets the target component for focus movement based on key presses. If it is not 
 
 ### Example 1: Setting Focus and Focus Traversal Effects for Components
 
-This example shows how to use **defaultFocus**, **groupDefaultFocus**, and **focusOnTouch**. **defaultFocus** sets the bound component as the initial focus after the [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is created. **groupDefaultFocus** sets the bound component as the initial focus after the container with the specified **tabIndex** is created. **focusOnTouch** sets the bound component to obtain focus upon being clicked.
+This example shows how to use [defaultFocus](#defaultfocus9), [groupDefaultFocus](#groupdefaultfocus9), and [focusOnTouch](#focusontouch9). **defaultFocus** sets the bound component as the initial focus after the [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is created. **groupDefaultFocus** sets the bound component as the initial focus after the container with the specified **tabIndex** is created. **focusOnTouch** sets the bound component to obtain focus upon being clicked.
 
 ```ts
 // focusTest.ets
@@ -527,7 +527,7 @@ Clicking the component bound to **focusOnTouch** sets the focus on the component
 
 ### Example 2: Setting Focus on a Specific Component
 
-This example demonstrates how to set focus on a specific component using **focusControl.requestFocus**.
+This example demonstrates how to set focus on a specific component using [focusControl.requestFocus](#requestfocus9).
 
 ```ts
 // requestFocus.ets
@@ -610,7 +610,7 @@ Below shows how the UI behaves when you request focus for a focusable component.
 
 ### Example 3: Customizing the Focus Box Style
 
-This example shows how to change the focus box style of a component by configuring **focusBox**.
+This example shows how to change the focus box style of a component by configuring [focusBox](#focusbox12).
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -643,7 +643,7 @@ struct RequestFocusExample {
 
 ### Example 4: Setting Focus Group Traversal
 
-This example demonstrates how to set a component as the initial focus when its container gains focus by configuring **focusScopePriority**. Configuring **focusScopeId** allows the bound container component to become a focus group.
+This example demonstrates how to set a component as the initial focus when its container gains focus by configuring [focusScopePriority](#focusscopeid12). Configuring [focusScopeId](#focusscopeid12) allows the bound container component to become a focus group.
 
 ```ts
 // focusTest.ets
@@ -735,7 +735,7 @@ struct FocusableExample {
             .width(165)
             .height(40)
             .fontColor(Color.White)
-            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Focuses when Column2 first gains focus.
+            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Focus when Column2 first gains focus.
           Row({ space: 5 }) {
             Button()
               .width(80)
@@ -791,7 +791,7 @@ Pressing the **Tab** key again moves the focus to the component named **Group1**
 
 ### Example 5: Setting Focus Stop
 
-This example illustrates how to use **tabStop** to enable focus stop on a component during focus traversal with the **Tab** key.
+This example illustrates how to use [tabStop](#tabstop14) to enable focus stop on a component during focus traversal with the **Tab** key.
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -878,8 +878,8 @@ Pressing **Tab** moves the focus back to **button1**.
 
 ### Example 6: Setting Custom Focus Movement
 
-This example demonstrates how to implement custom focus movement logic using the **nextFocus** API.
-Without **nextFocus** configured, the default focus navigation order using the **Tab** key is as follows: M -> A -> B -> C. After **nextFocus** is configured, the order changes to the following: M -> D -> F -> B.
+This example demonstrates how to implement custom focus movement logic using the [nextFocus](#nextfocus18) API, available since API version 18.
+Without [nextFocus](#nextfocus18) configured, the default focus navigation order using the **Tab** key is as follows: M -> A -> B -> C. After [nextFocus](#nextfocus18) is configured, the order changes to the following: M -> D -> F -> B.
 
 ```ts
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {

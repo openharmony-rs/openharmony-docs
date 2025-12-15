@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_TypographyCreate OH_Drawing_TypographyCreate
+```
+
 ## Overview
 
 Creates an [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md) object.

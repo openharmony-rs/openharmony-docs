@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Divider** component is used to separate content blocks and content elements.
 
@@ -12,7 +12,7 @@ The **Divider** component is used to separate content blocks and content element
 >
 >  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  If the thickness of the division line is inconsistent or the division line disappears, see [FAQs](./ts-universal-attributes-pixelRoundForComponent.md#faqs).
+>  If the divider appears with inconsistent thickness or becomes invisible, follow the instructions in [FAQs](./ts-universal-attributes-pixelRoundForComponent.md#faqs).
 
 ## Child Components
 
@@ -86,13 +86,13 @@ Sets the stroke width of the divider. This attribute can be dynamically set usin
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number \| string | Yes  | Stroke width of the divider.<br>Default value: **1px**<br>Invalid values are treated as the default value.<br>Unit: vp<br>**NOTE**<br>This attribute cannot be set to a percentage. The priority of this attribute is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). If the value of this attribute is greater than that of **height**, cropping is performed based on the **height** settings. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
+| value  | number \| string | Yes  | Stroke width of the divider.<br>Default value: **1px**<br>Invalid values are treated as the default value.<br>Unit: vp<br>**NOTE**<br>Percentage values are not supported. This attribute has lower priority than the [height](ts-universal-attributes-size.md#height) attribute. If its value exceeds the **height** setting, cropping is performed based on the **height** constraint. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
 
 ### lineCap
 
 lineCap(value: LineCapStyle)
 
-Sets the cap style of the divider. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the line cap style of the divider. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -104,7 +104,7 @@ Sets the cap style of the divider. This attribute can be dynamically set using [
 
 | Name| Type                                             | Mandatory| Description                                            |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the divider.<br>Default value: **LineCapStyle.Butt**<br>Invalid values are treated as the default value.|
+| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Line cap style of the divider.<br>Default value: **LineCapStyle.Butt**<br>Invalid values are treated as the default value.|
 
 ## Events
 
@@ -112,7 +112,9 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 
-This example demonstrates how to define the style of a divider, including its direction, color, and width.
+### Example 1: Configuring the Divider Direction, Color, and Stroke Width
+
+This example demonstrates how to configure a divider's direction, color, and stroke width.
 
 ```ts
 // xxx.ets
@@ -185,3 +187,42 @@ struct DividerExample {
 ```
 
 ![en-us_image_0000001174422926](figures/en-us_image_0000001174422926.png)
+
+### Example 2: Configuring the Divider Line Cap Style
+
+This example shows how to define the line cap style for a divider.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct DividerExample {
+  build() {
+    Column({space:30}) {
+      Text("LineCap:Butt")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Butt)
+
+      Text("LineCap:Round")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Round)
+
+      Text("LineCap:Square")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Square)
+
+    }.width('100%').padding({ top: 24 })
+  }
+}
+```
+
+![dividerLineCap.png](figures/dividerLineCap.png)

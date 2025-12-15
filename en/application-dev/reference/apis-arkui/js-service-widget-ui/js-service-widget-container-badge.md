@@ -1,5 +1,10 @@
 # badge
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<badge>** component is used to mark new events that require user attention in your application.
 
@@ -49,53 +54,52 @@ The [universal events](js-service-widget-common-events.md) are supported.
 ## Example
 
    ```html
-    <!-- xxx.hml -->
-    <div class="container">
-      <badge class="badge" config="{{badgeconfig}}" visible="true" count="100" maxcount="99">
+<!-- xxx.hml -->
+<div class="container">
+    <badge class="badge" config="{{ badgeConfig }}" visible="true" count="100" maxcount="99">
         <text class="text1">example</text>
-      </badge>
-      <badge class="badge" visible="true" count="1">
+    </badge>
+    <badge class="badge" visible="true" count="1">
         <text class="text2">example</text>
-      </badge>
-    </div>
+    </badge>
+</div>
    ```
 
    ```css
-    /* xxx.css */
-    .container {
-      flex-direction: column;
-      width: 100%;
-      align-items: center;
-    }
+/* xxx.css */
+.container {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
 
-    .badge {
-      width: 80px;
-      height: 60px;
-      margin-top: 30px;
-    }
+.badge {
+    width: 160px;
+    height: 60px;
+    margin-top: 30px;
+}
 
-    .text1 {
-      background-color: #f9a01e;
-      font-size: 19fp;
-    }
+.text1 {
+    background-color: #f9a01e;
+    font-size: 19fp;
+}
 
-    .text2 {
-      background-color: #46b1e3;
-      font-size: 19fp;
-    }
+.text2 {
+    background-color: #46b1e3;
+    font-size: 19fp;
+}
    ```
 
-   ```json
-    {
-      "data":{
-        "badgeconfig":{
-          "badgeColor":"#0a59f7",
-          "textColor":"#ffffff",
-          "textSize":"9px",
-          "badgeSize": "14px"
+   ```js
+// xxx.js
+export default {
+    data: {
+        badgeConfig: {
+            badgeColor: "#0a59f7",
+            textColor: "#ffffff",
         }
-      }
     }
+}
    ```
 
 ![badgeSample](figures/badgeSample.png)

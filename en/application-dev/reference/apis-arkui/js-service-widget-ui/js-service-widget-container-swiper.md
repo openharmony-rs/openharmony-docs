@@ -1,4 +1,10 @@
 # swiper
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **Swiper** component provides a container that allows users to switch among child components using swipe gestures.
@@ -20,7 +26,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | indicator | boolean | true  | No   | Whether to enable the indicator. The default value is **true**.                      |
 | digital   | boolean | false | No   | Whether to enable the digital indicator. The default value is **false**.<br>The digital indicator takes effect only when **indicator** is set to **true**.|
 | loop      | boolean | true  | No   | Whether to enable looping.                               |
-| duration  | number  | -     | No   | Duration of the autoplay for child component switching.                             |
+| duration  | number  | 0     | No   | Duration of the autoplay for child component switching.                             |
 | vertical  | boolean | false | No   | Whether the swipe gesture is performed vertically. A vertical swipe uses the vertical indicator.                  |
 
 

@@ -27,15 +27,16 @@ You can use the setBlendMode() API to apply a blend mode to a brush or pen. This
 
 The following figure shows a key example and effect.
 
-```ts
-// ComplexEffect.ets
+<!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+``` TypeScript
 import { DrawContext, FrameNode, NodeController, RenderNode, UIContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 ```
-<!-- [arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
-```ts
-// ComplexEffect.ets
+<!-- @[arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+``` TypeScript
 function drawRenderNode(canvas: drawing.Canvas) {
   canvas.saveLayer(null, null);
   const brushCircle = new drawing.Brush();
@@ -59,7 +60,6 @@ function drawRenderNode(canvas: drawing.Canvas) {
   canvas.detachBrush();
 }
 ```
-<!-- [arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ![image_BlendMode_SrcIn.png](figures/image_BlendMode_SrcIn.png)
 
@@ -76,8 +76,9 @@ You can use the createDashPathEffect() API to set the dash pattern. This API acc
 
 The following shows how to draw a rectangle with a dash pattern. The key code and effect are as follows:
 
-```ts
-// ComplexEffect.ets
+<!-- @[arkts_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+``` TypeScript
 // Create a pen.
 let pen = new drawing.Pen();
 // Set the line width.
@@ -93,17 +94,16 @@ pen.setPathEffect(effect);
 canvas.attachPen(pen);
 // Create a rectangle.
 let rect: common2D.Rect = {
-  left: 200,
-  top: 200,
-  right: 1000,
-  bottom: 700
+  left: VALUE_200,
+  top: VALUE_200,
+  right: VALUE_1000,
+  bottom: VALUE_700
 };
 // Draw the rectangle.
 canvas.drawRect(rect);
 // Remove the stroke effect.
 canvas.detachPen();
 ```
-<!-- [arkts_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 | Original image| Image after the dashed line effect is set|
 | -------- | -------- |
@@ -138,10 +138,11 @@ You can use the createLinearGradient() API to create the linear gradient shader 
 
 The following figure shows how to draw a rectangle and use the brush to set the linear gradient shader effect.
 
-```ts
-// ComplexEffect.ets
-let startPt: common2D.Point = { x: 100, y: 100 };
-let endPt: common2D.Point = { x: 900, y: 900 };
+<!-- @[arkts_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+``` TypeScript
+let startPt: common2D.Point = { x: VALUE_100, y: VALUE_100 };
+let endPt: common2D.Point = { x: VALUE_900, y: VALUE_900 };
 let colors = [0xFFFFFF00, 0xFFFF0000, 0xFF0000FF];
 // Create a linear gradient shader.
 let shaderEffect = drawing.ShaderEffect.createLinearGradient(startPt, endPt, colors, drawing.TileMode.CLAMP);
@@ -152,17 +153,16 @@ brush.setShaderEffect(shaderEffect);
 // Set the brush fill effect.
 canvas.attachBrush(brush);
 let rect: common2D.Rect = {
-  left: 100,
-  top: 100,
-  right: 900,
-  bottom: 900
+  left: VALUE_100,
+  top: VALUE_100,
+  right: VALUE_900,
+  bottom: VALUE_900
 };
 // Draw the rectangle.
 canvas.drawRect(rect);
 // Remove the fill effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ![image_0000002158744106](figures/image_0000002158744106.png)
 
@@ -175,12 +175,13 @@ The implementation method is similar to that of the linear gradient shader. The 
 
 The following uses drawing a rectangle and setting the radial gradient shader effect using a brush as an example. The key example and effect are as follows:
 
-```ts
-// ComplexEffect.ets
-let centerPt: common2D.Point = { x: 500, y: 500 };
+<!-- @[arkts_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+``` TypeScript
+let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
 let colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
 // Create a radial gradient shader.
-let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, 600, colors, drawing.TileMode.CLAMP);
+let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, VALUE_600, colors, drawing.TileMode.CLAMP);
 // Create a brush.
 let brush = new drawing.Brush();
 // Set the radial gradient shader.
@@ -188,17 +189,16 @@ brush.setShaderEffect(shaderEffect);
 // Set the brush fill effect.
 canvas.attachBrush(brush);
 let rect: common2D.Rect = {
-  left: 100,
-  top: 100,
-  right: 900,
-  bottom: 900
+  left: VALUE_100,
+  top: VALUE_100,
+  right: VALUE_900,
+  bottom: VALUE_900
 };
 // Draw the rectangle.
 canvas.drawRect(rect);
 // Remove the fill effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ![Screenshot_20241130164939281](figures/Screenshot_20241130164939281.jpg)
 
@@ -211,9 +211,10 @@ The implementation method is similar to that of the linear gradient shader. The 
 
 The following uses drawing a rectangle and setting the sweep gradient shader for the brush as an example. The key code and effect are as follows:
 
-```ts
-// ComplexEffect.ets
-let centerPt: common2D.Point = { x: 500, y: 500 };
+<!-- @[arkts_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+``` TypeScript
+let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
 let colors = [0xFF00FFFF, 0xFFFF00FF, 0xFFFFFF00];
 // Create a sweep gradient shader.
 let shaderEffect = drawing.ShaderEffect.createSweepGradient(centerPt, colors, drawing.TileMode.CLAMP, 0, 360);
@@ -224,17 +225,16 @@ brush.setShaderEffect(shaderEffect);
 // Set the brush fill effect.
 canvas.attachBrush(brush);
 let rect: common2D.Rect = {
-  left: 100,
-  top: 100,
-  right: 900,
-  bottom: 900
+  left: VALUE_100,
+  top: VALUE_100,
+  right: VALUE_900,
+  bottom: VALUE_900
 };
 // Draw the rectangle.
 canvas.drawRect(rect);
 // Remove the fill effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ![Screenshot_20241130165741720](figures/Screenshot_20241130165741720.jpg)
 
@@ -288,8 +288,9 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 
 The following example shows how to draw a rectangle and use a brush to set a color filter effect with a 5x4 color matrix. The key example and effect diagram are as follows:
 
-```ts
-// ComplexEffect.ets
+<!-- @[arkts_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+``` TypeScript
 // Create a brush.
 let brush = new drawing.Brush();
 // Set the color
@@ -308,17 +309,16 @@ brush.setColorFilter(filter);
 // Set the brush filling effect.
 canvas.attachBrush(brush);
 let rect: common2D.Rect = {
-  left: 300,
-  top: 300,
-  right: 900,
-  bottom: 900
+  left: VALUE_300,
+  top: VALUE_300,
+  right: VALUE_900,
+  bottom: VALUE_900
 };
 // Draw the rectangle.
 canvas.drawRect(rect);
 // Remove the fill effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 | Original image| Image effect after the color filter with a 5x4 color matrix is set|
 | -------- | -------- |
@@ -341,8 +341,9 @@ Currently, only the following two types of image filters are supported:
 
 The following figure shows how to draw a rectangle and add an image filter with the blur effect using a paint brush.
 
-```ts
-// ComplexEffect.ets
+<!-- @[arkts_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+``` TypeScript
 // Set the paint brush.
 let pen = new drawing.Pen();
 // Set the line width.
@@ -356,17 +357,16 @@ pen.setImageFilter(filter);
 // Set the paint brush stroke effect.
 canvas.attachPen(pen);
 let rect: common2D.Rect = {
-  left: 300,
-  top: 300,
-  right: 900,
-  bottom: 900
+  left: VALUE_300,
+  top: VALUE_300,
+  right: VALUE_900,
+  bottom: VALUE_900
 };
 // Draw the rectangle.
 canvas.drawRect(rect);
 // Remove the stroke effect.
 canvas.detachPen();
 ```
-<!-- [arkts_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 | Original image| Image after the blur effect is set|
 | -------- | -------- |
@@ -387,8 +387,9 @@ You can use the createBlurMaskFilter() API to create a mask filter with the blur
 
 The following uses a rectangle as an example to describe how to set the mask filter effect using a brush. The key code and effect are as follows:
 
-```ts
-// ComplexEffect.ets
+<!-- @[arkts_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+``` TypeScript
 // Create a pen.
 let pen = new drawing.Pen();
 // Set the line width.
@@ -402,17 +403,16 @@ pen.setMaskFilter(filter);
 // Set the brush stroke effect.
 canvas.attachPen(pen);
 let rect: common2D.Rect = {
-  left: 300,
-  top: 300,
-  right: 900,
-  bottom: 900
+  left: VALUE_300,
+  top: VALUE_300,
+  right: VALUE_900,
+  bottom: VALUE_900
 };
 // Draw the rectangle.
 canvas.drawRect(rect);
 // Remove the stroke effect.
 canvas.detachPen();
 ```
-<!-- [arkts_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 | Original image| Image after the blur effect is set|
 | -------- | -------- |
@@ -423,5 +423,5 @@ canvas.detachPen();
 
 The following samples are available for you to develop Drawing (ArkTS) applications:
 
-- [ArkTSGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

@@ -38,7 +38,7 @@ This file declares the common types used in the NativeBuffer module.<br>Since AP
 | -- | -- | -- |
 | [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | Defines an enum for the color spaces of an **OH_NativeBuffer** instance. It is relocated from **native_buffer.h** to this header file for a more cohesive presentation.|
 | [OH_NativeBuffer_MetadataType](#oh_nativebuffer_metadatatype) | OH_NativeBuffer_MetadataType | Defines an enum for the **OH_NativeBuffer** image standards.|
-| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | Defines an enum for the keys that specify the HDR metadata of an **OH_NativeBuffer** instance.|
+| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | Defines an enum for the key values of **OH_NativeBuffer** description information, such as HDR metadata and ROI metadata.|
 
 ## Enum Description
 
@@ -122,7 +122,7 @@ enum OH_NativeBuffer_MetadataKey
 
 **Description**
 
-Defines an enum for the keys that specify the HDR metadata of an **OH_NativeBuffer** instance.
+Defines an enum for the key values of **OH_NativeBuffer** description information, such as HDR metadata and ROI metadata.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 

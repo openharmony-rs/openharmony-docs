@@ -9,7 +9,7 @@
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-MediaKeySystem implements MediaKeySystem instance management. Specifically, it provides APIs to request and process DRM certificates, creates session, manages offline media key, obtain DRM statistical information, and obtain device configuration information. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
+MediaKeySystem manages MediaKeySystem instances, handles device certificate (DRM certificate) requests and processing, creates sessions, manages offline media keys, obtains DRM metrics, and obtain device configurations. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
 
 ## Modules to Import
 
@@ -202,7 +202,7 @@ try {
 
 getStatistics(): StatisticKeyValue[]
 
-Obtains the statistical information, including the number of current sessions, plugin version, maximum decryption duration for each session, number of decryption times, and number of decryption failures.
+Obtains the DRM metrics, including the number of active sessions, plugin version details, the maximum decryption time for each session (over three attempts), the total count of decryption operations, and the number of decryption failures.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -212,7 +212,7 @@ Obtains the statistical information, including the number of current sessions, p
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| [StatisticKeyValue[]](arkts-apis-drm-i.md#statistickeyvalue)          | Statistical information.                  |
+| [StatisticKeyValue[]](arkts-apis-drm-i.md#statistickeyvalue)          | Metrics.                  |
 
 **Error codes**
 
@@ -282,7 +282,7 @@ try {
 
 generateKeySystemRequest(): Promise<ProvisionRequest\>
 
-Generates a provision request. This API uses a promise to return the result.
+Generates a request to obtain a device certificate for the MediaKeySystem. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -292,7 +292,7 @@ Generates a provision request. This API uses a promise to return the result.
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise<[ProvisionRequest](arkts-apis-drm-i.md#provisionrequest)\>          | Promise used to return the provision request obtained. If a DRM certificate already exists on the device, a failure message is returned.  |
+| Promise<[ProvisionRequest](arkts-apis-drm-i.md#provisionrequest)\>          | Promise used to return the request for a device certificate. If a device certificate already exists on the device, this operation fails.  |
 
 **Error codes**
 
@@ -310,7 +310,7 @@ import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// Do not call this API if a DRM certificate already exists on the device.
+// Do not call this API if a device certificate already exists on the device.
 mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionRequest) => {
   console.info("generateKeySystemRequest");
 }).catch((err: BusinessError) => {
@@ -322,7 +322,7 @@ mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionR
 
 processKeySystemResponse(response: Uint8Array): Promise<void\>
 
-Processes a provision response. This API uses a promise to return the result.
+Processes the response to a previously generated device certificate request. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -332,13 +332,13 @@ Processes a provision response. This API uses a promise to return the result.
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| response  | Uint8Array     | Yes  | Provision response.                  |
+| response  | Uint8Array     | Yes  | Response to a previously generated device certificate request.                  |
 
 **Return value**
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise<void\>          | Promise                  |
+| Promise<void\>          | Promise that returns no value.                  |
 
 **Error codes**
 
@@ -357,7 +357,7 @@ import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// keySystemResponse is the response obtained from the DRM service. Pass in the actual data obtained.
+// keySystemResponse is the response obtained from the DRM service. Pass in the actual value as required.
 let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
   console.info("processKeySystemResponse");
@@ -370,7 +370,7 @@ mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
 
 getCertificateStatus():CertificateStatus
 
-Obtains the status of the DRM certificate.
+Obtains the status of the device certificate.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -410,7 +410,7 @@ try {
 
 on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
-Subscribes to events indicating that the application requires a DRM certificate. This API uses an asynchronous callback to return the result.
+Subscribes to events indicating that the application requests a device certificate. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -420,8 +420,8 @@ Subscribes to events indicating that the application requires a DRM certificate.
 
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| type     | string               | Yes  | Event type. The event can be listened for when a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem). This event is triggered when the application requests a DRM certificate.|
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | Yes  | Callback used to return the event information. If this event callback is returned, a DRM certificate must be requested.                |
+| type     | string               | Yes  | Event type. This event is available for listening after a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem). It is triggered when a device certificate is required.|
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | Yes  | Callback used to return the event information. The occurrence of this event signals the need to request a device certificate.                |
 
 **Error codes**
 
@@ -447,7 +447,7 @@ mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
 
 off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
-Unsubscribes from events indicating that the application requests a DRM certificate. This API uses an asynchronous callback to return the result.
+Unsubscribes from events indicating that the application requests a device certificate. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -457,7 +457,7 @@ Unsubscribes from events indicating that the application requests a DRM certific
 
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| type     | string               | Yes  | Event type. The event can be listened for when a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem).|
+| type     | string               | Yes  | Event type. This event is available for listening after a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem).|
 | callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information.                 |
 
 **Error codes**
@@ -529,7 +529,7 @@ try {
 
 createMediaKeySession(): MediaKeySession
 
-Creates a MediaKeySession instance with the default content protection level of the DRM solution.
+Creates a MediaKeySession instance with the default content protection level.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -580,7 +580,7 @@ Obtains the IDs of offline media keys.
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Uint8Array[]          | Array holding the IDs of offline media keys.                  |
+| Uint8Array[]          | Array of offline media key IDs.                  |
 
 **Error codes**
 
@@ -620,7 +620,7 @@ Obtains the status of offline media keys with the specified IDs.
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| mediaKeyId | Uint8Array     | Yes  | Array holding the IDs of offline media keys.                  |
+| mediaKeyId | Uint8Array     | Yes  | Array of offline media key IDs.                  |
 
 **Return value**
 
@@ -645,7 +645,7 @@ import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual data returned.
+// mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual value as required.
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 try {
   let configValue: drm.OfflineMediaKeyStatus = mediaKeySystem.getOfflineMediaKeyStatus(mediaKeyId);
@@ -659,7 +659,7 @@ try {
 
 clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
-Clears offline media keys by ID.
+Clears offline media keys with the specified IDs.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -669,7 +669,7 @@ Clears offline media keys by ID.
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| mediaKeyId  | Uint8Array     | Yes  | Array holding the IDs of offline media keys.           |
+| mediaKeyId  | Uint8Array     | Yes  | Array of offline media key IDs.           |
 
 **Error codes**
 
@@ -688,7 +688,7 @@ import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual data returned.
+// mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual value as required.
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 try {
   mediaKeySystem.clearOfflineMediaKeys(mediaKeyId);

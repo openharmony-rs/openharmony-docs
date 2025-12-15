@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_CreateVMOptions
+```
+
 ## Overview
 
 Defines options for creating a JavaScript VM.

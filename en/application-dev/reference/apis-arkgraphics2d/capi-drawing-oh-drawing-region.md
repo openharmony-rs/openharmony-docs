@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Region OH_Drawing_Region
+```
+
 ## Overview
 
 Defines a struct for a region, which represents a closed area on the canvas for more accurate graphic control.

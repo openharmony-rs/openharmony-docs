@@ -21,14 +21,13 @@ import { avSession } from '@kit.AVSessionKit';
 
 ## Properties
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 | Name     | Type  | Read-Only| Optional| Description                         |
 | :-------- | :----- | :--- | :--- | :---------------------------- |
-| sessionId<sup>10+</sup> | string | Yes  | No  | Unique session ID of the AVSession object.|
-| sessionType<sup>10+</sup> | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10) | Yes  | No  | AVSession type.|
+| sessionId<sup>10+</sup> | string | Yes  | No  | Unique session ID of the AVSession object.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| sessionType<sup>10+</sup> | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10) | Yes  | No  | AVSession type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| sessionTag<sup>22+</sup> | string | Yes  | No  | Custom tag information of the AVSession.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 **Example**
 

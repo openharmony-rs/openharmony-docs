@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} OH_Drawing_PlaceholderSpan
+```
+
 ## Overview
 
 This struct describes the placeholder that acts as a span.

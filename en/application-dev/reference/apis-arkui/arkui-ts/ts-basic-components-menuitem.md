@@ -4,7 +4,7 @@
 <!--Owner: @Armstrong15-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **MenuItem** component represents an item in a menu.
 
