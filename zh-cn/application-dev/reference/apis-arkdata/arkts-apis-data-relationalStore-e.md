@@ -185,7 +185,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-使用pluginLibs参数加载开发者自定义分词器示例：
+使用pluginLibs加载开发者自定义分词器示例：
+
 1. 开发者需要实现一个fts5可加载分词器扩展，并将其编译成so，编译可参考[使用命令行CMake构建NDK工程](../../napi/build-with-ndk-cmake.md)。
 
 2. 将生成的so后放到"/libs/arm64/"目录下
