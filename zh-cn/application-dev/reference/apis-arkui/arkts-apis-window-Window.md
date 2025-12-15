@@ -1655,7 +1655,7 @@ API version 14之前，该接口在所有设备中可正常调用。
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and sub windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -1694,7 +1694,7 @@ getImmersiveModeEnabledState(): boolean
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and sub windows are supported. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -7491,7 +7491,7 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only sub windows and float windows are supported. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported. |
 
 **示例：**
 
