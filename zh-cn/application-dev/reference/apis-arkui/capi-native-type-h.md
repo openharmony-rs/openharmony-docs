@@ -3427,7 +3427,7 @@ enum ArkUI_RenderStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RENDERSTRATEGY_FAST  = 0 | 	在线绘制模式。 |
+| ARKUI_RENDERSTRATEGY_FAST  = 0 | 在线绘制模式。 |
 | ARKUI_RENDERSTRATEGY_OFFSCREEN = 1 | 离屏绘制模式。 |
 
 
