@@ -427,7 +427,7 @@ hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限**：ohos.permission.ANSWER_CALL、ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -1789,6 +1789,8 @@ startDTMF\(callId: number, character: string, callback: AsyncCallback\<void\>\):
 
 **系统接口：** 此接口为系统接口。
 
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
 **系统能力**：SystemCapability.Telephony.CallManager
 
 **参数：**
@@ -1882,6 +1884,8 @@ stopDTMF\(callId: number, callback: AsyncCallback\<void\>\): void
 停止双音多频。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -2742,6 +2746,8 @@ separateConference\(callId: number, callback: AsyncCallback\<void\>\): void
 分离会议电话。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -3814,6 +3820,8 @@ updateImsCallMode\(callId: number, mode: ImsCallMode, callback: AsyncCallback\<v
 更新Ims呼叫模式。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
