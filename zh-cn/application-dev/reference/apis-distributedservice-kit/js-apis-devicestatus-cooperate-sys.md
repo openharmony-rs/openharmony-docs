@@ -18,7 +18,7 @@ import cooperate from '@ohos.cooperate';
 
 ## cooperate.prepareCooperate<sup>11+</sup>
 
-ArkTS-Dyn：prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
+prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 准备键鼠穿越，使用Callback异步回调。
 
