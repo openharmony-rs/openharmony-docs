@@ -5,7 +5,7 @@
 > **说明：**
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
+
 > - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -45,7 +45,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 **ArkTS-Sta起始版本**：22
 
-## motion.on('operatingHandChanged')<sup>15+</sup>
+## motion.on('operatingHandChanged')
 
 on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;): void;
 
@@ -97,7 +97,7 @@ try {
 }
 ```
 
-## motion.off('operatingHandChanged')<sup>15+</sup>
+## motion.off('operatingHandChanged')
 
 off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;): void;
 
@@ -145,7 +145,7 @@ try {
 }
 ```
 
-## motion.getRecentOperatingHandStatus()<sup>15+</sup>
+## motion.getRecentOperatingHandStatus()
 
 getRecentOperatingHandStatus(): OperatingHandStatus;
 
