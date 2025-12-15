@@ -634,6 +634,7 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 | image   | number | 否 | 否 | 图像数据大小，单位为Byte。   |
 | file | number | 否 | 否 | 文件数据大小，单位为Byte。  |
 | app  | number | 否 | 否 | 应用数据大小，单位为Byte。 |
+
 ## ExtBundleStats<sup>23+</sup>
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
