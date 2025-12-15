@@ -174,7 +174,7 @@ OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString
 
 ### OH_ArkUI_StyledString_AddPlaceholder()
 
-```
+```c
 void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing_PlaceholderSpan* placeholder)
 ```
 
@@ -193,7 +193,7 @@ void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing
 
 ### OH_ArkUI_StyledString_Descriptor_Create()
 
-```
+```c
 ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)
 ```
 
@@ -211,7 +211,7 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)
 
 ### OH_ArkUI_StyledString_Descriptor_Destroy()
 
-```
+```c
 void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* descriptor)
 ```
 
@@ -229,7 +229,7 @@ void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* des
 
 ### OH_ArkUI_UnmarshallStyledStringDescriptor()
 
-```
+```c
 int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor)
 ```
 
@@ -255,7 +255,7 @@ int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t buffer
 
 ### OH_ArkUI_MarshallStyledStringDescriptor()
 
-```
+```c
 int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor, size_t* resultSize)
 ```
 
@@ -282,7 +282,7 @@ int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSi
 
 ### OH_ArkUI_ConvertToHtml()
 
-```
+```c
 const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)
 ```
 

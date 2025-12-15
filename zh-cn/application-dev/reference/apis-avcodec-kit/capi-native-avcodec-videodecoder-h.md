@@ -72,7 +72,7 @@
 
 ### OH_VideoDecoder_CreateByMime()
 
-```
+```c
 OH_AVCodec *OH_VideoDecoder_CreateByMime(const char *mime)
 ```
 
@@ -98,7 +98,7 @@ OH_AVCodec *OH_VideoDecoder_CreateByMime(const char *mime)
 
 ### OH_VideoDecoder_CreateByName()
 
-```
+```c
 OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)
 ```
 
@@ -124,7 +124,7 @@ OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)
 
 ### OH_VideoDecoder_Destroy()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Destroy(OH_AVCodec *codec)
 ```
 
@@ -150,7 +150,7 @@ OH_AVErrCode OH_VideoDecoder_Destroy(OH_AVCodec *codec)
 
 ### OH_VideoDecoder_SetCallback()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)
 ```
 
@@ -182,7 +182,7 @@ OH_AVErrCode OH_VideoDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallb
 
 ### OH_VideoDecoder_RegisterCallback()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)
 ```
 
@@ -210,7 +210,7 @@ OH_AVErrCode OH_VideoDecoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallb
 
 ### OH_VideoDecoder_SetSurface()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *window)
 ```
 
@@ -237,7 +237,7 @@ OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *windo
 
 ### OH_VideoDecoder_Configure()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -277,7 +277,7 @@ OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 ### OH_VideoDecoder_Prepare()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)
 ```
 
@@ -303,7 +303,7 @@ OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)
 
 ### OH_VideoDecoder_Start()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)
 ```
 
@@ -329,7 +329,7 @@ OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)
 
 ### OH_VideoDecoder_Stop()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)
 ```
 
@@ -355,7 +355,7 @@ OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)
 
 ### OH_VideoDecoder_Flush()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Flush(OH_AVCodec *codec)
 ```
 
@@ -381,7 +381,7 @@ OH_AVErrCode OH_VideoDecoder_Flush(OH_AVCodec *codec)
 
 ### OH_VideoDecoder_Reset()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Reset(OH_AVCodec *codec)
 ```
 
@@ -407,7 +407,7 @@ OH_AVErrCode OH_VideoDecoder_Reset(OH_AVCodec *codec)
 
 ### OH_VideoDecoder_GetOutputDescription()
 
-```
+```c
 OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)
 ```
 
@@ -433,7 +433,7 @@ OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)
 
 ### OH_VideoDecoder_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -460,7 +460,7 @@ OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format
 
 ### OH_VideoDecoder_PushInputData()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)
 ```
 
@@ -492,7 +492,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 
 ### OH_VideoDecoder_RenderOutputData()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -523,7 +523,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)
 
 ### OH_VideoDecoder_FreeOutputData()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -554,7 +554,7 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 
 ### OH_VideoDecoder_PushInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -581,7 +581,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 ### OH_VideoDecoder_RenderOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -608,7 +608,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t inde
 
 ### OH_VideoDecoder_RenderOutputBufferAtTime()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_t index, int64_t renderTimestampNs)
 ```
 
@@ -636,7 +636,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_
 
 ### OH_VideoDecoder_FreeOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -663,7 +663,7 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 
 ### OH_VideoDecoder_IsValid()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)
 ```
 
@@ -690,7 +690,7 @@ OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)
 
 ### OH_VideoDecoder_SetDecryptionConfig()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession, bool secureVideoPath)
 ```
 
@@ -718,7 +718,7 @@ OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySess
 
 ### OH_VideoDecoder_QueryInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -746,7 +746,7 @@ OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t
 
 ### OH_VideoDecoder_GetInputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_VideoDecoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -773,7 +773,7 @@ OH_AVBuffer *OH_VideoDecoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t i
 
 ### OH_VideoDecoder_QueryOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -801,7 +801,7 @@ OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 
 ### OH_VideoDecoder_GetOutputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_VideoDecoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 
