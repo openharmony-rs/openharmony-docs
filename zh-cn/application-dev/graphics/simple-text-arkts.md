@@ -32,6 +32,21 @@
 2. 初始化文本样式，此处设置字体颜色为红色，字体大小为50。
 
    <!-- @[arkts_drawing_simple_text_create_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取文本样式
+   let myTextStyle: text.TextStyle = {
+     // 文本颜色
+     color: {
+       alpha: 255,
+       red: 255,
+       green: 0,
+       blue: 0
+     },
+     // 文本大小
+     fontSize: 100
+   };
+   ```
    <!-- -->
 
 3. 初始化段落样式。
