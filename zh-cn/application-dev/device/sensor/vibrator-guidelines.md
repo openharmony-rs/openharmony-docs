@@ -444,7 +444,7 @@ let TAG = 'vibrator:';
 
    **方式一** 按照指定模式停止对应的马达振动，自定义振动不支持此类停止方式：
 
-   ​	停止固定时长振动：
+   ​  停止固定时长振动：
 
    <!-- @[vibrator_js_stop_vibrator_by_type_time_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
 
@@ -465,7 +465,7 @@ let TAG = 'vibrator:';
 ```
 
 
-   ​	停止预置振动：
+   ​  停止预置振动：
 
    <!-- @[vibrator_js_stop_vibrator_by_type_preset_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
 
