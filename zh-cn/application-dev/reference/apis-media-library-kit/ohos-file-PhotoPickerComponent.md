@@ -202,7 +202,7 @@ type ScrollStopAtStartCallback = () => void
 
 type ScrollStopAtEndCallback = () => void
 
-用户在滑动picker宫格页且滚动停止时处于底部的回调事件。
+表示用户滑动picker宫格页，当滚动停止并处于底部的回调事件类型。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
