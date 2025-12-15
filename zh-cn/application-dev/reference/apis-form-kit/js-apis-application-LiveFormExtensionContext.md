@@ -15,7 +15,7 @@ LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFor
 >
 > 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext'; 导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行，LiveFormExtensionContext直接使用。
 >
-> 在API version 22及以后新增支持使用 import { common } from '@kit.AbilityKit'; 导入，通过common.LiveFormExtensionContext方式使用。
+> 在API version 22及以后新增通过 import { common } from '@kit.AbilityKit'; 导入LiveFormExtensionContext，通过common.LiveFormExtensionContext方式使用。
 
 ## 导入模块
 ```ts
