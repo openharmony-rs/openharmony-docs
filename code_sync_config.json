@@ -806,9 +806,9 @@
 						"start_line":989
 					},
 					{
-						"end_line":1281,
+						"end_line":1412,
 						"name":"AppEvent_C++_Init",
-						"start_line":1036
+						"start_line":1043
 					},
 					{
 						"end_line":910,
@@ -10938,9 +10938,9 @@
 						"start_line":438
 					},
 					{
-						"end_line":1278,
+						"end_line":1414,
 						"name":"Sys_Native_Nullptr_Event_C++_Init",
-						"start_line":1209
+						"start_line":1339
 					}
 				]
 			},
@@ -10993,9 +10993,9 @@
 						"start_line":518
 					},
 					{
-						"end_line":1277,
+						"end_line":1413,
 						"name":"Sys_Crash_Event_C++_Init",
-						"start_line":1208
+						"start_line":1338
 					},
 					{
 						"end_line":916,
@@ -28791,7 +28791,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":19,
+						"end_line":20,
 						"name":"EventSub_Header",
 						"start_line":16
 					},
