@@ -1255,7 +1255,7 @@ if (store != undefined) {
 
 ## queryWithoutRowCount<sup>23+</sup>
 
-queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;LiteResultSet>&gt;
+queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;LiteResultSet&gt;
 
 根据指定条件查询数据库中的数据，查询时不计算行数，与[query](#query14)接口相比，性能优化约30%。使用Promise异步回调。
 
@@ -1322,7 +1322,7 @@ if (store != undefined) {
 
 ## queryWithoutRowCountSync<sup>23+</sup>
 
-queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): LiteResultSet;
+queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): LiteResultSet
 
 根据指定条件查询数据库中的数据，查询时不计算行数。对queryWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
@@ -1390,7 +1390,7 @@ if (store != undefined) {
 
 ## querySqlWithoutRowCount<sup>23+</sup>
 
-querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;LiteResultSet>&gt;
+querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;LiteResultSet&gt;
 
 根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。与[querySql](#querysql14)接口相比，性能优化约30%。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
 

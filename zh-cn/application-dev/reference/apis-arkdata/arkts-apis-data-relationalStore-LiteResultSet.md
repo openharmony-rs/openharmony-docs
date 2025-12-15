@@ -24,6 +24,8 @@ getColumnIndex(columnName: string): number
 
 根据指定的列名获取列索引。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -40,7 +42,7 @@ getColumnIndex(columnName: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -76,13 +78,15 @@ getColumnName(columnIndex: number): string
 
 根据指定的列索引获取列名。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | -------------------------- |
-| columnIndex | number | 是   | 表示结果集中指定列的索引。 |
+| columnIndex | number | 是   | 表示结果集中指定列的索引，从0开始。 |
 
 **返回值：**
 
@@ -92,7 +96,7 @@ getColumnName(columnIndex: number): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -128,6 +132,8 @@ try {
 getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
 根据指定的列索引或列名称获取列数据类型，使用Promise异步回调。
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -191,6 +197,8 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 根据指定的列索引或列名称获取列数据类型。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core 
 
 **参数：**
@@ -207,7 +215,7 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -252,6 +260,8 @@ try {
 goToNextRow(): boolean
 
 移动到结果集的下一行。
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -298,6 +308,8 @@ getValue(columnIndex: number): ValueType
 
 获取当前行中指定列的值。如果值类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring23)接口获取。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -314,7 +326,7 @@ getValue(columnIndex: number): ValueType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**     |
 |-----------|---------|
@@ -343,6 +355,8 @@ getBlob(columnIndex: number): Uint8Array
 
 以字节数组的形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成字节数组类型返回指定值，如果该列内容为空时，会返回空字节数组。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -359,7 +373,7 @@ getBlob(columnIndex: number): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -389,6 +403,8 @@ getString(columnIndex: number): string
 
 以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble23)接口获取。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -405,7 +421,7 @@ getString(columnIndex: number): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -435,6 +451,8 @@ getLong(columnIndex: number): number
 
 以Long形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成Long类型返回指定值，如果该列内容为空时，会返回0。如果当前列的数据类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring23)接口获取。如果当前列的数据类型为DOUBLE且不希望丢失精度，建议使用[getDouble](#getdouble23)接口获取。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -451,7 +469,7 @@ getLong(columnIndex: number): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -481,6 +499,8 @@ getDouble(columnIndex: number): number
 
 以double形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成double类型返回指定值，如果该列内容为空时，会返回0.0，其他类型则返回14800041。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -497,7 +517,7 @@ getDouble(columnIndex: number): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -527,6 +547,8 @@ getAsset(columnIndex: number): Asset
 
 以[Asset](arkts-apis-data-relationalStore-i.md#asset10)形式获取当前行中指定列的值，如果当前列的数据类型为Asset类型，会以Asset类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800041。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -543,7 +565,7 @@ getAsset(columnIndex: number): Asset
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -573,6 +595,8 @@ getAssets(columnIndex: number): Assets
 
 以[Assets](arkts-apis-data-relationalStore-t.md#assets10)形式获取当前行中指定列的值，如果当前列的数据类型为Assets类型，会以Assets类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800041。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -589,7 +613,7 @@ getAssets(columnIndex: number): Assets
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -617,7 +641,9 @@ try {
 
 getRow(): ValuesBucket
 
-获取当前行。
+获取当前行的数据。
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -664,6 +690,8 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 
 从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -682,7 +710,7 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -736,6 +764,8 @@ isColumnNull(columnIndex: number): boolean
 
 检查当前行中指定列的值是否为null。
 
+**模型约束：** 此接口仅在Stage模型下可用。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -752,7 +782,7 @@ isColumnNull(columnIndex: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------- |
@@ -787,6 +817,8 @@ try {
 close(): void
 
 关闭结果集，若不关闭可能会引起fd泄露和内存泄露。
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
