@@ -160,9 +160,8 @@
    ```
 
   <!-- @[napi_ark_runtime_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
-   ```ts
-   // ArkTS侧调用接口
-   import testNapi from 'libentry.so';
-
-   testNapi.createArkRuntime();
-   ```
+  
+  ``` TypeScript
+  // index.ets
+  testNapi.createArkRuntime();
+  ```
