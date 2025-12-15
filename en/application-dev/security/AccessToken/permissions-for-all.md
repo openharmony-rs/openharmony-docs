@@ -668,3 +668,17 @@ This permission applies only to binary programs.
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 23
+
+## ohos.permission.GET_DONOTDISTURB_STATE
+
+Allows an application to obtain the Do Not Disturb state of the system.
+
+With this permission, the application can query whether the system is in the Do Not Disturb state via an API call.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | Tablet
+
+**Since**: 23

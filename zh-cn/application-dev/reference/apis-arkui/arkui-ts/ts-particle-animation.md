@@ -1445,6 +1445,8 @@ struct ParticleExample4 {
 <!-- @[particle_example5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template5/Index.ets) -->
 
 ``` TypeScript
+import { LengthMetrics } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct ParticleExample5 {
@@ -1529,6 +1531,8 @@ struct ParticleExample5 {
 <!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
 
 ``` TypeScript
+import { LengthMetrics } from '@kit.ArkUI'
+
 @Entry
 @Component
 struct ParticleExample6 {
