@@ -62,7 +62,7 @@ Navigation(pathInfos: NavPathStack)
 
 Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 
-绑定路由栈到Navigation组件，并且指定一个NavDestination作为Navigation的导航栏（主页），适用于使用[NavPathStack](#navpathstack10)配合[navDestination](#navdestination10)属性或者系统路由表进行页面路由。使用示例参考[示例16（Navigation使用NavDestination作为导航栏）](#示例16navigation使用navdestination作为导航栏)。
+绑定路由栈到Navigation组件，并且指定一个NavDestination作为Navigation的导航页（主页），适用于使用[NavPathStack](#navpathstack10)配合[navDestination](#navdestination10)属性或者系统路由表进行页面路由。使用示例参考[示例16（Navigation使用NavDestination作为导航页）](#示例16navigation使用navdestination作为导航页)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -276,7 +276,7 @@ hideBackButton(value: boolean)
 
 navBarWidth(value: Length)
 
-设置导航栏宽度。仅在Navigation组件分栏时生效。
+设置导航页宽度。仅在Navigation组件分栏时生效。
 
 从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
 
@@ -288,13 +288,13 @@ navBarWidth(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                                      |
 | ------ | ---------------------------- | ---- | ----------------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 导航栏宽度。<br/>默认值：240<br/>单位：vp<br/>undefined：行为不做处理，导航栏宽度与默认值保持一致。 |
+| value  | [Length](ts-types.md#length) | 是   | 导航页宽度。<br/>默认值：240<br/>单位：vp<br/>undefined：行为不做处理，导航页宽度与默认值保持一致。 |
 
 ### navBarPosition<sup>9+</sup>
 
 navBarPosition(value: NavBarPosition)
 
-设置导航栏位置。仅在Navigation组件分栏时生效。
+设置导航页位置。仅在Navigation组件分栏时生效。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -304,13 +304,13 @@ navBarPosition(value: NavBarPosition)
 
 | 参数名 | 类型                                       | 必填 | 说明                                          |
 | ------ | ------------------------------------------ | ---- | --------------------------------------------- |
-| value  | [NavBarPosition](#navbarposition9枚举说明) | 是   | 导航栏位置。<br/>默认值：NavBarPosition.Start |
+| value  | [NavBarPosition](#navbarposition9枚举说明) | 是   | 导航页位置。<br/>默认值：NavBarPosition.Start |
 
 ### mode<sup>9+</sup>
 
 mode(value: NavigationMode)
 
-设置导航栏的显示模式，支持单栏（Stack）、分栏（Split）和自适应（Auto）。
+设置导航页的显示模式，支持单栏（Stack）、分栏（Split）和自适应（Auto）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -320,7 +320,7 @@ mode(value: NavigationMode)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [NavigationMode](#navigationmode9枚举说明) | 是   | 导航栏的显示模式。<br/>默认值：NavigationMode.Auto<br/>自适应：基于组件宽度自适应单栏和双栏。 |
+| value  | [NavigationMode](#navigationmode9枚举说明) | 是   | 导航页的显示模式。<br/>默认值：NavigationMode.Auto<br/>自适应：基于组件宽度自适应单栏和双栏。 |
 
 ### backButtonIcon<sup>9+</sup>
 
@@ -369,7 +369,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 
 hideNavBar(value: boolean)
 
-设置是否隐藏导航栏。设置为true时，隐藏Navigation的导航栏，包括标题栏、内容区和工具栏。如果此时路由栈中存在NavDestination页面，则直接显示栈顶NavDestination页面，反之显示空白。
+设置是否隐藏导航页。设置为true时，隐藏Navigation的导航页，包括标题栏、内容区和工具栏。如果此时路由栈中存在NavDestination页面，则直接显示栈顶NavDestination页面，反之显示空白。
 
 从API version 9开始到API version 10仅在双栏模式下生效。从API version 11开始在单栏、双栏与自适应模式均生效。
 
@@ -381,7 +381,7 @@ hideNavBar(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| value  | boolean | 是   | 是否隐藏导航栏。<br/>默认值：false。 <br/>true：隐藏导航栏。<br/>false：显示导航栏。|
+| value  | boolean | 是   | 是否隐藏导航页。<br/>默认值：false。 <br/>true：隐藏导航页。<br/>false：显示导航页。|
 
 ### navDestination<sup>10+</sup>
 
@@ -403,7 +403,7 @@ navDestination(builder: (name: string, param: unknown) => void)
 
 navBarWidthRange(value: [Dimension, Dimension])
 
-设置导航栏最小和最大宽度（双栏模式下生效）。
+设置导航页最小和最大宽度（双栏模式下生效）。
 
 **规则：** 优先级规则详见[minContentWidth](#mincontentwidth10)说明。
 
@@ -415,13 +415,13 @@ navBarWidthRange(value: [Dimension, Dimension])
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value | [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] | 是   | 导航栏最小和最大宽度。<br/>默认值：最小默认值 240，最大默认值为组件宽度的40% ，且不大于 432，未正确设置的值按照默认值计算。<br/>单位：vp |
+| value | [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] | 是   | 导航页最小和最大宽度。<br/>默认值：最小默认值 240，最大默认值为组件宽度的40% ，且不大于 432，未正确设置的值按照默认值计算。<br/>单位：vp |
 
 ### minContentWidth<sup>10+</sup>
 
 minContentWidth(value: Dimension)
 
-设置导航栏内容区最小宽度（双栏模式下生效）。
+设置导航页内容区最小宽度（双栏模式下生效）。
 
 >  **说明：**
 >
@@ -431,7 +431,7 @@ minContentWidth(value: Dimension)
 >
 >  2. navBarWidthRange指定分割线可以拖拽范围。如果不设置值，则按照默认值处理。拖拽范围需要满足navBarWidthRange设置的范围和minContentWidth限制。
 >
->  3. Navigation显示范围缩小：a. 缩小内容区大小。如果不设置minContentWidth属性，则可以缩小内容区至0， 否则最小缩小至minContentWidth。b. 缩小导航栏大小，缩小时需要满足导航栏宽度大于navBarRange的下限。c. 对显示内容进行裁切。
+>  3. Navigation显示范围缩小：a. 缩小内容区大小。如果不设置minContentWidth属性，则可以缩小内容区至0， 否则最小缩小至minContentWidth。b. 缩小导航页大小，缩小时需要满足导航页宽度大于navBarRange的下限。c. 对显示内容进行裁切。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -441,7 +441,7 @@ minContentWidth(value: Dimension)
 
 | 参数名  | 类型                                 | 必填 | 说明                                                         |
 | ------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| value | [Dimension](ts-types.md#dimension10) | 是   | 导航栏内容区最小宽度。<br/>默认值：360<br/>单位：vp<br/>undefined：行为不做处理，导航栏内容区最小宽度与默认值保持一致。<br/>Auto模式断点计算：默认600vp，minNavBarWidth(240vp) + minContentWidth (360vp) |
+| value | [Dimension](ts-types.md#dimension10) | 是   | 导航页内容区最小宽度。<br/>默认值：360<br/>单位：vp<br/>undefined：行为不做处理，导航页内容区最小宽度与默认值保持一致。<br/>Auto模式断点计算：默认600vp，minNavBarWidth(240vp) + minContentWidth (360vp) |
 
 ### ignoreLayoutSafeArea<sup>12+</sup>
 
@@ -644,7 +644,7 @@ onTitleModeChange(callback: (titleMode: NavigationTitleMode) =&gt; void)
 
 onNavBarStateChange(callback: (isVisible: boolean) =&gt; void) 
 
-导航栏显示状态切换时触发该回调。
+导航页显示状态切换时触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -690,7 +690,7 @@ customNavContentTransition(delegate:(from: NavContentInfo, to: NavContentInfo, o
 
 | 参数名    | 类型                                                  | 必填 | 说明                    |
 | --------- | ----------------------------------------------------- | ---- | ----------------------- |
-| from      | [NavContentInfo](#navcontentinfo11)                   | 是   | 退场Destination的页面。 |	
+| from      | [NavContentInfo](#navcontentinfo11)                   | 是   | 退场Destination的页面。 |
 | to        | [NavContentInfo](#navcontentinfo11)                   | 是   | 进场Destination的页面。 |
 | operation | [NavigationOperation](#navigationoperation11枚举说明) | 是   | 转场类型。              |
 
@@ -1682,7 +1682,7 @@ navigation单双栏显示状态发生变更时的拦截回调。
 
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
-| mode | [NavigationMode](#navigationmode9枚举说明) | 是 |  导航栏的显示模式。 |
+| mode | [NavigationMode](#navigationmode9枚举说明) | 是 |  导航页的显示模式。 |
 
 ## NavBar<sup>12+</sup>
 
@@ -1784,7 +1784,7 @@ Navigation自定义标题。
 
 ## NavBarPosition<sup>9+</sup>枚举说明
 
-导航栏位置。
+导航页位置。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1797,7 +1797,7 @@ Navigation自定义标题。
 
 ## NavigationMode<sup>9+</sup>枚举说明
 
-导航栏显示模式。Navigation处于分栏显示状态时，导航栏和内容区之间会显示分割线。
+导航页显示模式。Navigation处于分栏显示状态时，导航页和内容区之间会显示分割线。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1805,8 +1805,8 @@ Navigation自定义标题。
 
 | 名称  | 值 |说明                                                         |
 | ----- | ----- |------------------------------------------------------------ |
-| Stack | 0 |导航栏与内容区独立显示，相当于两个页面。                     |
-| Split | 1 |导航栏与内容区分两栏显示。<br/>**1.** navBarWidth最终取值与开发者设置值的关系参见表1。<br/>**2.** 缩小组件尺寸时，先缩小内容区的尺寸至minContentWidth，然后再缩小导航栏的尺寸至minNavBarWidth。若继续缩小，先缩小内容区，内容区消失后再缩小导航栏。<br/>**3.** 设置导航栏为固定尺寸时，若持续缩小组件尺寸，导航栏最后压缩显示。<br/>**4.** 若只设置了navBarWidth属性，则导航栏宽度为navBarWidth，且分割线不可拖动。<br/>**5.** 分割线的热区左右各2vp，建议避让4vp以上。<br/>**6.** Split模式下，内容区若只存在一个页面，则页面左上角不会显示返回按钮。 |
+| Stack | 0 |导航页与内容区独立显示，相当于两个页面。                     |
+| Split | 1 |导航页与内容区分两栏显示。<br/>**1.** navBarWidth最终取值与开发者设置值的关系参见表1。<br/>**2.** 缩小组件尺寸时，先缩小内容区的尺寸至minContentWidth，然后再缩小导航页的尺寸至minNavBarWidth。若继续缩小，先缩小内容区，内容区消失后再缩小导航页。<br/>**3.** 设置导航页为固定尺寸时，若持续缩小组件尺寸，导航页最后压缩显示。<br/>**4.** 若只设置了navBarWidth属性，则导航页宽度为navBarWidth，且分割线不可拖动。<br/>**5.** 分割线的热区左右各2vp，建议避让4vp以上。<br/>**6.** Split模式下，内容区若只存在一个页面，则页面左上角不会显示返回按钮。 |
 | Auto  | 2 |API version 9之前：窗口宽度>=520vp时，采用Split模式显示；窗口宽度<520vp时，采用Stack模式显示。<br/>API version 10及以上：窗口宽度>=600vp时，采用Split模式显示；窗口宽度<600vp时，采用Stack模式显示，600vp等于minNavBarWidth(240vp) + minContentWidth (360vp)。 |
 
 **表1** navBarWidth最终取值与开发者设置值的关系表
@@ -4755,9 +4755,9 @@ struct NavigationExample {
 
 ![zh-cn_image_navigation_toolbar_adaptation_landscape](figures/zh-cn_image_navigation_toolbar_adaptation_landscape.gif)
 
-### 示例16（Navigation使用NavDestination作为导航栏）
+### 示例16（Navigation使用NavDestination作为导航页）
 
-该示例代码主要展示Navigation可以使用[NavDestination](ts-basic-components-navdestination.md)作为导航栏（主页）。
+该示例代码主要展示Navigation可以使用[NavDestination](ts-basic-components-navdestination.md)作为导航页（主页）。
 
 ```ts
 @Component
