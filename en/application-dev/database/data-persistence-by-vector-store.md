@@ -432,13 +432,13 @@ The following lists only the APIs for persisting vector store data. For details 
 
    | Unit| Value in Seconds|
    | ------ | -------- |
-   | year | 365 * 24 * 60 * 60 |
-   | month | 30 * 24 * 60 * 60 |
-   | day | 24 * 60 * 60 |
-   | hour | 60 * 60 |
+   | year | 365 × 24 × 60 × 60 |
+   | month | 30 × 24 × 60 × 60 |
+   | day | 24 × 60 × 60 |
+   | hour | 60 × 60 |
    | minute | 60 |
 
-   For example, if **ttl** is set to **3 months**, the value will be converted into 7,776,000 seconds (3 x (30 * 24 * 60 * 60)).
+   For example, if **ttl** is set to **3 months**, the value will be converted into 7,776,000 seconds (3 × (30 × 24 × 60 × 60)).
 
    The sample code is as follows:
 

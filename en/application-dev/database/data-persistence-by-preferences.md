@@ -66,7 +66,7 @@ The following table lists the APIs related to user preference persistence. For m
 | API                                                    | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | getPreferencesSync(context: Context, options: Options): Preferences | Obtains a **Preferences** instance. This API returns the result synchronously. An asynchronous API is also provided.                   |
-| putSync(key: string, value: ValueType): void                 | Writes data to the **Preferences** instance. This API returns the result synchronously. An asynchronous API is also provided.|
+| putSync(key: string, value: ValueType): void                 | Writes data to the **Preferences** instance. You can use **flush()** to persist the **Preferences** instance data. This API returns the result synchronously. An asynchronous API is also provided.|
 | hasSync(key: string): boolean                                | Checks whether the **Preferences** instance contains the KV pair with the given key. The value **true** means the instance contains the KV pair; the value **false** means the opposite. The key cannot be empty. This API returns the result synchronously. An asynchronous API is also provided.|
 | getSync(key: string, defValue: ValueType): ValueType         | Obtains the value of the specified key. If the value is null or not of the default value type, **defValue** is returned. This API returns the result synchronously. An asynchronous API is also provided.|
 | deleteSync(key: string): void                                | Deletes a KV pair from the **Preferences** instance. This API returns the result synchronously. An asynchronous API is also provided.|
@@ -236,7 +236,7 @@ The following table lists the APIs related to user preference persistence. For m
 
    Specify an observer as the callback to return the data changes for an application.
 
-   If the preferences data is stored in the default format (XML), the observer callback will be triggered only after the subscribed value changes and **flush()** is executed.
+   If the preferences data is stored in the default format (XML), the observer callback will be triggered only after the subscribed **key** value changes and **flush()** is executed.
 
    Example:
 
@@ -264,7 +264,7 @@ The following table lists the APIs related to user preference persistence. For m
    })
    ```
 
-   If the preferences data is stored in GSKV format, the observer callback will be triggered after the subscribed value changes (without the need for calling **flush()**).
+   If the preferences data is stored in GSKV format, the observer callback will be triggered after the subscribed **key** value changes (without the need for calling **flush()**).
 
    Example:
     ```ts
