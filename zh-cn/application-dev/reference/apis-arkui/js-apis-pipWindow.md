@@ -916,7 +916,7 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 | 参数名        | 类型        | 必填   | 说明                                                                                                |
 |------------|-----------|------|---------------------------------------------------------------------------------------------------|
 | type       | string    | 是    | 监听事件，固定为'stateChange'，即画中画生命周期状态变化事件。                                                             |
-| callback   | function  | 是    | 回调生命周期状态变化事件以及原因。<br/>state：[PiPState](#pipstate)，表示当前画中画生命周期状态。<br/>reason：string，表示当前生命周期的切换原因。 |
+| callback   | function  | 是    | 回调生命周期状态变化事件以及原因。<br/>state：[PiPState](#pipstate)，表示当前画中画生命周期状态。<br/>reason：string，表示当前生命周期的切换原因。"requestStart"：应用调用startPip接口；"autoStart"：应用退后台自动启动；"requestDelete":应用调用stopPip接口；"panelActionDelete"：用户点击画中画控制模板的关闭按钮；"dragDelete"：用户将画中画窗口拖入垃圾桶；"panelActionRestore"：用户点击画中画窗口（还原按钮）触发还原；"other"：其他原因，新的画中画窗口拉起导致当前窗口被关闭、应用主窗口被关闭等场景。<br/>当state为ERROR时，reason表示错误码。 |
 
 **示例：**
 
