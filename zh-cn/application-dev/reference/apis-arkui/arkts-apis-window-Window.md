@@ -24,7 +24,7 @@ import { window } from '@kit.ArkUI';
 
 showWindow(callback: AsyncCallback&lt;void&gt;): void
 
-显示当前窗口，使用callback异步回调，仅支持系统窗口、应用子窗口、模态窗和全局悬浮窗，或将已显示的应用主窗口层级提升至顶部。
+显示当前窗口，使用callback异步回调，支持系统窗口、应用子窗口、模态窗和全局悬浮窗，或将已显示的应用主窗口层级提升至顶部。
 
 > **说明：**
 >
@@ -102,7 +102,7 @@ export default class EntryAbility extends UIAbility {
 
 showWindow(): Promise&lt;void&gt;
 
-显示当前窗口，使用Promise异步回调，仅支持系统窗口、应用子窗口、模态窗和全局悬浮窗，或将已显示的应用主窗口层级提升至顶部。
+显示当前窗口，使用Promise异步回调，支持系统窗口、应用子窗口、模态窗和全局悬浮窗，或将已显示的应用主窗口层级提升至顶部。
 
 > **说明：**
 >
