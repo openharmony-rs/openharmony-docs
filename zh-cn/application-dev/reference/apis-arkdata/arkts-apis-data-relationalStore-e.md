@@ -189,9 +189,7 @@ export default class EntryAbility extends UIAbility {
 
 1. 开发者需要实现一个fts5可加载分词器扩展，并将其编译成so，编译可参考[使用命令行CMake构建NDK工程](../../napi/build-with-ndk-cmake.md)。
 
-2. 将生成的so后放到"/libs/arm64/"目录下
-
-![image.png](https://raw.gitcode.com/user-images/assets/4372488/0ac39c6d-ab0e-438c-b224-96117c5de69e/image.png 'image.png')
+2. 将生成的so后放到"/libs/arm64-v8a"目录下，"/libs/"的子目录需要根据系统架构来决定具体值，例如是arm64-v8a放在"/libs/arm64-v8a"目录下，armeabi-v7a则放在"/libs/armeabi-v7a"目录下。
 
 3. 使用RDB加载自定义分词器。
 
@@ -199,18 +197,27 @@ export default class EntryAbility extends UIAbility {
 import relationalStore from '@ohos.data.relationalStore'
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import fs from '@ohos.file.fs';
 
-// 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
 export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
     let rdbStore: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
-      name: "insert.db",
+      name: "testTokenize.db",
       securityLevel: relationalStore.SecurityLevel.S1,
     };
     let bundleCodeDir = this.context.bundleCodeDir;
     // libdistributeddb_extension.so为实现的fts5可加载分词器扩展编译成的so名称
-    let path = [bundleCodeDir + "/libs/arm64/libdistributeddb_extension.so"];
+    let soPath = bundleCodeDir + "/libs/arm64/libdistributeddb_extension.so";
+    try {
+      await fs.access(soPath);
+      console.info("Dynamic library found and accessible");
+    } catch (err) {
+      console.error("Dynamic library not accessible: " + err.message);
+      return;
+    }
+
+    let path = [soPath];
     // 将pluginLibs配置为需要加载的动态库拓展路径。
     STORE_CONFIG.pluginLibs = path;
     try {
@@ -227,8 +234,9 @@ export default class EntryAbility extends UIAbility {
         console.info(`query result success, match body:${resultSet.getString(resultSet.getColumnIndex("body"))}`);
       }
       resultSet.close();
-      await relationalStore.deleteRdbStore(this.context, STORE_CONFIG);
-
+      if (rdbStore) {
+        await rdbStore.close();
+      }
     } catch (err) {
       console.error("RdbStore failed, err: code=" + err.code + " message=" + err.message);
     }
