@@ -2062,7 +2062,7 @@ if (store != undefined) {
 }
 ```
 
-## querySqlWithoutRowCountSync<sup>23+</sup>
+## querySqlWithoutRowCount<sup>23+</sup>
 
 querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;LiteResultSet>&gt;
 
