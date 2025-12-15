@@ -532,7 +532,7 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[new Date()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#%E5%A6%82%E4%BD%95%E5%B0%86%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2string%E8%BD%AC%E6%8D%A2%E4%B8%BAdate%E5%AF%B9%E8%B1%A1api-9)替代，new Date()返回Date实例对象。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[new Date()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)替代，new Date()返回Date实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
