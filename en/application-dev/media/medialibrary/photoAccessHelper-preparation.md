@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zengyawen-->
 
 An application needs to obtain a PhotoAccessHelper instance before accessing or modifying the media data in an album. User personal data is involved in the PhotoAccessHelper module. Therefore, the application must also apply for the read and write permissions from the user. Unless otherwise specified, the APIs of the PhotoAccessHelper module are used in **pages/index.ets** of the project or other customized .ets files.
 
@@ -56,9 +56,9 @@ The required permissions must be authorized by the user. After adding the permis
 **How to Develop**
 <!--RP1-->
 1. Request the required permissions via the ACL. For details, see [Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md).
-<!--RP1End-->
 2. [Declare the required permissions in the **module.json5** file](../../security/AccessToken/declare-permissions.md).
 3. [Request user authorization](../../security/AccessToken/request-user-authorization.md).
+<!--RP1End-->
 
 > **NOTE**
 >
