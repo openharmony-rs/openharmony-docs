@@ -2128,3 +2128,197 @@ struct Index {
   }
 }
 ```
+
+## 动态添加删除监听接口去除this与路径的复杂规格
+
+**变更原因：** 
+
+ArkTS-Sta简化了ArkTS-Dyn的设计，去除了必须传递的this和路径的复杂规格。
+
+**适配建议：**
+
+按照[addMonitor/clearMonitor接口：动态添加/取消监听](./state-management-static/arkts-static-new-addmonitor-clearmonitor.md)文档手动进行修改。将传递的`this`与路径替换为返回被监听状态变量的lambda函数，保存`addMonitor`返回的`IMonitorDecoratedVariable`用于之后传递给`clearMonitor`使用。向`MonitorOptions.path`传递字符串或字符串数组可以显式指定作为被监听状态变量的路径。`MonitorOptions.owner`用于绑定到`@ComponentV2`组件继承组件冻结。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+import { UIUtils } from '@kit.ArkUI';
+
+@ObservedV2
+class User {
+  @Trace age: number = 10;
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`onChange: User property ${path} has changed from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+    });
+  }
+
+  constructor(needMonitor: boolean) {
+    if (needMonitor) {
+      UIUtils.addMonitor(this, 'age', this.onChange);
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local user1: User = new User(true);
+  @Local user2: User = new User(false);
+
+  build() {
+    Column() {
+      Text(`user1 age ${this.user1.age}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 有Monitor回调
+          this.user1.age++;
+        })
+      Text(`user2 age ${this.user2.age}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 无Monitor回调
+          this.user2.age++;
+        })
+      Button('remove user1 monitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this.user1, 'age', this.user1.onChange);
+        })
+
+      Child({ needMonitor: true })
+      Child({ needMonitor: false })
+    }
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true })
+struct Child {
+  @Param needMonitor: boolean = false;
+  @Param user: User = new User(true);
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`Child needMonitor ${this.needMonitor} onChange: property ${path} has changed from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+    });
+  }
+
+  aboutToAppear(): void {
+    if (this.needMonitor) {
+      UIUtils.addMonitor(this.user, 'age', this.onChange);
+    }
+  }
+
+  build() {
+    Column() {
+      Text(`User: ${this.user.age}`)
+        .fontSize(20)
+      Button('Increase User age')
+        .onClick(() => {
+          this.user.age++;
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta
+
+```typescript
+'use static'
+
+import { UIUtils, IMonitor, IMonitorDecoratedVariable, ObservedV2, ComponentV2, Trace, Local, Entry, Param, Column, Text, Button } from '@kit.ArkUI';
+
+@ObservedV2
+class User {
+  @Trace age: number = 10;
+  monitor?: IMonitorDecoratedVariable;  // 添加接收句柄的变量
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`onChange: User property ${path} has changed from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+    });
+  }
+
+  // 传递返回被监听状态变量的箭头函数
+  constructor(needMonitor: boolean) {
+    if (needMonitor) {
+      // age修改为() => this.age
+      // 使用this.monitor接收句柄IMonitorDecoratedVariable
+      // 可选传递路径 'age'
+      this.monitor = UIUtils.addMonitor(() => this.age, this.onChange, { path: 'age' });
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local user1: User = new User(true);
+  @Local user2: User = new User(false);
+
+  build() {
+    Column() {
+      Text(`user1 age ${this.user1.age}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 有Monitor回调
+          this.user1.age++;
+        })
+      Text(`user2 age ${this.user2.age}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 无Monitor回调
+          this.user2.age++;
+        })
+      Button('remove user1 monitor')
+        .onClick(() => {
+          if (this.user1.monitor) {
+            // ArkTS-Sta使用句柄IMonitorDecoratedVariable清除监听
+            UIUtils.clearMonitor(this.user1.monitor!);
+          }
+        })
+
+      Child({ needMonitor: true })
+      Child({ needMonitor: false })
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Param needMonitor: boolean = false;
+  @Param user: User = new User(true);
+  monitor?: IMonitorDecoratedVariable;
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`Child needMonitor ${this.needMonitor} onChange: property ${path} has changed from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+    });
+  }
+
+  // 传递返回被监听状态变量的箭头函数
+  aboutToAppear(): void {
+    if (this.needMonitor) {
+      // owner用于继承组件冻结
+      this.monitor = UIUtils.addMonitor(() => this.user.age, this.onChange, {
+        path: 'user.age',
+        owner: this
+      });
+    }
+  }
+
+  build() {
+    Column() {
+      Text(`User: ${this.user.age}`)
+        .fontSize(20)
+      Button('Increase User age')
+        .onClick(() => {
+          this.user.age++;
+        })
+    }
+  }
+}
+```
