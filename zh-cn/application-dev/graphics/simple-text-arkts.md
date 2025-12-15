@@ -52,6 +52,12 @@
 3. 初始化段落样式。
 
    <!-- @[arkts_drawing_simple_text_create_paragraph_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+   };
+   ```
    <!-- -->
 
 4. 初始化段落对象，并添加文本。
