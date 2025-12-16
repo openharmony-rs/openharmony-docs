@@ -65,6 +65,19 @@
 3. 创建段落样式，并使用构造段落生成器ParagraphBuilder生成段落实例。
 
    <!-- @[complex_text_c_independent_shaping_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+   
+   ``` C++
+   // 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用
+   OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+   // 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
+   OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+   OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
+   
+   // 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
+   OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+   // 使用 FontCollection 和 之前创建的 TypographyStyle 创建 TypographyCreate。TypographyCreate 用于创建 Typography
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+   ```
 
 4. 设置文本样式，添加文本内容。
 
