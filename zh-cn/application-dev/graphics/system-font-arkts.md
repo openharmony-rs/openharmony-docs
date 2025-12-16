@@ -38,6 +38,28 @@
 
 3. 在获取系统字体信息之后通过日志打印字体信息。
    <!-- @[arkts_system_font_info_print](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   console.info('sysFontMfg::font-dir -----------' + String(fontConfig.fontDir.length));
+   for (let i = 0; i < fontConfig.fontDir.length; i++) {
+     console.info(fontConfig.fontDir[i]);
+   }
+   console.info('sysFontMfg::generic-------------' + String(fontConfig.generic.length));
+   for (let i = 0; i < fontConfig.generic.length; i++) {
+     console.info('sysFontMfg::family:' + fontConfig.generic[i].family);
+     for (let j = 0; j < fontConfig.generic[i].alias.length; j++) {
+       console.info(fontConfig.generic[i].alias[j].name + ' ' + fontConfig.generic[i].alias[j].weight);
+     }
+   }
+   console.info('sysFontMfg::fallback------------' + String(fontConfig.fallbackGroups.length));
+   for (let i = 0; i < fontConfig.fallbackGroups.length; i++) {
+     console.info('sysFontMfg::fontSetName:' + fontConfig.fallbackGroups[i].fontSetName);
+     for (let j = 0; j < fontConfig.fallbackGroups[i].fallback.length; j++) {
+       console.info('sysFontMfg::language:' + fontConfig.fallbackGroups[i].fallback[j].language + ' family:' +
+         fontConfig.fallbackGroups[i].fallback[j].family);
+     }
+   }
+   ```
 
   以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
