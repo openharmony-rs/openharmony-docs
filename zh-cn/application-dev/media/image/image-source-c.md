@@ -121,6 +121,30 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    - 创建定义图片信息的结构体对象，并获取图片信息。
 
      <!-- @[get_imageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+     
+     ``` C++
+     // 创建定义图片信息的结构体对象，并获取图片信息。
+     napi_value GetImageInfo(napi_env env, napi_callback_info info)
+     {
+         OH_ImageSourceInfo_Create(&g_thisImageSource->imageInfo);
+         Image_ErrorCode errCode = OH_ImageSourceNative_GetImageInfo(g_thisImageSource->source,
+                                                                     0, g_thisImageSource->imageInfo);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceInfo_Create failed, errCode: %{public}d.", errCode);
+             return GetJsResult(env, errCode);
+         }
+         
+         uint32_t width;
+         uint32_t height;
+         OH_ImageSourceInfo_GetWidth(g_thisImageSource->imageInfo, &width);
+         OH_ImageSourceInfo_GetHeight(g_thisImageSource->imageInfo, &height);
+         OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageInfo success,"
+                    "width: %{public}d, height: %{public}d.", width, height);
+         OH_ImageSourceInfo_Release(g_thisImageSource->imageInfo);
+         g_thisImageSource->imageInfo = nullptr;
+         return GetJsResult(env, width); // 返回获取到info信息的width。
+     }
+     ```
 
    - 读取、编辑Exif信息。
 
