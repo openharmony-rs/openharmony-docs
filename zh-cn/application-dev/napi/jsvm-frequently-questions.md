@@ -52,7 +52,7 @@
 
    ```
    func {
-   	// ...
+      // ...
        JSVM_CallbackStruct param[] = {
            {.data = nullptr, .callback = ConsoleInfo},
            {.data = nullptr, .callback = Add},
