@@ -24,6 +24,7 @@
   - [证书CMS解封装](create-cms-decapsulation-object.md)
   - [证书PKCS12的创建和解析](create-parse-pkcs12.md)
   - [证书链在线校验证书吊销状态](create-verify-cerchainvalidator-revocation-object.md)
+  - [证书链校验时下载缺失的中间CA证书](allow-download-Intermediate-Cert.md)
 - 证书管理<!--certmanager-->
   - [证书管理概述](certManager-overview.md)
   - [应用证书凭据开发指导](certManager-private-credential-guidelines.md)
