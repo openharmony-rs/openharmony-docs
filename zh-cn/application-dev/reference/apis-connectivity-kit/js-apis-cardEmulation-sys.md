@@ -19,7 +19,7 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
 
 ## 导入模块
 
-```
+```ts
 import { cardEmulation } from '@kit.ConnectivityKit';
 ```
 

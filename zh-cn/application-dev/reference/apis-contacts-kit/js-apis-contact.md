@@ -15,7 +15,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { contact } from '@kit.ContactsKit';
 ```
 
