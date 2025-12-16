@@ -157,7 +157,7 @@ PACKAGE_NAME = com.samples.freezedebug
 PROCESS_NAME = com.samples.freezedebug
 eventLog_action = ffrt,t,GpuStack,cmd:m,hot
 eventLog_interval = 10
-MSG =
+MSG = 
 Fault time:2025/06/28-14:08:34
 App main thread is not response!
 Main handler dump start time: 2025-06-28 14:08:34.067
@@ -197,8 +197,69 @@ All the three types of AppFreeze events include the following information.
 | PROCESS_NAME | Application process name.|
 | MSG | Time when the fault occurs and **EventHandler** information.|
 | task name | Task name in the task queue.|
+
+**EventHandler** information. The details are as follows:
+
+Structure of the dump information.
+
+| Field| Description|
+| -------- | -------- |
+| EventHandler dump begin curTime | Time when the dump information is obtained.|
+| Event runner | Thread name and thread ID corresponding to **EventHandler**.|
+| Current Running | Complete information about the task that is being executed.|
+| History event queue information | Information about historical tasks.|
+| VIP priority event queue information | VIP task queue information.|
+| Immediate priority event queue information | Information about the task queue that is executed immediately.|
+| High priority event queue information | Information about the high-priority task queue.|
+| Low priority event queue information | Information about the low-priority task queue.|
+| Idle priority event queue information | Information about the suspended task queue.|
+
+Task components.
+
+| Field| Description|
+| -------- | -------- |
+| send thread | Thread ID of the submitted task.|
+| send time | Time when a task is submitted.|
+| task name | Task name in the task queue.|
+| priority | Task priority.|
+| caller | Method of submitting a task.|
+| handle time | Expected execution time of a task. The value may be different from the actual task execution time (**trigger time**).|
 | trigger time | Task execution time.|
 | completeTime time | Time when the task is complete. (If no information is displayed, the task is not complete.)|
+**EventHandler** information. The details are as follows:
+
+Structure of the dump information.
+
+| Field| Description|
+| -------- | -------- |
+| EventHandler dump begin curTime | Time when the dump information is obtained.|
+| Event runner | Thread name and thread ID corresponding to **EventHandler**.|
+| Current Running | Complete information about the task that is being executed.|
+| History event queue information | Information about historical tasks.|
+| VIP priority event queue information | VIP task queue information.|
+| Immediate priority event queue information | Information about the task queue that is executed immediately.|
+| High priority event queue information | Information about the high-priority task queue.|
+| Low priority event queue information | Information about the low-priority task queue.|
+| Idle priority event queue information | Information about the suspended task queue.|
+
+Task components.
+
+| Field| Description|
+| -------- | -------- |
+| send thread | Thread ID of the submitted task.|
+| send time | Time when a task is submitted.|
+| task name | Task name in the task queue.|
+| priority | Task priority.|
+| caller | Method of submitting a task.|
+| handle time | Expected execution time of a task. The value may be different from the actual task execution time (**trigger time**).|
+| trigger time | Task execution time.|
+| completeTime time | Time when the task is complete. (If no information is displayed, the task is not complete.)|
+
+> **NOTE**
+>
+> In the **EventHandler** information, you only need to pay attention to **EventHandler dump begin curTime**, **trigger time**, and **completeTime time**.
+>
+>  
 
 ### Stack Information
 
@@ -267,24 +328,24 @@ pid context     request started max ready   free_async_space
 
 The IPC information is described as follows.
 
-| | |
+| Field| Description|
 | -------- | -------- |
-| xxx:xxx to xxx:xxx | Client process ID, thread ID to server process ID, thread ID. **async** indicates asynchronous; no **async** indicates synchronous. |
-| code | Service code agreed by the client and server. |
-| wait | Communication waiting duration. |
-| frz_state | Process freeze status.<br>**-1**: Unknown.<br>**1**: Default.<br>**2**: The binder status information is being sent to the user mode.<br>**3**: The binder receiving thread is reached. |
-| ns | Client process ID, thread ID to server process ID, thread ID (-1 for non-DroiTong processes). |
-| debug | Supplementary information about the IPC parties. |
-| active_code | The asynchronous message code being processed. |
-| active_thread | Thread that processes the asynchronous message. |
-| pending_async_proc | Process blocked by the asynchronous message. |
-| pid | Process ID. |
-| context | Communication mode. |
-| request | Number of IPC threads requested. |
-| started | Number of started IPC threads. |
-| max | Maximum number of IPC threads that can be requested. |
-| ready | Free IPC thread. |
-| free_async_space | Free asynchronous space, which is used to observe asynchronous information blocking. |
+| xxx:xxx to xxx:xxx | Client process ID and thread ID to server process ID and thread ID. **async** indicates asynchronous; no **async** indicates synchronous.|
+| code | Service code agreed by the client and server.|
+| wait | Communication waiting duration.|
+| frz_state | Process freeze state.<br>**-1**: Unknown.<br>**1**: Default.<br>**2**: The binder status information is being sent to the user mode.<br>**3**: The binder receiving thread is reached.|
+| ns | Client process ID and thread ID to server process ID and thread ID (**-1** for non-DroiTong processes).|
+| debug | Supplementary information about the IPC parties.|
+| active_code | Code of the asynchronous message that is being processed.|
+| active_thread | Thread that processes the asynchronous message.|
+| pending_async_proc | Process blocked by the asynchronous message.|
+| pid | Process ID.|
+| context | Communication mode.|
+| request | Number of IPC threads requested.|
+| started | Number of started IPC threads.|
+| max | Maximum number of IPC threads that can be requested.|
+| ready | Idle IPC thread.|
+| free_async_space | Free asynchronous space, which is used to observe asynchronous information blocking.|
 
 (2) **PeerBinder Stacktrace**: Stack traces of unresponsive peer processes communicating with the faulty process.
 
@@ -320,20 +381,20 @@ Total: 22.45%; User Space: 13.64%; Kernel Space: 8.81%; iowait: 0.33%; irq: 0.07
 Details of Processes:
     PID   Total Usage      User Space    Kernel Space    Page Fault Minor    Page Fault Major    Name
     13680      8.86%           8.31%          0.55%            4711                6637            com.samples.freezedebug
-    644        2.55%           1.40%          1.15%          210104                7391            hiview
-    600        0.89%           0.78%          0.10%           60192                 514            hilogd
-    1685       0.53%           0.31%          0.22%          879838               59636            foundation
+    644        2.55%           1.40%          1.15%          210104                7391            hiview         
+    600        0.89%           0.78%          0.10%           60192                 514            hilogd         
+    1685       0.53%           0.31%          0.22%          879838               59636            foundation     
 ```
 
-| | |
+| Field| Description|
 | -------- | -------- |
-| PID | Process ID. |
-| Total Usage | CPU usage. **Total Usage** = **User Space** + **Kernel Space**. |
-| User Space | User space usage. |
-| Kernel Space | Kernel space usage. |
-| Page Fault Minor | Minor page fault. |
-| Page Fault Major | Major page fault. |
-| Name | Process name. |
+| PID | Process ID.|
+| Total Usage | CPU usage. **Total Usage** = **User Space** + **Kernel Space**.|
+| User Space | CPU usage in user mode.|
+| Kernel Space | CPU usage in kernel mode.|
+| Page Fault Minor | Minor page fault.|
+| Page Fault Major | Major page fault.|
+| Name | Name of the process.|
 
 ### Memory Information
 
@@ -385,52 +446,50 @@ The following describes the MSG information with two complete lifecycle switchov
 
 (1) Events in the load phase (when the application process is not created)
 
-| | | |
+| server | client | Description|
 | -------- | -------- | -------- |
-| server | client | Description |
-| AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | Start. |
-| AppMgrServiceInner::LoadAbility | -| The process is yet to be created. |
-| AppMgrService::AttachApplication | -| The process is successfully created and attached. |
-| ServiceInner::AttachApplication | -| The process is attached. |
-| ServiceInner::LaunchApplication | -| The application is scheduled to execute the loading process. |
-| AppRunningRecord::LaunchApplication | -| The application is scheduled to execute the loading process. |
-| AppScheduler::ScheduleLaunchApplication | -| The application is scheduled to execute the loading process. |
-| -| ScheduleLaunchApplication | The application receives a loading scheduling request. |
-| -| HandleLaunchApplication begin | The application loading starts. |
-| -| HandleLaunchApplication end | The application loading ends. |
-| AppRunningRecord::LaunchPendingAbilities | -| The application is scheduled to start ability. |
-| -| MainThread::ScheduleLaunchAbility | The application receives a request to load ability. |
-| -| MainThread::HandleLaunchAbility | The main thread processes the request. |
-| -| JsAbilityStage::Create | An AbilityStage is loaded. |
-| -| JsAbilityStage::OnCreate begin | The **onCreate** lifecycle of AbilityStage starts. |
-| -| JsAbilityStage::OnCreate end | The **onCreate** lifecycle of **AbilityStage** ends. |
-| -| AbilityThread::Attach | The ability is attached to AMS, and the loading process ends. |
+| AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | The lifecycle starts.|
+| AppMgrServiceInner::LoadAbility | -| Before the process is created.|
+| AppMgrService::AttachApplication | -| The process is created and attached.|
+| ServiceInner::AttachApplication | -| The process is attached.|
+| ServiceInner::LaunchApplication | -| The application is scheduled to execute the loading process.|
+| AppRunningRecord::LaunchApplication | -| The application is scheduled to execute the loading process.|
+| AppScheduler::ScheduleLaunchApplication | -| The application is scheduled to execute the loading process.|
+| -| ScheduleLaunchApplication | The application receives a loading scheduling request.|
+| -| HandleLaunchApplication begin | The application loading starts.|
+| -| HandleLaunchApplication end | The application loading ends.|
+| AppRunningRecord::LaunchPendingAbilities | -| The application is scheduled to start an ability.|
+| -| MainThread::ScheduleLaunchAbility | The application receives a request to load an ability.|
+| -| MainThread::HandleLaunchAbility | The main thread processes the request.|
+| -| JsAbilityStage::Create | The AbilityStage is loaded.|
+| -| JsAbilityStage::OnCreate begin | The **onCreate** lifecycle of the AbilityStage starts.|
+| -| JsAbilityStage::OnCreate end | The **onCreate** lifecycle of the AbilityStage ends.|
+| -| AbilityThread::Attach | The ability is attached to AMS, and the loading process ends.|
 
  (2) Foreground phase event – cold start
 
-| | | |
+| server | client | Description|
 | -------- | -------- | -------- |
-| server | client | Description |
-| AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. |  | Start. |
-| ServiceInner::UpdateAbilityState | -| The application frontend is scheduled first. |
-| AppRunningRecord::ScheduleForegroundRunning | -| The application foreground is scheduled. |
-| AppScheduler::ScheduleForegroundApplication | -| The application foreground is scheduled. |
-| -| ScheduleForegroundApplication | The application receives a scheduling request. |
-| -| HandleForegroundApplication | The main thread executes the scheduling request. |
-| AppMgrService::AppForegrounded | -| The application enters the foreground. |
-| ServiceInner::AppForegrounded | -| The application enters the foreground. |
-| -| AbilityThread::ScheduleAbilityTransaction | The application receives an ability foreground scheduling request. |
-| -| AbilityThread::HandleAbilityTransaction | The main thread executes the ability foreground scheduling. |
-| -| JsUIAbility::OnStart begin | The **onCreate** lifecycle starts. |
-| -| JsUIAbility::OnStart end | The **onCreate** lifecycle ends. |
-| -| JsUIAbility::OnSceneCreated begin | The window scene creation starts. |
-| -| JsUIAbility::OnSceneCreated end | The window scene creation ends. |
+| AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. |  | The lifecycle starts.|
+| ServiceInner::UpdateAbilityState | -| The application foregrounding scheduling is initiated first.|
+| AppRunningRecord::ScheduleForegroundRunning | -| The application foregrounding is scheduled.|
+| AppScheduler::ScheduleForegroundApplication | -| The application foregrounding is scheduled.|
+| -| ScheduleForegroundApplication | The application receives the scheduling.|
+| -| HandleForegroundApplication | The main thread executes scheduling.|
+| AppMgrService::AppForegrounded | -| The application foregrounding is complete.|
+| ServiceInner::AppForegrounded | -| The application foregrounding is complete.|
+| -| AbilityThread::ScheduleAbilityTransaction | The application receives the ability foregrounding scheduling.|
+| -| AbilityThread::HandleAbilityTransaction | The main thread executes ability foregrounding scheduling.|
+| -| JsUIAbility::OnStart begin | The **onCreate** lifecycle starts.|
+| -| JsUIAbility::OnStart end | The **onCreate** lifecycle ends.|
+| -| JsUIAbility::OnSceneCreated begin | The window scene creation starts.|
+| -| JsUIAbility::OnSceneCreated end | The window scene creation ends.|
 | -| JsUIAbility::OnWillForeground begin | -|
 | -| JsUIAbility::OnWillForeground end |- |
-| -| JsUIAbility::WindowScene::GoForeground begin | The window API is called to execute **goForeground**. |
-| -| UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | The callback after the window migration. |
-| -| JsUIAbility::OnForeground begin | The **onForeground** lifecycle starts. |
-| -| JsUIAbility::OnForeground end | The **onForeground** lifecycle ends. |
-| -| | The foreground lifecycle ends after both the window callback and **onForeground** are complete. |
+| -| JsUIAbility::WindowScene::GoForeground begin | The window API is called to execute **goForeground**.|
+| -| UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | Calledback after the window is in the foreground.|
+| -| JsUIAbility::OnForeground begin | The **onForeground** lifecycle starts.|
+| -| JsUIAbility::OnForeground end | The **onForeground** lifecycle ends.|
+| -|  | After the window callback and **onForeground** are complete, the foreground lifecycle ends.|
 
 You can analyze other log information by referring to [Log Specifications](#log-specifications). Note that the main thread is suspended during lifecycle switching in most cases. You can compare the stack and BinderCatcher information in the two event logs.

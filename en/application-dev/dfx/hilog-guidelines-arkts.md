@@ -144,7 +144,7 @@ Add a click event in a button, which prints a log when the button is clicked.
    '%{public}s World %{public}d'
    ```
 
-   *%{public}s* indicates a string, and *%{public}d* indicates an integer. Both of them are displayed in plaintext.
+   *%{public}s* is a public string and *%{public}d* is a public integer.
 
    To output objects, use the following format string:
 
@@ -164,8 +164,8 @@ Add a click event in a button, which prints a log when the button is clicked.
    The log result is as follows:
 
    ```txt
-   01-02 08:18:24.947   30988-30988   A0ff00/testTag                  com.example.hilogDemo  I     hello World 3
-   01-02 08:18:24.947   30988-30988   A0ff00/testTag                  com.example.hilogDemo  I     peter is {"name":"peter","age":15}
+   01-02 08:18:24.947   30988-30988   A0FF00/testTag                  com.example.hilogDemo  I     hello World 3
+   01-02 08:18:24.947   30988-30988   A0FF00/testTag                  com.example.hilogDemo  I     peter is {"name":"peter","age":15}
    01-02 08:18:24.947   30988-30988   A00000/testTag                  com.example.hilogDemo  E     this is an error level log
    ```
 <!--RP3End-->
