@@ -373,7 +373,7 @@ getBlob(columnIndex: number): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -565,7 +565,7 @@ getAsset(columnIndex: number): Asset
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -613,7 +613,7 @@ getAssets(columnIndex: number): Assets
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
