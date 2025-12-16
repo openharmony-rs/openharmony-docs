@@ -25,7 +25,7 @@
 
 其次在CMakeLists.txt中添加以下动态链接库：
 
-```
+```txt
 libuv.so
 ```
 
@@ -141,7 +141,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```
 
 在index.d.ts文件中添加如下代码：
-```
+```ts
 export const test:() => number;
 ```
 
@@ -341,7 +341,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 在index.d.ts添加如下代码：
 
-```
+```ts
 export const testClose:() => number;
 ```
 
@@ -463,7 +463,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```
 在index.d.ts添加如下代码：
 
-```
+```ts
 export const testClose:() => number;
 ```
 
@@ -796,7 +796,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 在index.d.ts添加如下代码：
 
-```
+```ts
 export const testTimerAsync:() => number;
 export const testTimerAsyncSend:() => number;
 ```
@@ -1177,7 +1177,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 在index.d.ts添加如下代码：
 
-```
+```ts
 export const testTimerAsync:() => number;
 export const testTimerAsyncSend:() => number;
 ```
@@ -1263,7 +1263,7 @@ int main()
 
 可以看到，每触发一次，主线程都会执行一次回调函数。
 
-```
+```txt
 0th:subThread triggered
 ohos async print
 1th:subThread triggered
@@ -1302,7 +1302,9 @@ work_cb：提交给工作线程的任务。
 
 after_work_cb：loop所在线程要执行的回调函数。
 
-**注意：** work_cb与after_work_cb的执行有一个时序问题，只有work_cb执行完，通过`uv_async_send(loop->wq_async)`触发fd事件，loop所在线程在下一次迭代中才会执行after_work_cb。只有执行到after_work_cb时，与之相关的uv_work_t生命周期才算结束。
+> **注意：**
+>
+> work_cb与after_work_cb的执行有一个时序问题，只有work_cb执行完，通过`uv_async_send(loop->wq_async)`触发fd事件，loop所在线程在下一次迭代中才会执行after_work_cb。只有执行到after_work_cb时，与之相关的uv_work_t生命周期才算结束。
 
 **1. 异步任务提交**
 
