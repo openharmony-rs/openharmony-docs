@@ -157,13 +157,13 @@ Codec MIME类型枚举。
 
 ## SoundInterruptMode <sup>23+</sup>
 
-表示SoundPool中同一ID的音频在播放时的打断模式
+表示在SoundPool中，同一ID的音频在播放时的打断模式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 | 名称                                  | 值      | 说明                             |
 | ----------------------------------- | ------- | --------------------------------- |
-| NO_INTERRUPT                            | 0       | 表示对同一ID的音频，若前者尚未播放完成，后者不会打断前者的播放，二者并行播放。            |
-| SAME_SOUND_INTERRUPT                            | 1       | 表示对同一ID的音频，若前者尚未播放完成，后者在播放前会先打断前者的播放。            |
+| NO_INTERRUPT                            | 0       | 表示同一ID的音频，如果前者尚未播放完成，后者不会打断前者的播放，二者并行播放。            |
+| SAME_SOUND_INTERRUPT                            | 1       | 表示同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。            |
 
 ## StateChangeReason<sup>9+</sup>
 
