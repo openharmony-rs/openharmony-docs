@@ -421,6 +421,49 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 创建相机拍照流。
 
      <!-- @[start_cameraSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     Camera_ErrorCode StartTakePhoto(char* str)
+     {
+         Camera_Manager* cameraManager = nullptr;
+         Camera_Device* cameras = nullptr;
+         uint32_t size = 0;
+         Camera_Input* cameraInput = nullptr;
+         Camera_ErrorCode ret = InitCameraManagerAndInput(cameraManager, cameras, size, cameraInput);
+         if (ret != CAMERA_OK) return ret;
+     
+         Camera_OutputCapability* cameraOutputCapability = nullptr;
+         ret = GetCameraOutputCapability(cameraManager, cameras, 0, cameraOutputCapability);
+         if (ret != CAMERA_OK) return ret;
+         const Camera_Profile* photoProfile = cameraOutputCapability->photoProfiles[0];
+         Camera_PhotoOutput* photoOutput = nullptr;
+         ret = OH_CameraManager_CreatePhotoOutput(cameraManager, photoProfile, str, &photoOutput);
+         if (photoProfile == nullptr || photoOutput == nullptr || ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePhotoOutput failed.");
+             return ret;
+         }
+     
+         ret = OH_CameraInput_Open(cameraInput);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CameraInput_open failed.");
+             return ret;
+         }
+     
+         Camera_CaptureSession* captureSession = nullptr;
+         ret = StartCaptureSession(cameraManager, cameraInput, photoOutput, &captureSession);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "StartCaptureSession failed.");
+             return ret;
+         }
+     
+         ret = OH_PhotoOutput_Capture(photoOutput);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_Capture failed.");
+             return ret;
+         }
+         return CAMERA_OK;
+     }
+     ```
 
    - 调用相机拍照的整体流程。
 
