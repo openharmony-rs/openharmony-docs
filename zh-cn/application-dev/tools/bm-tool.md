@@ -1266,7 +1266,7 @@ SysCap不一致导致安装失败。
 
 检查多HAP/HSP中配置的SysCap，请保持一致。
 
-
+<!--Del-->
 ### 9568294 appType不一致导致的安装失败
 **错误信息**
 
@@ -1282,9 +1282,9 @@ error: install failed due to apptype not same.
 
 **处理步骤**
 
-* 方案一：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的HAP包。
+* 方案一：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成），再安装新的HAP包。
 * 方案二：保证多HAP/HSP使用同一个证书签名，保证签名的一致性。
-* 方案三：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。
+* 方案三：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。<!--DelEnd-->
 
 ### 9568297 由于设备sdk版本较低导致安装失败
 **错误信息**
