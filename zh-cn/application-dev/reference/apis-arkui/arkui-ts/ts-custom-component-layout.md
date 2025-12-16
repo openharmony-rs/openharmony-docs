@@ -346,7 +346,7 @@ measure(childConstraint: ConstraintSizeOptions)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[measure](#measure)替代。
+> 从API version 9开始支持，从API version 10开始废弃，无替代接口。可以使用[measure](#measure)对子组件的尺寸范围进行限制。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -366,7 +366,7 @@ layout(childLayoutInfo: LayoutInfo)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[layout](#layout)替代。
+> 从API version 9开始支持，从API version 10开始废弃，无替代接口。可以使用[layout](#layout)对子组件的位置信息进行限制。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

@@ -1868,7 +1868,7 @@ export default class EntryAbility extends UIAbility{
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
         let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-        console.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+        console.info("KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
       });
     }
 }
