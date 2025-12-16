@@ -1261,6 +1261,52 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 });
 ```
 
+### setInterruptMode
+
+setInterruptMode(interruptMode: media.SoundInterruptMode): void;
+
+设置音频流的打断模式。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                        |
+| -------- | ---------------------- | ---- | --------------------------- |
+| interruptMode | media.SoundInterruptMode | 是   | 音频流打断模式，通过media.SoundInterruptMode枚举获取。 |
+
+**返回值：**
+
+| 类型             | 说明                             |
+| ---------------- | -------------------------------- |
+| void | 无返回结果。 |
+
+**示例：**
+
+```js
+import { media } from '@kit.MediaKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    // 设置为同音频截断模式
+    soundPool.setInterruptMode(media.SoundInterruptMode.SAME_SOUND_INTERRUPT);
+    // 设置为同音频并行播放模式
+    soundPool.setInterruptMode(media.SoundInterruptMode.NO_INTERRUPT);
+  }
+});
+```
+
 ### unload
 
 unload(soundID: number, callback: AsyncCallback\<void>): void
