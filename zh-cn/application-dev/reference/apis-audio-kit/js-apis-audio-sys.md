@@ -4335,7 +4335,9 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 
 ## AudioCollaborativeManager<sup>20+</sup>
 
-移动全景声管理器。在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](#getcollaborativemanager20)获取AudioCollaborativeManager实例。
+移动全景声管理器。
+
+在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](#getcollaborativemanager20)获取AudioCollaborativeManager实例。
 
 ### getCollaborativeManager<sup>20+</sup>
 
@@ -4392,7 +4394,7 @@ isCollaborativePlaybackSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202     | Not system APP.                     |
+| 202     | Not system application.                     |
 
 **示例：**
 
