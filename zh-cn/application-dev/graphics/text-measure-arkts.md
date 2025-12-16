@@ -72,6 +72,15 @@
 3. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
    <!-- @[ts_text_metrics_create_paragraph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 在段落生成器中设置文本样式
+   paragraphBuilder.pushStyle(myTextStyle);
+   // 在段落生成器中设置文本内容
+   paragraphBuilder.addText("文本测量测试");
+   // 通过段落生成器生成段落
+   let paragraph = paragraphBuilder.build();
+   ```
 
 4. 调用测量相关接口，获取指定的测量信息。
 
