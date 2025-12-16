@@ -43,6 +43,12 @@
 2. 导入依赖的相关头文件。
 
    <!-- @[c_text_metrics_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   #include <native_drawing/drawing_font_collection.h>
+   #include <native_drawing/drawing_text_typography.h>
+   #include <native_drawing/drawing_text_declaration.h>
+   ```
 
 3. 创建段落生成器ParagraphBuilder，并设置段落样式。
 
