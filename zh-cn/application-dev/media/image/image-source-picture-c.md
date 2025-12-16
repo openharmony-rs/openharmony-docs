@@ -68,6 +68,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 4. 创建一个ImagePictureNative实例。
 
    <!-- @[create_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->    
+   
+   ``` C++
+   static ImagePictureNative *g_thisPicture = new ImagePictureNative();
+   ```
 
 5. 定义ImageAuxiliaryPictureNative类。
 
