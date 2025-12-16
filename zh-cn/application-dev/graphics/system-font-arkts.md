@@ -130,6 +130,10 @@
 6. 生成段落，用于后续绘制使用。
 
    <!-- @[arkts_use_and_change_system_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let paragraph = ParagraphGraphBuilder.build();
+   ```
 
 效果展示如下：
 
