@@ -34,7 +34,8 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 [ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callable或明确的Error message](napi-faq-about-common-basic.md#arkts侧报错显示undefined)  
 
 [模块注册与模块命名](napi-guidelines.md#模块注册与模块命名)  
-2. 同时也可参考动态加载能力是否可以满足该场景  
+
+2. 同时也可参考动态加载能力是否可以满足该场景：
 
 [napi_load_module_with_info支持的场景](use-napi-load-module-with-info.md#napi_load_module_with_info支持的场景)  
 
@@ -60,7 +61,7 @@ napi_call_threadsafe_function按先入先出的顺序执行。
 
 napi_call_threadsafe_function_with_priority根据指定的入队方式执行。
 
-[使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的的任务](use-call-threadsafe-function-with-priority.md)
+[使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务](use-call-threadsafe-function-with-priority.md)
 
 ## 是否存在便捷的回调ArkTS的方式
 
@@ -154,9 +155,9 @@ napi_value NapiGenericFailure(napi_env env, napi_callback_info)
 如果想要在Native层调用ArkTS层对象方法，则Native层需获取该ArkTS Function对象。  
 
 获取的途径有多种，比如：  
-1. 通过传递的方式，ArkTS层传给Native层，也就是问题描述的方案   
-2. 可以把这个ArkTS function通过属性设置方式绑定到Native层可访问的对象上，这样Native层通过这个对象也能拿到function进行调用   
-3. Node-API层也提供了一个创建ArkTS Function对象的能力，即napi_create_function，可以直接在Native层中创建出来，这样，Native层自然就能拿到这个ArkTS Function对象   
+1. 通过传递的方式，ArkTS层传给Native层，也就是问题描述的方案。   
+2. 可以把这个ArkTS function通过属性设置方式绑定到Native层可访问的对象上，这样Native层通过这个对象也能拿到function进行调用。   
+3. Node-API层也提供了一个创建ArkTS Function对象的能力，即napi_create_function，可以直接在Native层中创建出来，这样，Native层自然就能拿到这个ArkTS Function对象。   
 
 ## 是否能调用ArkTS的方法并获取到结果
 
@@ -190,16 +191,17 @@ napi_value NapiGenericFailure(napi_env env, napi_callback_info)
 多线程下napi_env的使用注意事项是什么？是否存在napi_env切换导致的异常问题？是否必须在主线程？  
 
 - 注意事项：   
-1. napi_env和ArkTS线程是绑定的，napi_env不能跨线程使用，否则会导致稳定性问题。
 
-[多线程限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-process#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%99%90%E5%88%B6)
+1. napi_env和ArkTS线程是绑定的，napi_env不能跨线程使用，否则会导致稳定性问题。可参考文档
+
+[多线程限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-process#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%99%90%E5%88%B6)。
 2. 在使用env调用napi接口时，需要注意，大部分的napi接口只能在env所在的ArkTS线程上调用，不然会出现多线程安全问题。
 
-参考该文档的第四点【multi-thread】 [开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)   
-3. 最好不要缓存napi env，否则容易出现多线程安全问题和use-after-free问题 
+可参考该文档的第四点【multi-thread】 [开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。   
+3. 最好不要缓存napi env，否则容易出现多线程安全问题和use-after-free问题。
 
-参考该文档的第八点【use-after-free】[开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615) 
-4. [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73)
+可参考该文档的第八点【use-after-free】[开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。 
+4. [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73)。
 
 ## napi_call_threadsafe_function执行顺序不符合预期
 
@@ -227,7 +229,8 @@ posttask(c);
 ## ArkTS侧报错显示undefined
 具体问题：
 
-ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callable或明确的Error message
+ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callable或明确的Error message。
+
 1. 排查.cpp文件在注册模块时的模块名称与so的名称匹配一致。
 
    如模块名为entry，则so的名字为libentry.so，napi_module中nm_modname字段应为entry，大小写与模块名保持一致。
@@ -314,7 +317,7 @@ Node-API接口正常执行后，会返回一个napi_ok的状态枚举值，若No
 
 参考方案：  
 
-先标记可释放状态，当A和B都为可释放状态时同时释放C++对象   
+先标记可释放状态，当A和B都为可释放状态时同时释放C++对象。   
 
 原理：将所有依赖对象的释放逻辑集中在最后一个被销毁的 ArkTS 对象的 finalize_cb 中处理。  
 
