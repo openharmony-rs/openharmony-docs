@@ -269,7 +269,7 @@ goToNextRow(): boolean
 
 | 类型    | 说明                                          |
 | ------- | --------------------------------------------- |
-| boolean | 如果成功移动结果集，则为true；否则返回false。 |
+| boolean | 如果成功移动结果集到下一行，则为true；否则返回false。 |
 
 **错误码：**
 
@@ -306,7 +306,7 @@ try {
 
 getValue(columnIndex: number): ValueType
 
-获取当前行中指定列的值。如果值类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring23)接口获取。
+获取当前行中指定列的值。如果值类型为INTEGER，值大于Number.MAX_SAFE_INTEGER或小于Number.MIN_SAFE_INTEGER且不希望丢失精度，建议使用[getString](#getstring23)接口获取。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -778,7 +778,7 @@ isColumnNull(columnIndex: number): boolean
 
 | 类型    | 说明                                                      |
 | ------- | --------------------------------------------------------- |
-| boolean | 如果当前行中指定列的值为null，则返回true，否则返回false。 |
+| boolean | 如果当前行中指定列的值为null，则返回true；否则返回false。 |
 
 **错误码：**
 
