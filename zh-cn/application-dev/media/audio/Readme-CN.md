@@ -30,7 +30,7 @@
   - [分布式音频播放(仅对系统应用开放)](distributed-audio-playback.md)
   <!--DelEnd-->
   <!--Del-->
-  - [移动全景声管理（仅对系统应用开放）](audio-collaborative-management.md)
+  - [移动全景声管理（仅对系统应用开放）](audio-collaborative-management-sys.md)
   <!--DelEnd-->
 - 音频录制<!--audio-recording-->
   - [音频录制开发概述](audio-recording-overview.md)

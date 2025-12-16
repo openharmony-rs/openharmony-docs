@@ -3944,17 +3944,13 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 
 移动全景声管理器。在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](#getcollaborativemanager20)获取AudioCollaborativeManager实例。
 
-**系统接口：** 该接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 ### getCollaborativeManager<sup>20+</sup>
 
 getCollaborativeManager(): AudioCollaborativeManager
 
 获取移动全景声管理器。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -3962,7 +3958,7 @@ getCollaborativeManager(): AudioCollaborativeManager
 
 | 类型                                           | 说明                          |
 |----------------------------------------------| ----------------------------- |
-| [AudioCollaborativeManager](#audiocollaborativemanager20) | AudioCollaborativeManager实例。 |
+| [AudioCollaborativeManager](#audiocollaborativemanager20) | 返回一个AudioCollaborativeManager实例。 |
 
 **错误码：**
 
@@ -3970,7 +3966,7 @@ getCollaborativeManager(): AudioCollaborativeManager
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202     | Not system application.                     |
+| 202     | Not system APP.                     |
 
 **示例：**
 
@@ -3995,7 +3991,7 @@ isCollaborativePlaybackSupported(): boolean
 
 | 类型    | 必填 | 说明                                                    |
 | ------- |------|------------------------------------------------------- |
-| boolean |  是  | 返回系统是否支持移动全景声能力，true表示支持，false表示不支持。 |
+| boolean |  是  | 表示系统是否支持移动全景声能力，true表示支持，false表示不支持。 |
 
 **错误码：**
 
@@ -4003,7 +3999,7 @@ isCollaborativePlaybackSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202     | Not system application.                     |
+| 202     | Not system APP.                     |
 
 **示例：**
 
@@ -4026,7 +4022,7 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 
 根据输入指令，开启或关闭指定设备移动全景声。使用Promise异步回调。
 
-当前只有蓝牙A2DP设备支持移动全景声。当开启移动全景声后，指定蓝牙A2DP设备和本地扬声器将同时播放音频。
+当前只有蓝牙A2DP（Advanced Audio Distribution Profile）设备支持移动全景声。当开启移动全景声后，指定蓝牙A2DP设备和本地扬声器将同时播放音频。
 
 **系统接口：** 此接口为系统接口。
 
