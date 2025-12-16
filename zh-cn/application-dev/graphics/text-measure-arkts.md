@@ -40,6 +40,10 @@
 1. 导入依赖的相关模块。
 
    <!-- @[ts_text_metrics_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { text } from '@kit.ArkGraphics2D';
+   ```
 
 2. 创建段落样式，并使用构造段落生成器ParagraphBuilder生成段落实例。
 
