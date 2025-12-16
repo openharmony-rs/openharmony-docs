@@ -23,18 +23,25 @@
 示例使用 [Tabs容器组件](reference/apis-arkui/arkui-ts/ts-container-tabs.md) 搭建整体应用框架，每个 [TabContent内容视图](reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) 使用 [List容器组件](reference/apis-arkui/arkui-ts/ts-container-list.md) 布局，在每个 [ListItem](reference/apis-arkui/arkui-ts/ts-container-listitem.md) 中使用 [循环渲染](ui/rendering-control/arkts-rendering-control-foreach.md) 加载此分类下分类导航数据，底部导航菜单使用 [TabContent中tabBar属性](reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) 设置自定义样式 。
 将组件库分成四大类：  
 组件模块：  
-1、空白与分隔：使用全局组件TitleBar，CommonItemSlider，CommonItemSelect，引入全局样式搭建分隔器组件页面。  
-2、按钮与选择：使用全局组件TitleBar，引入全局样式搭建按钮，日期选择器，单选按钮，选择菜单，滑动条，切换按钮组件页面。  
-3、信息展示与功效：使用全局组件TitleBar，引入全局样式搭建二维码组件页面。  
-4、文本与输入：使用全局组件TitleBar，引入全局样式搭建行内文本，输入框，文本组件页面。  
-5、辅助：使用全局组件TitleBar，引入全局样式搭建标记组件页面。  
+
+1. 空白与分隔：使用全局组件TitleBar，CommonItemSlider，CommonItemSelect，引入全局样式搭建分隔器组件页面。  
+2. 按钮与选择：使用全局组件TitleBar，引入全局样式搭建按钮，日期选择器，单选按钮，选择菜单，滑动条，切换按钮组件页面。  
+3. 信息展示与功效：使用全局组件TitleBar，引入全局样式搭建二维码组件页面。  
+4. 文本与输入：使用全局组件TitleBar，引入全局样式搭建行内文本，输入框，文本组件页面。  
+5. 辅助：使用全局组件TitleBar，引入全局样式搭建标记组件页面。 
+
 通用模块：  
-1、通用事件：用到全局组件TitleBar，全局样式实现点击事件组件页面。  
-2、通用属性：使用全局组件TitleBar，全局样式实现组件页面，使用Math.trunc()方法将参数隐式转换成数字类型后，纯粹的去除小数部分。  
+
+1. 通用事件：用到全局组件TitleBar，全局样式实现点击事件组件页面。  
+2. 通用属性：使用全局组件TitleBar，全局样式实现组件页面，使用Math.trunc()方法将参数隐式转换成数字类型后，纯粹的去除小数部分。  
 动画模块：
-1、转场动画：用到全局组件TitleBar实现动画转场组件页面。  
-全局方法模块：  
+
+1. 转场动画：用到全局组件TitleBar实现动画转场组件页面。 
+
+全局方法模块：
+
 弹窗：使用全局组件TitleBar，全局样式实现弹窗组件页面。
+
 ##### 约束与限制
 开发语言：ArkTS
 
@@ -213,11 +220,11 @@ specified多实例功能实现：specified模式则是根据MyAbilityStage中的
 ##### 介绍
 本示例通过使用蓝牙低功耗心率服务，结合[bluetooth](reference/apis-connectivity-kit/js-apis-bluetooth.md) 来接收BLE心率设备发送的心率数据，并使用画布[Canvas](reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) 来绘制实时心率图来展示蓝牙相关API用法。
 ##### 使用
-1.启动应用后，弹出是否允许应用访问位置信息，点击允许后开始操作。
-2.点击界面中搜索设备，如未开启蓝牙会自动开启并搜索心率设备，如已开启直接搜索设备。
-3.点击连接按钮可以连接到对应的蓝牙心率设备。
-4.点击列表Item可以进入实时心率图查看页面。
-5.点击实时心率图页断开连接可以断开与当前心率设备的连接。
+1. 启动应用后，弹出是否允许应用访问位置信息，点击允许后开始操作。
+2. 点击界面中搜索设备，如未开启蓝牙会自动开启并搜索心率设备，如已开启直接搜索设备。
+3. 点击连接按钮可以连接到对应的蓝牙心率设备。
+4. 点击列表Item可以进入实时心率图查看页面。
+5. 点击实时心率图页断开连接可以断开与当前心率设备的连接。
 ##### 基本原理
 1.首页扫描蓝牙心率设备：使用bluetooth 来实现蓝牙的开启和BLE的扫描，然后再使用一个List显示扫描到BLE心率设备，点击连接按钮可以连接上对应的心率设备。  
 2.实时心率图页：使用bluetooth 来接收心率设备发送的心率数据，并使用画布Canvas 来绘制实时心率图，点击断开连接可以断开与当前心率设备的连接。
@@ -273,17 +280,17 @@ specified多实例功能实现：specified模式则是根据MyAbilityStage中的
 ##### 介绍
 本示例主要使用面向非连接的协议UDP Socket，展示Socket在两端设备的连接验证、聊天通信方面的应用。
 ##### 使用
-1.搭建服务器环境：修改服务器脚本中的服务端IP地址，与本机IP地址保持一致，修改完成后双击运行脚本（端口号不必修改，与客户端工程中的端口保持一致即可）。  
-2.运行成功后为阻塞状态，等待客户端连接成功后会有相应提示。  
-3.打开应用，点击用户选择框选择要登录的用户（不同客户端保持用户选择不一致），点击协议选择框选择通信协议（与运行的服务器一致），并输入另一个设备的IP地址(如果是TCP和TLS，则输入服务端IP地址)，点击登录按钮进入创建房间用户页面（两个设备都要依次执行此步骤）。  
-4.在两台设备都成功连上服务器后，在其中一个设备上点击创建房间按钮，任意输入房间号，另一个设备会收到邀请进入房间的信息弹框，点击确定按钮后，两个设备进入聊天页面。
-5.在其中一个设备上输入聊天信息并点击发送按钮后，另一个设备的聊天页面会收到该聊天消息。  
-6.点击顶部标题栏左侧的返回图标按钮，则返回创建房间页面。  
-7.以上运行完成后如需再次创建房间请重启客户端和服务端进行调试。  
+1. 搭建服务器环境：修改服务器脚本中的服务端IP地址，与本机IP地址保持一致，修改完成后双击运行脚本（端口号不必修改，与客户端工程中的端口保持一致即可）。  
+2. 运行成功后为阻塞状态，等待客户端连接成功后会有相应提示。  
+3. 打开应用，点击用户选择框选择要登录的用户（不同客户端保持用户选择不一致），点击协议选择框选择通信协议（与运行的服务器一致），并输入另一个设备的IP地址(如果是TCP和TLS，则输入服务端IP地址)，点击登录按钮进入创建房间用户页面（两个设备都要依次执行此步骤）。  
+4. 在两台设备都成功连上服务器后，在其中一个设备上点击创建房间按钮，任意输入房间号，另一个设备会收到邀请进入房间的信息弹框，点击确定按钮后，两个设备进入聊天页面。
+5. 在其中一个设备上输入聊天信息并点击发送按钮后，另一个设备的聊天页面会收到该聊天消息。  
+6. 点击顶部标题栏左侧的返回图标按钮，则返回创建房间页面。  
+7. 以上运行完成后如需再次创建房间请重启客户端和服务端进行调试。  
 ##### 基本原理
-1.UDP Socket：使用UDP Socket实现文本传输，无需搭建服务器，对端直接交流。  
-2.TCP Socket：使用TCP Socket实现文本传输和公共通知事件转发，需要Python脚本搭建TCP服务器，公共通知用于来起音频通话应用。  
-3.TLS Socket：使用TLS Socket实现文本传输，需要Python脚本搭建TLS服务器，服务器和客户端需要同一套证书文件。  
+1. UDP Socket：使用UDP Socket实现文本传输，无需搭建服务器，对端直接交流。  
+2. TCP Socket：使用TCP Socket实现文本传输和公共通知事件转发，需要Python脚本搭建TCP服务器，公共通知用于来起音频通话应用。  
+3. TLS Socket：使用TLS Socket实现文本传输，需要Python脚本搭建TLS服务器，服务器和客户端需要同一套证书文件。  
 ##### 约束与限制
 开发语言：ArkTS
 
@@ -308,9 +315,9 @@ specified多实例功能实现：specified模式则是根据MyAbilityStage中的
 6.当点击昵称栏再次切换为在线状态，则两端的己方账号状态会切换为在线图标，同时两端的昵称栏会显示蓝色，此时可正常收发消息。
 ##### 基本原理
 本示例分为三个模块
-1.输入对端IP模块:使用wifi.getIpInfo()方法获取IP地址，constructUDPSocketInstance方法创建一个UDPSocket对象。  
-2.创建房间模块：点击创建房间按钮，弹出创建房间框，输入房间号，点击确定，进入聊天页面。
-3.聊天模块：bindOption方法监听消息，设置在线与离线。  
+1. 输入对端IP模块:使用wifi.getIpInfo()方法获取IP地址，constructUDPSocketInstance方法创建一个UDPSocket对象。  
+2. 创建房间模块：点击创建房间按钮，弹出创建房间框，输入房间号，点击确定，进入聊天页面。
+3. 聊天模块：bindOption方法监听消息，设置在线与离线。  
 ##### 约束与限制
 开发语言：ArkTS
 
@@ -451,36 +458,60 @@ specified多实例功能实现：specified模式则是根据MyAbilityStage中的
 
 ##### 使用
 
-一.单Ability自动恢复 \
-点击首页点击``跳转到故障触发页面`` \
-在故障触发页面点击按钮``点击``，再点击``保存当前Ability状态``以及``触发JsError``。 \
-以上场景预期：\
+一.单Ability自动恢复 
+
+点击首页点击``跳转到故障触发页面`` 
+
+在故障触发页面点击按钮``点击``，再点击``保存当前Ability状态``以及``触发JsError``。 
+
+以上场景预期：
+
 能够回到``故障触发页面``页面，页面上的点击次数与触发保存状态时的一致。
 
-二.多Ability自动恢复 \
-点击首页点击跳转到``故障触发页面`` \
+二.多Ability自动恢复 
+
+点击首页点击跳转到``故障触发页面`` 
+
 在``故障触发页面``点击``启动SecondAbility``
-点击首页点击``跳转到故障触发页面`` \
-在故障触发页面点击按钮``点击``，再点击``保存当前Ability状态``以及``触发JsError``。 \
-以上场景预期：\
-立即回到SecondAbility的故障触发页面，并恢复页面的点击次数信息。\
+
+点击首页点击``跳转到故障触发页面`` 
+
+在故障触发页面点击按钮``点击``，再点击``保存当前Ability状态``以及``触发JsError``。 
+
+以上场景预期：
+
+立即回到SecondAbility的故障触发页面，并恢复页面的点击次数信息。
+
 从任务管理中将EntryAbility切回前台，预期能回到故障触发页面，页面上的点击次数与触发保存状态时的一致。
 
-三.多Ability主动恢复 \
-点击首页点击跳转到``故障触发页面`` \
+三.多Ability主动恢复 
+
+点击首页点击跳转到``故障触发页面`` 
+
 在``故障触发页面``点击``启动SecondAbility``
-在SecondAbility的故障触发页面点击设置重启Ability。 \
-在SecondAbility的故障触发页面点击``触发JsError``。 \
-以上场景预期：\
+
+在SecondAbility的故障触发页面点击设置重启Ability。 
+
+在SecondAbility的故障触发页面点击``触发JsError``。 
+
+以上场景预期：
+
 重启时启动RecoveryAbility。
 
-四.Ability后台强制终止恢复 \
-点击首页点击跳转到``故障触发页面`` \
+四.Ability后台强制终止恢复 
+
+点击首页点击跳转到``故障触发页面`` 
+
 在``故障触发页面``点击``启动SecondAbility``
-在SecondAbility的故障触发页面点击Counter，点击``保存当前Ability状态``,并切入后台 \
-使用kill命令强制终止当前应用 \
-以上场景预期：\
-从任务管理中将EntryAbility切回前台，预期能回到故障触发页面，并恢复页面上的点击次数信息。\
+
+在SecondAbility的故障触发页面点击Counter，点击``保存当前Ability状态``,并切入后台 
+
+使用kill命令强制终止当前应用 
+
+以上场景预期：
+
+从任务管理中将EntryAbility切回前台，预期能回到故障触发页面，并恢复页面上的点击次数信息。
+
 从任务管理中将SecondAbility切回前台，预期能回到故障触发页面，并恢复页面上的点击次数信息。
 
 为避免反复拉起，两次测试的间隔至少为60秒(自动拉起的间隔为60秒)。
@@ -625,9 +656,7 @@ specified多实例功能实现：specified模式则是根据MyAbilityStage中的
 
 ##### 基本原理
 
-* 切换主题：在首页预先设置好几套主体数据，使用preferences.getPreferences获取使用Preferences对象，调用Preferences.get()
-读取缓存中的参数，得到当前应该展示哪一套主体。每次点击切换按钮都会调用Preferences.put()来重新修改参数，然后使用
-Preferences.flush()保存并刷新文件内容。
+* 切换主题：在首页预先设置好几套主体数据，使用preferences.getPreferences获取使用Preferences对象，调用Preferences.get()读取缓存中的参数，得到当前应该展示哪一套主体。每次点击切换按钮都会调用Preferences.put()来重新修改参数，然后使用Preferences.flush()保存并刷新文件内容。
 
 ##### 约束与限制
 
@@ -741,27 +770,19 @@ Preferences.flush()保存并刷新文件内容。
 
 1.首页菜单展示：使用一个module，menuitems完成菜单组件的实现，传入要展示的菜单的strarray类型的资源和菜单点击对应的组件即可。使用Navigation和NavRouter组件实现菜单点击进入功能界面，使用LocalStorage实现应用内Ability内数据共享，点击菜单时标记selectedLabel，在entry中的Capabilities组件中，通过selectedLabel显示对应的功能组件。
 
-2.电量信息：使用[@ohos.batteryInfo.d.ts](reference/apis-basic-services-kit/js-apis-battery-info.md)
-接口获取电池和充放电状态信息。
+2.电量信息：使用[@ohos.batteryInfo.d.ts](reference/apis-basic-services-kit/js-apis-battery-info.md)接口获取电池和充放电状态信息。
 
-3.RunningLock锁：使用[@ohos.runningLock.d.ts](reference/apis-basic-services-kit/js-apis-runninglock.md)
-实现对Runninglock锁的创建、查询、持锁、释放等操作。
+3.RunningLock锁：使用[@ohos.runningLock.d.ts](reference/apis-basic-services-kit/js-apis-runninglock.md)实现对Runninglock锁的创建、查询、持锁、释放等操作。
 
-4.系统电源管理：使用[@ohos.power.d.ts](reference/apis-basic-services-kit/js-apis-power.md)
-实现获取亮灭屏状态、查询电源模式功能。
+4.系统电源管理：使用[@ohos.power.d.ts](reference/apis-basic-services-kit/js-apis-power.md)实现获取亮灭屏状态、查询电源模式功能。
 
-5.设置数据项名称：使用[@ohos.settings.d.ts](reference/apis-basic-services-kit/js-apis-settings.md)
-实现获取获取数据项uri、开关飞行模式、检查应用是否能以悬浮窗形式显示功能。
+5.设置数据项名称：使用[@ohos.settings.d.ts](reference/apis-basic-services-kit/js-apis-settings.md)实现获取获取数据项uri、开关飞行模式、检查应用是否能以悬浮窗形式显示功能。
 
-6.设备状态感知框架：使用[@ohos.stationary.d.ts](reference/apis-multimodalawareness-kit/js-apis-stationary.md)
-接口提供设备状态感知能力。
+6.设备状态感知框架：使用[@ohos.stationary.d.ts](reference/apis-multimodalawareness-kit/js-apis-stationary.md)接口提供设备状态感知能力。
 
-7.热管理：使用[@ohos.thermal.d.ts](reference/apis-basic-services-kit/js-apis-thermal.md)
-提供热管理相关的接口，查询热档位以及注册温控等级回调。
+7.热管理：使用[@ohos.thermal.d.ts](reference/apis-basic-services-kit/js-apis-thermal.md)提供热管理相关的接口，查询热档位以及注册温控等级回调。
 
-8.USB管理：使用[@ohos.usbManager.d.ts](reference/apis-basic-services-kit/js-apis-usbManager.md)
-实现usb设备列表的获取，使用[@ohos.commonEventManager.d.ts](reference/apis-basic-services-kit/js-apis-commonEventManager.md)
-订阅USB设备插入和拔出监听。
+8.USB管理：使用[@ohos.usbManager.d.ts](reference/apis-basic-services-kit/js-apis-usbManager.md)实现usb设备列表的获取，使用[@ohos.commonEventManager.d.ts](reference/apis-basic-services-kit/js-apis-commonEventManager.md)订阅USB设备插入和拔出监听。
 
 ##### 约束与限制
 
@@ -1242,10 +1263,13 @@ Preferences.flush()保存并刷新文件内容。
       通过`AppStorage.SetAndLink()`将逻辑代码中的变量与界面代码中使用`@StorageLink`声明的变量连接起来，通过`set()`与`get()`操作来修改或获取变量的值
     * 获取当前设备中会话并创建Controller
 
-      通过接口`getAllSessionDescriptors()`获取当前设备中的媒体会话；  
-      通过接口`createController()`创建媒体会话对应的控制器；  
-      通过接口`getHistoricalSessionDescriptors()`获取当前设备中的媒体会话历史记录；  
-      通过接口`on(metadataChange | playbackStateChange | queueItemsChange | queueTitleChange | sessionEvent)`开启对媒体提供方发送事件的监听，对媒体提供方的事件进行处理；
+      通过接口`getAllSessionDescriptors()`获取当前设备中的媒体会话。
+
+      通过接口`createController()`创建媒体会话对应的控制器。
+
+      通过接口`getHistoricalSessionDescriptors()`获取当前设备中的媒体会话历史记录。
+
+      通过接口`on(metadataChange | playbackStateChange | queueItemsChange | queueTitleChange | sessionEvent)`开启对媒体提供方发送事件的监听，对媒体提供方的事件进行处理。
 
   应用在运行中相关的操作
 
@@ -1258,10 +1282,13 @@ Preferences.flush()保存并刷新文件内容。
       媒体控制方可以使用接口`sendCommonCommand()`发送自定义控制命令，当媒体会话提供方接收到命令后，会通过接口`dispatchSessionEvent()`与接口`setExtras()`将歌词信息发送给媒体会话控制方。（此部分请参见媒体会话提供方Sample）
 
     * 获取当前会话信息
-      通过接口`getAVQueueItems()`获取当前歌曲列表信息；  
-      通过接口`getAVQueueTitle()`获取当前歌曲列表名称信息；  
-      通过接口`getAVPlaybackState()`获取当前歌曲播放状态信息；  
-      通过接口`getAVMetadata()`获取当前歌曲媒体会话元数据信息；  
+      通过接口`getAVQueueItems()`获取当前歌曲列表信息。
+
+      通过接口`getAVQueueTitle()`获取当前歌曲列表名称信息。
+
+      通过接口`getAVPlaybackState()`获取当前歌曲播放状态信息。
+
+      通过接口`getAVMetadata()`获取当前歌曲媒体会话元数据信息。
 
 ##### 约束与限制
 
@@ -1302,12 +1329,16 @@ Preferences.flush()保存并刷新文件内容。
 
   * 创建并设置媒体会话
 
-    通过接口`createAVSession()`创建媒体会话；  
-    通过接口`activate()`激活媒体会话；  
-    通过接口`setAVQueueItems()`设置播放列表，设置后媒体控制方可以读取使用该信息；  
-    通过接口`setAVQueueTitle()`设置播放列表标题，设置后媒体控制方可以读取使用该信息；  
-    通过接口`setAVMetadata()`设置当前媒体的元数据，设置后媒体控制方可以读取使用此信息；  
-    通过接口`on()`开启对媒体控制方控制命令的监听，对媒体控制方的命令进行处理；  
+    通过接口`createAVSession()`创建媒体会话。
+
+    通过接口`activate()`激活媒体会话。
+    通过接口`setAVQueueItems()`设置播放列表，设置后媒体控制方可以读取使用该信息。
+
+    通过接口`setAVQueueTitle()`设置播放列表标题，设置后媒体控制方可以读取使用该信息。
+
+    通过接口`setAVMetadata()`设置当前媒体的元数据，设置后媒体控制方可以读取使用此信息。
+
+    通过接口`on()`开启对媒体控制方控制命令的监听，对媒体控制方的命令进行处理。 
 
   应用在运行中相关的操作
 
@@ -1440,9 +1471,7 @@ Preferences.flush()保存并刷新文件内容。
     + 图片选择：首先使用startAbilityForResult()启动系统图库应用，然后将选择的图片用select数组保存路径，展示到页面便于选择，选择完跳转到首页，点击一张图片，进入到编辑删除界面。
 + 图片编辑功能在EditImage中实现:
     + 图片编辑：图片编辑权限需要使用[requestPermissionsFromUser](reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)
-    申请
-    ，首先根据选择图片获取到的uri打开图片文件，fileAsset.open选择‘rw'读写模式，然后使用image.createImageSource创建ImageSource实例，接下来使用createPixelMap创建PixelMap对象，便于处理图片，最后使用crop对图像进行裁剪处理，使用scale对图像进行缩放处理，rotate进行旋转处理。亮度调节使用effectKit.getHighestSaturationColor()
-    接口实现对图片的高亮调节。添加文字/贴纸，编辑模式下，使用组件组合（Image、Shape、Text）进行交互完成素材大小和位置选择；编辑确认后，再使用OffscreenCanvasRenderingContext2D进行离屏绘制，保存为新的pixelMap。
+    申请，首先根据选择图片获取到的uri打开图片文件，fileAsset.open选择‘rw'读写模式，然后使用image.createImageSource创建ImageSource实例，接下来使用createPixelMap创建PixelMap对象，便于处理图片，最后使用crop对图像进行裁剪处理，使用scale对图像进行缩放处理，rotate进行旋转处理。亮度调节使用effectKit.getHighestSaturationColor()接口实现对图片的高亮调节。添加文字/贴纸，编辑模式下，使用组件组合（Image、Shape、Text）进行交互完成素材大小和位置选择；编辑确认后，再使用OffscreenCanvasRenderingContext2D进行离屏绘制，保存为新的pixelMap。
 
 ##### 约束与限制
 
@@ -1896,7 +1925,9 @@ Preferences.flush()保存并刷新文件内容。
 ##### 基本原理
 
 通过在IDE中创建Native c++ 工程，在c++代码中定义对外接口为getFileList、getRawFileContent、getRawFileDescriptor，映射C++接口分别为GetFileList、GetRawFileContent、GetRawFileDescriptor。
+
 通过获取Js的资源对象，并转为Native的资源对象，即可调用资源的Native接口，获取rawfile列表、rawfile文件内容以及rawfile描述符{fd, offset, length}。
+
 在Js侧导入"libentry.so"，通过getContext().resourceManager获取资源管理对象。调用src/main/cpp/types/libentry/index.d.ts中声明的接口，传入js的资源对象和相关参数获取对于rawfile相关资源信息。
 
 ##### 约束与限制
@@ -2208,36 +2239,27 @@ Preferences.flush()保存并刷新文件内容。
 ##### 基本原理
 
 * 允许发送通知、发送通知、取消通知的功能接口封装在NotificationUtil
-    * 允许发送通知：在进入Index.ets前
-    通过notificationUtil.enableNotification()调用notification.requestEnableNotification()接口向用户请求发送通知；
-    * 发送通知：通过publishNotification()封装发布通知的接口；
-    * 取消通知：Index.ets 页面中通过点击事件调用cancelAllNotifications()取消所有的通知或者通过cancelNotificationById()取消指定id的通知；
+    * 允许发送通知：在进入Index.ets前通过notificationUtil.enableNotification()调用notification.requestEnableNotification()接口向用户请求发送通知。
+    * 发送通知：通过publishNotification()封装发布通知的接口。
+    * 取消通知：Index.ets 页面中通过点击事件调用cancelAllNotifications()取消所有的通知或者通过cancelNotificationById()取消指定id的通知。
 
 * 获取应用所有消息通知、取消相关类型通知，角标管理接口封装在NotificationManagementUtil
-    * 获取应用所有消息通知：在constructor()
-    构造函数中调用@ohos.notificationManager中的getActiveNotifications接口获取所有通知及相应类型通知数量，通过封装getAllNotifications()
-    对外提供接口获取当前消息及消息数量。
-    * 取消相关类型通知：通过cancelNotificationType()封装取消相关通知类型的接口；
+    * 获取应用所有消息通知：在constructor()构造函数中调用@ohos.notificationManager中的getActiveNotifications接口获取所有通知及相应类型通知数量，通过封装getAllNotifications()对外提供接口获取当前消息及消息数量。
+    * 取消相关类型通知：通过cancelNotificationType()封装取消相关通知类型的接口。
     * 角标管理接口：通过setBadgeNumber()封装设置应用角标数量的接口，通过getBadgeNumber()封装获取当前应用角标数量的接口。
     * 添加一条通知：通过addNotification()封装接口添加一条通知到消息管理器，当发送通知的时候进行调用。
 
 * NotificationOperations向外提供接口，在页面中调用它们来实现功能
-    * 发布通知：
-    页面中通过点击事件调用NotificationOperations中封装的对应的方法，然后从NotificationContentUtil中获取对应的主体内容content，
-    将content传递给NotificationRequestUtil得到完整的发布信息，最后调用NotificationUtil.publishNotification()发布内容；
+    * 发布通知：页面中通过点击事件调用NotificationOperations中封装的对应的方法，然后从NotificationContentUtil中获取对应的主体内容content，将content传递给NotificationRequestUtil得到完整的发布信息，最后调用NotificationUtil.publishNotification()发布内容。
 
 * 播放提示音、马达震动的功能在NotificationUtil调用发布通知的接口处进行判断是否开启
-    * 发布通知：
-    通过publishNotification()封装发布通知的接口的同时，根据NotificationUtil类中对应变量的值判断是否开启了提示音或马达，若已开启，则执行对应代码段；
-    * 控制提示音或马达的开关，
-    通过调用NotificationUtil类两个方法对NotificationUtil类中对应变量进行更改，开启为true，关闭为false；
+    * 发布通知：通过publishNotification()封装发布通知的接口的同时，根据NotificationUtil类中对应变量的值判断是否开启了提示音或马达，若已开启，则执行对应代码段。
+    * 控制提示音或马达的开关，通过调用NotificationUtil类两个方法对NotificationUtil类中对应变量进行更改，开启为true，关闭为false；
 
 * 自动化测试，对应用接口或系统接口进行单元测试，并且对基于UI操作进行UI自动化测试
     * 模拟点击：在Index.test.ets的beforeAll中调用startAbility()拉起应用并进入首页，
-    然后通过Driver的assertComponentExist、findComponent和findWindow等获取到对应组件的位置，
-    最后通过click()模拟出人工点击对应组件的效果；
-    * 模拟各种操作流程：在Index.test.ets
-    的每个it里面，按一定逻辑顺序排好点击组件的顺序，从而模拟出人为操作的过程，最终，所有的it组成了整一个应用的自动化测试。
+    然后通过Driver的assertComponentExist、findComponent和findWindow等获取到对应组件的位置，最后通过click()模拟出人工点击对应组件的效果；
+    * 模拟各种操作流程：在Index.test.ets的每个it里面，按一定逻辑顺序排好点击组件的顺序，从而模拟出人为操作的过程，最终，所有的it组成了整一个应用的自动化测试。
 
 ##### 约束与限制
 
@@ -2264,8 +2286,7 @@ Preferences.flush()保存并刷新文件内容。
 ##### 基本原理
 
 * 允许发送通知，发送通知的功能接口封装在NotificationUtil
-    * 允许发送通知：
-      前通过notificationUtil.enableNotification()调用notification.requestEnableNotification()接口向用户请求发送通知；
+    * 允许发送通知：前通过notificationUtil.enableNotification()调用notification.requestEnableNotification()接口向用户请求发送通知；
     * 发送通知：通过publishNotification()封装发布通知的接口；
 
 * 获取应用所有消息通知、取消相关类型通知，角标管理接口封装在NotificationManagementUtil
@@ -2304,10 +2325,8 @@ Preferences.flush()保存并刷新文件内容。
 ##### 基本原理
 
 * 允许通知过滤、指定通知类型过滤的功能接口封装在NotificationFilterUtil
-    * 允许通知过滤：
-      页面中通过Toggle状态改变事件调用setNotificationEnableFilter()接口开启通知监听并设置通知过滤回调管理；
-    * 指定类型通知过滤：
-      页面中，开启通知过滤后，勾选或取消勾选指定通知类型调用接口setContentTypeEnable()接口设置通知类型是否允许发送；
+    * 允许通知过滤：页面中通过Toggle状态改变事件调用setNotificationEnableFilter()接口开启通知监听并设置通知过滤回调管理。
+    * 指定类型通知过滤：页面中，开启通知过滤后，勾选或取消勾选指定通知类型调用接口setContentTypeEnable()接口设置通知类型是否允许发送。
 
 ##### 约束与限制
 
@@ -2442,13 +2461,11 @@ Preferences.flush()保存并刷新文件内容。
 
 ##### 使用
 
-1.点击主页面的**加密**按钮，在加密界面中点击**Encryption Algorithm**下拉选择加密算法，在输入框中输入待加密的内容，点击**加密**
-按钮，下方文本框中显示加密后内容。
+1.点击主页面的**加密**按钮，在加密界面中点击**Encryption Algorithm**下拉选择加密算法，在输入框中输入待加密的内容，点击**加密**按钮，下方文本框中显示加密后内容。
 
 2.点击**重置**按钮，清除文本框中内容。
 
-3.点击主页面的**解密**按钮，在解密界面中点击**Decrypt Algorithm**下拉选择解密算法，在输入框中输入待解密的内容，点击**解密**
-按钮，下方文本框中显示解密后内容。
+3.点击主页面的**解密**按钮，在解密界面中点击**Decrypt Algorithm**下拉选择解密算法，在输入框中输入待解密的内容，点击**解密**按钮，下方文本框中显示解密后内容。
 
 4.点击**重置**按钮，清除文本框中内容。
 
@@ -2489,52 +2506,22 @@ Preferences.flush()保存并刷新文件内容。
 
 ##### 使用
 
-1.点击主页面tab栏的**加密**，在加密界面点击**打开文件**，通过文件选择器选择文本文件，选择完毕自动返回加密界面，
-其内容显示在**文件内容**文本框中，
-点击**选择密钥**，选择密钥文件，如果没有密钥文件，可以通过在加密界面点击**随机生成AES密钥**，生成并通过文件选择器保存密钥文件。
-选择完文本文件和密钥文件后，点击**加密**按钮，完成加密，并通过文件选择器保存密文文件。
-下方**加密内容**文本框中显示加密后的消息内容。
+1.点击主页面tab栏的**加密**，在加密界面点击**打开文件**，通过文件选择器选择文本文件，选择完毕自动返回加密界面，其内容显示在**文件内容**文本框中，点击**选择密钥**，选择密钥文件，如果没有密钥文件，可以通过在加密界面点击**随机生成AES密钥**，生成并通过文件选择器保存密钥文件。选择完文本文件和密钥文件后，点击**加密**按钮，完成加密，并通过文件选择器保存密文文件。下方**加密内容**文本框中显示加密后的消息内容。
 
-2.点击主页面tab栏的**解密**，在解密界面点击**打开文件**，通过文件选择器选择文本文件，选择完毕自动返回解密界面，
-其内容显示在**文件内容**文本框中，
-点击**选择密钥**，选择和**加密相同**的密钥文件。
-选择完文本文件和密钥文件后，点击**解密**按钮，完成解密，并通过文件选择器保存明文文件。
-下方**解密内容**文本框中显示解密后的消息内容。
+2.点击主页面tab栏的**解密**，在解密界面点击**打开文件**，通过文件选择器选择文本文件，选择完毕自动返回解密界面，其内容显示在**文件内容**文本框中，点击**选择密钥**，选择和**加密相同**的密钥文件。选择完文本文件和密钥文件后，点击**解密**按钮，完成解密，并通过文件选择器保存明文文件。下方**解密内容**文本框中显示解密后的消息内容。
 
-3.点击主页面tab栏的**签名**，在签名界面点击**打开文件**，通过文件选择器选择文本文件，选择完毕自动返回签名界面，
-其内容显示在**文件内容**文本框中，
-点击**选择密钥**，选择密钥文件，如果没有密钥文件，可以通过在签名界面点击**随机生成RSA密钥**，生成并通过文件选择器保存密钥文件，注意RSA密钥生成耗时较长。
-选择完文本文件和密钥文件后，点击**签名**按钮，完成完整性签名，并通过文件选择器保存签名文件。
+3.点击主页面tab栏的**签名**，在签名界面点击**打开文件**，通过文件选择器选择文本文件，选择完毕自动返回签名界面，其内容显示在**文件内容**文本框中，点击**选择密钥**，选择密钥文件，如果没有密钥文件，可以通过在签名界面点击**随机生成RSA密钥**，生成并通过文件选择器保存密钥文件，注意RSA密钥生成耗时较长。选择完文本文件和密钥文件后，点击**签名**按钮，完成完整性签名，并通过文件选择器保存签名文件。
 
-4.点击主页面tab栏的**验签**，在验签界面点击**打开文件**，通过文件选择器选择文本文件，选择完毕自动返回验签界面，
-其内容显示在**文件内容**文本框中，
-点击**选择密钥**，选择和签名一致的密钥文件。点击**选择签名文件**，通过文件选择器选择签名时保存的签名文件，
-选择完文本文件、密钥文件和签名文件后，点击**验签**按钮，完成验签。
+4.点击主页面tab栏的**验签**，在验签界面点击**打开文件**，通过文件选择器选择文本文件，选择完毕自动返回验签界面，其内容显示在**文件内容**文本框中，点击**选择密钥**，选择和签名一致的密钥文件。点击**选择签名文件**，通过文件选择器选择签名时保存的签名文件，选择完文本文件、密钥文件和签名文件后，点击**验签**按钮，完成验签。
 
 ##### 基本原理
 
 * 进行对文本文件进行加解密、签名验签的功能接口封装在CryptoOperation中
 
-* 对文本文件加密：
-  文件中依次点击打开文件、选择密钥，通过filePicker选择明文文本文件和密钥文件，点击加密按钮，调用加密函数实现对文本内容进行加密，并将密文文件通过filePicker保存。
-  需要生成密钥文本文件时，可以点击随机生成AES密钥，通过调用[cryptoFramework.symKeyGenerator](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#symkeygenerator)
-  生成用于加密的AES密钥，并通过filePicker保存密钥文本文件。
-  对消息加密的过程中采用[cryptoFramework.Cipher](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cipher)
-  完成加密操作。
-* 对文本文件解密：
-  文件中依次点击打开文件、选择密钥，通过filePicker选择密文文本文件和密钥文件，点击解密按钮，调用解密函数实现对文本内容进行解密，并将明文文件通过filePicker保存。
-  对消息解密的过程中采用[cryptoFramework.Cipher](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cipher)
-  完成解密操作。
-* 对文本文件签名：
-  文件中依次点击打开文件、选择密钥，通过filePicker选择待签名文本文件和密钥文件，点击签名按钮，调用签名函数实现对文本内容进行加密，并将签名文件通过filePicker保存。
-  需要生成密钥文本文件时，可以点击随机生成RSA密钥，通过调用[cryptoFramework.asyKeyGenerator](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#asykeygenerator)
-  生成用于签名的RSA密钥，并通过filePicker保存密钥文本文件。
-  对消息签名的过程中采用[cryptoFramework.Sign](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign)
-  完成加密操作。
-* 对文本文件验签：
-  文件中依次点击打开文件、选择密钥、选择签名文件，通过filePicker选择密文文本文件、密钥文件和签名文件，点击验签按钮，调用验签函数实现对文本内容进行验签，并显示验签结果。
-  对消息验签的过程中采用[cryptoFramework.Verify](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify)
-  完成验签操作。
+* 对文本文件加密：文件中依次点击打开文件、选择密钥，通过filePicker选择明文文本文件和密钥文件，点击加密按钮，调用加密函数实现对文本内容进行加密，并将密文文件通过filePicker保存。需要生成密钥文本文件时，可以点击随机生成AES密钥，通过调用[cryptoFramework.symKeyGenerator](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#symkeygenerator)生成用于加密的AES密钥，并通过filePicker保存密钥文本文件。对消息加密的过程中采用[cryptoFramework.Cipher](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cipher)完成加密操作。
+* 对文本文件解密：文件中依次点击打开文件、选择密钥，通过filePicker选择密文文本文件和密钥文件，点击解密按钮，调用解密函数实现对文本内容进行解密，并将明文文件通过filePicker保存。对消息解密的过程中采用[cryptoFramework.Cipher](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cipher)完成解密操作。
+* 对文本文件签名：文件中依次点击打开文件、选择密钥，通过filePicker选择待签名文本文件和密钥文件，点击签名按钮，调用签名函数实现对文本内容进行加密，并将签名文件通过filePicker保存。需要生成密钥文本文件时，可以点击随机生成RSA密钥，通过调用[cryptoFramework.asyKeyGenerator](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#asykeygenerator)生成用于签名的RSA密钥，并通过filePicker保存密钥文本文件。对消息签名的过程中采用[cryptoFramework.Sign](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign)完成加密操作。
+* 对文本文件验签：文件中依次点击打开文件、选择密钥、选择签名文件，通过filePicker选择密文文本文件、密钥文件和签名文件，点击验签按钮，调用验签函数实现对文本内容进行验签，并显示验签结果。对消息验签的过程中采用[cryptoFramework.Verify](reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify)完成验签操作。
 
 ##### 约束与限制
 
@@ -2558,24 +2545,17 @@ Preferences.flush()保存并刷新文件内容。
 
 ##### 使用
 
-1.点击主页面的**新密钥**按钮，在新密钥界面的输入框中输入待发送的消息内容，点击**发送消息**
-按钮，下方文本框中显示加密后的消息内容，然后点击**接收消息**按钮，下方文本框中显示解密后的消息内容。
+1.点击主页面的**新密钥**按钮，在新密钥界面的输入框中输入待发送的消息内容，点击**发送消息**按钮，下方文本框中显示加密后的消息内容，然后点击**接收消息**按钮，下方文本框中显示解密后的消息内容。
 
-2.点击主页面的**旧密钥**按钮，在旧密钥界面的输入框中输入待发送的消息内容，点击**发送消息**
-按钮，下方文本框中显示加密后的消息内容，首先点击**导入密钥**按钮，弹窗提示导入密钥成功，然后点击**接收消息**按钮，下方文本框中显示解密后的消息内容。
+2.点击主页面的**旧密钥**按钮，在旧密钥界面的输入框中输入待发送的消息内容，点击**发送消息**按钮，下方文本框中显示加密后的消息内容，首先点击**导入密钥**按钮，弹窗提示导入密钥成功，然后点击**接收消息**按钮，下方文本框中显示解密后的消息内容。
 
-3.点击主页面的**低安访问控制**按钮，在新密钥界面的输入框中输入待保存的密码内容，点击**保存密码**
-按钮，下方文本框中显示加密后的密码内容，录入锁屏密码， 然后点击**读取密码**按钮，在输入PIN码（锁屏密码，需要预先录入）之后，下方文本框中显示解密后的消息内容。
+3.点击主页面的**低安访问控制**按钮，在新密钥界面的输入框中输入待保存的密码内容，点击**保存密码**按钮，下方文本框中显示加密后的密码内容，录入锁屏密码，然后点击**读取密码**按钮，在输入PIN码（锁屏密码，需要预先录入）之后，下方文本框中显示解密后的消息内容。
 
 ##### 基本原理
 
 * 使用新密钥、旧密钥与低安访问控制进行消息的加密和解密的功能接口封装在HuksModel中
-    * 使用新密钥加密：在NewKey.ets文件中通过HuksModel.encryptData方式调用加密函数实现对发送的消息内容进行加密，设置好生成密钥和解密密钥的密钥属性信息，加密前会先调用生成密钥接口
-      [huks.generateKeyItem](reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9-1)
-      生成用于加密的AES密钥，对消息加密的过程中采用三段式接口[huks.initSession,huks.updateSession,huks.finishSession](reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9-1)
-      完成加密操作。
-    * 使用新密钥解密：NewKey.ets文件中通过HuksModel.decryptData方式调用解密函数实现对发送消息的解密，设置好解密密钥的密钥属性信息，使用加密时的密钥对消息进行解密，仍然是采用三段式接口完成解密操作，解密动作完成后调用删除密钥接口
-      [huks.deleteKeyItem](reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9-1)清除本地保存的密钥。
+    * 使用新密钥加密：在NewKey.ets文件中通过HuksModel.encryptData方式调用加密函数实现对发送的消息内容进行加密，设置好生成密钥和解密密钥的密钥属性信息，加密前会先调用生成密钥接口[huks.generateKeyItem](reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9-1)生成用于加密的AES密钥，对消息加密的过程中采用三段式接口[huks.initSession,huks.updateSession,huks.finishSession](reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9-1)完成加密操作。
+    * 使用新密钥解密：NewKey.ets文件中通过HuksModel.decryptData方式调用解密函数实现对发送消息的解密，设置好解密密钥的密钥属性信息，使用加密时的密钥对消息进行解密，仍然是采用三段式接口完成解密操作，解密动作完成后调用删除密钥接口[huks.deleteKeyItem](reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9-1)清除本地保存的密钥。
     * 使用旧密钥加密：在OldKey.ets文件中通过HuksModel.encryptDataUserOldKey方式调用加密函数对发送的消息内容进行加密，设置好加密密钥的密钥属性信息，采用三段式接口使用本地已保存的旧密钥完成加密操作。
     * 使用旧密钥解密：在OldKey.ets文件中通过HuksModel.decryptDataUserOldKey方式调用解密函数对发送的消息内容进行解密，首先模拟在新设备上导入旧设备的加密密钥，同样采用三段式接口完成解密操作，解密完成后删除密钥。
     * 使用低安访问控制管理密码：在MinAccessControl.ets文件中通过 huksModel.encryptDataUseSm2 方式生成SM2密钥并调用加密函数对发送的消息内容进行加密，设置好加密密钥的密钥属性信息，采用两段式接口使用本地已保存的旧密钥完成加密操作。读取密码时（需先设定系统锁屏密码）调用IAM的PIN码（锁屏密码）接口进行验证。
@@ -2841,17 +2821,16 @@ Preferences.flush()保存并刷新文件内容。
 
 ##### 使用
 
-1. 安装本应用之前，先编译好未签名的应用包，然后在终端执行工程里的脚本，目录为：WorkScheduler/signTool/b_sign_hap_release.bat；
-2. 未连接wifi状态下进入应用；
-3. 进入首页后连接wifi；
+1. 安装本应用之前，先编译好未签名的应用包，然后在终端执行工程里的脚本，目录为：WorkScheduler/signTool/b_sign_hap_release.bat。
+2. 未连接wifi状态下进入应用。
+3. 进入首页后连接wifi。
 4. 后台判断版本号后会下载新的升级包，并在页面中给出弹窗询问是否安装，点击“确定”按钮；
 5. 应用会安装已经下载的升级包，实现版本更新，安装后会回到设备桌面，此时点击应用图标，可以看到版本已经是新版本了。
-6. 运行自动化测试用例时，必须使用命令行装包，不能使用ide自动装包，安装自动化测试包之前，先编译好未签名的测试包，
-然后在终端执行工程里的脚本，目录为：WorkScheduler/signTool/a_sign_hap_release.bat；
+6. 运行自动化测试用例时，必须使用命令行装包，不能使用ide自动装包，安装自动化测试包之前，先编译好未签名的测试包，然后在终端执行工程里的脚本，目录为：WorkScheduler/signTool/a_sign_hap_release.bat。
 7. 运行自动化测试应用时需要使用如下命令：
-```
-hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s unittest OpenHarmonyTestRunner -s class ActsAbilityTest -s timeout 150000
-```
+   ```
+   hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s unittest OpenHarmonyTestRunner -s class ActsAbilityTest -s timeout 150000
+   ```
 
 ##### 基本原理
 
@@ -2906,9 +2885,9 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 ##### 使用
 
-1.点击 **+** 按钮，跳转添加联系人界面，输入联系人信息，点击 **√**，确认添加联系人，并返回首页；
-2.点击联系人列表跳转页面查看详细信息，并且可以编辑或删除联系人信息；
-3.在搜索栏输入号码或邮箱可查询对应的联系人。
+1. 点击 **+** 按钮，跳转添加联系人界面，输入联系人信息，点击 **√**，确认添加联系人，并返回首页。
+2. 点击联系人列表跳转页面查看详细信息，并且可以编辑或删除联系人信息。
+3. 在搜索栏输入号码或邮箱可查询对应的联系人。
 
 ##### 基本原理
 
@@ -2962,10 +2941,10 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 ##### 使用
 
-1.默认移动数据的SIM卡背景色显示为蓝色。
-2.若已经开启移动数据，则显示开启，否则显示为关闭。
-3.若已经开启漫游服务，则显示开启，否则显示为关闭。
-4.显示打开本应用时数据流类型及连接状态。
+1. 默认移动数据的SIM卡背景色显示为蓝色。
+2. 若已经开启移动数据，则显示开启，否则显示为关闭。
+3. 若已经开启漫游服务，则显示开启，否则显示为关闭。
+4. 显示打开本应用时数据流类型及连接状态。
 
 ##### 基本原理
 
@@ -2988,11 +2967,11 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 ##### 使用
 
-1.打开应用，开启所有订阅事件开关。
-2.开关一次网络，触发网络状态变化。
-3.拨打一次电话，触发通话状态变化。
-4.插拔一次sim卡，触发sim卡状态变化和信号状态变化。
-5.点击**查看详情**按钮，跳转详情页，显示监听到的数据结果。
+1. 打开应用，开启所有订阅事件开关。
+2. 开关一次网络，触发网络状态变化。
+3. 拨打一次电话，触发通话状态变化。
+4. 插拔一次sim卡，触发sim卡状态变化和信号状态变化。
+5. 点击**查看详情**按钮，跳转详情页，显示监听到的数据结果。
 
 ##### 基本原理
 
@@ -3015,10 +2994,10 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 ##### 使用
 
-1.点击**SIM1 status**，弹出面板显示卡1的无线接入技术、注册网络信号强度信息列表、选网模式、ISO国家码，
-再次点击面板消失， 点击**SIM2 status**显示同理；
-2.**NetworkState**显示网络状态相关信息；
-3.**IsRadioOn**显示Radio是否打开，true为打开，false为关闭。
+1. 点击**SIM1 status**，弹出面板显示卡1的无线接入技术、注册网络信号强度信息列表、选网模式、ISO国家码。
+再次点击面板消失， 点击**SIM2 status**显示同理。
+2. **NetworkState**显示网络状态相关信息。
+3. **IsRadioOn**显示Radio是否打开，true为打开，false为关闭。
 
 ##### 基本原理
 
@@ -3046,10 +3025,10 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 ##### 使用
 
-1.若SIM卡槽1插入SIM卡则SIM卡1区域显示为蓝色，否则默认为白色。
-2.点击SIM卡1区域，弹窗显示SIM卡1的相关信息，再次点击面板消失。
-3.默认拨号的SIM卡其按钮背景色为蓝色，目前只展示默认拨号的SIM卡，更改默认拨号卡功能暂不支持。
-4.呼叫转移界面功能暂不支持，故点击按钮无实际操作。
+1. 若SIM卡槽1插入SIM卡则SIM卡1区域显示为蓝色，否则默认为白色。
+2. 点击SIM卡1区域，弹窗显示SIM卡1的相关信息，再次点击面板消失。
+3. 默认拨号的SIM卡其按钮背景色为蓝色，目前只展示默认拨号的SIM卡，更改默认拨号卡功能暂不支持。
+4. 呼叫转移界面功能暂不支持，故点击按钮无实际操作。
 
 ##### 基本原理
 
@@ -3632,17 +3611,27 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 * 管理分布式设备（节点）  
   1、创建设备管理对象，并指定参数kvstore应用包deviceManager.createDeviceManager("ohos.samples.distributeddatagobang", (error, value) => {})。  
+
   2、获取可信设备列表"this.deviceManager.getTrustedDeviceListSync()"。  
+
   3、监听设备状态"this.deviceManager.on('deviceStateChange', (data) => {})"。
+
 * 分布式数据管理  
   1、页面初始化时获取此应用所需能力，引入@ohos.data.distributedData初始化分布式数据库，并使用kvstore.on对数据change进行监听，通过appstorge判断获取相应的key判断是否是分布式节点。  
+
   2、如果是分布式节点，如果数据发生变化处理数据，使用this.kvManager.getKVStore()通过指定Options和storeId，创建并获取KVStore数据库。以及添加键值对到数据库this.kvStore.put(key, value)。    
+
   3、页面通过kvStore对象进行增删改查会触发其他已连接设备的kvStore.on监听。  
+
 * 游戏规则编写  
   1、init()函数初始化游戏规则，通过canvas组件绘制棋盘背景和棋子，游戏状态为开始，共计回合为0，并生成棋盘。
+
   2、触发onClick函数，每click一次，清除一次canvas，数组中添加当前棋子，重绘。
+
   3、当在A盘，且步长是偶数，表示B下的棋子会在A盘显示，绘制确定好的棋子，例如：this.deviceFlag === 'A' && this.distributedData.step % 2 === 0;
+
   4、当在B盘，且步长是奇数，表示A下的棋子会在B盘显示，绘制确定好的棋子，例如：this.deviceFlag === 'B' && this.distributedData.step % 2 !== 0;
+
   5、如果A盘重开(isRestart=true)，那B盘就要清空棋子;不重开(isRestart=false)时，B盘正常显示。
 
 ##### 约束与限制
@@ -3669,17 +3658,27 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 * 管理分布式设备（节点）  
   1、创建设备管理对象，并指定参数kvstore应用包deviceManager.createDeviceManager("ohos.samples.distributeddatagobang", (error, value) => {})。  
+
   2、获取可信设备列表"this.deviceManager.getTrustedDeviceListSync()"。  
+
   3、监听设备状态"this.deviceManager.on('deviceStateChange', (data) => {})"。
+
 * 分布式数据管理  
   1、页面初始化时获取此应用所需能力，引入@ohos.data.distributedData初始化分布式数据库，并使用kvstore.on对数据change进行监听，通过appstorge判断获取相应的key判断是否是分布式节点。  
+
   2、如果是分布式节点，如果数据发生变化处理数据，使用this.kvManager.getKVStore()通过指定Options和storeId，创建并获取KVStore数据库。以及添加键值对到数据库this.kvStore.put(key, value)。    
+
   3、页面通过kvStore对象进行增删改查会触发其他已连接设备的kvStore.on监听。  
+
 * 游戏规则编写  
   1、init()函数初始化游戏规则，通过canvas组件绘制棋盘背景和棋子，游戏状态为开始，共计回合为0，并生成棋盘。
+
   2、触发onClick函数，每click一次，清除一次canvas，数组中添加当前棋子，重绘。
+
   3、当在A盘，且步长是偶数，表示B下的棋子会在A盘显示，绘制确定好的棋子，例如：this.deviceFlag === 'A' && this.distributedData.step % 2 === 0;
+
   4、当在B盘，且步长是奇数，表示A下的棋子会在B盘显示，绘制确定好的棋子，例如：this.deviceFlag === 'B' && this.distributedData.step % 2 !== 0;
+
   5、如果A盘重开(isRestart=true)，那B盘就要清空棋子;不重开(isRestart=false)时，B盘正常显示。
 
 ##### 约束与限制
@@ -3957,12 +3956,13 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 ##### 介绍
 
-本示例集中展示了时钟、闹钟、倒计时、设置屏幕亮度相关的场景，
-1、使用[@ohos.reminderAgentManager](reference/apis-backgroundtasks-kit/js-apis-reminderAgentManager.md)完成闹钟的相关功能，
-2、使用animateTo完成翻页时钟动画，使用[@ohos.runningLock](reference/apis-basic-services-kit/js-apis-runninglock.md)完成屏幕常亮功能，
-3、设置屏幕亮度，使用[@ohos.brightness](reference/apis-basic-services-kit/js-apis-brightness-sys.md)系统能力调节屏幕亮度，
-4、后台消息提醒，使用[@ohos.notificationManager](reference/apis-notification-kit/js-apis-notificationManager.md)系统能力做后台代理提醒。
-5、需要系统存储信息，使用用户首选项接口[@ohos.data.preferences](reference/apis-arkdata/js-apis-data-preferences.md)。
+本示例集中展示了时钟、闹钟、倒计时、设置屏幕亮度相关的场景：
+
+1. 使用[@ohos.reminderAgentManager](reference/apis-backgroundtasks-kit/js-apis-reminderAgentManager.md)完成闹钟的相关功能。
+2. 使用animateTo完成翻页时钟动画，使用[@ohos.runningLock](reference/apis-basic-services-kit/js-apis-runninglock.md)完成屏幕常亮功能。
+3. 设置屏幕亮度，使用[@ohos.brightness](reference/apis-basic-services-kit/js-apis-brightness-sys.md)系统能力调节屏幕亮度。
+4. 后台消息提醒，使用[@ohos.notificationManager](reference/apis-notification-kit/js-apis-notificationManager.md)系统能力做后台代理提醒。
+5. 需要系统存储信息，使用用户首选项接口[@ohos.data.preferences](reference/apis-arkdata/js-apis-data-preferences.md)。
 
 ##### 使用
 
@@ -3979,21 +3979,24 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 * 在entry/pages/index.ets中通过tabArray.TabType.num的值来加载每个TabContent()的资源，num:[0,1,2,3]分别加载翻页时钟，闹钟，倒计时，设置组件。
 * 页面编写步骤：  
   1、定义以下四个页面组件 FlipClock()//翻转时钟 AlarmClock()// 闹钟CountDown()// 倒计时Setting()//设置  
+
   2、使用tabs()标签，将四个组件封装。
 * 组件逻辑实现  
-  1、时钟： 通过aboutToAppear()中new date()获取当前时间，通过获取date的时、分、秒，10位数通过math.floor()取整，个位数通过对10取余，从而实现对时间格式化，使用box标签，对获取到的数据进行渲染。  
+  1、时钟：通过aboutToAppear()中new date()获取当前时间，通过获取date的时、分、秒，10位数通过math.floor()取整，个位数通过对10取余，从而实现对时间格式化，使用box标签，对获取到的数据进行渲染。  
+  
   2、闹钟：   
-   * a) 使用自定义对话控制器CustomDialogController，定义时间选择器，使用data.preferences存储设置的闹钟，并使用reminderAgentManager将其添加到系统中。
-  import data_preferences from '@ohos.data.preferences'
-  import reminderAgentManager from '@ohos.reminderAgentManager'  
-  *  b) 页面从data.preferences获取添加的闹钟数据，通过Scroll()标签渲染，在标签row内，设置delete按钮，如果删除就调用以下函数取消系统时钟
-  import reminderAgentManager from '@ohos.reminderAgentManager'
-  reminderAgentManager.cancelReminder  
+   * a) 使用自定义对话控制器CustomDialogController，定义时间选择器，使用data.preferences存储设置的闹钟，并使用reminderAgentManager将其添加到系统中。<br/>
+        import data_preferences from '@ohos.data.preferences'<br/>
+        import reminderAgentManager from '@ohos.reminderAgentManager'  
+  *  b) 页面从data.preferences获取添加的闹钟数据，通过Scroll()标签渲染，在标签row内，设置delete按钮，如果删除就调用以下函数取消系统时钟。<br/>
+        import reminderAgentManager from '@ohos.reminderAgentManager'
+        reminderAgentManager.cancelReminder  
+
   3、倒计时  
-  * a) 使用aboutToAppear()初始化界面布局，通过this.listener.on('change', portraitFunc)添加监听，  
-  * b) 点击开始按钮触发以下函数开始计时，并修改按钮的样式为暂停，并将running=true，触发canvas样式
-  * c) 点击暂停按钮，时间暂停，并将按钮样式修改为开始  
-  * d) 点击reset计时重置，将所有数据初始化  
+  * a) 使用aboutToAppear()初始化界面布局，通过this.listener.on('change', portraitFunc)添加监听。  
+  * b) 点击开始按钮触发以下函数开始计时，并修改按钮的样式为暂停，并将running=true，触发canvas样式。
+  * c) 点击暂停按钮，时间暂停，并将按钮样式修改为开始。
+  * d) 点击reset计时重置，将所有数据初始化。
 
 ##### 约束与限制
 
@@ -4025,8 +4028,7 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 3、当用户回到小程序首页时（onShow事件），重新设置一个定时器（timer）setInterval，定时从index.js刷新最新消息通知。  
 
-4、实现动画样式：通过transform设置平移/旋转/缩放的属性。时钟的指针使用rotate设置x轴和y轴两个维度参数，rotate可以传入具体角度值。指针旋转角度通过计算得出。  
-例如："transform : rotate\(\{\{ second \* 6 \}\}deg\)", 秒针1秒转动6度。
+4、实现动画样式：通过transform设置平移/旋转/缩放的属性。时钟的指针使用rotate设置x轴和y轴两个维度参数，rotate可以传入具体角度值。指针旋转角度通过计算得出。例如："transform : rotate\(\{\{ second \* 6 \}\}deg\)", 秒针1秒转动6度。
 
 ##### 约束与限制
 
@@ -4055,7 +4057,7 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 * 在pages/Home.ets中定义密码锁组件，通过定义两个变量isHasPass：是否已经设过密码;isReset：是否需要重置密码;
 * 密码验证分为几种情况：
   1. 首次进入页面， 通过aboutToAppear()初始化调用preferences.getPreferences()获取密码，此时defaultPassword='null'，isHassPass=false，需设置密码并确认密码；
-  2. 已经设过密码： 通过aboutToAppear()初始化调用preferences.getPreferences()获取密码，此时defaultPassword='oldPassword'，isHassPass=true，页面渲染重置密码text()。
+  2. 已经设过密码： 通过aboutToAppear()初始化调用preferences.getPreferences()获取密码，此时defaultPassword='oldPassword'，isHassPass=true，页面渲染重置密码text()。<br/>
      需输入密码和defaultPassword比较，正确后跳转相应页面，若失败提示密码错误，需重新输入密码。
   3. 点击重置密码，此时组件清除旧密码，即defaultPassword='null'，此时无密码，走首次无密码流程。
 * 在pages/index.ets中定义密码通过后的首页页面。
@@ -4094,8 +4096,7 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 ##### 基本原理
 
-在分布式计算器应用中，分布式设备管理包含了分布式设备搜索、分布式设备列表弹窗、远端设备拉起三部分。  
-首先在分布式组网内搜索设备，然后把设备展示到分布式设备列表弹窗中，最后根据用户的选择拉起远端设备。
+在分布式计算器应用中，分布式设备管理包含了分布式设备搜索、分布式设备列表弹窗、远端设备拉起三部分。首先在分布式组网内搜索设备，然后把设备展示到分布式设备列表弹窗中，最后根据用户的选择拉起远端设备。
 #### 分布式设备搜索
 通过SUBSCRIBE_ID搜索分布式组网内的远端设备，详见startDeviceDiscovery(){}模块。
 #### 分布式设备列表弹窗
@@ -4104,8 +4105,11 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 通过startAbility(deviceId)方法拉起远端设备的包。
 #### 分布式数据管理
 (1) 管理分布式数据库  
+
 创建一个KVManager对象实例，用于管理分布式数据库对象。通过distributedData.createKVManager(config)，并通过指定Options和storeId，创建并获取KVStore数据库，并通过Promise方式返回，此方法为异步方法，例如this.kvManager.getKVStore(STORE_ID, options).then((store) => {})。
+
 (2) 订阅分布式数据变化  
+
 通过订阅分布式数据库所有（本地及远端）数据变化实现数据协同。
 
 ##### 约束与限制
@@ -4132,8 +4136,7 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 ##### 基本原理
 
-在分布式音乐播放器中，分布式设备管理包含了分布式设备搜索、分布式设备列表弹窗、远端设备拉起三部分。  
-首先在分布式组网内搜索设备，然后把设备展示到分布式设备列表弹窗中，最后根据用户的选择拉起远端设备。
+在分布式音乐播放器中，分布式设备管理包含了分布式设备搜索、分布式设备列表弹窗、远端设备拉起三部分。首先在分布式组网内搜索设备，然后把设备展示到分布式设备列表弹窗中，最后根据用户的选择拉起远端设备。
 #### 分布式设备搜索
 通过SUBSCRIBE_ID搜索分布式组网内的远端设备，详见registerDeviceListCallback(callback) {}模块。
 #### 分布式设备列表弹窗
@@ -4142,8 +4145,11 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 通过startAbility(deviceId)方法拉起远端设备的包。
 #### 分布式数据管理
 (1) 管理分布式数据库  
+
 创建一个KVManager对象实例，用于管理分布式数据库对象。通过distributedData.createKVManager(config)，并通过指定Options和storeId，创建并获取KVStore数据库，并通过Promise方式返回，此方法为异步方法，例如this.kvManager.getKVStore(STORE_ID, options).then((store) => {})  
+
 (2) 订阅分布式数据变化  
+
 通过订阅分布式数据库所有（本地及远端）数据变化实现数据协同。
 
 ##### 约束与限制
@@ -4174,8 +4180,7 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 
 ##### 基本原理
 
-在分布式计算器应用中，分布式设备管理包含了分布式设备搜索、分布式设备列表弹窗、远端设备拉起三部分。  
-首先在分布式组网内搜索设备，然后把设备展示到分布式设备列表弹窗中，最后根据用户的选择拉起远端设备。
+在分布式计算器应用中，分布式设备管理包含了分布式设备搜索、分布式设备列表弹窗、远端设备拉起三部分。首先在分布式组网内搜索设备，然后把设备展示到分布式设备列表弹窗中，最后根据用户的选择拉起远端设备。
 #### 分布式设备搜索
 通过SUBSCRIBE_ID搜索分布式组网内的远端设备，详见startDeviceDiscovery(){}模块
 #### 分布式设备列表弹窗
@@ -4184,8 +4189,11 @@ hdc shell aa test -b ohos.samples.workschedulerextensionability -m entry_test -s
 selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉起远端设备的包，调用dataChange(key, value)改变kvstore的值。
 #### 分布式数据管理
 (1) 管理分布式数据库  
+
 创建一个KVManager对象实例，用于管理分布式数据库对象。通过distributedData.createKVManager(config)，并通过指定Options和storeId，创建并获取KVStore数据库，并通过Promise方式返回，此方法为异步方法，例如this.kvManager.getKVStore(STORE_ID, options).then((store) => {})。  
+
 (2) 订阅分布式数据变化  
+
 通过订阅分布式数据库所有（本地及远端）数据变化实现数据协同。
 
 ##### 约束与限制
@@ -4283,8 +4291,7 @@ selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉�
 
 ##### 基本原理
 
-在分布式笔记应用中，分布式设备管理包含了分布式设备搜索、分布式设备列表弹窗、远端设备拉起三部分。  
-首先在分布式组网内搜索设备，然后把设备展示到分布式设备列表弹窗中，最后根据用户的选择拉起远端设备。
+在分布式笔记应用中，分布式设备管理包含了分布式设备搜索、分布式设备列表弹窗、远端设备拉起三部分。首先在分布式组网内搜索设备，然后把设备展示到分布式设备列表弹窗中，最后根据用户的选择拉起远端设备。
 #### 分布式设备搜索
 通过SUBSCRIBE_ID搜索分布式组网内的设备，详见startDeviceDiscovery(){}模块。
 #### 分布式设备列表弹窗
@@ -4293,15 +4300,23 @@ selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉�
 通过startAbility(deviceId)方法拉起远端设备的包。  
 #### 分布式数据管理
 (1) 管理分布式数据库  
+
 创建一个distributedObject分布式数据对象实例，用于管理分布式数据对象。详见distributedObject.createDistributedObject()。  
-(2) 订阅分布式数据变化  
+
+(2) 订阅分布式数据变化 
+
 通过this.distributedObject.on('status', this.statusCallback)监听分布式数据对象的变更。
 #### 笔记
-(1)UIAbility拉起弹框请求用户授权:在onCreate()时通过abilityAccessCtrl.createAtManager.requestPermissionsFromUser(this.context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((data)=> {})获取不同设备间的数据交换权限。   
+(1)UIAbility拉起弹框请求用户授权:在onCreate()时通过abilityAccessCtrl.createAtManager.requestPermissionsFromUser(this.context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((data)=> {})获取不同设备间的数据交换权限。 
+
 (2)将sessionID存在应用全局的UI状态存储AppStorage内：在onCreate(want, launchParam) {}时拿到sessionId并存储在AppStorage内，并把同时把sessionId绑定到@StorageLink上实现双向数据绑定。  
+
 (3)对笔记内容进行存储在dataArray:note[]中：通过this.noteDataSource['dataArray'] = this.globalObject.distributedObject.documents。  
+
 (4)笔记内容更新：通过绑定Button的onClick事件指定this.globalObject.update(index, this.note.title, this.note.content, this.note.mark)进行笔记内容和状态更新。    
+
 (5)实现分布式数据自动同步：通过this.globalObject.distributedObject.setSessionId(this.sessionId)，从而实现当可信组网中有多个设备时，多个设备间的对象如果设置为同一个sessionId的笔记数据自动同步，并将其封装在share()函数内。    
+
 (6)在首页的onPageShow()钩子中，调用share()实现首页在分布式设备上同步渲染组件。
 
 ##### 约束与限制
@@ -4381,12 +4396,12 @@ selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉�
 本示例展示了在eTS中分布式数据管理的使用，包括KVManager对象实例的创建和KVStore数据流转的使用。
 
 通过设备管理接口[@ohos.distributedHardware.deviceManager](reference/apis-distributedservice-kit/js-apis-device-manager-sys.md) ，实现设备之间的kvStore对象的数据传输交互，该对象拥有以下能力[详见](reference/apis-distributedservice-kit/js-apis-device-manager-sys.md) ;
-1、注册和解除注册设备上下线变化监听
-2、发现周边不可信设备
-3、认证和取消认证设备
-4、查询可信设备列表
-5、查询本地设备信息，包括设备名称，设备类型和设备标识
-6、发布设备发现
+1. 注册和解除注册设备上下线变化监听。
+2. 发现周边不可信设备。
+3. 认证和取消认证设备。
+4. 查询可信设备列表。
+5. 查询本地设备信息，包括设备名称，设备类型和设备标识。
+6. 发布设备发现。
 
 ##### 使用
 
@@ -4400,9 +4415,9 @@ selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉�
 
 ##### 基本原理
 
-1、页面初始化时获取此应用所需能力：引入@ohos.data.distributedKVStore初始化kvstore数据库并对使用kvstore.on数据change进行监听，通过appstorge判断获取相应的key判断是否是分布式节点。
-2、如果是分布式节点，如果数据发生变化，处理数据并使用.noteDataSource()进行reload数据。  
-3、页面通过kvStore对象进行增删改查会触发其他已连接设备的kvStore.on监听。
+1. 页面初始化时获取此应用所需能力：引入@ohos.data.distributedKVStore初始化kvstore数据库并对使用kvstore.on数据change进行监听，通过appstorge判断获取相应的key判断是否是分布式节点。
+2. 如果是分布式节点，如果数据发生变化，处理数据并使用.noteDataSource()进行reload数据。  
+3. 页面通过kvStore对象进行增删改查会触发其他已连接设备的kvStore.on监听。
 
 
 ##### 约束与限制
@@ -4553,8 +4568,8 @@ selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉�
 
 本示例介绍如何使用自适应布局能力和响应式布局能力适配不同尺寸窗口，将页面分拆为5个部分。   
 ##### 底部/侧边导航栏
-1、在sm和md断点下，导航栏在底部；在lg断点下，导航栏在左侧。   
-2、通过Tab组件的barPosition和vertical属性控制TabBar的位置在主轴方向起始或结尾位置和水平或垂直方向，同时还可以通过barWidth和barHeight属性控制TabBar的尺寸。
+1. 在sm和md断点下，导航栏在底部；在lg断点下，导航栏在左侧。   
+2. 通过Tab组件的barPosition和vertical属性控制TabBar的位置在主轴方向起始或结尾位置和水平或垂直方向，同时还可以通过barWidth和barHeight属性控制TabBar的尺寸。
 
 ##### 约束与限制
 
@@ -4612,11 +4627,11 @@ selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉�
 
 ##### 基本原理
 
-1、index下定义三个box，分别资源限定词resourceQualifier、原子布局atomicLayoutCapability、响应式布局responsiveLayout，并通过onclick路由到各自的组件。  
-2、资源限定词组件： 在MainAbility.resource下定义需要访问的资源，在资源限定词resourceQualifier组件中，使用$r('')即可实现不同形态和规格访问到不同的资源。  
-3、原子布局atomicLayoutCapability组件：该布局下，通过slide滑动控制样式的展示比率rate,例如下面这个样例。  
-4、响应式布局responsiveLayout ：该布局下需要相对应的媒体资源，比如sm、md、lg，然后监听媒体的变化，从而对资源进行响应式的调整。 例如栅格布局。本案例定义了xs、sm、md、lg下的栅格宽度，根据系统的规格自动选择相应的属性。  
-5、使用mediaQuery对规格进行监听，判断当前系统的横竖屏，从而加载相应的资源。  
+1. index下定义三个box，分别资源限定词resourceQualifier、原子布局atomicLayoutCapability、响应式布局responsiveLayout，并通过onclick路由到各自的组件。  
+2. 资源限定词组件： 在MainAbility.resource下定义需要访问的资源，在资源限定词resourceQualifier组件中，使用$r('')即可实现不同形态和规格访问到不同的资源。  
+3. 原子布局atomicLayoutCapability组件：该布局下，通过slide滑动控制样式的展示比率rate,例如下面这个样例。  
+4. 响应式布局responsiveLayout ：该布局下需要相对应的媒体资源，比如sm、md、lg，然后监听媒体的变化，从而对资源进行响应式的调整。 例如栅格布局。本案例定义了xs、sm、md、lg下的栅格宽度，根据系统的规格自动选择相应的属性。  
+5. 使用mediaQuery对规格进行监听，判断当前系统的横竖屏，从而加载相应的资源。  
 
 ##### 约束与限制
 
@@ -4687,8 +4702,7 @@ selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉�
 
 **整体布局:**
 
-1.通过GridRow组件提供的断点事件，获取到当前窗口的断点，通过visibility属性将[Tabs](reference/apis-arkui/arkui-ts/ts-container-tabs.md)组件与[SideBarContainer](reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)组件分别在sm/(md、lg)
-形态下展示/隐藏。
+1.通过GridRow组件提供的断点事件，获取到当前窗口的断点，通过visibility属性将[Tabs](reference/apis-arkui/arkui-ts/ts-container-tabs.md)组件与[SideBarContainer](reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)组件分别在sm/(md、lg)形态下展示/隐藏。
 
 2.同时通过断点，对组件设置不同的样式属性，以最优的效果展示。
 
@@ -4744,10 +4758,13 @@ selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉�
 本示例介绍如何使用自适应布局能力和响应式布局能力适配不同尺寸窗口，将页面分拆为4个部分。
 ###### 标题栏
 由于在不同断点下，标题栏始终只显示“返回按钮”、“歌单”以及“更多按钮”，但“歌单”与“更多按钮”之间的间距不同。  
+
 通过栅格实现：将标题栏划分为“返回按钮及歌单”和“更多按钮”两部分，这两部分在不同断点下占据的列数不同。
 ###### 歌单封面
 通过栅格实现歌单封面，它由封面图片、歌单介绍及常用操作三部分组成这三部分的布局在md和lg断点下完全相同，但在sm断点下有较大差异。  
-1、在sm断点下，封面图片和歌单介绍占满12列，常用操作此时会自动换行显示。  
+
+1、在sm断点下，封面图片和歌单介绍占满12列，常用操作此时会自动换行显示。
+
 2、在lg和md断点下，封面图片，歌单和常用操作各占一行中显示。
 ###### 歌单列表
 通过List组件的lanes属性实现：在不同断点下，歌单列表的样式一致，但sm和md断点下是歌单列表是单列显示，lg断点下是双列显示。  
@@ -4784,18 +4801,21 @@ selectDevice()发起远程设备调用，featureAbility.startAbility()方法拉�
 
 本示例介绍如何实现不同断点下存在单栏和双栏设计的场景，主要有以下三方面：
 ###### 实现单/双栏的显示效果
-通过Navigation组件实现单/双栏展示，由Navbar(设置主页面)和Content(跳转子页面)两部分区域组成，Navigation组件支持Stack、Split以及Auto三种模式。    
+通过Navigation组件实现单/双栏展示，由Navbar(设置主页面)和Content(跳转子页面)两部分区域组成，Navigation组件支持Stack、Split以及Auto三种模式。  
+
 1、stack模式：导航栏与内容区独立显示，相当于多个页面。展示效果：从Navbar(设置主页面)跳转到Content1(WLAN页面)跳转到Content2(更多WLAN模式)。  
-2、Split模式：导航栏与内容区分两栏显示。展示效果：Navbar+Content1。  
+
+2、Split模式：导航栏与内容区分两栏显示。展示效果：Navbar+Content1。
+
 3、auto模式：Navigation组件可以根据应用窗口尺寸，自动选择合适的模式：窗口宽度小于520vp时，采用Stack模式显示；窗口宽度大于等于520vp时，采用Split模式显示。当窗口尺寸发生改变时，Navigation组件也会自动在Stack模式和Split模式之间切换。
 
 ###### 实现点击跳转或刷新
 Navigation组件通常搭配NavRouter组件以及NavDestination组件一起使用：
 * NavRouter组件用于控制Navigation组件Content区域的显示和刷新逻辑：其必须包含两个孩子节点。  
-1、容器类组件-直接控制NavRouter的显示效果。  
-2、NavDestination组件：刷新Navigation组件Content区域的显示。  
-3、NavRouter组件通过onStateChange回调事件，用于通知开发者NavRouter的状态：用户点击NavRouter，激活NavRouter并加载对应的NavDestination子组件时，回调onStateChange(true)；  
-4、NavRouter对应的NavDestination子组件不再显示时，回调onStateChange(false)。
+  1. 容器类组件-直接控制NavRouter的显示效果。
+  2. NavDestination组件：刷新Navigation组件Content区域的显示。  
+  3. NavRouter组件通过onStateChange回调事件，用于通知开发者NavRouter的状态：用户点击NavRouter，激活NavRouter并加载对应的NavDestination子组件时，回调onStateChange(true)。
+  4. NavRouter对应的NavDestination子组件不再显示时，回调onStateChange(false)。
 * NavDestination组件用于实际刷新Navigation组件Content区域的显示。
 * 例如：在本示例中wlan功能项为NavRouter的第一个孩子节点，跳转的子页面WLAN为NavRouter的第二个孩子节点。
 
@@ -4901,14 +4921,26 @@ Navigation组件支持自动切换单栏和双栏的显示效果，同时可以�
 
 ##### 基本原理
 
-1、在module.json5文件添加拓展能力，类型为卡片，并设置卡片入口srcEntrance和卡片元数据metadata。例如："metadata": [
-{
-"name": "ohos.extension.form",
-"resource": "$profile:form_config"
-}。  
-2、初始化卡片：通过实现@ohos.app.form.FormExtensionAbility卡片操作类，在卡片对象首次被创建时，初始化卡片绑定数据为空，并将卡片状态设置为就绪状态READY。 例如：onCreate(){
-formBindingData.createFormBindingData({}) onAcquireFormState(want) {
-return formInfo.FormState.READY }。   
+1、在module.json5文件添加拓展能力，类型为卡片，并设置卡片入口srcEntrance和卡片元数据metadata。例如：
+   ```
+   "metadata": [
+      {
+        "name": "ohos.extension.form",
+        "resource": "$profile:form_config"
+      }
+   ]
+   ```
+  
+2、初始化卡片：通过实现@ohos.app.form.FormExtensionAbility卡片操作类，在卡片对象首次被创建时，初始化卡片绑定数据为空，并将卡片状态设置为就绪状态READY。例如：
+   ```
+   onCreate(){
+      formBindingData.createFormBindingData({}) 
+      onAcquireFormState(want) {
+          return formInfo.FormState.READY 
+        }
+   }    
+   ```
+
 3、配置卡片：用js编写相应的卡片，将卡片配置到resources/base/profile/form_config。 
 
 ##### 约束与限制
@@ -5060,8 +5092,11 @@ return formInfo.FormState.READY }。
 ##### 基本原理
 
 1、在module.json5文件添加拓展能力，类型为卡片，并设置卡片入口srcEntrance和卡片元数据metadata。 
+
 2、配置卡片：用js编写相应的卡片，将卡片配置到resources/base/profile/form_config。  
-3、定义小游戏逻辑：实现FormExtensionAbility中addform时初始化数据(本sample中使用的是mock数据)，并将数据存储到dataStore，通过调用c++随机数，将成语顺序打乱显示，
+
+3、定义小游戏逻辑：实现FormExtensionAbility中addform时初始化数据(本sample中使用的是mock数据)，并将数据存储到dataStore，通过调用c++随机数，将成语顺序打乱显示。
+
 4、监听卡片变化：通过onformEvent()监听卡片事件，更新已选择的成语数据，并随机替换成语待选列表的已被选掉的word。
 
 ##### 约束与限制
@@ -5499,38 +5534,31 @@ return formInfo.FormState.READY }。
 
 1.首页菜单展示：使用一个module，menuitems完成菜单组件的实现，传入要展示的菜单的strarray类型的资源和菜单点击对应的组件即可。使用Navigation和NavRouter组件实现菜单点击进入功能界面，使用LocalStorage实现应用内Ability内数据共享，点击菜单时标记selectedLabel，在entry中的Capabilities组件中，通过selectedLabel显示对应的功能组件。
 
-2.耗电统计：使用[@ohos.batteryStatistics.d.ts](reference/apis-basic-services-kit/js-apis-batteryStatistics-sys.md)
-接口获取硬件和应用的耗电量与百分比，使用[@ohos.bundle.bundleManager.d.ts](reference/apis-ability-kit/js-apis-bundleManager.md)
-接口获取系统已安装应用信息。
+2.耗电统计：使用[@ohos.batteryStatistics.d.ts](reference/apis-basic-services-kit/js-apis-batteryStatistics-sys.md)接口获取硬件和应用的耗电量与百分比，使用[@ohos.bundle.bundleManager.d.ts](reference/apis-ability-kit/js-apis-bundleManager.md)接口获取系统已安装应用信息。
 
-3.屏幕亮度：使用[@ohos.brightness.d.ts](reference/apis-basic-services-kit/js-apis-brightness-sys.md)
-实现屏幕亮度控制。
+3.屏幕亮度：使用[@ohos.brightness.d.ts](reference/apis-basic-services-kit/js-apis-brightness-sys.md)实现屏幕亮度控制。
 
-4.系统电源管理：使用[@ohos.power.d.ts](reference/apis-basic-services-kit/js-apis-power-sys.md)
-实现休眠、关机、重启、设置电源模式功能。
+4.系统电源管理：使用[@ohos.power.d.ts](reference/apis-basic-services-kit/js-apis-power-sys.md)实现休眠、关机、重启、设置电源模式功能。
 
-5.设置数据项名称：使用[@ohos.settings.d.ts](reference/apis-basic-services-kit/js-apis-settings.md)
-实现将数据项名称及数据项的值保存到数据库中。
+5.设置数据项名称：使用[@ohos.settings.d.ts](reference/apis-basic-services-kit/js-apis-settings.md)实现将数据项名称及数据项的值保存到数据库中。
 
-6.系统能力：使用[@ohos.systemCapability.d.ts](reference/apis-basic-services-kit/js-apis-system-capability-sys.md)
-实现获取系统能力集合的字符串并显示。
+6.系统能力：使用[@ohos.systemCapability.d.ts](reference/apis-basic-services-kit/js-apis-system-capability-sys.md)实现获取系统能力集合的字符串并显示。
 
-7.系统参数：使用[@ohos.systemParameterEnhance.d.ts](reference/apis-basic-services-kit/js-apis-system-parameterEnhance-sys.md)
-实现设置一个系统参数、获取并展示系统参数功能。
+7.系统参数：使用[@ohos.systemParameterEnhance.d.ts](reference/apis-basic-services-kit/js-apis-system-parameterEnhance-sys.md)实现设置一个系统参数、获取并展示系统参数功能。
 
-8.电量信息：使用[@ohos.batteryInfo.d.ts](reference/apis-basic-services-kit/js-apis-battery-info-sys.md)接口获取电池和充放电状态信息
+8.电量信息：使用[@ohos.batteryInfo.d.ts](reference/apis-basic-services-kit/js-apis-battery-info-sys.md)接口获取电池和充放电状态信息。
 
 9.设备信息：使用[@ohos.deviceInfo](reference/apis-basic-services-kit/js-apis-device-info.md)获取设备相关信息。
 
-10.组合按键：使用[@ohos.multimodalInput.inputConsumer](reference/apis-input-kit/js-apis-inputconsumer-sys.md) 订阅组合按键，当组合按键被触发时展示组合按键回调信息。
+10.组合按键：使用[@ohos.multimodalInput.inputConsumer](reference/apis-input-kit/js-apis-inputconsumer-sys.md)订阅组合按键，当组合按键被触发时展示组合按键回调信息。
 
-11.输入设备：使用[@ohos.multimodalInput.inputDevice](reference/apis-input-kit/js-apis-inputdevice.md) 获取输入设备列表，并显示输入设备信息，实现设备的热插拔监听。
+11.输入设备：使用[@ohos.multimodalInput.inputDevice](reference/apis-input-kit/js-apis-inputdevice.md)获取输入设备列表，并显示输入设备信息，实现设备的热插拔监听。
 
 12.输入事件：使用[@ohos.multimodalInput.inputMonitor](reference/apis-input-kit/js-apis-inputmonitor-sys.md)开启监听全局触屏输入事件，当触发触屏输入事件时显示触屏详情，使用[@ohos.multimodalInput.inputEventClient](reference/apis-input-kit/js-apis-inputeventclient-sys.md)模拟返回按键进行按键注入，实现返回功能，在column组件中添加[@ohos.multimodalInput.touchEvent](reference/apis-input-kit/js-apis-touchevent.md)触摸事件，模拟按键被按下效果。
 
 13.鼠标光标：使用[@ohos.multimodalInput.mouseEvent](reference/apis-input-kit/js-apis-mouseevent.md)监听鼠标事件，并显示鼠标操作回调信息，使用[@ohos.multimodalInput.pointer](reference/apis-input-kit/js-apis-pointer.md)实现鼠标光标的显示或隐藏状态，设置鼠标移动速度和显示样式。
 
-14.输入按键事件：使用 [@ohos.multimodalInput.keyEvent (按键输入事件)](reference/apis-input-kit/js-apis-keyevent.md)监听按键输入的信息。
+14.输入按键事件：使用[@ohos.multimodalInput.keyEvent (按键输入事件)](reference/apis-input-kit/js-apis-keyevent.md)监听按键输入的信息。
 
 ##### 约束与限制
 
