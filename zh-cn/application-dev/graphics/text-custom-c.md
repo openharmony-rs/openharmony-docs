@@ -108,6 +108,52 @@
 6. 该步骤是文本塑形流程中的自定义绘制环节。通过调用OH_Drawing_GetRunGlyphs()方法获取文本中每个字符对应的字形序号，再结合OH_Drawing_GetRunFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。  
 从 API version 20 开始，新增的OH_Drawing_GetRunGlyphAdvances()方法能够返回一个数组，其中包含了每个字形在绘制时建议占用的宽度和高度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
    <!-- @[complex_text_c_independent_shaping_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+   
+   ``` C++
+   size_t runsLength = OH_Drawing_GetDrawingArraySize(runs);
+   for (int i = 0; i < runsLength; i++) {
+       OH_Drawing_Run *run = OH_Drawing_GetRunByIndex(runs, i);
+       // 获取所有字形数据
+       OH_Drawing_Array *glyphs = OH_Drawing_GetRunGlyphs(run, 0, 0);
+       size_t glyphsLength = OH_Drawing_GetDrawingArraySize(glyphs);
+       // 获取相同绘制单元字体
+       OH_Drawing_Font *font = OH_Drawing_GetRunFont(run);
+       OH_Drawing_Array *advances = OH_Drawing_GetRunGlyphAdvances(run, 0, 0);
+   
+       OH_Drawing_TextBlobBuilder *builder = OH_Drawing_TextBlobBuilderCreate();
+       // 创建一个20*20的矩形
+       OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 20, 20);
+       const OH_Drawing_RunBuffer *buffer = OH_Drawing_TextBlobBuilderAllocRunPos(builder, font, glyphsLength, rect);
+   
+       // 创建字形buffer，通过drawing接口进行字形独立绘制
+       int x = 0;
+       int y = 0;
+       for (int index = 0; index < glyphsLength; index++) {
+           buffer->glyphs[index] = OH_Drawing_GetRunGlyphsByIndex(glyphs, index);
+           // 设置字形位置
+           buffer->pos[index * TWO_INT] = x;
+           buffer->pos[index * TWO_INT + 1] = y;
+   
+           OH_Drawing_Point *advance = OH_Drawing_GetRunGlyphAdvanceByIndex(advances, index);
+           float pos = 0;
+           OH_Drawing_PointGetX(advance, &pos);
+           x += pos + 10; // 每个字形间水平间隔10px
+           OH_Drawing_PointGetY(advance, &pos);
+           y += pos + 30; // 每个字形间垂直间隔30px
+       }
+   
+       // 自定义绘制一串具有相同属性的一系列连续字形
+       OH_Drawing_TextBlob *textBlob = OH_Drawing_TextBlobBuilderMake(builder);
+       // 将文本绘制到画布(20,100)上
+       OH_Drawing_CanvasDrawTextBlob(cCanvas_, textBlob, 20, 100);
+   
+       // 释放内存
+       OH_Drawing_TextBlobDestroy(textBlob);
+       OH_Drawing_FontDestroy(font);
+       OH_Drawing_DestroyRunGlyphAdvances(advances);
+       OH_Drawing_DestroyRunGlyphs(glyphs);
+   }
+   ```
 
 7. 释放内存
    <!-- @[complex_text_c_independent_shaping_text_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
