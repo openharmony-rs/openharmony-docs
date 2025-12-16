@@ -85,3 +85,40 @@
 4. 调用测量相关接口，获取指定的测量信息。
 
    <!-- @[ts_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 对段落进行塑形排版，设置排版宽度为1000
+   paragraph.layoutSync(1000);
+   // case1: 获取排版后最长行行宽
+   let longestLineWidth = paragraph.getLongestLine();
+   console.info("longestLineWidth = " + longestLineWidth);
+   
+   // case2: 获取排版后最长行行宽(包含缩进)
+   let longestLineWithIndentWidth = paragraph.getLongestLineWithIndent();
+   console.info("longestLineWithIndentWidth = " + longestLineWithIndentWidth);
+   
+   // case3: 获取排版后所有行对象
+   let textLines = paragraph.getTextLines();
+   for (let index = 0; index < textLines.length; index++) {
+     const textline = textLines[index];
+     let curLineRange = textline.getTextRange();
+     let curLineGlyCnt = textline.getGlyphCount();
+     console.info("MetricsMSG: 第" + (index + 1) + "行 TextRange start: " + curLineRange.start + " TextRange end: " + curLineRange.end);
+     console.info("MetricsMSG: 第" + (index + 1) + "行字形数量为: " + curLineGlyCnt);
+   }
+   
+   // case4: 获取排版后指定行对应的度量信息
+   let lineCnt = paragraph.getLineCount();
+   for (let index = 0; index < lineCnt; index++) {
+     let lineMetrics = paragraph.getLineMetrics(index);
+     if (lineMetrics) {
+       console.info("MetricsMSG: 第" + (index + 1) + "行 lineMetrics width: " + lineMetrics.width);
+       console.info("MetricsMSG: 第" + (index + 1) + "行 lineMetrics start index: " + lineMetrics.startIndex + ", end index: " +
+       lineMetrics.endIndex);
+     }
+   }
+   
+   // case5: 获取排版后所有行度量信息数组
+   let allLineMetrics = paragraph.getLineMetrics();
+   console.info("MetricsMSG: 第1行 lineMetrics width: " + allLineMetrics[0].width);
+   ```
