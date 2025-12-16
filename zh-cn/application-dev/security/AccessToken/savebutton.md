@@ -65,7 +65,6 @@
    async function savePhotoToGallery(context: common.UIAbilityContext) {
      let helper = photoAccessHelper.getPhotoAccessHelper(context);
      try {
-       // onClick触发后一分钟内通过createAsset接口创建图片文件，一分钟后createAsset权限收回。
        let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
        // 使用uri打开文件，可以持续写入内容，写入过程不受时间限制。
        let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
