@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **RelativeContainer** component is a container component used for relative layout of elements in complex scenarios.
 
@@ -73,7 +73,7 @@ Sets the barriers in the **RelativeContainer** component. The value is an array,
 
 barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt;)
 
-Sets the barriers in the **RelativeContainer** component. The value is an array, each element of which is a barrier.
+Sets barriers in the **RelativeContainer** component. Each array element defines a barrier. Barriers can be defined in mirrored layout mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

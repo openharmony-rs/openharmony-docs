@@ -163,7 +163,7 @@ Checks whether the current application is allowed to access the network when run
 
 | Type             | Description                                                                                |
 | ----------------- | ------------------------------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return the result. If the operation is successful, the value **true** is returned, indicating that the application is allowed to access the network when running at the background. If the operation fails, an error message is returned.|
+| Promise\<boolean> |  Promise used to return the result. The value **true** indicates that the background policy is allowed, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -739,7 +739,7 @@ Checks whether the application specified by a given UID is allowed to access a m
 
 | Type             | Description                         |
 | ----------------- | ----------------------------- |
-| Promise\<boolean> | Promise used to return the result.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the UID can access the metering or non-metering network, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -832,7 +832,7 @@ Checks whether an application is allowed to access the specified network. This A
 
 | Type             | Description                                                   |
 | ----------------- | ------------------------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. |
+| Promise\<boolean> | Promise used to return the result. The value **true** means that the application is allowed to access the specified network, and the value **false** means the opposite.|
 
 **Error codes**
 
@@ -2324,8 +2324,8 @@ Network access policy.
 
 | Name             | Type      | Read-Only| Optional|Description                         |
 | ----------------- | --------- | ---- | ------|----------------------- |
-| allowWiFi         | boolean   | No  |No|Whether the application is allowed to access the Wi-Fi network. The value **true** indicates that the application is allowed to access the Wi-Fi network, and the value **false** indicates the opposite.|
-| allowCellular     | boolean   | No |No|Whether the application is allowed to access the cellular network. The value **true** indicates that the application is allowed to access the cellular network, and the value **false** indicates the opposite.|
+| allowWiFi         | boolean   | No  |Yes|Whether the application is allowed to access the Wi-Fi network. The value **true** indicates that the application is allowed to access the Wi-Fi network, and the value **false** indicates the opposite.|
+| allowCellular     | boolean   | No |Yes|Whether the application is allowed to access the cellular network. The value **true** indicates that the application is allowed to access the cellular network, and the value **false** indicates the opposite.|
 | alwaysAllowWiFi<sup>18+</sup>    | boolean   | No |Yes|Whether the application is always allowed to access the Wi-Fi network. The value **true** indicates that the application is always allowed to access the Wi-Fi network, and the value **false** indicates the opposite.|
 | alwaysAllowCellular<sup>18+</sup>  | boolean   | No |Yes|Whether the application is always allowed to access the cellular network. The value **true** indicates that the application is always allowed to access the cellular network, and the value **false** indicates the opposite.|
 
@@ -2339,4 +2339,4 @@ Defines the network policy for an application with the specified UID.
 
 | Name      | Type                                                        | Read-Only|Optional|Description                |
 | --------- | -----------------------------------------------------------  | ---- | ---|---------------- |
-| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | No  |Yes|Network policy. The data type is key-value pair.     |
+| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | No  |No|Network policy. The data type is key-value pair.     |

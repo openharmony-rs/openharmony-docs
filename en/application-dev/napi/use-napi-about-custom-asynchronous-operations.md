@@ -83,6 +83,7 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
     napi_callback_scope scope = nullptr;
     status = napi_open_callback_scope(env, resource, context, &scope);
     if (status != napi_ok) {
+        napi_async_destroy(env, context);
         napi_throw_error(env, nullptr, "napi_open_callback_scope fail");
         return nullptr;
     }

@@ -94,7 +94,7 @@ Obtains the remaining time of a transient task. This API uses an asynchronous ca
 
 | Name      | Type                         | Mandatory  | Description                                      |
 | --------- | --------------------------- | ---- | ---------------------------------------- |
-| requestId | number                      | Yes   | Request ID of the transient task. It is obtained by calling the [requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay) API when applying for a transient task. |
+| requestId | number                      | Yes   | Request ID of the transient task. It is obtained by calling the [requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay) API. |
 | callback  | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the remaining time of the transient task, in milliseconds.|
 
 **Error codes**
@@ -892,7 +892,7 @@ Subscribes to continuous task cancellation events. This API uses an asynchronous
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| type   | string                            | Yes   | Cancels a continuous task. The value is fixed at **'continuousTaskCancel'**.|
+| type   | string                            | Yes   | Event type. The value is fixed at **'continuousTaskCancel'**, indicating that a continuous task is canceled.|
 | callback   | Callback\<[ContinuousTaskCancelInfo](#continuoustaskcancelinfo15)>       | Yes   | Callback used to return information such as the reason for canceling a continuous task.|
 
 **Error codes**
@@ -1314,7 +1314,7 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   notificationId: number = 0; // Save the notification ID.
-  continuousTaskId: number | undefined = -1; // ID of the continuous task.
+  continuousTaskId: number | undefined = -1; // Continuous task ID.
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // Add the bundleName and abilityName of the application to be started. Replace them with the actual ones.
@@ -1324,7 +1324,7 @@ export default class EntryAbility extends UIAbility {
           abilityName: "EntryAbility"
         }
       ],
-      // Set the action type after the notification is tapped.
+      // Set the operation type after the notification is tapped.
       actionType: wantAgent.OperationType.START_ABILITY,
       // Custom request code, which is used to identify the operation to execute.
       requestCode: 0,
@@ -1375,7 +1375,7 @@ Cancels a continuous task with the specified ID. This API uses a promise to retu
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.|
-| continuousTaskId   | number | Yes   | ID of a continuous task.<br>**Note**: You can obtain the ID of the current continuous task through the return value of the [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) API, or obtain information about all continuous tasks through the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API. |
+| continuousTaskId   | number | Yes   | Continuous task ID.<br>**Note**: You can obtain the ID of the current continuous task through the return value of the [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) API, or obtain information about all continuous tasks through the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API. |
 
 **Return value**
 
@@ -1576,7 +1576,7 @@ Describes the continuous task information.
 | [backgroundModes](#backgroundmode) | string[] | No   | No   | Type of the continuous task.              |
 | [backgroundSubModes](#backgroundsubmode16) | string[] | No   | No   | Subtype of a continuous task.             |
 | notificationId | number   | No   | No   | Notification ID.               |
-| continuousTaskId | number   | No   | No   | ID of a continuous task.             |
+| continuousTaskId | number   | No   | No   | Continuous task ID.             |
 | abilityId | number   | No   | No   | UIAbility ID.        |
 | wantAgentBundleName | string   | No   | No   |  Bundle name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.       |
 | wantAgentAbilityName | string   | No   | No   |  Ability name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.|
@@ -1603,7 +1603,7 @@ Specifies details of the continuous task being requested or updated. It is typic
 | backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | No   | No   | Subtype of a continuous task.<br>**Note**: The main type must match the subtype.|
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | No   | No   | Notification parameters, which are used to specify the target page that is redirected to when a continuous task notification is clicked.|
 | combinedTaskNotification | boolean   | No   | Yes   | Whether to combine notifications. The value **true** means to combine notifications, and the value **false** (default) means the opposite.<br>**Note**: This property does not take effect in [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API. If notifications need to be combined for an existing task, request the task again and set the value to **true**.|
-| continuousTaskId | number   | No   | Yes   | Continuous task ID. The default value is **-1**.<br>**Note**: If **combinedTaskNotification** is set to **true**, this property is mandatory and the ID must exist.<br>This property is mandatory and the ID must exist if it is used as the input parameter of the [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API.<br>You can call the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API to view information about all continuous tasks.  |
+| continuousTaskId | number   | No   | Yes   | Continuous task ID. The default value is **-1**.<br>**Note**: If **combinedTaskNotification** is set to true, this property is mandatory and the corresponding ID must exist.<br>Additionally, this property is mandatory (with the corresponding ID required) when used as an input parameter for the [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API.<br>You can call the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API to view information about all continuous tasks.  |
 
 ### isModeSupported<sup>21+</sup>
 
@@ -1758,7 +1758,7 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 
 | Name                    | Value | Description                   |
 | ------------------------ | ---- | --------------------- |
-| MODE_DATA_TRANSFER              | 1         | Data transfer.<br>Example: Upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>**NOTE**<br>1. During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>2. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).                |
+| MODE_DATA_TRANSFER              | 1         | Data transfer.<br>Use scenario: upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>**NOTE**<br>1. During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>2. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).                |
 | MODE_AUDIO_PLAYBACK             | 2         | Audio and video playback.<br>Use scenario: audio/video playback in the background and audio/video casting.<br>**Note**: If a continuous task of the **MODE_AUDIO_PLAYBACK** type is requested or updated without connecting to AVSession, a notification will appear in the notification panel once the task is successfully requested or updated. Once AVSession is connected, notifications will be sent by AVSession instead of the background task module.             |
 | MODE_AUDIO_RECORDING            | 3         | Audio recording.<br>Use scenario: recording and screen capture in the background.<!--Del--><br>**Note**: No notification is displayed if a system application requests or updates a continuous task.<!--DelEnd-->                 |
 | MODE_LOCATION                   | 4         | Positioning and navigation.                 |
@@ -1771,7 +1771,7 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
-Subtype of a continuous task. It is usually used together with the main type [BackgroundTaskMode](#backgroundtaskmode21). For details, see the mapping table. The two types are newly added in API version 21 for requesting and updating continuous tasks.
+Defines the subtype of a continuous task. It is usually used together with the main type [BackgroundTaskMode](#backgroundtaskmode21). For details, see the mapping table. The two types are newly added in API version 21 for requesting and updating continuous tasks.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

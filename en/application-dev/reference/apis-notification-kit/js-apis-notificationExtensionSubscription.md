@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **notificationExtensionSubscription** module provides notification management capabilities for opening the settings page, subscribing to/unsubscribing from notifications, and obtaining/setting the notification authorization status.
+The **notificationExtensionSubscription** module provides capabilities for managing notification extension, including opening the extension settings screen, subscribing to/unsubscribing from notification extension, and obtaining/setting the notification authorization status.
 
 > **NOTE**
 >
@@ -23,7 +23,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-Opens the Settings screen (displayed in a semi-modal dialog box) for subscribing notification extension after the [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) is implemented. Users can set the notification enabling status and mode on this screen. This API uses a promise to return the result.
+Opens the settings screen of notification extension subscription in a semi-modal dialog box. On this screen, the user can turn on the **Allow access to notifications on this device** switch and allows notifications of specified applications to be accessed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -76,7 +76,7 @@ try {
 
 subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
-Subscribes to notifications after the Bluetooth address is connected and the [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) is implemented. This API uses a promise to return the result.
+Subscribes to the notification extension. You can subscribe to the notification extension only after obtaining the unique address of the Bluetooth device by calling the APIs related to the [Bluetooth modules](../../connectivity/connectivity-kit-intro.md#bluetooth). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -126,7 +126,7 @@ notificationExtensionSubscription.subscribe(infos).then(() => {
 
 unsubscribe(): Promise\<void\>
 
-Unsubscribes from notifications. This API uses a promise to return the result.
+Unsubscribes from the notification extension. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -162,7 +162,7 @@ notificationExtensionSubscription.unsubscribe().then(() => {
 
 getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
-Obtains the notification subscription information of this application. This API uses a promise to return the result.
+Obtains the subscription information about the notification extension of this application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -198,7 +198,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 
 isUserGranted(): Promise\<boolean\>
 
-Checks whether the notification extension subscription is granted by the user. This API uses a promise to return the result.
+Checks whether the user has granted the permission to access notifications on this device. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -236,9 +236,9 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 ## notificationExtensionSubscription.getUserGrantedEnabledBundles
 
-getUserGrantedEnabledBundles(): Promise\<String[]\>
+getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-Obtains the source applications authorized to send notifications to this application. This API uses a promise to return the result.
+Obtains the applications whose notifications can be accessed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -248,7 +248,7 @@ Obtains the source applications authorized to send notifications to this applica
 
 | Type    | Description       | 
 | ------- |-----------|
-| Promise\<String[]\>   | Promise used to return the result.       |
+| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise used to return the applications whose notifications can be accessed.       |
 
 **Error codes**
 
@@ -303,3 +303,15 @@ Describes the bundle information of an application.
 | Type| Description|
 | --- | --- |
 | [_BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Bundle information.|
+
+## GrantedBundleInfo
+
+type GrantedBundleInfo = _GrantedBundleInfo
+
+Describes the bundle information of the authorized application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Type| Description|
+| --- | --- |
+| [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | Bundle information of the authorized application.|

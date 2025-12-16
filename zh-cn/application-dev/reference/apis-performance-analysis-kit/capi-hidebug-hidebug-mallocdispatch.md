@@ -38,7 +38,7 @@ typedef struct HiDebug_MallocDispatch {...} HiDebug_MallocDispatch
 
 ### malloc()
 
-```
+```c
 void* (*malloc)(size_t)
 ```
 
@@ -48,7 +48,7 @@ void* (*malloc)(size_t)
 
 ### calloc()
 
-```
+```c
 void* (*calloc)(size_t, size_t)
 ```
 
@@ -58,7 +58,7 @@ void* (*calloc)(size_t, size_t)
 
 ### realloc()
 
-```
+```c
 void* (*realloc)(void*, size_t)
 ```
 
@@ -68,7 +68,7 @@ void* (*realloc)(void*, size_t)
 
 ### free()
 
-```
+```c
 void (*free)(void*)
 ```
 
@@ -78,7 +78,7 @@ void (*free)(void*)
 
 ### mmap()
 
-```
+```c
 void* (*mmap)(void*, size_t, int, int, int, off_t)
 ```
 
@@ -88,7 +88,7 @@ void* (*mmap)(void*, size_t, int, int, int, off_t)
 
 ### munmap()
 
-```
+```c
 int (*munmap)(void*, size_t)
 ```
 

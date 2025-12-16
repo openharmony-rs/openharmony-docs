@@ -80,7 +80,7 @@ interface OHOS.IIdlServiceExt {
 
 在DevEco Studio工程Module对应的ets目录下手动新建名为IdlServiceExt的目录，将[IDL工具](../IDL/idl-guidelines.md)生成的文件复制到该目录下，并创建一个名为idl_service_ext_impl.ts的文件，作为idl接口的实现：
 
-```
+```txt
 ├── ets
 │ ├── IdlServiceExt
 │ │   ├── i_idl_service_ext.ts      # 生成文件
@@ -127,7 +127,7 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
 
 2. 在ServiceExtAbility目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为ServiceExtAbility.ets。
 
-    ```
+    ```txt
     ├── ets
     │ ├── IdlServiceExt
     │ │   ├── i_idl_service_ext.ets      # 生成文件
@@ -541,7 +541,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       data.writeInt(99);
       // 开发者可发送data到目标端应用进行相应操作
       // @param code 表示客户端发送的服务请求代码。
-      // @param data 表示客户端发送的{@link MessageSequence}对象。
+      // @param data 表示客户端发送的MessageSequence对象。
       // @param reply 表示远程服务发送的响应消息对象。
       // @param options 指示操作是同步的还是异步的。
       // @return 如果操作成功返回{@code true}； 否则返回 {@code false}。

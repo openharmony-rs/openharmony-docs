@@ -1,10 +1,10 @@
 # LoadingProgress
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **LoadingProgress** component is used to create a loading progress animation.
 

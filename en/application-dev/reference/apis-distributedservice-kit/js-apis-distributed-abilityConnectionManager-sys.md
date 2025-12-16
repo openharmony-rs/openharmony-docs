@@ -173,7 +173,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?:&nbsp;number):&nbsp;Promise&lt;void&gt;
 
-Sends images from one device to another after a connection is successfully established.
+Sends images from one device to another after a connection is successfully established. This method uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -245,7 +245,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;
 
-Creates transport streams to send images and videos from one device to another after a connection is successfully established.
+Creates transport streams to send images and videos from one device to another after a connection is successfully established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 

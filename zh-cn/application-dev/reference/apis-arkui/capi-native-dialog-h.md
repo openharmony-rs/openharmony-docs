@@ -90,7 +90,7 @@
 
 ### ArkUI_DismissReason
 
-```
+```c
 enum ArkUI_DismissReason
 ```
 
@@ -110,7 +110,7 @@ enum ArkUI_DismissReason
 
 ### ArkUI_LevelMode
 
-```
+```c
 enum ArkUI_LevelMode
 ```
 
@@ -128,7 +128,7 @@ enum ArkUI_LevelMode
 
 ### ArkUI_ImmersiveMode
 
-```
+```c
 enum ArkUI_ImmersiveMode
 ```
 
@@ -146,7 +146,7 @@ enum ArkUI_ImmersiveMode
 
 ### ArkUI_DialogState
 
-```
+```c
 enum ArkUI_DialogState
 ```
 
@@ -171,7 +171,7 @@ enum ArkUI_DialogState
 
 ### ArkUI_OnWillDismissEvent()
 
-```
+```c
 typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 ```
 
@@ -196,7 +196,7 @@ typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 
 ### OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss()
 
-```
+```c
 void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)
 ```
 
@@ -217,7 +217,7 @@ void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent*
 
 ### OH_ArkUI_DialogDismissEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)
 ```
 
@@ -243,7 +243,7 @@ void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)
 
 ### OH_ArkUI_DialogDismissEvent_GetDismissReason()
 
-```
+```c
 int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)
 ```
 
@@ -269,7 +269,7 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 ### OH_ArkUI_CustomDialog_OpenDialog()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))
 ```
 
@@ -296,7 +296,7 @@ int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, voi
 
 ### OH_ArkUI_CustomDialog_UpdateDialog()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))
 ```
 
@@ -323,7 +323,7 @@ int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, v
 
 ### OH_ArkUI_CustomDialog_CloseDialog()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 ```
 
@@ -349,7 +349,7 @@ int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 
 ### OH_ArkUI_CustomDialog_CreateOptions()
 
-```
+```c
 ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)
 ```
 
@@ -375,7 +375,7 @@ ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle 
 
 ### OH_ArkUI_CustomDialog_DisposeOptions()
 
-```
+```c
 void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 ```
 
@@ -395,7 +395,7 @@ void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 
 ### OH_ArkUI_CustomDialog_SetLevelMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, ArkUI_LevelMode levelMode)
 ```
 
@@ -426,7 +426,7 @@ int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, A
 
 ### OH_ArkUI_CustomDialog_SetLevelUniqueId()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* options, int32_t uniqueId)
 ```
 
@@ -457,7 +457,7 @@ int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* option
 
 ### OH_ArkUI_CustomDialog_SetImmersiveMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMode immersiveMode)
 ```
 
@@ -484,7 +484,7 @@ int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* option
 
 ### OH_ArkUI_CustomDialog_SetBackgroundColor()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* options, uint32_t backgroundColor)
 ```
 
@@ -511,7 +511,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* opti
 
 ### OH_ArkUI_CustomDialog_SetCornerRadius()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options, float topLeft, float topRight, float bottomLeft, float bottomRight)
 ```
 
@@ -541,7 +541,7 @@ int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options
 
 ### OH_ArkUI_CustomDialog_SetBorderWidth()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -572,7 +572,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options,
 
 ### OH_ArkUI_CustomDialog_SetBorderColor()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)
 ```
 
@@ -602,7 +602,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options,
 
 ### OH_ArkUI_CustomDialog_SetBorderStyle()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options, int32_t top, int32_t right, int32_t bottom, int32_t left)
 ```
 
@@ -632,7 +632,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options,
 
 ### OH_ArkUI_CustomDialog_SetWidth()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float width, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -660,7 +660,7 @@ int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float
 
 ### OH_ArkUI_CustomDialog_SetHeight()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, float height, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -688,7 +688,7 @@ int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, floa
 
 ### OH_ArkUI_CustomDialog_SetShadow()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkUI_ShadowStyle shadow)
 ```
 
@@ -715,7 +715,7 @@ int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkU
 
 ### OH_ArkUI_CustomDialog_SetCustomShadow()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* customShadow)
 ```
 
@@ -742,7 +742,7 @@ int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options
 
 ### OH_ArkUI_CustomDialog_SetBackgroundBlurStyle()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* options, ArkUI_BlurStyle blurStyle)
 ```
 
@@ -769,7 +769,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* 
 
 ### OH_ArkUI_CustomDialog_SetAlignment()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, int32_t alignment, float offsetX, float offsetY)
 ```
 
@@ -798,7 +798,7 @@ int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, i
 
 ### OH_ArkUI_CustomDialog_SetModalMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)
 ```
 
@@ -825,7 +825,7 @@ int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, b
 
 ### OH_ArkUI_CustomDialog_SetAutoCancel()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)
 ```
 
@@ -852,7 +852,7 @@ int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, 
 
 ### OH_ArkUI_CustomDialog_SetSubwindowMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)
 ```
 
@@ -879,7 +879,7 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 
 ### OH_ArkUI_CustomDialog_SetMask()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)
 ```
 
@@ -907,7 +907,7 @@ int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32
 
 ### OH_ArkUI_CustomDialog_SetKeyboardAvoidMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* options, ArkUI_KeyboardAvoidMode keyboardAvoidMode)
 ```
 
@@ -934,7 +934,7 @@ int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* op
 
 ### OH_ArkUI_CustomDialog_SetHoverModeEnabled()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* options, bool enabled)
 ```
 
@@ -961,7 +961,7 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* opt
 
 ### OH_ArkUI_CustomDialog_SetHoverModeArea()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* options, ArkUI_HoverModeAreaType hoverModeAreaType)
 ```
 
@@ -988,7 +988,7 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* option
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))
 ```
 
@@ -1016,7 +1016,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOp
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1044,7 +1044,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOpt
 
 ### OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1072,7 +1072,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOpti
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1100,7 +1100,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialog
 
 ### OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1128,7 +1128,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogO
 
 ### OH_ArkUI_CustomDialog_GetState()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_DialogState* state)
 ```
 
@@ -1155,7 +1155,7 @@ int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_Di
 
 ### OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundBlurStyleOptions)
 ```
 
@@ -1182,7 +1182,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOp
 
 ### OH_ArkUI_CustomDialog_SetBackgroundEffect()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundEffect)
 ```
 

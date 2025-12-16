@@ -156,11 +156,15 @@ let instance: Class<void>;
 
 **`Object`类型**
 
-`Object`类型是所有引用类型的基类型。任何值，包括基本类型的值，都可以直接被赋给`Object`类型的变量（基本类型值会被自动装箱）。`Object`类型用于表示除基本类型外的类型。
+`Object`类型是所有引用类型的基类型。任何值，包括基本类型的值，都可以直接被赋给`Object`类型的变量（基本类型值会被自动装箱）。
+
+`object`类型用于表示除基本类型外的类型。
+
 ```typescript
 let o1: Object = 'Alice';
 let o2: Object = ['a', 'b'];
 let o3: Object = 1;
+let o4: object = [1, 2, 3];
 ```
 
 **`array`类型**

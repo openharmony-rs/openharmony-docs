@@ -1537,3 +1537,50 @@ if (path.isInterpolate(other)) {
   console.info('isInterpolate return false');
 }
 ```
+
+## isInverseFillType<sup>23+</sup>
+
+isInverseFillType(): boolean
+
+检查当前路径填充类型是否是反向填充类型。例如填充类型Winding、EvenOdd不是反向类型，InverseWinding、InverseEvenOdd是反向类型。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| boolean | 检查当前路径填充类型是否是反向填充类型。true表示是反向填充类型，false表示不是反向填充类型。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.setFillType(drawing.PathFillType.WINDING);
+if (path.isInverseFillType()) {
+  console.info("path is inverse FillType.");
+} else {
+  console.info("path is not inverse FillType.");
+}
+```
+
+## toggleInverseFillType<sup>23+</sup>
+
+toggleInverseFillType(): void
+
+切换路径的填充类型为反向类型。例如，使用Winding填充类型时，经过取反后填充类型为InverseWinding，而使用EvenOdd填充类型时，经过取反后填充类型为InverseEvenOdd，反之亦然。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.setFillType(drawing.PathFillType.WINDING);
+path.toggleInverseFillType();
+console.info("path fillType = ", path.getFillType());
+```

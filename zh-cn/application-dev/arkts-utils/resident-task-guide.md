@@ -52,7 +52,8 @@
 
    ```ts
    // Worker.ets
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    let isRunning = false;
    workerPort.onmessage = (e: MessageEvents) => {
@@ -67,6 +68,7 @@
        isRunning = false;
      }
    }
+   
    // 模拟常驻任务
    function performTask() {
      if (isRunning) {

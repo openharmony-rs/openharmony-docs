@@ -268,7 +268,7 @@ Obtains the **needsPackProperties** parameter in the OH_PackingOptions struct.
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| bool *needsPackProperties | Pointer to the parameter that specifies whether to encode image property information, for example, EXIF.|
+| bool *needsPackProperties | Pointer to the parameter that specifies whether to encode image property information, for example, Exif.|
 
 **Returns**
 
@@ -294,7 +294,7 @@ Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| bool needsPackProperties | Whether to encode image property information, for example, EXIF.|
+| bool needsPackProperties | Whether to encode image property information, for example, Exif.|
 
 **Returns**
 

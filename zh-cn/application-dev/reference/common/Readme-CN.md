@@ -50,4 +50,5 @@
     - [JSVM_Deferred__*](capi-jsvm-jsvm-deferred--8h.md)
     - [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)
     - [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
+    - [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md)
     - [PurgMem*](capi-memory-purgmem.md)

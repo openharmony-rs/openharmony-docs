@@ -27,27 +27,27 @@ addColorStop(offset: number, color: string): void
 
 **示例：** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
   <canvas ref="canvas" style="width: 500px; height: 500px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        const gradient = ctx.createLinearGradient(50, 0, 300, 100);
-        gradient.addColorStop(0.0, '#ff0000')
-        gradient.addColorStop(0.5, '#ffffff')
-        gradient.addColorStop(1.0, '#00ff00')
-        ctx.fillStyle = gradient
-        ctx.fillRect(0, 0, 300, 300)
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    const gradient = ctx.createLinearGradient(50, 0, 300, 100);
+    gradient.addColorStop(0.0, '#ff0000')
+    gradient.addColorStop(0.5, '#ffffff')
+    gradient.addColorStop(1.0, '#00ff00')
+    ctx.fillStyle = gradient
+    ctx.fillRect(0, 0, 300, 300)
+  }
 }
-  ```
+```
 
-  ![zh-cn_image_0000001152610806](figures/zh-cn_image_0000001152610806.png)
+![zh-cn_image_0000001152610806](figures/zh-cn_image_0000001152610806.png)

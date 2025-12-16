@@ -374,4 +374,8 @@ Description of settings:
 
 ![Demo log output](./figures/websocket-demo-log.png)
 
+## Samples
 
+The following samples are provided to help you better understand how to develop WebSocket connection features:
+
+- [WebSocket Connection (C/C++)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C)

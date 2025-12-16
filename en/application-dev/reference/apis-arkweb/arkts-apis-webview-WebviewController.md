@@ -217,7 +217,7 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 
 | Name             | Type   | Mandatory  |  Description|
 | ------------------ | ------- | ---- | ------------- |
-| webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** indicates that web debugging is enabled, and **false** indicates the opposite .<br>Default value: **false**.|
+| webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** means to enable web debugging, and **false** means the opposite.<br>Default value: **false**.|
 
 **Error codes**
 
@@ -5107,7 +5107,7 @@ struct WebComponent {
 
 setDownloadDelegate(delegate: WebDownloadDelegate): void
 
-Sets a **WebDownloadDelegate** object to receive downloads and download progress triggered from a page.
+Sets a **WebDownloadDelegate** for the current **Web** component. The delegate is used to receive the download progress triggered within the page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -6405,7 +6405,7 @@ Sets whether this web page is scrollable.
 | Name| Type| Mandatory| Description              |
 | ------ | -------- | ---- | ---------------------- |
 | enable     | boolean   | Yes  | Whether this web page is scrollable.<br>The value **true** indicates that this web page is scrollable, and **false** indicates the opposite.<br>Default value: **true**.|
-| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  No| Scrolling type supported by the web page. The default value is supported.<br> - If the value of **enable** is set to **false**, the specified **ScrollType** is disabled. If **ScrollType** is set to the default value, all scrolling types are disabled.<br> - If the value of **enable** is set to **true**, all scrolling types are enabled regardless of the value of **ScrollType**.|
+| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  No| Scrolling type supported by the web page. The default value is supported.<br> - If the value of **enable** is set to **false**, the specified **ScrollType** is disabled. If **ScrollType** is set to the default value, all scrolling types are disabled.<br> - If the value of **enable** is set to **true**, all scrolling types are enabled regardless of the value of **ScrollType**.<br>**NOTE**<br>If **undefined** is passed in, error code 401 will be thrown.|
 
 **Error codes**
 
@@ -10116,7 +10116,7 @@ Sets the destroy mode of the **Web** component. The destroy mode of the **Web** 
 
 > **NOTE**
 >
-> [WebDestroyMode.FAST_MODE](./arkts-apis-webview-e.md#webdestroymode20) changes the time when the **Web** component is destroyed. When it is used, pay attention to the incorrect implementation that depends on the destroy time of the **Web** component. For example, when a **WebViewController** is called in fast mode rather than using [WebDestroyMode.NORMAL_MODE](./arkts-apis-webview-e.md#webdestroymode20), the unbinding exception is more likely to be triggered. In this case, the application needs to capture the exception, or use [getAttachState](#getattachstate20) to obtain the attach state to avoid stability problems.
+> [WebDestroyMode.FAST_MODE](./arkts-apis-webview-e.md#webdestroymode20) changes the time when the **Web** component is destroyed. When it is used, pay attention to the incorrect implementation that depends on the destroy time of the **Web** component. For example, when a **WebViewController** is called in fast mode rather than using [WebDestroyMode.NORMAL_MODE](./arkts-apis-webview-e.md#webdestroymode20), the unbinding exception (**17100001**) is more likely to be triggered. In this case, the application needs to capture the exception, or use [getAttachState](#getattachstate20) to obtain the attach state to avoid stability problems.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -10507,4 +10507,171 @@ struct WebComponent {
     }
   }
 }
+```
+
+## resumeMicrophone<sup>23+</sup>
+
+resumeMicrophone(): void
+
+Resumes microphone capture on the current web page. Before using the microphone , add the **ohos.permission.MICROPHONE** permission to **module.json5**. For details about how to add the permission, see [Declaring Permissions in the Configuration File](../../security/AccessToken/declare-permissions.md).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+
+**Example**
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  uiContext: UIContext = this.getUIContext();
+
+  aboutToAppear(): void {
+    let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+      console.info('data:' + JSON.stringify(data));
+      console.info('data permissions:' + data.permissions);
+      console.info('data authResults:' + data.authResults);
+    })
+  }
+
+  build() {
+    Column() {
+      Button("resumeMicrophone").onClick(() => {
+        try {
+          this.controller.startMicrophone();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("pauseMicrophone").onClick(() => {
+        try {
+          this.controller.stopMicrophone();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("stopMicrophone").onClick(() => {
+        try {
+          this.controller.closeMicrophone();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onPermissionRequest((event) => {
+          if (event) {
+            this.uiContext.showAlertDialog({
+              title: 'title',
+              message: 'text',
+              primaryButton: {
+                value: 'deny',
+                action: () => {
+                  event.request.deny();
+                }
+              },
+              secondaryButton: {
+                value: 'onConfirm',
+                action: () => {
+                  event.request.grant(event.request.getAccessibleResource());
+                }
+              },
+              cancel: () => {
+                event.request.deny();
+              }
+            })
+          }
+        })
+        .onMicrophoneCaptureStateChange((info:MicrophoneCaptureStateInfo)=>{
+          console.info("MicrophoneCapture from ", info.originalState, " to ", info.newState);
+    }
+  }
+}
+```
+HTML file to be loaded:
+ ```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="UTF-8">
+ </head>
+ <body>
+   <video id="video" width="400px" height="400px" autoplay="autoplay">
+   </video>
+   <input type="button" title="HTML5 microphone" value="Enable microphone" onclick="getMedia()" />
+   <script>
+     function getMedia() {
+       let constraints = {
+         video: {
+           width: 500,
+           height: 500
+         },
+         audio: true
+       }
+       let video = document.getElementById("video");
+       let promise = navigator.mediaDevices.getUserMedia(constraints);
+       promise.then(function(MediaStream) {
+         video.srcObject = MediaStream;
+         video.play();
+       })
+     }
+   </script>
+ </body>
+</html>
+ ```
+
+## pauseMicrophone<sup>23+</sup>
+
+pauseMicrophone(): void
+
+Pauses microphone capture on the current web page.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+
+**Example**
+
+For the complete sample code, see [resumeMicrophone](#resumemicrophone23).
+
+## stopMicrophone<sup>23+</sup>
+
+stopMicrophone(): void
+
+Stops microphone capture on the current web page.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+
+**Example**
+
+For the complete sample code, see [resumeMicrophone](#resumemicrophone23).
 ```

@@ -12,8 +12,8 @@ JSVM的内存占用包括Native内存占用(C/C++侧的内存占用)和底层的
 
 ## 定性分析
 
-可以通过hdc连接设备，执行如下命令行的方式对目标应用的内存进行采样，比较一段时间内的内存变化情况，从而定性分析是Native内存泄漏还是JS内存。下图中Pss Total列，native heap对应Native内存占用，AnnonPage other对应js堆内存占用。
-```
+可以通过hdc连接设备，执行如下命令行的方式对目标应用的内存进行采样，比较一段时间内的内存变化情况，从而定性分析是Native内存泄漏还是JS内存。下图中Pss Total列，native heap对应Native内存占用，AnonPage other对应js堆内存占用。
+```hdc
 hidumper --mem $(pidof dest_app)
 ```
 <div align=left><img src="figures/jsvm_locate_memory_leak_hidump.png"/></div>
@@ -40,15 +40,15 @@ OH_JSVM_GetReferenceValue(env, reference, &result);
 ### 定位步骤
 为了分析Native内存泄漏，可以借助DevEco Studio的内存分析模块，具体参考文档：[内存分析及优化](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-allocations-memory)。
 1. 使用Profiler的Allocation模块记录一段时间内的Native内存信息。
-<div align=left><img src="figures/jsvm_locate_memory_leak_allocation1.png"/></div>  
+   <div align=left><img src="figures/jsvm_locate_memory_leak_allocation1.png"/></div>  
 
 2. 比较这段时间内"Created & Existing"的内存变化情况，如果存在占比较大且Count较大的未释放内存，则怀疑存在内存泄漏，展开进一步查看调用栈。
-<div align=left><img src="figures/jsvm_locate_memory_leak_allocation2.png"/></div> 
+   <div align=left><img src="figures/jsvm_locate_memory_leak_allocation2.png"/></div> 
 
 
 ## JS引擎堆内存泄漏定位
 ### 典型场景
-1. 全局变量滥用，导致dom元素未释放。
+1. 全局变量滥用，导致DOM元素未释放。
 ```js
 const elements = [];
 function createElements() {

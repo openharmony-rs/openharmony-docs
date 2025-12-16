@@ -769,7 +769,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | info | Uint8Array | 否   | 否   | 附加信息。 |
-| keySize | int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
 
 > **说明：**
 >
@@ -3741,7 +3741,7 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| cipherText     | [DataBlob](#datablob)                 | 是   | 符合国密标准的ASN.1格式的SM2密文。
+| cipherText     | [DataBlob](#datablob)                 | 是   | 符合国密标准的ASN.1格式的SM2密文。 |
 | mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。  |
 
 **返回值：**

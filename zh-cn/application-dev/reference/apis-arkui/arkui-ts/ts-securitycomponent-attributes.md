@@ -808,7 +808,6 @@ enabled(respond: boolean): T
 focusBox(style: FocusBoxStyle): T
 
 设置安全控件系统焦点框样式。
-如果不设置，焦点框默认形状为矩形。设置后，焦点框形状将与背托形状保持一致。具体图示可查阅[示例4](#示例4)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1400,4 +1399,4 @@ struct Index {
 }
 ```
 
-![security_component_focus_box.png](figures/security_component_focus_box.gif)
+![security_component_focus_box.gif](figures/security_component_focus_box.gif)

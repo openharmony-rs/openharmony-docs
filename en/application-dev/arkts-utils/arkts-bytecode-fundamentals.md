@@ -193,8 +193,10 @@ In Ark bytecode, a lexical environment may be considered as an array with multip
 
 |xxx|xxx|xxx|xxx|   <-- Current lexical environment.
 ```
-**NOTE**<br>
-The logic related to **lexical** is used in the compiler. As the Ark Compiler evolves, new lexical instruction scenarios may emerge. Existing **lexical** instruction scenarios may no longer involve lexical-related instructions due to requirement evolution and code refactoring.
+> **NOTE**
+>
+> The logic related to **lexical** is used in the compiler. As the Ark Compiler evolves, new lexical instruction scenarios may emerge. Existing **lexical** instruction scenarios may no longer involve lexical-related instructions due to requirement evolution and code refactoring.
+
 Example:
 ```ts
 // index.ts
@@ -438,7 +440,7 @@ For example, consider the instruction *defineclasswithbuffer RR, @AAAA, @BBBB, +
 |  0x35	|  IMM8_ID16_ID16_IMM16_V8	|  defineclasswithbuffer RR, @AAAA, @BBBB, +CCCC, vDD	|  R: 8-bit reserved number used in Ark runtime<br>A: method id of the constructor of a class<br>B: literal id<br>C: number of formal parameters of method A<br>D: parent class|  Uses the literal array corresponding to index B and parent class D to create a class object of A and stores it in the acc.  |
 |  0x36	|  V8	|  getnextpropname vAA	| A: iterator|  Executes the [next](https://262.ecma-international.org/12.0/#sec-%25foriniteratorprototype%25.next) method of [for-in iterator](https://262.ecma-international.org/12.0/#sec-createiterresultobject) A and stores the result in the acc.  |
 |  0x37	|  IMM8_V8	|  ldobjbyvalue RR, vAA	|  Default input parameter: acc: property key<br>R: 8-bit reserved number used in Ark runtime<br>A: Object|  Loads the property whose key is **acc** of object A and stores the result in the acc.
-|  0x38	|  IMM8_V8_V8	|  stobjbyvalue RR, vAA, vBB	|  Default input parameter: acc: value<br>R: 8-bit reserved number used in Ark runtime<br>A: Object<br>B: property key|  Stores the value in the acc to the property whose key is B of object A.  |
+|  0x38	|  IMM8_V8_V8	|  stobjbyvalue RR, vAA, vBB	|  Default input parameter: acc: value<br>R: 8-bit reserved number used in Ark runtime<br>A: Object<br>B: property key|  Stores the value in the **acc** to the property whose key is B of object A.  |
 |  0x39	|  IMM8_V8	|  ldsuperbyvalue RR, vAA	|  Default input parameter: acc: property key<br>R: 8-bit reserved number used in Ark runtime<br>A: Object|  In the current function, obtains the property whose key of **super** is **acc** and stores the property in the acc. If the property is of an accessor, the object in A is used as the **this** parameter when the **getter** function of the property is called.  |
 |  0x3a	|  IMM8_IMM16	|  ldobjbyindex RR, +AAAA	|  Default input parameter: acc: object<br>R: 8-bit reserved number used in Ark runtime<br>A: property key|  Loads the property whose key is A of the object stored in the acc and stores the property in the **acc**.  |
 |  0x3b	|  IMM8_V8_IMM16	|  stobjbyindex RR, vAA, +BBBB	|  Default input parameter: acc: value<br>R: 8-bit reserved number used in Ark runtime<br>A: Object<br>B: property key|  Stores the value in the **acc** to the property whose key is B of object A.  |

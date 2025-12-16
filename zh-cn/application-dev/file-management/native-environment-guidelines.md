@@ -99,3 +99,33 @@ void GetUserDocumentDirPathExample()
     }
 }
 ```
+
+
+4. 调用OH_Environment_GetUserDocumentDir接口获取用户Document目录沙箱路径，使用stat函数判断Document目录空间大小。示例代码如下所示：
+
+   使用前需要引入如下头文件：
+   ``` C++
+   #include <sys/stat.h>
+   ```
+   <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   
+   ``` C++
+   void GetUserDownloadDirSizeExample()
+   {
+       char *documentPath = nullptr;
+       FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
+       if (ret == 0) {
+           OH_LOG_INFO(LOG_APP, "Document Path=%{public}s", documentPath);
+           struct stat fileStat;
+           int result = stat(documentPath, &fileStat);
+           if (result == 0) {
+               OH_LOG_INFO(LOG_APP, "Document Size=%{public}ld", fileStat.st_size);
+           } else {
+               OH_LOG_ERROR(LOG_APP, "GetDocumentSize fail, error code is %{public}ld", result);
+           }
+           free(documentPath);
+       } else {
+           OH_LOG_ERROR(LOG_APP, "GetDocumentPath fail, error code is %{public}d", ret);
+       }
+   }
+   ```

@@ -40,7 +40,7 @@
 
 ### OH_Filter_CreateEffect()
 
-```
+```c
 EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** filter)
 ```
 
@@ -66,7 +66,7 @@ EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** 
 
 ### OH_Filter_Release()
 
-```
+```c
 EffectErrorCode OH_Filter_Release(OH_Filter* filter)
 ```
 
@@ -91,7 +91,7 @@ EffectErrorCode OH_Filter_Release(OH_Filter* filter)
 
 ### OH_Filter_Blur()
 
-```
+```c
 EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)
 ```
 
@@ -117,7 +117,7 @@ EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)
 
 ### OH_Filter_BlurWithTileMode()
 
-```
+```c
 EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, EffectTileMode tileMode)
 ```
 
@@ -144,7 +144,7 @@ EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, Effe
 
 ### OH_Filter_Brighten()
 
-```
+```c
 EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)
 ```
 
@@ -170,7 +170,7 @@ EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)
 
 ### OH_Filter_GrayScale()
 
-```
+```c
 EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)
 ```
 
@@ -195,7 +195,7 @@ EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)
 
 ### OH_Filter_Invert()
 
-```
+```c
 EffectErrorCode OH_Filter_Invert(OH_Filter* filter)
 ```
 
@@ -220,7 +220,7 @@ EffectErrorCode OH_Filter_Invert(OH_Filter* filter)
 
 ### OH_Filter_SetColorMatrix()
 
-```
+```c
 EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatrix* matrix)
 ```
 
@@ -246,7 +246,7 @@ EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatri
 
 ### OH_Filter_GetEffectPixelMap()
 
-```
+```c
 EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative** pixelmap)
 ```
 

@@ -308,13 +308,17 @@ import { common } from '@kit.AbilityKit';
 struct OffscreenCanvasExamplePage {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ts');
+  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
   private imgPixelMap: image.PixelMap | undefined = undefined
 
   aboutToAppear(): void {
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
-    this.imgPixelMap = resourceMgr.getDrawableDescriptor($r("app.media.startIcon").id).getPixelMap()
+    try {
+      this.imgPixelMap = resourceMgr.getDrawableDescriptor($r("app.media.startIcon").id).getPixelMap();
+    } catch (error) {
+      console.error("resourceMgr getDrawableDescriptor error, error code: " + error);
+    }
   }
 
   build() {
@@ -328,6 +332,7 @@ struct OffscreenCanvasExamplePage {
           .backgroundColor('#FFFFFF')
           .onReady(() => {
             let offCanvas = new OffscreenCanvas(600, 800)
+            // worker线程中绘制图像
             this.myWorker.postMessage({ myOffCanvas: offCanvas, imgPixelMap: this.imgPixelMap });
             this.myWorker.onmessage = (e): void => {
               if (e.data.myImage) {
@@ -349,7 +354,8 @@ struct OffscreenCanvasExamplePage {
 Worker线程在onmessage中接收到主线程postMessage发送的OffscreenCanvas，并进行绘制。
 
 ```ts
-import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+// entry/ets/workers/Worker.ets
+import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 import { image } from '@kit.ImageKit';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;

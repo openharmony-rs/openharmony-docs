@@ -60,7 +60,7 @@
 | path | string | 否 | 否 | 资产在应用沙箱里的路径。 |
 | createTime | string | 否 | 否 | 资产被创建出来的时间。 |
 | modifyTime | string | 否 | 否 | 资产最后一次被修改的时间。 |
-| size | string | 否 | 否 | 资产占用空间的大小。 |
+| size | string | 否 | 否 | 资产占用空间的大小。在端云同步机制中，本字段作为判定资产是否发生变更的关键依据之一，需确保在全链路中保持统一、一致的存储格式与取值逻辑。建议所有系统节点均采用标准化处理方式（单位为字节（Byte），取值为非负整数），避免因格式差异导致同步异常或误判。 |
 | status | [AssetStatus](arkts-apis-data-relationalStore-e.md#assetstatus10) | 否   | 是   | 资产的状态，默认值为ASSET_NORMAL。 |
 
 ## ChangeInfo<sup>10+</sup>
@@ -133,11 +133,11 @@
 
 | 名称     | 类型                                               | 只读 | 可选  |说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| sql<sup>12+</sup>           | Array&lt;string&gt;            | 否   |   否   | 表示执行的SQL语句的数组。当[batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert)的参数太大时，可能有多个SQL。      |
-| totalTime<sup>12+</sup>      | number                        | 否   |   否   | 表示执行SQL语句的总时间，单位为μs。                                    |
-| waitTime<sup>12+</sup>       | number                        | 否   |   否   | 表示获取句柄的时间，单位为μs。                                         |
-| prepareTime<sup>12+</sup>    | number                        | 否   |   否   | 表示准备SQL和绑定参数的时间，单位为μs。                                 |
-| executeTime<sup>12+</sup>    | number                        | 否   |   否   | 表示执行SQL语句的时间，单位为μs。 |
+| sql | Array&lt;string&gt; | 否 | 否 | 表示执行的SQL语句的数组。当[batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert)的参数太大时，可能有多个SQL。 |
+| totalTime   | number | 否 | 否 | 表示执行SQL语句的总时间，单位为μs。 |
+| waitTime    | number | 否 | 否 | 表示获取句柄的时间，单位为μs。 |
+| prepareTime | number | 否 | 否 | 表示准备SQL和绑定参数的时间，单位为μs。 |
+| executeTime | number | 否 | 否 | 表示执行SQL语句的时间，单位为μs。 |
 
 ## SqlInfo<sup>20+</sup>
 
@@ -147,8 +147,8 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| sql<sup>20+</sup>  | string | 否 | 否 | 表示执行的sql语句。 |
-| args<sup>20+</sup> | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否 | 否 | 表示执行SQL中的参数信息。 |
+| sql  | string | 否 | 否 | 表示执行的sql语句。 |
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否 | 否 | 表示执行SQL中的参数信息。 |
 
 ## ExceptionMessage<sup>20+</sup>
 
@@ -158,9 +158,9 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| code<sup>20+</sup> | number | 否 | 否 | 表示执行SQL返回的错误码，对应的取值和含义请见[sqlite错误码](https://www.sqlite.org/rescode.html) |
-| message<sup>20+</sup> | string | 否 | 否 | 表示执行SQL返回的错误信息。 |
-| sql<sup>20+</sup> | string | 否 | 否 | 表示报错执行的SQL语句。 |
+| code | number | 否 | 否 | 表示执行SQL返回的错误码，对应的取值和含义请见[sqlite错误码](https://www.sqlite.org/rescode.html) |
+| message | string | 否 | 否 | 表示执行SQL返回的错误信息。 |
+| sql | string | 否 | 否 | 表示报错执行的SQL语句。 |
 
 ## TransactionOptions<sup>14+</sup>
 
