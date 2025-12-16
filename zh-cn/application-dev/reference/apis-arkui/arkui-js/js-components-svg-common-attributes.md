@@ -14,7 +14,7 @@
 | -------- | -------- | -------- | -------- | -------- |
 | fill | &lt;color&gt; | black | 否 | 使用简写属性设置元素的填充色。支持属性动画。 |
 | fill-opacity | number | 1 | 否 | 填充色的透明度，取值范围为0到1，1表示为不透明，0表示为完全透明。支持属性动画。 |
-| fill-rule | nonzero&nbsp;\|&nbsp;evenodd | nonzero | 否 | nonzero:非零规则;&nbsp;evenodd:奇偶规则。 |
+| fill-rule | nonzero&nbsp;\|&nbsp;evenodd | nonzero | 否 | nonzero：非零规则；&nbsp;evenodd：奇偶规则。 |
 | opacity | number | 1 | 否 | 元素的透明度，取值范围为0到1，1表示为不透明，0表示为完全透明。支持属性动画。 |
 | stroke | &lt;color&gt; | - | 否 | 设置形状轮廓的颜色。支持属性动画。 |
 | stroke-dasharray | &lt;string&gt; | - | 否 | 指定短划线和缺口的长度。格式为[length&nbsp;length&nbsp;length&nbsp;length]，短划线和缺口的长度中间空格隔开成对出现。 |
