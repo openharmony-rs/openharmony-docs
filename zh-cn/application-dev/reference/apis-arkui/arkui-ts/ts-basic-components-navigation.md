@@ -4585,9 +4585,11 @@ export class CustomTransition {
 ```
 ![navigationCustomTransition.gif](figures/navigationCustomTransition.gif)
 
-### 示例14（Navigation双栏模式占位页）
+### 示例14（设置Navigation双栏模式）
 
-该示例主要展示Navigation在双栏模式下，右侧显示默认占位页。
+该示例主要展示Navigation在双栏模式下，右侧显示默认占位页，并通过[navBarWidthRange](#navbarwidthrange10)设置Navigation导航页最小和最大宽度。
+
+此示例在运行前需要在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "auto_rotation"。
 
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
@@ -4605,6 +4607,9 @@ import { ComponentContent } from '@kit.ArkUI';
 @Entry
 @Component
 struct NavigationExample {
+  @State minNavBarWidth: Dimension | undefined = undefined;
+  @State maxNavBarWidth: Dimension | undefined = undefined;
+  @State minContentWidth: Dimension|undefined = undefined;
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   @State currentIndex: number = 0;
   placeholder = new ComponentContent(this.getUIContext(), wrapBuilder(PlaceholderPage))
@@ -4629,21 +4634,21 @@ struct NavigationExample {
   @Builder
   NavigationMenus() {
     Row() {
-      // 'resources/base/media/ic_public_add.svg'需要替换为开发者所需的资源文件
-      Image('resources/base/media/ic_public_add.svg')
+      // $r('sys.media.ohos_ic_public_add')需要替换为开发者所需的资源文件
+      Image($r('sys.media.ohos_ic_public_add'))
         .width(24)
         .height(24)
-      // 'resources/base/media/ic_public_add.svg'需要替换为开发者所需的资源文件
-      Image('resources/base/media/ic_public_add.svg')
-        .width(24)
-        .height(24)
-        .margin({ left: 24 })
-      // 'common/ic_public_more.svg'需要替换为开发者所需的资源文件
-      Image('common/ic_public_more.svg')
+      // $r('sys.media.ohos_ic_public_add')需要替换为开发者所需的资源文件
+      Image($r('sys.media.ohos_ic_public_add'))
         .width(24)
         .height(24)
         .margin({ left: 24 })
-    }
+      // $r('sys.media.ohos_ic_public_more')需要替换为开发者所需的资源文件
+      Image($r('sys.media.ohos_ic_public_more'))
+        .width(24)
+        .height(24)
+        .margin({ left: 24 })
+    }.margin({ top: 30 })
   }
 
   build() {
@@ -4674,6 +4679,7 @@ struct NavigationExample {
         .margin({ top: 12, left: '10%' })
       }
       .title(this.NavigationTitle)
+      .padding({ left: 12 })
       .menus(this.NavigationMenus)
       .titleMode(NavigationTitleMode.Full)
       .toolbarConfiguration([
@@ -4693,7 +4699,9 @@ struct NavigationExample {
           icon: $r("app.media.startIcon")
         }
       ])
-      .mode(NavigationMode.Split)
+      .mode(NavigationMode.Split) // 设置Navigation模式为Split
+      .navBarWidthRange([this.minNavBarWidth, this.maxNavBarWidth]) // 设置导航栏宽度范围：[最小宽度, 最大宽度]
+      .minContentWidth(this.minContentWidth)
       .hideTitleBar(false)
       .hideToolBar(false)
       .onTitleModeChange((titleModel: NavigationTitleMode) => {
@@ -4705,7 +4713,7 @@ struct NavigationExample {
 }
 ```
 
-![zh-cn_image_navigation_splitPlaceholder](figures/zh-cn_image_navigation_splitPlaceholder.png)
+![navigation_navbarwidthrange](figures/navigation_navbarwidthrange.gif)
 
 ### 示例15（Navigation工具栏自适应）
 
