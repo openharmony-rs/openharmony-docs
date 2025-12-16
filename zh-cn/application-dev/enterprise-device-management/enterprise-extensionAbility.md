@@ -1,4 +1,10 @@
 # EnterpriseAdminExtensionAbility
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @zhang_yixin13-->
 
 ## EnterpriseAdminExtensionAbility简介
 
@@ -57,7 +63,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-​	4.在工程Module对应的[module.json5](../quick-start/module-configuration-file.md)配置文件中注册ServiceExtensionAbility，type标签需要设置为“enterpriseAdmin”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
+ ​4.在工程Module对应的[module.json5](../quick-start/module-configuration-file.md)配置文件中注册ServiceExtensionAbility，type标签需要设置为“enterpriseAdmin”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
 ```json
 "extensionAbilities": [
