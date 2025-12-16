@@ -190,7 +190,7 @@ type MovingPhotoBadgeStateChangedCallback = (uri: string, state: photoAccessHelp
 
 type ScrollStopAtStartCallback = () => void
 
-表示用户滑动picker宫格页，当滚动停止并处于底部的回调事件类型。
+表示用户滑动picker宫格页，当滚动停止并处于顶部的回调事件类型。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
