@@ -55,8 +55,8 @@ import { audio } from '@kit.AudioKit';
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 | 名称                                  | 值      | 说明                             |
 | ----------------------------------- | ------- | --------------------------------- |
-| NO_INTERRUPT                            | 0       | 表示对同一SoundID的音频，后者会打断前者的播放。            |
-| SAME_SOUND_INTERRUPT                            | 1       | 表示对同一个SoundID的音频，后者不会打断前者的播放，会并行播放。            |
+| NO_INTERRUPT                            | 0       | 表示对同一个SoundID的音频，后者不会打断前者的播放，会并行播放。            |
+| SAME_SOUND_INTERRUPT                            | 1       | 表示对同一SoundID的音频，后者会打断前者的播放。            |
 
 ## ErrorInfo<sup>20+</sup>
 
