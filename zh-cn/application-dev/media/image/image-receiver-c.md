@@ -294,6 +294,42 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 创建一个CameraManager实例。
 
      <!-- @[init_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->     
+     
+     ``` C++
+     Camera_ErrorCode InitCameraManagerAndInput(Camera_Manager*& cameraManager,
+                                                Camera_Device*& cameras,
+                                                uint32_t& size,
+                                                Camera_Input*& cameraInput)
+     {
+         cameraManager = nullptr;
+         cameras = nullptr;
+         size = 0;
+         cameraInput = nullptr;
+         Camera_ErrorCode ret = OH_Camera_GetCameraManager(&cameraManager);
+         if (cameraManager == nullptr || ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
+             return ret;
+         }
+         ret = OH_CameraManager_GetSupportedCameras(cameraManager, &cameras, &size);
+         if (cameras == nullptr || size < 1 || ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
+             return ret;
+         }
+     
+         for (uint32_t i = 0; i < size; ++i) {
+             OH_LOG_INFO(LOG_APP, "Camera[%{public}u]: id=%{public}s, position=%{public}d, type=%{public}d, "
+                 "connectionType=%{public}d", i, cameras[i].cameraId, cameras[i].cameraPosition, cameras[i].cameraType,
+                 cameras[i].connectionType);
+         }
+     
+         ret = OH_CameraManager_CreateCameraInput(cameraManager, &cameras[0], &cameraInput);
+         if (cameraInput == nullptr || ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreateCameraInput failed.ret:%{public}d", ret);
+             return ret;
+         }
+         return CAMERA_OK;
+     }
+     ```
 
    - 获取相机输出能力
 
