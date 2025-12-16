@@ -2257,7 +2257,7 @@ off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE。  |
 | sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
-| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
@@ -6579,7 +6579,7 @@ try {
 
 | 名称            | 类型   | 只读 | 可选 | 说明                                           |
 | -------------- | ------ | ---- | ---- | ---------------------------------------------- |
-| fusionPressure | number | 否   | 否   | 施加在融合压力传感器上的压强，单位 : %。     |
+| fusionPressure | number | 否   | 否   | 施加在融合压力传感器上的压强，单位 : %     |
 
 
 ## GravityResponse
