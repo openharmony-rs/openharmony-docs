@@ -695,6 +695,37 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及效果如下所示：
 <!-- @[complex_text_c_line_height_limit_two_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+// 设置文字大小为50
+OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+// 设置文字颜色
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+// 设置行高缩放系数为1.5
+OH_Drawing_SetTextStyleFontHeight(txtStyle, 1.5);
+// 设置行高缩放样式（1代表行高缩放以字形高度作为缩放基数）
+OH_Drawing_SetTextStyleAttributeInt(txtStyle,
+    OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE, 1);
+// 创建排版对象，并绘制
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+const char *text = "Hello World!";
+OH_Drawing_TypographyHandlerAddText(handler, text);
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 排版宽度为1000
+OH_Drawing_TypographyLayout(typography, 1000);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
+
+// 释放对象
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
   
 具体效果如下所示：
 
