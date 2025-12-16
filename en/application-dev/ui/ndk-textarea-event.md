@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Text boxes support various interactive behaviors, allowing you to register event listeners and obtain status information.
 
@@ -16,7 +16,7 @@ Layout changes during editing: Register the [NODE_TEXT_AREA_ON_EDIT_CHANGE](../.
 
 The following example demonstrates how to listen for text box events and parse data based on the [Integrating with ArkTS Pages](../ui/ndk-access-the-arkts-page.md) section.
 
-- Registering Events
+- Registering events
     
     Events are registered through a unified API. For details, see [registerNodeEvent](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent). For details about the event types supported by the text box, see the [ArkUI_NodeEventType](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) section, searching for **NODE_TEXT_AREA_**.
 
@@ -43,7 +43,7 @@ The following example demonstrates how to listen for text box events and parse d
     nodeApi->registerNodeEvent(textArea, NODE_TEXT_AREA_ON_TEXT_SELECTION_CHANGE, id, selectionText);
     ```
 
-- Registering Event Callbacks
+- Registering event callbacks
 
     Event callbacks are registered through a unified API. For details, see [registerNodeEventReceiver](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver).
 
