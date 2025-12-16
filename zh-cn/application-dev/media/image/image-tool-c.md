@@ -64,6 +64,10 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
 4. 创建ImageSourceNative的一个实例。
 
    <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
+   
+   ``` C++
+   static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
+   ```
 
 5. 创建GetJsResult函数处理napi返回值。
 
