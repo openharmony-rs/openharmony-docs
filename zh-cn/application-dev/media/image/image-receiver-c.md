@@ -35,6 +35,25 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 1. 导入相关头文件。
 
    <!-- @[receiver_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->        
+   
+   ``` C++
+   #include <hilog/log.h>
+   #include "napi/native_api.h"
+   #include <string>
+   #include <multimedia/image_framework/image/image_native.h>
+   #include <multimedia/image_framework/image/image_receiver_native.h>
+   
+   #include "ohcamera/camera.h"
+   #include "ohcamera/camera_input.h"
+   #include "ohcamera/capture_session.h"
+   #include "ohcamera/photo_output.h"
+   #include "ohcamera/preview_output.h"
+   #include "ohcamera/video_output.h"
+   #include "ohcamera/camera_manager.h"
+   
+   #include <mutex>
+   #include <condition_variable>
+   ```
 
 2. 常量定义。
 
