@@ -531,6 +531,62 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 获取组件信息。
 
      <!-- @[get_componentInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     // 获取组件信息。
+     static napi_value GetComponentInfo(napi_env env, size_t componentTypeSize, OH_ImageNative* image, napi_value resultObj)
+     {
+         if (componentTypeSize > 0) {
+             uint32_t* components = new uint32_t[componentTypeSize];
+             Image_ErrorCode errCode = OH_ImageNative_GetComponentTypes(image, &components, &componentTypeSize);
+             OH_LOG_INFO(LOG_APP, "GetImageInfoObject: GetComponentTypes (get types) errCode=%{public}d,"
+                         "firstComponent=%{public}u", errCode, componentTypeSize > 0 ? components[0] : 0);
+             if (errCode != IMAGE_SUCCESS) {
+                 OH_LOG_ERROR(LOG_APP, "GetImageInfoObject: GetComponentTypes (get types) failed");
+                 delete [] components;
+                 return resultObj;
+             }
+             
+             OH_NativeBuffer* nativeBuffer = nullptr;
+             errCode = OH_ImageNative_GetByteBuffer(image, components[0], &nativeBuffer);
+             if (errCode == IMAGE_SUCCESS) {
+                 OH_LOG_INFO(LOG_APP, "Get native buffer success.");
+             }
+         
+             size_t nativeBufferSize = 0;
+             errCode = OH_ImageNative_GetBufferSize(image, components[0], &nativeBufferSize);
+             OH_LOG_INFO(LOG_APP, "GetImageInfoObject: GetBufferSize errCode=%{public}d, nativeBufferSize=%{public}zu",
+                         errCode, nativeBufferSize);
+             if (errCode == IMAGE_SUCCESS) {
+                 napi_value bufSize;
+                 napi_create_int32(env, static_cast<int32_t>(nativeBufferSize), &bufSize);
+                 napi_set_named_property(env, resultObj, "bufferSize", bufSize);
+             }
+         
+             int32_t rowStride = 0;
+             errCode = OH_ImageNative_GetRowStride(image, components[0], &rowStride);
+             OH_LOG_INFO(LOG_APP, "GetImageInfoObject: GetRowStride errCode=%{public}d,"
+                         "rowStride=%{public}d", errCode, rowStride);
+             if (errCode == IMAGE_SUCCESS) {
+                 napi_value jsRowStride;
+                 napi_create_int32(env, rowStride, &jsRowStride);
+                 napi_set_named_property(env, resultObj, "rowStride", jsRowStride);
+             }
+         
+             int32_t pixelStride = 0;
+             errCode = OH_ImageNative_GetPixelStride(image, components[0], &pixelStride);
+             OH_LOG_INFO(LOG_APP, "GetImageInfoObject: GetPixelStride errCode=%{public}d, pixelStride=%{public}d",
+                         errCode, pixelStride);
+             if (errCode == IMAGE_SUCCESS) {
+                 napi_value jsPixelStride;
+                 napi_create_int32(env, pixelStride, &jsPixelStride);
+                 napi_set_named_property(env, resultObj, "pixelStride", jsPixelStride);
+             }
+             delete [] components;
+         }
+         return resultObj;
+     }
+     ```
 
    - 获取图片属性并封装为napi对象。
 
