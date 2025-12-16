@@ -103,6 +103,57 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_break_all_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+// 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+
+// 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TWENTY(width_));
+OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
+
+// 设置文本内容
+const char *text =
+    "Nunc quis augue viverra, venenatis arcu eu, gravida odio. Integer posuere nisi quis ex pretium, a dapibus "
+    "nisl gravida. Mauris lacinia accumsan enim, non tempus ligula. Mauris iaculis dui eu nisi tristique, in porta "
+    "urna varius. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris "
+    "congue nibh mi, vel ultrices ex volutpat et. Aliquam consectetur odio in libero tristique, a mattis ex "
+    "mollis. Praesent et nisl iaculis, facilisis metus nec, faucibus lacus. Duis nec dolor at nibh eleifend "
+    "tempus. Nunc et enim interdum, commodo eros ac, pretium sapien. Pellentesque laoreet orci a nunc pharetra "
+    "pharetra.";
+
+// 创建一个断词策略为 BREAK_ALL 的 TypographyStyle
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置文本对齐方式为居中
+OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
+// 设置断词策略为 WORD_BREAK_TYPE_BREAK_ALL
+OH_Drawing_SetTypographyTextWordBreakType(typoStyle, OH_Drawing_WordBreakType::WORD_BREAK_TYPE_BREAK_ALL);
+// 设置最大行数为 10，行数大于 10 的部分不显示
+OH_Drawing_SetTypographyTextMaxLines(typoStyle, 10);
+
+// 使用之前创建的 FontCollection 和 TypographyStyle 创建 TypographyCreate。TypographyCreate 用于创建 Typography
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+// 将之前创建的 TextStyle 加入 handler
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+// 将文本添加到 handler 中
+OH_Drawing_TypographyHandlerAddText(handler, text);
+
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 设置页面最大宽度
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// 释放内存
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
+
 | BREAK_ALL | BREAK_WORD | 
 | -------- | -------- |
 | ![ndk_word_break_all.jpg](figures/ndk_word_break_all.jpg) | ![ndk_word_break_word.jpg](figures/ndk_word_break_word.jpg) | 
