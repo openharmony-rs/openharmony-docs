@@ -1,4 +1,10 @@
 # EnterpriseAdminExtensionAbility
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @zhang_yixin13-->
 
 ## EnterpriseAdminExtensionAbility简介
 
