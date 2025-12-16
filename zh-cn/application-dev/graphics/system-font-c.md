@@ -171,6 +171,16 @@
 6. 生成最终段落文本，以便实现最终的文本绘制和显示。
 
    <!-- @[custom_font_c_print_system_font_metrics_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 情况一：设置系统字体为"HarmonyOS Sans Condensed"
+   const char *myFontFamilies[] = {"HarmonyOS Sans Condensed"};
+   OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   
+   // 情况二：不手动设置，此时使用的是系统默认字体"HarmonyOS Sans"
+   // const char* myFontFamilies[] = {"HarmonyOS Sans Condensed"};
+   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   ```
 
 ## 禁用系统字体
 
