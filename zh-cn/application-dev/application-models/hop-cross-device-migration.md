@@ -657,400 +657,428 @@ export default class MigrationAbility extends UIAbility {
   >
   > 自API 12起，由于直接使用[跨设备文件访问](../file-management/file-access-across-devices.md)实现文件的迁移难以获取文件同步完成的时间，为了保证更高的成功率，文件数据的迁移不建议继续通过该方式实现，推荐使用分布式数据对象携带资产的方式进行。开发者此前通过跨设备文件访问实现的文件迁移依然生效。
 
-#### 基础数据的迁移
-
-使用分布式数据对象，需要在源端[onContinue()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncontinue)接口中进行数据保存，并在对端的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)/[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)接口中进行数据恢复。
-
-在源端，将需要迁移的数据保存到分布式数据对象[DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject)中。
-
-- 在onContinue()接口中使用[create()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectcreate9)接口创建分布式数据对象，将所要迁移的数据填充到分布式数据对象数据中。
-- 调用[genSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectgensessionid)接口生成数据对象组网id，并使用该id调用[setSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#setsessionid9)加入组网，激活分布式数据对象。
-- 使用[save()](../reference/apis-arkdata/js-apis-data-distributedobject.md#save9)接口将已激活的分布式数据对象持久化，确保源端退出后对端依然可以获取到数据。
-- 将生成的`sessionId`通过`want`传递到对端，供对端激活同步使用。
-
-> **注意**
->
-> 1. 分布式数据对象需要先激活，再持久化，因此必须在`setSessionId()`后调用save()接口。
-> 2. 对于源端迁移后需要退出的应用，为了防止数据未保存完成应用就退出，应采用`await`的方式等待save()接口执行完毕。从API 12 起，`onContinue()`接口提供了`async`版本供该场景使用。
-> 3. 当前，`wantParams`中`sessionId`字段在迁移流程中被系统占用，建议开发者在`wantParams`中定义其他key值存储该id，避免数据异常。
-
-示例代码如下：
-
-```ts
-// 导入模块
-import { distributedDataObject } from '@kit.ArkData';
-import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG: string = '[MigrationAbility]';
-const DOMAIN_NUMBER: number = 0xFF00;
-
-// 业务数据定义
-class ParentObject {
-  mother: string
-  father: string
-
-  constructor(mother: string, father: string) {
-    this.mother = mother
-    this.father = father
-  }
-}
-
-// 支持字符、数字、布尔值、对象的传递
-class SourceObject {
-  name: string | undefined
-  age: number | undefined
-  isVis: boolean | undefined
-  parent: ParentObject | undefined
-
-  constructor(name: string | undefined, age: number | undefined, isVis: boolean | undefined, parent: ParentObject | undefined) {
-    this.name = name
-    this.age = age
-    this.isVis = isVis
-    this.parent = parent
-  }
-}
-
-export default class MigrationAbility extends UIAbility {
-  d_object?: distributedDataObject.DataObject;
-
-  async onContinue(wantParam: Record<string, Object>): Promise<AbilityConstant.OnContinueResult> {
-    // ...
-    let parentSource: ParentObject = new ParentObject('jack mom', 'jack Dad');
-    let source: SourceObject = new SourceObject("jack", 18, false, parentSource);
-
-    // 创建分布式数据对象
-    this.d_object = distributedDataObject.create(this.context, source);
-
-    // 生成数据对象组网id，激活分布式数据对象
-    let dataSessionId: string = distributedDataObject.genSessionId();
-    this.d_object.setSessionId(dataSessionId);
-
-    // 将组网id存在want中传递到对端
-    wantParam['dataSessionId'] = dataSessionId;
-
-    // 数据对象持久化，确保迁移后即使应用退出，对端依然能够恢复数据对象
-    // 从wantParam.targetDevice中获取到对端设备的networkId作为入参
-    await this.d_object.save(wantParam.targetDevice as string).then((result:
-      distributedDataObject.SaveSuccessResponse) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in saving. SessionId: ${result.sessionId}`,
-        `version:${result.version}, deviceId:${result.deviceId}`);
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, 'Failed to save. Error: ', JSON.stringify(err) ?? '');
-    });
-
-    return AbilityConstant.OnContinueResult.AGREE;
-  }
-}
-```
-
-对端在[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)/[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)中，通过加入与源端一致的分布式数据对象组网进行数据恢复。
-
-- 创建空的分布式数据对象，用于接收恢复的数据。
-- 从[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中读取分布式数据对象组网id。
-- 注册[on()](../reference/apis-arkdata/js-apis-data-distributedobject.md#onstatus9)接口监听数据变更。在收到`status`为`restore`的事件的回调中，实现数据恢复完毕时需要进行的业务操作。
-- 调用[setSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#setsessionid9)加入组网，激活分布式数据对象。
-
-> **注意**
->
-> 1. 对端加入组网的分布式数据对象不能为临时变量，因为on()接口的回调可能在onCreate()/onNewWant()执行结束后才执行，临时变量被释放可能导致空指针异常。可以使用类成员变量避免该问题。
-> 2. 对端用于创建分布式数据对象的`Object`，其属性应在激活分布式数据对象前置为`undefined`，否则会导致新数据加入组网后覆盖源端数据，数据恢复失败。
-> 3. 应当在激活分布式数据对象之前，调用on()接口进行注册监听，防止错过`restore`事件导致数据恢复失败。
-
-示例代码如下：
-
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { distributedDataObject } from '@kit.ArkData';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG: string = '[MigrationAbility]';
-const DOMAIN_NUMBER: number = 0xFF00;
-
-// 示例数据对象定义与上同
-export default class MigrationAbility extends UIAbility {
-  d_object?: distributedDataObject.DataObject;
-
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
-      // ...
-      // 调用封装好的分布式数据对象处理函数
-      this.handleDistributedData(want);
-    }
-  }
-
-  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
-      if (want.parameters !== undefined) {
-        // ...
-        // 调用封装好的分布式数据对象处理函数
-        this.handleDistributedData(want);
-      }
-    }
-  }
-
-  handleDistributedData(want: Want) {
-    // 创建空的分布式数据对象
-    let remoteSource: SourceObject = new SourceObject(undefined, undefined, undefined, undefined);
-    this.d_object = distributedDataObject.create(this.context, remoteSource);
-
-    // 读取分布式数据对象组网id
-    let dataSessionId = '';
-    if (want.parameters !== undefined) {
-      dataSessionId = want.parameters.dataSessionId as string;
-    }
-
-    // 添加数据变更监听
-    this.d_object.on("status", (sessionId: string, networkId: string, status: 'online' | 'offline' | 'restored') => {
-      hilog.info(DOMAIN_NUMBER, TAG, "status changed " + sessionId + " " + status + " " + networkId);
-      if (status == 'restored') {
-        if (this.d_object) {
-          // 收到迁移恢复的状态时，可以从分布式数据对象中读取数据
-          hilog.info(DOMAIN_NUMBER, TAG, "restored name:" + this.d_object['name']);
-          hilog.info(DOMAIN_NUMBER, TAG, "restored parents:" + JSON.stringify(this.d_object['parent']));
-        }
-      }
-    });
-
-    // 激活分布式数据对象
-    this.d_object.setSessionId(dataSessionId);
-  }
-}
-```
-
-#### 文件资产的迁移
-
-对于图片、文档等文件类数据，需要先将其转换为[资产`commonType.Asset`](../reference/apis-arkdata/js-apis-data-commonType.md#asset)类型，再封装到分布式数据对象中进行迁移。迁移实现方式与普通的分布式数据对象类似，下例中仅针对区别部分进行说明。
-
-在源端，将需要迁移的文件资产保存到分布式数据对象[DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject)中。
-
-- 将文件资产拷贝到[分布式文件目录](application-context-stage.md#获取应用文件路径)下，相关接口与用法详见[基础文件接口](../file-management/app-file-access.md)。
-- 使用分布式文件目录下的文件创建`Asset`资产对象。
-- 将`Asset`资产对象作为分布式数据对象的根属性保存。
-
-随后，与普通数据对象的迁移的源端实现相同，可以使用该数据对象加入组网，并进行持久化保存。
-
-示例如下：
-
-```ts
-// 导入模块
-import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-import { distributedDataObject, commonType } from '@kit.ArkData';
-import { fileIo, fileUri } from '@kit.CoreFileKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
-
-const TAG: string = '[MigrationAbility]';
-const DOMAIN_NUMBER: number = 0xFF00;
-
-// 数据对象定义
-class ParentObject {
-  mother: string
-  father: string
-
-  constructor(mother: string, father: string) {
-    this.mother = mother
-    this.father = father
-  }
-}
-
-class SourceObject {
-  name: string | undefined
-  age: number | undefined
-  isVis: boolean | undefined
-  parent: ParentObject | undefined
-  attachment: commonType.Asset | undefined // 新增资产属性
-
-  constructor(name: string | undefined, age: number | undefined, isVis: boolean | undefined,
-              parent: ParentObject | undefined, attachment: commonType.Asset | undefined) {
-    this.name = name
-    this.age = age
-    this.isVis = isVis
-    this.parent = parent
-    this.attachment = attachment;
-  }
-}
-
-export default class MigrationAbility extends UIAbility {
-  d_object?: distributedDataObject.DataObject;
-
-  async onContinue(wantParam: Record<string, Object>): Promise<AbilityConstant.OnContinueResult> {
-    // ...
-
-    // 1. 将资产写入分布式文件目录下
-    let distributedDir: string = this.context.distributedFilesDir; // 获取分布式文件目录路径
-    let fileName: string = '/test.txt'; // 文件名
-    let filePath: string = distributedDir + fileName; // 文件路径
-
-    try {
-      // 在分布式目录下创建文件
-      let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-      hilog.info(DOMAIN_NUMBER, TAG, 'Create file success.');
-      // 向文件中写入内容（若资产为图片，可将图片转换为buffer后写入）
-      fileIo.writeSync(file.fd, '[Sample] Insert file content here.');
-      // 关闭文件
-      fileIo.closeSync(file.fd);
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      hilog.error(DOMAIN_NUMBER, TAG, `Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
-    }
-
-    // 2. 使用分布式文件目录下的文件创建资产对象
-    let distributedUri: string = fileUri.getUriFromPath(filePath); // 获取分布式文件Uri
-
-    // 获取文件参数
-    let ctime: string = '';
-    let mtime: string = '';
-    let size: string = '';
-    await fileIo.stat(filePath).then((stat: fileIo.Stat) => {
-      ctime = stat.ctime.toString(); // 创建时间
-      mtime = stat.mtime.toString(); // 修改时间
-      size = stat.size.toString(); // 文件大小
-    })
-
-    // 创建资产对象
-    let attachment: commonType.Asset = {
-      name: fileName,
-      uri: distributedUri,
-      path: filePath,
-      createTime: ctime,
-      modifyTime: mtime,
-      size: size,
-    }
-
-    // 3. 将资产对象作为分布式数据对象的根属性，创建分布式数据对象
-    let parentSource: ParentObject = new ParentObject('jack mom', 'jack Dad');
-    let source: SourceObject = new SourceObject("jack", 18, false, parentSource, attachment);
-    this.d_object = distributedDataObject.create(this.context, source);
-
-    // 生成组网id，激活分布式数据对象，save持久化保存
-    // ...
-
-    return AbilityConstant.OnContinueResult.AGREE;
-  }
-}
-```
-
-对端需要先创建一个各属性为空的`Asset`资产对象作为分布式数据对象的根属性。在接收到[on()](../reference/apis-arkdata/js-apis-data-distributedobject.md#onstatus9)接口`status`为`restored`的事件的回调时，表示包括资产在内的数据同步完成，可以像获取基本数据一样获取到源端的资产对象。
-
-> **注意**
->
-> 对端创建分布式数据对象时，`SourceObject`对象中的资产不能直接使用`undefined`初始化，需要创建一个所有属性初始值为空的Asset资产对象，使分布式对象可以识别出资产类型。
-
-```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
-import { distributedDataObject, commonType } from '@kit.ArkData';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG: string = '[MigrationAbility]';
-const DOMAIN_NUMBER: number = 0xFF00;
-
-export default class MigrationAbility extends UIAbility {
-  d_object?: distributedDataObject.DataObject;
-
-  handleDistributedData(want: Want) {
-    // ...
-    // 创建一个各属性为空的资产对象
-    let attachment: commonType.Asset = {
-      name: '',
-      uri: '',
-      path: '',
-      createTime: '',
-      modifyTime: '',
-      size: '',
-    }
-
-    // 使用该空资产对象创建分布式数据对象，其余基础属性可以直接使用undefined
-    let source: SourceObject = new SourceObject(undefined, undefined, undefined, undefined, attachment);
-    this.d_object = distributedDataObject.create(this.context, source);
-
-    this.d_object.on("status", (sessionId: string, networkId: string, status: 'online' | 'offline' | 'restored') => {
-      if (status == 'restored') {
-        if (this.d_object) {
-          // 收到监听的restored回调，表示分布式资产对象同步完成
-          hilog.info(DOMAIN_NUMBER, TAG, "restored attachment:" + JSON.stringify(this.d_object['attachment']));
-        }
-      }
-    });
-    // ...
-  }
-}
-```
-
-若应用想要同步多个资产，可采用两种方式实现
-
-1. 可将每个资产作为分布式数据对象的一个根属性实现，适用于要迁移的资产数量固定的场景。
-2. 可以将资产数组传化为`Object`传递，适用于需要迁移的资产个数会动态变化的场景（如，用户选择了不定数量的图片）。当前不支持直接将资产数组作为根属性传递。
-
-其中方式1的实现可以直接参照添加一个资产的方式添加更多资产。方式2的示例如下所示：
-
-```ts
-// 导入模块
-import { distributedDataObject, commonType } from '@kit.ArkData';
-import { UIAbility } from '@kit.AbilityKit';
-
-// 数据对象定义
-class SourceObject {
-  name: string | undefined
-  assets: Object | undefined // 分布式数据对象的中添加一个Object属性
-
-  constructor(name: string | undefined, assets: Object | undefined) {
-    this.name = name
-    this.assets = assets;
-  }
-}
-
-export default class MigrationAbility extends UIAbility {
-  d_object?: distributedDataObject.DataObject;
-
-  // 该函数用于将资产数组转为Record
-  GetAssetsWapper(assets: commonType.Assets): Record<string, commonType.Asset> {
-    let wrapper: Record<string, commonType.Asset> = {}
-    let num: number = assets.length;
-    for (let i: number = 0; i < num; i++) {
-      wrapper[`asset${i}`] = assets[i];
-    }
-    return wrapper;
-  }
-
-  async onContinue(wantParam: Record<string, Object>): Promise<AbilityConstant.OnContinueResult> {
-    // ...
-
-    // 创建了多个资产对象
-    let attachment1: commonType.Asset = {
-      name: '',
-      uri: '',
-      path: '',
-      createTime: '',
-      modifyTime: '',
-      size: '',
-    }
-
-    let attachment2: commonType.Asset = {
-      name: '',
-      uri: '',
-      path: '',
-      createTime: '',
-      modifyTime: '',
-      size: '',
-    }
-
-    // 将资产对象插入资产数组
-    let assets: commonType.Assets = [];
-    assets.push(attachment1);
-    assets.push(attachment2);
-
-    // 将资产数组转为Record Object，并用于创建分布式数据对象
-    let assetsWrapper: Object = this.GetAssetsWapper(assets);
-    let source: SourceObject = new SourceObject("jack", assetsWrapper);
-    this.d_object = distributedDataObject.create(this.context, source);
-
-    // ...
-    return AbilityConstant.OnContinueResult.AGREE;
-  }
-}
-```
+1. 基础数据的迁移
+
+   使用分布式数据对象，需要在源端[onContinue()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncontinue)接口中进行数据保存，并在对端的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)/[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)接口中进行数据恢复。
+   
+   在源端，将需要迁移的数据保存到分布式数据对象[DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject)中。
+   
+   - 在onContinue()接口中使用[create()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectcreate9)接口创建分布式数据对象，将所要迁移的数据填充到分布式数据对象数据中。
+   - 调用[genSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectgensessionid)接口生成数据对象组网id，并使用该id调用[setSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#setsessionid9)加入组网，激活分布式数据对象。
+   - 使用[save()](../reference/apis-arkdata/js-apis-data-distributedobject.md#save9)接口将已激活的分布式数据对象持久化，确保源端退出后对端依然可以获取到数据。
+   - 将生成的`sessionId`通过`want`传递到对端，供对端激活同步使用。
+   
+   > **注意**
+   >
+   > 1. 分布式数据对象需要先激活，再持久化，因此必须在`setSessionId()`后调用save()接口。
+   > 2. 对于源端迁移后需要退出的应用，为了防止数据未保存完成应用就退出，应采用`await`的方式等待save()接口执行完毕。从API 12 起，`onContinue()`接口提供了`async`版本供该场景使用。
+   > 3. 当前，`wantParams`中`sessionId`字段在迁移流程中被系统占用，建议开发者在`wantParams`中定义其他key值存储该id，避免数据异常。
+   
+   示例代码如下：
+   
+   ```ts
+   // 导入模块
+   import { distributedDataObject } from '@kit.ArkData';
+   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = '[MigrationAbility]';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   
+   // 业务数据定义
+   class ParentObject {
+     mother: string
+     father: string
+   
+     constructor(mother: string, father: string) {
+       this.mother = mother
+       this.father = father
+     }
+   }
+   
+   // 支持字符、数字、布尔值、对象的传递
+   class SourceObject {
+     name: string | undefined
+     age: number | undefined
+     isVis: boolean | undefined
+     parent: ParentObject | undefined
+   
+     constructor(name: string | undefined, age: number | undefined, isVis: boolean | undefined, parent: ParentObject | undefined) {
+       this.name = name
+       this.age = age
+       this.isVis = isVis
+       this.parent = parent
+     }
+   }
+   
+   export default class MigrationAbility extends UIAbility {
+     d_object?: distributedDataObject.DataObject;
+   
+     async onContinue(wantParam: Record<string, Object>): Promise<AbilityConstant.OnContinueResult> {
+       // ...
+       let parentSource: ParentObject = new ParentObject('jack mom', 'jack Dad');
+       let source: SourceObject = new SourceObject("jack", 18, false, parentSource);
+   
+       // 创建分布式数据对象
+       this.d_object = distributedDataObject.create(this.context, source);
+   
+       // 生成数据对象组网id，激活分布式数据对象
+       let dataSessionId: string = distributedDataObject.genSessionId();
+       this.d_object.setSessionId(dataSessionId);
+   
+       // 将组网id存在want中传递到对端
+       wantParam['dataSessionId'] = dataSessionId;
+   
+       // 数据对象持久化，确保迁移后即使应用退出，对端依然能够恢复数据对象
+       // 从wantParam.targetDevice中获取到对端设备的networkId作为入参
+       await this.d_object.save(wantParam.targetDevice as string).then((result:
+         distributedDataObject.SaveSuccessResponse) => {
+         hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in saving. SessionId: ${result.sessionId}`,
+           `version:${result.version}, deviceId:${result.deviceId}`);
+       }).catch((err: BusinessError) => {
+         hilog.error(DOMAIN_NUMBER, TAG, 'Failed to save. Error: ', JSON.stringify(err) ?? '');
+       });
+   
+       return AbilityConstant.OnContinueResult.AGREE;
+     }
+   }
+   ```
+   
+   对端在[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)/[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)中，通过加入与源端一致的分布式数据对象组网进行数据恢复。
+   
+   - 创建空的分布式数据对象，用于接收恢复的数据。
+   - 从[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中读取分布式数据对象组网id。
+   - 注册[on()](../reference/apis-arkdata/js-apis-data-distributedobject.md#onstatus9)接口监听数据变更。在收到`status`为`restore`的事件的回调中，实现数据恢复完毕时需要进行的业务操作。
+   - 调用[setSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#setsessionid9)加入组网，激活分布式数据对象。
+   
+   > **注意**
+   >
+   > 1. 对端加入组网的分布式数据对象不能为临时变量，因为on()接口的回调可能在onCreate()/onNewWant()执行结束后才执行，临时变量被释放可能导致空指针异常。可以使用类成员变量避免该问题。
+   > 2. 对端用于创建分布式数据对象的`Object`，其属性应在激活分布式数据对象前置为`undefined`，否则会导致新数据加入组网后覆盖源端数据，数据恢复失败。
+   > 3. 应当在激活分布式数据对象之前，调用on()接口进行注册监听，防止错过`restore`事件导致数据恢复失败。
+   
+   示例代码如下：
+   
+   ```ts
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { distributedDataObject } from '@kit.ArkData';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = '[MigrationAbility]';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   
+   // 示例数据对象定义与上同
+   export default class MigrationAbility extends UIAbility {
+     d_object?: distributedDataObject.DataObject;
+   
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
+         // ...
+         // 调用封装好的分布式数据对象处理函数
+         this.handleDistributedData(want);
+       }
+     }
+   
+     onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
+         if (want.parameters !== undefined) {
+           // ...
+           // 调用封装好的分布式数据对象处理函数
+           this.handleDistributedData(want);
+         }
+       }
+     }
+   
+     handleDistributedData(want: Want) {
+       // 创建空的分布式数据对象
+       let remoteSource: SourceObject = new SourceObject(undefined, undefined, undefined, undefined);
+       this.d_object = distributedDataObject.create(this.context, remoteSource);
+   
+       // 读取分布式数据对象组网id
+       let dataSessionId = '';
+       if (want.parameters !== undefined) {
+         dataSessionId = want.parameters.dataSessionId as string;
+       }
+   
+       // 添加数据变更监听
+       this.d_object.on("status", (sessionId: string, networkId: string, status: 'online' | 'offline' | 'restored') => {
+         hilog.info(DOMAIN_NUMBER, TAG, "status changed " + sessionId + " " + status + " " + networkId);
+         if (status == 'restored') {
+           if (this.d_object) {
+             // 收到迁移恢复的状态时，可以从分布式数据对象中读取数据
+             hilog.info(DOMAIN_NUMBER, TAG, "restored name:" + this.d_object['name']);
+             hilog.info(DOMAIN_NUMBER, TAG, "restored parents:" + JSON.stringify(this.d_object['parent']));
+           }
+         }
+       });
+   
+       // 激活分布式数据对象
+       this.d_object.setSessionId(dataSessionId);
+     }
+   }
+   ```
+
+2. 文件资产的迁移
+
+   对于图片、文档等文件类数据，需要先将其转换为[资产`commonType.Asset`](../reference/apis-arkdata/js-apis-data-commonType.md#asset)类型，再封装到分布式数据对象中进行迁移。迁移实现方式与普通的分布式数据对象类似，下例中仅针对区别部分进行说明。
+   
+   在源端，将需要迁移的文件资产保存到分布式数据对象[DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject)中。
+   
+   - 将文件资产拷贝到[分布式文件目录](application-context-stage.md#获取应用文件路径)下，相关接口与用法详见[基础文件接口](../file-management/app-file-access.md)。
+   - 使用分布式文件目录下的文件创建`Asset`资产对象。
+   - 将`Asset`资产对象作为分布式数据对象的根属性保存。
+   
+   随后，与普通数据对象的迁移的源端实现相同，可以使用该数据对象加入组网，并进行持久化保存。
+   
+   示例如下：
+   
+   ```ts
+   // 导入模块
+   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+   import { distributedDataObject, commonType } from '@kit.ArkData';
+   import { fileIo, fileUri } from '@kit.CoreFileKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { BusinessError } from '@ohos.base';
+   
+   const TAG: string = '[MigrationAbility]';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   
+   // 数据对象定义
+   class ParentObject {
+     mother: string
+     father: string
+   
+     constructor(mother: string, father: string) {
+       this.mother = mother
+       this.father = father
+     }
+   }
+   
+   class SourceObject {
+     name: string | undefined
+     age: number | undefined
+     isVis: boolean | undefined
+     parent: ParentObject | undefined
+     attachment: commonType.Asset | undefined // 新增资产属性
+   
+     constructor(name: string | undefined, age: number | undefined, isVis: boolean | undefined,
+                 parent: ParentObject | undefined, attachment: commonType.Asset | undefined) {
+       this.name = name
+       this.age = age
+       this.isVis = isVis
+       this.parent = parent
+       this.attachment = attachment;
+     }
+   }
+   
+   export default class MigrationAbility extends UIAbility {
+     d_object?: distributedDataObject.DataObject;
+   
+     async onContinue(wantParam: Record<string, Object>): Promise<AbilityConstant.OnContinueResult> {
+       // ...
+   
+       // 1. 将资产写入分布式文件目录下
+       let distributedDir: string = this.context.distributedFilesDir; // 获取分布式文件目录路径
+       let fileName: string = '/test.txt'; // 文件名
+       let filePath: string = distributedDir + fileName; // 文件路径
+   
+       try {
+         // 在分布式目录下创建文件
+         let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+         hilog.info(DOMAIN_NUMBER, TAG, 'Create file success.');
+         // 向文件中写入内容（若资产为图片，可将图片转换为buffer后写入）
+         fileIo.writeSync(file.fd, '[Sample] Insert file content here.');
+         // 关闭文件
+         fileIo.closeSync(file.fd);
+       } catch (error) {
+         let err: BusinessError = error as BusinessError;
+         hilog.error(DOMAIN_NUMBER, TAG, `Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
+       }
+   
+       // 2. 使用分布式文件目录下的文件创建资产对象
+       let distributedUri: string = fileUri.getUriFromPath(filePath); // 获取分布式文件Uri
+   
+       // 获取文件参数
+       let ctime: string = '';
+       let mtime: string = '';
+       let size: string = '';
+       await fileIo.stat(filePath).then((stat: fileIo.Stat) => {
+         ctime = stat.ctime.toString(); // 创建时间
+         mtime = stat.mtime.toString(); // 修改时间
+         size = stat.size.toString(); // 文件大小
+       })
+   
+       // 创建资产对象
+       let attachment: commonType.Asset = {
+         name: fileName,
+         uri: distributedUri,
+         path: filePath,
+         createTime: ctime,
+         modifyTime: mtime,
+         size: size,
+       }
+   
+       // 3. 将资产对象作为分布式数据对象的根属性，创建分布式数据对象
+       let parentSource: ParentObject = new ParentObject('jack mom', 'jack Dad');
+       let source: SourceObject = new SourceObject("jack", 18, false, parentSource, attachment);
+       this.d_object = distributedDataObject.create(this.context, source);
+   
+       // 生成组网id，激活分布式数据对象，save持久化保存
+       // ...
+   
+       return AbilityConstant.OnContinueResult.AGREE;
+     }
+   }
+   ```
+   
+   对端需要先创建一个各属性为空的`Asset`资产对象作为分布式数据对象的根属性。在接收到[on()](../reference/apis-arkdata/js-apis-data-distributedobject.md#onstatus9)接口`status`为`restored`的事件的回调时，表示包括资产在内的数据同步完成，可以像获取基本数据一样获取到源端的资产对象。
+   
+   > **注意**
+   >
+   > 对端创建分布式数据对象时，`SourceObject`对象中的资产不能直接使用`undefined`初始化，需要创建一个所有属性初始值为空的Asset资产对象，使分布式对象可以识别出资产类型。
+   
+   ```ts
+   import { UIAbility, Want } from '@kit.AbilityKit';
+   import { distributedDataObject, commonType } from '@kit.ArkData';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = '[MigrationAbility]';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   
+   // 数据对象定义
+   class ParentObject {
+     mother: string
+     father: string
+   
+     constructor(mother: string, father: string) {
+       this.mother = mother
+       this.father = father
+     }
+   }
+   
+   class SourceObject {
+     name: string | undefined
+     age: number | undefined
+     isVis: boolean | undefined
+     parent: ParentObject | undefined
+     attachment: commonType.Asset | undefined // 新增资产属性
+   
+     constructor(name: string | undefined, age: number | undefined, isVis: boolean | undefined,
+                 parent: ParentObject | undefined, attachment: commonType.Asset | undefined) {
+       this.name = name
+       this.age = age
+       this.isVis = isVis
+       this.parent = parent
+       this.attachment = attachment;
+     }
+   }
+   
+   export default class MigrationAbility extends UIAbility {
+     d_object?: distributedDataObject.DataObject;
+   
+     handleDistributedData(want: Want) {
+       // ...
+       // 创建一个各属性为空的资产对象
+       let attachment: commonType.Asset = {
+         name: '',
+         uri: '',
+         path: '',
+         createTime: '',
+         modifyTime: '',
+         size: '',
+       }
+   
+       // 使用该空资产对象创建分布式数据对象，其余基础属性可以直接使用undefined
+       let source: SourceObject = new SourceObject(undefined, undefined, undefined, undefined, attachment);
+       this.d_object = distributedDataObject.create(this.context, source);
+   
+       this.d_object.on("status", (sessionId: string, networkId: string, status: 'online' | 'offline' | 'restored') => {
+         if (status == 'restored') {
+           if (this.d_object) {
+             // 收到监听的restored回调，表示分布式资产对象同步完成
+             hilog.info(DOMAIN_NUMBER, TAG, "restored attachment:" + JSON.stringify(this.d_object['attachment']));
+           }
+         }
+       });
+       // ...
+     }
+   }
+   ```
+   
+   若应用想要同步多个资产，可采用两种方式实现
+   
+   1. 可将每个资产作为分布式数据对象的一个根属性实现，适用于要迁移的资产数量固定的场景。
+   2. 可以将资产数组传化为`Object`传递，适用于需要迁移的资产个数会动态变化的场景（如，用户选择了不定数量的图片）。当前不支持直接将资产数组作为根属性传递。
+   
+   其中方式1的实现可以直接参照添加一个资产的方式添加更多资产。方式2的示例如下所示：
+   
+   ```ts
+   // 导入模块
+   import { distributedDataObject, commonType } from '@kit.ArkData';
+   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+   
+   // 数据对象定义
+   class SourceObject {
+     name: string | undefined
+     assets: Object | undefined // 分布式数据对象的中添加一个Object属性
+   
+     constructor(name: string | undefined, assets: Object | undefined) {
+       this.name = name
+       this.assets = assets;
+     }
+   }
+   
+   export default class MigrationAbility extends UIAbility {
+     d_object?: distributedDataObject.DataObject;
+   
+     // 该函数用于将资产数组转为Record
+     GetAssetsWapper(assets: commonType.Assets): Record<string, commonType.Asset> {
+       let wrapper: Record<string, commonType.Asset> = {}
+       let num: number = assets.length;
+       for (let i: number = 0; i < num; i++) {
+         wrapper[`asset${i}`] = assets[i];
+       }
+       return wrapper;
+     }
+   
+     async onContinue(wantParam: Record<string, Object>): Promise<AbilityConstant.OnContinueResult> {
+       // ...
+   
+       // 创建了多个资产对象
+       let attachment1: commonType.Asset = {
+         name: '',
+         uri: '',
+         path: '',
+         createTime: '',
+         modifyTime: '',
+         size: '',
+       }
+   
+       let attachment2: commonType.Asset = {
+         name: '',
+         uri: '',
+         path: '',
+         createTime: '',
+         modifyTime: '',
+         size: '',
+       }
+   
+       // 将资产对象插入资产数组
+       let assets: commonType.Assets = [];
+       assets.push(attachment1);
+       assets.push(attachment2);
+   
+       // 将资产数组转为Record Object，并用于创建分布式数据对象
+       let assetsWrapper: Object = this.GetAssetsWapper(assets);
+       let source: SourceObject = new SourceObject("jack", assetsWrapper);
+       this.d_object = distributedDataObject.create(this.context, source);
+   
+       // ...
+       return AbilityConstant.OnContinueResult.AGREE;
+     }
+   }
+   ```
 
 ## 验证指导
 
