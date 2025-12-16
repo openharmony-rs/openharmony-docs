@@ -629,3 +629,24 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 8. 释放receiver。
 
    <!-- @[release_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->     
+   
+   ``` C++
+   static napi_value ReleaseImageReceiver(napi_env env, napi_callback_info info)
+   {
+       if (g_receiver == nullptr) {
+           OH_LOG_INFO(LOG_APP, "No image receiver to release.");
+           return nullptr;
+       }
+       Image_ErrorCode errCode = OH_ImageReceiverNative_Off(g_receiver);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeCTest image receiver off failed, errCode: %{public}d.", errCode);
+       }
+       errCode = OH_ImageReceiverNative_Release(g_receiver);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "Release image receiver failed, errCode: %{public}d.", errCode);
+       }
+       g_receiver = nullptr;
+   
+       return GetJsResultDemo(env, errCode);
+   }
+   ```
