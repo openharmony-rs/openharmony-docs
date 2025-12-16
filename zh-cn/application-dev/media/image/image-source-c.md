@@ -98,6 +98,54 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 7. 创建ImageSource实例。
 
    <!-- @[decodingPixel_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+   
+   ``` C++
+   // 返回ErrorCode。
+   napi_value ReturnErrorCode(napi_env env, Image_ErrorCode errCode, std::string funcName)
+   {
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "%{public}s failed, errCode: %{public}d.", funcName.c_str(), errCode);
+           return GetJsResult(env, errCode);
+       }
+       return GetJsResult(env, errCode);
+   }
+   
+   // 获取解码能力范围。
+   napi_value GetSupportedFormats(napi_env env, napi_callback_info info)
+   {
+       Image_MimeType* mimeType = nullptr;
+       size_t length = 10;
+       Image_ErrorCode errCode = OH_ImageSourceNative_GetSupportedFormats(&mimeType, &length);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetSupportedFormats failed, "
+                        "errCode: %{public}d.", errCode);
+           return GetJsResult(env, errCode);
+       }
+       for (size_t count = 0; count < length; count++) {
+           OH_LOG_INFO(LOG_APP, "Decode supportedFormats: %{public}s", mimeType[count].data);
+       }
+       return GetJsResult(env, errCode);
+   }
+   
+   // 创建ImageSource实例。
+   napi_value CreateImageSource(napi_env env, napi_callback_info info)
+   {
+       napi_value argValue[1] = {nullptr};
+       size_t argCount = 1;
+       if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < 1 ||
+           argValue[0] == nullptr) {
+           OH_LOG_ERROR(LOG_APP, "CreateImageSource napi_get_cb_info failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+   
+       char name[MAX_STRING_LENGTH];
+       size_t nameSize = MAX_STRING_LENGTH;
+       napi_get_value_string_utf8(env, argValue[0], name, MAX_STRING_LENGTH, &nameSize);
+   
+       Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromUri(name, nameSize, &g_thisImageSource->source);
+       return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_CreateFromUri");
+   }
+   ```
 
 8. 在创建ImageSource实例后，进行指定属性值的获取和修改、通过解码参数创建PixelMap对象、获取图像帧数等操作。
 
