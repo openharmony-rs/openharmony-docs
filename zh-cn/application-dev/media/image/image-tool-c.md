@@ -48,6 +48,19 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
 
    <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->    
    
+   ``` C
+   class ImageSourceNative {
+   public:
+       OH_ImageSource_Info *imageInfo;
+       OH_ImageSourceNative *source = nullptr;
+       OH_PixelmapNative *resPixMap = nullptr;
+       OH_Pixelmap_ImageInfo *pixelmapImageInfo = nullptr;
+       uint32_t frameCnt = 0;
+       ImageSourceNative() {}
+       ~ImageSourceNative() {}
+   };
+   ```
+   
 4. 创建ImageSourceNative的一个实例。
 
    <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
