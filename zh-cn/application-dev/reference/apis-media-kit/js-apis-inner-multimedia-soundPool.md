@@ -1263,7 +1263,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setInterruptMode
 
-setInterruptMode(interruptMode: media.SoundInterruptMode): void;
+setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
 创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#SoundInterruptMode23)，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。
 
@@ -1274,12 +1274,6 @@ setInterruptMode(interruptMode: media.SoundInterruptMode): void;
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | interruptMode | media.SoundInterruptMode | 是   | 同一ID音频在播放时的打断模式，通过media.SoundInterruptMode枚举获取。 |
-
-**返回值：**
-
-| 类型             | 说明                             |
-| ---------------- | -------------------------------- |
-| void | 无返回结果。 |
 
 **示例：**
 
@@ -1299,9 +1293,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
   } else {
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
-    // 选择模式1：同ID音频并行播放模式
+    // 选择模式1：同ID音频并行播放模式。
     soundPool.setInterruptMode(media.SoundInterruptMode.NO_INTERRUPT);
-    // 选择模式2：同ID音频截断模式
+    // 选择模式2：同ID音频截断模式。
     soundPool.setInterruptMode(media.SoundInterruptMode.SAME_SOUND_INTERRUPT);
   }
 });
