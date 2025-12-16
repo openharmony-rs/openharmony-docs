@@ -479,6 +479,38 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
      <!-- @[get_imageSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
      
+     ``` C++
+     // 获取图片大小。
+     static napi_value GetImageSizeInfo(napi_env env, OH_ImageNative* image)
+     {
+         OH_LOG_INFO(LOG_APP, "GetImageSizeInfo: enter, image=%{public}p", image);
+     
+         Image_Size imgSizeRead;
+         Image_ErrorCode errCode = OH_ImageNative_GetImageSize(image, &imgSizeRead);
+         OH_LOG_INFO(LOG_APP, "GetImageSizeInfo: GetImageSize errCode=%{public}d, width=%{public}d, height=%{public}d",
+                     errCode, imgSizeRead.width, imgSizeRead.height);
+     
+         if (errCode == IMAGE_SUCCESS) {
+             napi_value resultObj;
+             napi_create_object(env, &resultObj);
+     
+             napi_value width;
+             napi_value height;
+             napi_create_int32(env, imgSizeRead.width, &width);
+             napi_create_int32(env, imgSizeRead.height, &height);
+     
+             napi_set_named_property(env, resultObj, "width", width);
+             napi_set_named_property(env, resultObj, "height", height);
+     
+             OH_LOG_INFO(LOG_APP, "GetImageSizeInfo: exit");
+             return resultObj;
+         }
+     
+         OH_LOG_ERROR(LOG_APP, "GetImageSizeInfo: Failed to get image size");
+         return nullptr;
+     }
+     ```
+     
    - 获取组件类型。
 
      <!-- @[get_componentType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
