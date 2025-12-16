@@ -182,6 +182,29 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 定义获取下一张图片的callback函数。
 
      <!-- @[define_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->         
+     
+     ``` C++
+     static void OnCallback(OH_ImageReceiverNative* receiver)
+     {
+         OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest buffer available.");
+     
+         OH_ImageNative* image = nullptr;
+         Image_ErrorCode errCode = OH_ImageReceiverNative_ReadNextImage(receiver, &image);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeCTest get image receiver next image failed,"
+                          "errCode: %{public}d.", errCode);
+             OH_ImageNative_Release(image);
+             return;
+         }
+     
+         {
+             std::lock_guard<std::mutex> lock(g_mutex);
+             g_imageInfoResult = image;
+             g_imageReady = true;
+         }
+         g_condVar.notify_one();
+     }
+     ```
 
    - 注册callback。
 
