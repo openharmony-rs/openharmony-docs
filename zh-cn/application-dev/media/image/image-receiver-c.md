@@ -387,6 +387,36 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 开启捕获会话。
 
      <!-- @[start_captureSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     static Camera_ErrorCode StartCaptureSession(Camera_Manager* mgr, Camera_Input* input, Camera_PhotoOutput* photoOutput,
+         Camera_CaptureSession** sessionOut)
+     {
+         *sessionOut = CreateAndStartSession(mgr, input, NORMAL_PHOTO);
+         if (*sessionOut == nullptr) {
+             OH_LOG_ERROR(LOG_APP, "CreateAndStartSession failed.");
+             return CAMERA_INVALID_ARGUMENT;
+         }
+     
+         Camera_ErrorCode ret = OH_CaptureSession_AddPhotoOutput(*sessionOut, photoOutput);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPhotoOutput failed.");
+             return ret;
+         }
+     
+         ret = OH_CaptureSession_CommitConfig(*sessionOut);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
+             return ret;
+         }
+     
+         ret = OH_CaptureSession_Start(*sessionOut);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_Start failed.");
+         }
+         return ret;
+     }
+     ```
 
    - 创建相机拍照流。
 
