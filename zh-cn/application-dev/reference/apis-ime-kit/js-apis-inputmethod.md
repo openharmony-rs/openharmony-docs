@@ -638,7 +638,7 @@ setSimpleKeyboardEnabled(enable: boolean): void
   inputMethod.setSimpleKeyboardEnabled(enable);
 ```
 
-## inputMethod.onAttachmentDidFail<sup>23+</sup>
+## inputMethod.onAttachmentDidFail<sup>22+</sup>
 
 onAttachmentDidFail(callback: Callback&lt;AttachFailureReason&gt;): void
 
@@ -650,7 +650,7 @@ onAttachmentDidFail(callback: Callback&lt;AttachFailureReason&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[AttachFailureReason](#attachfailurereason23)&gt; | 是 | 回调函数，返回绑定失败的原因，仅当注册者进程触发的绑定失败时，调用该回调函数。|
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | 是 | 回调函数，返回绑定失败的原因，仅当注册者进程触发的绑定失败时，调用该回调函数。|
 
 **示例：**
 
@@ -667,7 +667,7 @@ let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> =
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 ```
 
-## inputMethod.offAttachmentDidFail<sup>23+</sup>
+## inputMethod.offAttachmentDidFail<sup>22+</sup>
 
 offAttachmentDidFail(callback?:  Callback&lt;AttachFailureReason&gt;): void
 
@@ -679,7 +679,7 @@ offAttachmentDidFail(callback?:  Callback&lt;AttachFailureReason&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[AttachFailureReason](#attachfailurereason23)&gt; | 否 | 取消订阅的回调函数，需要与订阅接口传入的保持一致。参数不填写时，取消订阅该事件的所有回调函数。|
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | 否 | 取消订阅的回调函数，需要与订阅接口传入的保持一致。参数不填写时，取消订阅该事件的所有回调函数。|
 
 **示例：**
 
@@ -982,7 +982,7 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 | text    | string            | 是   | 预览文本内容。                 |
 | range   | [Range](#range10) | 是   | 文本的选中范围。 |
 
-## AttachFailureReason<sup>23+</sup>
+## AttachFailureReason<sup>22+</sup>
 
 枚举，绑定失败的原因。
 
