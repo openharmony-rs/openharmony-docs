@@ -801,11 +801,11 @@ ArkTS-Sta不能直接实例化JS对象。
 
 **变更原因：**
 
-ArkTS-Sta不能直接实例化JS对象，不支持ConvertXML解析xml文本后创建JsObject对象添加xml内容返回。
+ArkTS-Sta不能直接实例化JS对象，不支持ConvertXML解析XML文本后创建JsObject对象添加XML内容返回。
 
 **适配建议：**
 
-使用ArkTS-Dyn提供的xml.XmlPullParser来解析xml并获取属性[XML解析](../arkts-utils/xml-parsing.md)。
+使用ArkTS-Dyn提供的xml.XmlPullParser来解析XML并获取属性[XML解析](../arkts-utils/xml-parsing.md)。
 
 **示例：**
 
@@ -865,7 +865,7 @@ function func(name: string, value: string): boolean {
   if (name == 'title' || name == 'lens') {
     console.info('  ' + name);
   }
-  return true; //true:继续解析 false:停止解析
+  return true; // true:继续解析 false:停止解析
 }
 
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
