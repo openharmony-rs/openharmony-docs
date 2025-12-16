@@ -72,6 +72,16 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
 5. 创建GetJsResult函数处理napi返回值。
 
    <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->     
+   
+   ``` C++
+   // 处理napi返回值。
+   napi_value GetJsResult(napi_env env, int result)
+   {
+       napi_value resultNapi = nullptr;
+       napi_create_int32(env, result, &resultNapi);
+       return resultNapi;
+   }
+   ```
 
 6. 在成功创建ImageSource对象后，读取、编辑Exif信息。
 
