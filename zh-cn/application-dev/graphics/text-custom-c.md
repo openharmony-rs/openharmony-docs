@@ -82,6 +82,13 @@
 4. 设置文本样式，添加文本内容。
 
    <!-- @[complex_text_c_independent_shaping_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+   
+   ``` C++
+   // 设置文本内容，并将文本添加到 handler 中
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+   const char *text = "Hello World";
+   OH_Drawing_TypographyHandlerAddText(handler, text);
+   ```
 
 5. 创建行对象。获取行中所有文字的塑形结果。  
 使用OH_Drawing_LineTypographyCreateLine()方法创建一个单行对象，通过行对象OH_Drawing_TextLineGetGlyphRuns()方法获取相同样式的文字单元。
