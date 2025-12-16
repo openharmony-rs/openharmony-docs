@@ -50,6 +50,20 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 3. 定义ImagePictureNative类。
 
    <!-- @[define_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->    
+   
+   ``` C
+   class ImagePictureNative {
+   public:
+       Image_ErrorCode errorCode = IMAGE_SUCCESS;
+       OH_DecodingOptionsForPicture *options = nullptr;
+       OH_ImagePackerNative *imagePacker = nullptr;
+       OH_PackingOptions *packerOptions = nullptr;
+       OH_PictureNative *picture = nullptr;
+       OH_ImageSourceNative *source = nullptr;
+       ImagePictureNative() {}
+       ~ImagePictureNative() {}
+   };
+   ```
 
 4. 创建一个ImagePictureNative实例。
 
