@@ -57,6 +57,34 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 获取ReceiverOptions。
 
      <!-- @[get_receiverOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
+     
+     ``` C++
+     static Image_ErrorCode ValidateOptions(OH_ImageReceiverOptions* options)
+     {
+         Image_Size imgSizeRead;
+         Image_ErrorCode errCode = OH_ImageReceiverOptions_GetSize(options, &imgSizeRead);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "Get image receiver options size failed, errCode: %{public}d.", errCode);
+             return errCode;
+         }
+         if (imgSizeRead.width != IMAGE_WIDTH || imgSizeRead.height != IMAGE_HEIGHT) {
+             OH_LOG_ERROR(LOG_APP, "Get image receiver options size failed,"
+                          "width: %{public}d, height: %{public}d.", imgSizeRead.width, imgSizeRead.height);
+             return IMAGE_BAD_PARAMETER;
+         }
+         int32_t capacity = 0;
+         errCode = OH_ImageReceiverOptions_GetCapacity(options, &capacity);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "Get image receiver options capacity failed, errCode: %{public}d.", errCode);
+             return errCode;
+         }
+         if (capacity != IMAGE_CAPACITY) {
+             OH_LOG_ERROR(LOG_APP, "Get image receiver options capacity failed, capacity: %{public}d.", capacity);
+             return IMAGE_BAD_PARAMETER;
+         }
+         return IMAGE_SUCCESS;
+     }
+     ```
 
    - 创建Receiver对象。
 
