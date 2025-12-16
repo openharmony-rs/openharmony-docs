@@ -450,6 +450,68 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_shadow_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+// 创建一个 TypographyStyle 创建 Typography 时需要使用
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置文本对齐方式为居中
+OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
+// 设置文本内容
+const char *text = "Hello World Drawing\n";
+
+// 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
+OH_Drawing_TextStyle *txtStyleWithShadow = OH_Drawing_CreateTextStyle();
+OH_Drawing_SetTextStyleColor(txtStyleWithShadow, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyleWithShadow, DIV_TEN(width_));
+OH_Drawing_SetTextStyleFontWeight(txtStyleWithShadow, FONT_WEIGHT_400);
+// 设置阴影偏移量
+OH_Drawing_Point *offset = OH_Drawing_PointCreate(1, 1);
+OH_Drawing_TextShadow *shadow = OH_Drawing_CreateTextShadow();
+double radius = 10.0;
+// 为 TextShadow 设置样式
+OH_Drawing_SetTextShadow(shadow, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00), offset, radius);
+// 将 TextShadow 加入 TextStyle
+OH_Drawing_TextStyleAddShadow(txtStyleWithShadow, shadow);
+
+// 创建一个不带阴影的 TextStyle 用于对比
+OH_Drawing_TextStyle *txtStyleNoShadow = OH_Drawing_CreateTextStyle();
+// 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
+OH_Drawing_SetTextStyleColor(txtStyleNoShadow, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyleNoShadow, DIV_TEN(width_));
+OH_Drawing_SetTextStyleFontWeight(txtStyleNoShadow, FONT_WEIGHT_400);
+
+// 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+// 使用 FontCollection 和 之前创建的 TypographyStyle 创建 TypographyCreate。TypographyCreate 用于创建 Typography
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+
+// 加入带有阴影的文本样式
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleWithShadow);
+// 将文本添加到 handler 中
+OH_Drawing_TypographyHandlerAddText(handler, text);
+
+// 后续加入的不带阴影的文本样式
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleNoShadow);
+// 将文本添加到 handler 中
+OH_Drawing_TypographyHandlerAddText(handler, text);
+
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 设置页面最大宽度
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// 释放内存
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTextStyle(txtStyleWithShadow);
+OH_Drawing_PointDestroy(offset);
+OH_Drawing_DestroyTextShadow(shadow);
+OH_Drawing_DestroyTextStyle(txtStyleNoShadow);
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
+
 ![zh-cn_image_0000002246563769](figures/zh-cn_image_0000002246563769.png)
 
 
