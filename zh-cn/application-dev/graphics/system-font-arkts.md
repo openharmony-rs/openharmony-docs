@@ -89,6 +89,14 @@
 
 3. 创建textStyle2，指定fontFamilies为“HarmonyOS Sans TC”（该两种字体易于观察同一文字字型差异）。
    <!-- @[arkts_use_and_change_system_font_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let textStyle2: text.TextStyle = {
+     color: { alpha: 255, red: 255, green: 0, blue: 0 },
+     fontSize: 100,
+     fontFamilies: ['HarmonyOS Sans TC']
+   };
+   ```
 
 4. 创建段落生成器。
    <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
