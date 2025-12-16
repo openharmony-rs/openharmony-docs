@@ -378,7 +378,7 @@ abilities示例：
 
 该标签标识UIAbility组件或者ExtensionAbility组件能够接收的[Want](../application-models/want-overview.md)的特征。
 
-像浏览器下应用下载PDF文件，可以调用此接口选择文件处理应用打开此PDF文件，就需要通过skills标签配置实现，详情参考[拉起文件处理类应用](../application-models/file-processing-apps-startup.md)。
+例如：在浏览器中下载PDF文件时，可以通过配置skills标签选择并打开该PDF文件。详情请参考[拉起文件处理类应用](../application-models/file-processing-apps-startup.md)。
 
   **表7** skills标签说明
 
