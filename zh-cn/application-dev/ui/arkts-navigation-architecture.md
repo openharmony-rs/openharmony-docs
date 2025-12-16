@@ -6,7 +6,11 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-导航组件（[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）主要用于实现[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)页面间的跳转，支持在不同NavDestination间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。Navigation组件结构较为复杂，包含几个关键概念：
+导航组件（[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）主要用于实现[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)页面间的跳转，支持在不同NavDestination间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。
+
+## Navigation整体架构
+
+Navigation组件结构较为复杂，包含几个关键概念：
 
 - [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)：导航根视图容器，所有的导航页面都被此容器包裹，提供分栏显示的能力，一般用作全局的根容器。
 - [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)：子页面容器，导航的所有页面路由操作均是针对NavDestination的操作，主要包含：
@@ -37,7 +41,7 @@
 
 - 分栏模式：
 
-  当Navigation容器宽度大于600vp时，建议使用分栏模式。此模式下Navigation分为左右两部分，左侧为导航栏（NavBar）右侧为子页面（NavDestination），发生路由跳转时，只有右边子页会被替换。
+  当Navigation容器宽度大于等于600vp时，建议使用分栏模式。此模式下Navigation分为左右两部分，左侧为导航栏（NavBar），右侧为子页面（NavDestination）。发生路由跳转时，只有右边子页会被替换。
 
   **图3** 分栏布局示意图
 
@@ -94,15 +98,13 @@ Navigation的子页面栈存在NavPathStack中，每个Navigation都需要绑定
 
 NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathStack跟Navigation一一对应，在每个子页中可以通过NavDestination的[onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调获取，也可以全局维护一个单例的NavPathStack，在任意地方获取并执行路由操作（注意：页面切换动画和布局必须在UI线程中才可以生效，依赖Vsync信号）。
 
-## 标题栏、工具栏与菜单栏
-
-### 设置标题栏模式
+## 标题栏
 
 标题栏在界面顶部，用于呈现界面名称和操作入口，Navigation组件通过[title](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)属性设置标题内容，通过[titleMode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#titlemode)属性设置标题栏模式。
 
 > **说明：**
 >
-> Navigation未设置[title](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)属性时，即使将[hideBackButton](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidebackbutton)设置为false，返回按钮也不会展示。
+> Navigation未设置[title](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)、[titleMode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#titlemode)、[menus](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#menus)等与标题、菜单栏相关的属性时，即使将[hideBackButton](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidebackbutton)设置为false，返回按钮也不会展示。
 
 - Mini模式：
 
@@ -138,7 +140,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
   .titleMode(NavigationTitleMode.Full)
   ```
 
-### 设置菜单栏
+## 菜单栏
 
 菜单栏位于Navigation组件的右上角，开发者可以通过[menus](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#menus)属性进行设置。menus支持Array&lt;[NavigationMenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationmenuitem)&gt;和[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)两种参数类型。使用Array&lt;NavigationMenuItem&gt;类型时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
@@ -149,7 +151,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
    <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
    
    ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
+   let menuItem: NavigationMenuItem  = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
@@ -158,7 +160,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
          Navigation(this.navPathStack) {
            // ...
          }
-         .menus([toolTmp, toolTmp, toolTmp])
+         .menus([menuItem, menuItem, menuItem])
    ```
 
 图片也可以引用resources中的资源。
@@ -166,7 +168,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
    <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
    
    ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
+   let menuItem: NavigationMenuItem  = {
      'value': 'func',
      'icon': 'resources/base/media/ic_public_add.svg',
      'action': () => {}
@@ -175,7 +177,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
          Navigation(this.navPathStack) {
            // ...
          }
-         .menus([toolTmp, toolTmp, toolTmp])
+         .menus([menuItem, menuItem, menuItem])
    ```
 
 **图7** 设置了4个图标的菜单栏 
@@ -187,7 +189,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
    <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
    
    ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
+   let menuItem: NavigationMenuItem  = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
@@ -197,10 +199,10 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
            // ...
          }
          // 竖屏最多支持显示3个图标，多余的图标会被放入自动生成的更多图标
-         .menus([toolTmp, toolTmp, toolTmp, toolTmp])
+         .menus([menuItem, menuItem, menuItem, menuItem])
    ```
 
-### 设置工具栏
+## 工具栏
 
 工具栏位于Navigation组件的底部，开发者可以通过[toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)属性进行设置。
 
