@@ -391,13 +391,13 @@ ArkTS-Sta: addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: i
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201 | Verify permission denied. |
-| 202 | Permission denied, non-system app called system api. |
-| 801 | Capability not support. |
-| 17700001 | The specified bundle name is not found.|
-| 17700002 | The specified module name is not found.|
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found.|
+| 17700002 | The specified module is not found.|
 | 17700003 | The specified ability is not found.|
-| 17700004 | The specified user ID is not found.|
+| 17700004 | The specified user id is not found.|
 | 17700026 | The specified bundle is disabled.|
 | 17700061 | The specified app index is invalid.|
 | 17700070 | The specified shortcut id is illegal.|
@@ -471,11 +471,11 @@ ArkTS-Sta: deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId:
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201 | Verify permission denied. |
-| 202 | Permission denied, non-system app called system api. |
-| 801 | Capability not support. |
-| 17700001 | The specified bundle name is not found.|
-| 17700004 | The specified user ID is not found.|
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found.|
+| 17700004 | The specified user id is not found.|
 | 17700026 | The specified bundle is disabled.|
 | 17700061 | The specified app index is invalid.|
 | 17700070 | The specified shortcut id is illegal.|
