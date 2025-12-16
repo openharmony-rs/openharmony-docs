@@ -88,6 +88,29 @@
 5. 该步骤是文本塑形流程中的自定义绘制环节。通过调用getGlyphs()方法获取文本中每个字符对应的字形序号，再结合getFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。  
 从 API version 20 开始，新增的getAdvances()方法能够返回一个数组，其中包含了每个字形在绘制时建议占用的宽度和高度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
    <!-- @[arkts_independent_shaping_text_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   let x: number = 0;
+   let y: number = 0;
+   for (let index = 0; index < runs.length; index++) {
+     const run = runs[index];
+     // 绘制字形
+     let glyphs: number[] = run.getGlyphs();
+     let font: drawing.Font = run.getFont();
+     let advances: common2D.Point[] = run.getAdvances({ start: 0, end: 0 });
+   
+     // 创建字形buffer，通过drawing接口进行字形独立绘制
+     let runBuffer: drawing.TextBlobRunBuffer[] = [];
+     for (let i = 0; i < glyphs.length; i++) {
+       runBuffer.push({ glyph: glyphs[i], positionX: x, positionY: y });
+       x += advances[i].x + 10;
+       y += advances[i].y + 30;
+     }
+     let textBlob: drawing.TextBlob = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, null);
+     // 自定义绘制一串具有相同属性的一系列连续字形
+     canvas.drawTextBlob(textBlob, 20, 100);
+   }
+   ```
 
 效果展示：  
 ![ts_independent_shaping.png](figures/ts_independent_shaping.png)
