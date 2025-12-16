@@ -43,6 +43,13 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
    <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   
+   ``` C++
+   #undef LOG_DOMAIN
+   #undef LOG_TAG
+   #define LOG_DOMAIN 0x3200
+   #define LOG_TAG "IMAGE_SAMPLE"
+   ```
 
 3. 定义ImageSourceNative类。
 
