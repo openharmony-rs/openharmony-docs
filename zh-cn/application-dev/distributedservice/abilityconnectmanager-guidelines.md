@@ -179,42 +179,43 @@ function getRemoteDeviceId(): string | undefined {
 <!-- @[source_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  createSession(): void {
-    // 定义peer信息
-    const peerInfo: abilityConnectionManager.PeerInfo = {
-      deviceId: getRemoteDeviceId()!,
-      bundleName: 'com.example.myapplication',
-      moduleName: 'entry',
-      abilityName: 'EntryAbility',
-    };
-    const myRecord: Record<string, string> = {
-      'newKey1': 'value1',
-    };
+createSession(): void {
+  // 定义peer信息
+  const peerInfo: abilityConnectionManager.PeerInfo = {
+    deviceId: getRemoteDeviceId()!,
+    bundleName: 'com.example.myapplication', // 定义为被测应用包名，请开发者替换为实际包名
+    moduleName: 'entry',
+    abilityName: 'EntryAbility',
+    serviceName: 'test',
+  };
+  const myRecord: Record<string, string> = {
+    'newKey1': 'value1',
+  };
 
-    // 定义连接选项
-    const connectOption: abilityConnectionManager.ConnectOptions = {
-      needSendData: true,
-      startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
-      parameters: myRecord
-    };
-    console.info(TAG + JSON.stringify(peerInfo))
-    console.info(TAG + JSON.stringify(connectOption))
-    let context = this.getUIContext().getHostContext();
-    try {
-      this.sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', context, peerInfo, connectOption);
-      hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
-      abilityConnectionManager.connect(this.sessionId).then((connectResult) => {
-        if (!connectResult.isConnected) {
-          hilog.info(0x0000, 'testTag', 'connect failed');
-          return;
-        }
-      }).catch(() => {
-        hilog.error(0x0000, 'testTag', 'connect failed');
-      })
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', error);
-    }
+  // 定义连接选项
+  const connectOption: abilityConnectionManager.ConnectOptions = {
+    needSendData: true,
+    startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
+    parameters: myRecord
+  };
+  console.info(TAG + JSON.stringify(peerInfo))
+  console.info(TAG + JSON.stringify(connectOption))
+  let context = this.getUIContext().getHostContext();
+  try {
+    this.sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', context, peerInfo, connectOption);
+    hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
+    abilityConnectionManager.connect(this.sessionId).then((connectResult) => {
+      if (!connectResult.isConnected) {
+        hilog.info(0x0000, 'testTag', 'connect failed');
+        return;
+      }
+    }).catch(() => {
+      hilog.error(0x0000, 'testTag', 'connect failed');
+    })
+  } catch (error) {
+    hilog.error(0x0000, 'testTag', error);
   }
+}
 ```
 
 
