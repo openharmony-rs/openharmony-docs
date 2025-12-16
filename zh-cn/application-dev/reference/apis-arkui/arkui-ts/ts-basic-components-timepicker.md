@@ -381,7 +381,7 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 enableCascade(enabled: boolean)
 
-设置上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。
+设置上午和下午的标识是否根据小时数自动切换，仅在[useMilitaryTime](#usemilitarytime)设置为false时生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -728,6 +728,8 @@ struct TimePickerExample {
 ### 示例7（设置上午下午跟随时间联动）
 
 该示例通过配置[enableCascade](#enablecascade18)、[loop](#loop11)实现12小时制时上午下午跟随时间联动。
+
+从API version 18开始，新增enableCascade接口。
 
 ```ts
 // xxx.ets

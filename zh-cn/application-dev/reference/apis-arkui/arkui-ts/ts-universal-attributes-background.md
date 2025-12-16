@@ -576,6 +576,8 @@ backgroundImageResizable(value: ResizableOptions): T
 
 ## BlurStyleActivePolicy<sup>14+</sup>
 
+组件模糊激活策略可选项。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full

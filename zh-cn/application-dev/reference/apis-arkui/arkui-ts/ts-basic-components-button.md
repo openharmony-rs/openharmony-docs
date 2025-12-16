@@ -416,7 +416,7 @@ Button组件的label文本及其字体样式。
 
 ## ButtonRole<sup>12+</sup>枚举说明
 
-按钮的角色。
+按钮的功能角色选项。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
