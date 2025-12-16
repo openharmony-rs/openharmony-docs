@@ -730,6 +730,7 @@
     - [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)
     - [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
     - [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
+    - [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)
