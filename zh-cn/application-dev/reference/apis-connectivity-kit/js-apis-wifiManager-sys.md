@@ -1143,7 +1143,7 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。 |
-| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| 否 | 否 | 加密类型。 |
+| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype)| 否 | 否 | 加密类型。 |
 | band | number | 否 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 |
 | channel<sup>10+</sup> | number | 否 | 是 | 热点的信道（2.4G：1~14,5G：7~196）。 |
 | preSharedKey | string | 否 | 否 | 热点的密钥。 |
@@ -1455,7 +1455,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo9)&gt;&nbsp;&gt; | Promise对象。表示所有群组信息。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
+| Promise&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo)&gt;&nbsp;&gt; | Promise对象。表示所有群组信息。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
 
 **错误码：**
 
@@ -1471,8 +1471,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 **示例：**
 ```ts
 import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-wifiManager.getP2pGroups((err, data:wifiManager.WifiP2pGroupInfo) => {
+wifiManager.getP2pGroups((err: BusinessError, data:wifiManager.WifiP2pGroupInfo[]) => {
 if (err) {
     console.error("get P2P groups error");
     return;
@@ -1507,7 +1508,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo9)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示所有群组信息。如果error为非0，表示处理出现错误。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
+| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示所有群组信息。如果error为非0，表示处理出现错误。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
 
 **错误码：**
 
