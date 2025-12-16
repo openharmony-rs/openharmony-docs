@@ -218,6 +218,7 @@ Destroy() {
 ### 生成VPN Id
 
 创建新的VPN时，应生成一个VPN Id作为VPN的唯一标识。
+
 可参考如下示例：
 
 <!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) -->
