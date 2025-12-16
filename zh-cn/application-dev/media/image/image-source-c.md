@@ -98,3 +98,15 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 9. 释放ImageSource。
 
      <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->       
+     
+     ``` C++
+     // 释放资源。
+     napi_value ReleaseImageSource(napi_env env, napi_callback_info info)
+     {
+         Image_ErrorCode errCode = OH_ImageSourceNative_Release(g_thisImageSource->source);
+         g_thisImageSource->source = nullptr;
+         OH_PixelmapNative_Release(g_thisImageSource->resPixMap);
+         g_thisImageSource->resPixMap = nullptr;
+         return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_Release");
+     }
+     ```
