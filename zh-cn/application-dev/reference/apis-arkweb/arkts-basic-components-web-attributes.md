@@ -754,21 +754,21 @@ copyOptions(value: CopyOptions)
 **示例：**
 
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .copyOptions(CopyOptions.None)
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .copyOptions(CopyOptions.None)
+      }
     }
   }
-}
   ```
 
 ## textZoomRatio<sup>9+</sup>
