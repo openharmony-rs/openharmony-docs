@@ -48,6 +48,26 @@
 2. 创建段落样式，并使用构造段落生成器ParagraphBuilder生成段落实例。
 
    <!-- @[ts_text_metrics_create_paragraphBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 设置文本样式
+   let myTextStyle: text.TextStyle = {
+     color: {
+       alpha: 255,
+       red: 255,
+       green: 0,
+       blue: 0
+     },
+     fontSize: 100
+   };
+   // 创建一个段落样式对象，以设置排版风格
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+     wordBreak: text.WordBreak.NORMAL
+   };
+   // 创建一个段落生成器
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, new text.FontCollection());
+   ```
 
 3. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
