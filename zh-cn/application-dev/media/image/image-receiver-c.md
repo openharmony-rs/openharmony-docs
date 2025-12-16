@@ -58,6 +58,18 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 2. 常量定义。
 
    <!-- @[receiver_defineConst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+   
+   ``` C++
+   #undef LOG_DOMAIN
+   #define LOG_DOMAIN 0x3200
+   
+   #undef LOG_TAG
+   #define LOG_TAG "MY_TAG"
+   
+   #define IMAGE_WIDTH 320
+   #define IMAGE_HEIGHT 480
+   #define IMAGE_CAPACITY 2
+   ```
 
 3. 定义全局变量。
 
