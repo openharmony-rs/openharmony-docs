@@ -1276,7 +1276,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -1344,7 +1344,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -1411,7 +1411,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
@@ -1549,7 +1549,7 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
