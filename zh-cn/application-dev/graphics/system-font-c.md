@@ -80,6 +80,29 @@
    以下示例展示系统字体的一些具体配置信息的获取：
 
    <!-- @[custom_font_c_print_system_font_metrics_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 获取系统字体配置信息示例
+   if (fontConfigInfo != nullptr) {
+       // 获取字体文件路径数量，打印日志
+       size_t fontDirCount = fontConfigInfo->fontDirSize;
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "PrintSysFontMetrics", "字体文件路径数量为: %{public}zu\n", fontDirCount);
+       // 遍历字体文件路径列表，打印日志
+       for (size_t i = 0; i < fontDirCount; ++i) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "PrintSysFontMetrics", "字体文件路径为: %{public}s\n",
+                        fontConfigInfo->fontDirSet[i]);
+       }
+       // 获取通用字体集数量，打印日志
+       size_t genericCount = fontConfigInfo->fontGenericInfoSize;
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "PrintSysFontMetrics", "通用字体集数量为: %{public}zu\n", genericCount);
+       // 遍历获取每个通用字体集中的字体家族名（例如 HarmonyOS Sans），打印日志
+       for (size_t i = 0; i < genericCount; ++i) {
+           OH_Drawing_FontGenericInfo &genericInfo = fontConfigInfo->fontGenericInfoSet[i];
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "PrintSysFontMetrics",
+                        "获取第%{public}zu个通用字体集中的字体家族名为: %{public}s", i, genericInfo.familyName);
+       }
+   }
+   ```
 
    以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
