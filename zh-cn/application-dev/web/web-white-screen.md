@@ -324,6 +324,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 
 ## 复杂的布局与渲染模式导致白屏
 若页面使用了复杂布局或渲染模式，需注意其应用场景和约束条件，不当使用可能导致布局混乱或白屏。
+
 Web组件提供了两种渲染模式，能够根据不同的容器大小进行适配，从而满足使用场景中对容器尺寸的需求，详情见[Web组件渲染模式](web-render-mode.md)。在使用过程中需要注意以下几点：
 - 异步渲染模式下（renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).ASYNC_RENDER），Web组件的宽高不能超过7,680px（物理像素），超过会导致白屏。
 
