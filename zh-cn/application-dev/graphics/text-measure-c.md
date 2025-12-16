@@ -53,6 +53,25 @@
 3. 创建段落生成器ParagraphBuilder，并设置段落样式。
 
    <!-- @[c_text_metrics_create_paragraph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 创建文本样式，并设置字体大小为50
+   OH_Drawing_SetTextStyleColor(myTextStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+   OH_Drawing_SetTextStyleFontSize(myTextStyle, 50.0);
+   // 创建一个段落样式对象，以设置排版风格
+   OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
+   // 设置段落样式的对齐方式为左对齐
+   OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT);
+   // 创建一个段落生成器
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   // 在段落生成器中设置文本样式
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, myTextStyle);
+   // 在段落生成器中添加文本内容
+   const char *text = "排版测量的文字度量信息";
+   OH_Drawing_TypographyHandlerAddText(handler, text);
+   // 通过段落生成器生成段落
+   OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+   ```
 
 4. 调用排版接口并设置段落排版宽度，对段落进行塑型排版。
 
