@@ -32,7 +32,7 @@ Provides configuration options for download and cache, including HTTP options, t
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| headers | Record\<string, string\> | No | Yes| Request header used by a download-and-cache task during HTTP transfer.|
+| headers | Record\<string, string\> | No | Yes| Request header used by a download task during HTTP transfer.|
 
 ## ResourceInfo<sup>20+</sup>
 
@@ -121,7 +121,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
 
-  // Provide configuration options for the download-and-cache task.
+  // Provide configuration options for the download task.
   let options: cacheDownload.CacheDownloadOptions = {};
   
   try {
@@ -136,7 +136,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 cancel(url: string): void
 
-Cancels an ongoing download-and-cache task based on the URL. The saved memory cache and file cache are not affected.
+Cancels an ongoing download task based on the URL. The saved memory cache and file cache are not affected.
 
 - If the task corresponding to the URL does not exist, no operation is required.
 
@@ -163,7 +163,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
 
-  // Provide configuration options for the download-and-cache task.
+  // Provide configuration options for the download task.
   let options: cacheDownload.CacheDownloadOptions = {};
   
   try {
@@ -176,7 +176,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   // Other service logic is omitted here.
   
   try {
-    // Cancel the download-and-cache task when it is not required. The cached data is not affected.
+    // Cancel the download task when it is not required. The cached data is not affected.
     cacheDownload.cancel("https://www.example.com");
   } catch (err) {
     console.error(`Failed to cancel the task. err code: ${err.code}, err message: ${err.message}`);
@@ -229,6 +229,8 @@ setFileCacheSize(bytes: number): void
 Sets the upper limit of the file cache size for the **cacheDownload** component.
 
 - When this API is used to adjust the cache size, the LRU mode is used by default to clear redundant cached data in the file.
+
+- If **bytes** is set to **0**, all cached files will be deleted.
 
 - This API returns the result synchronously, without blocking the calling thread.
 
@@ -306,11 +308,11 @@ getDownloadInfo(url: string): DownloadInfo | undefined
 
 Obtains the download information based on the URL. The download information is stored in the download information list in memory and is cleared when the application exits.
 
-- If the specified URL can be found in the download information list, the last downloaded [DownloadInfo](#downloadinfo20) of the URL is returned.
+- If the specified URL can be found in the download information list, the latest [DownloadInfo](#downloadinfo20) of the URL is returned.
 
 - If the specified URL cannot be found in the download information list, **undefined** is returned.
 
-- If the download information has already cached in the URL, the new cached information overwrites the old one.
+- If the download information has already cached in the URL, the new cached information will overwrite the old one.
 
 - When the target information is stored in memory, the existing cached information is replaced in LRU mode.
 
@@ -348,7 +350,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.error(`Failed to set download information list size. err code: ${err.code}, err message: ${err.message}`);
   }
 
-  // Provide configuration options for the download-and-cache task.
+  // Provide configuration options for the download task.
   let options: cacheDownload.CacheDownloadOptions = {};
   
   try {
