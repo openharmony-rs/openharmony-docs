@@ -625,6 +625,21 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 获取ReceiverImageInfo的整体流程。
 
      <!-- @[get_receiverImageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     static napi_value GetReceiverImageInfo(napi_env env, napi_callback_info info)
+     {
+         OH_ImageNative* image = NotifyJsImageInfoSync();
+         if (!image) {
+             napi_value undefined;
+             napi_get_undefined(env, &undefined);
+             return undefined;
+         }
+         napi_value resultObj = GetImageInfoObject(env, image);
+         OH_ImageNative_Release(image);
+         return resultObj;
+     }
+     ```
 
 8. 释放receiver。
 
