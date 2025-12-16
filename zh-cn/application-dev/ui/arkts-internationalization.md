@@ -64,6 +64,31 @@ ArkUI 如下能力已默认适配镜像：
 
   <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
   
+  ``` TypeScript
+  import { LengthMetrics } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct InterfaceLayoutBorderSettings {
+    build() {
+      Stack({ alignContent: Alignment.TopStart }) {
+        Stack({ alignContent: Alignment.TopStart }) {
+          Column()
+            .width(100)
+            .height(100)
+            .backgroundColor(Color.Red)
+            .position({
+              start: LengthMetrics.px(200),
+              top: LengthMetrics.px(200)
+            }) //需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
+          //仅支持LTR时等同于.position({ x: '200px', y: '200px' })
+  
+        }.backgroundColor(Color.Blue)
+      }.width('100%').height('100%').border({ color: '#880606' })
+    }
+  }
+  ```
+  
 
 ### 自定义绘制Canvas组件
 
