@@ -211,6 +211,10 @@
 4. 创建字体管理器，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
 
    <!-- @[custom_font_c_disable_system_font_text_step_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();
+   ```
 
 5. 禁用系统字体。
 
