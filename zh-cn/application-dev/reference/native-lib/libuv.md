@@ -1133,7 +1133,7 @@ void async_cb(uv_async_t* handle)
 static napi_value TestTimerAsync(napi_env env, napi_callback_info info)
 {
     uv_loop_t* loop = nullptr;
-	napi_get_uv_event_loop(env, &loop);
+    napi_get_uv_event_loop(env, &loop);
     uv_async_init(loop, async, async_cb);
     return 0;
 }
