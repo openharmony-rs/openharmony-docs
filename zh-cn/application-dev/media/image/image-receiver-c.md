@@ -247,6 +247,47 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 初始化Receiver的整体流程。
 
      <!-- @[init_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     static napi_value ImageReceiverNativeCTest(napi_env env, napi_callback_info info)
+     {
+         if (g_receiver != nullptr) {
+             OH_ImageReceiverNative_Off(g_receiver);
+             OH_ImageReceiverNative_Release(g_receiver);
+             g_receiver = nullptr;
+         }
+     
+         OH_ImageReceiverOptions* options = nullptr;
+         Image_ErrorCode errCode = CreateAndConfigOptions(&options);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "CreateAndConfigOptions failed errCode=%{public}d", errCode);
+             return GetJsResultDemo(env, errCode);
+         }
+         errCode = ValidateOptions(options);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "ValidateOptions failed errCode=%{public}d", errCode);
+             OH_ImageReceiverOptions_Release(options);
+             return GetJsResultDemo(env, errCode);
+         }
+         errCode = CreateReceiver(options, &g_receiver);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "CreateReceiver failed errCode=%{public}d", errCode);
+             OH_ImageReceiverOptions_Release(options);
+             return GetJsResultDemo(env, errCode);
+         }
+         errCode = RegisterCallbackAndQuery(g_receiver);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "RegisterCallbackAndQuery failed errCode=%{public}d", errCode);
+             OH_ImageReceiverOptions_Release(options);
+             OH_ImageReceiverNative_Release(g_receiver);
+             g_receiver = nullptr;
+             return GetJsResultDemo(env, errCode);
+         }
+         OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest create and config success.");
+         OH_ImageReceiverOptions_Release(options);
+         return GetJsResultDemo(env, IMAGE_SUCCESS);
+     }
+     ```
 
 6. 调用相机拍照流进行拍照，触发回调。
 
