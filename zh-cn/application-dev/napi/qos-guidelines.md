@@ -22,7 +22,7 @@ QoS(quality-of-service)，即服务质量，在OpenHarmony中QoS特性主要指�
 | QOS_DEFAULT | 默认。 | 任务完成需要几秒钟。 |
 | QOS_USER_INITIATED | 用户触发并且可见进展的任务，例如打开文档。 | 任务在几秒钟之内完成。 |
 | QOS_DEADLINE_REQUEST | 越快越好的关键任务，如页面加载。 | 任务几乎是瞬间完成的。 |
-| QOS_USER_INTERACTIVE	 | 用户交互任务（UI线程、刷新界面、动效）。 | 任务是即时的。 |
+| QOS_USER_INTERACTIVE | 用户交互任务（UI线程、刷新界面、动效）。 | 任务是即时的。 |
 
 QoS等级定义为枚举类型QoS_Level，如上表所示；枚举值定义如下。
 ### QoS_Level声明
