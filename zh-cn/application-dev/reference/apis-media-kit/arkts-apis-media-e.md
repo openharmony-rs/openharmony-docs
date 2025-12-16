@@ -157,7 +157,7 @@ Codec MIME类型枚举。
 
 ## SoundInterruptMode <sup>23+</sup>
 
-枚举，音频的打断类型
+表示SoundPool中同一ID的音频播放模式
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 | 名称                                  | 值      | 说明                             |
