@@ -223,6 +223,23 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 获取相机输出能力
 
      <!-- @[get_cameraOutCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     Camera_ErrorCode GetCameraOutputCapability(Camera_Manager* cameraManager,
+                                                Camera_Device* cameras,
+                                                uint32_t cameraDeviceIndex,
+                                                Camera_OutputCapability*& capability)
+     {
+         capability = nullptr;
+         Camera_ErrorCode ret = OH_CameraManager_GetSupportedCameraOutputCapability(cameraManager,
+                                                                                    &cameras[cameraDeviceIndex],
+                                                                                    &capability);
+         if (capability == nullptr || ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameraOutputCapability failed.");
+         }
+         return ret;
+     }
+     ```
 
    - 创建相机捕获会话，用于捕获相机拍摄的照片。
 
