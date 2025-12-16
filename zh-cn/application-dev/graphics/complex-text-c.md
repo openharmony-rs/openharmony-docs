@@ -531,6 +531,72 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_placeholder_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+// 设置页面最大宽度
+double maxWidth = width_;
+// 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+
+// 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
+OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
+
+// 设置文本内容
+const char *text = "Hello World Drawing\n";
+
+// 创建一个 TypographyStyle 创建 Typography 时需要使用
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置文本对齐方式为居中
+OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
+
+// 使用 FontCollection 和 之前创建的 TypographyStyle 创建 TypographyCreate。TypographyCreate 用于创建 Typography
+OH_Drawing_TypographyCreate *handlerWithPlaceholder = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+// 创建一个 placeholder，并且初始化其成员变量
+OH_Drawing_PlaceholderSpan placeholder;
+placeholder.width = DIV_TEN(width_);
+placeholder.height = DIV_FIVE(width_);
+placeholder.alignment = ALIGNMENT_ABOVE_BASELINE; // 基线对齐策略
+placeholder.baseline = TEXT_BASELINE_ALPHABETIC;  // 使用的文本基线类型
+placeholder.baselineOffset = 0.0; // 相比基线的偏移量。只有对齐策略是 OFFSET_AT_BASELINE 时生效
+
+// 将 placeholder 放在开头
+OH_Drawing_TypographyHandlerAddPlaceholder(handlerWithPlaceholder, &placeholder);
+
+// 将之前创建的 TextStyle 加入 handler
+OH_Drawing_TypographyHandlerPushTextStyle(handlerWithPlaceholder, txtStyle);
+// 将文本添加到 handler 中
+OH_Drawing_TypographyHandlerAddText(handlerWithPlaceholder, text);
+
+OH_Drawing_Typography *typographyWithPlaceholder = OH_Drawing_CreateTypography(handlerWithPlaceholder);
+OH_Drawing_TypographyLayout(typographyWithPlaceholder, maxWidth);
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typographyWithPlaceholder, cCanvas_, 0, DIV_TEN(width_));
+
+// 创建 OH_Drawing_TypographyCreate
+OH_Drawing_TypographyCreate *handlerNoPlaceholder = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+// 将之前创建的 TextStyle 加入 handler
+OH_Drawing_TypographyHandlerPushTextStyle(handlerNoPlaceholder, txtStyle);
+// 将文本添加到 handler 中
+OH_Drawing_TypographyHandlerAddText(handlerNoPlaceholder, text);
+
+OH_Drawing_Typography *typographyNoPlaceholder = OH_Drawing_CreateTypography(handlerNoPlaceholder);
+
+OH_Drawing_TypographyLayout(typographyNoPlaceholder, maxWidth);
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typographyNoPlaceholder, cCanvas_, 0, DIV_TWO(width_));
+
+// 释放内存
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handlerWithPlaceholder);
+OH_Drawing_DestroyTypographyHandler(handlerNoPlaceholder);
+OH_Drawing_DestroyTypography(typographyWithPlaceholder);
+OH_Drawing_DestroyTypography(typographyNoPlaceholder);
+```
+
 ![zh-cn_image_0000002211443820](figures/zh-cn_image_0000002211443820.png)
 
 
