@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **reuseId** is an ID that identifies the reuse group of a custom component. The reuse framework identifies and groups reusable custom components based on their reuse IDs.
 
@@ -21,7 +21,9 @@ Sets the ID that identifies the reuse group of the component.
 
 >  **NOTE**
 >
-> Set **reuseId** flexibly based on different scenarios to achieve optimal reuse effects. For best practices, see [Using reuseId to Mark Components with Layout Changes](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section1239555818211).
+> - Set **reuseId** flexibly based on different scenarios to achieve optimal reuse effects. For best practices, see [Using reuseId to Mark Components with Layout Changes](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section1239555818211).
+>
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

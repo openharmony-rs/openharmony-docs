@@ -20,12 +20,12 @@ In focus testing, specific components are injected. Available features include s
 The following figure shows the wukong component architecture and the responsibilities of sub-modules. 
 ![Alternate text](figures/wukongRandomTestFlow.png)
 
-- Command line parsing: Obtain and parse parameters using commands.
-- Operating environment management: Initialize the overall operating environment of wukong using commands.
-- System API management: Check and obtain the specified mgr, and register the callback function of the Faultlogger for the controller and DFX.
-- Random event generation: Use the **random** function to generate a sequence of random numbers with the specified seed value to generate an event.
-- Event injection: Inject events of supported types to the system. This feature depends on the window, multi-mode, and security subsystems.
-- Exception capture and processing and report generation: Obtain exception information with the DFX subsystem during application running, record log, and generate reports.
+- Command line parsing: obtains and parses parameters using commands.
+- Operating environment management: initializes the overall operating environment of wukong using commands.
+- System API management: checks and obtains the specified mgr, and registers the callback function of Faultlogger for the controller and DFX.
+- Random event generation: generates a sequence of random numbers using a specified seed through a random function, and creates events based on this sequence.
+- Event injection: injects events of supported types to the system. This feature depends on the window, multimodal, and security subsystems.
+- Exception capture and processing and report generation: obtains exception information with the DFX subsystem during application running, record log, and generate reports.
 
 ## Constraints
 

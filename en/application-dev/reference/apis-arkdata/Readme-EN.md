@@ -43,6 +43,7 @@
   - [@ohos.data.dataShareResultSet (DataShare Result Set) (System API)](js-apis-data-DataShareResultSet-sys.md)
   - [@ohos.data.distributedKVStore (Distributed KV Store) (System API)](js-apis-distributedKVStore-sys.md)
   - [@ohos.data.relationalStore (RDB Store) (System API)](js-apis-data-relationalStore-sys.md)
+  - [@ohos.data.uniformTypeDescriptor (Uniform Data Definition and Description) (System API)](js-apis-data-uniformTypeDescriptor-sys.md)
   <!--DelEnd-->
   - APIs No Longer Maintained<!--arkdata-arkts-dep-->
     - [@ohos.data.distributedData (Distributed Data Management)](js-apis-distributed-data.md)

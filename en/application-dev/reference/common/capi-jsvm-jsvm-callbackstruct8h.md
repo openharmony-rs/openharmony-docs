@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef JSVM_CallbackStruct* JSVM_Callback
+```
+
 ## Overview
 
 Defines the pointer types of the native functions provided by user. These functions are exposed to JavaScript via JSVM-API.

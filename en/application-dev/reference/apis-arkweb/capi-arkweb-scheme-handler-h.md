@@ -10,6 +10,8 @@
 
 Declares the APIs used to intercept requests from ArkWeb.
 
+**File to include**: <web/arkweb_scheme_handler.h>
+
 **Library**: libohweb.so
 
 **System capability**: SystemCapability.Web.Webview.Core

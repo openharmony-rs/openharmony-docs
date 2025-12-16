@@ -6,7 +6,7 @@
 >
 > - Since DevEco Studio 4.1 Beta1, you can only create a HarmonyOS project by default. To create an OpenHarmony project, you should modify some fields in the created HarmonyOS project.
 >
-> - To ensure the running effect, the latest [DevEco Studio](https://developer.huawei.com/consumer/en/download/) is used as an example.
+> - To ensure optimal results, this guide uses the latest version of [DevEco Studio](https://developer.huawei.com/consumer/en/download/) as an example.
 
 1. If you are opening DevEco Studio for the first time, click **Create Project**. If a project is already open, choose **File** > **New** > **Create Project** from the menu bar.
 
@@ -16,7 +16,7 @@
 
    ![createProject](figures/en-us_image_00250403.png)
 
-3. On the **Create Project** page, **Compatible SDK** indicates the earliest compatible API version. Choose **5.0.0(12)** as an example and retain the default values for other parameters.
+3. On the **Create Project** page, choose **5.0.0(12)** as an example of **Compatible SDK**, which specifies the earliest compatible API version. Retain the default values for other parameters.
 
    ![chooseStageModel](figures/en-us_image_compatible_version.png)
 
@@ -59,7 +59,7 @@
   
   - **src > main > ets > pages**: pages included in your application/service.
   
-  - **src > main > resources**: a collection of resource files used by your application/service, such as graphics, multimedia, character strings, and layout files. For details about resource files, see [Resource Categories and Access](resource-categories-and-access.md#resource-categories).
+  - **src > main > resources**: a collection of resource files used by your application/service, such as graphics, media, strings, and layout files. For details about resource files, see [Resource Categories and Access](resource-categories-and-access.md#resource-categories).
   
   - **src > main > module.json5**: module configuration file. This file describes the global configuration information of the application/service, the device-specific configuration information, and the configuration information of the HAP file. For details, see [module.json5 Configuration File](module-configuration-file.md).
   
@@ -149,15 +149,15 @@
 
 1. Create the second page.
 
-   - Create the second page file: In the **Project** window, choose **entry** > **src** > **main** > **ets**. Right-click the **pages** folder, choose **New** > **ArkTS File**, name the page **Second**, and press **Enter**. Below is the structure of the **Second** folder.
+   - Creating the second page file: In the **Project** window, choose **entry** > **src** > **main** > **ets**. Right-click the **pages** folder, choose **New** > **ArkTS File**, name the page **Second**, and press **Enter**. Below is the structure of the **Second** folder.
 
       ![secondPage](figures/secondPage.png)
 
       >  **NOTE**
       >
-      > You can also right-click the **pages** folder, choose **New** > **Page** > **Empty Page** from the shortcut menu, name the page **Second**, and click **Finish**. This way, you can skip the step for manually configuring the route for the second page.
+      > You can also right-click the **pages** folder, choose **New** > **Page** > **Empty Page** from the shortcut menu, name the page **Second**, and click **Finish**. In this way, there is no need to manually configure the route for the second page (described below).
 
-   - Configure the route for the second page: In the **Project** window, choose **entry** > **src** > **main** > **resources** > **base** > **profile**. In the **main_pages.json** file, set **pages/Second** under **src**. The sample code is as follows:
+   - Configuring the route for the second page: In the **Project** window, choose **entry** > **src** > **main** > **resources** > **base** > **profile**. In the **main_pages.json** file, set **pages/Second** under **src**. The sample code is as follows:
      
       ```json
       {
@@ -214,7 +214,7 @@ To deliver better transition effects, use [Navigation](../ui/arkts-navigation-na
 
 1. Implement redirection from the first page to the second page.
 
-   In the **Index.ets** file of the first page, bind the **onClick** event to the **Next** button so that clicking the button redirects the user to the second page. The sample code in the **Index.ets** file is shown below:
+   In the **Index.ets** file of the first page, bind the **onClick** event to the **Next** button so that clicking this button redirects the user to the second page. The sample code in the **Index.ets** file is shown below:
    
    ```ts
    // Index.ets
@@ -268,7 +268,7 @@ To deliver better transition effects, use [Navigation](../ui/arkts-navigation-na
 
 2. Implement redirection from the second page to the first page.
 
-   In the **Second.ets** file of the second page, bind the **onClick** event to the **Back** button so that clicking the button redirects the user back to the first page. The sample code in the **Second.ets** file is shown below:
+   In the **Second.ets** file of the second page, bind the **onClick** event to the **Back** button so that clicking this button redirects the user back to the first page. The sample code in the **Second.ets** file is shown below:
    
    ```ts
    // Second.ets
@@ -322,7 +322,7 @@ To deliver better transition effects, use [Navigation](../ui/arkts-navigation-na
    }
    ```
 
-3. Open the **Index.ets** file and click ![en-us_image_0000001311015192](figures/en-us_image_0000001311015192.png) in the Previewer to refresh the file. The display effect is shown in the figure below.
+3. Open the **Index.ets** file and click ![en-us_image_0000001311015192](figures/en-us_image_0000001311015192.png) in the Previewer to refresh the UI. The display effect is shown in the figure below.
 
    ![en-us_image_0000001364254729](figures/en-us_image_0000001364254729.png)
 
@@ -339,4 +339,4 @@ To deliver better transition effects, use [Navigation](../ui/arkts-navigation-na
 
    ![en-us_image_0000001364254729](figures/en-us_image_0000001364254729.png)
 
-Congratulations! You have finished developing your OpenHarmony application in ArkTS in the stage model.
+Congratulations! You have successfully built your first OpenHarmony application based on ArkTS. Feel free to explore more HarmonyOS features!

@@ -28,7 +28,7 @@ You can use the APIs to create an album, and access and modify the media data in
 
 ### OH_MediaAccessHelper_ApplyChanges()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAccessHelper_ApplyChanges(OH_MediaAssetChangeRequest* changeRequest)
 ```
 

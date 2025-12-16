@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set outline attributes for components. Drawn outside the component, the outline does not affect the component's layout or increase its size.
 
@@ -82,7 +82,7 @@ Outline attributes.
 
 outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
 
-Sets the style of the outline.
+Sets the outline style.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
@@ -106,7 +106,7 @@ Sets the style of the outline.
 
 outlineStyle(style: Optional\<OutlineStyle | EdgeOutlineStyles>): T
 
-Sets the style of the outline. Compared with [outlineStyle](#outlinestyle), this API supports the **undefined** type for the **style** parameter.
+Sets the outline style. Compared with [outlineStyle](#outlinestyle), this API supports the **undefined** type for the **style** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 

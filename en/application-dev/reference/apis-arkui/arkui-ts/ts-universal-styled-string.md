@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Styled strings are string objects that facilitate the flexible use of text styles. They can be bound to the **Text** component using the [setStyledString](./ts-basic-components-text.md#setstyledstring12) API in **TextController**, and to the **RichEditor** component using the [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) API in **RichEditorStyledStringController**.
 
@@ -16,7 +16,7 @@ Styled strings are string objects that facilitate the flexible use of text style
 >
 >  Currently, styled strings cannot be used in worker threads.
 >
->  When bound using a controller, the styled string takes effect only after layout completion. When using **setStyledString** alongside [measure](../js-apis-arkui-frameNode.md#measure12), you must wait for layout completion using the [layout callback](../js-apis-arkui-inspector.md) before applying the styled string.
+>  If a styled string is bound via controller, the binding only takes effect after layout completion. When using **setStyledString** alongside [measure](../js-apis-arkui-frameNode.md#measure12), you must wait for layout completion using the [layout callback](../js-apis-arkui-inspector.md) before applying the styled string.
 
 ## Rules of Use
 
@@ -130,6 +130,8 @@ getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<
 
 Obtains the styles in the specified range of a styled string. The specified range must not exceed the string's length.
 
+This API returns only styles explicitly set by the developer.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -160,14 +162,14 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 static fromHtml(html: string): Promise\<StyledString>
 
-Converts an HTML-formatted string into a styled string. Currently, the following HTML tags are supported for conversion: \<p>, \<span>, \<img>, \<br>, \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, \<sub>. The **style** attribute within tags can be converted to the corresponding style in the styled string.
+Converts an HTML string into a styled string. Currently, the following HTML tags are supported for conversion: \<p>, \<span>, \<img>, \<br>, \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, \<sub>. The **style** attribute within tags can be converted to the corresponding style in the styled string.
 
 For details about how to use this API, see [Example 12: Implementing Conversion Using fromHtml and toHtml](#example-12-implementing-conversion-using-fromhtml-and-tohtml).
 
 | Tag Name| Description                  |
 |-------------|----------------------------|
 | \<p\>       | Paragraph tag, which separates text into paragraphs.        |
-| \<span\>    | Inline text tag, which supports style settings.    |
+| \<span\>    | Inline text supporting style configuration. In API version 17 and earlier, the **background-color** attribute set using **\<span\>** does not take effect.    |
 | \<img\>     | Image tag, used to insert an image.                  |
 | \<strong\>  | Bold text tag.                  |
 | \<br\><sup>20+</sup>      | Line break tag.                      |
@@ -542,7 +544,7 @@ Defines the style for a styled string.
 | [ImageAttachment](#imageattachment) | Image style.|
 | [CustomSpan](#customspan) | Custom span style.|
 | [UserDataSpan](#userdataspan) | User data span style.|
-| [UrlStyle](#urlstyle14) | Hyperlink style.|
+| [UrlStyle](#urlstyle14) | URL style.|
 | [BackgroundColorStyle](#backgroundcolorstyle14) | Text background color style.|
 
 ## StyleOptions
@@ -634,14 +636,14 @@ A constructor used to create a text style.
 
 | Name       | Type    | Read-Only| Optional| Description     |
 | ----------- | ----------------------------------- | ---- | ---- |---------------------------- |
-| fontColor   | [ResourceColor](ts-types.md#resourcecolor)                       | No  | Yes| Font color.<br>The default value is the theme color.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| fontColor   | [ResourceColor](ts-types.md#resourcecolor)                       | No  | Yes| Font color.<br>Default value: theme color.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | fontFamily  | [ResourceStr](ts-types.md#resourcestr)                           | No  | Yes| Font family.<br>Default value: theme font.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | No  | Yes| Font size.<br>Default value: 16 fp.<br>If **unit** of **LengthMetrics** is percent, the setting does not take effect, and 16 fp is used.<br>Unit: [fp](ts-pixel-units.md)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | No  | Yes| Font size.<br>Default value: 16 fp.<br>If **unit** of **LengthMetrics** is percent, the setting does not take effect, and 16 fp is used instead.<br>Unit: [fp](ts-pixel-units.md)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | fontWeight  | number\| [FontWeight](ts-appendix-enums.md#fontweight) \| string | No  | Yes| Font weight.<br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle)                      | No  | Yes| Font style.<br>Default value: **FontStyle.Normal**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | strokeWidth<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | No  | Yes| Text stroke width. If **unit** of **LengthMetrics** is percent, the setting does not take effect, and 0 is used instead.<br>If the value is less than 0, the text is solid. If the value is greater than 0, the text is hollow.<br>Default value: **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | No  | Yes| Text stroke color.<br>Default value: text color. If invalid values are provided, the text color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20)     | No  | Yes| Usuperscript or subscript for the text.<br>Default value: **SuperscriptStyle.NORMAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20)     | No  | Yes| Superscript or subscript for the text.<br>Default value: **SuperscriptStyle.NORMAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## GestureStyle
 
@@ -901,12 +903,12 @@ Describes the image attachment.
 | ------------ |---------------------| ---- | ---- | ------ |
 | value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) |  Yes |  No | Image data source of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | size  | [SizeOptions](ts-types.md#sizeoptions) |  Yes |  Yes | Image size of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>Number-type values use px as the unit.|
-| sizeInVp<sup>21+</sup>   | [SizeOptions](ts-types.md#sizeoptions) |  Yes |  Yes | Image size of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 21.<br>Number-type values use vp as the unit.|
+| sizeInVp<sup>21+</sup>   | [SizeOptions](ts-types.md#sizeoptions) |  Yes |  Yes | Image size of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 21.<br>Number-type values use vp as the unit.<br>Negative or **undefined** values return **undefined**.|
 | verticalAlign  | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) |  Yes |  Yes | Image alignment mode of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | objectFit  | [ImageFit](ts-appendix-enums.md#imagefit) |  Yes |  Yes | Image scale type of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle) |  Yes |  Yes | Image layout of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  Yes |  Yes | Image color filter of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| supportSvg2<sup>22+</sup>  | boolean |  Yes |  Yes | Whether to enable [enhanced SVG parsing](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG parsing. **false**: Use original SVG parsing.<br>Default value: **false**<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| supportSvg2<sup>22+</sup>  | boolean |  Yes |  Yes | Whether to enable [enhanced SVG tag parsing capabilities](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG tag parsing. **false**: Use original SVG tag parsing.<br>Default value: **false**<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ### constructor
 
@@ -977,7 +979,7 @@ Defines the type for image color filter settings.
 | Name | Type                             | Read-Only| Optional| Description  |
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
 | value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) |  No | No| Image data source. **Atomic service API**: This API can be used in atomic services since API version 12.|
-| size | [SizeOptions](ts-types.md#sizeoptions) | No  | Yes| Sets the image size. The value cannot be a percentage. **Atomic service API**: This API can be used in atomic services since API version 12.<br>The default value of **size** depends on the value of **objectFit**. For example, if the value of **objectFit** is **Cover**, the image height is the component height minus the top and bottom paddings, and the image width is the component width minus the left and right paddings.|
+| size | [SizeOptions](ts-types.md#sizeoptions) | No  | Yes| Image size, which does not support percentage values. **Atomic service API**: This API can be used in atomic services since API version 12.<br>The default value of **size** depends on the value of **objectFit**. For example, if the value of **objectFit** is **Cover**, the image height is the component height minus the top and bottom paddings, and the image width is the component width minus the left and right paddings.|
 | verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | No   | Yes| Alignment mode of the image with the text. **Atomic service API**: This API can be used in atomic services since API version 12.<br>Default value: **ImageSpanAlignment.BOTTOM**|
 | objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | No   | Yes| Image scaling type. The **ImageFit.MATRIX** enum value is not supported. **Atomic service API**: This API can be used in atomic services since API version 12.<br>Default value: **ImageFit.Cover**|
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle) | No   | Yes| Image layout. **Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -997,7 +999,7 @@ Defines the type for image color filter settings.
 
 ## ResourceImageAttachmentOptions<sup>15+</sup>
 
-Settings for images of the ResourceStr type.
+Defines the settings for images of the ResourceStr type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1010,7 +1012,7 @@ Settings for images of the ResourceStr type.
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle) | No | Yes | Image layout.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | colorFilter  | [ColorFilterType](#colorfiltertype15) |  No | Yes| Image color filter of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | syncLoad  | boolean |  No | Yes| Whether to load the image synchronously. By default, the image is loaded asynchronously. During synchronous loading, the UI thread is blocked and the placeholder image is not displayed.<br>**true**: synchronous loading; **false**: asynchronous loading.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| supportSvg2<sup>22+</sup>  | boolean |  No |  Yes | Whether to enable [enhanced SVG parsing](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG parsing. **false**: Use original SVG parsing.<br>Default value: **false**<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| supportSvg2<sup>22+</sup>  | boolean |  No |  Yes | Whether to enable [enhanced SVG tag parsing capabilities](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG tag parsing. **false**: Use original SVG tag parsing.<br>Default value: **false**<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## CustomSpan
 
@@ -2075,7 +2077,7 @@ struct styled_string_set_lineheight_paragraphstyle_demo {
 
 ### Example 6: Setting Custom Spans
 
-This example illustrates how to configure custom spans for a styled string using the [CustomSpan](#customspan) API, available since API version 12.
+This example illustrates how to configure custom spans for a styled string using [CustomSpan](#customspan) and [measureTextSize](../arkts-apis-uicontext-measureutils.md#measuretextsize12), supported since API version 12.
 
 ```ts
 // xxx.ets
@@ -2093,7 +2095,14 @@ class MyCustomSpan extends CustomSpan {
   }
 
   onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics {
-    return { width: this.width, height: this.height };
+    this.setPx(gUIContext.vp2px(2));
+    let textSize = gUIContext.getMeasureUtils().measureTextSize({ textContent: this.word, fontSize: this.wordFontSize })
+    this.width = textSize.width as number;
+    this.height = textSize.height as number;
+    return {
+      width: gUIContext.px2vp(this.width) + (this.paddingLeft + this.paddingRight) * 2,
+      height: gUIContext.px2vp(this.height) + this.paddingTop + this.paddingBottom
+    };
   }
 
   onDraw(context: DrawContext, options: CustomSpanDrawInfo) {
@@ -2107,14 +2116,15 @@ class MyCustomSpan extends CustomSpan {
       blue: 175
     });
     const font = new drawing.Font();
-    font.setSize(25);
+    font.setSize(gUIContext.vp2px(this.wordFontSize));
     const textBlob = drawing.TextBlob.makeFromString(this.word, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     canvas.attachBrush(brush);
     canvas.drawRect({
-      left: options.x + 10,
-      right: options.x + gUIContext.vp2px(this.width) - 10,
-      top: options.lineTop + 10,
-      bottom: options.lineBottom - 10
+      // Center the drawn rectangle within the span size.
+      left: options.x + gUIContext.vp2px(this.paddingLeft),
+      right: options.x + this.width + 2 * gUIContext.vp2px(this.paddingLeft) + gUIContext.vp2px(this.paddingRight),
+      top: options.lineTop,
+      bottom: options.baseline
     });
 
     brush.setColor({
@@ -2124,7 +2134,9 @@ class MyCustomSpan extends CustomSpan {
       blue: 141
     });
     canvas.attachBrush(brush);
-    canvas.drawTextBlob(textBlob, options.x + 20, options.lineBottom - 15);
+    // Center the text in the drawn rectangle.
+    canvas.drawTextBlob(textBlob, options.x + 2 * gUIContext.vp2px(this.paddingLeft),
+      options.baseline - gUIContext.vp2px(this.paddingBottom));
     canvas.detachBrush();
   }
 
@@ -2132,9 +2144,21 @@ class MyCustomSpan extends CustomSpan {
     this.word = word;
   }
 
+  setPx(px: number) {
+    this.paddingLeft = px;
+    this.paddingRight = px;
+    this.paddingTop = px;
+    this.paddingBottom = px;
+  }
+
   width: number = 160;
   word: string = "drawing";
   height: number = 10;
+  paddingLeft: number = 0;
+  paddingRight: number = 0;
+  paddingTop: number = 0;
+  paddingBottom: number = 0;
+  wordFontSize: number = 20;
 }
 
 @Entry
@@ -2529,16 +2553,16 @@ struct styled_string_html_convert_demo {
 
   build() {
     Column() {
-      // Display the converted SpanString.
+      // Display the spanString after conversion.
       Text(undefined, { controller: this.controller }).height(100)
 
-      // TextArea for displaying the result of each step.
+      // Display each step result in the text area.
       TextArea({ text: this.html })
         .width("100%")
         .height(100)
         .margin(5)
 
-      // Button 1: Convert HTML to SpanString.
+      // Button 1: Convert HTML to SpanString
       Button("Convert HTML to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
@@ -2868,4 +2892,68 @@ struct leadingMarginSpanDemo {
 }
 ```
 
-<!--no_check-->
+### Example 16: Displaying an SVG Image Using the supportSvg2 Property
+Starting from API version 22, this example enables enhanced SVG usability capabilities through the [SVG tag parsing enhancement feature](ts-image-svg2-capabilities.md#improved-svg-usability) by configuring the **supportSvg2** property in [ResourceImageAttachmentOptions](#resourceimageattachmentoptions15).
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { LengthMetrics } from '@kit.ArkUI';
+@Entry
+@Component
+struct styled_string_process_demo {
+  controller: TextController = new TextController();
+  controller1: TextController = new TextController();
+  imageAttachment: ImageAttachment = new ImageAttachment({
+    // Replace $r("app.media.ice") with the image resource file you use.
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: true,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN)
+  })
+  imageAttachment1: ImageAttachment = new ImageAttachment({
+    // Replace $r("app.media.ice") with the image resource file you use.
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: false,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN)
+  })
+  scroller: Scroller = new Scroller();
+  mutableStr: MutableStyledString = new MutableStyledString('');
+  mutableStr1: MutableStyledString = new MutableStyledString('');
+  aboutToAppear() {
+    this.mutableStr = new MutableStyledString(this.imageAttachment);
+    this.controller.setStyledString(this.mutableStr);
+    this.mutableStr1 = new MutableStyledString(this.imageAttachment1);
+    this.controller1.setStyledString(this.mutableStr1);
+  }
+
+  build() {
+    Column() {
+      Scroll(this.scroller) {
+        Column() {
+          Text ('Styled string with supportSvg2: false')
+          Text(undefined, { controller: this.controller1 })
+            .draggable(true)
+            .fontSize(30)
+          Text ('Styled string with supportSvg2: true')
+          Text(undefined, { controller: this.controller })
+            .draggable(true)
+            .fontSize(30)
+        }.width('100%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+![styledString_17](figures/styledString_17.png)

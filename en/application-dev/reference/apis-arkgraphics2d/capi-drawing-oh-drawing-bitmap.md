@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Bitmap OH_Drawing_Bitmap
+```
+
 ## Overview
 
 Defines a struct for a bitmap, which is a memory area that contains the pixel data of a shape.

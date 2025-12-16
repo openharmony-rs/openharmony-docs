@@ -4,18 +4,18 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
-Form Kit provides a development framework and APIs for embedding application information into system entries like the home screen<!--RP3--><!--RP3End-->. It can extract key user information or frequent operations into service widgets (referred to as "widgets"), which can be added to the home screen<!--RP3--><!--RP3End--> for easy access to information and direct service interactions.
+<!--Adviser: @HelloShuo-->
+Form Kit provides a development framework and APIs for embedding application information into system entries like the home screen <!--RP3--><!--RP3End-->. It can extract key user information or frequent operations into service widgets (referred to as "widgets"), which can be added to the home screen <!--RP3--><!--RP3End--> for easy access to information and direct service interactions.
 
 ## Scenarios for Widget Usage
-- Supported devices: smartphones, tablets, PCs/2-in-1 devices, smart TVs, smart watches, and head units. This kit is not supported on lite wearables.
+- Supported devices: smartphones, tablets, PCs/2-in-1 devices, smart TVs, and smart watches. This kit is not supported on lite wearables.
 - Supported types: Both applications and atomic services can develop widgets.
-- Supported positions: Users can add widgets to the home screen<!--RP3--><!--RP3End-->. Widgets cannot be embedded in common applications.
+- Supported positions: Users can add widgets to the home screen <!--RP3--><!--RP3End-->. Widgets cannot be embedded in common applications.
 - To use a widget:
 
 1. Touch and hold an application icon on the home screen to display the shortcut menu.
 2. Tap <!--Del-->**Service**<!--DelEnd-->**widget**, go to the widget management page, and preview the widget.
-3. Touch the **Add to home** button. The widget is then added to the home screen.
+3. Tap the **Add to home** button. You can then view<!--Del--> and operate<!--DelEnd--> the widget on the home screen.
 
 **Figure 1** Typical procedure of using a widget 
 <!--RP2-->

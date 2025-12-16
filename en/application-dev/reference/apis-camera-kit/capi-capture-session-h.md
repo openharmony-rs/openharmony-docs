@@ -2425,5 +2425,3 @@ Unregisters the callback used to listen for macro status changes of a camera ses
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.|
-
-<!--no_check-->

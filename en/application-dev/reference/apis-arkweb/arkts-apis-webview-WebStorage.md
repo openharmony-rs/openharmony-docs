@@ -17,6 +17,8 @@ Implements a **WebStorage** object to manage the Web SQL database and HTML5 Web 
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
 > - You must load the **Web** component before calling the APIs in **WebStorage**.
+>
+> - After the ArkWeb kernel is upgraded to M132, the Web SQL database management becomes invalid because the kernel discards Web SQL. For details about the ArkWeb kernel version, see [Constraints](../../web/web-component-overview.md#constraints).
 
 ## Modules to Import
 
@@ -171,7 +173,7 @@ HTML file to be loaded:
 
 static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
-Obtains information about all origins that are currently using the Web SQL Database. This API uses an asynchronous callback to return the result.
+Obtains information about origins that are currently using the Web SQL Database and HTML5-supported Web Storage APIs. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -235,7 +237,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
-Obtains information about all origins that are currently using the Web SQL Database. This API uses a promise to return the result.
+Obtains information about origins that are currently using the Web SQL Database and HTML5-supported Web Storage APIs. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -299,7 +301,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
-Obtains the storage quota of an origin in the Web SQL Database, in bytes. This API uses an asynchronous callback to return the result.
+Obtains the storage quota of an origin in Web SQL Database and HTML5-supported Web Storage APIs, in bytes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -361,7 +363,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOriginQuota(origin: string): Promise\<number>
 
-Obtains the storage quota of an origin in the Web SQL Database, in bytes. This API uses a promise to return the result.
+Obtains the storage quota of an origin in the Web SQL Database and HTML5-supported Web Storage APIs, in bytes. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -428,7 +430,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 
-Obtains the storage usage of an origin in the Web SQL Database, in bytes. This API uses an asynchronous callback to return the result.
+Obtains the storage usage of an origin in the Web SQL Database and HTML5-supported Web Storage APIs, in bytes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -490,7 +492,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static getOriginUsage(origin: string): Promise\<number>
 
-Obtains the storage usage of an origin in the Web SQL Database, in bytes. This API uses a promise to return the result.
+Obtains the storage usage of an origin in the Web SQL Database and HTML5-supported Web Storage APIs, in bytes. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -555,7 +557,7 @@ For details about the HTML file loaded, see the HTML file loaded using the [dele
 
 static deleteAllData(incognito?: boolean): void
 
-Deletes all data in the Web SQL Database.
+Deletes all storage data used by JavaScript storage APIs, including the Web SQL Database and HTML5-supported Web storage APIs.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

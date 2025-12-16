@@ -476,11 +476,14 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print
+## print.print<sup>(deprecated)</sup>
+
+> This API is supported since API version 10 and deprecated since API version 23.
+> You are advised to use [print](#printprint11-1) instead.
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
-Prints files. This API uses an asynchronous callback to return the result.
+Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -522,11 +525,14 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print
+## print.print<sup>(deprecated)</sup>
+
+> This API is supported since API version 10 and deprecated since API version 23.
+> You are advised to use [print](#printprint11-1) instead.
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
-Prints files. This API uses a promise to return the result.
+Prints files. This API uses a promise to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
 
 **Required permissions**: ohos.permission.PRINT
 

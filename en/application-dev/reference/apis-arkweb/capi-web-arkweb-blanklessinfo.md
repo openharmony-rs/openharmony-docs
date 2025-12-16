@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct {...} ArkWeb_BlanklessInfo
+```
+
 ## Overview
 
 Describes prediction information about blankless loading, including the first screen similarity, first screen loading duration, and error codes. The application determines whether to enable the blankless loading solution based on the prediction information.

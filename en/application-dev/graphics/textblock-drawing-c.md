@@ -33,25 +33,25 @@ The following uses OH_Drawing_TextBlobCreateFromString() as an example to descri
 
 The following figure shows a simple example.
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the font size.
-OH_Drawing_FontSetTextSize(font, 100);
+OH_Drawing_FontSetTextSize(font, value100_);
 // Text to be drawn.
 const char *str = "Hello world";
 // Create a text block object.
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // Draw the text block.
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Release the text block object.
 OH_Drawing_TextBlobDestroy(textBlob);
 // Release the font object.
 OH_Drawing_FontDestroy(font);
 ```
-<!-- [ndk_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Screenshot_20241225164926098](figures/Screenshot_20241225164926098.jpg)
 
@@ -65,14 +65,15 @@ The following provides examples for drawing strokes for English and Chinese text
 
 The following figure shows how to draw strokes for English text.
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a pen.
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // Enable anti-aliasing.
 OH_Drawing_PenSetAntiAlias(pen, true);
 // Set the stroke color.
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // Set the stroke width to 3.
 OH_Drawing_PenSetWidth(pen, 3);
 // Set the stroke effect of the paint.
@@ -80,13 +81,13 @@ OH_Drawing_CanvasAttachPen(canvas, pen);
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the font size.
-OH_Drawing_FontSetTextSize(font, 150);
+OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
 // Create a text block object.
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // Draw the text block.
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Remove the stroke effect.
 OH_Drawing_CanvasDetachPen(canvas);
 // Destroy objects.
@@ -94,7 +95,6 @@ OH_Drawing_TextBlobDestroy(textBlob);
 OH_Drawing_FontDestroy(font);
 OH_Drawing_PenDestroy(pen);
 ```
-<!-- [ndk_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Screenshot_20241225171259621](figures/Screenshot_20241225171259621.jpg)
 
@@ -104,8 +104,9 @@ You need to use the paint to stroke the text, and then call the brush to fill th
 
 The following is an example of outlining Chinese characters:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a brush.
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // Create a pen.
@@ -125,18 +126,18 @@ OH_Drawing_CanvasAttachPen(canvas, pen);
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the font size.
-OH_Drawing_FontSetTextSize(font, 150);
+OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello";
 // Create a text block object.
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // Draw the text block.
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
-// Remove the outline effect.
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+// Remove the stroke effect.
 OH_Drawing_CanvasDetachPen(canvas);
 // Set the outline effect of the brush.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 
 // Destroy objects.
 OH_Drawing_TextBlobDestroy(textBlob);
@@ -144,7 +145,6 @@ OH_Drawing_FontDestroy(font);
 OH_Drawing_PenDestroy(pen);
 OH_Drawing_BrushDestroy(brush);
 ```
-<!-- [ndk_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![chinese_stroke_text_c](figures/chinese_stroke_text_c.png)
 
@@ -154,12 +154,13 @@ You can create text gradient effects using shaders. For details about shaders, p
 
 The following is a brief example of adding a linear gradient shader effect to text:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Start point.
-OH_Drawing_Point *startPt = OH_Drawing_PointCreate(100, 100);
+OH_Drawing_Point *startPt = OH_Drawing_PointCreate(value100_, value100_);
 // End point.
-OH_Drawing_Point *endPt = OH_Drawing_PointCreate(900, 900);
+OH_Drawing_Point *endPt = OH_Drawing_PointCreate(value900_, value900_);
 // Color array.
 uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 // Relative position array.
@@ -176,13 +177,13 @@ OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the font size.
-OH_Drawing_FontSetTextSize(font, 150);
+OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
 // Create a text block object.
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // Draw the text block.
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Cancel the filling effect.
 OH_Drawing_CanvasDetachBrush(canvas);
 // Destroy objects.
@@ -190,7 +191,6 @@ OH_Drawing_TextBlobDestroy(textBlob);
 OH_Drawing_FontDestroy(font);
 OH_Drawing_BrushDestroy(brush);
 ```
-<!-- [ndk_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Screenshot_20241225173900576](figures/Screenshot_20241225173900576.jpg)
 
@@ -200,12 +200,13 @@ Theme fonts refer to the fonts that can be used in the **theme application**. Th
 
 The sample code and effect of setting the theme font are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the text size.
-OH_Drawing_FontSetTextSize(font, 100);
+OH_Drawing_FontSetTextSize(font, value100_);
 // Set the theme font.
 OH_Drawing_FontSetThemeFontFollowed(font, true);
 // Text to be drawn.
@@ -214,13 +215,12 @@ const char *str = "Hello World";
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // Draw the text block.
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Release the text block object.
 OH_Drawing_TextBlobDestroy(textBlob);
 // Release the font object.
 OH_Drawing_FontDestroy(font);
 ```
-<!-- [ndk_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | Effect of not using the theme font| Effect of using the theme font (The display effect varies according to the theme font.)|
 | -------- | -------- |
@@ -237,12 +237,13 @@ Single character drawing is a refined control technology for text rendering in g
 Basic scenario: drawing characters without font features 
 For common text rendering scenarios without font features, you can use OH_Drawing_CanvasDrawSingleCharacter to draw a single character and use OH_Drawing_FontMeasureSingleCharacter to measure the width of a single character. The following is the sample code and effect:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the text size.
-OH_Drawing_FontSetTextSize(font, 100);
+OH_Drawing_FontSetTextSize(font, value100_);
 float startX = 100;
 float startY = 100;
 int strLen = 5;
@@ -258,19 +259,19 @@ for (int i = 0; i < strLen; ++i) {
 // Release the font object.
 OH_Drawing_FontDestroy(font);
 ```
-<!-- [ndk_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacter.jpg)
 
 Advanced Scenario: Drawing Characters with Font Features 
 In text rendering scenarios that require font features, you can use OH_Drawing_CanvasDrawSingleCharacterWithFeatures to draw a single character and OH_Drawing_FontMeasureSingleCharacterWithFeatures to measure the width of a single character. The sample code and effect are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the text size.
-OH_Drawing_FontSetTextSize(font, 100);
+OH_Drawing_FontSetTextSize(font, value100_);
 // Create a font feature object.
 OH_Drawing_FontFeatures* features = OH_Drawing_FontFeaturesCreate();
 OH_Drawing_FontFeaturesAddFeature(features, "frac", 1);
@@ -291,7 +292,6 @@ OH_Drawing_FontFeaturesDestroy(features);
 //Release the font object.
 OH_Drawing_FontDestroy(font);
 ```
-<!-- [ndk_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacterWithFeatures.png)
 
@@ -304,5 +304,5 @@ OH_Drawing_FontDestroy(font);
 
 The following samples can be used as references for Drawing (C/C++):
 
-- [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

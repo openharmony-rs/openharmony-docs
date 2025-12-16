@@ -22,10 +22,11 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   The following uses an example to describe how to use HTTP or HTTPS to access local cross-origin resources. the **index.html** and **js/script.js** files are stored in the **rawfile** folder of the project directory. When the resource protocol is used to access the **index.html** file, the **js/script.js** file is intercepted due to cross-origin access and cannot be loaded. In the example, the domain name **https:\//www\.example.com/** is used to replace the original resource protocol, and the **onInterceptRequest** API is used to replace the resource to ensure that the **js/script.js** file can be successfully loaded. In this way, the cross-origin interception problem is solved.
 
-  ```ts
-  // main/ets/pages/Index.ets
+  <!-- @[cors_loccross_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct Index {
@@ -33,27 +34,27 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
     webviewController: webview.WebviewController = new webview.WebviewController();
     // Construct a mapping table between domain names and local files.
     schemeMap = new Map([
-      ["https://www.example.com/index.html", "index.html"],
-      ["https://www.example.com/js/script.js", "js/script.js"],
-    ])
+      ['https://www.example.com/index.html', 'index.html'],
+      ['https://www.example.com/js/script.js', 'js/script.js'],
+    ]);
     // Construct the local file and construct the return value format mimeType.
     mimeTypeMap = new Map([
-      ["index.html", 'text/html'],
-      ["js/script.js", "text/javascript"]
-    ])
-
+      ['index.html', 'text/html'],
+      ['js/script.js', 'text/javascript']
+    ]);
+  
     build() {
       Row() {
         Column() {
           // For the local index.html file, use HTTP or HTTPS in place of file or resource as the protocol and construct a custom domain name.
           // In this example, www.example.com is constructed.
-          Web({ src: "https://www.example.com/index.html", controller: this.webviewController })
+          Web({ src: 'https://www.example.com/index.html', controller: this.webviewController })
             .javaScriptAccess(true)
             .fileAccess(true)
             .domStorageAccess(true)
             .geolocationAccess(true)
-            .width("100%")
-            .height("100%")
+            .width('100%')
+            .height('100%')
             .onInterceptRequest((event) => {
               if (!event) {
                 return;
@@ -83,6 +84,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
     }
   }
   ```
+  <!---->
 
   ```html
   <!-- main/resources/rawfile/index.html -->
@@ -95,9 +97,10 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   </body>
   </html>
   ```
-
-  ```js
-  // main/resources/rawfile/js/script.js
+  <!---->
+  <!-- @[cors_script_raw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/rawfile/js/script.js)-->
+  
+  ``` JavaScript
   const body = document.body;
   const element = document.createElement('div');
   element.textContent = 'success';
@@ -131,30 +134,32 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   If a path is not any of the preceding paths, an error code 401 is reported and the path list fails to be set. If the path list is empty, the access scope of the file protocol complies with the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) rule. The following is an example:
 
-  ```ts
-  // main/ets/pages/index.ets
+  <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
-
+  
     build() {
       Row() {
-        Web({ src: "", controller: this.controller })
+        Web({ src: '', controller: this.controller })
           .onControllerAttached(() => {
             try {
               // Set the list of paths that allow cross-domain access.
               this.controller.setPathAllowingUniversalAccess([
                 this.uiContext.getHostContext()!.resourceDir,
-                this.uiContext.getHostContext()!.filesDir + "/example"
-              ])
-              this.controller.loadUrl("file://" + this.uiContext.getHostContext()!.resourceDir + "/index.html")
+                this.uiContext.getHostContext()!.filesDir + '/example'
+                ]);
+              this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as   BusinessError).message}`);
             }
           })
           .javaScriptAccess(true)
@@ -164,6 +169,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
     }
   }
   ```
+  <!---->
 
   ```html
   <!-- main/resources/resfile/index.html -->
@@ -209,11 +215,12 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   </html>
   ```
-
-  ```javascript
-  // main/resources/resfile/js/script.js
-  const body = document.body;
-  const element = document.createElement('div');
-  element.textContent = 'success';
-  body.appendChild(element);
-  ```
+ <!---->
+ <!-- @[cors_script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/resfile/js/script.js) -->
+ 
+ ``` JavaScript
+ const body = document.body;
+ const element = document.createElement('div');
+ element.textContent = 'success';
+ body.appendChild(element);
+ ```
