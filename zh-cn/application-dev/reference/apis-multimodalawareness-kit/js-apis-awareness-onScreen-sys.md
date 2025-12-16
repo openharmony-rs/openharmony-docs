@@ -136,7 +136,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 ## onScreen.OnscreenAwarenessOptions<sup>23+</sup>
 
-屏上感知参数列表.
+屏上感知参数列表。
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -274,11 +274,14 @@ sendControlEvent(event: [ControlEvent](#onscreencontrolevent)): Promise&lt;void&
 subscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap), 
           callback: Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt;, 
           options?: [OnscreenAwarenessOptions](#OnscreenAwarenessOptions)): void
+
 开启屏幕内容主动感知，并订阅屏幕感知结果。
 
 **需要权限**：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
 **系统API**：此接口为系统接口
 
@@ -286,8 +289,8 @@ subscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap),
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [ControlEvent](#onscreencontrolevent)   | 是   | 屏上控制事件。 |
-|options||
+| capability | [OnscreenAwarenessCap](#OnscreenAwarenessCap)   | 是   | 屏上感知能力列表。 |
+| options|[OnscreenAwarenessOptions](#OnscreenAwarenessOptions)| 否   | 屏上感知参数列表。|
 | callback | Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt; | 是   | 回调函数，返回屏幕感知结果。|
 
 
@@ -297,47 +300,146 @@ subscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap),
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.SIMULATE_USER_INPUT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
-| 34000005 | The target is not found. |
+| 34000002 | The application or page is not supported. |
 
 **示例**：
 
    ```ts
-   import { onScreen } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   let options: onScreen.ContentOptions = {
-      contentUnderstand: true,
-      textOnly: true
-   };
-   let event: onScreen.ControlEvent | undefined = undefined;
-   try {
-      onScreen.getPageContent(options).then((pageContent: onScreen.PageContent) => {
-         if (pageContent.paragraphs != undefined && pageContent.paragraphs.length > 0 &&
-            pageContent.paragraphs[0].hookId != undefined) {
-            event = {
-               windowId: pageContent.windowId,
-               sessionId: pageContent.sessionId,
-               hookId: pageContent.paragraphs[0].hookId,
-               eventType: onScreen.EventType.SCROLL_TO_HOOK
-            };
-         }
-      }).catch((err: BusinessError) => {
-         console.error("get page content failed, errCode = " + err.code);
-      });
-   } catch (err) {
-      console.error('invoke failed, errCode = ' + err.code);
+   import onScreen from "@ohos.multimodalAwareness.onScreen";
+   let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+      capList: [
+         'contentUiTree',
+         'scenarioReading'
+      ],
+      description: 'reading scenario'
    }
-   if (event != undefined) {
-      try {
-         onScreen.sendControlEvent(event).catch((err: BusinessError) => {
-            console.error("send control event failed, errCode =" + err.code);
-         })
-      } catch (err) {
-         console.error('invoke failed, errCode = ' + err.code);
-      }
+
+   let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+      parameters: {
+         "windowId": 12,
+         "controlByPolicy": 1
+      } as Record<string, Object>
+   }
+
+   try {
+      onScreen.subscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo) => {
+         console.info(`subscribe failed, error: ${info.resultCode}`);
+      }, onscreenAwarenessOptions);
+   } catch (err) {
+      console.error('subscribe failed, errCode = ' + err.code);
    }
    ```
+## onScreen.unsubscribe
+
+unsubscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap), 
+            callback?: Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt;): void
+
+关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明               |
+| -------- | -------------------------------- | ---- | ---------------------------------------- |
+| capability | [OnscreenAwarenessCap](#OnscreenAwarenessCap)   | 是   | 屏上感知能力列表。 |
+| callback | Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt; | 是   | 回调函数，返回屏幕感知结果。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 202      | Permission check failed. A non-system application uses the system API. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
+| 34000001 | Service exception. |
+
+**示例**：
+
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+	'contentUiTree',
+  ],
+  description: 'unsubscribe uiTree scenario'
+}
+
+try {
+  onScreen.unsubscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo) => {
+	console.info(`subscribe failed, error: ${info.resultCode}`);
+  });
+} catch (err) {
+  console.error('unsubscribe failed, errCode = ' + err.code);
+}
+```
+## onScreen.unsubscribe
+
+unsubscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap), 
+            callback?: Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt;): void
+
+关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
+| capability | [OnscreenAwarenessCap](#OnscreenAwarenessCap)   | 是   | 屏上感知能力列表。 |
+| options|[OnscreenAwarenessOptions](#OnscreenAwarenessOptions)| 否   | 屏上感知参数列表。|
+
+
+**返回值：**
+
+  | 类型                           | 说明         |
+  | ---------------------------- | ---------- |
+  | Promise&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt; | Promise对象，返回屏幕感知结果。 |
+**错误码**：
+
+以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 202      | Permission check failed. A non-system application uses the system API. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
+| 34000001 | Service exception. |
+| 34000002 | The application or page is not supported. |
+
+**示例**：
+
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'contentUiTree',
+    'scenarioReading'
+  ],
+  description: 'subscribe reading scenario'
+}
+
+let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  parameters: {
+    "windowId": 12,
+    "controlByPolicy": 1
+  } as Record<string, Object>
+}
+try {
+  let info: onScreen.OnscreenAwarenessInfo =
+    await onScreen.trigger(onscreenAwarenessCap, onscreenAwarenessOptions);
+  console.info(`trigger resultCode: ${info.resultCode}`);
+} catch (err) {
+  console.error('trigger failed, errCode = ' + err.code);
+}
+```
