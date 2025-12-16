@@ -793,6 +793,43 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_badge_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+OH_Drawing_TextStyle *badgeTxtStyle = OH_Drawing_CreateTextStyle();
+// 设置文字大小
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TWENTY(width_));
+OH_Drawing_SetTextStyleFontSize(badgeTxtStyle, DIV_TWENTY(width_));
+// 设置文字颜色
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleColor(badgeTxtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+// 使能文本上标
+OH_Drawing_SetTextStyleBadgeType(badgeTxtStyle, OH_Drawing_TextBadgeType::TEXT_SUPERSCRIPT);
+// 创建排版对象，并绘制
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+const char *text = "Mass-energy equivalence: E=mc";
+OH_Drawing_TypographyHandlerAddText(handler, text);
+OH_Drawing_TypographyHandlerPushTextStyle(handler, badgeTxtStyle);
+const char *badgeText = "2";
+OH_Drawing_TypographyHandlerAddText(handler, badgeText);
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 设置页面最大宽度
+double maxWidth = width_;
+// 将段落按照排版宽度进行排版
+OH_Drawing_TypographyLayout(typography, maxWidth);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// 释放对象
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTextStyle(badgeTxtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
+
 ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg)
 
 ### 高对比度
