@@ -1963,7 +1963,8 @@ getAuthenticator(): Authenticator
 获取Authenticator对象，用于执行用户身份认证。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[constructor](#constructordeprecated)替代。
+>
+> 从 API version 6 开始支持，从 API version 8 开始废弃，建议使用[constructor](#constructordeprecated)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1994,7 +1995,8 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback&lt;number&gt
 执行用户认证，使用callback方式作为异步方法。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
+>
+> 从 API version 6 开始支持，从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -2031,7 +2033,8 @@ execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
 执行用户认证，使用promise方式作为异步方法。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
+>
+> 从 API version 6 开始支持，从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
