@@ -1261,7 +1261,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 });
 ```
 
-### setInterruptMode
+### setInterruptMode<sup>23+</sup>
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
