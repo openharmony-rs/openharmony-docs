@@ -94,6 +94,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 6. 常量定义。
 
    <!-- @[define_maxStringLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   
+   ``` C++
+   const int MAX_STRING_LENGTH = 1024;
+   ```
 
 7. 创建ImageSource实例。
 
