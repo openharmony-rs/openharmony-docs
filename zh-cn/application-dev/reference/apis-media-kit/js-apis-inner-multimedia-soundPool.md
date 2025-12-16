@@ -1265,7 +1265,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void;
 
-设置音频流的打断模式，仅在创建soundPool之后，首次播放之前设置有效，否则将默认使用SoundInterruptMode，即同音频打断模式。
+设置SoundPool中同ID音频的打断模式，且仅在创建soundPool之后，首次播放之前设置有效，否则将默认使用SoundInterruptMode，即同ID音频打断模式。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1273,7 +1273,7 @@ setInterruptMode(interruptMode: media.SoundInterruptMode): void;
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| interruptMode | media.SoundInterruptMode | 是   | 音频流打断模式，通过media.SoundInterruptMode枚举获取。 |
+| interruptMode | media.SoundInterruptMode | 是   | 同ID音频打断模式，通过media.SoundInterruptMode枚举获取。 |
 
 **返回值：**
 
@@ -1299,10 +1299,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
   } else {
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
-    // 设置为同音频截断模式
-    soundPool.setInterruptMode(media.SoundInterruptMode.SAME_SOUND_INTERRUPT);
-    // 设置为同音频并行播放模式
+    // 选择模式1：同ID音频并行播放模式
     soundPool.setInterruptMode(media.SoundInterruptMode.NO_INTERRUPT);
+    // 选择模式2：同ID音频截断模式
+    soundPool.setInterruptMode(media.SoundInterruptMode.SAME_SOUND_INTERRUPT);
   }
 });
 ```
