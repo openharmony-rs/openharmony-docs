@@ -1,4 +1,10 @@
 # QoS 开发指导
+<!--Kit: Kernel Enhance Kit-->
+<!--Subsystem: Kernel-->
+<!--Owner: @yzl-kongzhenhua; @Leibobo-->
+<!--Designer: @wangxiayang; @lizongfeng; @zzzuo-->
+<!--Tester: @lianxuanself; @laonie666-->
+<!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
