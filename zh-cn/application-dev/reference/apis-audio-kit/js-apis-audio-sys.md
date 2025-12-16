@@ -4024,9 +4024,9 @@ try {
 
 setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
-根据输入指令，开启/关闭指定设备移动全景声。使用Promise异步回调。
+根据输入指令，开启或关闭指定设备移动全景声。使用Promise异步回调。
 
-当前只有A2DP设备支持移动全景声。开启移动全景声后，指定A2DP设备和本地扬声器将同时播放音频。
+当前只有蓝牙A2DP设备支持移动全景声。当开启移动全景声后，指定蓝牙A2DP设备和本地扬声器将同时播放音频。
 
 **系统接口：** 此接口为系统接口。
 
