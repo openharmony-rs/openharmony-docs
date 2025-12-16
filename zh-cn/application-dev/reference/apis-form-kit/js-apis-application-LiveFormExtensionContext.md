@@ -12,15 +12,17 @@ LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFor
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
->
-> 在API version 22以前通过 import LiveFormExtensionContext from 'application/LiveFormExtensionContext'; 导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行，LiveFormExtensionContext直接使用。
->
-> 在API version 22及以后新增通过 import { common } from '@kit.AbilityKit'; 导入LiveFormExtensionContext，通过common.LiveFormExtensionContext方式使用。
 
 ## 导入模块
 ```ts
 import { common } from '@kit.AbilityKit';
 ```
+
+>  **说明：**
+>
+> - 在API version 22以前，需要通过`import LiveFormExtensionContext from 'application/LiveFormExtensionContext'; `导入LiveFormExtensionContext。该导入方式在DevEco Studio中标红，但不影响编译运行，可以直接使用LiveFormExtensionContext。
+>
+> - 在API version 22及以后，支持通过`import { common } from '@kit.AbilityKit'; `导入LiveFormExtensionContext，并通过common.LiveFormExtensionContext的方式使用。
 
 ## LiveFormExtensionContext
 
