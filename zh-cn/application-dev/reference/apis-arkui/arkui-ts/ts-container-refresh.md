@@ -103,7 +103,7 @@ pullToRefresh(value: boolean)
 
 pullUpToCancelRefresh(enabled: boolean | undefined)
 
-设置刷新状态之后，上划是否取消刷新。
+设置上划是否取消刷新。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -113,7 +113,7 @@ pullUpToCancelRefresh(enabled: boolean | undefined)
 
 | 参数名  | 类型                 | 必填 | 说明                                                         |
 | ------- | -------------------- | ---- | ------------------------------------------------------------ |
-| enabled | boolean \| undefined | 是   | 刷新状态之后，上划是否取消刷新。<br/>true表示能取消刷新；false表示不能取消刷新。<br/>值为undefined时，上划能取消刷新。 |
+| enabled | boolean \| undefined | 是   | 设置上划是否取消刷新。<br/>true表示取消刷新；false表示不取消刷新。<br/>值为undefined时，上划取消刷新。 |
 
 ### pullDownRatio<sup>12+</sup>
 
@@ -919,14 +919,14 @@ function customRefreshingContent(params: Params) {
   Stack() {
     Row() {
       LoadingProgress().height(32)
-      Text("refreshStatus: " + params.refreshStatus).fontSize(16).margin({ left: 20 })
+      Text('refreshStatus: ' + params.refreshStatus).fontSize(16).margin({ left: 20 })
     }
     .alignItems(VerticalAlign.Center)
   }
   .align(Alignment.Center)
   .clip(true)
   .constraintSize({ minHeight: 32 })
-  .width("100%")
+  .width('100%')
 }
 
 @Entry
