@@ -244,6 +244,20 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    - 获取图像帧数。
 
      <!-- @[get_frameCount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+     
+     ``` C++
+     // 获取图像帧数。
+     napi_value GetFrameCount(napi_env env, napi_callback_info info)
+     {
+         Image_ErrorCode errCode = OH_ImageSourceNative_GetFrameCount(g_thisImageSource->source,
+                                                                      &g_thisImageSource->frameCnt);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetFrameCount failed, errCode: %{public}d.", errCode);
+             return GetJsResult(env, errCode);
+         }
+         return GetJsResult(env, g_thisImageSource->frameCnt); // 返回获取到的图像帧数。
+     }
+     ```
 
    - 通过图片解码参数创建Pixelmap列表。
 
