@@ -1296,16 +1296,16 @@ type Nullable\<T> = T | undefined
 
 文本段落在水平方向的对齐方式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                  | 值 | 说明                                                         |
-| --------------------- | ------------------ | ------------------------------------------------------------ |
-| Start                 | 0 | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Center                | 1 | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| End                   | 2 | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| JUSTIFY<sup>10+</sup> | 3 | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| 名称     |  值  | 说明                                       |
+| ------ | ------ | ---------------------------------------- |
+| Start                     |  0  | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Center                    |  1  | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| End                       |  2  | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。。 |
+| RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## TextOverflow
 
