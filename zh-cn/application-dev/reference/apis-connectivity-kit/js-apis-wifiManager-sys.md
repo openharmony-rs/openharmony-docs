@@ -1470,8 +1470,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 **示例：**
 ```ts
 import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-wifiManager.getP2pGroups((err, data:wifiManager.WifiP2pGroupInfo) => {
+wifiManager.getP2pGroups((err: BusinessError<WifiP2pGroupInfo>, data:wifiManager.WifiP2pGroupInfo) => {
 if (err) {
     console.error("get P2P groups error");
     return;

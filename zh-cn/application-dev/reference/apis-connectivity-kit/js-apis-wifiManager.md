@@ -19,7 +19,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
-## wifiManager.isWifiActive<sup>9+</sup>
+## wifiManager.isWifiActive
 
 isWifiActive(): boolean
 
@@ -123,7 +123,7 @@ disableWifi(): void
 	}
 ```
 
-## wifiManager.scan<sup>9+</sup><sup>(deprecated)</sup>
+## wifiManager.scan<sup>(deprecated)</sup>
 
 scan(): void
 
@@ -194,7 +194,7 @@ startScan(): void
 	}
 ```
 
-## wifiManager.getScanResults<sup>9+</sup><sup>(deprecated)</sup>
+## wifiManager.getScanResults<sup>(deprecated)</sup>
 
 getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
@@ -225,7 +225,7 @@ getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.getScanResults<sup>9+</sup><sup>(deprecated)</sup>
+## wifiManager.getScanResults<sup>(deprecated)</sup>
 
 getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
@@ -299,7 +299,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
   });
 ```
 
-## wifiManager.getScanResultsSync<sup>9+</sup><sup>(deprecated)</sup>
+## wifiManager.getScanResultsSync<sup>(deprecated)</sup>
 
 getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt;
 
@@ -416,7 +416,7 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 	
 ```
 
-## WifiScanInfo<sup>9+</sup>
+## WifiScanInfo
 
 WLAN热点信息。
 
@@ -438,7 +438,7 @@ WLAN热点信息。
 | centerFrequency1 | number | 否 | 否 | 热点的中心频率。如果热点使用两个不重叠的WLAN信道，则返回两个中心频率，分别用centerFrequency0和centerFrequency1表示。 |
 | infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem9)&gt; | 否 | 否 | 信息元素。 |
 | timestamp | number | 否 | 否 | 时间戳。 |
-| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 |
+| supportedWifiCategory<sup>20+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 |
 | isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true表示支持，&nbsp;false表示不支持。 |
 
 ## DeviceAddressType<sup>10+</sup>
@@ -456,7 +456,7 @@ WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一
 | RANDOM_DEVICE_ADDRESS | 0 | 随机设备地址。 |
 | REAL_DEVICE_ADDRESS | 1 | 真实设备地址。 |
 
-## WifiSecurityType<sup>9+</sup>
+## WifiSecurityType
 
 表示加密类型的枚举。
 
@@ -508,7 +508,7 @@ WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一
 | WIFI_STANDARD_11AX | 6 | 802.11ax WiFi标准类型。 |
 | WIFI_STANDARD_11AD | 7 | 802.11ad WiFi标准类型。 |
 
-## WifiInfoElem<sup>9+</sup>
+## WifiInfoElem
 
 WLAN热点信息。
 
@@ -521,7 +521,7 @@ WLAN热点信息。
 | content | Uint8Array | 否 | 否 | 元素内容。 |
 
 
-## WifiChannelWidth<sup>9+</sup>
+## WifiChannelWidth
 
 表示带宽类型的枚举。
 
@@ -538,7 +538,7 @@ WLAN热点信息。
 | WIDTH_INVALID | 5 | 无效值 |
 
 
-## WifiDeviceConfig<sup>9+</sup>
+## WifiDeviceConfig
 
 WLAN配置信息。
 
@@ -657,7 +657,7 @@ WAPI认证方式的枚举。
 | WIFI7<sup>15+</sup> | 4 | Wifi7。 |
 | WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 |
 
-## wifiManager.addCandidateConfig<sup>9+</sup>
+## wifiManager.addCandidateConfig
 
 addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
@@ -715,7 +715,7 @@ addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 	}
 `````
 
-## wifiManager.addCandidateConfig<sup>9+</sup>
+## wifiManager.addCandidateConfig
 
 addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
@@ -766,7 +766,7 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 	}
 `````
 
-## wifiManager.removeCandidateConfig<sup>9+</sup>
+## wifiManager.removeCandidateConfig
 
 removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
@@ -822,7 +822,7 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 	}
 ```
 
-## wifiManager.removeCandidateConfig<sup>9+</sup>
+## wifiManager.removeCandidateConfig
 
 removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -913,7 +913,7 @@ removeDevice(id: number): void
     }
 ```
 
-## wifiManager.getCandidateConfigs<sup>9+</sup>
+## wifiManager.getCandidateConfigs
 
 getCandidateConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
@@ -969,7 +969,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 	
 ```
 
-## wifiManager.connectToCandidateConfig<sup>9+</sup>
+## wifiManager.connectToCandidateConfig
 
 connectToCandidateConfig(networkId: number): void
 
@@ -1256,7 +1256,7 @@ connectToNetwork(networkId: number): void
 	
 ```
 
-## wifiManager.getSignalLevel<sup>9+</sup>
+## wifiManager.getSignalLevel
 
 getSignalLevel(rssi: number, band: number): number
 
@@ -1305,7 +1305,7 @@ getSignalLevel(rssi: number, band: number): number
 
 ```
 
-## wifiManager.getLinkedInfo<sup>9+</sup>
+## wifiManager.getLinkedInfo
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
@@ -1336,7 +1336,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 | 2501000  | Operation failed.|
 | 2501001  | Wi-Fi STA disabled.|
 
-## wifiManager.getLinkedInfo<sup>9+</sup>
+## wifiManager.getLinkedInfo
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
@@ -1422,7 +1422,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
   }
 ```
 
-## WifiLinkedInfo<sup>9+</sup>
+## WifiLinkedInfo
 
 提供WLAN连接的相关信息。
 
@@ -1466,7 +1466,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 | WIFI7_EMLSR | 3 | Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。 |
 | WIFI7_STR | 4 | Wi-Fi7 STR（Simultaneous Tx and Rx，同时发送和接收）连接。 |
 
-## ConnState<sup>9+</sup>
+## ConnState
 
 表示WLAN连接状态的枚举。
 
@@ -1484,7 +1484,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 | UNKNOWN | 7 | WLAN连接建立失败。 |
 
 
-## wifiManager.isConnected<sup>9+</sup>
+## wifiManager.isConnected
 
 isConnected(): boolean
 
@@ -1561,7 +1561,7 @@ disconnect(): void
 ```
 
 
-## wifiManager.isFeatureSupported<sup>9+</sup>
+## wifiManager.isFeatureSupported
 
 isFeatureSupported(featureId: number): boolean
 
@@ -1667,7 +1667,7 @@ API8-15 ohos.permission.GET_WIFI_LOCAL_MAC权限仅向系统应用开放，从AP
 ```
 
 
-## wifiManager.getIpInfo<sup>9+</sup>
+## wifiManager.getIpInfo
 
 getIpInfo(): IpInfo
 
@@ -1705,7 +1705,7 @@ getIpInfo(): IpInfo
 	}
 ```
 
-## IpInfo<sup>9+</sup>
+## IpInfo
 
 IPV4信息。
 
@@ -1777,7 +1777,7 @@ Ipv6信息。
 | primaryDNS | string | 否 | 否 | 主DNS服务器Ipv6地址。 |
 | secondDNS | string | 否 | 否 | 备DNS服务器Ipv6地址。 |
 
-## wifiManager.getCountryCode<sup>9+</sup>
+## wifiManager.getCountryCode
 
 getCountryCode(): string
 
@@ -1944,7 +1944,7 @@ isHotspotActive(): boolean
 ```
 
 
-## wifiManager.getP2pLinkedInfo<sup>9+</sup>
+## wifiManager.getP2pLinkedInfo
 
 getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
@@ -1973,7 +1973,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 | 2801000  | Operation failed. |
 
 
-## wifiManager.getP2pLinkedInfo<sup>9+</sup>
+## wifiManager.getP2pLinkedInfo
 
 getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
@@ -2020,7 +2020,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 ```
 
 
-## WifiP2pLinkedInfo<sup>9+</sup>
+## WifiP2pLinkedInfo
 
 提供WLAN连接的相关信息。
 
@@ -2033,7 +2033,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 | groupOwnerAddr | string | 否 | 否 | 群组IP地址。| 
 
 
-## P2pConnectState<sup>9+</sup>
+## P2pConnectState
 
 表示P2P连接状态的枚举。
 
@@ -2044,7 +2044,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 | DISCONNECTED | 0 | 断开状态。 |
 | CONNECTED | 1 | 连接状态。 |
 
-## wifiManager.getCurrentGroup<sup>9+</sup>
+## wifiManager.getCurrentGroup
 
 getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
@@ -2072,7 +2072,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.getCurrentGroup<sup>9+</sup>
+## wifiManager.getCurrentGroup
 
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
@@ -2117,7 +2117,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 	});
 ```
 
-## wifiManager.getP2pPeerDevices<sup>9+</sup>
+## wifiManager.getP2pPeerDevices
 
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
@@ -2145,7 +2145,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.getP2pPeerDevices<sup>9+</sup>
+## wifiManager.getP2pPeerDevices
 
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
@@ -2191,7 +2191,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 	});
 ```
 
-## WifiP2pDevice<sup>9+</sup>
+## WifiP2pDevice
 
 表示P2P设备信息。
 
@@ -2207,7 +2207,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | groupCapabilities | number | 否 | 否 | 群组能力。 |
 
 
-## P2pDeviceStatus<sup>9+</sup>
+## P2pDeviceStatus
 
 表示设备状态的枚举。
 
@@ -2222,7 +2222,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | UNAVAILABLE | 4 | 不可用状态。 |
 
 
-## wifiManager.getP2pLocalDevice<sup>9+</sup>
+## wifiManager.getP2pLocalDevice
 
 getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 
@@ -2250,7 +2250,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.getP2pLocalDevice<sup>9+</sup>
+## wifiManager.getP2pLocalDevice
 
 getP2pLocalDevice(callback: AsyncCallback&lt;WifiP2pDevice&gt;): void
 
@@ -2294,7 +2294,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 	});
 ```
 
-## wifiManager.createGroup<sup>9+</sup>
+## wifiManager.createGroup
 
 createGroup(config: WifiP2PConfig): void
 
@@ -2341,7 +2341,7 @@ createGroup(config: WifiP2PConfig): void
 	}
 ```
 
-## WifiP2PConfig<sup>9+</sup>
+## WifiP2PConfig
 
 表示P2P配置信息。
 
@@ -2357,7 +2357,7 @@ createGroup(config: WifiP2PConfig): void
 | goBand | [GroupOwnerBand](#groupownerband9) | 否 | 否 | 群组带宽。 |
 
 
-## GroupOwnerBand<sup>9+</sup>
+## GroupOwnerBand
 
 表示群组带宽的枚举。
 
@@ -2370,7 +2370,7 @@ createGroup(config: WifiP2PConfig): void
 | GO_BAND_5GHZ | 2 | 5GHZ。 |
 
 
-## wifiManager.removeGroup<sup>9+</sup>
+## wifiManager.removeGroup
 
 removeGroup(): void
 
@@ -2402,7 +2402,7 @@ removeGroup(): void
 	}
 ```
 
-## wifiManager.p2pConnect<sup>9+</sup>
+## wifiManager.p2pConnect
 
 p2pConnect(config: WifiP2PConfig): void
 
@@ -2499,7 +2499,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
   console.info("start discover devices -> " + wifiManager.startDiscoverDevices());
 ```
 
-## wifiManager.p2pCancelConnect<sup>9+</sup>
+## wifiManager.p2pCancelConnect
 
 p2pCancelConnect(): void
 
@@ -2531,7 +2531,7 @@ p2pCancelConnect(): void
 	}
 ```
 
-## wifiManager.startDiscoverDevices<sup>9+</sup>
+## wifiManager.startDiscoverDevices
 
 startDiscoverDevices(): void
 
@@ -2565,7 +2565,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 	}
 ```
 
-## wifiManager.stopDiscoverDevices<sup>9+</sup>
+## wifiManager.stopDiscoverDevices
 
 stopDiscoverDevices(): void
 
@@ -2640,7 +2640,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
   }
 ```
 
-## WifiP2pGroupInfo<sup>9+</sup>
+## WifiP2pGroupInfo
 
 表示P2P群组相关信息。
 
@@ -2659,7 +2659,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | goIpAddress | string | 否 | 否 | 群组IP地址。 |
 
 
-## wifiManager.on('wifiStateChange')<sup>9+</sup>
+## wifiManager.on('wifiStateChange')
 
 on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
@@ -2699,7 +2699,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 | 3 | 去激活中。 |
 
 
-## wifiManager.off('wifiStateChange')<sup>9+</sup>
+## wifiManager.off('wifiStateChange')
 
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
@@ -2745,7 +2745,7 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 ```
 
 
-## wifiManager.on('wifiConnectionChange')<sup>9+</sup>
+## wifiManager.on('wifiConnectionChange')
 
 on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
@@ -2782,7 +2782,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiConnectionChange')<sup>9+</sup>
+## wifiManager.off('wifiConnectionChange')
 
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
@@ -2827,7 +2827,7 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
 ```
 
-## wifiManager.on('wifiScanStateChange')<sup>9+</sup>
+## wifiManager.on('wifiScanStateChange')
 
 on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
@@ -2864,7 +2864,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiScanStateChange')<sup>9+</sup>
+## wifiManager.off('wifiScanStateChange')
 
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
@@ -2909,7 +2909,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
 ```
 
-## wifiManager.on('wifiRssiChange')<sup>9+</sup>
+## wifiManager.on('wifiRssiChange')
 
 on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
@@ -2937,7 +2937,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiRssiChange')<sup>9+</sup>
+## wifiManager.off('wifiRssiChange')
 
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
@@ -2980,7 +2980,7 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiRssiChange", recvWifiRssiChangeFunc);
 ```
  
-## wifiManager.on('hotspotStateChange')<sup>9+</sup>
+## wifiManager.on('hotspotStateChange')
 
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
@@ -3017,7 +3017,7 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
-## wifiManager.off('hotspotStateChange')<sup>9+</sup>
+## wifiManager.off('hotspotStateChange')
 
 off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
@@ -3061,7 +3061,7 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 ```
 
 
-## wifiManager.on('p2pStateChange')<sup>9+</sup>
+## wifiManager.on('p2pStateChange')
 
 on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
@@ -3099,7 +3099,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pStateChange')<sup>9+</sup>
+## wifiManager.off('p2pStateChange')
 
 off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
@@ -3142,7 +3142,7 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("p2pStateChange", recvP2pStateChangeFunc);
 ```
 
-## wifiManager.on('p2pConnectionChange')<sup>9+</sup>
+## wifiManager.on('p2pConnectionChange')
 
 on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
@@ -3170,7 +3170,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pConnectionChange')<sup>9+</sup>
+## wifiManager.off('p2pConnectionChange')
 
 off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
@@ -3213,7 +3213,7 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
   wifiManager.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
 ```
 
-## wifiManager.on('p2pDeviceChange')<sup>9+</sup>
+## wifiManager.on('p2pDeviceChange')
 
 on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
@@ -3243,7 +3243,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pDeviceChange')<sup>9+</sup>
+## wifiManager.off('p2pDeviceChange')
 
 off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
@@ -3264,7 +3264,7 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-| 201<sup>10+</sup> | Permission denied.                 |
+| 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
@@ -3284,7 +3284,7 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
   wifiManager.off("p2pDeviceChange", recvP2pDeviceChangeFunc);
 ```
 
-## wifiManager.on('p2pPeerDeviceChange')<sup>9+</sup>
+## wifiManager.on('p2pPeerDeviceChange')
 
 on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
@@ -3314,7 +3314,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pPeerDeviceChange')<sup>9+</sup>
+## wifiManager.off('p2pPeerDeviceChange')
 
 off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
@@ -3355,7 +3355,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
   wifiManager.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 ```
 
-## wifiManager.on('p2pPersistentGroupChange')<sup>9+</sup>
+## wifiManager.on('p2pPersistentGroupChange')
 
 on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
@@ -3383,7 +3383,7 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pPersistentGroupChange')<sup>9+</sup>
+## wifiManager.off('p2pPersistentGroupChange')
 
 off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
@@ -3426,7 +3426,7 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
   wifiManager.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
 ```
 
-## wifiManager.on('p2pDiscoveryChange')<sup>9+</sup>
+## wifiManager.on('p2pDiscoveryChange')
 
 on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
@@ -3461,7 +3461,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pDiscoveryChange')<sup>9+</sup>
+## wifiManager.off('p2pDiscoveryChange')
 
 off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
