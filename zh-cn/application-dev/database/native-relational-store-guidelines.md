@@ -107,7 +107,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 ```
 
 **头文件**
-<!--@[rdb_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[rdb_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
 ``` C++
 #include <database/data/data_asset.h>
