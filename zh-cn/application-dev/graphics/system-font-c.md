@@ -219,6 +219,10 @@
 5. 禁用系统字体。
 
    <!-- @[custom_font_c_disable_system_font_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   OH_Drawing_DisableFontCollectionSystemFont(fontCollection);
+   ```
 
 6. 创建文本样式对象，使用注册成功的自定义字体。
 
