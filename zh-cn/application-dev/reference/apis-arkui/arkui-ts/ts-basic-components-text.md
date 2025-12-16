@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -431,18 +431,19 @@ enableHapticFeedback(isEnabled: boolean)
 
 设置是否开启触控反馈。
 
->**说明：**
+开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段开启振动权限，配置如下：
+
+```json
+"requestPermissions": [
+ {
+    "name": "ohos.permission.VIBRATE",
+ }
+]
+```
+
+> **说明：**
 >
 > 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
->
-> 开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段开启振动权限，配置如下：
-> ```json
-> "requestPermissions": [
->  {
->     "name": "ohos.permission.VIBRATE",
->  }
-> ]
-> ```
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -1519,7 +1520,7 @@ Text组件的控制器。
 
 ### 导入对象
 
-```
+```ts
 controller: TextController = new TextController()
 ```
 
