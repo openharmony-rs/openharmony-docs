@@ -76,6 +76,18 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 5. 定义ImageAuxiliaryPictureNative类。
 
    <!-- @[define_auxPictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->    
+   
+   ``` C
+   class ImageAuxiliaryPictureNative {
+   public:
+       Image_ErrorCode errorCode = IMAGE_SUCCESS;
+       Image_AuxiliaryPictureType type = AUXILIARY_PICTURE_TYPE_GAINMAP;
+       OH_AuxiliaryPictureNative *auxiliaryPicture = nullptr;
+       size_t buffSize = 640 * 480 * 4; // 辅助图size：`长 * 宽 * 每个像素占用的字节数`。
+       ImageAuxiliaryPictureNative() {}
+       ~ImageAuxiliaryPictureNative() {}
+   };
+   ```
 
 6. 创建一个ImageAuxiliaryPictureNative实例。
 
