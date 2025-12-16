@@ -83,8 +83,8 @@ The **params** parameter in the event information is described as follows.
 | Value| Description|
 | -------- | -------- |
 | pss_memory | PSS memory leak.|
-| ion_memory | ION memory leak.<br />Note: This field is supported since API version 20.|
-| gpu_memory | GPU memory leak.<br />Note: This field is supported since API version 20.|
+| ion_memory | ION memory leak.<br>Note: This field is supported since API version 20.|
+| gpu_memory | GPU memory leak.<br>Note: This field is supported since API version 20.|
 | js_heap | JS memory leak.|
 | fd | Handle leak.|
 | thread | Thread leak.|
@@ -96,8 +96,8 @@ The **params** parameter in the event information is described as follows.
 | rss | number | Size of the memory allocated for a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | vss | number | Size of the virtual memory applied by a process from the system (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | pss | number | Size of the physical memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
-| ion | number | Size of the ION memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.<br />Note: This field is supported since API version 20.|
-| gpu | number | Size of the GPU memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.<br />Note: This field is supported since API version 20.|
+| ion | number | Size of the ION memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.<br>Note: This field is supported since API version 20.|
+| gpu | number | Size of the GPU memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.<br>Note: This field is supported since API version 20.|
 | sys_free_mem | number | Size of the free memory (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | sys_avail_mem | number | Size of the available memory (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | sys_total_mem | number | Size of the total memory (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|

@@ -1,5 +1,5 @@
 # Subscribing to Task Execution Timeout Events (C/C++)
- 
+
 ## Overview
 
 This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to task execution timeout events. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
@@ -308,7 +308,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
    }
    ```
 
-10. In DevEco Studio, click the **Run** button to run the project. Then, click the **testHiCollieTimerNdk** button to trigger a task execution timeout event.
+10. In DevEco Studio, click the **Run** button to run the project. Then, click the **TestHiCollieTimerNdk** button to trigger a task execution timeout event.
 
 ### Verifying the Subscription
 
