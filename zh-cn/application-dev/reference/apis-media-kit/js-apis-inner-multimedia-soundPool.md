@@ -46,17 +46,7 @@ import { audio } from '@kit.AudioKit';
 | 名称                                  | 值      | 说明                             |
 | ----------------------------------- | ------- | --------------------------------- |
 | LOAD_ERROR                           | 1       | 表示加载资源时发生错误。            |
-| PLAY_ERROR                           | 2       | 表示播放资源时发生错误。            |
-
-## SoundInterruptMode <sup>23+</sup>
-
-枚举，音频的打断类型
-
-**系统能力：** SystemCapability.Multimedia.Media.SoundPool
-| 名称                                  | 值      | 说明                             |
-| ----------------------------------- | ------- | --------------------------------- |
-| NO_INTERRUPT                            | 0       | 表示对同一个SoundID的音频，后者不会打断前者的播放，会并行播放。            |
-| SAME_SOUND_INTERRUPT                            | 1       | 表示对同一SoundID的音频，后者会打断前者的播放。            |
+| PLAY_ERROR                           | 2       | 表示播放资源时发生错误。            |           |
 
 ## ErrorInfo<sup>20+</sup>
 

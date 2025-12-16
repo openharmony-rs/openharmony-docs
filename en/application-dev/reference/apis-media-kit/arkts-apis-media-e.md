@@ -155,6 +155,16 @@ Enumerates the buffering event types.
 | BUFFERING_PERCENT | 3    | Buffering percentage. You can use this event to monitor the buffering status.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
 | CACHED_DURATION   | 4    |  Estimated duration, in ms, that the buffered data can be played. This event is triggered once the data change amount in the buffer exceeds 500 ms. You can use this event to develop a progress bar.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 
+## SoundInterruptMode <sup>23+</sup>
+
+枚举，音频的打断类型
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+| 名称                                  | 值      | 说明                             |
+| ----------------------------------- | ------- | --------------------------------- |
+| NO_INTERRUPT                            | 0       | 表示对同一个SoundID的音频，后者不会打断前者的播放，会并行播放。            |
+| SAME_SOUND_INTERRUPT                            | 1       | 表示对同一SoundID的音频，后者会打断前者的播放。 
+
 ## StateChangeReason<sup>9+</sup>
 
 Enumerates the reasons for the state transition of the AVPlayer or AVRecorder instance. The enum value is reported together with **state**.
