@@ -10927,7 +10927,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template3/BindMenuDemo.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":63,
 						"name":"bind_menu_demo",
 						"start_line":16
 					}
