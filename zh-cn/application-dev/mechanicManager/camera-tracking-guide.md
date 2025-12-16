@@ -42,8 +42,7 @@
 确保机械体设备连接或断开时，应用能及时响应，支持设备连接状态的动态管理。
 
 1. 导入机械体设备管理模块。
-
-    <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     import { mechanicManager } from '@kit.MechanicKit';
