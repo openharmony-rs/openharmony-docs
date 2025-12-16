@@ -40,10 +40,10 @@
    ``` TypeScript
    // 设置监听子类型事件，改变输入法应用界面
    inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-     if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+     if (inputMethodSubtype.id === 'InputMethodExtAbility') {
        AppStorage.setOrCreate('subtypeChange', 0);
      }
-     if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+     if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
        AppStorage.setOrCreate('subtypeChange', 1);
      }
    });
