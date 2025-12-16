@@ -1265,7 +1265,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
-创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#SoundInterruptMode23)，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。
+创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1273,7 +1275,7 @@ setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| interruptMode | media.SoundInterruptMode | 是   | 同一ID音频在播放时的打断模式，通过[media.SoundInterruptMode](arkts-apis-media-e.md#SoundInterruptMode23)枚举获取。 |
+| interruptMode | media.SoundInterruptMode | 是   | 同一ID音频在播放时的打断模式，通过[media.SoundInterruptMode](arkts-apis-media-e.md#soundinterruptmode23)枚举获取。 |
 
 **示例：**
 
