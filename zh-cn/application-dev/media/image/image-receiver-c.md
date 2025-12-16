@@ -209,6 +209,40 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 注册callback。
 
      <!-- @[register_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
+     
+     ``` C++
+     static Image_ErrorCode RegisterCallbackAndQuery(OH_ImageReceiverNative* receiver)
+     {
+         uint64_t surfaceID = 0;
+         Image_ErrorCode errCode = OH_ImageReceiverNative_On(receiver, OnCallback);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "Image receiver on failed, errCode: %{public}d.", errCode);
+             return errCode;
+         }
+         errCode = OH_ImageReceiverNative_GetReceivingSurfaceId(receiver, &surfaceID);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "Get image receiver surfaceID failed, errCode: %{public}d.", errCode);
+             return errCode;
+         }
+         OH_LOG_INFO(LOG_APP, "Get image receiver surfaceID: %{public}lu.", surfaceID);
+         Image_Size imgSizeRead;
+         errCode = OH_ImageReceiverNative_GetSize(receiver, &imgSizeRead);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "Get image receiver size failed, errCode: %{public}d.", errCode);
+             return errCode;
+         }
+         OH_LOG_INFO(LOG_APP, "Get image receiver size: width = %{public}d, height = %{public}d.",
+                     imgSizeRead.width, imgSizeRead.height);
+         int32_t capacity = 0;
+         errCode = OH_ImageReceiverNative_GetCapacity(receiver, &capacity);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "Get image receiver capacity failed, errCode: %{public}d.", errCode);
+             return errCode;
+         }
+         OH_LOG_INFO(LOG_APP, "Get image receiver capacity: %{public}d.", capacity);
+         return IMAGE_SUCCESS;
+     }
+     ```
  
    - 初始化Receiver的整体流程。
 
