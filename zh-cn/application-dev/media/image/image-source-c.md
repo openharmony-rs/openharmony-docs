@@ -262,6 +262,23 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    - 通过图片解码参数创建Pixelmap列表。
 
      <!-- @[create_pixelmapList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->        
+     
+     ``` C++
+     // 通过图片解码参数创建Pixelmap列表。
+     napi_value CreatePixelmapList(napi_env env, napi_callback_info info)
+     {
+         OH_DecodingOptions *opts = nullptr;
+         OH_DecodingOptions_Create(&opts);
+         OH_PixelmapNative** resVecPixMap = new OH_PixelmapNative* [g_thisImageSource->frameCnt];
+         size_t outSize = g_thisImageSource->frameCnt;
+         Image_ErrorCode errCode = OH_ImageSourceNative_CreatePixelmapList(g_thisImageSource->source,
+                                                                           opts, resVecPixMap, outSize);
+         OH_DecodingOptions_Release(opts);
+         opts = nullptr;
+         delete[] resVecPixMap;
+         return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_CreatePixelmapList");
+     }
+     ```
 
    - 获取图像延迟时间列表。
 
