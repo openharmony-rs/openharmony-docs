@@ -141,7 +141,7 @@ getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
+| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称，索引从0开始。 |
 
 **返回值：**
 
@@ -205,7 +205,7 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
+| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称，索引从0开始。 |
 
 **返回值：**
 
