@@ -317,7 +317,7 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 | 正常值     | \\      | BITRATE_MODE_VBR、BITRATE_MODE_CBR      | AV_ERR_OK     | \\        |
 | 正常值     | \\      | BITRATE_MODE_CQ           | AV_ERR_INVALID_VAL   | Bitrate 与 CQ 模式冲突      |
 | \\      | 正常值     | \\           | AV_ERR_OK     | 使能 CQ 模式 |
-| \\      | 正常值     | BITRATE_MODE_CQ           | AV_ERR_OK     |          |
+| \\      | 正常值     | BITRATE_MODE_CQ           | AV_ERR_OK     | \\       |
 | \\      | 正常值     | BITRATE_MODE_VBR、BITRATE_MODE_CBR      | AV_ERR_INVALID_VAL   | Quality 与 VBR、CBR 模式冲突 |
 | \\      | \\      | BITRATE_MODE_VBR、BITRATE_MODE_CBR      | AV_ERR_OK     | 使用编码器默认码率|
 | \\      | \\      | BITRATE_MODE_CQ           | AV_ERR_OK    | 使用默认quality  |
