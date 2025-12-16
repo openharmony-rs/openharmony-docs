@@ -199,6 +199,65 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_font_variation_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+// 创建一个 TypographyStyle 创建 Typography 时需要使用
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置文本对齐方式为居中
+OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
+// 设置文字内容
+const char *text = "Hello World Drawing\n";
+
+OH_Drawing_TextStyle *txtStyleWithVar = OH_Drawing_CreateTextStyle();
+// 设置可变字体的字重为800，在字体文件支持的情况下，还可以设置"slnt", "wdth"
+OH_Drawing_TextStyleAddFontVariation(txtStyleWithVar, "wght", 800);
+// 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
+OH_Drawing_SetTextStyleColor(txtStyleWithVar, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyleWithVar, DIV_TEN(width_));
+// 此处设置字重不生效，将被可变字体的字重覆盖
+OH_Drawing_SetTextStyleFontWeight(txtStyleWithVar, FONT_WEIGHT_400);
+
+// 创建一个不带可变字体的 TextStyle 用于对比
+OH_Drawing_TextStyle *txtStyleNoVar = OH_Drawing_CreateTextStyle();
+// 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
+OH_Drawing_SetTextStyleColor(txtStyleNoVar, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyleNoVar, DIV_TEN(width_));
+OH_Drawing_SetTextStyleFontWeight(txtStyleNoVar, FONT_WEIGHT_400);
+
+// 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+// 使用 FontCollection 和 之前创建的 TypographyStyle 创建 TypographyCreate。TypographyCreate 用于创建 Typography
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+
+// 加入带有可变字体的文本样式
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleWithVar);
+// 将文本添加到 handler 中
+OH_Drawing_TypographyHandlerAddText(handler, text);
+// 弹出之前创建的 TextStyle
+OH_Drawing_TypographyHandlerPopTextStyle(handler);
+
+// 后续加入的不带可变字体的文本样式
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleNoVar);
+// 将文本添加到 handler 中
+OH_Drawing_TypographyHandlerAddText(handler, text);
+// 弹出之前创建的 TextStyle
+OH_Drawing_TypographyHandlerPopTextStyle(handler);
+
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 设置页面最大宽度
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// 释放内存
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTextStyle(txtStyleWithVar);
+OH_Drawing_DestroyTextStyle(txtStyleNoVar);
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
+
 ![zh-cn_image_0000002211443824](figures/zh-cn_image_0000002211443824.png)
 
 
