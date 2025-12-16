@@ -1,10 +1,4 @@
 # Interface (RdbStore)
-<!--Kit: ArkData-->
-<!--Subsystem: DistributedDataManager-->
-<!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
-<!--Adviser: @ge-yafang-->
 
 提供管理关系数据库（RDB）方法的接口。
 
