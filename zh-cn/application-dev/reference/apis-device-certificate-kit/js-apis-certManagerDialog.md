@@ -424,7 +424,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401      | Invalid parameter. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                                                                                                                 |
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 
 **示例**：
@@ -482,7 +482,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 801      | Capability not supported.  |
-| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                                                                                                                 |
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error; 4. Call other service failed. Please try again.                 |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 | 29700007 | No available certificate for authorization            |
@@ -550,8 +550,8 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 801      | Capability not supported.  |
-| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                                                                                                                 |
-| 29700002 | The user cancels the authorization.                                                                                                             |
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
+| 29700002 | The user cancels the authentication operation.                                                                                                             |
 | 29700003 | The authentication operation failed, such as the USB key certificate does not exist, the USB key status is abnormal.                              |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 
