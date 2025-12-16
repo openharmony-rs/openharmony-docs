@@ -157,6 +157,17 @@
 
 7. 释放内存
    <!-- @[complex_text_c_independent_shaping_text_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+   
+   ``` C++
+   // 释放内存
+   OH_Drawing_DestroyTypographyStyle(typoStyle);
+   OH_Drawing_DestroyTextStyle(txtStyle);
+   OH_Drawing_DestroyFontCollection(fc);
+   OH_Drawing_DestroyTypographyHandler(handler);
+   OH_Drawing_DestroyLineTypography(lineTypography);
+   OH_Drawing_DestroyTextLine(textLine);
+   OH_Drawing_DestroyRuns(runs);
+   ```
 
 ### 示例和效果
 
