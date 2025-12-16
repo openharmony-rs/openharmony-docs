@@ -30,7 +30,7 @@ visualEffect(effect: VisualEffect): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| effect | [VisualEffect](#visualeffect) | 是   | 非滤镜视觉效果。 |
+| effect | [VisualEffect](#visualeffect-1) | 是   | 非滤镜视觉效果。 |
 
 **返回值：**
 
