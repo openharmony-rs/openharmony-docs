@@ -20,6 +20,10 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **返回值：**
 
 | 类型                                        | 说明          |
@@ -49,17 +53,23 @@ let portId: int = portList[0].portId;
 
 ## serialManager.hasSerialRight
 
-hasSerialRight(portId: int): boolean;
+ArkTS-Dyn: hasSerialRight(portId: number): boolean
+
+ArkTS-Sta: hasSerialRight(portId: int): boolean
 
 检查应用程序是否具有访问串口设备的权限。应用退出后再拉起时，需要重新申请授权。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | int | 是  | 端口号。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号。 |
 
 **返回值：**
 
@@ -74,7 +84,7 @@ hasSerialRight(portId: int): boolean;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception. |
+| 14400005 | Database operation exception.  |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 
@@ -108,17 +118,23 @@ if (serialManager.hasSerialRight(portId)) {
 
 ## serialManager.requestSerialRight
 
-requestSerialRight(portId: int): Promise&lt;boolean&gt;
+ArkTS-Dyn: requestSerialRight(portId: number): Promise&lt;boolean&gt;
+
+ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
 请求应用程序访问串口设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | int | 是  | 端口号。 |
+| portId |  ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号。 |
 
 **返回值：**
 
@@ -133,9 +149,9 @@ requestSerialRight(portId: int): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception. |
-| 31400001 | Serial port management exception. |
-| 31400003 | PortId does not exist. |
+| 14400005 | Database operation exception.  |
+| 31400001 | Serial port management exception.  |
+| 31400003 | PortId does not exist.  |
 
 **示例：**
 
@@ -173,17 +189,23 @@ if (!serialManager.hasSerialRight(portId)) {
 
 ## serialManager.open
 
-open(portId: int): void;
+ArkTS-Dyn: open(portId: number): void
+
+ArkTS-Sta: open(portId: int): void
 
 打开串口设备。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | int | 是  | 端口号。 |
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号。 |
 
 **错误码：**
 
@@ -192,9 +214,9 @@ open(portId: int): void;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. |
-| 31400002 | Access denied. Call requestSerialRight to request user authorization first. |
-| 31400003 | PortId does not exist. |
+| 31400001 | Serial port management exception.  |
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first.  |
+| 31400003 | PortId does not exist.  |
 | 31400004 | The serial port device is occupied. |
 
 **示例：**
@@ -241,17 +263,23 @@ try {
 
 ## serialManager.getAttribute
 
-getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattribute)&gt;;
+ArkTS-Dyn: getAttribute(portId: number): Readonly&lt;[SerialAttribute](#serialattribute)&gt;
+
+ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattribute)&gt;
 
 获取指定串口的配置参数。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | int | 是  | 端口号。 |
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号。 |
 
 **返回值：**
 
@@ -266,9 +294,9 @@ getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattribute)&gt;;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. |
+| 31400001 | Serial port management exception.  |
 | 31400003 | PortId does not exist. |
-| 31400005 | The serial port device is not opened. Call the open API first. |
+| 31400005 | The serial port device is not opened. Call the open API first.  |
 
 **示例：**
 
@@ -326,17 +354,23 @@ try {
 
 ## serialManager.setAttribute
 
-setAttribute(portId: int, attribute: [SerialAttribute](#serialattribute)): void;
+ArkTS-Dyn: setAttribute(portId: number, attribute: [SerialAttribute](#serialattribute)): void
+
+ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribute)): void
 
 设置串口的配置参数。如果未调用该方法，使用默认配置参数（波特率：9600bps；据位：8；校验位：0；停止位：1）。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名       | 类型                                  | 必填 | 说明          |
 |-----------|-------------------------------------|----|-------------|
-| portId    | int                              | 是  | 端口号。 |
+| portId    |   ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号。 |
 | attribute | [SerialAttribute](#serialattribute) | 是  | 串口参数。     |
 
 **错误码：**
@@ -348,7 +382,7 @@ setAttribute(portId: int, attribute: [SerialAttribute](#serialattribute)): void;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
-| 31400005 | The serial port device is not opened. Call the open API first. |
+| 31400005 | The serial port device is not opened. Call the open API first.  |
 
 **示例：**
 
@@ -408,25 +442,31 @@ try {
 
 ## serialManager.read
 
-read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;;
+ArkTS-Dyn: read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 从串口设备异步读取数据。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | int     | 是  | 端口号。      |
+| portId  |   ArkTS-Dyn: number<br> ArkTS-Sta: int       | 是  | 端口号。 |
+| portId  |   ArkTS-Dyn: number<br> ArkTS-Sta: int       | 是  | 端口号。 |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | int     | 否  | 读取的超时时间（以毫秒为单位）。 |
 
 **返回值：**
 
 | 类型                    | 说明             |
 |-----------------------|----------------|
-| Promise&lt;int&gt; | Promise对象，返回读取数据长度。 |
+| ArkTS-Dyn:  Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回读取数据长度。 |
 
 **错误码：**
 
@@ -493,25 +533,31 @@ serialManager.read(portId, readBuffer, 2000).then((size: int) => {
 
 ## serialManager.readSync
 
-readSync(portId: int, buffer: Uint8Array, timeout?: int): int;
+ArkTS-Dyn: readSync(portId: number, buffer: Uint8Array, timeout?: number): number
+
+ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 从串口设备同步读取数据。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | int     | 是  | 端口号。|
+| portId  |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 是  | 端口号。 |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | int     | 否  | 读取的超时时间（以毫秒为单位）。 |
+| timeout |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 否  | 读取的超时时间（以毫秒为单位）。 |
 
 **返回值：**
 
 | 类型     | 说明          |
 |--------|-------------|
-| int | 返回读取数据长度。 |
+|  ArkTS-Dyn: number<br> ArkTS-Sta: int  | 返回读取数据长度。 |
 
 **错误码：**
 
@@ -522,8 +568,8 @@ readSync(portId: int, buffer: Uint8Array, timeout?: int): int;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
-| 31400005 | The serial port device is not opened. Call the open API first. |
-| 31400006 | Data transfer timed out. |
+| 31400005 | The serial port device is not opened. Call the open API first.  |
+| 31400006 | Data transfer timed out.  |
 | 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
@@ -579,25 +625,31 @@ try {
 
 ## serialManager.write
 
-write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;;
+ArkTS-Dyn: write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 向串口设备异步写入数据。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | int     | 是  | 端口号。      |
+| portId  |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 是  | 端口号。 |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区。 |
-| timeout | int     | 否  | 写入的超时时间（以毫秒为单位）。 |
+| timeout |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 否  | 写入的超时时间（以毫秒为单位）。 |
 
 **返回值：**
 
 | 类型                    | 说明          |
 |-----------------------|-------------|
-| Promise&lt;int&gt; | Promise对象，返回写入数据长度。 |
+| ArkTS-Dyn: romise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回写入数据长度。 |
 
 **错误码：**
 
@@ -605,12 +657,12 @@ write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 | 31400001 | Serial port management exception. |
-| 31400003 | PortId does not exist. |
+| 31400003 | PortId does not exist.  |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 | 31400006 | Data transfer timed out. |
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed.  |
 
 **示例：**
 
@@ -664,25 +716,31 @@ serialManager.write(portId, writeBuffer, 2000).then((size: int) => {
 
 ## serialManager.writeSync
 
-writeSync(portId: int, buffer: Uint8Array, timeout?: int): int;
+ArkTS-Dyn: writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
+
+ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 向串口设备同步写数据。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | int     | 是  | 端口号。     |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号。 |
 | buffer  | Uint8Array | 是  | 写入目标缓冲区。 |
-| timeout | int     | 否  | 写入的超时时间（以毫秒为单位）。|
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 写入的超时时间（以毫秒为单位）。 |
 
 **返回值：**
 
 | 类型     | 说明          |
 |--------|-------------|
-| int | 返回写入数据长度。 |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 返回写入数据长度。 |
 
 **错误码：**
 
@@ -750,17 +808,23 @@ try {
 
 ## serialManager.close
 
-close(portId: int): void;
+ArkTS-Dyn: close(portId: number): void
+
+ArkTS-Sta: close(portId: int): void
 
 关闭串口。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | int | 是  | 端口号。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号。 |
 
 **错误码：**
 
@@ -825,17 +889,23 @@ try {
 
 ## serialManager.cancelSerialRight
 
-cancelSerialRight(portId: int): void;
+ArkTS-Dyn: cancelSerialRight(portId: number): void
+
+ArkTS-Sta: cancelSerialRight(portId: int): void
 
 移除应用程序运行时访问串口设备的权限。此接口会调用close关闭已打开的串口。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | int | 是  | 端口号。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号。 |
 
 **错误码：**
 
@@ -844,9 +914,9 @@ cancelSerialRight(portId: int): void;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception.                                |
+| 14400005 | Database operation exception.  |
 | 31400001 | Serial port management exception. |
-| 31400002 | Access denied. Call requestSerialRight to request user authorization first. |
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first.  |
 | 31400003 | PortId does not exist. |
 
 **示例：**
@@ -897,6 +967,10 @@ try {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 | 名称       |          类型        |  只读   |  可选 | 说明        |
 |----------|--------|----------|-----------|----------------------|
 | baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率。  |
@@ -910,9 +984,13 @@ try {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 | 名称     | 类型  |  只读 | 可选 | 说明    |
 |--------|--------|------|-------|--------|
-| portId | int | 否  |  否 | 端口号。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否  |  否 | 端口号。 |
 | deviceName | string | 否  |  否 | 串口设备名称。 |
 
 ## BaudRates
@@ -920,6 +998,10 @@ try {
 表示波特率的枚举
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
+
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -960,6 +1042,10 @@ try {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
+
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
 | DATABIT_8 | 8 | 报文的有效数据位宽为8比特 |
@@ -972,6 +1058,10 @@ try {
 表示校验位的校验方式的枚举
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
+
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -986,6 +1076,10 @@ try {
 表示停止位宽的枚举
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
+
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
