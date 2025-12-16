@@ -311,8 +311,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const bundleName = "com.example.dynamic";
 let moduleName = 'entry';
 const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
-  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
-  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 }
+  {
+    id: "1",
+    bundleName: bundleName,
+    moduleName: moduleName,
+    appIndex: 0,
+    sourceType: 2
+  },
+  {
+    id: "2",
+    bundleName: bundleName,
+    moduleName: moduleName,
+    appIndex: 0,
+    sourceType: 2
+  }
 ]
 
 try {
@@ -320,8 +332,8 @@ try {
     .then(() => {
       console.info('addDynamicShortcutInfos success');
     }).catch((err: Error) => {
-      console.error(`addDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
-    });
+    console.error(`addDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
 } catch (err) {
   console.error(`addDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
@@ -387,8 +399,8 @@ try {
     .then(() => {
       console.info('deleteDynamicShortcutInfos success');
     }).catch((err: Error) => {
-      console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
-    });
+    console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
 } catch (err) {
   console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
@@ -440,8 +452,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 请开发者替换为实际的快捷方式id、bundleName。
 const bundleName = "com.example.myapplication";
 const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
-  { id: "1", bundleName: bundleName, appIndex: 0, sourceType: 1 },
-  { id: "2", bundleName: bundleName, appIndex: 0, sourceType: 1 }
+  {
+    id: "1",
+    bundleName: bundleName,
+    appIndex: 0,
+    sourceType: 1
+  },
+  {
+    id: "2",
+    bundleName: bundleName,
+    appIndex: 0,
+    sourceType: 1
+  }
 ]
 
 try {
@@ -449,8 +471,8 @@ try {
     .then(() => {
       console.info('setShortcutsEnabled success');
     }).catch((err: Error) => {
-      console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
-    });
+    console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
 } catch (err) {
   console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
