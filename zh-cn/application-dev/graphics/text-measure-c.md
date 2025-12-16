@@ -76,6 +76,11 @@
 4. 调用排版接口并设置段落排版宽度，对段落进行塑型排版。
 
    <!-- @[c_text_metrics_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 对段落进行塑形排版，设置排版宽度为maxWidth
+   OH_Drawing_TypographyLayout(typography, maxWidth);
+   ```
 
 5. 调用段落测量信息获取接口，获取指定数据。
 
