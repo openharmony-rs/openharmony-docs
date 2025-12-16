@@ -189,7 +189,7 @@ export default class EntryAbility extends UIAbility {
 
 1. 开发者需要实现一个fts5可加载分词器扩展，并将其编译成so，编译可参考[使用命令行CMake构建NDK工程](../../napi/build-with-ndk-cmake.md)。
 
-2. 将生成的so后放到"/libs/arm64-v8a"目录下，"/libs/"的子目录需要根据系统架构来决定具体值，例如系统架构是arm64-v8a放在"/libs/arm64-v8a"目录下，系统架构是armeabi-v7a则放在"/libs/armeabi-v7a"目录下。
+2. 将生成的so文件放置在"/libs/"目录下的相应子目录中，子目录根据系统架构确定。例如，系统架构为arm64-v8a时，放置在"/libs/arm64-v8a"目录下；系统架构为armeabi-v7a时，放置在"/libs/armeabi-v7a"目录下。
 
 3. 使用RDB加载自定义分词器。
 
