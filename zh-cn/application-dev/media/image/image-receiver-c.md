@@ -345,6 +345,19 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 获取组件类型。
 
      <!-- @[get_componentType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     // 获取组件类型。
+     static size_t GetComponentTypeSize(OH_ImageNative* image, size_t& componentTypeSize)
+     {
+         OH_LOG_INFO(LOG_APP, "GetComponentTypeSize: enter, image=%{public}p", image);
+         // 获取组件类型的大小。
+         Image_ErrorCode errCode = OH_ImageNative_GetComponentTypes(image, nullptr, &componentTypeSize);
+         OH_LOG_INFO(LOG_APP, "GetComponentTypeSize: GetComponentTypes (query size) errCode=%{public}d,"
+                     "componentTypeSize=%{public}zu", errCode, componentTypeSize);
+         return componentTypeSize;
+     }
+     ```
 
    - 获取组件信息。
 
