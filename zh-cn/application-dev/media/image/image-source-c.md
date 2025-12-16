@@ -35,6 +35,15 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 1. 导入相关头文件。
 
    <!-- @[decodingPixel_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   
+   ``` C++
+   #include <string>
+   #include <hilog/log.h>
+   #include <multimedia/image_framework/image/image_source_native.h>
+   #include "napi/native_api.h"
+   #include <multimedia/image_framework/image/image_common.h>
+   #include <multimedia/image_framework/image/pixelmap_native.h>
+   ```
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
