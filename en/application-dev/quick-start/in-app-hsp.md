@@ -39,13 +39,13 @@ A Harmony Shared Package (HSP) is a dynamic shared package that can contain code
 
 ## Creating an HSP
 Create an HSP module for calling C++ code on DevEco Studio and turn on **Enable native** on the **Configure New Module** page. For details, see [Creating an HSP Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hsp#section7717162312546). The following uses the **library** module as an example. The basic project directory structure is as follows:
-```
+```txt
 MyApplication
 ├── library
 │   ├── src
 │   │   └── main
 |   |       ├── cpp
-|   |       |   ├── CMakeLists.txt    // Configuration file for compiling native C++ code
+|   |       |   ├── CMakeLists.txt    // Configuration file for compiling C++ code
 |   |       |   └── napi_init.cpp     // C++ file for initializing the NAPI module
 │   │       ├── ets
 │   │       │   └── pages
@@ -408,7 +408,7 @@ export struct Library_Menu {
 ```
 
 Add the **route_map.json** file (**library/src/main/resources/base/profile/route_map.json**) to the **library** module.
-```
+```json
 {
   "routerMap": [
     {
