@@ -1265,7 +1265,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void;
 
-设置SoundPool中同一ID音频在播放时的打断模式，且仅在创建soundPool之后，首次调用soundPool的Play函数之前设置有效，否则将默认使用SAME_SOUND_INTERRUPT，即对同一ID的音频，若前者尚未播放完成，后者在播放前会先打断前者的播放。
+设置SoundPool中同一ID音频在播放时的打断模式，且仅在创建soundPool之后，首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用SAME_SOUND_INTERRUPT，即对同一ID的音频，若前者尚未播放完成，后者在播放前会先打断前者的播放。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
