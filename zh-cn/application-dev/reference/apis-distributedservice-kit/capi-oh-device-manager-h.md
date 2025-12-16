@@ -26,7 +26,7 @@
 
 ### OH_DeviceManager_GetLocalDeviceName()
 
-```
+```c
 int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int &len)
 ```
 

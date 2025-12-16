@@ -47,7 +47,7 @@
 
 3. 拉起证书管理界面。
 
-<!-- @[certificate_management_dialog_box_development_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerDialogSample.ets) -->
+   <!-- @[certificate_management_dialog_box_development_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerDialogSample.ets) -->
 
 ``` TypeScript
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
@@ -75,7 +75,7 @@ async function certificateManagerDialogSample() {
 
 4. 调用安装证书对话框接口进行证书安装、调用删除证书对话框接口进行证书删除、调用查看证书详情的对话框接口、展示证书的详情。以上场景仅2in1设备支持。
 
-<!-- @[certificate_management_ca_dialog_development_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerCaDialogSample.ets) -->
+   <!-- @[certificate_management_ca_dialog_development_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerCaDialogSample.ets) -->
 
 ``` TypeScript
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';

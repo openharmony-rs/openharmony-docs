@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现状态管理V2与[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)等动效的同步刷新，开发者可以使用[applySync](../../reference/apis-arkui/js-apis-StateManagement.md#applysync22)、[flushUpdates](../../reference/apis-arkui/js-apis-StateManagement.md#flushupdates22)或[flushUIUpdates](../../reference/apis-arkui/js-apis-StateManagement.md#flushuiupdates22)接口。
+为了实现状态管理V2与[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)等动效的同步刷新，开发者可以使用[applySync](../../reference/apis-arkui/js-apis-stateManagement.md#applysync22)、[flushUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushupdates22)或[flushUIUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushuiupdates22)接口。
 
 > **说明：**
 >
@@ -15,7 +15,7 @@
 
 ## 概述
 
-与状态管理V1不同的是，状态管理V2修改完状态变量后不会立即[标脏](./arkts-state-management-glossary.md#标脏mark-dirty)，而是抛出一个Promise微任务（优先级低于宏任务），该微任务在当前宏任务执行完成后才会处理自定义组件标脏。而animateTo动效会立刻刷新已标脏节点来决定动效首帧。如果动效中使用了V2状态变量，并且在动效前修改了该状态变量，由于调用animateTo时状态变量的变化尚未标脏，这会导致animateTo的动效首帧不符合预期。为此，引入applySync、flushUpdates和flushUIUpdates接口，实现状态管理V2的同步标脏，确保动效达到预期效果。
+与状态管理V1不同的是，状态管理V2修改完状态变量后不会立即[标脏](./arkts-state-management-glossary.md#标脏mark-dirty)，而是抛出一个Promise微任务（优先级低于宏任务），该微任务在当前宏任务执行完成后才会处理自定义组件标脏，具体差异可参考[V1状态变量更新和V2状态变量更新差异](./arkts-v1-v2-update-difference.md#v1状态变量更新和v2状态变量更新差异)。而animateTo动效会立刻刷新已标脏节点来决定动效首帧。如果动效中使用了V2状态变量，并且在动效前修改了该状态变量，由于调用animateTo时状态变量的变化尚未标脏，这会导致animateTo的动效首帧不符合预期。为此，引入applySync、flushUpdates和flushUIUpdates接口，实现状态管理V2的同步标脏，确保动效达到预期效果。
 
 使用applySync/flushUpdates/flushUIUpdates接口需要导入UIUtils工具。
 
@@ -25,7 +25,7 @@ import { UIUtils } from '@kit.ArkUI';
 
 ## 使用规则
 
-- applySync接口用于同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed](./arkts-new-Computed.md)计算、[@Monitor](./arkts-new-monitor.md)回调以及重新渲染UI节点。
+- applySync接口用于同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed](./arkts-new-computed.md)计算、[@Monitor](./arkts-new-monitor.md)回调以及重新渲染UI节点。
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
@@ -136,8 +136,6 @@ import { UIUtils } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
-    @Local w: number = 50; // 宽度
-    @Local h: number = 50; // 高度
     @Local message: string = 'Hello';
 
     @Monitor('message')
@@ -149,35 +147,28 @@ import { UIUtils } from '@kit.ArkUI';
 
     build() {
       Column() {
+        Text(`message: ${this.message}`)
         Button('change size')
           .margin(20)
           .onClick(() => {
-            // 在执行动画前，存在额外的修改
-            this.w = 100;
-            this.h = 100;
+            // test1：调用applySync接口，日志打印两次
+            // UIUtils.applySync(() => {
+            //   this.message = 'Hello World';
+            // })
+            
+            // test2：调用flushUpdates接口，日志打印两次
+            // this.message = 'Hello World';
+            // UIUtils.flushUpdates();
+            
+            // test3：调用flushUIUpdates接口，日志打印一次
             this.message = 'Hello World';
             UIUtils.flushUIUpdates();
-
-            this.getUIContext().animateTo({
-              duration: 1000
-            }, () => {
-              this.w = 200;
-              this.h = 200;
-              this.message = 'Hello ArkUI';
-            });
+            this.message = 'Hello ArkUI';
           })
-        Column() {
-          Text(`${this.message}`)
-        }
-        .backgroundColor('#ff17a98d')
-        .width(this.w)
-        .height(this.h)
       }
     }
   }
   ```
-
-  ![applySync-flushUpdates-flushUIUpdates](./figures/applySync-flushUpdates-flushUIUpdates.gif)
 
 ## 限制条件
 
@@ -414,9 +405,15 @@ struct SharedTransitionExample {
   build() {
     Column() {
       // 此处'app.media.startIcon'仅做示例，请开发者自行替换
-      Image($r('app.media.startIcon')).width(50).height(50).margin({ left: 20, top: 20 })
+      Image($r('app.media.startIcon'))
+        .width(50)
+        .height(50)
+        .margin({ left: 20, top: 20 })
         .sharedTransition(this.info.name, { duration: 800, curve: Curve.Linear, delay: 100 })
-    }.width('100%').height('100%').alignItems(HorizontalAlign.Start)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Start)
     .onClick(() => {
       UIUtils.applySync(() => {
         this.info.name = 'id1'; // 不匹配
@@ -439,7 +436,9 @@ struct PageBExample {
   build() {
     Stack() {
       // 此处'app.media.startIcon'仅做示例，请开发者自行替换
-      Image($r('app.media.startIcon')).width(150).height(150)
+      Image($r('app.media.startIcon'))
+        .width(150)
+        .height(150)
         .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 })
         .onClick(() => {
           UIUtils.applySync(() => {
@@ -447,7 +446,9 @@ struct PageBExample {
           });
           this.getUIContext().getRouter().back();
         })
-    }.width('100%').height('100%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```

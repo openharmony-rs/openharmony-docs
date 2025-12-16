@@ -205,7 +205,7 @@ OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较�
 
    @Concurrent
    function TaskpoolFunc(data: string) {
-      console.log('testTag, ' + data);
+      console.info('testTag, ' + data);
       let sObj = testNapi.getSendableRefValueInWorkerOrTaskpool() as SendableClass;
       sObj.num = 2222;
    }

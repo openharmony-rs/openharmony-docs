@@ -145,13 +145,15 @@ struct Index {
 }
 ```
 
-## avSession.getAVSession<sup>21+</sup>
+## avSession.getAVSession<sup>22+</sup>
 
 getAVSession(context: Context): Promise\<AVSession>
 
 获取会话对象。使用Promise异步回调。
 
 该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，当前接口会调用失败抛出异常。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 

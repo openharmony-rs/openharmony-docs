@@ -120,7 +120,7 @@ static show(options?: DatePickerDialogOptions)
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-01-01");
 
   build() {
     Column() {
@@ -128,7 +128,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             showTime: true,
@@ -175,7 +175,7 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-01-01");
 
   build() {
     Column() {
@@ -183,7 +183,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             disappearTextStyle: { color: '#297bec', font: { size: '20fp', weight: FontWeight.Bold } },
@@ -257,7 +257,7 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-01-01");
 
   build() {
     Column() {
@@ -265,7 +265,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             showTime: true,
@@ -316,7 +316,7 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-01-01");
 
   build() {
     Column() {
@@ -324,7 +324,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             alignment: DialogAlignment.Center,
@@ -352,7 +352,7 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-01-01");
 
   build() {
     Column() {
@@ -360,7 +360,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             maskRect: {
@@ -392,7 +392,7 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-01-01");
 
   build() {
     Column() {
@@ -400,7 +400,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             backgroundColor: 'rgb(204, 226, 251)',
@@ -429,7 +429,7 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-11-09");
 
   build() {
     Column() {
@@ -437,7 +437,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             lunar: false,
@@ -453,7 +453,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             lunar: true,
@@ -480,7 +480,7 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-10-13");
 
   build() {
     Column() {
@@ -488,7 +488,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             mode: DatePickerMode.MONTH_AND_DAY,
@@ -516,7 +516,7 @@ struct DatePickerDialogExample {
 @Component
 struct DatePickerDialogExample {
   @State isLoop: boolean = true;
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2009-12-31");
 
   build() {
     Column() {
@@ -524,7 +524,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
+            start: new Date("2000-01-01"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
             canLoop: this.isLoop,
@@ -558,17 +558,18 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-01-01");
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("DatePickerDialog")
           .margin(20)
           .onClick(() => {
             this.getUIContext().showDatePickerDialog({
-              start: new Date("2000-1-1"),
+              start: new Date("2000-01-01"),
               end: new Date("2100-12-31"),
               selected: this.selectedDate,
               backgroundColor: undefined,
@@ -597,17 +598,18 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date("2010-01-01");
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("DatePickerDialog")
           .margin(20)
           .onClick(() => {
             this.getUIContext().showDatePickerDialog({
-              start: new Date("2000-1-1"),
+              start: new Date("2000-01-01"),
               end: new Date("2100-12-31"),
               selected: this.selectedDate,
               backgroundColor: undefined,

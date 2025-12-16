@@ -687,7 +687,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 | -------- | -------- | -------- | -------- | -------- |
 | connectState | [P2pConnectState](#p2pconnectstate8) | 否 | 否 | P2P连接状态。 |
 | isGroupOwner | boolean | 否 | 否 | 是否是群主。true:是群主，false:不是群主。 |
-| groupOwnerAddr | string | 否 | 否 | 群组MAC地址。 
+| groupOwnerAddr | string | 否 | 否 | 群组MAC地址。 |
 
 
 ## P2pConnectState<sup>8+</sup>

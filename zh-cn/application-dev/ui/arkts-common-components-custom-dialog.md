@@ -49,7 +49,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    
 
 
-2. 创建构造器，与装饰器呼应相连。
+2. 创建构造器，与装饰器相互连接。
    <!-- @[create_custom_dialog_new_customDialog_controller_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
    
    ``` TypeScript

@@ -631,7 +631,7 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-停止同一应用程序内的服务。使用callback异步回调。
+停止指定的ServiceExtensionAbility后台服务。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

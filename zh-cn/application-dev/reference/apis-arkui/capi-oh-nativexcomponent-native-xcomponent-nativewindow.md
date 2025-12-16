@@ -6,8 +6,8 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
-typedef struct OHNativeWindow OHNativeWindow
+```c
+typedef struct NativeWindow OHNativeWindow
 ```
 
 ## 概述

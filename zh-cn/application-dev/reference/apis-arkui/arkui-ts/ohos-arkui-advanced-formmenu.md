@@ -70,7 +70,7 @@ AddFormMenuItem(
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
-| 名称             | 类型|只读|可选| 说明                                                      |
+| 名称 | 类型 | 只读 |可选| 说明 |
 | --------------- | ---- | ---- | ---- | ---------------------------------------------------------------- |
 | formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 是 | 卡片数据。 |
 | callback        | AsyncCallback\<string>                                                                                                | 否 | 是  | 返回添加卡片是否成功的结果回调。返回为0表示卡片添加成功，非0表示卡片添加失败，失败时请参考[卡片错误码信息](../../apis-form-kit/errorcode-form.md)进行排查。  |

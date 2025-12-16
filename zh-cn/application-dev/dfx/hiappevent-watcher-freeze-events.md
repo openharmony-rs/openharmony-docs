@@ -22,6 +22,10 @@
 
 - [订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)
 
+> **说明：**
+>
+> 应用冻屏事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+
 ## 事件字段说明
 
 ### params字段说明
@@ -39,7 +43,7 @@
 | uid | number | 应用的用户ID。 |
 | uuid | string | 根据故障信息生成的故障特征码，用于标识特征相同的崩溃故障。 |
 | exception | object | 异常信息，详见exception属性。 |
-| hilog | string[] | 日志信息。 |
+| hilog | string[] | 日志信息。当生成应用无响应事件日志时，从hilog缓冲区中获取最多100行故障进程日志信息。 |
 | event_handler | string[] | 主线程未处理消息。 |
 | event_handler_size_3s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中3s时任务栈中任务数量。 |
 | event_handler_size_6s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中6s时任务栈中任务数量。 |

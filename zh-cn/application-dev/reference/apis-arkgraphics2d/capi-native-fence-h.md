@@ -34,7 +34,7 @@
 
 ### OH_NativeFence_IsValid()
 
-```
+```c
 bool OH_NativeFence_IsValid(int fenceFd)
 ```
 
@@ -59,7 +59,7 @@ bool OH_NativeFence_IsValid(int fenceFd)
 
 ### OH_NativeFence_Wait()
 
-```
+```c
 bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 ```
 
@@ -86,7 +86,7 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 
 ### OH_NativeFence_WaitForever()
 
-```
+```c
 bool OH_NativeFence_WaitForever(int fenceFd)
 ```
 
@@ -111,7 +111,7 @@ bool OH_NativeFence_WaitForever(int fenceFd)
 
 ### OH_NativeFence_Close()
 
-```
+```c
 void OH_NativeFence_Close(int fenceFd)
 ```
 

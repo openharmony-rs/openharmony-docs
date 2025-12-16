@@ -155,6 +155,111 @@ try {
 }
 ```
 
+## backgroundTaskManager.setBackgroundTaskState<sup>22+</sup>
+
+setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
+
+设置长时任务授权信息。
+
+**需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+**参数**：
+
+| 参数名     | 类型      | 必填   | 说明                    |
+| ------- | ------- | ---- |-----------------------|
+| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | 是    | 授权的必要信息，包括用户ID、应用包名、应用分身ID等。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 202 | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**示例**：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    // 请开发者根据实际情况更新参数
+    let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
+        userId: 100,
+        bundleName: 'com.example.continuoustask',
+        appIndex: 0,
+        authResult: backgroundTaskManager.UserAuthResult.DENIED
+    };
+    backgroundTaskManager.setBackgroundTaskState(backgroundTaskStateInfo);
+    console.info('Operation setBackgroundTaskState succeeded.');
+} catch (error) {
+    console.error(`Operation setBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+## backgroundTaskManager.getBackgroundTaskState<sup>22+</sup>
+
+getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
+
+获取长时任务授权信息。
+
+**需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+**参数**：
+
+| 参数名     | 类型      | 必填   | 说明                    |
+| ------- | ------- | ---- |-----------------------|
+| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | 是    | 授权的必要信息，包括用户ID、应用包名、应用分身ID等。 |
+
+**返回值**：
+
+| 类型                                            | 说明          |
+|-----------------------------------------------|-------------|
+|  [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 授权结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 202 | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**示例**：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    // 请开发者根据实际情况更新参数
+    let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
+        userId: 100,
+        bundleName: 'com.example.continuoustask',
+        appIndex: 0
+    };
+    let auth = backgroundTaskManager.getBackgroundTaskState(backgroundTaskStateInfo);
+    console.info('Operation getBackgroundTaskState succeeded. data: ' + JSON.stringify(auth));
+} catch (error) {
+    console.error(`Operation getBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
 ## BackgroundMode
 
 长时任务模式。
@@ -231,3 +336,18 @@ try {
 | 名称                     | 值  | 说明                    |
 | ------------------------ | ---- | --------------------- |
 | MODE_ALLOW_WIFI_AWARE           | 7         | WLAN相关业务。            |
+
+## BackgroundTaskStateInfo<sup>22+</sup>
+
+长时任务授权信息。
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+| 名称 | 类型                                  | 只读   | 可选 | 说明      |
+|--|-------------------------------------| ---- |----|---------|
+| userId | number                              | 否    | 否  | 用户ID。   |
+| bundleName | string                              | 否    | 否  | 应用包名。   |
+| appIndex | number                              | 否    | 否  | 应用分身ID。 |
+| authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 否    | 是  | 授权结果。   |

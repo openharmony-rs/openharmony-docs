@@ -34,9 +34,9 @@ import formInfo from '@ohos.application.formInfo';
 | type        | [FormType](#formtype)             | 否    | 否      | 表示卡片类型，当前支持JS卡片。 |
 | jsComponentName      | string               | 否    | 否      | 表示JS卡片的组件名。               |
 | colorMode  | [ColorMode](#colormode) | 否    | 否      | 表示卡片颜色模式。                                       |
-| isDefault    | boolean      | 否    | 否      | 表示是否是默认卡片。                              |
-| updateEnabled  | boolean               | 否    | 否      | 表示卡片是否使能更新。                    |
-| formVisibleNotify  | boolean               | 否    | 否      | 表示卡片是否使能可见通知。            |
+| isDefault    | boolean      | 否    | 否      | 表示是否是默认卡片。<br/>-&nbsp;true：默认卡片。<br/>-&nbsp;false：非默认卡片。|
+| updateEnabled  | boolean               | 否    | 否      | 表示卡片是否使能更新。<br/>-&nbsp;true：表示支持周期性刷新。<br/>-&nbsp;false：表示不支持周期性刷新。|
+| formVisibleNotify  | boolean               | 否    | 否      | 表示卡片是否使能可见通知。<br/>-&nbsp;true：通知卡片提供方可见状态变化。<br/>-&nbsp;false：不通知卡片提供方可见状态变化。|
 | relatedBundleName | string               | 否    | 否      | 表示卡片所属的相关联Bundle名称。           |
 | scheduledUpdateTime        | string               | 否    | 否      | 表示卡片更新时间。     |
 | formConfigAbility | string               | 否    | 否      | 表示卡片配置ability。   |

@@ -8,9 +8,9 @@
 
 应用可以通过[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。
 
-> **注意**
+> **注意：**
 >
-> onInterceptRequest接口中无法获取Post Data，如果想要获取Post Data需使用SchemeHandler机制来进行拦截。
+> - onInterceptRequest接口中无法获取Post Data，如果想要获取Post Data需使用SchemeHandler机制来进行拦截。
 
 ## 网络请求拦截处理 (onInterceptRequest接口)
 
@@ -34,7 +34,7 @@ ArkTS：[onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHa
 NDK：[ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop)  
 ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12)  
 
-> **注意**
+> **注意：**
 >
 > - 需要在Web组件初始化之后设置SchemeHandler，否则会设置失败。 
 > - 若想要拦截Web组件发出的第一个请求，可以通过[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考[完整示例](#完整示例)。
@@ -108,7 +108,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 在ArkTS中可以通过customizeSchemes注册自定义协议，示例如下：
 
- ``` ts
+  ``` ts
     // xxx.ets
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -198,6 +198,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+    return true;
   })
   ```
 
@@ -209,9 +210,9 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 NDK：[网络错误码(arkweb_net_error_list.h)](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md)。  
 ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/arkts-apis-netErrorList.md)。  
 
-> **注意**
+> **注意：**
 >
-> ArkWeb不支持自定义错误码，请使用ArkWeb提供的错误码来结束请求。
+> - ArkWeb不支持自定义错误码，请使用ArkWeb提供的错误码来结束请求。
 
 在NDK中，为被拦截的请求提供自定义的响应信息：
 
@@ -272,6 +273,7 @@ ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/
     } catch (error) {
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+    return true;
   })
   ```
 
@@ -291,6 +293,7 @@ ArkTS示例：
   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     // 直接调用didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true)，自动构造一个网络请求错误ERR_CONNECTION_FAILED。
     resourceHandler.didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true);
+    return true;
   })
   ```
 

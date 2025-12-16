@@ -87,7 +87,7 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **参考链接**
 
-[跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)。
+[跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)。
 
 
 ## @Link数据源类型错误
@@ -133,4 +133,4 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **参考链接**
 
-[跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)。
+[跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)。

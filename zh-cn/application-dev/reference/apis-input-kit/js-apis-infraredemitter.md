@@ -28,7 +28,7 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
-**系统能力**：SystemCapability.MultimodalInput.Input. InfraredEmitter
+**系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
 **参数**：
 

@@ -270,7 +270,7 @@ getId(): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回后端实例唯一标识的ID，取值范围：(0, +∞) |
+| number | 返回后端实例唯一标识的ID，取值范围：[-1, +∞) |
 
 **示例：**
 
@@ -432,6 +432,8 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 在组件出现和消失时，可以通过[组件内转场](../apis-arkui/arkui-ts/ts-transition-animation-component.md)添加动画效果。
 > - 组件内转场不支持的属性，可以参考[显式动画](./arkui-ts/ts-explicit-animation.md)中的[示例2](./arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
 > - 某些场景下，在[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发[onFinish动画播放完成回调](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
+> - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
 **参数：**
 
@@ -2562,7 +2564,7 @@ openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOp
 | ------- | ---------------------------------------- | ---- | ------- |
 | bindSheetContent | [ComponentContent\<T>](js-apis-arkui-ComponentContent.md) | 是 | 半模态页面中显示的组件内容。 |
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | 否    |   半模态页面样式。<br/>**说明：** <br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考[SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)文档。 |
-| targetId | number | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。 |
+| targetId | number | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。在传入undefined时返回错误码401。 |
 
 **返回值：**
 

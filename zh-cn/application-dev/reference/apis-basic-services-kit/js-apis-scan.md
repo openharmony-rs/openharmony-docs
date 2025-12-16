@@ -565,7 +565,7 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| batchMode | boolean | 是 | 是否使用批处理模式。 |
+| batchMode | boolean | 是 | 是否使用批处理模式。true表示使用批处理模式，false表示不使用批处理模式。 |
 
 **返回值：**
 | **类型** | **说明** |

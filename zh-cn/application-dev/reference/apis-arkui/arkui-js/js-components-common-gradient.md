@@ -65,7 +65,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
 
    ```css
    /* 45度夹角，从红色渐变到绿色 */
-     background: linear-gradient(45deg, rgb(255,0,0),rgb(0, 255, 0));
+   background: linear-gradient(45deg, rgb(255,0,0),rgb(0, 255, 0));
    ```
 
    

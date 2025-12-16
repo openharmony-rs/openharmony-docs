@@ -20,7 +20,7 @@
 ![image5](figures/image5.png)
 
 - 首先通过Web组件的javaScriptProxy属性，将JSBridgeHandle对象注册到H5的window上，作为H5调用原生的通道。当H5开始加载时，在onPageBegin生命周期中调用initJSBridge()方法初始化JSBridge。
-  ```
+  ```ts
   // javaScriptProxy对象
   public get javaScriptProxy() {
       return {
@@ -34,7 +34,7 @@
   }
   ```
 
-  ```
+  ```ts
   // 使用Web组件加载H5页面
   @Component
   struct JsProxy {
@@ -53,7 +53,7 @@
   ```
 
 - 在initJSBridge方法中，通过webviewControll.runJavaScript()将JSBridge初始化脚本注入H5执行。当H5调用时，生成window.callID标识回调函数，将callID与调用参数使用JSBridgeHandle.call传到原生侧。通过JSBridgeCallback接收原生侧执行的结果，根据callID找到对应callback执行并且释放内存。
-  ```
+  ```ts
   // bridgeKey与bridgeMethod动态生成H5侧调用的入口
   bridgeKey: string = 'JSBridge'
   bridgeMethod: string = 'call'
@@ -77,7 +77,7 @@
   ```
 
 - JSBridgeHandle.call()是H5调用原生接口的统一入口，在该方法中根据H5调用的方法名，匹配到对应接口去调用。调用结束后通过this.callback()方法将调用结果返回H5。callback方法中使用webviewControll.runJavaScript()调用H5的JSBridgeCallback回传callID和调用结果。
-  ```
+  ```ts
   // call方法调用原生侧方法，接收结果
   private call = (fun, params) => {
       try {
@@ -143,7 +143,7 @@ onInterceptRequest拦截页面Web的src的链接后返回自定义HTML，但是�
 
 **代码示例**
 
-```
+```ts
 Web({ src: 'www.example.com', controller: this.controller })
   .onInterceptRequest((event) => {
     console.log('url:' + event.request.getRequestUrl())
@@ -188,7 +188,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 1. 准备一个html文件，例如：
 
-   ```
+   ```html
    <!DOCTYPE html>
    <html lang="en">
    <head>
@@ -214,7 +214,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 2. 在ArkTs中使用JavaScriptProxy方法将ArkTs里的对象注册到H5的window对象中，然后在h5中使用window对象调用该方法。比如下面例子，在ArkTs中将testObj这个对象以别名objName注册到h5的window对象上，在上面的h5中就可以使用window.objName去访问这个对象。
 
-   ```
+   ```ts
    // xxx.ets
    import web_webview from '@ohos.web.webview'
    @Entry
@@ -295,7 +295,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 **代码示例**
 
-```
+```ts
 import web_webview from '@ohos.web.webview'
 @Entry
 @Component

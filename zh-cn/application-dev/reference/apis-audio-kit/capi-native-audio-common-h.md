@@ -34,7 +34,7 @@
 
 ### OH_AudioCommon_Result
 
-```
+```c
 enum OH_AudioCommon_Result
 ```
 
@@ -57,7 +57,7 @@ enum OH_AudioCommon_Result
 
 ### OH_AudioScene
 
-```
+```c
 enum OH_AudioScene
 ```
 
@@ -76,7 +76,7 @@ enum OH_AudioScene
 
 ### OH_AudioRingerMode
 
-```
+```c
 enum OH_AudioRingerMode
 ```
 
