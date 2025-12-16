@@ -5,15 +5,15 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
-DRM plugins implement the DRM HDI, and the DRM framework of DRM Kit loads the DRM plugins through the HDI.
+DRM plugins provide implementations of the DRM HDI APIs. The DRM framework of DRM Kit loads these plugins through the HDI.
 
 Plugins are developed by DRM solution integrators and placed in the /vendor partition of devices.
 
-For details about the development process of the OpenHarmony HDI plugin driver service, see [HDF Driver Development Process](../../../device-dev/driver/driver-hdf-manage.md). The IDL of the DRM HDI API is defined in the **ohos/drivers/interface/drm/v1_0** directory, where **v1_0** is the HDI API version number and should be changed to the actual version number.
+For details about the development process of the OpenHarmony HDI plugin driver service, see [HDF Driver Development Process](../../../device-dev/driver/driver-hdf-manage.md). The IDL for the DRM HDI APIs is defined in the **ohos/drivers/interface/drm/v1_0** directory. Note that **v1_0** corresponds to the HDI API version number and should be adjusted based on the actual HDI API version.
 
-After the IDL of the DRM HDI API is built, you can find the generated .h and .cpp files of the corresponding version in **//ohos/out/*productModel*/gen/drivers/interface/drm/v1_0/**.
+After the IDL of the DRM HDI API is built, the generated .h and .cpp files are located in **//ohos/out/*productModel*/gen/drivers/interface/drm/v1_0/**.
 
-To implement a DRM plugin (clearplay used as an example), perform the following steps:
+To implement a DRM plugin (using clearplay as an example), perform the following steps:
 
 1. [Plugin Development](#plugin-development)
     - Module addition
@@ -21,8 +21,8 @@ To implement a DRM plugin (clearplay used as an example), perform the following 
     - HDI API implementation
     - Compilation configuration
     - Component configuration
-    - Component compilation entry configuration
-    - Service code compilation
+    - Component build entry configuration
+    - Service code build
 
 2. [DRM Plugin Service Configuration](#drm-plugin-service-configuration)
     - hcs configuration
@@ -39,23 +39,23 @@ Create a plugin directory. The following is an example:
 ```
 //drivers/peripheral/clearplay
 .
-├── BUILD.gn     # Module compilation file.
-├── bundle.json  # Component configuration file.
-├── hdi_service  # HDI service code of the DRM solution.
-│   ├── BUILD.gn # Configuration file for the HDI service code of the DRM solution.
-│   ├── common   # Utility code for the HDI service of the DRM solution, including JSON parsing and Base64 encoding/decoding.
-│   ├── include  # Header file for the HDI service of the DRM solution.
-│   └── src      # Implementation code for the HDI service of DRM solution.
-├── interfaces   # Capability interfaces for the HDI service of the DRM solution.
-│   ├── BUILD.gn # Configuration file for the capability interfaces of the HDI service code of the DRM solution.
-│   ├── include  # Capability interface file for the HDI service of the DRM solution.
-│   └── src      # Implementation of the capability interfaces of the HDI service of the DRM solution.
-└── README.md # Description of the HDI service component in the DRM solution.
+├── BUILD.gn     # Module build configuration.
+├── bundle.json  # Component configuration
+├── hdi_service  # HDI service implementation of the DRM solution
+│   ├── BUILD.gn # HDI service build configuration
+│   ├── common   # Common utilities (JSON parsing, Base64 encoding/decoding)
+│   ├── include  # HDI service header files
+│   └── src      # HDI service source code
+├── interfaces   # HDI service capability interfaces
+│   ├── BUILD.gn # Interface build configuration
+│   ├── include  # Interface definitions
+│   └── src      # Interface implementations
+└── README.md # Component documentation
 ```
 
 ### Driver Entry Implementation
 
-Refer to **//ohos/out/productModel/gen/drivers/interface/drm/v1_0/media_key_system_factory_driver.cpp** for the driver entry implementation. Make the following modifications in the driver entry and configure the compilation manually:
+For the driver entry implementation, refer to **//ohos/out/productModel/gen/drivers/interface/drm/v1_0/media_key_system_factory_driver.cpp**. In your implementation, make the following modifications and configure the build manually:
 
 ```
 using namespace OHOS::HDI::Drm::V1_0; // 1. V1_0 indicates the HDI API version number. Replace it with the actual version number.
@@ -124,7 +124,7 @@ static int32_t MediaKeySystemFactoryDriverDispatch(struct HdfDeviceIoClient *cli
 
 ### HDI API Implementation
 
-Refer to the .cpp file automatically generated in **//ohos/out/*productModel*/gen/drivers/interface/drm/v1_0/** for the HDI API implementation. You can modify or add files based on service requirements. The following uses **media_key_system_factory_service.cpp** as an example.
+For the HDI API implementation, refer to the .cpp file automatically generated in **//ohos/out/*productModel*/gen/drivers/interface/drm/v1_0/**. You can modify or add files based on service requirements. The following uses **media_key_system_factory_service.cpp** as an example.
 
 ```
 extern "C" IMediaKeySystemFactory *MediaKeySystemFactoryImplGetInstance(void)
@@ -274,7 +274,7 @@ group("hdf_clearplay_interfaces") {
 
 ### Component Configuration
 
-Create the **drivers/peripheral/clearplay/build.json** file to define the new drivers_peripheral_clearplay component.
+Create the **drivers/peripheral/clearplay/build.json** file to define the drivers_peripheral_clearplay component.
 
 ```
 {
@@ -355,7 +355,7 @@ Create the **drivers/peripheral/clearplay/build.json** file to define the new dr
   }
 }
 ```
-### Component Compilation Entry Configuration
+### Component Build Entry Configuration
 
 The following uses RK3568 as an example. The entry configuration file is **//productdefine/common/inherit/chipset_common.json**.
 
@@ -366,11 +366,11 @@ The following uses RK3568 as an example. The entry configuration file is **//pro
 }
 ```
 
-### Service Code Compilation
+### Service Code Build
 
-This process is similar to the compilation of system components.
+This process is similar to building system components.
 `./build.sh --product-name rk3568 --ccache --build-target drivers_peripheral_clearplay`
-The binary files generated after compilation are as follows:
+The build generates the following binary files:
 //ohos/out/rk3568/hdf/drivers_peripheral_clearplay/libclearplay_driver.z.so
 //ohos/out/rk3568/hdf/drivers_peripheral_clearplay/libmedia_key_system_factory_clearplay_service_1.0.z.so
 
@@ -384,14 +384,14 @@ The following uses RK3568 as an example. Add the driver service configuration to
 clearplay :: host {
     hostName = "clearplay_host";   // Process name.
     priority = 50;
-    uid = ""; // uid of the user-mode process. It is left empty by default. If you do not set the value, this parameter will be set to the value of hostName, which indicates a common user.
-    gid = ""; // gid of the user-mode process. It is left empty by default. If you do not set the value, this parameter will be set to the value of hostName, which indicates a common user group.
-    caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"]; // Linux capabilities of the user-mode process. It is left empty by default. Set this parameter based on service requirements.
+    uid = ""; // User ID of the user-space process. It is left empty by default. If you do not set the value, this parameter will be set to the value of hostName (regular user).
+    gid = ""; // Group ID of the user-space process. It is left empty by default. If you do not set the value, this parameter will be set to the value of hostName (regular user group).
+    caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"]; // Linux capabilities of the user-space process. It is left empty by default. Set this parameter based on service requirements.
     clearplay_device :: device {
         device0 :: deviceNode {
             policy = 2;
             priority = 100;
-            moduleName = "libclearplay_driver.z.so";  // Driver loading entry.
+            moduleName = "libclearplay_driver.z.so";  // Driver entry point.
             serviceName = "clearplay_service";        // Service name.
         }
     }
@@ -400,16 +400,16 @@ clearplay :: host {
 
 ### Host User and Group Configuration
 
-For the new host node in hcs, you must configure the uid and gid of the corresponding process.
+For any newly added host node in hcs, you must configure the uid and gid for the corresponding process.
 
-The **passwd** file is a system user configuration file that stores basic information about all users in the system. The following is an example:
+The **passwd** file is a system user configuration file that stores basic information about all users. The following is an example:
 
 ```
 //base/startup/init/services/etc/passwd
 clearplay_host:x:1089:1089::/bin/false
 ```
 
-In **//base/startup/init/services/etc/passwd**, each line of user information is divided into 7 fields, separated by colons (:). The meaning of each field is as follows:
+Each line in the **//base/startup/init/services/etc/passwd** file represents a user, using the colon (:) as a delimiter, divided into seven fields. The meaning of each field is as follows:
 
 Username: Password: uid: gid: Description: Home directory: Default shell
 
@@ -420,18 +420,17 @@ base/startup/init/services/etc/group
 clearplay_host:x:1089:
 ```
 
-In **base/startup/init/services/etc/group**, each line indicates a user group. The user group is divided into four fields, separated by colons (:). The meaning of each field is as follows:
+Each line in the **base/startup/init/services/etc/group** file indicates a user group, using the colon (:) as a delimiter, divided into four fields. The meaning of each field is as follows:
 
 Group name: Password: gid: List of users in the user group
 
 > **NOTE**
-> 
 > - **clearplay_host** in **passwd** corresponds to **uid** in **device_info.hcs**. If **uid** in **device_info.hcs** is not specified, the default value **hostName** is used.
 > - **clearplay_host** in **group** corresponds to **gid** in **device_info.hcs**. If **gid** in **device_info.hcs** is not specified, the default value **hostName** is used.
 
 ### Dynamic Loading
 
-To reduce Random Access Memory (RAM) usage, the DRM framework supports dynamic loading of DRM plugins. After the DRM framework calls the plugin, it should promptly unload the plugin to release the occupied RAM. The plugin must modify its service startup properties to configure itself as a lazy loading service and add itself to the lazy loading list configuration file for the DRM framework on the device. The HDI service provides dynamic loading capabilities, which are not loaded by default during system startup but can be loaded dynamically. Here is an example:
+To reduce Random Access Memory (RAM) usage, the DRM framework supports dynamic loading of DRM plugins. After calling a plugin, the framework promptly unloads it to free memory. The plugin must modify its service startup properties to configure itself as lazy-loaded and add itself to the lazy loading list configuration file of the DRM framework on the device. HDI services provide dynamic loading capabilities. By default, they are not loaded during system startup but can be loaded dynamically. Here is an example:
 
 Set **preload** to **2** in **device_info.hcs**.
 
@@ -443,14 +442,14 @@ clearplay :: host {
         device0 :: deviceNode {
             policy = 2;
             priority = 100;
-            preload = 2; // If preload is set to 2, the system does not load the file during startup by default. You can manually load the file later.
+            preload = 2; // If preload is set to 2, the system does not load the file during startup by default. It can be loaded manually later.
             moduleName = "libclearplay_driver.z.so";
             serviceName = "clearplay_service";
         }
     }
 }
 ```
-The **/etc/drm/drm_plugin_lazyloding.cfg** file on the device is the lazy loading list configuration file of the DRM framework. The file is in the format of key-value pairs, where the solution name of the DRM plugin is the key and the service name of the DRM solution is the value.
+The **/etc/drm/drm_plugin_lazyloding.cfg** file on the device is the lazy loading list configuration file of the DRM framework. The file is in the format of key-value pairs, where the DRM solution name is the key and the DRM service name is the value.
 ```
 {
     "plugin_services": {
@@ -463,7 +462,7 @@ The **/etc/drm/drm_plugin_lazyloding.cfg** file on the device is the lazy loadin
 
 ## Adding SELinux Permissions
 
-SELinux is used to restrict resources that can be accessed by service processes. The following provides the basic SELinux configuration. Add required rules based on services.
+SELinux is used to restrict resources that can be accessed by service processes. The following provides the basic SELinux configuration. Add required rules based on service requirements.
 
 In the following example, **clearplay_host** indicates the value of **hostName** in hcs, and **clearplay_service** indicates the service name.
 

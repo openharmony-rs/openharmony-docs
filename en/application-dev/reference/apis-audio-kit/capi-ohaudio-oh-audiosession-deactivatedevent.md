@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} OH_AudioSession_DeactivatedEvent
+```
+
 ## Overview
 
 The struct describes the event indicating that an audio session is deactivated.

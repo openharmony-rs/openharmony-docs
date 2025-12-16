@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_ColorSpace OH_Drawing_ColorSpace
+```
+
 ## Overview
 
 Defines a struct for a color space, which is used to describe the color information.

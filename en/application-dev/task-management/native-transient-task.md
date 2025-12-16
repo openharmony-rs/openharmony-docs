@@ -18,10 +18,10 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 | Name| Description|
 | -------- | -------- |
-| int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char *reason, TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info); | Requests a transient task.|
-| int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime); | Obtains the remaining time of a transient task.|
-| int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId); | Cancels a transient task.|
-| int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo); | Obtains all information about a transient task, including the remaining quota of the current day.|
+| [int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char *reason, TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_requestsuspenddelay)  | Requests a transient task.|
+| [int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_getremainingdelaytime) | Obtains the remaining time of a transient task.|
+| [int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_cancelsuspenddelay) | Cancels a transient task.|
+| [int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_gettransienttaskinfo) | Obtains all information about a transient task, including the remaining quota of the current day.|
 
 ## How to Develop
 
@@ -266,4 +266,4 @@ Configure the `CMakeLists.txt` file. Add the required shared library, that is, `
    ```
 > **NOTE**
 >
->If the `Request transient task` button is touched for more than three consecutive times, an error is reported. For more constraints, see [Transient Task (ArkTS)](transient-task.md#constraints).
+>If the `Request transient task` button is tapped for more than three consecutive times, the number of transient tasks exceeds the upper limit, and an error is reported. For more constraints, see [Transient Task (ArkTS)](transient-task.md#constraints).

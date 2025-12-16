@@ -65,7 +65,7 @@ HiLog模块日志接口定义，通过这些接口实现日志打印相关功能
 
 ### LogType
 
-```
+```c
 enum LogType
 ```
 
@@ -81,7 +81,7 @@ enum LogType
 
 ### LogLevel
 
-```
+```c
 enum LogLevel
 ```
 
@@ -101,7 +101,7 @@ enum LogLevel
 
 ### PreferStrategy
 
-```
+```c
 enum PreferStrategy
 ```
 
@@ -121,7 +121,7 @@ enum PreferStrategy
 
 ### OH_LOG_Print()
 
-```
+```c
 int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, ...)
 ```
 
@@ -151,7 +151,7 @@ int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *
 
 ### OH_LOG_PrintMsg()
 
-```
+```c
 int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *message)
 ```
 
@@ -180,7 +180,7 @@ int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const cha
 
 ### OH_LOG_PrintMsgByLen()
 
-```
+```c
 int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen, const char *message, size_t messageLen)
 ```
 
@@ -211,7 +211,7 @@ int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, cons
 
 ### OH_LOG_VPrint()
 
-```
+```c
 int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, va_list ap)
 ```
 
@@ -241,7 +241,7 @@ int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char 
 
 ### OH_LOG_IsLoggable()
 
-```
+```c
 bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)
 ```
 
@@ -268,7 +268,7 @@ bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)
 
 ### OH_LOG_DEBUG()
 
-```
+```c
 OH_LOG_DEBUG(type, ...)((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -294,7 +294,7 @@ DEBUG级别写日志，宏封装接口。使用时需要先定义日志业务领
 
 ### OH_LOG_INFO()
 
-```
+```c
 OH_LOG_INFO(type, ...)((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -320,7 +320,7 @@ INFO级别写日志，宏封装接口。使用时需要先定义日志业务领�
 
 ### OH_LOG_WARN()
 
-```
+```c
 OH_LOG_WARN(type, ...)((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -346,7 +346,7 @@ WARN级别写日志，宏封装接口。使用时需要先定义日志业务领�
 
 ### OH_LOG_ERROR()
 
-```
+```c
 OH_LOG_ERROR(type, ...)((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -372,7 +372,7 @@ ERROR级别写日志，宏封装接口。使用时需要先定义日志业务领
 
 ### OH_LOG_FATAL()
 
-```
+```c
 OH_LOG_FATAL(type, ...)((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -398,7 +398,7 @@ FATAL级别写日志，宏封装接口。使用时需要先定义日志业务领
 
 ### LogCallback()
 
-```
+```c
 typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag, const char *msg)
 ```
 
@@ -421,7 +421,7 @@ typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsi
 
 ### OH_LOG_SetCallback()
 
-```
+```c
 void OH_LOG_SetCallback(LogCallback callback)
 ```
 
@@ -440,7 +440,7 @@ void OH_LOG_SetCallback(LogCallback callback)
 
 ### OH_LOG_SetMinLogLevel()
 
-```
+```c
 void OH_LOG_SetMinLogLevel(LogLevel level)
 ```
 
@@ -465,7 +465,7 @@ void OH_LOG_SetMinLogLevel(LogLevel level)
 
 ### OH_LOG_SetLogLevel()
 
-```
+```c
 void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)
 ```
 

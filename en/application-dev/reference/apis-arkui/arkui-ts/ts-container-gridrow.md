@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The responsive grid layout provides rules for layout design and resolves issues of dynamic layout across devices with different sizes, thereby ensuring layout consistency across layouts on different devices.
 
@@ -23,7 +23,7 @@ This component can contain the **GridCol** child component.
 ## APIs
 GridRow(option?: GridRowOptions)
 
-Grid row layout container.
+Creates a **GridRow** container.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -38,7 +38,7 @@ Grid row layout container.
 
 ## GridRowOptions
 
-Layout options of the grid row layout container.
+Defines layout options of the **GridRow** container.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -88,20 +88,20 @@ Describes the numbers of grid columns for devices with different grid sizes.
 | xxl | number | No   | Yes | Number of grid columns on the device where the grid size is xxl.   |
 
 **NOTE**
-- For versions earlier than API version 20, if the number of columns in the GridRow component is configured only for some breakpoints, the number of columns at the configured smaller breakpoints is used to supplement the number of columns that are not configured. If the number of columns at the smaller breakpoints is not configured, the default number of columns (12) is used to supplement the number of columns that are not configured.
+- In versions earlier than API version 20: When **GridRow** column spans are configured only at specific breakpoints, unconfigured breakpoints inherit values from the next smaller configured breakpoint. If no smaller breakpoint exists, the default column count (12) is used for unconfigured breakpoints.
   <!--code_no_check-->
   ```ts
-  columns: {xs:2, md:4, lg:8} //equivalent to columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
-  columns: {md:4, lg:8} //equivalent to columns: {xs:12, sm:12, md:4, lg:8, xl:8, xxl:8}
+  columns: {xs:2, md:4, lg:8} // Equivalent to columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}.
+  columns: {md:4, lg:8} // Equivalent to columns: {xs:12, sm:12, md:4, lg:8, xl:8, xxl:8}.
   ```
-- For API version 20 and later, if the number of columns in the GridRow component is configured only for some breakpoints, the number of columns at the configured smaller breakpoints is used to supplement the number of columns that are not configured. If the number of columns at the smaller breakpoints is not configured, the number of columns at the configured larger breakpoints is used to supplement the number of columns that are not configured.
+- Since API version 20: When **GridRow** column spans are configured only at specific breakpoints, unconfigured breakpoints inherit values from the next smaller configured breakpoint. If no smaller breakpoint exists, values are inherited from the next larger configured breakpoint.
   <!--code_no_check-->
   ```ts
-  columns: {xs:2, md:4, lg:8} //equivalent to columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
-  columns: {md:4, lg:8} //equivalent to columns: {xs:4, sm:4, md:4, lg:8, xl:8, xxl:8}
+  columns: {xs:2, md:4, lg:8} // Equivalent to columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}.
+  columns: {md:4, lg:8} // Equivalent to columns: {xs:4, sm:4, md:4, lg:8, xl:8, xxl:8}.
   ```
-- You are advised to manually configure the number of columns in the GridRow component at different breakpoints to avoid unexpected layout effects of the default number of columns.
-- The width of each column is the content area size of the GridRow component minus the gutter of the grid child components, and then divided by the total number of columns. For example, if columns is set to 12, gutter is set to 10px, and padding is set to 20px for a GridRow with a width of 800px, the width of each column is (800 – 20 x 2 – 10 x 11)/12.
+- Recommendation: Explicitly configure **GridRow** column spans for all required breakpoints to prevent unexpected layout behavior caused by automatic value inheritance.
+- The width of each column is the content area size of the **GridRow** component minus the gutter of the grid child components, and then divided by the total number of columns. For example, if columns is set to 12, gutter is set to 10px, and padding is set to 20px for a GridRow with a width of 800px, the width of each column is (800 – 20 x 2 – 10 x 11)/12.
 
 ## GridRowSizeOption
 

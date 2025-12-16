@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-可以通过设置组件的 sharedTransition 属性将该元素标记为共享元素并设置对应的共享元素转场动效。sharedTransition仅发生在页面路由（router）跳转时。
+可以通过设置组件的sharedTransition属性将该元素标记为共享元素并设置对应的共享元素转场动效。sharedTransition仅发生在[页面路由（router）](../js-apis-router.md)跳转时。
 
 > **说明：**
 >
@@ -49,12 +49,12 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 
 | 名称              | 类型      | 只读 |  可选     | 说明                                                     |
 | ----------------- | -------------|------- | ------- | --------------------------------------------------------------|
-| duration          |     number   |  否  |    是          | 描述共享元素转场动效播放时长。<br>默认值：1000。 <br>单位：毫秒。<br/>取值范围：[0, +∞)。 |
+| duration          |     number   |  否  |    是          | 描述共享元素转场动效播放时长。<br>默认值：1000 <br>单位：毫秒。<br/>取值范围：[0, +∞)。 |
 | curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)  | 否 | 是 | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
-| delay          |     number   |  否  |  是         | 延迟播放时间。<br>默认值：0。 <br>单位：毫秒。 |
+| delay          |     number   |  否  |  是         | 延迟播放时间。<br>默认值：0 <br>单位：毫秒。 |
 | motionPath          | [MotionPathOptions](./ts-motion-path-animation.md)  |  否   |  是        | 运动路径信息。 |
-| zIndex          |     number   |  否   |   是           | 设置Z轴。<br/>取值范围：(-∞, +∞)。 |
-| type           |     [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype)   |  否  |  是 | 动画类型。<br>默认值：SharedTransitionEffectType.Exchange。 |
+| zIndex          |     number   |  否   |   是           | 设置Z轴。<br/>取值范围：(-∞, +∞)。<br>默认值：0 |
+| type           |     [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype)   |  否  |  是 | 动画类型。<br>默认值：SharedTransitionEffectType.Exchange |
 
 
 ## 示例
@@ -77,6 +77,11 @@ struct SharedTransitionExample {
       this.getUIContext().getRouter().pushUrl({ url: 'pages/PageB' })
     })
   }
+
+  pageTransition() {
+    PageTransitionEnter({ type: RouteType.None, duration: 0 })
+    PageTransitionExit({ type: RouteType.None, duration: 0 })
+  }
 }
 ```
 
@@ -91,6 +96,11 @@ struct PageBExample {
       Image($r('app.media.ic_health_heart')).width(150).height(150)
         .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 })
     }.width('100%').height('100%')
+  }
+
+  pageTransition() {
+    PageTransitionEnter({ type: RouteType.None, duration: 0 })
+    PageTransitionExit({ type: RouteType.None, duration: 0 })
   }
 }
 ```

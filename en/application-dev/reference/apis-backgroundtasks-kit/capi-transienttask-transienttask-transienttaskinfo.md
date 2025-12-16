@@ -7,6 +7,10 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTaskInfo
+```
+
 ## Overview
 
 A struct that describes all transient task information.

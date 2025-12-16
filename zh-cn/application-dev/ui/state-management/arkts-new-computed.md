@@ -201,101 +201,103 @@ get varName(): T {
 ### 当被计算的属性变化时，\@Computed装饰的getter访问器只会被求解一次
 1. 在自定义组件中使用计算属性。
 
-- 点击第一个Button改变lastName，触发\@Computed fullName重新计算。
-- `this.fullName`被绑定在两个Text组件上，观察`fullName`日志，可以发现，计算只发生了一次。
-- 对于前两个Text组件，`this.lastName + ' '+ this.firstName`这段逻辑被求解了两次。
-- 如果UI中有多处需要使用`this.lastName + ' '+ this.firstName`这段计算逻辑，可以使用计算属性，减少计算次数。
-- 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
+   - 点击第一个Button改变lastName，触发\@Computed fullName重新计算。
+   - `this.fullName`被绑定在两个Text组件上，观察`fullName`日志，可以发现，计算只发生了一次。
+   - 对于前两个Text组件，`this.lastName + ' '+ this.firstName`这段逻辑被求解了两次。
+   - 如果UI中有多处需要使用`this.lastName + ' '+ this.firstName`这段计算逻辑，可以使用计算属性，减少计算次数。
+   - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
-  <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) -->
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const TAG = '[Sample_Textcomponent]';
-  const DOMAIN = 0xF811;
-  const BUNDLE = 'Textcomponent_';
-  
-  @Entry
-  @ComponentV2
-  struct CustomComponentUse {
-    @Local firstName: string = 'Li';
-    @Local lastName: string = 'Hua';
-    age: number = 20; // 无法触发Computed
-  
-    @Computed
-    get fullName() {
-      hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
-      return this.firstName + ' ' + this.lastName + this.age;
-    }
-  
-    build() {
-      Column() {
-        Text(this.lastName + ' ' + this.firstName)
-        Text(this.lastName + ' ' + this.firstName)
-        Divider()
-        Text(this.fullName)
-        Text(this.fullName)
-        Button('changed lastName')
-          .onClick(() => {
-            this.lastName += 'a';
-          })
-  
-        Button('changed age')
-          .onClick(() => {
-            this.age++;  // 无法触发Computed
-          })
-      }
-    }
-  }
-  ```
+   <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) -->
 
-计算属性本身会带来性能开销，在实际应用开发中需要注意：
-- 对于简单的计算逻辑，可以不使用计算属性。
-- 如果计算逻辑在视图中仅使用一次，则不使用计算属性，直接求解。
+   ```ts
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG = '[Sample_Textcomponent]';
+   const DOMAIN = 0xF811;
+   const BUNDLE = 'Textcomponent_';
+   
+   @Entry
+   @ComponentV2
+   struct CustomComponentUse {
+     @Local firstName: string = 'Li';
+     @Local lastName: string = 'Hua';
+     age: number = 20; // 无法触发Computed
+   
+     @Computed
+     get fullName() {
+       hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
+       return this.firstName + ' ' + this.lastName + this.age;
+     }
+   
+     build() {
+       Column() {
+         Text(this.lastName + ' ' + this.firstName)
+         Text(this.lastName + ' ' + this.firstName)
+         Divider()
+         Text(this.fullName)
+         Text(this.fullName)
+         Button('changed lastName')
+           .onClick(() => {
+             this.lastName += 'a';
+           })
+   
+         Button('changed age')
+           .onClick(() => {
+             this.age++;  // 无法触发Computed
+           })
+       }
+     }
+   }
+   ```
+
+   计算属性本身会带来性能开销，在实际应用开发中需要注意：
+
+   - 对于简单的计算逻辑，可以不使用计算属性。
+   - 如果计算逻辑在视图中仅使用一次，则不使用计算属性，直接求解。
 
 2. 在\@ObservedV2装饰的类中使用计算属性。
-- 点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
-  <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const TAG = '[Sample_Textcomponent]';
-  const DOMAIN = 0xF811;
-  const BUNDLE = 'Textcomponent_';
-  
-  @ObservedV2
-  class Name {
-    @Trace public firstName: string = 'Hua';
-    @Trace public lastName: string = 'Li';
-  
-    @Computed
-    get fullName() {
-      hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
-      return this.firstName + ' ' + this.lastName;
-    }
-  }
-  
-  const name: Name = new Name();
-  
-  @Entry
-  @ComponentV2
-  struct ObservedV2ClassUser {
-    name1: Name = name;
-  
-    build() {
-      Column() {
-        Text(this.name1.fullName)
-        Text(this.name1.fullName)
-        Button('changed lastName').onClick(() => {
-          this.name1.lastName += 'a';
-        })
-      }
-    }
-  }
-  ```
+   点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
+
+   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
+
+   ```ts
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG = '[Sample_Textcomponent]';
+   const DOMAIN = 0xF811;
+   const BUNDLE = 'Textcomponent_';
+   
+   @ObservedV2
+   class Name {
+     @Trace public firstName: string = 'Hua';
+     @Trace public lastName: string = 'Li';
+   
+     @Computed
+     get fullName() {
+       hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
+       return this.firstName + ' ' + this.lastName;
+     }
+   }
+   
+   const name: Name = new Name();
+   
+   @Entry
+   @ComponentV2
+   struct ObservedV2ClassUser {
+     name1: Name = name;
+   
+     build() {
+       Column() {
+         Text(this.name1.fullName)
+         Text(this.name1.fullName)
+         Button('changed lastName').onClick(() => {
+           this.name1.lastName += 'a';
+         })
+       }
+     }
+   }
+   ```
 
 ### \@Computed装饰的属性可以被\@Monitor监听变化
 如何使用计算属性求解fahrenheit和kelvin。示例如下：

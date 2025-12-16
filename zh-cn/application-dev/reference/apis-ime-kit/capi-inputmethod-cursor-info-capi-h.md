@@ -41,7 +41,7 @@
 
 ### OH_CursorInfo_Create()
 
-```
+```c
 InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double width, double height)
 ```
 
@@ -69,7 +69,7 @@ InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double wid
 
 ### OH_CursorInfo_Destroy()
 
-```
+```c
 void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 ```
 
@@ -88,7 +88,7 @@ void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 
 ### OH_CursorInfo_SetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, double left, double top, double width, double height)
 ```
 
@@ -117,7 +117,7 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 
 ### OH_CursorInfo_GetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, double *left, double *top, double *width, double *height)
 ```
 

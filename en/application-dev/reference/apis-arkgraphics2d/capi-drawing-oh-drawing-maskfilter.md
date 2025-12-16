@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_MaskFilter OH_Drawing_MaskFilter
+```
+
 ## Overview
 
 Defines a struct for a mask filter.

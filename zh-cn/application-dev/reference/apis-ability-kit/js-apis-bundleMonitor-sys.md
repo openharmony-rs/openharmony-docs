@@ -87,6 +87,7 @@ on(type: BundleChangedEvent, callback: Callback\<BundleChangedInfo>): void
 ```ts
 import { bundleMonitor } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
   console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
 };

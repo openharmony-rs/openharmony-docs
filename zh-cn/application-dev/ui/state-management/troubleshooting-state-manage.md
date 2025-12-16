@@ -44,7 +44,7 @@ struct Index {
 }
 ```
 观察日志输出`this.message`前后发生改变，日志输出如下：
-```
+```text
 message set before Hello World
 message set after Welcome
 ```
@@ -98,7 +98,7 @@ struct Child {
   }
 
   onChange() {
-    console.info(`innner property has been changed ${this.inner.value}`);
+    console.info(`inner property has been changed ${this.inner.value}`);
   }
 
   build() {
@@ -158,7 +158,7 @@ struct Child {
   }
 
   onChange() {
-    console.info(`innner property has been changed ${this.inner.value}`)
+    console.info(`inner property has been changed ${this.inner.value}`)
   }
 
   build() {
@@ -432,7 +432,7 @@ struct Page {
 
 第三步点击`Button('change resource')`后，输出日志如下：
 
-```
+```text
 Image render
 FIX THIS APPLICATION ERROR: @Component 'Page: State variable 'widthValue' has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!
 Image onComplete 200 load status: 0
@@ -488,7 +488,7 @@ struct Page {
 ```
 第三步点击`Button('change resource')`后，输出日志如下：
 
-```
+```text
 Image render
 Image onComplete 200 load status: 0
 Image onComplete 200 load status: 1

@@ -1,5 +1,8 @@
 # OH_LowPowerAudioSinkCallback
 
+```c
+typedef struct OH_LowPowerAudioSinkCallback OH_LowPowerAudioSinkCallback
+```
 ## Overview
 
 The struct contains a set of callback function pointers for the LowPowerAudioSink.

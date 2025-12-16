@@ -453,4 +453,107 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 
 ![](figures/text_too_long_scroll.gif)
 
+### selection如何触发弹出自定义菜单并设置菜单字体大小
+
+**问题现象**
+
+在[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11)自定义选择菜单中，可通过TextResponseType设置文本选择菜单的响应类型。通过[selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)如何触发弹出自定义菜单并设置菜单字体大小。
+
+**解决措施**
+
+若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample8 {
+  controller: TextController = new TextController();
+  options: TextOptions = { controller: this.controller };
+  @State selectStart: number = 0;
+  @State selectEnd: number = 0;
+
+  build() {
+    Column() {
+      Column() {
+        Text("TextTextTextText")
+          .fontSize(14)
+          .selection(this.selectStart, this.selectEnd)
+          .copyOption(CopyOptions.InApp)
+          .bindSelectionMenu(TextSpanType.TEXT, this.CustomMenu, TextResponseType.DEFAULT, {
+            onDisappear: () => {
+              this.selectStart = -1;
+              this.selectEnd = -1;
+            },
+          })
+          .textAlign(TextAlign.Center)
+          .borderWidth(1)
+          .borderColor(Color.Red)
+        Button("Set selection")
+          .onClick(() => {
+            this.selectStart = 0;
+            this.selectEnd = 10;
+          })
+          .fontSize(14)
+          .margin({ top: 20 })
+      }
+      .width('100%')
+      .padding({ top: 300 })
+    }
+    .height('100%')
+  }
+
+  @Builder
+  CustomMenu() {
+    Column() {
+      Menu() {
+        MenuItem({ content: "Item Content" })
+        MenuItem({ content: "Item Content" })
+        MenuItem({ content: "Item Content" })
+      }
+      .font({ size: 14 })
+      .radius($r('sys.float.ohos_id_corner_radius_card'))
+      .clip(true)
+      .backgroundColor('#F0F0F0')
+    }
+  }
+}
+```
+
+![](figures/selectionAndBindMenuAndFont.gif)
+
+### 如何屏蔽文本的长按手势
+
+**问题现象**
+
+配置[CopyOptions](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9)将文本设置为可选择，此时长按文本会选择文字内容并弹出系统菜单，如何使长按手势不生效。
+
+**解决措施**
+
+想要使长按手势对文本不生效，可以设置触发时间小于系统菜单触发时间（500ms）的自定义长按手势。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample8 {
+  build() {
+    Column() {
+      Text("TextTextTextText")
+        .copyOption(CopyOptions.InApp)
+        .gesture(LongPressGesture({ repeat: false, duration: 400 })
+          .onAction(() => {
+          }))
+        .margin({
+          top: 100,
+          bottom: 100,
+          left: 100,
+          right: 100
+        })
+    }
+    .height('100%')
+  }
+}
+```
+
 <!--RP4--><!--RP4End-->

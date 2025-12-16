@@ -48,7 +48,7 @@
 
 ### OH_NativeBundle_GetCurrentApplicationInfo()
 
-```
+```c
 OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()
 ```
 
@@ -66,7 +66,7 @@ OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()
 
 ### OH_NativeBundle_GetAppId()
 
-```
+```c
 char* OH_NativeBundle_GetAppId()
 ```
 
@@ -84,7 +84,7 @@ char* OH_NativeBundle_GetAppId()
 
 ### OH_NativeBundle_GetAppIdentifier()
 
-```
+```c
 char* OH_NativeBundle_GetAppIdentifier()
 ```
 
@@ -101,7 +101,7 @@ char* OH_NativeBundle_GetAppIdentifier()
 
 ### OH_NativeBundle_GetMainElementName()
 
-```
+```c
 OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 ```
 
@@ -119,7 +119,7 @@ OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 
 ### OH_NativeBundle_GetCompatibleDeviceType()
 
-```
+```c
 char* OH_NativeBundle_GetCompatibleDeviceType()
 ```
 
@@ -137,7 +137,7 @@ char* OH_NativeBundle_GetCompatibleDeviceType()
 
 ### OH_NativeBundle_IsDebugMode()
 
-```
+```c
 bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)
 ```
 
@@ -161,7 +161,7 @@ bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)
 
 ### OH_NativeBundle_GetModuleMetadata()
 
-```
+```c
 OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 ```
 
@@ -185,7 +185,7 @@ OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 
 ### OH_NativeBundle_GetAbilityResourceInfo()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo, size_t* size)
 ```
 

@@ -314,7 +314,7 @@ uri
 
 ### Media Library URI Introduction and Obtaining Method
 
-The URI uniquely identifies a media library asset. Each URI corresponds to a media asset. mediatool uses the URI to determine the media asset object to be operated.
+The URI uniquely identifies a media library asset. mediatool uses the URI to determine the media asset object to be operated.
 
 To obtain the URI, perform the following steps:
 
@@ -334,7 +334,7 @@ When the preceding URIs are used during mediatool operations, the target asset c
 
 ## hdc Commands
 
-Since API version 20, the hdc command can be used to access media library file paths, including the **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** indicates the ID of the current user.
+Since API version 21, the hdc command can be used to access media library file paths, including the **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** indicates the ID of the current user.
 
 ### Querying Media Library Files
 
@@ -346,7 +346,7 @@ Run the following command:
 hdc shell ls -l DEST
 ```
 
-**Use Example**
+**Example**
 
 ```shell
 $ hdc shell ls -l /mnt/data/100/media_fuse/Photo # Return the album list.
@@ -372,7 +372,7 @@ Run the following command:
 hdc file recv DEST SOURCE
 ```
 
-**Use Example**
+**Example**
 
 ```shell
 $ hdc file recv /mnt/data/100/media_fuse/Photo/Camera/File A # Export file A.
@@ -387,13 +387,13 @@ FileTransfer finish, Size:xxx, File...
 
 ### Importing Media Library Files
 
-You can import files and directories, but cannot create directories. If the directory names are the same, the content is combined (all files with different names are retained). If the file names are the same, the target file is overwritten.
+You can import media files (such as images and videos) and directories, but cannot create directories. If the directory names are the same, the content is combined (all files with different names are retained). If the file names are the same, the target file is overwritten.
 
 ```shell
 hdc file send SOURCE DEST
 ```
 
-**Use Example**
+**Example**
 
 ```shell
 $ hdc file send D:\dest\Camera/mnt/data/100/media_fuse/Photo/ # Import all files in D:\dest\Camera to /mnt/data/100/media_fuse/Photo/camera/.
@@ -414,7 +414,7 @@ You can delete specified files in an album, but cannot delete directories.
 hdc shell rm DEST
 ```
 
-**Use Example**
+**Example**
 
 ```shell
 $ hdc shell rm /mnt/data/100/media_fuse/Photo/Camera/ # Return failure.

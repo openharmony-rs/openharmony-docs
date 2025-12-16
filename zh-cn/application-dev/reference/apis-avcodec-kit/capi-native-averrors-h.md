@@ -33,7 +33,7 @@
 
 ### OH_AVErrCode
 
-```
+```c
 enum OH_AVErrCode
 ```
 

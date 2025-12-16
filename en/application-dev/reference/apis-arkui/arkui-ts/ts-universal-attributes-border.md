@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The border attributes are used to set border styles for components.
 
@@ -130,7 +130,7 @@ Sets the border radius. The radius value is restricted by the component size, wi
 
 | Name| Type                                                        | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| value  | [Length](ts-types.md#length) \| [BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup> \| [LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | Yes  | Border radius of the component. Percentage values relative to component width are supported. The maximum value is half the component's width or height. When combined with the [.clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.|
+| value  | [Length](ts-types.md#length) \| [BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup> \| [LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | Yes  | Border radius of the component. Percentage values relative to component width are supported. The maximum value is half the component's width or height. When combined with the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.|
 
 **Return value**
 
@@ -138,6 +138,30 @@ Sets the border radius. The radius value is restricted by the component size, wi
 | --- | --- |
 |  T | Current component.|
 
+## borderRadius<sup>22+</sup>
+
+borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: RenderStrategy): T
+
+Sets the border corner radius and the rendering strategy for rounded corners. The radius value is restricted by the component size, with the maximum value being half of the component's width or height.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 22.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                  |
+| ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| value  | [Length](ts-types.md#length) \| [BorderRadiuses](./ts-types.md#borderradiuses9) \| [LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) | Yes  | Radius of the border corners. The value can be expressed as a percentage of the component's width. When combined with the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.|
+| type  | [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | No  |Rendering strategy for drawing rounded corners.<br>Default value: **RenderStrategy.FAST**.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## Example
 
@@ -147,51 +171,6 @@ This example shows how to set the border width, color, border radius, and styles
 
 ```ts
 // xxx.ets
-@Entry
-@Component
-struct BorderExample {
-  build() {
-    Column() {
-      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // Dashed border
-        Text('dashed')
-          .borderStyle(BorderStyle.Dashed).borderWidth(5).borderColor(0xAFEEEE).borderRadius(10)
-          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
-        // Dotted border
-        Text('dotted')
-          .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
-          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
-      }.width('100%').height(150)
-
-      Text('.border')
-        .fontSize(50)
-        .width(300)
-        .height(300)
-        .border({
-          width: { left: 3, right: 6, top: 10, bottom: 15 },
-          color: { left: '#e3bbbb', right: Color.Blue, top: Color.Red, bottom: Color.Green },
-          radius: { topLeft: 10, topRight: 20, bottomLeft: 40, bottomRight: 80 },
-          style: {
-            left: BorderStyle.Dotted,
-            right: BorderStyle.Dotted,
-            top: BorderStyle.Solid,
-            bottom: BorderStyle.Dashed
-          }
-        }).textAlign(TextAlign.Center)
-    }
-  }
-}
-```
-
-![en-us_image_0000001211898466](figures/en-us_image_0000001211898466.gif)
-
-### Example 2: Setting the Border Width Type and Border Color
-
-In this example, the **width**, **radius**, and **color** properties of the **border** attribute use the **LocalizedEdgeWidths** and **LocalizedEdgeColors** types.
-
-```ts
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
 @Entry
 @Component
 struct BorderExample {
@@ -210,7 +189,88 @@ struct BorderExample {
           .fontSize(16)
         // Dotted border
         Text('dotted')
-          .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
+          .border({
+            width: 5,
+            color: 0x317AF7,
+            radius: 10,
+            style: BorderStyle.Dotted
+          })
+          .width(120)
+          .height(120)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+      }.width('100%').height(150)
+
+      Text('.border')
+        .fontSize(50)
+        .width(300)
+        .height(300)
+        .border({
+          width: {
+            left: 3,
+            right: 6,
+            top: 10,
+            bottom: 15
+          },
+          color: {
+            left: '#e3bbbb',
+            right: Color.Blue,
+            top: Color.Red,
+            bottom: Color.Green
+          },
+          radius: {
+            topLeft: 10,
+            topRight: 20,
+            bottomLeft: 40,
+            bottomRight: 80
+          },
+          style: {
+            left: BorderStyle.Dotted,
+            right: BorderStyle.Dotted,
+            top: BorderStyle.Solid,
+            bottom: BorderStyle.Dashed
+          }
+        })
+        .textAlign(TextAlign.Center)
+    }
+  }
+}
+```
+
+![en-us_image_0000001211898466](figures/en-us_image_0000001211898466.gif)
+
+### Example 2: Setting the Border Width Type and Border Color
+
+In this example, the **width**, **radius**, and **color** properties of the **border** attribute use the **LocalizedEdgeWidths** and **LocalizedEdgeColors** types.
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        // Dashed border
+        Text('dashed')
+          .borderStyle(BorderStyle.Dashed)
+          .borderWidth(5)
+          .borderColor(0xAFEEEE)
+          .borderRadius(10)
+          .width(120)
+          .height(120)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+        // Dotted border
+        Text('dotted')
+          .border({
+            width: 5,
+            color: 0x317AF7,
+            radius: 10,
+            style: BorderStyle.Dotted
+          })
           .width(120)
           .height(120)
           .textAlign(TextAlign.Center)
@@ -228,7 +288,12 @@ struct BorderExample {
             top: LengthMetrics.vp(10),
             bottom: LengthMetrics.vp(15)
           },
-          color: { start: '#e3bbbb', end: Color.Blue, top: Color.Red, bottom: Color.Green },
+          color: {
+            start: '#e3bbbb',
+            end: Color.Blue,
+            top: Color.Red,
+            bottom: Color.Green
+          },
           radius: {
             topStart: LengthMetrics.vp(10),
             topEnd: LengthMetrics.vp(20),
@@ -255,3 +320,82 @@ The following shows how the example is represented with left-to-right scripts.
 The following shows how the example is represented with right-to-left scripts.
 
 ![en-us_image_border_rtl](figures/en-us_image_border_rtl.png)
+
+### Example 3: Configuring Offscreen Rounded Corners
+
+This example demonstrates how to set the rendering strategy for drawing rounded corners on components, supported since API version 22.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct RenderStrategyExample {
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        Stack() {
+          Column()
+            .width(320)
+            .height(320)
+            .backgroundColor(Color.Black)
+
+          Stack() {
+            Stack() {
+              Scroll(new Scroller()) {
+                Image($r('app.media.startIcon'))
+                  .width('100%')
+                  .height('200%')
+              }
+
+              Column()
+                .blur(50)
+                .width(300)
+                .height(100)
+                .position({ x: 0, y: 0 })
+            }
+          }
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Pink)
+          .borderRadius(50, RenderStrategy.FAST)
+          .clip(true)
+        }
+
+        Stack() {
+          Column()
+            .width(320)
+            .height(320)
+            .backgroundColor(Color.Black)
+
+          Stack() {
+            Stack() {
+              Scroll(new Scroller()) {
+                Image($r('app.media.startIcon'))
+                  .width('100%')
+                  .height('200%')
+              }
+
+              Column()
+                .blur(50)
+                .width(300)
+                .height(100)
+                .position({ x: 0, y: 0 })
+            }
+          }
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Pink)
+          .borderRadius(50, RenderStrategy.OFFSCREEN)
+          .clip(true)
+        }
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+The following illustration compares online rendering (top) with offscreen rendering (bottom) modes.
+
+![Offscreen drawing](figures/renderStrategy.jpg)

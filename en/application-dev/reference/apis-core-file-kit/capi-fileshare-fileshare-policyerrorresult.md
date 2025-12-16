@@ -5,6 +5,9 @@
 <!--Designer: @chenxi0605; @JerryH1011-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @foryourself-->
+```c
+typedef struct FileShare_PolicyErrorResult {...} FileShare_PolicyErrorResult
+```
 
 ## Overview
 

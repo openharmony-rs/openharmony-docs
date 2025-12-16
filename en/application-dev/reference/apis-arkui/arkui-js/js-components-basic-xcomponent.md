@@ -1,4 +1,10 @@
 # xcomponent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 > 

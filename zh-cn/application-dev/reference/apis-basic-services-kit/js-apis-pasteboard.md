@@ -573,10 +573,10 @@ struct PasteboardTest {
               let text = "test";
               let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
               let systemPasteboard = pasteboard.getSystemPasteboard();
-        	  await systemPasteboard.setData(pasteData);
+              await systemPasteboard.setData(pasteData);
               let signal = new pasteboard.ProgressSignal;
               let progressListenerInfo = (progress: pasteboard.ProgressInfo) => {
-    		    console.info('progressListener success, progress:' + progress.progress);
+                console.info('progressListener success, progress:' + progress.progress);
                 signal.cancel();
               };
               let destPath: string = '/data/storage/el2/base/files/';
@@ -3029,9 +3029,9 @@ struct PasteboardTest {
               let text = "test";
               let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
               let systemPasteboard = pasteboard.getSystemPasteboard();
-        	  await systemPasteboard.setData(pasteData);
+              await systemPasteboard.setData(pasteData);
               let progressListenerInfo = (progress: pasteboard.ProgressInfo) => {
-    		    console.info('progressListener success, progress:' + progress.progress);
+                console.info('progressListener success, progress:' + progress.progress);
               };
               let destPath: string = '/data/storage/el2/base/files/';
               let destUri : string = fileUri.getUriFromPath(destPath);

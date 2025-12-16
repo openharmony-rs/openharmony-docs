@@ -10,7 +10,7 @@
 
 Defines APIs and enums related to multiple data values.
 
-**File to include**: <database/rdb/oh_data_values.h>
+**File to include**: <database/data/oh_data_values.h>
 
 **Library**: libnative_rdb_ndk.z.so
 
@@ -64,7 +64,7 @@ Defines APIs and enums related to multiple data values.
 
 ### OH_Values_Create()
 
-```
+```c
 OH_Data_Values *OH_Values_Create(void)
 ```
 
@@ -82,7 +82,7 @@ Creates an [OH_Data_Values](capi-rdb-oh-data-values.md) instance to store multip
 
 ### OH_Values_Destroy()
 
-```
+```c
 int OH_Values_Destroy(OH_Data_Values *values)
 ```
 
@@ -107,7 +107,7 @@ Destroys an [OH_Data_Values](capi-rdb-oh-data-values.md) instance.
 
 ### OH_Values_Put()
 
-```
+```c
 int OH_Values_Put(OH_Data_Values *values, const OH_Data_Value *val)
 ```
 
@@ -133,7 +133,7 @@ Adds data of the **OH_Data_Value** type to an **OH_Data_Values** instance.
 
 ### OH_Values_PutNull()
 
-```
+```c
 int OH_Values_PutNull(OH_Data_Values *values)
 ```
 
@@ -158,7 +158,7 @@ Adds empty data to an **OH_Data_Values** instance.
 
 ### OH_Values_PutInt()
 
-```
+```c
 int OH_Values_PutInt(OH_Data_Values *values, int64_t val)
 ```
 
@@ -184,7 +184,7 @@ Adds an integer to an **OH_Data_Values** instance.
 
 ### OH_Values_PutReal()
 
-```
+```c
 int OH_Values_PutReal(OH_Data_Values *values, double val)
 ```
 
@@ -210,7 +210,7 @@ Adds REAL data to an **OH_Data_Values** instance.
 
 ### OH_Values_PutText()
 
-```
+```c
 int OH_Values_PutText(OH_Data_Values *values, const char *val)
 ```
 
@@ -236,7 +236,7 @@ Adds a string to an **OH_Data_Values** instance.
 
 ### OH_Values_PutBlob()
 
-```
+```c
 int OH_Values_PutBlob(OH_Data_Values *values, const unsigned char *val, size_t length)
 ```
 
@@ -263,7 +263,7 @@ Adds BLOB data to an **OH_Data_Values** instance.
 
 ### OH_Values_PutAsset()
 
-```
+```c
 int OH_Values_PutAsset(OH_Data_Values *values, const Data_Asset *val)
 ```
 
@@ -289,7 +289,7 @@ Adds an asset to an **OH_Data_Values** instance.
 
 ### OH_Values_PutAssets()
 
-```
+```c
 int OH_Values_PutAssets(OH_Data_Values *values, const Data_Asset * const * val, size_t length)
 ```
 
@@ -316,7 +316,7 @@ Adds assets to an **OH_Data_Values** instance.
 
 ### OH_Values_PutFloatVector()
 
-```
+```c
 int OH_Values_PutFloatVector(OH_Data_Values *values, const float *val, size_t length)
 ```
 
@@ -343,7 +343,7 @@ Adds a float array to an **OH_Data_Values** instance.
 
 ### OH_Values_PutUnlimitedInt()
 
-```
+```c
 int OH_Values_PutUnlimitedInt(OH_Data_Values *values, int sign, const uint64_t *trueForm, size_t length)
 ```
 
@@ -371,7 +371,7 @@ Adds an integer array of any length to an **OH_Data_Values** instance.
 
 ### OH_Values_Count()
 
-```
+```c
 int OH_Values_Count(OH_Data_Values *values, size_t *count)
 ```
 
@@ -397,7 +397,7 @@ Obtains the number of records in an **OH_Data_Values** instance.
 
 ### OH_Values_GetType()
 
-```
+```c
 int OH_Values_GetType(OH_Data_Values *values, int index, OH_ColumnType *type)
 ```
 
@@ -424,7 +424,7 @@ Obtains the data type.
 
 ### OH_Values_Get()
 
-```
+```c
 int OH_Values_Get(OH_Data_Values *values, int index, OH_Data_Value **val)
 ```
 
@@ -451,7 +451,7 @@ Obtains data of the **OH_Data_Value** type.
 
 ### OH_Values_IsNull()
 
-```
+```c
 int OH_Values_IsNull(OH_Data_Values *values, int index, bool *val)
 ```
 
@@ -478,7 +478,7 @@ Checks whether a value is null.
 
 ### OH_Values_GetInt()
 
-```
+```c
 int OH_Values_GetInt(OH_Data_Values *values, int index, int64_t *val)
 ```
 
@@ -505,7 +505,7 @@ Obtains the integer from an **OH_Data_Values** instance.
 
 ### OH_Values_GetReal()
 
-```
+```c
 int OH_Values_GetReal(OH_Data_Values *values, int index, double *val)
 ```
 
@@ -532,7 +532,7 @@ Obtains the REAL data from an **OH_Data_Values** instance.
 
 ### OH_Values_GetText()
 
-```
+```c
 int OH_Values_GetText(OH_Data_Values *values, int index, const char **val)
 ```
 
@@ -559,7 +559,7 @@ Obtains the string from an **OH_Data_Values** instance.
 
 ### OH_Values_GetBlob()
 
-```
+```c
 int OH_Values_GetBlob(OH_Data_Values *values, int index, const uint8_t **val, size_t *length)
 ```
 
@@ -587,7 +587,7 @@ Obtains the BLOB data from an **OH_Data_Values** instance.
 
 ### OH_Values_GetAsset()
 
-```
+```c
 int OH_Values_GetAsset(OH_Data_Values *values, int index, Data_Asset *val)
 ```
 
@@ -604,7 +604,7 @@ Obtains the asset from an **OH_Data_Values** instance.
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
-| [Data_Asset](capi-rdb-data-asset.md) *val            | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the execution fails.|
+| [Data_Asset](capi-rdb-data-asset.md) *val            | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
 
 **Returns**
 
@@ -614,7 +614,7 @@ Obtains the asset from an **OH_Data_Values** instance.
 
 ### OH_Values_GetAssetsCount()
 
-```
+```c
 int OH_Values_GetAssetsCount(OH_Data_Values *values, int index, size_t *length)
 ```
 
@@ -641,7 +641,7 @@ Obtains the length of the asset in an **OH_Data_Values** instance.
 
 ### OH_Values_GetAssets()
 
-```
+```c
 int OH_Values_GetAssets(OH_Data_Values *values, int index, Data_Asset **val, size_t inLen, size_t *outLen)
 ```
 
@@ -658,7 +658,7 @@ Obtains the assets from an **OH_Data_Values** instance.
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
-| [Data_Asset](capi-rdb-data-asset.md) **val           | Double pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the execution fails.|
+| [Data_Asset](capi-rdb-data-asset.md) **val           | Double pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
 | size_t inLen                                     | Size of **val**, which can be obtained using [OH_Values_GetAssetsCount](capi-oh-data-values-h.md#oh_values_getassetscount).|
 | size_t *outLen                                   | Pointer to the actual length of the data obtained.                      |
 
@@ -670,7 +670,7 @@ Obtains the assets from an **OH_Data_Values** instance.
 
 ### OH_Values_GetFloatVectorCount()
 
-```
+```c
 int OH_Values_GetFloatVectorCount(OH_Data_Values *values, int index, size_t *length)
 ```
 
@@ -697,7 +697,7 @@ Obtains the length of the float array in an **OH_Data_Values** instance.
 
 ### OH_Values_GetFloatVector()
 
-```
+```c
 int OH_Values_GetFloatVector(OH_Data_Values *values, int index, float *val, size_t inLen, size_t *outLen)
 ```
 
@@ -714,7 +714,7 @@ Obtains the float array from an **OH_Data_Values** instance.
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
-| float *val                                       | Pointer to the float array obtained.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the execution fails.|
+| float *val                                       | Pointer to the float array obtained.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
 | size_t inLen                                     | Size of **val**, which can be obtained using [OH_Values_GetFloatVectorCount](capi-oh-data-values-h.md#oh_values_getfloatvectorcount).|
 | size_t *outLen                                   | Pointer to the actual length of the data obtained.                      |
 
@@ -726,7 +726,7 @@ Obtains the float array from an **OH_Data_Values** instance.
 
 ### OH_Values_GetUnlimitedIntBand()
 
-```
+```c
 int OH_Values_GetUnlimitedIntBand(OH_Data_Values *values, int index, size_t *length)
 ```
 
@@ -753,7 +753,7 @@ Obtains the length of the unlimited integer from an **OH_Data_Values** instance.
 
 ### OH_Values_GetUnlimitedInt()
 
-```
+```c
 int OH_Values_GetUnlimitedInt(OH_Data_Values *values, int index, int *sign, uint64_t *trueForm, size_t inLen, size_t *outLen)
 ```
 
@@ -771,7 +771,7 @@ Obtains the unlimited integer from an **OH_Data_Values** instance.
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
 | int *sign                                        | Pointer to the sign notation of the integer obtained. The value **0** indicates a positive integer, and the value **1** indicates a negative integer.        |
-| uint64_t *trueForm                               | Pointer to the integer array obtained.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the execution fails.|
+| uint64_t *trueForm                               | Pointer to the integer array obtained.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
 | size_t inLen                                     | **trueForm** length, which can be obtained using [OH_Values_GetUnlimitedIntBand](capi-oh-data-values-h.md#oh_values_getunlimitedintband).|
 | size_t *outLen                                   | Pointer to the actual length of the data obtained.                      |
 

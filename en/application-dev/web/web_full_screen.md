@@ -23,11 +23,6 @@ The [visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibi
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import hilog from '@ohos.hilog';
-
-const TAG = '[Sample_WebFullScreen]'
-const DOMAIN = 0xF811
-const BUNDLE = 'WebFullScreen_'
 
 @Entry
 @Component
@@ -50,12 +45,12 @@ struct ShortWebPage {
         controller: this.controller
       })
         .onFullScreenEnter((event) => {
-          hilog.info(DOMAIN, TAG, BUNDLE + "onFullScreenEnter...");
+          console.info('onFullScreenEnter...');
           // When the full screen is displayed, the isVisible flag is false, the component is invisible, not involved in layout, and no placeholder is used for it.
           this.isVisible = false;
         })
         .onFullScreenExit(() => {
-          hilog.info(DOMAIN, TAG, BUNDLE + "onFullScreenExit...");
+          console.info('onFullScreenExit...');
           // When the full screen is exited, the isVisible flag is true, and the component is visible.
           this.isVisible = true;
         })

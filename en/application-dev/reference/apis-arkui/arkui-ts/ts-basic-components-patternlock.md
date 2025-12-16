@@ -1,10 +1,10 @@
 # PatternLock
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **PatternLock** component allows users to use a pattern password for authentication. It enters the input state once a finger is pressed against it, and exits the input state and completes the input once the finger leaves the screen.
 
@@ -74,6 +74,10 @@ Sets the radius of the dots in a grid. If this attribute is set to **0** or a ne
 backgroundColor(value: ResourceColor)
 
 Sets the background color.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -240,6 +244,10 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 Invoked when a grid dot is connected during pattern password input.
 
 The callback parameter is a digit that is the index of the connected grid dot. The indexes of the grid dots are as follows: 0, 1, 2 for the dots in the first row from left to right; 3, 4, 5 for the dots in the second row; 6, 7, 8 for the dots in the third row.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

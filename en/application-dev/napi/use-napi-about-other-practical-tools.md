@@ -113,6 +113,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   let lhs = "123";
   let rhs = "123";

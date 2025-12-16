@@ -55,7 +55,7 @@
 
 ### MediaKeySession_EventCallback()
 
-```
+```c
 typedef  Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)
 ```
 
@@ -83,7 +83,7 @@ MediaKeySession事件触发时将调用的回调，如密钥过期事件。
 
 ### MediaKeySession_KeyChangeCallback()
 
-```
+```c
 typedef  Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable)
 ```
 
@@ -109,7 +109,7 @@ typedef  Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo
 
 ### OH_MediaKeySession_EventCallback()
 
-```
+```c
 typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)
 ```
 
@@ -138,7 +138,7 @@ typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKe
 
 ### OH_MediaKeySession_KeyChangeCallback()
 
-```
+```c
 typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo,bool newKeysAvailable)
 ```
 
@@ -165,7 +165,7 @@ typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *med
 
 ### OH_MediaKeySession_GenerateMediaKeyRequest()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKeySession,DRM_MediaKeyRequestInfo *info, DRM_MediaKeyRequest *mediaKeyRequest)
 ```
 
@@ -192,7 +192,7 @@ Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKey
 
 ### OH_MediaKeySession_ProcessMediaKeyResponse()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKeySession,uint8_t *response, int32_t responseLen, uint8_t *offlineMediaKeyId, int32_t *offlineMediaKeyIdLen)
 ```
 
@@ -221,7 +221,7 @@ Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKey
 
 ### OH_MediaKeySession_CheckMediaKeyStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySession,DRM_MediaKeyStatus *mediaKeyStatus)
 ```
 
@@ -247,7 +247,7 @@ Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySess
 
 ### OH_MediaKeySession_ClearMediaKeys()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)
 ```
 
@@ -272,7 +272,7 @@ Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)
 
 ### OH_MediaKeySession_GenerateOfflineReleaseRequest()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *mediaKeySession,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseRequest,int32_t *releaseRequestLen)
 ```
 
@@ -301,7 +301,7 @@ Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *me
 
 ### OH_MediaKeySession_ProcessOfflineReleaseResponse()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseResponse,int32_t releaseResponseLen)
 ```
 
@@ -330,7 +330,7 @@ Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *me
 
 ### OH_MediaKeySession_RestoreOfflineMediaKeys()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKeySession,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)
 ```
 
@@ -357,7 +357,7 @@ Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKey
 
 ### OH_MediaKeySession_GetContentProtectionLevel()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaKeySession,DRM_ContentProtectionLevel *contentProtectionLevel)
 ```
 
@@ -383,7 +383,7 @@ Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaK
 
 ### OH_MediaKeySession_RequireSecureDecoderModule()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *mediaKeySession,const char *mimeType, bool *status)
 ```
 
@@ -410,7 +410,7 @@ Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *media
 
 ### OH_MediaKeySession_SetMediaKeySessionCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *mediaKeySession,MediaKeySession_Callback *callback)
 ```
 
@@ -436,7 +436,7 @@ Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *media
 
 ### OH_MediaKeySession_SetCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession,OH_MediaKeySession_Callback *callback)
 ```
 
@@ -462,7 +462,7 @@ Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession,OH_M
 
 ### OH_MediaKeySession_Destroy()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)
 ```
 

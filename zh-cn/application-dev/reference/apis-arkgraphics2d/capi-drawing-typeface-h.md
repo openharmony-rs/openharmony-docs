@@ -38,7 +38,7 @@
 
 ### OH_Drawing_TypefaceCreateDefault()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateDefault(void)
 ```
 
@@ -58,7 +58,7 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateDefault(void)
 
 ### OH_Drawing_TypefaceCreateFromFile()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFile(const char* path, int index)
 ```
 
@@ -86,7 +86,7 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFile(const char* path, int ind
 
 ### OH_Drawing_TypefaceCreateFromFileWithArguments()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFileWithArguments(const char* path,const OH_Drawing_FontArguments* fontArguments)
 ```
 
@@ -114,7 +114,7 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFileWithArguments(const char* 
 
 ### OH_Drawing_TypefaceCreateFromCurrent()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromCurrent(const OH_Drawing_Typeface* current,const OH_Drawing_FontArguments* fontArguments)
 ```
 
@@ -142,7 +142,7 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromCurrent(const OH_Drawing_Typef
 
 ### OH_Drawing_TypefaceCreateFromStream()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromStream(OH_Drawing_MemoryStream* memoryStream, int32_t index)
 ```
 
@@ -170,7 +170,7 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromStream(OH_Drawing_MemoryStream
 
 ### OH_Drawing_TypefaceDestroy()
 
-```
+```c
 void OH_Drawing_TypefaceDestroy(OH_Drawing_Typeface* typeface)
 ```
 
@@ -191,7 +191,7 @@ void OH_Drawing_TypefaceDestroy(OH_Drawing_Typeface* typeface)
 
 ### OH_Drawing_FontArgumentsCreate()
 
-```
+```c
 OH_Drawing_FontArguments* OH_Drawing_FontArgumentsCreate(void)
 ```
 
@@ -211,7 +211,7 @@ OH_Drawing_FontArguments* OH_Drawing_FontArgumentsCreate(void)
 
 ### OH_Drawing_FontArgumentsAddVariation()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontArgumentsAddVariation(OH_Drawing_FontArguments* fontArguments,const char* axis, float value)
 ```
 
@@ -240,7 +240,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontArgumentsAddVariation(OH_Drawing_FontArgumen
 
 ### OH_Drawing_FontArgumentsDestroy()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontArgumentsDestroy(OH_Drawing_FontArguments* fontArguments)
 ```
 

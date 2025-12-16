@@ -23,7 +23,9 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 无障碍事件信息。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 

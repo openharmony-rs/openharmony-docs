@@ -10,7 +10,7 @@ The [getPageHeight](../reference/apis-arkweb/arkts-apis-webview-WebviewControlle
 
 ## When to Use
 
-Since the height is updated after dynamic content is loaded, the value obtained during web page loading may be inaccurate, especially when the web page rendering is not complete. The web page content may take a long time to load. To speed up the initial loading, many websites use dynamic loading. When the first frame of a web page is displayed, remaining images and content continue to load.
+The height obtained during web page loading may be inaccurate, especially when the rendering is not complete. The value will be updated after dynamic content is loaded. The web page content may take a long time to load. To speed up the initial loading, many websites use dynamic loading. When the first frame of a web page is displayed, remaining images and content continue to load.
 You are advised to not obtain the height of a non-static web page during the [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend), [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9), [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10) and [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) callbacks. You need to obtain the actual height of the current web page content through JSBridge or delay in a specific callback notification on the frontend based on the characteristics of the current web page.
 
 ## Common Static Page
@@ -112,7 +112,7 @@ Frontend code:
             console.info("jsbObj is error");
         }
     })
-</script>>
+</script>
 </body>
 </html>
 ```
@@ -142,7 +142,7 @@ Replace the image in the frontend code with a real image.
             console.info("jsbObj is error");
         }
     });
-</script>>
+</script>
 </body>
 </html>
 ```

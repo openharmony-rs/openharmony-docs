@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_PixelmapNative OH_PixelmapNative
+```
+
 ## Overview
 
 Defines a pixel map defined by the image framework.

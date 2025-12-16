@@ -62,7 +62,7 @@
 
 ### OH_AudioStreamBuilder_Create()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_Create(OH_AudioStreamBuilder** builder, OH_AudioStream_Type type)
 ```
 
@@ -88,7 +88,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Create(OH_AudioStreamBuilder** build
 
 ### OH_AudioStreamBuilder_Destroy()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_Destroy(OH_AudioStreamBuilder* builder)
 ```
 
@@ -113,7 +113,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Destroy(OH_AudioStreamBuilder* build
 
 ### OH_AudioStreamBuilder_SetSamplingRate()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetSamplingRate(OH_AudioStreamBuilder* builder, int32_t rate)
 ```
 
@@ -139,7 +139,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSamplingRate(OH_AudioStreamBuilde
 
 ### OH_AudioStreamBuilder_SetChannelCount()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelCount(OH_AudioStreamBuilder* builder, int32_t channelCount)
 ```
 
@@ -165,7 +165,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelCount(OH_AudioStreamBuilde
 
 ### OH_AudioStreamBuilder_SetSampleFormat()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetSampleFormat(OH_AudioStreamBuilder* builder,OH_AudioStream_SampleFormat format)
 ```
 
@@ -191,7 +191,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSampleFormat(OH_AudioStreamBuilde
 
 ### OH_AudioStreamBuilder_SetEncodingType()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetEncodingType(OH_AudioStreamBuilder* builder,OH_AudioStream_EncodingType encodingType)
 ```
 
@@ -217,7 +217,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetEncodingType(OH_AudioStreamBuilde
 
 ### OH_AudioStreamBuilder_SetLatencyMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetLatencyMode(OH_AudioStreamBuilder* builder,OH_AudioStream_LatencyMode latencyMode)
 ```
 
@@ -243,7 +243,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetLatencyMode(OH_AudioStreamBuilder
 
 ### OH_AudioStreamBuilder_SetChannelLayout()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelLayout(OH_AudioStreamBuilder* builder,OH_AudioChannelLayout channelLayout)
 ```
 
@@ -269,7 +269,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelLayout(OH_AudioStreamBuild
 
 ### OH_AudioStreamBuilder_SetRendererInfo()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInfo(OH_AudioStreamBuilder* builder,OH_AudioStream_Usage usage)
 ```
 
@@ -295,7 +295,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInfo(OH_AudioStreamBuilde
 
 ### OH_AudioStreamBuilder_SetVolumeMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetVolumeMode(OH_AudioStreamBuilder* builder,OH_AudioStream_VolumeMode volumeMode)
 ```
 
@@ -303,8 +303,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetVolumeMode(OH_AudioStreamBuilder*
 
 设置音频流音量模式。
 
-**起始版本：** 18
-
+**起始版本：** 19
 
 **参数：**
 
@@ -321,7 +320,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetVolumeMode(OH_AudioStreamBuilder*
 
 ### OH_AudioStreamBuilder_SetCapturerInfo()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInfo(OH_AudioStreamBuilder* builder,OH_AudioStream_SourceType sourceType)
 ```
 
@@ -347,7 +346,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInfo(OH_AudioStreamBuilde
 
 ### OH_AudioStreamBuilder_SetRendererCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_Callbacks callbacks, void* userData)
 ```
 
@@ -380,7 +379,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererCallback(OH_AudioStreamBu
 
 ### OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OutputDeviceChangeCallback callback, void* userData)
 ```
 
@@ -407,7 +406,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallbac
 
 ### OH_AudioStreamBuilder_SetRendererPrivacy()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererPrivacy(OH_AudioStreamBuilder* builder,OH_AudioStream_PrivacyType privacy)
 ```
 
@@ -433,7 +432,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererPrivacy(OH_AudioStreamBui
 
 ### OH_AudioStreamBuilder_SetCapturerCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_Callbacks callbacks, void* userData)
 ```
 
@@ -466,7 +465,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerCallback(OH_AudioStreamBu
 
 ### OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_WriteDataWithMetadataCallback callback, void* userData)
 ```
 
@@ -493,7 +492,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(OH_
 
 ### OH_AudioStreamBuilder_GenerateRenderer()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_GenerateRenderer(OH_AudioStreamBuilder* builder,OH_AudioRenderer** audioRenderer)
 ```
 
@@ -519,7 +518,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_GenerateRenderer(OH_AudioStreamBuild
 
 ### OH_AudioStreamBuilder_GenerateCapturer()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_GenerateCapturer(OH_AudioStreamBuilder* builder,OH_AudioCapturer** audioCapturer)
 ```
 
@@ -545,7 +544,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_GenerateCapturer(OH_AudioStreamBuild
 
 ### OH_AudioStreamBuilder_SetFrameSizeInCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetFrameSizeInCallback(OH_AudioStreamBuilder* builder,int32_t frameSize)
 ```
 
@@ -571,7 +570,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetFrameSizeInCallback(OH_AudioStrea
 
 ### OH_AudioStreamBuilder_SetRendererInterruptMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptMode(OH_AudioStreamBuilder* builder,OH_AudioInterrupt_Mode mode)
 ```
 
@@ -597,7 +596,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptMode(OH_AudioStr
 
 ### OH_AudioStreamBuilder_SetRendererWriteDataCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnWriteDataCallback callback, void* userData)
 ```
 
@@ -624,7 +623,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallback(OH_Audi
 
 ### OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnWriteDataCallbackAdvanced callback, void* userData)
 ```
 
@@ -640,7 +639,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | 指向[OH_AudioStreamBuilder_Create](#oh_audiostreambuilder_create)创建的构造器实例。 |
-| [OH_AudioRenderer_OnWriteDataCallbackAdvanced](capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallbackadvanced) callback | 将被用来写入音频数据的回调函数。 |
+| [OH_AudioRenderer_OnWriteDataCallbackAdvanced](capi-native-audiorenderer-h.md#oh_audiorenderer_onwritedatacallbackadvanced) callback | 将被用来写入音频数据的回调函数。 |
 | void* userData | 指向通过回调函数传递的应用数据指针。 |
 
 **返回：**
@@ -651,7 +650,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced
 
 ### OH_AudioStreamBuilder_SetRendererInterruptCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnInterruptCallback callback, void* userData)
 ```
 
@@ -678,7 +677,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptCallback(OH_Audi
 
 ### OH_AudioStreamBuilder_SetRendererErrorCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererErrorCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnErrorCallback callback, void* userData)
 ```
 
@@ -705,7 +704,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererErrorCallback(OH_AudioStr
 
 ### OH_AudioStreamBuilder_SetCapturerReadDataCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerReadDataCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnReadDataCallback callback, void* userData)
 ```
 
@@ -732,7 +731,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerReadDataCallback(OH_Audio
 
 ### OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnDeviceChangeCallback callback, void* userData)
 ```
 
@@ -759,7 +758,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback(OH_A
 
 ### OH_AudioStreamBuilder_SetCapturerInterruptCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInterruptCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnInterruptCallback callback, void* userData)
 ```
 
@@ -786,7 +785,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInterruptCallback(OH_Audi
 
 ### OH_AudioStreamBuilder_SetCapturerErrorCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerErrorCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnErrorCallback callback, void* userData)
 ```
 
@@ -813,7 +812,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerErrorCallback(OH_AudioStr
 
 ### OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted(OH_AudioStreamBuilder* builder,bool muteWhenInterrupted)
 ```
 
@@ -839,7 +838,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted(O
 
 ### OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(OH_AudioStreamBuilder* builder,OH_AudioRenderer_OnFastStatusChange callback, void* userData)
 ```
 
@@ -866,7 +865,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(
 
 ### OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(OH_AudioStreamBuilder* builder,OH_AudioCapturer_OnFastStatusChange callback, void* userData)
 ```
 

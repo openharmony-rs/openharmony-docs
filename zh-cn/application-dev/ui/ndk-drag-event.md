@@ -231,7 +231,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                break;
            }
            default:
-               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKOWN Event Receive");
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKNOWN Event Receive");
                break;
        }
    });
@@ -479,7 +479,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                break;
            }
            default: {
-               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKOWN EventReceiver");
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKNOWN EventReceiver");
                break;
            }
        }

@@ -26,7 +26,7 @@
 
 ### ImageEffect_ErrorCode
 
-```
+```c
 enum ImageEffect_ErrorCode
 ```
 

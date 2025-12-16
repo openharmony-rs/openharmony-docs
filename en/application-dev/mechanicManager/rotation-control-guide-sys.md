@@ -87,17 +87,14 @@ Device connection status management helps to ensure that the application respond
 
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
-    if (info.state === mechanicManager.AttachState.ATTACHED) {
-        console.info('Device attached:', info.mechInfo);
-        // Process the device connection logic.
-        handleDeviceAttached(info.mechInfo);
-    } else if (info.state === mechanicManager.AttachState.DETACHED) {
-        console.info('Device detached:', info.mechInfo);
-        // Process the device disconnection logic.
-        handleDeviceDetached(info.mechInfo);
-    }
+        if (info.state === mechanicManager.AttachState.ATTACHED) {
+            console.info('Device attached:', info.mechInfo);
+            // Process the device connection logic.
+        } else if (info.state === mechanicManager.AttachState.DETACHED) {
+            console.info('Device detached:', info.mechInfo);
+            // Process the device disconnection logic.
+        }
     };
-
     // Register a listener for attachStateChange events.
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
@@ -105,24 +102,37 @@ Device connection status management helps to ensure that the application respond
 4. Process device connection and disconnection events.
 
     ```ts
+    const savedMechanicIds: number[] = [];
+    const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
+        if (info.state === mechanicManager.AttachState.ATTACHED) {
+            console.info('Device attached:', info.mechInfo);
+            savedMechanicIds.push(info.mechInfo.mechId);
+            // To do sth.
+        } else if (info.state === mechanicManager.AttachState.DETACHED) {
+            console.info('Device detached:', info.mechInfo);
+            savedMechanicIds.filter(id => id !== info.mechInfo.mechId);
+            // To do sth.
+        }
+    };
+    // Register a listener for attachStateChange events.
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
-
-    function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
-    console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.push(mechInfo.mechId);
-    // To do sth.
-    }
-
-    function handleDeviceDetached(mechInfo:  mechanicManager.MechInfo) {
-    console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.filter(id => id !== mechInfo.mechId);
-    // To do sth.
-    }
     ```
 
 5. Cancel listening for device connection state changes.
 
     ```ts
+    const savedMechanicIds: number[] = [];
+    const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
+        if (info.state === mechanicManager.AttachState.ATTACHED) {
+            console.info('Device attached:', info.mechInfo);
+            savedMechanicIds.push(info.mechInfo.mechId);
+            // To do sth.
+        } else if (info.state === mechanicManager.AttachState.DETACHED) {
+            console.info('Device detached:', info.mechInfo);
+            savedMechanicIds.filter(id => id !== info.mechInfo.mechId);
+            // To do sth.
+        }
+    };
     // Cancel listening for device connection state changes.
     mechanicManager.off('attachStateChange', attachStateChangeCallback);
     ```
@@ -135,109 +145,127 @@ Precise rotation control, such as angle adjustment and motion trajectory control
 
     ```ts
     try {
-    // Initialize device functions, such as obtaining the device status.
-    const devices = mechanicManager.getAttachedMechDevices();
-    console.info('Connected devices:', devices);
-
-    devices.forEach(device => {
-        console.info(`Device ID: ${device.mechId}`);
-        console.info(`Device Name: ${device.mechName}`);
-        console.info(`Device Type: ${device.mechDeviceType}`);
-    });
-
-    // Register the listener for device connection state changes.
-    const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
-        if (info.state === mechanicManager.AttachState.ATTACHED) {
-        console.info('Device attached:', info.mechInfo);
-        } else if (info.state === mechanicManager.AttachState.DETACHED) {
-        console.info('Device detached:', info.mechInfo);
-        }
-    };
-    mechanicManager.on('attachStateChange', attachStateChangeCallback);
-    // Obtain the current angle of the device.
-    const currentAngles = mechanicManager.getCurrentAngles(savedMechanicIds[0]);
-    console.info('current angle:', currentAngles);
-
-    // Obtain the rotation limit of the device.
-    const rotationLimits = mechanicManager.getRotationLimits(savedMechanicIds[0]);
-    console.info('Rotation limit:', rotationLimits);
-
-    // Obtain the maximum rotation speed of the device.
-    const maxSpeed = mechanicManager.getMaxRotationSpeed(savedMechanicIds[0]);
-    console.info('Maximum rotation speed:', maxSpeed);
-
-    // Obtain the maximum duration for continuous rotation of the device.
-    const maxTime = mechanicManager.getMaxRotationTime(savedMechanicIds[0]);
-    console.info('Maximum spin time:', maxTime);
+        const savedMechanicIds: number[] = [];
+        // Initialize device functions, such as obtaining the device status.
+        const devices = mechanicManager.getAttachedMechDevices();
+        console.info('Connected devices:', devices);
+   
+        devices.forEach(device => {
+            console.info(`Device ID: ${device.mechId}`);
+            console.info(`Device Name: ${device.mechName}`);
+            console.info(`Device Type: ${device.mechDeviceType}`);
+            savedMechanicIds.push(device.mechId);
+        });
+   
+        // Register the listener for device connection state changes.
+        const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
+            if (info.state === mechanicManager.AttachState.ATTACHED) {
+                console.info('Device attached:', info.mechInfo);
+            } else if (info.state === mechanicManager.AttachState.DETACHED) {
+                console.info('Device detached:', info.mechInfo);
+            }
+        };
+        mechanicManager.on('attachStateChange', attachStateChangeCallback);
+        // Obtain the current angle of the device.
+        const currentAngles = mechanicManager.getCurrentAngles(savedMechanicIds[0]);
+        console.info('current angle:', currentAngles);
+   
+        // Obtain the rotation limit of the device.
+        const rotationLimits = mechanicManager.getRotationLimits(savedMechanicIds[0]);
+        console.info('Rotation limit:', rotationLimits);
+   
+        // Obtain the maximum rotation speed of the device.
+        const maxSpeed = mechanicManager.getMaxRotationSpeed(savedMechanicIds[0]);
+        console.info('Maximum rotation speed:', maxSpeed);
+   
+        // Obtain the maximum duration for continuous rotation of the device.
+        const maxTime = mechanicManager.getMaxRotationTime(savedMechanicIds[0]);
+        console.info('Maximum spin time:', maxTime);
     } catch (err) {
-    console.error('Failed to query device status:', err);
+        console.error('Failed to query device status:', err);
     }
     ```
 
 2. Rotate the device by a relative angle.
 
     ```ts
+    const savedMechanicIds: number[] = [];
+    // Initialize device functions, such as obtaining the device status.
+    const devices = mechanicManager.getAttachedMechDevices();
+    console.info('Connected devices:', devices);
+
+    devices.forEach(device => {
+        savedMechanicIds.push(device.mechId);
+    });
     // Disable the camera tracking function before rotating the device.
     mechanicManager.setCameraTrackingEnabled(false);
 
-    async function rotateByRelativeAngles() {
     try {
         const mechId = savedMechanicIds[0]; // Device ID.
 
         // Obtain the current angle of the device.
         const currentAngles = mechanicManager.getCurrentAngles(mechId);
         if (!currentAngles || currentAngles.yaw === undefined || currentAngles.pitch === undefined ||
-        currentAngles.roll === undefined) {
-        console.error('Failed to retrieve current angles or angles are undefined.');
-        return;
+            currentAngles.roll === undefined) {
+            console.error('Failed to retrieve current angles or angles are undefined.');
+            return;
         }
 
         // Obtain the rotation limit of the device.
         const rotationLimits = mechanicManager.getRotationLimits(mechId);
-        if (!rotationLimits || rotationLimits.negativeYawMax === undefined || rotationLimits.positiveYawMax === undefined ||
-        rotationLimits.negativePitchMax === undefined || rotationLimits.positivePitchMax === undefined ||
-        rotationLimits.negativeRollMax === undefined || rotationLimits.positiveRollMax === undefined) {
-        console.error('Failed to retrieve rotation limits or limits are undefined.');
-        return;
+        if (!rotationLimits || rotationLimits.negativeYawMax === undefined ||
+            rotationLimits.positiveYawMax === undefined ||
+            rotationLimits.negativePitchMax === undefined || rotationLimits.positivePitchMax === undefined ||
+            rotationLimits.negativeRollMax === undefined || rotationLimits.positiveRollMax === undefined) {
+            console.error('Failed to retrieve rotation limits or limits are undefined.');
+            return;
         }
         console.info('Rotation limits:', rotationLimits);
 
         // Define the target angle.
         const angles: mechanicManager.RotationAngles = {
-        yaw: Math.PI / 4, // Yaw angle: 45 degrees
-        pitch: Math.PI / 6, // Pitch angle: 30 degrees
-        roll: 0            // Roll angle: 0 degrees
+            yaw: Math.PI / 4, // Yaw angle: 45 degrees
+            pitch: Math.PI / 6, // Pitch angle: 30 degrees
+            roll: 0            // Roll angle: 0 degrees
         };
 
         // Check whether the target angle exceeds the limit.
-        if (
-        currentAngles.yaw + (angles.yaw ?? 0) > rotationLimits.negativeYawMax ||
+        if (currentAngles.yaw + (angles.yaw ?? 0) > rotationLimits.negativeYawMax ||
             currentAngles.yaw + (angles.yaw ?? 0) < rotationLimits.positiveYawMax ||
             currentAngles.pitch + (angles.pitch ?? 0) > rotationLimits.negativePitchMax ||
             currentAngles.pitch + (angles.pitch ?? 0) < rotationLimits.positivePitchMax ||
             currentAngles.roll + (angles.roll ?? 0) > rotationLimits.negativeRollMax ||
             currentAngles.roll + (angles.roll ?? 0) < rotationLimits.positiveRollMax
         ) {
-        console.error('Target angles exceed rotation limits.');
-        return;
+            console.error('Target angles exceed rotation limits.');
+            return;
         }
 
         const duration = 2000; // Rotation duration: 2 seconds
 
         // Perform rotation.
-        const result = await mechanicManager.rotate(mechId, angles, duration);
-        console.info(`Rotation Result: ${result}`);
+        mechanicManager.rotate(mechId, angles, duration)
+            .then((result) => {
+                console.info(`Rotation Result: ${result}`);
+            });
     } catch (err) {
         console.error('Failed to rotate relative angle:', err);
-    }
     }
     ```
 
 3. Perform rotation at the specified speed until the task is complete.
 
     ```ts
-    async function rotateBySpeed() {
     try {
+        const savedMechanicIds: number[] = [];
+        // Initialize device functions, such as obtaining the device status.
+        const devices = mechanicManager.getAttachedMechDevices();
+        console.info('Connected devices:', devices);
+
+        devices.forEach(device => {
+            savedMechanicIds.push(device.mechId);
+        });
+
         const mechId = savedMechanicIds[0]; // Assume that the first device is used.
 
         // Obtain the maximum rotation duration.
@@ -246,25 +274,27 @@ Precise rotation control, such as angle adjustment and motion trajectory control
 
         // Obtain the maximum rotation speed.
         const maxSpeed = mechanicManager.getMaxRotationSpeed(mechId);
-        if (!maxSpeed || maxSpeed.yawSpeed === undefined || maxSpeed.pitchSpeed === undefined || maxSpeed.rollSpeed === undefined) {
-        console.error('Failed to retrieve maximum rotation speed or speed values are undefined.');
-        return;
+        if (!maxSpeed || maxSpeed.yawSpeed === undefined || maxSpeed.pitchSpeed === undefined ||
+            maxSpeed.rollSpeed === undefined) {
+            console.error('Failed to retrieve maximum rotation speed or speed values are undefined.');
+            return;
         }
         console.info('Maximum rotation speed:', maxSpeed);
         // Define the rotation speed and duration.
-        const speed : mechanicManager.RotationSpeed = {
-        yawSpeed: maxSpeed.yawSpeed / 2,    // Yaw speed: half of the maximum speed
-        pitchSpeed: maxSpeed.pitchSpeed / 2, // Pitch speed: half of the maximum speed
-        rollSpeed: maxSpeed.rollSpeed / 2    // Roll speed: half of the maximum speed
+        const speed: mechanicManager.RotationSpeed = {
+            yawSpeed: maxSpeed.yawSpeed / 2, // Yaw speed: half of the maximum speed
+            pitchSpeed: maxSpeed.pitchSpeed / 2, // Pitch speed: half of the maximum speed
+            rollSpeed: maxSpeed.rollSpeed / 2    // Roll speed: half of the maximum speed
         };
         const duration = Math.min(maxTime, 5000); // Duration: 5 seconds at most
 
         // Perform rotation.
-        const result = await mechanicManager.rotateBySpeed(mechId, speed, duration);
-        console.info(`Rotation by speed result: ${result}`);
+        mechanicManager.rotateBySpeed(mechId, speed, duration)
+            .then((result) => {
+                console.info(`Rotation Result: ${result}`);
+            });
     } catch (err) {
-        console.error('Failed to rotate by speed:', err);
-    }
+         console.error('Failed to rotate by speed:', err);
     }
     ```
 
@@ -293,14 +323,20 @@ Precise rotation control, such as angle adjustment and motion trajectory control
 5. Stop the device movement.
 
     ```ts
-    async function stopDeviceMoving() {
     try {
+        const savedMechanicIds: number[] = [];
+        // Initialize device functions, such as obtaining the device status.
+        const devices = mechanicManager.getAttachedMechDevices();
+        console.info('Connected devices:', devices);
+
+        devices.forEach(device => {
+            savedMechanicIds.push(device.mechId);
+        });
         const mechId = savedMechanicIds[0];
-        await mechanicManager.stopMoving(mechId);
+        mechanicManager.stopMoving(mechId);
         console.info('The device has ceased moving.');
     } catch (err) {
         console.error('Failed to stop device movement:', err);
-    }
     }
     ```
 

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_VideoProfile {...} Camera_VideoProfile
+```
+
 ## Overview
 
 The struct describes the video profile.

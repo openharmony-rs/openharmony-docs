@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **GridContainer** component lays out components vertically. It is used only in the grid layout.
 
@@ -35,12 +35,12 @@ GridContainer(value?: GridContainerOptions)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| columns | number \| 'auto' | No| Total number of columns in the current layout.<br>Default value: **'auto'**|
-| sizeType | SizeType | No| Device size type.<br>Default value: **SizeType.Auto**|
-| gutter | number \| string | No| Gutter of the grid layout. This parameter cannot be set to a percentage.|
-| margin | number \| string | No| Margin of the grid layout. This parameter cannot be set to a percentage.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| columns | number \| 'auto' | No| Yes| Total number of columns in the current layout.<br>Default value: **'auto'**|
+| sizeType | SizeType | No| Yes| Device size type.<br>Default value: **SizeType.Auto**|
+| gutter | number \| string | No| Yes| Gutter of the grid layout. This parameter cannot be set to a percentage.|
+| margin | number \| string | No| Yes| Margin of the grid layout. This parameter cannot be set to a percentage.|
 
 ## SizeType
 

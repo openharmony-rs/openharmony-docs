@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides frame rate configuration APIs for the **Swiper** component.
 
@@ -22,7 +22,7 @@ Provides frame rate configuration APIs for the **Swiper** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type                                                     | Read Only| Optional| Description                               |
+| Name      | Type                                                     | Read-Only| Optional| Description                               |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
 | type<sup>12+</sup>      | [SwiperDynamicSyncSceneType](./arkts-apis-uicontext-e.md#swiperdynamicsyncscenetype12) | Yes  | No  | Dynamic sync scene of the **Swiper** component.            |
 
