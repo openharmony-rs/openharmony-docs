@@ -201,6 +201,7 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 
 **示例：**
 
