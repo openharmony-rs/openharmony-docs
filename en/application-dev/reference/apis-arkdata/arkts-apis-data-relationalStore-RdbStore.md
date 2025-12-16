@@ -446,7 +446,7 @@ Inserts a row of data into a table. This API returns the result synchronously. D
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | table    | string                                      | Yes  | Name of the target table.                                            |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | Yes  | Row of data to insert.                                  |
-| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict.<br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**. |
+| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict.<br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
 **Return value**
 
@@ -533,7 +533,7 @@ Inserts a row of Sendable data into a table. This API returns the result synchro
 | -------- | ---------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
 | table    | string                                                                                         | Yes  | Name of the target table.                                                               |
 | values   | [sendableRelationalStore.ValuesBucket](js-apis-data-sendableRelationalStore.md#valuesbucket) | Yes  | Sendable data to insert.                                           |
-| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)                                                   | No  | Resolution used to resolve the conflict.<br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**. |
+| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)                                                   | No  | Resolution used to resolve the conflict.<br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
 **Return value**
 
@@ -597,7 +597,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 Inserts data into a table in batches. This API uses an asynchronous callback to return the result.
 
-This API returns either an error or **-1** if the data fails to be inserted.
+The data insertion fails if the API returns an error, or if it returns **-1** without throwing an error.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported since API version 20.
 
@@ -691,7 +691,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 
 Inserts data into a table in batches. This API uses a promise to return the result.
 
-This API returns either an error or **-1** if the data fails to be inserted.
+The data insertion fails if the API returns an error, or if it returns **-1** without throwing an error.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported since API version 20.
 
@@ -813,7 +813,7 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 Inserts data into a table with conflict resolutions in batches. This API returns the result synchronously.
 
-This API returns either an error or **-1** if the data fails to be inserted.
+The data insertion fails if the API returns an error, or if it returns **-1** without throwing an error.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -913,11 +913,11 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 Inserts data into a table in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result.
 
-A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The product of the number of inserted data records and the size of the union of all fields in the inserted data equals the number of parameters.
 
 For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
 
-Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
+Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1015,11 +1015,11 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 Inserts data into a table in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10).
 
-A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The product of the number of inserted data records and the size of the union of all fields in the inserted data equals the number of parameters.
 
 For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
 
-Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
+Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1472,7 +1472,7 @@ Updates data in the RDB store based on the specified **RdbPredicates** object. D
 | ---------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | Yes  | Rows of data to update in the RDB store. The key-value pair is associated with the column name in the target table.|
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)             | Yes  | Update conditions specified by the **RdbPredicates** object.                     |
-| conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict.<br> Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
+| conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict.<br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
 **Return value**
 
@@ -3895,7 +3895,7 @@ Sets distributed tables. The distributed type and configuration of the table can
 | Name| Type                                     | Mandatory| Description                                                             |
 | ------ | ----------------------------------------- | ---- |-----------------------------------------------------------------|
 | tables | Array&lt;string&gt;                       | Yes  | Names of the distributed tables to set.                                                 |
-| type   | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10)     | No  | Distributed type of the tables.<br> Default value: **relationalStore.DistributedType.DISTRIBUTED_DEVICE**.|
+| type   | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10)     | No  | Distributed type of the tables.<br>Default value: **relationalStore.DistributedType.DISTRIBUTED_DEVICE**.|
 | config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | No  | Configuration of the distributed mode. If this parameter is not specified, the value of **autoSync** is **false** by default, which means only manual sync is supported.                       |
 
 **Return value**
@@ -4542,7 +4542,7 @@ Subscribes to the intra-process or inter-process events of this RDB store. The r
 | Name      | Type           | Mandatory| Description                                                        |
 | ------------ | --------------- | ---- | ------------------------------------------------------------ |
 | event        | string          | Yes  | Event name, which must match the event name in **emit**.              |
-| interProcess | boolean         | Yes  | Type of the data to observe.<br> **true**: inter-process.<br> **false**: intra-process.|
+| interProcess | boolean         | Yes  | Type of the data to observe.<br>**true**: inter-process.<br>**false**: intra-process.|
 | observer     | Callback\<void> | Yes  | Callback used to return the result.                                                  |
 
 **Error codes**
@@ -4957,7 +4957,7 @@ Unsubscribes from process events.
 | Name      | Type           | Mandatory| Description                                                        |
 | ------------ | --------------- | ---- | ------------------------------------------------------------ |
 | event        | string          | Yes  | Event name, which matches the event name in **on()**.|
-| interProcess | boolean         | Yes  | Type of the data to observe.<br> **true**: inter-process.<br> **false**: intra-process.|
+| interProcess | boolean         | Yes  | Type of the data to observe.<br>**true**: inter-process.<br>**false**: intra-process.|
 | observer     | Callback\<void> | No  | If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
