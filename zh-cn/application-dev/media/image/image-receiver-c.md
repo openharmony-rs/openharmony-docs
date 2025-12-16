@@ -66,6 +66,27 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 4. 定义一些工具类函数，用来处理napi的返回值和参数类型的转换。
  
    <!-- @[receiver_utility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+   
+   ``` C++
+   // 处理napi返回值。
+   napi_value GetJsResultDemo(napi_env env, int result)
+   {
+       napi_value resultNapi = nullptr;
+       napi_create_int32(env, result, &resultNapi);
+       return resultNapi;
+   }
+   
+   // 将uint64_t转换为一个以null结尾的char数组。
+   std::unique_ptr<char[]> ConvertUint64ToCharTemp(uint64_t value)
+   {
+       std::string strValue = std::to_string(value);
+       auto charBuffer = std::make_unique<char[]>(strValue.size() + 1);
+       std::copy(strValue.begin(), strValue.end(), charBuffer.get());
+       charBuffer[strValue.size()] = '\0';
+   
+       return charBuffer;
+   }
+   ```
 
 5. 初始化Receiver。
 
