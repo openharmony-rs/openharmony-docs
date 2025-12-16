@@ -591,6 +591,36 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 获取图片属性并封装为napi对象。
 
      <!-- @[get_imageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     // 获取图像属性并封装为napi对象。
+     static napi_value GetImageInfoObject(napi_env env, OH_ImageNative* image)
+     {
+         OH_LOG_INFO(LOG_APP, "GetImageInfoObject: enter, image=%{public}p", image);
+         napi_value resultObj;
+         napi_create_object(env, &resultObj);
+         resultObj = GetImageSizeInfo(env, image);
+         
+         size_t componentTypeSize = 0;
+         componentTypeSize = GetComponentTypeSize(image, componentTypeSize);
+         if (componentTypeSize > 0) {
+             resultObj = GetComponentInfo(env, componentTypeSize, image, resultObj);
+         }
+     
+         int64_t timestamp = 0;
+         Image_ErrorCode errCode = OH_ImageNative_GetTimestamp(image, &timestamp);
+         OH_LOG_INFO(LOG_APP, "GetImageInfoObject: GetTimestamp errCode=%{public}d, timestamp=%{public}ld",
+                     errCode, timestamp);
+         if (errCode == IMAGE_SUCCESS) {
+             napi_value jsTimestamp;
+             napi_create_int64(env, timestamp, &jsTimestamp);
+             napi_set_named_property(env, resultObj, "timestamp", jsTimestamp);
+         }
+     
+         OH_LOG_INFO(LOG_APP, "GetImageInfoObject: exit");
+         return resultObj;
+     }
+     ```
 
    - 获取ReceiverImageInfo的整体流程。
 
