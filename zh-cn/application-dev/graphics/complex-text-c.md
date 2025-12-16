@@ -614,6 +614,64 @@ OH_Drawing_DestroyTypography(typographyNoPlaceholder);
 
 <!-- @[complex_text_c_auto_space_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+// 创建一个TypographyStyle创建Typography时需要使用
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置使能自动间距，默认为false
+OH_Drawing_SetTypographyTextAutoSpace(typoStyle, true);
+// 设置文字内容
+const char *text = "test测试©test©测。";
+
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+// 设置文字颜色、大小、字重，不设置TextStyle会使用TypographyStyle中的默认TextStyle
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
+
+// 创建FontCollection，FontCollection用于管理字体匹配逻辑
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+// 使用FontCollection和之前创建的TypographyStyle创建TypographyCreate。TypographyCreate用于创建Typography
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+
+// 将文本样式添加到handler中
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+// 将文本添加到handler中
+OH_Drawing_TypographyHandlerAddText(handler, text);
+// 创建段落
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 设置页面最大宽度
+double maxWidth = width_;
+// 将段落按照排版宽度进行排版
+OH_Drawing_TypographyLayout(typography, maxWidth);
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// 设置使能自动间距，用于对比
+OH_Drawing_SetTypographyTextAutoSpace(typoStyle, false);
+
+// 使用FontCollection和之前创建的TypographyStyle创建TypographyCreate。TypographyCreate用于创建Typography
+OH_Drawing_TypographyCreate *handlerWithoutAutoSpace = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+
+// 将文本样式添加到handlerWithoutAutoSpace中
+OH_Drawing_TypographyHandlerPushTextStyle(handlerWithoutAutoSpace, txtStyle);
+// 将文本添加到handlerWithoutAutoSpace中
+OH_Drawing_TypographyHandlerAddText(handlerWithoutAutoSpace, text);
+// 创建段落
+OH_Drawing_Typography *typographyWithoutAutoSpace = OH_Drawing_CreateTypography(handlerWithoutAutoSpace);
+// 将段落按照排版宽度进行排版
+OH_Drawing_TypographyLayout(typographyWithoutAutoSpace, maxWidth);
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typographyWithoutAutoSpace, cCanvas_, 0, DIV_FOUR(width_));
+
+// 释放内存
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypographyHandler(handlerWithoutAutoSpace);
+OH_Drawing_DestroyTypography(typography);
+OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
+```
+
 | 段落样式设置（自动间距） | 示意效果 | 
 | -------- | -------- |
 | 不使能自动间距 | ![zh-cn_image_autoSpace_1](figures/zh-cn_image_autoSpace_1.png) | 
